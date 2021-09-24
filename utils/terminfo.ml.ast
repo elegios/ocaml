@@ -1,0 +1,383 @@
+[
+  structure_item (utils/terminfo.ml[16,1079+0]..[16,1079+11])
+    Pstr_open Fresh
+    module_expr (utils/terminfo.ml[16,1079+5]..[16,1079+11])
+      Pmod_ident "Printf" (utils/terminfo.ml[16,1079+5]..[16,1079+11])
+  structure_item (utils/terminfo.ml[18,1092+0]..[18,1092+57])
+    Pstr_primitive
+    value_description "isatty" (utils/terminfo.ml[18,1092+9]..[18,1092+15]) (utils/terminfo.ml[18,1092+0]..[18,1092+57])
+      core_type (utils/terminfo.ml[18,1092+18]..[18,1092+37])
+        Ptyp_arrow
+        Nolabel
+        core_type (utils/terminfo.ml[18,1092+18]..[18,1092+29])
+          Ptyp_constr "out_channel" (utils/terminfo.ml[18,1092+18]..[18,1092+29])
+          []
+        core_type (utils/terminfo.ml[18,1092+33]..[18,1092+37])
+          Ptyp_constr "bool" (utils/terminfo.ml[18,1092+33]..[18,1092+37])
+          []
+      [
+        "caml_sys_isatty"
+      ]
+  structure_item (utils/terminfo.ml[19,1150+0]..[19,1150+65])
+    Pstr_primitive
+    value_description "terminfo_rows" (utils/terminfo.ml[19,1150+9]..[19,1150+22]) (utils/terminfo.ml[19,1150+0]..[19,1150+65])
+      core_type (utils/terminfo.ml[19,1150+24]..[19,1150+42])
+        Ptyp_arrow
+        Nolabel
+        core_type (utils/terminfo.ml[19,1150+24]..[19,1150+35])
+          Ptyp_constr "out_channel" (utils/terminfo.ml[19,1150+24]..[19,1150+35])
+          []
+        core_type (utils/terminfo.ml[19,1150+39]..[19,1150+42])
+          Ptyp_constr "int" (utils/terminfo.ml[19,1150+39]..[19,1150+42])
+          []
+      [
+        "caml_terminfo_rows"
+      ]
+  structure_item (utils/terminfo.ml[21,1217+0]..[24,1262+13])
+    Pstr_type Rec
+    [
+      type_declaration "status" (utils/terminfo.ml[21,1217+5]..[21,1217+11]) (utils/terminfo.ml[21,1217+0]..[24,1262+13])
+        ptype_params =
+          []
+        ptype_cstrs =
+          []
+        ptype_kind =
+          Ptype_variant
+            [
+              (utils/terminfo.ml[22,1231+2]..[22,1231+17])
+                "Uninitialised" (utils/terminfo.ml[22,1231+4]..[22,1231+17])
+                []
+                None
+              (utils/terminfo.ml[23,1249+2]..[23,1249+12])
+                "Bad_term" (utils/terminfo.ml[23,1249+4]..[23,1249+12])
+                []
+                None
+              (utils/terminfo.ml[24,1262+2]..[24,1262+13])
+                "Good_term" (utils/terminfo.ml[24,1262+4]..[24,1262+13])
+                []
+                None
+            ]
+        ptype_private = Public
+        ptype_manifest =
+          None
+    ]
+  structure_item (utils/terminfo.ml[26,1277+0]..[31,1476+15])
+    Pstr_value Nonrec
+    [
+      <def>
+        pattern (utils/terminfo.ml[26,1277+4]..[26,1277+9])
+          Ppat_var "setup" (utils/terminfo.ml[26,1277+4]..[26,1277+9])
+        expression (utils/terminfo.ml[26,1277+10]..[31,1476+15]) ghost
+          Pexp_fun
+          Nolabel
+          None
+          pattern (utils/terminfo.ml[26,1277+10]..[26,1277+12])
+            Ppat_var "oc" (utils/terminfo.ml[26,1277+10]..[26,1277+12])
+          expression (utils/terminfo.ml[27,1292+2]..[31,1476+15])
+            Pexp_let Nonrec
+            [
+              <def>
+                pattern (utils/terminfo.ml[27,1292+6]..[27,1292+10])
+                  Ppat_var "term" (utils/terminfo.ml[27,1292+6]..[27,1292+10])
+                expression (utils/terminfo.ml[27,1292+13]..[27,1292+55])
+                  Pexp_try
+                  expression (utils/terminfo.ml[27,1292+17]..[27,1292+34])
+                    Pexp_apply
+                    expression (utils/terminfo.ml[27,1292+17]..[27,1292+27])
+                      Pexp_ident "Sys.getenv" (utils/terminfo.ml[27,1292+17]..[27,1292+27])
+                    [
+                      <arg>
+                      Nolabel
+                        expression (utils/terminfo.ml[27,1292+28]..[27,1292+34])
+                          Pexp_constant PConst_string("TERM",(utils/terminfo.ml[27,1292+29]..[27,1292+33]),None)
+                    ]
+                  [
+                    <case>
+                      pattern (utils/terminfo.ml[27,1292+40]..[27,1292+49])
+                        Ppat_construct "Not_found" (utils/terminfo.ml[27,1292+40]..[27,1292+49])
+                        None
+                      expression (utils/terminfo.ml[27,1292+53]..[27,1292+55])
+                        Pexp_constant PConst_string("",(utils/terminfo.ml[27,1292+54]..[27,1292+54]),None)
+                  ]
+            ]
+            expression (utils/terminfo.ml[29,1412+2]..[31,1476+15])
+              Pexp_ifthenelse
+              expression (utils/terminfo.ml[29,1412+5]..[29,1412+46])
+                Pexp_apply
+                expression (utils/terminfo.ml[29,1412+16]..[29,1412+18])
+                  Pexp_ident "&&" (utils/terminfo.ml[29,1412+16]..[29,1412+18])
+                [
+                  <arg>
+                  Nolabel
+                    expression (utils/terminfo.ml[29,1412+5]..[29,1412+15])
+                      Pexp_apply
+                      expression (utils/terminfo.ml[29,1412+10]..[29,1412+12])
+                        Pexp_ident "<>" (utils/terminfo.ml[29,1412+10]..[29,1412+12])
+                      [
+                        <arg>
+                        Nolabel
+                          expression (utils/terminfo.ml[29,1412+5]..[29,1412+9])
+                            Pexp_ident "term" (utils/terminfo.ml[29,1412+5]..[29,1412+9])
+                        <arg>
+                        Nolabel
+                          expression (utils/terminfo.ml[29,1412+13]..[29,1412+15])
+                            Pexp_constant PConst_string("",(utils/terminfo.ml[29,1412+14]..[29,1412+14]),None)
+                      ]
+                  <arg>
+                  Nolabel
+                    expression (utils/terminfo.ml[29,1412+19]..[29,1412+46])
+                      Pexp_apply
+                      expression (utils/terminfo.ml[29,1412+34]..[29,1412+36])
+                        Pexp_ident "&&" (utils/terminfo.ml[29,1412+34]..[29,1412+36])
+                      [
+                        <arg>
+                        Nolabel
+                          expression (utils/terminfo.ml[29,1412+19]..[29,1412+33])
+                            Pexp_apply
+                            expression (utils/terminfo.ml[29,1412+24]..[29,1412+26])
+                              Pexp_ident "<>" (utils/terminfo.ml[29,1412+24]..[29,1412+26])
+                            [
+                              <arg>
+                              Nolabel
+                                expression (utils/terminfo.ml[29,1412+19]..[29,1412+23])
+                                  Pexp_ident "term" (utils/terminfo.ml[29,1412+19]..[29,1412+23])
+                              <arg>
+                              Nolabel
+                                expression (utils/terminfo.ml[29,1412+27]..[29,1412+33])
+                                  Pexp_constant PConst_string("dumb",(utils/terminfo.ml[29,1412+28]..[29,1412+32]),None)
+                            ]
+                        <arg>
+                        Nolabel
+                          expression (utils/terminfo.ml[29,1412+37]..[29,1412+46])
+                            Pexp_apply
+                            expression (utils/terminfo.ml[29,1412+37]..[29,1412+43])
+                              Pexp_ident "isatty" (utils/terminfo.ml[29,1412+37]..[29,1412+43])
+                            [
+                              <arg>
+                              Nolabel
+                                expression (utils/terminfo.ml[29,1412+44]..[29,1412+46])
+                                  Pexp_ident "oc" (utils/terminfo.ml[29,1412+44]..[29,1412+46])
+                            ]
+                      ]
+                ]
+              expression (utils/terminfo.ml[30,1459+7]..[30,1459+16])
+                Pexp_construct "Good_term" (utils/terminfo.ml[30,1459+7]..[30,1459+16])
+                None
+              Some
+                expression (utils/terminfo.ml[31,1476+7]..[31,1476+15])
+                  Pexp_construct "Bad_term" (utils/terminfo.ml[31,1476+7]..[31,1476+15])
+                  None
+    ]
+  structure_item (utils/terminfo.ml[33,1493+0]..[35,1545+31])
+    Pstr_value Nonrec
+    [
+      <def>
+        pattern (utils/terminfo.ml[33,1493+4]..[33,1493+13])
+          Ppat_var "num_lines" (utils/terminfo.ml[33,1493+4]..[33,1493+13])
+        expression (utils/terminfo.ml[33,1493+14]..[35,1545+31]) ghost
+          Pexp_fun
+          Nolabel
+          None
+          pattern (utils/terminfo.ml[33,1493+14]..[33,1493+16])
+            Ppat_var "oc" (utils/terminfo.ml[33,1493+14]..[33,1493+16])
+          expression (utils/terminfo.ml[34,1512+2]..[35,1545+31])
+            Pexp_let Nonrec
+            [
+              <def>
+                pattern (utils/terminfo.ml[34,1512+6]..[34,1512+10])
+                  Ppat_var "rows" (utils/terminfo.ml[34,1512+6]..[34,1512+10])
+                expression (utils/terminfo.ml[34,1512+13]..[34,1512+29])
+                  Pexp_apply
+                  expression (utils/terminfo.ml[34,1512+13]..[34,1512+26])
+                    Pexp_ident "terminfo_rows" (utils/terminfo.ml[34,1512+13]..[34,1512+26])
+                  [
+                    <arg>
+                    Nolabel
+                      expression (utils/terminfo.ml[34,1512+27]..[34,1512+29])
+                        Pexp_ident "oc" (utils/terminfo.ml[34,1512+27]..[34,1512+29])
+                  ]
+            ]
+            expression (utils/terminfo.ml[35,1545+2]..[35,1545+31])
+              Pexp_ifthenelse
+              expression (utils/terminfo.ml[35,1545+5]..[35,1545+13])
+                Pexp_apply
+                expression (utils/terminfo.ml[35,1545+10]..[35,1545+11])
+                  Pexp_ident ">" (utils/terminfo.ml[35,1545+10]..[35,1545+11])
+                [
+                  <arg>
+                  Nolabel
+                    expression (utils/terminfo.ml[35,1545+5]..[35,1545+9])
+                      Pexp_ident "rows" (utils/terminfo.ml[35,1545+5]..[35,1545+9])
+                  <arg>
+                  Nolabel
+                    expression (utils/terminfo.ml[35,1545+12]..[35,1545+13])
+                      Pexp_constant PConst_int (0,None)
+                ]
+              expression (utils/terminfo.ml[35,1545+19]..[35,1545+23])
+                Pexp_ident "rows" (utils/terminfo.ml[35,1545+19]..[35,1545+23])
+              Some
+                expression (utils/terminfo.ml[35,1545+29]..[35,1545+31])
+                  Pexp_constant PConst_int (24,None)
+    ]
+  structure_item (utils/terminfo.ml[38,1642+0]..[39,1660+42])
+    Pstr_value Nonrec
+    [
+      <def>
+        pattern (utils/terminfo.ml[38,1642+4]..[38,1642+10])
+          Ppat_var "backup" (utils/terminfo.ml[38,1642+4]..[38,1642+10])
+        expression (utils/terminfo.ml[38,1642+11]..[39,1660+42]) ghost
+          Pexp_fun
+          Nolabel
+          None
+          pattern (utils/terminfo.ml[38,1642+11]..[38,1642+13])
+            Ppat_var "oc" (utils/terminfo.ml[38,1642+11]..[38,1642+13])
+          expression (utils/terminfo.ml[38,1642+14]..[39,1660+42]) ghost
+            Pexp_fun
+            Nolabel
+            None
+            pattern (utils/terminfo.ml[38,1642+14]..[38,1642+15])
+              Ppat_var "n" (utils/terminfo.ml[38,1642+14]..[38,1642+15])
+            expression (utils/terminfo.ml[39,1660+2]..[39,1660+42])
+              Pexp_ifthenelse
+              expression (utils/terminfo.ml[39,1660+5]..[39,1660+11])
+                Pexp_apply
+                expression (utils/terminfo.ml[39,1660+7]..[39,1660+9])
+                  Pexp_ident ">=" (utils/terminfo.ml[39,1660+7]..[39,1660+9])
+                [
+                  <arg>
+                  Nolabel
+                    expression (utils/terminfo.ml[39,1660+5]..[39,1660+6])
+                      Pexp_ident "n" (utils/terminfo.ml[39,1660+5]..[39,1660+6])
+                  <arg>
+                  Nolabel
+                    expression (utils/terminfo.ml[39,1660+10]..[39,1660+11])
+                      Pexp_constant PConst_int (1,None)
+                ]
+              expression (utils/terminfo.ml[39,1660+17]..[39,1660+42])
+                Pexp_apply
+                expression (utils/terminfo.ml[39,1660+17]..[39,1660+24])
+                  Pexp_ident "fprintf" (utils/terminfo.ml[39,1660+17]..[39,1660+24])
+                [
+                  <arg>
+                  Nolabel
+                    expression (utils/terminfo.ml[39,1660+25]..[39,1660+27])
+                      Pexp_ident "oc" (utils/terminfo.ml[39,1660+25]..[39,1660+27])
+                  <arg>
+                  Nolabel
+                    expression (utils/terminfo.ml[39,1660+28]..[39,1660+40])
+                      Pexp_constant PConst_string("\027[%dA%!",(utils/terminfo.ml[39,1660+29]..[39,1660+39]),None)
+                  <arg>
+                  Nolabel
+                    expression (utils/terminfo.ml[39,1660+41]..[39,1660+42])
+                      Pexp_ident "n" (utils/terminfo.ml[39,1660+41]..[39,1660+42])
+                ]
+              None
+    ]
+  structure_item (utils/terminfo.ml[41,1704+0]..[42,1722+42])
+    Pstr_value Nonrec
+    [
+      <def>
+        pattern (utils/terminfo.ml[41,1704+4]..[41,1704+10])
+          Ppat_var "resume" (utils/terminfo.ml[41,1704+4]..[41,1704+10])
+        expression (utils/terminfo.ml[41,1704+11]..[42,1722+42]) ghost
+          Pexp_fun
+          Nolabel
+          None
+          pattern (utils/terminfo.ml[41,1704+11]..[41,1704+13])
+            Ppat_var "oc" (utils/terminfo.ml[41,1704+11]..[41,1704+13])
+          expression (utils/terminfo.ml[41,1704+14]..[42,1722+42]) ghost
+            Pexp_fun
+            Nolabel
+            None
+            pattern (utils/terminfo.ml[41,1704+14]..[41,1704+15])
+              Ppat_var "n" (utils/terminfo.ml[41,1704+14]..[41,1704+15])
+            expression (utils/terminfo.ml[42,1722+2]..[42,1722+42])
+              Pexp_ifthenelse
+              expression (utils/terminfo.ml[42,1722+5]..[42,1722+11])
+                Pexp_apply
+                expression (utils/terminfo.ml[42,1722+7]..[42,1722+9])
+                  Pexp_ident ">=" (utils/terminfo.ml[42,1722+7]..[42,1722+9])
+                [
+                  <arg>
+                  Nolabel
+                    expression (utils/terminfo.ml[42,1722+5]..[42,1722+6])
+                      Pexp_ident "n" (utils/terminfo.ml[42,1722+5]..[42,1722+6])
+                  <arg>
+                  Nolabel
+                    expression (utils/terminfo.ml[42,1722+10]..[42,1722+11])
+                      Pexp_constant PConst_int (1,None)
+                ]
+              expression (utils/terminfo.ml[42,1722+17]..[42,1722+42])
+                Pexp_apply
+                expression (utils/terminfo.ml[42,1722+17]..[42,1722+24])
+                  Pexp_ident "fprintf" (utils/terminfo.ml[42,1722+17]..[42,1722+24])
+                [
+                  <arg>
+                  Nolabel
+                    expression (utils/terminfo.ml[42,1722+25]..[42,1722+27])
+                      Pexp_ident "oc" (utils/terminfo.ml[42,1722+25]..[42,1722+27])
+                  <arg>
+                  Nolabel
+                    expression (utils/terminfo.ml[42,1722+28]..[42,1722+40])
+                      Pexp_constant PConst_string("\027[%dB%!",(utils/terminfo.ml[42,1722+29]..[42,1722+39]),None)
+                  <arg>
+                  Nolabel
+                    expression (utils/terminfo.ml[42,1722+41]..[42,1722+42])
+                      Pexp_ident "n" (utils/terminfo.ml[42,1722+41]..[42,1722+42])
+                ]
+              None
+    ]
+  structure_item (utils/terminfo.ml[44,1766+0]..[45,1786+65])
+    Pstr_value Nonrec
+    [
+      <def>
+        pattern (utils/terminfo.ml[44,1766+4]..[44,1766+12])
+          Ppat_var "standout" (utils/terminfo.ml[44,1766+4]..[44,1766+12])
+        expression (utils/terminfo.ml[44,1766+13]..[45,1786+65]) ghost
+          Pexp_fun
+          Nolabel
+          None
+          pattern (utils/terminfo.ml[44,1766+13]..[44,1766+15])
+            Ppat_var "oc" (utils/terminfo.ml[44,1766+13]..[44,1766+15])
+          expression (utils/terminfo.ml[44,1766+16]..[45,1786+65]) ghost
+            Pexp_fun
+            Nolabel
+            None
+            pattern (utils/terminfo.ml[44,1766+16]..[44,1766+17])
+              Ppat_var "b" (utils/terminfo.ml[44,1766+16]..[44,1766+17])
+            expression (utils/terminfo.ml[45,1786+2]..[45,1786+65])
+              Pexp_sequence
+              expression (utils/terminfo.ml[45,1786+2]..[45,1786+55])
+                Pexp_apply
+                expression (utils/terminfo.ml[45,1786+2]..[45,1786+15])
+                  Pexp_ident "output_string" (utils/terminfo.ml[45,1786+2]..[45,1786+15])
+                [
+                  <arg>
+                  Nolabel
+                    expression (utils/terminfo.ml[45,1786+16]..[45,1786+18])
+                      Pexp_ident "oc" (utils/terminfo.ml[45,1786+16]..[45,1786+18])
+                  <arg>
+                  Nolabel
+                    expression (utils/terminfo.ml[45,1786+19]..[45,1786+55])
+                      Pexp_ifthenelse
+                      expression (utils/terminfo.ml[45,1786+23]..[45,1786+24])
+                        Pexp_ident "b" (utils/terminfo.ml[45,1786+23]..[45,1786+24])
+                      expression (utils/terminfo.ml[45,1786+30]..[45,1786+39])
+                        Pexp_constant PConst_string("\027[4m",(utils/terminfo.ml[45,1786+31]..[45,1786+38]),None)
+                      Some
+                        expression (utils/terminfo.ml[45,1786+45]..[45,1786+54])
+                          Pexp_constant PConst_string("\027[0m",(utils/terminfo.ml[45,1786+46]..[45,1786+53]),None)
+                ]
+              expression (utils/terminfo.ml[45,1786+57]..[45,1786+65])
+                Pexp_apply
+                expression (utils/terminfo.ml[45,1786+57]..[45,1786+62])
+                  Pexp_ident "flush" (utils/terminfo.ml[45,1786+57]..[45,1786+62])
+                [
+                  <arg>
+                  Nolabel
+                    expression (utils/terminfo.ml[45,1786+63]..[45,1786+65])
+                      Pexp_ident "oc" (utils/terminfo.ml[45,1786+63]..[45,1786+65])
+                ]
+    ]
+]
+

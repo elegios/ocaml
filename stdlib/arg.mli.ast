@@ -1,0 +1,1080 @@
+[
+  signature_item (stdlib/arg.mli[16,1079+0]..[72,3363+2])
+    Psig_attribute "ocaml.text"
+    [
+      structure_item (stdlib/arg.mli[16,1079+0]..[72,3363+2])
+        Pstr_eval
+        expression (stdlib/arg.mli[16,1079+0]..[72,3363+2])
+          Pexp_constant PConst_string(" Parsing of command line arguments.\n\n   This module provides a general mechanism for extracting options and\n   arguments from the command line to the program. For example:\n\n{[\n     let usage_msg = \"append [-verbose] <file1> [<file2>] ... -o <output>\"\n     let verbose = ref false\n     let input_files = ref []\n     let output_file = ref \"\"\n\n     let anon_fun filename =\n       input_files := filename::!input_files\n\n     let speclist =\n       [(\"-verbose\", Arg.Set verbose, \"Output debug information\");\n        (\"-o\", Arg.Set_string output_file, \"Set output file name\")]\n\n     let () =\n       Arg.parse speclist anon_fun usage_msg;\n       (* Main functionality here *)\n]}\n\n   Syntax of command lines:\n    A keyword is a character string starting with a [-].\n    An option is a keyword alone or followed by an argument.\n    The types of keywords are: [Unit], [Bool], [Set], [Clear],\n    [String], [Set_string], [Int], [Set_int], [Float], [Set_float],\n    [Tuple], [Symbol], [Rest], [Rest_all] and [Expand].\n\n    [Unit], [Set] and [Clear] keywords take no argument.\n\n    A [Rest] or [Rest_all] keyword takes the remainder of the command line\n    as arguments. (More explanations below.)\n\n    Every other keyword takes the following word on the command line\n    as argument.  For compatibility with GNU getopt_long, [keyword=arg]\n    is also allowed.\n    Arguments not preceded by a keyword are called anonymous arguments.\n\n   Examples ([cmd] is assumed to be the command name):\n-   [cmd -flag           ](a unit option)\n-   [cmd -int 1          ](an int option with argument [1])\n-   [cmd -string foobar  ](a string option with argument [\"foobar\"])\n-   [cmd -float 12.34    ](a float option with argument [12.34])\n-   [cmd a b c           ](three anonymous arguments: [\"a\"], [\"b\"], and [\"c\"])\n-   [cmd a b -- c d      ](two anonymous arguments and a rest option with\n                           two arguments)\n\n    [Rest] takes a function that is called repeatedly for each\n    remaining command line argument. [Rest_all] takes a function that\n    is called once, with the list of all remaining arguments.\n\n    Note that if no arguments follow a [Rest] keyword then the function\n    is not called at all whereas the function for a [Rest_all] keyword\n    is called with an empty list.\n",(stdlib/arg.mli[16,1079+0]..[72,3363+2]),None)
+    ]
+  signature_item (stdlib/arg.mli[74,3367+0]..[95,4782+38])
+    Psig_type Rec
+    [
+      type_declaration "spec" (stdlib/arg.mli[74,3367+5]..[74,3367+9]) (stdlib/arg.mli[74,3367+0]..[95,4782+38])
+        attribute "ocaml.doc"
+          [
+            structure_item (stdlib/arg.mli[102,5306+0]..[103,5363+21])
+              Pstr_eval
+              expression (stdlib/arg.mli[102,5306+0]..[103,5363+21])
+                Pexp_constant PConst_string(" The concrete type describing the behavior associated\n   with a keyword. ",(stdlib/arg.mli[102,5306+0]..[103,5363+21]),None)
+          ]
+        ptype_params =
+          []
+        ptype_cstrs =
+          []
+        ptype_kind =
+          Ptype_variant
+            [
+              (stdlib/arg.mli[75,3379+2]..[75,3379+26])
+                "Unit" (stdlib/arg.mli[75,3379+4]..[75,3379+8])
+                attribute "ocaml.doc"
+                  [
+                    structure_item (stdlib/arg.mli[75,3379+31]..[75,3379+74])
+                      Pstr_eval
+                      expression (stdlib/arg.mli[75,3379+31]..[75,3379+74])
+                        Pexp_constant PConst_string(" Call the function with unit argument ",(stdlib/arg.mli[75,3379+31]..[75,3379+74]),None)
+                  ]
+                [
+                  core_type (stdlib/arg.mli[75,3379+13]..[75,3379+25])
+                    Ptyp_arrow
+                    Nolabel
+                    core_type (stdlib/arg.mli[75,3379+13]..[75,3379+17])
+                      Ptyp_constr "unit" (stdlib/arg.mli[75,3379+13]..[75,3379+17])
+                      []
+                    core_type (stdlib/arg.mli[75,3379+21]..[75,3379+25])
+                      Ptyp_constr "unit" (stdlib/arg.mli[75,3379+21]..[75,3379+25])
+                      []
+                ]
+                None
+              (stdlib/arg.mli[76,3454+2]..[76,3454+26])
+                "Bool" (stdlib/arg.mli[76,3454+4]..[76,3454+8])
+                attribute "ocaml.doc"
+                  [
+                    structure_item (stdlib/arg.mli[76,3454+31]..[76,3454+76])
+                      Pstr_eval
+                      expression (stdlib/arg.mli[76,3454+31]..[76,3454+76])
+                        Pexp_constant PConst_string(" Call the function with a bool argument ",(stdlib/arg.mli[76,3454+31]..[76,3454+76]),None)
+                  ]
+                [
+                  core_type (stdlib/arg.mli[76,3454+13]..[76,3454+25])
+                    Ptyp_arrow
+                    Nolabel
+                    core_type (stdlib/arg.mli[76,3454+13]..[76,3454+17])
+                      Ptyp_constr "bool" (stdlib/arg.mli[76,3454+13]..[76,3454+17])
+                      []
+                    core_type (stdlib/arg.mli[76,3454+21]..[76,3454+25])
+                      Ptyp_constr "unit" (stdlib/arg.mli[76,3454+21]..[76,3454+25])
+                      []
+                ]
+                None
+              (stdlib/arg.mli[77,3531+2]..[77,3531+19])
+                "Set" (stdlib/arg.mli[77,3531+4]..[77,3531+7])
+                attribute "ocaml.doc"
+                  [
+                    structure_item (stdlib/arg.mli[77,3531+31]..[77,3531+63])
+                      Pstr_eval
+                      expression (stdlib/arg.mli[77,3531+31]..[77,3531+63])
+                        Pexp_constant PConst_string(" Set the reference to true ",(stdlib/arg.mli[77,3531+31]..[77,3531+63]),None)
+                  ]
+                [
+                  core_type (stdlib/arg.mli[77,3531+11]..[77,3531+19])
+                    Ptyp_constr "ref" (stdlib/arg.mli[77,3531+16]..[77,3531+19])
+                    [
+                      core_type (stdlib/arg.mli[77,3531+11]..[77,3531+15])
+                        Ptyp_constr "bool" (stdlib/arg.mli[77,3531+11]..[77,3531+15])
+                        []
+                    ]
+                ]
+                None
+              (stdlib/arg.mli[78,3595+2]..[78,3595+21])
+                "Clear" (stdlib/arg.mli[78,3595+4]..[78,3595+9])
+                attribute "ocaml.doc"
+                  [
+                    structure_item (stdlib/arg.mli[78,3595+31]..[78,3595+64])
+                      Pstr_eval
+                      expression (stdlib/arg.mli[78,3595+31]..[78,3595+64])
+                        Pexp_constant PConst_string(" Set the reference to false ",(stdlib/arg.mli[78,3595+31]..[78,3595+64]),None)
+                  ]
+                [
+                  core_type (stdlib/arg.mli[78,3595+13]..[78,3595+21])
+                    Ptyp_constr "ref" (stdlib/arg.mli[78,3595+18]..[78,3595+21])
+                    [
+                      core_type (stdlib/arg.mli[78,3595+13]..[78,3595+17])
+                        Ptyp_constr "bool" (stdlib/arg.mli[78,3595+13]..[78,3595+17])
+                        []
+                    ]
+                ]
+                None
+              (stdlib/arg.mli[79,3660+2]..[79,3660+30])
+                "String" (stdlib/arg.mli[79,3660+4]..[79,3660+10])
+                attribute "ocaml.doc"
+                  [
+                    structure_item (stdlib/arg.mli[79,3660+31]..[79,3660+78])
+                      Pstr_eval
+                      expression (stdlib/arg.mli[79,3660+31]..[79,3660+78])
+                        Pexp_constant PConst_string(" Call the function with a string argument ",(stdlib/arg.mli[79,3660+31]..[79,3660+78]),None)
+                  ]
+                [
+                  core_type (stdlib/arg.mli[79,3660+15]..[79,3660+29])
+                    Ptyp_arrow
+                    Nolabel
+                    core_type (stdlib/arg.mli[79,3660+15]..[79,3660+21])
+                      Ptyp_constr "string" (stdlib/arg.mli[79,3660+15]..[79,3660+21])
+                      []
+                    core_type (stdlib/arg.mli[79,3660+25]..[79,3660+29])
+                      Ptyp_constr "unit" (stdlib/arg.mli[79,3660+25]..[79,3660+29])
+                      []
+                ]
+                None
+              (stdlib/arg.mli[80,3739+2]..[80,3739+28])
+                "Set_string" (stdlib/arg.mli[80,3739+4]..[80,3739+14])
+                attribute "ocaml.doc"
+                  [
+                    structure_item (stdlib/arg.mli[80,3739+31]..[80,3739+78])
+                      Pstr_eval
+                      expression (stdlib/arg.mli[80,3739+31]..[80,3739+78])
+                        Pexp_constant PConst_string(" Set the reference to the string argument ",(stdlib/arg.mli[80,3739+31]..[80,3739+78]),None)
+                  ]
+                [
+                  core_type (stdlib/arg.mli[80,3739+18]..[80,3739+28])
+                    Ptyp_constr "ref" (stdlib/arg.mli[80,3739+25]..[80,3739+28])
+                    [
+                      core_type (stdlib/arg.mli[80,3739+18]..[80,3739+24])
+                        Ptyp_constr "string" (stdlib/arg.mli[80,3739+18]..[80,3739+24])
+                        []
+                    ]
+                ]
+                None
+              (stdlib/arg.mli[81,3818+2]..[81,3818+24])
+                "Int" (stdlib/arg.mli[81,3818+4]..[81,3818+7])
+                attribute "ocaml.doc"
+                  [
+                    structure_item (stdlib/arg.mli[81,3818+31]..[81,3818+76])
+                      Pstr_eval
+                      expression (stdlib/arg.mli[81,3818+31]..[81,3818+76])
+                        Pexp_constant PConst_string(" Call the function with an int argument ",(stdlib/arg.mli[81,3818+31]..[81,3818+76]),None)
+                  ]
+                [
+                  core_type (stdlib/arg.mli[81,3818+12]..[81,3818+23])
+                    Ptyp_arrow
+                    Nolabel
+                    core_type (stdlib/arg.mli[81,3818+12]..[81,3818+15])
+                      Ptyp_constr "int" (stdlib/arg.mli[81,3818+12]..[81,3818+15])
+                      []
+                    core_type (stdlib/arg.mli[81,3818+19]..[81,3818+23])
+                      Ptyp_constr "unit" (stdlib/arg.mli[81,3818+19]..[81,3818+23])
+                      []
+                ]
+                None
+              (stdlib/arg.mli[82,3895+2]..[82,3895+22])
+                "Set_int" (stdlib/arg.mli[82,3895+4]..[82,3895+11])
+                attribute "ocaml.doc"
+                  [
+                    structure_item (stdlib/arg.mli[82,3895+31]..[82,3895+75])
+                      Pstr_eval
+                      expression (stdlib/arg.mli[82,3895+31]..[82,3895+75])
+                        Pexp_constant PConst_string(" Set the reference to the int argument ",(stdlib/arg.mli[82,3895+31]..[82,3895+75]),None)
+                  ]
+                [
+                  core_type (stdlib/arg.mli[82,3895+15]..[82,3895+22])
+                    Ptyp_constr "ref" (stdlib/arg.mli[82,3895+19]..[82,3895+22])
+                    [
+                      core_type (stdlib/arg.mli[82,3895+15]..[82,3895+18])
+                        Ptyp_constr "int" (stdlib/arg.mli[82,3895+15]..[82,3895+18])
+                        []
+                    ]
+                ]
+                None
+              (stdlib/arg.mli[83,3971+2]..[83,3971+28])
+                "Float" (stdlib/arg.mli[83,3971+4]..[83,3971+9])
+                attribute "ocaml.doc"
+                  [
+                    structure_item (stdlib/arg.mli[83,3971+31]..[83,3971+77])
+                      Pstr_eval
+                      expression (stdlib/arg.mli[83,3971+31]..[83,3971+77])
+                        Pexp_constant PConst_string(" Call the function with a float argument ",(stdlib/arg.mli[83,3971+31]..[83,3971+77]),None)
+                  ]
+                [
+                  core_type (stdlib/arg.mli[83,3971+14]..[83,3971+27])
+                    Ptyp_arrow
+                    Nolabel
+                    core_type (stdlib/arg.mli[83,3971+14]..[83,3971+19])
+                      Ptyp_constr "float" (stdlib/arg.mli[83,3971+14]..[83,3971+19])
+                      []
+                    core_type (stdlib/arg.mli[83,3971+23]..[83,3971+27])
+                      Ptyp_constr "unit" (stdlib/arg.mli[83,3971+23]..[83,3971+27])
+                      []
+                ]
+                None
+              (stdlib/arg.mli[84,4049+2]..[84,4049+26])
+                "Set_float" (stdlib/arg.mli[84,4049+4]..[84,4049+13])
+                attribute "ocaml.doc"
+                  [
+                    structure_item (stdlib/arg.mli[84,4049+31]..[84,4049+77])
+                      Pstr_eval
+                      expression (stdlib/arg.mli[84,4049+31]..[84,4049+77])
+                        Pexp_constant PConst_string(" Set the reference to the float argument ",(stdlib/arg.mli[84,4049+31]..[84,4049+77]),None)
+                  ]
+                [
+                  core_type (stdlib/arg.mli[84,4049+17]..[84,4049+26])
+                    Ptyp_constr "ref" (stdlib/arg.mli[84,4049+23]..[84,4049+26])
+                    [
+                      core_type (stdlib/arg.mli[84,4049+17]..[84,4049+22])
+                        Ptyp_constr "float" (stdlib/arg.mli[84,4049+17]..[84,4049+22])
+                        []
+                    ]
+                ]
+                None
+              (stdlib/arg.mli[85,4127+2]..[85,4127+22])
+                "Tuple" (stdlib/arg.mli[85,4127+4]..[85,4127+9])
+                attribute "ocaml.doc"
+                  [
+                    structure_item (stdlib/arg.mli[85,4127+31]..[86,4202+47])
+                      Pstr_eval
+                      expression (stdlib/arg.mli[85,4127+31]..[86,4202+47])
+                        Pexp_constant PConst_string(" Take several arguments according to the\n                                   spec list ",(stdlib/arg.mli[85,4127+31]..[86,4202+47]),None)
+                  ]
+                [
+                  core_type (stdlib/arg.mli[85,4127+13]..[85,4127+22])
+                    Ptyp_constr "list" (stdlib/arg.mli[85,4127+18]..[85,4127+22])
+                    [
+                      core_type (stdlib/arg.mli[85,4127+13]..[85,4127+17])
+                        Ptyp_constr "spec" (stdlib/arg.mli[85,4127+13]..[85,4127+17])
+                        []
+                    ]
+                ]
+                None
+              (stdlib/arg.mli[87,4250+2]..[87,4250+44])
+                "Symbol" (stdlib/arg.mli[87,4250+4]..[87,4250+10])
+                attribute "ocaml.doc"
+                  [
+                    structure_item (stdlib/arg.mli[88,4295+31]..[89,4370+71])
+                      Pstr_eval
+                      expression (stdlib/arg.mli[88,4295+31]..[89,4370+71])
+                        Pexp_constant PConst_string(" Take one of the symbols as argument and\n                                   call the function with the symbol ",(stdlib/arg.mli[88,4295+31]..[89,4370+71]),None)
+                  ]
+                [
+                  core_type (stdlib/arg.mli[87,4250+14]..[87,4250+25])
+                    Ptyp_constr "list" (stdlib/arg.mli[87,4250+21]..[87,4250+25])
+                    [
+                      core_type (stdlib/arg.mli[87,4250+14]..[87,4250+20])
+                        Ptyp_constr "string" (stdlib/arg.mli[87,4250+14]..[87,4250+20])
+                        []
+                    ]
+                  core_type (stdlib/arg.mli[87,4250+29]..[87,4250+43])
+                    Ptyp_arrow
+                    Nolabel
+                    core_type (stdlib/arg.mli[87,4250+29]..[87,4250+35])
+                      Ptyp_constr "string" (stdlib/arg.mli[87,4250+29]..[87,4250+35])
+                      []
+                    core_type (stdlib/arg.mli[87,4250+39]..[87,4250+43])
+                      Ptyp_constr "unit" (stdlib/arg.mli[87,4250+39]..[87,4250+43])
+                      []
+                ]
+                None
+              (stdlib/arg.mli[90,4442+2]..[90,4442+28])
+                "Rest" (stdlib/arg.mli[90,4442+4]..[90,4442+8])
+                attribute "ocaml.doc"
+                  [
+                    structure_item (stdlib/arg.mli[90,4442+31]..[91,4517+75])
+                      Pstr_eval
+                      expression (stdlib/arg.mli[90,4442+31]..[91,4517+75])
+                        Pexp_constant PConst_string(" Stop interpreting keywords and call the\n                                   function with each remaining argument ",(stdlib/arg.mli[90,4442+31]..[91,4517+75]),None)
+                  ]
+                [
+                  core_type (stdlib/arg.mli[90,4442+13]..[90,4442+27])
+                    Ptyp_arrow
+                    Nolabel
+                    core_type (stdlib/arg.mli[90,4442+13]..[90,4442+19])
+                      Ptyp_constr "string" (stdlib/arg.mli[90,4442+13]..[90,4442+19])
+                      []
+                    core_type (stdlib/arg.mli[90,4442+23]..[90,4442+27])
+                      Ptyp_constr "unit" (stdlib/arg.mli[90,4442+23]..[90,4442+27])
+                      []
+                ]
+                None
+              (stdlib/arg.mli[92,4593+2]..[92,4593+37])
+                "Rest_all" (stdlib/arg.mli[92,4593+4]..[92,4593+12])
+                attribute "ocaml.doc"
+                  [
+                    structure_item (stdlib/arg.mli[93,4631+31]..[94,4706+75])
+                      Pstr_eval
+                      expression (stdlib/arg.mli[93,4631+31]..[94,4706+75])
+                        Pexp_constant PConst_string(" Stop interpreting keywords and call the\n                                   function with all remaining arguments ",(stdlib/arg.mli[93,4631+31]..[94,4706+75]),None)
+                  ]
+                [
+                  core_type (stdlib/arg.mli[92,4593+17]..[92,4593+36])
+                    Ptyp_arrow
+                    Nolabel
+                    core_type (stdlib/arg.mli[92,4593+17]..[92,4593+28])
+                      Ptyp_constr "list" (stdlib/arg.mli[92,4593+24]..[92,4593+28])
+                      [
+                        core_type (stdlib/arg.mli[92,4593+17]..[92,4593+23])
+                          Ptyp_constr "string" (stdlib/arg.mli[92,4593+17]..[92,4593+23])
+                          []
+                      ]
+                    core_type (stdlib/arg.mli[92,4593+32]..[92,4593+36])
+                      Ptyp_constr "unit" (stdlib/arg.mli[92,4593+32]..[92,4593+36])
+                      []
+                ]
+                None
+              (stdlib/arg.mli[95,4782+2]..[95,4782+38])
+                "Expand" (stdlib/arg.mli[95,4782+4]..[95,4782+10])
+                attribute "ocaml.doc"
+                  [
+                    structure_item (stdlib/arg.mli[95,4782+39]..[101,5227+78])
+                      Pstr_eval
+                      expression (stdlib/arg.mli[95,4782+39]..[101,5227+78])
+                        Pexp_constant PConst_string(" If the remaining arguments to process\n                                           are of the form\n                                           [[\"-foo\"; \"arg\"] @ rest] where \"foo\"\n                                           is registered as [Expand f], then the\n                                           arguments [f \"arg\" @ rest] are\n                                           processed. Only allowed in\n                                           [parse_and_expand_argv_dynamic]. ",(stdlib/arg.mli[95,4782+39]..[101,5227+78]),None)
+                  ]
+                [
+                  core_type (stdlib/arg.mli[95,4782+15]..[95,4782+37])
+                    Ptyp_arrow
+                    Nolabel
+                    core_type (stdlib/arg.mli[95,4782+15]..[95,4782+21])
+                      Ptyp_constr "string" (stdlib/arg.mli[95,4782+15]..[95,4782+21])
+                      []
+                    core_type (stdlib/arg.mli[95,4782+25]..[95,4782+37])
+                      Ptyp_constr "array" (stdlib/arg.mli[95,4782+32]..[95,4782+37])
+                      [
+                        core_type (stdlib/arg.mli[95,4782+25]..[95,4782+31])
+                          Ptyp_constr "string" (stdlib/arg.mli[95,4782+25]..[95,4782+31])
+                          []
+                      ]
+                ]
+                None
+            ]
+        ptype_private = Public
+        ptype_manifest =
+          None
+    ]
+  signature_item (stdlib/arg.mli[105,5386+0]..[105,5386+17])
+    Psig_type Rec
+    [
+      type_declaration "key" (stdlib/arg.mli[105,5386+5]..[105,5386+8]) (stdlib/arg.mli[105,5386+0]..[105,5386+17])
+        ptype_params =
+          []
+        ptype_cstrs =
+          []
+        ptype_kind =
+          Ptype_abstract
+        ptype_private = Public
+        ptype_manifest =
+          Some
+            core_type (stdlib/arg.mli[105,5386+11]..[105,5386+17])
+              Ptyp_constr "string" (stdlib/arg.mli[105,5386+11]..[105,5386+17])
+              []
+    ]
+  signature_item (stdlib/arg.mli[106,5404+0]..[106,5404+17])
+    Psig_type Rec
+    [
+      type_declaration "doc" (stdlib/arg.mli[106,5404+5]..[106,5404+8]) (stdlib/arg.mli[106,5404+0]..[106,5404+17])
+        ptype_params =
+          []
+        ptype_cstrs =
+          []
+        ptype_kind =
+          Ptype_abstract
+        ptype_private = Public
+        ptype_manifest =
+          Some
+            core_type (stdlib/arg.mli[106,5404+11]..[106,5404+17])
+              Ptyp_constr "string" (stdlib/arg.mli[106,5404+11]..[106,5404+17])
+              []
+    ]
+  signature_item (stdlib/arg.mli[107,5422+0]..[107,5422+23])
+    Psig_type Rec
+    [
+      type_declaration "usage_msg" (stdlib/arg.mli[107,5422+5]..[107,5422+14]) (stdlib/arg.mli[107,5422+0]..[107,5422+23])
+        ptype_params =
+          []
+        ptype_cstrs =
+          []
+        ptype_kind =
+          Ptype_abstract
+        ptype_private = Public
+        ptype_manifest =
+          Some
+            core_type (stdlib/arg.mli[107,5422+17]..[107,5422+23])
+              Ptyp_constr "string" (stdlib/arg.mli[107,5422+17]..[107,5422+23])
+              []
+    ]
+  signature_item (stdlib/arg.mli[108,5446+0]..[108,5446+32])
+    Psig_type Rec
+    [
+      type_declaration "anon_fun" (stdlib/arg.mli[108,5446+5]..[108,5446+13]) (stdlib/arg.mli[108,5446+0]..[108,5446+32])
+        ptype_params =
+          []
+        ptype_cstrs =
+          []
+        ptype_kind =
+          Ptype_abstract
+        ptype_private = Public
+        ptype_manifest =
+          Some
+            core_type (stdlib/arg.mli[108,5446+17]..[108,5446+31])
+              Ptyp_arrow
+              Nolabel
+              core_type (stdlib/arg.mli[108,5446+17]..[108,5446+23])
+                Ptyp_constr "string" (stdlib/arg.mli[108,5446+17]..[108,5446+23])
+                []
+              core_type (stdlib/arg.mli[108,5446+27]..[108,5446+31])
+                Ptyp_constr "unit" (stdlib/arg.mli[108,5446+27]..[108,5446+31])
+                []
+    ]
+  signature_item (stdlib/arg.mli[110,5480+0]..[111,5492+58])
+    Psig_value
+    value_description "parse" (stdlib/arg.mli[110,5480+4]..[110,5480+9]) (stdlib/arg.mli[110,5480+0]..[111,5492+58])
+      attribute "ocaml.doc"
+        [
+          structure_item (stdlib/arg.mli[112,5551+0]..[137,6895+2])
+            Pstr_eval
+            expression (stdlib/arg.mli[112,5551+0]..[137,6895+2])
+              Pexp_constant PConst_string(" [Arg.parse speclist anon_fun usage_msg] parses the command line.\n    [speclist] is a list of triples [(key, spec, doc)].\n    [key] is the option keyword, it must start with a ['-'] character.\n    [spec] gives the option type and the function to call when this option\n    is found on the command line.\n    [doc] is a one-line description of this option.\n    [anon_fun] is called on anonymous arguments.\n    The functions in [spec] and [anon_fun] are called in the same order\n    as their arguments appear on the command line.\n\n    If an error occurs, [Arg.parse] exits the program, after printing\n    to standard error an error message as follows:\n-   The reason for the error: unknown option, invalid or missing argument, etc.\n-   [usage_msg]\n-   The list of options, each followed by the corresponding [doc] string.\n    Beware: options that have an empty [doc] string will not be included in the\n    list.\n\n    For the user to be able to specify anonymous arguments starting with a\n    [-], include for example [(\"-\", String anon_fun, doc)] in [speclist].\n\n    By default, [parse] recognizes two unit options, [-help] and [--help],\n    which will print to standard output [usage_msg] and the list of\n    options, and exit the program.  You can override this behaviour\n    by specifying your own [-help] and [--help] options in [speclist].\n",(stdlib/arg.mli[112,5551+0]..[137,6895+2]),None)
+        ]
+      core_type (stdlib/arg.mli[111,5492+2]..[111,5492+58])
+        Ptyp_arrow
+        Nolabel
+        core_type (stdlib/arg.mli[111,5492+2]..[111,5492+25])
+          Ptyp_constr "list" (stdlib/arg.mli[111,5492+21]..[111,5492+25])
+          [
+            core_type (stdlib/arg.mli[111,5492+3]..[111,5492+19])
+              Ptyp_tuple
+              [
+                core_type (stdlib/arg.mli[111,5492+3]..[111,5492+6])
+                  Ptyp_constr "key" (stdlib/arg.mli[111,5492+3]..[111,5492+6])
+                  []
+                core_type (stdlib/arg.mli[111,5492+9]..[111,5492+13])
+                  Ptyp_constr "spec" (stdlib/arg.mli[111,5492+9]..[111,5492+13])
+                  []
+                core_type (stdlib/arg.mli[111,5492+16]..[111,5492+19])
+                  Ptyp_constr "doc" (stdlib/arg.mli[111,5492+16]..[111,5492+19])
+                  []
+              ]
+          ]
+        core_type (stdlib/arg.mli[111,5492+29]..[111,5492+58])
+          Ptyp_arrow
+          Nolabel
+          core_type (stdlib/arg.mli[111,5492+29]..[111,5492+37])
+            Ptyp_constr "anon_fun" (stdlib/arg.mli[111,5492+29]..[111,5492+37])
+            []
+          core_type (stdlib/arg.mli[111,5492+41]..[111,5492+58])
+            Ptyp_arrow
+            Nolabel
+            core_type (stdlib/arg.mli[111,5492+41]..[111,5492+50])
+              Ptyp_constr "usage_msg" (stdlib/arg.mli[111,5492+41]..[111,5492+50])
+              []
+            core_type (stdlib/arg.mli[111,5492+54]..[111,5492+58])
+              Ptyp_constr "unit" (stdlib/arg.mli[111,5492+54]..[111,5492+58])
+              []
+      []
+  signature_item (stdlib/arg.mli[139,6899+0]..[140,6919+62])
+    Psig_value
+    value_description "parse_dynamic" (stdlib/arg.mli[139,6899+4]..[139,6899+17]) (stdlib/arg.mli[139,6899+0]..[140,6919+62])
+      attribute "ocaml.doc"
+        [
+          structure_item (stdlib/arg.mli[141,6982+0]..[147,7308+2])
+            Pstr_eval
+            expression (stdlib/arg.mli[141,6982+0]..[147,7308+2])
+              Pexp_constant PConst_string(" Same as {!Arg.parse}, except that the [speclist] argument is a reference\n    and may be updated during the parsing. A typical use for this feature\n    is to parse command lines of the form:\n-     command subcommand [options]\n    where the list of options depends on the value of the subcommand argument.\n    @since 4.01.0\n",(stdlib/arg.mli[141,6982+0]..[147,7308+2]),None)
+        ]
+      core_type (stdlib/arg.mli[140,6919+2]..[140,6919+62])
+        Ptyp_arrow
+        Nolabel
+        core_type (stdlib/arg.mli[140,6919+2]..[140,6919+29])
+          Ptyp_constr "ref" (stdlib/arg.mli[140,6919+26]..[140,6919+29])
+          [
+            core_type (stdlib/arg.mli[140,6919+2]..[140,6919+25])
+              Ptyp_constr "list" (stdlib/arg.mli[140,6919+21]..[140,6919+25])
+              [
+                core_type (stdlib/arg.mli[140,6919+3]..[140,6919+19])
+                  Ptyp_tuple
+                  [
+                    core_type (stdlib/arg.mli[140,6919+3]..[140,6919+6])
+                      Ptyp_constr "key" (stdlib/arg.mli[140,6919+3]..[140,6919+6])
+                      []
+                    core_type (stdlib/arg.mli[140,6919+9]..[140,6919+13])
+                      Ptyp_constr "spec" (stdlib/arg.mli[140,6919+9]..[140,6919+13])
+                      []
+                    core_type (stdlib/arg.mli[140,6919+16]..[140,6919+19])
+                      Ptyp_constr "doc" (stdlib/arg.mli[140,6919+16]..[140,6919+19])
+                      []
+                  ]
+              ]
+          ]
+        core_type (stdlib/arg.mli[140,6919+33]..[140,6919+62])
+          Ptyp_arrow
+          Nolabel
+          core_type (stdlib/arg.mli[140,6919+33]..[140,6919+41])
+            Ptyp_constr "anon_fun" (stdlib/arg.mli[140,6919+33]..[140,6919+41])
+            []
+          core_type (stdlib/arg.mli[140,6919+45]..[140,6919+62])
+            Ptyp_arrow
+            Nolabel
+            core_type (stdlib/arg.mli[140,6919+45]..[140,6919+54])
+              Ptyp_constr "usage_msg" (stdlib/arg.mli[140,6919+45]..[140,6919+54])
+              []
+            core_type (stdlib/arg.mli[140,6919+58]..[140,6919+62])
+              Ptyp_constr "unit" (stdlib/arg.mli[140,6919+58]..[140,6919+62])
+              []
+      []
+  signature_item (stdlib/arg.mli[149,7312+0]..[150,7366+58])
+    Psig_value
+    value_description "parse_argv" (stdlib/arg.mli[149,7312+4]..[149,7312+14]) (stdlib/arg.mli[149,7312+0]..[150,7366+58])
+      attribute "ocaml.doc"
+        [
+          structure_item (stdlib/arg.mli[151,7425+0]..[160,7977+2])
+            Pstr_eval
+            expression (stdlib/arg.mli[151,7425+0]..[160,7977+2])
+              Pexp_constant PConst_string(" [Arg.parse_argv ~current args speclist anon_fun usage_msg] parses\n  the array [args] as if it were the command line.  It uses and updates\n  the value of [~current] (if given), or {!Arg.current}.  You must set\n  it before calling [parse_argv].  The initial value of [current]\n  is the index of the program name (argument 0) in the array.\n  If an error occurs, [Arg.parse_argv] raises {!Arg.Bad} with\n  the error message as argument.  If option [-help] or [--help] is\n  given, [Arg.parse_argv] raises {!Arg.Help} with the help message\n  as argument.\n",(stdlib/arg.mli[151,7425+0]..[160,7977+2]),None)
+        ]
+      core_type (stdlib/arg.mli[149,7312+17]..[150,7366+58])
+        Ptyp_arrow
+        Optional "current"
+        core_type (stdlib/arg.mli[149,7312+27]..[149,7312+34])
+          Ptyp_constr "ref" (stdlib/arg.mli[149,7312+31]..[149,7312+34])
+          [
+            core_type (stdlib/arg.mli[149,7312+27]..[149,7312+30])
+              Ptyp_constr "int" (stdlib/arg.mli[149,7312+27]..[149,7312+30])
+              []
+          ]
+        core_type (stdlib/arg.mli[149,7312+38]..[150,7366+58])
+          Ptyp_arrow
+          Nolabel
+          core_type (stdlib/arg.mli[149,7312+38]..[149,7312+50])
+            Ptyp_constr "array" (stdlib/arg.mli[149,7312+45]..[149,7312+50])
+            [
+              core_type (stdlib/arg.mli[149,7312+38]..[149,7312+44])
+                Ptyp_constr "string" (stdlib/arg.mli[149,7312+38]..[149,7312+44])
+                []
+            ]
+          core_type (stdlib/arg.mli[150,7366+2]..[150,7366+58])
+            Ptyp_arrow
+            Nolabel
+            core_type (stdlib/arg.mli[150,7366+2]..[150,7366+25])
+              Ptyp_constr "list" (stdlib/arg.mli[150,7366+21]..[150,7366+25])
+              [
+                core_type (stdlib/arg.mli[150,7366+3]..[150,7366+19])
+                  Ptyp_tuple
+                  [
+                    core_type (stdlib/arg.mli[150,7366+3]..[150,7366+6])
+                      Ptyp_constr "key" (stdlib/arg.mli[150,7366+3]..[150,7366+6])
+                      []
+                    core_type (stdlib/arg.mli[150,7366+9]..[150,7366+13])
+                      Ptyp_constr "spec" (stdlib/arg.mli[150,7366+9]..[150,7366+13])
+                      []
+                    core_type (stdlib/arg.mli[150,7366+16]..[150,7366+19])
+                      Ptyp_constr "doc" (stdlib/arg.mli[150,7366+16]..[150,7366+19])
+                      []
+                  ]
+              ]
+            core_type (stdlib/arg.mli[150,7366+29]..[150,7366+58])
+              Ptyp_arrow
+              Nolabel
+              core_type (stdlib/arg.mli[150,7366+29]..[150,7366+37])
+                Ptyp_constr "anon_fun" (stdlib/arg.mli[150,7366+29]..[150,7366+37])
+                []
+              core_type (stdlib/arg.mli[150,7366+41]..[150,7366+58])
+                Ptyp_arrow
+                Nolabel
+                core_type (stdlib/arg.mli[150,7366+41]..[150,7366+50])
+                  Ptyp_constr "usage_msg" (stdlib/arg.mli[150,7366+41]..[150,7366+50])
+                  []
+                core_type (stdlib/arg.mli[150,7366+54]..[150,7366+58])
+                  Ptyp_constr "unit" (stdlib/arg.mli[150,7366+54]..[150,7366+58])
+                  []
+      []
+  signature_item (stdlib/arg.mli[162,7981+0]..[163,8042+59])
+    Psig_value
+    value_description "parse_argv_dynamic" (stdlib/arg.mli[162,7981+4]..[162,7981+22]) (stdlib/arg.mli[162,7981+0]..[163,8042+59])
+      attribute "ocaml.doc"
+        [
+          structure_item (stdlib/arg.mli[164,8102+0]..[168,8275+2])
+            Pstr_eval
+            expression (stdlib/arg.mli[164,8102+0]..[168,8275+2])
+              Pexp_constant PConst_string(" Same as {!Arg.parse_argv}, except that the [speclist] argument is a\n    reference and may be updated during the parsing.\n    See {!Arg.parse_dynamic}.\n    @since 4.01.0\n",(stdlib/arg.mli[164,8102+0]..[168,8275+2]),None)
+        ]
+      core_type (stdlib/arg.mli[162,7981+25]..[163,8042+59])
+        Ptyp_arrow
+        Optional "current"
+        core_type (stdlib/arg.mli[162,7981+34]..[162,7981+41])
+          Ptyp_constr "ref" (stdlib/arg.mli[162,7981+38]..[162,7981+41])
+          [
+            core_type (stdlib/arg.mli[162,7981+34]..[162,7981+37])
+              Ptyp_constr "int" (stdlib/arg.mli[162,7981+34]..[162,7981+37])
+              []
+          ]
+        core_type (stdlib/arg.mli[162,7981+45]..[163,8042+59])
+          Ptyp_arrow
+          Nolabel
+          core_type (stdlib/arg.mli[162,7981+45]..[162,7981+57])
+            Ptyp_constr "array" (stdlib/arg.mli[162,7981+52]..[162,7981+57])
+            [
+              core_type (stdlib/arg.mli[162,7981+45]..[162,7981+51])
+                Ptyp_constr "string" (stdlib/arg.mli[162,7981+45]..[162,7981+51])
+                []
+            ]
+          core_type (stdlib/arg.mli[163,8042+2]..[163,8042+59])
+            Ptyp_arrow
+            Nolabel
+            core_type (stdlib/arg.mli[163,8042+2]..[163,8042+29])
+              Ptyp_constr "ref" (stdlib/arg.mli[163,8042+26]..[163,8042+29])
+              [
+                core_type (stdlib/arg.mli[163,8042+2]..[163,8042+25])
+                  Ptyp_constr "list" (stdlib/arg.mli[163,8042+21]..[163,8042+25])
+                  [
+                    core_type (stdlib/arg.mli[163,8042+3]..[163,8042+19])
+                      Ptyp_tuple
+                      [
+                        core_type (stdlib/arg.mli[163,8042+3]..[163,8042+6])
+                          Ptyp_constr "key" (stdlib/arg.mli[163,8042+3]..[163,8042+6])
+                          []
+                        core_type (stdlib/arg.mli[163,8042+9]..[163,8042+13])
+                          Ptyp_constr "spec" (stdlib/arg.mli[163,8042+9]..[163,8042+13])
+                          []
+                        core_type (stdlib/arg.mli[163,8042+16]..[163,8042+19])
+                          Ptyp_constr "doc" (stdlib/arg.mli[163,8042+16]..[163,8042+19])
+                          []
+                      ]
+                  ]
+              ]
+            core_type (stdlib/arg.mli[163,8042+33]..[163,8042+59])
+              Ptyp_arrow
+              Nolabel
+              core_type (stdlib/arg.mli[163,8042+33]..[163,8042+41])
+                Ptyp_constr "anon_fun" (stdlib/arg.mli[163,8042+33]..[163,8042+41])
+                []
+              core_type (stdlib/arg.mli[163,8042+45]..[163,8042+59])
+                Ptyp_arrow
+                Nolabel
+                core_type (stdlib/arg.mli[163,8042+45]..[163,8042+51])
+                  Ptyp_constr "string" (stdlib/arg.mli[163,8042+45]..[163,8042+51])
+                  []
+                core_type (stdlib/arg.mli[163,8042+55]..[163,8042+59])
+                  Ptyp_constr "unit" (stdlib/arg.mli[163,8042+55]..[163,8042+59])
+                  []
+      []
+  signature_item (stdlib/arg.mli[170,8279+0]..[171,8346+59])
+    Psig_value
+    value_description "parse_and_expand_argv_dynamic" (stdlib/arg.mli[170,8279+4]..[170,8279+33]) (stdlib/arg.mli[170,8279+0]..[171,8346+59])
+      attribute "ocaml.doc"
+        [
+          structure_item (stdlib/arg.mli[172,8406+0]..[176,8610+2])
+            Pstr_eval
+            expression (stdlib/arg.mli[172,8406+0]..[176,8610+2])
+              Pexp_constant PConst_string(" Same as {!Arg.parse_argv_dynamic}, except that the [argv] argument is a\n    reference and may be updated during the parsing of [Expand] arguments.\n    See {!Arg.parse_argv_dynamic}.\n    @since 4.05.0\n",(stdlib/arg.mli[172,8406+0]..[176,8610+2]),None)
+        ]
+      core_type (stdlib/arg.mli[170,8279+36]..[171,8346+59])
+        Ptyp_arrow
+        Nolabel
+        core_type (stdlib/arg.mli[170,8279+36]..[170,8279+43])
+          Ptyp_constr "ref" (stdlib/arg.mli[170,8279+40]..[170,8279+43])
+          [
+            core_type (stdlib/arg.mli[170,8279+36]..[170,8279+39])
+              Ptyp_constr "int" (stdlib/arg.mli[170,8279+36]..[170,8279+39])
+              []
+          ]
+        core_type (stdlib/arg.mli[170,8279+47]..[171,8346+59])
+          Ptyp_arrow
+          Nolabel
+          core_type (stdlib/arg.mli[170,8279+47]..[170,8279+63])
+            Ptyp_constr "ref" (stdlib/arg.mli[170,8279+60]..[170,8279+63])
+            [
+              core_type (stdlib/arg.mli[170,8279+47]..[170,8279+59])
+                Ptyp_constr "array" (stdlib/arg.mli[170,8279+54]..[170,8279+59])
+                [
+                  core_type (stdlib/arg.mli[170,8279+47]..[170,8279+53])
+                    Ptyp_constr "string" (stdlib/arg.mli[170,8279+47]..[170,8279+53])
+                    []
+                ]
+            ]
+          core_type (stdlib/arg.mli[171,8346+2]..[171,8346+59])
+            Ptyp_arrow
+            Nolabel
+            core_type (stdlib/arg.mli[171,8346+2]..[171,8346+29])
+              Ptyp_constr "ref" (stdlib/arg.mli[171,8346+26]..[171,8346+29])
+              [
+                core_type (stdlib/arg.mli[171,8346+2]..[171,8346+25])
+                  Ptyp_constr "list" (stdlib/arg.mli[171,8346+21]..[171,8346+25])
+                  [
+                    core_type (stdlib/arg.mli[171,8346+3]..[171,8346+19])
+                      Ptyp_tuple
+                      [
+                        core_type (stdlib/arg.mli[171,8346+3]..[171,8346+6])
+                          Ptyp_constr "key" (stdlib/arg.mli[171,8346+3]..[171,8346+6])
+                          []
+                        core_type (stdlib/arg.mli[171,8346+9]..[171,8346+13])
+                          Ptyp_constr "spec" (stdlib/arg.mli[171,8346+9]..[171,8346+13])
+                          []
+                        core_type (stdlib/arg.mli[171,8346+16]..[171,8346+19])
+                          Ptyp_constr "doc" (stdlib/arg.mli[171,8346+16]..[171,8346+19])
+                          []
+                      ]
+                  ]
+              ]
+            core_type (stdlib/arg.mli[171,8346+33]..[171,8346+59])
+              Ptyp_arrow
+              Nolabel
+              core_type (stdlib/arg.mli[171,8346+33]..[171,8346+41])
+                Ptyp_constr "anon_fun" (stdlib/arg.mli[171,8346+33]..[171,8346+41])
+                []
+              core_type (stdlib/arg.mli[171,8346+45]..[171,8346+59])
+                Ptyp_arrow
+                Nolabel
+                core_type (stdlib/arg.mli[171,8346+45]..[171,8346+51])
+                  Ptyp_constr "string" (stdlib/arg.mli[171,8346+45]..[171,8346+51])
+                  []
+                core_type (stdlib/arg.mli[171,8346+55]..[171,8346+59])
+                  Ptyp_constr "unit" (stdlib/arg.mli[171,8346+55]..[171,8346+59])
+                  []
+      []
+  signature_item (stdlib/arg.mli[178,8614+0]..[179,8632+58])
+    Psig_value
+    value_description "parse_expand" (stdlib/arg.mli[178,8614+4]..[178,8614+16]) (stdlib/arg.mli[178,8614+0]..[179,8632+58])
+      attribute "ocaml.doc"
+        [
+          structure_item (stdlib/arg.mli[180,8691+0]..[183,8831+2])
+            Pstr_eval
+            expression (stdlib/arg.mli[180,8691+0]..[183,8831+2])
+              Pexp_constant PConst_string(" Same as {!Arg.parse}, except that the [Expand] arguments are allowed and\n    the {!current} reference is not updated.\n    @since 4.05.0\n",(stdlib/arg.mli[180,8691+0]..[183,8831+2]),None)
+        ]
+      core_type (stdlib/arg.mli[179,8632+2]..[179,8632+58])
+        Ptyp_arrow
+        Nolabel
+        core_type (stdlib/arg.mli[179,8632+2]..[179,8632+25])
+          Ptyp_constr "list" (stdlib/arg.mli[179,8632+21]..[179,8632+25])
+          [
+            core_type (stdlib/arg.mli[179,8632+3]..[179,8632+19])
+              Ptyp_tuple
+              [
+                core_type (stdlib/arg.mli[179,8632+3]..[179,8632+6])
+                  Ptyp_constr "key" (stdlib/arg.mli[179,8632+3]..[179,8632+6])
+                  []
+                core_type (stdlib/arg.mli[179,8632+9]..[179,8632+13])
+                  Ptyp_constr "spec" (stdlib/arg.mli[179,8632+9]..[179,8632+13])
+                  []
+                core_type (stdlib/arg.mli[179,8632+16]..[179,8632+19])
+                  Ptyp_constr "doc" (stdlib/arg.mli[179,8632+16]..[179,8632+19])
+                  []
+              ]
+          ]
+        core_type (stdlib/arg.mli[179,8632+29]..[179,8632+58])
+          Ptyp_arrow
+          Nolabel
+          core_type (stdlib/arg.mli[179,8632+29]..[179,8632+37])
+            Ptyp_constr "anon_fun" (stdlib/arg.mli[179,8632+29]..[179,8632+37])
+            []
+          core_type (stdlib/arg.mli[179,8632+41]..[179,8632+58])
+            Ptyp_arrow
+            Nolabel
+            core_type (stdlib/arg.mli[179,8632+41]..[179,8632+50])
+              Ptyp_constr "usage_msg" (stdlib/arg.mli[179,8632+41]..[179,8632+50])
+              []
+            core_type (stdlib/arg.mli[179,8632+54]..[179,8632+58])
+              Ptyp_constr "unit" (stdlib/arg.mli[179,8632+54]..[179,8632+58])
+              []
+      []
+  signature_item (stdlib/arg.mli[185,8835+0]..[185,8835+24])
+    Psig_exception
+    type_exception
+      ptyext_constructor =
+        extension_constructor (stdlib/arg.mli[185,8835+0]..[185,8835+24])
+          attribute "ocaml.doc"
+            [
+              structure_item (stdlib/arg.mli[186,8860+0]..[186,8860+62])
+                Pstr_eval
+                expression (stdlib/arg.mli[186,8860+0]..[186,8860+62])
+                  Pexp_constant PConst_string(" Raised by [Arg.parse_argv] when the user asks for help. ",(stdlib/arg.mli[186,8860+0]..[186,8860+62]),None)
+            ]
+          pext_name = "Help"
+          pext_kind =
+            Pext_decl
+              [
+                core_type (stdlib/arg.mli[185,8835+18]..[185,8835+24])
+                  Ptyp_constr "string" (stdlib/arg.mli[185,8835+18]..[185,8835+24])
+                  []
+              ]
+              None
+  signature_item (stdlib/arg.mli[188,8924+0]..[188,8924+23])
+    Psig_exception
+    type_exception
+      ptyext_constructor =
+        extension_constructor (stdlib/arg.mli[188,8924+0]..[188,8924+23])
+          attribute "ocaml.doc"
+            [
+              structure_item (stdlib/arg.mli[189,8948+0]..[191,9061+73])
+                Pstr_eval
+                expression (stdlib/arg.mli[189,8948+0]..[191,9061+73])
+                  Pexp_constant PConst_string(" Functions in [spec] or [anon_fun] can raise [Arg.Bad] with an error\n    message to reject invalid arguments.\n    [Arg.Bad] is also raised by {!Arg.parse_argv} in case of an error. ",(stdlib/arg.mli[189,8948+0]..[191,9061+73]),None)
+            ]
+          pext_name = "Bad"
+          pext_kind =
+            Pext_decl
+              [
+                core_type (stdlib/arg.mli[188,8924+17]..[188,8924+23])
+                  Ptyp_constr "string" (stdlib/arg.mli[188,8924+17]..[188,8924+23])
+                  []
+              ]
+              None
+  signature_item (stdlib/arg.mli[193,9136+0]..[193,9136+56])
+    Psig_value
+    value_description "usage" (stdlib/arg.mli[193,9136+4]..[193,9136+9]) (stdlib/arg.mli[193,9136+0]..[193,9136+56])
+      attribute "ocaml.doc"
+        [
+          structure_item (stdlib/arg.mli[194,9193+0]..[197,9388+67])
+            Pstr_eval
+            expression (stdlib/arg.mli[194,9193+0]..[197,9388+67])
+              Pexp_constant PConst_string(" [Arg.usage speclist usage_msg] prints to standard error\n    an error message that includes the list of valid options.  This is\n    the same message that {!Arg.parse} prints in case of error.\n    [speclist] and [usage_msg] are the same as for {!Arg.parse}. ",(stdlib/arg.mli[194,9193+0]..[197,9388+67]),None)
+        ]
+      core_type (stdlib/arg.mli[193,9136+12]..[193,9136+56])
+        Ptyp_arrow
+        Nolabel
+        core_type (stdlib/arg.mli[193,9136+12]..[193,9136+35])
+          Ptyp_constr "list" (stdlib/arg.mli[193,9136+31]..[193,9136+35])
+          [
+            core_type (stdlib/arg.mli[193,9136+13]..[193,9136+29])
+              Ptyp_tuple
+              [
+                core_type (stdlib/arg.mli[193,9136+13]..[193,9136+16])
+                  Ptyp_constr "key" (stdlib/arg.mli[193,9136+13]..[193,9136+16])
+                  []
+                core_type (stdlib/arg.mli[193,9136+19]..[193,9136+23])
+                  Ptyp_constr "spec" (stdlib/arg.mli[193,9136+19]..[193,9136+23])
+                  []
+                core_type (stdlib/arg.mli[193,9136+26]..[193,9136+29])
+                  Ptyp_constr "doc" (stdlib/arg.mli[193,9136+26]..[193,9136+29])
+                  []
+              ]
+          ]
+        core_type (stdlib/arg.mli[193,9136+39]..[193,9136+56])
+          Ptyp_arrow
+          Nolabel
+          core_type (stdlib/arg.mli[193,9136+39]..[193,9136+48])
+            Ptyp_constr "usage_msg" (stdlib/arg.mli[193,9136+39]..[193,9136+48])
+            []
+          core_type (stdlib/arg.mli[193,9136+52]..[193,9136+56])
+            Ptyp_constr "unit" (stdlib/arg.mli[193,9136+52]..[193,9136+56])
+            []
+      []
+  signature_item (stdlib/arg.mli[199,9457+0]..[199,9457+65])
+    Psig_value
+    value_description "usage_string" (stdlib/arg.mli[199,9457+4]..[199,9457+16]) (stdlib/arg.mli[199,9457+0]..[199,9457+65])
+      attribute "ocaml.doc"
+        [
+          structure_item (stdlib/arg.mli[200,9523+0]..[201,9593+44])
+            Pstr_eval
+            expression (stdlib/arg.mli[200,9523+0]..[201,9593+44])
+              Pexp_constant PConst_string(" Returns the message that would have been printed by {!Arg.usage},\n    if provided with the same parameters. ",(stdlib/arg.mli[200,9523+0]..[201,9593+44]),None)
+        ]
+      core_type (stdlib/arg.mli[199,9457+19]..[199,9457+65])
+        Ptyp_arrow
+        Nolabel
+        core_type (stdlib/arg.mli[199,9457+19]..[199,9457+42])
+          Ptyp_constr "list" (stdlib/arg.mli[199,9457+38]..[199,9457+42])
+          [
+            core_type (stdlib/arg.mli[199,9457+20]..[199,9457+36])
+              Ptyp_tuple
+              [
+                core_type (stdlib/arg.mli[199,9457+20]..[199,9457+23])
+                  Ptyp_constr "key" (stdlib/arg.mli[199,9457+20]..[199,9457+23])
+                  []
+                core_type (stdlib/arg.mli[199,9457+26]..[199,9457+30])
+                  Ptyp_constr "spec" (stdlib/arg.mli[199,9457+26]..[199,9457+30])
+                  []
+                core_type (stdlib/arg.mli[199,9457+33]..[199,9457+36])
+                  Ptyp_constr "doc" (stdlib/arg.mli[199,9457+33]..[199,9457+36])
+                  []
+              ]
+          ]
+        core_type (stdlib/arg.mli[199,9457+46]..[199,9457+65])
+          Ptyp_arrow
+          Nolabel
+          core_type (stdlib/arg.mli[199,9457+46]..[199,9457+55])
+            Ptyp_constr "usage_msg" (stdlib/arg.mli[199,9457+46]..[199,9457+55])
+            []
+          core_type (stdlib/arg.mli[199,9457+59]..[199,9457+65])
+            Ptyp_constr "string" (stdlib/arg.mli[199,9457+59]..[199,9457+65])
+            []
+      []
+  signature_item (stdlib/arg.mli[203,9639+0]..[203,9639+76])
+    Psig_value
+    value_description "align" (stdlib/arg.mli[203,9639+4]..[203,9639+9]) (stdlib/arg.mli[203,9639+0]..[203,9639+76])
+      attribute "ocaml.doc"
+        [
+          structure_item (stdlib/arg.mli[204,9716+0]..[210,10166+40])
+            Pstr_eval
+            expression (stdlib/arg.mli[204,9716+0]..[210,10166+40])
+              Pexp_constant PConst_string(" Align the documentation strings by inserting spaces at the first alignment\n    separator (tab or, if tab is not found, space), according to the length of\n    the keyword.  Use a alignment separator as the first character in a doc\n    string if you want to align the whole string.  The doc strings corresponding\n    to [Symbol] arguments are aligned on the next line.\n    @param limit options with keyword and message longer than [limit] will not\n    be used to compute the alignment. ",(stdlib/arg.mli[204,9716+0]..[210,10166+40]),None)
+        ]
+      core_type (stdlib/arg.mli[203,9639+11]..[203,9639+76])
+        Ptyp_arrow
+        Optional "limit"
+        core_type (stdlib/arg.mli[203,9639+19]..[203,9639+22])
+          Ptyp_constr "int" (stdlib/arg.mli[203,9639+19]..[203,9639+22])
+          []
+        core_type (stdlib/arg.mli[203,9639+26]..[203,9639+76])
+          Ptyp_arrow
+          Nolabel
+          core_type (stdlib/arg.mli[203,9639+26]..[203,9639+49])
+            Ptyp_constr "list" (stdlib/arg.mli[203,9639+45]..[203,9639+49])
+            [
+              core_type (stdlib/arg.mli[203,9639+27]..[203,9639+43])
+                Ptyp_tuple
+                [
+                  core_type (stdlib/arg.mli[203,9639+27]..[203,9639+30])
+                    Ptyp_constr "key" (stdlib/arg.mli[203,9639+27]..[203,9639+30])
+                    []
+                  core_type (stdlib/arg.mli[203,9639+33]..[203,9639+37])
+                    Ptyp_constr "spec" (stdlib/arg.mli[203,9639+33]..[203,9639+37])
+                    []
+                  core_type (stdlib/arg.mli[203,9639+40]..[203,9639+43])
+                    Ptyp_constr "doc" (stdlib/arg.mli[203,9639+40]..[203,9639+43])
+                    []
+                ]
+            ]
+          core_type (stdlib/arg.mli[203,9639+53]..[203,9639+76])
+            Ptyp_constr "list" (stdlib/arg.mli[203,9639+72]..[203,9639+76])
+            [
+              core_type (stdlib/arg.mli[203,9639+54]..[203,9639+70])
+                Ptyp_tuple
+                [
+                  core_type (stdlib/arg.mli[203,9639+54]..[203,9639+57])
+                    Ptyp_constr "key" (stdlib/arg.mli[203,9639+54]..[203,9639+57])
+                    []
+                  core_type (stdlib/arg.mli[203,9639+60]..[203,9639+64])
+                    Ptyp_constr "spec" (stdlib/arg.mli[203,9639+60]..[203,9639+64])
+                    []
+                  core_type (stdlib/arg.mli[203,9639+67]..[203,9639+70])
+                    Ptyp_constr "doc" (stdlib/arg.mli[203,9639+67]..[203,9639+70])
+                    []
+                ]
+            ]
+      []
+  signature_item (stdlib/arg.mli[212,10208+0]..[212,10208+21])
+    Psig_value
+    value_description "current" (stdlib/arg.mli[212,10208+4]..[212,10208+11]) (stdlib/arg.mli[212,10208+0]..[212,10208+21])
+      attribute "ocaml.doc"
+        [
+          structure_item (stdlib/arg.mli[213,10230+0]..[217,10513+27])
+            Pstr_eval
+            expression (stdlib/arg.mli[213,10230+0]..[217,10513+27])
+              Pexp_constant PConst_string(" Position (in {!Sys.argv}) of the argument being processed.  You can\n    change this value, e.g. to force {!Arg.parse} to skip some arguments.\n    {!Arg.parse} uses the initial value of {!Arg.current} as the index of\n    argument 0 (the program name) and starts parsing arguments\n    at the next element. ",(stdlib/arg.mli[213,10230+0]..[217,10513+27]),None)
+        ]
+      core_type (stdlib/arg.mli[212,10208+14]..[212,10208+21])
+        Ptyp_constr "ref" (stdlib/arg.mli[212,10208+18]..[212,10208+21])
+        [
+          core_type (stdlib/arg.mli[212,10208+14]..[212,10208+17])
+            Ptyp_constr "int" (stdlib/arg.mli[212,10208+14]..[212,10208+17])
+            []
+        ]
+      []
+  signature_item (stdlib/arg.mli[219,10542+0]..[219,10542+36])
+    Psig_value
+    value_description "read_arg" (stdlib/arg.mli[219,10542+4]..[219,10542+12]) (stdlib/arg.mli[219,10542+0]..[219,10542+36])
+      attribute "ocaml.doc"
+        [
+          structure_item (stdlib/arg.mli[220,10579+0]..[222,10673+20])
+            Pstr_eval
+            expression (stdlib/arg.mli[220,10579+0]..[222,10673+20])
+              Pexp_constant PConst_string(" [Arg.read_arg file] reads newline-terminated command line arguments from\n    file [file].\n    @since 4.05.0 ",(stdlib/arg.mli[220,10579+0]..[222,10673+20]),None)
+        ]
+      core_type (stdlib/arg.mli[219,10542+14]..[219,10542+36])
+        Ptyp_arrow
+        Nolabel
+        core_type (stdlib/arg.mli[219,10542+14]..[219,10542+20])
+          Ptyp_constr "string" (stdlib/arg.mli[219,10542+14]..[219,10542+20])
+          []
+        core_type (stdlib/arg.mli[219,10542+24]..[219,10542+36])
+          Ptyp_constr "array" (stdlib/arg.mli[219,10542+31]..[219,10542+36])
+          [
+            core_type (stdlib/arg.mli[219,10542+24]..[219,10542+30])
+              Ptyp_constr "string" (stdlib/arg.mli[219,10542+24]..[219,10542+30])
+              []
+          ]
+      []
+  signature_item (stdlib/arg.mli[224,10695+0]..[224,10695+37])
+    Psig_value
+    value_description "read_arg0" (stdlib/arg.mli[224,10695+4]..[224,10695+13]) (stdlib/arg.mli[224,10695+0]..[224,10695+37])
+      attribute "ocaml.doc"
+        [
+          structure_item (stdlib/arg.mli[225,10733+0]..[227,10832+20])
+            Pstr_eval
+            expression (stdlib/arg.mli[225,10733+0]..[227,10832+20])
+              Pexp_constant PConst_string(" Identical to {!Arg.read_arg} but assumes null character terminated command\n    line arguments.\n    @since 4.05.0 ",(stdlib/arg.mli[225,10733+0]..[227,10832+20]),None)
+        ]
+      core_type (stdlib/arg.mli[224,10695+15]..[224,10695+37])
+        Ptyp_arrow
+        Nolabel
+        core_type (stdlib/arg.mli[224,10695+15]..[224,10695+21])
+          Ptyp_constr "string" (stdlib/arg.mli[224,10695+15]..[224,10695+21])
+          []
+        core_type (stdlib/arg.mli[224,10695+25]..[224,10695+37])
+          Ptyp_constr "array" (stdlib/arg.mli[224,10695+32]..[224,10695+37])
+          [
+            core_type (stdlib/arg.mli[224,10695+25]..[224,10695+31])
+              Ptyp_constr "string" (stdlib/arg.mli[224,10695+25]..[224,10695+31])
+              []
+          ]
+      []
+  signature_item (stdlib/arg.mli[230,10855+0]..[230,10855+45])
+    Psig_value
+    value_description "write_arg" (stdlib/arg.mli[230,10855+4]..[230,10855+13]) (stdlib/arg.mli[230,10855+0]..[230,10855+45])
+      attribute "ocaml.doc"
+        [
+          structure_item (stdlib/arg.mli[231,10901+0]..[234,11097+20])
+            Pstr_eval
+            expression (stdlib/arg.mli[231,10901+0]..[234,11097+20])
+              Pexp_constant PConst_string(" [Arg.write_arg file args] writes the arguments [args] newline-terminated\n    into the file [file]. If the any of the arguments in [args] contains a\n    newline, use {!Arg.write_arg0} instead.\n    @since 4.05.0 ",(stdlib/arg.mli[231,10901+0]..[234,11097+20]),None)
+        ]
+      core_type (stdlib/arg.mli[230,10855+15]..[230,10855+45])
+        Ptyp_arrow
+        Nolabel
+        core_type (stdlib/arg.mli[230,10855+15]..[230,10855+21])
+          Ptyp_constr "string" (stdlib/arg.mli[230,10855+15]..[230,10855+21])
+          []
+        core_type (stdlib/arg.mli[230,10855+25]..[230,10855+45])
+          Ptyp_arrow
+          Nolabel
+          core_type (stdlib/arg.mli[230,10855+25]..[230,10855+37])
+            Ptyp_constr "array" (stdlib/arg.mli[230,10855+32]..[230,10855+37])
+            [
+              core_type (stdlib/arg.mli[230,10855+25]..[230,10855+31])
+                Ptyp_constr "string" (stdlib/arg.mli[230,10855+25]..[230,10855+31])
+                []
+            ]
+          core_type (stdlib/arg.mli[230,10855+41]..[230,10855+45])
+            Ptyp_constr "unit" (stdlib/arg.mli[230,10855+41]..[230,10855+45])
+            []
+      []
+  signature_item (stdlib/arg.mli[236,11119+0]..[236,11119+46])
+    Psig_value
+    value_description "write_arg0" (stdlib/arg.mli[236,11119+4]..[236,11119+14]) (stdlib/arg.mli[236,11119+0]..[236,11119+46])
+      attribute "ocaml.doc"
+        [
+          structure_item (stdlib/arg.mli[237,11166+0]..[239,11267+20])
+            Pstr_eval
+            expression (stdlib/arg.mli[237,11166+0]..[239,11267+20])
+              Pexp_constant PConst_string(" Identical to {!Arg.write_arg} but uses the null character for terminator\n    instead of newline.\n    @since 4.05.0 ",(stdlib/arg.mli[237,11166+0]..[239,11267+20]),None)
+        ]
+      core_type (stdlib/arg.mli[236,11119+16]..[236,11119+46])
+        Ptyp_arrow
+        Nolabel
+        core_type (stdlib/arg.mli[236,11119+16]..[236,11119+22])
+          Ptyp_constr "string" (stdlib/arg.mli[236,11119+16]..[236,11119+22])
+          []
+        core_type (stdlib/arg.mli[236,11119+26]..[236,11119+46])
+          Ptyp_arrow
+          Nolabel
+          core_type (stdlib/arg.mli[236,11119+26]..[236,11119+38])
+            Ptyp_constr "array" (stdlib/arg.mli[236,11119+33]..[236,11119+38])
+            [
+              core_type (stdlib/arg.mli[236,11119+26]..[236,11119+32])
+                Ptyp_constr "string" (stdlib/arg.mli[236,11119+26]..[236,11119+32])
+                []
+            ]
+          core_type (stdlib/arg.mli[236,11119+42]..[236,11119+46])
+            Ptyp_constr "unit" (stdlib/arg.mli[236,11119+42]..[236,11119+46])
+            []
+      []
+]
+

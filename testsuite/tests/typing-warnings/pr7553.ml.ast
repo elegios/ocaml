@@ -1,0 +1,158 @@
+[
+  structure_item (testsuite/tests/typing-warnings/pr7553.ml[6,62+0]..[6,62+30])
+    Pstr_module
+    "A" (testsuite/tests/typing-warnings/pr7553.ml[6,62+7]..[6,62+8])
+      module_expr (testsuite/tests/typing-warnings/pr7553.ml[6,62+11]..[6,62+30])
+        Pmod_structure
+        [
+          structure_item (testsuite/tests/typing-warnings/pr7553.ml[6,62+18]..[6,62+26])
+            Pstr_type Rec
+            [
+              type_declaration "foo" (testsuite/tests/typing-warnings/pr7553.ml[6,62+23]..[6,62+26]) (testsuite/tests/typing-warnings/pr7553.ml[6,62+18]..[6,62+26])
+                ptype_params =
+                  []
+                ptype_cstrs =
+                  []
+                ptype_kind =
+                  Ptype_abstract
+                ptype_private = Public
+                ptype_manifest =
+                  None
+            ]
+        ]
+  structure_item (testsuite/tests/typing-warnings/pr7553.ml[7,95+0]..[9,136+3])
+    Pstr_extension "expect"
+    [
+      structure_item (testsuite/tests/typing-warnings/pr7553.ml[7,95+10]..[9,136+2])
+        Pstr_eval
+        expression (testsuite/tests/typing-warnings/pr7553.ml[7,95+10]..[9,136+2])
+          Pexp_constant PConst_string ("\nmodule A : sig type foo end\n",(testsuite/tests/typing-warnings/pr7553.ml[7,95+12]..[9,136+0]),Some "")
+    ]
+  structure_item (testsuite/tests/typing-warnings/pr7553.ml[11,141+0]..[14,193+7])
+    Pstr_recmodule
+    [
+      "B" (testsuite/tests/typing-warnings/pr7553.ml[11,141+11]..[11,141+12])
+        module_expr (testsuite/tests/typing-warnings/pr7553.ml[11,141+13]..[14,193+7])
+          Pmod_constraint
+          module_expr (testsuite/tests/typing-warnings/pr7553.ml[14,193+6]..[14,193+7])
+            Pmod_ident "B" (testsuite/tests/typing-warnings/pr7553.ml[14,193+6]..[14,193+7])
+          module_type (testsuite/tests/typing-warnings/pr7553.ml[11,141+15]..[14,193+3])
+            Pmty_signature
+            [
+              signature_item (testsuite/tests/typing-warnings/pr7553.ml[12,160+2]..[12,160+8])
+                Psig_open Fresh "A" (testsuite/tests/typing-warnings/pr7553.ml[12,160+7]..[12,160+8])
+              signature_item (testsuite/tests/typing-warnings/pr7553.ml[13,169+2]..[13,169+23])
+                Psig_type Rec
+                [
+                  type_declaration "bar" (testsuite/tests/typing-warnings/pr7553.ml[13,169+7]..[13,169+10]) (testsuite/tests/typing-warnings/pr7553.ml[13,169+2]..[13,169+23])
+                    ptype_params =
+                      []
+                    ptype_cstrs =
+                      []
+                    ptype_kind =
+                      Ptype_variant
+                        [
+                          (testsuite/tests/typing-warnings/pr7553.ml[13,169+13]..[13,169+23])
+                            "Bar" (testsuite/tests/typing-warnings/pr7553.ml[13,169+13]..[13,169+16])
+                            [
+                              core_type (testsuite/tests/typing-warnings/pr7553.ml[13,169+20]..[13,169+23])
+                                Ptyp_constr "foo" (testsuite/tests/typing-warnings/pr7553.ml[13,169+20]..[13,169+23])
+                                []
+                            ]
+                            None
+                        ]
+                    ptype_private = Public
+                    ptype_manifest =
+                      None
+                ]
+            ]
+    ]
+  structure_item (testsuite/tests/typing-warnings/pr7553.ml[15,203+0]..[17,263+3])
+    Pstr_extension "expect"
+    [
+      structure_item (testsuite/tests/typing-warnings/pr7553.ml[15,203+10]..[17,263+2])
+        Pstr_eval
+        expression (testsuite/tests/typing-warnings/pr7553.ml[15,203+10]..[17,263+2])
+          Pexp_constant PConst_string ("\nmodule rec B : sig type bar = Bar of A.foo end\n",(testsuite/tests/typing-warnings/pr7553.ml[15,203+12]..[17,263+0]),Some "")
+    ]
+  structure_item (testsuite/tests/typing-warnings/pr7553.ml[19,268+0]..[21,296+7])
+    Pstr_recmodule
+    [
+      "C" (testsuite/tests/typing-warnings/pr7553.ml[19,268+11]..[19,268+12])
+        module_expr (testsuite/tests/typing-warnings/pr7553.ml[19,268+13]..[21,296+7])
+          Pmod_constraint
+          module_expr (testsuite/tests/typing-warnings/pr7553.ml[21,296+6]..[21,296+7])
+            Pmod_ident "C" (testsuite/tests/typing-warnings/pr7553.ml[21,296+6]..[21,296+7])
+          module_type (testsuite/tests/typing-warnings/pr7553.ml[19,268+15]..[21,296+3])
+            Pmty_signature
+            [
+              signature_item (testsuite/tests/typing-warnings/pr7553.ml[20,287+2]..[20,287+8])
+                Psig_open Fresh "A" (testsuite/tests/typing-warnings/pr7553.ml[20,287+7]..[20,287+8])
+            ]
+    ]
+  structure_item (testsuite/tests/typing-warnings/pr7553.ml[22,306+0]..[28,433+3])
+    Pstr_extension "expect"
+    [
+      structure_item (testsuite/tests/typing-warnings/pr7553.ml[22,306+10]..[28,433+2])
+        Pstr_eval
+        expression (testsuite/tests/typing-warnings/pr7553.ml[22,306+10]..[28,433+2])
+          Pexp_constant PConst_string ("\nLine 2, characters 2-8:\n2 |   open A\n      ^^^^^^\nWarning 33 [unused-open]: unused open A.\nmodule rec C : sig end\n",(testsuite/tests/typing-warnings/pr7553.ml[22,306+12]..[28,433+0]),Some "")
+    ]
+  structure_item (testsuite/tests/typing-warnings/pr7553.ml[30,438+0]..[37,573+7])
+    Pstr_recmodule
+    [
+      "D" (testsuite/tests/typing-warnings/pr7553.ml[30,438+11]..[30,438+12])
+        module_expr (testsuite/tests/typing-warnings/pr7553.ml[30,438+13]..[37,573+7])
+          Pmod_constraint
+          module_expr (testsuite/tests/typing-warnings/pr7553.ml[37,573+6]..[37,573+7])
+            Pmod_ident "D" (testsuite/tests/typing-warnings/pr7553.ml[37,573+6]..[37,573+7])
+          module_type (testsuite/tests/typing-warnings/pr7553.ml[30,438+15]..[37,573+3])
+            Pmty_signature
+            [
+              signature_item (testsuite/tests/typing-warnings/pr7553.ml[31,457+2]..[36,567+5])
+                Psig_module "M" (testsuite/tests/typing-warnings/pr7553.ml[31,457+9]..[31,457+10])
+                module_type (testsuite/tests/typing-warnings/pr7553.ml[31,457+13]..[36,567+5])
+                  Pmty_typeof
+                  module_expr (testsuite/tests/typing-warnings/pr7553.ml[31,457+28]..[36,567+5])
+                    Pmod_structure
+                    [
+                      structure_item (testsuite/tests/typing-warnings/pr7553.ml[32,492+4]..[35,559+7])
+                        Pstr_module
+                        "X" (testsuite/tests/typing-warnings/pr7553.ml[32,492+11]..[32,492+12])
+                          module_expr (testsuite/tests/typing-warnings/pr7553.ml[32,492+13]..[35,559+7])
+                            Pmod_constraint
+                            module_expr (testsuite/tests/typing-warnings/pr7553.ml[32,492+25]..[35,559+7])
+                              Pmod_structure
+                              [
+                                structure_item (testsuite/tests/typing-warnings/pr7553.ml[33,524+6]..[33,524+12])
+                                  Pstr_open Fresh
+                                  module_expr (testsuite/tests/typing-warnings/pr7553.ml[33,524+11]..[33,524+12])
+                                    Pmod_ident "A" (testsuite/tests/typing-warnings/pr7553.ml[33,524+11]..[33,524+12])
+                                structure_item (testsuite/tests/typing-warnings/pr7553.ml[34,537+6]..[34,537+21])
+                                  Pstr_value Nonrec
+                                  [
+                                    <def>
+                                      pattern (testsuite/tests/typing-warnings/pr7553.ml[34,537+10]..[34,537+14])
+                                        Ppat_construct "None" (testsuite/tests/typing-warnings/pr7553.ml[34,537+10]..[34,537+14])
+                                        None
+                                      expression (testsuite/tests/typing-warnings/pr7553.ml[34,537+17]..[34,537+21])
+                                        Pexp_construct "None" (testsuite/tests/typing-warnings/pr7553.ml[34,537+17]..[34,537+21])
+                                        None
+                                  ]
+                              ]
+                            module_type (testsuite/tests/typing-warnings/pr7553.ml[32,492+15]..[32,492+22])
+                              Pmty_signature
+                              []
+                    ]
+            ]
+    ]
+  structure_item (testsuite/tests/typing-warnings/pr7553.ml[38,583+0]..[50,953+3])
+    Pstr_extension "expect"
+    [
+      structure_item (testsuite/tests/typing-warnings/pr7553.ml[38,583+10]..[50,953+2])
+        Pstr_eval
+        expression (testsuite/tests/typing-warnings/pr7553.ml[38,583+10]..[50,953+2])
+          Pexp_constant PConst_string ("\nLine 5, characters 10-14:\n5 |       let None = None\n              ^^^^\nWarning 8 [partial-match]: this pattern-matching is not exhaustive.\nHere is an example of a case that is not matched:\nSome _\nLine 4, characters 6-12:\n4 |       open A\n          ^^^^^^\nWarning 33 [unused-open]: unused open A.\nmodule rec D : sig module M : sig module X : sig end end end\n",(testsuite/tests/typing-warnings/pr7553.ml[38,583+12]..[50,953+0]),Some "")
+    ]
+]
+

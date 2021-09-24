@@ -1,0 +1,209 @@
+[
+  structure_item (testsuite/tests/typing-poly/pr9603.ml[5,24+0]..[5,24+59])
+    Pstr_type Rec
+    [
+      type_declaration "pair" (testsuite/tests/typing-poly/pr9603.ml[5,24+8]..[5,24+12]) (testsuite/tests/typing-poly/pr9603.ml[5,24+0]..[5,24+59])
+        ptype_params =
+          [
+            core_type (testsuite/tests/typing-poly/pr9603.ml[5,24+5]..[5,24+7])
+              Ptyp_var p
+          ]
+        ptype_cstrs =
+          [
+            <constraint> (testsuite/tests/typing-poly/pr9603.ml[5,24+34]..[5,24+59])
+              core_type (testsuite/tests/typing-poly/pr9603.ml[5,24+34]..[5,24+36])
+                Ptyp_var p
+              core_type (testsuite/tests/typing-poly/pr9603.ml[5,24+39]..[5,24+59])
+                Ptyp_object Closed
+                  method left
+                    core_type (testsuite/tests/typing-poly/pr9603.ml[5,24+46]..[5,24+48])
+                      Ptyp_var a
+                  method right
+                    core_type (testsuite/tests/typing-poly/pr9603.ml[5,24+56]..[5,24+58])
+                      Ptyp_var b
+          ]
+        ptype_kind =
+          Ptype_abstract
+        ptype_private = Public
+        ptype_manifest =
+          Some
+            core_type (testsuite/tests/typing-poly/pr9603.ml[5,24+15]..[5,24+22])
+              Ptyp_tuple
+              [
+                core_type (testsuite/tests/typing-poly/pr9603.ml[5,24+15]..[5,24+17])
+                  Ptyp_var a
+                core_type (testsuite/tests/typing-poly/pr9603.ml[5,24+20]..[5,24+22])
+                  Ptyp_var b
+              ]
+    ]
+  structure_item (testsuite/tests/typing-poly/pr9603.ml[8,103+0]..[10,199+20])
+    Pstr_value Nonrec
+    [
+      <def>
+        pattern (testsuite/tests/typing-poly/pr9603.ml[8,103+4]..[9,128+68]) ghost
+          Ppat_constraint
+          pattern (testsuite/tests/typing-poly/pr9603.ml[8,103+4]..[8,103+9])
+            Ppat_var "error" (testsuite/tests/typing-poly/pr9603.ml[8,103+4]..[8,103+9])
+          core_type (testsuite/tests/typing-poly/pr9603.ml[8,103+11]..[9,128+68]) ghost
+            Ptyp_poly 'left 'right
+            core_type (testsuite/tests/typing-poly/pr9603.ml[9,128+2]..[9,128+68])
+              Ptyp_arrow
+              Nolabel
+              core_type (testsuite/tests/typing-poly/pr9603.ml[9,128+2]..[9,128+33])
+                Ptyp_constr "pair" (testsuite/tests/typing-poly/pr9603.ml[9,128+29]..[9,128+33])
+                [
+                  core_type (testsuite/tests/typing-poly/pr9603.ml[9,128+2]..[9,128+28])
+                    Ptyp_object Closed
+                      method left
+                        core_type (testsuite/tests/typing-poly/pr9603.ml[9,128+8]..[9,128+13])
+                          Ptyp_var left
+                      method right
+                        core_type (testsuite/tests/typing-poly/pr9603.ml[9,128+21]..[9,128+27])
+                          Ptyp_var right
+                ]
+              core_type (testsuite/tests/typing-poly/pr9603.ml[9,128+37]..[9,128+68])
+                Ptyp_constr "pair" (testsuite/tests/typing-poly/pr9603.ml[9,128+64]..[9,128+68])
+                [
+                  core_type (testsuite/tests/typing-poly/pr9603.ml[9,128+37]..[9,128+63])
+                    Ptyp_object Closed
+                      method left
+                        core_type (testsuite/tests/typing-poly/pr9603.ml[9,128+43]..[9,128+49])
+                          Ptyp_var right
+                      method right
+                        core_type (testsuite/tests/typing-poly/pr9603.ml[9,128+57]..[9,128+62])
+                          Ptyp_var left
+                ]
+        expression (testsuite/tests/typing-poly/pr9603.ml[10,199+2]..[10,199+20])
+          Pexp_fun
+          Nolabel
+          None
+          pattern (testsuite/tests/typing-poly/pr9603.ml[10,199+6]..[10,199+11])
+            Ppat_tuple
+            [
+              pattern (testsuite/tests/typing-poly/pr9603.ml[10,199+7]..[10,199+8])
+                Ppat_var "x" (testsuite/tests/typing-poly/pr9603.ml[10,199+7]..[10,199+8])
+              pattern (testsuite/tests/typing-poly/pr9603.ml[10,199+9]..[10,199+10])
+                Ppat_var "y" (testsuite/tests/typing-poly/pr9603.ml[10,199+9]..[10,199+10])
+            ]
+          expression (testsuite/tests/typing-poly/pr9603.ml[10,199+15]..[10,199+20])
+            Pexp_tuple
+            [
+              expression (testsuite/tests/typing-poly/pr9603.ml[10,199+16]..[10,199+17])
+                Pexp_ident "y" (testsuite/tests/typing-poly/pr9603.ml[10,199+16]..[10,199+17])
+              expression (testsuite/tests/typing-poly/pr9603.ml[10,199+18]..[10,199+19])
+                Pexp_ident "x" (testsuite/tests/typing-poly/pr9603.ml[10,199+18]..[10,199+19])
+            ]
+    ]
+  structure_item (testsuite/tests/typing-poly/pr9603.ml[11,220+0]..[16,400+3])
+    Pstr_extension "expect"
+    [
+      structure_item (testsuite/tests/typing-poly/pr9603.ml[11,220+9]..[16,400+2])
+        Pstr_eval
+        expression (testsuite/tests/typing-poly/pr9603.ml[11,220+9]..[16,400+2])
+          Pexp_constant PConst_string ("\ntype 'c pair = 'a * 'b constraint 'c = < left : 'a; right : 'b >\nval error :\n  < left : 'left; right : 'right > pair ->\n  < left : 'right; right : 'left > pair = <fun>\n",(testsuite/tests/typing-poly/pr9603.ml[11,220+11]..[16,400+0]),Some "")
+    ]
+  structure_item (testsuite/tests/typing-poly/pr9603.ml[19,450+0]..[22,576+12])
+    Pstr_value Nonrec
+    [
+      <def>
+        pattern (testsuite/tests/typing-poly/pr9603.ml[19,450+4]..[21,516+59]) ghost
+          Ppat_constraint
+          pattern (testsuite/tests/typing-poly/pr9603.ml[19,450+4]..[19,450+7])
+            Ppat_var "foo" (testsuite/tests/typing-poly/pr9603.ml[19,450+4]..[19,450+7])
+          core_type (testsuite/tests/typing-poly/pr9603.ml[20,460+2]..[21,516+59]) ghost
+            Ptyp_poly
+            core_type (testsuite/tests/typing-poly/pr9603.ml[20,460+2]..[21,516+59])
+              Ptyp_arrow
+              Nolabel
+              core_type (testsuite/tests/typing-poly/pr9603.ml[20,460+2]..[20,460+55])
+                Ptyp_object Closed
+                  method m
+                    core_type (testsuite/tests/typing-poly/pr9603.ml[20,460+8]..[20,460+53])
+                      Ptyp_poly 'left 'right
+                      core_type (testsuite/tests/typing-poly/pr9603.ml[20,460+22]..[20,460+53])
+                        Ptyp_constr "pair" (testsuite/tests/typing-poly/pr9603.ml[20,460+49]..[20,460+53])
+                        [
+                          core_type (testsuite/tests/typing-poly/pr9603.ml[20,460+22]..[20,460+48])
+                            Ptyp_object Closed
+                              method left
+                                core_type (testsuite/tests/typing-poly/pr9603.ml[20,460+28]..[20,460+33])
+                                  Ptyp_var left
+                              method right
+                                core_type (testsuite/tests/typing-poly/pr9603.ml[20,460+41]..[20,460+47])
+                                  Ptyp_var right
+                        ]
+              core_type (testsuite/tests/typing-poly/pr9603.ml[21,516+6]..[21,516+59])
+                Ptyp_object Closed
+                  method m
+                    core_type (testsuite/tests/typing-poly/pr9603.ml[21,516+12]..[21,516+57])
+                      Ptyp_poly 'left 'right
+                      core_type (testsuite/tests/typing-poly/pr9603.ml[21,516+26]..[21,516+57])
+                        Ptyp_constr "pair" (testsuite/tests/typing-poly/pr9603.ml[21,516+53]..[21,516+57])
+                        [
+                          core_type (testsuite/tests/typing-poly/pr9603.ml[21,516+26]..[21,516+52])
+                            Ptyp_object Closed
+                              method left
+                                core_type (testsuite/tests/typing-poly/pr9603.ml[21,516+32]..[21,516+37])
+                                  Ptyp_var left
+                              method right
+                                core_type (testsuite/tests/typing-poly/pr9603.ml[21,516+45]..[21,516+51])
+                                  Ptyp_var right
+                        ]
+        expression (testsuite/tests/typing-poly/pr9603.ml[19,450+4]..[22,576+12])
+          Pexp_constraint
+          expression (testsuite/tests/typing-poly/pr9603.ml[22,576+2]..[22,576+12])
+            Pexp_fun
+            Nolabel
+            None
+            pattern (testsuite/tests/typing-poly/pr9603.ml[22,576+6]..[22,576+7])
+              Ppat_var "x" (testsuite/tests/typing-poly/pr9603.ml[22,576+6]..[22,576+7])
+            expression (testsuite/tests/typing-poly/pr9603.ml[22,576+11]..[22,576+12])
+              Pexp_ident "x" (testsuite/tests/typing-poly/pr9603.ml[22,576+11]..[22,576+12])
+          core_type (testsuite/tests/typing-poly/pr9603.ml[20,460+2]..[21,516+59])
+            Ptyp_arrow
+            Nolabel
+            core_type (testsuite/tests/typing-poly/pr9603.ml[20,460+2]..[20,460+55])
+              Ptyp_object Closed
+                method m
+                  core_type (testsuite/tests/typing-poly/pr9603.ml[20,460+8]..[20,460+53])
+                    Ptyp_poly 'left 'right
+                    core_type (testsuite/tests/typing-poly/pr9603.ml[20,460+22]..[20,460+53])
+                      Ptyp_constr "pair" (testsuite/tests/typing-poly/pr9603.ml[20,460+49]..[20,460+53])
+                      [
+                        core_type (testsuite/tests/typing-poly/pr9603.ml[20,460+22]..[20,460+48])
+                          Ptyp_object Closed
+                            method left
+                              core_type (testsuite/tests/typing-poly/pr9603.ml[20,460+28]..[20,460+33])
+                                Ptyp_var left
+                            method right
+                              core_type (testsuite/tests/typing-poly/pr9603.ml[20,460+41]..[20,460+47])
+                                Ptyp_var right
+                      ]
+            core_type (testsuite/tests/typing-poly/pr9603.ml[21,516+6]..[21,516+59])
+              Ptyp_object Closed
+                method m
+                  core_type (testsuite/tests/typing-poly/pr9603.ml[21,516+12]..[21,516+57])
+                    Ptyp_poly 'left 'right
+                    core_type (testsuite/tests/typing-poly/pr9603.ml[21,516+26]..[21,516+57])
+                      Ptyp_constr "pair" (testsuite/tests/typing-poly/pr9603.ml[21,516+53]..[21,516+57])
+                      [
+                        core_type (testsuite/tests/typing-poly/pr9603.ml[21,516+26]..[21,516+52])
+                          Ptyp_object Closed
+                            method left
+                              core_type (testsuite/tests/typing-poly/pr9603.ml[21,516+32]..[21,516+37])
+                                Ptyp_var left
+                            method right
+                              core_type (testsuite/tests/typing-poly/pr9603.ml[21,516+45]..[21,516+51])
+                                Ptyp_var right
+                      ]
+    ]
+  structure_item (testsuite/tests/typing-poly/pr9603.ml[24,590+0]..[33,921+3])
+    Pstr_extension "expect"
+    [
+      structure_item (testsuite/tests/typing-poly/pr9603.ml[24,590+9]..[33,921+2])
+        Pstr_eval
+        expression (testsuite/tests/typing-poly/pr9603.ml[24,590+9]..[33,921+2])
+          Pexp_constant PConst_string ("\nLine 4, characters 11-12:\n4 | = fun x -> x\n               ^\nError: This expression has type\n         < m : 'left 'right. < left : 'left; right : 'right > pair >\n       but an expression was expected of type\n         < m : 'left 'right. < left : 'left; right : 'right > pair >\n       Types for method m are incompatible\n",(testsuite/tests/typing-poly/pr9603.ml[24,590+11]..[33,921+0]),Some "")
+    ]
+]
+

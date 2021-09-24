@@ -1,0 +1,492 @@
+[
+  structure_item (testsuite/tests/lib-threads/tls.ml[10,71+0]..[10,71+69])
+    Pstr_value Nonrec
+    [
+      <def>
+        pattern (testsuite/tests/lib-threads/tls.ml[10,71+4]..[10,71+16])
+          Ppat_var "private_data" (testsuite/tests/lib-threads/tls.ml[10,71+4]..[10,71+16])
+        expression (testsuite/tests/lib-threads/tls.ml[10,71+19]..[10,71+69])
+          Pexp_constraint
+          expression (testsuite/tests/lib-threads/tls.ml[10,71+20]..[10,71+37])
+            Pexp_apply
+            expression (testsuite/tests/lib-threads/tls.ml[10,71+20]..[10,71+34])
+              Pexp_ident "Hashtbl.create" (testsuite/tests/lib-threads/tls.ml[10,71+20]..[10,71+34])
+            [
+              <arg>
+              Nolabel
+                expression (testsuite/tests/lib-threads/tls.ml[10,71+35]..[10,71+37])
+                  Pexp_constant PConst_int (17,None)
+            ]
+          core_type (testsuite/tests/lib-threads/tls.ml[10,71+40]..[10,71+68])
+            Ptyp_constr "Hashtbl.t" (testsuite/tests/lib-threads/tls.ml[10,71+59]..[10,71+68])
+            [
+              core_type (testsuite/tests/lib-threads/tls.ml[10,71+41]..[10,71+49])
+                Ptyp_constr "Thread.t" (testsuite/tests/lib-threads/tls.ml[10,71+41]..[10,71+49])
+                []
+              core_type (testsuite/tests/lib-threads/tls.ml[10,71+51]..[10,71+57])
+                Ptyp_constr "string" (testsuite/tests/lib-threads/tls.ml[10,71+51]..[10,71+57])
+                []
+            ]
+    ]
+  structure_item (testsuite/tests/lib-threads/tls.ml[11,141+0]..[11,141+38])
+    Pstr_value Nonrec
+    [
+      <def>
+        pattern (testsuite/tests/lib-threads/tls.ml[11,141+4]..[11,141+21])
+          Ppat_var "private_data_lock" (testsuite/tests/lib-threads/tls.ml[11,141+4]..[11,141+21])
+        expression (testsuite/tests/lib-threads/tls.ml[11,141+24]..[11,141+38])
+          Pexp_apply
+          expression (testsuite/tests/lib-threads/tls.ml[11,141+24]..[11,141+36])
+            Pexp_ident "Mutex.create" (testsuite/tests/lib-threads/tls.ml[11,141+24]..[11,141+36])
+          [
+            <arg>
+            Nolabel
+              expression (testsuite/tests/lib-threads/tls.ml[11,141+36]..[11,141+38])
+                Pexp_construct "()" (testsuite/tests/lib-threads/tls.ml[11,141+36]..[11,141+38])
+                None
+          ]
+    ]
+  structure_item (testsuite/tests/lib-threads/tls.ml[12,180+0]..[12,180+32])
+    Pstr_value Nonrec
+    [
+      <def>
+        pattern (testsuite/tests/lib-threads/tls.ml[12,180+4]..[12,180+15])
+          Ppat_var "output_lock" (testsuite/tests/lib-threads/tls.ml[12,180+4]..[12,180+15])
+        expression (testsuite/tests/lib-threads/tls.ml[12,180+18]..[12,180+32])
+          Pexp_apply
+          expression (testsuite/tests/lib-threads/tls.ml[12,180+18]..[12,180+30])
+            Pexp_ident "Mutex.create" (testsuite/tests/lib-threads/tls.ml[12,180+18]..[12,180+30])
+          [
+            <arg>
+            Nolabel
+              expression (testsuite/tests/lib-threads/tls.ml[12,180+30]..[12,180+32])
+                Pexp_construct "()" (testsuite/tests/lib-threads/tls.ml[12,180+30]..[12,180+32])
+                None
+          ]
+    ]
+  structure_item (testsuite/tests/lib-threads/tls.ml[14,214+0]..[17,323+32])
+    Pstr_value Nonrec
+    [
+      <def>
+        pattern (testsuite/tests/lib-threads/tls.ml[14,214+4]..[14,214+20])
+          Ppat_var "set_private_data" (testsuite/tests/lib-threads/tls.ml[14,214+4]..[14,214+20])
+        expression (testsuite/tests/lib-threads/tls.ml[14,214+21]..[17,323+32]) ghost
+          Pexp_fun
+          Nolabel
+          None
+          pattern (testsuite/tests/lib-threads/tls.ml[14,214+21]..[14,214+25])
+            Ppat_var "data" (testsuite/tests/lib-threads/tls.ml[14,214+21]..[14,214+25])
+          expression (testsuite/tests/lib-threads/tls.ml[15,242+2]..[17,323+32])
+            Pexp_sequence
+            expression (testsuite/tests/lib-threads/tls.ml[15,242+2]..[15,242+30])
+              Pexp_apply
+              expression (testsuite/tests/lib-threads/tls.ml[15,242+2]..[15,242+12])
+                Pexp_ident "Mutex.lock" (testsuite/tests/lib-threads/tls.ml[15,242+2]..[15,242+12])
+              [
+                <arg>
+                Nolabel
+                  expression (testsuite/tests/lib-threads/tls.ml[15,242+13]..[15,242+30])
+                    Pexp_ident "private_data_lock" (testsuite/tests/lib-threads/tls.ml[15,242+13]..[15,242+30])
+              ]
+            expression (testsuite/tests/lib-threads/tls.ml[16,274+2]..[17,323+32])
+              Pexp_sequence
+              expression (testsuite/tests/lib-threads/tls.ml[16,274+2]..[16,274+47])
+                Pexp_apply
+                expression (testsuite/tests/lib-threads/tls.ml[16,274+2]..[16,274+13])
+                  Pexp_ident "Hashtbl.add" (testsuite/tests/lib-threads/tls.ml[16,274+2]..[16,274+13])
+                [
+                  <arg>
+                  Nolabel
+                    expression (testsuite/tests/lib-threads/tls.ml[16,274+14]..[16,274+26])
+                      Pexp_ident "private_data" (testsuite/tests/lib-threads/tls.ml[16,274+14]..[16,274+26])
+                  <arg>
+                  Nolabel
+                    expression (testsuite/tests/lib-threads/tls.ml[16,274+27]..[16,274+42])
+                      Pexp_apply
+                      expression (testsuite/tests/lib-threads/tls.ml[16,274+28]..[16,274+39])
+                        Pexp_ident "Thread.self" (testsuite/tests/lib-threads/tls.ml[16,274+28]..[16,274+39])
+                      [
+                        <arg>
+                        Nolabel
+                          expression (testsuite/tests/lib-threads/tls.ml[16,274+39]..[16,274+41])
+                            Pexp_construct "()" (testsuite/tests/lib-threads/tls.ml[16,274+39]..[16,274+41])
+                            None
+                      ]
+                  <arg>
+                  Nolabel
+                    expression (testsuite/tests/lib-threads/tls.ml[16,274+43]..[16,274+47])
+                      Pexp_ident "data" (testsuite/tests/lib-threads/tls.ml[16,274+43]..[16,274+47])
+                ]
+              expression (testsuite/tests/lib-threads/tls.ml[17,323+2]..[17,323+32])
+                Pexp_apply
+                expression (testsuite/tests/lib-threads/tls.ml[17,323+2]..[17,323+14])
+                  Pexp_ident "Mutex.unlock" (testsuite/tests/lib-threads/tls.ml[17,323+2]..[17,323+14])
+                [
+                  <arg>
+                  Nolabel
+                    expression (testsuite/tests/lib-threads/tls.ml[17,323+15]..[17,323+32])
+                      Pexp_ident "private_data_lock" (testsuite/tests/lib-threads/tls.ml[17,323+15]..[17,323+32])
+                ]
+    ]
+  structure_item (testsuite/tests/lib-threads/tls.ml[19,357+0]..[20,383+43])
+    Pstr_value Nonrec
+    [
+      <def>
+        pattern (testsuite/tests/lib-threads/tls.ml[19,357+4]..[19,357+20])
+          Ppat_var "get_private_data" (testsuite/tests/lib-threads/tls.ml[19,357+4]..[19,357+20])
+        expression (testsuite/tests/lib-threads/tls.ml[19,357+21]..[20,383+43]) ghost
+          Pexp_fun
+          Nolabel
+          None
+          pattern (testsuite/tests/lib-threads/tls.ml[19,357+21]..[19,357+23])
+            Ppat_construct "()" (testsuite/tests/lib-threads/tls.ml[19,357+21]..[19,357+23])
+            None
+          expression (testsuite/tests/lib-threads/tls.ml[20,383+2]..[20,383+43])
+            Pexp_apply
+            expression (testsuite/tests/lib-threads/tls.ml[20,383+2]..[20,383+14])
+              Pexp_ident "Hashtbl.find" (testsuite/tests/lib-threads/tls.ml[20,383+2]..[20,383+14])
+            [
+              <arg>
+              Nolabel
+                expression (testsuite/tests/lib-threads/tls.ml[20,383+15]..[20,383+27])
+                  Pexp_ident "private_data" (testsuite/tests/lib-threads/tls.ml[20,383+15]..[20,383+27])
+              <arg>
+              Nolabel
+                expression (testsuite/tests/lib-threads/tls.ml[20,383+28]..[20,383+43])
+                  Pexp_apply
+                  expression (testsuite/tests/lib-threads/tls.ml[20,383+29]..[20,383+40])
+                    Pexp_ident "Thread.self" (testsuite/tests/lib-threads/tls.ml[20,383+29]..[20,383+40])
+                  [
+                    <arg>
+                    Nolabel
+                      expression (testsuite/tests/lib-threads/tls.ml[20,383+40]..[20,383+42])
+                        Pexp_construct "()" (testsuite/tests/lib-threads/tls.ml[20,383+40]..[20,383+42])
+                        None
+                  ]
+            ]
+    ]
+  structure_item (testsuite/tests/lib-threads/tls.ml[22,428+0]..[27,592+26])
+    Pstr_value Nonrec
+    [
+      <def>
+        pattern (testsuite/tests/lib-threads/tls.ml[22,428+4]..[22,428+11])
+          Ppat_var "process" (testsuite/tests/lib-threads/tls.ml[22,428+4]..[22,428+11])
+        expression (testsuite/tests/lib-threads/tls.ml[22,428+12]..[27,592+26]) ghost
+          Pexp_fun
+          Nolabel
+          None
+          pattern (testsuite/tests/lib-threads/tls.ml[22,428+12]..[22,428+14])
+            Ppat_var "id" (testsuite/tests/lib-threads/tls.ml[22,428+12]..[22,428+14])
+          expression (testsuite/tests/lib-threads/tls.ml[22,428+15]..[27,592+26]) ghost
+            Pexp_fun
+            Nolabel
+            None
+            pattern (testsuite/tests/lib-threads/tls.ml[22,428+15]..[22,428+19])
+              Ppat_var "data" (testsuite/tests/lib-threads/tls.ml[22,428+15]..[22,428+19])
+            expression (testsuite/tests/lib-threads/tls.ml[23,450+2]..[27,592+26])
+              Pexp_sequence
+              expression (testsuite/tests/lib-threads/tls.ml[23,450+2]..[23,450+23])
+                Pexp_apply
+                expression (testsuite/tests/lib-threads/tls.ml[23,450+2]..[23,450+18])
+                  Pexp_ident "set_private_data" (testsuite/tests/lib-threads/tls.ml[23,450+2]..[23,450+18])
+                [
+                  <arg>
+                  Nolabel
+                    expression (testsuite/tests/lib-threads/tls.ml[23,450+19]..[23,450+23])
+                      Pexp_ident "data" (testsuite/tests/lib-threads/tls.ml[23,450+19]..[23,450+23])
+                ]
+              expression (testsuite/tests/lib-threads/tls.ml[24,475+2]..[27,592+26])
+                Pexp_sequence
+                expression (testsuite/tests/lib-threads/tls.ml[24,475+2]..[24,475+24])
+                  Pexp_apply
+                  expression (testsuite/tests/lib-threads/tls.ml[24,475+2]..[24,475+12])
+                    Pexp_ident "Mutex.lock" (testsuite/tests/lib-threads/tls.ml[24,475+2]..[24,475+12])
+                  [
+                    <arg>
+                    Nolabel
+                      expression (testsuite/tests/lib-threads/tls.ml[24,475+13]..[24,475+24])
+                        Pexp_ident "output_lock" (testsuite/tests/lib-threads/tls.ml[24,475+13]..[24,475+24])
+                  ]
+                expression (testsuite/tests/lib-threads/tls.ml[25,501+2]..[27,592+26])
+                  Pexp_sequence
+                  expression (testsuite/tests/lib-threads/tls.ml[25,501+2]..[25,501+14])
+                    Pexp_apply
+                    expression (testsuite/tests/lib-threads/tls.ml[25,501+2]..[25,501+11])
+                      Pexp_ident "print_int" (testsuite/tests/lib-threads/tls.ml[25,501+2]..[25,501+11])
+                    [
+                      <arg>
+                      Nolabel
+                        expression (testsuite/tests/lib-threads/tls.ml[25,501+12]..[25,501+14])
+                          Pexp_ident "id" (testsuite/tests/lib-threads/tls.ml[25,501+12]..[25,501+14])
+                    ]
+                  expression (testsuite/tests/lib-threads/tls.ml[25,501+16]..[27,592+26])
+                    Pexp_sequence
+                    expression (testsuite/tests/lib-threads/tls.ml[25,501+16]..[25,501+36])
+                      Pexp_apply
+                      expression (testsuite/tests/lib-threads/tls.ml[25,501+16]..[25,501+28])
+                        Pexp_ident "print_string" (testsuite/tests/lib-threads/tls.ml[25,501+16]..[25,501+28])
+                      [
+                        <arg>
+                        Nolabel
+                          expression (testsuite/tests/lib-threads/tls.ml[25,501+29]..[25,501+36])
+                            Pexp_constant PConst_string(" --> ",(testsuite/tests/lib-threads/tls.ml[25,501+30]..[25,501+35]),None)
+                      ]
+                    expression (testsuite/tests/lib-threads/tls.ml[25,501+38]..[27,592+26])
+                      Pexp_sequence
+                      expression (testsuite/tests/lib-threads/tls.ml[25,501+38]..[25,501+70])
+                        Pexp_apply
+                        expression (testsuite/tests/lib-threads/tls.ml[25,501+38]..[25,501+50])
+                          Pexp_ident "print_string" (testsuite/tests/lib-threads/tls.ml[25,501+38]..[25,501+50])
+                        [
+                          <arg>
+                          Nolabel
+                            expression (testsuite/tests/lib-threads/tls.ml[25,501+50]..[25,501+70])
+                              Pexp_apply
+                              expression (testsuite/tests/lib-threads/tls.ml[25,501+51]..[25,501+67])
+                                Pexp_ident "get_private_data" (testsuite/tests/lib-threads/tls.ml[25,501+51]..[25,501+67])
+                              [
+                                <arg>
+                                Nolabel
+                                  expression (testsuite/tests/lib-threads/tls.ml[25,501+67]..[25,501+69])
+                                    Pexp_construct "()" (testsuite/tests/lib-threads/tls.ml[25,501+67]..[25,501+69])
+                                    None
+                              ]
+                        ]
+                      expression (testsuite/tests/lib-threads/tls.ml[26,573+2]..[27,592+26])
+                        Pexp_sequence
+                        expression (testsuite/tests/lib-threads/tls.ml[26,573+2]..[26,573+17])
+                          Pexp_apply
+                          expression (testsuite/tests/lib-threads/tls.ml[26,573+2]..[26,573+15])
+                            Pexp_ident "print_newline" (testsuite/tests/lib-threads/tls.ml[26,573+2]..[26,573+15])
+                          [
+                            <arg>
+                            Nolabel
+                              expression (testsuite/tests/lib-threads/tls.ml[26,573+15]..[26,573+17])
+                                Pexp_construct "()" (testsuite/tests/lib-threads/tls.ml[26,573+15]..[26,573+17])
+                                None
+                          ]
+                        expression (testsuite/tests/lib-threads/tls.ml[27,592+2]..[27,592+26])
+                          Pexp_apply
+                          expression (testsuite/tests/lib-threads/tls.ml[27,592+2]..[27,592+14])
+                            Pexp_ident "Mutex.unlock" (testsuite/tests/lib-threads/tls.ml[27,592+2]..[27,592+14])
+                          [
+                            <arg>
+                            Nolabel
+                              expression (testsuite/tests/lib-threads/tls.ml[27,592+15]..[27,592+26])
+                                Pexp_ident "output_lock" (testsuite/tests/lib-threads/tls.ml[27,592+15]..[27,592+26])
+                          ]
+    ]
+  structure_item (testsuite/tests/lib-threads/tls.ml[29,620+0]..[35,864+40])
+    Pstr_value Nonrec
+    [
+      <def>
+        pattern (testsuite/tests/lib-threads/tls.ml[29,620+4]..[29,620+5])
+          Ppat_any
+        expression (testsuite/tests/lib-threads/tls.ml[30,628+2]..[35,864+40])
+          Pexp_let Nonrec
+          [
+            <def>
+              pattern (testsuite/tests/lib-threads/tls.ml[30,628+6]..[30,628+8])
+                Ppat_var "t1" (testsuite/tests/lib-threads/tls.ml[30,628+6]..[30,628+8])
+              expression (testsuite/tests/lib-threads/tls.ml[30,628+11]..[30,628+41])
+                Pexp_apply
+                expression (testsuite/tests/lib-threads/tls.ml[30,628+11]..[30,628+24])
+                  Pexp_ident "Thread.create" (testsuite/tests/lib-threads/tls.ml[30,628+11]..[30,628+24])
+                [
+                  <arg>
+                  Nolabel
+                    expression (testsuite/tests/lib-threads/tls.ml[30,628+25]..[30,628+36])
+                      Pexp_apply
+                      expression (testsuite/tests/lib-threads/tls.ml[30,628+26]..[30,628+33])
+                        Pexp_ident "process" (testsuite/tests/lib-threads/tls.ml[30,628+26]..[30,628+33])
+                      [
+                        <arg>
+                        Nolabel
+                          expression (testsuite/tests/lib-threads/tls.ml[30,628+34]..[30,628+35])
+                            Pexp_constant PConst_int (1,None)
+                      ]
+                  <arg>
+                  Nolabel
+                    expression (testsuite/tests/lib-threads/tls.ml[30,628+37]..[30,628+41])
+                      Pexp_constant PConst_string("un",(testsuite/tests/lib-threads/tls.ml[30,628+38]..[30,628+40]),None)
+                ]
+          ]
+          expression (testsuite/tests/lib-threads/tls.ml[31,673+2]..[35,864+40])
+            Pexp_let Nonrec
+            [
+              <def>
+                pattern (testsuite/tests/lib-threads/tls.ml[31,673+6]..[31,673+8])
+                  Ppat_var "t2" (testsuite/tests/lib-threads/tls.ml[31,673+6]..[31,673+8])
+                expression (testsuite/tests/lib-threads/tls.ml[31,673+11]..[31,673+43])
+                  Pexp_apply
+                  expression (testsuite/tests/lib-threads/tls.ml[31,673+11]..[31,673+24])
+                    Pexp_ident "Thread.create" (testsuite/tests/lib-threads/tls.ml[31,673+11]..[31,673+24])
+                  [
+                    <arg>
+                    Nolabel
+                      expression (testsuite/tests/lib-threads/tls.ml[31,673+25]..[31,673+36])
+                        Pexp_apply
+                        expression (testsuite/tests/lib-threads/tls.ml[31,673+26]..[31,673+33])
+                          Pexp_ident "process" (testsuite/tests/lib-threads/tls.ml[31,673+26]..[31,673+33])
+                        [
+                          <arg>
+                          Nolabel
+                            expression (testsuite/tests/lib-threads/tls.ml[31,673+34]..[31,673+35])
+                              Pexp_constant PConst_int (2,None)
+                        ]
+                    <arg>
+                    Nolabel
+                      expression (testsuite/tests/lib-threads/tls.ml[31,673+37]..[31,673+43])
+                        Pexp_constant PConst_string("deux",(testsuite/tests/lib-threads/tls.ml[31,673+38]..[31,673+42]),None)
+                  ]
+            ]
+            expression (testsuite/tests/lib-threads/tls.ml[32,720+2]..[35,864+40])
+              Pexp_let Nonrec
+              [
+                <def>
+                  pattern (testsuite/tests/lib-threads/tls.ml[32,720+6]..[32,720+8])
+                    Ppat_var "t3" (testsuite/tests/lib-threads/tls.ml[32,720+6]..[32,720+8])
+                  expression (testsuite/tests/lib-threads/tls.ml[32,720+11]..[32,720+44])
+                    Pexp_apply
+                    expression (testsuite/tests/lib-threads/tls.ml[32,720+11]..[32,720+24])
+                      Pexp_ident "Thread.create" (testsuite/tests/lib-threads/tls.ml[32,720+11]..[32,720+24])
+                    [
+                      <arg>
+                      Nolabel
+                        expression (testsuite/tests/lib-threads/tls.ml[32,720+25]..[32,720+36])
+                          Pexp_apply
+                          expression (testsuite/tests/lib-threads/tls.ml[32,720+26]..[32,720+33])
+                            Pexp_ident "process" (testsuite/tests/lib-threads/tls.ml[32,720+26]..[32,720+33])
+                          [
+                            <arg>
+                            Nolabel
+                              expression (testsuite/tests/lib-threads/tls.ml[32,720+34]..[32,720+35])
+                                Pexp_constant PConst_int (3,None)
+                          ]
+                      <arg>
+                      Nolabel
+                        expression (testsuite/tests/lib-threads/tls.ml[32,720+37]..[32,720+44])
+                          Pexp_constant PConst_string("trois",(testsuite/tests/lib-threads/tls.ml[32,720+38]..[32,720+43]),None)
+                    ]
+              ]
+              expression (testsuite/tests/lib-threads/tls.ml[33,768+2]..[35,864+40])
+                Pexp_let Nonrec
+                [
+                  <def>
+                    pattern (testsuite/tests/lib-threads/tls.ml[33,768+6]..[33,768+8])
+                      Ppat_var "t4" (testsuite/tests/lib-threads/tls.ml[33,768+6]..[33,768+8])
+                    expression (testsuite/tests/lib-threads/tls.ml[33,768+11]..[33,768+45])
+                      Pexp_apply
+                      expression (testsuite/tests/lib-threads/tls.ml[33,768+11]..[33,768+24])
+                        Pexp_ident "Thread.create" (testsuite/tests/lib-threads/tls.ml[33,768+11]..[33,768+24])
+                      [
+                        <arg>
+                        Nolabel
+                          expression (testsuite/tests/lib-threads/tls.ml[33,768+25]..[33,768+36])
+                            Pexp_apply
+                            expression (testsuite/tests/lib-threads/tls.ml[33,768+26]..[33,768+33])
+                              Pexp_ident "process" (testsuite/tests/lib-threads/tls.ml[33,768+26]..[33,768+33])
+                            [
+                              <arg>
+                              Nolabel
+                                expression (testsuite/tests/lib-threads/tls.ml[33,768+34]..[33,768+35])
+                                  Pexp_constant PConst_int (4,None)
+                            ]
+                        <arg>
+                        Nolabel
+                          expression (testsuite/tests/lib-threads/tls.ml[33,768+37]..[33,768+45])
+                            Pexp_constant PConst_string("quatre",(testsuite/tests/lib-threads/tls.ml[33,768+38]..[33,768+44]),None)
+                      ]
+                ]
+                expression (testsuite/tests/lib-threads/tls.ml[34,817+2]..[35,864+40])
+                  Pexp_let Nonrec
+                  [
+                    <def>
+                      pattern (testsuite/tests/lib-threads/tls.ml[34,817+6]..[34,817+8])
+                        Ppat_var "t5" (testsuite/tests/lib-threads/tls.ml[34,817+6]..[34,817+8])
+                      expression (testsuite/tests/lib-threads/tls.ml[34,817+11]..[34,817+43])
+                        Pexp_apply
+                        expression (testsuite/tests/lib-threads/tls.ml[34,817+11]..[34,817+24])
+                          Pexp_ident "Thread.create" (testsuite/tests/lib-threads/tls.ml[34,817+11]..[34,817+24])
+                        [
+                          <arg>
+                          Nolabel
+                            expression (testsuite/tests/lib-threads/tls.ml[34,817+25]..[34,817+36])
+                              Pexp_apply
+                              expression (testsuite/tests/lib-threads/tls.ml[34,817+26]..[34,817+33])
+                                Pexp_ident "process" (testsuite/tests/lib-threads/tls.ml[34,817+26]..[34,817+33])
+                              [
+                                <arg>
+                                Nolabel
+                                  expression (testsuite/tests/lib-threads/tls.ml[34,817+34]..[34,817+35])
+                                    Pexp_constant PConst_int (5,None)
+                              ]
+                          <arg>
+                          Nolabel
+                            expression (testsuite/tests/lib-threads/tls.ml[34,817+37]..[34,817+43])
+                              Pexp_constant PConst_string("cinq",(testsuite/tests/lib-threads/tls.ml[34,817+38]..[34,817+42]),None)
+                        ]
+                  ]
+                  expression (testsuite/tests/lib-threads/tls.ml[35,864+2]..[35,864+40])
+                    Pexp_apply
+                    expression (testsuite/tests/lib-threads/tls.ml[35,864+2]..[35,864+11])
+                      Pexp_ident "List.iter" (testsuite/tests/lib-threads/tls.ml[35,864+2]..[35,864+11])
+                    [
+                      <arg>
+                      Nolabel
+                        expression (testsuite/tests/lib-threads/tls.ml[35,864+12]..[35,864+23])
+                          Pexp_ident "Thread.join" (testsuite/tests/lib-threads/tls.ml[35,864+12]..[35,864+23])
+                      <arg>
+                      Nolabel
+                        expression (testsuite/tests/lib-threads/tls.ml[35,864+24]..[35,864+40])
+                          Pexp_construct "::" (testsuite/tests/lib-threads/tls.ml[35,864+25]..[35,864+40]) ghost
+                          Some
+                            expression (testsuite/tests/lib-threads/tls.ml[35,864+25]..[35,864+40]) ghost
+                              Pexp_tuple
+                              [
+                                expression (testsuite/tests/lib-threads/tls.ml[35,864+25]..[35,864+27])
+                                  Pexp_ident "t1" (testsuite/tests/lib-threads/tls.ml[35,864+25]..[35,864+27])
+                                expression (testsuite/tests/lib-threads/tls.ml[35,864+28]..[35,864+40]) ghost
+                                  Pexp_construct "::" (testsuite/tests/lib-threads/tls.ml[35,864+28]..[35,864+40]) ghost
+                                  Some
+                                    expression (testsuite/tests/lib-threads/tls.ml[35,864+28]..[35,864+40]) ghost
+                                      Pexp_tuple
+                                      [
+                                        expression (testsuite/tests/lib-threads/tls.ml[35,864+28]..[35,864+30])
+                                          Pexp_ident "t2" (testsuite/tests/lib-threads/tls.ml[35,864+28]..[35,864+30])
+                                        expression (testsuite/tests/lib-threads/tls.ml[35,864+31]..[35,864+40]) ghost
+                                          Pexp_construct "::" (testsuite/tests/lib-threads/tls.ml[35,864+31]..[35,864+40]) ghost
+                                          Some
+                                            expression (testsuite/tests/lib-threads/tls.ml[35,864+31]..[35,864+40]) ghost
+                                              Pexp_tuple
+                                              [
+                                                expression (testsuite/tests/lib-threads/tls.ml[35,864+31]..[35,864+33])
+                                                  Pexp_ident "t3" (testsuite/tests/lib-threads/tls.ml[35,864+31]..[35,864+33])
+                                                expression (testsuite/tests/lib-threads/tls.ml[35,864+34]..[35,864+40]) ghost
+                                                  Pexp_construct "::" (testsuite/tests/lib-threads/tls.ml[35,864+34]..[35,864+40]) ghost
+                                                  Some
+                                                    expression (testsuite/tests/lib-threads/tls.ml[35,864+34]..[35,864+40]) ghost
+                                                      Pexp_tuple
+                                                      [
+                                                        expression (testsuite/tests/lib-threads/tls.ml[35,864+34]..[35,864+36])
+                                                          Pexp_ident "t4" (testsuite/tests/lib-threads/tls.ml[35,864+34]..[35,864+36])
+                                                        expression (testsuite/tests/lib-threads/tls.ml[35,864+37]..[35,864+40]) ghost
+                                                          Pexp_construct "::" (testsuite/tests/lib-threads/tls.ml[35,864+37]..[35,864+40]) ghost
+                                                          Some
+                                                            expression (testsuite/tests/lib-threads/tls.ml[35,864+37]..[35,864+40]) ghost
+                                                              Pexp_tuple
+                                                              [
+                                                                expression (testsuite/tests/lib-threads/tls.ml[35,864+37]..[35,864+39])
+                                                                  Pexp_ident "t5" (testsuite/tests/lib-threads/tls.ml[35,864+37]..[35,864+39])
+                                                                expression (testsuite/tests/lib-threads/tls.ml[35,864+39]..[35,864+40]) ghost
+                                                                  Pexp_construct "[]" (testsuite/tests/lib-threads/tls.ml[35,864+39]..[35,864+40]) ghost
+                                                                  None
+                                                              ]
+                                                      ]
+                                              ]
+                                      ]
+                              ]
+                    ]
+    ]
+]
+

@@ -1,0 +1,104 @@
+[
+  structure_item (testsuite/tests/typing-modules/pr6394.ml[5,24+0]..[5,24+24])
+    Pstr_attribute "ocaml.warning"
+    [
+      structure_item (testsuite/tests/typing-modules/pr6394.ml[5,24+19]..[5,24+23])
+        Pstr_eval
+        expression (testsuite/tests/typing-modules/pr6394.ml[5,24+19]..[5,24+23])
+          Pexp_constant PConst_string("+4",(testsuite/tests/typing-modules/pr6394.ml[5,24+20]..[5,24+22]),None)
+    ]
+  structure_item (testsuite/tests/typing-modules/pr6394.ml[6,49+0]..[11,150+3])
+    Pstr_recmodule
+    [
+      "X" (testsuite/tests/typing-modules/pr6394.ml[6,49+11]..[6,49+12])
+        module_expr (testsuite/tests/typing-modules/pr6394.ml[6,49+13]..[11,150+3])
+          Pmod_constraint
+          module_expr (testsuite/tests/typing-modules/pr6394.ml[8,90+6]..[11,150+3])
+            Pmod_structure
+            [
+              structure_item (testsuite/tests/typing-modules/pr6394.ml[9,103+2]..[9,103+16])
+                Pstr_type Rec
+                [
+                  type_declaration "t" (testsuite/tests/typing-modules/pr6394.ml[9,103+7]..[9,103+8]) (testsuite/tests/typing-modules/pr6394.ml[9,103+2]..[9,103+16])
+                    ptype_params =
+                      []
+                    ptype_cstrs =
+                      []
+                    ptype_kind =
+                      Ptype_variant
+                        [
+                          (testsuite/tests/typing-modules/pr6394.ml[9,103+11]..[9,103+12])
+                            "A" (testsuite/tests/typing-modules/pr6394.ml[9,103+11]..[9,103+12])
+                            []
+                            None
+                          (testsuite/tests/typing-modules/pr6394.ml[9,103+13]..[9,103+16])
+                            "B" (testsuite/tests/typing-modules/pr6394.ml[9,103+15]..[9,103+16])
+                            []
+                            None
+                        ]
+                    ptype_private = Public
+                    ptype_manifest =
+                      None
+                ]
+              structure_item (testsuite/tests/typing-modules/pr6394.ml[10,120+2]..[10,120+29])
+                Pstr_value Nonrec
+                [
+                  <def>
+                    pattern (testsuite/tests/typing-modules/pr6394.ml[10,120+6]..[10,120+7])
+                      Ppat_var "f" (testsuite/tests/typing-modules/pr6394.ml[10,120+6]..[10,120+7])
+                    expression (testsuite/tests/typing-modules/pr6394.ml[10,120+10]..[10,120+29])
+                      Pexp_function
+                      [
+                        <case>
+                          pattern (testsuite/tests/typing-modules/pr6394.ml[10,120+19]..[10,120+24])
+                            Ppat_or
+                            pattern (testsuite/tests/typing-modules/pr6394.ml[10,120+19]..[10,120+20])
+                              Ppat_construct "A" (testsuite/tests/typing-modules/pr6394.ml[10,120+19]..[10,120+20])
+                              None
+                            pattern (testsuite/tests/typing-modules/pr6394.ml[10,120+23]..[10,120+24])
+                              Ppat_construct "B" (testsuite/tests/typing-modules/pr6394.ml[10,120+23]..[10,120+24])
+                              None
+                          expression (testsuite/tests/typing-modules/pr6394.ml[10,120+28]..[10,120+29])
+                            Pexp_constant PConst_int (0,None)
+                      ]
+                ]
+            ]
+          module_type (testsuite/tests/typing-modules/pr6394.ml[6,49+15]..[8,90+3])
+            Pmty_signature
+            [
+              signature_item (testsuite/tests/typing-modules/pr6394.ml[7,68+2]..[7,68+21])
+                Psig_type Rec
+                [
+                  type_declaration "t" (testsuite/tests/typing-modules/pr6394.ml[7,68+7]..[7,68+8]) (testsuite/tests/typing-modules/pr6394.ml[7,68+2]..[7,68+21])
+                    ptype_params =
+                      []
+                    ptype_cstrs =
+                      []
+                    ptype_kind =
+                      Ptype_abstract
+                    ptype_private = Public
+                    ptype_manifest =
+                      Some
+                        core_type (testsuite/tests/typing-modules/pr6394.ml[7,68+11]..[7,68+21])
+                          Ptyp_tuple
+                          [
+                            core_type (testsuite/tests/typing-modules/pr6394.ml[7,68+11]..[7,68+14])
+                              Ptyp_constr "int" (testsuite/tests/typing-modules/pr6394.ml[7,68+11]..[7,68+14])
+                              []
+                            core_type (testsuite/tests/typing-modules/pr6394.ml[7,68+17]..[7,68+21])
+                              Ptyp_constr "bool" (testsuite/tests/typing-modules/pr6394.ml[7,68+17]..[7,68+21])
+                              []
+                          ]
+                ]
+            ]
+    ]
+  structure_item (testsuite/tests/typing-modules/pr6394.ml[12,156+0]..[28,631+3])
+    Pstr_extension "expect"
+    [
+      structure_item (testsuite/tests/typing-modules/pr6394.ml[12,156+9]..[28,631+2])
+        Pstr_eval
+        expression (testsuite/tests/typing-modules/pr6394.ml[12,156+9]..[28,631+2])
+          Pexp_constant PConst_string ("\nLines 4-7, characters 6-3:\n4 | ......struct\n5 |   type t = A | B\n6 |   let f = function A | B -> 0\n7 | end..\nError: Signature mismatch:\n       Modules do not match:\n         sig type t = X.t = A | B val f : t -> int end\n       is not included in\n         sig type t = int * bool end\n       Type declarations do not match:\n         type t = X.t = A | B\n       is not included in\n         type t = int * bool\n       The type X.t is not equal to the type int * bool\n",(testsuite/tests/typing-modules/pr6394.ml[12,156+11]..[28,631+0]),Some "")
+    ]
+]
+

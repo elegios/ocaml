@@ -1,0 +1,135 @@
+[
+  signature_item (middle_end/semantics_of_primitives.mli[17,1156+0]..[17,1156+39])
+    Psig_attribute "ocaml.warning"
+    [
+      structure_item (middle_end/semantics_of_primitives.mli[17,1156+18]..[17,1156+38])
+        Pstr_eval
+        expression (middle_end/semantics_of_primitives.mli[17,1156+18]..[17,1156+38])
+          Pexp_constant PConst_string("+a-4-9-30-40-41-42",(middle_end/semantics_of_primitives.mli[17,1156+19]..[17,1156+37]),None)
+    ]
+  signature_item (middle_end/semantics_of_primitives.mli[19,1197+0]..[54,3126+2])
+    Psig_attribute "ocaml.text"
+    [
+      structure_item (middle_end/semantics_of_primitives.mli[19,1197+0]..[54,3126+2])
+        Pstr_eval
+        expression (middle_end/semantics_of_primitives.mli[19,1197+0]..[54,3126+2])
+          Pexp_constant PConst_string(" Description of the semantics of primitives, to be used for optimization\n    purposes.\n\n    \"No effects\" means that the primitive does not change the observable state\n    of the world.  For example, it must not write to any mutable storage,\n    call arbitrary external functions or change control flow (e.g. by raising\n    an exception).  Note that allocation is not \"No effects\" (see below).\n\n    It is assumed in the compiler that applications of primitives with no\n    effects, whose results are not used, may be eliminated.  It is further\n    assumed that applications of primitives with no effects may be\n    duplicated (and thus possibly executed more than once).\n\n    (Exceptions arising from allocation points, for example \"out of memory\" or\n    exceptions propagated from finalizers or signal handlers, are treated as\n    \"effects out of the ether\" and thus ignored for our determination here\n    of effectfulness.  The same goes for floating point operations that may\n    cause hardware traps on some platforms.)\n\n    \"Only generative effects\" means that a primitive does not change the\n    observable state of the world save for possibly affecting the state of\n    the garbage collector by performing an allocation.  Applications of\n    primitives that only have generative effects and whose results are unused\n    may be eliminated by the compiler.  However, unlike \"No effects\"\n    primitives, such applications will never be eligible for duplication.\n\n    \"Arbitrary effects\" covers all other primitives.\n\n    \"No coeffects\" means that the primitive does not observe the effects (in\n    the sense described above) of other expressions.  For example, it must not\n    read from any mutable storage or call arbitrary external functions.\n\n    It is assumed in the compiler that, subject to data dependencies,\n    expressions with neither effects nor coeffects may be reordered with\n    respect to other expressions.\n",(middle_end/semantics_of_primitives.mli[19,1197+0]..[54,3126+2]),None)
+    ]
+  signature_item (middle_end/semantics_of_primitives.mli[56,3130+0]..[56,3130+71])
+    Psig_type Rec
+    [
+      type_declaration "effects" (middle_end/semantics_of_primitives.mli[56,3130+5]..[56,3130+12]) (middle_end/semantics_of_primitives.mli[56,3130+0]..[56,3130+71])
+        ptype_params =
+          []
+        ptype_cstrs =
+          []
+        ptype_kind =
+          Ptype_variant
+            [
+              (middle_end/semantics_of_primitives.mli[56,3130+15]..[56,3130+25])
+                "No_effects" (middle_end/semantics_of_primitives.mli[56,3130+15]..[56,3130+25])
+                []
+                None
+              (middle_end/semantics_of_primitives.mli[56,3130+26]..[56,3130+51])
+                "Only_generative_effects" (middle_end/semantics_of_primitives.mli[56,3130+28]..[56,3130+51])
+                []
+                None
+              (middle_end/semantics_of_primitives.mli[56,3130+52]..[56,3130+71])
+                "Arbitrary_effects" (middle_end/semantics_of_primitives.mli[56,3130+54]..[56,3130+71])
+                []
+                None
+            ]
+        ptype_private = Public
+        ptype_manifest =
+          None
+    ]
+  signature_item (middle_end/semantics_of_primitives.mli[57,3202+0]..[57,3202+45])
+    Psig_type Rec
+    [
+      type_declaration "coeffects" (middle_end/semantics_of_primitives.mli[57,3202+5]..[57,3202+14]) (middle_end/semantics_of_primitives.mli[57,3202+0]..[57,3202+45])
+        ptype_params =
+          []
+        ptype_cstrs =
+          []
+        ptype_kind =
+          Ptype_variant
+            [
+              (middle_end/semantics_of_primitives.mli[57,3202+17]..[57,3202+29])
+                "No_coeffects" (middle_end/semantics_of_primitives.mli[57,3202+17]..[57,3202+29])
+                []
+                None
+              (middle_end/semantics_of_primitives.mli[57,3202+30]..[57,3202+45])
+                "Has_coeffects" (middle_end/semantics_of_primitives.mli[57,3202+32]..[57,3202+45])
+                []
+                None
+            ]
+        ptype_private = Public
+        ptype_manifest =
+          None
+    ]
+  signature_item (middle_end/semantics_of_primitives.mli[63,3512+0]..[63,3512+70])
+    Psig_value
+    value_description "for_primitive" (middle_end/semantics_of_primitives.mli[63,3512+4]..[63,3512+17]) (middle_end/semantics_of_primitives.mli[63,3512+0]..[63,3512+70])
+      attribute "ocaml.doc"
+        [
+          structure_item (middle_end/semantics_of_primitives.mli[59,3249+0]..[62,3482+29])
+            Pstr_eval
+            expression (middle_end/semantics_of_primitives.mli[59,3249+0]..[62,3482+29])
+              Pexp_constant PConst_string(" Describe the semantics of a primitive.  This does not take into account of\n    the (non-)(co)effectfulness of the arguments in a primitive application.\n    To determine whether such an application is (co)effectful, the arguments\n    must also be analysed. ",(middle_end/semantics_of_primitives.mli[59,3249+0]..[62,3482+29]),None)
+        ]
+      core_type (middle_end/semantics_of_primitives.mli[63,3512+19]..[63,3512+70])
+        Ptyp_arrow
+        Nolabel
+        core_type (middle_end/semantics_of_primitives.mli[63,3512+19]..[63,3512+47])
+          Ptyp_constr "Clambda_primitives.primitive" (middle_end/semantics_of_primitives.mli[63,3512+19]..[63,3512+47])
+          []
+        core_type (middle_end/semantics_of_primitives.mli[63,3512+51]..[63,3512+70])
+          Ptyp_tuple
+          [
+            core_type (middle_end/semantics_of_primitives.mli[63,3512+51]..[63,3512+58])
+              Ptyp_constr "effects" (middle_end/semantics_of_primitives.mli[63,3512+51]..[63,3512+58])
+              []
+            core_type (middle_end/semantics_of_primitives.mli[63,3512+61]..[63,3512+70])
+              Ptyp_constr "coeffects" (middle_end/semantics_of_primitives.mli[63,3512+61]..[63,3512+70])
+              []
+          ]
+      []
+  signature_item (middle_end/semantics_of_primitives.mli[65,3584+0]..[67,3613+9])
+    Psig_type Rec
+    [
+      type_declaration "return_type" (middle_end/semantics_of_primitives.mli[65,3584+5]..[65,3584+16]) (middle_end/semantics_of_primitives.mli[65,3584+0]..[67,3613+9])
+        ptype_params =
+          []
+        ptype_cstrs =
+          []
+        ptype_kind =
+          Ptype_variant
+            [
+              (middle_end/semantics_of_primitives.mli[66,3603+2]..[66,3603+9])
+                "Float" (middle_end/semantics_of_primitives.mli[66,3603+4]..[66,3603+9])
+                []
+                None
+              (middle_end/semantics_of_primitives.mli[67,3613+2]..[67,3613+9])
+                "Other" (middle_end/semantics_of_primitives.mli[67,3613+4]..[67,3613+9])
+                []
+                None
+            ]
+        ptype_private = Public
+        ptype_manifest =
+          None
+    ]
+  signature_item (middle_end/semantics_of_primitives.mli[69,3624+0]..[69,3624+73])
+    Psig_value
+    value_description "return_type_of_primitive" (middle_end/semantics_of_primitives.mli[69,3624+4]..[69,3624+28]) (middle_end/semantics_of_primitives.mli[69,3624+0]..[69,3624+73])
+      core_type (middle_end/semantics_of_primitives.mli[69,3624+30]..[69,3624+73])
+        Ptyp_arrow
+        Nolabel
+        core_type (middle_end/semantics_of_primitives.mli[69,3624+30]..[69,3624+58])
+          Ptyp_constr "Clambda_primitives.primitive" (middle_end/semantics_of_primitives.mli[69,3624+30]..[69,3624+58])
+          []
+        core_type (middle_end/semantics_of_primitives.mli[69,3624+62]..[69,3624+73])
+          Ptyp_constr "return_type" (middle_end/semantics_of_primitives.mli[69,3624+62]..[69,3624+73])
+          []
+      []
+]
+

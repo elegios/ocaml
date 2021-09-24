@@ -1,0 +1,813 @@
+[
+  structure_item (otherlibs/systhreads/semaphore.ml[16,1080+0]..[16,1080+17])
+    Pstr_attribute "ocaml.text"
+    [
+      structure_item (otherlibs/systhreads/semaphore.ml[16,1080+0]..[16,1080+17])
+        Pstr_eval
+        expression (otherlibs/systhreads/semaphore.ml[16,1080+0]..[16,1080+17])
+          Pexp_constant PConst_string(" Semaphores ",(otherlibs/systhreads/semaphore.ml[16,1080+0]..[16,1080+17]),None)
+    ]
+  structure_item (otherlibs/systhreads/semaphore.ml[18,1099+0]..[22,1303+1])
+    Pstr_type Rec
+    [
+      type_declaration "sem" (otherlibs/systhreads/semaphore.ml[18,1099+5]..[18,1099+8]) (otherlibs/systhreads/semaphore.ml[18,1099+0]..[22,1303+1])
+        ptype_params =
+          []
+        ptype_cstrs =
+          []
+        ptype_kind =
+          Ptype_record
+            [
+              (otherlibs/systhreads/semaphore.ml[19,1112+2]..[19,1112+15])
+                Immutable
+                "mut" (otherlibs/systhreads/semaphore.ml[19,1112+2]..[19,1112+5])                core_type (otherlibs/systhreads/semaphore.ml[19,1112+7]..[19,1112+14])
+                  Ptyp_constr "Mutex.t" (otherlibs/systhreads/semaphore.ml[19,1112+7]..[19,1112+14])
+                  []
+              (otherlibs/systhreads/semaphore.ml[20,1171+2]..[20,1171+17])
+                Mutable
+                "v" (otherlibs/systhreads/semaphore.ml[20,1171+10]..[20,1171+11])                core_type (otherlibs/systhreads/semaphore.ml[20,1171+13]..[20,1171+16])
+                  Ptyp_constr "int" (otherlibs/systhreads/semaphore.ml[20,1171+13]..[20,1171+16])
+                  []
+              (otherlibs/systhreads/semaphore.ml[21,1235+2]..[21,1235+22])
+                Immutable
+                "nonzero" (otherlibs/systhreads/semaphore.ml[21,1235+2]..[21,1235+9])                core_type (otherlibs/systhreads/semaphore.ml[21,1235+11]..[21,1235+22])
+                  Ptyp_constr "Condition.t" (otherlibs/systhreads/semaphore.ml[21,1235+11]..[21,1235+22])
+                  []
+            ]
+        ptype_private = Public
+        ptype_manifest =
+          None
+    ]
+  structure_item (otherlibs/systhreads/semaphore.ml[24,1306+0]..[57,2035+3])
+    Pstr_module
+    "Counting" (otherlibs/systhreads/semaphore.ml[24,1306+7]..[24,1306+15])
+      module_expr (otherlibs/systhreads/semaphore.ml[24,1306+18]..[57,2035+3])
+        Pmod_structure
+        [
+          structure_item (otherlibs/systhreads/semaphore.ml[26,1332+0]..[26,1332+12])
+            Pstr_type Rec
+            [
+              type_declaration "t" (otherlibs/systhreads/semaphore.ml[26,1332+5]..[26,1332+6]) (otherlibs/systhreads/semaphore.ml[26,1332+0]..[26,1332+12])
+                ptype_params =
+                  []
+                ptype_cstrs =
+                  []
+                ptype_kind =
+                  Ptype_abstract
+                ptype_private = Public
+                ptype_manifest =
+                  Some
+                    core_type (otherlibs/systhreads/semaphore.ml[26,1332+9]..[26,1332+12])
+                      Ptyp_constr "sem" (otherlibs/systhreads/semaphore.ml[26,1332+9]..[26,1332+12])
+                      []
+            ]
+          structure_item (otherlibs/systhreads/semaphore.ml[28,1346+0]..[30,1435+59])
+            Pstr_value Nonrec
+            [
+              <def>
+                pattern (otherlibs/systhreads/semaphore.ml[28,1346+4]..[28,1346+8])
+                  Ppat_var "make" (otherlibs/systhreads/semaphore.ml[28,1346+4]..[28,1346+8])
+                expression (otherlibs/systhreads/semaphore.ml[28,1346+9]..[30,1435+59]) ghost
+                  Pexp_fun
+                  Nolabel
+                  None
+                  pattern (otherlibs/systhreads/semaphore.ml[28,1346+9]..[28,1346+10])
+                    Ppat_var "v" (otherlibs/systhreads/semaphore.ml[28,1346+9]..[28,1346+10])
+                  expression (otherlibs/systhreads/semaphore.ml[29,1359+2]..[30,1435+59])
+                    Pexp_sequence
+                    expression (otherlibs/systhreads/semaphore.ml[29,1359+2]..[29,1359+74])
+                      Pexp_ifthenelse
+                      expression (otherlibs/systhreads/semaphore.ml[29,1359+5]..[29,1359+10])
+                        Pexp_apply
+                        expression (otherlibs/systhreads/semaphore.ml[29,1359+7]..[29,1359+8])
+                          Pexp_ident "<" (otherlibs/systhreads/semaphore.ml[29,1359+7]..[29,1359+8])
+                        [
+                          <arg>
+                          Nolabel
+                            expression (otherlibs/systhreads/semaphore.ml[29,1359+5]..[29,1359+6])
+                              Pexp_ident "v" (otherlibs/systhreads/semaphore.ml[29,1359+5]..[29,1359+6])
+                          <arg>
+                          Nolabel
+                            expression (otherlibs/systhreads/semaphore.ml[29,1359+9]..[29,1359+10])
+                              Pexp_constant PConst_int (0,None)
+                        ]
+                      expression (otherlibs/systhreads/semaphore.ml[29,1359+16]..[29,1359+74])
+                        Pexp_apply
+                        expression (otherlibs/systhreads/semaphore.ml[29,1359+16]..[29,1359+27])
+                          Pexp_ident "invalid_arg" (otherlibs/systhreads/semaphore.ml[29,1359+16]..[29,1359+27])
+                        [
+                          <arg>
+                          Nolabel
+                            expression (otherlibs/systhreads/semaphore.ml[29,1359+28]..[29,1359+74])
+                              Pexp_constant PConst_string("Semaphore.Counting.init: wrong initial value",(otherlibs/systhreads/semaphore.ml[29,1359+29]..[29,1359+73]),None)
+                        ]
+                      None
+                    expression (otherlibs/systhreads/semaphore.ml[30,1435+2]..[30,1435+59])
+                      Pexp_record
+                      [
+                        "mut" (otherlibs/systhreads/semaphore.ml[30,1435+4]..[30,1435+7])
+                          expression (otherlibs/systhreads/semaphore.ml[30,1435+10]..[30,1435+24])
+                            Pexp_apply
+                            expression (otherlibs/systhreads/semaphore.ml[30,1435+10]..[30,1435+22])
+                              Pexp_ident "Mutex.create" (otherlibs/systhreads/semaphore.ml[30,1435+10]..[30,1435+22])
+                            [
+                              <arg>
+                              Nolabel
+                                expression (otherlibs/systhreads/semaphore.ml[30,1435+22]..[30,1435+24])
+                                  Pexp_construct "()" (otherlibs/systhreads/semaphore.ml[30,1435+22]..[30,1435+24])
+                                  None
+                            ]
+                        "v" (otherlibs/systhreads/semaphore.ml[30,1435+26]..[30,1435+27]) ghost
+                          expression (otherlibs/systhreads/semaphore.ml[30,1435+26]..[30,1435+27])
+                            Pexp_ident "v" (otherlibs/systhreads/semaphore.ml[30,1435+26]..[30,1435+27])
+                        "nonzero" (otherlibs/systhreads/semaphore.ml[30,1435+29]..[30,1435+36])
+                          expression (otherlibs/systhreads/semaphore.ml[30,1435+39]..[30,1435+57])
+                            Pexp_apply
+                            expression (otherlibs/systhreads/semaphore.ml[30,1435+39]..[30,1435+55])
+                              Pexp_ident "Condition.create" (otherlibs/systhreads/semaphore.ml[30,1435+39]..[30,1435+55])
+                            [
+                              <arg>
+                              Nolabel
+                                expression (otherlibs/systhreads/semaphore.ml[30,1435+55]..[30,1435+57])
+                                  Pexp_construct "()" (otherlibs/systhreads/semaphore.ml[30,1435+55]..[30,1435+57])
+                                  None
+                            ]
+                      ]
+                      None
+            ]
+          structure_item (otherlibs/systhreads/semaphore.ml[32,1496+0]..[41,1739+5])
+            Pstr_value Nonrec
+            [
+              <def>
+                pattern (otherlibs/systhreads/semaphore.ml[32,1496+4]..[32,1496+11])
+                  Ppat_var "release" (otherlibs/systhreads/semaphore.ml[32,1496+4]..[32,1496+11])
+                expression (otherlibs/systhreads/semaphore.ml[32,1496+12]..[41,1739+5]) ghost
+                  Pexp_fun
+                  Nolabel
+                  None
+                  pattern (otherlibs/systhreads/semaphore.ml[32,1496+12]..[32,1496+13])
+                    Ppat_var "s" (otherlibs/systhreads/semaphore.ml[32,1496+12]..[32,1496+13])
+                  expression (otherlibs/systhreads/semaphore.ml[33,1512+2]..[41,1739+5])
+                    Pexp_sequence
+                    expression (otherlibs/systhreads/semaphore.ml[33,1512+2]..[33,1512+18])
+                      Pexp_apply
+                      expression (otherlibs/systhreads/semaphore.ml[33,1512+2]..[33,1512+12])
+                        Pexp_ident "Mutex.lock" (otherlibs/systhreads/semaphore.ml[33,1512+2]..[33,1512+12])
+                      [
+                        <arg>
+                        Nolabel
+                          expression (otherlibs/systhreads/semaphore.ml[33,1512+13]..[33,1512+18])
+                            Pexp_field
+                            expression (otherlibs/systhreads/semaphore.ml[33,1512+13]..[33,1512+14])
+                              Pexp_ident "s" (otherlibs/systhreads/semaphore.ml[33,1512+13]..[33,1512+14])
+                            "mut" (otherlibs/systhreads/semaphore.ml[33,1512+15]..[33,1512+18])
+                      ]
+                    expression (otherlibs/systhreads/semaphore.ml[34,1532+2]..[41,1739+5])
+                      Pexp_ifthenelse
+                      expression (otherlibs/systhreads/semaphore.ml[34,1532+5]..[34,1532+18])
+                        Pexp_apply
+                        expression (otherlibs/systhreads/semaphore.ml[34,1532+9]..[34,1532+10])
+                          Pexp_ident "<" (otherlibs/systhreads/semaphore.ml[34,1532+9]..[34,1532+10])
+                        [
+                          <arg>
+                          Nolabel
+                            expression (otherlibs/systhreads/semaphore.ml[34,1532+5]..[34,1532+8])
+                              Pexp_field
+                              expression (otherlibs/systhreads/semaphore.ml[34,1532+5]..[34,1532+6])
+                                Pexp_ident "s" (otherlibs/systhreads/semaphore.ml[34,1532+5]..[34,1532+6])
+                              "v" (otherlibs/systhreads/semaphore.ml[34,1532+7]..[34,1532+8])
+                          <arg>
+                          Nolabel
+                            expression (otherlibs/systhreads/semaphore.ml[34,1532+11]..[34,1532+18])
+                              Pexp_ident "max_int" (otherlibs/systhreads/semaphore.ml[34,1532+11]..[34,1532+18])
+                        ]
+                      expression (otherlibs/systhreads/semaphore.ml[34,1532+24]..[38,1637+5])
+                        Pexp_sequence
+                        expression (otherlibs/systhreads/semaphore.ml[35,1562+4]..[35,1562+18])
+                          Pexp_setfield
+                          expression (otherlibs/systhreads/semaphore.ml[35,1562+4]..[35,1562+5])
+                            Pexp_ident "s" (otherlibs/systhreads/semaphore.ml[35,1562+4]..[35,1562+5])
+                          "v" (otherlibs/systhreads/semaphore.ml[35,1562+6]..[35,1562+7])
+                          expression (otherlibs/systhreads/semaphore.ml[35,1562+11]..[35,1562+18])
+                            Pexp_apply
+                            expression (otherlibs/systhreads/semaphore.ml[35,1562+15]..[35,1562+16])
+                              Pexp_ident "+" (otherlibs/systhreads/semaphore.ml[35,1562+15]..[35,1562+16])
+                            [
+                              <arg>
+                              Nolabel
+                                expression (otherlibs/systhreads/semaphore.ml[35,1562+11]..[35,1562+14])
+                                  Pexp_field
+                                  expression (otherlibs/systhreads/semaphore.ml[35,1562+11]..[35,1562+12])
+                                    Pexp_ident "s" (otherlibs/systhreads/semaphore.ml[35,1562+11]..[35,1562+12])
+                                  "v" (otherlibs/systhreads/semaphore.ml[35,1562+13]..[35,1562+14])
+                              <arg>
+                              Nolabel
+                                expression (otherlibs/systhreads/semaphore.ml[35,1562+17]..[35,1562+18])
+                                  Pexp_constant PConst_int (1,None)
+                            ]
+                        expression (otherlibs/systhreads/semaphore.ml[36,1582+4]..[37,1614+22])
+                          Pexp_sequence
+                          expression (otherlibs/systhreads/semaphore.ml[36,1582+4]..[36,1582+30])
+                            Pexp_apply
+                            expression (otherlibs/systhreads/semaphore.ml[36,1582+4]..[36,1582+20])
+                              Pexp_ident "Condition.signal" (otherlibs/systhreads/semaphore.ml[36,1582+4]..[36,1582+20])
+                            [
+                              <arg>
+                              Nolabel
+                                expression (otherlibs/systhreads/semaphore.ml[36,1582+21]..[36,1582+30])
+                                  Pexp_field
+                                  expression (otherlibs/systhreads/semaphore.ml[36,1582+21]..[36,1582+22])
+                                    Pexp_ident "s" (otherlibs/systhreads/semaphore.ml[36,1582+21]..[36,1582+22])
+                                  "nonzero" (otherlibs/systhreads/semaphore.ml[36,1582+23]..[36,1582+30])
+                            ]
+                          expression (otherlibs/systhreads/semaphore.ml[37,1614+4]..[37,1614+22])
+                            Pexp_apply
+                            expression (otherlibs/systhreads/semaphore.ml[37,1614+4]..[37,1614+16])
+                              Pexp_ident "Mutex.unlock" (otherlibs/systhreads/semaphore.ml[37,1614+4]..[37,1614+16])
+                            [
+                              <arg>
+                              Nolabel
+                                expression (otherlibs/systhreads/semaphore.ml[37,1614+17]..[37,1614+22])
+                                  Pexp_field
+                                  expression (otherlibs/systhreads/semaphore.ml[37,1614+17]..[37,1614+18])
+                                    Pexp_ident "s" (otherlibs/systhreads/semaphore.ml[37,1614+17]..[37,1614+18])
+                                  "mut" (otherlibs/systhreads/semaphore.ml[37,1614+19]..[37,1614+22])
+                            ]
+                      Some
+                        expression (otherlibs/systhreads/semaphore.ml[38,1637+11]..[41,1739+5])
+                          Pexp_sequence
+                          expression (otherlibs/systhreads/semaphore.ml[39,1654+4]..[39,1654+22])
+                            Pexp_apply
+                            expression (otherlibs/systhreads/semaphore.ml[39,1654+4]..[39,1654+16])
+                              Pexp_ident "Mutex.unlock" (otherlibs/systhreads/semaphore.ml[39,1654+4]..[39,1654+16])
+                            [
+                              <arg>
+                              Nolabel
+                                expression (otherlibs/systhreads/semaphore.ml[39,1654+17]..[39,1654+22])
+                                  Pexp_field
+                                  expression (otherlibs/systhreads/semaphore.ml[39,1654+17]..[39,1654+18])
+                                    Pexp_ident "s" (otherlibs/systhreads/semaphore.ml[39,1654+17]..[39,1654+18])
+                                  "mut" (otherlibs/systhreads/semaphore.ml[39,1654+19]..[39,1654+22])
+                            ]
+                          expression (otherlibs/systhreads/semaphore.ml[40,1678+4]..[40,1678+60])
+                            Pexp_apply
+                            expression (otherlibs/systhreads/semaphore.ml[40,1678+4]..[40,1678+9])
+                              Pexp_ident "raise" (otherlibs/systhreads/semaphore.ml[40,1678+4]..[40,1678+9])
+                            [
+                              <arg>
+                              Nolabel
+                                expression (otherlibs/systhreads/semaphore.ml[40,1678+10]..[40,1678+60])
+                                  Pexp_construct "Sys_error" (otherlibs/systhreads/semaphore.ml[40,1678+11]..[40,1678+20])
+                                  Some
+                                    expression (otherlibs/systhreads/semaphore.ml[40,1678+21]..[40,1678+59])
+                                      Pexp_constant PConst_string("Semaphore.Counting.release: overflow",(otherlibs/systhreads/semaphore.ml[40,1678+22]..[40,1678+58]),None)
+                            ]
+            ]
+          structure_item (otherlibs/systhreads/semaphore.ml[43,1746+0]..[47,1856+20])
+            Pstr_value Nonrec
+            [
+              <def>
+                pattern (otherlibs/systhreads/semaphore.ml[43,1746+4]..[43,1746+11])
+                  Ppat_var "acquire" (otherlibs/systhreads/semaphore.ml[43,1746+4]..[43,1746+11])
+                expression (otherlibs/systhreads/semaphore.ml[43,1746+12]..[47,1856+20]) ghost
+                  Pexp_fun
+                  Nolabel
+                  None
+                  pattern (otherlibs/systhreads/semaphore.ml[43,1746+12]..[43,1746+13])
+                    Ppat_var "s" (otherlibs/systhreads/semaphore.ml[43,1746+12]..[43,1746+13])
+                  expression (otherlibs/systhreads/semaphore.ml[44,1762+2]..[47,1856+20])
+                    Pexp_sequence
+                    expression (otherlibs/systhreads/semaphore.ml[44,1762+2]..[44,1762+18])
+                      Pexp_apply
+                      expression (otherlibs/systhreads/semaphore.ml[44,1762+2]..[44,1762+12])
+                        Pexp_ident "Mutex.lock" (otherlibs/systhreads/semaphore.ml[44,1762+2]..[44,1762+12])
+                      [
+                        <arg>
+                        Nolabel
+                          expression (otherlibs/systhreads/semaphore.ml[44,1762+13]..[44,1762+18])
+                            Pexp_field
+                            expression (otherlibs/systhreads/semaphore.ml[44,1762+13]..[44,1762+14])
+                              Pexp_ident "s" (otherlibs/systhreads/semaphore.ml[44,1762+13]..[44,1762+14])
+                            "mut" (otherlibs/systhreads/semaphore.ml[44,1762+15]..[44,1762+18])
+                      ]
+                    expression (otherlibs/systhreads/semaphore.ml[45,1782+2]..[47,1856+20])
+                      Pexp_sequence
+                      expression (otherlibs/systhreads/semaphore.ml[45,1782+2]..[45,1782+54])
+                        Pexp_while
+                        expression (otherlibs/systhreads/semaphore.ml[45,1782+8]..[45,1782+15])
+                          Pexp_apply
+                          expression (otherlibs/systhreads/semaphore.ml[45,1782+12]..[45,1782+13])
+                            Pexp_ident "=" (otherlibs/systhreads/semaphore.ml[45,1782+12]..[45,1782+13])
+                          [
+                            <arg>
+                            Nolabel
+                              expression (otherlibs/systhreads/semaphore.ml[45,1782+8]..[45,1782+11])
+                                Pexp_field
+                                expression (otherlibs/systhreads/semaphore.ml[45,1782+8]..[45,1782+9])
+                                  Pexp_ident "s" (otherlibs/systhreads/semaphore.ml[45,1782+8]..[45,1782+9])
+                                "v" (otherlibs/systhreads/semaphore.ml[45,1782+10]..[45,1782+11])
+                            <arg>
+                            Nolabel
+                              expression (otherlibs/systhreads/semaphore.ml[45,1782+14]..[45,1782+15])
+                                Pexp_constant PConst_int (0,None)
+                          ]
+                        expression (otherlibs/systhreads/semaphore.ml[45,1782+19]..[45,1782+49])
+                          Pexp_apply
+                          expression (otherlibs/systhreads/semaphore.ml[45,1782+19]..[45,1782+33])
+                            Pexp_ident "Condition.wait" (otherlibs/systhreads/semaphore.ml[45,1782+19]..[45,1782+33])
+                          [
+                            <arg>
+                            Nolabel
+                              expression (otherlibs/systhreads/semaphore.ml[45,1782+34]..[45,1782+43])
+                                Pexp_field
+                                expression (otherlibs/systhreads/semaphore.ml[45,1782+34]..[45,1782+35])
+                                  Pexp_ident "s" (otherlibs/systhreads/semaphore.ml[45,1782+34]..[45,1782+35])
+                                "nonzero" (otherlibs/systhreads/semaphore.ml[45,1782+36]..[45,1782+43])
+                            <arg>
+                            Nolabel
+                              expression (otherlibs/systhreads/semaphore.ml[45,1782+44]..[45,1782+49])
+                                Pexp_field
+                                expression (otherlibs/systhreads/semaphore.ml[45,1782+44]..[45,1782+45])
+                                  Pexp_ident "s" (otherlibs/systhreads/semaphore.ml[45,1782+44]..[45,1782+45])
+                                "mut" (otherlibs/systhreads/semaphore.ml[45,1782+46]..[45,1782+49])
+                          ]
+                      expression (otherlibs/systhreads/semaphore.ml[46,1838+2]..[47,1856+20])
+                        Pexp_sequence
+                        expression (otherlibs/systhreads/semaphore.ml[46,1838+2]..[46,1838+16])
+                          Pexp_setfield
+                          expression (otherlibs/systhreads/semaphore.ml[46,1838+2]..[46,1838+3])
+                            Pexp_ident "s" (otherlibs/systhreads/semaphore.ml[46,1838+2]..[46,1838+3])
+                          "v" (otherlibs/systhreads/semaphore.ml[46,1838+4]..[46,1838+5])
+                          expression (otherlibs/systhreads/semaphore.ml[46,1838+9]..[46,1838+16])
+                            Pexp_apply
+                            expression (otherlibs/systhreads/semaphore.ml[46,1838+13]..[46,1838+14])
+                              Pexp_ident "-" (otherlibs/systhreads/semaphore.ml[46,1838+13]..[46,1838+14])
+                            [
+                              <arg>
+                              Nolabel
+                                expression (otherlibs/systhreads/semaphore.ml[46,1838+9]..[46,1838+12])
+                                  Pexp_field
+                                  expression (otherlibs/systhreads/semaphore.ml[46,1838+9]..[46,1838+10])
+                                    Pexp_ident "s" (otherlibs/systhreads/semaphore.ml[46,1838+9]..[46,1838+10])
+                                  "v" (otherlibs/systhreads/semaphore.ml[46,1838+11]..[46,1838+12])
+                              <arg>
+                              Nolabel
+                                expression (otherlibs/systhreads/semaphore.ml[46,1838+15]..[46,1838+16])
+                                  Pexp_constant PConst_int (1,None)
+                            ]
+                        expression (otherlibs/systhreads/semaphore.ml[47,1856+2]..[47,1856+20])
+                          Pexp_apply
+                          expression (otherlibs/systhreads/semaphore.ml[47,1856+2]..[47,1856+14])
+                            Pexp_ident "Mutex.unlock" (otherlibs/systhreads/semaphore.ml[47,1856+2]..[47,1856+14])
+                          [
+                            <arg>
+                            Nolabel
+                              expression (otherlibs/systhreads/semaphore.ml[47,1856+15]..[47,1856+20])
+                                Pexp_field
+                                expression (otherlibs/systhreads/semaphore.ml[47,1856+15]..[47,1856+16])
+                                  Pexp_ident "s" (otherlibs/systhreads/semaphore.ml[47,1856+15]..[47,1856+16])
+                                "mut" (otherlibs/systhreads/semaphore.ml[47,1856+17]..[47,1856+20])
+                          ]
+            ]
+          structure_item (otherlibs/systhreads/semaphore.ml[49,1878+0]..[53,2005+5])
+            Pstr_value Nonrec
+            [
+              <def>
+                pattern (otherlibs/systhreads/semaphore.ml[49,1878+4]..[49,1878+15])
+                  Ppat_var "try_acquire" (otherlibs/systhreads/semaphore.ml[49,1878+4]..[49,1878+15])
+                expression (otherlibs/systhreads/semaphore.ml[49,1878+16]..[53,2005+5]) ghost
+                  Pexp_fun
+                  Nolabel
+                  None
+                  pattern (otherlibs/systhreads/semaphore.ml[49,1878+16]..[49,1878+17])
+                    Ppat_var "s" (otherlibs/systhreads/semaphore.ml[49,1878+16]..[49,1878+17])
+                  expression (otherlibs/systhreads/semaphore.ml[50,1898+2]..[53,2005+5])
+                    Pexp_sequence
+                    expression (otherlibs/systhreads/semaphore.ml[50,1898+2]..[50,1898+18])
+                      Pexp_apply
+                      expression (otherlibs/systhreads/semaphore.ml[50,1898+2]..[50,1898+12])
+                        Pexp_ident "Mutex.lock" (otherlibs/systhreads/semaphore.ml[50,1898+2]..[50,1898+12])
+                      [
+                        <arg>
+                        Nolabel
+                          expression (otherlibs/systhreads/semaphore.ml[50,1898+13]..[50,1898+18])
+                            Pexp_field
+                            expression (otherlibs/systhreads/semaphore.ml[50,1898+13]..[50,1898+14])
+                              Pexp_ident "s" (otherlibs/systhreads/semaphore.ml[50,1898+13]..[50,1898+14])
+                            "mut" (otherlibs/systhreads/semaphore.ml[50,1898+15]..[50,1898+18])
+                      ]
+                    expression (otherlibs/systhreads/semaphore.ml[51,1918+2]..[53,2005+5])
+                      Pexp_let Nonrec
+                      [
+                        <def>
+                          pattern (otherlibs/systhreads/semaphore.ml[51,1918+6]..[51,1918+9])
+                            Ppat_var "ret" (otherlibs/systhreads/semaphore.ml[51,1918+6]..[51,1918+9])
+                          expression (otherlibs/systhreads/semaphore.ml[51,1918+12]..[51,1918+61])
+                            Pexp_ifthenelse
+                            expression (otherlibs/systhreads/semaphore.ml[51,1918+15]..[51,1918+22])
+                              Pexp_apply
+                              expression (otherlibs/systhreads/semaphore.ml[51,1918+19]..[51,1918+20])
+                                Pexp_ident "=" (otherlibs/systhreads/semaphore.ml[51,1918+19]..[51,1918+20])
+                              [
+                                <arg>
+                                Nolabel
+                                  expression (otherlibs/systhreads/semaphore.ml[51,1918+15]..[51,1918+18])
+                                    Pexp_field
+                                    expression (otherlibs/systhreads/semaphore.ml[51,1918+15]..[51,1918+16])
+                                      Pexp_ident "s" (otherlibs/systhreads/semaphore.ml[51,1918+15]..[51,1918+16])
+                                    "v" (otherlibs/systhreads/semaphore.ml[51,1918+17]..[51,1918+18])
+                                <arg>
+                                Nolabel
+                                  expression (otherlibs/systhreads/semaphore.ml[51,1918+21]..[51,1918+22])
+                                    Pexp_constant PConst_int (0,None)
+                              ]
+                            expression (otherlibs/systhreads/semaphore.ml[51,1918+28]..[51,1918+33])
+                              Pexp_construct "false" (otherlibs/systhreads/semaphore.ml[51,1918+28]..[51,1918+33])
+                              None
+                            Some
+                              expression (otherlibs/systhreads/semaphore.ml[51,1918+39]..[51,1918+61])
+                                Pexp_sequence
+                                expression (otherlibs/systhreads/semaphore.ml[51,1918+40]..[51,1918+54])
+                                  Pexp_setfield
+                                  expression (otherlibs/systhreads/semaphore.ml[51,1918+40]..[51,1918+41])
+                                    Pexp_ident "s" (otherlibs/systhreads/semaphore.ml[51,1918+40]..[51,1918+41])
+                                  "v" (otherlibs/systhreads/semaphore.ml[51,1918+42]..[51,1918+43])
+                                  expression (otherlibs/systhreads/semaphore.ml[51,1918+47]..[51,1918+54])
+                                    Pexp_apply
+                                    expression (otherlibs/systhreads/semaphore.ml[51,1918+51]..[51,1918+52])
+                                      Pexp_ident "-" (otherlibs/systhreads/semaphore.ml[51,1918+51]..[51,1918+52])
+                                    [
+                                      <arg>
+                                      Nolabel
+                                        expression (otherlibs/systhreads/semaphore.ml[51,1918+47]..[51,1918+50])
+                                          Pexp_field
+                                          expression (otherlibs/systhreads/semaphore.ml[51,1918+47]..[51,1918+48])
+                                            Pexp_ident "s" (otherlibs/systhreads/semaphore.ml[51,1918+47]..[51,1918+48])
+                                          "v" (otherlibs/systhreads/semaphore.ml[51,1918+49]..[51,1918+50])
+                                      <arg>
+                                      Nolabel
+                                        expression (otherlibs/systhreads/semaphore.ml[51,1918+53]..[51,1918+54])
+                                          Pexp_constant PConst_int (1,None)
+                                    ]
+                                expression (otherlibs/systhreads/semaphore.ml[51,1918+56]..[51,1918+60])
+                                  Pexp_construct "true" (otherlibs/systhreads/semaphore.ml[51,1918+56]..[51,1918+60])
+                                  None
+                      ]
+                      expression (otherlibs/systhreads/semaphore.ml[52,1983+2]..[53,2005+5])
+                        Pexp_sequence
+                        expression (otherlibs/systhreads/semaphore.ml[52,1983+2]..[52,1983+20])
+                          Pexp_apply
+                          expression (otherlibs/systhreads/semaphore.ml[52,1983+2]..[52,1983+14])
+                            Pexp_ident "Mutex.unlock" (otherlibs/systhreads/semaphore.ml[52,1983+2]..[52,1983+14])
+                          [
+                            <arg>
+                            Nolabel
+                              expression (otherlibs/systhreads/semaphore.ml[52,1983+15]..[52,1983+20])
+                                Pexp_field
+                                expression (otherlibs/systhreads/semaphore.ml[52,1983+15]..[52,1983+16])
+                                  Pexp_ident "s" (otherlibs/systhreads/semaphore.ml[52,1983+15]..[52,1983+16])
+                                "mut" (otherlibs/systhreads/semaphore.ml[52,1983+17]..[52,1983+20])
+                          ]
+                        expression (otherlibs/systhreads/semaphore.ml[53,2005+2]..[53,2005+5])
+                          Pexp_ident "ret" (otherlibs/systhreads/semaphore.ml[53,2005+2]..[53,2005+5])
+            ]
+          structure_item (otherlibs/systhreads/semaphore.ml[55,2012+0]..[55,2012+21])
+            Pstr_value Nonrec
+            [
+              <def>
+                pattern (otherlibs/systhreads/semaphore.ml[55,2012+4]..[55,2012+13])
+                  Ppat_var "get_value" (otherlibs/systhreads/semaphore.ml[55,2012+4]..[55,2012+13])
+                expression (otherlibs/systhreads/semaphore.ml[55,2012+14]..[55,2012+21]) ghost
+                  Pexp_fun
+                  Nolabel
+                  None
+                  pattern (otherlibs/systhreads/semaphore.ml[55,2012+14]..[55,2012+15])
+                    Ppat_var "s" (otherlibs/systhreads/semaphore.ml[55,2012+14]..[55,2012+15])
+                  expression (otherlibs/systhreads/semaphore.ml[55,2012+18]..[55,2012+21])
+                    Pexp_field
+                    expression (otherlibs/systhreads/semaphore.ml[55,2012+18]..[55,2012+19])
+                      Pexp_ident "s" (otherlibs/systhreads/semaphore.ml[55,2012+18]..[55,2012+19])
+                    "v" (otherlibs/systhreads/semaphore.ml[55,2012+20]..[55,2012+21])
+            ]
+        ]
+  structure_item (otherlibs/systhreads/semaphore.ml[59,2040+0]..[86,2535+3])
+    Pstr_module
+    "Binary" (otherlibs/systhreads/semaphore.ml[59,2040+7]..[59,2040+13])
+      module_expr (otherlibs/systhreads/semaphore.ml[59,2040+16]..[86,2535+3])
+        Pmod_structure
+        [
+          structure_item (otherlibs/systhreads/semaphore.ml[61,2064+0]..[61,2064+12])
+            Pstr_type Rec
+            [
+              type_declaration "t" (otherlibs/systhreads/semaphore.ml[61,2064+5]..[61,2064+6]) (otherlibs/systhreads/semaphore.ml[61,2064+0]..[61,2064+12])
+                ptype_params =
+                  []
+                ptype_cstrs =
+                  []
+                ptype_kind =
+                  Ptype_abstract
+                ptype_private = Public
+                ptype_manifest =
+                  Some
+                    core_type (otherlibs/systhreads/semaphore.ml[61,2064+9]..[61,2064+12])
+                      Ptyp_constr "sem" (otherlibs/systhreads/semaphore.ml[61,2064+9]..[61,2064+12])
+                      []
+            ]
+          structure_item (otherlibs/systhreads/semaphore.ml[63,2078+0]..[66,2145+34])
+            Pstr_value Nonrec
+            [
+              <def>
+                pattern (otherlibs/systhreads/semaphore.ml[63,2078+4]..[63,2078+8])
+                  Ppat_var "make" (otherlibs/systhreads/semaphore.ml[63,2078+4]..[63,2078+8])
+                expression (otherlibs/systhreads/semaphore.ml[63,2078+9]..[66,2145+34]) ghost
+                  Pexp_fun
+                  Nolabel
+                  None
+                  pattern (otherlibs/systhreads/semaphore.ml[63,2078+9]..[63,2078+10])
+                    Ppat_var "b" (otherlibs/systhreads/semaphore.ml[63,2078+9]..[63,2078+10])
+                  expression (otherlibs/systhreads/semaphore.ml[64,2091+2]..[66,2145+34])
+                    Pexp_record
+                    [
+                      "mut" (otherlibs/systhreads/semaphore.ml[64,2091+4]..[64,2091+7])
+                        expression (otherlibs/systhreads/semaphore.ml[64,2091+10]..[64,2091+24])
+                          Pexp_apply
+                          expression (otherlibs/systhreads/semaphore.ml[64,2091+10]..[64,2091+22])
+                            Pexp_ident "Mutex.create" (otherlibs/systhreads/semaphore.ml[64,2091+10]..[64,2091+22])
+                          [
+                            <arg>
+                            Nolabel
+                              expression (otherlibs/systhreads/semaphore.ml[64,2091+22]..[64,2091+24])
+                                Pexp_construct "()" (otherlibs/systhreads/semaphore.ml[64,2091+22]..[64,2091+24])
+                                None
+                          ]
+                      "v" (otherlibs/systhreads/semaphore.ml[65,2117+4]..[65,2117+5])
+                        expression (otherlibs/systhreads/semaphore.ml[65,2117+8]..[65,2117+26])
+                          Pexp_ifthenelse
+                          expression (otherlibs/systhreads/semaphore.ml[65,2117+11]..[65,2117+12])
+                            Pexp_ident "b" (otherlibs/systhreads/semaphore.ml[65,2117+11]..[65,2117+12])
+                          expression (otherlibs/systhreads/semaphore.ml[65,2117+18]..[65,2117+19])
+                            Pexp_constant PConst_int (1,None)
+                          Some
+                            expression (otherlibs/systhreads/semaphore.ml[65,2117+25]..[65,2117+26])
+                              Pexp_constant PConst_int (0,None)
+                      "nonzero" (otherlibs/systhreads/semaphore.ml[66,2145+4]..[66,2145+11])
+                        expression (otherlibs/systhreads/semaphore.ml[66,2145+14]..[66,2145+32])
+                          Pexp_apply
+                          expression (otherlibs/systhreads/semaphore.ml[66,2145+14]..[66,2145+30])
+                            Pexp_ident "Condition.create" (otherlibs/systhreads/semaphore.ml[66,2145+14]..[66,2145+30])
+                          [
+                            <arg>
+                            Nolabel
+                              expression (otherlibs/systhreads/semaphore.ml[66,2145+30]..[66,2145+32])
+                                Pexp_construct "()" (otherlibs/systhreads/semaphore.ml[66,2145+30]..[66,2145+32])
+                                None
+                          ]
+                    ]
+                    None
+            ]
+          structure_item (otherlibs/systhreads/semaphore.ml[68,2181+0]..[72,2259+20])
+            Pstr_value Nonrec
+            [
+              <def>
+                pattern (otherlibs/systhreads/semaphore.ml[68,2181+4]..[68,2181+11])
+                  Ppat_var "release" (otherlibs/systhreads/semaphore.ml[68,2181+4]..[68,2181+11])
+                expression (otherlibs/systhreads/semaphore.ml[68,2181+12]..[72,2259+20]) ghost
+                  Pexp_fun
+                  Nolabel
+                  None
+                  pattern (otherlibs/systhreads/semaphore.ml[68,2181+12]..[68,2181+13])
+                    Ppat_var "s" (otherlibs/systhreads/semaphore.ml[68,2181+12]..[68,2181+13])
+                  expression (otherlibs/systhreads/semaphore.ml[69,2197+2]..[72,2259+20])
+                    Pexp_sequence
+                    expression (otherlibs/systhreads/semaphore.ml[69,2197+2]..[69,2197+18])
+                      Pexp_apply
+                      expression (otherlibs/systhreads/semaphore.ml[69,2197+2]..[69,2197+12])
+                        Pexp_ident "Mutex.lock" (otherlibs/systhreads/semaphore.ml[69,2197+2]..[69,2197+12])
+                      [
+                        <arg>
+                        Nolabel
+                          expression (otherlibs/systhreads/semaphore.ml[69,2197+13]..[69,2197+18])
+                            Pexp_field
+                            expression (otherlibs/systhreads/semaphore.ml[69,2197+13]..[69,2197+14])
+                              Pexp_ident "s" (otherlibs/systhreads/semaphore.ml[69,2197+13]..[69,2197+14])
+                            "mut" (otherlibs/systhreads/semaphore.ml[69,2197+15]..[69,2197+18])
+                      ]
+                    expression (otherlibs/systhreads/semaphore.ml[70,2217+2]..[72,2259+20])
+                      Pexp_sequence
+                      expression (otherlibs/systhreads/semaphore.ml[70,2217+2]..[70,2217+10])
+                        Pexp_setfield
+                        expression (otherlibs/systhreads/semaphore.ml[70,2217+2]..[70,2217+3])
+                          Pexp_ident "s" (otherlibs/systhreads/semaphore.ml[70,2217+2]..[70,2217+3])
+                        "v" (otherlibs/systhreads/semaphore.ml[70,2217+4]..[70,2217+5])
+                        expression (otherlibs/systhreads/semaphore.ml[70,2217+9]..[70,2217+10])
+                          Pexp_constant PConst_int (1,None)
+                      expression (otherlibs/systhreads/semaphore.ml[71,2229+2]..[72,2259+20])
+                        Pexp_sequence
+                        expression (otherlibs/systhreads/semaphore.ml[71,2229+2]..[71,2229+28])
+                          Pexp_apply
+                          expression (otherlibs/systhreads/semaphore.ml[71,2229+2]..[71,2229+18])
+                            Pexp_ident "Condition.signal" (otherlibs/systhreads/semaphore.ml[71,2229+2]..[71,2229+18])
+                          [
+                            <arg>
+                            Nolabel
+                              expression (otherlibs/systhreads/semaphore.ml[71,2229+19]..[71,2229+28])
+                                Pexp_field
+                                expression (otherlibs/systhreads/semaphore.ml[71,2229+19]..[71,2229+20])
+                                  Pexp_ident "s" (otherlibs/systhreads/semaphore.ml[71,2229+19]..[71,2229+20])
+                                "nonzero" (otherlibs/systhreads/semaphore.ml[71,2229+21]..[71,2229+28])
+                          ]
+                        expression (otherlibs/systhreads/semaphore.ml[72,2259+2]..[72,2259+20])
+                          Pexp_apply
+                          expression (otherlibs/systhreads/semaphore.ml[72,2259+2]..[72,2259+14])
+                            Pexp_ident "Mutex.unlock" (otherlibs/systhreads/semaphore.ml[72,2259+2]..[72,2259+14])
+                          [
+                            <arg>
+                            Nolabel
+                              expression (otherlibs/systhreads/semaphore.ml[72,2259+15]..[72,2259+20])
+                                Pexp_field
+                                expression (otherlibs/systhreads/semaphore.ml[72,2259+15]..[72,2259+16])
+                                  Pexp_ident "s" (otherlibs/systhreads/semaphore.ml[72,2259+15]..[72,2259+16])
+                                "mut" (otherlibs/systhreads/semaphore.ml[72,2259+17]..[72,2259+20])
+                          ]
+            ]
+          structure_item (otherlibs/systhreads/semaphore.ml[74,2281+0]..[78,2385+20])
+            Pstr_value Nonrec
+            [
+              <def>
+                pattern (otherlibs/systhreads/semaphore.ml[74,2281+4]..[74,2281+11])
+                  Ppat_var "acquire" (otherlibs/systhreads/semaphore.ml[74,2281+4]..[74,2281+11])
+                expression (otherlibs/systhreads/semaphore.ml[74,2281+12]..[78,2385+20]) ghost
+                  Pexp_fun
+                  Nolabel
+                  None
+                  pattern (otherlibs/systhreads/semaphore.ml[74,2281+12]..[74,2281+13])
+                    Ppat_var "s" (otherlibs/systhreads/semaphore.ml[74,2281+12]..[74,2281+13])
+                  expression (otherlibs/systhreads/semaphore.ml[75,2297+2]..[78,2385+20])
+                    Pexp_sequence
+                    expression (otherlibs/systhreads/semaphore.ml[75,2297+2]..[75,2297+18])
+                      Pexp_apply
+                      expression (otherlibs/systhreads/semaphore.ml[75,2297+2]..[75,2297+12])
+                        Pexp_ident "Mutex.lock" (otherlibs/systhreads/semaphore.ml[75,2297+2]..[75,2297+12])
+                      [
+                        <arg>
+                        Nolabel
+                          expression (otherlibs/systhreads/semaphore.ml[75,2297+13]..[75,2297+18])
+                            Pexp_field
+                            expression (otherlibs/systhreads/semaphore.ml[75,2297+13]..[75,2297+14])
+                              Pexp_ident "s" (otherlibs/systhreads/semaphore.ml[75,2297+13]..[75,2297+14])
+                            "mut" (otherlibs/systhreads/semaphore.ml[75,2297+15]..[75,2297+18])
+                      ]
+                    expression (otherlibs/systhreads/semaphore.ml[76,2317+2]..[78,2385+20])
+                      Pexp_sequence
+                      expression (otherlibs/systhreads/semaphore.ml[76,2317+2]..[76,2317+54])
+                        Pexp_while
+                        expression (otherlibs/systhreads/semaphore.ml[76,2317+8]..[76,2317+15])
+                          Pexp_apply
+                          expression (otherlibs/systhreads/semaphore.ml[76,2317+12]..[76,2317+13])
+                            Pexp_ident "=" (otherlibs/systhreads/semaphore.ml[76,2317+12]..[76,2317+13])
+                          [
+                            <arg>
+                            Nolabel
+                              expression (otherlibs/systhreads/semaphore.ml[76,2317+8]..[76,2317+11])
+                                Pexp_field
+                                expression (otherlibs/systhreads/semaphore.ml[76,2317+8]..[76,2317+9])
+                                  Pexp_ident "s" (otherlibs/systhreads/semaphore.ml[76,2317+8]..[76,2317+9])
+                                "v" (otherlibs/systhreads/semaphore.ml[76,2317+10]..[76,2317+11])
+                            <arg>
+                            Nolabel
+                              expression (otherlibs/systhreads/semaphore.ml[76,2317+14]..[76,2317+15])
+                                Pexp_constant PConst_int (0,None)
+                          ]
+                        expression (otherlibs/systhreads/semaphore.ml[76,2317+19]..[76,2317+49])
+                          Pexp_apply
+                          expression (otherlibs/systhreads/semaphore.ml[76,2317+19]..[76,2317+33])
+                            Pexp_ident "Condition.wait" (otherlibs/systhreads/semaphore.ml[76,2317+19]..[76,2317+33])
+                          [
+                            <arg>
+                            Nolabel
+                              expression (otherlibs/systhreads/semaphore.ml[76,2317+34]..[76,2317+43])
+                                Pexp_field
+                                expression (otherlibs/systhreads/semaphore.ml[76,2317+34]..[76,2317+35])
+                                  Pexp_ident "s" (otherlibs/systhreads/semaphore.ml[76,2317+34]..[76,2317+35])
+                                "nonzero" (otherlibs/systhreads/semaphore.ml[76,2317+36]..[76,2317+43])
+                            <arg>
+                            Nolabel
+                              expression (otherlibs/systhreads/semaphore.ml[76,2317+44]..[76,2317+49])
+                                Pexp_field
+                                expression (otherlibs/systhreads/semaphore.ml[76,2317+44]..[76,2317+45])
+                                  Pexp_ident "s" (otherlibs/systhreads/semaphore.ml[76,2317+44]..[76,2317+45])
+                                "mut" (otherlibs/systhreads/semaphore.ml[76,2317+46]..[76,2317+49])
+                          ]
+                      expression (otherlibs/systhreads/semaphore.ml[77,2373+2]..[78,2385+20])
+                        Pexp_sequence
+                        expression (otherlibs/systhreads/semaphore.ml[77,2373+2]..[77,2373+10])
+                          Pexp_setfield
+                          expression (otherlibs/systhreads/semaphore.ml[77,2373+2]..[77,2373+3])
+                            Pexp_ident "s" (otherlibs/systhreads/semaphore.ml[77,2373+2]..[77,2373+3])
+                          "v" (otherlibs/systhreads/semaphore.ml[77,2373+4]..[77,2373+5])
+                          expression (otherlibs/systhreads/semaphore.ml[77,2373+9]..[77,2373+10])
+                            Pexp_constant PConst_int (0,None)
+                        expression (otherlibs/systhreads/semaphore.ml[78,2385+2]..[78,2385+20])
+                          Pexp_apply
+                          expression (otherlibs/systhreads/semaphore.ml[78,2385+2]..[78,2385+14])
+                            Pexp_ident "Mutex.unlock" (otherlibs/systhreads/semaphore.ml[78,2385+2]..[78,2385+14])
+                          [
+                            <arg>
+                            Nolabel
+                              expression (otherlibs/systhreads/semaphore.ml[78,2385+15]..[78,2385+20])
+                                Pexp_field
+                                expression (otherlibs/systhreads/semaphore.ml[78,2385+15]..[78,2385+16])
+                                  Pexp_ident "s" (otherlibs/systhreads/semaphore.ml[78,2385+15]..[78,2385+16])
+                                "mut" (otherlibs/systhreads/semaphore.ml[78,2385+17]..[78,2385+20])
+                          ]
+            ]
+          structure_item (otherlibs/systhreads/semaphore.ml[80,2407+0]..[84,2528+5])
+            Pstr_value Nonrec
+            [
+              <def>
+                pattern (otherlibs/systhreads/semaphore.ml[80,2407+4]..[80,2407+15])
+                  Ppat_var "try_acquire" (otherlibs/systhreads/semaphore.ml[80,2407+4]..[80,2407+15])
+                expression (otherlibs/systhreads/semaphore.ml[80,2407+16]..[84,2528+5]) ghost
+                  Pexp_fun
+                  Nolabel
+                  None
+                  pattern (otherlibs/systhreads/semaphore.ml[80,2407+16]..[80,2407+17])
+                    Ppat_var "s" (otherlibs/systhreads/semaphore.ml[80,2407+16]..[80,2407+17])
+                  expression (otherlibs/systhreads/semaphore.ml[81,2427+2]..[84,2528+5])
+                    Pexp_sequence
+                    expression (otherlibs/systhreads/semaphore.ml[81,2427+2]..[81,2427+18])
+                      Pexp_apply
+                      expression (otherlibs/systhreads/semaphore.ml[81,2427+2]..[81,2427+12])
+                        Pexp_ident "Mutex.lock" (otherlibs/systhreads/semaphore.ml[81,2427+2]..[81,2427+12])
+                      [
+                        <arg>
+                        Nolabel
+                          expression (otherlibs/systhreads/semaphore.ml[81,2427+13]..[81,2427+18])
+                            Pexp_field
+                            expression (otherlibs/systhreads/semaphore.ml[81,2427+13]..[81,2427+14])
+                              Pexp_ident "s" (otherlibs/systhreads/semaphore.ml[81,2427+13]..[81,2427+14])
+                            "mut" (otherlibs/systhreads/semaphore.ml[81,2427+15]..[81,2427+18])
+                      ]
+                    expression (otherlibs/systhreads/semaphore.ml[82,2447+2]..[84,2528+5])
+                      Pexp_let Nonrec
+                      [
+                        <def>
+                          pattern (otherlibs/systhreads/semaphore.ml[82,2447+6]..[82,2447+9])
+                            Ppat_var "ret" (otherlibs/systhreads/semaphore.ml[82,2447+6]..[82,2447+9])
+                          expression (otherlibs/systhreads/semaphore.ml[82,2447+12]..[82,2447+55])
+                            Pexp_ifthenelse
+                            expression (otherlibs/systhreads/semaphore.ml[82,2447+15]..[82,2447+22])
+                              Pexp_apply
+                              expression (otherlibs/systhreads/semaphore.ml[82,2447+19]..[82,2447+20])
+                                Pexp_ident "=" (otherlibs/systhreads/semaphore.ml[82,2447+19]..[82,2447+20])
+                              [
+                                <arg>
+                                Nolabel
+                                  expression (otherlibs/systhreads/semaphore.ml[82,2447+15]..[82,2447+18])
+                                    Pexp_field
+                                    expression (otherlibs/systhreads/semaphore.ml[82,2447+15]..[82,2447+16])
+                                      Pexp_ident "s" (otherlibs/systhreads/semaphore.ml[82,2447+15]..[82,2447+16])
+                                    "v" (otherlibs/systhreads/semaphore.ml[82,2447+17]..[82,2447+18])
+                                <arg>
+                                Nolabel
+                                  expression (otherlibs/systhreads/semaphore.ml[82,2447+21]..[82,2447+22])
+                                    Pexp_constant PConst_int (0,None)
+                              ]
+                            expression (otherlibs/systhreads/semaphore.ml[82,2447+28]..[82,2447+33])
+                              Pexp_construct "false" (otherlibs/systhreads/semaphore.ml[82,2447+28]..[82,2447+33])
+                              None
+                            Some
+                              expression (otherlibs/systhreads/semaphore.ml[82,2447+39]..[82,2447+55])
+                                Pexp_sequence
+                                expression (otherlibs/systhreads/semaphore.ml[82,2447+40]..[82,2447+48])
+                                  Pexp_setfield
+                                  expression (otherlibs/systhreads/semaphore.ml[82,2447+40]..[82,2447+41])
+                                    Pexp_ident "s" (otherlibs/systhreads/semaphore.ml[82,2447+40]..[82,2447+41])
+                                  "v" (otherlibs/systhreads/semaphore.ml[82,2447+42]..[82,2447+43])
+                                  expression (otherlibs/systhreads/semaphore.ml[82,2447+47]..[82,2447+48])
+                                    Pexp_constant PConst_int (0,None)
+                                expression (otherlibs/systhreads/semaphore.ml[82,2447+50]..[82,2447+54])
+                                  Pexp_construct "true" (otherlibs/systhreads/semaphore.ml[82,2447+50]..[82,2447+54])
+                                  None
+                      ]
+                      expression (otherlibs/systhreads/semaphore.ml[83,2506+2]..[84,2528+5])
+                        Pexp_sequence
+                        expression (otherlibs/systhreads/semaphore.ml[83,2506+2]..[83,2506+20])
+                          Pexp_apply
+                          expression (otherlibs/systhreads/semaphore.ml[83,2506+2]..[83,2506+14])
+                            Pexp_ident "Mutex.unlock" (otherlibs/systhreads/semaphore.ml[83,2506+2]..[83,2506+14])
+                          [
+                            <arg>
+                            Nolabel
+                              expression (otherlibs/systhreads/semaphore.ml[83,2506+15]..[83,2506+20])
+                                Pexp_field
+                                expression (otherlibs/systhreads/semaphore.ml[83,2506+15]..[83,2506+16])
+                                  Pexp_ident "s" (otherlibs/systhreads/semaphore.ml[83,2506+15]..[83,2506+16])
+                                "mut" (otherlibs/systhreads/semaphore.ml[83,2506+17]..[83,2506+20])
+                          ]
+                        expression (otherlibs/systhreads/semaphore.ml[84,2528+2]..[84,2528+5])
+                          Pexp_ident "ret" (otherlibs/systhreads/semaphore.ml[84,2528+2]..[84,2528+5])
+            ]
+        ]
+]
+

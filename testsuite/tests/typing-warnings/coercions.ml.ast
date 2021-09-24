@@ -1,0 +1,342 @@
+[
+  structure_item (testsuite/tests/typing-warnings/coercions.ml[8,93+0]..[8,93+48])
+    Pstr_eval
+    expression (testsuite/tests/typing-warnings/coercions.ml[8,93+0]..[8,93+48])
+      Pexp_fun
+      Nolabel
+      None
+      pattern (testsuite/tests/typing-warnings/coercions.ml[8,93+4]..[8,93+5])
+        Ppat_var "b" (testsuite/tests/typing-warnings/coercions.ml[8,93+4]..[8,93+5])
+      expression (testsuite/tests/typing-warnings/coercions.ml[8,93+9]..[8,93+48])
+        Pexp_ifthenelse
+        expression (testsuite/tests/typing-warnings/coercions.ml[8,93+12]..[8,93+13])
+          Pexp_ident "b" (testsuite/tests/typing-warnings/coercions.ml[8,93+12]..[8,93+13])
+        expression (testsuite/tests/typing-warnings/coercions.ml[8,93+19]..[8,93+39])
+          Pexp_apply
+          expression (testsuite/tests/typing-warnings/coercions.ml[8,93+19]..[8,93+35])
+            Pexp_ident "format_of_string" (testsuite/tests/typing-warnings/coercions.ml[8,93+19]..[8,93+35])
+          [
+            <arg>
+            Nolabel
+              expression (testsuite/tests/typing-warnings/coercions.ml[8,93+36]..[8,93+39])
+                Pexp_constant PConst_string("x",(testsuite/tests/typing-warnings/coercions.ml[8,93+37]..[8,93+38]),None)
+          ]
+        Some
+          expression (testsuite/tests/typing-warnings/coercions.ml[8,93+45]..[8,93+48])
+            Pexp_constant PConst_string("y",(testsuite/tests/typing-warnings/coercions.ml[8,93+46]..[8,93+47]),None)
+  structure_item (testsuite/tests/typing-warnings/coercions.ml[9,142+0]..[17,480+3])
+    Pstr_extension "expect"
+    [
+      structure_item (testsuite/tests/typing-warnings/coercions.ml[9,142+10]..[17,480+2])
+        Pstr_eval
+        expression (testsuite/tests/typing-warnings/coercions.ml[9,142+10]..[17,480+2])
+          Pexp_tuple
+          [
+            expression (testsuite/tests/typing-warnings/coercions.ml[9,142+10]..[11,208+2])
+              Pexp_constant PConst_string ("\n- : bool -> ('a, 'b, 'c, 'd, 'd, 'a) format6 = <fun>\n",(testsuite/tests/typing-warnings/coercions.ml[9,142+12]..[11,208+0]),Some "")
+            expression (testsuite/tests/typing-warnings/coercions.ml[11,208+4]..[17,480+2])
+              Pexp_construct "Principal" (testsuite/tests/typing-warnings/coercions.ml[11,208+4]..[11,208+13])
+              Some
+                expression (testsuite/tests/typing-warnings/coercions.ml[11,208+13]..[17,480+2])
+                  Pexp_constant PConst_string ("\nLine 1, characters 45-48:\n1 | fun b -> if b then format_of_string \"x\" else \"y\"\n                                                 ^^^\nWarning 18 [not-principal]: this coercion to format6 is not principal.\n- : bool -> ('a, 'b, 'c, 'd, 'd, 'a) format6 = <fun>\n",(testsuite/tests/typing-warnings/coercions.ml[11,208+15]..[17,480+0]),Some "")
+          ]
+    ]
+  structure_item (testsuite/tests/typing-warnings/coercions.ml[20,488+0]..[20,488+48])
+    Pstr_eval
+    expression (testsuite/tests/typing-warnings/coercions.ml[20,488+0]..[20,488+48])
+      Pexp_fun
+      Nolabel
+      None
+      pattern (testsuite/tests/typing-warnings/coercions.ml[20,488+4]..[20,488+5])
+        Ppat_var "b" (testsuite/tests/typing-warnings/coercions.ml[20,488+4]..[20,488+5])
+      expression (testsuite/tests/typing-warnings/coercions.ml[20,488+9]..[20,488+48])
+        Pexp_ifthenelse
+        expression (testsuite/tests/typing-warnings/coercions.ml[20,488+12]..[20,488+13])
+          Pexp_ident "b" (testsuite/tests/typing-warnings/coercions.ml[20,488+12]..[20,488+13])
+        expression (testsuite/tests/typing-warnings/coercions.ml[20,488+19]..[20,488+22])
+          Pexp_constant PConst_string("x",(testsuite/tests/typing-warnings/coercions.ml[20,488+20]..[20,488+21]),None)
+        Some
+          expression (testsuite/tests/typing-warnings/coercions.ml[20,488+28]..[20,488+48])
+            Pexp_apply
+            expression (testsuite/tests/typing-warnings/coercions.ml[20,488+28]..[20,488+44])
+              Pexp_ident "format_of_string" (testsuite/tests/typing-warnings/coercions.ml[20,488+28]..[20,488+44])
+            [
+              <arg>
+              Nolabel
+                expression (testsuite/tests/typing-warnings/coercions.ml[20,488+45]..[20,488+48])
+                  Pexp_constant PConst_string("y",(testsuite/tests/typing-warnings/coercions.ml[20,488+46]..[20,488+47]),None)
+            ]
+  structure_item (testsuite/tests/typing-warnings/coercions.ml[21,537+0]..[29,880+3])
+    Pstr_extension "expect"
+    [
+      structure_item (testsuite/tests/typing-warnings/coercions.ml[21,537+10]..[29,880+2])
+        Pstr_eval
+        expression (testsuite/tests/typing-warnings/coercions.ml[21,537+10]..[29,880+2])
+          Pexp_constant PConst_string ("\nLine 1, characters 28-48:\n1 | fun b -> if b then \"x\" else format_of_string \"y\"\n                                ^^^^^^^^^^^^^^^^^^^^\nError: This expression has type\n         ('a, 'b, 'c, 'd, 'd, 'a) format6 =\n           ('a, 'b, 'c, 'd, 'd, 'a) CamlinternalFormatBasics.format6\n       but an expression was expected of type string\n",(testsuite/tests/typing-warnings/coercions.ml[21,537+12]..[29,880+0]),Some "")
+    ]
+  structure_item (testsuite/tests/typing-warnings/coercions.ml[32,888+0]..[32,888+48])
+    Pstr_eval
+    expression (testsuite/tests/typing-warnings/coercions.ml[32,888+0]..[32,888+48])
+      Pexp_fun
+      Nolabel
+      None
+      pattern (testsuite/tests/typing-warnings/coercions.ml[32,888+4]..[32,888+5])
+        Ppat_var "b" (testsuite/tests/typing-warnings/coercions.ml[32,888+4]..[32,888+5])
+      expression (testsuite/tests/typing-warnings/coercions.ml[32,888+6]..[32,888+48])
+        Pexp_constraint
+        expression (testsuite/tests/typing-warnings/coercions.ml[32,888+26]..[32,888+48])
+          Pexp_ifthenelse
+          expression (testsuite/tests/typing-warnings/coercions.ml[32,888+29]..[32,888+30])
+            Pexp_ident "b" (testsuite/tests/typing-warnings/coercions.ml[32,888+29]..[32,888+30])
+          expression (testsuite/tests/typing-warnings/coercions.ml[32,888+36]..[32,888+39])
+            Pexp_constant PConst_string("x",(testsuite/tests/typing-warnings/coercions.ml[32,888+37]..[32,888+38]),None)
+          Some
+            expression (testsuite/tests/typing-warnings/coercions.ml[32,888+45]..[32,888+48])
+              Pexp_constant PConst_string("y",(testsuite/tests/typing-warnings/coercions.ml[32,888+46]..[32,888+47]),None)
+        core_type (testsuite/tests/typing-warnings/coercions.ml[32,888+8]..[32,888+22])
+          Ptyp_constr "format" (testsuite/tests/typing-warnings/coercions.ml[32,888+16]..[32,888+22])
+          [
+            core_type (testsuite/tests/typing-warnings/coercions.ml[32,888+9]..[32,888+10])
+              Ptyp_any
+            core_type (testsuite/tests/typing-warnings/coercions.ml[32,888+11]..[32,888+12])
+              Ptyp_any
+            core_type (testsuite/tests/typing-warnings/coercions.ml[32,888+13]..[32,888+14])
+              Ptyp_any
+          ]
+  structure_item (testsuite/tests/typing-warnings/coercions.ml[33,937+0]..[35,990+3])
+    Pstr_extension "expect"
+    [
+      structure_item (testsuite/tests/typing-warnings/coercions.ml[33,937+10]..[35,990+2])
+        Pstr_eval
+        expression (testsuite/tests/typing-warnings/coercions.ml[33,937+10]..[35,990+2])
+          Pexp_constant PConst_string ("\n- : bool -> ('a, 'b, 'a) format = <fun>\n",(testsuite/tests/typing-warnings/coercions.ml[33,937+12]..[35,990+0]),Some "")
+    ]
+  structure_item (testsuite/tests/typing-warnings/coercions.ml[40,1013+0]..[46,1200+3])
+    Pstr_module
+    "PR7135" (testsuite/tests/typing-warnings/coercions.ml[40,1013+7]..[40,1013+13])
+      module_expr (testsuite/tests/typing-warnings/coercions.ml[40,1013+16]..[46,1200+3])
+        Pmod_structure
+        [
+          structure_item (testsuite/tests/typing-warnings/coercions.ml[41,1036+2]..[41,1036+68])
+            Pstr_module
+            "M" (testsuite/tests/typing-warnings/coercions.ml[41,1036+9]..[41,1036+10])
+              module_expr (testsuite/tests/typing-warnings/coercions.ml[41,1036+11]..[41,1036+68])
+                Pmod_constraint
+                module_expr (testsuite/tests/typing-warnings/coercions.ml[41,1036+45]..[41,1036+68])
+                  Pmod_structure
+                  [
+                    structure_item (testsuite/tests/typing-warnings/coercions.ml[41,1036+52]..[41,1036+64])
+                      Pstr_type Rec
+                      [
+                        type_declaration "t" (testsuite/tests/typing-warnings/coercions.ml[41,1036+57]..[41,1036+58]) (testsuite/tests/typing-warnings/coercions.ml[41,1036+52]..[41,1036+64])
+                          ptype_params =
+                            []
+                          ptype_cstrs =
+                            []
+                          ptype_kind =
+                            Ptype_abstract
+                          ptype_private = Public
+                          ptype_manifest =
+                            Some
+                              core_type (testsuite/tests/typing-warnings/coercions.ml[41,1036+61]..[41,1036+64])
+                                Ptyp_constr "int" (testsuite/tests/typing-warnings/coercions.ml[41,1036+61]..[41,1036+64])
+                                []
+                      ]
+                  ]
+                module_type (testsuite/tests/typing-warnings/coercions.ml[41,1036+13]..[41,1036+41])
+                  Pmty_signature
+                  [
+                    signature_item (testsuite/tests/typing-warnings/coercions.ml[41,1036+17]..[41,1036+37])
+                      Psig_type Rec
+                      [
+                        type_declaration "t" (testsuite/tests/typing-warnings/coercions.ml[41,1036+22]..[41,1036+23]) (testsuite/tests/typing-warnings/coercions.ml[41,1036+17]..[41,1036+37])
+                          ptype_params =
+                            []
+                          ptype_cstrs =
+                            []
+                          ptype_kind =
+                            Ptype_abstract
+                          ptype_private = Private
+                          ptype_manifest =
+                            Some
+                              core_type (testsuite/tests/typing-warnings/coercions.ml[41,1036+34]..[41,1036+37])
+                                Ptyp_constr "int" (testsuite/tests/typing-warnings/coercions.ml[41,1036+34]..[41,1036+37])
+                                []
+                      ]
+                  ]
+          structure_item (testsuite/tests/typing-warnings/coercions.ml[42,1105+2]..[42,1105+11])
+            Pstr_include            module_expr (testsuite/tests/typing-warnings/coercions.ml[42,1105+10]..[42,1105+11])
+              Pmod_ident "M" (testsuite/tests/typing-warnings/coercions.ml[42,1105+10]..[42,1105+11])
+          structure_item (testsuite/tests/typing-warnings/coercions.ml[44,1118+2]..[45,1172+27])
+            Pstr_value Nonrec
+            [
+              <def>
+                pattern (testsuite/tests/typing-warnings/coercions.ml[44,1118+6]..[44,1118+11])
+                  Ppat_var "lift2" (testsuite/tests/typing-warnings/coercions.ml[44,1118+6]..[44,1118+11])
+                expression (testsuite/tests/typing-warnings/coercions.ml[44,1118+12]..[45,1172+27]) ghost
+                  Pexp_fun
+                  Nolabel
+                  None
+                  pattern (testsuite/tests/typing-warnings/coercions.ml[44,1118+12]..[44,1118+35])
+                    Ppat_constraint
+                    pattern (testsuite/tests/typing-warnings/coercions.ml[44,1118+13]..[44,1118+14])
+                      Ppat_var "f" (testsuite/tests/typing-warnings/coercions.ml[44,1118+13]..[44,1118+14])
+                    core_type (testsuite/tests/typing-warnings/coercions.ml[44,1118+17]..[44,1118+34])
+                      Ptyp_arrow
+                      Nolabel
+                      core_type (testsuite/tests/typing-warnings/coercions.ml[44,1118+17]..[44,1118+20])
+                        Ptyp_constr "int" (testsuite/tests/typing-warnings/coercions.ml[44,1118+17]..[44,1118+20])
+                        []
+                      core_type (testsuite/tests/typing-warnings/coercions.ml[44,1118+24]..[44,1118+34])
+                        Ptyp_arrow
+                        Nolabel
+                        core_type (testsuite/tests/typing-warnings/coercions.ml[44,1118+24]..[44,1118+27])
+                          Ptyp_constr "int" (testsuite/tests/typing-warnings/coercions.ml[44,1118+24]..[44,1118+27])
+                          []
+                        core_type (testsuite/tests/typing-warnings/coercions.ml[44,1118+31]..[44,1118+34])
+                          Ptyp_constr "int" (testsuite/tests/typing-warnings/coercions.ml[44,1118+31]..[44,1118+34])
+                          []
+                  expression (testsuite/tests/typing-warnings/coercions.ml[44,1118+36]..[45,1172+27]) ghost
+                    Pexp_fun
+                    Nolabel
+                    None
+                    pattern (testsuite/tests/typing-warnings/coercions.ml[44,1118+36]..[44,1118+43])
+                      Ppat_constraint
+                      pattern (testsuite/tests/typing-warnings/coercions.ml[44,1118+37]..[44,1118+38])
+                        Ppat_var "x" (testsuite/tests/typing-warnings/coercions.ml[44,1118+37]..[44,1118+38])
+                      core_type (testsuite/tests/typing-warnings/coercions.ml[44,1118+41]..[44,1118+42])
+                        Ptyp_constr "t" (testsuite/tests/typing-warnings/coercions.ml[44,1118+41]..[44,1118+42])
+                        []
+                    expression (testsuite/tests/typing-warnings/coercions.ml[44,1118+44]..[45,1172+27]) ghost
+                      Pexp_fun
+                      Nolabel
+                      None
+                      pattern (testsuite/tests/typing-warnings/coercions.ml[44,1118+44]..[44,1118+51])
+                        Ppat_constraint
+                        pattern (testsuite/tests/typing-warnings/coercions.ml[44,1118+45]..[44,1118+46])
+                          Ppat_var "y" (testsuite/tests/typing-warnings/coercions.ml[44,1118+45]..[44,1118+46])
+                        core_type (testsuite/tests/typing-warnings/coercions.ml[44,1118+49]..[44,1118+50])
+                          Ptyp_constr "t" (testsuite/tests/typing-warnings/coercions.ml[44,1118+49]..[44,1118+50])
+                          []
+                      expression (testsuite/tests/typing-warnings/coercions.ml[45,1172+4]..[45,1172+27])
+                        Pexp_apply
+                        expression (testsuite/tests/typing-warnings/coercions.ml[45,1172+4]..[45,1172+5])
+                          Pexp_ident "f" (testsuite/tests/typing-warnings/coercions.ml[45,1172+4]..[45,1172+5])
+                        [
+                          <arg>
+                          Nolabel
+                            expression (testsuite/tests/typing-warnings/coercions.ml[45,1172+6]..[45,1172+16])
+                              Pexp_coerce
+                              expression (testsuite/tests/typing-warnings/coercions.ml[45,1172+7]..[45,1172+8])
+                                Pexp_ident "x" (testsuite/tests/typing-warnings/coercions.ml[45,1172+7]..[45,1172+8])
+                              None
+                              core_type (testsuite/tests/typing-warnings/coercions.ml[45,1172+12]..[45,1172+15])
+                                Ptyp_constr "int" (testsuite/tests/typing-warnings/coercions.ml[45,1172+12]..[45,1172+15])
+                                []
+                          <arg>
+                          Nolabel
+                            expression (testsuite/tests/typing-warnings/coercions.ml[45,1172+17]..[45,1172+27])
+                              Pexp_coerce
+                              expression (testsuite/tests/typing-warnings/coercions.ml[45,1172+18]..[45,1172+19])
+                                Pexp_ident "y" (testsuite/tests/typing-warnings/coercions.ml[45,1172+18]..[45,1172+19])
+                              None
+                              core_type (testsuite/tests/typing-warnings/coercions.ml[45,1172+23]..[45,1172+26])
+                                Ptyp_constr "int" (testsuite/tests/typing-warnings/coercions.ml[45,1172+23]..[45,1172+26])
+                                []
+                        ]
+            ]
+        ]
+  structure_item (testsuite/tests/typing-warnings/coercions.ml[47,1206+0]..[54,1361+3])
+    Pstr_extension "expect"
+    [
+      structure_item (testsuite/tests/typing-warnings/coercions.ml[47,1206+10]..[54,1361+2])
+        Pstr_eval
+        expression (testsuite/tests/typing-warnings/coercions.ml[47,1206+10]..[54,1361+2])
+          Pexp_constant PConst_string ("\nmodule PR7135 :\n  sig\n    module M : sig type t = private int end\n    type t = M.t\n    val lift2 : (int -> int -> int) -> t -> t -> int\n  end\n",(testsuite/tests/typing-warnings/coercions.ml[47,1206+12]..[54,1361+0]),Some "")
+    ]
+  structure_item (testsuite/tests/typing-warnings/coercions.ml[58,1404+0]..[61,1509+3])
+    Pstr_module
+    "Test1" (testsuite/tests/typing-warnings/coercions.ml[58,1404+7]..[58,1404+12])
+      module_expr (testsuite/tests/typing-warnings/coercions.ml[58,1404+15]..[61,1509+3])
+        Pmod_structure
+        [
+          structure_item (testsuite/tests/typing-warnings/coercions.ml[59,1426+2]..[59,1426+22])
+            Pstr_type Rec
+            [
+              type_declaration "t" (testsuite/tests/typing-warnings/coercions.ml[59,1426+7]..[59,1426+8]) (testsuite/tests/typing-warnings/coercions.ml[59,1426+2]..[59,1426+22])
+                ptype_params =
+                  []
+                ptype_cstrs =
+                  []
+                ptype_kind =
+                  Ptype_abstract
+                ptype_private = Private
+                ptype_manifest =
+                  Some
+                    core_type (testsuite/tests/typing-warnings/coercions.ml[59,1426+19]..[59,1426+22])
+                      Ptyp_constr "int" (testsuite/tests/typing-warnings/coercions.ml[59,1426+19]..[59,1426+22])
+                      []
+            ]
+          structure_item (testsuite/tests/typing-warnings/coercions.ml[60,1449+2]..[60,1449+59])
+            Pstr_value Nonrec
+            [
+              <def>
+                pattern (testsuite/tests/typing-warnings/coercions.ml[60,1449+6]..[60,1449+7])
+                  Ppat_var "f" (testsuite/tests/typing-warnings/coercions.ml[60,1449+6]..[60,1449+7])
+                expression (testsuite/tests/typing-warnings/coercions.ml[60,1449+8]..[60,1449+59]) ghost
+                  Pexp_fun
+                  Nolabel
+                  None
+                  pattern (testsuite/tests/typing-warnings/coercions.ml[60,1449+8]..[60,1449+9])
+                    Ppat_var "x" (testsuite/tests/typing-warnings/coercions.ml[60,1449+8]..[60,1449+9])
+                  expression (testsuite/tests/typing-warnings/coercions.ml[60,1449+12]..[60,1449+59])
+                    Pexp_let Nonrec
+                    [
+                      <def>
+                        pattern (testsuite/tests/typing-warnings/coercions.ml[60,1449+16]..[60,1449+17])
+                          Ppat_var "y" (testsuite/tests/typing-warnings/coercions.ml[60,1449+16]..[60,1449+17])
+                        expression (testsuite/tests/typing-warnings/coercions.ml[60,1449+20]..[60,1449+45])
+                          Pexp_ifthenelse
+                          expression (testsuite/tests/typing-warnings/coercions.ml[60,1449+23]..[60,1449+27])
+                            Pexp_construct "true" (testsuite/tests/typing-warnings/coercions.ml[60,1449+23]..[60,1449+27])
+                            None
+                          expression (testsuite/tests/typing-warnings/coercions.ml[60,1449+33]..[60,1449+34])
+                            Pexp_ident "x" (testsuite/tests/typing-warnings/coercions.ml[60,1449+33]..[60,1449+34])
+                          Some
+                            expression (testsuite/tests/typing-warnings/coercions.ml[60,1449+40]..[60,1449+45])
+                              Pexp_constraint
+                              expression (testsuite/tests/typing-warnings/coercions.ml[60,1449+41]..[60,1449+42])
+                                Pexp_ident "x" (testsuite/tests/typing-warnings/coercions.ml[60,1449+41]..[60,1449+42])
+                              core_type (testsuite/tests/typing-warnings/coercions.ml[60,1449+43]..[60,1449+44])
+                                Ptyp_constr "t" (testsuite/tests/typing-warnings/coercions.ml[60,1449+43]..[60,1449+44])
+                                []
+                    ]
+                    expression (testsuite/tests/typing-warnings/coercions.ml[60,1449+49]..[60,1449+59])
+                      Pexp_coerce
+                      expression (testsuite/tests/typing-warnings/coercions.ml[60,1449+50]..[60,1449+51])
+                        Pexp_ident "y" (testsuite/tests/typing-warnings/coercions.ml[60,1449+50]..[60,1449+51])
+                      None
+                      core_type (testsuite/tests/typing-warnings/coercions.ml[60,1449+55]..[60,1449+58])
+                        Ptyp_constr "int" (testsuite/tests/typing-warnings/coercions.ml[60,1449+55]..[60,1449+58])
+                        []
+            ]
+        ]
+  structure_item (testsuite/tests/typing-warnings/coercions.ml[62,1515+0]..[70,1887+3])
+    Pstr_extension "expect"
+    [
+      structure_item (testsuite/tests/typing-warnings/coercions.ml[62,1515+10]..[70,1887+2])
+        Pstr_eval
+        expression (testsuite/tests/typing-warnings/coercions.ml[62,1515+10]..[70,1887+2])
+          Pexp_tuple
+          [
+            expression (testsuite/tests/typing-warnings/coercions.ml[62,1515+10]..[64,1589+2])
+              Pexp_constant PConst_string ("\nmodule Test1 : sig type t = private int val f : t -> int end\n",(testsuite/tests/typing-warnings/coercions.ml[62,1515+12]..[64,1589+0]),Some "")
+            expression (testsuite/tests/typing-warnings/coercions.ml[64,1589+4]..[70,1887+2])
+              Pexp_construct "Principal" (testsuite/tests/typing-warnings/coercions.ml[64,1589+4]..[64,1589+13])
+              Some
+                expression (testsuite/tests/typing-warnings/coercions.ml[64,1589+13]..[70,1887+2])
+                  Pexp_constant PConst_string ("\nLine 3, characters 49-59:\n3 |   let f x = let y = if true then x else (x:t) in (y :> int)\n                                                     ^^^^^^^^^^\nWarning 18 [not-principal]: this ground coercion is not principal.\nmodule Test1 : sig type t = private int val f : t -> int end\n",(testsuite/tests/typing-warnings/coercions.ml[64,1589+15]..[70,1887+0]),Some "")
+          ]
+    ]
+]
+

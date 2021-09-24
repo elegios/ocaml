@@ -1,0 +1,2549 @@
+[
+  structure_item (typing/printpat.ml[18,1120+0]..[18,1120+13])
+    Pstr_open Fresh
+    module_expr (typing/printpat.ml[18,1120+5]..[18,1120+13])
+      Pmod_ident "Asttypes" (typing/printpat.ml[18,1120+5]..[18,1120+13])
+  structure_item (typing/printpat.ml[19,1134+0]..[19,1134+14])
+    Pstr_open Fresh
+    module_expr (typing/printpat.ml[19,1134+5]..[19,1134+14])
+      Pmod_ident "Typedtree" (typing/printpat.ml[19,1134+5]..[19,1134+14])
+  structure_item (typing/printpat.ml[20,1149+0]..[20,1149+10])
+    Pstr_open Fresh
+    module_expr (typing/printpat.ml[20,1149+5]..[20,1149+10])
+      Pmod_ident "Types" (typing/printpat.ml[20,1149+5]..[20,1149+10])
+  structure_item (typing/printpat.ml[21,1160+0]..[21,1160+11])
+    Pstr_open Fresh
+    module_expr (typing/printpat.ml[21,1160+5]..[21,1160+11])
+      Pmod_ident "Format" (typing/printpat.ml[21,1160+5]..[21,1160+11])
+  structure_item (typing/printpat.ml[23,1173+0]..[25,1225+12])
+    Pstr_value Nonrec
+    [
+      <def>
+        pattern (typing/printpat.ml[23,1173+4]..[23,1173+11])
+          Ppat_var "is_cons" (typing/printpat.ml[23,1173+4]..[23,1173+11])
+        expression (typing/printpat.ml[23,1173+14]..[25,1225+12])
+          Pexp_function
+          [
+            <case>
+              pattern (typing/printpat.ml[24,1196+2]..[24,1196+20])
+                Ppat_record Closed
+                [
+                  "cstr_name" (typing/printpat.ml[24,1196+3]..[24,1196+12])
+                    pattern (typing/printpat.ml[24,1196+15]..[24,1196+19])
+                      Ppat_constant PConst_string("::",(typing/printpat.ml[24,1196+16]..[24,1196+18]),None)
+                ]
+              expression (typing/printpat.ml[24,1196+24]..[24,1196+28])
+                Pexp_construct "true" (typing/printpat.ml[24,1196+24]..[24,1196+28])
+                None
+            <case>
+              pattern (typing/printpat.ml[25,1225+2]..[25,1225+3])
+                Ppat_any
+              expression (typing/printpat.ml[25,1225+7]..[25,1225+12])
+                Pexp_construct "false" (typing/printpat.ml[25,1225+7]..[25,1225+12])
+                None
+          ]
+    ]
+  structure_item (typing/printpat.ml[27,1239+0]..[34,1529+46])
+    Pstr_value Nonrec
+    [
+      <def>
+        pattern (typing/printpat.ml[27,1239+4]..[27,1239+16])
+          Ppat_var "pretty_const" (typing/printpat.ml[27,1239+4]..[27,1239+16])
+        expression (typing/printpat.ml[27,1239+17]..[34,1529+46]) ghost
+          Pexp_fun
+          Nolabel
+          None
+          pattern (typing/printpat.ml[27,1239+17]..[27,1239+18])
+            Ppat_var "c" (typing/printpat.ml[27,1239+17]..[27,1239+18])
+          expression (typing/printpat.ml[27,1239+21]..[34,1529+46])
+            Pexp_match
+            expression (typing/printpat.ml[27,1239+27]..[27,1239+28])
+              Pexp_ident "c" (typing/printpat.ml[27,1239+27]..[27,1239+28])
+            [
+              <case>
+                pattern (typing/printpat.ml[28,1273+2]..[28,1273+13])
+                  Ppat_construct "Const_int" (typing/printpat.ml[28,1273+2]..[28,1273+11])
+                  Some
+                    []
+                    pattern (typing/printpat.ml[28,1273+12]..[28,1273+13])
+                      Ppat_var "i" (typing/printpat.ml[28,1273+12]..[28,1273+13])
+                expression (typing/printpat.ml[28,1273+17]..[28,1273+38])
+                  Pexp_apply
+                  expression (typing/printpat.ml[28,1273+17]..[28,1273+31])
+                    Pexp_ident "Printf.sprintf" (typing/printpat.ml[28,1273+17]..[28,1273+31])
+                  [
+                    <arg>
+                    Nolabel
+                      expression (typing/printpat.ml[28,1273+32]..[28,1273+36])
+                        Pexp_constant PConst_string("%d",(typing/printpat.ml[28,1273+33]..[28,1273+35]),None)
+                    <arg>
+                    Nolabel
+                      expression (typing/printpat.ml[28,1273+37]..[28,1273+38])
+                        Pexp_ident "i" (typing/printpat.ml[28,1273+37]..[28,1273+38])
+                  ]
+              <case>
+                pattern (typing/printpat.ml[29,1312+2]..[29,1312+14])
+                  Ppat_construct "Const_char" (typing/printpat.ml[29,1312+2]..[29,1312+12])
+                  Some
+                    []
+                    pattern (typing/printpat.ml[29,1312+13]..[29,1312+14])
+                      Ppat_var "c" (typing/printpat.ml[29,1312+13]..[29,1312+14])
+                expression (typing/printpat.ml[29,1312+18]..[29,1312+39])
+                  Pexp_apply
+                  expression (typing/printpat.ml[29,1312+18]..[29,1312+32])
+                    Pexp_ident "Printf.sprintf" (typing/printpat.ml[29,1312+18]..[29,1312+32])
+                  [
+                    <arg>
+                    Nolabel
+                      expression (typing/printpat.ml[29,1312+33]..[29,1312+37])
+                        Pexp_constant PConst_string("%C",(typing/printpat.ml[29,1312+34]..[29,1312+36]),None)
+                    <arg>
+                    Nolabel
+                      expression (typing/printpat.ml[29,1312+38]..[29,1312+39])
+                        Pexp_ident "c" (typing/printpat.ml[29,1312+38]..[29,1312+39])
+                  ]
+              <case>
+                pattern (typing/printpat.ml[30,1352+2]..[30,1352+24])
+                  Ppat_construct "Const_string" (typing/printpat.ml[30,1352+2]..[30,1352+14])
+                  Some
+                    []
+                    pattern (typing/printpat.ml[30,1352+15]..[30,1352+24])
+                      Ppat_tuple
+                      [
+                        pattern (typing/printpat.ml[30,1352+16]..[30,1352+17])
+                          Ppat_var "s" (typing/printpat.ml[30,1352+16]..[30,1352+17])
+                        pattern (typing/printpat.ml[30,1352+19]..[30,1352+20])
+                          Ppat_any
+                        pattern (typing/printpat.ml[30,1352+22]..[30,1352+23])
+                          Ppat_any
+                      ]
+                expression (typing/printpat.ml[30,1352+28]..[30,1352+49])
+                  Pexp_apply
+                  expression (typing/printpat.ml[30,1352+28]..[30,1352+42])
+                    Pexp_ident "Printf.sprintf" (typing/printpat.ml[30,1352+28]..[30,1352+42])
+                  [
+                    <arg>
+                    Nolabel
+                      expression (typing/printpat.ml[30,1352+43]..[30,1352+47])
+                        Pexp_constant PConst_string("%S",(typing/printpat.ml[30,1352+44]..[30,1352+46]),None)
+                    <arg>
+                    Nolabel
+                      expression (typing/printpat.ml[30,1352+48]..[30,1352+49])
+                        Pexp_ident "s" (typing/printpat.ml[30,1352+48]..[30,1352+49])
+                  ]
+              <case>
+                pattern (typing/printpat.ml[31,1402+2]..[31,1402+15])
+                  Ppat_construct "Const_float" (typing/printpat.ml[31,1402+2]..[31,1402+13])
+                  Some
+                    []
+                    pattern (typing/printpat.ml[31,1402+14]..[31,1402+15])
+                      Ppat_var "f" (typing/printpat.ml[31,1402+14]..[31,1402+15])
+                expression (typing/printpat.ml[31,1402+19]..[31,1402+40])
+                  Pexp_apply
+                  expression (typing/printpat.ml[31,1402+19]..[31,1402+33])
+                    Pexp_ident "Printf.sprintf" (typing/printpat.ml[31,1402+19]..[31,1402+33])
+                  [
+                    <arg>
+                    Nolabel
+                      expression (typing/printpat.ml[31,1402+34]..[31,1402+38])
+                        Pexp_constant PConst_string("%s",(typing/printpat.ml[31,1402+35]..[31,1402+37]),None)
+                    <arg>
+                    Nolabel
+                      expression (typing/printpat.ml[31,1402+39]..[31,1402+40])
+                        Pexp_ident "f" (typing/printpat.ml[31,1402+39]..[31,1402+40])
+                  ]
+              <case>
+                pattern (typing/printpat.ml[32,1443+2]..[32,1443+15])
+                  Ppat_construct "Const_int32" (typing/printpat.ml[32,1443+2]..[32,1443+13])
+                  Some
+                    []
+                    pattern (typing/printpat.ml[32,1443+14]..[32,1443+15])
+                      Ppat_var "i" (typing/printpat.ml[32,1443+14]..[32,1443+15])
+                expression (typing/printpat.ml[32,1443+19]..[32,1443+42])
+                  Pexp_apply
+                  expression (typing/printpat.ml[32,1443+19]..[32,1443+33])
+                    Pexp_ident "Printf.sprintf" (typing/printpat.ml[32,1443+19]..[32,1443+33])
+                  [
+                    <arg>
+                    Nolabel
+                      expression (typing/printpat.ml[32,1443+34]..[32,1443+40])
+                        Pexp_constant PConst_string("%ldl",(typing/printpat.ml[32,1443+35]..[32,1443+39]),None)
+                    <arg>
+                    Nolabel
+                      expression (typing/printpat.ml[32,1443+41]..[32,1443+42])
+                        Pexp_ident "i" (typing/printpat.ml[32,1443+41]..[32,1443+42])
+                  ]
+              <case>
+                pattern (typing/printpat.ml[33,1486+2]..[33,1486+15])
+                  Ppat_construct "Const_int64" (typing/printpat.ml[33,1486+2]..[33,1486+13])
+                  Some
+                    []
+                    pattern (typing/printpat.ml[33,1486+14]..[33,1486+15])
+                      Ppat_var "i" (typing/printpat.ml[33,1486+14]..[33,1486+15])
+                expression (typing/printpat.ml[33,1486+19]..[33,1486+42])
+                  Pexp_apply
+                  expression (typing/printpat.ml[33,1486+19]..[33,1486+33])
+                    Pexp_ident "Printf.sprintf" (typing/printpat.ml[33,1486+19]..[33,1486+33])
+                  [
+                    <arg>
+                    Nolabel
+                      expression (typing/printpat.ml[33,1486+34]..[33,1486+40])
+                        Pexp_constant PConst_string("%LdL",(typing/printpat.ml[33,1486+35]..[33,1486+39]),None)
+                    <arg>
+                    Nolabel
+                      expression (typing/printpat.ml[33,1486+41]..[33,1486+42])
+                        Pexp_ident "i" (typing/printpat.ml[33,1486+41]..[33,1486+42])
+                  ]
+              <case>
+                pattern (typing/printpat.ml[34,1529+2]..[34,1529+19])
+                  Ppat_construct "Const_nativeint" (typing/printpat.ml[34,1529+2]..[34,1529+17])
+                  Some
+                    []
+                    pattern (typing/printpat.ml[34,1529+18]..[34,1529+19])
+                      Ppat_var "i" (typing/printpat.ml[34,1529+18]..[34,1529+19])
+                expression (typing/printpat.ml[34,1529+23]..[34,1529+46])
+                  Pexp_apply
+                  expression (typing/printpat.ml[34,1529+23]..[34,1529+37])
+                    Pexp_ident "Printf.sprintf" (typing/printpat.ml[34,1529+23]..[34,1529+37])
+                  [
+                    <arg>
+                    Nolabel
+                      expression (typing/printpat.ml[34,1529+38]..[34,1529+44])
+                        Pexp_constant PConst_string("%ndn",(typing/printpat.ml[34,1529+39]..[34,1529+43]),None)
+                    <arg>
+                    Nolabel
+                      expression (typing/printpat.ml[34,1529+45]..[34,1529+46])
+                        Pexp_ident "i" (typing/printpat.ml[34,1529+45]..[34,1529+46])
+                  ]
+            ]
+    ]
+  structure_item (typing/printpat.ml[36,1577+0]..[45,1886+46])
+    Pstr_value Nonrec
+    [
+      <def>
+        pattern (typing/printpat.ml[36,1577+4]..[36,1577+16])
+          Ppat_var "pretty_extra" (typing/printpat.ml[36,1577+4]..[36,1577+16])
+        expression (typing/printpat.ml[36,1577+17]..[45,1886+46]) ghost
+          Pexp_fun
+          Nolabel
+          None
+          pattern (typing/printpat.ml[36,1577+17]..[36,1577+20])
+            Ppat_var "ppf" (typing/printpat.ml[36,1577+17]..[36,1577+20])
+          expression (typing/printpat.ml[36,1577+21]..[45,1886+46]) ghost
+            Pexp_fun
+            Nolabel
+            None
+            pattern (typing/printpat.ml[36,1577+21]..[36,1577+41])
+              Ppat_tuple
+              [
+                pattern (typing/printpat.ml[36,1577+22]..[36,1577+26])
+                  Ppat_var "cstr" (typing/printpat.ml[36,1577+22]..[36,1577+26])
+                pattern (typing/printpat.ml[36,1577+28]..[36,1577+32])
+                  Ppat_var "_loc" (typing/printpat.ml[36,1577+28]..[36,1577+32])
+                pattern (typing/printpat.ml[36,1577+34]..[36,1577+40])
+                  Ppat_var "_attrs" (typing/printpat.ml[36,1577+34]..[36,1577+40])
+              ]
+            expression (typing/printpat.ml[36,1577+42]..[45,1886+46]) ghost
+              Pexp_fun
+              Nolabel
+              None
+              pattern (typing/printpat.ml[36,1577+42]..[36,1577+53])
+                Ppat_var "pretty_rest" (typing/printpat.ml[36,1577+42]..[36,1577+53])
+              expression (typing/printpat.ml[36,1577+54]..[45,1886+46]) ghost
+                Pexp_fun
+                Nolabel
+                None
+                pattern (typing/printpat.ml[36,1577+54]..[36,1577+58])
+                  Ppat_var "rest" (typing/printpat.ml[36,1577+54]..[36,1577+58])
+                expression (typing/printpat.ml[37,1638+2]..[45,1886+46])
+                  Pexp_match
+                  expression (typing/printpat.ml[37,1638+8]..[37,1638+12])
+                    Pexp_ident "cstr" (typing/printpat.ml[37,1638+8]..[37,1638+12])
+                  [
+                    <case>
+                      pattern (typing/printpat.ml[38,1656+4]..[38,1656+15])
+                        Ppat_construct "Tpat_unpack" (typing/printpat.ml[38,1656+4]..[38,1656+15])
+                        None
+                      expression (typing/printpat.ml[39,1675+5]..[39,1675+51])
+                        Pexp_apply
+                        expression (typing/printpat.ml[39,1675+5]..[39,1675+12])
+                          Pexp_ident "fprintf" (typing/printpat.ml[39,1675+5]..[39,1675+12])
+                        [
+                          <arg>
+                          Nolabel
+                            expression (typing/printpat.ml[39,1675+13]..[39,1675+16])
+                              Pexp_ident "ppf" (typing/printpat.ml[39,1675+13]..[39,1675+16])
+                          <arg>
+                          Nolabel
+                            expression (typing/printpat.ml[39,1675+17]..[39,1675+34])
+                              Pexp_constant PConst_string("@[(module %a)@]",(typing/printpat.ml[39,1675+18]..[39,1675+33]),None)
+                          <arg>
+                          Nolabel
+                            expression (typing/printpat.ml[39,1675+35]..[39,1675+46])
+                              Pexp_ident "pretty_rest" (typing/printpat.ml[39,1675+35]..[39,1675+46])
+                          <arg>
+                          Nolabel
+                            expression (typing/printpat.ml[39,1675+47]..[39,1675+51])
+                              Pexp_ident "rest" (typing/printpat.ml[39,1675+47]..[39,1675+51])
+                        ]
+                    <case>
+                      pattern (typing/printpat.ml[40,1727+4]..[40,1727+21])
+                        Ppat_construct "Tpat_constraint" (typing/printpat.ml[40,1727+4]..[40,1727+19])
+                        Some
+                          []
+                          pattern (typing/printpat.ml[40,1727+20]..[40,1727+21])
+                            Ppat_any
+                      expression (typing/printpat.ml[41,1752+5]..[41,1752+48])
+                        Pexp_apply
+                        expression (typing/printpat.ml[41,1752+5]..[41,1752+12])
+                          Pexp_ident "fprintf" (typing/printpat.ml[41,1752+5]..[41,1752+12])
+                        [
+                          <arg>
+                          Nolabel
+                            expression (typing/printpat.ml[41,1752+13]..[41,1752+16])
+                              Pexp_ident "ppf" (typing/printpat.ml[41,1752+13]..[41,1752+16])
+                          <arg>
+                          Nolabel
+                            expression (typing/printpat.ml[41,1752+17]..[41,1752+31])
+                              Pexp_constant PConst_string("@[(%a : _)@]",(typing/printpat.ml[41,1752+18]..[41,1752+30]),None)
+                          <arg>
+                          Nolabel
+                            expression (typing/printpat.ml[41,1752+32]..[41,1752+43])
+                              Pexp_ident "pretty_rest" (typing/printpat.ml[41,1752+32]..[41,1752+43])
+                          <arg>
+                          Nolabel
+                            expression (typing/printpat.ml[41,1752+44]..[41,1752+48])
+                              Pexp_ident "rest" (typing/printpat.ml[41,1752+44]..[41,1752+48])
+                        ]
+                    <case>
+                      pattern (typing/printpat.ml[42,1801+4]..[42,1801+15])
+                        Ppat_construct "Tpat_type" (typing/printpat.ml[42,1801+4]..[42,1801+13])
+                        Some
+                          []
+                          pattern (typing/printpat.ml[42,1801+14]..[42,1801+15])
+                            Ppat_any
+                      expression (typing/printpat.ml[43,1820+5]..[43,1820+46])
+                        Pexp_apply
+                        expression (typing/printpat.ml[43,1820+5]..[43,1820+12])
+                          Pexp_ident "fprintf" (typing/printpat.ml[43,1820+5]..[43,1820+12])
+                        [
+                          <arg>
+                          Nolabel
+                            expression (typing/printpat.ml[43,1820+13]..[43,1820+16])
+                              Pexp_ident "ppf" (typing/printpat.ml[43,1820+13]..[43,1820+16])
+                          <arg>
+                          Nolabel
+                            expression (typing/printpat.ml[43,1820+17]..[43,1820+29])
+                              Pexp_constant PConst_string("@[(# %a)@]",(typing/printpat.ml[43,1820+18]..[43,1820+28]),None)
+                          <arg>
+                          Nolabel
+                            expression (typing/printpat.ml[43,1820+30]..[43,1820+41])
+                              Pexp_ident "pretty_rest" (typing/printpat.ml[43,1820+30]..[43,1820+41])
+                          <arg>
+                          Nolabel
+                            expression (typing/printpat.ml[43,1820+42]..[43,1820+46])
+                              Pexp_ident "rest" (typing/printpat.ml[43,1820+42]..[43,1820+46])
+                        ]
+                    <case>
+                      pattern (typing/printpat.ml[44,1867+4]..[44,1867+15])
+                        Ppat_construct "Tpat_open" (typing/printpat.ml[44,1867+4]..[44,1867+13])
+                        Some
+                          []
+                          pattern (typing/printpat.ml[44,1867+14]..[44,1867+15])
+                            Ppat_any
+                      expression (typing/printpat.ml[45,1886+5]..[45,1886+46])
+                        Pexp_apply
+                        expression (typing/printpat.ml[45,1886+5]..[45,1886+12])
+                          Pexp_ident "fprintf" (typing/printpat.ml[45,1886+5]..[45,1886+12])
+                        [
+                          <arg>
+                          Nolabel
+                            expression (typing/printpat.ml[45,1886+13]..[45,1886+16])
+                              Pexp_ident "ppf" (typing/printpat.ml[45,1886+13]..[45,1886+16])
+                          <arg>
+                          Nolabel
+                            expression (typing/printpat.ml[45,1886+17]..[45,1886+29])
+                              Pexp_constant PConst_string("@[(# %a)@]",(typing/printpat.ml[45,1886+18]..[45,1886+28]),None)
+                          <arg>
+                          Nolabel
+                            expression (typing/printpat.ml[45,1886+30]..[45,1886+41])
+                              Pexp_ident "pretty_rest" (typing/printpat.ml[45,1886+30]..[45,1886+41])
+                          <arg>
+                          Nolabel
+                            expression (typing/printpat.ml[45,1886+42]..[45,1886+46])
+                              Pexp_ident "rest" (typing/printpat.ml[45,1886+42]..[45,1886+46])
+                        ]
+                  ]
+    ]
+  structure_item (typing/printpat.ml[47,1934+0]..[145,5454+51])
+    Pstr_value Rec
+    [
+      <def>
+        pattern (typing/printpat.ml[47,1934+8]..[47,1934+57]) ghost
+          Ppat_constraint
+          pattern (typing/printpat.ml[47,1934+8]..[47,1934+18])
+            Ppat_var "pretty_val" (typing/printpat.ml[47,1934+8]..[47,1934+18])
+          core_type (typing/printpat.ml[47,1934+8]..[108,4354+40]) ghost
+            Ptyp_poly 'k
+            core_type (typing/printpat.ml[47,1934+30]..[47,1934+57])
+              Ptyp_arrow
+              Nolabel
+              core_type (typing/printpat.ml[47,1934+30]..[47,1934+31])
+                Ptyp_any
+              core_type (typing/printpat.ml[47,1934+35]..[47,1934+57])
+                Ptyp_arrow
+                Nolabel
+                core_type (typing/printpat.ml[47,1934+35]..[47,1934+52])
+                  Ptyp_constr "general_pattern" (typing/printpat.ml[47,1934+37]..[47,1934+52])
+                  [
+                    core_type (typing/printpat.ml[47,1934+35]..[47,1934+36])
+                      Ptyp_var k
+                  ]
+                core_type (typing/printpat.ml[47,1934+56]..[47,1934+57])
+                  Ptyp_any
+        expression (typing/printpat.ml[47,1934+8]..[108,4354+40])
+          Pexp_newtype "k"
+          expression (typing/printpat.ml[47,1934+8]..[108,4354+40])
+            Pexp_constraint
+            expression (typing/printpat.ml[47,1934+60]..[108,4354+40])
+              Pexp_fun
+              Nolabel
+              None
+              pattern (typing/printpat.ml[47,1934+64]..[47,1934+67])
+                Ppat_var "ppf" (typing/printpat.ml[47,1934+64]..[47,1934+67])
+              expression (typing/printpat.ml[47,1934+68]..[108,4354+40]) ghost
+                Pexp_fun
+                Nolabel
+                None
+                pattern (typing/printpat.ml[47,1934+68]..[47,1934+69])
+                  Ppat_var "v" (typing/printpat.ml[47,1934+68]..[47,1934+69])
+                expression (typing/printpat.ml[48,2007+2]..[108,4354+40])
+                  Pexp_match
+                  expression (typing/printpat.ml[48,2007+8]..[48,2007+19])
+                    Pexp_field
+                    expression (typing/printpat.ml[48,2007+8]..[48,2007+9])
+                      Pexp_ident "v" (typing/printpat.ml[48,2007+8]..[48,2007+9])
+                    "pat_extra" (typing/printpat.ml[48,2007+10]..[48,2007+19])
+                  [
+                    <case>
+                      pattern (typing/printpat.ml[49,2032+6]..[49,2032+18])
+                        Ppat_construct "::" (typing/printpat.ml[49,2032+12]..[49,2032+14])
+                        Some
+                          []
+                          pattern (typing/printpat.ml[49,2032+6]..[49,2032+18]) ghost
+                            Ppat_tuple
+                            [
+                              pattern (typing/printpat.ml[49,2032+6]..[49,2032+11])
+                                Ppat_var "extra" (typing/printpat.ml[49,2032+6]..[49,2032+11])
+                              pattern (typing/printpat.ml[49,2032+15]..[49,2032+18])
+                                Ppat_var "rem" (typing/printpat.ml[49,2032+15]..[49,2032+18])
+                            ]
+                      expression (typing/printpat.ml[50,2054+7]..[51,2084+46])
+                        Pexp_apply
+                        expression (typing/printpat.ml[50,2054+7]..[50,2054+19])
+                          Pexp_ident "pretty_extra" (typing/printpat.ml[50,2054+7]..[50,2054+19])
+                        [
+                          <arg>
+                          Nolabel
+                            expression (typing/printpat.ml[50,2054+20]..[50,2054+23])
+                              Pexp_ident "ppf" (typing/printpat.ml[50,2054+20]..[50,2054+23])
+                          <arg>
+                          Nolabel
+                            expression (typing/printpat.ml[50,2054+24]..[50,2054+29])
+                              Pexp_ident "extra" (typing/printpat.ml[50,2054+24]..[50,2054+29])
+                          <arg>
+                          Nolabel
+                            expression (typing/printpat.ml[51,2084+9]..[51,2084+19])
+                              Pexp_ident "pretty_val" (typing/printpat.ml[51,2084+9]..[51,2084+19])
+                          <arg>
+                          Nolabel
+                            expression (typing/printpat.ml[51,2084+20]..[51,2084+46])
+                              Pexp_record
+                              [
+                                "pat_extra" (typing/printpat.ml[51,2084+29]..[51,2084+38])
+                                  expression (typing/printpat.ml[51,2084+41]..[51,2084+44])
+                                    Pexp_ident "rem" (typing/printpat.ml[51,2084+41]..[51,2084+44])
+                              ]
+                              Some
+                                expression (typing/printpat.ml[51,2084+22]..[51,2084+23])
+                                  Pexp_ident "v" (typing/printpat.ml[51,2084+22]..[51,2084+23])
+                        ]
+                    <case>
+                      pattern (typing/printpat.ml[52,2131+6]..[52,2131+8])
+                        Ppat_construct "[]" (typing/printpat.ml[52,2131+6]..[52,2131+8])
+                        None
+                      expression (typing/printpat.ml[53,2143+2]..[108,4354+40])
+                        Pexp_match
+                        expression (typing/printpat.ml[53,2143+8]..[53,2143+18])
+                          Pexp_field
+                          expression (typing/printpat.ml[53,2143+8]..[53,2143+9])
+                            Pexp_ident "v" (typing/printpat.ml[53,2143+8]..[53,2143+9])
+                          "pat_desc" (typing/printpat.ml[53,2143+10]..[53,2143+18])
+                        [
+                          <case>
+                            pattern (typing/printpat.ml[54,2167+4]..[54,2167+12])
+                              Ppat_construct "Tpat_any" (typing/printpat.ml[54,2167+4]..[54,2167+12])
+                              None
+                            expression (typing/printpat.ml[54,2167+16]..[54,2167+31])
+                              Pexp_apply
+                              expression (typing/printpat.ml[54,2167+16]..[54,2167+23])
+                                Pexp_ident "fprintf" (typing/printpat.ml[54,2167+16]..[54,2167+23])
+                              [
+                                <arg>
+                                Nolabel
+                                  expression (typing/printpat.ml[54,2167+24]..[54,2167+27])
+                                    Pexp_ident "ppf" (typing/printpat.ml[54,2167+24]..[54,2167+27])
+                                <arg>
+                                Nolabel
+                                  expression (typing/printpat.ml[54,2167+28]..[54,2167+31])
+                                    Pexp_constant PConst_string("_",(typing/printpat.ml[54,2167+29]..[54,2167+30]),None)
+                              ]
+                          <case>
+                            pattern (typing/printpat.ml[55,2199+4]..[55,2199+18])
+                              Ppat_construct "Tpat_var" (typing/printpat.ml[55,2199+4]..[55,2199+12])
+                              Some
+                                []
+                                pattern (typing/printpat.ml[55,2199+13]..[55,2199+18])
+                                  Ppat_tuple
+                                  [
+                                    pattern (typing/printpat.ml[55,2199+14]..[55,2199+15])
+                                      Ppat_var "x" (typing/printpat.ml[55,2199+14]..[55,2199+15])
+                                    pattern (typing/printpat.ml[55,2199+16]..[55,2199+17])
+                                      Ppat_any
+                                  ]
+                            expression (typing/printpat.ml[55,2199+22]..[55,2199+53])
+                              Pexp_apply
+                              expression (typing/printpat.ml[55,2199+22]..[55,2199+29])
+                                Pexp_ident "fprintf" (typing/printpat.ml[55,2199+22]..[55,2199+29])
+                              [
+                                <arg>
+                                Nolabel
+                                  expression (typing/printpat.ml[55,2199+30]..[55,2199+33])
+                                    Pexp_ident "ppf" (typing/printpat.ml[55,2199+30]..[55,2199+33])
+                                <arg>
+                                Nolabel
+                                  expression (typing/printpat.ml[55,2199+34]..[55,2199+38])
+                                    Pexp_constant PConst_string("%s",(typing/printpat.ml[55,2199+35]..[55,2199+37]),None)
+                                <arg>
+                                Nolabel
+                                  expression (typing/printpat.ml[55,2199+39]..[55,2199+53])
+                                    Pexp_apply
+                                    expression (typing/printpat.ml[55,2199+40]..[55,2199+50])
+                                      Pexp_ident "Ident.name" (typing/printpat.ml[55,2199+40]..[55,2199+50])
+                                    [
+                                      <arg>
+                                      Nolabel
+                                        expression (typing/printpat.ml[55,2199+51]..[55,2199+52])
+                                          Pexp_ident "x" (typing/printpat.ml[55,2199+51]..[55,2199+52])
+                                    ]
+                              ]
+                          <case>
+                            pattern (typing/printpat.ml[56,2253+4]..[56,2253+19])
+                              Ppat_construct "Tpat_constant" (typing/printpat.ml[56,2253+4]..[56,2253+17])
+                              Some
+                                []
+                                pattern (typing/printpat.ml[56,2253+18]..[56,2253+19])
+                                  Ppat_var "c" (typing/printpat.ml[56,2253+18]..[56,2253+19])
+                            expression (typing/printpat.ml[56,2253+23]..[56,2253+56])
+                              Pexp_apply
+                              expression (typing/printpat.ml[56,2253+23]..[56,2253+30])
+                                Pexp_ident "fprintf" (typing/printpat.ml[56,2253+23]..[56,2253+30])
+                              [
+                                <arg>
+                                Nolabel
+                                  expression (typing/printpat.ml[56,2253+31]..[56,2253+34])
+                                    Pexp_ident "ppf" (typing/printpat.ml[56,2253+31]..[56,2253+34])
+                                <arg>
+                                Nolabel
+                                  expression (typing/printpat.ml[56,2253+35]..[56,2253+39])
+                                    Pexp_constant PConst_string("%s",(typing/printpat.ml[56,2253+36]..[56,2253+38]),None)
+                                <arg>
+                                Nolabel
+                                  expression (typing/printpat.ml[56,2253+40]..[56,2253+56])
+                                    Pexp_apply
+                                    expression (typing/printpat.ml[56,2253+41]..[56,2253+53])
+                                      Pexp_ident "pretty_const" (typing/printpat.ml[56,2253+41]..[56,2253+53])
+                                    [
+                                      <arg>
+                                      Nolabel
+                                        expression (typing/printpat.ml[56,2253+54]..[56,2253+55])
+                                          Pexp_ident "c" (typing/printpat.ml[56,2253+54]..[56,2253+55])
+                                    ]
+                              ]
+                          <case>
+                            pattern (typing/printpat.ml[57,2310+4]..[57,2310+17])
+                              Ppat_construct "Tpat_tuple" (typing/printpat.ml[57,2310+4]..[57,2310+14])
+                              Some
+                                []
+                                pattern (typing/printpat.ml[57,2310+15]..[57,2310+17])
+                                  Ppat_var "vs" (typing/printpat.ml[57,2310+15]..[57,2310+17])
+                            expression (typing/printpat.ml[58,2331+6]..[58,2331+49])
+                              Pexp_apply
+                              expression (typing/printpat.ml[58,2331+6]..[58,2331+13])
+                                Pexp_ident "fprintf" (typing/printpat.ml[58,2331+6]..[58,2331+13])
+                              [
+                                <arg>
+                                Nolabel
+                                  expression (typing/printpat.ml[58,2331+14]..[58,2331+17])
+                                    Pexp_ident "ppf" (typing/printpat.ml[58,2331+14]..[58,2331+17])
+                                <arg>
+                                Nolabel
+                                  expression (typing/printpat.ml[58,2331+18]..[58,2331+28])
+                                    Pexp_constant PConst_string("@[(%a)@]",(typing/printpat.ml[58,2331+19]..[58,2331+27]),None)
+                                <arg>
+                                Nolabel
+                                  expression (typing/printpat.ml[58,2331+29]..[58,2331+46])
+                                    Pexp_apply
+                                    expression (typing/printpat.ml[58,2331+30]..[58,2331+41])
+                                      Pexp_ident "pretty_vals" (typing/printpat.ml[58,2331+30]..[58,2331+41])
+                                    [
+                                      <arg>
+                                      Nolabel
+                                        expression (typing/printpat.ml[58,2331+42]..[58,2331+45])
+                                          Pexp_constant PConst_string(",",(typing/printpat.ml[58,2331+43]..[58,2331+44]),None)
+                                    ]
+                                <arg>
+                                Nolabel
+                                  expression (typing/printpat.ml[58,2331+47]..[58,2331+49])
+                                    Pexp_ident "vs" (typing/printpat.ml[58,2331+47]..[58,2331+49])
+                              ]
+                          <case>
+                            pattern (typing/printpat.ml[59,2381+4]..[59,2381+35])
+                              Ppat_construct "Tpat_construct" (typing/printpat.ml[59,2381+4]..[59,2381+18])
+                              Some
+                                []
+                                pattern (typing/printpat.ml[59,2381+19]..[59,2381+35])
+                                  Ppat_tuple
+                                  [
+                                    pattern (typing/printpat.ml[59,2381+20]..[59,2381+21])
+                                      Ppat_any
+                                    pattern (typing/printpat.ml[59,2381+23]..[59,2381+27])
+                                      Ppat_var "cstr" (typing/printpat.ml[59,2381+23]..[59,2381+27])
+                                    pattern (typing/printpat.ml[59,2381+29]..[59,2381+31])
+                                      Ppat_construct "[]" (typing/printpat.ml[59,2381+29]..[59,2381+31])
+                                      None
+                                    pattern (typing/printpat.ml[59,2381+33]..[59,2381+34])
+                                      Ppat_any
+                                  ]
+                            expression (typing/printpat.ml[60,2420+6]..[60,2420+37])
+                              Pexp_apply
+                              expression (typing/printpat.ml[60,2420+6]..[60,2420+13])
+                                Pexp_ident "fprintf" (typing/printpat.ml[60,2420+6]..[60,2420+13])
+                              [
+                                <arg>
+                                Nolabel
+                                  expression (typing/printpat.ml[60,2420+14]..[60,2420+17])
+                                    Pexp_ident "ppf" (typing/printpat.ml[60,2420+14]..[60,2420+17])
+                                <arg>
+                                Nolabel
+                                  expression (typing/printpat.ml[60,2420+18]..[60,2420+22])
+                                    Pexp_constant PConst_string("%s",(typing/printpat.ml[60,2420+19]..[60,2420+21]),None)
+                                <arg>
+                                Nolabel
+                                  expression (typing/printpat.ml[60,2420+23]..[60,2420+37])
+                                    Pexp_field
+                                    expression (typing/printpat.ml[60,2420+23]..[60,2420+27])
+                                      Pexp_ident "cstr" (typing/printpat.ml[60,2420+23]..[60,2420+27])
+                                    "cstr_name" (typing/printpat.ml[60,2420+28]..[60,2420+37])
+                              ]
+                          <case>
+                            pattern (typing/printpat.ml[61,2458+4]..[61,2458+39])
+                              Ppat_construct "Tpat_construct" (typing/printpat.ml[61,2458+4]..[61,2458+18])
+                              Some
+                                []
+                                pattern (typing/printpat.ml[61,2458+19]..[61,2458+39])
+                                  Ppat_tuple
+                                  [
+                                    pattern (typing/printpat.ml[61,2458+20]..[61,2458+21])
+                                      Ppat_any
+                                    pattern (typing/printpat.ml[61,2458+23]..[61,2458+27])
+                                      Ppat_var "cstr" (typing/printpat.ml[61,2458+23]..[61,2458+27])
+                                    pattern (typing/printpat.ml[61,2458+29]..[61,2458+32])
+                                      Ppat_construct "::" (typing/printpat.ml[61,2458+30]..[61,2458+32]) ghost
+                                      Some
+                                        []
+                                        pattern (typing/printpat.ml[61,2458+30]..[61,2458+32]) ghost
+                                          Ppat_tuple
+                                          [
+                                            pattern (typing/printpat.ml[61,2458+30]..[61,2458+31])
+                                              Ppat_var "w" (typing/printpat.ml[61,2458+30]..[61,2458+31])
+                                            pattern (typing/printpat.ml[61,2458+31]..[61,2458+32]) ghost
+                                              Ppat_construct "[]" (typing/printpat.ml[61,2458+31]..[61,2458+32]) ghost
+                                              None
+                                          ]
+                                    pattern (typing/printpat.ml[61,2458+34]..[61,2458+38])
+                                      Ppat_construct "None" (typing/printpat.ml[61,2458+34]..[61,2458+38])
+                                      None
+                                  ]
+                            expression (typing/printpat.ml[62,2501+6]..[62,2501+61])
+                              Pexp_apply
+                              expression (typing/printpat.ml[62,2501+6]..[62,2501+13])
+                                Pexp_ident "fprintf" (typing/printpat.ml[62,2501+6]..[62,2501+13])
+                              [
+                                <arg>
+                                Nolabel
+                                  expression (typing/printpat.ml[62,2501+14]..[62,2501+17])
+                                    Pexp_ident "ppf" (typing/printpat.ml[62,2501+14]..[62,2501+17])
+                                <arg>
+                                Nolabel
+                                  expression (typing/printpat.ml[62,2501+18]..[62,2501+33])
+                                    Pexp_constant PConst_string("@[<2>%s@ %a@]",(typing/printpat.ml[62,2501+19]..[62,2501+32]),None)
+                                <arg>
+                                Nolabel
+                                  expression (typing/printpat.ml[62,2501+34]..[62,2501+48])
+                                    Pexp_field
+                                    expression (typing/printpat.ml[62,2501+34]..[62,2501+38])
+                                      Pexp_ident "cstr" (typing/printpat.ml[62,2501+34]..[62,2501+38])
+                                    "cstr_name" (typing/printpat.ml[62,2501+39]..[62,2501+48])
+                                <arg>
+                                Nolabel
+                                  expression (typing/printpat.ml[62,2501+49]..[62,2501+59])
+                                    Pexp_ident "pretty_arg" (typing/printpat.ml[62,2501+49]..[62,2501+59])
+                                <arg>
+                                Nolabel
+                                  expression (typing/printpat.ml[62,2501+60]..[62,2501+61])
+                                    Pexp_ident "w" (typing/printpat.ml[62,2501+60]..[62,2501+61])
+                              ]
+                          <case>
+                            pattern (typing/printpat.ml[63,2563+4]..[63,2563+37])
+                              Ppat_construct "Tpat_construct" (typing/printpat.ml[63,2563+4]..[63,2563+18])
+                              Some
+                                []
+                                pattern (typing/printpat.ml[63,2563+19]..[63,2563+37])
+                                  Ppat_tuple
+                                  [
+                                    pattern (typing/printpat.ml[63,2563+20]..[63,2563+21])
+                                      Ppat_any
+                                    pattern (typing/printpat.ml[63,2563+23]..[63,2563+27])
+                                      Ppat_var "cstr" (typing/printpat.ml[63,2563+23]..[63,2563+27])
+                                    pattern (typing/printpat.ml[63,2563+29]..[63,2563+31])
+                                      Ppat_var "vs" (typing/printpat.ml[63,2563+29]..[63,2563+31])
+                                    pattern (typing/printpat.ml[63,2563+33]..[63,2563+36])
+                                      Ppat_var "vto" (typing/printpat.ml[63,2563+33]..[63,2563+36])
+                                  ]
+                            expression (typing/printpat.ml[64,2604+6]..[76,3196+9])
+                              Pexp_let Nonrec
+                              [
+                                <def>
+                                  pattern (typing/printpat.ml[64,2604+10]..[64,2604+14])
+                                    Ppat_var "name" (typing/printpat.ml[64,2604+10]..[64,2604+14])
+                                  expression (typing/printpat.ml[64,2604+17]..[64,2604+31])
+                                    Pexp_field
+                                    expression (typing/printpat.ml[64,2604+17]..[64,2604+21])
+                                      Pexp_ident "cstr" (typing/printpat.ml[64,2604+17]..[64,2604+21])
+                                    "cstr_name" (typing/printpat.ml[64,2604+22]..[64,2604+31])
+                              ]
+                              expression (typing/printpat.ml[65,2639+6]..[76,3196+9])
+                                Pexp_match
+                                expression (typing/printpat.ml[65,2639+18]..[65,2639+33])
+                                  Pexp_tuple
+                                  [
+                                    expression (typing/printpat.ml[65,2639+19]..[65,2639+23])
+                                      Pexp_ident "name" (typing/printpat.ml[65,2639+19]..[65,2639+23])
+                                    expression (typing/printpat.ml[65,2639+25]..[65,2639+27])
+                                      Pexp_ident "vs" (typing/printpat.ml[65,2639+25]..[65,2639+27])
+                                    expression (typing/printpat.ml[65,2639+29]..[65,2639+32])
+                                      Pexp_ident "vto" (typing/printpat.ml[65,2639+29]..[65,2639+32])
+                                  ]
+                                [
+                                  <case>
+                                    pattern (typing/printpat.ml[66,2678+8]..[66,2678+29])
+                                      Ppat_tuple
+                                      [
+                                        pattern (typing/printpat.ml[66,2678+9]..[66,2678+13])
+                                          Ppat_constant PConst_string("::",(typing/printpat.ml[66,2678+10]..[66,2678+12]),None)
+                                        pattern (typing/printpat.ml[66,2678+15]..[66,2678+22])
+                                          Ppat_construct "::" (typing/printpat.ml[66,2678+16]..[66,2678+22]) ghost
+                                          Some
+                                            []
+                                            pattern (typing/printpat.ml[66,2678+16]..[66,2678+22]) ghost
+                                              Ppat_tuple
+                                              [
+                                                pattern (typing/printpat.ml[66,2678+16]..[66,2678+18])
+                                                  Ppat_var "v1" (typing/printpat.ml[66,2678+16]..[66,2678+18])
+                                                pattern (typing/printpat.ml[66,2678+19]..[66,2678+22]) ghost
+                                                  Ppat_construct "::" (typing/printpat.ml[66,2678+19]..[66,2678+22]) ghost
+                                                  Some
+                                                    []
+                                                    pattern (typing/printpat.ml[66,2678+19]..[66,2678+22]) ghost
+                                                      Ppat_tuple
+                                                      [
+                                                        pattern (typing/printpat.ml[66,2678+19]..[66,2678+21])
+                                                          Ppat_var "v2" (typing/printpat.ml[66,2678+19]..[66,2678+21])
+                                                        pattern (typing/printpat.ml[66,2678+21]..[66,2678+22]) ghost
+                                                          Ppat_construct "[]" (typing/printpat.ml[66,2678+21]..[66,2678+22]) ghost
+                                                          None
+                                                      ]
+                                              ]
+                                        pattern (typing/printpat.ml[66,2678+24]..[66,2678+28])
+                                          Ppat_construct "None" (typing/printpat.ml[66,2678+24]..[66,2678+28])
+                                          None
+                                      ]
+                                    expression (typing/printpat.ml[67,2711+10]..[67,2711+64])
+                                      Pexp_apply
+                                      expression (typing/printpat.ml[67,2711+10]..[67,2711+17])
+                                        Pexp_ident "fprintf" (typing/printpat.ml[67,2711+10]..[67,2711+17])
+                                      [
+                                        <arg>
+                                        Nolabel
+                                          expression (typing/printpat.ml[67,2711+18]..[67,2711+21])
+                                            Pexp_ident "ppf" (typing/printpat.ml[67,2711+18]..[67,2711+21])
+                                        <arg>
+                                        Nolabel
+                                          expression (typing/printpat.ml[67,2711+22]..[67,2711+36])
+                                            Pexp_constant PConst_string("@[%a::@,%a@]",(typing/printpat.ml[67,2711+23]..[67,2711+35]),None)
+                                        <arg>
+                                        Nolabel
+                                          expression (typing/printpat.ml[67,2711+37]..[67,2711+47])
+                                            Pexp_ident "pretty_car" (typing/printpat.ml[67,2711+37]..[67,2711+47])
+                                        <arg>
+                                        Nolabel
+                                          expression (typing/printpat.ml[67,2711+48]..[67,2711+50])
+                                            Pexp_ident "v1" (typing/printpat.ml[67,2711+48]..[67,2711+50])
+                                        <arg>
+                                        Nolabel
+                                          expression (typing/printpat.ml[67,2711+51]..[67,2711+61])
+                                            Pexp_ident "pretty_cdr" (typing/printpat.ml[67,2711+51]..[67,2711+61])
+                                        <arg>
+                                        Nolabel
+                                          expression (typing/printpat.ml[67,2711+62]..[67,2711+64])
+                                            Pexp_ident "v2" (typing/printpat.ml[67,2711+62]..[67,2711+64])
+                                      ]
+                                  <case>
+                                    pattern (typing/printpat.ml[68,2776+8]..[68,2776+20])
+                                      Ppat_tuple
+                                      [
+                                        pattern (typing/printpat.ml[68,2776+9]..[68,2776+10])
+                                          Ppat_any
+                                        pattern (typing/printpat.ml[68,2776+12]..[68,2776+13])
+                                          Ppat_any
+                                        pattern (typing/printpat.ml[68,2776+15]..[68,2776+19])
+                                          Ppat_construct "None" (typing/printpat.ml[68,2776+15]..[68,2776+19])
+                                          None
+                                      ]
+                                    expression (typing/printpat.ml[69,2800+10]..[69,2800+69])
+                                      Pexp_apply
+                                      expression (typing/printpat.ml[69,2800+10]..[69,2800+17])
+                                        Pexp_ident "fprintf" (typing/printpat.ml[69,2800+10]..[69,2800+17])
+                                      [
+                                        <arg>
+                                        Nolabel
+                                          expression (typing/printpat.ml[69,2800+18]..[69,2800+21])
+                                            Pexp_ident "ppf" (typing/printpat.ml[69,2800+18]..[69,2800+21])
+                                        <arg>
+                                        Nolabel
+                                          expression (typing/printpat.ml[69,2800+22]..[69,2800+43])
+                                            Pexp_constant PConst_string("@[<2>%s@ @[(%a)@]@]",(typing/printpat.ml[69,2800+23]..[69,2800+42]),None)
+                                        <arg>
+                                        Nolabel
+                                          expression (typing/printpat.ml[69,2800+44]..[69,2800+48])
+                                            Pexp_ident "name" (typing/printpat.ml[69,2800+44]..[69,2800+48])
+                                        <arg>
+                                        Nolabel
+                                          expression (typing/printpat.ml[69,2800+49]..[69,2800+66])
+                                            Pexp_apply
+                                            expression (typing/printpat.ml[69,2800+50]..[69,2800+61])
+                                              Pexp_ident "pretty_vals" (typing/printpat.ml[69,2800+50]..[69,2800+61])
+                                            [
+                                              <arg>
+                                              Nolabel
+                                                expression (typing/printpat.ml[69,2800+62]..[69,2800+65])
+                                                  Pexp_constant PConst_string(",",(typing/printpat.ml[69,2800+63]..[69,2800+64]),None)
+                                            ]
+                                        <arg>
+                                        Nolabel
+                                          expression (typing/printpat.ml[69,2800+67]..[69,2800+69])
+                                            Pexp_ident "vs" (typing/printpat.ml[69,2800+67]..[69,2800+69])
+                                      ]
+                                  <case>
+                                    pattern (typing/printpat.ml[70,2870+8]..[70,2870+29])
+                                      Ppat_tuple
+                                      [
+                                        pattern (typing/printpat.ml[70,2870+9]..[70,2870+10])
+                                          Ppat_any
+                                        pattern (typing/printpat.ml[70,2870+12]..[70,2870+13])
+                                          Ppat_any
+                                        pattern (typing/printpat.ml[70,2870+15]..[70,2870+28])
+                                          Ppat_construct "Some" (typing/printpat.ml[70,2870+15]..[70,2870+19])
+                                          Some
+                                            []
+                                            pattern (typing/printpat.ml[70,2870+20]..[70,2870+28])
+                                              Ppat_tuple
+                                              [
+                                                pattern (typing/printpat.ml[70,2870+21]..[70,2870+23])
+                                                  Ppat_construct "[]" (typing/printpat.ml[70,2870+21]..[70,2870+23])
+                                                  None
+                                                pattern (typing/printpat.ml[70,2870+25]..[70,2870+27])
+                                                  Ppat_var "_t" (typing/printpat.ml[70,2870+25]..[70,2870+27])
+                                              ]
+                                      ]
+                                    expression (typing/printpat.ml[71,2903+10]..[71,2903+73])
+                                      Pexp_apply
+                                      expression (typing/printpat.ml[71,2903+10]..[71,2903+17])
+                                        Pexp_ident "fprintf" (typing/printpat.ml[71,2903+10]..[71,2903+17])
+                                      [
+                                        <arg>
+                                        Nolabel
+                                          expression (typing/printpat.ml[71,2903+18]..[71,2903+21])
+                                            Pexp_ident "ppf" (typing/printpat.ml[71,2903+18]..[71,2903+21])
+                                        <arg>
+                                        Nolabel
+                                          expression (typing/printpat.ml[71,2903+22]..[71,2903+47])
+                                            Pexp_constant PConst_string("@[<2>%s@ @[(%a : _)@]@]",(typing/printpat.ml[71,2903+23]..[71,2903+46]),None)
+                                        <arg>
+                                        Nolabel
+                                          expression (typing/printpat.ml[71,2903+48]..[71,2903+52])
+                                            Pexp_ident "name" (typing/printpat.ml[71,2903+48]..[71,2903+52])
+                                        <arg>
+                                        Nolabel
+                                          expression (typing/printpat.ml[71,2903+53]..[71,2903+70])
+                                            Pexp_apply
+                                            expression (typing/printpat.ml[71,2903+54]..[71,2903+65])
+                                              Pexp_ident "pretty_vals" (typing/printpat.ml[71,2903+54]..[71,2903+65])
+                                            [
+                                              <arg>
+                                              Nolabel
+                                                expression (typing/printpat.ml[71,2903+66]..[71,2903+69])
+                                                  Pexp_constant PConst_string(",",(typing/printpat.ml[71,2903+67]..[71,2903+68]),None)
+                                            ]
+                                        <arg>
+                                        Nolabel
+                                          expression (typing/printpat.ml[71,2903+71]..[71,2903+73])
+                                            Pexp_ident "vs" (typing/printpat.ml[71,2903+71]..[71,2903+73])
+                                      ]
+                                  <case>
+                                    pattern (typing/printpat.ml[72,2977+8]..[72,2977+29])
+                                      Ppat_tuple
+                                      [
+                                        pattern (typing/printpat.ml[72,2977+9]..[72,2977+10])
+                                          Ppat_any
+                                        pattern (typing/printpat.ml[72,2977+12]..[72,2977+13])
+                                          Ppat_any
+                                        pattern (typing/printpat.ml[72,2977+15]..[72,2977+28])
+                                          Ppat_construct "Some" (typing/printpat.ml[72,2977+15]..[72,2977+19])
+                                          Some
+                                            []
+                                            pattern (typing/printpat.ml[72,2977+20]..[72,2977+28])
+                                              Ppat_tuple
+                                              [
+                                                pattern (typing/printpat.ml[72,2977+21]..[72,2977+23])
+                                                  Ppat_var "vl" (typing/printpat.ml[72,2977+21]..[72,2977+23])
+                                                pattern (typing/printpat.ml[72,2977+25]..[72,2977+27])
+                                                  Ppat_var "_t" (typing/printpat.ml[72,2977+25]..[72,2977+27])
+                                              ]
+                                      ]
+                                    expression (typing/printpat.ml[73,3010+10]..[75,3133+62])
+                                      Pexp_let Nonrec
+                                      [
+                                        <def>
+                                          pattern (typing/printpat.ml[73,3010+14]..[73,3010+18])
+                                            Ppat_var "vars" (typing/printpat.ml[73,3010+14]..[73,3010+18])
+                                          expression (typing/printpat.ml[73,3010+21]..[73,3010+60])
+                                            Pexp_apply
+                                            expression (typing/printpat.ml[73,3010+21]..[73,3010+29])
+                                              Pexp_ident "List.map" (typing/printpat.ml[73,3010+21]..[73,3010+29])
+                                            [
+                                              <arg>
+                                              Nolabel
+                                                expression (typing/printpat.ml[73,3010+30]..[73,3010+57])
+                                                  Pexp_fun
+                                                  Nolabel
+                                                  None
+                                                  pattern (typing/printpat.ml[73,3010+35]..[73,3010+36])
+                                                    Ppat_var "x" (typing/printpat.ml[73,3010+35]..[73,3010+36])
+                                                  expression (typing/printpat.ml[73,3010+40]..[73,3010+56])
+                                                    Pexp_apply
+                                                    expression (typing/printpat.ml[73,3010+40]..[73,3010+50])
+                                                      Pexp_ident "Ident.name" (typing/printpat.ml[73,3010+40]..[73,3010+50])
+                                                    [
+                                                      <arg>
+                                                      Nolabel
+                                                        expression (typing/printpat.ml[73,3010+51]..[73,3010+56])
+                                                          Pexp_field
+                                                          expression (typing/printpat.ml[73,3010+51]..[73,3010+52])
+                                                            Pexp_ident "x" (typing/printpat.ml[73,3010+51]..[73,3010+52])
+                                                          "txt" (typing/printpat.ml[73,3010+53]..[73,3010+56])
+                                                    ]
+                                              <arg>
+                                              Nolabel
+                                                expression (typing/printpat.ml[73,3010+58]..[73,3010+60])
+                                                  Pexp_ident "vl" (typing/printpat.ml[73,3010+58]..[73,3010+60])
+                                            ]
+                                      ]
+                                      expression (typing/printpat.ml[74,3074+10]..[75,3133+62])
+                                        Pexp_apply
+                                        expression (typing/printpat.ml[74,3074+10]..[74,3074+17])
+                                          Pexp_ident "fprintf" (typing/printpat.ml[74,3074+10]..[74,3074+17])
+                                        [
+                                          <arg>
+                                          Nolabel
+                                            expression (typing/printpat.ml[74,3074+18]..[74,3074+21])
+                                              Pexp_ident "ppf" (typing/printpat.ml[74,3074+18]..[74,3074+21])
+                                          <arg>
+                                          Nolabel
+                                            expression (typing/printpat.ml[74,3074+22]..[74,3074+58])
+                                              Pexp_constant PConst_string("@[<2>%s@ (type %s)@ @[(%a : _)@]@]",(typing/printpat.ml[74,3074+23]..[74,3074+57]),None)
+                                          <arg>
+                                          Nolabel
+                                            expression (typing/printpat.ml[75,3133+12]..[75,3133+16])
+                                              Pexp_ident "name" (typing/printpat.ml[75,3133+12]..[75,3133+16])
+                                          <arg>
+                                          Nolabel
+                                            expression (typing/printpat.ml[75,3133+17]..[75,3133+41])
+                                              Pexp_apply
+                                              expression (typing/printpat.ml[75,3133+18]..[75,3133+31])
+                                                Pexp_ident "String.concat" (typing/printpat.ml[75,3133+18]..[75,3133+31])
+                                              [
+                                                <arg>
+                                                Nolabel
+                                                  expression (typing/printpat.ml[75,3133+32]..[75,3133+35])
+                                                    Pexp_constant PConst_string(" ",(typing/printpat.ml[75,3133+33]..[75,3133+34]),None)
+                                                <arg>
+                                                Nolabel
+                                                  expression (typing/printpat.ml[75,3133+36]..[75,3133+40])
+                                                    Pexp_ident "vars" (typing/printpat.ml[75,3133+36]..[75,3133+40])
+                                              ]
+                                          <arg>
+                                          Nolabel
+                                            expression (typing/printpat.ml[75,3133+42]..[75,3133+59])
+                                              Pexp_apply
+                                              expression (typing/printpat.ml[75,3133+43]..[75,3133+54])
+                                                Pexp_ident "pretty_vals" (typing/printpat.ml[75,3133+43]..[75,3133+54])
+                                              [
+                                                <arg>
+                                                Nolabel
+                                                  expression (typing/printpat.ml[75,3133+55]..[75,3133+58])
+                                                    Pexp_constant PConst_string(",",(typing/printpat.ml[75,3133+56]..[75,3133+57]),None)
+                                              ]
+                                          <arg>
+                                          Nolabel
+                                            expression (typing/printpat.ml[75,3133+60]..[75,3133+62])
+                                              Pexp_ident "vs" (typing/printpat.ml[75,3133+60]..[75,3133+62])
+                                        ]
+                                ]
+                          <case>
+                            pattern (typing/printpat.ml[77,3206+4]..[77,3206+29])
+                              Ppat_construct "Tpat_variant" (typing/printpat.ml[77,3206+4]..[77,3206+16])
+                              Some
+                                []
+                                pattern (typing/printpat.ml[77,3206+17]..[77,3206+29])
+                                  Ppat_tuple
+                                  [
+                                    pattern (typing/printpat.ml[77,3206+18]..[77,3206+19])
+                                      Ppat_var "l" (typing/printpat.ml[77,3206+18]..[77,3206+19])
+                                    pattern (typing/printpat.ml[77,3206+21]..[77,3206+25])
+                                      Ppat_construct "None" (typing/printpat.ml[77,3206+21]..[77,3206+25])
+                                      None
+                                    pattern (typing/printpat.ml[77,3206+27]..[77,3206+28])
+                                      Ppat_any
+                                  ]
+                            expression (typing/printpat.ml[78,3239+6]..[78,3239+25])
+                              Pexp_apply
+                              expression (typing/printpat.ml[78,3239+6]..[78,3239+13])
+                                Pexp_ident "fprintf" (typing/printpat.ml[78,3239+6]..[78,3239+13])
+                              [
+                                <arg>
+                                Nolabel
+                                  expression (typing/printpat.ml[78,3239+14]..[78,3239+17])
+                                    Pexp_ident "ppf" (typing/printpat.ml[78,3239+14]..[78,3239+17])
+                                <arg>
+                                Nolabel
+                                  expression (typing/printpat.ml[78,3239+18]..[78,3239+23])
+                                    Pexp_constant PConst_string("`%s",(typing/printpat.ml[78,3239+19]..[78,3239+22]),None)
+                                <arg>
+                                Nolabel
+                                  expression (typing/printpat.ml[78,3239+24]..[78,3239+25])
+                                    Pexp_ident "l" (typing/printpat.ml[78,3239+24]..[78,3239+25])
+                              ]
+                          <case>
+                            pattern (typing/printpat.ml[79,3265+4]..[79,3265+31])
+                              Ppat_construct "Tpat_variant" (typing/printpat.ml[79,3265+4]..[79,3265+16])
+                              Some
+                                []
+                                pattern (typing/printpat.ml[79,3265+17]..[79,3265+31])
+                                  Ppat_tuple
+                                  [
+                                    pattern (typing/printpat.ml[79,3265+18]..[79,3265+19])
+                                      Ppat_var "l" (typing/printpat.ml[79,3265+18]..[79,3265+19])
+                                    pattern (typing/printpat.ml[79,3265+21]..[79,3265+27])
+                                      Ppat_construct "Some" (typing/printpat.ml[79,3265+21]..[79,3265+25])
+                                      Some
+                                        []
+                                        pattern (typing/printpat.ml[79,3265+26]..[79,3265+27])
+                                          Ppat_var "w" (typing/printpat.ml[79,3265+26]..[79,3265+27])
+                                    pattern (typing/printpat.ml[79,3265+29]..[79,3265+30])
+                                      Ppat_any
+                                  ]
+                            expression (typing/printpat.ml[80,3300+6]..[80,3300+49])
+                              Pexp_apply
+                              expression (typing/printpat.ml[80,3300+6]..[80,3300+13])
+                                Pexp_ident "fprintf" (typing/printpat.ml[80,3300+6]..[80,3300+13])
+                              [
+                                <arg>
+                                Nolabel
+                                  expression (typing/printpat.ml[80,3300+14]..[80,3300+17])
+                                    Pexp_ident "ppf" (typing/printpat.ml[80,3300+14]..[80,3300+17])
+                                <arg>
+                                Nolabel
+                                  expression (typing/printpat.ml[80,3300+18]..[80,3300+34])
+                                    Pexp_constant PConst_string("@[<2>`%s@ %a@]",(typing/printpat.ml[80,3300+19]..[80,3300+33]),None)
+                                <arg>
+                                Nolabel
+                                  expression (typing/printpat.ml[80,3300+35]..[80,3300+36])
+                                    Pexp_ident "l" (typing/printpat.ml[80,3300+35]..[80,3300+36])
+                                <arg>
+                                Nolabel
+                                  expression (typing/printpat.ml[80,3300+37]..[80,3300+47])
+                                    Pexp_ident "pretty_arg" (typing/printpat.ml[80,3300+37]..[80,3300+47])
+                                <arg>
+                                Nolabel
+                                  expression (typing/printpat.ml[80,3300+48]..[80,3300+49])
+                                    Pexp_ident "w" (typing/printpat.ml[80,3300+48]..[80,3300+49])
+                              ]
+                          <case>
+                            pattern (typing/printpat.ml[81,3350+4]..[81,3350+23])
+                              Ppat_construct "Tpat_record" (typing/printpat.ml[81,3350+4]..[81,3350+15])
+                              Some
+                                []
+                                pattern (typing/printpat.ml[81,3350+16]..[81,3350+23])
+                                  Ppat_tuple
+                                  [
+                                    pattern (typing/printpat.ml[81,3350+17]..[81,3350+20])
+                                      Ppat_var "lvs" (typing/printpat.ml[81,3350+17]..[81,3350+20])
+                                    pattern (typing/printpat.ml[81,3350+21]..[81,3350+22])
+                                      Ppat_any
+                                  ]
+                            expression (typing/printpat.ml[82,3377+6]..[96,3946+9])
+                              Pexp_let Nonrec
+                              [
+                                <def>
+                                  pattern (typing/printpat.ml[82,3377+10]..[82,3377+22])
+                                    Ppat_var "filtered_lvs" (typing/printpat.ml[82,3377+10]..[82,3377+22])
+                                  expression (typing/printpat.ml[82,3377+25]..[85,3507+28])
+                                    Pexp_apply
+                                    expression (typing/printpat.ml[82,3377+25]..[82,3377+36])
+                                      Pexp_ident "List.filter" (typing/printpat.ml[82,3377+25]..[82,3377+36])
+                                    [
+                                      <arg>
+                                      Nolabel
+                                        expression (typing/printpat.ml[83,3414+10]..[85,3507+24])
+                                          Pexp_function
+                                          [
+                                            <case>
+                                              pattern (typing/printpat.ml[84,3434+14]..[84,3434+39])
+                                                Ppat_tuple
+                                                [
+                                                  pattern (typing/printpat.ml[84,3434+15]..[84,3434+16])
+                                                    Ppat_any
+                                                  pattern (typing/printpat.ml[84,3434+17]..[84,3434+18])
+                                                    Ppat_any
+                                                  pattern (typing/printpat.ml[84,3434+19]..[84,3434+38])
+                                                    Ppat_record Closed
+                                                    [
+                                                      "pat_desc" (typing/printpat.ml[84,3434+20]..[84,3434+28])
+                                                        pattern (typing/printpat.ml[84,3434+29]..[84,3434+37])
+                                                          Ppat_construct "Tpat_any" (typing/printpat.ml[84,3434+29]..[84,3434+37])
+                                                          None
+                                                    ]
+                                                ]
+                                              expression (typing/printpat.ml[84,3434+43]..[84,3434+48])
+                                                Pexp_construct "false" (typing/printpat.ml[84,3434+43]..[84,3434+48])
+                                                None
+                                            <case>
+                                              pattern (typing/printpat.ml[85,3507+14]..[85,3507+15])
+                                                Ppat_any
+                                              expression (typing/printpat.ml[85,3507+19]..[85,3507+23])
+                                                Pexp_construct "true" (typing/printpat.ml[85,3507+19]..[85,3507+23])
+                                                None
+                                          ]
+                                      <arg>
+                                      Nolabel
+                                        expression (typing/printpat.ml[85,3507+25]..[85,3507+28])
+                                          Pexp_ident "lvs" (typing/printpat.ml[85,3507+25]..[85,3507+28])
+                                    ]
+                              ]
+                              expression (typing/printpat.ml[86,3539+6]..[96,3946+9])
+                                Pexp_match
+                                expression (typing/printpat.ml[86,3539+18]..[86,3539+30])
+                                  Pexp_ident "filtered_lvs" (typing/printpat.ml[86,3539+18]..[86,3539+30])
+                                [
+                                  <case>
+                                    pattern (typing/printpat.ml[87,3575+8]..[87,3575+10])
+                                      Ppat_construct "[]" (typing/printpat.ml[87,3575+8]..[87,3575+10])
+                                      None
+                                    expression (typing/printpat.ml[87,3575+14]..[87,3575+29])
+                                      Pexp_apply
+                                      expression (typing/printpat.ml[87,3575+14]..[87,3575+21])
+                                        Pexp_ident "fprintf" (typing/printpat.ml[87,3575+14]..[87,3575+21])
+                                      [
+                                        <arg>
+                                        Nolabel
+                                          expression (typing/printpat.ml[87,3575+22]..[87,3575+25])
+                                            Pexp_ident "ppf" (typing/printpat.ml[87,3575+22]..[87,3575+25])
+                                        <arg>
+                                        Nolabel
+                                          expression (typing/printpat.ml[87,3575+26]..[87,3575+29])
+                                            Pexp_constant PConst_string("_",(typing/printpat.ml[87,3575+27]..[87,3575+28]),None)
+                                      ]
+                                  <case>
+                                    pattern (typing/printpat.ml[88,3605+8]..[88,3605+24])
+                                      Ppat_construct "::" (typing/printpat.ml[88,3605+20]..[88,3605+22])
+                                      Some
+                                        []
+                                        pattern (typing/printpat.ml[88,3605+8]..[88,3605+24]) ghost
+                                          Ppat_tuple
+                                          [
+                                            pattern (typing/printpat.ml[88,3605+8]..[88,3605+19])
+                                              Ppat_tuple
+                                              [
+                                                pattern (typing/printpat.ml[88,3605+9]..[88,3605+10])
+                                                  Ppat_any
+                                                pattern (typing/printpat.ml[88,3605+12]..[88,3605+15])
+                                                  Ppat_var "lbl" (typing/printpat.ml[88,3605+12]..[88,3605+15])
+                                                pattern (typing/printpat.ml[88,3605+17]..[88,3605+18])
+                                                  Ppat_any
+                                              ]
+                                            pattern (typing/printpat.ml[88,3605+23]..[88,3605+24])
+                                              Ppat_var "q" (typing/printpat.ml[88,3605+23]..[88,3605+24])
+                                          ]
+                                    expression (typing/printpat.ml[89,3633+10]..[95,3895+50])
+                                      Pexp_let Nonrec
+                                      [
+                                        <def>
+                                          pattern (typing/printpat.ml[89,3633+14]..[89,3633+26])
+                                            Ppat_var "elision_mark" (typing/printpat.ml[89,3633+14]..[89,3633+26])
+                                          expression (typing/printpat.ml[89,3633+27]..[93,3836+20]) ghost
+                                            Pexp_fun
+                                            Nolabel
+                                            None
+                                            pattern (typing/printpat.ml[89,3633+27]..[89,3633+30])
+                                              Ppat_var "ppf" (typing/printpat.ml[89,3633+27]..[89,3633+30])
+                                            expression (typing/printpat.ml[91,3734+13]..[93,3836+20])
+                                              Pexp_ifthenelse
+                                              expression (typing/printpat.ml[91,3734+16]..[91,3734+60])
+                                                Pexp_apply
+                                                expression (typing/printpat.ml[91,3734+41]..[91,3734+42])
+                                                  Pexp_ident ">" (typing/printpat.ml[91,3734+41]..[91,3734+42])
+                                                [
+                                                  <arg>
+                                                  Nolabel
+                                                    expression (typing/printpat.ml[91,3734+16]..[91,3734+40])
+                                                      Pexp_apply
+                                                      expression (typing/printpat.ml[91,3734+16]..[91,3734+28])
+                                                        Pexp_ident "Array.length" (typing/printpat.ml[91,3734+16]..[91,3734+28])
+                                                      [
+                                                        <arg>
+                                                        Nolabel
+                                                          expression (typing/printpat.ml[91,3734+29]..[91,3734+40])
+                                                            Pexp_field
+                                                            expression (typing/printpat.ml[91,3734+29]..[91,3734+32])
+                                                              Pexp_ident "lbl" (typing/printpat.ml[91,3734+29]..[91,3734+32])
+                                                            "lbl_all" (typing/printpat.ml[91,3734+33]..[91,3734+40])
+                                                      ]
+                                                  <arg>
+                                                  Nolabel
+                                                    expression (typing/printpat.ml[91,3734+43]..[91,3734+60])
+                                                      Pexp_apply
+                                                      expression (typing/printpat.ml[91,3734+45]..[91,3734+46])
+                                                        Pexp_ident "+" (typing/printpat.ml[91,3734+45]..[91,3734+46])
+                                                      [
+                                                        <arg>
+                                                        Nolabel
+                                                          expression (typing/printpat.ml[91,3734+43]..[91,3734+44])
+                                                            Pexp_constant PConst_int (1,None)
+                                                        <arg>
+                                                        Nolabel
+                                                          expression (typing/printpat.ml[91,3734+47]..[91,3734+60])
+                                                            Pexp_apply
+                                                            expression (typing/printpat.ml[91,3734+47]..[91,3734+58])
+                                                              Pexp_ident "List.length" (typing/printpat.ml[91,3734+47]..[91,3734+58])
+                                                            [
+                                                              <arg>
+                                                              Nolabel
+                                                                expression (typing/printpat.ml[91,3734+59]..[91,3734+60])
+                                                                  Pexp_ident "q" (typing/printpat.ml[91,3734+59]..[91,3734+60])
+                                                            ]
+                                                      ]
+                                                ]
+                                              expression (typing/printpat.ml[92,3800+15]..[92,3800+35])
+                                                Pexp_apply
+                                                expression (typing/printpat.ml[92,3800+15]..[92,3800+22])
+                                                  Pexp_ident "fprintf" (typing/printpat.ml[92,3800+15]..[92,3800+22])
+                                                [
+                                                  <arg>
+                                                  Nolabel
+                                                    expression (typing/printpat.ml[92,3800+23]..[92,3800+26])
+                                                      Pexp_ident "ppf" (typing/printpat.ml[92,3800+23]..[92,3800+26])
+                                                  <arg>
+                                                  Nolabel
+                                                    expression (typing/printpat.ml[92,3800+27]..[92,3800+35])
+                                                      Pexp_constant PConst_string(";@ _@ ",(typing/printpat.ml[92,3800+28]..[92,3800+34]),None)
+                                                ]
+                                              Some
+                                                expression (typing/printpat.ml[93,3836+18]..[93,3836+20])
+                                                  Pexp_construct "()" (typing/printpat.ml[93,3836+18]..[93,3836+20])
+                                                  None
+                                      ]
+                                      expression (typing/printpat.ml[94,3860+10]..[95,3895+50])
+                                        Pexp_apply
+                                        expression (typing/printpat.ml[94,3860+10]..[94,3860+17])
+                                          Pexp_ident "fprintf" (typing/printpat.ml[94,3860+10]..[94,3860+17])
+                                        [
+                                          <arg>
+                                          Nolabel
+                                            expression (typing/printpat.ml[94,3860+18]..[94,3860+21])
+                                              Pexp_ident "ppf" (typing/printpat.ml[94,3860+18]..[94,3860+21])
+                                          <arg>
+                                          Nolabel
+                                            expression (typing/printpat.ml[94,3860+22]..[94,3860+34])
+                                              Pexp_constant PConst_string("@[{%a%t}@]",(typing/printpat.ml[94,3860+23]..[94,3860+33]),None)
+                                          <arg>
+                                          Nolabel
+                                            expression (typing/printpat.ml[95,3895+12]..[95,3895+24])
+                                              Pexp_ident "pretty_lvals" (typing/printpat.ml[95,3895+12]..[95,3895+24])
+                                          <arg>
+                                          Nolabel
+                                            expression (typing/printpat.ml[95,3895+25]..[95,3895+37])
+                                              Pexp_ident "filtered_lvs" (typing/printpat.ml[95,3895+25]..[95,3895+37])
+                                          <arg>
+                                          Nolabel
+                                            expression (typing/printpat.ml[95,3895+38]..[95,3895+50])
+                                              Pexp_ident "elision_mark" (typing/printpat.ml[95,3895+38]..[95,3895+50])
+                                        ]
+                                ]
+                          <case>
+                            pattern (typing/printpat.ml[97,3956+4]..[97,3956+17])
+                              Ppat_construct "Tpat_array" (typing/printpat.ml[97,3956+4]..[97,3956+14])
+                              Some
+                                []
+                                pattern (typing/printpat.ml[97,3956+15]..[97,3956+17])
+                                  Ppat_var "vs" (typing/printpat.ml[97,3956+15]..[97,3956+17])
+                            expression (typing/printpat.ml[98,3977+6]..[98,3977+54])
+                              Pexp_apply
+                              expression (typing/printpat.ml[98,3977+6]..[98,3977+13])
+                                Pexp_ident "fprintf" (typing/printpat.ml[98,3977+6]..[98,3977+13])
+                              [
+                                <arg>
+                                Nolabel
+                                  expression (typing/printpat.ml[98,3977+14]..[98,3977+17])
+                                    Pexp_ident "ppf" (typing/printpat.ml[98,3977+14]..[98,3977+17])
+                                <arg>
+                                Nolabel
+                                  expression (typing/printpat.ml[98,3977+18]..[98,3977+32])
+                                    Pexp_constant PConst_string("@[[| %a |]@]",(typing/printpat.ml[98,3977+19]..[98,3977+31]),None)
+                                <arg>
+                                Nolabel
+                                  expression (typing/printpat.ml[98,3977+33]..[98,3977+51])
+                                    Pexp_apply
+                                    expression (typing/printpat.ml[98,3977+34]..[98,3977+45])
+                                      Pexp_ident "pretty_vals" (typing/printpat.ml[98,3977+34]..[98,3977+45])
+                                    [
+                                      <arg>
+                                      Nolabel
+                                        expression (typing/printpat.ml[98,3977+46]..[98,3977+50])
+                                          Pexp_constant PConst_string(" ;",(typing/printpat.ml[98,3977+47]..[98,3977+49]),None)
+                                    ]
+                                <arg>
+                                Nolabel
+                                  expression (typing/printpat.ml[98,3977+52]..[98,3977+54])
+                                    Pexp_ident "vs" (typing/printpat.ml[98,3977+52]..[98,3977+54])
+                              ]
+                          <case>
+                            pattern (typing/printpat.ml[99,4032+4]..[99,4032+15])
+                              Ppat_construct "Tpat_lazy" (typing/printpat.ml[99,4032+4]..[99,4032+13])
+                              Some
+                                []
+                                pattern (typing/printpat.ml[99,4032+14]..[99,4032+15])
+                                  Ppat_var "v" (typing/printpat.ml[99,4032+14]..[99,4032+15])
+                            expression (typing/printpat.ml[100,4051+6]..[100,4051+48])
+                              Pexp_apply
+                              expression (typing/printpat.ml[100,4051+6]..[100,4051+13])
+                                Pexp_ident "fprintf" (typing/printpat.ml[100,4051+6]..[100,4051+13])
+                              [
+                                <arg>
+                                Nolabel
+                                  expression (typing/printpat.ml[100,4051+14]..[100,4051+17])
+                                    Pexp_ident "ppf" (typing/printpat.ml[100,4051+14]..[100,4051+17])
+                                <arg>
+                                Nolabel
+                                  expression (typing/printpat.ml[100,4051+18]..[100,4051+35])
+                                    Pexp_constant PConst_string("@[<2>lazy@ %a@]",(typing/printpat.ml[100,4051+19]..[100,4051+34]),None)
+                                <arg>
+                                Nolabel
+                                  expression (typing/printpat.ml[100,4051+36]..[100,4051+46])
+                                    Pexp_ident "pretty_arg" (typing/printpat.ml[100,4051+36]..[100,4051+46])
+                                <arg>
+                                Nolabel
+                                  expression (typing/printpat.ml[100,4051+47]..[100,4051+48])
+                                    Pexp_ident "v" (typing/printpat.ml[100,4051+47]..[100,4051+48])
+                              ]
+                          <case>
+                            pattern (typing/printpat.ml[101,4100+4]..[101,4100+23])
+                              Ppat_construct "Tpat_alias" (typing/printpat.ml[101,4100+4]..[101,4100+14])
+                              Some
+                                []
+                                pattern (typing/printpat.ml[101,4100+15]..[101,4100+23])
+                                  Ppat_tuple
+                                  [
+                                    pattern (typing/printpat.ml[101,4100+16]..[101,4100+17])
+                                      Ppat_var "v" (typing/printpat.ml[101,4100+16]..[101,4100+17])
+                                    pattern (typing/printpat.ml[101,4100+19]..[101,4100+20])
+                                      Ppat_var "x" (typing/printpat.ml[101,4100+19]..[101,4100+20])
+                                    pattern (typing/printpat.ml[101,4100+21]..[101,4100+22])
+                                      Ppat_any
+                                  ]
+                            expression (typing/printpat.ml[102,4127+6]..[102,4127+62])
+                              Pexp_apply
+                              expression (typing/printpat.ml[102,4127+6]..[102,4127+13])
+                                Pexp_ident "fprintf" (typing/printpat.ml[102,4127+6]..[102,4127+13])
+                              [
+                                <arg>
+                                Nolabel
+                                  expression (typing/printpat.ml[102,4127+14]..[102,4127+17])
+                                    Pexp_ident "ppf" (typing/printpat.ml[102,4127+14]..[102,4127+17])
+                                <arg>
+                                Nolabel
+                                  expression (typing/printpat.ml[102,4127+18]..[102,4127+35])
+                                    Pexp_constant PConst_string("@[(%a@ as %a)@]",(typing/printpat.ml[102,4127+19]..[102,4127+34]),None)
+                                <arg>
+                                Nolabel
+                                  expression (typing/printpat.ml[102,4127+36]..[102,4127+46])
+                                    Pexp_ident "pretty_val" (typing/printpat.ml[102,4127+36]..[102,4127+46])
+                                <arg>
+                                Nolabel
+                                  expression (typing/printpat.ml[102,4127+47]..[102,4127+48])
+                                    Pexp_ident "v" (typing/printpat.ml[102,4127+47]..[102,4127+48])
+                                <arg>
+                                Nolabel
+                                  expression (typing/printpat.ml[102,4127+49]..[102,4127+60])
+                                    Pexp_ident "Ident.print" (typing/printpat.ml[102,4127+49]..[102,4127+60])
+                                <arg>
+                                Nolabel
+                                  expression (typing/printpat.ml[102,4127+61]..[102,4127+62])
+                                    Pexp_ident "x" (typing/printpat.ml[102,4127+61]..[102,4127+62])
+                              ]
+                          <case>
+                            pattern (typing/printpat.ml[103,4190+4]..[103,4190+16])
+                              Ppat_construct "Tpat_value" (typing/printpat.ml[103,4190+4]..[103,4190+14])
+                              Some
+                                []
+                                pattern (typing/printpat.ml[103,4190+15]..[103,4190+16])
+                                  Ppat_var "v" (typing/printpat.ml[103,4190+15]..[103,4190+16])
+                            expression (typing/printpat.ml[104,4210+6]..[104,4210+48])
+                              Pexp_apply
+                              expression (typing/printpat.ml[104,4210+6]..[104,4210+13])
+                                Pexp_ident "fprintf" (typing/printpat.ml[104,4210+6]..[104,4210+13])
+                              [
+                                <arg>
+                                Nolabel
+                                  expression (typing/printpat.ml[104,4210+14]..[104,4210+17])
+                                    Pexp_ident "ppf" (typing/printpat.ml[104,4210+14]..[104,4210+17])
+                                <arg>
+                                Nolabel
+                                  expression (typing/printpat.ml[104,4210+18]..[104,4210+22])
+                                    Pexp_constant PConst_string("%a",(typing/printpat.ml[104,4210+19]..[104,4210+21]),None)
+                                <arg>
+                                Nolabel
+                                  expression (typing/printpat.ml[104,4210+23]..[104,4210+33])
+                                    Pexp_ident "pretty_val" (typing/printpat.ml[104,4210+23]..[104,4210+33])
+                                <arg>
+                                Nolabel
+                                  expression (typing/printpat.ml[104,4210+34]..[104,4210+48])
+                                    Pexp_coerce
+                                    expression (typing/printpat.ml[104,4210+35]..[104,4210+36])
+                                      Pexp_ident "v" (typing/printpat.ml[104,4210+35]..[104,4210+36])
+                                    None
+                                    core_type (typing/printpat.ml[104,4210+40]..[104,4210+47])
+                                      Ptyp_constr "pattern" (typing/printpat.ml[104,4210+40]..[104,4210+47])
+                                      []
+                              ]
+                          <case>
+                            pattern (typing/printpat.ml[105,4259+4]..[105,4259+20])
+                              Ppat_construct "Tpat_exception" (typing/printpat.ml[105,4259+4]..[105,4259+18])
+                              Some
+                                []
+                                pattern (typing/printpat.ml[105,4259+19]..[105,4259+20])
+                                  Ppat_var "v" (typing/printpat.ml[105,4259+19]..[105,4259+20])
+                            expression (typing/printpat.ml[106,4283+6]..[106,4283+53])
+                              Pexp_apply
+                              expression (typing/printpat.ml[106,4283+6]..[106,4283+13])
+                                Pexp_ident "fprintf" (typing/printpat.ml[106,4283+6]..[106,4283+13])
+                              [
+                                <arg>
+                                Nolabel
+                                  expression (typing/printpat.ml[106,4283+14]..[106,4283+17])
+                                    Pexp_ident "ppf" (typing/printpat.ml[106,4283+14]..[106,4283+17])
+                                <arg>
+                                Nolabel
+                                  expression (typing/printpat.ml[106,4283+18]..[106,4283+40])
+                                    Pexp_constant PConst_string("@[<2>exception@ %a@]",(typing/printpat.ml[106,4283+19]..[106,4283+39]),None)
+                                <arg>
+                                Nolabel
+                                  expression (typing/printpat.ml[106,4283+41]..[106,4283+51])
+                                    Pexp_ident "pretty_arg" (typing/printpat.ml[106,4283+41]..[106,4283+51])
+                                <arg>
+                                Nolabel
+                                  expression (typing/printpat.ml[106,4283+52]..[106,4283+53])
+                                    Pexp_ident "v" (typing/printpat.ml[106,4283+52]..[106,4283+53])
+                              ]
+                          <case>
+                            pattern (typing/printpat.ml[107,4337+4]..[107,4337+13])
+                              Ppat_construct "Tpat_or" (typing/printpat.ml[107,4337+4]..[107,4337+11])
+                              Some
+                                []
+                                pattern (typing/printpat.ml[107,4337+12]..[107,4337+13])
+                                  Ppat_any
+                            expression (typing/printpat.ml[108,4354+6]..[108,4354+40])
+                              Pexp_apply
+                              expression (typing/printpat.ml[108,4354+6]..[108,4354+13])
+                                Pexp_ident "fprintf" (typing/printpat.ml[108,4354+6]..[108,4354+13])
+                              [
+                                <arg>
+                                Nolabel
+                                  expression (typing/printpat.ml[108,4354+14]..[108,4354+17])
+                                    Pexp_ident "ppf" (typing/printpat.ml[108,4354+14]..[108,4354+17])
+                                <arg>
+                                Nolabel
+                                  expression (typing/printpat.ml[108,4354+18]..[108,4354+28])
+                                    Pexp_constant PConst_string("@[(%a)@]",(typing/printpat.ml[108,4354+19]..[108,4354+27]),None)
+                                <arg>
+                                Nolabel
+                                  expression (typing/printpat.ml[108,4354+29]..[108,4354+38])
+                                    Pexp_ident "pretty_or" (typing/printpat.ml[108,4354+29]..[108,4354+38])
+                                <arg>
+                                Nolabel
+                                  expression (typing/printpat.ml[108,4354+39]..[108,4354+40])
+                                    Pexp_ident "v" (typing/printpat.ml[108,4354+39]..[108,4354+40])
+                              ]
+                        ]
+                  ]
+            core_type (typing/printpat.ml[47,1934+30]..[47,1934+57])
+              Ptyp_arrow
+              Nolabel
+              core_type (typing/printpat.ml[47,1934+30]..[47,1934+31])
+                Ptyp_any
+              core_type (typing/printpat.ml[47,1934+35]..[47,1934+57])
+                Ptyp_arrow
+                Nolabel
+                core_type (typing/printpat.ml[47,1934+35]..[47,1934+52])
+                  Ptyp_constr "general_pattern" (typing/printpat.ml[47,1934+37]..[47,1934+52])
+                  [
+                    core_type (typing/printpat.ml[47,1934+35]..[47,1934+36])
+                      Ptyp_constr "k" (typing/printpat.ml[47,1934+35]..[47,1934+36])
+                      []
+                  ]
+                core_type (typing/printpat.ml[47,1934+56]..[47,1934+57])
+                  Ptyp_any
+      <def>
+        pattern (typing/printpat.ml[110,4396+4]..[110,4396+14])
+          Ppat_var "pretty_car" (typing/printpat.ml[110,4396+4]..[110,4396+14])
+        expression (typing/printpat.ml[110,4396+15]..[114,4545+23]) ghost
+          Pexp_fun
+          Nolabel
+          None
+          pattern (typing/printpat.ml[110,4396+15]..[110,4396+18])
+            Ppat_var "ppf" (typing/printpat.ml[110,4396+15]..[110,4396+18])
+          expression (typing/printpat.ml[110,4396+19]..[114,4545+23]) ghost
+            Pexp_fun
+            Nolabel
+            None
+            pattern (typing/printpat.ml[110,4396+19]..[110,4396+20])
+              Ppat_var "v" (typing/printpat.ml[110,4396+19]..[110,4396+20])
+            expression (typing/printpat.ml[110,4396+23]..[114,4545+23])
+              Pexp_match
+              expression (typing/printpat.ml[110,4396+29]..[110,4396+39])
+                Pexp_field
+                expression (typing/printpat.ml[110,4396+29]..[110,4396+30])
+                  Pexp_ident "v" (typing/printpat.ml[110,4396+29]..[110,4396+30])
+                "pat_desc" (typing/printpat.ml[110,4396+31]..[110,4396+39])
+              [
+                <case>
+                  pattern (typing/printpat.ml[111,4441+2]..[111,4441+40])
+                    Ppat_construct "Tpat_construct" (typing/printpat.ml[111,4441+2]..[111,4441+16])
+                    Some
+                      []
+                      pattern (typing/printpat.ml[111,4441+17]..[111,4441+40])
+                        Ppat_tuple
+                        [
+                          pattern (typing/printpat.ml[111,4441+18]..[111,4441+19])
+                            Ppat_any
+                          pattern (typing/printpat.ml[111,4441+20]..[111,4441+24])
+                            Ppat_var "cstr" (typing/printpat.ml[111,4441+20]..[111,4441+24])
+                          pattern (typing/printpat.ml[111,4441+26]..[111,4441+33])
+                            Ppat_construct "::" (typing/printpat.ml[111,4441+27]..[111,4441+33]) ghost
+                            Some
+                              []
+                              pattern (typing/printpat.ml[111,4441+27]..[111,4441+33]) ghost
+                                Ppat_tuple
+                                [
+                                  pattern (typing/printpat.ml[111,4441+27]..[111,4441+28])
+                                    Ppat_any
+                                  pattern (typing/printpat.ml[111,4441+31]..[111,4441+33]) ghost
+                                    Ppat_construct "::" (typing/printpat.ml[111,4441+31]..[111,4441+33]) ghost
+                                    Some
+                                      []
+                                      pattern (typing/printpat.ml[111,4441+31]..[111,4441+33]) ghost
+                                        Ppat_tuple
+                                        [
+                                          pattern (typing/printpat.ml[111,4441+31]..[111,4441+32])
+                                            Ppat_any
+                                          pattern (typing/printpat.ml[111,4441+32]..[111,4441+33]) ghost
+                                            Ppat_construct "[]" (typing/printpat.ml[111,4441+32]..[111,4441+33]) ghost
+                                            None
+                                        ]
+                                ]
+                          pattern (typing/printpat.ml[111,4441+35]..[111,4441+39])
+                            Ppat_construct "None" (typing/printpat.ml[111,4441+35]..[111,4441+39])
+                            None
+                        ]
+                  <when>
+                    expression (typing/printpat.ml[112,4482+9]..[112,4482+21])
+                      Pexp_apply
+                      expression (typing/printpat.ml[112,4482+9]..[112,4482+16])
+                        Pexp_ident "is_cons" (typing/printpat.ml[112,4482+9]..[112,4482+16])
+                      [
+                        <arg>
+                        Nolabel
+                          expression (typing/printpat.ml[112,4482+17]..[112,4482+21])
+                            Pexp_ident "cstr" (typing/printpat.ml[112,4482+17]..[112,4482+21])
+                      ]
+                  expression (typing/printpat.ml[113,4507+6]..[113,4507+37])
+                    Pexp_apply
+                    expression (typing/printpat.ml[113,4507+6]..[113,4507+13])
+                      Pexp_ident "fprintf" (typing/printpat.ml[113,4507+6]..[113,4507+13])
+                    [
+                      <arg>
+                      Nolabel
+                        expression (typing/printpat.ml[113,4507+14]..[113,4507+17])
+                          Pexp_ident "ppf" (typing/printpat.ml[113,4507+14]..[113,4507+17])
+                      <arg>
+                      Nolabel
+                        expression (typing/printpat.ml[113,4507+18]..[113,4507+24])
+                          Pexp_constant PConst_string("(%a)",(typing/printpat.ml[113,4507+19]..[113,4507+23]),None)
+                      <arg>
+                      Nolabel
+                        expression (typing/printpat.ml[113,4507+25]..[113,4507+35])
+                          Pexp_ident "pretty_val" (typing/printpat.ml[113,4507+25]..[113,4507+35])
+                      <arg>
+                      Nolabel
+                        expression (typing/printpat.ml[113,4507+36]..[113,4507+37])
+                          Pexp_ident "v" (typing/printpat.ml[113,4507+36]..[113,4507+37])
+                    ]
+                <case>
+                  pattern (typing/printpat.ml[114,4545+2]..[114,4545+3])
+                    Ppat_any
+                  expression (typing/printpat.ml[114,4545+7]..[114,4545+23])
+                    Pexp_apply
+                    expression (typing/printpat.ml[114,4545+7]..[114,4545+17])
+                      Pexp_ident "pretty_val" (typing/printpat.ml[114,4545+7]..[114,4545+17])
+                    [
+                      <arg>
+                      Nolabel
+                        expression (typing/printpat.ml[114,4545+18]..[114,4545+21])
+                          Pexp_ident "ppf" (typing/printpat.ml[114,4545+18]..[114,4545+21])
+                      <arg>
+                      Nolabel
+                        expression (typing/printpat.ml[114,4545+22]..[114,4545+23])
+                          Pexp_ident "v" (typing/printpat.ml[114,4545+22]..[114,4545+23])
+                    ]
+              ]
+      <def>
+        pattern (typing/printpat.ml[116,4570+4]..[116,4570+14])
+          Ppat_var "pretty_cdr" (typing/printpat.ml[116,4570+4]..[116,4570+14])
+        expression (typing/printpat.ml[116,4570+15]..[120,4740+23]) ghost
+          Pexp_fun
+          Nolabel
+          None
+          pattern (typing/printpat.ml[116,4570+15]..[116,4570+18])
+            Ppat_var "ppf" (typing/printpat.ml[116,4570+15]..[116,4570+18])
+          expression (typing/printpat.ml[116,4570+19]..[120,4740+23]) ghost
+            Pexp_fun
+            Nolabel
+            None
+            pattern (typing/printpat.ml[116,4570+19]..[116,4570+20])
+              Ppat_var "v" (typing/printpat.ml[116,4570+19]..[116,4570+20])
+            expression (typing/printpat.ml[116,4570+23]..[120,4740+23])
+              Pexp_match
+              expression (typing/printpat.ml[116,4570+29]..[116,4570+39])
+                Pexp_field
+                expression (typing/printpat.ml[116,4570+29]..[116,4570+30])
+                  Pexp_ident "v" (typing/printpat.ml[116,4570+29]..[116,4570+30])
+                "pat_desc" (typing/printpat.ml[116,4570+31]..[116,4570+39])
+              [
+                <case>
+                  pattern (typing/printpat.ml[117,4615+2]..[117,4615+42])
+                    Ppat_construct "Tpat_construct" (typing/printpat.ml[117,4615+2]..[117,4615+16])
+                    Some
+                      []
+                      pattern (typing/printpat.ml[117,4615+17]..[117,4615+42])
+                        Ppat_tuple
+                        [
+                          pattern (typing/printpat.ml[117,4615+18]..[117,4615+19])
+                            Ppat_any
+                          pattern (typing/printpat.ml[117,4615+20]..[117,4615+24])
+                            Ppat_var "cstr" (typing/printpat.ml[117,4615+20]..[117,4615+24])
+                          pattern (typing/printpat.ml[117,4615+26]..[117,4615+35])
+                            Ppat_construct "::" (typing/printpat.ml[117,4615+27]..[117,4615+35]) ghost
+                            Some
+                              []
+                              pattern (typing/printpat.ml[117,4615+27]..[117,4615+35]) ghost
+                                Ppat_tuple
+                                [
+                                  pattern (typing/printpat.ml[117,4615+27]..[117,4615+29])
+                                    Ppat_var "v1" (typing/printpat.ml[117,4615+27]..[117,4615+29])
+                                  pattern (typing/printpat.ml[117,4615+32]..[117,4615+35]) ghost
+                                    Ppat_construct "::" (typing/printpat.ml[117,4615+32]..[117,4615+35]) ghost
+                                    Some
+                                      []
+                                      pattern (typing/printpat.ml[117,4615+32]..[117,4615+35]) ghost
+                                        Ppat_tuple
+                                        [
+                                          pattern (typing/printpat.ml[117,4615+32]..[117,4615+34])
+                                            Ppat_var "v2" (typing/printpat.ml[117,4615+32]..[117,4615+34])
+                                          pattern (typing/printpat.ml[117,4615+34]..[117,4615+35]) ghost
+                                            Ppat_construct "[]" (typing/printpat.ml[117,4615+34]..[117,4615+35]) ghost
+                                            None
+                                        ]
+                                ]
+                          pattern (typing/printpat.ml[117,4615+37]..[117,4615+41])
+                            Ppat_construct "None" (typing/printpat.ml[117,4615+37]..[117,4615+41])
+                            None
+                        ]
+                  <when>
+                    expression (typing/printpat.ml[118,4658+9]..[118,4658+21])
+                      Pexp_apply
+                      expression (typing/printpat.ml[118,4658+9]..[118,4658+16])
+                        Pexp_ident "is_cons" (typing/printpat.ml[118,4658+9]..[118,4658+16])
+                      [
+                        <arg>
+                        Nolabel
+                          expression (typing/printpat.ml[118,4658+17]..[118,4658+21])
+                            Pexp_ident "cstr" (typing/printpat.ml[118,4658+17]..[118,4658+21])
+                      ]
+                  expression (typing/printpat.ml[119,4683+6]..[119,4683+56])
+                    Pexp_apply
+                    expression (typing/printpat.ml[119,4683+6]..[119,4683+13])
+                      Pexp_ident "fprintf" (typing/printpat.ml[119,4683+6]..[119,4683+13])
+                    [
+                      <arg>
+                      Nolabel
+                        expression (typing/printpat.ml[119,4683+14]..[119,4683+17])
+                          Pexp_ident "ppf" (typing/printpat.ml[119,4683+14]..[119,4683+17])
+                      <arg>
+                      Nolabel
+                        expression (typing/printpat.ml[119,4683+18]..[119,4683+28])
+                          Pexp_constant PConst_string("%a::@,%a",(typing/printpat.ml[119,4683+19]..[119,4683+27]),None)
+                      <arg>
+                      Nolabel
+                        expression (typing/printpat.ml[119,4683+29]..[119,4683+39])
+                          Pexp_ident "pretty_car" (typing/printpat.ml[119,4683+29]..[119,4683+39])
+                      <arg>
+                      Nolabel
+                        expression (typing/printpat.ml[119,4683+40]..[119,4683+42])
+                          Pexp_ident "v1" (typing/printpat.ml[119,4683+40]..[119,4683+42])
+                      <arg>
+                      Nolabel
+                        expression (typing/printpat.ml[119,4683+43]..[119,4683+53])
+                          Pexp_ident "pretty_cdr" (typing/printpat.ml[119,4683+43]..[119,4683+53])
+                      <arg>
+                      Nolabel
+                        expression (typing/printpat.ml[119,4683+54]..[119,4683+56])
+                          Pexp_ident "v2" (typing/printpat.ml[119,4683+54]..[119,4683+56])
+                    ]
+                <case>
+                  pattern (typing/printpat.ml[120,4740+2]..[120,4740+3])
+                    Ppat_any
+                  expression (typing/printpat.ml[120,4740+7]..[120,4740+23])
+                    Pexp_apply
+                    expression (typing/printpat.ml[120,4740+7]..[120,4740+17])
+                      Pexp_ident "pretty_val" (typing/printpat.ml[120,4740+7]..[120,4740+17])
+                    [
+                      <arg>
+                      Nolabel
+                        expression (typing/printpat.ml[120,4740+18]..[120,4740+21])
+                          Pexp_ident "ppf" (typing/printpat.ml[120,4740+18]..[120,4740+21])
+                      <arg>
+                      Nolabel
+                        expression (typing/printpat.ml[120,4740+22]..[120,4740+23])
+                          Pexp_ident "v" (typing/printpat.ml[120,4740+22]..[120,4740+23])
+                    ]
+              ]
+      <def>
+        pattern (typing/printpat.ml[122,4765+4]..[122,4765+14])
+          Ppat_var "pretty_arg" (typing/printpat.ml[122,4765+4]..[122,4765+14])
+        expression (typing/printpat.ml[122,4765+15]..[125,4908+24]) ghost
+          Pexp_fun
+          Nolabel
+          None
+          pattern (typing/printpat.ml[122,4765+15]..[122,4765+18])
+            Ppat_var "ppf" (typing/printpat.ml[122,4765+15]..[122,4765+18])
+          expression (typing/printpat.ml[122,4765+19]..[125,4908+24]) ghost
+            Pexp_fun
+            Nolabel
+            None
+            pattern (typing/printpat.ml[122,4765+19]..[122,4765+20])
+              Ppat_var "v" (typing/printpat.ml[122,4765+19]..[122,4765+20])
+            expression (typing/printpat.ml[122,4765+23]..[125,4908+24])
+              Pexp_match
+              expression (typing/printpat.ml[122,4765+29]..[122,4765+39])
+                Pexp_field
+                expression (typing/printpat.ml[122,4765+29]..[122,4765+30])
+                  Pexp_ident "v" (typing/printpat.ml[122,4765+29]..[122,4765+30])
+                "pat_desc" (typing/printpat.ml[122,4765+31]..[122,4765+39])
+              [
+                <case>
+                  pattern (typing/printpat.ml[123,4810+2]..[124,4843+29])
+                    Ppat_or
+                    pattern (typing/printpat.ml[123,4810+2]..[123,4810+32])
+                      Ppat_construct "Tpat_construct" (typing/printpat.ml[123,4810+2]..[123,4810+16])
+                      Some
+                        []
+                        pattern (typing/printpat.ml[123,4810+17]..[123,4810+32])
+                          Ppat_tuple
+                          [
+                            pattern (typing/printpat.ml[123,4810+18]..[123,4810+19])
+                              Ppat_any
+                            pattern (typing/printpat.ml[123,4810+20]..[123,4810+21])
+                              Ppat_any
+                            pattern (typing/printpat.ml[123,4810+22]..[123,4810+26])
+                              Ppat_construct "::" (typing/printpat.ml[123,4810+23]..[123,4810+25])
+                              Some
+                                []
+                                pattern (typing/printpat.ml[123,4810+22]..[123,4810+26]) ghost
+                                  Ppat_tuple
+                                  [
+                                    pattern (typing/printpat.ml[123,4810+22]..[123,4810+23])
+                                      Ppat_any
+                                    pattern (typing/printpat.ml[123,4810+25]..[123,4810+26])
+                                      Ppat_any
+                                  ]
+                            pattern (typing/printpat.ml[123,4810+27]..[123,4810+31])
+                              Ppat_construct "None" (typing/printpat.ml[123,4810+27]..[123,4810+31])
+                              None
+                          ]
+                    pattern (typing/printpat.ml[124,4843+2]..[124,4843+29])
+                      Ppat_construct "Tpat_variant" (typing/printpat.ml[124,4843+2]..[124,4843+14])
+                      Some
+                        []
+                        pattern (typing/printpat.ml[124,4843+15]..[124,4843+29])
+                          Ppat_tuple
+                          [
+                            pattern (typing/printpat.ml[124,4843+16]..[124,4843+17])
+                              Ppat_any
+                            pattern (typing/printpat.ml[124,4843+19]..[124,4843+25])
+                              Ppat_construct "Some" (typing/printpat.ml[124,4843+19]..[124,4843+23])
+                              Some
+                                []
+                                pattern (typing/printpat.ml[124,4843+24]..[124,4843+25])
+                                  Ppat_any
+                            pattern (typing/printpat.ml[124,4843+27]..[124,4843+28])
+                              Ppat_any
+                          ]
+                  expression (typing/printpat.ml[124,4843+33]..[124,4843+64])
+                    Pexp_apply
+                    expression (typing/printpat.ml[124,4843+33]..[124,4843+40])
+                      Pexp_ident "fprintf" (typing/printpat.ml[124,4843+33]..[124,4843+40])
+                    [
+                      <arg>
+                      Nolabel
+                        expression (typing/printpat.ml[124,4843+41]..[124,4843+44])
+                          Pexp_ident "ppf" (typing/printpat.ml[124,4843+41]..[124,4843+44])
+                      <arg>
+                      Nolabel
+                        expression (typing/printpat.ml[124,4843+45]..[124,4843+51])
+                          Pexp_constant PConst_string("(%a)",(typing/printpat.ml[124,4843+46]..[124,4843+50]),None)
+                      <arg>
+                      Nolabel
+                        expression (typing/printpat.ml[124,4843+52]..[124,4843+62])
+                          Pexp_ident "pretty_val" (typing/printpat.ml[124,4843+52]..[124,4843+62])
+                      <arg>
+                      Nolabel
+                        expression (typing/printpat.ml[124,4843+63]..[124,4843+64])
+                          Pexp_ident "v" (typing/printpat.ml[124,4843+63]..[124,4843+64])
+                    ]
+                <case>
+                  pattern (typing/printpat.ml[125,4908+3]..[125,4908+4])
+                    Ppat_any
+                  expression (typing/printpat.ml[125,4908+8]..[125,4908+24])
+                    Pexp_apply
+                    expression (typing/printpat.ml[125,4908+8]..[125,4908+18])
+                      Pexp_ident "pretty_val" (typing/printpat.ml[125,4908+8]..[125,4908+18])
+                    [
+                      <arg>
+                      Nolabel
+                        expression (typing/printpat.ml[125,4908+19]..[125,4908+22])
+                          Pexp_ident "ppf" (typing/printpat.ml[125,4908+19]..[125,4908+22])
+                      <arg>
+                      Nolabel
+                        expression (typing/printpat.ml[125,4908+23]..[125,4908+24])
+                          Pexp_ident "v" (typing/printpat.ml[125,4908+23]..[125,4908+24])
+                    ]
+              ]
+      <def>
+        pattern (typing/printpat.ml[127,4934+4]..[127,4934+52]) ghost
+          Ppat_constraint
+          pattern (typing/printpat.ml[127,4934+4]..[127,4934+13])
+            Ppat_var "pretty_or" (typing/printpat.ml[127,4934+4]..[127,4934+13])
+          core_type (typing/printpat.ml[127,4934+4]..[131,5101+25]) ghost
+            Ptyp_poly 'k
+            core_type (typing/printpat.ml[127,4934+25]..[127,4934+52])
+              Ptyp_arrow
+              Nolabel
+              core_type (typing/printpat.ml[127,4934+25]..[127,4934+26])
+                Ptyp_any
+              core_type (typing/printpat.ml[127,4934+30]..[127,4934+52])
+                Ptyp_arrow
+                Nolabel
+                core_type (typing/printpat.ml[127,4934+30]..[127,4934+47])
+                  Ptyp_constr "general_pattern" (typing/printpat.ml[127,4934+32]..[127,4934+47])
+                  [
+                    core_type (typing/printpat.ml[127,4934+30]..[127,4934+31])
+                      Ptyp_var k
+                  ]
+                core_type (typing/printpat.ml[127,4934+51]..[127,4934+52])
+                  Ptyp_any
+        expression (typing/printpat.ml[127,4934+4]..[131,5101+25])
+          Pexp_newtype "k"
+          expression (typing/printpat.ml[127,4934+4]..[131,5101+25])
+            Pexp_constraint
+            expression (typing/printpat.ml[127,4934+55]..[131,5101+25])
+              Pexp_fun
+              Nolabel
+              None
+              pattern (typing/printpat.ml[127,4934+59]..[127,4934+62])
+                Ppat_var "ppf" (typing/printpat.ml[127,4934+59]..[127,4934+62])
+              expression (typing/printpat.ml[127,4934+63]..[131,5101+25]) ghost
+                Pexp_fun
+                Nolabel
+                None
+                pattern (typing/printpat.ml[127,4934+63]..[127,4934+64])
+                  Ppat_var "v" (typing/printpat.ml[127,4934+63]..[127,4934+64])
+                expression (typing/printpat.ml[128,5002+2]..[131,5101+25])
+                  Pexp_match
+                  expression (typing/printpat.ml[128,5002+8]..[128,5002+18])
+                    Pexp_field
+                    expression (typing/printpat.ml[128,5002+8]..[128,5002+9])
+                      Pexp_ident "v" (typing/printpat.ml[128,5002+8]..[128,5002+9])
+                    "pat_desc" (typing/printpat.ml[128,5002+10]..[128,5002+18])
+                  [
+                    <case>
+                      pattern (typing/printpat.ml[129,5026+4]..[129,5026+19])
+                        Ppat_construct "Tpat_or" (typing/printpat.ml[129,5026+4]..[129,5026+11])
+                        Some
+                          []
+                          pattern (typing/printpat.ml[129,5026+12]..[129,5026+19])
+                            Ppat_tuple
+                            [
+                              pattern (typing/printpat.ml[129,5026+13]..[129,5026+14])
+                                Ppat_var "v" (typing/printpat.ml[129,5026+13]..[129,5026+14])
+                              pattern (typing/printpat.ml[129,5026+15]..[129,5026+16])
+                                Ppat_var "w" (typing/printpat.ml[129,5026+15]..[129,5026+16])
+                              pattern (typing/printpat.ml[129,5026+17]..[129,5026+18])
+                                Ppat_any
+                            ]
+                      expression (typing/printpat.ml[130,5049+6]..[130,5049+51])
+                        Pexp_apply
+                        expression (typing/printpat.ml[130,5049+6]..[130,5049+13])
+                          Pexp_ident "fprintf" (typing/printpat.ml[130,5049+6]..[130,5049+13])
+                        [
+                          <arg>
+                          Nolabel
+                            expression (typing/printpat.ml[130,5049+14]..[130,5049+17])
+                              Pexp_ident "ppf" (typing/printpat.ml[130,5049+14]..[130,5049+17])
+                          <arg>
+                          Nolabel
+                            expression (typing/printpat.ml[130,5049+18]..[130,5049+27])
+                              Pexp_constant PConst_string("%a|@,%a",(typing/printpat.ml[130,5049+19]..[130,5049+26]),None)
+                          <arg>
+                          Nolabel
+                            expression (typing/printpat.ml[130,5049+28]..[130,5049+37])
+                              Pexp_ident "pretty_or" (typing/printpat.ml[130,5049+28]..[130,5049+37])
+                          <arg>
+                          Nolabel
+                            expression (typing/printpat.ml[130,5049+38]..[130,5049+39])
+                              Pexp_ident "v" (typing/printpat.ml[130,5049+38]..[130,5049+39])
+                          <arg>
+                          Nolabel
+                            expression (typing/printpat.ml[130,5049+40]..[130,5049+49])
+                              Pexp_ident "pretty_or" (typing/printpat.ml[130,5049+40]..[130,5049+49])
+                          <arg>
+                          Nolabel
+                            expression (typing/printpat.ml[130,5049+50]..[130,5049+51])
+                              Pexp_ident "w" (typing/printpat.ml[130,5049+50]..[130,5049+51])
+                        ]
+                    <case>
+                      pattern (typing/printpat.ml[131,5101+4]..[131,5101+5])
+                        Ppat_any
+                      expression (typing/printpat.ml[131,5101+9]..[131,5101+25])
+                        Pexp_apply
+                        expression (typing/printpat.ml[131,5101+9]..[131,5101+19])
+                          Pexp_ident "pretty_val" (typing/printpat.ml[131,5101+9]..[131,5101+19])
+                        [
+                          <arg>
+                          Nolabel
+                            expression (typing/printpat.ml[131,5101+20]..[131,5101+23])
+                              Pexp_ident "ppf" (typing/printpat.ml[131,5101+20]..[131,5101+23])
+                          <arg>
+                          Nolabel
+                            expression (typing/printpat.ml[131,5101+24]..[131,5101+25])
+                              Pexp_ident "v" (typing/printpat.ml[131,5101+24]..[131,5101+25])
+                        ]
+                  ]
+            core_type (typing/printpat.ml[127,4934+25]..[127,4934+52])
+              Ptyp_arrow
+              Nolabel
+              core_type (typing/printpat.ml[127,4934+25]..[127,4934+26])
+                Ptyp_any
+              core_type (typing/printpat.ml[127,4934+30]..[127,4934+52])
+                Ptyp_arrow
+                Nolabel
+                core_type (typing/printpat.ml[127,4934+30]..[127,4934+47])
+                  Ptyp_constr "general_pattern" (typing/printpat.ml[127,4934+32]..[127,4934+47])
+                  [
+                    core_type (typing/printpat.ml[127,4934+30]..[127,4934+31])
+                      Ptyp_constr "k" (typing/printpat.ml[127,4934+30]..[127,4934+31])
+                      []
+                  ]
+                core_type (typing/printpat.ml[127,4934+51]..[127,4934+52])
+                  Ptyp_any
+      <def>
+        pattern (typing/printpat.ml[133,5128+4]..[133,5128+15])
+          Ppat_var "pretty_vals" (typing/printpat.ml[133,5128+4]..[133,5128+15])
+        expression (typing/printpat.ml[133,5128+16]..[137,5217+66]) ghost
+          Pexp_fun
+          Nolabel
+          None
+          pattern (typing/printpat.ml[133,5128+16]..[133,5128+19])
+            Ppat_var "sep" (typing/printpat.ml[133,5128+16]..[133,5128+19])
+          expression (typing/printpat.ml[133,5128+20]..[137,5217+66]) ghost
+            Pexp_fun
+            Nolabel
+            None
+            pattern (typing/printpat.ml[133,5128+20]..[133,5128+23])
+              Ppat_var "ppf" (typing/printpat.ml[133,5128+20]..[133,5128+23])
+            expression (typing/printpat.ml[133,5128+26]..[137,5217+66])
+              Pexp_function
+              [
+                <case>
+                  pattern (typing/printpat.ml[134,5163+4]..[134,5163+6])
+                    Ppat_construct "[]" (typing/printpat.ml[134,5163+4]..[134,5163+6])
+                    None
+                  expression (typing/printpat.ml[134,5163+10]..[134,5163+12])
+                    Pexp_construct "()" (typing/printpat.ml[134,5163+10]..[134,5163+12])
+                    None
+                <case>
+                  pattern (typing/printpat.ml[135,5176+4]..[135,5176+7])
+                    Ppat_construct "::" (typing/printpat.ml[135,5176+5]..[135,5176+7]) ghost
+                    Some
+                      []
+                      pattern (typing/printpat.ml[135,5176+5]..[135,5176+7]) ghost
+                        Ppat_tuple
+                        [
+                          pattern (typing/printpat.ml[135,5176+5]..[135,5176+6])
+                            Ppat_var "v" (typing/printpat.ml[135,5176+5]..[135,5176+6])
+                          pattern (typing/printpat.ml[135,5176+6]..[135,5176+7]) ghost
+                            Ppat_construct "[]" (typing/printpat.ml[135,5176+6]..[135,5176+7]) ghost
+                            None
+                        ]
+                  expression (typing/printpat.ml[135,5176+11]..[135,5176+27])
+                    Pexp_apply
+                    expression (typing/printpat.ml[135,5176+11]..[135,5176+21])
+                      Pexp_ident "pretty_val" (typing/printpat.ml[135,5176+11]..[135,5176+21])
+                    [
+                      <arg>
+                      Nolabel
+                        expression (typing/printpat.ml[135,5176+22]..[135,5176+25])
+                          Pexp_ident "ppf" (typing/printpat.ml[135,5176+22]..[135,5176+25])
+                      <arg>
+                      Nolabel
+                        expression (typing/printpat.ml[135,5176+26]..[135,5176+27])
+                          Pexp_ident "v" (typing/printpat.ml[135,5176+26]..[135,5176+27])
+                    ]
+                <case>
+                  pattern (typing/printpat.ml[136,5204+4]..[136,5204+9])
+                    Ppat_construct "::" (typing/printpat.ml[136,5204+5]..[136,5204+7])
+                    Some
+                      []
+                      pattern (typing/printpat.ml[136,5204+4]..[136,5204+9]) ghost
+                        Ppat_tuple
+                        [
+                          pattern (typing/printpat.ml[136,5204+4]..[136,5204+5])
+                            Ppat_var "v" (typing/printpat.ml[136,5204+4]..[136,5204+5])
+                          pattern (typing/printpat.ml[136,5204+7]..[136,5204+9])
+                            Ppat_var "vs" (typing/printpat.ml[136,5204+7]..[136,5204+9])
+                        ]
+                  expression (typing/printpat.ml[137,5217+6]..[137,5217+66])
+                    Pexp_apply
+                    expression (typing/printpat.ml[137,5217+6]..[137,5217+13])
+                      Pexp_ident "fprintf" (typing/printpat.ml[137,5217+6]..[137,5217+13])
+                    [
+                      <arg>
+                      Nolabel
+                        expression (typing/printpat.ml[137,5217+14]..[137,5217+17])
+                          Pexp_ident "ppf" (typing/printpat.ml[137,5217+14]..[137,5217+17])
+                      <arg>
+                      Nolabel
+                        expression (typing/printpat.ml[137,5217+18]..[137,5217+28])
+                          Pexp_constant PConst_string("%a%s@ %a",(typing/printpat.ml[137,5217+19]..[137,5217+27]),None)
+                      <arg>
+                      Nolabel
+                        expression (typing/printpat.ml[137,5217+29]..[137,5217+39])
+                          Pexp_ident "pretty_val" (typing/printpat.ml[137,5217+29]..[137,5217+39])
+                      <arg>
+                      Nolabel
+                        expression (typing/printpat.ml[137,5217+40]..[137,5217+41])
+                          Pexp_ident "v" (typing/printpat.ml[137,5217+40]..[137,5217+41])
+                      <arg>
+                      Nolabel
+                        expression (typing/printpat.ml[137,5217+42]..[137,5217+45])
+                          Pexp_ident "sep" (typing/printpat.ml[137,5217+42]..[137,5217+45])
+                      <arg>
+                      Nolabel
+                        expression (typing/printpat.ml[137,5217+46]..[137,5217+63])
+                          Pexp_apply
+                          expression (typing/printpat.ml[137,5217+47]..[137,5217+58])
+                            Pexp_ident "pretty_vals" (typing/printpat.ml[137,5217+47]..[137,5217+58])
+                          [
+                            <arg>
+                            Nolabel
+                              expression (typing/printpat.ml[137,5217+59]..[137,5217+62])
+                                Pexp_ident "sep" (typing/printpat.ml[137,5217+59]..[137,5217+62])
+                          ]
+                      <arg>
+                      Nolabel
+                        expression (typing/printpat.ml[137,5217+64]..[137,5217+66])
+                          Pexp_ident "vs" (typing/printpat.ml[137,5217+64]..[137,5217+66])
+                    ]
+              ]
+      <def>
+        pattern (typing/printpat.ml[139,5285+4]..[139,5285+16])
+          Ppat_var "pretty_lvals" (typing/printpat.ml[139,5285+4]..[139,5285+16])
+        expression (typing/printpat.ml[139,5285+17]..[145,5454+51]) ghost
+          Pexp_fun
+          Nolabel
+          None
+          pattern (typing/printpat.ml[139,5285+17]..[139,5285+20])
+            Ppat_var "ppf" (typing/printpat.ml[139,5285+17]..[139,5285+20])
+          expression (typing/printpat.ml[139,5285+23]..[145,5454+51])
+            Pexp_function
+            [
+              <case>
+                pattern (typing/printpat.ml[140,5317+4]..[140,5317+6])
+                  Ppat_construct "[]" (typing/printpat.ml[140,5317+4]..[140,5317+6])
+                  None
+                expression (typing/printpat.ml[140,5317+10]..[140,5317+12])
+                  Pexp_construct "()" (typing/printpat.ml[140,5317+10]..[140,5317+12])
+                  None
+              <case>
+                pattern (typing/printpat.ml[141,5330+4]..[141,5330+13])
+                  Ppat_construct "::" (typing/printpat.ml[141,5330+5]..[141,5330+13]) ghost
+                  Some
+                    []
+                    pattern (typing/printpat.ml[141,5330+5]..[141,5330+13]) ghost
+                      Ppat_tuple
+                      [
+                        pattern (typing/printpat.ml[141,5330+5]..[141,5330+12])
+                          Ppat_tuple
+                          [
+                            pattern (typing/printpat.ml[141,5330+5]..[141,5330+6])
+                              Ppat_any
+                            pattern (typing/printpat.ml[141,5330+7]..[141,5330+10])
+                              Ppat_var "lbl" (typing/printpat.ml[141,5330+7]..[141,5330+10])
+                            pattern (typing/printpat.ml[141,5330+11]..[141,5330+12])
+                              Ppat_var "v" (typing/printpat.ml[141,5330+11]..[141,5330+12])
+                          ]
+                        pattern (typing/printpat.ml[141,5330+12]..[141,5330+13]) ghost
+                          Ppat_construct "[]" (typing/printpat.ml[141,5330+12]..[141,5330+13]) ghost
+                          None
+                      ]
+                expression (typing/printpat.ml[142,5347+6]..[142,5347+51])
+                  Pexp_apply
+                  expression (typing/printpat.ml[142,5347+6]..[142,5347+13])
+                    Pexp_ident "fprintf" (typing/printpat.ml[142,5347+6]..[142,5347+13])
+                  [
+                    <arg>
+                    Nolabel
+                      expression (typing/printpat.ml[142,5347+14]..[142,5347+17])
+                        Pexp_ident "ppf" (typing/printpat.ml[142,5347+14]..[142,5347+17])
+                    <arg>
+                    Nolabel
+                      expression (typing/printpat.ml[142,5347+18]..[142,5347+25])
+                        Pexp_constant PConst_string("%s=%a",(typing/printpat.ml[142,5347+19]..[142,5347+24]),None)
+                    <arg>
+                    Nolabel
+                      expression (typing/printpat.ml[142,5347+26]..[142,5347+38])
+                        Pexp_field
+                        expression (typing/printpat.ml[142,5347+26]..[142,5347+29])
+                          Pexp_ident "lbl" (typing/printpat.ml[142,5347+26]..[142,5347+29])
+                        "lbl_name" (typing/printpat.ml[142,5347+30]..[142,5347+38])
+                    <arg>
+                    Nolabel
+                      expression (typing/printpat.ml[142,5347+39]..[142,5347+49])
+                        Pexp_ident "pretty_val" (typing/printpat.ml[142,5347+39]..[142,5347+49])
+                    <arg>
+                    Nolabel
+                      expression (typing/printpat.ml[142,5347+50]..[142,5347+51])
+                        Pexp_ident "v" (typing/printpat.ml[142,5347+50]..[142,5347+51])
+                  ]
+              <case>
+                pattern (typing/printpat.ml[143,5399+4]..[143,5399+20])
+                  Ppat_construct "::" (typing/printpat.ml[143,5399+14]..[143,5399+16])
+                  Some
+                    []
+                    pattern (typing/printpat.ml[143,5399+4]..[143,5399+20]) ghost
+                      Ppat_tuple
+                      [
+                        pattern (typing/printpat.ml[143,5399+4]..[143,5399+14])
+                          Ppat_tuple
+                          [
+                            pattern (typing/printpat.ml[143,5399+5]..[143,5399+6])
+                              Ppat_any
+                            pattern (typing/printpat.ml[143,5399+8]..[143,5399+11])
+                              Ppat_var "lbl" (typing/printpat.ml[143,5399+8]..[143,5399+11])
+                            pattern (typing/printpat.ml[143,5399+12]..[143,5399+13])
+                              Ppat_var "v" (typing/printpat.ml[143,5399+12]..[143,5399+13])
+                          ]
+                        pattern (typing/printpat.ml[143,5399+16]..[143,5399+20])
+                          Ppat_var "rest" (typing/printpat.ml[143,5399+16]..[143,5399+20])
+                      ]
+                expression (typing/printpat.ml[144,5423+6]..[145,5454+51])
+                  Pexp_apply
+                  expression (typing/printpat.ml[144,5423+6]..[144,5423+13])
+                    Pexp_ident "fprintf" (typing/printpat.ml[144,5423+6]..[144,5423+13])
+                  [
+                    <arg>
+                    Nolabel
+                      expression (typing/printpat.ml[144,5423+14]..[144,5423+17])
+                        Pexp_ident "ppf" (typing/printpat.ml[144,5423+14]..[144,5423+17])
+                    <arg>
+                    Nolabel
+                      expression (typing/printpat.ml[144,5423+18]..[144,5423+30])
+                        Pexp_constant PConst_string("%s=%a;@ %a",(typing/printpat.ml[144,5423+19]..[144,5423+29]),None)
+                    <arg>
+                    Nolabel
+                      expression (typing/printpat.ml[145,5454+8]..[145,5454+20])
+                        Pexp_field
+                        expression (typing/printpat.ml[145,5454+8]..[145,5454+11])
+                          Pexp_ident "lbl" (typing/printpat.ml[145,5454+8]..[145,5454+11])
+                        "lbl_name" (typing/printpat.ml[145,5454+12]..[145,5454+20])
+                    <arg>
+                    Nolabel
+                      expression (typing/printpat.ml[145,5454+21]..[145,5454+31])
+                        Pexp_ident "pretty_val" (typing/printpat.ml[145,5454+21]..[145,5454+31])
+                    <arg>
+                    Nolabel
+                      expression (typing/printpat.ml[145,5454+32]..[145,5454+33])
+                        Pexp_ident "v" (typing/printpat.ml[145,5454+32]..[145,5454+33])
+                    <arg>
+                    Nolabel
+                      expression (typing/printpat.ml[145,5454+34]..[145,5454+46])
+                        Pexp_ident "pretty_lvals" (typing/printpat.ml[145,5454+34]..[145,5454+46])
+                    <arg>
+                    Nolabel
+                      expression (typing/printpat.ml[145,5454+47]..[145,5454+51])
+                        Pexp_ident "rest" (typing/printpat.ml[145,5454+47]..[145,5454+51])
+                  ]
+            ]
+    ]
+  structure_item (typing/printpat.ml[147,5507+0]..[148,5530+37])
+    Pstr_value Nonrec
+    [
+      <def>
+        pattern (typing/printpat.ml[147,5507+4]..[147,5507+14])
+          Ppat_var "top_pretty" (typing/printpat.ml[147,5507+4]..[147,5507+14])
+        expression (typing/printpat.ml[147,5507+15]..[148,5530+37]) ghost
+          Pexp_fun
+          Nolabel
+          None
+          pattern (typing/printpat.ml[147,5507+15]..[147,5507+18])
+            Ppat_var "ppf" (typing/printpat.ml[147,5507+15]..[147,5507+18])
+          expression (typing/printpat.ml[147,5507+19]..[148,5530+37]) ghost
+            Pexp_fun
+            Nolabel
+            None
+            pattern (typing/printpat.ml[147,5507+19]..[147,5507+20])
+              Ppat_var "v" (typing/printpat.ml[147,5507+19]..[147,5507+20])
+            expression (typing/printpat.ml[148,5530+2]..[148,5530+37])
+              Pexp_apply
+              expression (typing/printpat.ml[148,5530+2]..[148,5530+9])
+                Pexp_ident "fprintf" (typing/printpat.ml[148,5530+2]..[148,5530+9])
+              [
+                <arg>
+                Nolabel
+                  expression (typing/printpat.ml[148,5530+10]..[148,5530+13])
+                    Pexp_ident "ppf" (typing/printpat.ml[148,5530+10]..[148,5530+13])
+                <arg>
+                Nolabel
+                  expression (typing/printpat.ml[148,5530+14]..[148,5530+24])
+                    Pexp_constant PConst_string("@[%a@]@?",(typing/printpat.ml[148,5530+15]..[148,5530+23]),None)
+                <arg>
+                Nolabel
+                  expression (typing/printpat.ml[148,5530+25]..[148,5530+35])
+                    Pexp_ident "pretty_val" (typing/printpat.ml[148,5530+25]..[148,5530+35])
+                <arg>
+                Nolabel
+                  expression (typing/printpat.ml[148,5530+36]..[148,5530+37])
+                    Pexp_ident "v" (typing/printpat.ml[148,5530+36]..[148,5530+37])
+              ]
+    ]
+  structure_item (typing/printpat.ml[150,5569+0]..[152,5626+46])
+    Pstr_value Nonrec
+    [
+      <def>
+        pattern (typing/printpat.ml[150,5569+4]..[150,5569+14])
+          Ppat_var "pretty_pat" (typing/printpat.ml[150,5569+4]..[150,5569+14])
+        expression (typing/printpat.ml[150,5569+15]..[152,5626+46]) ghost
+          Pexp_fun
+          Nolabel
+          None
+          pattern (typing/printpat.ml[150,5569+15]..[150,5569+16])
+            Ppat_var "p" (typing/printpat.ml[150,5569+15]..[150,5569+16])
+          expression (typing/printpat.ml[151,5588+2]..[152,5626+46])
+            Pexp_sequence
+            expression (typing/printpat.ml[151,5588+2]..[151,5588+35])
+              Pexp_apply
+              expression (typing/printpat.ml[151,5588+2]..[151,5588+12])
+                Pexp_ident "top_pretty" (typing/printpat.ml[151,5588+2]..[151,5588+12])
+              [
+                <arg>
+                Nolabel
+                  expression (typing/printpat.ml[151,5588+13]..[151,5588+33])
+                    Pexp_ident "Format.str_formatter" (typing/printpat.ml[151,5588+13]..[151,5588+33])
+                <arg>
+                Nolabel
+                  expression (typing/printpat.ml[151,5588+34]..[151,5588+35])
+                    Pexp_ident "p" (typing/printpat.ml[151,5588+34]..[151,5588+35])
+              ]
+            expression (typing/printpat.ml[152,5626+2]..[152,5626+46])
+              Pexp_apply
+              expression (typing/printpat.ml[152,5626+2]..[152,5626+14])
+                Pexp_ident "prerr_string" (typing/printpat.ml[152,5626+2]..[152,5626+14])
+              [
+                <arg>
+                Nolabel
+                  expression (typing/printpat.ml[152,5626+15]..[152,5626+46])
+                    Pexp_apply
+                    expression (typing/printpat.ml[152,5626+16]..[152,5626+42])
+                      Pexp_ident "Format.flush_str_formatter" (typing/printpat.ml[152,5626+16]..[152,5626+42])
+                    [
+                      <arg>
+                      Nolabel
+                        expression (typing/printpat.ml[152,5626+43]..[152,5626+45])
+                          Pexp_construct "()" (typing/printpat.ml[152,5626+43]..[152,5626+45])
+                          None
+                    ]
+              ]
+    ]
+  structure_item (typing/printpat.ml[154,5674+0]..[154,5674+45])
+    Pstr_type Rec
+    [
+      type_declaration "matrix" (typing/printpat.ml[154,5674+8]..[154,5674+14]) (typing/printpat.ml[154,5674+0]..[154,5674+45])
+        ptype_params =
+          [
+            core_type (typing/printpat.ml[154,5674+5]..[154,5674+7])
+              Ptyp_var k
+          ]
+        ptype_cstrs =
+          []
+        ptype_kind =
+          Ptype_abstract
+        ptype_private = Public
+        ptype_manifest =
+          Some
+            core_type (typing/printpat.ml[154,5674+17]..[154,5674+45])
+              Ptyp_constr "list" (typing/printpat.ml[154,5674+41]..[154,5674+45])
+              [
+                core_type (typing/printpat.ml[154,5674+17]..[154,5674+40])
+                  Ptyp_constr "list" (typing/printpat.ml[154,5674+36]..[154,5674+40])
+                  [
+                    core_type (typing/printpat.ml[154,5674+17]..[154,5674+35])
+                      Ptyp_constr "general_pattern" (typing/printpat.ml[154,5674+20]..[154,5674+35])
+                      [
+                        core_type (typing/printpat.ml[154,5674+17]..[154,5674+19])
+                          Ptyp_var k
+                      ]
+                  ]
+              ]
+    ]
+  structure_item (typing/printpat.ml[156,5721+0]..[161,5844+3])
+    Pstr_value Nonrec
+    [
+      <def>
+        pattern (typing/printpat.ml[156,5721+4]..[156,5721+15])
+          Ppat_var "pretty_line" (typing/printpat.ml[156,5721+4]..[156,5721+15])
+        expression (typing/printpat.ml[156,5721+16]..[161,5844+3]) ghost
+          Pexp_fun
+          Nolabel
+          None
+          pattern (typing/printpat.ml[156,5721+16]..[156,5721+19])
+            Ppat_var "fmt" (typing/printpat.ml[156,5721+16]..[156,5721+19])
+          expression (typing/printpat.ml[157,5743+2]..[161,5844+3])
+            Pexp_apply
+            expression (typing/printpat.ml[157,5743+2]..[157,5743+11])
+              Pexp_ident "List.iter" (typing/printpat.ml[157,5743+2]..[157,5743+11])
+            [
+              <arg>
+              Nolabel
+                expression (typing/printpat.ml[157,5743+12]..[161,5844+3])
+                  Pexp_fun
+                  Nolabel
+                  None
+                  pattern (typing/printpat.ml[157,5743+17]..[157,5743+18])
+                    Ppat_var "p" (typing/printpat.ml[157,5743+17]..[157,5743+18])
+                  expression (typing/printpat.ml[158,5765+4]..[160,5816+27])
+                    Pexp_sequence
+                    expression (typing/printpat.ml[158,5765+4]..[158,5765+27])
+                      Pexp_apply
+                      expression (typing/printpat.ml[158,5765+4]..[158,5765+18])
+                        Pexp_ident "Format.fprintf" (typing/printpat.ml[158,5765+4]..[158,5765+18])
+                      [
+                        <arg>
+                        Nolabel
+                          expression (typing/printpat.ml[158,5765+19]..[158,5765+22])
+                            Pexp_ident "fmt" (typing/printpat.ml[158,5765+19]..[158,5765+22])
+                        <arg>
+                        Nolabel
+                          expression (typing/printpat.ml[158,5765+23]..[158,5765+27])
+                            Pexp_constant PConst_string(" <",(typing/printpat.ml[158,5765+24]..[158,5765+26]),None)
+                      ]
+                    expression (typing/printpat.ml[159,5794+4]..[160,5816+27])
+                      Pexp_sequence
+                      expression (typing/printpat.ml[159,5794+4]..[159,5794+20])
+                        Pexp_apply
+                        expression (typing/printpat.ml[159,5794+4]..[159,5794+14])
+                          Pexp_ident "top_pretty" (typing/printpat.ml[159,5794+4]..[159,5794+14])
+                        [
+                          <arg>
+                          Nolabel
+                            expression (typing/printpat.ml[159,5794+15]..[159,5794+18])
+                              Pexp_ident "fmt" (typing/printpat.ml[159,5794+15]..[159,5794+18])
+                          <arg>
+                          Nolabel
+                            expression (typing/printpat.ml[159,5794+19]..[159,5794+20])
+                              Pexp_ident "p" (typing/printpat.ml[159,5794+19]..[159,5794+20])
+                        ]
+                      expression (typing/printpat.ml[160,5816+4]..[160,5816+26])
+                        Pexp_apply
+                        expression (typing/printpat.ml[160,5816+4]..[160,5816+18])
+                          Pexp_ident "Format.fprintf" (typing/printpat.ml[160,5816+4]..[160,5816+18])
+                        [
+                          <arg>
+                          Nolabel
+                            expression (typing/printpat.ml[160,5816+19]..[160,5816+22])
+                              Pexp_ident "fmt" (typing/printpat.ml[160,5816+19]..[160,5816+22])
+                          <arg>
+                          Nolabel
+                            expression (typing/printpat.ml[160,5816+23]..[160,5816+26])
+                              Pexp_constant PConst_string(">",(typing/printpat.ml[160,5816+24]..[160,5816+25]),None)
+                        ]
+            ]
+    ]
+  structure_item (typing/printpat.ml[163,5849+0]..[169,6016+37])
+    Pstr_value Nonrec
+    [
+      <def>
+        pattern (typing/printpat.ml[163,5849+4]..[163,5849+17])
+          Ppat_var "pretty_matrix" (typing/printpat.ml[163,5849+4]..[163,5849+17])
+        expression (typing/printpat.ml[163,5849+18]..[169,6016+37]) ghost
+          Pexp_fun
+          Nolabel
+          None
+          pattern (typing/printpat.ml[163,5849+18]..[163,5849+21])
+            Ppat_var "fmt" (typing/printpat.ml[163,5849+18]..[163,5849+21])
+          expression (typing/printpat.ml[163,5849+22]..[169,6016+37]) ghost
+            Pexp_fun
+            Nolabel
+            None
+            pattern (typing/printpat.ml[163,5849+22]..[163,5849+39])
+              Ppat_constraint
+              pattern (typing/printpat.ml[163,5849+23]..[163,5849+26])
+                Ppat_var "pss" (typing/printpat.ml[163,5849+23]..[163,5849+26])
+              core_type (typing/printpat.ml[163,5849+29]..[163,5849+38])
+                Ptyp_constr "matrix" (typing/printpat.ml[163,5849+32]..[163,5849+38])
+                [
+                  core_type (typing/printpat.ml[163,5849+29]..[163,5849+31])
+                    Ptyp_var k
+                ]
+            expression (typing/printpat.ml[164,5891+2]..[169,6016+37])
+              Pexp_sequence
+              expression (typing/printpat.ml[164,5891+2]..[164,5891+37])
+                Pexp_apply
+                expression (typing/printpat.ml[164,5891+2]..[164,5891+16])
+                  Pexp_ident "Format.fprintf" (typing/printpat.ml[164,5891+2]..[164,5891+16])
+                [
+                  <arg>
+                  Nolabel
+                    expression (typing/printpat.ml[164,5891+17]..[164,5891+20])
+                      Pexp_ident "fmt" (typing/printpat.ml[164,5891+17]..[164,5891+20])
+                  <arg>
+                  Nolabel
+                    expression (typing/printpat.ml[164,5891+21]..[164,5891+37])
+                      Pexp_constant PConst_string("begin matrix\n",(typing/printpat.ml[164,5891+22]..[164,5891+36]),None)
+                ]
+              expression (typing/printpat.ml[165,5931+2]..[169,6016+37])
+                Pexp_sequence
+                expression (typing/printpat.ml[165,5931+2]..[168,6007+7])
+                  Pexp_apply
+                  expression (typing/printpat.ml[165,5931+2]..[165,5931+11])
+                    Pexp_ident "List.iter" (typing/printpat.ml[165,5931+2]..[165,5931+11])
+                  [
+                    <arg>
+                    Nolabel
+                      expression (typing/printpat.ml[165,5931+12]..[168,6007+3])
+                        Pexp_fun
+                        Nolabel
+                        None
+                        pattern (typing/printpat.ml[165,5931+17]..[165,5931+19])
+                          Ppat_var "ps" (typing/printpat.ml[165,5931+17]..[165,5931+19])
+                        expression (typing/printpat.ml[166,5954+4]..[167,5979+27])
+                          Pexp_sequence
+                          expression (typing/printpat.ml[166,5954+4]..[166,5954+22])
+                            Pexp_apply
+                            expression (typing/printpat.ml[166,5954+4]..[166,5954+15])
+                              Pexp_ident "pretty_line" (typing/printpat.ml[166,5954+4]..[166,5954+15])
+                            [
+                              <arg>
+                              Nolabel
+                                expression (typing/printpat.ml[166,5954+16]..[166,5954+19])
+                                  Pexp_ident "fmt" (typing/printpat.ml[166,5954+16]..[166,5954+19])
+                              <arg>
+                              Nolabel
+                                expression (typing/printpat.ml[166,5954+20]..[166,5954+22])
+                                  Pexp_ident "ps" (typing/printpat.ml[166,5954+20]..[166,5954+22])
+                            ]
+                          expression (typing/printpat.ml[167,5979+4]..[167,5979+27])
+                            Pexp_apply
+                            expression (typing/printpat.ml[167,5979+4]..[167,5979+18])
+                              Pexp_ident "Format.fprintf" (typing/printpat.ml[167,5979+4]..[167,5979+18])
+                            [
+                              <arg>
+                              Nolabel
+                                expression (typing/printpat.ml[167,5979+19]..[167,5979+22])
+                                  Pexp_ident "fmt" (typing/printpat.ml[167,5979+19]..[167,5979+22])
+                              <arg>
+                              Nolabel
+                                expression (typing/printpat.ml[167,5979+23]..[167,5979+27])
+                                  Pexp_constant PConst_string("\n",(typing/printpat.ml[167,5979+24]..[167,5979+26]),None)
+                            ]
+                    <arg>
+                    Nolabel
+                      expression (typing/printpat.ml[168,6007+4]..[168,6007+7])
+                        Pexp_ident "pss" (typing/printpat.ml[168,6007+4]..[168,6007+7])
+                  ]
+                expression (typing/printpat.ml[169,6016+2]..[169,6016+37])
+                  Pexp_apply
+                  expression (typing/printpat.ml[169,6016+2]..[169,6016+16])
+                    Pexp_ident "Format.fprintf" (typing/printpat.ml[169,6016+2]..[169,6016+16])
+                  [
+                    <arg>
+                    Nolabel
+                      expression (typing/printpat.ml[169,6016+17]..[169,6016+20])
+                        Pexp_ident "fmt" (typing/printpat.ml[169,6016+17]..[169,6016+20])
+                    <arg>
+                    Nolabel
+                      expression (typing/printpat.ml[169,6016+21]..[169,6016+37])
+                        Pexp_constant PConst_string("end matrix\n%!",(typing/printpat.ml[169,6016+22]..[169,6016+36]),None)
+                  ]
+    ]
+]
+

@@ -1,0 +1,146 @@
+[
+  structure_item (testsuite/tests/typing-gadts/pr7397.ml[5,24+0]..[5,24+10])
+    Pstr_type Rec
+    [
+      type_declaration "t" (testsuite/tests/typing-gadts/pr7397.ml[5,24+9]..[5,24+10]) (testsuite/tests/typing-gadts/pr7397.ml[5,24+0]..[5,24+10])
+        ptype_params =
+          [
+            core_type (testsuite/tests/typing-gadts/pr7397.ml[5,24+6]..[5,24+8])
+              Ptyp_var a
+          ]
+        ptype_cstrs =
+          []
+        ptype_kind =
+          Ptype_abstract
+        ptype_private = Public
+        ptype_manifest =
+          None
+    ]
+  structure_item (testsuite/tests/typing-gadts/pr7397.ml[7,36+0]..[13,106+3])
+    Pstr_class_type
+    [
+      class_type_declaration (testsuite/tests/typing-gadts/pr7397.ml[7,36+0]..[9,72+3])
+        pci_virt = Concrete
+        pci_params =
+          []
+        pci_name = "a" (testsuite/tests/typing-gadts/pr7397.ml[7,36+11]..[7,36+12])
+        pci_expr =
+          class_type (testsuite/tests/typing-gadts/pr7397.ml[7,36+15]..[9,72+3])
+            Pcty_signature
+            class_signature
+              core_type (testsuite/tests/typing-gadts/pr7397.ml[7,36+21]..[7,36+21])
+                Ptyp_any
+              [
+                class_type_field (testsuite/tests/typing-gadts/pr7397.ml[8,58+1]..[8,58+13])
+                  Pctf_method "b" Public Concrete
+                    core_type (testsuite/tests/typing-gadts/pr7397.ml[8,58+12]..[8,58+13])
+                      Ptyp_constr "b" (testsuite/tests/typing-gadts/pr7397.ml[8,58+12]..[8,58+13])
+                      []
+              ]
+      class_type_declaration (testsuite/tests/typing-gadts/pr7397.ml[11,77+0]..[13,106+3])
+        pci_virt = Concrete
+        pci_params =
+          []
+        pci_name = "b" (testsuite/tests/typing-gadts/pr7397.ml[11,77+4]..[11,77+5])
+        pci_expr =
+          class_type (testsuite/tests/typing-gadts/pr7397.ml[11,77+8]..[13,106+3])
+            Pcty_signature
+            class_signature
+              core_type (testsuite/tests/typing-gadts/pr7397.ml[11,77+14]..[11,77+14])
+                Ptyp_any
+              [
+                class_type_field (testsuite/tests/typing-gadts/pr7397.ml[12,92+1]..[12,92+13])
+                  Pctf_method "a" Public Concrete
+                    core_type (testsuite/tests/typing-gadts/pr7397.ml[12,92+12]..[12,92+13])
+                      Ptyp_constr "a" (testsuite/tests/typing-gadts/pr7397.ml[12,92+12]..[12,92+13])
+                      []
+              ]
+    ]
+  structure_item (testsuite/tests/typing-gadts/pr7397.ml[15,111+0]..[16,129+20])
+    Pstr_type Rec
+    [
+      type_declaration "response" (testsuite/tests/typing-gadts/pr7397.ml[15,111+7]..[15,111+15]) (testsuite/tests/typing-gadts/pr7397.ml[15,111+0]..[16,129+20])
+        ptype_params =
+          [
+            core_type (testsuite/tests/typing-gadts/pr7397.ml[15,111+5]..[15,111+6])
+              Ptyp_any
+          ]
+        ptype_cstrs =
+          []
+        ptype_kind =
+          Ptype_variant
+            [
+              (testsuite/tests/typing-gadts/pr7397.ml[16,129+1]..[16,129+20])
+                "C" (testsuite/tests/typing-gadts/pr7397.ml[16,129+3]..[16,129+4])
+                []
+                Some
+                  core_type (testsuite/tests/typing-gadts/pr7397.ml[16,129+7]..[16,129+20])
+                    Ptyp_constr "response" (testsuite/tests/typing-gadts/pr7397.ml[16,129+12]..[16,129+20])
+                    [
+                      core_type (testsuite/tests/typing-gadts/pr7397.ml[16,129+7]..[16,129+11])
+                        Ptyp_constr "t" (testsuite/tests/typing-gadts/pr7397.ml[16,129+10]..[16,129+11])
+                        [
+                          core_type (testsuite/tests/typing-gadts/pr7397.ml[16,129+7]..[16,129+9])
+                            Ptyp_class "a" (testsuite/tests/typing-gadts/pr7397.ml[16,129+8]..[16,129+9])
+                            []
+                        ]
+                    ]
+            ]
+        ptype_private = Public
+        ptype_manifest =
+          None
+    ]
+  structure_item (testsuite/tests/typing-gadts/pr7397.ml[17,152+0]..[22,282+3])
+    Pstr_extension "expect"
+    [
+      structure_item (testsuite/tests/typing-gadts/pr7397.ml[17,152+9]..[22,282+2])
+        Pstr_eval
+        expression (testsuite/tests/typing-gadts/pr7397.ml[17,152+9]..[22,282+2])
+          Pexp_constant PConst_string ("\ntype +'a t\nclass type a = object method b : b end\nand b = object method a : a end\ntype _ response = C : #a t response\n",(testsuite/tests/typing-gadts/pr7397.ml[17,152+11]..[22,282+0]),Some "")
+    ]
+  structure_item (testsuite/tests/typing-gadts/pr7397.ml[24,287+0]..[26,335+9])
+    Pstr_value Nonrec
+    [
+      <def>
+        pattern (testsuite/tests/typing-gadts/pr7397.ml[24,287+4]..[24,287+5])
+          Ppat_var "f" (testsuite/tests/typing-gadts/pr7397.ml[24,287+4]..[24,287+5])
+        expression (testsuite/tests/typing-gadts/pr7397.ml[24,287+6]..[26,335+9])
+          Pexp_newtype "a"
+          expression (testsuite/tests/typing-gadts/pr7397.ml[24,287+15]..[26,335+9]) ghost
+            Pexp_fun
+            Nolabel
+            None
+            pattern (testsuite/tests/typing-gadts/pr7397.ml[24,287+15]..[24,287+31])
+              Ppat_constraint
+              pattern (testsuite/tests/typing-gadts/pr7397.ml[24,287+16]..[24,287+17])
+                Ppat_var "a" (testsuite/tests/typing-gadts/pr7397.ml[24,287+16]..[24,287+17])
+              core_type (testsuite/tests/typing-gadts/pr7397.ml[24,287+20]..[24,287+30])
+                Ptyp_constr "response" (testsuite/tests/typing-gadts/pr7397.ml[24,287+22]..[24,287+30])
+                [
+                  core_type (testsuite/tests/typing-gadts/pr7397.ml[24,287+20]..[24,287+21])
+                    Ptyp_constr "a" (testsuite/tests/typing-gadts/pr7397.ml[24,287+20]..[24,287+21])
+                    []
+                ]
+            expression (testsuite/tests/typing-gadts/pr7397.ml[25,321+1]..[26,335+9])
+              Pexp_match
+              expression (testsuite/tests/typing-gadts/pr7397.ml[25,321+7]..[25,321+8])
+                Pexp_ident "a" (testsuite/tests/typing-gadts/pr7397.ml[25,321+7]..[25,321+8])
+              [
+                <case>
+                  pattern (testsuite/tests/typing-gadts/pr7397.ml[26,335+3]..[26,335+4])
+                    Ppat_construct "C" (testsuite/tests/typing-gadts/pr7397.ml[26,335+3]..[26,335+4])
+                    None
+                  expression (testsuite/tests/typing-gadts/pr7397.ml[26,335+8]..[26,335+9])
+                    Pexp_constant PConst_int (0,None)
+              ]
+    ]
+  structure_item (testsuite/tests/typing-gadts/pr7397.ml[27,347+0]..[29,394+3])
+    Pstr_extension "expect"
+    [
+      structure_item (testsuite/tests/typing-gadts/pr7397.ml[27,347+9]..[29,394+2])
+        Pstr_eval
+        expression (testsuite/tests/typing-gadts/pr7397.ml[27,347+9]..[29,394+2])
+          Pexp_constant PConst_string ("\nval f : 'a response -> int = <fun>\n",(testsuite/tests/typing-gadts/pr7397.ml[27,347+11]..[29,394+0]),Some "")
+    ]
+]
+

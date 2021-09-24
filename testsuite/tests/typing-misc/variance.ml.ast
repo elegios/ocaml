@@ -1,0 +1,55 @@
+[
+  structure_item (testsuite/tests/typing-misc/variance.ml[8,71+0]..[8,71+41])
+    Pstr_type Rec
+    [
+      type_declaration "t" (testsuite/tests/typing-misc/variance.ml[8,71+9]..[8,71+10]) (testsuite/tests/typing-misc/variance.ml[8,71+0]..[8,71+41])
+        ptype_params =
+          [
+            core_type (testsuite/tests/typing-misc/variance.ml[8,71+6]..[8,71+8])
+              Ptyp_var a
+          ]
+        ptype_cstrs =
+          []
+        ptype_kind =
+          Ptype_abstract
+        ptype_private = Public
+        ptype_manifest =
+          Some
+            core_type (testsuite/tests/typing-misc/variance.ml[8,71+13]..[8,71+41])
+              Ptyp_alias "a"
+              core_type (testsuite/tests/typing-misc/variance.ml[8,71+13]..[8,71+35])
+                Ptyp_variant closed=Open
+                [
+                  Rtag "Foo" false
+                    [
+                      core_type (testsuite/tests/typing-misc/variance.ml[8,71+24]..[8,71+34])
+                        Ptyp_arrow
+                        Nolabel
+                        core_type (testsuite/tests/typing-misc/variance.ml[8,71+24]..[8,71+26])
+                          Ptyp_var a
+                        core_type (testsuite/tests/typing-misc/variance.ml[8,71+30]..[8,71+34])
+                          Ptyp_constr "unit" (testsuite/tests/typing-misc/variance.ml[8,71+30]..[8,71+34])
+                          []
+                    ]
+                ]
+                None
+    ]
+  structure_item (testsuite/tests/typing-misc/variance.ml[9,115+0]..[13,254+3])
+    Pstr_extension "expect"
+    [
+      structure_item (testsuite/tests/typing-misc/variance.ml[9,115+9]..[13,254+2])
+        Pstr_eval
+        expression (testsuite/tests/typing-misc/variance.ml[9,115+9]..[13,254+2])
+          Pexp_tuple
+          [
+            expression (testsuite/tests/typing-misc/variance.ml[9,115+9]..[11,182+2])
+              Pexp_constant PConst_string ("\ntype 'a t = 'a constraint 'a = [> `Foo of 'a -> unit ]\n",(testsuite/tests/typing-misc/variance.ml[9,115+11]..[11,182+0]),Some "")
+            expression (testsuite/tests/typing-misc/variance.ml[11,182+4]..[13,254+2])
+              Pexp_construct "Principal" (testsuite/tests/typing-misc/variance.ml[11,182+4]..[11,182+13])
+              Some
+                expression (testsuite/tests/typing-misc/variance.ml[11,182+13]..[13,254+2])
+                  Pexp_constant PConst_string ("\ntype +'a t = 'a constraint 'a = [> `Foo of 'a -> unit ]\n",(testsuite/tests/typing-misc/variance.ml[11,182+15]..[13,254+0]),Some "")
+          ]
+    ]
+]
+

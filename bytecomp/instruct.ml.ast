@@ -1,0 +1,694 @@
+[
+  structure_item (bytecomp/instruct.ml[16,1079+0]..[16,1079+11])
+    Pstr_open Fresh
+    module_expr (bytecomp/instruct.ml[16,1079+5]..[16,1079+11])
+      Pmod_ident "Lambda" (bytecomp/instruct.ml[16,1079+5]..[16,1079+11])
+  structure_item (bytecomp/instruct.ml[18,1092+0]..[21,1172+27])
+    Pstr_type Rec
+    [
+      type_declaration "compilation_env" (bytecomp/instruct.ml[18,1092+5]..[18,1092+20]) (bytecomp/instruct.ml[18,1092+0]..[21,1172+27])
+        ptype_params =
+          []
+        ptype_cstrs =
+          []
+        ptype_kind =
+          Ptype_record
+            [
+              (bytecomp/instruct.ml[19,1115+4]..[19,1115+28])
+                Immutable
+                "ce_stack" (bytecomp/instruct.ml[19,1115+4]..[19,1115+12])                core_type (bytecomp/instruct.ml[19,1115+14]..[19,1115+27])
+                  Ptyp_constr "Ident.tbl" (bytecomp/instruct.ml[19,1115+18]..[19,1115+27])
+                  [
+                    core_type (bytecomp/instruct.ml[19,1115+14]..[19,1115+17])
+                      Ptyp_constr "int" (bytecomp/instruct.ml[19,1115+14]..[19,1115+17])
+                      []
+                  ]
+              (bytecomp/instruct.ml[20,1144+4]..[20,1144+27])
+                Immutable
+                "ce_heap" (bytecomp/instruct.ml[20,1144+4]..[20,1144+11])                core_type (bytecomp/instruct.ml[20,1144+13]..[20,1144+26])
+                  Ptyp_constr "Ident.tbl" (bytecomp/instruct.ml[20,1144+17]..[20,1144+26])
+                  [
+                    core_type (bytecomp/instruct.ml[20,1144+13]..[20,1144+16])
+                      Ptyp_constr "int" (bytecomp/instruct.ml[20,1144+13]..[20,1144+16])
+                      []
+                  ]
+              (bytecomp/instruct.ml[21,1172+4]..[21,1172+25])
+                Immutable
+                "ce_rec" (bytecomp/instruct.ml[21,1172+4]..[21,1172+10])                core_type (bytecomp/instruct.ml[21,1172+12]..[21,1172+25])
+                  Ptyp_constr "Ident.tbl" (bytecomp/instruct.ml[21,1172+16]..[21,1172+25])
+                  [
+                    core_type (bytecomp/instruct.ml[21,1172+12]..[21,1172+15])
+                      Ptyp_constr "int" (bytecomp/instruct.ml[21,1172+12]..[21,1172+15])
+                      []
+                  ]
+            ]
+        ptype_private = Public
+        ptype_manifest =
+          None
+    ]
+  structure_item (bytecomp/instruct.ml[23,1201+0]..[49,2214+26])
+    Pstr_type Rec
+    [
+      type_declaration "debug_event" (bytecomp/instruct.ml[23,1201+5]..[23,1201+16]) (bytecomp/instruct.ml[23,1201+0]..[34,1894+31])
+        ptype_params =
+          []
+        ptype_cstrs =
+          []
+        ptype_kind =
+          Ptype_record
+            [
+              (bytecomp/instruct.ml[24,1220+4]..[24,1220+24])
+                Mutable
+                "ev_pos" (bytecomp/instruct.ml[24,1220+12]..[24,1220+18])                core_type (bytecomp/instruct.ml[24,1220+20]..[24,1220+23])
+                  Ptyp_constr "int" (bytecomp/instruct.ml[24,1220+20]..[24,1220+23])
+                  []
+              (bytecomp/instruct.ml[25,1287+4]..[25,1287+22])
+                Immutable
+                "ev_module" (bytecomp/instruct.ml[25,1287+4]..[25,1287+13])                core_type (bytecomp/instruct.ml[25,1287+15]..[25,1287+21])
+                  Ptyp_constr "string" (bytecomp/instruct.ml[25,1287+15]..[25,1287+21])
+                  []
+              (bytecomp/instruct.ml[26,1357+4]..[26,1357+23])
+                Immutable
+                "ev_loc" (bytecomp/instruct.ml[26,1357+4]..[26,1357+10])                core_type (bytecomp/instruct.ml[26,1357+12]..[26,1357+22])
+                  Ptyp_constr "Location.t" (bytecomp/instruct.ml[26,1357+12]..[26,1357+22])
+                  []
+              (bytecomp/instruct.ml[27,1427+4]..[27,1427+30])
+                Immutable
+                "ev_kind" (bytecomp/instruct.ml[27,1427+4]..[27,1427+11])                core_type (bytecomp/instruct.ml[27,1427+13]..[27,1427+29])
+                  Ptyp_constr "debug_event_kind" (bytecomp/instruct.ml[27,1427+13]..[27,1427+29])
+                  []
+              (bytecomp/instruct.ml[28,1492+4]..[28,1492+23])
+                Immutable
+                "ev_defname" (bytecomp/instruct.ml[28,1492+4]..[28,1492+14])                core_type (bytecomp/instruct.ml[28,1492+16]..[28,1492+22])
+                  Ptyp_constr "string" (bytecomp/instruct.ml[28,1492+16]..[28,1492+22])
+                  []
+              (bytecomp/instruct.ml[29,1559+4]..[29,1559+30])
+                Immutable
+                "ev_info" (bytecomp/instruct.ml[29,1559+4]..[29,1559+11])                core_type (bytecomp/instruct.ml[29,1559+13]..[29,1559+29])
+                  Ptyp_constr "debug_event_info" (bytecomp/instruct.ml[29,1559+13]..[29,1559+29])
+                  []
+              (bytecomp/instruct.ml[30,1623+4]..[30,1623+27])
+                Immutable
+                "ev_typenv" (bytecomp/instruct.ml[30,1623+4]..[30,1623+13])                core_type (bytecomp/instruct.ml[30,1623+15]..[30,1623+26])
+                  Ptyp_constr "Env.summary" (bytecomp/instruct.ml[30,1623+15]..[30,1623+26])
+                  []
+              (bytecomp/instruct.ml[31,1688+4]..[31,1688+25])
+                Immutable
+                "ev_typsubst" (bytecomp/instruct.ml[31,1688+4]..[31,1688+15])                core_type (bytecomp/instruct.ml[31,1688+17]..[31,1688+24])
+                  Ptyp_constr "Subst.t" (bytecomp/instruct.ml[31,1688+17]..[31,1688+24])
+                  []
+              (bytecomp/instruct.ml[32,1758+4]..[32,1758+32])
+                Immutable
+                "ev_compenv" (bytecomp/instruct.ml[32,1758+4]..[32,1758+14])                core_type (bytecomp/instruct.ml[32,1758+16]..[32,1758+31])
+                  Ptyp_constr "compilation_env" (bytecomp/instruct.ml[32,1758+16]..[32,1758+31])
+                  []
+              (bytecomp/instruct.ml[33,1828+4]..[33,1828+22])
+                Immutable
+                "ev_stacksize" (bytecomp/instruct.ml[33,1828+4]..[33,1828+16])                core_type (bytecomp/instruct.ml[33,1828+18]..[33,1828+21])
+                  Ptyp_constr "int" (bytecomp/instruct.ml[33,1828+18]..[33,1828+21])
+                  []
+              (bytecomp/instruct.ml[34,1894+4]..[34,1894+29])
+                Immutable
+                "ev_repr" (bytecomp/instruct.ml[34,1894+4]..[34,1894+11])                core_type (bytecomp/instruct.ml[34,1894+13]..[34,1894+29])
+                  Ptyp_constr "debug_event_repr" (bytecomp/instruct.ml[34,1894+13]..[34,1894+29])
+                  []
+            ]
+        ptype_private = Public
+        ptype_manifest =
+          None
+      type_declaration "debug_event_kind" (bytecomp/instruct.ml[36,1972+4]..[36,1972+20]) (bytecomp/instruct.ml[36,1972+0]..[39,2047+16])
+        ptype_params =
+          []
+        ptype_cstrs =
+          []
+        ptype_kind =
+          Ptype_variant
+            [
+              (bytecomp/instruct.ml[37,1995+4]..[37,1995+16])
+                "Event_before" (bytecomp/instruct.ml[37,1995+4]..[37,1995+16])
+                []
+                None
+              (bytecomp/instruct.ml[38,2012+2]..[38,2012+34])
+                "Event_after" (bytecomp/instruct.ml[38,2012+4]..[38,2012+15])
+                [
+                  core_type (bytecomp/instruct.ml[38,2012+19]..[38,2012+34])
+                    Ptyp_constr "Types.type_expr" (bytecomp/instruct.ml[38,2012+19]..[38,2012+34])
+                    []
+                ]
+                None
+              (bytecomp/instruct.ml[39,2047+2]..[39,2047+16])
+                "Event_pseudo" (bytecomp/instruct.ml[39,2047+4]..[39,2047+16])
+                []
+                None
+            ]
+        ptype_private = Public
+        ptype_manifest =
+          None
+      type_declaration "debug_event_info" (bytecomp/instruct.ml[41,2065+4]..[41,2065+20]) (bytecomp/instruct.ml[41,2065+0]..[44,2131+15])
+        ptype_params =
+          []
+        ptype_cstrs =
+          []
+        ptype_kind =
+          Ptype_variant
+            [
+              (bytecomp/instruct.ml[42,2088+4]..[42,2088+18])
+                "Event_function" (bytecomp/instruct.ml[42,2088+4]..[42,2088+18])
+                []
+                None
+              (bytecomp/instruct.ml[43,2107+2]..[43,2107+23])
+                "Event_return" (bytecomp/instruct.ml[43,2107+4]..[43,2107+16])
+                [
+                  core_type (bytecomp/instruct.ml[43,2107+20]..[43,2107+23])
+                    Ptyp_constr "int" (bytecomp/instruct.ml[43,2107+20]..[43,2107+23])
+                    []
+                ]
+                None
+              (bytecomp/instruct.ml[44,2131+2]..[44,2131+15])
+                "Event_other" (bytecomp/instruct.ml[44,2131+4]..[44,2131+15])
+                []
+                None
+            ]
+        ptype_private = Public
+        ptype_manifest =
+          None
+      type_declaration "debug_event_repr" (bytecomp/instruct.ml[46,2148+4]..[46,2148+20]) (bytecomp/instruct.ml[46,2148+0]..[49,2214+26])
+        ptype_params =
+          []
+        ptype_cstrs =
+          []
+        ptype_kind =
+          Ptype_variant
+            [
+              (bytecomp/instruct.ml[47,2171+4]..[47,2171+14])
+                "Event_none" (bytecomp/instruct.ml[47,2171+4]..[47,2171+14])
+                []
+                None
+              (bytecomp/instruct.ml[48,2186+2]..[48,2186+27])
+                "Event_parent" (bytecomp/instruct.ml[48,2186+4]..[48,2186+16])
+                [
+                  core_type (bytecomp/instruct.ml[48,2186+20]..[48,2186+27])
+                    Ptyp_constr "ref" (bytecomp/instruct.ml[48,2186+24]..[48,2186+27])
+                    [
+                      core_type (bytecomp/instruct.ml[48,2186+20]..[48,2186+23])
+                        Ptyp_constr "int" (bytecomp/instruct.ml[48,2186+20]..[48,2186+23])
+                        []
+                    ]
+                ]
+                None
+              (bytecomp/instruct.ml[49,2214+2]..[49,2214+26])
+                "Event_child" (bytecomp/instruct.ml[49,2214+4]..[49,2214+15])
+                [
+                  core_type (bytecomp/instruct.ml[49,2214+19]..[49,2214+26])
+                    Ptyp_constr "ref" (bytecomp/instruct.ml[49,2214+23]..[49,2214+26])
+                    [
+                      core_type (bytecomp/instruct.ml[49,2214+19]..[49,2214+22])
+                        Ptyp_constr "int" (bytecomp/instruct.ml[49,2214+19]..[49,2214+22])
+                        []
+                    ]
+                ]
+                None
+            ]
+        ptype_private = Public
+        ptype_manifest =
+          None
+    ]
+  structure_item (bytecomp/instruct.ml[51,2242+0]..[51,2242+16])
+    Pstr_type Rec
+    [
+      type_declaration "label" (bytecomp/instruct.ml[51,2242+5]..[51,2242+10]) (bytecomp/instruct.ml[51,2242+0]..[51,2242+16])
+        ptype_params =
+          []
+        ptype_cstrs =
+          []
+        ptype_kind =
+          Ptype_abstract
+        ptype_private = Public
+        ptype_manifest =
+          Some
+            core_type (bytecomp/instruct.ml[51,2242+13]..[51,2242+16])
+              Ptyp_constr "int" (bytecomp/instruct.ml[51,2242+13]..[51,2242+16])
+              []
+    ]
+  structure_item (bytecomp/instruct.ml[53,2307+0]..[107,3783+9])
+    Pstr_type Rec
+    [
+      type_declaration "instruction" (bytecomp/instruct.ml[53,2307+5]..[53,2307+16]) (bytecomp/instruct.ml[53,2307+0]..[107,3783+9])
+        ptype_params =
+          []
+        ptype_cstrs =
+          []
+        ptype_kind =
+          Ptype_variant
+            [
+              (bytecomp/instruct.ml[54,2326+4]..[54,2326+19])
+                "Klabel" (bytecomp/instruct.ml[54,2326+4]..[54,2326+10])
+                [
+                  core_type (bytecomp/instruct.ml[54,2326+14]..[54,2326+19])
+                    Ptyp_constr "label" (bytecomp/instruct.ml[54,2326+14]..[54,2326+19])
+                    []
+                ]
+                None
+              (bytecomp/instruct.ml[55,2346+2]..[55,2346+15])
+                "Kacc" (bytecomp/instruct.ml[55,2346+4]..[55,2346+8])
+                [
+                  core_type (bytecomp/instruct.ml[55,2346+12]..[55,2346+15])
+                    Ptyp_constr "int" (bytecomp/instruct.ml[55,2346+12]..[55,2346+15])
+                    []
+                ]
+                None
+              (bytecomp/instruct.ml[56,2362+2]..[56,2362+18])
+                "Kenvacc" (bytecomp/instruct.ml[56,2362+4]..[56,2362+11])
+                [
+                  core_type (bytecomp/instruct.ml[56,2362+15]..[56,2362+18])
+                    Ptyp_constr "int" (bytecomp/instruct.ml[56,2362+15]..[56,2362+18])
+                    []
+                ]
+                None
+              (bytecomp/instruct.ml[57,2381+2]..[57,2381+9])
+                "Kpush" (bytecomp/instruct.ml[57,2381+4]..[57,2381+9])
+                []
+                None
+              (bytecomp/instruct.ml[58,2391+2]..[58,2391+15])
+                "Kpop" (bytecomp/instruct.ml[58,2391+4]..[58,2391+8])
+                [
+                  core_type (bytecomp/instruct.ml[58,2391+12]..[58,2391+15])
+                    Ptyp_constr "int" (bytecomp/instruct.ml[58,2391+12]..[58,2391+15])
+                    []
+                ]
+                None
+              (bytecomp/instruct.ml[59,2407+2]..[59,2407+18])
+                "Kassign" (bytecomp/instruct.ml[59,2407+4]..[59,2407+11])
+                [
+                  core_type (bytecomp/instruct.ml[59,2407+15]..[59,2407+18])
+                    Ptyp_constr "int" (bytecomp/instruct.ml[59,2407+15]..[59,2407+18])
+                    []
+                ]
+                None
+              (bytecomp/instruct.ml[60,2426+2]..[60,2426+26])
+                "Kpush_retaddr" (bytecomp/instruct.ml[60,2426+4]..[60,2426+17])
+                [
+                  core_type (bytecomp/instruct.ml[60,2426+21]..[60,2426+26])
+                    Ptyp_constr "label" (bytecomp/instruct.ml[60,2426+21]..[60,2426+26])
+                    []
+                ]
+                None
+              (bytecomp/instruct.ml[61,2453+2]..[61,2453+17])
+                "Kapply" (bytecomp/instruct.ml[61,2453+4]..[61,2453+10])
+                [
+                  core_type (bytecomp/instruct.ml[61,2453+14]..[61,2453+17])
+                    Ptyp_constr "int" (bytecomp/instruct.ml[61,2453+14]..[61,2453+17])
+                    []
+                ]
+                None
+              (bytecomp/instruct.ml[62,2519+2]..[62,2519+25])
+                "Kappterm" (bytecomp/instruct.ml[62,2519+4]..[62,2519+12])
+                [
+                  core_type (bytecomp/instruct.ml[62,2519+16]..[62,2519+19])
+                    Ptyp_constr "int" (bytecomp/instruct.ml[62,2519+16]..[62,2519+19])
+                    []
+                  core_type (bytecomp/instruct.ml[62,2519+22]..[62,2519+25])
+                    Ptyp_constr "int" (bytecomp/instruct.ml[62,2519+22]..[62,2519+25])
+                    []
+                ]
+                None
+              (bytecomp/instruct.ml[63,2596+2]..[63,2596+18])
+                "Kreturn" (bytecomp/instruct.ml[63,2596+4]..[63,2596+11])
+                [
+                  core_type (bytecomp/instruct.ml[63,2596+15]..[63,2596+18])
+                    Ptyp_constr "int" (bytecomp/instruct.ml[63,2596+15]..[63,2596+18])
+                    []
+                ]
+                None
+              (bytecomp/instruct.ml[64,2652+2]..[64,2652+12])
+                "Krestart" (bytecomp/instruct.ml[64,2652+4]..[64,2652+12])
+                []
+                None
+              (bytecomp/instruct.ml[65,2665+2]..[65,2665+16])
+                "Kgrab" (bytecomp/instruct.ml[65,2665+4]..[65,2665+9])
+                [
+                  core_type (bytecomp/instruct.ml[65,2665+13]..[65,2665+16])
+                    Ptyp_constr "int" (bytecomp/instruct.ml[65,2665+13]..[65,2665+16])
+                    []
+                ]
+                None
+              (bytecomp/instruct.ml[66,2731+2]..[66,2731+27])
+                "Kclosure" (bytecomp/instruct.ml[66,2731+4]..[66,2731+12])
+                [
+                  core_type (bytecomp/instruct.ml[66,2731+16]..[66,2731+21])
+                    Ptyp_constr "label" (bytecomp/instruct.ml[66,2731+16]..[66,2731+21])
+                    []
+                  core_type (bytecomp/instruct.ml[66,2731+24]..[66,2731+27])
+                    Ptyp_constr "int" (bytecomp/instruct.ml[66,2731+24]..[66,2731+27])
+                    []
+                ]
+                None
+              (bytecomp/instruct.ml[67,2759+2]..[67,2759+35])
+                "Kclosurerec" (bytecomp/instruct.ml[67,2759+4]..[67,2759+15])
+                [
+                  core_type (bytecomp/instruct.ml[67,2759+19]..[67,2759+29])
+                    Ptyp_constr "list" (bytecomp/instruct.ml[67,2759+25]..[67,2759+29])
+                    [
+                      core_type (bytecomp/instruct.ml[67,2759+19]..[67,2759+24])
+                        Ptyp_constr "label" (bytecomp/instruct.ml[67,2759+19]..[67,2759+24])
+                        []
+                    ]
+                  core_type (bytecomp/instruct.ml[67,2759+32]..[67,2759+35])
+                    Ptyp_constr "int" (bytecomp/instruct.ml[67,2759+32]..[67,2759+35])
+                    []
+                ]
+                None
+              (bytecomp/instruct.ml[68,2795+2]..[68,2795+25])
+                "Koffsetclosure" (bytecomp/instruct.ml[68,2795+4]..[68,2795+18])
+                [
+                  core_type (bytecomp/instruct.ml[68,2795+22]..[68,2795+25])
+                    Ptyp_constr "int" (bytecomp/instruct.ml[68,2795+22]..[68,2795+25])
+                    []
+                ]
+                None
+              (bytecomp/instruct.ml[69,2821+2]..[69,2821+25])
+                "Kgetglobal" (bytecomp/instruct.ml[69,2821+4]..[69,2821+14])
+                [
+                  core_type (bytecomp/instruct.ml[69,2821+18]..[69,2821+25])
+                    Ptyp_constr "Ident.t" (bytecomp/instruct.ml[69,2821+18]..[69,2821+25])
+                    []
+                ]
+                None
+              (bytecomp/instruct.ml[70,2847+2]..[70,2847+25])
+                "Ksetglobal" (bytecomp/instruct.ml[70,2847+4]..[70,2847+14])
+                [
+                  core_type (bytecomp/instruct.ml[70,2847+18]..[70,2847+25])
+                    Ptyp_constr "Ident.t" (bytecomp/instruct.ml[70,2847+18]..[70,2847+25])
+                    []
+                ]
+                None
+              (bytecomp/instruct.ml[71,2873+2]..[71,2873+33])
+                "Kconst" (bytecomp/instruct.ml[71,2873+4]..[71,2873+10])
+                [
+                  core_type (bytecomp/instruct.ml[71,2873+14]..[71,2873+33])
+                    Ptyp_constr "structured_constant" (bytecomp/instruct.ml[71,2873+14]..[71,2873+33])
+                    []
+                ]
+                None
+              (bytecomp/instruct.ml[72,2907+2]..[72,2907+27])
+                "Kmakeblock" (bytecomp/instruct.ml[72,2907+4]..[72,2907+14])
+                [
+                  core_type (bytecomp/instruct.ml[72,2907+18]..[72,2907+21])
+                    Ptyp_constr "int" (bytecomp/instruct.ml[72,2907+18]..[72,2907+21])
+                    []
+                  core_type (bytecomp/instruct.ml[72,2907+24]..[72,2907+27])
+                    Ptyp_constr "int" (bytecomp/instruct.ml[72,2907+24]..[72,2907+27])
+                    []
+                ]
+                None
+              (bytecomp/instruct.ml[73,2963+2]..[73,2963+26])
+                "Kmakefloatblock" (bytecomp/instruct.ml[73,2963+4]..[73,2963+19])
+                [
+                  core_type (bytecomp/instruct.ml[73,2963+23]..[73,2963+26])
+                    Ptyp_constr "int" (bytecomp/instruct.ml[73,2963+23]..[73,2963+26])
+                    []
+                ]
+                None
+              (bytecomp/instruct.ml[74,2990+2]..[74,2990+20])
+                "Kgetfield" (bytecomp/instruct.ml[74,2990+4]..[74,2990+13])
+                [
+                  core_type (bytecomp/instruct.ml[74,2990+17]..[74,2990+20])
+                    Ptyp_constr "int" (bytecomp/instruct.ml[74,2990+17]..[74,2990+20])
+                    []
+                ]
+                None
+              (bytecomp/instruct.ml[75,3011+2]..[75,3011+20])
+                "Ksetfield" (bytecomp/instruct.ml[75,3011+4]..[75,3011+13])
+                [
+                  core_type (bytecomp/instruct.ml[75,3011+17]..[75,3011+20])
+                    Ptyp_constr "int" (bytecomp/instruct.ml[75,3011+17]..[75,3011+20])
+                    []
+                ]
+                None
+              (bytecomp/instruct.ml[76,3032+2]..[76,3032+25])
+                "Kgetfloatfield" (bytecomp/instruct.ml[76,3032+4]..[76,3032+18])
+                [
+                  core_type (bytecomp/instruct.ml[76,3032+22]..[76,3032+25])
+                    Ptyp_constr "int" (bytecomp/instruct.ml[76,3032+22]..[76,3032+25])
+                    []
+                ]
+                None
+              (bytecomp/instruct.ml[77,3058+2]..[77,3058+25])
+                "Ksetfloatfield" (bytecomp/instruct.ml[77,3058+4]..[77,3058+18])
+                [
+                  core_type (bytecomp/instruct.ml[77,3058+22]..[77,3058+25])
+                    Ptyp_constr "int" (bytecomp/instruct.ml[77,3058+22]..[77,3058+25])
+                    []
+                ]
+                None
+              (bytecomp/instruct.ml[78,3084+2]..[78,3084+15])
+                "Kvectlength" (bytecomp/instruct.ml[78,3084+4]..[78,3084+15])
+                []
+                None
+              (bytecomp/instruct.ml[79,3100+2]..[79,3100+16])
+                "Kgetvectitem" (bytecomp/instruct.ml[79,3100+4]..[79,3100+16])
+                []
+                None
+              (bytecomp/instruct.ml[80,3117+2]..[80,3117+16])
+                "Ksetvectitem" (bytecomp/instruct.ml[80,3117+4]..[80,3117+16])
+                []
+                None
+              (bytecomp/instruct.ml[81,3134+2]..[81,3134+18])
+                "Kgetstringchar" (bytecomp/instruct.ml[81,3134+4]..[81,3134+18])
+                []
+                None
+              (bytecomp/instruct.ml[82,3153+2]..[82,3153+17])
+                "Kgetbyteschar" (bytecomp/instruct.ml[82,3153+4]..[82,3153+17])
+                []
+                None
+              (bytecomp/instruct.ml[83,3171+2]..[83,3171+17])
+                "Ksetbyteschar" (bytecomp/instruct.ml[83,3171+4]..[83,3171+17])
+                []
+                None
+              (bytecomp/instruct.ml[84,3189+2]..[84,3189+20])
+                "Kbranch" (bytecomp/instruct.ml[84,3189+4]..[84,3189+11])
+                [
+                  core_type (bytecomp/instruct.ml[84,3189+15]..[84,3189+20])
+                    Ptyp_constr "label" (bytecomp/instruct.ml[84,3189+15]..[84,3189+20])
+                    []
+                ]
+                None
+              (bytecomp/instruct.ml[85,3210+2]..[85,3210+22])
+                "Kbranchif" (bytecomp/instruct.ml[85,3210+4]..[85,3210+13])
+                [
+                  core_type (bytecomp/instruct.ml[85,3210+17]..[85,3210+22])
+                    Ptyp_constr "label" (bytecomp/instruct.ml[85,3210+17]..[85,3210+22])
+                    []
+                ]
+                None
+              (bytecomp/instruct.ml[86,3233+2]..[86,3233+25])
+                "Kbranchifnot" (bytecomp/instruct.ml[86,3233+4]..[86,3233+16])
+                [
+                  core_type (bytecomp/instruct.ml[86,3233+20]..[86,3233+25])
+                    Ptyp_constr "label" (bytecomp/instruct.ml[86,3233+20]..[86,3233+25])
+                    []
+                ]
+                None
+              (bytecomp/instruct.ml[87,3259+2]..[87,3259+28])
+                "Kstrictbranchif" (bytecomp/instruct.ml[87,3259+4]..[87,3259+19])
+                [
+                  core_type (bytecomp/instruct.ml[87,3259+23]..[87,3259+28])
+                    Ptyp_constr "label" (bytecomp/instruct.ml[87,3259+23]..[87,3259+28])
+                    []
+                ]
+                None
+              (bytecomp/instruct.ml[88,3288+2]..[88,3288+31])
+                "Kstrictbranchifnot" (bytecomp/instruct.ml[88,3288+4]..[88,3288+22])
+                [
+                  core_type (bytecomp/instruct.ml[88,3288+26]..[88,3288+31])
+                    Ptyp_constr "label" (bytecomp/instruct.ml[88,3288+26]..[88,3288+31])
+                    []
+                ]
+                None
+              (bytecomp/instruct.ml[89,3320+2]..[89,3320+40])
+                "Kswitch" (bytecomp/instruct.ml[89,3320+4]..[89,3320+11])
+                [
+                  core_type (bytecomp/instruct.ml[89,3320+15]..[89,3320+26])
+                    Ptyp_constr "array" (bytecomp/instruct.ml[89,3320+21]..[89,3320+26])
+                    [
+                      core_type (bytecomp/instruct.ml[89,3320+15]..[89,3320+20])
+                        Ptyp_constr "label" (bytecomp/instruct.ml[89,3320+15]..[89,3320+20])
+                        []
+                    ]
+                  core_type (bytecomp/instruct.ml[89,3320+29]..[89,3320+40])
+                    Ptyp_constr "array" (bytecomp/instruct.ml[89,3320+35]..[89,3320+40])
+                    [
+                      core_type (bytecomp/instruct.ml[89,3320+29]..[89,3320+34])
+                        Ptyp_constr "label" (bytecomp/instruct.ml[89,3320+29]..[89,3320+34])
+                        []
+                    ]
+                ]
+                None
+              (bytecomp/instruct.ml[90,3361+2]..[90,3361+12])
+                "Kboolnot" (bytecomp/instruct.ml[90,3361+4]..[90,3361+12])
+                []
+                None
+              (bytecomp/instruct.ml[91,3374+2]..[91,3374+22])
+                "Kpushtrap" (bytecomp/instruct.ml[91,3374+4]..[91,3374+13])
+                [
+                  core_type (bytecomp/instruct.ml[91,3374+17]..[91,3374+22])
+                    Ptyp_constr "label" (bytecomp/instruct.ml[91,3374+17]..[91,3374+22])
+                    []
+                ]
+                None
+              (bytecomp/instruct.ml[92,3397+2]..[92,3397+12])
+                "Kpoptrap" (bytecomp/instruct.ml[92,3397+4]..[92,3397+12])
+                []
+                None
+              (bytecomp/instruct.ml[93,3410+2]..[93,3410+24])
+                "Kraise" (bytecomp/instruct.ml[93,3410+4]..[93,3410+10])
+                [
+                  core_type (bytecomp/instruct.ml[93,3410+14]..[93,3410+24])
+                    Ptyp_constr "raise_kind" (bytecomp/instruct.ml[93,3410+14]..[93,3410+24])
+                    []
+                ]
+                None
+              (bytecomp/instruct.ml[94,3435+2]..[94,3435+18])
+                "Kcheck_signals" (bytecomp/instruct.ml[94,3435+4]..[94,3435+18])
+                []
+                None
+              (bytecomp/instruct.ml[95,3454+2]..[95,3454+26])
+                "Kccall" (bytecomp/instruct.ml[95,3454+4]..[95,3454+10])
+                [
+                  core_type (bytecomp/instruct.ml[95,3454+14]..[95,3454+20])
+                    Ptyp_constr "string" (bytecomp/instruct.ml[95,3454+14]..[95,3454+20])
+                    []
+                  core_type (bytecomp/instruct.ml[95,3454+23]..[95,3454+26])
+                    Ptyp_constr "int" (bytecomp/instruct.ml[95,3454+23]..[95,3454+26])
+                    []
+                ]
+                None
+              (bytecomp/instruct.ml[96,3481+2]..[96,3481+11])
+                "Knegint" (bytecomp/instruct.ml[96,3481+4]..[96,3481+11])
+                []
+                None
+              (bytecomp/instruct.ml[96,3481+12]..[96,3481+21])
+                "Kaddint" (bytecomp/instruct.ml[96,3481+14]..[96,3481+21])
+                []
+                None
+              (bytecomp/instruct.ml[96,3481+22]..[96,3481+31])
+                "Ksubint" (bytecomp/instruct.ml[96,3481+24]..[96,3481+31])
+                []
+                None
+              (bytecomp/instruct.ml[96,3481+32]..[96,3481+41])
+                "Kmulint" (bytecomp/instruct.ml[96,3481+34]..[96,3481+41])
+                []
+                None
+              (bytecomp/instruct.ml[96,3481+42]..[96,3481+51])
+                "Kdivint" (bytecomp/instruct.ml[96,3481+44]..[96,3481+51])
+                []
+                None
+              (bytecomp/instruct.ml[96,3481+52]..[96,3481+61])
+                "Kmodint" (bytecomp/instruct.ml[96,3481+54]..[96,3481+61])
+                []
+                None
+              (bytecomp/instruct.ml[97,3543+2]..[97,3543+11])
+                "Kandint" (bytecomp/instruct.ml[97,3543+4]..[97,3543+11])
+                []
+                None
+              (bytecomp/instruct.ml[97,3543+12]..[97,3543+20])
+                "Korint" (bytecomp/instruct.ml[97,3543+14]..[97,3543+20])
+                []
+                None
+              (bytecomp/instruct.ml[97,3543+21]..[97,3543+30])
+                "Kxorint" (bytecomp/instruct.ml[97,3543+23]..[97,3543+30])
+                []
+                None
+              (bytecomp/instruct.ml[97,3543+31]..[97,3543+40])
+                "Klslint" (bytecomp/instruct.ml[97,3543+33]..[97,3543+40])
+                []
+                None
+              (bytecomp/instruct.ml[97,3543+41]..[97,3543+50])
+                "Klsrint" (bytecomp/instruct.ml[97,3543+43]..[97,3543+50])
+                []
+                None
+              (bytecomp/instruct.ml[97,3543+51]..[97,3543+60])
+                "Kasrint" (bytecomp/instruct.ml[97,3543+53]..[97,3543+60])
+                []
+                None
+              (bytecomp/instruct.ml[98,3604+2]..[98,3604+34])
+                "Kintcomp" (bytecomp/instruct.ml[98,3604+4]..[98,3604+12])
+                [
+                  core_type (bytecomp/instruct.ml[98,3604+16]..[98,3604+34])
+                    Ptyp_constr "integer_comparison" (bytecomp/instruct.ml[98,3604+16]..[98,3604+34])
+                    []
+                ]
+                None
+              (bytecomp/instruct.ml[99,3639+2]..[99,3639+21])
+                "Koffsetint" (bytecomp/instruct.ml[99,3639+4]..[99,3639+14])
+                [
+                  core_type (bytecomp/instruct.ml[99,3639+18]..[99,3639+21])
+                    Ptyp_constr "int" (bytecomp/instruct.ml[99,3639+18]..[99,3639+21])
+                    []
+                ]
+                None
+              (bytecomp/instruct.ml[100,3661+2]..[100,3661+21])
+                "Koffsetref" (bytecomp/instruct.ml[100,3661+4]..[100,3661+14])
+                [
+                  core_type (bytecomp/instruct.ml[100,3661+18]..[100,3661+21])
+                    Ptyp_constr "int" (bytecomp/instruct.ml[100,3661+18]..[100,3661+21])
+                    []
+                ]
+                None
+              (bytecomp/instruct.ml[101,3683+2]..[101,3683+10])
+                "Kisint" (bytecomp/instruct.ml[101,3683+4]..[101,3683+10])
+                []
+                None
+              (bytecomp/instruct.ml[102,3694+2]..[102,3694+10])
+                "Kisout" (bytecomp/instruct.ml[102,3694+4]..[102,3694+10])
+                []
+                None
+              (bytecomp/instruct.ml[103,3705+2]..[103,3705+14])
+                "Kgetmethod" (bytecomp/instruct.ml[103,3705+4]..[103,3705+14])
+                []
+                None
+              (bytecomp/instruct.ml[104,3720+2]..[104,3720+21])
+                "Kgetpubmet" (bytecomp/instruct.ml[104,3720+4]..[104,3720+14])
+                [
+                  core_type (bytecomp/instruct.ml[104,3720+18]..[104,3720+21])
+                    Ptyp_constr "int" (bytecomp/instruct.ml[104,3720+18]..[104,3720+21])
+                    []
+                ]
+                None
+              (bytecomp/instruct.ml[105,3742+2]..[105,3742+14])
+                "Kgetdynmet" (bytecomp/instruct.ml[105,3742+4]..[105,3742+14])
+                []
+                None
+              (bytecomp/instruct.ml[106,3757+2]..[106,3757+25])
+                "Kevent" (bytecomp/instruct.ml[106,3757+4]..[106,3757+10])
+                [
+                  core_type (bytecomp/instruct.ml[106,3757+14]..[106,3757+25])
+                    Ptyp_constr "debug_event" (bytecomp/instruct.ml[106,3757+14]..[106,3757+25])
+                    []
+                ]
+                None
+              (bytecomp/instruct.ml[107,3783+2]..[107,3783+9])
+                "Kstop" (bytecomp/instruct.ml[107,3783+4]..[107,3783+9])
+                []
+                None
+            ]
+        ptype_private = Public
+        ptype_manifest =
+          None
+    ]
+  structure_item (bytecomp/instruct.ml[109,3794+0]..[110,3822+26])
+    Pstr_value Nonrec
+    [
+      <def>
+        pattern (bytecomp/instruct.ml[109,3794+4]..[109,3794+13])
+          Ppat_var "immed_min" (bytecomp/instruct.ml[109,3794+4]..[109,3794+13])
+        expression (bytecomp/instruct.ml[109,3794+16]..[109,3794+27])
+          Pexp_constant PConst_int (-0x40000000,None)
+      <def>
+        pattern (bytecomp/instruct.ml[110,3822+4]..[110,3822+13])
+          Ppat_var "immed_max" (bytecomp/instruct.ml[110,3822+4]..[110,3822+13])
+        expression (bytecomp/instruct.ml[110,3822+16]..[110,3822+26])
+          Pexp_constant PConst_int (0x3FFFFFFF,None)
+    ]
+]
+

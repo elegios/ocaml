@@ -1,0 +1,1068 @@
+[
+  signature_item (stdlib/scanf.mli[16,1079+0]..[16,1079+33])
+    Psig_attribute "ocaml.text"
+    [
+      structure_item (stdlib/scanf.mli[16,1079+0]..[16,1079+33])
+        Pstr_eval
+        expression (stdlib/scanf.mli[16,1079+0]..[16,1079+33])
+          Pexp_constant PConst_string(" Formatted input functions. ",(stdlib/scanf.mli[16,1079+0]..[16,1079+33]),None)
+    ]
+  signature_item (stdlib/scanf.mli[18,1114+0]..[18,1114+23])
+    Psig_attribute "ocaml.text"
+    [
+      structure_item (stdlib/scanf.mli[18,1114+0]..[18,1114+23])
+        Pstr_eval
+        expression (stdlib/scanf.mli[18,1114+0]..[18,1114+23])
+          Pexp_constant PConst_string(" {1 Introduction} ",(stdlib/scanf.mli[18,1114+0]..[18,1114+23]),None)
+    ]
+  signature_item (stdlib/scanf.mli[20,1139+0]..[20,1139+47])
+    Psig_attribute "ocaml.text"
+    [
+      structure_item (stdlib/scanf.mli[20,1139+0]..[20,1139+47])
+        Pstr_eval
+        expression (stdlib/scanf.mli[20,1139+0]..[20,1139+47])
+          Pexp_constant PConst_string(" {2 Functional input with format strings} ",(stdlib/scanf.mli[20,1139+0]..[20,1139+47]),None)
+    ]
+  signature_item (stdlib/scanf.mli[22,1188+0]..[49,2449+2])
+    Psig_attribute "ocaml.text"
+    [
+      structure_item (stdlib/scanf.mli[22,1188+0]..[49,2449+2])
+        Pstr_eval
+        expression (stdlib/scanf.mli[22,1188+0]..[49,2449+2])
+          Pexp_constant PConst_string(" The module {!Scanf} provides formatted input functions or {e scanners}.\n\n    The formatted input functions can read from any kind of input, including\n    strings, files, or anything that can return characters. The more general\n    source of characters is named a {e formatted input channel} (or {e\n    scanning buffer}) and has type {!Scanning.in_channel}. The more general\n    formatted input function reads from any scanning buffer and is named\n    [bscanf].\n\n    Generally speaking, the formatted input functions have 3 arguments:\n    - the first argument is a source of characters for the input,\n    - the second argument is a format string that specifies the values to\n      read,\n    - the third argument is a {e receiver function} that is applied to the\n      values read.\n\n    Hence, a typical call to the formatted input function {!Scanf.bscanf} is\n    [bscanf ic fmt f], where:\n\n    - [ic] is a source of characters (typically a {e\n    formatted input channel} with type {!Scanning.in_channel}),\n\n    - [fmt] is a format string (the same format strings as those used to print\n    material with module {!Printf} or {!Format}),\n\n    - [f] is a function that has as many arguments as the number of values to\n    read in the input according to [fmt].\n",(stdlib/scanf.mli[22,1188+0]..[49,2449+2]),None)
+    ]
+  signature_item (stdlib/scanf.mli[51,2453+0]..[51,2453+27])
+    Psig_attribute "ocaml.text"
+    [
+      structure_item (stdlib/scanf.mli[51,2453+0]..[51,2453+27])
+        Pstr_eval
+        expression (stdlib/scanf.mli[51,2453+0]..[51,2453+27])
+          Pexp_constant PConst_string(" {2 A simple example} ",(stdlib/scanf.mli[51,2453+0]..[51,2453+27]),None)
+    ]
+  signature_item (stdlib/scanf.mli[53,2482+0]..[67,3098+2])
+    Psig_attribute "ocaml.text"
+    [
+      structure_item (stdlib/scanf.mli[53,2482+0]..[67,3098+2])
+        Pstr_eval
+        expression (stdlib/scanf.mli[53,2482+0]..[67,3098+2])
+          Pexp_constant PConst_string(" As suggested above, the expression [bscanf ic \"%d\" f] reads a decimal\n    integer [n] from the source of characters [ic] and returns [f n].\n\n    For instance,\n\n    - if we use [stdin] as the source of characters ({!Scanning.stdin} is\n    the predefined formatted input channel that reads from standard input),\n\n    - if we define the receiver [f] as [let f x = x + 1],\n\n    then [bscanf Scanning.stdin \"%d\" f] reads an integer [n] from the\n    standard input and returns [f n] (that is [n + 1]). Thus, if we\n    evaluate [bscanf stdin \"%d\" f], and then enter [41] at the\n    keyboard, the result we get is [42].\n",(stdlib/scanf.mli[53,2482+0]..[67,3098+2]),None)
+    ]
+  signature_item (stdlib/scanf.mli[69,3102+0]..[69,3102+50])
+    Psig_attribute "ocaml.text"
+    [
+      structure_item (stdlib/scanf.mli[69,3102+0]..[69,3102+50])
+        Pstr_eval
+        expression (stdlib/scanf.mli[69,3102+0]..[69,3102+50])
+          Pexp_constant PConst_string(" {2 Formatted input as a functional feature} ",(stdlib/scanf.mli[69,3102+0]..[69,3102+50]),None)
+    ]
+  signature_item (stdlib/scanf.mli[71,3154+0]..[82,3948+2])
+    Psig_attribute "ocaml.text"
+    [
+      structure_item (stdlib/scanf.mli[71,3154+0]..[82,3948+2])
+        Pstr_eval
+        expression (stdlib/scanf.mli[71,3154+0]..[82,3948+2])
+          Pexp_constant PConst_string(" The OCaml scanning facility is reminiscent of the corresponding C feature.\n    However, it is also largely different, simpler, and yet more powerful:\n    the formatted input functions are higher-order functionals and the\n    parameter passing mechanism is just the regular function application not\n    the variable assignment based mechanism which is typical for formatted\n    input in imperative languages; the OCaml format strings also feature\n    useful additions to easily define complex tokens; as expected within a\n    functional programming language, the formatted input functions also\n    support polymorphism, in particular arbitrary interaction with\n    polymorphic user-defined scanners. Furthermore, the OCaml formatted input\n    facility is fully type-checked at compile time.\n",(stdlib/scanf.mli[71,3154+0]..[82,3948+2]),None)
+    ]
+  signature_item (stdlib/scanf.mli[84,3952+0]..[84,3952+34])
+    Psig_attribute "ocaml.text"
+    [
+      structure_item (stdlib/scanf.mli[84,3952+0]..[84,3952+34])
+        Pstr_eval
+        expression (stdlib/scanf.mli[84,3952+0]..[84,3952+34])
+          Pexp_constant PConst_string(" {1 Formatted input channel} ",(stdlib/scanf.mli[84,3952+0]..[84,3952+34]),None)
+    ]
+  signature_item (stdlib/scanf.mli[86,3988+0]..[204,8442+3])
+    Psig_module "Scanning" (stdlib/scanf.mli[86,3988+7]..[86,3988+15])
+    module_type (stdlib/scanf.mli[86,3988+18]..[204,8442+3])
+      Pmty_signature
+      [
+        signature_item (stdlib/scanf.mli[88,4011+0]..[88,4011+15])
+          Psig_type Rec
+          [
+            type_declaration "in_channel" (stdlib/scanf.mli[88,4011+5]..[88,4011+15]) (stdlib/scanf.mli[88,4011+0]..[88,4011+15])
+              attribute "ocaml.doc"
+                [
+                  structure_item (stdlib/scanf.mli[89,4027+0]..[96,4438+2])
+                    Pstr_eval
+                    expression (stdlib/scanf.mli[89,4027+0]..[96,4438+2])
+                      Pexp_constant PConst_string(" The notion of input channel for the {!Scanf} module:\n   those channels provide all the machinery necessary to read from any source\n   of characters, including a {!Stdlib.in_channel} value.\n   A Scanf.Scanning.in_channel value is also called a {i formatted input\n   channel} or equivalently a {i scanning buffer}.\n   The type {!Scanning.scanbuf} below is an alias for [Scanning.in_channel].\n   @since 3.12.0\n",(stdlib/scanf.mli[89,4027+0]..[96,4438+2]),None)
+                ]
+              ptype_params =
+                []
+              ptype_cstrs =
+                []
+              ptype_kind =
+                Ptype_abstract
+              ptype_private = Public
+              ptype_manifest =
+                None
+          ]
+        signature_item (stdlib/scanf.mli[98,4442+0]..[98,4442+25])
+          Psig_type Rec
+          [
+            type_declaration "scanbuf" (stdlib/scanf.mli[98,4442+5]..[98,4442+12]) (stdlib/scanf.mli[98,4442+0]..[98,4442+25])
+              attribute "ocaml.doc"
+                [
+                  structure_item (stdlib/scanf.mli[99,4468+0]..[108,5017+2])
+                    Pstr_eval
+                    expression (stdlib/scanf.mli[99,4468+0]..[108,5017+2])
+                      Pexp_constant PConst_string(" The type of scanning buffers. A scanning buffer is the source from which a\n    formatted input function gets characters. The scanning buffer holds the\n    current state of the scan, plus a function to get the next char from the\n    input, and a token buffer to store the string matched so far.\n\n    Note: a scanning action may often require to examine one character in\n    advance; when this 'lookahead' character does not belong to the token\n    read, it is stored back in the scanning buffer and becomes the next\n    character yet to be read.\n",(stdlib/scanf.mli[99,4468+0]..[108,5017+2]),None)
+                ]
+              ptype_params =
+                []
+              ptype_cstrs =
+                []
+              ptype_kind =
+                Ptype_abstract
+              ptype_private = Public
+              ptype_manifest =
+                Some
+                  core_type (stdlib/scanf.mli[98,4442+15]..[98,4442+25])
+                    Ptyp_constr "in_channel" (stdlib/scanf.mli[98,4442+15]..[98,4442+25])
+                    []
+          ]
+        signature_item (stdlib/scanf.mli[110,5021+0]..[110,5021+22])
+          Psig_value
+          value_description "stdin" (stdlib/scanf.mli[110,5021+4]..[110,5021+9]) (stdlib/scanf.mli[110,5021+0]..[110,5021+22])
+            attribute "ocaml.doc"
+              [
+                structure_item (stdlib/scanf.mli[111,5044+0]..[121,5556+2])
+                  Pstr_eval
+                  expression (stdlib/scanf.mli[111,5044+0]..[121,5556+2])
+                    Pexp_constant PConst_string(" The standard input notion for the {!Scanf} module.\n    [Scanning.stdin] is the {!Scanning.in_channel} formatted input channel\n    attached to {!Stdlib.stdin}.\n\n    Note: in the interactive system, when input is read from\n    {!Stdlib.stdin}, the newline character that triggers evaluation is\n    part of the input; thus, the scanning specifications must properly skip\n    this additional newline character (for instance, simply add a ['\\n'] as\n    the last character of the format string).\n    @since 3.12.0\n",(stdlib/scanf.mli[111,5044+0]..[121,5556+2]),None)
+              ]
+            core_type (stdlib/scanf.mli[110,5021+12]..[110,5021+22])
+              Ptyp_constr "in_channel" (stdlib/scanf.mli[110,5021+12]..[110,5021+22])
+              []
+            []
+        signature_item (stdlib/scanf.mli[123,5560+0]..[123,5560+23])
+          Psig_type Rec
+          [
+            type_declaration "file_name" (stdlib/scanf.mli[123,5560+5]..[123,5560+14]) (stdlib/scanf.mli[123,5560+0]..[123,5560+23])
+              attribute "ocaml.doc"
+                [
+                  structure_item (stdlib/scanf.mli[124,5584+0]..[126,5651+2])
+                    Pstr_eval
+                    expression (stdlib/scanf.mli[124,5584+0]..[126,5651+2])
+                      Pexp_constant PConst_string(" A convenient alias to designate a file name.\n    @since 4.00.0\n",(stdlib/scanf.mli[124,5584+0]..[126,5651+2]),None)
+                ]
+              ptype_params =
+                []
+              ptype_cstrs =
+                []
+              ptype_kind =
+                Ptype_abstract
+              ptype_private = Public
+              ptype_manifest =
+                Some
+                  core_type (stdlib/scanf.mli[123,5560+17]..[123,5560+23])
+                    Ptyp_constr "string" (stdlib/scanf.mli[123,5560+17]..[123,5560+23])
+                    []
+          ]
+        signature_item (stdlib/scanf.mli[128,5655+0]..[128,5655+37])
+          Psig_value
+          value_description "open_in" (stdlib/scanf.mli[128,5655+4]..[128,5655+11]) (stdlib/scanf.mli[128,5655+0]..[128,5655+37])
+            attribute "ocaml.doc"
+              [
+                structure_item (stdlib/scanf.mli[129,5693+0]..[138,6125+2])
+                  Pstr_eval
+                  expression (stdlib/scanf.mli[129,5693+0]..[138,6125+2])
+                    Pexp_constant PConst_string(" [Scanning.open_in fname] returns a {!Scanning.in_channel} formatted input\n    channel for bufferized reading in text mode from file [fname].\n\n    Note:\n    [open_in] returns a formatted input channel that efficiently reads\n    characters in large chunks; in contrast, [from_channel] below returns\n    formatted input channels that must read one character at a time, leading\n    to a much slower scanning rate.\n    @since 3.12.0\n",(stdlib/scanf.mli[129,5693+0]..[138,6125+2]),None)
+              ]
+            core_type (stdlib/scanf.mli[128,5655+14]..[128,5655+37])
+              Ptyp_arrow
+              Nolabel
+              core_type (stdlib/scanf.mli[128,5655+14]..[128,5655+23])
+                Ptyp_constr "file_name" (stdlib/scanf.mli[128,5655+14]..[128,5655+23])
+                []
+              core_type (stdlib/scanf.mli[128,5655+27]..[128,5655+37])
+                Ptyp_constr "in_channel" (stdlib/scanf.mli[128,5655+27]..[128,5655+37])
+                []
+            []
+        signature_item (stdlib/scanf.mli[140,6129+0]..[140,6129+41])
+          Psig_value
+          value_description "open_in_bin" (stdlib/scanf.mli[140,6129+4]..[140,6129+15]) (stdlib/scanf.mli[140,6129+0]..[140,6129+41])
+            attribute "ocaml.doc"
+              [
+                structure_item (stdlib/scanf.mli[141,6171+0]..[144,6340+2])
+                  Pstr_eval
+                  expression (stdlib/scanf.mli[141,6171+0]..[144,6340+2])
+                    Pexp_constant PConst_string(" [Scanning.open_in_bin fname] returns a {!Scanning.in_channel} formatted\n    input channel for bufferized reading in binary mode from file [fname].\n    @since 3.12.0\n",(stdlib/scanf.mli[141,6171+0]..[144,6340+2]),None)
+              ]
+            core_type (stdlib/scanf.mli[140,6129+18]..[140,6129+41])
+              Ptyp_arrow
+              Nolabel
+              core_type (stdlib/scanf.mli[140,6129+18]..[140,6129+27])
+                Ptyp_constr "file_name" (stdlib/scanf.mli[140,6129+18]..[140,6129+27])
+                []
+              core_type (stdlib/scanf.mli[140,6129+31]..[140,6129+41])
+                Ptyp_constr "in_channel" (stdlib/scanf.mli[140,6129+31]..[140,6129+41])
+                []
+            []
+        signature_item (stdlib/scanf.mli[146,6344+0]..[146,6344+33])
+          Psig_value
+          value_description "close_in" (stdlib/scanf.mli[146,6344+4]..[146,6344+12]) (stdlib/scanf.mli[146,6344+0]..[146,6344+33])
+            attribute "ocaml.doc"
+              [
+                structure_item (stdlib/scanf.mli[147,6378+0]..[150,6506+2])
+                  Pstr_eval
+                  expression (stdlib/scanf.mli[147,6378+0]..[150,6506+2])
+                    Pexp_constant PConst_string(" Closes the {!Stdlib.in_channel} associated with the given\n  {!Scanning.in_channel} formatted input channel.\n  @since 3.12.0\n",(stdlib/scanf.mli[147,6378+0]..[150,6506+2]),None)
+              ]
+            core_type (stdlib/scanf.mli[146,6344+15]..[146,6344+33])
+              Ptyp_arrow
+              Nolabel
+              core_type (stdlib/scanf.mli[146,6344+15]..[146,6344+25])
+                Ptyp_constr "in_channel" (stdlib/scanf.mli[146,6344+15]..[146,6344+25])
+                []
+              core_type (stdlib/scanf.mli[146,6344+29]..[146,6344+33])
+                Ptyp_constr "unit" (stdlib/scanf.mli[146,6344+29]..[146,6344+33])
+                []
+            []
+        signature_item (stdlib/scanf.mli[152,6510+0]..[152,6510+39])
+          Psig_value
+          value_description "from_file" (stdlib/scanf.mli[152,6510+4]..[152,6510+13]) (stdlib/scanf.mli[152,6510+0]..[152,6510+39])
+            attribute "ocaml.doc"
+              [
+                structure_item (stdlib/scanf.mli[153,6550+0]..[153,6550+46])
+                  Pstr_eval
+                  expression (stdlib/scanf.mli[153,6550+0]..[153,6550+46])
+                    Pexp_constant PConst_string(" An alias for {!Scanning.open_in} above. ",(stdlib/scanf.mli[153,6550+0]..[153,6550+46]),None)
+              ]
+            core_type (stdlib/scanf.mli[152,6510+16]..[152,6510+39])
+              Ptyp_arrow
+              Nolabel
+              core_type (stdlib/scanf.mli[152,6510+16]..[152,6510+25])
+                Ptyp_constr "file_name" (stdlib/scanf.mli[152,6510+16]..[152,6510+25])
+                []
+              core_type (stdlib/scanf.mli[152,6510+29]..[152,6510+39])
+                Ptyp_constr "in_channel" (stdlib/scanf.mli[152,6510+29]..[152,6510+39])
+                []
+            []
+        signature_item (stdlib/scanf.mli[155,6598+0]..[155,6598+40])
+          Psig_value
+          value_description "from_file_bin" (stdlib/scanf.mli[155,6598+4]..[155,6598+17]) (stdlib/scanf.mli[155,6598+0]..[155,6598+40])
+            attribute "ocaml.doc"
+              [
+                structure_item (stdlib/scanf.mli[156,6639+0]..[156,6639+50])
+                  Pstr_eval
+                  expression (stdlib/scanf.mli[156,6639+0]..[156,6639+50])
+                    Pexp_constant PConst_string(" An alias for {!Scanning.open_in_bin} above. ",(stdlib/scanf.mli[156,6639+0]..[156,6639+50]),None)
+              ]
+            core_type (stdlib/scanf.mli[155,6598+20]..[155,6598+40])
+              Ptyp_arrow
+              Nolabel
+              core_type (stdlib/scanf.mli[155,6598+20]..[155,6598+26])
+                Ptyp_constr "string" (stdlib/scanf.mli[155,6598+20]..[155,6598+26])
+                []
+              core_type (stdlib/scanf.mli[155,6598+30]..[155,6598+40])
+                Ptyp_constr "in_channel" (stdlib/scanf.mli[155,6598+30]..[155,6598+40])
+                []
+            []
+        signature_item (stdlib/scanf.mli[158,6691+0]..[158,6691+38])
+          Psig_value
+          value_description "from_string" (stdlib/scanf.mli[158,6691+4]..[158,6691+15]) (stdlib/scanf.mli[158,6691+0]..[158,6691+38])
+            attribute "ocaml.doc"
+              [
+                structure_item (stdlib/scanf.mli[159,6730+0]..[163,6991+2])
+                  Pstr_eval
+                  expression (stdlib/scanf.mli[159,6730+0]..[163,6991+2])
+                    Pexp_constant PConst_string(" [Scanning.from_string s] returns a {!Scanning.in_channel} formatted\n    input channel which reads from the given string.\n    Reading starts from the first character in the string.\n    The end-of-input condition is set when the end of the string is reached.\n",(stdlib/scanf.mli[159,6730+0]..[163,6991+2]),None)
+              ]
+            core_type (stdlib/scanf.mli[158,6691+18]..[158,6691+38])
+              Ptyp_arrow
+              Nolabel
+              core_type (stdlib/scanf.mli[158,6691+18]..[158,6691+24])
+                Ptyp_constr "string" (stdlib/scanf.mli[158,6691+18]..[158,6691+24])
+                []
+              core_type (stdlib/scanf.mli[158,6691+28]..[158,6691+38])
+                Ptyp_constr "in_channel" (stdlib/scanf.mli[158,6691+28]..[158,6691+38])
+                []
+            []
+        signature_item (stdlib/scanf.mli[165,6995+0]..[165,6995+48])
+          Psig_value
+          value_description "from_function" (stdlib/scanf.mli[165,6995+4]..[165,6995+17]) (stdlib/scanf.mli[165,6995+0]..[165,6995+48])
+            attribute "ocaml.doc"
+              [
+                structure_item (stdlib/scanf.mli[166,7044+0]..[173,7404+2])
+                  Pstr_eval
+                  expression (stdlib/scanf.mli[166,7044+0]..[173,7404+2])
+                    Pexp_constant PConst_string(" [Scanning.from_function f] returns a {!Scanning.in_channel} formatted\n    input channel with the given function as its reading method.\n\n    When scanning needs one more character, the given function is called.\n\n    When the function has no more character to provide, it {e must} signal an\n    end-of-input condition by raising the exception [End_of_file].\n",(stdlib/scanf.mli[166,7044+0]..[173,7404+2]),None)
+              ]
+            core_type (stdlib/scanf.mli[165,6995+20]..[165,6995+48])
+              Ptyp_arrow
+              Nolabel
+              core_type (stdlib/scanf.mli[165,6995+21]..[165,6995+33])
+                Ptyp_arrow
+                Nolabel
+                core_type (stdlib/scanf.mli[165,6995+21]..[165,6995+25])
+                  Ptyp_constr "unit" (stdlib/scanf.mli[165,6995+21]..[165,6995+25])
+                  []
+                core_type (stdlib/scanf.mli[165,6995+29]..[165,6995+33])
+                  Ptyp_constr "char" (stdlib/scanf.mli[165,6995+29]..[165,6995+33])
+                  []
+              core_type (stdlib/scanf.mli[165,6995+38]..[165,6995+48])
+                Ptyp_constr "in_channel" (stdlib/scanf.mli[165,6995+38]..[165,6995+48])
+                []
+            []
+        signature_item (stdlib/scanf.mli[175,7408+0]..[175,7408+50])
+          Psig_value
+          value_description "from_channel" (stdlib/scanf.mli[175,7408+4]..[175,7408+16]) (stdlib/scanf.mli[175,7408+0]..[175,7408+50])
+            attribute "ocaml.doc"
+              [
+                structure_item (stdlib/scanf.mli[176,7459+0]..[180,7690+2])
+                  Pstr_eval
+                  expression (stdlib/scanf.mli[176,7459+0]..[180,7690+2])
+                    Pexp_constant PConst_string(" [Scanning.from_channel ic] returns a {!Scanning.in_channel} formatted\n    input channel which reads from the regular {!Stdlib.in_channel} input\n    channel [ic] argument.\n    Reading starts at current reading position of [ic].\n",(stdlib/scanf.mli[176,7459+0]..[180,7690+2]),None)
+              ]
+            core_type (stdlib/scanf.mli[175,7408+19]..[175,7408+50])
+              Ptyp_arrow
+              Nolabel
+              core_type (stdlib/scanf.mli[175,7408+19]..[175,7408+36])
+                Ptyp_constr "Stdlib.in_channel" (stdlib/scanf.mli[175,7408+19]..[175,7408+36])
+                []
+              core_type (stdlib/scanf.mli[175,7408+40]..[175,7408+50])
+                Ptyp_constr "in_channel" (stdlib/scanf.mli[175,7408+40]..[175,7408+50])
+                []
+            []
+        signature_item (stdlib/scanf.mli[182,7694+0]..[182,7694+37])
+          Psig_value
+          value_description "end_of_input" (stdlib/scanf.mli[182,7694+4]..[182,7694+16]) (stdlib/scanf.mli[182,7694+0]..[182,7694+37])
+            attribute "ocaml.doc"
+              [
+                structure_item (stdlib/scanf.mli[183,7732+0]..[185,7861+2])
+                  Pstr_eval
+                  expression (stdlib/scanf.mli[183,7732+0]..[185,7861+2])
+                    Pexp_constant PConst_string(" [Scanning.end_of_input ic] tests the end-of-input condition of the given\n    {!Scanning.in_channel} formatted input channel.\n",(stdlib/scanf.mli[183,7732+0]..[185,7861+2]),None)
+              ]
+            core_type (stdlib/scanf.mli[182,7694+19]..[182,7694+37])
+              Ptyp_arrow
+              Nolabel
+              core_type (stdlib/scanf.mli[182,7694+19]..[182,7694+29])
+                Ptyp_constr "in_channel" (stdlib/scanf.mli[182,7694+19]..[182,7694+29])
+                []
+              core_type (stdlib/scanf.mli[182,7694+33]..[182,7694+37])
+                Ptyp_constr "bool" (stdlib/scanf.mli[182,7694+33]..[182,7694+37])
+                []
+            []
+        signature_item (stdlib/scanf.mli[187,7865+0]..[187,7865+43])
+          Psig_value
+          value_description "beginning_of_input" (stdlib/scanf.mli[187,7865+4]..[187,7865+22]) (stdlib/scanf.mli[187,7865+0]..[187,7865+43])
+            attribute "ocaml.doc"
+              [
+                structure_item (stdlib/scanf.mli[188,7909+0]..[190,8050+2])
+                  Pstr_eval
+                  expression (stdlib/scanf.mli[188,7909+0]..[190,8050+2])
+                    Pexp_constant PConst_string(" [Scanning.beginning_of_input ic] tests the beginning of input condition\n    of the given {!Scanning.in_channel} formatted input channel.\n",(stdlib/scanf.mli[188,7909+0]..[190,8050+2]),None)
+              ]
+            core_type (stdlib/scanf.mli[187,7865+25]..[187,7865+43])
+              Ptyp_arrow
+              Nolabel
+              core_type (stdlib/scanf.mli[187,7865+25]..[187,7865+35])
+                Ptyp_constr "in_channel" (stdlib/scanf.mli[187,7865+25]..[187,7865+35])
+                []
+              core_type (stdlib/scanf.mli[187,7865+39]..[187,7865+43])
+                Ptyp_constr "bool" (stdlib/scanf.mli[187,7865+39]..[187,7865+43])
+                []
+            []
+        signature_item (stdlib/scanf.mli[192,8054+0]..[192,8054+40])
+          Psig_value
+          value_description "name_of_input" (stdlib/scanf.mli[192,8054+4]..[192,8054+17]) (stdlib/scanf.mli[192,8054+0]..[192,8054+40])
+            attribute "ocaml.doc"
+              [
+                structure_item (stdlib/scanf.mli[193,8095+0]..[196,8252+2])
+                  Pstr_eval
+                  expression (stdlib/scanf.mli[193,8095+0]..[196,8252+2])
+                    Pexp_constant PConst_string(" [Scanning.name_of_input ic] returns the name of the character source\n    for the given {!Scanning.in_channel} formatted input channel.\n    @since 3.09.0\n",(stdlib/scanf.mli[193,8095+0]..[196,8252+2]),None)
+              ]
+            core_type (stdlib/scanf.mli[192,8054+20]..[192,8054+40])
+              Ptyp_arrow
+              Nolabel
+              core_type (stdlib/scanf.mli[192,8054+20]..[192,8054+30])
+                Ptyp_constr "in_channel" (stdlib/scanf.mli[192,8054+20]..[192,8054+30])
+                []
+              core_type (stdlib/scanf.mli[192,8054+34]..[192,8054+40])
+                Ptyp_constr "string" (stdlib/scanf.mli[192,8054+34]..[192,8054+40])
+                []
+            []
+        signature_item (stdlib/scanf.mli[198,8256+0]..[199,8279+58])
+          Psig_value
+          value_description "stdib" (stdlib/scanf.mli[198,8256+4]..[198,8256+9]) (stdlib/scanf.mli[198,8256+0]..[199,8279+58])
+            attribute "ocaml.deprecated"
+              [
+                structure_item (stdlib/scanf.mli[199,8279+22]..[199,8279+57])
+                  Pstr_eval
+                  expression (stdlib/scanf.mli[199,8279+22]..[199,8279+57])
+                    Pexp_constant PConst_string("Use Scanf.Scanning.stdin instead.",(stdlib/scanf.mli[199,8279+23]..[199,8279+56]),None)
+              ]
+            attribute "ocaml.doc"
+              [
+                structure_item (stdlib/scanf.mli[200,8338+0]..[202,8438+2])
+                  Pstr_eval
+                  expression (stdlib/scanf.mli[200,8338+0]..[202,8438+2])
+                    Pexp_constant PConst_string(" A deprecated alias for {!Scanning.stdin}, the scanning buffer reading from\n    {!Stdlib.stdin}.\n",(stdlib/scanf.mli[200,8338+0]..[202,8438+2]),None)
+              ]
+            core_type (stdlib/scanf.mli[198,8256+12]..[198,8256+22])
+              Ptyp_constr "in_channel" (stdlib/scanf.mli[198,8256+12]..[198,8256+22])
+              []
+            []
+      ]
+  signature_item (stdlib/scanf.mli[206,8447+0]..[206,8447+44])
+    Psig_attribute "ocaml.text"
+    [
+      structure_item (stdlib/scanf.mli[206,8447+0]..[206,8447+44])
+        Pstr_eval
+        expression (stdlib/scanf.mli[206,8447+0]..[206,8447+44])
+          Pexp_constant PConst_string(" {1 Type of formatted input functions} ",(stdlib/scanf.mli[206,8447+0]..[206,8447+44]),None)
+    ]
+  signature_item (stdlib/scanf.mli[208,8493+0]..[209,8525+66])
+    Psig_type Rec
+    [
+      type_declaration "scanner" (stdlib/scanf.mli[208,8493+22]..[208,8493+29]) (stdlib/scanf.mli[208,8493+0]..[209,8525+66])
+        attribute "ocaml.doc"
+          [
+            structure_item (stdlib/scanf.mli[210,8592+0]..[230,9723+2])
+              Pstr_eval
+              expression (stdlib/scanf.mli[210,8592+0]..[230,9723+2])
+                Pexp_constant PConst_string(" The type of formatted input scanners: [('a, 'b, 'c, 'd) scanner]\n    is the type of a formatted input function that reads from some\n    formatted input channel according to some format string; more\n    precisely, if [scan] is some formatted input function, then [scan\n    ic fmt f] applies [f] to all the arguments specified by format\n    string [fmt], when [scan] has read those arguments from the\n    {!Scanning.in_channel} formatted input channel [ic].\n\n    For instance, the {!Scanf.scanf} function below has type\n    [('a, 'b, 'c, 'd) scanner], since it is a formatted input function that\n    reads from {!Scanning.stdin}: [scanf fmt f] applies [f] to the arguments\n    specified by [fmt], reading those arguments from {!Stdlib.stdin} as\n    expected.\n\n    If the format [fmt] has some [%r] indications, the corresponding\n    formatted input functions must be provided {e before} receiver function\n    [f]. For instance, if [read_elem] is an input function for values of type\n    [t], then [bscanf ic \"%r;\" read_elem f] reads a value [v] of type [t]\n    followed by a [';'] character, and returns [f v].\n    @since 3.10.0\n",(stdlib/scanf.mli[210,8592+0]..[230,9723+2]),None)
+          ]
+        ptype_params =
+          [
+            core_type (stdlib/scanf.mli[208,8493+6]..[208,8493+8])
+              Ptyp_var a
+            core_type (stdlib/scanf.mli[208,8493+10]..[208,8493+12])
+              Ptyp_var b
+            core_type (stdlib/scanf.mli[208,8493+14]..[208,8493+16])
+              Ptyp_var c
+            core_type (stdlib/scanf.mli[208,8493+18]..[208,8493+20])
+              Ptyp_var d
+          ]
+        ptype_cstrs =
+          []
+        ptype_kind =
+          Ptype_abstract
+        ptype_private = Public
+        ptype_manifest =
+          Some
+            core_type (stdlib/scanf.mli[209,8525+5]..[209,8525+66])
+              Ptyp_arrow
+              Nolabel
+              core_type (stdlib/scanf.mli[209,8525+5]..[209,8525+60])
+                Ptyp_constr "format6" (stdlib/scanf.mli[209,8525+53]..[209,8525+60])
+                [
+                  core_type (stdlib/scanf.mli[209,8525+6]..[209,8525+8])
+                    Ptyp_var a
+                  core_type (stdlib/scanf.mli[209,8525+10]..[209,8525+29])
+                    Ptyp_constr "Scanning.in_channel" (stdlib/scanf.mli[209,8525+10]..[209,8525+29])
+                    []
+                  core_type (stdlib/scanf.mli[209,8525+31]..[209,8525+33])
+                    Ptyp_var b
+                  core_type (stdlib/scanf.mli[209,8525+35]..[209,8525+37])
+                    Ptyp_var c
+                  core_type (stdlib/scanf.mli[209,8525+39]..[209,8525+47])
+                    Ptyp_arrow
+                    Nolabel
+                    core_type (stdlib/scanf.mli[209,8525+39]..[209,8525+41])
+                      Ptyp_var a
+                    core_type (stdlib/scanf.mli[209,8525+45]..[209,8525+47])
+                      Ptyp_var d
+                  core_type (stdlib/scanf.mli[209,8525+49]..[209,8525+51])
+                    Ptyp_var d
+                ]
+              core_type (stdlib/scanf.mli[209,8525+64]..[209,8525+66])
+                Ptyp_var c
+    ]
+  signature_item (stdlib/scanf.mli[232,9727+0]..[232,9727+32])
+    Psig_exception
+    type_exception
+      ptyext_constructor =
+        extension_constructor (stdlib/scanf.mli[232,9727+0]..[232,9727+32])
+          attribute "ocaml.doc"
+            [
+              structure_item (stdlib/scanf.mli[233,9760+0]..[236,9917+2])
+                Pstr_eval
+                expression (stdlib/scanf.mli[233,9760+0]..[236,9917+2])
+                  Pexp_constant PConst_string(" When the input can not be read according to the format string\n    specification, formatted input functions typically raise exception\n    [Scan_failure].\n",(stdlib/scanf.mli[233,9760+0]..[236,9917+2]),None)
+            ]
+          pext_name = "Scan_failure"
+          pext_kind =
+            Pext_decl
+              [
+                core_type (stdlib/scanf.mli[232,9727+26]..[232,9727+32])
+                  Ptyp_constr "string" (stdlib/scanf.mli[232,9727+26]..[232,9727+32])
+                  []
+              ]
+              None
+  signature_item (stdlib/scanf.mli[238,9921+0]..[238,9921+47])
+    Psig_attribute "ocaml.text"
+    [
+      structure_item (stdlib/scanf.mli[238,9921+0]..[238,9921+47])
+        Pstr_eval
+        expression (stdlib/scanf.mli[238,9921+0]..[238,9921+47])
+          Pexp_constant PConst_string(" {1 The general formatted input function} ",(stdlib/scanf.mli[238,9921+0]..[238,9921+47]),None)
+    ]
+  signature_item (stdlib/scanf.mli[240,9970+0]..[240,9970+60])
+    Psig_value
+    value_description "bscanf" (stdlib/scanf.mli[240,9970+4]..[240,9970+10]) (stdlib/scanf.mli[240,9970+0]..[240,9970+60])
+      core_type (stdlib/scanf.mli[240,9970+13]..[240,9970+60])
+        Ptyp_arrow
+        Nolabel
+        core_type (stdlib/scanf.mli[240,9970+13]..[240,9970+32])
+          Ptyp_constr "Scanning.in_channel" (stdlib/scanf.mli[240,9970+13]..[240,9970+32])
+          []
+        core_type (stdlib/scanf.mli[240,9970+36]..[240,9970+60])
+          Ptyp_constr "scanner" (stdlib/scanf.mli[240,9970+53]..[240,9970+60])
+          [
+            core_type (stdlib/scanf.mli[240,9970+37]..[240,9970+39])
+              Ptyp_var a
+            core_type (stdlib/scanf.mli[240,9970+41]..[240,9970+43])
+              Ptyp_var b
+            core_type (stdlib/scanf.mli[240,9970+45]..[240,9970+47])
+              Ptyp_var c
+            core_type (stdlib/scanf.mli[240,9970+49]..[240,9970+51])
+              Ptyp_var d
+          ]
+      []
+  signature_item (stdlib/scanf.mli[242,10032+0]..[254,10612+2])
+    Psig_attribute "ocaml.text"
+    [
+      structure_item (stdlib/scanf.mli[242,10032+0]..[254,10612+2])
+        Pstr_eval
+        expression (stdlib/scanf.mli[242,10032+0]..[254,10612+2])
+          Pexp_constant PConst_string(" [bscanf ic fmt r1 ... rN f] reads characters from the\n    {!Scanning.in_channel} formatted input channel [ic] and converts them to\n    values according to format string [fmt].\n    As a final step, receiver function [f] is applied to the values read and\n    gives the result of the [bscanf] call.\n\n    For instance, if [f] is the function [fun s i -> i + 1], then\n    [Scanf.sscanf \"x= 1\" \"%s = %i\" f] returns [2].\n\n    Arguments [r1] to [rN] are user-defined input functions that read the\n    argument corresponding to the [%r] conversions specified in the format\n    string.\n",(stdlib/scanf.mli[242,10032+0]..[254,10612+2]),None)
+    ]
+  signature_item (stdlib/scanf.mli[256,10616+0]..[256,10616+36])
+    Psig_attribute "ocaml.text"
+    [
+      structure_item (stdlib/scanf.mli[256,10616+0]..[256,10616+36])
+        Pstr_eval
+        expression (stdlib/scanf.mli[256,10616+0]..[256,10616+36])
+          Pexp_constant PConst_string(" {1 Format string description} ",(stdlib/scanf.mli[256,10616+0]..[256,10616+36]),None)
+    ]
+  signature_item (stdlib/scanf.mli[258,10654+0]..[266,11144+2])
+    Psig_attribute "ocaml.text"
+    [
+      structure_item (stdlib/scanf.mli[258,10654+0]..[266,11144+2])
+        Pstr_eval
+        expression (stdlib/scanf.mli[258,10654+0]..[266,11144+2])
+          Pexp_constant PConst_string(" The format string is a character string which contains three types of\n    objects:\n    - plain characters, which are simply matched with the characters of the\n      input (with a special case for space and line feed, see {!Scanf.space}),\n    - conversion specifications, each of which causes reading and conversion of\n      one argument for the function [f] (see {!Scanf.conversion}),\n    - scanning indications to specify boundaries of tokens\n      (see scanning {!Scanf.indication}).\n",(stdlib/scanf.mli[258,10654+0]..[266,11144+2]),None)
+    ]
+  signature_item (stdlib/scanf.mli[268,11148+0]..[268,11148+54])
+    Psig_attribute "ocaml.text"
+    [
+      structure_item (stdlib/scanf.mli[268,11148+0]..[268,11148+54])
+        Pstr_eval
+        expression (stdlib/scanf.mli[268,11148+0]..[268,11148+54])
+          Pexp_constant PConst_string(" {2:space The space character in format strings} ",(stdlib/scanf.mli[268,11148+0]..[268,11148+54]),None)
+    ]
+  signature_item (stdlib/scanf.mli[270,11204+0]..[286,12206+2])
+    Psig_attribute "ocaml.text"
+    [
+      structure_item (stdlib/scanf.mli[270,11204+0]..[286,12206+2])
+        Pstr_eval
+        expression (stdlib/scanf.mli[270,11204+0]..[286,12206+2])
+          Pexp_constant PConst_string(" As mentioned above, a plain character in the format string is just\n    matched with the next character of the input; however, two characters are\n    special exceptions to this rule: the space character ([' '] or ASCII code\n    32) and the line feed character (['\\n'] or ASCII code 10).\n    A space does not match a single space character, but any amount of\n    'whitespace' in the input. More precisely, a space inside the format\n    string matches {e any number} of tab, space, line feed and carriage\n    return characters. Similarly, a line feed character in the format string\n    matches either a single line feed or a carriage return followed by a line\n    feed.\n\n    Matching {e any} amount of whitespace, a space in the format string\n    also matches no amount of whitespace at all; hence, the call [bscanf ib\n    \"Price = %d $\" (fun p -> p)] succeeds and returns [1] when reading an\n    input with various whitespace in it, such as [Price = 1 $],\n    [Price  =  1    $], or even [Price=1$].\n",(stdlib/scanf.mli[270,11204+0]..[286,12206+2]),None)
+    ]
+  signature_item (stdlib/scanf.mli[288,12210+0]..[288,12210+65])
+    Psig_attribute "ocaml.text"
+    [
+      structure_item (stdlib/scanf.mli[288,12210+0]..[288,12210+65])
+        Pstr_eval
+        expression (stdlib/scanf.mli[288,12210+0]..[288,12210+65])
+          Pexp_constant PConst_string(" {2:conversion Conversion specifications in format strings} ",(stdlib/scanf.mli[288,12210+0]..[288,12210+65]),None)
+    ]
+  signature_item (stdlib/scanf.mli[290,12277+0]..[415,19449+2])
+    Psig_attribute "ocaml.text"
+    [
+      structure_item (stdlib/scanf.mli[290,12277+0]..[415,19449+2])
+        Pstr_eval
+        expression (stdlib/scanf.mli[290,12277+0]..[415,19449+2])
+          Pexp_constant PConst_string(" Conversion specifications consist in the [%] character, followed by\n    an optional flag, an optional field width, and followed by one or\n    two conversion characters.\n\n    The conversion characters and their meanings are:\n\n    - [d]: reads an optionally signed decimal integer ([0-9]+).\n    - [i]: reads an optionally signed integer\n      (usual input conventions for decimal ([0-9]+), hexadecimal\n       ([0x[0-9a-f]+] and [0X[0-9A-F]+]), octal ([0o[0-7]+]), and binary\n       ([0b[0-1]+]) notations are understood).\n    - [u]: reads an unsigned decimal integer.\n    - [x] or [X]: reads an unsigned hexadecimal integer ([[0-9a-fA-F]+]).\n    - [o]: reads an unsigned octal integer ([[0-7]+]).\n    - [s]: reads a string argument that spreads as much as possible, until the\n      following bounding condition holds: {ul\n      {- a whitespace has been found (see {!Scanf.space}),}\n      {- a scanning indication (see scanning {!Scanf.indication}) has been\n         encountered,}\n      {- the end-of-input has been reached.}}\n      Hence, this conversion always succeeds: it returns an empty\n      string if the bounding condition holds when the scan begins.\n    - [S]: reads a delimited string argument (delimiters and special\n      escaped characters follow the lexical conventions of OCaml).\n    - [c]: reads a single character. To test the current input character\n      without reading it, specify a null field width, i.e. use\n      specification [%0c]. Raise [Invalid_argument], if the field width\n      specification is greater than 1.\n    - [C]: reads a single delimited character (delimiters and special\n      escaped characters follow the lexical conventions of OCaml).\n    - [f], [e], [E], [g], [G]: reads an optionally signed\n      floating-point number in decimal notation, in the style [dddd.ddd\n      e/E+-dd].\n    - [h], [H]: reads an optionally signed floating-point number\n      in hexadecimal notation.\n    - [F]: reads a floating point number according to the lexical\n      conventions of OCaml (hence the decimal point is mandatory if the\n      exponent part is not mentioned).\n    - [B]: reads a boolean argument ([true] or [false]).\n    - [b]: reads a boolean argument (for backward compatibility; do not use\n      in new programs).\n    - [ld], [li], [lu], [lx], [lX], [lo]: reads an [int32] argument to\n      the format specified by the second letter for regular integers.\n    - [nd], [ni], [nu], [nx], [nX], [no]: reads a [nativeint] argument to\n      the format specified by the second letter for regular integers.\n    - [Ld], [Li], [Lu], [Lx], [LX], [Lo]: reads an [int64] argument to\n      the format specified by the second letter for regular integers.\n    - [[ range ]]: reads characters that matches one of the characters\n      mentioned in the range of characters [range] (or not mentioned in\n      it, if the range starts with [^]). Reads a [string] that can be\n      empty, if the next input character does not match the range. The set of\n      characters from [c1] to [c2] (inclusively) is denoted by [c1-c2].\n      Hence, [%[0-9]] returns a string representing a decimal number\n      or an empty string if no decimal digit is found; similarly,\n      [%[0-9a-f]] returns a string of hexadecimal digits.\n      If a closing bracket appears in a range, it must occur as the\n      first character of the range (or just after the [^] in case of\n      range negation); hence [[\\]]] matches a [\\]] character and\n      [[^\\]]] matches any character that is not [\\]].\n      Use [%%] and [%@] to include a [%] or a [@] in a range.\n    - [r]: user-defined reader. Takes the next [ri] formatted input\n      function and applies it to the scanning buffer [ib] to read the\n      next argument. The input function [ri] must therefore have type\n      [Scanning.in_channel -> 'a] and the argument read has type ['a].\n    - [{ fmt %}]: reads a format string argument. The format string\n      read must have the same type as the format string specification\n      [fmt]. For instance, [\"%{ %i %}\"] reads any format string that\n      can read a value of type [int]; hence, if [s] is the string\n      [\"fmt:\\\"number is %u\\\"\"], then [Scanf.sscanf s \"fmt: %{%i%}\"]\n      succeeds and returns the format string [\"number is %u\"].\n    - [( fmt %)]: scanning sub-format substitution.\n      Reads a format string [rf] in the input, then goes on scanning with\n      [rf] instead of scanning with [fmt].\n      The format string [rf] must have the same type as the format string\n      specification [fmt] that it replaces.\n      For instance, [\"%( %i %)\"] reads any format string that can read a value\n      of type [int].\n      The conversion returns the format string read [rf], and then a value\n      read using [rf].\n      Hence, if [s] is the string [\"\\\"%4d\\\"1234.00\"], then\n      [Scanf.sscanf s \"%(%i%)\" (fun fmt i -> fmt, i)] evaluates to\n      [(\"%4d\", 1234)].\n      This behaviour is not mere format substitution, since the conversion\n      returns the format string read as additional argument. If you need\n      pure format substitution, use special flag [_] to discard the\n      extraneous argument: conversion [%_( fmt %)] reads a format string\n      [rf] and then behaves the same as format string [rf].  Hence, if [s] is\n      the string [\"\\\"%4d\\\"1234.00\"], then [Scanf.sscanf s \"%_(%i%)\"] is\n      simply equivalent to [Scanf.sscanf \"1234.00\" \"%4d\"].\n    - [l]: returns the number of lines read so far.\n    - [n]: returns the number of characters read so far.\n    - [N] or [L]: returns the number of tokens read so far.\n    - [!]: matches the end of input condition.\n    - [%]: matches one [%] character in the input.\n    - [@]: matches one [@] character in the input.\n    - [,]: does nothing.\n\n    Following the [%] character that introduces a conversion, there may be\n    the special flag [_]: the conversion that follows occurs as usual,\n    but the resulting value is discarded.\n    For instance, if [f] is the function [fun i -> i + 1], and [s] is the\n    string [\"x = 1\"], then [Scanf.sscanf s \"%_s = %i\" f] returns [2].\n\n    The field width is composed of an optional integer literal\n    indicating the maximal width of the token to read.\n    For instance, [%6d] reads an integer, having at most 6 decimal digits;\n    [%4f] reads a float with at most 4 characters; and [%8[\\000-\\255]]\n    returns the next 8 characters (or all the characters still available,\n    if fewer than 8 characters are available in the input).\n\n    Notes:\n\n    - as mentioned above, a [%s] conversion always succeeds, even if there is\n      nothing to read in the input: in this case, it simply returns [\"\"].\n\n    - in addition to the relevant digits, ['_'] characters may appear\n    inside numbers (this is reminiscent to the usual OCaml lexical\n    conventions). If stricter scanning is desired, use the range\n    conversion facility instead of the number conversions.\n\n    - the [scanf] facility is not intended for heavy duty lexical\n    analysis and parsing. If it appears not expressive enough for your\n    needs, several alternative exists: regular expressions (module\n    {!Str}), stream parsers, [ocamllex]-generated lexers,\n    [ocamlyacc]-generated parsers.\n",(stdlib/scanf.mli[290,12277+0]..[415,19449+2]),None)
+    ]
+  signature_item (stdlib/scanf.mli[417,19453+0]..[417,19453+60])
+    Psig_attribute "ocaml.text"
+    [
+      structure_item (stdlib/scanf.mli[417,19453+0]..[417,19453+60])
+        Pstr_eval
+        expression (stdlib/scanf.mli[417,19453+0]..[417,19453+60])
+          Pexp_constant PConst_string(" {2:indication Scanning indications in format strings} ",(stdlib/scanf.mli[417,19453+0]..[417,19453+60]),None)
+    ]
+  signature_item (stdlib/scanf.mli[419,19515+0]..[444,20993+2])
+    Psig_attribute "ocaml.text"
+    [
+      structure_item (stdlib/scanf.mli[419,19515+0]..[444,20993+2])
+        Pstr_eval
+        expression (stdlib/scanf.mli[419,19515+0]..[444,20993+2])
+          Pexp_constant PConst_string(" Scanning indications appear just after the string conversions [%s]\n    and [%[ range ]] to delimit the end of the token. A scanning\n    indication is introduced by a [@] character, followed by some\n    plain character [c]. It means that the string token should end\n    just before the next matching [c] (which is skipped). If no [c]\n    character is encountered, the string token spreads as much as\n    possible. For instance, [\"%s@\\t\"] reads a string up to the next\n    tab character or to the end of input. If a [@] character appears\n    anywhere else in the format string, it is treated as a plain character.\n\n    Note:\n\n    - As usual in format strings, [%] and [@] characters must be escaped\n    using [%%] and [%@]; this rule still holds within range specifications\n    and scanning indications.\n    For instance, format [\"%s@%%\"] reads a string up to the next [%]\n    character, and format [\"%s@%@\"] reads a string up to the next [@].\n    - The scanning indications introduce slight differences in the syntax of\n    {!Scanf} format strings, compared to those used for the {!Printf}\n    module. However, the scanning indications are similar to those used in\n    the {!Format} module; hence, when producing formatted text to be scanned\n    by {!Scanf.bscanf}, it is wise to use printing functions from the\n    {!Format} module (or, if you need to use functions from {!Printf}, banish\n    or carefully double check the format strings that contain ['@']\n    characters).\n",(stdlib/scanf.mli[419,19515+0]..[444,20993+2]),None)
+    ]
+  signature_item (stdlib/scanf.mli[446,20997+0]..[446,20997+37])
+    Psig_attribute "ocaml.text"
+    [
+      structure_item (stdlib/scanf.mli[446,20997+0]..[446,20997+37])
+        Pstr_eval
+        expression (stdlib/scanf.mli[446,20997+0]..[446,20997+37])
+          Pexp_constant PConst_string(" {2 Exceptions during scanning} ",(stdlib/scanf.mli[446,20997+0]..[446,20997+37]),None)
+    ]
+  signature_item (stdlib/scanf.mli[448,21036+0]..[465,21753+2])
+    Psig_attribute "ocaml.text"
+    [
+      structure_item (stdlib/scanf.mli[448,21036+0]..[465,21753+2])
+        Pstr_eval
+        expression (stdlib/scanf.mli[448,21036+0]..[465,21753+2])
+          Pexp_constant PConst_string(" Scanners may raise the following exceptions when the input cannot be read\n    according to the format string:\n\n    - Raise {!Scanf.Scan_failure} if the input does not match the format.\n\n    - Raise [Failure] if a conversion to a number is not possible.\n\n    - Raise [End_of_file] if the end of input is encountered while some more\n      characters are needed to read the current conversion specification.\n\n    - Raise [Invalid_argument] if the format string is invalid.\n\n    Note:\n\n    - as a consequence, scanning a [%s] conversion never raises exception\n    [End_of_file]: if the end of input is reached the conversion succeeds and\n    simply returns the characters read so far, or [\"\"] if none were ever read.\n",(stdlib/scanf.mli[448,21036+0]..[465,21753+2]),None)
+    ]
+  signature_item (stdlib/scanf.mli[467,21757+0]..[467,21757+48])
+    Psig_attribute "ocaml.text"
+    [
+      structure_item (stdlib/scanf.mli[467,21757+0]..[467,21757+48])
+        Pstr_eval
+        expression (stdlib/scanf.mli[467,21757+0]..[467,21757+48])
+          Pexp_constant PConst_string(" {1 Specialised formatted input functions} ",(stdlib/scanf.mli[467,21757+0]..[467,21757+48]),None)
+    ]
+  signature_item (stdlib/scanf.mli[469,21807+0]..[469,21807+47])
+    Psig_value
+    value_description "sscanf" (stdlib/scanf.mli[469,21807+4]..[469,21807+10]) (stdlib/scanf.mli[469,21807+0]..[469,21807+47])
+      attribute "ocaml.doc"
+        [
+          structure_item (stdlib/scanf.mli[470,21855+0]..[470,21855+64])
+            Pstr_eval
+            expression (stdlib/scanf.mli[470,21855+0]..[470,21855+64])
+              Pexp_constant PConst_string(" Same as {!Scanf.bscanf}, but reads from the given string. ",(stdlib/scanf.mli[470,21855+0]..[470,21855+64]),None)
+        ]
+      core_type (stdlib/scanf.mli[469,21807+13]..[469,21807+47])
+        Ptyp_arrow
+        Nolabel
+        core_type (stdlib/scanf.mli[469,21807+13]..[469,21807+19])
+          Ptyp_constr "string" (stdlib/scanf.mli[469,21807+13]..[469,21807+19])
+          []
+        core_type (stdlib/scanf.mli[469,21807+23]..[469,21807+47])
+          Ptyp_constr "scanner" (stdlib/scanf.mli[469,21807+40]..[469,21807+47])
+          [
+            core_type (stdlib/scanf.mli[469,21807+24]..[469,21807+26])
+              Ptyp_var a
+            core_type (stdlib/scanf.mli[469,21807+28]..[469,21807+30])
+              Ptyp_var b
+            core_type (stdlib/scanf.mli[469,21807+32]..[469,21807+34])
+              Ptyp_var c
+            core_type (stdlib/scanf.mli[469,21807+36]..[469,21807+38])
+              Ptyp_var d
+          ]
+      []
+  signature_item (stdlib/scanf.mli[472,21921+0]..[472,21921+36])
+    Psig_value
+    value_description "scanf" (stdlib/scanf.mli[472,21921+4]..[472,21921+9]) (stdlib/scanf.mli[472,21921+0]..[472,21921+36])
+      attribute "ocaml.doc"
+        [
+          structure_item (stdlib/scanf.mli[473,21958+0]..[475,22107+2])
+            Pstr_eval
+            expression (stdlib/scanf.mli[473,21958+0]..[475,22107+2])
+              Pexp_constant PConst_string(" Same as {!Scanf.bscanf}, but reads from the predefined formatted input\n    channel {!Scanf.Scanning.stdin} that is connected to {!Stdlib.stdin}.\n",(stdlib/scanf.mli[473,21958+0]..[475,22107+2]),None)
+        ]
+      core_type (stdlib/scanf.mli[472,21921+12]..[472,21921+36])
+        Ptyp_constr "scanner" (stdlib/scanf.mli[472,21921+29]..[472,21921+36])
+        [
+          core_type (stdlib/scanf.mli[472,21921+13]..[472,21921+15])
+            Ptyp_var a
+          core_type (stdlib/scanf.mli[472,21921+17]..[472,21921+19])
+            Ptyp_var b
+          core_type (stdlib/scanf.mli[472,21921+21]..[472,21921+23])
+            Ptyp_var c
+          core_type (stdlib/scanf.mli[472,21921+25]..[472,21921+27])
+            Ptyp_var d
+        ]
+      []
+  signature_item (stdlib/scanf.mli[477,22111+0]..[479,22187+28])
+    Psig_value
+    value_description "kscanf" (stdlib/scanf.mli[477,22111+4]..[477,22111+10]) (stdlib/scanf.mli[477,22111+0]..[479,22187+28])
+      attribute "ocaml.doc"
+        [
+          structure_item (stdlib/scanf.mli[480,22216+0]..[485,22562+2])
+            Pstr_eval
+            expression (stdlib/scanf.mli[480,22216+0]..[485,22562+2])
+              Pexp_constant PConst_string(" Same as {!Scanf.bscanf}, but takes an additional function argument\n    [ef] that is called in case of error: if the scanning process or\n    some conversion fails, the scanning function aborts and calls the\n    error handling function [ef] with the formatted input channel and the\n    exception that aborted the scanning process as arguments.\n",(stdlib/scanf.mli[480,22216+0]..[485,22562+2]),None)
+        ]
+      core_type (stdlib/scanf.mli[478,22124+2]..[479,22187+28])
+        Ptyp_arrow
+        Nolabel
+        core_type (stdlib/scanf.mli[478,22124+2]..[478,22124+21])
+          Ptyp_constr "Scanning.in_channel" (stdlib/scanf.mli[478,22124+2]..[478,22124+21])
+          []
+        core_type (stdlib/scanf.mli[478,22124+25]..[479,22187+28])
+          Ptyp_arrow
+          Nolabel
+          core_type (stdlib/scanf.mli[478,22124+26]..[478,22124+58])
+            Ptyp_arrow
+            Nolabel
+            core_type (stdlib/scanf.mli[478,22124+26]..[478,22124+45])
+              Ptyp_constr "Scanning.in_channel" (stdlib/scanf.mli[478,22124+26]..[478,22124+45])
+              []
+            core_type (stdlib/scanf.mli[478,22124+49]..[478,22124+58])
+              Ptyp_arrow
+              Nolabel
+              core_type (stdlib/scanf.mli[478,22124+49]..[478,22124+52])
+                Ptyp_constr "exn" (stdlib/scanf.mli[478,22124+49]..[478,22124+52])
+                []
+              core_type (stdlib/scanf.mli[478,22124+56]..[478,22124+58])
+                Ptyp_var d
+          core_type (stdlib/scanf.mli[479,22187+4]..[479,22187+28])
+            Ptyp_constr "scanner" (stdlib/scanf.mli[479,22187+21]..[479,22187+28])
+            [
+              core_type (stdlib/scanf.mli[479,22187+5]..[479,22187+7])
+                Ptyp_var a
+              core_type (stdlib/scanf.mli[479,22187+9]..[479,22187+11])
+                Ptyp_var b
+              core_type (stdlib/scanf.mli[479,22187+13]..[479,22187+15])
+                Ptyp_var c
+              core_type (stdlib/scanf.mli[479,22187+17]..[479,22187+19])
+                Ptyp_var d
+            ]
+      []
+  signature_item (stdlib/scanf.mli[487,22566+0]..[489,22630+28])
+    Psig_value
+    value_description "ksscanf" (stdlib/scanf.mli[487,22566+4]..[487,22566+11]) (stdlib/scanf.mli[487,22566+0]..[489,22630+28])
+      attribute "ocaml.doc"
+        [
+          structure_item (stdlib/scanf.mli[490,22659+0]..[491,22720+20])
+            Pstr_eval
+            expression (stdlib/scanf.mli[490,22659+0]..[491,22720+20])
+              Pexp_constant PConst_string(" Same as {!Scanf.kscanf} but reads from the given string.\n    @since 4.02.0 ",(stdlib/scanf.mli[490,22659+0]..[491,22720+20]),None)
+        ]
+      core_type (stdlib/scanf.mli[488,22580+2]..[489,22630+28])
+        Ptyp_arrow
+        Nolabel
+        core_type (stdlib/scanf.mli[488,22580+2]..[488,22580+8])
+          Ptyp_constr "string" (stdlib/scanf.mli[488,22580+2]..[488,22580+8])
+          []
+        core_type (stdlib/scanf.mli[488,22580+12]..[489,22630+28])
+          Ptyp_arrow
+          Nolabel
+          core_type (stdlib/scanf.mli[488,22580+13]..[488,22580+45])
+            Ptyp_arrow
+            Nolabel
+            core_type (stdlib/scanf.mli[488,22580+13]..[488,22580+32])
+              Ptyp_constr "Scanning.in_channel" (stdlib/scanf.mli[488,22580+13]..[488,22580+32])
+              []
+            core_type (stdlib/scanf.mli[488,22580+36]..[488,22580+45])
+              Ptyp_arrow
+              Nolabel
+              core_type (stdlib/scanf.mli[488,22580+36]..[488,22580+39])
+                Ptyp_constr "exn" (stdlib/scanf.mli[488,22580+36]..[488,22580+39])
+                []
+              core_type (stdlib/scanf.mli[488,22580+43]..[488,22580+45])
+                Ptyp_var d
+          core_type (stdlib/scanf.mli[489,22630+4]..[489,22630+28])
+            Ptyp_constr "scanner" (stdlib/scanf.mli[489,22630+21]..[489,22630+28])
+            [
+              core_type (stdlib/scanf.mli[489,22630+5]..[489,22630+7])
+                Ptyp_var a
+              core_type (stdlib/scanf.mli[489,22630+9]..[489,22630+11])
+                Ptyp_var b
+              core_type (stdlib/scanf.mli[489,22630+13]..[489,22630+15])
+                Ptyp_var c
+              core_type (stdlib/scanf.mli[489,22630+17]..[489,22630+19])
+                Ptyp_var d
+            ]
+      []
+  signature_item (stdlib/scanf.mli[493,22742+0]..[493,22742+44])
+    Psig_attribute "ocaml.text"
+    [
+      structure_item (stdlib/scanf.mli[493,22742+0]..[493,22742+44])
+        Pstr_eval
+        expression (stdlib/scanf.mli[493,22742+0]..[493,22742+44])
+          Pexp_constant PConst_string(" {1 Reading format strings from input} ",(stdlib/scanf.mli[493,22742+0]..[493,22742+44]),None)
+    ]
+  signature_item (stdlib/scanf.mli[495,22788+0]..[497,22869+50])
+    Psig_value
+    value_description "bscanf_format" (stdlib/scanf.mli[495,22788+4]..[495,22788+17]) (stdlib/scanf.mli[495,22788+0]..[497,22869+50])
+      attribute "ocaml.doc"
+        [
+          structure_item (stdlib/scanf.mli[498,22920+0]..[504,23238+2])
+            Pstr_eval
+            expression (stdlib/scanf.mli[498,22920+0]..[504,23238+2])
+              Pexp_constant PConst_string(" [bscanf_format ic fmt f] reads a format string token from the formatted\n    input channel [ic], according to the given format string [fmt], and\n    applies [f] to the resulting format string value.\n    @raise Scan_failure if the format string value read does not have the\n    same type as [fmt].\n    @since 3.09.0\n",(stdlib/scanf.mli[498,22920+0]..[504,23238+2]),None)
+        ]
+      core_type (stdlib/scanf.mli[496,22808+2]..[497,22869+50])
+        Ptyp_arrow
+        Nolabel
+        core_type (stdlib/scanf.mli[496,22808+2]..[496,22808+21])
+          Ptyp_constr "Scanning.in_channel" (stdlib/scanf.mli[496,22808+2]..[496,22808+21])
+          []
+        core_type (stdlib/scanf.mli[496,22808+25]..[497,22869+50])
+          Ptyp_arrow
+          Nolabel
+          core_type (stdlib/scanf.mli[496,22808+25]..[496,22808+57])
+            Ptyp_constr "format6" (stdlib/scanf.mli[496,22808+50]..[496,22808+57])
+            [
+              core_type (stdlib/scanf.mli[496,22808+26]..[496,22808+28])
+                Ptyp_var a
+              core_type (stdlib/scanf.mli[496,22808+30]..[496,22808+32])
+                Ptyp_var b
+              core_type (stdlib/scanf.mli[496,22808+34]..[496,22808+36])
+                Ptyp_var c
+              core_type (stdlib/scanf.mli[496,22808+38]..[496,22808+40])
+                Ptyp_var d
+              core_type (stdlib/scanf.mli[496,22808+42]..[496,22808+44])
+                Ptyp_var e
+              core_type (stdlib/scanf.mli[496,22808+46]..[496,22808+48])
+                Ptyp_var f
+            ]
+          core_type (stdlib/scanf.mli[497,22869+4]..[497,22869+50])
+            Ptyp_arrow
+            Nolabel
+            core_type (stdlib/scanf.mli[497,22869+5]..[497,22869+43])
+              Ptyp_arrow
+              Nolabel
+              core_type (stdlib/scanf.mli[497,22869+5]..[497,22869+37])
+                Ptyp_constr "format6" (stdlib/scanf.mli[497,22869+30]..[497,22869+37])
+                [
+                  core_type (stdlib/scanf.mli[497,22869+6]..[497,22869+8])
+                    Ptyp_var a
+                  core_type (stdlib/scanf.mli[497,22869+10]..[497,22869+12])
+                    Ptyp_var b
+                  core_type (stdlib/scanf.mli[497,22869+14]..[497,22869+16])
+                    Ptyp_var c
+                  core_type (stdlib/scanf.mli[497,22869+18]..[497,22869+20])
+                    Ptyp_var d
+                  core_type (stdlib/scanf.mli[497,22869+22]..[497,22869+24])
+                    Ptyp_var e
+                  core_type (stdlib/scanf.mli[497,22869+26]..[497,22869+28])
+                    Ptyp_var f
+                ]
+              core_type (stdlib/scanf.mli[497,22869+41]..[497,22869+43])
+                Ptyp_var g
+            core_type (stdlib/scanf.mli[497,22869+48]..[497,22869+50])
+              Ptyp_var g
+      []
+  signature_item (stdlib/scanf.mli[506,23242+0]..[508,23310+50])
+    Psig_value
+    value_description "sscanf_format" (stdlib/scanf.mli[506,23242+4]..[506,23242+17]) (stdlib/scanf.mli[506,23242+0]..[508,23310+50])
+      attribute "ocaml.doc"
+        [
+          structure_item (stdlib/scanf.mli[509,23361+0]..[511,23448+2])
+            Pstr_eval
+            expression (stdlib/scanf.mli[509,23361+0]..[511,23448+2])
+              Pexp_constant PConst_string(" Same as {!Scanf.bscanf_format}, but reads from the given string.\n    @since 3.09.0\n",(stdlib/scanf.mli[509,23361+0]..[511,23448+2]),None)
+        ]
+      core_type (stdlib/scanf.mli[507,23262+2]..[508,23310+50])
+        Ptyp_arrow
+        Nolabel
+        core_type (stdlib/scanf.mli[507,23262+2]..[507,23262+8])
+          Ptyp_constr "string" (stdlib/scanf.mli[507,23262+2]..[507,23262+8])
+          []
+        core_type (stdlib/scanf.mli[507,23262+12]..[508,23310+50])
+          Ptyp_arrow
+          Nolabel
+          core_type (stdlib/scanf.mli[507,23262+12]..[507,23262+44])
+            Ptyp_constr "format6" (stdlib/scanf.mli[507,23262+37]..[507,23262+44])
+            [
+              core_type (stdlib/scanf.mli[507,23262+13]..[507,23262+15])
+                Ptyp_var a
+              core_type (stdlib/scanf.mli[507,23262+17]..[507,23262+19])
+                Ptyp_var b
+              core_type (stdlib/scanf.mli[507,23262+21]..[507,23262+23])
+                Ptyp_var c
+              core_type (stdlib/scanf.mli[507,23262+25]..[507,23262+27])
+                Ptyp_var d
+              core_type (stdlib/scanf.mli[507,23262+29]..[507,23262+31])
+                Ptyp_var e
+              core_type (stdlib/scanf.mli[507,23262+33]..[507,23262+35])
+                Ptyp_var f
+            ]
+          core_type (stdlib/scanf.mli[508,23310+4]..[508,23310+50])
+            Ptyp_arrow
+            Nolabel
+            core_type (stdlib/scanf.mli[508,23310+5]..[508,23310+43])
+              Ptyp_arrow
+              Nolabel
+              core_type (stdlib/scanf.mli[508,23310+5]..[508,23310+37])
+                Ptyp_constr "format6" (stdlib/scanf.mli[508,23310+30]..[508,23310+37])
+                [
+                  core_type (stdlib/scanf.mli[508,23310+6]..[508,23310+8])
+                    Ptyp_var a
+                  core_type (stdlib/scanf.mli[508,23310+10]..[508,23310+12])
+                    Ptyp_var b
+                  core_type (stdlib/scanf.mli[508,23310+14]..[508,23310+16])
+                    Ptyp_var c
+                  core_type (stdlib/scanf.mli[508,23310+18]..[508,23310+20])
+                    Ptyp_var d
+                  core_type (stdlib/scanf.mli[508,23310+22]..[508,23310+24])
+                    Ptyp_var e
+                  core_type (stdlib/scanf.mli[508,23310+26]..[508,23310+28])
+                    Ptyp_var f
+                ]
+              core_type (stdlib/scanf.mli[508,23310+41]..[508,23310+43])
+                Ptyp_var g
+            core_type (stdlib/scanf.mli[508,23310+48]..[508,23310+50])
+              Ptyp_var g
+      []
+  signature_item (stdlib/scanf.mli[513,23452+0]..[515,23489+72])
+    Psig_value
+    value_description "format_from_string" (stdlib/scanf.mli[513,23452+4]..[513,23452+22]) (stdlib/scanf.mli[513,23452+0]..[515,23489+72])
+      attribute "ocaml.doc"
+        [
+          structure_item (stdlib/scanf.mli[516,23562+0]..[521,23811+2])
+            Pstr_eval
+            expression (stdlib/scanf.mli[516,23562+0]..[521,23811+2])
+              Pexp_constant PConst_string(" [format_from_string s fmt] converts a string argument to a format string,\n    according to the given format string [fmt].\n    @raise Scan_failure if [s], considered as a format string, does not\n    have the same type as [fmt].\n    @since 3.10.0\n",(stdlib/scanf.mli[516,23562+0]..[521,23811+2]),None)
+        ]
+      core_type (stdlib/scanf.mli[514,23477+2]..[515,23489+72])
+        Ptyp_arrow
+        Nolabel
+        core_type (stdlib/scanf.mli[514,23477+2]..[514,23477+8])
+          Ptyp_constr "string" (stdlib/scanf.mli[514,23477+2]..[514,23477+8])
+          []
+        core_type (stdlib/scanf.mli[515,23489+4]..[515,23489+72])
+          Ptyp_arrow
+          Nolabel
+          core_type (stdlib/scanf.mli[515,23489+4]..[515,23489+36])
+            Ptyp_constr "format6" (stdlib/scanf.mli[515,23489+29]..[515,23489+36])
+            [
+              core_type (stdlib/scanf.mli[515,23489+5]..[515,23489+7])
+                Ptyp_var a
+              core_type (stdlib/scanf.mli[515,23489+9]..[515,23489+11])
+                Ptyp_var b
+              core_type (stdlib/scanf.mli[515,23489+13]..[515,23489+15])
+                Ptyp_var c
+              core_type (stdlib/scanf.mli[515,23489+17]..[515,23489+19])
+                Ptyp_var d
+              core_type (stdlib/scanf.mli[515,23489+21]..[515,23489+23])
+                Ptyp_var e
+              core_type (stdlib/scanf.mli[515,23489+25]..[515,23489+27])
+                Ptyp_var f
+            ]
+          core_type (stdlib/scanf.mli[515,23489+40]..[515,23489+72])
+            Ptyp_constr "format6" (stdlib/scanf.mli[515,23489+65]..[515,23489+72])
+            [
+              core_type (stdlib/scanf.mli[515,23489+41]..[515,23489+43])
+                Ptyp_var a
+              core_type (stdlib/scanf.mli[515,23489+45]..[515,23489+47])
+                Ptyp_var b
+              core_type (stdlib/scanf.mli[515,23489+49]..[515,23489+51])
+                Ptyp_var c
+              core_type (stdlib/scanf.mli[515,23489+53]..[515,23489+55])
+                Ptyp_var d
+              core_type (stdlib/scanf.mli[515,23489+57]..[515,23489+59])
+                Ptyp_var e
+              core_type (stdlib/scanf.mli[515,23489+61]..[515,23489+63])
+                Ptyp_var f
+            ]
+      []
+  signature_item (stdlib/scanf.mli[523,23815+0]..[523,23815+32])
+    Psig_value
+    value_description "unescaped" (stdlib/scanf.mli[523,23815+4]..[523,23815+13]) (stdlib/scanf.mli[523,23815+0]..[523,23815+32])
+      attribute "ocaml.doc"
+        [
+          structure_item (stdlib/scanf.mli[524,23848+0]..[536,24471+2])
+            Pstr_eval
+            expression (stdlib/scanf.mli[524,23848+0]..[536,24471+2])
+              Pexp_constant PConst_string(" [unescaped s] return a copy of [s] with escape sequences (according to\n    the lexical conventions of OCaml) replaced by their corresponding special\n    characters.\n    More precisely, [Scanf.unescaped] has the following property:\n    for all string [s], [Scanf.unescaped (String.escaped s) = s].\n\n    Always return a copy of the argument, even if there is no escape sequence\n    in the argument.\n    @raise Scan_failure if [s] is not properly escaped (i.e. [s] has invalid\n    escape sequences or special characters that are not properly escaped).\n    For instance, [Scanf.unescaped \"\\\"\"] will fail.\n    @since 4.00.0\n",(stdlib/scanf.mli[524,23848+0]..[536,24471+2]),None)
+        ]
+      core_type (stdlib/scanf.mli[523,23815+16]..[523,23815+32])
+        Ptyp_arrow
+        Nolabel
+        core_type (stdlib/scanf.mli[523,23815+16]..[523,23815+22])
+          Ptyp_constr "string" (stdlib/scanf.mli[523,23815+16]..[523,23815+22])
+          []
+        core_type (stdlib/scanf.mli[523,23815+26]..[523,23815+32])
+          Ptyp_constr "string" (stdlib/scanf.mli[523,23815+26]..[523,23815+32])
+          []
+      []
+  signature_item (stdlib/scanf.mli[538,24475+0]..[538,24475+21])
+    Psig_attribute "ocaml.text"
+    [
+      structure_item (stdlib/scanf.mli[538,24475+0]..[538,24475+21])
+        Pstr_eval
+        expression (stdlib/scanf.mli[538,24475+0]..[538,24475+21])
+          Pexp_constant PConst_string(" {1 Deprecated} ",(stdlib/scanf.mli[538,24475+0]..[538,24475+21]),None)
+    ]
+  signature_item (stdlib/scanf.mli[540,24498+0]..[541,24557+69])
+    Psig_value
+    value_description "fscanf" (stdlib/scanf.mli[540,24498+4]..[540,24498+10]) (stdlib/scanf.mli[540,24498+0]..[541,24557+69])
+      attribute "ocaml.deprecated"
+        [
+          structure_item (stdlib/scanf.mli[541,24557+22]..[541,24557+68])
+            Pstr_eval
+            expression (stdlib/scanf.mli[541,24557+22]..[541,24557+68])
+              Pexp_constant PConst_string("Use Scanning.from_channel then Scanf.bscanf.",(stdlib/scanf.mli[541,24557+23]..[541,24557+67]),None)
+        ]
+      attribute "ocaml.doc"
+        [
+          structure_item (stdlib/scanf.mli[542,24627+0]..[553,25171+2])
+            Pstr_eval
+            expression (stdlib/scanf.mli[542,24627+0]..[553,25171+2])
+              Pexp_constant PConst_string(" @deprecated [Scanf.fscanf] is error prone and deprecated since 4.03.0.\n\n    This function violates the following invariant of the {!Scanf} module:\n    To preserve scanning semantics, all scanning functions defined in {!Scanf}\n    must read from a user defined {!Scanning.in_channel} formatted input\n    channel.\n\n    If you need to read from a {!Stdlib.in_channel} input channel\n    [ic], simply define a {!Scanning.in_channel} formatted input channel as in\n    [let ib = Scanning.from_channel ic],\n    then use [Scanf.bscanf ib] as usual.\n",(stdlib/scanf.mli[542,24627+0]..[553,25171+2]),None)
+        ]
+      core_type (stdlib/scanf.mli[540,24498+13]..[540,24498+58])
+        Ptyp_arrow
+        Nolabel
+        core_type (stdlib/scanf.mli[540,24498+13]..[540,24498+30])
+          Ptyp_constr "Stdlib.in_channel" (stdlib/scanf.mli[540,24498+13]..[540,24498+30])
+          []
+        core_type (stdlib/scanf.mli[540,24498+34]..[540,24498+58])
+          Ptyp_constr "scanner" (stdlib/scanf.mli[540,24498+51]..[540,24498+58])
+          [
+            core_type (stdlib/scanf.mli[540,24498+35]..[540,24498+37])
+              Ptyp_var a
+            core_type (stdlib/scanf.mli[540,24498+39]..[540,24498+41])
+              Ptyp_var b
+            core_type (stdlib/scanf.mli[540,24498+43]..[540,24498+45])
+              Ptyp_var c
+            core_type (stdlib/scanf.mli[540,24498+47]..[540,24498+49])
+              Ptyp_var d
+          ]
+      []
+  signature_item (stdlib/scanf.mli[555,25175+0]..[558,25279+69])
+    Psig_value
+    value_description "kfscanf" (stdlib/scanf.mli[555,25175+4]..[555,25175+11]) (stdlib/scanf.mli[555,25175+0]..[558,25279+69])
+      attribute "ocaml.deprecated"
+        [
+          structure_item (stdlib/scanf.mli[558,25279+22]..[558,25279+68])
+            Pstr_eval
+            expression (stdlib/scanf.mli[558,25279+22]..[558,25279+68])
+              Pexp_constant PConst_string("Use Scanning.from_channel then Scanf.kscanf.",(stdlib/scanf.mli[558,25279+23]..[558,25279+67]),None)
+        ]
+      attribute "ocaml.doc"
+        [
+          structure_item (stdlib/scanf.mli[559,25349+0]..[559,25349+78])
+            Pstr_eval
+            expression (stdlib/scanf.mli[559,25349+0]..[559,25349+78])
+              Pexp_constant PConst_string(" @deprecated [Scanf.kfscanf] is error prone and deprecated since 4.03.0. ",(stdlib/scanf.mli[559,25349+0]..[559,25349+78]),None)
+        ]
+      core_type (stdlib/scanf.mli[556,25189+2]..[557,25250+28])
+        Ptyp_arrow
+        Nolabel
+        core_type (stdlib/scanf.mli[556,25189+2]..[556,25189+19])
+          Ptyp_constr "Stdlib.in_channel" (stdlib/scanf.mli[556,25189+2]..[556,25189+19])
+          []
+        core_type (stdlib/scanf.mli[556,25189+23]..[557,25250+28])
+          Ptyp_arrow
+          Nolabel
+          core_type (stdlib/scanf.mli[556,25189+24]..[556,25189+56])
+            Ptyp_arrow
+            Nolabel
+            core_type (stdlib/scanf.mli[556,25189+24]..[556,25189+43])
+              Ptyp_constr "Scanning.in_channel" (stdlib/scanf.mli[556,25189+24]..[556,25189+43])
+              []
+            core_type (stdlib/scanf.mli[556,25189+47]..[556,25189+56])
+              Ptyp_arrow
+              Nolabel
+              core_type (stdlib/scanf.mli[556,25189+47]..[556,25189+50])
+                Ptyp_constr "exn" (stdlib/scanf.mli[556,25189+47]..[556,25189+50])
+                []
+              core_type (stdlib/scanf.mli[556,25189+54]..[556,25189+56])
+                Ptyp_var d
+          core_type (stdlib/scanf.mli[557,25250+4]..[557,25250+28])
+            Ptyp_constr "scanner" (stdlib/scanf.mli[557,25250+21]..[557,25250+28])
+            [
+              core_type (stdlib/scanf.mli[557,25250+5]..[557,25250+7])
+                Ptyp_var a
+              core_type (stdlib/scanf.mli[557,25250+9]..[557,25250+11])
+                Ptyp_var b
+              core_type (stdlib/scanf.mli[557,25250+13]..[557,25250+15])
+                Ptyp_var c
+              core_type (stdlib/scanf.mli[557,25250+17]..[557,25250+19])
+                Ptyp_var d
+            ]
+      []
+]
+

@@ -1,0 +1,1147 @@
+[
+  signature_item (stdlib/buffer.mli[16,1079+0]..[31,1485+2])
+    Psig_attribute "ocaml.text"
+    [
+      structure_item (stdlib/buffer.mli[16,1079+0]..[31,1485+2])
+        Pstr_eval
+        expression (stdlib/buffer.mli[16,1079+0]..[31,1485+2])
+          Pexp_constant PConst_string(" Extensible buffers.\n\n   This module implements buffers that automatically expand\n   as necessary.  It provides accumulative concatenation of strings\n   in quasi-linear time (instead of quadratic time when strings are\n   concatenated pairwise). For example:\n\n{[\n     let concat_strings ss =\n       let b = Buffer.create 16 in\n         List.iter (Buffer.add_string b) ss;\n         Buffer.contents b\n\n]}\n\n",(stdlib/buffer.mli[16,1079+0]..[31,1485+2]),None)
+    ]
+  signature_item (stdlib/buffer.mli[33,1489+0]..[33,1489+6])
+    Psig_type Rec
+    [
+      type_declaration "t" (stdlib/buffer.mli[33,1489+5]..[33,1489+6]) (stdlib/buffer.mli[33,1489+0]..[33,1489+6])
+        attribute "ocaml.doc"
+          [
+            structure_item (stdlib/buffer.mli[34,1496+0]..[34,1496+36])
+              Pstr_eval
+              expression (stdlib/buffer.mli[34,1496+0]..[34,1496+36])
+                Pexp_constant PConst_string(" The abstract type of buffers. ",(stdlib/buffer.mli[34,1496+0]..[34,1496+36]),None)
+          ]
+        ptype_params =
+          []
+        ptype_cstrs =
+          []
+        ptype_kind =
+          Ptype_abstract
+        ptype_private = Public
+        ptype_manifest =
+          None
+    ]
+  signature_item (stdlib/buffer.mli[36,1534+0]..[36,1534+21])
+    Psig_value
+    value_description "create" (stdlib/buffer.mli[36,1534+4]..[36,1534+10]) (stdlib/buffer.mli[36,1534+0]..[36,1534+21])
+      attribute "ocaml.doc"
+        [
+          structure_item (stdlib/buffer.mli[37,1556+0]..[48,2278+34])
+            Pstr_eval
+            expression (stdlib/buffer.mli[37,1556+0]..[48,2278+34])
+              Pexp_constant PConst_string(" [create n] returns a fresh buffer, initially empty.\n   The [n] parameter is the initial size of the internal byte sequence\n   that holds the buffer contents. That byte sequence is automatically\n   reallocated when more than [n] characters are stored in the buffer,\n   but shrinks back to [n] characters when [reset] is called.\n   For best performance, [n] should be of the same order of magnitude\n   as the number of characters that are expected to be stored in\n   the buffer (for instance, 80 for a buffer that holds one output\n   line).  Nothing bad will happen if the buffer grows beyond that\n   limit, however. In doubt, take [n = 16] for instance.\n   If [n] is not between 1 and {!Sys.max_string_length}, it will\n   be clipped to that interval. ",(stdlib/buffer.mli[37,1556+0]..[48,2278+34]),None)
+        ]
+      core_type (stdlib/buffer.mli[36,1534+13]..[36,1534+21])
+        Ptyp_arrow
+        Nolabel
+        core_type (stdlib/buffer.mli[36,1534+13]..[36,1534+16])
+          Ptyp_constr "int" (stdlib/buffer.mli[36,1534+13]..[36,1534+16])
+          []
+        core_type (stdlib/buffer.mli[36,1534+20]..[36,1534+21])
+          Ptyp_constr "t" (stdlib/buffer.mli[36,1534+20]..[36,1534+21])
+          []
+      []
+  signature_item (stdlib/buffer.mli[50,2314+0]..[50,2314+26])
+    Psig_value
+    value_description "contents" (stdlib/buffer.mli[50,2314+4]..[50,2314+12]) (stdlib/buffer.mli[50,2314+0]..[50,2314+26])
+      attribute "ocaml.doc"
+        [
+          structure_item (stdlib/buffer.mli[51,2341+0]..[52,2398+38])
+            Pstr_eval
+            expression (stdlib/buffer.mli[51,2341+0]..[52,2398+38])
+              Pexp_constant PConst_string(" Return a copy of the current contents of the buffer.\n    The buffer itself is unchanged. ",(stdlib/buffer.mli[51,2341+0]..[52,2398+38]),None)
+        ]
+      core_type (stdlib/buffer.mli[50,2314+15]..[50,2314+26])
+        Ptyp_arrow
+        Nolabel
+        core_type (stdlib/buffer.mli[50,2314+15]..[50,2314+16])
+          Ptyp_constr "t" (stdlib/buffer.mli[50,2314+15]..[50,2314+16])
+          []
+        core_type (stdlib/buffer.mli[50,2314+20]..[50,2314+26])
+          Ptyp_constr "string" (stdlib/buffer.mli[50,2314+20]..[50,2314+26])
+          []
+      []
+  signature_item (stdlib/buffer.mli[54,2438+0]..[54,2438+25])
+    Psig_value
+    value_description "to_bytes" (stdlib/buffer.mli[54,2438+4]..[54,2438+12]) (stdlib/buffer.mli[54,2438+0]..[54,2438+25])
+      attribute "ocaml.doc"
+        [
+          structure_item (stdlib/buffer.mli[55,2464+0]..[57,2557+18])
+            Pstr_eval
+            expression (stdlib/buffer.mli[55,2464+0]..[57,2557+18])
+              Pexp_constant PConst_string(" Return a copy of the current contents of the buffer.\n    The buffer itself is unchanged.\n    @since 4.02 ",(stdlib/buffer.mli[55,2464+0]..[57,2557+18]),None)
+        ]
+      core_type (stdlib/buffer.mli[54,2438+15]..[54,2438+25])
+        Ptyp_arrow
+        Nolabel
+        core_type (stdlib/buffer.mli[54,2438+15]..[54,2438+16])
+          Ptyp_constr "t" (stdlib/buffer.mli[54,2438+15]..[54,2438+16])
+          []
+        core_type (stdlib/buffer.mli[54,2438+20]..[54,2438+25])
+          Ptyp_constr "bytes" (stdlib/buffer.mli[54,2438+20]..[54,2438+25])
+          []
+      []
+  signature_item (stdlib/buffer.mli[59,2577+0]..[59,2577+35])
+    Psig_value
+    value_description "sub" (stdlib/buffer.mli[59,2577+4]..[59,2577+7]) (stdlib/buffer.mli[59,2577+0]..[59,2577+35])
+      attribute "ocaml.doc"
+        [
+          structure_item (stdlib/buffer.mli[60,2613+0]..[63,2817+20])
+            Pstr_eval
+            expression (stdlib/buffer.mli[60,2613+0]..[63,2817+20])
+              Pexp_constant PConst_string(" [Buffer.sub b off len] returns a copy of [len] bytes from the\n    current contents of the buffer [b], starting at offset [off].\n    @raise Invalid_argument if [off] and [len] do not designate a valid\n    range of [b]. ",(stdlib/buffer.mli[60,2613+0]..[63,2817+20]),None)
+        ]
+      core_type (stdlib/buffer.mli[59,2577+10]..[59,2577+35])
+        Ptyp_arrow
+        Nolabel
+        core_type (stdlib/buffer.mli[59,2577+10]..[59,2577+11])
+          Ptyp_constr "t" (stdlib/buffer.mli[59,2577+10]..[59,2577+11])
+          []
+        core_type (stdlib/buffer.mli[59,2577+15]..[59,2577+35])
+          Ptyp_arrow
+          Nolabel
+          core_type (stdlib/buffer.mli[59,2577+15]..[59,2577+18])
+            Ptyp_constr "int" (stdlib/buffer.mli[59,2577+15]..[59,2577+18])
+            []
+          core_type (stdlib/buffer.mli[59,2577+22]..[59,2577+35])
+            Ptyp_arrow
+            Nolabel
+            core_type (stdlib/buffer.mli[59,2577+22]..[59,2577+25])
+              Ptyp_constr "int" (stdlib/buffer.mli[59,2577+22]..[59,2577+25])
+              []
+            core_type (stdlib/buffer.mli[59,2577+29]..[59,2577+35])
+              Ptyp_constr "string" (stdlib/buffer.mli[59,2577+29]..[59,2577+35])
+              []
+      []
+  signature_item (stdlib/buffer.mli[65,2839+0]..[65,2839+50])
+    Psig_value
+    value_description "blit" (stdlib/buffer.mli[65,2839+4]..[65,2839+8]) (stdlib/buffer.mli[65,2839+0]..[65,2839+50])
+      attribute "ocaml.doc"
+        [
+          structure_item (stdlib/buffer.mli[66,2890+0]..[73,3260+2])
+            Pstr_eval
+            expression (stdlib/buffer.mli[66,2890+0]..[73,3260+2])
+              Pexp_constant PConst_string(" [Buffer.blit src srcoff dst dstoff len] copies [len] characters from\n   the current contents of the buffer [src], starting at offset [srcoff]\n   to [dst], starting at character [dstoff].\n   @raise Invalid_argument if [srcoff] and [len] do not designate a valid\n   range of [src], or if [dstoff] and [len] do not designate a valid\n   range of [dst].\n   @since 3.11.2\n",(stdlib/buffer.mli[66,2890+0]..[73,3260+2]),None)
+        ]
+      core_type (stdlib/buffer.mli[65,2839+11]..[65,2839+50])
+        Ptyp_arrow
+        Nolabel
+        core_type (stdlib/buffer.mli[65,2839+11]..[65,2839+12])
+          Ptyp_constr "t" (stdlib/buffer.mli[65,2839+11]..[65,2839+12])
+          []
+        core_type (stdlib/buffer.mli[65,2839+16]..[65,2839+50])
+          Ptyp_arrow
+          Nolabel
+          core_type (stdlib/buffer.mli[65,2839+16]..[65,2839+19])
+            Ptyp_constr "int" (stdlib/buffer.mli[65,2839+16]..[65,2839+19])
+            []
+          core_type (stdlib/buffer.mli[65,2839+23]..[65,2839+50])
+            Ptyp_arrow
+            Nolabel
+            core_type (stdlib/buffer.mli[65,2839+23]..[65,2839+28])
+              Ptyp_constr "bytes" (stdlib/buffer.mli[65,2839+23]..[65,2839+28])
+              []
+            core_type (stdlib/buffer.mli[65,2839+32]..[65,2839+50])
+              Ptyp_arrow
+              Nolabel
+              core_type (stdlib/buffer.mli[65,2839+32]..[65,2839+35])
+                Ptyp_constr "int" (stdlib/buffer.mli[65,2839+32]..[65,2839+35])
+                []
+              core_type (stdlib/buffer.mli[65,2839+39]..[65,2839+50])
+                Ptyp_arrow
+                Nolabel
+                core_type (stdlib/buffer.mli[65,2839+39]..[65,2839+42])
+                  Ptyp_constr "int" (stdlib/buffer.mli[65,2839+39]..[65,2839+42])
+                  []
+                core_type (stdlib/buffer.mli[65,2839+46]..[65,2839+50])
+                  Ptyp_constr "unit" (stdlib/buffer.mli[65,2839+46]..[65,2839+50])
+                  []
+      []
+  signature_item (stdlib/buffer.mli[75,3264+0]..[75,3264+26])
+    Psig_value
+    value_description "nth" (stdlib/buffer.mli[75,3264+4]..[75,3264+7]) (stdlib/buffer.mli[75,3264+0]..[75,3264+26])
+      attribute "ocaml.doc"
+        [
+          structure_item (stdlib/buffer.mli[76,3291+0]..[78,3364+26])
+            Pstr_eval
+            expression (stdlib/buffer.mli[76,3291+0]..[78,3364+26])
+              Pexp_constant PConst_string(" Get the n-th character of the buffer.\n    @raise Invalid_argument if\n    index out of bounds ",(stdlib/buffer.mli[76,3291+0]..[78,3364+26]),None)
+        ]
+      core_type (stdlib/buffer.mli[75,3264+10]..[75,3264+26])
+        Ptyp_arrow
+        Nolabel
+        core_type (stdlib/buffer.mli[75,3264+10]..[75,3264+11])
+          Ptyp_constr "t" (stdlib/buffer.mli[75,3264+10]..[75,3264+11])
+          []
+        core_type (stdlib/buffer.mli[75,3264+15]..[75,3264+26])
+          Ptyp_arrow
+          Nolabel
+          core_type (stdlib/buffer.mli[75,3264+15]..[75,3264+18])
+            Ptyp_constr "int" (stdlib/buffer.mli[75,3264+15]..[75,3264+18])
+            []
+          core_type (stdlib/buffer.mli[75,3264+22]..[75,3264+26])
+            Ptyp_constr "char" (stdlib/buffer.mli[75,3264+22]..[75,3264+26])
+            []
+      []
+  signature_item (stdlib/buffer.mli[80,3392+0]..[80,3392+21])
+    Psig_value
+    value_description "length" (stdlib/buffer.mli[80,3392+4]..[80,3392+10]) (stdlib/buffer.mli[80,3392+0]..[80,3392+21])
+      attribute "ocaml.doc"
+        [
+          structure_item (stdlib/buffer.mli[81,3414+0]..[81,3414+73])
+            Pstr_eval
+            expression (stdlib/buffer.mli[81,3414+0]..[81,3414+73])
+              Pexp_constant PConst_string(" Return the number of characters currently contained in the buffer. ",(stdlib/buffer.mli[81,3414+0]..[81,3414+73]),None)
+        ]
+      core_type (stdlib/buffer.mli[80,3392+13]..[80,3392+21])
+        Ptyp_arrow
+        Nolabel
+        core_type (stdlib/buffer.mli[80,3392+13]..[80,3392+14])
+          Ptyp_constr "t" (stdlib/buffer.mli[80,3392+13]..[80,3392+14])
+          []
+        core_type (stdlib/buffer.mli[80,3392+18]..[80,3392+21])
+          Ptyp_constr "int" (stdlib/buffer.mli[80,3392+18]..[80,3392+21])
+          []
+      []
+  signature_item (stdlib/buffer.mli[83,3489+0]..[83,3489+21])
+    Psig_value
+    value_description "clear" (stdlib/buffer.mli[83,3489+4]..[83,3489+9]) (stdlib/buffer.mli[83,3489+0]..[83,3489+21])
+      attribute "ocaml.doc"
+        [
+          structure_item (stdlib/buffer.mli[84,3511+0]..[84,3511+24])
+            Pstr_eval
+            expression (stdlib/buffer.mli[84,3511+0]..[84,3511+24])
+              Pexp_constant PConst_string(" Empty the buffer. ",(stdlib/buffer.mli[84,3511+0]..[84,3511+24]),None)
+        ]
+      core_type (stdlib/buffer.mli[83,3489+12]..[83,3489+21])
+        Ptyp_arrow
+        Nolabel
+        core_type (stdlib/buffer.mli[83,3489+12]..[83,3489+13])
+          Ptyp_constr "t" (stdlib/buffer.mli[83,3489+12]..[83,3489+13])
+          []
+        core_type (stdlib/buffer.mli[83,3489+17]..[83,3489+21])
+          Ptyp_constr "unit" (stdlib/buffer.mli[83,3489+17]..[83,3489+21])
+          []
+      []
+  signature_item (stdlib/buffer.mli[86,3537+0]..[86,3537+21])
+    Psig_value
+    value_description "reset" (stdlib/buffer.mli[86,3537+4]..[86,3537+9]) (stdlib/buffer.mli[86,3537+0]..[86,3537+21])
+      attribute "ocaml.doc"
+        [
+          structure_item (stdlib/buffer.mli[87,3559+0]..[91,3836+57])
+            Pstr_eval
+            expression (stdlib/buffer.mli[87,3559+0]..[91,3836+57])
+              Pexp_constant PConst_string(" Empty the buffer and deallocate the internal byte sequence holding the\n   buffer contents, replacing it with the initial internal byte sequence\n   of length [n] that was allocated by {!Buffer.create} [n].\n   For long-lived buffers that may have grown a lot, [reset] allows\n   faster reclamation of the space used by the buffer. ",(stdlib/buffer.mli[87,3559+0]..[91,3836+57]),None)
+        ]
+      core_type (stdlib/buffer.mli[86,3537+12]..[86,3537+21])
+        Ptyp_arrow
+        Nolabel
+        core_type (stdlib/buffer.mli[86,3537+12]..[86,3537+13])
+          Ptyp_constr "t" (stdlib/buffer.mli[86,3537+12]..[86,3537+13])
+          []
+        core_type (stdlib/buffer.mli[86,3537+17]..[86,3537+21])
+          Ptyp_constr "unit" (stdlib/buffer.mli[86,3537+17]..[86,3537+21])
+          []
+      []
+  signature_item (stdlib/buffer.mli[93,3895+0]..[93,3895+44])
+    Psig_value
+    value_description "output_buffer" (stdlib/buffer.mli[93,3895+4]..[93,3895+17]) (stdlib/buffer.mli[93,3895+0]..[93,3895+44])
+      attribute "ocaml.doc"
+        [
+          structure_item (stdlib/buffer.mli[94,3940+0]..[95,4007+33])
+            Pstr_eval
+            expression (stdlib/buffer.mli[94,3940+0]..[95,4007+33])
+              Pexp_constant PConst_string(" [output_buffer oc b] writes the current contents of buffer [b]\n   on the output channel [oc]. ",(stdlib/buffer.mli[94,3940+0]..[95,4007+33]),None)
+        ]
+      core_type (stdlib/buffer.mli[93,3895+20]..[93,3895+44])
+        Ptyp_arrow
+        Nolabel
+        core_type (stdlib/buffer.mli[93,3895+20]..[93,3895+31])
+          Ptyp_constr "out_channel" (stdlib/buffer.mli[93,3895+20]..[93,3895+31])
+          []
+        core_type (stdlib/buffer.mli[93,3895+35]..[93,3895+44])
+          Ptyp_arrow
+          Nolabel
+          core_type (stdlib/buffer.mli[93,3895+35]..[93,3895+36])
+            Ptyp_constr "t" (stdlib/buffer.mli[93,3895+35]..[93,3895+36])
+            []
+          core_type (stdlib/buffer.mli[93,3895+40]..[93,3895+44])
+            Ptyp_constr "unit" (stdlib/buffer.mli[93,3895+40]..[93,3895+44])
+            []
+      []
+  signature_item (stdlib/buffer.mli[97,4042+0]..[97,4042+31])
+    Psig_value
+    value_description "truncate" (stdlib/buffer.mli[97,4042+4]..[97,4042+12]) (stdlib/buffer.mli[97,4042+0]..[97,4042+31])
+      attribute "ocaml.doc"
+        [
+          structure_item (stdlib/buffer.mli[98,4074+0]..[101,4245+18])
+            Pstr_eval
+            expression (stdlib/buffer.mli[98,4074+0]..[101,4245+18])
+              Pexp_constant PConst_string(" [truncate b len] truncates the length of [b] to [len]\n  Note: the internal byte sequence is not shortened.\n  @raise Invalid_argument if [len < 0] or [len > length b].\n  @since 4.05.0 ",(stdlib/buffer.mli[98,4074+0]..[101,4245+18]),None)
+        ]
+      core_type (stdlib/buffer.mli[97,4042+15]..[97,4042+31])
+        Ptyp_arrow
+        Nolabel
+        core_type (stdlib/buffer.mli[97,4042+15]..[97,4042+16])
+          Ptyp_constr "t" (stdlib/buffer.mli[97,4042+15]..[97,4042+16])
+          []
+        core_type (stdlib/buffer.mli[97,4042+20]..[97,4042+31])
+          Ptyp_arrow
+          Nolabel
+          core_type (stdlib/buffer.mli[97,4042+20]..[97,4042+23])
+            Ptyp_constr "int" (stdlib/buffer.mli[97,4042+20]..[97,4042+23])
+            []
+          core_type (stdlib/buffer.mli[97,4042+27]..[97,4042+31])
+            Ptyp_constr "unit" (stdlib/buffer.mli[97,4042+27]..[97,4042+31])
+            []
+      []
+  signature_item (stdlib/buffer.mli[103,4265+0]..[103,4265+20])
+    Psig_attribute "ocaml.text"
+    [
+      structure_item (stdlib/buffer.mli[103,4265+0]..[103,4265+20])
+        Pstr_eval
+        expression (stdlib/buffer.mli[103,4265+0]..[103,4265+20])
+          Pexp_constant PConst_string(" {1 Appending} ",(stdlib/buffer.mli[103,4265+0]..[103,4265+20]),None)
+    ]
+  signature_item (stdlib/buffer.mli[105,4287+0]..[107,4440+2])
+    Psig_attribute "ocaml.text"
+    [
+      structure_item (stdlib/buffer.mli[105,4287+0]..[107,4440+2])
+        Pstr_eval
+        expression (stdlib/buffer.mli[105,4287+0]..[107,4440+2])
+          Pexp_constant PConst_string(" Note: all [add_*] operations can raise [Failure] if the internal byte\n    sequence of the buffer would need to grow beyond {!Sys.max_string_length}.\n",(stdlib/buffer.mli[105,4287+0]..[107,4440+2]),None)
+    ]
+  signature_item (stdlib/buffer.mli[109,4444+0]..[109,4444+32])
+    Psig_value
+    value_description "add_char" (stdlib/buffer.mli[109,4444+4]..[109,4444+12]) (stdlib/buffer.mli[109,4444+0]..[109,4444+32])
+      attribute "ocaml.doc"
+        [
+          structure_item (stdlib/buffer.mli[110,4477+0]..[110,4477+73])
+            Pstr_eval
+            expression (stdlib/buffer.mli[110,4477+0]..[110,4477+73])
+              Pexp_constant PConst_string(" [add_char b c] appends the character [c] at the end of buffer [b]. ",(stdlib/buffer.mli[110,4477+0]..[110,4477+73]),None)
+        ]
+      core_type (stdlib/buffer.mli[109,4444+15]..[109,4444+32])
+        Ptyp_arrow
+        Nolabel
+        core_type (stdlib/buffer.mli[109,4444+15]..[109,4444+16])
+          Ptyp_constr "t" (stdlib/buffer.mli[109,4444+15]..[109,4444+16])
+          []
+        core_type (stdlib/buffer.mli[109,4444+20]..[109,4444+32])
+          Ptyp_arrow
+          Nolabel
+          core_type (stdlib/buffer.mli[109,4444+20]..[109,4444+24])
+            Ptyp_constr "char" (stdlib/buffer.mli[109,4444+20]..[109,4444+24])
+            []
+          core_type (stdlib/buffer.mli[109,4444+28]..[109,4444+32])
+            Ptyp_constr "unit" (stdlib/buffer.mli[109,4444+28]..[109,4444+32])
+            []
+      []
+  signature_item (stdlib/buffer.mli[112,4552+0]..[112,4552+42])
+    Psig_value
+    value_description "add_utf_8_uchar" (stdlib/buffer.mli[112,4552+4]..[112,4552+19]) (stdlib/buffer.mli[112,4552+0]..[112,4552+42])
+      attribute "ocaml.doc"
+        [
+          structure_item (stdlib/buffer.mli[113,4595+0]..[116,4727+20])
+            Pstr_eval
+            expression (stdlib/buffer.mli[113,4595+0]..[116,4727+20])
+              Pexp_constant PConst_string(" [add_utf_8_uchar b u] appends the {{:https://tools.ietf.org/html/rfc3629}\n    UTF-8} encoding of [u] at the end of buffer [b].\n\n    @since 4.06.0 ",(stdlib/buffer.mli[113,4595+0]..[116,4727+20]),None)
+        ]
+      core_type (stdlib/buffer.mli[112,4552+22]..[112,4552+42])
+        Ptyp_arrow
+        Nolabel
+        core_type (stdlib/buffer.mli[112,4552+22]..[112,4552+23])
+          Ptyp_constr "t" (stdlib/buffer.mli[112,4552+22]..[112,4552+23])
+          []
+        core_type (stdlib/buffer.mli[112,4552+27]..[112,4552+42])
+          Ptyp_arrow
+          Nolabel
+          core_type (stdlib/buffer.mli[112,4552+27]..[112,4552+34])
+            Ptyp_constr "Uchar.t" (stdlib/buffer.mli[112,4552+27]..[112,4552+34])
+            []
+          core_type (stdlib/buffer.mli[112,4552+38]..[112,4552+42])
+            Ptyp_constr "unit" (stdlib/buffer.mli[112,4552+38]..[112,4552+42])
+            []
+      []
+  signature_item (stdlib/buffer.mli[118,4749+0]..[118,4749+45])
+    Psig_value
+    value_description "add_utf_16le_uchar" (stdlib/buffer.mli[118,4749+4]..[118,4749+22]) (stdlib/buffer.mli[118,4749+0]..[118,4749+45])
+      attribute "ocaml.doc"
+        [
+          structure_item (stdlib/buffer.mli[119,4795+0]..[123,4936+20])
+            Pstr_eval
+            expression (stdlib/buffer.mli[119,4795+0]..[123,4936+20])
+              Pexp_constant PConst_string(" [add_utf_16le_uchar b u] appends the\n    {{:https://tools.ietf.org/html/rfc2781}UTF-16LE} encoding of [u]\n    at the end of buffer [b].\n\n    @since 4.06.0 ",(stdlib/buffer.mli[119,4795+0]..[123,4936+20]),None)
+        ]
+      core_type (stdlib/buffer.mli[118,4749+25]..[118,4749+45])
+        Ptyp_arrow
+        Nolabel
+        core_type (stdlib/buffer.mli[118,4749+25]..[118,4749+26])
+          Ptyp_constr "t" (stdlib/buffer.mli[118,4749+25]..[118,4749+26])
+          []
+        core_type (stdlib/buffer.mli[118,4749+30]..[118,4749+45])
+          Ptyp_arrow
+          Nolabel
+          core_type (stdlib/buffer.mli[118,4749+30]..[118,4749+37])
+            Ptyp_constr "Uchar.t" (stdlib/buffer.mli[118,4749+30]..[118,4749+37])
+            []
+          core_type (stdlib/buffer.mli[118,4749+41]..[118,4749+45])
+            Ptyp_constr "unit" (stdlib/buffer.mli[118,4749+41]..[118,4749+45])
+            []
+      []
+  signature_item (stdlib/buffer.mli[125,4958+0]..[125,4958+45])
+    Psig_value
+    value_description "add_utf_16be_uchar" (stdlib/buffer.mli[125,4958+4]..[125,4958+22]) (stdlib/buffer.mli[125,4958+0]..[125,4958+45])
+      attribute "ocaml.doc"
+        [
+          structure_item (stdlib/buffer.mli[126,5004+0]..[130,5145+20])
+            Pstr_eval
+            expression (stdlib/buffer.mli[126,5004+0]..[130,5145+20])
+              Pexp_constant PConst_string(" [add_utf_16be_uchar b u] appends the\n    {{:https://tools.ietf.org/html/rfc2781}UTF-16BE} encoding of [u]\n    at the end of buffer [b].\n\n    @since 4.06.0 ",(stdlib/buffer.mli[126,5004+0]..[130,5145+20]),None)
+        ]
+      core_type (stdlib/buffer.mli[125,4958+25]..[125,4958+45])
+        Ptyp_arrow
+        Nolabel
+        core_type (stdlib/buffer.mli[125,4958+25]..[125,4958+26])
+          Ptyp_constr "t" (stdlib/buffer.mli[125,4958+25]..[125,4958+26])
+          []
+        core_type (stdlib/buffer.mli[125,4958+30]..[125,4958+45])
+          Ptyp_arrow
+          Nolabel
+          core_type (stdlib/buffer.mli[125,4958+30]..[125,4958+37])
+            Ptyp_constr "Uchar.t" (stdlib/buffer.mli[125,4958+30]..[125,4958+37])
+            []
+          core_type (stdlib/buffer.mli[125,4958+41]..[125,4958+45])
+            Ptyp_constr "unit" (stdlib/buffer.mli[125,4958+41]..[125,4958+45])
+            []
+      []
+  signature_item (stdlib/buffer.mli[132,5167+0]..[132,5167+36])
+    Psig_value
+    value_description "add_string" (stdlib/buffer.mli[132,5167+4]..[132,5167+14]) (stdlib/buffer.mli[132,5167+0]..[132,5167+36])
+      attribute "ocaml.doc"
+        [
+          structure_item (stdlib/buffer.mli[133,5204+0]..[133,5204+72])
+            Pstr_eval
+            expression (stdlib/buffer.mli[133,5204+0]..[133,5204+72])
+              Pexp_constant PConst_string(" [add_string b s] appends the string [s] at the end of buffer [b]. ",(stdlib/buffer.mli[133,5204+0]..[133,5204+72]),None)
+        ]
+      core_type (stdlib/buffer.mli[132,5167+17]..[132,5167+36])
+        Ptyp_arrow
+        Nolabel
+        core_type (stdlib/buffer.mli[132,5167+17]..[132,5167+18])
+          Ptyp_constr "t" (stdlib/buffer.mli[132,5167+17]..[132,5167+18])
+          []
+        core_type (stdlib/buffer.mli[132,5167+22]..[132,5167+36])
+          Ptyp_arrow
+          Nolabel
+          core_type (stdlib/buffer.mli[132,5167+22]..[132,5167+28])
+            Ptyp_constr "string" (stdlib/buffer.mli[132,5167+22]..[132,5167+28])
+            []
+          core_type (stdlib/buffer.mli[132,5167+32]..[132,5167+36])
+            Ptyp_constr "unit" (stdlib/buffer.mli[132,5167+32]..[132,5167+36])
+            []
+      []
+  signature_item (stdlib/buffer.mli[135,5278+0]..[135,5278+34])
+    Psig_value
+    value_description "add_bytes" (stdlib/buffer.mli[135,5278+4]..[135,5278+13]) (stdlib/buffer.mli[135,5278+0]..[135,5278+34])
+      attribute "ocaml.doc"
+        [
+          structure_item (stdlib/buffer.mli[136,5313+0]..[137,5389+18])
+            Pstr_eval
+            expression (stdlib/buffer.mli[136,5313+0]..[137,5389+18])
+              Pexp_constant PConst_string(" [add_bytes b s] appends the byte sequence [s] at the end of buffer [b].\n    @since 4.02 ",(stdlib/buffer.mli[136,5313+0]..[137,5389+18]),None)
+        ]
+      core_type (stdlib/buffer.mli[135,5278+16]..[135,5278+34])
+        Ptyp_arrow
+        Nolabel
+        core_type (stdlib/buffer.mli[135,5278+16]..[135,5278+17])
+          Ptyp_constr "t" (stdlib/buffer.mli[135,5278+16]..[135,5278+17])
+          []
+        core_type (stdlib/buffer.mli[135,5278+21]..[135,5278+34])
+          Ptyp_arrow
+          Nolabel
+          core_type (stdlib/buffer.mli[135,5278+21]..[135,5278+26])
+            Ptyp_constr "bytes" (stdlib/buffer.mli[135,5278+21]..[135,5278+26])
+            []
+          core_type (stdlib/buffer.mli[135,5278+30]..[135,5278+34])
+            Ptyp_constr "unit" (stdlib/buffer.mli[135,5278+30]..[135,5278+34])
+            []
+      []
+  signature_item (stdlib/buffer.mli[139,5409+0]..[139,5409+53])
+    Psig_value
+    value_description "add_substring" (stdlib/buffer.mli[139,5409+4]..[139,5409+17]) (stdlib/buffer.mli[139,5409+0]..[139,5409+53])
+      attribute "ocaml.doc"
+        [
+          structure_item (stdlib/buffer.mli[140,5463+0]..[144,5669+20])
+            Pstr_eval
+            expression (stdlib/buffer.mli[140,5463+0]..[144,5669+20])
+              Pexp_constant PConst_string(" [add_substring b s ofs len] takes [len] characters from offset\n   [ofs] in string [s] and appends them at the end of buffer [b].\n\n    @raise Invalid_argument if [ofs] and [len] do not designate a valid\n    range of [s]. ",(stdlib/buffer.mli[140,5463+0]..[144,5669+20]),None)
+        ]
+      core_type (stdlib/buffer.mli[139,5409+20]..[139,5409+53])
+        Ptyp_arrow
+        Nolabel
+        core_type (stdlib/buffer.mli[139,5409+20]..[139,5409+21])
+          Ptyp_constr "t" (stdlib/buffer.mli[139,5409+20]..[139,5409+21])
+          []
+        core_type (stdlib/buffer.mli[139,5409+25]..[139,5409+53])
+          Ptyp_arrow
+          Nolabel
+          core_type (stdlib/buffer.mli[139,5409+25]..[139,5409+31])
+            Ptyp_constr "string" (stdlib/buffer.mli[139,5409+25]..[139,5409+31])
+            []
+          core_type (stdlib/buffer.mli[139,5409+35]..[139,5409+53])
+            Ptyp_arrow
+            Nolabel
+            core_type (stdlib/buffer.mli[139,5409+35]..[139,5409+38])
+              Ptyp_constr "int" (stdlib/buffer.mli[139,5409+35]..[139,5409+38])
+              []
+            core_type (stdlib/buffer.mli[139,5409+42]..[139,5409+53])
+              Ptyp_arrow
+              Nolabel
+              core_type (stdlib/buffer.mli[139,5409+42]..[139,5409+45])
+                Ptyp_constr "int" (stdlib/buffer.mli[139,5409+42]..[139,5409+45])
+                []
+              core_type (stdlib/buffer.mli[139,5409+49]..[139,5409+53])
+                Ptyp_constr "unit" (stdlib/buffer.mli[139,5409+49]..[139,5409+53])
+                []
+      []
+  signature_item (stdlib/buffer.mli[146,5691+0]..[146,5691+51])
+    Psig_value
+    value_description "add_subbytes" (stdlib/buffer.mli[146,5691+4]..[146,5691+16]) (stdlib/buffer.mli[146,5691+0]..[146,5691+51])
+      attribute "ocaml.doc"
+        [
+          structure_item (stdlib/buffer.mli[147,5743+0]..[153,5975+18])
+            Pstr_eval
+            expression (stdlib/buffer.mli[147,5743+0]..[153,5975+18])
+              Pexp_constant PConst_string(" [add_subbytes b s ofs len] takes [len] characters from offset\n    [ofs] in byte sequence [s] and appends them at the end of buffer [b].\n\n    @raise Invalid_argument if [ofs] and [len] do not designate a valid\n    range of [s].\n\n    @since 4.02 ",(stdlib/buffer.mli[147,5743+0]..[153,5975+18]),None)
+        ]
+      core_type (stdlib/buffer.mli[146,5691+19]..[146,5691+51])
+        Ptyp_arrow
+        Nolabel
+        core_type (stdlib/buffer.mli[146,5691+19]..[146,5691+20])
+          Ptyp_constr "t" (stdlib/buffer.mli[146,5691+19]..[146,5691+20])
+          []
+        core_type (stdlib/buffer.mli[146,5691+24]..[146,5691+51])
+          Ptyp_arrow
+          Nolabel
+          core_type (stdlib/buffer.mli[146,5691+24]..[146,5691+29])
+            Ptyp_constr "bytes" (stdlib/buffer.mli[146,5691+24]..[146,5691+29])
+            []
+          core_type (stdlib/buffer.mli[146,5691+33]..[146,5691+51])
+            Ptyp_arrow
+            Nolabel
+            core_type (stdlib/buffer.mli[146,5691+33]..[146,5691+36])
+              Ptyp_constr "int" (stdlib/buffer.mli[146,5691+33]..[146,5691+36])
+              []
+            core_type (stdlib/buffer.mli[146,5691+40]..[146,5691+51])
+              Ptyp_arrow
+              Nolabel
+              core_type (stdlib/buffer.mli[146,5691+40]..[146,5691+43])
+                Ptyp_constr "int" (stdlib/buffer.mli[146,5691+40]..[146,5691+43])
+                []
+              core_type (stdlib/buffer.mli[146,5691+47]..[146,5691+51])
+                Ptyp_constr "unit" (stdlib/buffer.mli[146,5691+47]..[146,5691+51])
+                []
+      []
+  signature_item (stdlib/buffer.mli[155,5995+0]..[155,5995+62])
+    Psig_value
+    value_description "add_substitute" (stdlib/buffer.mli[155,5995+4]..[155,5995+18]) (stdlib/buffer.mli[155,5995+0]..[155,5995+62])
+      attribute "ocaml.doc"
+        [
+          structure_item (stdlib/buffer.mli[156,6058+0]..[169,6831+22])
+            Pstr_eval
+            expression (stdlib/buffer.mli[156,6058+0]..[169,6831+22])
+              Pexp_constant PConst_string(" [add_substitute b f s] appends the string pattern [s] at the end\n   of buffer [b] with substitution.\n   The substitution process looks for variables into\n   the pattern and substitutes each variable name by its value, as\n   obtained by applying the mapping [f] to the variable name. Inside the\n   string pattern, a variable name immediately follows a non-escaped\n   [$] character and is one of the following:\n   - a non empty sequence of alphanumeric or [_] characters,\n   - an arbitrary sequence of characters enclosed by a pair of\n   matching parentheses or curly brackets.\n   An escaped [$] character is a [$] that immediately follows a backslash\n   character; it then stands for a plain [$].\n   @raise Not_found if the closing character of a parenthesized variable\n   cannot be found. ",(stdlib/buffer.mli[156,6058+0]..[169,6831+22]),None)
+        ]
+      core_type (stdlib/buffer.mli[155,5995+21]..[155,5995+62])
+        Ptyp_arrow
+        Nolabel
+        core_type (stdlib/buffer.mli[155,5995+21]..[155,5995+22])
+          Ptyp_constr "t" (stdlib/buffer.mli[155,5995+21]..[155,5995+22])
+          []
+        core_type (stdlib/buffer.mli[155,5995+26]..[155,5995+62])
+          Ptyp_arrow
+          Nolabel
+          core_type (stdlib/buffer.mli[155,5995+27]..[155,5995+43])
+            Ptyp_arrow
+            Nolabel
+            core_type (stdlib/buffer.mli[155,5995+27]..[155,5995+33])
+              Ptyp_constr "string" (stdlib/buffer.mli[155,5995+27]..[155,5995+33])
+              []
+            core_type (stdlib/buffer.mli[155,5995+37]..[155,5995+43])
+              Ptyp_constr "string" (stdlib/buffer.mli[155,5995+37]..[155,5995+43])
+              []
+          core_type (stdlib/buffer.mli[155,5995+48]..[155,5995+62])
+            Ptyp_arrow
+            Nolabel
+            core_type (stdlib/buffer.mli[155,5995+48]..[155,5995+54])
+              Ptyp_constr "string" (stdlib/buffer.mli[155,5995+48]..[155,5995+54])
+              []
+            core_type (stdlib/buffer.mli[155,5995+58]..[155,5995+62])
+              Ptyp_constr "unit" (stdlib/buffer.mli[155,5995+58]..[155,5995+62])
+              []
+      []
+  signature_item (stdlib/buffer.mli[171,6855+0]..[171,6855+31])
+    Psig_value
+    value_description "add_buffer" (stdlib/buffer.mli[171,6855+4]..[171,6855+14]) (stdlib/buffer.mli[171,6855+0]..[171,6855+31])
+      attribute "ocaml.doc"
+        [
+          structure_item (stdlib/buffer.mli[172,6887+0]..[173,6954+55])
+            Pstr_eval
+            expression (stdlib/buffer.mli[172,6887+0]..[173,6954+55])
+              Pexp_constant PConst_string(" [add_buffer b1 b2] appends the current contents of buffer [b2]\n   at the end of buffer [b1].  [b2] is not modified. ",(stdlib/buffer.mli[172,6887+0]..[173,6954+55]),None)
+        ]
+      core_type (stdlib/buffer.mli[171,6855+17]..[171,6855+31])
+        Ptyp_arrow
+        Nolabel
+        core_type (stdlib/buffer.mli[171,6855+17]..[171,6855+18])
+          Ptyp_constr "t" (stdlib/buffer.mli[171,6855+17]..[171,6855+18])
+          []
+        core_type (stdlib/buffer.mli[171,6855+22]..[171,6855+31])
+          Ptyp_arrow
+          Nolabel
+          core_type (stdlib/buffer.mli[171,6855+22]..[171,6855+23])
+            Ptyp_constr "t" (stdlib/buffer.mli[171,6855+22]..[171,6855+23])
+            []
+          core_type (stdlib/buffer.mli[171,6855+27]..[171,6855+31])
+            Ptyp_constr "unit" (stdlib/buffer.mli[171,6855+27]..[171,6855+31])
+            []
+      []
+  signature_item (stdlib/buffer.mli[175,7011+0]..[175,7011+48])
+    Psig_value
+    value_description "add_channel" (stdlib/buffer.mli[175,7011+4]..[175,7011+15]) (stdlib/buffer.mli[175,7011+0]..[175,7011+48])
+      attribute "ocaml.doc"
+        [
+          structure_item (stdlib/buffer.mli[176,7060+0]..[183,7430+3])
+            Pstr_eval
+            expression (stdlib/buffer.mli[176,7060+0]..[183,7430+3])
+              Pexp_constant PConst_string(" [add_channel b ic n] reads at most [n] characters from the\n   input channel [ic] and stores them at the end of buffer [b].\n   @raise End_of_file if the channel contains fewer than [n]\n   characters. In this case, the characters are still added to\n   the buffer, so as to avoid loss of data.\n\n   @raise Invalid_argument if [len < 0] or [len > Sys.max_string_length].\n ",(stdlib/buffer.mli[176,7060+0]..[183,7430+3]),None)
+        ]
+      core_type (stdlib/buffer.mli[175,7011+18]..[175,7011+48])
+        Ptyp_arrow
+        Nolabel
+        core_type (stdlib/buffer.mli[175,7011+18]..[175,7011+19])
+          Ptyp_constr "t" (stdlib/buffer.mli[175,7011+18]..[175,7011+19])
+          []
+        core_type (stdlib/buffer.mli[175,7011+23]..[175,7011+48])
+          Ptyp_arrow
+          Nolabel
+          core_type (stdlib/buffer.mli[175,7011+23]..[175,7011+33])
+            Ptyp_constr "in_channel" (stdlib/buffer.mli[175,7011+23]..[175,7011+33])
+            []
+          core_type (stdlib/buffer.mli[175,7011+37]..[175,7011+48])
+            Ptyp_arrow
+            Nolabel
+            core_type (stdlib/buffer.mli[175,7011+37]..[175,7011+40])
+              Ptyp_constr "int" (stdlib/buffer.mli[175,7011+37]..[175,7011+40])
+              []
+            core_type (stdlib/buffer.mli[175,7011+44]..[175,7011+48])
+              Ptyp_constr "unit" (stdlib/buffer.mli[175,7011+44]..[175,7011+48])
+              []
+      []
+  signature_item (stdlib/buffer.mli[185,7435+0]..[185,7435+32])
+    Psig_attribute "ocaml.text"
+    [
+      structure_item (stdlib/buffer.mli[185,7435+0]..[185,7435+32])
+        Pstr_eval
+        expression (stdlib/buffer.mli[185,7435+0]..[185,7435+32])
+          Pexp_constant PConst_string(" {1 Buffers and Sequences} ",(stdlib/buffer.mli[185,7435+0]..[185,7435+32]),None)
+    ]
+  signature_item (stdlib/buffer.mli[187,7469+0]..[187,7469+28])
+    Psig_value
+    value_description "to_seq" (stdlib/buffer.mli[187,7469+4]..[187,7469+10]) (stdlib/buffer.mli[187,7469+0]..[187,7469+28])
+      attribute "ocaml.doc"
+        [
+          structure_item (stdlib/buffer.mli[188,7498+0]..[191,7625+18])
+            Pstr_eval
+            expression (stdlib/buffer.mli[188,7498+0]..[191,7625+18])
+              Pexp_constant PConst_string(" Iterate on the buffer, in increasing order.\n\n    The behavior is not specified if the buffer is modified during iteration.\n    @since 4.07 ",(stdlib/buffer.mli[188,7498+0]..[191,7625+18]),None)
+        ]
+      core_type (stdlib/buffer.mli[187,7469+13]..[187,7469+28])
+        Ptyp_arrow
+        Nolabel
+        core_type (stdlib/buffer.mli[187,7469+13]..[187,7469+14])
+          Ptyp_constr "t" (stdlib/buffer.mli[187,7469+13]..[187,7469+14])
+          []
+        core_type (stdlib/buffer.mli[187,7469+18]..[187,7469+28])
+          Ptyp_constr "Seq.t" (stdlib/buffer.mli[187,7469+23]..[187,7469+28])
+          [
+            core_type (stdlib/buffer.mli[187,7469+18]..[187,7469+22])
+              Ptyp_constr "char" (stdlib/buffer.mli[187,7469+18]..[187,7469+22])
+              []
+          ]
+      []
+  signature_item (stdlib/buffer.mli[193,7645+0]..[193,7645+37])
+    Psig_value
+    value_description "to_seqi" (stdlib/buffer.mli[193,7645+4]..[193,7645+11]) (stdlib/buffer.mli[193,7645+0]..[193,7645+37])
+      attribute "ocaml.doc"
+        [
+          structure_item (stdlib/buffer.mli[194,7683+0]..[197,7840+18])
+            Pstr_eval
+            expression (stdlib/buffer.mli[194,7683+0]..[197,7840+18])
+              Pexp_constant PConst_string(" Iterate on the buffer, in increasing order, yielding indices along chars.\n\n    The behavior is not specified if the buffer is modified during iteration.\n    @since 4.07 ",(stdlib/buffer.mli[194,7683+0]..[197,7840+18]),None)
+        ]
+      core_type (stdlib/buffer.mli[193,7645+14]..[193,7645+37])
+        Ptyp_arrow
+        Nolabel
+        core_type (stdlib/buffer.mli[193,7645+14]..[193,7645+15])
+          Ptyp_constr "t" (stdlib/buffer.mli[193,7645+14]..[193,7645+15])
+          []
+        core_type (stdlib/buffer.mli[193,7645+19]..[193,7645+37])
+          Ptyp_constr "Seq.t" (stdlib/buffer.mli[193,7645+32]..[193,7645+37])
+          [
+            core_type (stdlib/buffer.mli[193,7645+20]..[193,7645+30])
+              Ptyp_tuple
+              [
+                core_type (stdlib/buffer.mli[193,7645+20]..[193,7645+23])
+                  Ptyp_constr "int" (stdlib/buffer.mli[193,7645+20]..[193,7645+23])
+                  []
+                core_type (stdlib/buffer.mli[193,7645+26]..[193,7645+30])
+                  Ptyp_constr "char" (stdlib/buffer.mli[193,7645+26]..[193,7645+30])
+                  []
+              ]
+          ]
+      []
+  signature_item (stdlib/buffer.mli[199,7860+0]..[199,7860+37])
+    Psig_value
+    value_description "add_seq" (stdlib/buffer.mli[199,7860+4]..[199,7860+11]) (stdlib/buffer.mli[199,7860+0]..[199,7860+37])
+      attribute "ocaml.doc"
+        [
+          structure_item (stdlib/buffer.mli[200,7898+0]..[201,7926+18])
+            Pstr_eval
+            expression (stdlib/buffer.mli[200,7898+0]..[201,7926+18])
+              Pexp_constant PConst_string(" Add chars to the buffer\n    @since 4.07 ",(stdlib/buffer.mli[200,7898+0]..[201,7926+18]),None)
+        ]
+      core_type (stdlib/buffer.mli[199,7860+14]..[199,7860+37])
+        Ptyp_arrow
+        Nolabel
+        core_type (stdlib/buffer.mli[199,7860+14]..[199,7860+15])
+          Ptyp_constr "t" (stdlib/buffer.mli[199,7860+14]..[199,7860+15])
+          []
+        core_type (stdlib/buffer.mli[199,7860+19]..[199,7860+37])
+          Ptyp_arrow
+          Nolabel
+          core_type (stdlib/buffer.mli[199,7860+19]..[199,7860+29])
+            Ptyp_constr "Seq.t" (stdlib/buffer.mli[199,7860+24]..[199,7860+29])
+            [
+              core_type (stdlib/buffer.mli[199,7860+19]..[199,7860+23])
+                Ptyp_constr "char" (stdlib/buffer.mli[199,7860+19]..[199,7860+23])
+                []
+            ]
+          core_type (stdlib/buffer.mli[199,7860+33]..[199,7860+37])
+            Ptyp_constr "unit" (stdlib/buffer.mli[199,7860+33]..[199,7860+37])
+            []
+      []
+  signature_item (stdlib/buffer.mli[203,7946+0]..[203,7946+28])
+    Psig_value
+    value_description "of_seq" (stdlib/buffer.mli[203,7946+4]..[203,7946+10]) (stdlib/buffer.mli[203,7946+0]..[203,7946+28])
+      attribute "ocaml.doc"
+        [
+          structure_item (stdlib/buffer.mli[204,7975+0]..[205,8014+18])
+            Pstr_eval
+            expression (stdlib/buffer.mli[204,7975+0]..[205,8014+18])
+              Pexp_constant PConst_string(" Create a buffer from the generator\n    @since 4.07 ",(stdlib/buffer.mli[204,7975+0]..[205,8014+18]),None)
+        ]
+      core_type (stdlib/buffer.mli[203,7946+13]..[203,7946+28])
+        Ptyp_arrow
+        Nolabel
+        core_type (stdlib/buffer.mli[203,7946+13]..[203,7946+23])
+          Ptyp_constr "Seq.t" (stdlib/buffer.mli[203,7946+18]..[203,7946+23])
+          [
+            core_type (stdlib/buffer.mli[203,7946+13]..[203,7946+17])
+              Ptyp_constr "char" (stdlib/buffer.mli[203,7946+13]..[203,7946+17])
+              []
+          ]
+        core_type (stdlib/buffer.mli[203,7946+27]..[203,7946+28])
+          Ptyp_constr "t" (stdlib/buffer.mli[203,7946+27]..[203,7946+28])
+          []
+      []
+  signature_item (stdlib/buffer.mli[207,8034+0]..[207,8034+38])
+    Psig_attribute "ocaml.text"
+    [
+      structure_item (stdlib/buffer.mli[207,8034+0]..[207,8034+38])
+        Pstr_eval
+        expression (stdlib/buffer.mli[207,8034+0]..[207,8034+38])
+          Pexp_constant PConst_string(" {1 Binary encoding of integers} ",(stdlib/buffer.mli[207,8034+0]..[207,8034+38]),None)
+    ]
+  signature_item (stdlib/buffer.mli[209,8074+0]..[225,8797+2])
+    Psig_attribute "ocaml.text"
+    [
+      structure_item (stdlib/buffer.mli[209,8074+0]..[225,8797+2])
+        Pstr_eval
+        expression (stdlib/buffer.mli[209,8074+0]..[225,8797+2])
+          Pexp_constant PConst_string(" The functions in this section append binary encodings of integers\n    to buffers.\n\n    Little-endian (resp. big-endian) encoding means that least\n    (resp. most) significant bytes are stored first.  Big-endian is\n    also known as network byte order.  Native-endian encoding is\n    either little-endian or big-endian depending on {!Sys.big_endian}.\n\n    32-bit and 64-bit integers are represented by the [int32] and\n    [int64] types, which can be interpreted either as signed or\n    unsigned numbers.\n\n    8-bit and 16-bit integers are represented by the [int] type,\n    which has more bits than the binary encoding.  Functions that\n    encode these values truncate their inputs to their least\n    significant bytes.\n",(stdlib/buffer.mli[209,8074+0]..[225,8797+2]),None)
+    ]
+  signature_item (stdlib/buffer.mli[227,8801+0]..[227,8801+32])
+    Psig_value
+    value_description "add_uint8" (stdlib/buffer.mli[227,8801+4]..[227,8801+13]) (stdlib/buffer.mli[227,8801+0]..[227,8801+32])
+      attribute "ocaml.doc"
+        [
+          structure_item (stdlib/buffer.mli[228,8834+0]..[231,8926+2])
+            Pstr_eval
+            expression (stdlib/buffer.mli[228,8834+0]..[231,8926+2])
+              Pexp_constant PConst_string(" [add_uint8 b i] appends a binary unsigned 8-bit integer [i] to\n    [b].\n    @since 4.08\n",(stdlib/buffer.mli[228,8834+0]..[231,8926+2]),None)
+        ]
+      core_type (stdlib/buffer.mli[227,8801+16]..[227,8801+32])
+        Ptyp_arrow
+        Nolabel
+        core_type (stdlib/buffer.mli[227,8801+16]..[227,8801+17])
+          Ptyp_constr "t" (stdlib/buffer.mli[227,8801+16]..[227,8801+17])
+          []
+        core_type (stdlib/buffer.mli[227,8801+21]..[227,8801+32])
+          Ptyp_arrow
+          Nolabel
+          core_type (stdlib/buffer.mli[227,8801+21]..[227,8801+24])
+            Ptyp_constr "int" (stdlib/buffer.mli[227,8801+21]..[227,8801+24])
+            []
+          core_type (stdlib/buffer.mli[227,8801+28]..[227,8801+32])
+            Ptyp_constr "unit" (stdlib/buffer.mli[227,8801+28]..[227,8801+32])
+            []
+      []
+  signature_item (stdlib/buffer.mli[233,8930+0]..[233,8930+31])
+    Psig_value
+    value_description "add_int8" (stdlib/buffer.mli[233,8930+4]..[233,8930+12]) (stdlib/buffer.mli[233,8930+0]..[233,8930+31])
+      attribute "ocaml.doc"
+        [
+          structure_item (stdlib/buffer.mli[234,8962+0]..[237,9051+2])
+            Pstr_eval
+            expression (stdlib/buffer.mli[234,8962+0]..[237,9051+2])
+              Pexp_constant PConst_string(" [add_int8 b i] appends a binary signed 8-bit integer [i] to\n    [b].\n    @since 4.08\n",(stdlib/buffer.mli[234,8962+0]..[237,9051+2]),None)
+        ]
+      core_type (stdlib/buffer.mli[233,8930+15]..[233,8930+31])
+        Ptyp_arrow
+        Nolabel
+        core_type (stdlib/buffer.mli[233,8930+15]..[233,8930+16])
+          Ptyp_constr "t" (stdlib/buffer.mli[233,8930+15]..[233,8930+16])
+          []
+        core_type (stdlib/buffer.mli[233,8930+20]..[233,8930+31])
+          Ptyp_arrow
+          Nolabel
+          core_type (stdlib/buffer.mli[233,8930+20]..[233,8930+23])
+            Ptyp_constr "int" (stdlib/buffer.mli[233,8930+20]..[233,8930+23])
+            []
+          core_type (stdlib/buffer.mli[233,8930+27]..[233,8930+31])
+            Ptyp_constr "unit" (stdlib/buffer.mli[233,8930+27]..[233,8930+31])
+            []
+      []
+  signature_item (stdlib/buffer.mli[239,9055+0]..[239,9055+36])
+    Psig_value
+    value_description "add_uint16_ne" (stdlib/buffer.mli[239,9055+4]..[239,9055+17]) (stdlib/buffer.mli[239,9055+0]..[239,9055+36])
+      attribute "ocaml.doc"
+        [
+          structure_item (stdlib/buffer.mli[240,9092+0]..[243,9203+2])
+            Pstr_eval
+            expression (stdlib/buffer.mli[240,9092+0]..[243,9203+2])
+              Pexp_constant PConst_string(" [add_uint16_ne b i] appends a binary native-endian unsigned 16-bit\n    integer [i] to [b].\n    @since 4.08\n",(stdlib/buffer.mli[240,9092+0]..[243,9203+2]),None)
+        ]
+      core_type (stdlib/buffer.mli[239,9055+20]..[239,9055+36])
+        Ptyp_arrow
+        Nolabel
+        core_type (stdlib/buffer.mli[239,9055+20]..[239,9055+21])
+          Ptyp_constr "t" (stdlib/buffer.mli[239,9055+20]..[239,9055+21])
+          []
+        core_type (stdlib/buffer.mli[239,9055+25]..[239,9055+36])
+          Ptyp_arrow
+          Nolabel
+          core_type (stdlib/buffer.mli[239,9055+25]..[239,9055+28])
+            Ptyp_constr "int" (stdlib/buffer.mli[239,9055+25]..[239,9055+28])
+            []
+          core_type (stdlib/buffer.mli[239,9055+32]..[239,9055+36])
+            Ptyp_constr "unit" (stdlib/buffer.mli[239,9055+32]..[239,9055+36])
+            []
+      []
+  signature_item (stdlib/buffer.mli[245,9207+0]..[245,9207+36])
+    Psig_value
+    value_description "add_uint16_be" (stdlib/buffer.mli[245,9207+4]..[245,9207+17]) (stdlib/buffer.mli[245,9207+0]..[245,9207+36])
+      attribute "ocaml.doc"
+        [
+          structure_item (stdlib/buffer.mli[246,9244+0]..[249,9352+2])
+            Pstr_eval
+            expression (stdlib/buffer.mli[246,9244+0]..[249,9352+2])
+              Pexp_constant PConst_string(" [add_uint16_be b i] appends a binary big-endian unsigned 16-bit\n    integer [i] to [b].\n    @since 4.08\n",(stdlib/buffer.mli[246,9244+0]..[249,9352+2]),None)
+        ]
+      core_type (stdlib/buffer.mli[245,9207+20]..[245,9207+36])
+        Ptyp_arrow
+        Nolabel
+        core_type (stdlib/buffer.mli[245,9207+20]..[245,9207+21])
+          Ptyp_constr "t" (stdlib/buffer.mli[245,9207+20]..[245,9207+21])
+          []
+        core_type (stdlib/buffer.mli[245,9207+25]..[245,9207+36])
+          Ptyp_arrow
+          Nolabel
+          core_type (stdlib/buffer.mli[245,9207+25]..[245,9207+28])
+            Ptyp_constr "int" (stdlib/buffer.mli[245,9207+25]..[245,9207+28])
+            []
+          core_type (stdlib/buffer.mli[245,9207+32]..[245,9207+36])
+            Ptyp_constr "unit" (stdlib/buffer.mli[245,9207+32]..[245,9207+36])
+            []
+      []
+  signature_item (stdlib/buffer.mli[251,9356+0]..[251,9356+36])
+    Psig_value
+    value_description "add_uint16_le" (stdlib/buffer.mli[251,9356+4]..[251,9356+17]) (stdlib/buffer.mli[251,9356+0]..[251,9356+36])
+      attribute "ocaml.doc"
+        [
+          structure_item (stdlib/buffer.mli[252,9393+0]..[255,9504+2])
+            Pstr_eval
+            expression (stdlib/buffer.mli[252,9393+0]..[255,9504+2])
+              Pexp_constant PConst_string(" [add_uint16_le b i] appends a binary little-endian unsigned 16-bit\n    integer [i] to [b].\n    @since 4.08\n",(stdlib/buffer.mli[252,9393+0]..[255,9504+2]),None)
+        ]
+      core_type (stdlib/buffer.mli[251,9356+20]..[251,9356+36])
+        Ptyp_arrow
+        Nolabel
+        core_type (stdlib/buffer.mli[251,9356+20]..[251,9356+21])
+          Ptyp_constr "t" (stdlib/buffer.mli[251,9356+20]..[251,9356+21])
+          []
+        core_type (stdlib/buffer.mli[251,9356+25]..[251,9356+36])
+          Ptyp_arrow
+          Nolabel
+          core_type (stdlib/buffer.mli[251,9356+25]..[251,9356+28])
+            Ptyp_constr "int" (stdlib/buffer.mli[251,9356+25]..[251,9356+28])
+            []
+          core_type (stdlib/buffer.mli[251,9356+32]..[251,9356+36])
+            Ptyp_constr "unit" (stdlib/buffer.mli[251,9356+32]..[251,9356+36])
+            []
+      []
+  signature_item (stdlib/buffer.mli[257,9508+0]..[257,9508+35])
+    Psig_value
+    value_description "add_int16_ne" (stdlib/buffer.mli[257,9508+4]..[257,9508+16]) (stdlib/buffer.mli[257,9508+0]..[257,9508+35])
+      attribute "ocaml.doc"
+        [
+          structure_item (stdlib/buffer.mli[258,9544+0]..[261,9652+2])
+            Pstr_eval
+            expression (stdlib/buffer.mli[258,9544+0]..[261,9652+2])
+              Pexp_constant PConst_string(" [add_int16_ne b i] appends a binary native-endian signed 16-bit\n    integer [i] to [b].\n    @since 4.08\n",(stdlib/buffer.mli[258,9544+0]..[261,9652+2]),None)
+        ]
+      core_type (stdlib/buffer.mli[257,9508+19]..[257,9508+35])
+        Ptyp_arrow
+        Nolabel
+        core_type (stdlib/buffer.mli[257,9508+19]..[257,9508+20])
+          Ptyp_constr "t" (stdlib/buffer.mli[257,9508+19]..[257,9508+20])
+          []
+        core_type (stdlib/buffer.mli[257,9508+24]..[257,9508+35])
+          Ptyp_arrow
+          Nolabel
+          core_type (stdlib/buffer.mli[257,9508+24]..[257,9508+27])
+            Ptyp_constr "int" (stdlib/buffer.mli[257,9508+24]..[257,9508+27])
+            []
+          core_type (stdlib/buffer.mli[257,9508+31]..[257,9508+35])
+            Ptyp_constr "unit" (stdlib/buffer.mli[257,9508+31]..[257,9508+35])
+            []
+      []
+  signature_item (stdlib/buffer.mli[263,9656+0]..[263,9656+35])
+    Psig_value
+    value_description "add_int16_be" (stdlib/buffer.mli[263,9656+4]..[263,9656+16]) (stdlib/buffer.mli[263,9656+0]..[263,9656+35])
+      attribute "ocaml.doc"
+        [
+          structure_item (stdlib/buffer.mli[264,9692+0]..[267,9797+2])
+            Pstr_eval
+            expression (stdlib/buffer.mli[264,9692+0]..[267,9797+2])
+              Pexp_constant PConst_string(" [add_int16_be b i] appends a binary big-endian signed 16-bit\n    integer [i] to [b].\n    @since 4.08\n",(stdlib/buffer.mli[264,9692+0]..[267,9797+2]),None)
+        ]
+      core_type (stdlib/buffer.mli[263,9656+19]..[263,9656+35])
+        Ptyp_arrow
+        Nolabel
+        core_type (stdlib/buffer.mli[263,9656+19]..[263,9656+20])
+          Ptyp_constr "t" (stdlib/buffer.mli[263,9656+19]..[263,9656+20])
+          []
+        core_type (stdlib/buffer.mli[263,9656+24]..[263,9656+35])
+          Ptyp_arrow
+          Nolabel
+          core_type (stdlib/buffer.mli[263,9656+24]..[263,9656+27])
+            Ptyp_constr "int" (stdlib/buffer.mli[263,9656+24]..[263,9656+27])
+            []
+          core_type (stdlib/buffer.mli[263,9656+31]..[263,9656+35])
+            Ptyp_constr "unit" (stdlib/buffer.mli[263,9656+31]..[263,9656+35])
+            []
+      []
+  signature_item (stdlib/buffer.mli[269,9801+0]..[269,9801+35])
+    Psig_value
+    value_description "add_int16_le" (stdlib/buffer.mli[269,9801+4]..[269,9801+16]) (stdlib/buffer.mli[269,9801+0]..[269,9801+35])
+      attribute "ocaml.doc"
+        [
+          structure_item (stdlib/buffer.mli[270,9837+0]..[273,9945+2])
+            Pstr_eval
+            expression (stdlib/buffer.mli[270,9837+0]..[273,9945+2])
+              Pexp_constant PConst_string(" [add_int16_le b i] appends a binary little-endian signed 16-bit\n    integer [i] to [b].\n    @since 4.08\n",(stdlib/buffer.mli[270,9837+0]..[273,9945+2]),None)
+        ]
+      core_type (stdlib/buffer.mli[269,9801+19]..[269,9801+35])
+        Ptyp_arrow
+        Nolabel
+        core_type (stdlib/buffer.mli[269,9801+19]..[269,9801+20])
+          Ptyp_constr "t" (stdlib/buffer.mli[269,9801+19]..[269,9801+20])
+          []
+        core_type (stdlib/buffer.mli[269,9801+24]..[269,9801+35])
+          Ptyp_arrow
+          Nolabel
+          core_type (stdlib/buffer.mli[269,9801+24]..[269,9801+27])
+            Ptyp_constr "int" (stdlib/buffer.mli[269,9801+24]..[269,9801+27])
+            []
+          core_type (stdlib/buffer.mli[269,9801+31]..[269,9801+35])
+            Ptyp_constr "unit" (stdlib/buffer.mli[269,9801+31]..[269,9801+35])
+            []
+      []
+  signature_item (stdlib/buffer.mli[275,9949+0]..[275,9949+37])
+    Psig_value
+    value_description "add_int32_ne" (stdlib/buffer.mli[275,9949+4]..[275,9949+16]) (stdlib/buffer.mli[275,9949+0]..[275,9949+37])
+      attribute "ocaml.doc"
+        [
+          structure_item (stdlib/buffer.mli[276,9987+0]..[279,10088+2])
+            Pstr_eval
+            expression (stdlib/buffer.mli[276,9987+0]..[279,10088+2])
+              Pexp_constant PConst_string(" [add_int32_ne b i] appends a binary native-endian 32-bit integer\n    [i] to [b].\n    @since 4.08\n",(stdlib/buffer.mli[276,9987+0]..[279,10088+2]),None)
+        ]
+      core_type (stdlib/buffer.mli[275,9949+19]..[275,9949+37])
+        Ptyp_arrow
+        Nolabel
+        core_type (stdlib/buffer.mli[275,9949+19]..[275,9949+20])
+          Ptyp_constr "t" (stdlib/buffer.mli[275,9949+19]..[275,9949+20])
+          []
+        core_type (stdlib/buffer.mli[275,9949+24]..[275,9949+37])
+          Ptyp_arrow
+          Nolabel
+          core_type (stdlib/buffer.mli[275,9949+24]..[275,9949+29])
+            Ptyp_constr "int32" (stdlib/buffer.mli[275,9949+24]..[275,9949+29])
+            []
+          core_type (stdlib/buffer.mli[275,9949+33]..[275,9949+37])
+            Ptyp_constr "unit" (stdlib/buffer.mli[275,9949+33]..[275,9949+37])
+            []
+      []
+  signature_item (stdlib/buffer.mli[281,10092+0]..[281,10092+37])
+    Psig_value
+    value_description "add_int32_be" (stdlib/buffer.mli[281,10092+4]..[281,10092+16]) (stdlib/buffer.mli[281,10092+0]..[281,10092+37])
+      attribute "ocaml.doc"
+        [
+          structure_item (stdlib/buffer.mli[282,10130+0]..[285,10228+2])
+            Pstr_eval
+            expression (stdlib/buffer.mli[282,10130+0]..[285,10228+2])
+              Pexp_constant PConst_string(" [add_int32_be b i] appends a binary big-endian 32-bit integer\n    [i] to [b].\n    @since 4.08\n",(stdlib/buffer.mli[282,10130+0]..[285,10228+2]),None)
+        ]
+      core_type (stdlib/buffer.mli[281,10092+19]..[281,10092+37])
+        Ptyp_arrow
+        Nolabel
+        core_type (stdlib/buffer.mli[281,10092+19]..[281,10092+20])
+          Ptyp_constr "t" (stdlib/buffer.mli[281,10092+19]..[281,10092+20])
+          []
+        core_type (stdlib/buffer.mli[281,10092+24]..[281,10092+37])
+          Ptyp_arrow
+          Nolabel
+          core_type (stdlib/buffer.mli[281,10092+24]..[281,10092+29])
+            Ptyp_constr "int32" (stdlib/buffer.mli[281,10092+24]..[281,10092+29])
+            []
+          core_type (stdlib/buffer.mli[281,10092+33]..[281,10092+37])
+            Ptyp_constr "unit" (stdlib/buffer.mli[281,10092+33]..[281,10092+37])
+            []
+      []
+  signature_item (stdlib/buffer.mli[287,10232+0]..[287,10232+37])
+    Psig_value
+    value_description "add_int32_le" (stdlib/buffer.mli[287,10232+4]..[287,10232+16]) (stdlib/buffer.mli[287,10232+0]..[287,10232+37])
+      attribute "ocaml.doc"
+        [
+          structure_item (stdlib/buffer.mli[288,10270+0]..[291,10371+2])
+            Pstr_eval
+            expression (stdlib/buffer.mli[288,10270+0]..[291,10371+2])
+              Pexp_constant PConst_string(" [add_int32_le b i] appends a binary little-endian 32-bit integer\n    [i] to [b].\n    @since 4.08\n",(stdlib/buffer.mli[288,10270+0]..[291,10371+2]),None)
+        ]
+      core_type (stdlib/buffer.mli[287,10232+19]..[287,10232+37])
+        Ptyp_arrow
+        Nolabel
+        core_type (stdlib/buffer.mli[287,10232+19]..[287,10232+20])
+          Ptyp_constr "t" (stdlib/buffer.mli[287,10232+19]..[287,10232+20])
+          []
+        core_type (stdlib/buffer.mli[287,10232+24]..[287,10232+37])
+          Ptyp_arrow
+          Nolabel
+          core_type (stdlib/buffer.mli[287,10232+24]..[287,10232+29])
+            Ptyp_constr "int32" (stdlib/buffer.mli[287,10232+24]..[287,10232+29])
+            []
+          core_type (stdlib/buffer.mli[287,10232+33]..[287,10232+37])
+            Ptyp_constr "unit" (stdlib/buffer.mli[287,10232+33]..[287,10232+37])
+            []
+      []
+  signature_item (stdlib/buffer.mli[293,10375+0]..[293,10375+38])
+    Psig_value
+    value_description "add_int64_ne" (stdlib/buffer.mli[293,10375+4]..[293,10375+16]) (stdlib/buffer.mli[293,10375+0]..[293,10375+38])
+      attribute "ocaml.doc"
+        [
+          structure_item (stdlib/buffer.mli[294,10414+0]..[297,10515+2])
+            Pstr_eval
+            expression (stdlib/buffer.mli[294,10414+0]..[297,10515+2])
+              Pexp_constant PConst_string(" [add_int64_ne b i] appends a binary native-endian 64-bit integer\n    [i] to [b].\n    @since 4.08\n",(stdlib/buffer.mli[294,10414+0]..[297,10515+2]),None)
+        ]
+      core_type (stdlib/buffer.mli[293,10375+20]..[293,10375+38])
+        Ptyp_arrow
+        Nolabel
+        core_type (stdlib/buffer.mli[293,10375+20]..[293,10375+21])
+          Ptyp_constr "t" (stdlib/buffer.mli[293,10375+20]..[293,10375+21])
+          []
+        core_type (stdlib/buffer.mli[293,10375+25]..[293,10375+38])
+          Ptyp_arrow
+          Nolabel
+          core_type (stdlib/buffer.mli[293,10375+25]..[293,10375+30])
+            Ptyp_constr "int64" (stdlib/buffer.mli[293,10375+25]..[293,10375+30])
+            []
+          core_type (stdlib/buffer.mli[293,10375+34]..[293,10375+38])
+            Ptyp_constr "unit" (stdlib/buffer.mli[293,10375+34]..[293,10375+38])
+            []
+      []
+  signature_item (stdlib/buffer.mli[299,10519+0]..[299,10519+37])
+    Psig_value
+    value_description "add_int64_be" (stdlib/buffer.mli[299,10519+4]..[299,10519+16]) (stdlib/buffer.mli[299,10519+0]..[299,10519+37])
+      attribute "ocaml.doc"
+        [
+          structure_item (stdlib/buffer.mli[300,10557+0]..[303,10655+2])
+            Pstr_eval
+            expression (stdlib/buffer.mli[300,10557+0]..[303,10655+2])
+              Pexp_constant PConst_string(" [add_int64_be b i] appends a binary big-endian 64-bit integer\n    [i] to [b].\n    @since 4.08\n",(stdlib/buffer.mli[300,10557+0]..[303,10655+2]),None)
+        ]
+      core_type (stdlib/buffer.mli[299,10519+19]..[299,10519+37])
+        Ptyp_arrow
+        Nolabel
+        core_type (stdlib/buffer.mli[299,10519+19]..[299,10519+20])
+          Ptyp_constr "t" (stdlib/buffer.mli[299,10519+19]..[299,10519+20])
+          []
+        core_type (stdlib/buffer.mli[299,10519+24]..[299,10519+37])
+          Ptyp_arrow
+          Nolabel
+          core_type (stdlib/buffer.mli[299,10519+24]..[299,10519+29])
+            Ptyp_constr "int64" (stdlib/buffer.mli[299,10519+24]..[299,10519+29])
+            []
+          core_type (stdlib/buffer.mli[299,10519+33]..[299,10519+37])
+            Ptyp_constr "unit" (stdlib/buffer.mli[299,10519+33]..[299,10519+37])
+            []
+      []
+  signature_item (stdlib/buffer.mli[305,10659+0]..[305,10659+37])
+    Psig_value
+    value_description "add_int64_le" (stdlib/buffer.mli[305,10659+4]..[305,10659+16]) (stdlib/buffer.mli[305,10659+0]..[305,10659+37])
+      attribute "ocaml.doc"
+        [
+          structure_item (stdlib/buffer.mli[306,10697+0]..[309,10798+2])
+            Pstr_eval
+            expression (stdlib/buffer.mli[306,10697+0]..[309,10798+2])
+              Pexp_constant PConst_string(" [add_int64_ne b i] appends a binary little-endian 64-bit integer\n    [i] to [b].\n    @since 4.08\n",(stdlib/buffer.mli[306,10697+0]..[309,10798+2]),None)
+        ]
+      core_type (stdlib/buffer.mli[305,10659+19]..[305,10659+37])
+        Ptyp_arrow
+        Nolabel
+        core_type (stdlib/buffer.mli[305,10659+19]..[305,10659+20])
+          Ptyp_constr "t" (stdlib/buffer.mli[305,10659+19]..[305,10659+20])
+          []
+        core_type (stdlib/buffer.mli[305,10659+24]..[305,10659+37])
+          Ptyp_arrow
+          Nolabel
+          core_type (stdlib/buffer.mli[305,10659+24]..[305,10659+29])
+            Ptyp_constr "int64" (stdlib/buffer.mli[305,10659+24]..[305,10659+29])
+            []
+          core_type (stdlib/buffer.mli[305,10659+33]..[305,10659+37])
+            Ptyp_constr "unit" (stdlib/buffer.mli[305,10659+33]..[305,10659+37])
+            []
+      []
+]
+

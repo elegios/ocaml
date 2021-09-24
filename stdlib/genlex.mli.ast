@@ -1,0 +1,128 @@
+[
+  signature_item (stdlib/genlex.mli[16,1079+0]..[46,2234+2])
+    Psig_attribute "ocaml.text"
+    [
+      structure_item (stdlib/genlex.mli[16,1079+0]..[46,2234+2])
+        Pstr_eval
+        expression (stdlib/genlex.mli[16,1079+0]..[46,2234+2])
+          Pexp_constant PConst_string(" A generic lexical analyzer.\n\n\n   This module implements a simple 'standard' lexical analyzer, presented\n   as a function from character streams to token streams. It implements\n   roughly the lexical conventions of OCaml, but is parameterized by the\n   set of keywords of your language.\n\n\n   Example: a lexer suitable for a desk calculator is obtained by\n{[     let lexer = make_lexer [\"+\"; \"-\"; \"*\"; \"/\"; \"let\"; \"=\"; \"(\"; \")\"]]}\n\n   The associated parser would be a function from [token stream]\n   to, for instance, [int], and would have rules such as:\n\n   {[\n     let rec parse_expr = parser\n       | [< n1 = parse_atom; n2 = parse_remainder n1 >] -> n2\n     and parse_atom = parser\n       | [< 'Int n >] -> n\n       | [< 'Kwd \"(\"; n = parse_expr; 'Kwd \")\" >] -> n\n     and parse_remainder n1 = parser\n       | [< 'Kwd \"+\"; n2 = parse_expr >] -> n1 + n2\n       | [< >] -> n1\n   ]}\n\n   One should notice that the use of the [parser] keyword and associated\n   notation for streams are only available through camlp4 extensions. This\n   means that one has to preprocess its sources {i e. g.} by using the\n   [\"-pp\"] command-line switch of the compilers.\n",(stdlib/genlex.mli[16,1079+0]..[46,2234+2]),None)
+    ]
+  signature_item (stdlib/genlex.mli[48,2238+0]..[48,2238+23])
+    Psig_attribute "ocaml.warning"
+    [
+      structure_item (stdlib/genlex.mli[48,2238+18]..[48,2238+22])
+        Pstr_eval
+        expression (stdlib/genlex.mli[48,2238+18]..[48,2238+22])
+          Pexp_constant PConst_string("-3",(stdlib/genlex.mli[48,2238+19]..[48,2238+21]),None)
+    ]
+  signature_item (stdlib/genlex.mli[58,2808+0]..[64,2914+16])
+    Psig_type Rec
+    [
+      type_declaration "token" (stdlib/genlex.mli[58,2808+5]..[58,2808+10]) (stdlib/genlex.mli[58,2808+0]..[64,2914+16])
+        attribute "ocaml.doc"
+          [
+            structure_item (stdlib/genlex.mli[50,2316+0]..[57,2750+57])
+              Pstr_eval
+              expression (stdlib/genlex.mli[50,2316+0]..[57,2750+57])
+                Pexp_constant PConst_string(" The type of tokens. The lexical classes are: [Int] and [Float]\n   for integer and floating-point numbers; [String] for\n   string literals, enclosed in double quotes; [Char] for\n   character literals, enclosed in single quotes; [Ident] for\n   identifiers (either sequences of letters, digits, underscores\n   and quotes, or sequences of 'operator characters' such as\n   [+], [*], etc); and [Kwd] for keywords (either identifiers or\n   single 'special characters' such as [(], [}], etc). ",(stdlib/genlex.mli[50,2316+0]..[57,2750+57]),None)
+          ]
+        ptype_params =
+          []
+        ptype_cstrs =
+          []
+        ptype_kind =
+          Ptype_variant
+            [
+              (stdlib/genlex.mli[59,2821+4]..[59,2821+17])
+                "Kwd" (stdlib/genlex.mli[59,2821+4]..[59,2821+7])
+                [
+                  core_type (stdlib/genlex.mli[59,2821+11]..[59,2821+17])
+                    Ptyp_constr "string" (stdlib/genlex.mli[59,2821+11]..[59,2821+17])
+                    []
+                ]
+                None
+              (stdlib/genlex.mli[60,2839+2]..[60,2839+19])
+                "Ident" (stdlib/genlex.mli[60,2839+4]..[60,2839+9])
+                [
+                  core_type (stdlib/genlex.mli[60,2839+13]..[60,2839+19])
+                    Ptyp_constr "string" (stdlib/genlex.mli[60,2839+13]..[60,2839+19])
+                    []
+                ]
+                None
+              (stdlib/genlex.mli[61,2859+2]..[61,2859+14])
+                "Int" (stdlib/genlex.mli[61,2859+4]..[61,2859+7])
+                [
+                  core_type (stdlib/genlex.mli[61,2859+11]..[61,2859+14])
+                    Ptyp_constr "int" (stdlib/genlex.mli[61,2859+11]..[61,2859+14])
+                    []
+                ]
+                None
+              (stdlib/genlex.mli[62,2874+2]..[62,2874+18])
+                "Float" (stdlib/genlex.mli[62,2874+4]..[62,2874+9])
+                [
+                  core_type (stdlib/genlex.mli[62,2874+13]..[62,2874+18])
+                    Ptyp_constr "float" (stdlib/genlex.mli[62,2874+13]..[62,2874+18])
+                    []
+                ]
+                None
+              (stdlib/genlex.mli[63,2893+2]..[63,2893+20])
+                "String" (stdlib/genlex.mli[63,2893+4]..[63,2893+10])
+                [
+                  core_type (stdlib/genlex.mli[63,2893+14]..[63,2893+20])
+                    Ptyp_constr "string" (stdlib/genlex.mli[63,2893+14]..[63,2893+20])
+                    []
+                ]
+                None
+              (stdlib/genlex.mli[64,2914+2]..[64,2914+16])
+                "Char" (stdlib/genlex.mli[64,2914+4]..[64,2914+8])
+                [
+                  core_type (stdlib/genlex.mli[64,2914+12]..[64,2914+16])
+                    Ptyp_constr "char" (stdlib/genlex.mli[64,2914+12]..[64,2914+16])
+                    []
+                ]
+                None
+            ]
+        ptype_private = Public
+        ptype_manifest =
+          None
+    ]
+  signature_item (stdlib/genlex.mli[66,2932+0]..[66,2932+63])
+    Psig_value
+    value_description "make_lexer" (stdlib/genlex.mli[66,2932+4]..[66,2932+14]) (stdlib/genlex.mli[66,2932+0]..[66,2932+63])
+      attribute "ocaml.doc"
+        [
+          structure_item (stdlib/genlex.mli[67,2996+0]..[75,3516+56])
+            Pstr_eval
+            expression (stdlib/genlex.mli[67,2996+0]..[75,3516+56])
+              Pexp_constant PConst_string(" Construct the lexer function. The first argument is the list of\n   keywords. An identifier [s] is returned as [Kwd s] if [s]\n   belongs to this list, and as [Ident s] otherwise.\n   A special character [s] is returned as [Kwd s] if [s]\n   belongs to this list, and cause a lexical error (exception\n   {!Stream.Error} with the offending lexeme as its parameter) otherwise.\n   Blanks and newlines are skipped. Comments delimited by [(*] and [*)]\n   are skipped as well, and can be nested. A {!Stream.Failure} exception\n   is raised if end of stream is unexpectedly reached.",(stdlib/genlex.mli[67,2996+0]..[75,3516+56]),None)
+        ]
+      core_type (stdlib/genlex.mli[66,2932+17]..[66,2932+63])
+        Ptyp_arrow
+        Nolabel
+        core_type (stdlib/genlex.mli[66,2932+17]..[66,2932+28])
+          Ptyp_constr "list" (stdlib/genlex.mli[66,2932+24]..[66,2932+28])
+          [
+            core_type (stdlib/genlex.mli[66,2932+17]..[66,2932+23])
+              Ptyp_constr "string" (stdlib/genlex.mli[66,2932+17]..[66,2932+23])
+              []
+          ]
+        core_type (stdlib/genlex.mli[66,2932+32]..[66,2932+63])
+          Ptyp_arrow
+          Nolabel
+          core_type (stdlib/genlex.mli[66,2932+32]..[66,2932+45])
+            Ptyp_constr "Stream.t" (stdlib/genlex.mli[66,2932+37]..[66,2932+45])
+            [
+              core_type (stdlib/genlex.mli[66,2932+32]..[66,2932+36])
+                Ptyp_constr "char" (stdlib/genlex.mli[66,2932+32]..[66,2932+36])
+                []
+            ]
+          core_type (stdlib/genlex.mli[66,2932+49]..[66,2932+63])
+            Ptyp_constr "Stream.t" (stdlib/genlex.mli[66,2932+55]..[66,2932+63])
+            [
+              core_type (stdlib/genlex.mli[66,2932+49]..[66,2932+54])
+                Ptyp_constr "token" (stdlib/genlex.mli[66,2932+49]..[66,2932+54])
+                []
+            ]
+      []
+]
+

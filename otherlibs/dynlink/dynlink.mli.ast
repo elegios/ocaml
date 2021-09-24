@@ -1,0 +1,497 @@
+[
+  signature_item (otherlibs/dynlink/dynlink.mli[18,1233+0]..[18,1233+53])
+    Psig_attribute "ocaml.text"
+    [
+      structure_item (otherlibs/dynlink/dynlink.mli[18,1233+0]..[18,1233+53])
+        Pstr_eval
+        expression (otherlibs/dynlink/dynlink.mli[18,1233+0]..[18,1233+53])
+          Pexp_constant PConst_string(" Dynamic loading of .cmo, .cma and .cmxs files. ",(otherlibs/dynlink/dynlink.mli[18,1233+0]..[18,1233+53]),None)
+    ]
+  signature_item (otherlibs/dynlink/dynlink.mli[20,1288+0]..[20,1288+37])
+    Psig_attribute "ocaml.warning"
+    [
+      structure_item (otherlibs/dynlink/dynlink.mli[20,1288+18]..[20,1288+36])
+        Pstr_eval
+        expression (otherlibs/dynlink/dynlink.mli[20,1288+18]..[20,1288+36])
+          Pexp_constant PConst_string("+a-4-30-40-41-42",(otherlibs/dynlink/dynlink.mli[20,1288+19]..[20,1288+35]),None)
+    ]
+  signature_item (otherlibs/dynlink/dynlink.mli[22,1327+0]..[22,1327+20])
+    Psig_value
+    value_description "is_native" (otherlibs/dynlink/dynlink.mli[22,1327+4]..[22,1327+13]) (otherlibs/dynlink/dynlink.mli[22,1327+0]..[22,1327+20])
+      attribute "ocaml.doc"
+        [
+          structure_item (otherlibs/dynlink/dynlink.mli[23,1348+0]..[24,1385+42])
+            Pstr_eval
+            expression (otherlibs/dynlink/dynlink.mli[23,1348+0]..[24,1385+42])
+              Pexp_constant PConst_string(" [true] if the program is native,\n    [false] if the program is bytecode. ",(otherlibs/dynlink/dynlink.mli[23,1348+0]..[24,1385+42]),None)
+        ]
+      core_type (otherlibs/dynlink/dynlink.mli[22,1327+16]..[22,1327+20])
+        Ptyp_constr "bool" (otherlibs/dynlink/dynlink.mli[22,1327+16]..[22,1327+20])
+        []
+      []
+  signature_item (otherlibs/dynlink/dynlink.mli[26,1429+0]..[26,1429+44])
+    Psig_attribute "ocaml.text"
+    [
+      structure_item (otherlibs/dynlink/dynlink.mli[26,1429+0]..[26,1429+44])
+        Pstr_eval
+        expression (otherlibs/dynlink/dynlink.mli[26,1429+0]..[26,1429+44])
+          Pexp_constant PConst_string(" {1 Dynamic loading of compiled files} ",(otherlibs/dynlink/dynlink.mli[26,1429+0]..[26,1429+44]),None)
+    ]
+  signature_item (otherlibs/dynlink/dynlink.mli[28,1475+0]..[28,1475+29])
+    Psig_value
+    value_description "loadfile" (otherlibs/dynlink/dynlink.mli[28,1475+4]..[28,1475+12]) (otherlibs/dynlink/dynlink.mli[28,1475+0]..[28,1475+29])
+      attribute "ocaml.doc"
+        [
+          structure_item (otherlibs/dynlink/dynlink.mli[29,1505+0]..[47,2478+55])
+            Pstr_eval
+            expression (otherlibs/dynlink/dynlink.mli[29,1505+0]..[47,2478+55])
+              Pexp_constant PConst_string(" In bytecode: load the given bytecode object file ([.cmo] file) or\n    bytecode library file ([.cma] file), and link it with the running\n    program. In native code: load the given OCaml plugin file (usually\n    [.cmxs]), and link it with the running program.\n\n    All toplevel expressions in the loaded compilation units\n    are evaluated. No facilities are provided to\n    access value names defined by the unit. Therefore, the unit\n    must itself register its entry points with the main program (or a\n    previously-loaded library) e.g. by modifying tables of functions.\n\n    An exception will be raised if the given library defines toplevel\n    modules whose names clash with modules existing either in the main\n    program or a shared library previously loaded with [loadfile].\n    Modules from shared libraries previously loaded with\n    [loadfile_private] are not included in this restriction.\n\n    The compilation units loaded by this function are added to the\n    \"allowed units\" list (see {!set_allowed_units}). ",(otherlibs/dynlink/dynlink.mli[29,1505+0]..[47,2478+55]),None)
+        ]
+      core_type (otherlibs/dynlink/dynlink.mli[28,1475+15]..[28,1475+29])
+        Ptyp_arrow
+        Nolabel
+        core_type (otherlibs/dynlink/dynlink.mli[28,1475+15]..[28,1475+21])
+          Ptyp_constr "string" (otherlibs/dynlink/dynlink.mli[28,1475+15]..[28,1475+21])
+          []
+        core_type (otherlibs/dynlink/dynlink.mli[28,1475+25]..[28,1475+29])
+          Ptyp_constr "unit" (otherlibs/dynlink/dynlink.mli[28,1475+25]..[28,1475+29])
+          []
+      []
+  signature_item (otherlibs/dynlink/dynlink.mli[49,2535+0]..[49,2535+37])
+    Psig_value
+    value_description "loadfile_private" (otherlibs/dynlink/dynlink.mli[49,2535+4]..[49,2535+20]) (otherlibs/dynlink/dynlink.mli[49,2535+0]..[49,2535+37])
+      attribute "ocaml.doc"
+        [
+          structure_item (otherlibs/dynlink/dynlink.mli[50,2573+0]..[69,3603+50])
+            Pstr_eval
+            expression (otherlibs/dynlink/dynlink.mli[50,2573+0]..[69,3603+50])
+              Pexp_constant PConst_string(" Same as [loadfile], except that the compilation units just loaded\n    are hidden (cannot be referenced) from other modules dynamically\n    loaded afterwards.\n\n    An exception will be raised if the given library defines toplevel\n    modules whose names clash with modules existing in either the main\n    program or a shared library previously loaded with [loadfile].\n    Modules from shared libraries previously loaded with\n    [loadfile_private] are not included in this restriction.\n\n    An exception will also be raised if the given library defines\n    toplevel modules whose name matches that of an interface depended\n    on by a module existing in either the main program or a shared\n    library previously loaded with [loadfile]. This applies even if\n    such dependency is only a \"module alias\" dependency (i.e. just on\n    the name rather than the contents of the interface).\n\n    The compilation units loaded by this function are not added to the\n    \"allowed units\" list (see {!set_allowed_units}) since they cannot\n    be referenced from other compilation units. ",(otherlibs/dynlink/dynlink.mli[50,2573+0]..[69,3603+50]),None)
+        ]
+      core_type (otherlibs/dynlink/dynlink.mli[49,2535+23]..[49,2535+37])
+        Ptyp_arrow
+        Nolabel
+        core_type (otherlibs/dynlink/dynlink.mli[49,2535+23]..[49,2535+29])
+          Ptyp_constr "string" (otherlibs/dynlink/dynlink.mli[49,2535+23]..[49,2535+29])
+          []
+        core_type (otherlibs/dynlink/dynlink.mli[49,2535+33]..[49,2535+37])
+          Ptyp_constr "unit" (otherlibs/dynlink/dynlink.mli[49,2535+33]..[49,2535+37])
+          []
+      []
+  signature_item (otherlibs/dynlink/dynlink.mli[71,3655+0]..[71,3655+37])
+    Psig_value
+    value_description "adapt_filename" (otherlibs/dynlink/dynlink.mli[71,3655+4]..[71,3655+18]) (otherlibs/dynlink/dynlink.mli[71,3655+0]..[71,3655+37])
+      attribute "ocaml.doc"
+        [
+          structure_item (otherlibs/dynlink/dynlink.mli[72,3693+0]..[73,3766+30])
+            Pstr_eval
+            expression (otherlibs/dynlink/dynlink.mli[72,3693+0]..[73,3766+30])
+              Pexp_constant PConst_string(" In bytecode, the identity function. In native code, replace the last\n    extension with [.cmxs]. ",(otherlibs/dynlink/dynlink.mli[72,3693+0]..[73,3766+30]),None)
+        ]
+      core_type (otherlibs/dynlink/dynlink.mli[71,3655+21]..[71,3655+37])
+        Ptyp_arrow
+        Nolabel
+        core_type (otherlibs/dynlink/dynlink.mli[71,3655+21]..[71,3655+27])
+          Ptyp_constr "string" (otherlibs/dynlink/dynlink.mli[71,3655+21]..[71,3655+27])
+          []
+        core_type (otherlibs/dynlink/dynlink.mli[71,3655+31]..[71,3655+37])
+          Ptyp_constr "string" (otherlibs/dynlink/dynlink.mli[71,3655+31]..[71,3655+37])
+          []
+      []
+  signature_item (otherlibs/dynlink/dynlink.mli[75,3798+0]..[75,3798+25])
+    Psig_attribute "ocaml.text"
+    [
+      structure_item (otherlibs/dynlink/dynlink.mli[75,3798+0]..[75,3798+25])
+        Pstr_eval
+        expression (otherlibs/dynlink/dynlink.mli[75,3798+0]..[75,3798+25])
+          Pexp_constant PConst_string(" {1 Access control} ",(otherlibs/dynlink/dynlink.mli[75,3798+0]..[75,3798+25]),None)
+    ]
+  signature_item (otherlibs/dynlink/dynlink.mli[77,3825+0]..[77,3825+43])
+    Psig_value
+    value_description "set_allowed_units" (otherlibs/dynlink/dynlink.mli[77,3825+4]..[77,3825+21]) (otherlibs/dynlink/dynlink.mli[77,3825+0]..[77,3825+43])
+      attribute "ocaml.doc"
+        [
+          structure_item (otherlibs/dynlink/dynlink.mli[78,3869+0]..[88,4416+60])
+            Pstr_eval
+            expression (otherlibs/dynlink/dynlink.mli[78,3869+0]..[88,4416+60])
+              Pexp_constant PConst_string(" Set the list of compilation units that may be referenced from units that\n    are dynamically loaded in the future to be exactly the given value.\n\n    Initially all compilation units composing the program currently running\n    are available for reference from dynamically-linked units.\n    [set_allowed_units] can be used to restrict access to a subset of these\n    units, e.g. to the units that compose the API for\n    dynamically-linked code, and prevent access to all other units,\n    e.g. private, internal modules of the running program.\n\n    Note that {!loadfile} changes the allowed-units list. ",(otherlibs/dynlink/dynlink.mli[78,3869+0]..[88,4416+60]),None)
+        ]
+      core_type (otherlibs/dynlink/dynlink.mli[77,3825+24]..[77,3825+43])
+        Ptyp_arrow
+        Nolabel
+        core_type (otherlibs/dynlink/dynlink.mli[77,3825+24]..[77,3825+35])
+          Ptyp_constr "list" (otherlibs/dynlink/dynlink.mli[77,3825+31]..[77,3825+35])
+          [
+            core_type (otherlibs/dynlink/dynlink.mli[77,3825+24]..[77,3825+30])
+              Ptyp_constr "string" (otherlibs/dynlink/dynlink.mli[77,3825+24]..[77,3825+30])
+              []
+          ]
+        core_type (otherlibs/dynlink/dynlink.mli[77,3825+39]..[77,3825+43])
+          Ptyp_constr "unit" (otherlibs/dynlink/dynlink.mli[77,3825+39]..[77,3825+43])
+          []
+      []
+  signature_item (otherlibs/dynlink/dynlink.mli[90,4478+0]..[90,4478+35])
+    Psig_value
+    value_description "allow_only" (otherlibs/dynlink/dynlink.mli[90,4478+4]..[90,4478+14]) (otherlibs/dynlink/dynlink.mli[90,4478+0]..[90,4478+35])
+      attribute "ocaml.doc"
+        [
+          structure_item (otherlibs/dynlink/dynlink.mli[91,4514+0]..[93,4666+51])
+            Pstr_eval
+            expression (otherlibs/dynlink/dynlink.mli[91,4514+0]..[93,4666+51])
+              Pexp_constant PConst_string(" [allow_only units] sets the list of allowed units to be the intersection\n    of the existing allowed units and the given list of units.  As such it\n    can never increase the set of allowed units. ",(otherlibs/dynlink/dynlink.mli[91,4514+0]..[93,4666+51]),None)
+        ]
+      core_type (otherlibs/dynlink/dynlink.mli[90,4478+16]..[90,4478+35])
+        Ptyp_arrow
+        Nolabel
+        core_type (otherlibs/dynlink/dynlink.mli[90,4478+16]..[90,4478+27])
+          Ptyp_constr "list" (otherlibs/dynlink/dynlink.mli[90,4478+23]..[90,4478+27])
+          [
+            core_type (otherlibs/dynlink/dynlink.mli[90,4478+16]..[90,4478+22])
+              Ptyp_constr "string" (otherlibs/dynlink/dynlink.mli[90,4478+16]..[90,4478+22])
+              []
+          ]
+        core_type (otherlibs/dynlink/dynlink.mli[90,4478+31]..[90,4478+35])
+          Ptyp_constr "unit" (otherlibs/dynlink/dynlink.mli[90,4478+31]..[90,4478+35])
+          []
+      []
+  signature_item (otherlibs/dynlink/dynlink.mli[95,4719+0]..[95,4719+34])
+    Psig_value
+    value_description "prohibit" (otherlibs/dynlink/dynlink.mli[95,4719+4]..[95,4719+12]) (otherlibs/dynlink/dynlink.mli[95,4719+0]..[95,4719+34])
+      attribute "ocaml.doc"
+        [
+          structure_item (otherlibs/dynlink/dynlink.mli[96,4754+0]..[99,4974+61])
+            Pstr_eval
+            expression (otherlibs/dynlink/dynlink.mli[96,4754+0]..[99,4974+61])
+              Pexp_constant PConst_string(" [prohibit units] prohibits dynamically-linked units from referencing\n    the units named in list [units] by removing such units from the allowed\n    units list.  This can be used to prevent access to selected units,\n    e.g. private, internal modules of the running program. ",(otherlibs/dynlink/dynlink.mli[96,4754+0]..[99,4974+61]),None)
+        ]
+      core_type (otherlibs/dynlink/dynlink.mli[95,4719+15]..[95,4719+34])
+        Ptyp_arrow
+        Nolabel
+        core_type (otherlibs/dynlink/dynlink.mli[95,4719+15]..[95,4719+26])
+          Ptyp_constr "list" (otherlibs/dynlink/dynlink.mli[95,4719+22]..[95,4719+26])
+          [
+            core_type (otherlibs/dynlink/dynlink.mli[95,4719+15]..[95,4719+21])
+              Ptyp_constr "string" (otherlibs/dynlink/dynlink.mli[95,4719+15]..[95,4719+21])
+              []
+          ]
+        core_type (otherlibs/dynlink/dynlink.mli[95,4719+30]..[95,4719+34])
+          Ptyp_constr "unit" (otherlibs/dynlink/dynlink.mli[95,4719+30]..[95,4719+34])
+          []
+      []
+  signature_item (otherlibs/dynlink/dynlink.mli[101,5037+0]..[101,5037+44])
+    Psig_value
+    value_description "main_program_units" (otherlibs/dynlink/dynlink.mli[101,5037+4]..[101,5037+22]) (otherlibs/dynlink/dynlink.mli[101,5037+0]..[101,5037+44])
+      attribute "ocaml.doc"
+        [
+          structure_item (otherlibs/dynlink/dynlink.mli[102,5082+0]..[103,5156+35])
+            Pstr_eval
+            expression (otherlibs/dynlink/dynlink.mli[102,5082+0]..[103,5156+35])
+              Pexp_constant PConst_string(" Return the list of compilation units that form the main program (i.e.\n    are not dynamically linked). ",(otherlibs/dynlink/dynlink.mli[102,5082+0]..[103,5156+35]),None)
+        ]
+      core_type (otherlibs/dynlink/dynlink.mli[101,5037+25]..[101,5037+44])
+        Ptyp_arrow
+        Nolabel
+        core_type (otherlibs/dynlink/dynlink.mli[101,5037+25]..[101,5037+29])
+          Ptyp_constr "unit" (otherlibs/dynlink/dynlink.mli[101,5037+25]..[101,5037+29])
+          []
+        core_type (otherlibs/dynlink/dynlink.mli[101,5037+33]..[101,5037+44])
+          Ptyp_constr "list" (otherlibs/dynlink/dynlink.mli[101,5037+40]..[101,5037+44])
+          [
+            core_type (otherlibs/dynlink/dynlink.mli[101,5037+33]..[101,5037+39])
+              Ptyp_constr "string" (otherlibs/dynlink/dynlink.mli[101,5037+33]..[101,5037+39])
+              []
+          ]
+      []
+  signature_item (otherlibs/dynlink/dynlink.mli[105,5193+0]..[105,5193+57])
+    Psig_value
+    value_description "public_dynamically_loaded_units" (otherlibs/dynlink/dynlink.mli[105,5193+4]..[105,5193+35]) (otherlibs/dynlink/dynlink.mli[105,5193+0]..[105,5193+57])
+      attribute "ocaml.doc"
+        [
+          structure_item (otherlibs/dynlink/dynlink.mli[106,5251+0]..[108,5408+45])
+            Pstr_eval
+            expression (otherlibs/dynlink/dynlink.mli[106,5251+0]..[108,5408+45])
+              Pexp_constant PConst_string(" Return the list of compilation units that have been dynamically loaded via\n    [loadfile] (and not via [loadfile_private]).  Note that compilation units\n    loaded dynamically cannot be unloaded. ",(otherlibs/dynlink/dynlink.mli[106,5251+0]..[108,5408+45]),None)
+        ]
+      core_type (otherlibs/dynlink/dynlink.mli[105,5193+38]..[105,5193+57])
+        Ptyp_arrow
+        Nolabel
+        core_type (otherlibs/dynlink/dynlink.mli[105,5193+38]..[105,5193+42])
+          Ptyp_constr "unit" (otherlibs/dynlink/dynlink.mli[105,5193+38]..[105,5193+42])
+          []
+        core_type (otherlibs/dynlink/dynlink.mli[105,5193+46]..[105,5193+57])
+          Ptyp_constr "list" (otherlibs/dynlink/dynlink.mli[105,5193+53]..[105,5193+57])
+          [
+            core_type (otherlibs/dynlink/dynlink.mli[105,5193+46]..[105,5193+52])
+              Ptyp_constr "string" (otherlibs/dynlink/dynlink.mli[105,5193+46]..[105,5193+52])
+              []
+          ]
+      []
+  signature_item (otherlibs/dynlink/dynlink.mli[110,5455+0]..[110,5455+35])
+    Psig_value
+    value_description "all_units" (otherlibs/dynlink/dynlink.mli[110,5455+4]..[110,5455+13]) (otherlibs/dynlink/dynlink.mli[110,5455+0]..[110,5455+35])
+      attribute "ocaml.doc"
+        [
+          structure_item (otherlibs/dynlink/dynlink.mli[111,5491+0]..[113,5645+27])
+            Pstr_eval
+            expression (otherlibs/dynlink/dynlink.mli[111,5491+0]..[113,5645+27])
+              Pexp_constant PConst_string(" Return the list of compilation units that form the main program together\n    with those that have been dynamically loaded via [loadfile] (and not via\n    [loadfile_private]). ",(otherlibs/dynlink/dynlink.mli[111,5491+0]..[113,5645+27]),None)
+        ]
+      core_type (otherlibs/dynlink/dynlink.mli[110,5455+16]..[110,5455+35])
+        Ptyp_arrow
+        Nolabel
+        core_type (otherlibs/dynlink/dynlink.mli[110,5455+16]..[110,5455+20])
+          Ptyp_constr "unit" (otherlibs/dynlink/dynlink.mli[110,5455+16]..[110,5455+20])
+          []
+        core_type (otherlibs/dynlink/dynlink.mli[110,5455+24]..[110,5455+35])
+          Ptyp_constr "list" (otherlibs/dynlink/dynlink.mli[110,5455+31]..[110,5455+35])
+          [
+            core_type (otherlibs/dynlink/dynlink.mli[110,5455+24]..[110,5455+30])
+              Ptyp_constr "string" (otherlibs/dynlink/dynlink.mli[110,5455+24]..[110,5455+30])
+              []
+          ]
+      []
+  signature_item (otherlibs/dynlink/dynlink.mli[115,5674+0]..[115,5674+39])
+    Psig_value
+    value_description "allow_unsafe_modules" (otherlibs/dynlink/dynlink.mli[115,5674+4]..[115,5674+24]) (otherlibs/dynlink/dynlink.mli[115,5674+0]..[115,5674+39])
+      attribute "ocaml.doc"
+        [
+          structure_item (otherlibs/dynlink/dynlink.mli[116,5714+0]..[121,6042+75])
+            Pstr_eval
+            expression (otherlibs/dynlink/dynlink.mli[116,5714+0]..[121,6042+75])
+              Pexp_constant PConst_string(" Govern whether unsafe object files are allowed to be\n    dynamically linked. A compilation unit is 'unsafe' if it contains\n    declarations of external functions, which can break type safety.\n    By default, dynamic linking of unsafe object files is\n    not allowed. In native code, this function does nothing; object files\n    with external functions are always allowed to be dynamically linked. ",(otherlibs/dynlink/dynlink.mli[116,5714+0]..[121,6042+75]),None)
+        ]
+      core_type (otherlibs/dynlink/dynlink.mli[115,5674+27]..[115,5674+39])
+        Ptyp_arrow
+        Nolabel
+        core_type (otherlibs/dynlink/dynlink.mli[115,5674+27]..[115,5674+31])
+          Ptyp_constr "bool" (otherlibs/dynlink/dynlink.mli[115,5674+27]..[115,5674+31])
+          []
+        core_type (otherlibs/dynlink/dynlink.mli[115,5674+35]..[115,5674+39])
+          Ptyp_constr "unit" (otherlibs/dynlink/dynlink.mli[115,5674+35]..[115,5674+39])
+          []
+      []
+  signature_item (otherlibs/dynlink/dynlink.mli[123,6119+0]..[123,6119+26])
+    Psig_attribute "ocaml.text"
+    [
+      structure_item (otherlibs/dynlink/dynlink.mli[123,6119+0]..[123,6119+26])
+        Pstr_eval
+        expression (otherlibs/dynlink/dynlink.mli[123,6119+0]..[123,6119+26])
+          Pexp_constant PConst_string(" {1 Error reporting} ",(otherlibs/dynlink/dynlink.mli[123,6119+0]..[123,6119+26]),None)
+    ]
+  signature_item (otherlibs/dynlink/dynlink.mli[125,6147+0]..[128,6243+34])
+    Psig_type Rec
+    [
+      type_declaration "linking_error" (otherlibs/dynlink/dynlink.mli[125,6147+5]..[125,6147+18]) (otherlibs/dynlink/dynlink.mli[125,6147+0]..[128,6243+34])
+        ptype_params =
+          []
+        ptype_cstrs =
+          []
+        ptype_kind =
+          Ptype_variant
+            [
+              (otherlibs/dynlink/dynlink.mli[126,6176+2]..[126,6176+30])
+                "Undefined_global" (otherlibs/dynlink/dynlink.mli[126,6176+4]..[126,6176+20])
+                [
+                  core_type (otherlibs/dynlink/dynlink.mli[126,6176+24]..[126,6176+30])
+                    Ptyp_constr "string" (otherlibs/dynlink/dynlink.mli[126,6176+24]..[126,6176+30])
+                    []
+                ]
+                None
+              (otherlibs/dynlink/dynlink.mli[127,6207+2]..[127,6207+35])
+                "Unavailable_primitive" (otherlibs/dynlink/dynlink.mli[127,6207+4]..[127,6207+25])
+                [
+                  core_type (otherlibs/dynlink/dynlink.mli[127,6207+29]..[127,6207+35])
+                    Ptyp_constr "string" (otherlibs/dynlink/dynlink.mli[127,6207+29]..[127,6207+35])
+                    []
+                ]
+                None
+              (otherlibs/dynlink/dynlink.mli[128,6243+2]..[128,6243+34])
+                "Uninitialized_global" (otherlibs/dynlink/dynlink.mli[128,6243+4]..[128,6243+24])
+                [
+                  core_type (otherlibs/dynlink/dynlink.mli[128,6243+28]..[128,6243+34])
+                    Ptyp_constr "string" (otherlibs/dynlink/dynlink.mli[128,6243+28]..[128,6243+34])
+                    []
+                ]
+                None
+            ]
+        ptype_private = Private
+        ptype_manifest =
+          None
+    ]
+  signature_item (otherlibs/dynlink/dynlink.mli[130,6279+0]..[141,6658+56])
+    Psig_type Rec
+    [
+      type_declaration "error" (otherlibs/dynlink/dynlink.mli[130,6279+5]..[130,6279+10]) (otherlibs/dynlink/dynlink.mli[130,6279+0]..[141,6658+56])
+        ptype_params =
+          []
+        ptype_cstrs =
+          []
+        ptype_kind =
+          Ptype_variant
+            [
+              (otherlibs/dynlink/dynlink.mli[131,6300+2]..[131,6300+33])
+                "Not_a_bytecode_file" (otherlibs/dynlink/dynlink.mli[131,6300+4]..[131,6300+23])
+                [
+                  core_type (otherlibs/dynlink/dynlink.mli[131,6300+27]..[131,6300+33])
+                    Ptyp_constr "string" (otherlibs/dynlink/dynlink.mli[131,6300+27]..[131,6300+33])
+                    []
+                ]
+                None
+              (otherlibs/dynlink/dynlink.mli[132,6334+2]..[132,6334+33])
+                "Inconsistent_import" (otherlibs/dynlink/dynlink.mli[132,6334+4]..[132,6334+23])
+                [
+                  core_type (otherlibs/dynlink/dynlink.mli[132,6334+27]..[132,6334+33])
+                    Ptyp_constr "string" (otherlibs/dynlink/dynlink.mli[132,6334+27]..[132,6334+33])
+                    []
+                ]
+                None
+              (otherlibs/dynlink/dynlink.mli[133,6368+2]..[133,6368+30])
+                "Unavailable_unit" (otherlibs/dynlink/dynlink.mli[133,6368+4]..[133,6368+20])
+                [
+                  core_type (otherlibs/dynlink/dynlink.mli[133,6368+24]..[133,6368+30])
+                    Ptyp_constr "string" (otherlibs/dynlink/dynlink.mli[133,6368+24]..[133,6368+30])
+                    []
+                ]
+                None
+              (otherlibs/dynlink/dynlink.mli[134,6399+2]..[134,6399+15])
+                "Unsafe_file" (otherlibs/dynlink/dynlink.mli[134,6399+4]..[134,6399+15])
+                []
+                None
+              (otherlibs/dynlink/dynlink.mli[135,6415+2]..[135,6415+43])
+                "Linking_error" (otherlibs/dynlink/dynlink.mli[135,6415+4]..[135,6415+17])
+                [
+                  core_type (otherlibs/dynlink/dynlink.mli[135,6415+21]..[135,6415+27])
+                    Ptyp_constr "string" (otherlibs/dynlink/dynlink.mli[135,6415+21]..[135,6415+27])
+                    []
+                  core_type (otherlibs/dynlink/dynlink.mli[135,6415+30]..[135,6415+43])
+                    Ptyp_constr "linking_error" (otherlibs/dynlink/dynlink.mli[135,6415+30]..[135,6415+43])
+                    []
+                ]
+                None
+              (otherlibs/dynlink/dynlink.mli[136,6459+2]..[136,6459+33])
+                "Corrupted_interface" (otherlibs/dynlink/dynlink.mli[136,6459+4]..[136,6459+23])
+                [
+                  core_type (otherlibs/dynlink/dynlink.mli[136,6459+27]..[136,6459+33])
+                    Ptyp_constr "string" (otherlibs/dynlink/dynlink.mli[136,6459+27]..[136,6459+33])
+                    []
+                ]
+                None
+              (otherlibs/dynlink/dynlink.mli[137,6493+2]..[137,6493+38])
+                "Cannot_open_dynamic_library" (otherlibs/dynlink/dynlink.mli[137,6493+4]..[137,6493+31])
+                [
+                  core_type (otherlibs/dynlink/dynlink.mli[137,6493+35]..[137,6493+38])
+                    Ptyp_constr "exn" (otherlibs/dynlink/dynlink.mli[137,6493+35]..[137,6493+38])
+                    []
+                ]
+                None
+              (otherlibs/dynlink/dynlink.mli[138,6532+2]..[138,6532+47])
+                "Library's_module_initializers_failed" (otherlibs/dynlink/dynlink.mli[138,6532+4]..[138,6532+40])
+                [
+                  core_type (otherlibs/dynlink/dynlink.mli[138,6532+44]..[138,6532+47])
+                    Ptyp_constr "exn" (otherlibs/dynlink/dynlink.mli[138,6532+44]..[138,6532+47])
+                    []
+                ]
+                None
+              (otherlibs/dynlink/dynlink.mli[139,6580+2]..[139,6580+41])
+                "Inconsistent_implementation" (otherlibs/dynlink/dynlink.mli[139,6580+4]..[139,6580+31])
+                [
+                  core_type (otherlibs/dynlink/dynlink.mli[139,6580+35]..[139,6580+41])
+                    Ptyp_constr "string" (otherlibs/dynlink/dynlink.mli[139,6580+35]..[139,6580+41])
+                    []
+                ]
+                None
+              (otherlibs/dynlink/dynlink.mli[140,6622+2]..[140,6622+35])
+                "Module_already_loaded" (otherlibs/dynlink/dynlink.mli[140,6622+4]..[140,6622+25])
+                [
+                  core_type (otherlibs/dynlink/dynlink.mli[140,6622+29]..[140,6622+35])
+                    Ptyp_constr "string" (otherlibs/dynlink/dynlink.mli[140,6622+29]..[140,6622+35])
+                    []
+                ]
+                None
+              (otherlibs/dynlink/dynlink.mli[141,6658+2]..[141,6658+56])
+                "Private_library_cannot_implement_interface" (otherlibs/dynlink/dynlink.mli[141,6658+4]..[141,6658+46])
+                [
+                  core_type (otherlibs/dynlink/dynlink.mli[141,6658+50]..[141,6658+56])
+                    Ptyp_constr "string" (otherlibs/dynlink/dynlink.mli[141,6658+50]..[141,6658+56])
+                    []
+                ]
+                None
+            ]
+        ptype_private = Private
+        ptype_manifest =
+          None
+    ]
+  signature_item (otherlibs/dynlink/dynlink.mli[143,6716+0]..[143,6716+24])
+    Psig_exception
+    type_exception
+      ptyext_constructor =
+        extension_constructor (otherlibs/dynlink/dynlink.mli[143,6716+0]..[143,6716+24])
+          attribute "ocaml.doc"
+            [
+              structure_item (otherlibs/dynlink/dynlink.mli[144,6741+0]..[148,7009+29])
+                Pstr_eval
+                expression (otherlibs/dynlink/dynlink.mli[144,6741+0]..[148,7009+29])
+                  Pexp_constant PConst_string(" Errors in dynamic linking are reported by raising the [Error]\n    exception with a description of the error.\n    A common case is the dynamic library not being found on the system: this\n    is reported via [Cannot_open_dynamic_library] (the enclosed exception may\n    be platform-specific). ",(otherlibs/dynlink/dynlink.mli[144,6741+0]..[148,7009+29]),None)
+            ]
+          pext_name = "Error"
+          pext_kind =
+            Pext_decl
+              [
+                core_type (otherlibs/dynlink/dynlink.mli[143,6716+19]..[143,6716+24])
+                  Ptyp_constr "error" (otherlibs/dynlink/dynlink.mli[143,6716+19]..[143,6716+24])
+                  []
+              ]
+              None
+  signature_item (otherlibs/dynlink/dynlink.mli[150,7040+0]..[150,7040+35])
+    Psig_value
+    value_description "error_message" (otherlibs/dynlink/dynlink.mli[150,7040+4]..[150,7040+17]) (otherlibs/dynlink/dynlink.mli[150,7040+0]..[150,7040+35])
+      attribute "ocaml.doc"
+        [
+          structure_item (otherlibs/dynlink/dynlink.mli[151,7076+0]..[151,7076+59])
+            Pstr_eval
+            expression (otherlibs/dynlink/dynlink.mli[151,7076+0]..[151,7076+59])
+              Pexp_constant PConst_string(" Convert an error description to a printable message. ",(otherlibs/dynlink/dynlink.mli[151,7076+0]..[151,7076+59]),None)
+        ]
+      core_type (otherlibs/dynlink/dynlink.mli[150,7040+20]..[150,7040+35])
+        Ptyp_arrow
+        Nolabel
+        core_type (otherlibs/dynlink/dynlink.mli[150,7040+20]..[150,7040+25])
+          Ptyp_constr "error" (otherlibs/dynlink/dynlink.mli[150,7040+20]..[150,7040+25])
+          []
+        core_type (otherlibs/dynlink/dynlink.mli[150,7040+29]..[150,7040+35])
+          Ptyp_constr "string" (otherlibs/dynlink/dynlink.mli[150,7040+29]..[150,7040+35])
+          []
+      []
+  signature_item (otherlibs/dynlink/dynlink.mli[153,7137+0]..[153,7137+7])
+    Psig_attribute "ocaml.text"
+    [
+      structure_item (otherlibs/dynlink/dynlink.mli[153,7137+0]..[153,7137+7])
+        Pstr_eval
+        expression (otherlibs/dynlink/dynlink.mli[153,7137+0]..[153,7137+7])
+          Pexp_constant PConst_string("/*",(otherlibs/dynlink/dynlink.mli[153,7137+0]..[153,7137+7]),None)
+    ]
+  signature_item (otherlibs/dynlink/dynlink.mli[155,7146+0]..[155,7146+75])
+    Psig_value
+    value_description "unsafe_get_global_value" (otherlibs/dynlink/dynlink.mli[155,7146+4]..[155,7146+27]) (otherlibs/dynlink/dynlink.mli[155,7146+0]..[155,7146+75])
+      attribute "ocaml.doc"
+        [
+          structure_item (otherlibs/dynlink/dynlink.mli[156,7222+0]..[173,8305+2])
+            Pstr_eval
+            expression (otherlibs/dynlink/dynlink.mli[156,7222+0]..[173,8305+2])
+              Pexp_constant PConst_string(" Obtain the globally-visible value whose address is that of the given symbol.\n    The symbol name must be the mangled form as would occur in bytecode or\n    a native object file.  [None] is returned if the value is inaccessible.\n    The accessible values are those in the main program and those provided by\n    previous calls to [loadfile].\n\n    This function is deemed \"unsafe\" as there is no type safety provided.\n\n    When executing in bytecode, this function uses [Symtable]. As a cautionary\n    note for programs such as the debugger: even though the linking of a packed\n    (subset of) compilerlibs into [Dynlink] hides the copy of [Symtable] that\n    [Dynlink] uses from its clients, there is still only one table of global\n    values in the bytecode VM. Changes to this table are NOT synchronized\n    between [Dynlink] and the functions that change the global value table\n    ([update_global_table] and [assign_global_value], accessed through a\n    client's version of [Symtable]). This is why we can't use [Dynlink] from the\n    toplevel interactive loop, in particular.\n",(otherlibs/dynlink/dynlink.mli[156,7222+0]..[173,8305+2]),None)
+        ]
+      core_type (otherlibs/dynlink/dynlink.mli[155,7146+30]..[155,7146+75])
+        Ptyp_arrow
+        Labelled "bytecode_or_asm_symbol"
+        core_type (otherlibs/dynlink/dynlink.mli[155,7146+53]..[155,7146+59])
+          Ptyp_constr "string" (otherlibs/dynlink/dynlink.mli[155,7146+53]..[155,7146+59])
+          []
+        core_type (otherlibs/dynlink/dynlink.mli[155,7146+63]..[155,7146+75])
+          Ptyp_constr "option" (otherlibs/dynlink/dynlink.mli[155,7146+69]..[155,7146+75])
+          [
+            core_type (otherlibs/dynlink/dynlink.mli[155,7146+63]..[155,7146+68])
+              Ptyp_constr "Obj.t" (otherlibs/dynlink/dynlink.mli[155,7146+63]..[155,7146+68])
+              []
+          ]
+      []
+]
+

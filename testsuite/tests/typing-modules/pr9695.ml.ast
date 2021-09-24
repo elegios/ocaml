@@ -1,0 +1,34 @@
+[
+  structure_item (testsuite/tests/typing-modules/pr9695.ml[5,24+0]..[6,76+53])
+    Pstr_module
+    "Test" (testsuite/tests/typing-modules/pr9695.ml[5,24+7]..[5,24+11])
+      module_expr (testsuite/tests/typing-modules/pr9695.ml[5,24+12]..[6,76+53])
+        Pmod_functor "S" (testsuite/tests/typing-modules/pr9695.ml[5,24+13]..[5,24+14])
+        module_type (testsuite/tests/typing-modules/pr9695.ml[5,24+17]..[5,24+38])
+          Pmty_signature
+          [
+            signature_item (testsuite/tests/typing-modules/pr9695.ml[5,24+21]..[5,24+34])
+              Psig_modtype "S" (testsuite/tests/typing-modules/pr9695.ml[5,24+33]..[5,24+34])
+              #abstract          ]
+        module_expr (testsuite/tests/typing-modules/pr9695.ml[5,24+40]..[6,76+53])
+          Pmod_functor "M" (testsuite/tests/typing-modules/pr9695.ml[5,24+41]..[5,24+42])
+          module_type (testsuite/tests/typing-modules/pr9695.ml[5,24+45]..[5,24+48])
+            Pmty_ident "S.S" (testsuite/tests/typing-modules/pr9695.ml[5,24+45]..[5,24+48])
+          module_expr (testsuite/tests/typing-modules/pr9695.ml[6,76+2]..[6,76+53])
+            Pmod_structure
+            [
+              structure_item (testsuite/tests/typing-modules/pr9695.ml[6,76+9]..[6,76+15])
+                Pstr_open Fresh
+                module_expr (testsuite/tests/typing-modules/pr9695.ml[6,76+14]..[6,76+15])
+                  Pmod_ident "M" (testsuite/tests/typing-modules/pr9695.ml[6,76+14]..[6,76+15])
+            ]
+  structure_item (testsuite/tests/typing-modules/pr9695.ml[7,130+0]..[12,301+3])
+    Pstr_extension "expect"
+    [
+      structure_item (testsuite/tests/typing-modules/pr9695.ml[7,130+9]..[12,301+2])
+        Pstr_eval
+        expression (testsuite/tests/typing-modules/pr9695.ml[7,130+9]..[12,301+2])
+          Pexp_constant PConst_string ("\nLine 2, characters 14-15:\n2 |   struct open M (* should not succeed silently *) end\n                  ^\nError: This module is not a structure; it has type S.S\n",(testsuite/tests/typing-modules/pr9695.ml[7,130+11]..[12,301+0]),Some "")
+    ]
+]
+

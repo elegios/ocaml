@@ -1,0 +1,102 @@
+[
+  structure_item (testsuite/tests/typing-misc/exotic_unifications.ml[5,24+0]..[5,24+52])
+    Pstr_class
+    [
+      class_declaration (testsuite/tests/typing-misc/exotic_unifications.ml[5,24+0]..[5,24+52])
+        pci_virt = Virtual
+        pci_params =
+          []
+        pci_name = "t" (testsuite/tests/typing-misc/exotic_unifications.ml[5,24+14]..[5,24+15])
+        pci_expr =
+          class_expr (testsuite/tests/typing-misc/exotic_unifications.ml[5,24+18]..[5,24+52])
+            Pcl_structure
+            class_structure
+              pattern (testsuite/tests/typing-misc/exotic_unifications.ml[5,24+24]..[5,24+24]) ghost
+                Ppat_any
+              [
+                class_field (testsuite/tests/typing-misc/exotic_unifications.ml[5,24+25]..[5,24+48])
+                  Pcf_method Public
+                    "x" (testsuite/tests/typing-misc/exotic_unifications.ml[5,24+40]..[5,24+41])
+                    Virtual
+                    core_type (testsuite/tests/typing-misc/exotic_unifications.ml[5,24+43]..[5,24+48])
+                      Ptyp_constr "float" (testsuite/tests/typing-misc/exotic_unifications.ml[5,24+43]..[5,24+48])
+                      []
+              ]
+    ]
+  structure_item (testsuite/tests/typing-misc/exotic_unifications.ml[7,78+0]..[9,132+3])
+    Pstr_class
+    [
+      class_declaration (testsuite/tests/typing-misc/exotic_unifications.ml[7,78+0]..[9,132+3])
+        pci_virt = Concrete
+        pci_params =
+          []
+        pci_name = "x" (testsuite/tests/typing-misc/exotic_unifications.ml[7,78+6]..[7,78+7])
+        pci_expr =
+          class_expr (testsuite/tests/typing-misc/exotic_unifications.ml[7,78+10]..[9,132+3])
+            Pcl_structure
+            class_structure
+              pattern (testsuite/tests/typing-misc/exotic_unifications.ml[7,78+16]..[7,78+35])
+                Ppat_constraint
+                pattern (testsuite/tests/typing-misc/exotic_unifications.ml[7,78+17]..[7,78+21])
+                  Ppat_var "self" (testsuite/tests/typing-misc/exotic_unifications.ml[7,78+17]..[7,78+21])
+                core_type (testsuite/tests/typing-misc/exotic_unifications.ml[7,78+23]..[7,78+34])
+                  Ptyp_object Open
+                    method x
+                      core_type (testsuite/tests/typing-misc/exotic_unifications.ml[7,78+26]..[7,78+29])
+                        Ptyp_constr "int" (testsuite/tests/typing-misc/exotic_unifications.ml[7,78+26]..[7,78+29])
+                        []
+              [
+                class_field (testsuite/tests/typing-misc/exotic_unifications.ml[8,114+8]..[8,114+17])
+                  Pcf_inherit Fresh
+                    class_expr (testsuite/tests/typing-misc/exotic_unifications.ml[8,114+16]..[8,114+17])
+                      Pcl_constr "t" (testsuite/tests/typing-misc/exotic_unifications.ml[8,114+16]..[8,114+17])
+                      []
+                    None
+              ]
+    ]
+  structure_item (testsuite/tests/typing-misc/exotic_unifications.ml[10,136+0]..[17,390+3])
+    Pstr_extension "expect"
+    [
+      structure_item (testsuite/tests/typing-misc/exotic_unifications.ml[10,136+10]..[17,390+2])
+        Pstr_eval
+        expression (testsuite/tests/typing-misc/exotic_unifications.ml[10,136+10]..[17,390+2])
+          Pexp_constant PConst_string ("\nclass virtual t : object method virtual x : float end\nLine 4, characters 8-17:\n4 |         inherit t\n            ^^^^^^^^^\nError: The method x has type int but is expected to have type float\n       Type int is not compatible with type float\n",(testsuite/tests/typing-misc/exotic_unifications.ml[10,136+12]..[17,390+0]),Some "")
+    ]
+  structure_item (testsuite/tests/typing-misc/exotic_unifications.ml[19,395+0]..[21,458+26])
+    Pstr_value Nonrec
+    [
+      <def>
+        pattern (testsuite/tests/typing-misc/exotic_unifications.ml[19,395+4]..[19,395+5])
+          Ppat_var "x" (testsuite/tests/typing-misc/exotic_unifications.ml[19,395+4]..[19,395+5])
+        expression (testsuite/tests/typing-misc/exotic_unifications.ml[20,403+2]..[21,458+26])
+          Pexp_letmodule "M" (testsuite/tests/typing-misc/exotic_unifications.ml[20,403+13]..[20,403+14])
+          module_expr (testsuite/tests/typing-misc/exotic_unifications.ml[20,403+17]..[20,403+51])
+            Pmod_structure
+            [
+              structure_item (testsuite/tests/typing-misc/exotic_unifications.ml[20,403+24]..[20,403+47])
+                Pstr_modtype "t" (testsuite/tests/typing-misc/exotic_unifications.ml[20,403+36]..[20,403+37])
+                  module_type (testsuite/tests/typing-misc/exotic_unifications.ml[20,403+40]..[20,403+47])
+                    Pmty_signature
+                    []
+            ]
+          expression (testsuite/tests/typing-misc/exotic_unifications.ml[21,458+2]..[21,458+26])
+            Pexp_constraint
+            expression (testsuite/tests/typing-misc/exotic_unifications.ml[21,458+2]..[21,458+26]) ghost
+              Pexp_pack
+              module_expr (testsuite/tests/typing-misc/exotic_unifications.ml[21,458+10]..[21,458+20])
+                Pmod_structure
+                []
+            core_type (testsuite/tests/typing-misc/exotic_unifications.ml[21,458+22]..[21,458+25])
+              Ptyp_package "M.t" (testsuite/tests/typing-misc/exotic_unifications.ml[21,458+22]..[21,458+25])
+              []
+    ]
+  structure_item (testsuite/tests/typing-misc/exotic_unifications.ml[22,485+0]..[29,729+3])
+    Pstr_extension "expect"
+    [
+      structure_item (testsuite/tests/typing-misc/exotic_unifications.ml[22,485+10]..[29,729+2])
+        Pstr_eval
+        expression (testsuite/tests/typing-misc/exotic_unifications.ml[22,485+10]..[29,729+2])
+          Pexp_constant PConst_string ("\nLine 3, characters 2-26:\n3 |   (module struct end: M.t)\n      ^^^^^^^^^^^^^^^^^^^^^^^^\nError: This expression has type (module M.t)\n       but an expression was expected of type 'a\n       The module type M.t would escape its scope\n",(testsuite/tests/typing-misc/exotic_unifications.ml[22,485+12]..[29,729+0]),Some "")
+    ]
+]
+

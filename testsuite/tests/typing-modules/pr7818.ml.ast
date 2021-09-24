@@ -1,0 +1,909 @@
+[
+  structure_item (testsuite/tests/typing-modules/pr7818.ml[6,46+0]..[18,271+3])
+    Pstr_module
+    "Termsig" (testsuite/tests/typing-modules/pr7818.ml[6,46+7]..[6,46+14])
+      module_expr (testsuite/tests/typing-modules/pr7818.ml[6,46+17]..[18,271+3])
+        Pmod_structure
+        [
+          structure_item (testsuite/tests/typing-modules/pr7818.ml[7,70+2]..[11,152+5])
+            Pstr_module
+            "Term0" (testsuite/tests/typing-modules/pr7818.ml[7,70+9]..[7,70+14])
+              module_expr (testsuite/tests/typing-modules/pr7818.ml[7,70+17]..[11,152+5])
+                Pmod_structure
+                [
+                  structure_item (testsuite/tests/typing-modules/pr7818.ml[8,94+4]..[10,144+7])
+                    Pstr_modtype "S" (testsuite/tests/typing-modules/pr7818.ml[8,94+16]..[8,94+17])
+                      module_type (testsuite/tests/typing-modules/pr7818.ml[8,94+20]..[10,144+7])
+                        Pmty_signature
+                        [
+                          signature_item (testsuite/tests/typing-modules/pr7818.ml[9,118+6]..[9,118+25])
+                            Psig_module "Id" (testsuite/tests/typing-modules/pr7818.ml[9,118+13]..[9,118+15])
+                            module_type (testsuite/tests/typing-modules/pr7818.ml[9,118+18]..[9,118+25])
+                              Pmty_signature
+                              []
+                        ]
+                ]
+          structure_item (testsuite/tests/typing-modules/pr7818.ml[12,158+2]..[17,265+5])
+            Pstr_module
+            "Term" (testsuite/tests/typing-modules/pr7818.ml[12,158+9]..[12,158+13])
+              module_expr (testsuite/tests/typing-modules/pr7818.ml[12,158+16]..[17,265+5])
+                Pmod_structure
+                [
+                  structure_item (testsuite/tests/typing-modules/pr7818.ml[13,181+4]..[16,257+7])
+                    Pstr_modtype "S" (testsuite/tests/typing-modules/pr7818.ml[13,181+16]..[13,181+17])
+                      module_type (testsuite/tests/typing-modules/pr7818.ml[13,181+20]..[16,257+7])
+                        Pmty_signature
+                        [
+                          signature_item (testsuite/tests/typing-modules/pr7818.ml[14,205+6]..[14,205+28])
+                            Psig_module "Term0" (testsuite/tests/typing-modules/pr7818.ml[14,205+13]..[14,205+18])
+                            module_type (testsuite/tests/typing-modules/pr7818.ml[14,205+21]..[14,205+28])
+                              Pmty_ident "Term0.S" (testsuite/tests/typing-modules/pr7818.ml[14,205+21]..[14,205+28])
+                          signature_item (testsuite/tests/typing-modules/pr7818.ml[15,234+6]..[15,234+22])
+                            Psig_module "T" (testsuite/tests/typing-modules/pr7818.ml[15,234+13]..[15,234+14])
+                            module_type (testsuite/tests/typing-modules/pr7818.ml[15,234+17]..[15,234+22])
+                              Pmty_alias "Term0" (testsuite/tests/typing-modules/pr7818.ml[15,234+17]..[15,234+22])
+                        ]
+                ]
+        ]
+  structure_item (testsuite/tests/typing-modules/pr7818.ml[19,277+0]..[26,485+3])
+    Pstr_extension "expect"
+    [
+      structure_item (testsuite/tests/typing-modules/pr7818.ml[19,277+9]..[26,485+2])
+        Pstr_eval
+        expression (testsuite/tests/typing-modules/pr7818.ml[19,277+9]..[26,485+2])
+          Pexp_constant PConst_string ("\nmodule Termsig :\n  sig\n    module Term0 : sig module type S = sig module Id : sig end end end\n    module Term :\n      sig module type S = sig module Term0 : Term0.S module T = Term0 end end\n  end\n",(testsuite/tests/typing-modules/pr7818.ml[19,277+11]..[26,485+0]),Some "")
+    ]
+  structure_item (testsuite/tests/typing-modules/pr7818.ml[28,490+0]..[33,591+3])
+    Pstr_module
+    "Make1" (testsuite/tests/typing-modules/pr7818.ml[28,490+7]..[28,490+12])
+      module_expr (testsuite/tests/typing-modules/pr7818.ml[28,490+13]..[33,591+3])
+        Pmod_functor "T'" (testsuite/tests/typing-modules/pr7818.ml[28,490+14]..[28,490+16])
+        module_type (testsuite/tests/typing-modules/pr7818.ml[28,490+19]..[28,490+33])
+          Pmty_ident "Termsig.Term.S" (testsuite/tests/typing-modules/pr7818.ml[28,490+19]..[28,490+33])
+        module_expr (testsuite/tests/typing-modules/pr7818.ml[28,490+37]..[33,591+3])
+          Pmod_structure
+          [
+            structure_item (testsuite/tests/typing-modules/pr7818.ml[29,534+2]..[32,585+5])
+              Pstr_module
+              "T" (testsuite/tests/typing-modules/pr7818.ml[29,534+9]..[29,534+10])
+                module_expr (testsuite/tests/typing-modules/pr7818.ml[29,534+13]..[32,585+5])
+                  Pmod_structure
+                  [
+                    structure_item (testsuite/tests/typing-modules/pr7818.ml[30,554+4]..[30,554+16])
+                      Pstr_include                      module_expr (testsuite/tests/typing-modules/pr7818.ml[30,554+12]..[30,554+16])
+                        Pmod_ident "T'.T" (testsuite/tests/typing-modules/pr7818.ml[30,554+12]..[30,554+16])
+                    structure_item (testsuite/tests/typing-modules/pr7818.ml[31,571+4]..[31,571+13])
+                      Pstr_value Nonrec
+                      [
+                        <def>
+                          pattern (testsuite/tests/typing-modules/pr7818.ml[31,571+8]..[31,571+9])
+                            Ppat_var "u" (testsuite/tests/typing-modules/pr7818.ml[31,571+8]..[31,571+9])
+                          expression (testsuite/tests/typing-modules/pr7818.ml[31,571+12]..[31,571+13])
+                            Pexp_constant PConst_int (1,None)
+                      ]
+                  ]
+          ]
+  structure_item (testsuite/tests/typing-modules/pr7818.ml[34,597+0]..[42,823+3])
+    Pstr_extension "expect"
+    [
+      structure_item (testsuite/tests/typing-modules/pr7818.ml[34,597+9]..[42,823+2])
+        Pstr_eval
+        expression (testsuite/tests/typing-modules/pr7818.ml[34,597+9]..[42,823+2])
+          Pexp_constant PConst_string ("\nmodule Make1 :\n  functor\n    (T' : sig\n            module Term0 : Termsig.Term0.S\n            module T : sig module Id : sig end end\n          end)\n    -> sig module T : sig module Id : sig end val u : int end end\n",(testsuite/tests/typing-modules/pr7818.ml[34,597+11]..[42,823+0]),Some "")
+    ]
+  structure_item (testsuite/tests/typing-modules/pr7818.ml[44,828+0]..[50,949+3])
+    Pstr_module
+    "Make2" (testsuite/tests/typing-modules/pr7818.ml[44,828+7]..[44,828+12])
+      module_expr (testsuite/tests/typing-modules/pr7818.ml[44,828+13]..[50,949+3])
+        Pmod_functor "T'" (testsuite/tests/typing-modules/pr7818.ml[44,828+14]..[44,828+16])
+        module_type (testsuite/tests/typing-modules/pr7818.ml[44,828+19]..[44,828+33])
+          Pmty_ident "Termsig.Term.S" (testsuite/tests/typing-modules/pr7818.ml[44,828+19]..[44,828+33])
+        module_expr (testsuite/tests/typing-modules/pr7818.ml[44,828+37]..[50,949+3])
+          Pmod_structure
+          [
+            structure_item (testsuite/tests/typing-modules/pr7818.ml[45,872+2]..[49,943+5])
+              Pstr_module
+              "T" (testsuite/tests/typing-modules/pr7818.ml[45,872+9]..[45,872+10])
+                module_expr (testsuite/tests/typing-modules/pr7818.ml[45,872+13]..[49,943+5])
+                  Pmod_structure
+                  [
+                    structure_item (testsuite/tests/typing-modules/pr7818.ml[46,892+4]..[46,892+16])
+                      Pstr_include                      module_expr (testsuite/tests/typing-modules/pr7818.ml[46,892+12]..[46,892+16])
+                        Pmod_ident "T'.T" (testsuite/tests/typing-modules/pr7818.ml[46,892+12]..[46,892+16])
+                    structure_item (testsuite/tests/typing-modules/pr7818.ml[47,909+4]..[47,909+19])
+                      Pstr_module
+                      "Id2" (testsuite/tests/typing-modules/pr7818.ml[47,909+11]..[47,909+14])
+                        module_expr (testsuite/tests/typing-modules/pr7818.ml[47,909+17]..[47,909+19])
+                          Pmod_ident "Id" (testsuite/tests/typing-modules/pr7818.ml[47,909+17]..[47,909+19])
+                    structure_item (testsuite/tests/typing-modules/pr7818.ml[48,929+4]..[48,929+13])
+                      Pstr_value Nonrec
+                      [
+                        <def>
+                          pattern (testsuite/tests/typing-modules/pr7818.ml[48,929+8]..[48,929+9])
+                            Ppat_var "u" (testsuite/tests/typing-modules/pr7818.ml[48,929+8]..[48,929+9])
+                          expression (testsuite/tests/typing-modules/pr7818.ml[48,929+12]..[48,929+13])
+                            Pexp_constant PConst_int (1,None)
+                      ]
+                  ]
+          ]
+  structure_item (testsuite/tests/typing-modules/pr7818.ml[51,955+0]..[62,1211+3])
+    Pstr_extension "expect"
+    [
+      structure_item (testsuite/tests/typing-modules/pr7818.ml[51,955+9]..[62,1211+2])
+        Pstr_eval
+        expression (testsuite/tests/typing-modules/pr7818.ml[51,955+9]..[62,1211+2])
+          Pexp_constant PConst_string ("\nmodule Make2 :\n  functor\n    (T' : sig\n            module Term0 : Termsig.Term0.S\n            module T : sig module Id : sig end end\n          end)\n    ->\n    sig\n      module T : sig module Id : sig end module Id2 = Id val u : int end\n    end\n",(testsuite/tests/typing-modules/pr7818.ml[51,955+11]..[62,1211+0]),Some "")
+    ]
+  structure_item (testsuite/tests/typing-modules/pr7818.ml[64,1216+0]..[71,1351+3])
+    Pstr_module
+    "Make3" (testsuite/tests/typing-modules/pr7818.ml[64,1216+7]..[64,1216+12])
+      module_expr (testsuite/tests/typing-modules/pr7818.ml[64,1216+13]..[71,1351+3])
+        Pmod_functor "T'" (testsuite/tests/typing-modules/pr7818.ml[64,1216+14]..[64,1216+16])
+        module_type (testsuite/tests/typing-modules/pr7818.ml[64,1216+19]..[64,1216+33])
+          Pmty_ident "Termsig.Term.S" (testsuite/tests/typing-modules/pr7818.ml[64,1216+19]..[64,1216+33])
+        module_expr (testsuite/tests/typing-modules/pr7818.ml[64,1216+37]..[71,1351+3])
+          Pmod_structure
+          [
+            structure_item (testsuite/tests/typing-modules/pr7818.ml[65,1260+2]..[70,1345+5])
+              Pstr_module
+              "T" (testsuite/tests/typing-modules/pr7818.ml[65,1260+9]..[65,1260+10])
+                module_expr (testsuite/tests/typing-modules/pr7818.ml[65,1260+13]..[70,1345+5])
+                  Pmod_structure
+                  [
+                    structure_item (testsuite/tests/typing-modules/pr7818.ml[66,1280+4]..[66,1280+16])
+                      Pstr_include                      module_expr (testsuite/tests/typing-modules/pr7818.ml[66,1280+12]..[66,1280+16])
+                        Pmod_ident "T'.T" (testsuite/tests/typing-modules/pr7818.ml[66,1280+12]..[66,1280+16])
+                    structure_item (testsuite/tests/typing-modules/pr7818.ml[67,1297+4]..[67,1297+19])
+                      Pstr_module
+                      "Id2" (testsuite/tests/typing-modules/pr7818.ml[67,1297+11]..[67,1297+14])
+                        module_expr (testsuite/tests/typing-modules/pr7818.ml[67,1297+17]..[67,1297+19])
+                          Pmod_ident "Id" (testsuite/tests/typing-modules/pr7818.ml[67,1297+17]..[67,1297+19])
+                    structure_item (testsuite/tests/typing-modules/pr7818.ml[68,1317+4]..[68,1317+13])
+                      Pstr_value Nonrec
+                      [
+                        <def>
+                          pattern (testsuite/tests/typing-modules/pr7818.ml[68,1317+8]..[68,1317+9])
+                            Ppat_var "u" (testsuite/tests/typing-modules/pr7818.ml[68,1317+8]..[68,1317+9])
+                          expression (testsuite/tests/typing-modules/pr7818.ml[68,1317+12]..[68,1317+13])
+                            Pexp_constant PConst_int (1,None)
+                      ]
+                    structure_item (testsuite/tests/typing-modules/pr7818.ml[69,1331+4]..[69,1331+13])
+                      Pstr_value Nonrec
+                      [
+                        <def>
+                          pattern (testsuite/tests/typing-modules/pr7818.ml[69,1331+8]..[69,1331+9])
+                            Ppat_var "u" (testsuite/tests/typing-modules/pr7818.ml[69,1331+8]..[69,1331+9])
+                          expression (testsuite/tests/typing-modules/pr7818.ml[69,1331+12]..[69,1331+13])
+                            Pexp_constant PConst_int (1,None)
+                      ]
+                  ]
+          ]
+  structure_item (testsuite/tests/typing-modules/pr7818.ml[72,1357+0]..[83,1613+3])
+    Pstr_extension "expect"
+    [
+      structure_item (testsuite/tests/typing-modules/pr7818.ml[72,1357+9]..[83,1613+2])
+        Pstr_eval
+        expression (testsuite/tests/typing-modules/pr7818.ml[72,1357+9]..[83,1613+2])
+          Pexp_constant PConst_string ("\nmodule Make3 :\n  functor\n    (T' : sig\n            module Term0 : Termsig.Term0.S\n            module T : sig module Id : sig end end\n          end)\n    ->\n    sig\n      module T : sig module Id : sig end module Id2 = Id val u : int end\n    end\n",(testsuite/tests/typing-modules/pr7818.ml[72,1357+11]..[83,1613+0]),Some "")
+    ]
+  structure_item (testsuite/tests/typing-modules/pr7818.ml[86,1641+0]..[89,1725+3])
+    Pstr_modtype "S" (testsuite/tests/typing-modules/pr7818.ml[86,1641+12]..[86,1641+13])
+      module_type (testsuite/tests/typing-modules/pr7818.ml[86,1641+16]..[89,1725+3])
+        Pmty_signature
+        [
+          signature_item (testsuite/tests/typing-modules/pr7818.ml[87,1661+2]..[87,1661+44])
+            Psig_module "Term0" (testsuite/tests/typing-modules/pr7818.ml[87,1661+9]..[87,1661+14])
+            module_type (testsuite/tests/typing-modules/pr7818.ml[87,1661+17]..[87,1661+44])
+              Pmty_signature
+              [
+                signature_item (testsuite/tests/typing-modules/pr7818.ml[87,1661+21]..[87,1661+40])
+                  Psig_module "Id" (testsuite/tests/typing-modules/pr7818.ml[87,1661+28]..[87,1661+30])
+                  module_type (testsuite/tests/typing-modules/pr7818.ml[87,1661+33]..[87,1661+40])
+                    Pmty_signature
+                    []
+              ]
+          signature_item (testsuite/tests/typing-modules/pr7818.ml[88,1706+2]..[88,1706+18])
+            Psig_module "T" (testsuite/tests/typing-modules/pr7818.ml[88,1706+9]..[88,1706+10])
+            module_type (testsuite/tests/typing-modules/pr7818.ml[88,1706+13]..[88,1706+18])
+              Pmty_alias "Term0" (testsuite/tests/typing-modules/pr7818.ml[88,1706+13]..[88,1706+18])
+        ]
+  structure_item (testsuite/tests/typing-modules/pr7818.ml[91,1732+0]..[94,1804+3])
+    Pstr_module
+    "Make1" (testsuite/tests/typing-modules/pr7818.ml[91,1732+7]..[91,1732+12])
+      module_expr (testsuite/tests/typing-modules/pr7818.ml[91,1732+13]..[94,1804+3])
+        Pmod_functor "T'" (testsuite/tests/typing-modules/pr7818.ml[91,1732+14]..[91,1732+16])
+        module_type (testsuite/tests/typing-modules/pr7818.ml[91,1732+19]..[91,1732+20])
+          Pmty_ident "S" (testsuite/tests/typing-modules/pr7818.ml[91,1732+19]..[91,1732+20])
+        module_expr (testsuite/tests/typing-modules/pr7818.ml[91,1732+25]..[94,1804+3])
+          Pmod_structure
+          [
+            structure_item (testsuite/tests/typing-modules/pr7818.ml[92,1764+2]..[92,1764+21])
+              Pstr_module
+              "Id" (testsuite/tests/typing-modules/pr7818.ml[92,1764+9]..[92,1764+11])
+                module_expr (testsuite/tests/typing-modules/pr7818.ml[92,1764+14]..[92,1764+21])
+                  Pmod_ident "T'.T.Id" (testsuite/tests/typing-modules/pr7818.ml[92,1764+14]..[92,1764+21])
+            structure_item (testsuite/tests/typing-modules/pr7818.ml[93,1786+2]..[93,1786+17])
+              Pstr_module
+              "Id2" (testsuite/tests/typing-modules/pr7818.ml[93,1786+9]..[93,1786+12])
+                module_expr (testsuite/tests/typing-modules/pr7818.ml[93,1786+15]..[93,1786+17])
+                  Pmod_ident "Id" (testsuite/tests/typing-modules/pr7818.ml[93,1786+15]..[93,1786+17])
+          ]
+  structure_item (testsuite/tests/typing-modules/pr7818.ml[95,1810+0]..[105,2119+3])
+    Pstr_extension "expect"
+    [
+      structure_item (testsuite/tests/typing-modules/pr7818.ml[95,1810+9]..[105,2119+2])
+        Pstr_eval
+        expression (testsuite/tests/typing-modules/pr7818.ml[95,1810+9]..[105,2119+2])
+          Pexp_constant PConst_string ("\nmodule type S =\n  sig module Term0 : sig module Id : sig end end module T = Term0 end\nmodule Make1 :\n  functor\n    (T' : sig\n            module Term0 : sig module Id : sig end end\n            module T : sig module Id : sig end end\n          end)\n    -> sig module Id : sig end module Id2 = Id end\n",(testsuite/tests/typing-modules/pr7818.ml[95,1810+11]..[105,2119+0]),Some "")
+    ]
+  structure_item (testsuite/tests/typing-modules/pr7818.ml[107,2124+0]..[111,2296+3])
+    Pstr_module
+    "Make2" (testsuite/tests/typing-modules/pr7818.ml[107,2124+7]..[107,2124+12])
+      module_expr (testsuite/tests/typing-modules/pr7818.ml[107,2124+13]..[111,2296+3])
+        Pmod_functor "T'" (testsuite/tests/typing-modules/pr7818.ml[107,2124+14]..[107,2124+16])
+        module_type (testsuite/tests/typing-modules/pr7818.ml[107,2124+19]..[107,2124+20])
+          Pmty_ident "S" (testsuite/tests/typing-modules/pr7818.ml[107,2124+19]..[107,2124+20])
+        module_expr (testsuite/tests/typing-modules/pr7818.ml[107,2124+22]..[111,2296+3])
+          Pmod_constraint
+          module_expr (testsuite/tests/typing-modules/pr7818.ml[108,2192+57]..[111,2296+3])
+            Pmod_structure
+            [
+              structure_item (testsuite/tests/typing-modules/pr7818.ml[109,2256+2]..[109,2256+21])
+                Pstr_module
+                "Id" (testsuite/tests/typing-modules/pr7818.ml[109,2256+9]..[109,2256+11])
+                  module_expr (testsuite/tests/typing-modules/pr7818.ml[109,2256+14]..[109,2256+21])
+                    Pmod_ident "T'.T.Id" (testsuite/tests/typing-modules/pr7818.ml[109,2256+14]..[109,2256+21])
+              structure_item (testsuite/tests/typing-modules/pr7818.ml[110,2278+2]..[110,2278+17])
+                Pstr_module
+                "Id2" (testsuite/tests/typing-modules/pr7818.ml[110,2278+9]..[110,2278+12])
+                  module_expr (testsuite/tests/typing-modules/pr7818.ml[110,2278+15]..[110,2278+17])
+                    Pmod_ident "Id" (testsuite/tests/typing-modules/pr7818.ml[110,2278+15]..[110,2278+17])
+            ]
+          module_type (testsuite/tests/typing-modules/pr7818.ml[107,2124+24]..[108,2192+53])
+            Pmty_with
+            module_type (testsuite/tests/typing-modules/pr7818.ml[107,2124+24]..[107,2124+67])
+              Pmty_signature
+              [
+                signature_item (testsuite/tests/typing-modules/pr7818.ml[107,2124+28]..[107,2124+47])
+                  Psig_module "Id" (testsuite/tests/typing-modules/pr7818.ml[107,2124+35]..[107,2124+37])
+                  module_type (testsuite/tests/typing-modules/pr7818.ml[107,2124+40]..[107,2124+47])
+                    Pmty_signature
+                    []
+                signature_item (testsuite/tests/typing-modules/pr7818.ml[107,2124+48]..[107,2124+63])
+                  Psig_module "Id2" (testsuite/tests/typing-modules/pr7818.ml[107,2124+55]..[107,2124+58])
+                  module_type (testsuite/tests/typing-modules/pr7818.ml[107,2124+61]..[107,2124+63])
+                    Pmty_alias "Id" (testsuite/tests/typing-modules/pr7818.ml[107,2124+61]..[107,2124+63])
+              ]
+            [
+              Pwith_modsubst "Id" (testsuite/tests/typing-modules/pr7818.ml[108,2192+36]..[108,2192+38]) = "T'.Term0.Id" (testsuite/tests/typing-modules/pr7818.ml[108,2192+42]..[108,2192+53])
+            ]
+  structure_item (testsuite/tests/typing-modules/pr7818.ml[112,2302+0]..[125,2711+3])
+    Pstr_extension "expect"
+    [
+      structure_item (testsuite/tests/typing-modules/pr7818.ml[112,2302+9]..[125,2711+2])
+        Pstr_eval
+        expression (testsuite/tests/typing-modules/pr7818.ml[112,2302+9]..[125,2711+2])
+          Pexp_constant PConst_string ("\nLines 2-5, characters 57-3:\n2 | .........................................................struct\n3 |   module Id = T'.T.Id\n4 |   module Id2 = Id\n5 | end..\nError: Signature mismatch:\n       Modules do not match:\n         sig module Id : sig end module Id2 = Id end\n       is not included in\n         sig module Id2 = T'.Term0.Id end\n       In module Id2:\n       Module T'.Term0.Id cannot be aliased\n",(testsuite/tests/typing-modules/pr7818.ml[112,2302+11]..[125,2711+0]),Some "")
+    ]
+  structure_item (testsuite/tests/typing-modules/pr7818.ml[127,2716+0]..[134,2845+3])
+    Pstr_module
+    "Make3" (testsuite/tests/typing-modules/pr7818.ml[127,2716+7]..[127,2716+12])
+      module_expr (testsuite/tests/typing-modules/pr7818.ml[127,2716+13]..[134,2845+3])
+        Pmod_functor "T'" (testsuite/tests/typing-modules/pr7818.ml[127,2716+14]..[127,2716+16])
+        module_type (testsuite/tests/typing-modules/pr7818.ml[127,2716+19]..[127,2716+20])
+          Pmty_ident "S" (testsuite/tests/typing-modules/pr7818.ml[127,2716+19]..[127,2716+20])
+        module_expr (testsuite/tests/typing-modules/pr7818.ml[127,2716+24]..[134,2845+3])
+          Pmod_structure
+          [
+            structure_item (testsuite/tests/typing-modules/pr7818.ml[128,2747+2]..[133,2839+5])
+              Pstr_module
+              "T" (testsuite/tests/typing-modules/pr7818.ml[128,2747+9]..[128,2747+10])
+                module_expr (testsuite/tests/typing-modules/pr7818.ml[128,2747+13]..[133,2839+5])
+                  Pmod_structure
+                  [
+                    structure_item (testsuite/tests/typing-modules/pr7818.ml[129,2767+4]..[129,2767+23])
+                      Pstr_module
+                      "Id" (testsuite/tests/typing-modules/pr7818.ml[129,2767+11]..[129,2767+13])
+                        module_expr (testsuite/tests/typing-modules/pr7818.ml[129,2767+16]..[129,2767+23])
+                          Pmod_ident "T'.T.Id" (testsuite/tests/typing-modules/pr7818.ml[129,2767+16]..[129,2767+23])
+                    structure_item (testsuite/tests/typing-modules/pr7818.ml[130,2791+4]..[130,2791+19])
+                      Pstr_module
+                      "Id2" (testsuite/tests/typing-modules/pr7818.ml[130,2791+11]..[130,2791+14])
+                        module_expr (testsuite/tests/typing-modules/pr7818.ml[130,2791+17]..[130,2791+19])
+                          Pmod_ident "Id" (testsuite/tests/typing-modules/pr7818.ml[130,2791+17]..[130,2791+19])
+                    structure_item (testsuite/tests/typing-modules/pr7818.ml[131,2811+4]..[131,2811+13])
+                      Pstr_value Nonrec
+                      [
+                        <def>
+                          pattern (testsuite/tests/typing-modules/pr7818.ml[131,2811+8]..[131,2811+9])
+                            Ppat_var "u" (testsuite/tests/typing-modules/pr7818.ml[131,2811+8]..[131,2811+9])
+                          expression (testsuite/tests/typing-modules/pr7818.ml[131,2811+12]..[131,2811+13])
+                            Pexp_constant PConst_int (1,None)
+                      ]
+                    structure_item (testsuite/tests/typing-modules/pr7818.ml[132,2825+4]..[132,2825+13])
+                      Pstr_value Nonrec
+                      [
+                        <def>
+                          pattern (testsuite/tests/typing-modules/pr7818.ml[132,2825+8]..[132,2825+9])
+                            Ppat_var "u" (testsuite/tests/typing-modules/pr7818.ml[132,2825+8]..[132,2825+9])
+                          expression (testsuite/tests/typing-modules/pr7818.ml[132,2825+12]..[132,2825+13])
+                            Pexp_constant PConst_int (1,None)
+                      ]
+                  ]
+          ]
+  structure_item (testsuite/tests/typing-modules/pr7818.ml[135,2851+0]..[146,3119+3])
+    Pstr_extension "expect"
+    [
+      structure_item (testsuite/tests/typing-modules/pr7818.ml[135,2851+9]..[146,3119+2])
+        Pstr_eval
+        expression (testsuite/tests/typing-modules/pr7818.ml[135,2851+9]..[146,3119+2])
+          Pexp_constant PConst_string ("\nmodule Make3 :\n  functor\n    (T' : sig\n            module Term0 : sig module Id : sig end end\n            module T : sig module Id : sig end end\n          end)\n    ->\n    sig\n      module T : sig module Id : sig end module Id2 = Id val u : int end\n    end\n",(testsuite/tests/typing-modules/pr7818.ml[135,2851+11]..[146,3119+0]),Some "")
+    ]
+  structure_item (testsuite/tests/typing-modules/pr7818.ml[149,3174+0]..[150,3214+69])
+    Pstr_module
+    "M" (testsuite/tests/typing-modules/pr7818.ml[149,3174+7]..[149,3174+8])
+      module_expr (testsuite/tests/typing-modules/pr7818.ml[149,3174+11]..[150,3214+69])
+        Pmod_apply
+        module_expr (testsuite/tests/typing-modules/pr7818.ml[149,3174+11]..[149,3174+16])
+          Pmod_ident "Make1" (testsuite/tests/typing-modules/pr7818.ml[149,3174+11]..[149,3174+16])
+        module_expr (testsuite/tests/typing-modules/pr7818.ml[149,3174+18]..[150,3214+68])
+          Pmod_structure
+          [
+            structure_item (testsuite/tests/typing-modules/pr7818.ml[149,3174+25]..[150,3214+47])
+              Pstr_module
+              "Term0" (testsuite/tests/typing-modules/pr7818.ml[149,3174+32]..[149,3174+37])
+                module_expr (testsuite/tests/typing-modules/pr7818.ml[150,3214+2]..[150,3214+47])
+                  Pmod_structure
+                  [
+                    structure_item (testsuite/tests/typing-modules/pr7818.ml[150,3214+9]..[150,3214+43])
+                      Pstr_module
+                      "Id" (testsuite/tests/typing-modules/pr7818.ml[150,3214+16]..[150,3214+18])
+                        module_expr (testsuite/tests/typing-modules/pr7818.ml[150,3214+21]..[150,3214+43])
+                          Pmod_structure
+                          [
+                            structure_item (testsuite/tests/typing-modules/pr7818.ml[150,3214+28]..[150,3214+39])
+                              Pstr_value Nonrec
+                              [
+                                <def>
+                                  pattern (testsuite/tests/typing-modules/pr7818.ml[150,3214+32]..[150,3214+33])
+                                    Ppat_var "x" (testsuite/tests/typing-modules/pr7818.ml[150,3214+32]..[150,3214+33])
+                                  expression (testsuite/tests/typing-modules/pr7818.ml[150,3214+36]..[150,3214+39])
+                                    Pexp_constant PConst_string("a",(testsuite/tests/typing-modules/pr7818.ml[150,3214+37]..[150,3214+38]),None)
+                              ]
+                          ]
+                  ]
+            structure_item (testsuite/tests/typing-modules/pr7818.ml[150,3214+48]..[150,3214+64])
+              Pstr_module
+              "T" (testsuite/tests/typing-modules/pr7818.ml[150,3214+55]..[150,3214+56])
+                module_expr (testsuite/tests/typing-modules/pr7818.ml[150,3214+59]..[150,3214+64])
+                  Pmod_ident "Term0" (testsuite/tests/typing-modules/pr7818.ml[150,3214+59]..[150,3214+64])
+          ]
+  structure_item (testsuite/tests/typing-modules/pr7818.ml[151,3286+0]..[151,3286+6])
+    Pstr_eval
+    expression (testsuite/tests/typing-modules/pr7818.ml[151,3286+0]..[151,3286+6])
+      Pexp_ident "M.Id.x" (testsuite/tests/typing-modules/pr7818.ml[151,3286+0]..[151,3286+6])
+  structure_item (testsuite/tests/typing-modules/pr7818.ml[152,3295+0]..[158,3438+3])
+    Pstr_extension "expect"
+    [
+      structure_item (testsuite/tests/typing-modules/pr7818.ml[152,3295+9]..[158,3438+2])
+        Pstr_eval
+        expression (testsuite/tests/typing-modules/pr7818.ml[152,3295+9]..[158,3438+2])
+          Pexp_constant PConst_string ("\nmodule M : sig module Id : sig end module Id2 = Id end\nLine 3, characters 0-6:\n3 | M.Id.x;;\n    ^^^^^^\nError: Unbound value M.Id.x\n",(testsuite/tests/typing-modules/pr7818.ml[152,3295+11]..[158,3438+0]),Some "")
+    ]
+  structure_item (testsuite/tests/typing-modules/pr7818.ml[162,3467+0]..[162,3467+43])
+    Pstr_module
+    "MkT" (testsuite/tests/typing-modules/pr7818.ml[162,3467+7]..[162,3467+10])
+      module_expr (testsuite/tests/typing-modules/pr7818.ml[162,3467+10]..[162,3467+43])
+        Pmod_functor "X" (testsuite/tests/typing-modules/pr7818.ml[162,3467+11]..[162,3467+12])
+        module_type (testsuite/tests/typing-modules/pr7818.ml[162,3467+15]..[162,3467+22])
+          Pmty_signature
+          []
+        module_expr (testsuite/tests/typing-modules/pr7818.ml[162,3467+26]..[162,3467+43])
+          Pmod_structure
+          [
+            structure_item (testsuite/tests/typing-modules/pr7818.ml[162,3467+33]..[162,3467+39])
+              Pstr_type Rec
+              [
+                type_declaration "t" (testsuite/tests/typing-modules/pr7818.ml[162,3467+38]..[162,3467+39]) (testsuite/tests/typing-modules/pr7818.ml[162,3467+33]..[162,3467+39])
+                  ptype_params =
+                    []
+                  ptype_cstrs =
+                    []
+                  ptype_kind =
+                    Ptype_abstract
+                  ptype_private = Public
+                  ptype_manifest =
+                    None
+              ]
+          ]
+  structure_item (testsuite/tests/typing-modules/pr7818.ml[163,3511+0]..[167,3615+3])
+    Pstr_modtype "S" (testsuite/tests/typing-modules/pr7818.ml[163,3511+12]..[163,3511+13])
+      module_type (testsuite/tests/typing-modules/pr7818.ml[163,3511+16]..[167,3615+3])
+        Pmty_signature
+        [
+          signature_item (testsuite/tests/typing-modules/pr7818.ml[164,3531+2]..[164,3531+44])
+            Psig_module "Term0" (testsuite/tests/typing-modules/pr7818.ml[164,3531+9]..[164,3531+14])
+            module_type (testsuite/tests/typing-modules/pr7818.ml[164,3531+17]..[164,3531+44])
+              Pmty_signature
+              [
+                signature_item (testsuite/tests/typing-modules/pr7818.ml[164,3531+21]..[164,3531+40])
+                  Psig_module "Id" (testsuite/tests/typing-modules/pr7818.ml[164,3531+28]..[164,3531+30])
+                  module_type (testsuite/tests/typing-modules/pr7818.ml[164,3531+33]..[164,3531+40])
+                    Pmty_signature
+                    []
+              ]
+          signature_item (testsuite/tests/typing-modules/pr7818.ml[165,3576+2]..[165,3576+18])
+            Psig_module "T" (testsuite/tests/typing-modules/pr7818.ml[165,3576+9]..[165,3576+10])
+            module_type (testsuite/tests/typing-modules/pr7818.ml[165,3576+13]..[165,3576+18])
+              Pmty_alias "Term0" (testsuite/tests/typing-modules/pr7818.ml[165,3576+13]..[165,3576+18])
+          signature_item (testsuite/tests/typing-modules/pr7818.ml[166,3595+2]..[166,3595+19])
+            Psig_type Rec
+            [
+              type_declaration "t" (testsuite/tests/typing-modules/pr7818.ml[166,3595+7]..[166,3595+8]) (testsuite/tests/typing-modules/pr7818.ml[166,3595+2]..[166,3595+19])
+                ptype_params =
+                  []
+                ptype_cstrs =
+                  []
+                ptype_kind =
+                  Ptype_abstract
+                ptype_private = Public
+                ptype_manifest =
+                  Some
+                    core_type (testsuite/tests/typing-modules/pr7818.ml[166,3595+11]..[166,3595+19])
+                      Ptyp_constr "MkT(T).t" (testsuite/tests/typing-modules/pr7818.ml[166,3595+11]..[166,3595+19])
+                      []
+            ]
+        ]
+  structure_item (testsuite/tests/typing-modules/pr7818.ml[169,3622+0]..[173,3710+3])
+    Pstr_module
+    "Make1" (testsuite/tests/typing-modules/pr7818.ml[169,3622+7]..[169,3622+12])
+      module_expr (testsuite/tests/typing-modules/pr7818.ml[169,3622+13]..[173,3710+3])
+        Pmod_functor "T'" (testsuite/tests/typing-modules/pr7818.ml[169,3622+14]..[169,3622+16])
+        module_type (testsuite/tests/typing-modules/pr7818.ml[169,3622+19]..[169,3622+20])
+          Pmty_ident "S" (testsuite/tests/typing-modules/pr7818.ml[169,3622+19]..[169,3622+20])
+        module_expr (testsuite/tests/typing-modules/pr7818.ml[169,3622+25]..[173,3710+3])
+          Pmod_structure
+          [
+            structure_item (testsuite/tests/typing-modules/pr7818.ml[170,3654+2]..[170,3654+21])
+              Pstr_module
+              "Id" (testsuite/tests/typing-modules/pr7818.ml[170,3654+9]..[170,3654+11])
+                module_expr (testsuite/tests/typing-modules/pr7818.ml[170,3654+14]..[170,3654+21])
+                  Pmod_ident "T'.T.Id" (testsuite/tests/typing-modules/pr7818.ml[170,3654+14]..[170,3654+21])
+            structure_item (testsuite/tests/typing-modules/pr7818.ml[171,3676+2]..[171,3676+17])
+              Pstr_module
+              "Id2" (testsuite/tests/typing-modules/pr7818.ml[171,3676+9]..[171,3676+12])
+                module_expr (testsuite/tests/typing-modules/pr7818.ml[171,3676+15]..[171,3676+17])
+                  Pmod_ident "Id" (testsuite/tests/typing-modules/pr7818.ml[171,3676+15]..[171,3676+17])
+            structure_item (testsuite/tests/typing-modules/pr7818.ml[172,3694+2]..[172,3694+15])
+              Pstr_type Rec
+              [
+                type_declaration "t" (testsuite/tests/typing-modules/pr7818.ml[172,3694+7]..[172,3694+8]) (testsuite/tests/typing-modules/pr7818.ml[172,3694+2]..[172,3694+15])
+                  ptype_params =
+                    []
+                  ptype_cstrs =
+                    []
+                  ptype_kind =
+                    Ptype_abstract
+                  ptype_private = Public
+                  ptype_manifest =
+                    Some
+                      core_type (testsuite/tests/typing-modules/pr7818.ml[172,3694+11]..[172,3694+15])
+                        Ptyp_constr "T'.t" (testsuite/tests/typing-modules/pr7818.ml[172,3694+11]..[172,3694+15])
+                        []
+              ]
+          ]
+  structure_item (testsuite/tests/typing-modules/pr7818.ml[175,3717+0]..[179,3838+3])
+    Pstr_module
+    "IS" (testsuite/tests/typing-modules/pr7818.ml[175,3717+7]..[175,3717+9])
+      module_expr (testsuite/tests/typing-modules/pr7818.ml[175,3717+12]..[179,3838+3])
+        Pmod_structure
+        [
+          structure_item (testsuite/tests/typing-modules/pr7818.ml[176,3736+2]..[176,3736+62])
+            Pstr_module
+            "Term0" (testsuite/tests/typing-modules/pr7818.ml[176,3736+9]..[176,3736+14])
+              module_expr (testsuite/tests/typing-modules/pr7818.ml[176,3736+17]..[176,3736+62])
+                Pmod_structure
+                [
+                  structure_item (testsuite/tests/typing-modules/pr7818.ml[176,3736+24]..[176,3736+58])
+                    Pstr_module
+                    "Id" (testsuite/tests/typing-modules/pr7818.ml[176,3736+31]..[176,3736+33])
+                      module_expr (testsuite/tests/typing-modules/pr7818.ml[176,3736+36]..[176,3736+58])
+                        Pmod_structure
+                        [
+                          structure_item (testsuite/tests/typing-modules/pr7818.ml[176,3736+43]..[176,3736+54])
+                            Pstr_value Nonrec
+                            [
+                              <def>
+                                pattern (testsuite/tests/typing-modules/pr7818.ml[176,3736+47]..[176,3736+48])
+                                  Ppat_var "x" (testsuite/tests/typing-modules/pr7818.ml[176,3736+47]..[176,3736+48])
+                                expression (testsuite/tests/typing-modules/pr7818.ml[176,3736+51]..[176,3736+54])
+                                  Pexp_constant PConst_string("a",(testsuite/tests/typing-modules/pr7818.ml[176,3736+52]..[176,3736+53]),None)
+                            ]
+                        ]
+                ]
+          structure_item (testsuite/tests/typing-modules/pr7818.ml[177,3799+2]..[177,3799+18])
+            Pstr_module
+            "T" (testsuite/tests/typing-modules/pr7818.ml[177,3799+9]..[177,3799+10])
+              module_expr (testsuite/tests/typing-modules/pr7818.ml[177,3799+13]..[177,3799+18])
+                Pmod_ident "Term0" (testsuite/tests/typing-modules/pr7818.ml[177,3799+13]..[177,3799+18])
+          structure_item (testsuite/tests/typing-modules/pr7818.ml[178,3818+2]..[178,3818+19])
+            Pstr_type Rec
+            [
+              type_declaration "t" (testsuite/tests/typing-modules/pr7818.ml[178,3818+7]..[178,3818+8]) (testsuite/tests/typing-modules/pr7818.ml[178,3818+2]..[178,3818+19])
+                ptype_params =
+                  []
+                ptype_cstrs =
+                  []
+                ptype_kind =
+                  Ptype_abstract
+                ptype_private = Public
+                ptype_manifest =
+                  Some
+                    core_type (testsuite/tests/typing-modules/pr7818.ml[178,3818+11]..[178,3818+19])
+                      Ptyp_constr "MkT(T).t" (testsuite/tests/typing-modules/pr7818.ml[178,3818+11]..[178,3818+19])
+                      []
+            ]
+        ]
+  structure_item (testsuite/tests/typing-modules/pr7818.ml[181,3845+0]..[181,3845+20])
+    Pstr_module
+    "M" (testsuite/tests/typing-modules/pr7818.ml[181,3845+7]..[181,3845+8])
+      module_expr (testsuite/tests/typing-modules/pr7818.ml[181,3845+11]..[181,3845+20])
+        Pmod_apply
+        module_expr (testsuite/tests/typing-modules/pr7818.ml[181,3845+11]..[181,3845+16])
+          Pmod_ident "Make1" (testsuite/tests/typing-modules/pr7818.ml[181,3845+11]..[181,3845+16])
+        module_expr (testsuite/tests/typing-modules/pr7818.ml[181,3845+17]..[181,3845+19])
+          Pmod_ident "IS" (testsuite/tests/typing-modules/pr7818.ml[181,3845+17]..[181,3845+19])
+  structure_item (testsuite/tests/typing-modules/pr7818.ml[182,3868+0]..[205,4504+3])
+    Pstr_extension "expect"
+    [
+      structure_item (testsuite/tests/typing-modules/pr7818.ml[182,3868+9]..[205,4504+2])
+        Pstr_eval
+        expression (testsuite/tests/typing-modules/pr7818.ml[182,3868+9]..[205,4504+2])
+          Pexp_constant PConst_string ("\nmodule MkT : functor (X : sig end) -> sig type t end\nmodule type S =\n  sig\n    module Term0 : sig module Id : sig end end\n    module T = Term0\n    type t = MkT(T).t\n  end\nmodule Make1 :\n  functor\n    (T' : sig\n            module Term0 : sig module Id : sig end end\n            module T : sig module Id : sig end end\n            type t = MkT(T).t\n          end)\n    -> sig module Id : sig end module Id2 = Id type t = T'.t end\nmodule IS :\n  sig\n    module Term0 : sig module Id : sig val x : string end end\n    module T = Term0\n    type t = MkT(T).t\n  end\nmodule M : sig module Id : sig end module Id2 = Id type t = IS.t end\n",(testsuite/tests/typing-modules/pr7818.ml[182,3868+11]..[205,4504+0]),Some "")
+    ]
+  structure_item (testsuite/tests/typing-modules/pr7818.ml[214,4759+0]..[214,4759+31])
+    Pstr_type Rec
+    [
+      type_declaration "eq" (testsuite/tests/typing-modules/pr7818.ml[214,4759+11]..[214,4759+13]) (testsuite/tests/typing-modules/pr7818.ml[214,4759+0]..[214,4759+31])
+        ptype_params =
+          [
+            core_type (testsuite/tests/typing-modules/pr7818.ml[214,4759+6]..[214,4759+7])
+              Ptyp_any
+            core_type (testsuite/tests/typing-modules/pr7818.ml[214,4759+8]..[214,4759+9])
+              Ptyp_any
+          ]
+        ptype_cstrs =
+          []
+        ptype_kind =
+          Ptype_variant
+            [
+              (testsuite/tests/typing-modules/pr7818.ml[214,4759+16]..[214,4759+31])
+                "Eq" (testsuite/tests/typing-modules/pr7818.ml[214,4759+16]..[214,4759+18])
+                []
+                Some
+                  core_type (testsuite/tests/typing-modules/pr7818.ml[214,4759+21]..[214,4759+31])
+                    Ptyp_constr "eq" (testsuite/tests/typing-modules/pr7818.ml[214,4759+29]..[214,4759+31])
+                    [
+                      core_type (testsuite/tests/typing-modules/pr7818.ml[214,4759+22]..[214,4759+24])
+                        Ptyp_var a
+                      core_type (testsuite/tests/typing-modules/pr7818.ml[214,4759+25]..[214,4759+27])
+                        Ptyp_var a
+                    ]
+            ]
+        ptype_private = Public
+        ptype_manifest =
+          None
+    ]
+  structure_item (testsuite/tests/typing-modules/pr7818.ml[215,4791+0]..[215,4791+45])
+    Pstr_module
+    "MkT" (testsuite/tests/typing-modules/pr7818.ml[215,4791+7]..[215,4791+10])
+      module_expr (testsuite/tests/typing-modules/pr7818.ml[215,4791+10]..[215,4791+45])
+        Pmod_functor "X" (testsuite/tests/typing-modules/pr7818.ml[215,4791+11]..[215,4791+12])
+        module_type (testsuite/tests/typing-modules/pr7818.ml[215,4791+15]..[215,4791+30])
+          Pmty_ident "Set.OrderedType" (testsuite/tests/typing-modules/pr7818.ml[215,4791+15]..[215,4791+30])
+        module_expr (testsuite/tests/typing-modules/pr7818.ml[215,4791+34]..[215,4791+45])
+          Pmod_apply
+          module_expr (testsuite/tests/typing-modules/pr7818.ml[215,4791+34]..[215,4791+42])
+            Pmod_ident "Set.Make" (testsuite/tests/typing-modules/pr7818.ml[215,4791+34]..[215,4791+42])
+          module_expr (testsuite/tests/typing-modules/pr7818.ml[215,4791+43]..[215,4791+44])
+            Pmod_ident "X" (testsuite/tests/typing-modules/pr7818.ml[215,4791+43]..[215,4791+44])
+  structure_item (testsuite/tests/typing-modules/pr7818.ml[216,4837+0]..[221,5013+3])
+    Pstr_modtype "S" (testsuite/tests/typing-modules/pr7818.ml[216,4837+12]..[216,4837+13])
+      module_type (testsuite/tests/typing-modules/pr7818.ml[216,4837+16]..[221,5013+3])
+        Pmty_signature
+        [
+          signature_item (testsuite/tests/typing-modules/pr7818.ml[217,4857+2]..[217,4857+50])
+            Psig_module "Term0" (testsuite/tests/typing-modules/pr7818.ml[217,4857+9]..[217,4857+14])
+            module_type (testsuite/tests/typing-modules/pr7818.ml[217,4857+17]..[217,4857+50])
+              Pmty_with
+              module_type (testsuite/tests/typing-modules/pr7818.ml[217,4857+17]..[217,4857+32])
+                Pmty_ident "Set.OrderedType" (testsuite/tests/typing-modules/pr7818.ml[217,4857+17]..[217,4857+32])
+              [
+                Pwith_type "t" (testsuite/tests/typing-modules/pr7818.ml[217,4857+43]..[217,4857+44])
+                  type_declaration "t" (testsuite/tests/typing-modules/pr7818.ml[217,4857+43]..[217,4857+44]) (testsuite/tests/typing-modules/pr7818.ml[217,4857+38]..[217,4857+50])
+                    ptype_params =
+                      []
+                    ptype_cstrs =
+                      []
+                    ptype_kind =
+                      Ptype_abstract
+                    ptype_private = Public
+                    ptype_manifest =
+                      Some
+                        core_type (testsuite/tests/typing-modules/pr7818.ml[217,4857+47]..[217,4857+50])
+                          Ptyp_constr "int" (testsuite/tests/typing-modules/pr7818.ml[217,4857+47]..[217,4857+50])
+                          []
+              ]
+          signature_item (testsuite/tests/typing-modules/pr7818.ml[218,4908+2]..[218,4908+18])
+            Psig_module "T" (testsuite/tests/typing-modules/pr7818.ml[218,4908+9]..[218,4908+10])
+            module_type (testsuite/tests/typing-modules/pr7818.ml[218,4908+13]..[218,4908+18])
+              Pmty_alias "Term0" (testsuite/tests/typing-modules/pr7818.ml[218,4908+13]..[218,4908+18])
+          signature_item (testsuite/tests/typing-modules/pr7818.ml[219,4927+2]..[219,4927+38])
+            Psig_type Rec
+            [
+              type_declaration "t" (testsuite/tests/typing-modules/pr7818.ml[219,4927+7]..[219,4927+8]) (testsuite/tests/typing-modules/pr7818.ml[219,4927+2]..[219,4927+38])
+                ptype_params =
+                  []
+                ptype_cstrs =
+                  []
+                ptype_kind =
+                  Ptype_variant
+                    [
+                      (testsuite/tests/typing-modules/pr7818.ml[219,4927+11]..[219,4927+38])
+                        "E" (testsuite/tests/typing-modules/pr7818.ml[219,4927+11]..[219,4927+12])
+                        [
+                          core_type (testsuite/tests/typing-modules/pr7818.ml[219,4927+16]..[219,4927+38])
+                            Ptyp_constr "eq" (testsuite/tests/typing-modules/pr7818.ml[219,4927+36]..[219,4927+38])
+                            [
+                              core_type (testsuite/tests/typing-modules/pr7818.ml[219,4927+17]..[219,4927+25])
+                                Ptyp_constr "MkT(T).t" (testsuite/tests/typing-modules/pr7818.ml[219,4927+17]..[219,4927+25])
+                                []
+                              core_type (testsuite/tests/typing-modules/pr7818.ml[219,4927+26]..[219,4927+34])
+                                Ptyp_constr "MkT(T).t" (testsuite/tests/typing-modules/pr7818.ml[219,4927+26]..[219,4927+34])
+                                []
+                            ]
+                        ]
+                        None
+                    ]
+                ptype_private = Public
+                ptype_manifest =
+                  None
+            ]
+          signature_item (testsuite/tests/typing-modules/pr7818.ml[220,4966+2]..[220,4966+46])
+            Psig_type Rec
+            [
+              type_declaration "u" (testsuite/tests/typing-modules/pr7818.ml[220,4966+7]..[220,4966+8]) (testsuite/tests/typing-modules/pr7818.ml[220,4966+2]..[220,4966+46])
+                ptype_params =
+                  []
+                ptype_cstrs =
+                  []
+                ptype_kind =
+                  Ptype_variant
+                    [
+                      (testsuite/tests/typing-modules/pr7818.ml[220,4966+15]..[220,4966+46])
+                        "E" (testsuite/tests/typing-modules/pr7818.ml[220,4966+15]..[220,4966+16])
+                        [
+                          core_type (testsuite/tests/typing-modules/pr7818.ml[220,4966+20]..[220,4966+46])
+                            Ptyp_constr "eq" (testsuite/tests/typing-modules/pr7818.ml[220,4966+44]..[220,4966+46])
+                            [
+                              core_type (testsuite/tests/typing-modules/pr7818.ml[220,4966+21]..[220,4966+33])
+                                Ptyp_constr "MkT(Term0).t" (testsuite/tests/typing-modules/pr7818.ml[220,4966+21]..[220,4966+33])
+                                []
+                              core_type (testsuite/tests/typing-modules/pr7818.ml[220,4966+34]..[220,4966+42])
+                                Ptyp_constr "MkT(T).t" (testsuite/tests/typing-modules/pr7818.ml[220,4966+34]..[220,4966+42])
+                                []
+                            ]
+                        ]
+                        None
+                    ]
+                ptype_private = Public
+                ptype_manifest =
+                  Some
+                    core_type (testsuite/tests/typing-modules/pr7818.ml[220,4966+11]..[220,4966+12])
+                      Ptyp_constr "t" (testsuite/tests/typing-modules/pr7818.ml[220,4966+11]..[220,4966+12])
+                      []
+            ]
+        ]
+  structure_item (testsuite/tests/typing-modules/pr7818.ml[222,5019+0]..[222,5019+17])
+    Pstr_module
+    "F" (testsuite/tests/typing-modules/pr7818.ml[222,5019+7]..[222,5019+8])
+      module_expr (testsuite/tests/typing-modules/pr7818.ml[222,5019+8]..[222,5019+17])
+        Pmod_functor "X" (testsuite/tests/typing-modules/pr7818.ml[222,5019+9]..[222,5019+10])
+        module_type (testsuite/tests/typing-modules/pr7818.ml[222,5019+11]..[222,5019+12])
+          Pmty_ident "S" (testsuite/tests/typing-modules/pr7818.ml[222,5019+11]..[222,5019+12])
+        module_expr (testsuite/tests/typing-modules/pr7818.ml[222,5019+16]..[222,5019+17])
+          Pmod_ident "X" (testsuite/tests/typing-modules/pr7818.ml[222,5019+16]..[222,5019+17])
+  structure_item (testsuite/tests/typing-modules/pr7818.ml[223,5039+0]..[223,5039+20])
+    Pstr_recmodule
+    [
+      "M" (testsuite/tests/typing-modules/pr7818.ml[223,5039+11]..[223,5039+12])
+        module_expr (testsuite/tests/typing-modules/pr7818.ml[223,5039+13]..[223,5039+20])
+          Pmod_constraint
+          module_expr (testsuite/tests/typing-modules/pr7818.ml[223,5039+19]..[223,5039+20])
+            Pmod_ident "M" (testsuite/tests/typing-modules/pr7818.ml[223,5039+19]..[223,5039+20])
+          module_type (testsuite/tests/typing-modules/pr7818.ml[223,5039+15]..[223,5039+16])
+            Pmty_ident "S" (testsuite/tests/typing-modules/pr7818.ml[223,5039+15]..[223,5039+16])
+    ]
+  structure_item (testsuite/tests/typing-modules/pr7818.ml[224,5062+0]..[224,5062+16])
+    Pstr_module
+    "M'" (testsuite/tests/typing-modules/pr7818.ml[224,5062+7]..[224,5062+9])
+      module_expr (testsuite/tests/typing-modules/pr7818.ml[224,5062+12]..[224,5062+16])
+        Pmod_apply
+        module_expr (testsuite/tests/typing-modules/pr7818.ml[224,5062+12]..[224,5062+13])
+          Pmod_ident "F" (testsuite/tests/typing-modules/pr7818.ml[224,5062+12]..[224,5062+13])
+        module_expr (testsuite/tests/typing-modules/pr7818.ml[224,5062+14]..[224,5062+15])
+          Pmod_ident "M" (testsuite/tests/typing-modules/pr7818.ml[224,5062+14]..[224,5062+15])
+  structure_item (testsuite/tests/typing-modules/pr7818.ml[225,5081+0]..[225,5081+34])
+    Pstr_modtype "S'" (testsuite/tests/typing-modules/pr7818.ml[225,5081+12]..[225,5081+14])
+      module_type (testsuite/tests/typing-modules/pr7818.ml[225,5081+17]..[225,5081+34])
+        Pmty_typeof
+        module_expr (testsuite/tests/typing-modules/pr7818.ml[225,5081+32]..[225,5081+34])
+          Pmod_ident "M'" (testsuite/tests/typing-modules/pr7818.ml[225,5081+32]..[225,5081+34])
+  structure_item (testsuite/tests/typing-modules/pr7818.ml[226,5118+0]..[226,5118+60])
+    Pstr_module
+    "Asc" (testsuite/tests/typing-modules/pr7818.ml[226,5118+7]..[226,5118+10])
+      module_expr (testsuite/tests/typing-modules/pr7818.ml[226,5118+13]..[226,5118+60])
+        Pmod_structure
+        [
+          structure_item (testsuite/tests/typing-modules/pr7818.ml[226,5118+20]..[226,5118+32])
+            Pstr_type Rec
+            [
+              type_declaration "t" (testsuite/tests/typing-modules/pr7818.ml[226,5118+25]..[226,5118+26]) (testsuite/tests/typing-modules/pr7818.ml[226,5118+20]..[226,5118+32])
+                ptype_params =
+                  []
+                ptype_cstrs =
+                  []
+                ptype_kind =
+                  Ptype_abstract
+                ptype_private = Public
+                ptype_manifest =
+                  Some
+                    core_type (testsuite/tests/typing-modules/pr7818.ml[226,5118+29]..[226,5118+32])
+                      Ptyp_constr "int" (testsuite/tests/typing-modules/pr7818.ml[226,5118+29]..[226,5118+32])
+                      []
+            ]
+          structure_item (testsuite/tests/typing-modules/pr7818.ml[226,5118+33]..[226,5118+56])
+            Pstr_value Nonrec
+            [
+              <def>
+                pattern (testsuite/tests/typing-modules/pr7818.ml[226,5118+37]..[226,5118+44])
+                  Ppat_var "compare" (testsuite/tests/typing-modules/pr7818.ml[226,5118+37]..[226,5118+44])
+                expression (testsuite/tests/typing-modules/pr7818.ml[226,5118+45]..[226,5118+56]) ghost
+                  Pexp_fun
+                  Nolabel
+                  None
+                  pattern (testsuite/tests/typing-modules/pr7818.ml[226,5118+45]..[226,5118+46])
+                    Ppat_var "x" (testsuite/tests/typing-modules/pr7818.ml[226,5118+45]..[226,5118+46])
+                  expression (testsuite/tests/typing-modules/pr7818.ml[226,5118+47]..[226,5118+56]) ghost
+                    Pexp_fun
+                    Nolabel
+                    None
+                    pattern (testsuite/tests/typing-modules/pr7818.ml[226,5118+47]..[226,5118+48])
+                      Ppat_var "y" (testsuite/tests/typing-modules/pr7818.ml[226,5118+47]..[226,5118+48])
+                    expression (testsuite/tests/typing-modules/pr7818.ml[226,5118+51]..[226,5118+56])
+                      Pexp_apply
+                      expression (testsuite/tests/typing-modules/pr7818.ml[226,5118+53]..[226,5118+54])
+                        Pexp_ident "-" (testsuite/tests/typing-modules/pr7818.ml[226,5118+53]..[226,5118+54])
+                      [
+                        <arg>
+                        Nolabel
+                          expression (testsuite/tests/typing-modules/pr7818.ml[226,5118+51]..[226,5118+52])
+                            Pexp_ident "x" (testsuite/tests/typing-modules/pr7818.ml[226,5118+51]..[226,5118+52])
+                        <arg>
+                        Nolabel
+                          expression (testsuite/tests/typing-modules/pr7818.ml[226,5118+55]..[226,5118+56])
+                            Pexp_ident "y" (testsuite/tests/typing-modules/pr7818.ml[226,5118+55]..[226,5118+56])
+                      ]
+            ]
+        ]
+  structure_item (testsuite/tests/typing-modules/pr7818.ml[227,5181+0]..[227,5181+61])
+    Pstr_module
+    "Desc" (testsuite/tests/typing-modules/pr7818.ml[227,5181+7]..[227,5181+11])
+      module_expr (testsuite/tests/typing-modules/pr7818.ml[227,5181+14]..[227,5181+61])
+        Pmod_structure
+        [
+          structure_item (testsuite/tests/typing-modules/pr7818.ml[227,5181+21]..[227,5181+33])
+            Pstr_type Rec
+            [
+              type_declaration "t" (testsuite/tests/typing-modules/pr7818.ml[227,5181+26]..[227,5181+27]) (testsuite/tests/typing-modules/pr7818.ml[227,5181+21]..[227,5181+33])
+                ptype_params =
+                  []
+                ptype_cstrs =
+                  []
+                ptype_kind =
+                  Ptype_abstract
+                ptype_private = Public
+                ptype_manifest =
+                  Some
+                    core_type (testsuite/tests/typing-modules/pr7818.ml[227,5181+30]..[227,5181+33])
+                      Ptyp_constr "int" (testsuite/tests/typing-modules/pr7818.ml[227,5181+30]..[227,5181+33])
+                      []
+            ]
+          structure_item (testsuite/tests/typing-modules/pr7818.ml[227,5181+34]..[227,5181+57])
+            Pstr_value Nonrec
+            [
+              <def>
+                pattern (testsuite/tests/typing-modules/pr7818.ml[227,5181+38]..[227,5181+45])
+                  Ppat_var "compare" (testsuite/tests/typing-modules/pr7818.ml[227,5181+38]..[227,5181+45])
+                expression (testsuite/tests/typing-modules/pr7818.ml[227,5181+46]..[227,5181+57]) ghost
+                  Pexp_fun
+                  Nolabel
+                  None
+                  pattern (testsuite/tests/typing-modules/pr7818.ml[227,5181+46]..[227,5181+47])
+                    Ppat_var "x" (testsuite/tests/typing-modules/pr7818.ml[227,5181+46]..[227,5181+47])
+                  expression (testsuite/tests/typing-modules/pr7818.ml[227,5181+48]..[227,5181+57]) ghost
+                    Pexp_fun
+                    Nolabel
+                    None
+                    pattern (testsuite/tests/typing-modules/pr7818.ml[227,5181+48]..[227,5181+49])
+                      Ppat_var "y" (testsuite/tests/typing-modules/pr7818.ml[227,5181+48]..[227,5181+49])
+                    expression (testsuite/tests/typing-modules/pr7818.ml[227,5181+52]..[227,5181+57])
+                      Pexp_apply
+                      expression (testsuite/tests/typing-modules/pr7818.ml[227,5181+54]..[227,5181+55])
+                        Pexp_ident "-" (testsuite/tests/typing-modules/pr7818.ml[227,5181+54]..[227,5181+55])
+                      [
+                        <arg>
+                        Nolabel
+                          expression (testsuite/tests/typing-modules/pr7818.ml[227,5181+52]..[227,5181+53])
+                            Pexp_ident "y" (testsuite/tests/typing-modules/pr7818.ml[227,5181+52]..[227,5181+53])
+                        <arg>
+                        Nolabel
+                          expression (testsuite/tests/typing-modules/pr7818.ml[227,5181+56]..[227,5181+57])
+                            Pexp_ident "x" (testsuite/tests/typing-modules/pr7818.ml[227,5181+56]..[227,5181+57])
+                      ]
+            ]
+        ]
+  structure_item (testsuite/tests/typing-modules/pr7818.ml[228,5245+0]..[228,5245+69])
+    Pstr_recmodule
+    [
+      "M1" (testsuite/tests/typing-modules/pr7818.ml[228,5245+11]..[228,5245+13])
+        module_expr (testsuite/tests/typing-modules/pr7818.ml[228,5245+14]..[228,5245+69])
+          Pmod_constraint
+          module_expr (testsuite/tests/typing-modules/pr7818.ml[228,5245+67]..[228,5245+69])
+            Pmod_ident "M1" (testsuite/tests/typing-modules/pr7818.ml[228,5245+67]..[228,5245+69])
+          module_type (testsuite/tests/typing-modules/pr7818.ml[228,5245+16]..[228,5245+64])
+            Pmty_with
+            module_type (testsuite/tests/typing-modules/pr7818.ml[228,5245+16]..[228,5245+18])
+              Pmty_ident "S'" (testsuite/tests/typing-modules/pr7818.ml[228,5245+16]..[228,5245+18])
+            [
+              Pwith_modsubst "Term0" (testsuite/tests/typing-modules/pr7818.ml[228,5245+31]..[228,5245+36]) = "Asc" (testsuite/tests/typing-modules/pr7818.ml[228,5245+40]..[228,5245+43])
+              Pwith_modsubst "T" (testsuite/tests/typing-modules/pr7818.ml[228,5245+55]..[228,5245+56]) = "Desc" (testsuite/tests/typing-modules/pr7818.ml[228,5245+60]..[228,5245+64])
+            ]
+    ]
+  structure_item (testsuite/tests/typing-modules/pr7818.ml[230,5381+0]..[230,5381+33])
+    Pstr_value Nonrec
+    [
+      <def>
+        pattern (testsuite/tests/typing-modules/pr7818.ml[230,5381+4]..[230,5381+17])
+          Ppat_constraint
+          pattern (testsuite/tests/typing-modules/pr7818.ml[230,5381+5]..[230,5381+9])
+            Ppat_construct "E" (testsuite/tests/typing-modules/pr7818.ml[230,5381+5]..[230,5381+6])
+            Some
+              []
+              pattern (testsuite/tests/typing-modules/pr7818.ml[230,5381+7]..[230,5381+9])
+                Ppat_var "eq" (testsuite/tests/typing-modules/pr7818.ml[230,5381+7]..[230,5381+9])
+          core_type (testsuite/tests/typing-modules/pr7818.ml[230,5381+12]..[230,5381+16])
+            Ptyp_constr "M1.u" (testsuite/tests/typing-modules/pr7818.ml[230,5381+12]..[230,5381+16])
+            []
+        expression (testsuite/tests/typing-modules/pr7818.ml[230,5381+20]..[230,5381+33])
+          Pexp_constraint
+          expression (testsuite/tests/typing-modules/pr7818.ml[230,5381+21]..[230,5381+25])
+            Pexp_construct "E" (testsuite/tests/typing-modules/pr7818.ml[230,5381+21]..[230,5381+22])
+            Some
+              expression (testsuite/tests/typing-modules/pr7818.ml[230,5381+23]..[230,5381+25])
+                Pexp_construct "Eq" (testsuite/tests/typing-modules/pr7818.ml[230,5381+23]..[230,5381+25])
+                None
+          core_type (testsuite/tests/typing-modules/pr7818.ml[230,5381+28]..[230,5381+32])
+            Ptyp_constr "M1.t" (testsuite/tests/typing-modules/pr7818.ml[230,5381+28]..[230,5381+32])
+            []
+    ]
+  structure_item (testsuite/tests/typing-modules/pr7818.ml[231,5417+0]..[332,9232+3])
+    Pstr_extension "expect"
+    [
+      structure_item (testsuite/tests/typing-modules/pr7818.ml[231,5417+9]..[332,9232+2])
+        Pstr_eval
+        expression (testsuite/tests/typing-modules/pr7818.ml[231,5417+9]..[332,9232+2])
+          Pexp_constant PConst_string ("\ntype (_, _) eq = Eq : ('a, 'a) eq\nmodule MkT :\n  functor (X : Set.OrderedType) ->\n    sig\n      type elt = X.t\n      type t = Set.Make(X).t\n      val empty : t\n      val is_empty : t -> bool\n      val mem : elt -> t -> bool\n      val add : elt -> t -> t\n      val singleton : elt -> t\n      val remove : elt -> t -> t\n      val union : t -> t -> t\n      val inter : t -> t -> t\n      val disjoint : t -> t -> bool\n      val diff : t -> t -> t\n      val compare : t -> t -> int\n      val equal : t -> t -> bool\n      val subset : t -> t -> bool\n      val iter : (elt -> unit) -> t -> unit\n      val map : (elt -> elt) -> t -> t\n      val fold : (elt -> 'a -> 'a) -> t -> 'a -> 'a\n      val for_all : (elt -> bool) -> t -> bool\n      val exists : (elt -> bool) -> t -> bool\n      val filter : (elt -> bool) -> t -> t\n      val filter_map : (elt -> elt option) -> t -> t\n      val partition : (elt -> bool) -> t -> t * t\n      val cardinal : t -> int\n      val elements : t -> elt list\n      val min_elt : t -> elt\n      val min_elt_opt : t -> elt option\n      val max_elt : t -> elt\n      val max_elt_opt : t -> elt option\n      val choose : t -> elt\n      val choose_opt : t -> elt option\n      val split : elt -> t -> t * bool * t\n      val find : elt -> t -> elt\n      val find_opt : elt -> t -> elt option\n      val find_first : (elt -> bool) -> t -> elt\n      val find_first_opt : (elt -> bool) -> t -> elt option\n      val find_last : (elt -> bool) -> t -> elt\n      val find_last_opt : (elt -> bool) -> t -> elt option\n      val of_list : elt list -> t\n      val to_seq_from : elt -> t -> elt Seq.t\n      val to_seq : t -> elt Seq.t\n      val to_rev_seq : t -> elt Seq.t\n      val add_seq : elt Seq.t -> t -> t\n      val of_seq : elt Seq.t -> t\n    end\nmodule type S =\n  sig\n    module Term0 : sig type t = int val compare : t -> t -> int end\n    module T = Term0\n    type t = E of (MkT(T).t, MkT(T).t) eq\n    type u = t = E of (MkT(Term0).t, MkT(T).t) eq\n  end\nmodule F :\n  functor\n    (X : sig\n           module Term0 : sig type t = int val compare : t -> t -> int end\n           module T : sig type t = int val compare : t -> t -> int end\n           type t = E of (MkT(T).t, MkT(T).t) eq\n           type u = t = E of (MkT(Term0).t, MkT(T).t) eq\n         end)\n    ->\n    sig\n      module Term0 : sig type t = int val compare : t -> t -> int end\n      module T : sig type t = int val compare : t -> t -> int end\n      type t = X.t = E of (MkT(T).t, MkT(T).t) eq\n      type u = t = E of (MkT(Term0).t, MkT(T).t) eq\n    end\nmodule rec M : S\nmodule M' :\n  sig\n    module Term0 : sig type t = int val compare : t -> t -> int end\n    module T : sig type t = int val compare : t -> t -> int end\n    type t = M.t = E of (MkT(T).t, MkT(T).t) eq\n    type u = t = E of (MkT(Term0).t, MkT(T).t) eq\n  end\nmodule type S' =\n  sig\n    module Term0 : sig type t = int val compare : t -> t -> int end\n    module T : sig type t = int val compare : t -> t -> int end\n    type t = M.t = E of (MkT(T).t, MkT(T).t) eq\n    type u = t = E of (MkT(Term0).t, MkT(T).t) eq\n  end\nmodule Asc : sig type t = int val compare : int -> int -> int end\nmodule Desc : sig type t = int val compare : int -> int -> int end\nLine 15, characters 0-69:\n15 | module rec M1 : S' with module Term0 := Asc and module T := Desc = M1;;\n     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nError: This variant or record definition does not match that of type M.t\n       Constructors do not match:\n         E of (MkT(M.T).t, MkT(M.T).t) eq\n       is not the same as:\n         E of (MkT(Desc).t, MkT(Desc).t) eq\n       The type (MkT(M.T).t, MkT(M.T).t) eq is not equal to the type\n         (MkT(Desc).t, MkT(Desc).t) eq\n       Type MkT(M.T).t = Set.Make(M.Term0).t is not equal to type\n         MkT(Desc).t = Set.Make(Desc).t\n",(testsuite/tests/typing-modules/pr7818.ml[231,5417+11]..[332,9232+0]),Some "")
+    ]
+]
+

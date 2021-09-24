@@ -1,0 +1,779 @@
+[
+  signature_item (stdlib/weak.mli[16,1079+0]..[16,1079+62])
+    Psig_attribute "ocaml.text"
+    [
+      structure_item (stdlib/weak.mli[16,1079+0]..[16,1079+62])
+        Pstr_eval
+        expression (stdlib/weak.mli[16,1079+0]..[16,1079+62])
+          Pexp_constant PConst_string(" Arrays of weak pointers and hash sets of weak pointers. ",(stdlib/weak.mli[16,1079+0]..[16,1079+62]),None)
+    ]
+  signature_item (stdlib/weak.mli[19,1144+0]..[19,1144+30])
+    Psig_attribute "ocaml.text"
+    [
+      structure_item (stdlib/weak.mli[19,1144+0]..[19,1144+30])
+        Pstr_eval
+        expression (stdlib/weak.mli[19,1144+0]..[19,1144+30])
+          Pexp_constant PConst_string(" {1 Low-level functions} ",(stdlib/weak.mli[19,1144+0]..[19,1144+30]),None)
+    ]
+  signature_item (stdlib/weak.mli[21,1176+0]..[21,1176+10])
+    Psig_type Rec
+    [
+      type_declaration "t" (stdlib/weak.mli[21,1176+9]..[21,1176+10]) (stdlib/weak.mli[21,1176+0]..[21,1176+10])
+        attribute "ocaml.doc"
+          [
+            structure_item (stdlib/weak.mli[22,1187+0]..[37,1907+2])
+              Pstr_eval
+              expression (stdlib/weak.mli[22,1187+0]..[37,1907+2])
+                Pexp_constant PConst_string(" The type of arrays of weak pointers (weak arrays).  A weak\n   pointer is a value that the garbage collector may erase whenever\n   the value is not used any more (through normal pointers) by the\n   program.  Note that finalisation functions are run before the\n   weak pointers are erased, because the finalisation functions\n   can make values alive again (before 4.03 the finalisation\n   functions were run after).\n\n   A weak pointer is said to be full if it points to a value,\n   empty if the value was erased by the GC.\n\n   Notes:\n   - Integers are not allocated and cannot be stored in weak arrays.\n   - Weak arrays cannot be marshaled using {!Stdlib.output_value}\n     nor the functions of the {!Marshal} module.\n",(stdlib/weak.mli[22,1187+0]..[37,1907+2]),None)
+          ]
+        ptype_params =
+          [
+            core_type (stdlib/weak.mli[21,1176+6]..[21,1176+8])
+              Ptyp_var a
+          ]
+        ptype_cstrs =
+          []
+        ptype_kind =
+          Ptype_abstract
+        ptype_private = Public
+        ptype_manifest =
+          None
+    ]
+  signature_item (stdlib/weak.mli[40,1912+0]..[40,1912+24])
+    Psig_value
+    value_description "create" (stdlib/weak.mli[40,1912+4]..[40,1912+10]) (stdlib/weak.mli[40,1912+0]..[40,1912+24])
+      attribute "ocaml.doc"
+        [
+          structure_item (stdlib/weak.mli[41,1937+0]..[45,2109+56])
+            Pstr_eval
+            expression (stdlib/weak.mli[41,1937+0]..[45,2109+56])
+              Pexp_constant PConst_string(" [Weak.create n] returns a new weak array of length [n].\n   All the pointers are initially empty.\n   @raise Invalid_argument\n   if [n] is not comprised between zero and\n   {!Obj.Ephemeron.max_ephe_length} (limits included).",(stdlib/weak.mli[41,1937+0]..[45,2109+56]),None)
+        ]
+      core_type (stdlib/weak.mli[40,1912+13]..[40,1912+24])
+        Ptyp_arrow
+        Nolabel
+        core_type (stdlib/weak.mli[40,1912+13]..[40,1912+16])
+          Ptyp_constr "int" (stdlib/weak.mli[40,1912+13]..[40,1912+16])
+          []
+        core_type (stdlib/weak.mli[40,1912+20]..[40,1912+24])
+          Ptyp_constr "t" (stdlib/weak.mli[40,1912+23]..[40,1912+24])
+          [
+            core_type (stdlib/weak.mli[40,1912+20]..[40,1912+22])
+              Ptyp_var a
+          ]
+      []
+  signature_item (stdlib/weak.mli[47,2167+0]..[47,2167+24])
+    Psig_value
+    value_description "length" (stdlib/weak.mli[47,2167+4]..[47,2167+10]) (stdlib/weak.mli[47,2167+0]..[47,2167+24])
+      attribute "ocaml.doc"
+        [
+          structure_item (stdlib/weak.mli[48,2192+0]..[49,2256+10])
+            Pstr_eval
+            expression (stdlib/weak.mli[48,2192+0]..[49,2256+10])
+              Pexp_constant PConst_string(" [Weak.length ar] returns the length (number of elements) of\n   [ar].",(stdlib/weak.mli[48,2192+0]..[49,2256+10]),None)
+        ]
+      core_type (stdlib/weak.mli[47,2167+13]..[47,2167+24])
+        Ptyp_arrow
+        Nolabel
+        core_type (stdlib/weak.mli[47,2167+13]..[47,2167+17])
+          Ptyp_constr "t" (stdlib/weak.mli[47,2167+16]..[47,2167+17])
+          [
+            core_type (stdlib/weak.mli[47,2167+13]..[47,2167+15])
+              Ptyp_var a
+          ]
+        core_type (stdlib/weak.mli[47,2167+21]..[47,2167+24])
+          Ptyp_constr "int" (stdlib/weak.mli[47,2167+21]..[47,2167+24])
+          []
+      []
+  signature_item (stdlib/weak.mli[51,2268+0]..[51,2268+42])
+    Psig_value
+    value_description "set" (stdlib/weak.mli[51,2268+4]..[51,2268+7]) (stdlib/weak.mli[51,2268+0]..[51,2268+42])
+      attribute "ocaml.doc"
+        [
+          structure_item (stdlib/weak.mli[52,2311+0]..[56,2520+33])
+            Pstr_eval
+            expression (stdlib/weak.mli[52,2311+0]..[56,2520+33])
+              Pexp_constant PConst_string(" [Weak.set ar n (Some el)] sets the [n]th cell of [ar] to be a\n   (full) pointer to [el]; [Weak.set ar n None] sets the [n]th\n   cell of [ar] to empty.\n   @raise Invalid_argument if [n] is not in the range\n   0 to {!Weak.length}[ a - 1].",(stdlib/weak.mli[52,2311+0]..[56,2520+33]),None)
+        ]
+      core_type (stdlib/weak.mli[51,2268+10]..[51,2268+42])
+        Ptyp_arrow
+        Nolabel
+        core_type (stdlib/weak.mli[51,2268+10]..[51,2268+14])
+          Ptyp_constr "t" (stdlib/weak.mli[51,2268+13]..[51,2268+14])
+          [
+            core_type (stdlib/weak.mli[51,2268+10]..[51,2268+12])
+              Ptyp_var a
+          ]
+        core_type (stdlib/weak.mli[51,2268+18]..[51,2268+42])
+          Ptyp_arrow
+          Nolabel
+          core_type (stdlib/weak.mli[51,2268+18]..[51,2268+21])
+            Ptyp_constr "int" (stdlib/weak.mli[51,2268+18]..[51,2268+21])
+            []
+          core_type (stdlib/weak.mli[51,2268+25]..[51,2268+42])
+            Ptyp_arrow
+            Nolabel
+            core_type (stdlib/weak.mli[51,2268+25]..[51,2268+34])
+              Ptyp_constr "option" (stdlib/weak.mli[51,2268+28]..[51,2268+34])
+              [
+                core_type (stdlib/weak.mli[51,2268+25]..[51,2268+27])
+                  Ptyp_var a
+              ]
+            core_type (stdlib/weak.mli[51,2268+38]..[51,2268+42])
+              Ptyp_constr "unit" (stdlib/weak.mli[51,2268+38]..[51,2268+42])
+              []
+      []
+  signature_item (stdlib/weak.mli[58,2555+0]..[58,2555+34])
+    Psig_value
+    value_description "get" (stdlib/weak.mli[58,2555+4]..[58,2555+7]) (stdlib/weak.mli[58,2555+0]..[58,2555+34])
+      attribute "ocaml.doc"
+        [
+          structure_item (stdlib/weak.mli[59,2590+0]..[62,2765+33])
+            Pstr_eval
+            expression (stdlib/weak.mli[59,2590+0]..[62,2765+33])
+              Pexp_constant PConst_string(" [Weak.get ar n] returns None if the [n]th cell of [ar] is\n   empty, [Some x] (where [x] is the value) if it is full.\n   @raise Invalid_argument if [n] is not in the range\n   0 to {!Weak.length}[ a - 1].",(stdlib/weak.mli[59,2590+0]..[62,2765+33]),None)
+        ]
+      core_type (stdlib/weak.mli[58,2555+10]..[58,2555+34])
+        Ptyp_arrow
+        Nolabel
+        core_type (stdlib/weak.mli[58,2555+10]..[58,2555+14])
+          Ptyp_constr "t" (stdlib/weak.mli[58,2555+13]..[58,2555+14])
+          [
+            core_type (stdlib/weak.mli[58,2555+10]..[58,2555+12])
+              Ptyp_var a
+          ]
+        core_type (stdlib/weak.mli[58,2555+18]..[58,2555+34])
+          Ptyp_arrow
+          Nolabel
+          core_type (stdlib/weak.mli[58,2555+18]..[58,2555+21])
+            Ptyp_constr "int" (stdlib/weak.mli[58,2555+18]..[58,2555+21])
+            []
+          core_type (stdlib/weak.mli[58,2555+25]..[58,2555+34])
+            Ptyp_constr "option" (stdlib/weak.mli[58,2555+28]..[58,2555+34])
+            [
+              core_type (stdlib/weak.mli[58,2555+25]..[58,2555+27])
+                Ptyp_var a
+            ]
+      []
+  signature_item (stdlib/weak.mli[64,2800+0]..[64,2800+39])
+    Psig_value
+    value_description "get_copy" (stdlib/weak.mli[64,2800+4]..[64,2800+12]) (stdlib/weak.mli[64,2800+0]..[64,2800+39])
+      attribute "ocaml.doc"
+        [
+          structure_item (stdlib/weak.mli[65,2840+0]..[77,3377+2])
+            Pstr_eval
+            expression (stdlib/weak.mli[65,2840+0]..[77,3377+2])
+              Pexp_constant PConst_string(" [Weak.get_copy ar n] returns None if the [n]th cell of [ar] is\n   empty, [Some x] (where [x] is a (shallow) copy of the value) if\n   it is full.\n   In addition to pitfalls with mutable values, the interesting\n   difference with [get] is that [get_copy] does not prevent\n   the incremental GC from erasing the value in its current cycle\n   ([get] may delay the erasure to the next GC cycle).\n   @raise Invalid_argument if [n] is not in the range\n   0 to {!Weak.length}[ a - 1].\n\n   If the element is a custom block it is not copied.\n\n",(stdlib/weak.mli[65,2840+0]..[77,3377+2]),None)
+        ]
+      core_type (stdlib/weak.mli[64,2800+15]..[64,2800+39])
+        Ptyp_arrow
+        Nolabel
+        core_type (stdlib/weak.mli[64,2800+15]..[64,2800+19])
+          Ptyp_constr "t" (stdlib/weak.mli[64,2800+18]..[64,2800+19])
+          [
+            core_type (stdlib/weak.mli[64,2800+15]..[64,2800+17])
+              Ptyp_var a
+          ]
+        core_type (stdlib/weak.mli[64,2800+23]..[64,2800+39])
+          Ptyp_arrow
+          Nolabel
+          core_type (stdlib/weak.mli[64,2800+23]..[64,2800+26])
+            Ptyp_constr "int" (stdlib/weak.mli[64,2800+23]..[64,2800+26])
+            []
+          core_type (stdlib/weak.mli[64,2800+30]..[64,2800+39])
+            Ptyp_constr "option" (stdlib/weak.mli[64,2800+33]..[64,2800+39])
+            [
+              core_type (stdlib/weak.mli[64,2800+30]..[64,2800+32])
+                Ptyp_var a
+            ]
+      []
+  signature_item (stdlib/weak.mli[80,3382+0]..[80,3382+31])
+    Psig_value
+    value_description "check" (stdlib/weak.mli[80,3382+4]..[80,3382+9]) (stdlib/weak.mli[80,3382+0]..[80,3382+31])
+      attribute "ocaml.doc"
+        [
+          structure_item (stdlib/weak.mli[81,3414+0]..[83,3550+71])
+            Pstr_eval
+            expression (stdlib/weak.mli[81,3414+0]..[83,3550+71])
+              Pexp_constant PConst_string(" [Weak.check ar n] returns [true] if the [n]th cell of [ar] is\n   full, [false] if it is empty.  Note that even if [Weak.check ar n]\n   returns [true], a subsequent {!Weak.get}[ ar n] can return [None].",(stdlib/weak.mli[81,3414+0]..[83,3550+71]),None)
+        ]
+      core_type (stdlib/weak.mli[80,3382+12]..[80,3382+31])
+        Ptyp_arrow
+        Nolabel
+        core_type (stdlib/weak.mli[80,3382+12]..[80,3382+16])
+          Ptyp_constr "t" (stdlib/weak.mli[80,3382+15]..[80,3382+16])
+          [
+            core_type (stdlib/weak.mli[80,3382+12]..[80,3382+14])
+              Ptyp_var a
+          ]
+        core_type (stdlib/weak.mli[80,3382+20]..[80,3382+31])
+          Ptyp_arrow
+          Nolabel
+          core_type (stdlib/weak.mli[80,3382+20]..[80,3382+23])
+            Ptyp_constr "int" (stdlib/weak.mli[80,3382+20]..[80,3382+23])
+            []
+          core_type (stdlib/weak.mli[80,3382+27]..[80,3382+31])
+            Ptyp_constr "bool" (stdlib/weak.mli[80,3382+27]..[80,3382+31])
+            []
+      []
+  signature_item (stdlib/weak.mli[85,3623+0]..[85,3623+50])
+    Psig_value
+    value_description "fill" (stdlib/weak.mli[85,3623+4]..[85,3623+8]) (stdlib/weak.mli[85,3623+0]..[85,3623+50])
+      attribute "ocaml.doc"
+        [
+          structure_item (stdlib/weak.mli[86,3674+0]..[89,3799+65])
+            Pstr_eval
+            expression (stdlib/weak.mli[86,3674+0]..[89,3799+65])
+              Pexp_constant PConst_string(" [Weak.fill ar ofs len el] sets to [el] all pointers of [ar] from\n   [ofs] to [ofs + len - 1].\n   @raise Invalid_argument\n   if [ofs] and [len] do not designate a valid subarray of [a].",(stdlib/weak.mli[86,3674+0]..[89,3799+65]),None)
+        ]
+      core_type (stdlib/weak.mli[85,3623+11]..[85,3623+50])
+        Ptyp_arrow
+        Nolabel
+        core_type (stdlib/weak.mli[85,3623+11]..[85,3623+15])
+          Ptyp_constr "t" (stdlib/weak.mli[85,3623+14]..[85,3623+15])
+          [
+            core_type (stdlib/weak.mli[85,3623+11]..[85,3623+13])
+              Ptyp_var a
+          ]
+        core_type (stdlib/weak.mli[85,3623+19]..[85,3623+50])
+          Ptyp_arrow
+          Nolabel
+          core_type (stdlib/weak.mli[85,3623+19]..[85,3623+22])
+            Ptyp_constr "int" (stdlib/weak.mli[85,3623+19]..[85,3623+22])
+            []
+          core_type (stdlib/weak.mli[85,3623+26]..[85,3623+50])
+            Ptyp_arrow
+            Nolabel
+            core_type (stdlib/weak.mli[85,3623+26]..[85,3623+29])
+              Ptyp_constr "int" (stdlib/weak.mli[85,3623+26]..[85,3623+29])
+              []
+            core_type (stdlib/weak.mli[85,3623+33]..[85,3623+50])
+              Ptyp_arrow
+              Nolabel
+              core_type (stdlib/weak.mli[85,3623+33]..[85,3623+42])
+                Ptyp_constr "option" (stdlib/weak.mli[85,3623+36]..[85,3623+42])
+                [
+                  core_type (stdlib/weak.mli[85,3623+33]..[85,3623+35])
+                    Ptyp_var a
+                ]
+              core_type (stdlib/weak.mli[85,3623+46]..[85,3623+50])
+                Ptyp_constr "unit" (stdlib/weak.mli[85,3623+46]..[85,3623+50])
+                []
+      []
+  signature_item (stdlib/weak.mli[91,3866+0]..[91,3866+52])
+    Psig_value
+    value_description "blit" (stdlib/weak.mli[91,3866+4]..[91,3866+8]) (stdlib/weak.mli[91,3866+0]..[91,3866+52])
+      attribute "ocaml.doc"
+        [
+          structure_item (stdlib/weak.mli[92,3919+0]..[97,4227+48])
+            Pstr_eval
+            expression (stdlib/weak.mli[92,3919+0]..[97,4227+48])
+              Pexp_constant PConst_string(" [Weak.blit ar1 off1 ar2 off2 len] copies [len] weak pointers\n   from [ar1] (starting at [off1]) to [ar2] (starting at [off2]).\n   It works correctly even if [ar1] and [ar2] are the same.\n   @raise Invalid_argument if [off1] and [len] do\n   not designate a valid subarray of [ar1], or if [off2] and [len]\n   do not designate a valid subarray of [ar2].",(stdlib/weak.mli[92,3919+0]..[97,4227+48]),None)
+        ]
+      core_type (stdlib/weak.mli[91,3866+11]..[91,3866+52])
+        Ptyp_arrow
+        Nolabel
+        core_type (stdlib/weak.mli[91,3866+11]..[91,3866+15])
+          Ptyp_constr "t" (stdlib/weak.mli[91,3866+14]..[91,3866+15])
+          [
+            core_type (stdlib/weak.mli[91,3866+11]..[91,3866+13])
+              Ptyp_var a
+          ]
+        core_type (stdlib/weak.mli[91,3866+19]..[91,3866+52])
+          Ptyp_arrow
+          Nolabel
+          core_type (stdlib/weak.mli[91,3866+19]..[91,3866+22])
+            Ptyp_constr "int" (stdlib/weak.mli[91,3866+19]..[91,3866+22])
+            []
+          core_type (stdlib/weak.mli[91,3866+26]..[91,3866+52])
+            Ptyp_arrow
+            Nolabel
+            core_type (stdlib/weak.mli[91,3866+26]..[91,3866+30])
+              Ptyp_constr "t" (stdlib/weak.mli[91,3866+29]..[91,3866+30])
+              [
+                core_type (stdlib/weak.mli[91,3866+26]..[91,3866+28])
+                  Ptyp_var a
+              ]
+            core_type (stdlib/weak.mli[91,3866+34]..[91,3866+52])
+              Ptyp_arrow
+              Nolabel
+              core_type (stdlib/weak.mli[91,3866+34]..[91,3866+37])
+                Ptyp_constr "int" (stdlib/weak.mli[91,3866+34]..[91,3866+37])
+                []
+              core_type (stdlib/weak.mli[91,3866+41]..[91,3866+52])
+                Ptyp_arrow
+                Nolabel
+                core_type (stdlib/weak.mli[91,3866+41]..[91,3866+44])
+                  Ptyp_constr "int" (stdlib/weak.mli[91,3866+41]..[91,3866+44])
+                  []
+                core_type (stdlib/weak.mli[91,3866+48]..[91,3866+52])
+                  Ptyp_constr "unit" (stdlib/weak.mli[91,3866+48]..[91,3866+52])
+                  []
+      []
+  signature_item (stdlib/weak.mli[100,4278+0]..[100,4278+25])
+    Psig_attribute "ocaml.text"
+    [
+      structure_item (stdlib/weak.mli[100,4278+0]..[100,4278+25])
+        Pstr_eval
+        expression (stdlib/weak.mli[100,4278+0]..[100,4278+25])
+          Pexp_constant PConst_string(" {1 Weak hash sets} ",(stdlib/weak.mli[100,4278+0]..[100,4278+25]),None)
+    ]
+  signature_item (stdlib/weak.mli[102,4305+0]..[113,4917+6])
+    Psig_attribute "ocaml.text"
+    [
+      structure_item (stdlib/weak.mli[102,4305+0]..[113,4917+6])
+        Pstr_eval
+        expression (stdlib/weak.mli[102,4305+0]..[113,4917+6])
+          Pexp_constant PConst_string(" A weak hash set is a hashed set of values.  Each value may\n    magically disappear from the set when it is not used by the\n    rest of the program any more.  This is normally used to share\n    data structures without inducing memory leaks.\n    Weak hash sets are defined on values from a {!Hashtbl.HashedType}\n    module; the [equal] relation and [hash] function are taken from that\n    module.  We will say that [v] is an instance of [x] if [equal x v]\n    is [true].\n\n    The [equal] relation must be able to work on a shallow copy of\n    the values and give the same result as with the values themselves.\n    ",(stdlib/weak.mli[102,4305+0]..[113,4917+6]),None)
+    ]
+  signature_item (stdlib/weak.mli[115,4925+0]..[183,7541+3])
+    Psig_modtype "S" (stdlib/weak.mli[115,4925+12]..[115,4925+13])
+      attribute "ocaml.doc"
+        [
+          structure_item (stdlib/weak.mli[184,7545+0]..[184,7545+56])
+            Pstr_eval
+            expression (stdlib/weak.mli[184,7545+0]..[184,7545+56])
+              Pexp_constant PConst_string(" The output signature of the functor {!Weak.Make}. ",(stdlib/weak.mli[184,7545+0]..[184,7545+56]),None)
+        ]
+      module_type (stdlib/weak.mli[115,4925+16]..[183,7541+3])
+        Pmty_signature
+        [
+          signature_item (stdlib/weak.mli[116,4945+2]..[116,4945+11])
+            Psig_type Rec
+            [
+              type_declaration "data" (stdlib/weak.mli[116,4945+7]..[116,4945+11]) (stdlib/weak.mli[116,4945+2]..[116,4945+11])
+                attribute "ocaml.doc"
+                  [
+                    structure_item (stdlib/weak.mli[117,4957+2]..[117,4957+54])
+                      Pstr_eval
+                      expression (stdlib/weak.mli[117,4957+2]..[117,4957+54])
+                        Pexp_constant PConst_string(" The type of the elements stored in the table. ",(stdlib/weak.mli[117,4957+2]..[117,4957+54]),None)
+                  ]
+                ptype_params =
+                  []
+                ptype_cstrs =
+                  []
+                ptype_kind =
+                  Ptype_abstract
+                ptype_private = Public
+                ptype_manifest =
+                  None
+            ]
+          signature_item (stdlib/weak.mli[119,5013+2]..[119,5013+8])
+            Psig_type Rec
+            [
+              type_declaration "t" (stdlib/weak.mli[119,5013+7]..[119,5013+8]) (stdlib/weak.mli[119,5013+2]..[119,5013+8])
+                attribute "ocaml.doc"
+                  [
+                    structure_item (stdlib/weak.mli[120,5022+4]..[123,5212+18])
+                      Pstr_eval
+                      expression (stdlib/weak.mli[120,5022+4]..[123,5212+18])
+                        Pexp_constant PConst_string(" The type of tables that contain elements of type [data].\n        Note that weak hash sets cannot be marshaled using\n        {!Stdlib.output_value} or the functions of the {!Marshal}\n        module. ",(stdlib/weak.mli[120,5022+4]..[123,5212+18]),None)
+                  ]
+                ptype_params =
+                  []
+                ptype_cstrs =
+                  []
+                ptype_kind =
+                  Ptype_abstract
+                ptype_private = Public
+                ptype_manifest =
+                  None
+            ]
+          signature_item (stdlib/weak.mli[125,5232+2]..[125,5232+23])
+            Psig_value
+            value_description "create" (stdlib/weak.mli[125,5232+6]..[125,5232+12]) (stdlib/weak.mli[125,5232+2]..[125,5232+23])
+              attribute "ocaml.doc"
+                [
+                  structure_item (stdlib/weak.mli[126,5256+4]..[127,5321+52])
+                    Pstr_eval
+                    expression (stdlib/weak.mli[126,5256+4]..[127,5321+52])
+                      Pexp_constant PConst_string(" [create n] creates a new empty weak hash set, of initial\n        size [n].  The table will grow as needed. ",(stdlib/weak.mli[126,5256+4]..[127,5321+52]),None)
+                ]
+              core_type (stdlib/weak.mli[125,5232+15]..[125,5232+23])
+                Ptyp_arrow
+                Nolabel
+                core_type (stdlib/weak.mli[125,5232+15]..[125,5232+18])
+                  Ptyp_constr "int" (stdlib/weak.mli[125,5232+15]..[125,5232+18])
+                  []
+                core_type (stdlib/weak.mli[125,5232+22]..[125,5232+23])
+                  Ptyp_constr "t" (stdlib/weak.mli[125,5232+22]..[125,5232+23])
+                  []
+              []
+          signature_item (stdlib/weak.mli[129,5375+2]..[129,5375+23])
+            Psig_value
+            value_description "clear" (stdlib/weak.mli[129,5375+6]..[129,5375+11]) (stdlib/weak.mli[129,5375+2]..[129,5375+23])
+              attribute "ocaml.doc"
+                [
+                  structure_item (stdlib/weak.mli[130,5399+2]..[130,5399+44])
+                    Pstr_eval
+                    expression (stdlib/weak.mli[130,5399+2]..[130,5399+44])
+                      Pexp_constant PConst_string(" Remove all elements from the table. ",(stdlib/weak.mli[130,5399+2]..[130,5399+44]),None)
+                ]
+              core_type (stdlib/weak.mli[129,5375+14]..[129,5375+23])
+                Ptyp_arrow
+                Nolabel
+                core_type (stdlib/weak.mli[129,5375+14]..[129,5375+15])
+                  Ptyp_constr "t" (stdlib/weak.mli[129,5375+14]..[129,5375+15])
+                  []
+                core_type (stdlib/weak.mli[129,5375+19]..[129,5375+23])
+                  Ptyp_constr "unit" (stdlib/weak.mli[129,5375+19]..[129,5375+23])
+                  []
+              []
+          signature_item (stdlib/weak.mli[132,5445+2]..[132,5445+31])
+            Psig_value
+            value_description "merge" (stdlib/weak.mli[132,5445+6]..[132,5445+11]) (stdlib/weak.mli[132,5445+2]..[132,5445+31])
+              attribute "ocaml.doc"
+                [
+                  structure_item (stdlib/weak.mli[133,5477+4]..[134,5545+50])
+                    Pstr_eval
+                    expression (stdlib/weak.mli[133,5477+4]..[134,5545+50])
+                      Pexp_constant PConst_string(" [merge t x] returns an instance of [x] found in [t] if any,\n        or else adds [x] to [t] and return [x]. ",(stdlib/weak.mli[133,5477+4]..[134,5545+50]),None)
+                ]
+              core_type (stdlib/weak.mli[132,5445+14]..[132,5445+31])
+                Ptyp_arrow
+                Nolabel
+                core_type (stdlib/weak.mli[132,5445+14]..[132,5445+15])
+                  Ptyp_constr "t" (stdlib/weak.mli[132,5445+14]..[132,5445+15])
+                  []
+                core_type (stdlib/weak.mli[132,5445+19]..[132,5445+31])
+                  Ptyp_arrow
+                  Nolabel
+                  core_type (stdlib/weak.mli[132,5445+19]..[132,5445+23])
+                    Ptyp_constr "data" (stdlib/weak.mli[132,5445+19]..[132,5445+23])
+                    []
+                  core_type (stdlib/weak.mli[132,5445+27]..[132,5445+31])
+                    Ptyp_constr "data" (stdlib/weak.mli[132,5445+27]..[132,5445+31])
+                    []
+              []
+          signature_item (stdlib/weak.mli[136,5597+2]..[136,5597+29])
+            Psig_value
+            value_description "add" (stdlib/weak.mli[136,5597+6]..[136,5597+9]) (stdlib/weak.mli[136,5597+2]..[136,5597+29])
+              attribute "ocaml.doc"
+                [
+                  structure_item (stdlib/weak.mli[137,5627+4]..[139,5754+62])
+                    Pstr_eval
+                    expression (stdlib/weak.mli[137,5627+4]..[139,5754+62])
+                      Pexp_constant PConst_string(" [add t x] adds [x] to [t].  If there is already an instance\n        of [x] in [t], it is unspecified which one will be\n        returned by subsequent calls to [find] and [merge]. ",(stdlib/weak.mli[137,5627+4]..[139,5754+62]),None)
+                ]
+              core_type (stdlib/weak.mli[136,5597+12]..[136,5597+29])
+                Ptyp_arrow
+                Nolabel
+                core_type (stdlib/weak.mli[136,5597+12]..[136,5597+13])
+                  Ptyp_constr "t" (stdlib/weak.mli[136,5597+12]..[136,5597+13])
+                  []
+                core_type (stdlib/weak.mli[136,5597+17]..[136,5597+29])
+                  Ptyp_arrow
+                  Nolabel
+                  core_type (stdlib/weak.mli[136,5597+17]..[136,5597+21])
+                    Ptyp_constr "data" (stdlib/weak.mli[136,5597+17]..[136,5597+21])
+                    []
+                  core_type (stdlib/weak.mli[136,5597+25]..[136,5597+29])
+                    Ptyp_constr "unit" (stdlib/weak.mli[136,5597+25]..[136,5597+29])
+                    []
+              []
+          signature_item (stdlib/weak.mli[141,5818+2]..[141,5818+32])
+            Psig_value
+            value_description "remove" (stdlib/weak.mli[141,5818+6]..[141,5818+12]) (stdlib/weak.mli[141,5818+2]..[141,5818+32])
+              attribute "ocaml.doc"
+                [
+                  structure_item (stdlib/weak.mli[142,5851+4]..[143,5916+57])
+                    Pstr_eval
+                    expression (stdlib/weak.mli[142,5851+4]..[143,5916+57])
+                      Pexp_constant PConst_string(" [remove t x] removes from [t] one instance of [x].  Does\n        nothing if there is no instance of [x] in [t]. ",(stdlib/weak.mli[142,5851+4]..[143,5916+57]),None)
+                ]
+              core_type (stdlib/weak.mli[141,5818+15]..[141,5818+32])
+                Ptyp_arrow
+                Nolabel
+                core_type (stdlib/weak.mli[141,5818+15]..[141,5818+16])
+                  Ptyp_constr "t" (stdlib/weak.mli[141,5818+15]..[141,5818+16])
+                  []
+                core_type (stdlib/weak.mli[141,5818+20]..[141,5818+32])
+                  Ptyp_arrow
+                  Nolabel
+                  core_type (stdlib/weak.mli[141,5818+20]..[141,5818+24])
+                    Ptyp_constr "data" (stdlib/weak.mli[141,5818+20]..[141,5818+24])
+                    []
+                  core_type (stdlib/weak.mli[141,5818+28]..[141,5818+32])
+                    Ptyp_constr "unit" (stdlib/weak.mli[141,5818+28]..[141,5818+32])
+                    []
+              []
+          signature_item (stdlib/weak.mli[145,5975+2]..[145,5975+30])
+            Psig_value
+            value_description "find" (stdlib/weak.mli[145,5975+6]..[145,5975+10]) (stdlib/weak.mli[145,5975+2]..[145,5975+30])
+              attribute "ocaml.doc"
+                [
+                  structure_item (stdlib/weak.mli[146,6006+4]..[147,6066+56])
+                    Pstr_eval
+                    expression (stdlib/weak.mli[146,6006+4]..[147,6066+56])
+                      Pexp_constant PConst_string(" [find t x] returns an instance of [x] found in [t].\n        @raise Not_found if there is no such element. ",(stdlib/weak.mli[146,6006+4]..[147,6066+56]),None)
+                ]
+              core_type (stdlib/weak.mli[145,5975+13]..[145,5975+30])
+                Ptyp_arrow
+                Nolabel
+                core_type (stdlib/weak.mli[145,5975+13]..[145,5975+14])
+                  Ptyp_constr "t" (stdlib/weak.mli[145,5975+13]..[145,5975+14])
+                  []
+                core_type (stdlib/weak.mli[145,5975+18]..[145,5975+30])
+                  Ptyp_arrow
+                  Nolabel
+                  core_type (stdlib/weak.mli[145,5975+18]..[145,5975+22])
+                    Ptyp_constr "data" (stdlib/weak.mli[145,5975+18]..[145,5975+22])
+                    []
+                  core_type (stdlib/weak.mli[145,5975+26]..[145,5975+30])
+                    Ptyp_constr "data" (stdlib/weak.mli[145,5975+26]..[145,5975+30])
+                    []
+              []
+          signature_item (stdlib/weak.mli[149,6124+2]..[149,6124+40])
+            Psig_value
+            value_description "find_opt" (stdlib/weak.mli[149,6124+6]..[149,6124+14]) (stdlib/weak.mli[149,6124+2]..[149,6124+40])
+              attribute "ocaml.doc"
+                [
+                  structure_item (stdlib/weak.mli[150,6165+4]..[153,6295+6])
+                    Pstr_eval
+                    expression (stdlib/weak.mli[150,6165+4]..[153,6295+6])
+                      Pexp_constant PConst_string(" [find_opt t x] returns an instance of [x] found in [t]\n        or [None] if there is no such element.\n        @since 4.05\n    ",(stdlib/weak.mli[150,6165+4]..[153,6295+6]),None)
+                ]
+              core_type (stdlib/weak.mli[149,6124+16]..[149,6124+40])
+                Ptyp_arrow
+                Nolabel
+                core_type (stdlib/weak.mli[149,6124+16]..[149,6124+17])
+                  Ptyp_constr "t" (stdlib/weak.mli[149,6124+16]..[149,6124+17])
+                  []
+                core_type (stdlib/weak.mli[149,6124+21]..[149,6124+40])
+                  Ptyp_arrow
+                  Nolabel
+                  core_type (stdlib/weak.mli[149,6124+21]..[149,6124+25])
+                    Ptyp_constr "data" (stdlib/weak.mli[149,6124+21]..[149,6124+25])
+                    []
+                  core_type (stdlib/weak.mli[149,6124+29]..[149,6124+40])
+                    Ptyp_constr "option" (stdlib/weak.mli[149,6124+34]..[149,6124+40])
+                    [
+                      core_type (stdlib/weak.mli[149,6124+29]..[149,6124+33])
+                        Ptyp_constr "data" (stdlib/weak.mli[149,6124+29]..[149,6124+33])
+                        []
+                    ]
+              []
+          signature_item (stdlib/weak.mli[155,6303+2]..[155,6303+39])
+            Psig_value
+            value_description "find_all" (stdlib/weak.mli[155,6303+6]..[155,6303+14]) (stdlib/weak.mli[155,6303+2]..[155,6303+39])
+              attribute "ocaml.doc"
+                [
+                  structure_item (stdlib/weak.mli[156,6343+4]..[157,6409+24])
+                    Pstr_eval
+                    expression (stdlib/weak.mli[156,6343+4]..[157,6409+24])
+                      Pexp_constant PConst_string(" [find_all t x] returns a list of all the instances of [x]\n        found in [t]. ",(stdlib/weak.mli[156,6343+4]..[157,6409+24]),None)
+                ]
+              core_type (stdlib/weak.mli[155,6303+17]..[155,6303+39])
+                Ptyp_arrow
+                Nolabel
+                core_type (stdlib/weak.mli[155,6303+17]..[155,6303+18])
+                  Ptyp_constr "t" (stdlib/weak.mli[155,6303+17]..[155,6303+18])
+                  []
+                core_type (stdlib/weak.mli[155,6303+22]..[155,6303+39])
+                  Ptyp_arrow
+                  Nolabel
+                  core_type (stdlib/weak.mli[155,6303+22]..[155,6303+26])
+                    Ptyp_constr "data" (stdlib/weak.mli[155,6303+22]..[155,6303+26])
+                    []
+                  core_type (stdlib/weak.mli[155,6303+30]..[155,6303+39])
+                    Ptyp_constr "list" (stdlib/weak.mli[155,6303+35]..[155,6303+39])
+                    [
+                      core_type (stdlib/weak.mli[155,6303+30]..[155,6303+34])
+                        Ptyp_constr "data" (stdlib/weak.mli[155,6303+30]..[155,6303+34])
+                        []
+                    ]
+              []
+          signature_item (stdlib/weak.mli[159,6435+2]..[159,6435+29])
+            Psig_value
+            value_description "mem" (stdlib/weak.mli[159,6435+6]..[159,6435+9]) (stdlib/weak.mli[159,6435+2]..[159,6435+29])
+              attribute "ocaml.doc"
+                [
+                  structure_item (stdlib/weak.mli[160,6465+4]..[161,6532+42])
+                    Pstr_eval
+                    expression (stdlib/weak.mli[160,6465+4]..[161,6532+42])
+                      Pexp_constant PConst_string(" [mem t x] returns [true] if there is at least one instance\n        of [x] in [t], false otherwise. ",(stdlib/weak.mli[160,6465+4]..[161,6532+42]),None)
+                ]
+              core_type (stdlib/weak.mli[159,6435+12]..[159,6435+29])
+                Ptyp_arrow
+                Nolabel
+                core_type (stdlib/weak.mli[159,6435+12]..[159,6435+13])
+                  Ptyp_constr "t" (stdlib/weak.mli[159,6435+12]..[159,6435+13])
+                  []
+                core_type (stdlib/weak.mli[159,6435+17]..[159,6435+29])
+                  Ptyp_arrow
+                  Nolabel
+                  core_type (stdlib/weak.mli[159,6435+17]..[159,6435+21])
+                    Ptyp_constr "data" (stdlib/weak.mli[159,6435+17]..[159,6435+21])
+                    []
+                  core_type (stdlib/weak.mli[159,6435+25]..[159,6435+29])
+                    Ptyp_constr "bool" (stdlib/weak.mli[159,6435+25]..[159,6435+29])
+                    []
+              []
+          signature_item (stdlib/weak.mli[163,6576+2]..[163,6576+40])
+            Psig_value
+            value_description "iter" (stdlib/weak.mli[163,6576+6]..[163,6576+10]) (stdlib/weak.mli[163,6576+2]..[163,6576+40])
+              attribute "ocaml.doc"
+                [
+                  structure_item (stdlib/weak.mli[164,6617+4]..[166,6762+22])
+                    Pstr_eval
+                    expression (stdlib/weak.mli[164,6617+4]..[166,6762+22])
+                      Pexp_constant PConst_string(" [iter f t] calls [f] on each element of [t], in some unspecified\n        order.  It is not specified what happens if [f] tries to change\n        [t] itself. ",(stdlib/weak.mli[164,6617+4]..[166,6762+22]),None)
+                ]
+              core_type (stdlib/weak.mli[163,6576+13]..[163,6576+40])
+                Ptyp_arrow
+                Nolabel
+                core_type (stdlib/weak.mli[163,6576+14]..[163,6576+26])
+                  Ptyp_arrow
+                  Nolabel
+                  core_type (stdlib/weak.mli[163,6576+14]..[163,6576+18])
+                    Ptyp_constr "data" (stdlib/weak.mli[163,6576+14]..[163,6576+18])
+                    []
+                  core_type (stdlib/weak.mli[163,6576+22]..[163,6576+26])
+                    Ptyp_constr "unit" (stdlib/weak.mli[163,6576+22]..[163,6576+26])
+                    []
+                core_type (stdlib/weak.mli[163,6576+31]..[163,6576+40])
+                  Ptyp_arrow
+                  Nolabel
+                  core_type (stdlib/weak.mli[163,6576+31]..[163,6576+32])
+                    Ptyp_constr "t" (stdlib/weak.mli[163,6576+31]..[163,6576+32])
+                    []
+                  core_type (stdlib/weak.mli[163,6576+36]..[163,6576+40])
+                    Ptyp_constr "unit" (stdlib/weak.mli[163,6576+36]..[163,6576+40])
+                    []
+              []
+          signature_item (stdlib/weak.mli[168,6786+2]..[168,6786+48])
+            Psig_value
+            value_description "fold" (stdlib/weak.mli[168,6786+6]..[168,6786+10]) (stdlib/weak.mli[168,6786+2]..[168,6786+48])
+              attribute "ocaml.doc"
+                [
+                  structure_item (stdlib/weak.mli[169,6835+4]..[172,7040+18])
+                    Pstr_eval
+                    expression (stdlib/weak.mli[169,6835+4]..[172,7040+18])
+                      Pexp_constant PConst_string(" [fold f t init] computes [(f d1 (... (f dN init)))] where\n        [d1 ... dN] are the elements of [t] in some unspecified order.\n        It is not specified what happens if [f] tries to change [t]\n        itself. ",(stdlib/weak.mli[169,6835+4]..[172,7040+18]),None)
+                ]
+              core_type (stdlib/weak.mli[168,6786+13]..[168,6786+48])
+                Ptyp_arrow
+                Nolabel
+                core_type (stdlib/weak.mli[168,6786+14]..[168,6786+30])
+                  Ptyp_arrow
+                  Nolabel
+                  core_type (stdlib/weak.mli[168,6786+14]..[168,6786+18])
+                    Ptyp_constr "data" (stdlib/weak.mli[168,6786+14]..[168,6786+18])
+                    []
+                  core_type (stdlib/weak.mli[168,6786+22]..[168,6786+30])
+                    Ptyp_arrow
+                    Nolabel
+                    core_type (stdlib/weak.mli[168,6786+22]..[168,6786+24])
+                      Ptyp_var a
+                    core_type (stdlib/weak.mli[168,6786+28]..[168,6786+30])
+                      Ptyp_var a
+                core_type (stdlib/weak.mli[168,6786+35]..[168,6786+48])
+                  Ptyp_arrow
+                  Nolabel
+                  core_type (stdlib/weak.mli[168,6786+35]..[168,6786+36])
+                    Ptyp_constr "t" (stdlib/weak.mli[168,6786+35]..[168,6786+36])
+                    []
+                  core_type (stdlib/weak.mli[168,6786+40]..[168,6786+48])
+                    Ptyp_arrow
+                    Nolabel
+                    core_type (stdlib/weak.mli[168,6786+40]..[168,6786+42])
+                      Ptyp_var a
+                    core_type (stdlib/weak.mli[168,6786+46]..[168,6786+48])
+                      Ptyp_var a
+              []
+          signature_item (stdlib/weak.mli[174,7060+2]..[174,7060+22])
+            Psig_value
+            value_description "count" (stdlib/weak.mli[174,7060+6]..[174,7060+11]) (stdlib/weak.mli[174,7060+2]..[174,7060+22])
+              attribute "ocaml.doc"
+                [
+                  structure_item (stdlib/weak.mli[175,7083+4]..[177,7229+45])
+                    Pstr_eval
+                    expression (stdlib/weak.mli[175,7083+4]..[177,7229+45])
+                      Pexp_constant PConst_string(" Count the number of elements in the table.  [count t] gives the\n        same result as [fold (fun _ n -> n+1) t 0] but does not delay the\n        deallocation of the dead elements. ",(stdlib/weak.mli[175,7083+4]..[177,7229+45]),None)
+                ]
+              core_type (stdlib/weak.mli[174,7060+14]..[174,7060+22])
+                Ptyp_arrow
+                Nolabel
+                core_type (stdlib/weak.mli[174,7060+14]..[174,7060+15])
+                  Ptyp_constr "t" (stdlib/weak.mli[174,7060+14]..[174,7060+15])
+                  []
+                core_type (stdlib/weak.mli[174,7060+19]..[174,7060+22])
+                  Ptyp_constr "int" (stdlib/weak.mli[174,7060+19]..[174,7060+22])
+                  []
+              []
+          signature_item (stdlib/weak.mli[179,7276+2]..[179,7276+52])
+            Psig_value
+            value_description "stats" (stdlib/weak.mli[179,7276+6]..[179,7276+11]) (stdlib/weak.mli[179,7276+2]..[179,7276+52])
+              attribute "ocaml.doc"
+                [
+                  structure_item (stdlib/weak.mli[180,7329+4]..[182,7461+79])
+                    Pstr_eval
+                    expression (stdlib/weak.mli[180,7329+4]..[182,7461+79])
+                      Pexp_constant PConst_string(" Return statistics on the table.  The numbers are, in order:\n        table length, number of entries, sum of bucket lengths,\n        smallest bucket length, median bucket length, biggest bucket length. ",(stdlib/weak.mli[180,7329+4]..[182,7461+79]),None)
+                ]
+              core_type (stdlib/weak.mli[179,7276+14]..[179,7276+52])
+                Ptyp_arrow
+                Nolabel
+                core_type (stdlib/weak.mli[179,7276+14]..[179,7276+15])
+                  Ptyp_constr "t" (stdlib/weak.mli[179,7276+14]..[179,7276+15])
+                  []
+                core_type (stdlib/weak.mli[179,7276+19]..[179,7276+52])
+                  Ptyp_tuple
+                  [
+                    core_type (stdlib/weak.mli[179,7276+19]..[179,7276+22])
+                      Ptyp_constr "int" (stdlib/weak.mli[179,7276+19]..[179,7276+22])
+                      []
+                    core_type (stdlib/weak.mli[179,7276+25]..[179,7276+28])
+                      Ptyp_constr "int" (stdlib/weak.mli[179,7276+25]..[179,7276+28])
+                      []
+                    core_type (stdlib/weak.mli[179,7276+31]..[179,7276+34])
+                      Ptyp_constr "int" (stdlib/weak.mli[179,7276+31]..[179,7276+34])
+                      []
+                    core_type (stdlib/weak.mli[179,7276+37]..[179,7276+40])
+                      Ptyp_constr "int" (stdlib/weak.mli[179,7276+37]..[179,7276+40])
+                      []
+                    core_type (stdlib/weak.mli[179,7276+43]..[179,7276+46])
+                      Ptyp_constr "int" (stdlib/weak.mli[179,7276+43]..[179,7276+46])
+                      []
+                    core_type (stdlib/weak.mli[179,7276+49]..[179,7276+52])
+                      Ptyp_constr "int" (stdlib/weak.mli[179,7276+49]..[179,7276+52])
+                      []
+                  ]
+              []
+        ]
+  signature_item (stdlib/weak.mli[186,7603+0]..[186,7603+61])
+    Psig_module "Make" (stdlib/weak.mli[186,7603+7]..[186,7603+11])
+      attribute "ocaml.doc"
+        [
+          structure_item (stdlib/weak.mli[187,7665+0]..[190,7856+3])
+            Pstr_eval
+            expression (stdlib/weak.mli[187,7665+0]..[190,7856+3])
+              Pexp_constant PConst_string(" Functor building an implementation of the weak hash set structure.\n    [H.equal] can't be the physical equality, since only shallow\n    copies of the elements in the set are given to it.\n ",(stdlib/weak.mli[187,7665+0]..[190,7856+3]),None)
+        ]
+    module_type (stdlib/weak.mli[186,7603+12]..[186,7603+61])
+      Pmty_functor "H" (stdlib/weak.mli[186,7603+13]..[186,7603+14])
+      module_type (stdlib/weak.mli[186,7603+17]..[186,7603+35])
+        Pmty_ident "Hashtbl.HashedType" (stdlib/weak.mli[186,7603+17]..[186,7603+35])
+      module_type (stdlib/weak.mli[186,7603+39]..[186,7603+61])
+        Pmty_with
+        module_type (stdlib/weak.mli[186,7603+39]..[186,7603+40])
+          Pmty_ident "S" (stdlib/weak.mli[186,7603+39]..[186,7603+40])
+        [
+          Pwith_type "data" (stdlib/weak.mli[186,7603+51]..[186,7603+55])
+            type_declaration "data" (stdlib/weak.mli[186,7603+51]..[186,7603+55]) (stdlib/weak.mli[186,7603+46]..[186,7603+61])
+              ptype_params =
+                []
+              ptype_cstrs =
+                []
+              ptype_kind =
+                Ptype_abstract
+              ptype_private = Public
+              ptype_manifest =
+                Some
+                  core_type (stdlib/weak.mli[186,7603+58]..[186,7603+61])
+                    Ptyp_constr "H.t" (stdlib/weak.mli[186,7603+58]..[186,7603+61])
+                    []
+        ]
+]
+

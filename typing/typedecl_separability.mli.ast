@@ -1,0 +1,210 @@
+[
+  signature_item (typing/typedecl_separability.mli[17,1156+0]..[69,3651+63])
+    Psig_attribute "ocaml.text"
+    [
+      structure_item (typing/typedecl_separability.mli[17,1156+0]..[69,3651+63])
+        Pstr_eval
+        expression (typing/typedecl_separability.mli[17,1156+0]..[69,3651+63])
+          Pexp_constant PConst_string(" The OCaml runtime assumes for type-directed optimizations that all types\n    are \"separable\". A type is \"separable\" if either all its inhabitants\n    (the values of this type) are floating-point numbers, or none of them are.\n\n    (Note: This assumption is required for the dynamic float array optimization;\n    it is only made if Config.flat_float_array is set,\n    otherwise the code in this module becomes trivial\n    -- see {!compute_decl}.)\n\n    This soundness requirement could be broken by type declarations mixing\n    existentials and the \"[@@unboxed]\" annotation. Consider the declaration\n\n    {[\n       type any = Any : 'a -> any [@@unboxed]\n    ]}\n\n   which corresponds to the existential type \"exists a. a\". If this type is\n   allowed to be unboxed, then it is inhabited by both [float] values\n   and non-[float] values. On the contrary, if unboxing is disallowed, the\n   inhabitants are all blocks with the [Any] constructors pointing to its\n   parameter: they may point to a float, but they are not floats.\n\n   The present module contains a static analysis ensuring that declarations\n   annotated with \"[@@unboxed]\" can be safely unboxed. The idea is to check\n   the \"separability\" (in the above sense) of the argument type that would\n   be unboxed, and reject the unboxed declaration if it would create a\n   non-separable type.\n\n   Checking mutually-recursive type declarations is a bit subtle.\n   Consider, for example, the following declarations.\n\n   {[\n      type foo = Foo : 'a t -> foo   [@@unboxed]\n      and 'a t = ...\n   ]}\n\n   Deciding whether the type [foo] should be accepted requires inspecting\n   the declaration of ['a t], which may itself refer to [foo] in turn.\n   In general, the analysis performs a fixpoint computation. It is somewhat\n   similar to what is done for inferring the variance of type parameters.\n\n   Our analysis is defined using inference rules for our judgment\n   [Def; Gamma |- t : m], in which a type expression [t] is checked\n   against a \"mode\" [m]. This \"mode\" describes the separability\n   requirement on the type expression (see below for\n   more details). The mode [Gamma] maps type variables to modes and\n   [Def] records the \"mode signature\" of the mutually-recursive type\n   declarations that are being checked.\n\n   The \"mode signature\" of a type with parameters [('a, 'b) t] is of the\n   form [('a : m1, 'b : m2) t], where [m1] and [m2] are modes. Its meaning\n   is the following: a concrete instance [(foo, bar) t] of the type is\n   separable if [foo] has mode [m1] and [bar] has mode [m2]. ",(typing/typedecl_separability.mli[17,1156+0]..[69,3651+63]),None)
+    ]
+  signature_item (typing/typedecl_separability.mli[71,3716+0]..[72,3729+39])
+    Psig_type Rec
+    [
+      type_declaration "error" (typing/typedecl_separability.mli[71,3716+5]..[71,3716+10]) (typing/typedecl_separability.mli[71,3716+0]..[72,3729+39])
+        ptype_params =
+          []
+        ptype_cstrs =
+          []
+        ptype_kind =
+          Ptype_variant
+            [
+              (typing/typedecl_separability.mli[72,3729+2]..[72,3729+39])
+                "Non_separable_evar" (typing/typedecl_separability.mli[72,3729+4]..[72,3729+22])
+                [
+                  core_type (typing/typedecl_separability.mli[72,3729+26]..[72,3729+39])
+                    Ptyp_constr "option" (typing/typedecl_separability.mli[72,3729+33]..[72,3729+39])
+                    [
+                      core_type (typing/typedecl_separability.mli[72,3729+26]..[72,3729+32])
+                        Ptyp_constr "string" (typing/typedecl_separability.mli[72,3729+26]..[72,3729+32])
+                        []
+                    ]
+                ]
+                None
+            ]
+        ptype_private = Public
+        ptype_manifest =
+          None
+    ]
+  signature_item (typing/typedecl_separability.mli[73,3769+0]..[73,3769+37])
+    Psig_exception
+    type_exception
+      ptyext_constructor =
+        extension_constructor (typing/typedecl_separability.mli[73,3769+0]..[73,3769+37])
+          attribute "ocaml.doc"
+            [
+              structure_item (typing/typedecl_separability.mli[74,3807+0]..[75,3882+42])
+                Pstr_eval
+                expression (typing/typedecl_separability.mli[74,3807+0]..[75,3882+42])
+                  Pexp_constant PConst_string(" Exception raised when a type declaration is not separable, or when its\n    separability cannot be established. ",(typing/typedecl_separability.mli[74,3807+0]..[75,3882+42]),None)
+            ]
+          pext_name = "Error"
+          pext_kind =
+            Pext_decl
+              [
+                core_type (typing/typedecl_separability.mli[73,3769+19]..[73,3769+29])
+                  Ptyp_constr "Location.t" (typing/typedecl_separability.mli[73,3769+19]..[73,3769+29])
+                  []
+                core_type (typing/typedecl_separability.mli[73,3769+32]..[73,3769+37])
+                  Ptyp_constr "error" (typing/typedecl_separability.mli[73,3769+32]..[73,3769+37])
+                  []
+              ]
+              None
+  signature_item (typing/typedecl_separability.mli[77,3926+0]..[77,3926+54])
+    Psig_type Rec
+    [
+      type_declaration "mode" (typing/typedecl_separability.mli[77,3926+5]..[77,3926+9]) (typing/typedecl_separability.mli[77,3926+0]..[77,3926+54])
+        ptype_params =
+          []
+        ptype_cstrs =
+          []
+        ptype_kind =
+          Ptype_variant
+            [
+              (typing/typedecl_separability.mli[77,3926+35]..[77,3926+38])
+                "Ind" (typing/typedecl_separability.mli[77,3926+35]..[77,3926+38])
+                []
+                None
+              (typing/typedecl_separability.mli[77,3926+39]..[77,3926+44])
+                "Sep" (typing/typedecl_separability.mli[77,3926+41]..[77,3926+44])
+                []
+                None
+              (typing/typedecl_separability.mli[77,3926+45]..[77,3926+54])
+                "Deepsep" (typing/typedecl_separability.mli[77,3926+47]..[77,3926+54])
+                attribute "ocaml.doc"
+                  [
+                    structure_item (typing/typedecl_separability.mli[78,3981+0]..[104,5403+40])
+                      Pstr_eval
+                      expression (typing/typedecl_separability.mli[78,3981+0]..[104,5403+40])
+                        Pexp_constant PConst_string(" The mode [Sep] (\"separable\") characterizes types that are indeed separable:\n    either they only contain floating-point values, or none of the values\n    at this type are floating-point values.\n    On a type parameter, it indicates that this parameter must be\n    separable for the whole type definition to be separable. For\n    example, the mode signature for the type declaration [type 'a\n    t = 'a] is [('a : Sep) t]. For the right-hand side to be\n    separable, the parameter ['a] must be separable.\n\n    The mode [Ind] (\"indifferent\") characterizes any type -- separable\n    or not.\n    On a type parameter, it indicates that this parameter needs not be\n    separable for the whole type definition to be separable. For\n    example, [type 'a t = 'a * bool] does not require its parameter\n    ['a] to be separable as ['a * bool] can never contain [float]\n    values. Its mode signature is thus [('a : Ind) t].\n\n    Finally, the mode [Deepsep] (\"deeply separable\") characterizes\n    types that are separable, and whose type sub-expressions are also\n    separable. This advanced feature is only used in the presence of\n    constraints.\n    For example, [type 'a t = 'b   constraint 'a = 'b * bool]\n    may not be separable even if ['a] is (its separately depends on 'b,\n    a fragment of 'a), so its mode signature is [('a : Deepsep) t].\n\n    The different modes are ordered as [Ind < Sep < Deepsep] (from the least\n    demanding to the most demanding). ",(typing/typedecl_separability.mli[78,3981+0]..[104,5403+40]),None)
+                  ]
+                []
+                None
+            ]
+        ptype_private = Public
+        ptype_manifest =
+          Some
+            core_type (typing/typedecl_separability.mli[77,3926+12]..[77,3926+32])
+              Ptyp_constr "Types.Separability.t" (typing/typedecl_separability.mli[77,3926+12]..[77,3926+32])
+              []
+    ]
+  signature_item (typing/typedecl_separability.mli[106,5445+0]..[106,5445+63])
+    Psig_value
+    value_description "compute_decl" (typing/typedecl_separability.mli[106,5445+4]..[106,5445+16]) (typing/typedecl_separability.mli[106,5445+0]..[106,5445+63])
+      attribute "ocaml.doc"
+        [
+          structure_item (typing/typedecl_separability.mli[107,5509+0]..[123,6344+2])
+            Pstr_eval
+            expression (typing/typedecl_separability.mli[107,5509+0]..[123,6344+2])
+              Pexp_constant PConst_string(" [compute_decl env def] returns the signature required\n    for the type definition [def] in the typing environment [env]\n    -- including signatures for the current recursive block.\n\n    The {!Error} exception is raised if no such signature exists\n    -- the definition will always be invalid. This only happens\n    when the definition is marked to be unboxed.\n\n    Variant (or record) declarations that are not marked with the\n    \"[@@unboxed]\" annotation, including those that contain several variants\n    (or labels), are always separable. In particular, their mode signatures\n    do not require anything of their type parameters, which are marked [Ind].\n\n    Finally, if {!Config.flat_float_array} is not set, then separability\n    is not required anymore; we just use [Ind] as the mode of each parameter\n    without any check.\n",(typing/typedecl_separability.mli[107,5509+0]..[123,6344+2]),None)
+        ]
+      core_type (typing/typedecl_separability.mli[106,5445+19]..[106,5445+63])
+        Ptyp_arrow
+        Nolabel
+        core_type (typing/typedecl_separability.mli[106,5445+19]..[106,5445+24])
+          Ptyp_constr "Env.t" (typing/typedecl_separability.mli[106,5445+19]..[106,5445+24])
+          []
+        core_type (typing/typedecl_separability.mli[106,5445+28]..[106,5445+63])
+          Ptyp_arrow
+          Nolabel
+          core_type (typing/typedecl_separability.mli[106,5445+28]..[106,5445+50])
+            Ptyp_constr "Types.type_declaration" (typing/typedecl_separability.mli[106,5445+28]..[106,5445+50])
+            []
+          core_type (typing/typedecl_separability.mli[106,5445+54]..[106,5445+63])
+            Ptyp_constr "list" (typing/typedecl_separability.mli[106,5445+59]..[106,5445+63])
+            [
+              core_type (typing/typedecl_separability.mli[106,5445+54]..[106,5445+58])
+                Ptyp_constr "mode" (typing/typedecl_separability.mli[106,5445+54]..[106,5445+58])
+                []
+            ]
+      []
+  signature_item (typing/typedecl_separability.mli[127,6491+0]..[127,6491+40])
+    Psig_type Rec
+    [
+      type_declaration "prop" (typing/typedecl_separability.mli[127,6491+5]..[127,6491+9]) (typing/typedecl_separability.mli[127,6491+0]..[127,6491+40])
+        attribute "ocaml.doc"
+          [
+            structure_item (typing/typedecl_separability.mli[125,6348+0]..[126,6417+73])
+              Pstr_eval
+              expression (typing/typedecl_separability.mli[125,6348+0]..[126,6417+73])
+                Pexp_constant PConst_string(" Property interface (see {!Typedecl_properties}). These functions\n    rely on {!compute_decl} and raise the {!Error} exception on error. ",(typing/typedecl_separability.mli[125,6348+0]..[126,6417+73]),None)
+          ]
+        ptype_params =
+          []
+        ptype_cstrs =
+          []
+        ptype_kind =
+          Ptype_abstract
+        ptype_private = Public
+        ptype_manifest =
+          Some
+            core_type (typing/typedecl_separability.mli[127,6491+12]..[127,6491+40])
+              Ptyp_constr "Types.Separability.signature" (typing/typedecl_separability.mli[127,6491+12]..[127,6491+40])
+              []
+    ]
+  signature_item (typing/typedecl_separability.mli[128,6532+0]..[128,6532+56])
+    Psig_value
+    value_description "property" (typing/typedecl_separability.mli[128,6532+4]..[128,6532+12]) (typing/typedecl_separability.mli[128,6532+0]..[128,6532+56])
+      core_type (typing/typedecl_separability.mli[128,6532+15]..[128,6532+56])
+        Ptyp_constr "Typedecl_properties.property" (typing/typedecl_separability.mli[128,6532+28]..[128,6532+56])
+        [
+          core_type (typing/typedecl_separability.mli[128,6532+16]..[128,6532+20])
+            Ptyp_constr "prop" (typing/typedecl_separability.mli[128,6532+16]..[128,6532+20])
+            []
+          core_type (typing/typedecl_separability.mli[128,6532+22]..[128,6532+26])
+            Ptyp_constr "unit" (typing/typedecl_separability.mli[128,6532+22]..[128,6532+26])
+            []
+        ]
+      []
+  signature_item (typing/typedecl_separability.mli[129,6589+0]..[132,6666+43])
+    Psig_value
+    value_description "update_decls" (typing/typedecl_separability.mli[129,6589+4]..[129,6589+16]) (typing/typedecl_separability.mli[129,6589+0]..[132,6666+43])
+      core_type (typing/typedecl_separability.mli[130,6608+2]..[132,6666+43])
+        Ptyp_arrow
+        Nolabel
+        core_type (typing/typedecl_separability.mli[130,6608+2]..[130,6608+7])
+          Ptyp_constr "Env.t" (typing/typedecl_separability.mli[130,6608+2]..[130,6608+7])
+          []
+        core_type (typing/typedecl_separability.mli[131,6619+2]..[132,6666+43])
+          Ptyp_arrow
+          Nolabel
+          core_type (typing/typedecl_separability.mli[131,6619+2]..[131,6619+43])
+            Ptyp_constr "list" (typing/typedecl_separability.mli[131,6619+39]..[131,6619+43])
+            [
+              core_type (typing/typedecl_separability.mli[131,6619+3]..[131,6619+37])
+                Ptyp_tuple
+                [
+                  core_type (typing/typedecl_separability.mli[131,6619+3]..[131,6619+10])
+                    Ptyp_constr "Ident.t" (typing/typedecl_separability.mli[131,6619+3]..[131,6619+10])
+                    []
+                  core_type (typing/typedecl_separability.mli[131,6619+13]..[131,6619+37])
+                    Ptyp_constr "Typedecl_properties.decl" (typing/typedecl_separability.mli[131,6619+13]..[131,6619+37])
+                    []
+                ]
+            ]
+          core_type (typing/typedecl_separability.mli[132,6666+2]..[132,6666+43])
+            Ptyp_constr "list" (typing/typedecl_separability.mli[132,6666+39]..[132,6666+43])
+            [
+              core_type (typing/typedecl_separability.mli[132,6666+3]..[132,6666+37])
+                Ptyp_tuple
+                [
+                  core_type (typing/typedecl_separability.mli[132,6666+3]..[132,6666+10])
+                    Ptyp_constr "Ident.t" (typing/typedecl_separability.mli[132,6666+3]..[132,6666+10])
+                    []
+                  core_type (typing/typedecl_separability.mli[132,6666+13]..[132,6666+37])
+                    Ptyp_constr "Typedecl_properties.decl" (typing/typedecl_separability.mli[132,6666+13]..[132,6666+37])
+                    []
+                ]
+            ]
+      []
+]
+

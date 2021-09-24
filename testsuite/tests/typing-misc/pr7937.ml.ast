@@ -1,0 +1,236 @@
+[
+  structure_item (testsuite/tests/typing-misc/pr7937.ml[5,24+0]..[5,24+37])
+    Pstr_type Rec
+    [
+      type_declaration "r" (testsuite/tests/typing-misc/pr7937.ml[5,24+8]..[5,24+9]) (testsuite/tests/typing-misc/pr7937.ml[5,24+0]..[5,24+37])
+        ptype_params =
+          [
+            core_type (testsuite/tests/typing-misc/pr7937.ml[5,24+5]..[5,24+7])
+              Ptyp_var a
+          ]
+        ptype_cstrs =
+          []
+        ptype_kind =
+          Ptype_abstract
+        ptype_private = Public
+        ptype_manifest =
+          Some
+            core_type (testsuite/tests/typing-misc/pr7937.ml[5,24+12]..[5,24+37])
+              Ptyp_alias "a"
+              core_type (testsuite/tests/typing-misc/pr7937.ml[5,24+12]..[5,24+31])
+                Ptyp_variant closed=Closed
+                [
+                  Rtag "X" false
+                    [
+                      core_type (testsuite/tests/typing-misc/pr7937.ml[5,24+21]..[5,24+24])
+                        Ptyp_constr "int" (testsuite/tests/typing-misc/pr7937.ml[5,24+21]..[5,24+24])
+                        []
+                      core_type (testsuite/tests/typing-misc/pr7937.ml[5,24+27]..[5,24+29])
+                        Ptyp_var a
+                    ]
+                ]
+                Some
+                  []
+    ]
+  structure_item (testsuite/tests/typing-misc/pr7937.ml[7,63+0]..[7,63+39])
+    Pstr_value Nonrec
+    [
+      <def>
+        pattern (testsuite/tests/typing-misc/pr7937.ml[7,63+4]..[7,63+23]) ghost
+          Ppat_constraint
+          pattern (testsuite/tests/typing-misc/pr7937.ml[7,63+4]..[7,63+5])
+            Ppat_var "f" (testsuite/tests/typing-misc/pr7937.ml[7,63+4]..[7,63+5])
+          core_type (testsuite/tests/typing-misc/pr7937.ml[7,63+7]..[7,63+23]) ghost
+            Ptyp_poly 'a
+            core_type (testsuite/tests/typing-misc/pr7937.ml[7,63+11]..[7,63+23])
+              Ptyp_arrow
+              Nolabel
+              core_type (testsuite/tests/typing-misc/pr7937.ml[7,63+11]..[7,63+15])
+                Ptyp_constr "r" (testsuite/tests/typing-misc/pr7937.ml[7,63+14]..[7,63+15])
+                [
+                  core_type (testsuite/tests/typing-misc/pr7937.ml[7,63+11]..[7,63+13])
+                    Ptyp_var a
+                ]
+              core_type (testsuite/tests/typing-misc/pr7937.ml[7,63+19]..[7,63+23])
+                Ptyp_constr "r" (testsuite/tests/typing-misc/pr7937.ml[7,63+22]..[7,63+23])
+                [
+                  core_type (testsuite/tests/typing-misc/pr7937.ml[7,63+19]..[7,63+21])
+                    Ptyp_var a
+                ]
+        expression (testsuite/tests/typing-misc/pr7937.ml[7,63+26]..[7,63+39])
+          Pexp_fun
+          Nolabel
+          None
+          pattern (testsuite/tests/typing-misc/pr7937.ml[7,63+30]..[7,63+31])
+            Ppat_var "x" (testsuite/tests/typing-misc/pr7937.ml[7,63+30]..[7,63+31])
+          expression (testsuite/tests/typing-misc/pr7937.ml[7,63+35]..[7,63+39])
+            Pexp_construct "true" (testsuite/tests/typing-misc/pr7937.ml[7,63+35]..[7,63+39])
+            None
+    ]
+  structure_item (testsuite/tests/typing-misc/pr7937.ml[8,105+0]..[22,702+3])
+    Pstr_extension "expect"
+    [
+      structure_item (testsuite/tests/typing-misc/pr7937.ml[8,105+10]..[22,702+2])
+        Pstr_eval
+        expression (testsuite/tests/typing-misc/pr7937.ml[8,105+10]..[22,702+2])
+          Pexp_tuple
+          [
+            expression (testsuite/tests/typing-misc/pr7937.ml[8,105+10]..[15,400+2])
+              Pexp_constant PConst_string ("\ntype 'a r = 'a constraint 'a = [< `X of int & 'a ]\nLine 3, characters 35-39:\n3 | let f: 'a. 'a r -> 'a r = fun x -> true;;\n                                       ^^^^\nError: This expression has type bool but an expression was expected of type\n         ([< `X of int & 'a ] as 'a) r\n",(testsuite/tests/typing-misc/pr7937.ml[8,105+12]..[15,400+0]),Some "")
+            expression (testsuite/tests/typing-misc/pr7937.ml[15,400+4]..[22,702+2])
+              Pexp_construct "Principal" (testsuite/tests/typing-misc/pr7937.ml[15,400+4]..[15,400+13])
+              Some
+                expression (testsuite/tests/typing-misc/pr7937.ml[15,400+13]..[22,702+2])
+                  Pexp_constant PConst_string ("\ntype 'a r = 'a constraint 'a = [< `X of int & 'a ]\nLine 3, characters 35-39:\n3 | let f: 'a. 'a r -> 'a r = fun x -> true;;\n                                       ^^^^\nError: This expression has type bool but an expression was expected of type\n         ([< `X of 'b & 'a & 'c ] as 'a) r\n",(testsuite/tests/typing-misc/pr7937.ml[15,400+15]..[22,702+0]),Some "")
+          ]
+    ]
+  structure_item (testsuite/tests/typing-misc/pr7937.ml[24,707+0]..[24,707+51])
+    Pstr_value Nonrec
+    [
+      <def>
+        pattern (testsuite/tests/typing-misc/pr7937.ml[24,707+4]..[24,707+23]) ghost
+          Ppat_constraint
+          pattern (testsuite/tests/typing-misc/pr7937.ml[24,707+4]..[24,707+5])
+            Ppat_var "g" (testsuite/tests/typing-misc/pr7937.ml[24,707+4]..[24,707+5])
+          core_type (testsuite/tests/typing-misc/pr7937.ml[24,707+7]..[24,707+23]) ghost
+            Ptyp_poly 'a
+            core_type (testsuite/tests/typing-misc/pr7937.ml[24,707+11]..[24,707+23])
+              Ptyp_arrow
+              Nolabel
+              core_type (testsuite/tests/typing-misc/pr7937.ml[24,707+11]..[24,707+15])
+                Ptyp_constr "r" (testsuite/tests/typing-misc/pr7937.ml[24,707+14]..[24,707+15])
+                [
+                  core_type (testsuite/tests/typing-misc/pr7937.ml[24,707+11]..[24,707+13])
+                    Ptyp_var a
+                ]
+              core_type (testsuite/tests/typing-misc/pr7937.ml[24,707+19]..[24,707+23])
+                Ptyp_constr "r" (testsuite/tests/typing-misc/pr7937.ml[24,707+22]..[24,707+23])
+                [
+                  core_type (testsuite/tests/typing-misc/pr7937.ml[24,707+19]..[24,707+21])
+                    Ptyp_var a
+                ]
+        expression (testsuite/tests/typing-misc/pr7937.ml[24,707+26]..[24,707+51])
+          Pexp_fun
+          Nolabel
+          None
+          pattern (testsuite/tests/typing-misc/pr7937.ml[24,707+30]..[24,707+31])
+            Ppat_var "x" (testsuite/tests/typing-misc/pr7937.ml[24,707+30]..[24,707+31])
+          expression (testsuite/tests/typing-misc/pr7937.ml[24,707+35]..[24,707+51])
+            Pexp_record
+            [
+              "contents" (testsuite/tests/typing-misc/pr7937.ml[24,707+37]..[24,707+45])
+                expression (testsuite/tests/typing-misc/pr7937.ml[24,707+48]..[24,707+49])
+                  Pexp_constant PConst_int (0,None)
+            ]
+            None
+    ]
+  structure_item (testsuite/tests/typing-misc/pr7937.ml[25,761+0]..[38,1315+3])
+    Pstr_extension "expect"
+    [
+      structure_item (testsuite/tests/typing-misc/pr7937.ml[25,761+10]..[38,1315+2])
+        Pstr_eval
+        expression (testsuite/tests/typing-misc/pr7937.ml[25,761+10]..[38,1315+2])
+          Pexp_tuple
+          [
+            expression (testsuite/tests/typing-misc/pr7937.ml[25,761+10]..[31,1030+2])
+              Pexp_constant PConst_string ("\nLine 1, characters 35-51:\n1 | let g: 'a. 'a r -> 'a r = fun x -> { contents = 0 };;\n                                       ^^^^^^^^^^^^^^^^\nError: This expression has type int ref\n       but an expression was expected of type ([< `X of int & 'a ] as 'a) r\n",(testsuite/tests/typing-misc/pr7937.ml[25,761+12]..[31,1030+0]),Some "")
+            expression (testsuite/tests/typing-misc/pr7937.ml[31,1030+4]..[38,1315+2])
+              Pexp_construct "Principal" (testsuite/tests/typing-misc/pr7937.ml[31,1030+4]..[31,1030+13])
+              Some
+                expression (testsuite/tests/typing-misc/pr7937.ml[31,1030+13]..[38,1315+2])
+                  Pexp_constant PConst_string ("\nLine 1, characters 35-51:\n1 | let g: 'a. 'a r -> 'a r = fun x -> { contents = 0 };;\n                                       ^^^^^^^^^^^^^^^^\nError: This expression has type int ref\n       but an expression was expected of type\n         ([< `X of 'b & 'a & 'c ] as 'a) r\n",(testsuite/tests/typing-misc/pr7937.ml[31,1030+15]..[38,1315+0]),Some "")
+          ]
+    ]
+  structure_item (testsuite/tests/typing-misc/pr7937.ml[40,1320+0]..[40,1320+50])
+    Pstr_value Nonrec
+    [
+      <def>
+        pattern (testsuite/tests/typing-misc/pr7937.ml[40,1320+4]..[40,1320+20]) ghost
+          Ppat_constraint
+          pattern (testsuite/tests/typing-misc/pr7937.ml[40,1320+4]..[40,1320+5])
+            Ppat_var "h" (testsuite/tests/typing-misc/pr7937.ml[40,1320+4]..[40,1320+5])
+          core_type (testsuite/tests/typing-misc/pr7937.ml[40,1320+7]..[40,1320+20]) ghost
+            Ptyp_poly 'a
+            core_type (testsuite/tests/typing-misc/pr7937.ml[40,1320+11]..[40,1320+20])
+              Ptyp_arrow
+              Nolabel
+              core_type (testsuite/tests/typing-misc/pr7937.ml[40,1320+11]..[40,1320+15])
+                Ptyp_constr "r" (testsuite/tests/typing-misc/pr7937.ml[40,1320+14]..[40,1320+15])
+                [
+                  core_type (testsuite/tests/typing-misc/pr7937.ml[40,1320+11]..[40,1320+13])
+                    Ptyp_var a
+                ]
+              core_type (testsuite/tests/typing-misc/pr7937.ml[40,1320+19]..[40,1320+20])
+                Ptyp_any
+        expression (testsuite/tests/typing-misc/pr7937.ml[40,1320+23]..[40,1320+50])
+          Pexp_function
+          [
+            <case>
+              pattern (testsuite/tests/typing-misc/pr7937.ml[40,1320+32]..[40,1320+44])
+                Ppat_or
+                pattern (testsuite/tests/typing-misc/pr7937.ml[40,1320+32]..[40,1320+36])
+                  Ppat_construct "true" (testsuite/tests/typing-misc/pr7937.ml[40,1320+32]..[40,1320+36])
+                  None
+                pattern (testsuite/tests/typing-misc/pr7937.ml[40,1320+39]..[40,1320+44])
+                  Ppat_construct "false" (testsuite/tests/typing-misc/pr7937.ml[40,1320+39]..[40,1320+44])
+                  None
+              expression (testsuite/tests/typing-misc/pr7937.ml[40,1320+48]..[40,1320+50])
+                Pexp_construct "()" (testsuite/tests/typing-misc/pr7937.ml[40,1320+48]..[40,1320+50])
+                None
+          ]
+    ]
+  structure_item (testsuite/tests/typing-misc/pr7937.ml[41,1373+0]..[47,1621+3])
+    Pstr_extension "expect"
+    [
+      structure_item (testsuite/tests/typing-misc/pr7937.ml[41,1373+10]..[47,1621+2])
+        Pstr_eval
+        expression (testsuite/tests/typing-misc/pr7937.ml[41,1373+10]..[47,1621+2])
+          Pexp_constant PConst_string ("\nLine 1, characters 32-36:\n1 | let h: 'a. 'a r -> _ = function true | false -> ();;\n                                    ^^^^\nError: This pattern should not be a boolean literal, the expected type is\n       ([< `X of int & 'a ] as 'a) r\n",(testsuite/tests/typing-misc/pr7937.ml[41,1373+12]..[47,1621+0]),Some "")
+    ]
+  structure_item (testsuite/tests/typing-misc/pr7937.ml[50,1627+0]..[50,1627+54])
+    Pstr_value Nonrec
+    [
+      <def>
+        pattern (testsuite/tests/typing-misc/pr7937.ml[50,1627+4]..[50,1627+20]) ghost
+          Ppat_constraint
+          pattern (testsuite/tests/typing-misc/pr7937.ml[50,1627+4]..[50,1627+5])
+            Ppat_var "i" (testsuite/tests/typing-misc/pr7937.ml[50,1627+4]..[50,1627+5])
+          core_type (testsuite/tests/typing-misc/pr7937.ml[50,1627+7]..[50,1627+20]) ghost
+            Ptyp_poly 'a
+            core_type (testsuite/tests/typing-misc/pr7937.ml[50,1627+11]..[50,1627+20])
+              Ptyp_arrow
+              Nolabel
+              core_type (testsuite/tests/typing-misc/pr7937.ml[50,1627+11]..[50,1627+15])
+                Ptyp_constr "r" (testsuite/tests/typing-misc/pr7937.ml[50,1627+14]..[50,1627+15])
+                [
+                  core_type (testsuite/tests/typing-misc/pr7937.ml[50,1627+11]..[50,1627+13])
+                    Ptyp_var a
+                ]
+              core_type (testsuite/tests/typing-misc/pr7937.ml[50,1627+19]..[50,1627+20])
+                Ptyp_any
+        expression (testsuite/tests/typing-misc/pr7937.ml[50,1627+23]..[50,1627+54])
+          Pexp_function
+          [
+            <case>
+              pattern (testsuite/tests/typing-misc/pr7937.ml[50,1627+32]..[50,1627+48])
+                Ppat_record Closed
+                [
+                  "contents" (testsuite/tests/typing-misc/pr7937.ml[50,1627+34]..[50,1627+42])
+                    pattern (testsuite/tests/typing-misc/pr7937.ml[50,1627+45]..[50,1627+46])
+                      Ppat_constant PConst_int (0,None)
+                ]
+              expression (testsuite/tests/typing-misc/pr7937.ml[50,1627+52]..[50,1627+54])
+                Pexp_construct "()" (testsuite/tests/typing-misc/pr7937.ml[50,1627+52]..[50,1627+54])
+                None
+          ]
+    ]
+  structure_item (testsuite/tests/typing-misc/pr7937.ml[51,1684+0]..[57,1939+3])
+    Pstr_extension "expect"
+    [
+      structure_item (testsuite/tests/typing-misc/pr7937.ml[51,1684+10]..[57,1939+2])
+        Pstr_eval
+        expression (testsuite/tests/typing-misc/pr7937.ml[51,1684+10]..[57,1939+2])
+          Pexp_constant PConst_string ("\nLine 1, characters 32-48:\n1 | let i: 'a. 'a r -> _ = function { contents = 0 } -> ();;\n                                    ^^^^^^^^^^^^^^^^\nError: This pattern should not be a record, the expected type is\n       ([< `X of int & 'a ] as 'a) r\n",(testsuite/tests/typing-misc/pr7937.ml[51,1684+12]..[57,1939+0]),Some "")
+    ]
+]
+

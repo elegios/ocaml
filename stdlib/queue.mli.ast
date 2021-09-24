@@ -1,0 +1,566 @@
+[
+  signature_item (stdlib/queue.mli[16,1079+0]..[23,1361+2])
+    Psig_attribute "ocaml.text"
+    [
+      structure_item (stdlib/queue.mli[16,1079+0]..[23,1361+2])
+        Pstr_eval
+        expression (stdlib/queue.mli[16,1079+0]..[23,1361+2])
+          Pexp_constant PConst_string(" First-in first-out queues.\n\n   This module implements queues (FIFOs), with in-place modification.\n\n   {b Warning} This module is not thread-safe: each {!Queue.t} value\n   must be protected from concurrent access (e.g. with a [Mutex.t]).\n   Failure to do so can lead to a crash.\n",(stdlib/queue.mli[16,1079+0]..[23,1361+2]),None)
+    ]
+  signature_item (stdlib/queue.mli[25,1365+0]..[25,1365+10])
+    Psig_type Rec
+    [
+      type_declaration "t" (stdlib/queue.mli[25,1365+9]..[25,1365+10]) (stdlib/queue.mli[25,1365+0]..[25,1365+10])
+        attribute "ocaml.doc"
+          [
+            structure_item (stdlib/queue.mli[26,1376+0]..[26,1376+59])
+              Pstr_eval
+              expression (stdlib/queue.mli[26,1376+0]..[26,1376+59])
+                Pexp_constant PConst_string(" The type of queues containing elements of type ['a]. ",(stdlib/queue.mli[26,1376+0]..[26,1376+59]),None)
+          ]
+        ptype_params =
+          [
+            core_type (stdlib/queue.mli[25,1365+6]..[25,1365+8])
+              Ptyp_var a
+          ]
+        ptype_cstrs =
+          []
+        ptype_kind =
+          Ptype_abstract
+        ptype_private = Public
+        ptype_manifest =
+          None
+    ]
+  signature_item (stdlib/queue.mli[29,1438+0]..[29,1438+15])
+    Psig_exception
+    type_exception
+      ptyext_constructor =
+        extension_constructor (stdlib/queue.mli[29,1438+0]..[29,1438+15])
+          attribute "ocaml.doc"
+            [
+              structure_item (stdlib/queue.mli[30,1454+0]..[30,1454+79])
+                Pstr_eval
+                expression (stdlib/queue.mli[30,1454+0]..[30,1454+79])
+                  Pexp_constant PConst_string(" Raised when {!Queue.take} or {!Queue.peek} is applied to an empty queue. ",(stdlib/queue.mli[30,1454+0]..[30,1454+79]),None)
+            ]
+          pext_name = "Empty"
+          pext_kind =
+            Pext_decl
+              []
+              None
+  signature_item (stdlib/queue.mli[33,1536+0]..[33,1536+25])
+    Psig_value
+    value_description "create" (stdlib/queue.mli[33,1536+4]..[33,1536+10]) (stdlib/queue.mli[33,1536+0]..[33,1536+25])
+      attribute "ocaml.doc"
+        [
+          structure_item (stdlib/queue.mli[34,1562+0]..[34,1562+43])
+            Pstr_eval
+            expression (stdlib/queue.mli[34,1562+0]..[34,1562+43])
+              Pexp_constant PConst_string(" Return a new queue, initially empty. ",(stdlib/queue.mli[34,1562+0]..[34,1562+43]),None)
+        ]
+      core_type (stdlib/queue.mli[33,1536+13]..[33,1536+25])
+        Ptyp_arrow
+        Nolabel
+        core_type (stdlib/queue.mli[33,1536+13]..[33,1536+17])
+          Ptyp_constr "unit" (stdlib/queue.mli[33,1536+13]..[33,1536+17])
+          []
+        core_type (stdlib/queue.mli[33,1536+21]..[33,1536+25])
+          Ptyp_constr "t" (stdlib/queue.mli[33,1536+24]..[33,1536+25])
+          [
+            core_type (stdlib/queue.mli[33,1536+21]..[33,1536+23])
+              Ptyp_var a
+          ]
+      []
+  signature_item (stdlib/queue.mli[36,1607+0]..[36,1607+28])
+    Psig_value
+    value_description "add" (stdlib/queue.mli[36,1607+4]..[36,1607+7]) (stdlib/queue.mli[36,1607+0]..[36,1607+28])
+      attribute "ocaml.doc"
+        [
+          structure_item (stdlib/queue.mli[37,1636+0]..[37,1636+66])
+            Pstr_eval
+            expression (stdlib/queue.mli[37,1636+0]..[37,1636+66])
+              Pexp_constant PConst_string(" [add x q] adds the element [x] at the end of the queue [q]. ",(stdlib/queue.mli[37,1636+0]..[37,1636+66]),None)
+        ]
+      core_type (stdlib/queue.mli[36,1607+10]..[36,1607+28])
+        Ptyp_arrow
+        Nolabel
+        core_type (stdlib/queue.mli[36,1607+10]..[36,1607+12])
+          Ptyp_var a
+        core_type (stdlib/queue.mli[36,1607+16]..[36,1607+28])
+          Ptyp_arrow
+          Nolabel
+          core_type (stdlib/queue.mli[36,1607+16]..[36,1607+20])
+            Ptyp_constr "t" (stdlib/queue.mli[36,1607+19]..[36,1607+20])
+            [
+              core_type (stdlib/queue.mli[36,1607+16]..[36,1607+18])
+                Ptyp_var a
+            ]
+          core_type (stdlib/queue.mli[36,1607+24]..[36,1607+28])
+            Ptyp_constr "unit" (stdlib/queue.mli[36,1607+24]..[36,1607+28])
+            []
+      []
+  signature_item (stdlib/queue.mli[39,1704+0]..[39,1704+29])
+    Psig_value
+    value_description "push" (stdlib/queue.mli[39,1704+4]..[39,1704+8]) (stdlib/queue.mli[39,1704+0]..[39,1704+29])
+      attribute "ocaml.doc"
+        [
+          structure_item (stdlib/queue.mli[40,1734+0]..[40,1734+37])
+            Pstr_eval
+            expression (stdlib/queue.mli[40,1734+0]..[40,1734+37])
+              Pexp_constant PConst_string(" [push] is a synonym for [add]. ",(stdlib/queue.mli[40,1734+0]..[40,1734+37]),None)
+        ]
+      core_type (stdlib/queue.mli[39,1704+11]..[39,1704+29])
+        Ptyp_arrow
+        Nolabel
+        core_type (stdlib/queue.mli[39,1704+11]..[39,1704+13])
+          Ptyp_var a
+        core_type (stdlib/queue.mli[39,1704+17]..[39,1704+29])
+          Ptyp_arrow
+          Nolabel
+          core_type (stdlib/queue.mli[39,1704+17]..[39,1704+21])
+            Ptyp_constr "t" (stdlib/queue.mli[39,1704+20]..[39,1704+21])
+            [
+              core_type (stdlib/queue.mli[39,1704+17]..[39,1704+19])
+                Ptyp_var a
+            ]
+          core_type (stdlib/queue.mli[39,1704+25]..[39,1704+29])
+            Ptyp_constr "unit" (stdlib/queue.mli[39,1704+25]..[39,1704+29])
+            []
+      []
+  signature_item (stdlib/queue.mli[42,1773+0]..[42,1773+21])
+    Psig_value
+    value_description "take" (stdlib/queue.mli[42,1773+4]..[42,1773+8]) (stdlib/queue.mli[42,1773+0]..[42,1773+21])
+      attribute "ocaml.doc"
+        [
+          structure_item (stdlib/queue.mli[43,1795+0]..[44,1860+47])
+            Pstr_eval
+            expression (stdlib/queue.mli[43,1795+0]..[44,1860+47])
+              Pexp_constant PConst_string(" [take q] removes and returns the first element in queue [q],\n   or raises {!Empty} if the queue is empty. ",(stdlib/queue.mli[43,1795+0]..[44,1860+47]),None)
+        ]
+      core_type (stdlib/queue.mli[42,1773+11]..[42,1773+21])
+        Ptyp_arrow
+        Nolabel
+        core_type (stdlib/queue.mli[42,1773+11]..[42,1773+15])
+          Ptyp_constr "t" (stdlib/queue.mli[42,1773+14]..[42,1773+15])
+          [
+            core_type (stdlib/queue.mli[42,1773+11]..[42,1773+13])
+              Ptyp_var a
+          ]
+        core_type (stdlib/queue.mli[42,1773+19]..[42,1773+21])
+          Ptyp_var a
+      []
+  signature_item (stdlib/queue.mli[46,1909+0]..[46,1909+32])
+    Psig_value
+    value_description "take_opt" (stdlib/queue.mli[46,1909+4]..[46,1909+12]) (stdlib/queue.mli[46,1909+0]..[46,1909+32])
+      attribute "ocaml.doc"
+        [
+          structure_item (stdlib/queue.mli[47,1942+0]..[49,2055+17])
+            Pstr_eval
+            expression (stdlib/queue.mli[47,1942+0]..[49,2055+17])
+              Pexp_constant PConst_string(" [take_opt q] removes and returns the first element in queue [q],\n   or returns [None] if the queue is empty.\n   @since 4.08 ",(stdlib/queue.mli[47,1942+0]..[49,2055+17]),None)
+        ]
+      core_type (stdlib/queue.mli[46,1909+15]..[46,1909+32])
+        Ptyp_arrow
+        Nolabel
+        core_type (stdlib/queue.mli[46,1909+15]..[46,1909+19])
+          Ptyp_constr "t" (stdlib/queue.mli[46,1909+18]..[46,1909+19])
+          [
+            core_type (stdlib/queue.mli[46,1909+15]..[46,1909+17])
+              Ptyp_var a
+          ]
+        core_type (stdlib/queue.mli[46,1909+23]..[46,1909+32])
+          Ptyp_constr "option" (stdlib/queue.mli[46,1909+26]..[46,1909+32])
+          [
+            core_type (stdlib/queue.mli[46,1909+23]..[46,1909+25])
+              Ptyp_var a
+          ]
+      []
+  signature_item (stdlib/queue.mli[51,2074+0]..[51,2074+20])
+    Psig_value
+    value_description "pop" (stdlib/queue.mli[51,2074+4]..[51,2074+7]) (stdlib/queue.mli[51,2074+0]..[51,2074+20])
+      attribute "ocaml.doc"
+        [
+          structure_item (stdlib/queue.mli[52,2095+0]..[52,2095+37])
+            Pstr_eval
+            expression (stdlib/queue.mli[52,2095+0]..[52,2095+37])
+              Pexp_constant PConst_string(" [pop] is a synonym for [take]. ",(stdlib/queue.mli[52,2095+0]..[52,2095+37]),None)
+        ]
+      core_type (stdlib/queue.mli[51,2074+10]..[51,2074+20])
+        Ptyp_arrow
+        Nolabel
+        core_type (stdlib/queue.mli[51,2074+10]..[51,2074+14])
+          Ptyp_constr "t" (stdlib/queue.mli[51,2074+13]..[51,2074+14])
+          [
+            core_type (stdlib/queue.mli[51,2074+10]..[51,2074+12])
+              Ptyp_var a
+          ]
+        core_type (stdlib/queue.mli[51,2074+18]..[51,2074+20])
+          Ptyp_var a
+      []
+  signature_item (stdlib/queue.mli[54,2134+0]..[54,2134+21])
+    Psig_value
+    value_description "peek" (stdlib/queue.mli[54,2134+4]..[54,2134+8]) (stdlib/queue.mli[54,2134+0]..[54,2134+21])
+      attribute "ocaml.doc"
+        [
+          structure_item (stdlib/queue.mli[55,2156+0]..[56,2226+66])
+            Pstr_eval
+            expression (stdlib/queue.mli[55,2156+0]..[56,2226+66])
+              Pexp_constant PConst_string(" [peek q] returns the first element in queue [q], without removing\n   it from the queue, or raises {!Empty} if the queue is empty. ",(stdlib/queue.mli[55,2156+0]..[56,2226+66]),None)
+        ]
+      core_type (stdlib/queue.mli[54,2134+11]..[54,2134+21])
+        Ptyp_arrow
+        Nolabel
+        core_type (stdlib/queue.mli[54,2134+11]..[54,2134+15])
+          Ptyp_constr "t" (stdlib/queue.mli[54,2134+14]..[54,2134+15])
+          [
+            core_type (stdlib/queue.mli[54,2134+11]..[54,2134+13])
+              Ptyp_var a
+          ]
+        core_type (stdlib/queue.mli[54,2134+19]..[54,2134+21])
+          Ptyp_var a
+      []
+  signature_item (stdlib/queue.mli[58,2294+0]..[58,2294+32])
+    Psig_value
+    value_description "peek_opt" (stdlib/queue.mli[58,2294+4]..[58,2294+12]) (stdlib/queue.mli[58,2294+0]..[58,2294+32])
+      attribute "ocaml.doc"
+        [
+          structure_item (stdlib/queue.mli[59,2327+0]..[61,2464+17])
+            Pstr_eval
+            expression (stdlib/queue.mli[59,2327+0]..[61,2464+17])
+              Pexp_constant PConst_string(" [peek_opt q] returns the first element in queue [q], without removing\n   it from the queue, or returns [None] if the queue is empty.\n   @since 4.08 ",(stdlib/queue.mli[59,2327+0]..[61,2464+17]),None)
+        ]
+      core_type (stdlib/queue.mli[58,2294+15]..[58,2294+32])
+        Ptyp_arrow
+        Nolabel
+        core_type (stdlib/queue.mli[58,2294+15]..[58,2294+19])
+          Ptyp_constr "t" (stdlib/queue.mli[58,2294+18]..[58,2294+19])
+          [
+            core_type (stdlib/queue.mli[58,2294+15]..[58,2294+17])
+              Ptyp_var a
+          ]
+        core_type (stdlib/queue.mli[58,2294+23]..[58,2294+32])
+          Ptyp_constr "option" (stdlib/queue.mli[58,2294+26]..[58,2294+32])
+          [
+            core_type (stdlib/queue.mli[58,2294+23]..[58,2294+25])
+              Ptyp_var a
+          ]
+      []
+  signature_item (stdlib/queue.mli[63,2483+0]..[63,2483+20])
+    Psig_value
+    value_description "top" (stdlib/queue.mli[63,2483+4]..[63,2483+7]) (stdlib/queue.mli[63,2483+0]..[63,2483+20])
+      attribute "ocaml.doc"
+        [
+          structure_item (stdlib/queue.mli[64,2504+0]..[64,2504+37])
+            Pstr_eval
+            expression (stdlib/queue.mli[64,2504+0]..[64,2504+37])
+              Pexp_constant PConst_string(" [top] is a synonym for [peek]. ",(stdlib/queue.mli[64,2504+0]..[64,2504+37]),None)
+        ]
+      core_type (stdlib/queue.mli[63,2483+10]..[63,2483+20])
+        Ptyp_arrow
+        Nolabel
+        core_type (stdlib/queue.mli[63,2483+10]..[63,2483+14])
+          Ptyp_constr "t" (stdlib/queue.mli[63,2483+13]..[63,2483+14])
+          [
+            core_type (stdlib/queue.mli[63,2483+10]..[63,2483+12])
+              Ptyp_var a
+          ]
+        core_type (stdlib/queue.mli[63,2483+18]..[63,2483+20])
+          Ptyp_var a
+      []
+  signature_item (stdlib/queue.mli[66,2543+0]..[66,2543+24])
+    Psig_value
+    value_description "clear" (stdlib/queue.mli[66,2543+4]..[66,2543+9]) (stdlib/queue.mli[66,2543+0]..[66,2543+24])
+      attribute "ocaml.doc"
+        [
+          structure_item (stdlib/queue.mli[67,2568+0]..[67,2568+41])
+            Pstr_eval
+            expression (stdlib/queue.mli[67,2568+0]..[67,2568+41])
+              Pexp_constant PConst_string(" Discard all elements from a queue. ",(stdlib/queue.mli[67,2568+0]..[67,2568+41]),None)
+        ]
+      core_type (stdlib/queue.mli[66,2543+12]..[66,2543+24])
+        Ptyp_arrow
+        Nolabel
+        core_type (stdlib/queue.mli[66,2543+12]..[66,2543+16])
+          Ptyp_constr "t" (stdlib/queue.mli[66,2543+15]..[66,2543+16])
+          [
+            core_type (stdlib/queue.mli[66,2543+12]..[66,2543+14])
+              Ptyp_var a
+          ]
+        core_type (stdlib/queue.mli[66,2543+20]..[66,2543+24])
+          Ptyp_constr "unit" (stdlib/queue.mli[66,2543+20]..[66,2543+24])
+          []
+      []
+  signature_item (stdlib/queue.mli[69,2611+0]..[69,2611+23])
+    Psig_value
+    value_description "copy" (stdlib/queue.mli[69,2611+4]..[69,2611+8]) (stdlib/queue.mli[69,2611+0]..[69,2611+23])
+      attribute "ocaml.doc"
+        [
+          structure_item (stdlib/queue.mli[70,2635+0]..[70,2635+40])
+            Pstr_eval
+            expression (stdlib/queue.mli[70,2635+0]..[70,2635+40])
+              Pexp_constant PConst_string(" Return a copy of the given queue. ",(stdlib/queue.mli[70,2635+0]..[70,2635+40]),None)
+        ]
+      core_type (stdlib/queue.mli[69,2611+11]..[69,2611+23])
+        Ptyp_arrow
+        Nolabel
+        core_type (stdlib/queue.mli[69,2611+11]..[69,2611+15])
+          Ptyp_constr "t" (stdlib/queue.mli[69,2611+14]..[69,2611+15])
+          [
+            core_type (stdlib/queue.mli[69,2611+11]..[69,2611+13])
+              Ptyp_var a
+          ]
+        core_type (stdlib/queue.mli[69,2611+19]..[69,2611+23])
+          Ptyp_constr "t" (stdlib/queue.mli[69,2611+22]..[69,2611+23])
+          [
+            core_type (stdlib/queue.mli[69,2611+19]..[69,2611+21])
+              Ptyp_var a
+          ]
+      []
+  signature_item (stdlib/queue.mli[72,2677+0]..[72,2677+27])
+    Psig_value
+    value_description "is_empty" (stdlib/queue.mli[72,2677+4]..[72,2677+12]) (stdlib/queue.mli[72,2677+0]..[72,2677+27])
+      attribute "ocaml.doc"
+        [
+          structure_item (stdlib/queue.mli[73,2705+0]..[73,2705+68])
+            Pstr_eval
+            expression (stdlib/queue.mli[73,2705+0]..[73,2705+68])
+              Pexp_constant PConst_string(" Return [true] if the given queue is empty, [false] otherwise. ",(stdlib/queue.mli[73,2705+0]..[73,2705+68]),None)
+        ]
+      core_type (stdlib/queue.mli[72,2677+15]..[72,2677+27])
+        Ptyp_arrow
+        Nolabel
+        core_type (stdlib/queue.mli[72,2677+15]..[72,2677+19])
+          Ptyp_constr "t" (stdlib/queue.mli[72,2677+18]..[72,2677+19])
+          [
+            core_type (stdlib/queue.mli[72,2677+15]..[72,2677+17])
+              Ptyp_var a
+          ]
+        core_type (stdlib/queue.mli[72,2677+23]..[72,2677+27])
+          Ptyp_constr "bool" (stdlib/queue.mli[72,2677+23]..[72,2677+27])
+          []
+      []
+  signature_item (stdlib/queue.mli[75,2775+0]..[75,2775+24])
+    Psig_value
+    value_description "length" (stdlib/queue.mli[75,2775+4]..[75,2775+10]) (stdlib/queue.mli[75,2775+0]..[75,2775+24])
+      attribute "ocaml.doc"
+        [
+          structure_item (stdlib/queue.mli[76,2800+0]..[76,2800+48])
+            Pstr_eval
+            expression (stdlib/queue.mli[76,2800+0]..[76,2800+48])
+              Pexp_constant PConst_string(" Return the number of elements in a queue. ",(stdlib/queue.mli[76,2800+0]..[76,2800+48]),None)
+        ]
+      core_type (stdlib/queue.mli[75,2775+13]..[75,2775+24])
+        Ptyp_arrow
+        Nolabel
+        core_type (stdlib/queue.mli[75,2775+13]..[75,2775+17])
+          Ptyp_constr "t" (stdlib/queue.mli[75,2775+16]..[75,2775+17])
+          [
+            core_type (stdlib/queue.mli[75,2775+13]..[75,2775+15])
+              Ptyp_var a
+          ]
+        core_type (stdlib/queue.mli[75,2775+21]..[75,2775+24])
+          Ptyp_constr "int" (stdlib/queue.mli[75,2775+21]..[75,2775+24])
+          []
+      []
+  signature_item (stdlib/queue.mli[78,2850+0]..[78,2850+39])
+    Psig_value
+    value_description "iter" (stdlib/queue.mli[78,2850+4]..[78,2850+8]) (stdlib/queue.mli[78,2850+0]..[78,2850+39])
+      attribute "ocaml.doc"
+        [
+          structure_item (stdlib/queue.mli[79,2890+0]..[81,3014+36])
+            Pstr_eval
+            expression (stdlib/queue.mli[79,2890+0]..[81,3014+36])
+              Pexp_constant PConst_string(" [iter f q] applies [f] in turn to all elements of [q],\n   from the least recently entered to the most recently entered.\n   The queue itself is unchanged. ",(stdlib/queue.mli[79,2890+0]..[81,3014+36]),None)
+        ]
+      core_type (stdlib/queue.mli[78,2850+11]..[78,2850+39])
+        Ptyp_arrow
+        Nolabel
+        core_type (stdlib/queue.mli[78,2850+12]..[78,2850+22])
+          Ptyp_arrow
+          Nolabel
+          core_type (stdlib/queue.mli[78,2850+12]..[78,2850+14])
+            Ptyp_var a
+          core_type (stdlib/queue.mli[78,2850+18]..[78,2850+22])
+            Ptyp_constr "unit" (stdlib/queue.mli[78,2850+18]..[78,2850+22])
+            []
+        core_type (stdlib/queue.mli[78,2850+27]..[78,2850+39])
+          Ptyp_arrow
+          Nolabel
+          core_type (stdlib/queue.mli[78,2850+27]..[78,2850+31])
+            Ptyp_constr "t" (stdlib/queue.mli[78,2850+30]..[78,2850+31])
+            [
+              core_type (stdlib/queue.mli[78,2850+27]..[78,2850+29])
+                Ptyp_var a
+            ]
+          core_type (stdlib/queue.mli[78,2850+35]..[78,2850+39])
+            Ptyp_constr "unit" (stdlib/queue.mli[78,2850+35]..[78,2850+39])
+            []
+      []
+  signature_item (stdlib/queue.mli[83,3052+0]..[83,3052+47])
+    Psig_value
+    value_description "fold" (stdlib/queue.mli[83,3052+4]..[83,3052+8]) (stdlib/queue.mli[83,3052+0]..[83,3052+47])
+      attribute "ocaml.doc"
+        [
+          structure_item (stdlib/queue.mli[84,3100+0]..[86,3226+16])
+            Pstr_eval
+            expression (stdlib/queue.mli[84,3100+0]..[86,3226+16])
+              Pexp_constant PConst_string(" [fold f accu q] is equivalent to [List.fold_left f accu l],\n   where [l] is the list of [q]'s elements. The queue remains\n   unchanged. ",(stdlib/queue.mli[84,3100+0]..[86,3226+16]),None)
+        ]
+      core_type (stdlib/queue.mli[83,3052+11]..[83,3052+47])
+        Ptyp_arrow
+        Nolabel
+        core_type (stdlib/queue.mli[83,3052+12]..[83,3052+26])
+          Ptyp_arrow
+          Nolabel
+          core_type (stdlib/queue.mli[83,3052+12]..[83,3052+14])
+            Ptyp_var b
+          core_type (stdlib/queue.mli[83,3052+18]..[83,3052+26])
+            Ptyp_arrow
+            Nolabel
+            core_type (stdlib/queue.mli[83,3052+18]..[83,3052+20])
+              Ptyp_var a
+            core_type (stdlib/queue.mli[83,3052+24]..[83,3052+26])
+              Ptyp_var b
+        core_type (stdlib/queue.mli[83,3052+31]..[83,3052+47])
+          Ptyp_arrow
+          Nolabel
+          core_type (stdlib/queue.mli[83,3052+31]..[83,3052+33])
+            Ptyp_var b
+          core_type (stdlib/queue.mli[83,3052+37]..[83,3052+47])
+            Ptyp_arrow
+            Nolabel
+            core_type (stdlib/queue.mli[83,3052+37]..[83,3052+41])
+              Ptyp_constr "t" (stdlib/queue.mli[83,3052+40]..[83,3052+41])
+              [
+                core_type (stdlib/queue.mli[83,3052+37]..[83,3052+39])
+                  Ptyp_var a
+              ]
+            core_type (stdlib/queue.mli[83,3052+45]..[83,3052+47])
+              Ptyp_var b
+      []
+  signature_item (stdlib/queue.mli[88,3244+0]..[88,3244+35])
+    Psig_value
+    value_description "transfer" (stdlib/queue.mli[88,3244+4]..[88,3244+12]) (stdlib/queue.mli[88,3244+0]..[88,3244+35])
+      attribute "ocaml.doc"
+        [
+          structure_item (stdlib/queue.mli[89,3280+0]..[92,3466+23])
+            Pstr_eval
+            expression (stdlib/queue.mli[89,3280+0]..[92,3466+23])
+              Pexp_constant PConst_string(" [transfer q1 q2] adds all of [q1]'s elements at the end of\n   the queue [q2], then clears [q1]. It is equivalent to the\n   sequence [iter (fun x -> add x q2) q1; clear q1], but runs\n   in constant time. ",(stdlib/queue.mli[89,3280+0]..[92,3466+23]),None)
+        ]
+      core_type (stdlib/queue.mli[88,3244+15]..[88,3244+35])
+        Ptyp_arrow
+        Nolabel
+        core_type (stdlib/queue.mli[88,3244+15]..[88,3244+19])
+          Ptyp_constr "t" (stdlib/queue.mli[88,3244+18]..[88,3244+19])
+          [
+            core_type (stdlib/queue.mli[88,3244+15]..[88,3244+17])
+              Ptyp_var a
+          ]
+        core_type (stdlib/queue.mli[88,3244+23]..[88,3244+35])
+          Ptyp_arrow
+          Nolabel
+          core_type (stdlib/queue.mli[88,3244+23]..[88,3244+27])
+            Ptyp_constr "t" (stdlib/queue.mli[88,3244+26]..[88,3244+27])
+            [
+              core_type (stdlib/queue.mli[88,3244+23]..[88,3244+25])
+                Ptyp_var a
+            ]
+          core_type (stdlib/queue.mli[88,3244+31]..[88,3244+35])
+            Ptyp_constr "unit" (stdlib/queue.mli[88,3244+31]..[88,3244+35])
+            []
+      []
+  signature_item (stdlib/queue.mli[94,3491+0]..[94,3491+20])
+    Psig_attribute "ocaml.text"
+    [
+      structure_item (stdlib/queue.mli[94,3491+0]..[94,3491+20])
+        Pstr_eval
+        expression (stdlib/queue.mli[94,3491+0]..[94,3491+20])
+          Pexp_constant PConst_string(" {1 Iterators} ",(stdlib/queue.mli[94,3491+0]..[94,3491+20]),None)
+    ]
+  signature_item (stdlib/queue.mli[96,3513+0]..[96,3513+29])
+    Psig_value
+    value_description "to_seq" (stdlib/queue.mli[96,3513+4]..[96,3513+10]) (stdlib/queue.mli[96,3513+0]..[96,3513+29])
+      attribute "ocaml.doc"
+        [
+          structure_item (stdlib/queue.mli[97,3543+0]..[100,3678+18])
+            Pstr_eval
+            expression (stdlib/queue.mli[97,3543+0]..[100,3678+18])
+              Pexp_constant PConst_string(" Iterate on the queue, in front-to-back order.\n    The behavior is not specified if the queue is modified\n    during the iteration.\n    @since 4.07 ",(stdlib/queue.mli[97,3543+0]..[100,3678+18]),None)
+        ]
+      core_type (stdlib/queue.mli[96,3513+13]..[96,3513+29])
+        Ptyp_arrow
+        Nolabel
+        core_type (stdlib/queue.mli[96,3513+13]..[96,3513+17])
+          Ptyp_constr "t" (stdlib/queue.mli[96,3513+16]..[96,3513+17])
+          [
+            core_type (stdlib/queue.mli[96,3513+13]..[96,3513+15])
+              Ptyp_var a
+          ]
+        core_type (stdlib/queue.mli[96,3513+21]..[96,3513+29])
+          Ptyp_constr "Seq.t" (stdlib/queue.mli[96,3513+24]..[96,3513+29])
+          [
+            core_type (stdlib/queue.mli[96,3513+21]..[96,3513+23])
+              Ptyp_var a
+          ]
+      []
+  signature_item (stdlib/queue.mli[102,3698+0]..[102,3698+38])
+    Psig_value
+    value_description "add_seq" (stdlib/queue.mli[102,3698+4]..[102,3698+11]) (stdlib/queue.mli[102,3698+0]..[102,3698+38])
+      attribute "ocaml.doc"
+        [
+          structure_item (stdlib/queue.mli[103,3737+0]..[104,3799+18])
+            Pstr_eval
+            expression (stdlib/queue.mli[103,3737+0]..[104,3799+18])
+              Pexp_constant PConst_string(" Add the elements from a sequence to the end of the queue.\n    @since 4.07 ",(stdlib/queue.mli[103,3737+0]..[104,3799+18]),None)
+        ]
+      core_type (stdlib/queue.mli[102,3698+14]..[102,3698+38])
+        Ptyp_arrow
+        Nolabel
+        core_type (stdlib/queue.mli[102,3698+14]..[102,3698+18])
+          Ptyp_constr "t" (stdlib/queue.mli[102,3698+17]..[102,3698+18])
+          [
+            core_type (stdlib/queue.mli[102,3698+14]..[102,3698+16])
+              Ptyp_var a
+          ]
+        core_type (stdlib/queue.mli[102,3698+22]..[102,3698+38])
+          Ptyp_arrow
+          Nolabel
+          core_type (stdlib/queue.mli[102,3698+22]..[102,3698+30])
+            Ptyp_constr "Seq.t" (stdlib/queue.mli[102,3698+25]..[102,3698+30])
+            [
+              core_type (stdlib/queue.mli[102,3698+22]..[102,3698+24])
+                Ptyp_var a
+            ]
+          core_type (stdlib/queue.mli[102,3698+34]..[102,3698+38])
+            Ptyp_constr "unit" (stdlib/queue.mli[102,3698+34]..[102,3698+38])
+            []
+      []
+  signature_item (stdlib/queue.mli[106,3819+0]..[106,3819+29])
+    Psig_value
+    value_description "of_seq" (stdlib/queue.mli[106,3819+4]..[106,3819+10]) (stdlib/queue.mli[106,3819+0]..[106,3819+29])
+      attribute "ocaml.doc"
+        [
+          structure_item (stdlib/queue.mli[107,3849+0]..[108,3885+18])
+            Pstr_eval
+            expression (stdlib/queue.mli[107,3849+0]..[108,3885+18])
+              Pexp_constant PConst_string(" Create a queue from a sequence.\n    @since 4.07 ",(stdlib/queue.mli[107,3849+0]..[108,3885+18]),None)
+        ]
+      core_type (stdlib/queue.mli[106,3819+13]..[106,3819+29])
+        Ptyp_arrow
+        Nolabel
+        core_type (stdlib/queue.mli[106,3819+13]..[106,3819+21])
+          Ptyp_constr "Seq.t" (stdlib/queue.mli[106,3819+16]..[106,3819+21])
+          [
+            core_type (stdlib/queue.mli[106,3819+13]..[106,3819+15])
+              Ptyp_var a
+          ]
+        core_type (stdlib/queue.mli[106,3819+25]..[106,3819+29])
+          Ptyp_constr "t" (stdlib/queue.mli[106,3819+28]..[106,3819+29])
+          [
+            core_type (stdlib/queue.mli[106,3819+25]..[106,3819+27])
+              Ptyp_var a
+          ]
+      []
+]
+

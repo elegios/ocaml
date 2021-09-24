@@ -1,0 +1,956 @@
+[
+  structure_item (stdlib/result.ml[16,1079+0]..[16,1079+58])
+    Pstr_type Rec
+    [
+      type_declaration "t" (stdlib/result.ml[16,1079+14]..[16,1079+15]) (stdlib/result.ml[16,1079+0]..[16,1079+58])
+        ptype_params =
+          [
+            core_type (stdlib/result.ml[16,1079+6]..[16,1079+8])
+              Ptyp_var a
+            core_type (stdlib/result.ml[16,1079+10]..[16,1079+12])
+              Ptyp_var e
+          ]
+        ptype_cstrs =
+          []
+        ptype_kind =
+          Ptype_variant
+            [
+              (stdlib/result.ml[16,1079+36]..[16,1079+44])
+                "Ok" (stdlib/result.ml[16,1079+36]..[16,1079+38])
+                [
+                  core_type (stdlib/result.ml[16,1079+42]..[16,1079+44])
+                    Ptyp_var a
+                ]
+                None
+              (stdlib/result.ml[16,1079+45]..[16,1079+58])
+                "Error" (stdlib/result.ml[16,1079+47]..[16,1079+52])
+                [
+                  core_type (stdlib/result.ml[16,1079+56]..[16,1079+58])
+                    Ptyp_var e
+                ]
+                None
+            ]
+        ptype_private = Public
+        ptype_manifest =
+          Some
+            core_type (stdlib/result.ml[16,1079+18]..[16,1079+33])
+              Ptyp_constr "result" (stdlib/result.ml[16,1079+27]..[16,1079+33])
+              [
+                core_type (stdlib/result.ml[16,1079+19]..[16,1079+21])
+                  Ptyp_var a
+                core_type (stdlib/result.ml[16,1079+23]..[16,1079+25])
+                  Ptyp_var e
+              ]
+    ]
+  structure_item (stdlib/result.ml[18,1139+0]..[18,1139+15])
+    Pstr_value Nonrec
+    [
+      <def>
+        pattern (stdlib/result.ml[18,1139+4]..[18,1139+6])
+          Ppat_var "ok" (stdlib/result.ml[18,1139+4]..[18,1139+6])
+        expression (stdlib/result.ml[18,1139+7]..[18,1139+15]) ghost
+          Pexp_fun
+          Nolabel
+          None
+          pattern (stdlib/result.ml[18,1139+7]..[18,1139+8])
+            Ppat_var "v" (stdlib/result.ml[18,1139+7]..[18,1139+8])
+          expression (stdlib/result.ml[18,1139+11]..[18,1139+15])
+            Pexp_construct "Ok" (stdlib/result.ml[18,1139+11]..[18,1139+13])
+            Some
+              expression (stdlib/result.ml[18,1139+14]..[18,1139+15])
+                Pexp_ident "v" (stdlib/result.ml[18,1139+14]..[18,1139+15])
+    ]
+  structure_item (stdlib/result.ml[19,1155+0]..[19,1155+21])
+    Pstr_value Nonrec
+    [
+      <def>
+        pattern (stdlib/result.ml[19,1155+4]..[19,1155+9])
+          Ppat_var "error" (stdlib/result.ml[19,1155+4]..[19,1155+9])
+        expression (stdlib/result.ml[19,1155+10]..[19,1155+21]) ghost
+          Pexp_fun
+          Nolabel
+          None
+          pattern (stdlib/result.ml[19,1155+10]..[19,1155+11])
+            Ppat_var "e" (stdlib/result.ml[19,1155+10]..[19,1155+11])
+          expression (stdlib/result.ml[19,1155+14]..[19,1155+21])
+            Pexp_construct "Error" (stdlib/result.ml[19,1155+14]..[19,1155+19])
+            Some
+              expression (stdlib/result.ml[19,1155+20]..[19,1155+21])
+                Pexp_ident "e" (stdlib/result.ml[19,1155+20]..[19,1155+21])
+    ]
+  structure_item (stdlib/result.ml[20,1177+0]..[20,1177+66])
+    Pstr_value Nonrec
+    [
+      <def>
+        pattern (stdlib/result.ml[20,1177+4]..[20,1177+9])
+          Ppat_var "value" (stdlib/result.ml[20,1177+4]..[20,1177+9])
+        expression (stdlib/result.ml[20,1177+10]..[20,1177+66]) ghost
+          Pexp_fun
+          Nolabel
+          None
+          pattern (stdlib/result.ml[20,1177+10]..[20,1177+11])
+            Ppat_var "r" (stdlib/result.ml[20,1177+10]..[20,1177+11])
+          expression (stdlib/result.ml[20,1177+12]..[20,1177+66]) ghost
+            Pexp_fun
+            Labelled "default"
+            None
+            pattern (stdlib/result.ml[20,1177+13]..[20,1177+20])
+              Ppat_var "default" (stdlib/result.ml[20,1177+13]..[20,1177+20])
+            expression (stdlib/result.ml[20,1177+23]..[20,1177+66])
+              Pexp_match
+              expression (stdlib/result.ml[20,1177+29]..[20,1177+30])
+                Pexp_ident "r" (stdlib/result.ml[20,1177+29]..[20,1177+30])
+              [
+                <case>
+                  pattern (stdlib/result.ml[20,1177+36]..[20,1177+40])
+                    Ppat_construct "Ok" (stdlib/result.ml[20,1177+36]..[20,1177+38])
+                    Some
+                      []
+                      pattern (stdlib/result.ml[20,1177+39]..[20,1177+40])
+                        Ppat_var "v" (stdlib/result.ml[20,1177+39]..[20,1177+40])
+                  expression (stdlib/result.ml[20,1177+44]..[20,1177+45])
+                    Pexp_ident "v" (stdlib/result.ml[20,1177+44]..[20,1177+45])
+                <case>
+                  pattern (stdlib/result.ml[20,1177+48]..[20,1177+55])
+                    Ppat_construct "Error" (stdlib/result.ml[20,1177+48]..[20,1177+53])
+                    Some
+                      []
+                      pattern (stdlib/result.ml[20,1177+54]..[20,1177+55])
+                        Ppat_any
+                  expression (stdlib/result.ml[20,1177+59]..[20,1177+66])
+                    Pexp_ident "default" (stdlib/result.ml[20,1177+59]..[20,1177+66])
+              ]
+    ]
+  structure_item (stdlib/result.ml[21,1244+0]..[21,1244+76])
+    Pstr_value Nonrec
+    [
+      <def>
+        pattern (stdlib/result.ml[21,1244+4]..[21,1244+10])
+          Ppat_var "get_ok" (stdlib/result.ml[21,1244+4]..[21,1244+10])
+        expression (stdlib/result.ml[21,1244+13]..[21,1244+76])
+          Pexp_function
+          [
+            <case>
+              pattern (stdlib/result.ml[21,1244+22]..[21,1244+26])
+                Ppat_construct "Ok" (stdlib/result.ml[21,1244+22]..[21,1244+24])
+                Some
+                  []
+                  pattern (stdlib/result.ml[21,1244+25]..[21,1244+26])
+                    Ppat_var "v" (stdlib/result.ml[21,1244+25]..[21,1244+26])
+              expression (stdlib/result.ml[21,1244+30]..[21,1244+31])
+                Pexp_ident "v" (stdlib/result.ml[21,1244+30]..[21,1244+31])
+            <case>
+              pattern (stdlib/result.ml[21,1244+34]..[21,1244+41])
+                Ppat_construct "Error" (stdlib/result.ml[21,1244+34]..[21,1244+39])
+                Some
+                  []
+                  pattern (stdlib/result.ml[21,1244+40]..[21,1244+41])
+                    Ppat_any
+              expression (stdlib/result.ml[21,1244+45]..[21,1244+76])
+                Pexp_apply
+                expression (stdlib/result.ml[21,1244+45]..[21,1244+56])
+                  Pexp_ident "invalid_arg" (stdlib/result.ml[21,1244+45]..[21,1244+56])
+                [
+                  <arg>
+                  Nolabel
+                    expression (stdlib/result.ml[21,1244+57]..[21,1244+76])
+                      Pexp_constant PConst_string("result is Error _",(stdlib/result.ml[21,1244+58]..[21,1244+75]),None)
+                ]
+          ]
+    ]
+  structure_item (stdlib/result.ml[22,1321+0]..[22,1321+76])
+    Pstr_value Nonrec
+    [
+      <def>
+        pattern (stdlib/result.ml[22,1321+4]..[22,1321+13])
+          Ppat_var "get_error" (stdlib/result.ml[22,1321+4]..[22,1321+13])
+        expression (stdlib/result.ml[22,1321+16]..[22,1321+76])
+          Pexp_function
+          [
+            <case>
+              pattern (stdlib/result.ml[22,1321+25]..[22,1321+32])
+                Ppat_construct "Error" (stdlib/result.ml[22,1321+25]..[22,1321+30])
+                Some
+                  []
+                  pattern (stdlib/result.ml[22,1321+31]..[22,1321+32])
+                    Ppat_var "e" (stdlib/result.ml[22,1321+31]..[22,1321+32])
+              expression (stdlib/result.ml[22,1321+36]..[22,1321+37])
+                Pexp_ident "e" (stdlib/result.ml[22,1321+36]..[22,1321+37])
+            <case>
+              pattern (stdlib/result.ml[22,1321+40]..[22,1321+44])
+                Ppat_construct "Ok" (stdlib/result.ml[22,1321+40]..[22,1321+42])
+                Some
+                  []
+                  pattern (stdlib/result.ml[22,1321+43]..[22,1321+44])
+                    Ppat_any
+              expression (stdlib/result.ml[22,1321+48]..[22,1321+76])
+                Pexp_apply
+                expression (stdlib/result.ml[22,1321+48]..[22,1321+59])
+                  Pexp_ident "invalid_arg" (stdlib/result.ml[22,1321+48]..[22,1321+59])
+                [
+                  <arg>
+                  Nolabel
+                    expression (stdlib/result.ml[22,1321+60]..[22,1321+76])
+                      Pexp_constant PConst_string("result is Ok _",(stdlib/result.ml[22,1321+61]..[22,1321+75]),None)
+                ]
+          ]
+    ]
+  structure_item (stdlib/result.ml[23,1398+0]..[23,1398+59])
+    Pstr_value Nonrec
+    [
+      <def>
+        pattern (stdlib/result.ml[23,1398+4]..[23,1398+8])
+          Ppat_var "bind" (stdlib/result.ml[23,1398+4]..[23,1398+8])
+        expression (stdlib/result.ml[23,1398+9]..[23,1398+59]) ghost
+          Pexp_fun
+          Nolabel
+          None
+          pattern (stdlib/result.ml[23,1398+9]..[23,1398+10])
+            Ppat_var "r" (stdlib/result.ml[23,1398+9]..[23,1398+10])
+          expression (stdlib/result.ml[23,1398+11]..[23,1398+59]) ghost
+            Pexp_fun
+            Nolabel
+            None
+            pattern (stdlib/result.ml[23,1398+11]..[23,1398+12])
+              Ppat_var "f" (stdlib/result.ml[23,1398+11]..[23,1398+12])
+            expression (stdlib/result.ml[23,1398+15]..[23,1398+59])
+              Pexp_match
+              expression (stdlib/result.ml[23,1398+21]..[23,1398+22])
+                Pexp_ident "r" (stdlib/result.ml[23,1398+21]..[23,1398+22])
+              [
+                <case>
+                  pattern (stdlib/result.ml[23,1398+28]..[23,1398+32])
+                    Ppat_construct "Ok" (stdlib/result.ml[23,1398+28]..[23,1398+30])
+                    Some
+                      []
+                      pattern (stdlib/result.ml[23,1398+31]..[23,1398+32])
+                        Ppat_var "v" (stdlib/result.ml[23,1398+31]..[23,1398+32])
+                  expression (stdlib/result.ml[23,1398+36]..[23,1398+39])
+                    Pexp_apply
+                    expression (stdlib/result.ml[23,1398+36]..[23,1398+37])
+                      Pexp_ident "f" (stdlib/result.ml[23,1398+36]..[23,1398+37])
+                    [
+                      <arg>
+                      Nolabel
+                        expression (stdlib/result.ml[23,1398+38]..[23,1398+39])
+                          Pexp_ident "v" (stdlib/result.ml[23,1398+38]..[23,1398+39])
+                    ]
+                <case>
+                  pattern (stdlib/result.ml[23,1398+42]..[23,1398+54])
+                    Ppat_alias "e" (stdlib/result.ml[23,1398+53]..[23,1398+54])
+                    pattern (stdlib/result.ml[23,1398+42]..[23,1398+49])
+                      Ppat_construct "Error" (stdlib/result.ml[23,1398+42]..[23,1398+47])
+                      Some
+                        []
+                        pattern (stdlib/result.ml[23,1398+48]..[23,1398+49])
+                          Ppat_any
+                  expression (stdlib/result.ml[23,1398+58]..[23,1398+59])
+                    Pexp_ident "e" (stdlib/result.ml[23,1398+58]..[23,1398+59])
+              ]
+    ]
+  structure_item (stdlib/result.ml[24,1458+0]..[24,1458+49])
+    Pstr_value Nonrec
+    [
+      <def>
+        pattern (stdlib/result.ml[24,1458+4]..[24,1458+8])
+          Ppat_var "join" (stdlib/result.ml[24,1458+4]..[24,1458+8])
+        expression (stdlib/result.ml[24,1458+11]..[24,1458+49])
+          Pexp_function
+          [
+            <case>
+              pattern (stdlib/result.ml[24,1458+20]..[24,1458+24])
+                Ppat_construct "Ok" (stdlib/result.ml[24,1458+20]..[24,1458+22])
+                Some
+                  []
+                  pattern (stdlib/result.ml[24,1458+23]..[24,1458+24])
+                    Ppat_var "r" (stdlib/result.ml[24,1458+23]..[24,1458+24])
+              expression (stdlib/result.ml[24,1458+28]..[24,1458+29])
+                Pexp_ident "r" (stdlib/result.ml[24,1458+28]..[24,1458+29])
+            <case>
+              pattern (stdlib/result.ml[24,1458+32]..[24,1458+44])
+                Ppat_alias "e" (stdlib/result.ml[24,1458+43]..[24,1458+44])
+                pattern (stdlib/result.ml[24,1458+32]..[24,1458+39])
+                  Ppat_construct "Error" (stdlib/result.ml[24,1458+32]..[24,1458+37])
+                  Some
+                    []
+                    pattern (stdlib/result.ml[24,1458+38]..[24,1458+39])
+                      Ppat_any
+              expression (stdlib/result.ml[24,1458+48]..[24,1458+49])
+                Pexp_ident "e" (stdlib/result.ml[24,1458+48]..[24,1458+49])
+          ]
+    ]
+  structure_item (stdlib/result.ml[25,1508+0]..[25,1508+57])
+    Pstr_value Nonrec
+    [
+      <def>
+        pattern (stdlib/result.ml[25,1508+4]..[25,1508+7])
+          Ppat_var "map" (stdlib/result.ml[25,1508+4]..[25,1508+7])
+        expression (stdlib/result.ml[25,1508+8]..[25,1508+57]) ghost
+          Pexp_fun
+          Nolabel
+          None
+          pattern (stdlib/result.ml[25,1508+8]..[25,1508+9])
+            Ppat_var "f" (stdlib/result.ml[25,1508+8]..[25,1508+9])
+          expression (stdlib/result.ml[25,1508+12]..[25,1508+57])
+            Pexp_function
+            [
+              <case>
+                pattern (stdlib/result.ml[25,1508+21]..[25,1508+25])
+                  Ppat_construct "Ok" (stdlib/result.ml[25,1508+21]..[25,1508+23])
+                  Some
+                    []
+                    pattern (stdlib/result.ml[25,1508+24]..[25,1508+25])
+                      Ppat_var "v" (stdlib/result.ml[25,1508+24]..[25,1508+25])
+                expression (stdlib/result.ml[25,1508+29]..[25,1508+37])
+                  Pexp_construct "Ok" (stdlib/result.ml[25,1508+29]..[25,1508+31])
+                  Some
+                    expression (stdlib/result.ml[25,1508+32]..[25,1508+37])
+                      Pexp_apply
+                      expression (stdlib/result.ml[25,1508+33]..[25,1508+34])
+                        Pexp_ident "f" (stdlib/result.ml[25,1508+33]..[25,1508+34])
+                      [
+                        <arg>
+                        Nolabel
+                          expression (stdlib/result.ml[25,1508+35]..[25,1508+36])
+                            Pexp_ident "v" (stdlib/result.ml[25,1508+35]..[25,1508+36])
+                      ]
+              <case>
+                pattern (stdlib/result.ml[25,1508+40]..[25,1508+52])
+                  Ppat_alias "e" (stdlib/result.ml[25,1508+51]..[25,1508+52])
+                  pattern (stdlib/result.ml[25,1508+40]..[25,1508+47])
+                    Ppat_construct "Error" (stdlib/result.ml[25,1508+40]..[25,1508+45])
+                    Some
+                      []
+                      pattern (stdlib/result.ml[25,1508+46]..[25,1508+47])
+                        Ppat_any
+                expression (stdlib/result.ml[25,1508+56]..[25,1508+57])
+                  Pexp_ident "e" (stdlib/result.ml[25,1508+56]..[25,1508+57])
+            ]
+    ]
+  structure_item (stdlib/result.ml[26,1566+0]..[26,1566+66])
+    Pstr_value Nonrec
+    [
+      <def>
+        pattern (stdlib/result.ml[26,1566+4]..[26,1566+13])
+          Ppat_var "map_error" (stdlib/result.ml[26,1566+4]..[26,1566+13])
+        expression (stdlib/result.ml[26,1566+14]..[26,1566+66]) ghost
+          Pexp_fun
+          Nolabel
+          None
+          pattern (stdlib/result.ml[26,1566+14]..[26,1566+15])
+            Ppat_var "f" (stdlib/result.ml[26,1566+14]..[26,1566+15])
+          expression (stdlib/result.ml[26,1566+18]..[26,1566+66])
+            Pexp_function
+            [
+              <case>
+                pattern (stdlib/result.ml[26,1566+27]..[26,1566+34])
+                  Ppat_construct "Error" (stdlib/result.ml[26,1566+27]..[26,1566+32])
+                  Some
+                    []
+                    pattern (stdlib/result.ml[26,1566+33]..[26,1566+34])
+                      Ppat_var "e" (stdlib/result.ml[26,1566+33]..[26,1566+34])
+                expression (stdlib/result.ml[26,1566+38]..[26,1566+49])
+                  Pexp_construct "Error" (stdlib/result.ml[26,1566+38]..[26,1566+43])
+                  Some
+                    expression (stdlib/result.ml[26,1566+44]..[26,1566+49])
+                      Pexp_apply
+                      expression (stdlib/result.ml[26,1566+45]..[26,1566+46])
+                        Pexp_ident "f" (stdlib/result.ml[26,1566+45]..[26,1566+46])
+                      [
+                        <arg>
+                        Nolabel
+                          expression (stdlib/result.ml[26,1566+47]..[26,1566+48])
+                            Pexp_ident "e" (stdlib/result.ml[26,1566+47]..[26,1566+48])
+                      ]
+              <case>
+                pattern (stdlib/result.ml[26,1566+52]..[26,1566+61])
+                  Ppat_alias "v" (stdlib/result.ml[26,1566+60]..[26,1566+61])
+                  pattern (stdlib/result.ml[26,1566+52]..[26,1566+56])
+                    Ppat_construct "Ok" (stdlib/result.ml[26,1566+52]..[26,1566+54])
+                    Some
+                      []
+                      pattern (stdlib/result.ml[26,1566+55]..[26,1566+56])
+                        Ppat_any
+                expression (stdlib/result.ml[26,1566+65]..[26,1566+66])
+                  Pexp_ident "v" (stdlib/result.ml[26,1566+65]..[26,1566+66])
+            ]
+    ]
+  structure_item (stdlib/result.ml[27,1633+0]..[27,1633+64])
+    Pstr_value Nonrec
+    [
+      <def>
+        pattern (stdlib/result.ml[27,1633+4]..[27,1633+8])
+          Ppat_var "fold" (stdlib/result.ml[27,1633+4]..[27,1633+8])
+        expression (stdlib/result.ml[27,1633+9]..[27,1633+64]) ghost
+          Pexp_fun
+          Labelled "ok"
+          None
+          pattern (stdlib/result.ml[27,1633+10]..[27,1633+12])
+            Ppat_var "ok" (stdlib/result.ml[27,1633+10]..[27,1633+12])
+          expression (stdlib/result.ml[27,1633+13]..[27,1633+64]) ghost
+            Pexp_fun
+            Labelled "error"
+            None
+            pattern (stdlib/result.ml[27,1633+14]..[27,1633+19])
+              Ppat_var "error" (stdlib/result.ml[27,1633+14]..[27,1633+19])
+            expression (stdlib/result.ml[27,1633+22]..[27,1633+64])
+              Pexp_function
+              [
+                <case>
+                  pattern (stdlib/result.ml[27,1633+31]..[27,1633+35])
+                    Ppat_construct "Ok" (stdlib/result.ml[27,1633+31]..[27,1633+33])
+                    Some
+                      []
+                      pattern (stdlib/result.ml[27,1633+34]..[27,1633+35])
+                        Ppat_var "v" (stdlib/result.ml[27,1633+34]..[27,1633+35])
+                  expression (stdlib/result.ml[27,1633+39]..[27,1633+43])
+                    Pexp_apply
+                    expression (stdlib/result.ml[27,1633+39]..[27,1633+41])
+                      Pexp_ident "ok" (stdlib/result.ml[27,1633+39]..[27,1633+41])
+                    [
+                      <arg>
+                      Nolabel
+                        expression (stdlib/result.ml[27,1633+42]..[27,1633+43])
+                          Pexp_ident "v" (stdlib/result.ml[27,1633+42]..[27,1633+43])
+                    ]
+                <case>
+                  pattern (stdlib/result.ml[27,1633+46]..[27,1633+53])
+                    Ppat_construct "Error" (stdlib/result.ml[27,1633+46]..[27,1633+51])
+                    Some
+                      []
+                      pattern (stdlib/result.ml[27,1633+52]..[27,1633+53])
+                        Ppat_var "e" (stdlib/result.ml[27,1633+52]..[27,1633+53])
+                  expression (stdlib/result.ml[27,1633+57]..[27,1633+64])
+                    Pexp_apply
+                    expression (stdlib/result.ml[27,1633+57]..[27,1633+62])
+                      Pexp_ident "error" (stdlib/result.ml[27,1633+57]..[27,1633+62])
+                    [
+                      <arg>
+                      Nolabel
+                        expression (stdlib/result.ml[27,1633+63]..[27,1633+64])
+                          Pexp_ident "e" (stdlib/result.ml[27,1633+63]..[27,1633+64])
+                    ]
+              ]
+    ]
+  structure_item (stdlib/result.ml[28,1698+0]..[28,1698+49])
+    Pstr_value Nonrec
+    [
+      <def>
+        pattern (stdlib/result.ml[28,1698+4]..[28,1698+8])
+          Ppat_var "iter" (stdlib/result.ml[28,1698+4]..[28,1698+8])
+        expression (stdlib/result.ml[28,1698+9]..[28,1698+49]) ghost
+          Pexp_fun
+          Nolabel
+          None
+          pattern (stdlib/result.ml[28,1698+9]..[28,1698+10])
+            Ppat_var "f" (stdlib/result.ml[28,1698+9]..[28,1698+10])
+          expression (stdlib/result.ml[28,1698+13]..[28,1698+49])
+            Pexp_function
+            [
+              <case>
+                pattern (stdlib/result.ml[28,1698+22]..[28,1698+26])
+                  Ppat_construct "Ok" (stdlib/result.ml[28,1698+22]..[28,1698+24])
+                  Some
+                    []
+                    pattern (stdlib/result.ml[28,1698+25]..[28,1698+26])
+                      Ppat_var "v" (stdlib/result.ml[28,1698+25]..[28,1698+26])
+                expression (stdlib/result.ml[28,1698+30]..[28,1698+33])
+                  Pexp_apply
+                  expression (stdlib/result.ml[28,1698+30]..[28,1698+31])
+                    Pexp_ident "f" (stdlib/result.ml[28,1698+30]..[28,1698+31])
+                  [
+                    <arg>
+                    Nolabel
+                      expression (stdlib/result.ml[28,1698+32]..[28,1698+33])
+                        Pexp_ident "v" (stdlib/result.ml[28,1698+32]..[28,1698+33])
+                  ]
+              <case>
+                pattern (stdlib/result.ml[28,1698+36]..[28,1698+43])
+                  Ppat_construct "Error" (stdlib/result.ml[28,1698+36]..[28,1698+41])
+                  Some
+                    []
+                    pattern (stdlib/result.ml[28,1698+42]..[28,1698+43])
+                      Ppat_any
+                expression (stdlib/result.ml[28,1698+47]..[28,1698+49])
+                  Pexp_construct "()" (stdlib/result.ml[28,1698+47]..[28,1698+49])
+                  None
+            ]
+    ]
+  structure_item (stdlib/result.ml[29,1748+0]..[29,1748+55])
+    Pstr_value Nonrec
+    [
+      <def>
+        pattern (stdlib/result.ml[29,1748+4]..[29,1748+14])
+          Ppat_var "iter_error" (stdlib/result.ml[29,1748+4]..[29,1748+14])
+        expression (stdlib/result.ml[29,1748+15]..[29,1748+55]) ghost
+          Pexp_fun
+          Nolabel
+          None
+          pattern (stdlib/result.ml[29,1748+15]..[29,1748+16])
+            Ppat_var "f" (stdlib/result.ml[29,1748+15]..[29,1748+16])
+          expression (stdlib/result.ml[29,1748+19]..[29,1748+55])
+            Pexp_function
+            [
+              <case>
+                pattern (stdlib/result.ml[29,1748+28]..[29,1748+35])
+                  Ppat_construct "Error" (stdlib/result.ml[29,1748+28]..[29,1748+33])
+                  Some
+                    []
+                    pattern (stdlib/result.ml[29,1748+34]..[29,1748+35])
+                      Ppat_var "e" (stdlib/result.ml[29,1748+34]..[29,1748+35])
+                expression (stdlib/result.ml[29,1748+39]..[29,1748+42])
+                  Pexp_apply
+                  expression (stdlib/result.ml[29,1748+39]..[29,1748+40])
+                    Pexp_ident "f" (stdlib/result.ml[29,1748+39]..[29,1748+40])
+                  [
+                    <arg>
+                    Nolabel
+                      expression (stdlib/result.ml[29,1748+41]..[29,1748+42])
+                        Pexp_ident "e" (stdlib/result.ml[29,1748+41]..[29,1748+42])
+                  ]
+              <case>
+                pattern (stdlib/result.ml[29,1748+45]..[29,1748+49])
+                  Ppat_construct "Ok" (stdlib/result.ml[29,1748+45]..[29,1748+47])
+                  Some
+                    []
+                    pattern (stdlib/result.ml[29,1748+48]..[29,1748+49])
+                      Ppat_any
+                expression (stdlib/result.ml[29,1748+53]..[29,1748+55])
+                  Pexp_construct "()" (stdlib/result.ml[29,1748+53]..[29,1748+55])
+                  None
+            ]
+    ]
+  structure_item (stdlib/result.ml[30,1804+0]..[30,1804+52])
+    Pstr_value Nonrec
+    [
+      <def>
+        pattern (stdlib/result.ml[30,1804+4]..[30,1804+9])
+          Ppat_var "is_ok" (stdlib/result.ml[30,1804+4]..[30,1804+9])
+        expression (stdlib/result.ml[30,1804+12]..[30,1804+52])
+          Pexp_function
+          [
+            <case>
+              pattern (stdlib/result.ml[30,1804+21]..[30,1804+25])
+                Ppat_construct "Ok" (stdlib/result.ml[30,1804+21]..[30,1804+23])
+                Some
+                  []
+                  pattern (stdlib/result.ml[30,1804+24]..[30,1804+25])
+                    Ppat_any
+              expression (stdlib/result.ml[30,1804+29]..[30,1804+33])
+                Pexp_construct "true" (stdlib/result.ml[30,1804+29]..[30,1804+33])
+                None
+            <case>
+              pattern (stdlib/result.ml[30,1804+36]..[30,1804+43])
+                Ppat_construct "Error" (stdlib/result.ml[30,1804+36]..[30,1804+41])
+                Some
+                  []
+                  pattern (stdlib/result.ml[30,1804+42]..[30,1804+43])
+                    Ppat_any
+              expression (stdlib/result.ml[30,1804+47]..[30,1804+52])
+                Pexp_construct "false" (stdlib/result.ml[30,1804+47]..[30,1804+52])
+                None
+          ]
+    ]
+  structure_item (stdlib/result.ml[31,1857+0]..[31,1857+55])
+    Pstr_value Nonrec
+    [
+      <def>
+        pattern (stdlib/result.ml[31,1857+4]..[31,1857+12])
+          Ppat_var "is_error" (stdlib/result.ml[31,1857+4]..[31,1857+12])
+        expression (stdlib/result.ml[31,1857+15]..[31,1857+55])
+          Pexp_function
+          [
+            <case>
+              pattern (stdlib/result.ml[31,1857+24]..[31,1857+31])
+                Ppat_construct "Error" (stdlib/result.ml[31,1857+24]..[31,1857+29])
+                Some
+                  []
+                  pattern (stdlib/result.ml[31,1857+30]..[31,1857+31])
+                    Ppat_any
+              expression (stdlib/result.ml[31,1857+35]..[31,1857+39])
+                Pexp_construct "true" (stdlib/result.ml[31,1857+35]..[31,1857+39])
+                None
+            <case>
+              pattern (stdlib/result.ml[31,1857+42]..[31,1857+46])
+                Ppat_construct "Ok" (stdlib/result.ml[31,1857+42]..[31,1857+44])
+                Some
+                  []
+                  pattern (stdlib/result.ml[31,1857+45]..[31,1857+46])
+                    Ppat_any
+              expression (stdlib/result.ml[31,1857+50]..[31,1857+55])
+                Pexp_construct "false" (stdlib/result.ml[31,1857+50]..[31,1857+55])
+                None
+          ]
+    ]
+  structure_item (stdlib/result.ml[33,1914+0]..[36,2024+15])
+    Pstr_value Nonrec
+    [
+      <def>
+        pattern (stdlib/result.ml[33,1914+4]..[33,1914+9])
+          Ppat_var "equal" (stdlib/result.ml[33,1914+4]..[33,1914+9])
+        expression (stdlib/result.ml[33,1914+10]..[36,2024+15]) ghost
+          Pexp_fun
+          Labelled "ok"
+          None
+          pattern (stdlib/result.ml[33,1914+11]..[33,1914+13])
+            Ppat_var "ok" (stdlib/result.ml[33,1914+11]..[33,1914+13])
+          expression (stdlib/result.ml[33,1914+14]..[36,2024+15]) ghost
+            Pexp_fun
+            Labelled "error"
+            None
+            pattern (stdlib/result.ml[33,1914+15]..[33,1914+20])
+              Ppat_var "error" (stdlib/result.ml[33,1914+15]..[33,1914+20])
+            expression (stdlib/result.ml[33,1914+21]..[36,2024+15]) ghost
+              Pexp_fun
+              Nolabel
+              None
+              pattern (stdlib/result.ml[33,1914+21]..[33,1914+23])
+                Ppat_var "r0" (stdlib/result.ml[33,1914+21]..[33,1914+23])
+              expression (stdlib/result.ml[33,1914+24]..[36,2024+15]) ghost
+                Pexp_fun
+                Nolabel
+                None
+                pattern (stdlib/result.ml[33,1914+24]..[33,1914+26])
+                  Ppat_var "r1" (stdlib/result.ml[33,1914+24]..[33,1914+26])
+                expression (stdlib/result.ml[33,1914+29]..[36,2024+15])
+                  Pexp_match
+                  expression (stdlib/result.ml[33,1914+35]..[33,1914+41])
+                    Pexp_tuple
+                    [
+                      expression (stdlib/result.ml[33,1914+35]..[33,1914+37])
+                        Pexp_ident "r0" (stdlib/result.ml[33,1914+35]..[33,1914+37])
+                      expression (stdlib/result.ml[33,1914+39]..[33,1914+41])
+                        Pexp_ident "r1" (stdlib/result.ml[33,1914+39]..[33,1914+41])
+                    ]
+                  [
+                    <case>
+                      pattern (stdlib/result.ml[34,1961+2]..[34,1961+14])
+                        Ppat_tuple
+                        [
+                          pattern (stdlib/result.ml[34,1961+2]..[34,1961+7])
+                            Ppat_construct "Ok" (stdlib/result.ml[34,1961+2]..[34,1961+4])
+                            Some
+                              []
+                              pattern (stdlib/result.ml[34,1961+5]..[34,1961+7])
+                                Ppat_var "v0" (stdlib/result.ml[34,1961+5]..[34,1961+7])
+                          pattern (stdlib/result.ml[34,1961+9]..[34,1961+14])
+                            Ppat_construct "Ok" (stdlib/result.ml[34,1961+9]..[34,1961+11])
+                            Some
+                              []
+                              pattern (stdlib/result.ml[34,1961+12]..[34,1961+14])
+                                Ppat_var "v1" (stdlib/result.ml[34,1961+12]..[34,1961+14])
+                        ]
+                      expression (stdlib/result.ml[34,1961+18]..[34,1961+26])
+                        Pexp_apply
+                        expression (stdlib/result.ml[34,1961+18]..[34,1961+20])
+                          Pexp_ident "ok" (stdlib/result.ml[34,1961+18]..[34,1961+20])
+                        [
+                          <arg>
+                          Nolabel
+                            expression (stdlib/result.ml[34,1961+21]..[34,1961+23])
+                              Pexp_ident "v0" (stdlib/result.ml[34,1961+21]..[34,1961+23])
+                          <arg>
+                          Nolabel
+                            expression (stdlib/result.ml[34,1961+24]..[34,1961+26])
+                              Pexp_ident "v1" (stdlib/result.ml[34,1961+24]..[34,1961+26])
+                        ]
+                    <case>
+                      pattern (stdlib/result.ml[35,1988+2]..[35,1988+20])
+                        Ppat_tuple
+                        [
+                          pattern (stdlib/result.ml[35,1988+2]..[35,1988+10])
+                            Ppat_construct "Error" (stdlib/result.ml[35,1988+2]..[35,1988+7])
+                            Some
+                              []
+                              pattern (stdlib/result.ml[35,1988+8]..[35,1988+10])
+                                Ppat_var "e0" (stdlib/result.ml[35,1988+8]..[35,1988+10])
+                          pattern (stdlib/result.ml[35,1988+12]..[35,1988+20])
+                            Ppat_construct "Error" (stdlib/result.ml[35,1988+12]..[35,1988+17])
+                            Some
+                              []
+                              pattern (stdlib/result.ml[35,1988+18]..[35,1988+20])
+                                Ppat_var "e1" (stdlib/result.ml[35,1988+18]..[35,1988+20])
+                        ]
+                      expression (stdlib/result.ml[35,1988+24]..[35,1988+35])
+                        Pexp_apply
+                        expression (stdlib/result.ml[35,1988+24]..[35,1988+29])
+                          Pexp_ident "error" (stdlib/result.ml[35,1988+24]..[35,1988+29])
+                        [
+                          <arg>
+                          Nolabel
+                            expression (stdlib/result.ml[35,1988+30]..[35,1988+32])
+                              Pexp_ident "e0" (stdlib/result.ml[35,1988+30]..[35,1988+32])
+                          <arg>
+                          Nolabel
+                            expression (stdlib/result.ml[35,1988+33]..[35,1988+35])
+                              Pexp_ident "e1" (stdlib/result.ml[35,1988+33]..[35,1988+35])
+                        ]
+                    <case>
+                      pattern (stdlib/result.ml[36,2024+2]..[36,2024+6])
+                        Ppat_tuple
+                        [
+                          pattern (stdlib/result.ml[36,2024+2]..[36,2024+3])
+                            Ppat_any
+                          pattern (stdlib/result.ml[36,2024+5]..[36,2024+6])
+                            Ppat_any
+                        ]
+                      expression (stdlib/result.ml[36,2024+10]..[36,2024+15])
+                        Pexp_construct "false" (stdlib/result.ml[36,2024+10]..[36,2024+15])
+                        None
+                  ]
+    ]
+  structure_item (stdlib/result.ml[38,2041+0]..[42,2175+20])
+    Pstr_value Nonrec
+    [
+      <def>
+        pattern (stdlib/result.ml[38,2041+4]..[38,2041+11])
+          Ppat_var "compare" (stdlib/result.ml[38,2041+4]..[38,2041+11])
+        expression (stdlib/result.ml[38,2041+12]..[42,2175+20]) ghost
+          Pexp_fun
+          Labelled "ok"
+          None
+          pattern (stdlib/result.ml[38,2041+13]..[38,2041+15])
+            Ppat_var "ok" (stdlib/result.ml[38,2041+13]..[38,2041+15])
+          expression (stdlib/result.ml[38,2041+16]..[42,2175+20]) ghost
+            Pexp_fun
+            Labelled "error"
+            None
+            pattern (stdlib/result.ml[38,2041+17]..[38,2041+22])
+              Ppat_var "error" (stdlib/result.ml[38,2041+17]..[38,2041+22])
+            expression (stdlib/result.ml[38,2041+23]..[42,2175+20]) ghost
+              Pexp_fun
+              Nolabel
+              None
+              pattern (stdlib/result.ml[38,2041+23]..[38,2041+25])
+                Ppat_var "r0" (stdlib/result.ml[38,2041+23]..[38,2041+25])
+              expression (stdlib/result.ml[38,2041+26]..[42,2175+20]) ghost
+                Pexp_fun
+                Nolabel
+                None
+                pattern (stdlib/result.ml[38,2041+26]..[38,2041+28])
+                  Ppat_var "r1" (stdlib/result.ml[38,2041+26]..[38,2041+28])
+                expression (stdlib/result.ml[38,2041+31]..[42,2175+20])
+                  Pexp_match
+                  expression (stdlib/result.ml[38,2041+37]..[38,2041+43])
+                    Pexp_tuple
+                    [
+                      expression (stdlib/result.ml[38,2041+37]..[38,2041+39])
+                        Pexp_ident "r0" (stdlib/result.ml[38,2041+37]..[38,2041+39])
+                      expression (stdlib/result.ml[38,2041+41]..[38,2041+43])
+                        Pexp_ident "r1" (stdlib/result.ml[38,2041+41]..[38,2041+43])
+                    ]
+                  [
+                    <case>
+                      pattern (stdlib/result.ml[39,2090+2]..[39,2090+14])
+                        Ppat_tuple
+                        [
+                          pattern (stdlib/result.ml[39,2090+2]..[39,2090+7])
+                            Ppat_construct "Ok" (stdlib/result.ml[39,2090+2]..[39,2090+4])
+                            Some
+                              []
+                              pattern (stdlib/result.ml[39,2090+5]..[39,2090+7])
+                                Ppat_var "v0" (stdlib/result.ml[39,2090+5]..[39,2090+7])
+                          pattern (stdlib/result.ml[39,2090+9]..[39,2090+14])
+                            Ppat_construct "Ok" (stdlib/result.ml[39,2090+9]..[39,2090+11])
+                            Some
+                              []
+                              pattern (stdlib/result.ml[39,2090+12]..[39,2090+14])
+                                Ppat_var "v1" (stdlib/result.ml[39,2090+12]..[39,2090+14])
+                        ]
+                      expression (stdlib/result.ml[39,2090+18]..[39,2090+26])
+                        Pexp_apply
+                        expression (stdlib/result.ml[39,2090+18]..[39,2090+20])
+                          Pexp_ident "ok" (stdlib/result.ml[39,2090+18]..[39,2090+20])
+                        [
+                          <arg>
+                          Nolabel
+                            expression (stdlib/result.ml[39,2090+21]..[39,2090+23])
+                              Pexp_ident "v0" (stdlib/result.ml[39,2090+21]..[39,2090+23])
+                          <arg>
+                          Nolabel
+                            expression (stdlib/result.ml[39,2090+24]..[39,2090+26])
+                              Pexp_ident "v1" (stdlib/result.ml[39,2090+24]..[39,2090+26])
+                        ]
+                    <case>
+                      pattern (stdlib/result.ml[40,2117+2]..[40,2117+20])
+                        Ppat_tuple
+                        [
+                          pattern (stdlib/result.ml[40,2117+2]..[40,2117+10])
+                            Ppat_construct "Error" (stdlib/result.ml[40,2117+2]..[40,2117+7])
+                            Some
+                              []
+                              pattern (stdlib/result.ml[40,2117+8]..[40,2117+10])
+                                Ppat_var "e0" (stdlib/result.ml[40,2117+8]..[40,2117+10])
+                          pattern (stdlib/result.ml[40,2117+12]..[40,2117+20])
+                            Ppat_construct "Error" (stdlib/result.ml[40,2117+12]..[40,2117+17])
+                            Some
+                              []
+                              pattern (stdlib/result.ml[40,2117+18]..[40,2117+20])
+                                Ppat_var "e1" (stdlib/result.ml[40,2117+18]..[40,2117+20])
+                        ]
+                      expression (stdlib/result.ml[40,2117+24]..[40,2117+35])
+                        Pexp_apply
+                        expression (stdlib/result.ml[40,2117+24]..[40,2117+29])
+                          Pexp_ident "error" (stdlib/result.ml[40,2117+24]..[40,2117+29])
+                        [
+                          <arg>
+                          Nolabel
+                            expression (stdlib/result.ml[40,2117+30]..[40,2117+32])
+                              Pexp_ident "e0" (stdlib/result.ml[40,2117+30]..[40,2117+32])
+                          <arg>
+                          Nolabel
+                            expression (stdlib/result.ml[40,2117+33]..[40,2117+35])
+                              Pexp_ident "e1" (stdlib/result.ml[40,2117+33]..[40,2117+35])
+                        ]
+                    <case>
+                      pattern (stdlib/result.ml[41,2153+2]..[41,2153+15])
+                        Ppat_tuple
+                        [
+                          pattern (stdlib/result.ml[41,2153+2]..[41,2153+6])
+                            Ppat_construct "Ok" (stdlib/result.ml[41,2153+2]..[41,2153+4])
+                            Some
+                              []
+                              pattern (stdlib/result.ml[41,2153+5]..[41,2153+6])
+                                Ppat_any
+                          pattern (stdlib/result.ml[41,2153+8]..[41,2153+15])
+                            Ppat_construct "Error" (stdlib/result.ml[41,2153+8]..[41,2153+13])
+                            Some
+                              []
+                              pattern (stdlib/result.ml[41,2153+14]..[41,2153+15])
+                                Ppat_any
+                        ]
+                      expression (stdlib/result.ml[41,2153+19]..[41,2153+21])
+                        Pexp_constant PConst_int (-1,None)
+                    <case>
+                      pattern (stdlib/result.ml[42,2175+2]..[42,2175+15])
+                        Ppat_tuple
+                        [
+                          pattern (stdlib/result.ml[42,2175+2]..[42,2175+9])
+                            Ppat_construct "Error" (stdlib/result.ml[42,2175+2]..[42,2175+7])
+                            Some
+                              []
+                              pattern (stdlib/result.ml[42,2175+8]..[42,2175+9])
+                                Ppat_any
+                          pattern (stdlib/result.ml[42,2175+11]..[42,2175+15])
+                            Ppat_construct "Ok" (stdlib/result.ml[42,2175+11]..[42,2175+13])
+                            Some
+                              []
+                              pattern (stdlib/result.ml[42,2175+14]..[42,2175+15])
+                                Ppat_any
+                        ]
+                      expression (stdlib/result.ml[42,2175+19]..[42,2175+20])
+                        Pexp_constant PConst_int (1,None)
+                  ]
+    ]
+  structure_item (stdlib/result.ml[44,2197+0]..[44,2197+57])
+    Pstr_value Nonrec
+    [
+      <def>
+        pattern (stdlib/result.ml[44,2197+4]..[44,2197+13])
+          Ppat_var "to_option" (stdlib/result.ml[44,2197+4]..[44,2197+13])
+        expression (stdlib/result.ml[44,2197+16]..[44,2197+57])
+          Pexp_function
+          [
+            <case>
+              pattern (stdlib/result.ml[44,2197+25]..[44,2197+29])
+                Ppat_construct "Ok" (stdlib/result.ml[44,2197+25]..[44,2197+27])
+                Some
+                  []
+                  pattern (stdlib/result.ml[44,2197+28]..[44,2197+29])
+                    Ppat_var "v" (stdlib/result.ml[44,2197+28]..[44,2197+29])
+              expression (stdlib/result.ml[44,2197+33]..[44,2197+39])
+                Pexp_construct "Some" (stdlib/result.ml[44,2197+33]..[44,2197+37])
+                Some
+                  expression (stdlib/result.ml[44,2197+38]..[44,2197+39])
+                    Pexp_ident "v" (stdlib/result.ml[44,2197+38]..[44,2197+39])
+            <case>
+              pattern (stdlib/result.ml[44,2197+42]..[44,2197+49])
+                Ppat_construct "Error" (stdlib/result.ml[44,2197+42]..[44,2197+47])
+                Some
+                  []
+                  pattern (stdlib/result.ml[44,2197+48]..[44,2197+49])
+                    Ppat_any
+              expression (stdlib/result.ml[44,2197+53]..[44,2197+57])
+                Pexp_construct "None" (stdlib/result.ml[44,2197+53]..[44,2197+57])
+                None
+          ]
+    ]
+  structure_item (stdlib/result.ml[45,2255+0]..[45,2255+50])
+    Pstr_value Nonrec
+    [
+      <def>
+        pattern (stdlib/result.ml[45,2255+4]..[45,2255+11])
+          Ppat_var "to_list" (stdlib/result.ml[45,2255+4]..[45,2255+11])
+        expression (stdlib/result.ml[45,2255+14]..[45,2255+50])
+          Pexp_function
+          [
+            <case>
+              pattern (stdlib/result.ml[45,2255+23]..[45,2255+27])
+                Ppat_construct "Ok" (stdlib/result.ml[45,2255+23]..[45,2255+25])
+                Some
+                  []
+                  pattern (stdlib/result.ml[45,2255+26]..[45,2255+27])
+                    Ppat_var "v" (stdlib/result.ml[45,2255+26]..[45,2255+27])
+              expression (stdlib/result.ml[45,2255+31]..[45,2255+34])
+                Pexp_construct "::" (stdlib/result.ml[45,2255+32]..[45,2255+34]) ghost
+                Some
+                  expression (stdlib/result.ml[45,2255+32]..[45,2255+34]) ghost
+                    Pexp_tuple
+                    [
+                      expression (stdlib/result.ml[45,2255+32]..[45,2255+33])
+                        Pexp_ident "v" (stdlib/result.ml[45,2255+32]..[45,2255+33])
+                      expression (stdlib/result.ml[45,2255+33]..[45,2255+34]) ghost
+                        Pexp_construct "[]" (stdlib/result.ml[45,2255+33]..[45,2255+34]) ghost
+                        None
+                    ]
+            <case>
+              pattern (stdlib/result.ml[45,2255+37]..[45,2255+44])
+                Ppat_construct "Error" (stdlib/result.ml[45,2255+37]..[45,2255+42])
+                Some
+                  []
+                  pattern (stdlib/result.ml[45,2255+43]..[45,2255+44])
+                    Ppat_any
+              expression (stdlib/result.ml[45,2255+48]..[45,2255+50])
+                Pexp_construct "[]" (stdlib/result.ml[45,2255+48]..[45,2255+50])
+                None
+          ]
+    ]
+  structure_item (stdlib/result.ml[46,2306+0]..[46,2306+65])
+    Pstr_value Nonrec
+    [
+      <def>
+        pattern (stdlib/result.ml[46,2306+4]..[46,2306+10])
+          Ppat_var "to_seq" (stdlib/result.ml[46,2306+4]..[46,2306+10])
+        expression (stdlib/result.ml[46,2306+13]..[46,2306+65])
+          Pexp_function
+          [
+            <case>
+              pattern (stdlib/result.ml[46,2306+22]..[46,2306+26])
+                Ppat_construct "Ok" (stdlib/result.ml[46,2306+22]..[46,2306+24])
+                Some
+                  []
+                  pattern (stdlib/result.ml[46,2306+25]..[46,2306+26])
+                    Ppat_var "v" (stdlib/result.ml[46,2306+25]..[46,2306+26])
+              expression (stdlib/result.ml[46,2306+30]..[46,2306+42])
+                Pexp_apply
+                expression (stdlib/result.ml[46,2306+30]..[46,2306+40])
+                  Pexp_ident "Seq.return" (stdlib/result.ml[46,2306+30]..[46,2306+40])
+                [
+                  <arg>
+                  Nolabel
+                    expression (stdlib/result.ml[46,2306+41]..[46,2306+42])
+                      Pexp_ident "v" (stdlib/result.ml[46,2306+41]..[46,2306+42])
+                ]
+            <case>
+              pattern (stdlib/result.ml[46,2306+45]..[46,2306+52])
+                Ppat_construct "Error" (stdlib/result.ml[46,2306+45]..[46,2306+50])
+                Some
+                  []
+                  pattern (stdlib/result.ml[46,2306+51]..[46,2306+52])
+                    Ppat_any
+              expression (stdlib/result.ml[46,2306+56]..[46,2306+65])
+                Pexp_ident "Seq.empty" (stdlib/result.ml[46,2306+56]..[46,2306+65])
+          ]
+    ]
+]
+

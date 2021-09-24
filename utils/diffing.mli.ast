@@ -1,0 +1,616 @@
+[
+  signature_item (utils/diffing.mli[17,1080+0]..[60,2868+2])
+    Psig_attribute "ocaml.text"
+    [
+      structure_item (utils/diffing.mli[17,1080+0]..[60,2868+2])
+        Pstr_eval
+        expression (utils/diffing.mli[17,1080+0]..[60,2868+2])
+          Pexp_constant PConst_string(" {0 Parametric diffing}\n\n    This module implements diffing over lists of arbitrary content.\n    It is parameterized by\n    - The content of the two lists\n    - The equality witness when an element is kept\n    - The diffing witness when an element is changed\n\n    Diffing is extended to maintain state depending on the\n    computed changes while walking through the two lists.\n\n    The underlying algorithm is a modified Wagner-Fischer algorithm\n    (see <https://en.wikipedia.org/wiki/Wagner%E2%80%93Fischer_algorithm>).\n\n    We provide the following guarantee:\n    Given two lists [l] and [r], if different patches result in different\n    states, we say that the state diverges.\n    - We always return the optimal patch on prefixes of [l] and [r]\n      on which state does not diverge.\n    - Otherwise, we return a correct but non-optimal patch where subpatches\n      with no divergent states are optimal for the given initial state.\n\n    More precisely, the optimality of Wagner-Fischer depends on the property\n    that the edit-distance between a k-prefix of the left input and a l-prefix\n    of the right input d(k,l) satisfies\n\n    d(k,l) = min (\n     del_cost + d(k-1,l),\n     insert_cost + d(k,l-1),\n     change_cost + d(k-1,l-1)\n    )\n\n   Under this hypothesis, it is optimal to choose greedily the state of the\n   minimal patch transforming the left k-prefix into the right l-prefix as a\n   representative of the states of all possible patches transforming the left\n   k-prefix into the right l-prefix.\n\n   If this property is not satisfied, we can still choose greedily a\n   representative state. However, the computed patch is no more guaranteed to\n   be globally optimal.\n   Nevertheless, it is still a correct patch, which is even optimal among all\n   explored patches.\n\n",(utils/diffing.mli[17,1080+0]..[60,2868+2]),None)
+    ]
+  signature_item (utils/diffing.mli[63,2922+0]..[74,3115+3])
+    Psig_modtype "Defs" (utils/diffing.mli[63,2922+12]..[63,2922+16])
+      attribute "ocaml.doc"
+        [
+          structure_item (utils/diffing.mli[62,2872+0]..[62,2872+49])
+            Pstr_eval
+            expression (utils/diffing.mli[62,2872+0]..[62,2872+49])
+              Pexp_constant PConst_string(" The core types of a diffing implementation ",(utils/diffing.mli[62,2872+0]..[62,2872+49]),None)
+        ]
+      module_type (utils/diffing.mli[63,2922+19]..[74,3115+3])
+        Pmty_signature
+        [
+          signature_item (utils/diffing.mli[64,2945+2]..[64,2945+11])
+            Psig_type Rec
+            [
+              type_declaration "left" (utils/diffing.mli[64,2945+7]..[64,2945+11]) (utils/diffing.mli[64,2945+2]..[64,2945+11])
+                ptype_params =
+                  []
+                ptype_cstrs =
+                  []
+                ptype_kind =
+                  Ptype_abstract
+                ptype_private = Public
+                ptype_manifest =
+                  None
+            ]
+          signature_item (utils/diffing.mli[65,2957+2]..[65,2957+12])
+            Psig_type Rec
+            [
+              type_declaration "right" (utils/diffing.mli[65,2957+7]..[65,2957+12]) (utils/diffing.mli[65,2957+2]..[65,2957+12])
+                ptype_params =
+                  []
+                ptype_cstrs =
+                  []
+                ptype_kind =
+                  Ptype_abstract
+                ptype_private = Public
+                ptype_manifest =
+                  None
+            ]
+          signature_item (utils/diffing.mli[66,2970+2]..[66,2970+9])
+            Psig_type Rec
+            [
+              type_declaration "eq" (utils/diffing.mli[66,2970+7]..[66,2970+9]) (utils/diffing.mli[66,2970+2]..[66,2970+9])
+                attribute "ocaml.doc"
+                  [
+                    structure_item (utils/diffing.mli[67,2980+2]..[67,2980+32])
+                      Pstr_eval
+                      expression (utils/diffing.mli[67,2980+2]..[67,2980+32])
+                        Pexp_constant PConst_string(" Detailed equality trace ",(utils/diffing.mli[67,2980+2]..[67,2980+32]),None)
+                  ]
+                ptype_params =
+                  []
+                ptype_cstrs =
+                  []
+                ptype_kind =
+                  Ptype_abstract
+                ptype_private = Public
+                ptype_manifest =
+                  None
+            ]
+          signature_item (utils/diffing.mli[69,3014+2]..[69,3014+11])
+            Psig_type Rec
+            [
+              type_declaration "diff" (utils/diffing.mli[69,3014+7]..[69,3014+11]) (utils/diffing.mli[69,3014+2]..[69,3014+11])
+                attribute "ocaml.doc"
+                  [
+                    structure_item (utils/diffing.mli[70,3026+2]..[70,3026+34])
+                      Pstr_eval
+                      expression (utils/diffing.mli[70,3026+2]..[70,3026+34])
+                        Pexp_constant PConst_string(" Detailed difference trace ",(utils/diffing.mli[70,3026+2]..[70,3026+34]),None)
+                  ]
+                ptype_params =
+                  []
+                ptype_cstrs =
+                  []
+                ptype_kind =
+                  Ptype_abstract
+                ptype_private = Public
+                ptype_manifest =
+                  None
+            ]
+          signature_item (utils/diffing.mli[72,3062+2]..[72,3062+12])
+            Psig_type Rec
+            [
+              type_declaration "state" (utils/diffing.mli[72,3062+7]..[72,3062+12]) (utils/diffing.mli[72,3062+2]..[72,3062+12])
+                attribute "ocaml.doc"
+                  [
+                    structure_item (utils/diffing.mli[73,3075+2]..[73,3075+39])
+                      Pstr_eval
+                      expression (utils/diffing.mli[73,3075+2]..[73,3075+39])
+                        Pexp_constant PConst_string(" environment of a partial patch ",(utils/diffing.mli[73,3075+2]..[73,3075+39]),None)
+                  ]
+                ptype_params =
+                  []
+                ptype_cstrs =
+                  []
+                ptype_kind =
+                  Ptype_abstract
+                ptype_private = Public
+                ptype_manifest =
+                  None
+            ]
+        ]
+  signature_item (utils/diffing.mli[78,3216+0]..[82,3279+16])
+    Psig_type Rec
+    [
+      type_declaration "change_kind" (utils/diffing.mli[78,3216+5]..[78,3216+16]) (utils/diffing.mli[78,3216+0]..[82,3279+16])
+        attribute "ocaml.doc"
+          [
+            structure_item (utils/diffing.mli[76,3120+0]..[77,3188+27])
+              Pstr_eval
+              expression (utils/diffing.mli[76,3120+0]..[77,3188+27])
+                Pexp_constant PConst_string(" The kind of changes which is used to share printing and styling\n    across implementation",(utils/diffing.mli[76,3120+0]..[77,3188+27]),None)
+          ]
+        ptype_params =
+          []
+        ptype_cstrs =
+          []
+        ptype_kind =
+          Ptype_variant
+            [
+              (utils/diffing.mli[79,3235+2]..[79,3235+12])
+                "Deletion" (utils/diffing.mli[79,3235+4]..[79,3235+12])
+                []
+                None
+              (utils/diffing.mli[80,3248+2]..[80,3248+13])
+                "Insertion" (utils/diffing.mli[80,3248+4]..[80,3248+13])
+                []
+                None
+              (utils/diffing.mli[81,3262+2]..[81,3262+16])
+                "Modification" (utils/diffing.mli[81,3262+4]..[81,3262+16])
+                []
+                None
+              (utils/diffing.mli[82,3279+2]..[82,3279+16])
+                "Preservation" (utils/diffing.mli[82,3279+4]..[82,3279+16])
+                []
+                None
+            ]
+        ptype_private = Public
+        ptype_manifest =
+          None
+    ]
+  signature_item (utils/diffing.mli[83,3296+0]..[83,3296+59])
+    Psig_value
+    value_description "prefix" (utils/diffing.mli[83,3296+4]..[83,3296+10]) (utils/diffing.mli[83,3296+0]..[83,3296+59])
+      core_type (utils/diffing.mli[83,3296+12]..[83,3296+59])
+        Ptyp_arrow
+        Nolabel
+        core_type (utils/diffing.mli[83,3296+12]..[83,3296+28])
+          Ptyp_constr "Format.formatter" (utils/diffing.mli[83,3296+12]..[83,3296+28])
+          []
+        core_type (utils/diffing.mli[83,3296+32]..[83,3296+59])
+          Ptyp_arrow
+          Nolabel
+          core_type (utils/diffing.mli[83,3296+33]..[83,3296+50])
+            Ptyp_tuple
+            [
+              core_type (utils/diffing.mli[83,3296+33]..[83,3296+36])
+                Ptyp_constr "int" (utils/diffing.mli[83,3296+33]..[83,3296+36])
+                []
+              core_type (utils/diffing.mli[83,3296+39]..[83,3296+50])
+                Ptyp_constr "change_kind" (utils/diffing.mli[83,3296+39]..[83,3296+50])
+                []
+            ]
+          core_type (utils/diffing.mli[83,3296+55]..[83,3296+59])
+            Ptyp_constr "unit" (utils/diffing.mli[83,3296+55]..[83,3296+59])
+            []
+      []
+  signature_item (utils/diffing.mli[84,3356+0]..[84,3356+47])
+    Psig_value
+    value_description "style" (utils/diffing.mli[84,3356+4]..[84,3356+9]) (utils/diffing.mli[84,3356+0]..[84,3356+47])
+      core_type (utils/diffing.mli[84,3356+11]..[84,3356+47])
+        Ptyp_arrow
+        Nolabel
+        core_type (utils/diffing.mli[84,3356+11]..[84,3356+22])
+          Ptyp_constr "change_kind" (utils/diffing.mli[84,3356+11]..[84,3356+22])
+          []
+        core_type (utils/diffing.mli[84,3356+26]..[84,3356+47])
+          Ptyp_constr "list" (utils/diffing.mli[84,3356+43]..[84,3356+47])
+          [
+            core_type (utils/diffing.mli[84,3356+26]..[84,3356+42])
+              Ptyp_constr "Misc.Color.style" (utils/diffing.mli[84,3356+26]..[84,3356+42])
+              []
+          ]
+      []
+  signature_item (utils/diffing.mli[87,3406+0]..[91,3519+36])
+    Psig_type Rec
+    [
+      type_declaration "change" (utils/diffing.mli[87,3406+30]..[87,3406+36]) (utils/diffing.mli[87,3406+0]..[91,3519+36])
+        ptype_params =
+          [
+            core_type (utils/diffing.mli[87,3406+6]..[87,3406+11])
+              Ptyp_var left
+            core_type (utils/diffing.mli[87,3406+12]..[87,3406+18])
+              Ptyp_var right
+            core_type (utils/diffing.mli[87,3406+19]..[87,3406+22])
+              Ptyp_var eq
+            core_type (utils/diffing.mli[87,3406+23]..[87,3406+28])
+              Ptyp_var diff
+          ]
+        ptype_cstrs =
+          []
+        ptype_kind =
+          Ptype_variant
+            [
+              (utils/diffing.mli[88,3445+2]..[88,3445+19])
+                "Delete" (utils/diffing.mli[88,3445+4]..[88,3445+10])
+                [
+                  core_type (utils/diffing.mli[88,3445+14]..[88,3445+19])
+                    Ptyp_var left
+                ]
+                None
+              (utils/diffing.mli[89,3465+2]..[89,3465+20])
+                "Insert" (utils/diffing.mli[89,3465+4]..[89,3465+10])
+                [
+                  core_type (utils/diffing.mli[89,3465+14]..[89,3465+20])
+                    Ptyp_var right
+                ]
+                None
+              (utils/diffing.mli[90,3486+2]..[90,3486+32])
+                "Keep" (utils/diffing.mli[90,3486+4]..[90,3486+8])
+                [
+                  core_type (utils/diffing.mli[90,3486+12]..[90,3486+17])
+                    Ptyp_var left
+                  core_type (utils/diffing.mli[90,3486+20]..[90,3486+26])
+                    Ptyp_var right
+                  core_type (utils/diffing.mli[90,3486+28]..[90,3486+32])
+                    Ptyp_var eq
+                ]
+                None
+              (utils/diffing.mli[91,3519+2]..[91,3519+36])
+                "Change" (utils/diffing.mli[91,3519+4]..[91,3519+10])
+                [
+                  core_type (utils/diffing.mli[91,3519+14]..[91,3519+19])
+                    Ptyp_var left
+                  core_type (utils/diffing.mli[91,3519+22]..[91,3519+28])
+                    Ptyp_var right
+                  core_type (utils/diffing.mli[91,3519+31]..[91,3519+36])
+                    Ptyp_var diff
+                ]
+                None
+            ]
+        ptype_private = Public
+        ptype_manifest =
+          None
+    ]
+  signature_item (utils/diffing.mli[93,3557+0]..[93,3557+37])
+    Psig_value
+    value_description "classify" (utils/diffing.mli[93,3557+4]..[93,3557+12]) (utils/diffing.mli[93,3557+0]..[93,3557+37])
+      core_type (utils/diffing.mli[93,3557+14]..[93,3557+37])
+        Ptyp_arrow
+        Nolabel
+        core_type (utils/diffing.mli[93,3557+14]..[93,3557+22])
+          Ptyp_constr "change" (utils/diffing.mli[93,3557+16]..[93,3557+22])
+          [
+            core_type (utils/diffing.mli[93,3557+14]..[93,3557+15])
+              Ptyp_any
+          ]
+        core_type (utils/diffing.mli[93,3557+26]..[93,3557+37])
+          Ptyp_constr "change_kind" (utils/diffing.mli[93,3557+26]..[93,3557+37])
+          []
+      []
+  signature_item (utils/diffing.mli[99,3769+0]..[148,5191+3])
+    Psig_module "Define" (utils/diffing.mli[99,3769+7]..[99,3769+13])
+      attribute "ocaml.doc"
+        [
+          structure_item (utils/diffing.mli[95,3596+0]..[98,3766+2])
+            Pstr_eval
+            expression (utils/diffing.mli[95,3596+0]..[98,3766+2])
+              Pexp_constant PConst_string(" [Define(Defs)] creates the diffing types from the types\n    defined in [Defs] and the functors that need to be instantatied\n    with the diffing algorithm parameters\n",(utils/diffing.mli[95,3596+0]..[98,3766+2]),None)
+        ]
+    module_type (utils/diffing.mli[99,3769+13]..[148,5191+3])
+      Pmty_functor "D" (utils/diffing.mli[99,3769+14]..[99,3769+15])
+      module_type (utils/diffing.mli[99,3769+16]..[99,3769+20])
+        Pmty_ident "Defs" (utils/diffing.mli[99,3769+16]..[99,3769+20])
+      module_type (utils/diffing.mli[99,3769+23]..[148,5191+3])
+        Pmty_signature
+        [
+          signature_item (utils/diffing.mli[100,3796+2]..[100,3796+8])
+            Psig_open Fresh "D" (utils/diffing.mli[100,3796+7]..[100,3796+8])
+          signature_item (utils/diffing.mli[103,3856+2]..[103,3856+50])
+            Psig_type Nonrec
+            [
+              type_declaration "change" (utils/diffing.mli[103,3856+14]..[103,3856+20]) (utils/diffing.mli[103,3856+2]..[103,3856+50])
+                attribute "ocaml.doc"
+                  [
+                    structure_item (utils/diffing.mli[102,3806+2]..[102,3806+49])
+                      Pstr_eval
+                      expression (utils/diffing.mli[102,3806+2]..[102,3806+49])
+                        Pexp_constant PConst_string(" The type of potential changes on a list. ",(utils/diffing.mli[102,3806+2]..[102,3806+49]),None)
+                  ]
+                ptype_params =
+                  []
+                ptype_cstrs =
+                  []
+                ptype_kind =
+                  Ptype_abstract
+                ptype_private = Public
+                ptype_manifest =
+                  Some
+                    core_type (utils/diffing.mli[103,3856+23]..[103,3856+50])
+                      Ptyp_constr "change" (utils/diffing.mli[103,3856+44]..[103,3856+50])
+                      [
+                        core_type (utils/diffing.mli[103,3856+24]..[103,3856+28])
+                          Ptyp_constr "left" (utils/diffing.mli[103,3856+24]..[103,3856+28])
+                          []
+                        core_type (utils/diffing.mli[103,3856+29]..[103,3856+34])
+                          Ptyp_constr "right" (utils/diffing.mli[103,3856+29]..[103,3856+34])
+                          []
+                        core_type (utils/diffing.mli[103,3856+35]..[103,3856+37])
+                          Ptyp_constr "eq" (utils/diffing.mli[103,3856+35]..[103,3856+37])
+                          []
+                        core_type (utils/diffing.mli[103,3856+38]..[103,3856+42])
+                          Ptyp_constr "diff" (utils/diffing.mli[103,3856+38]..[103,3856+42])
+                          []
+                      ]
+            ]
+          signature_item (utils/diffing.mli[104,3907+2]..[104,3907+26])
+            Psig_type Rec
+            [
+              type_declaration "patch" (utils/diffing.mli[104,3907+7]..[104,3907+12]) (utils/diffing.mli[104,3907+2]..[104,3907+26])
+                attribute "ocaml.doc"
+                  [
+                    structure_item (utils/diffing.mli[105,3934+2]..[105,3934+47])
+                      Pstr_eval
+                      expression (utils/diffing.mli[105,3934+2]..[105,3934+47])
+                        Pexp_constant PConst_string(" A patch is an ordered list of changes. ",(utils/diffing.mli[105,3934+2]..[105,3934+47]),None)
+                  ]
+                ptype_params =
+                  []
+                ptype_cstrs =
+                  []
+                ptype_kind =
+                  Ptype_abstract
+                ptype_private = Public
+                ptype_manifest =
+                  Some
+                    core_type (utils/diffing.mli[104,3907+15]..[104,3907+26])
+                      Ptyp_constr "list" (utils/diffing.mli[104,3907+22]..[104,3907+26])
+                      [
+                        core_type (utils/diffing.mli[104,3907+15]..[104,3907+21])
+                          Ptyp_constr "change" (utils/diffing.mli[104,3907+15]..[104,3907+21])
+                          []
+                      ]
+            ]
+          signature_item (utils/diffing.mli[107,3983+2]..[125,4573+5])
+            Psig_modtype "Parameters" (utils/diffing.mli[107,3983+14]..[107,3983+24])
+              module_type (utils/diffing.mli[107,3983+27]..[125,4573+5])
+                Pmty_signature
+                [
+                  signature_item (utils/diffing.mli[108,4014+4]..[108,4014+22])
+                    Psig_type Rec
+                    [
+                      type_declaration "update_result" (utils/diffing.mli[108,4014+9]..[108,4014+22]) (utils/diffing.mli[108,4014+4]..[108,4014+22])
+                        ptype_params =
+                          []
+                        ptype_cstrs =
+                          []
+                        ptype_kind =
+                          Ptype_abstract
+                        ptype_private = Public
+                        ptype_manifest =
+                          None
+                    ]
+                  signature_item (utils/diffing.mli[110,4038+4]..[110,4038+29])
+                    Psig_value
+                    value_description "weight" (utils/diffing.mli[110,4038+8]..[110,4038+14]) (utils/diffing.mli[110,4038+4]..[110,4038+29])
+                      attribute "ocaml.doc"
+                        [
+                          structure_item (utils/diffing.mli[111,4068+4]..[112,4127+43])
+                            Pstr_eval
+                            expression (utils/diffing.mli[111,4068+4]..[112,4127+43])
+                              Pexp_constant PConst_string(" [weight ch] returns the weight of the change [ch].\n        Used to find the smallest patch. ",(utils/diffing.mli[111,4068+4]..[112,4127+43]),None)
+                        ]
+                      core_type (utils/diffing.mli[110,4038+16]..[110,4038+29])
+                        Ptyp_arrow
+                        Nolabel
+                        core_type (utils/diffing.mli[110,4038+16]..[110,4038+22])
+                          Ptyp_constr "change" (utils/diffing.mli[110,4038+16]..[110,4038+22])
+                          []
+                        core_type (utils/diffing.mli[110,4038+26]..[110,4038+29])
+                          Ptyp_constr "int" (utils/diffing.mli[110,4038+26]..[110,4038+29])
+                          []
+                      []
+                  signature_item (utils/diffing.mli[114,4172+4]..[114,4172+57])
+                    Psig_value
+                    value_description "test" (utils/diffing.mli[114,4172+8]..[114,4172+12]) (utils/diffing.mli[114,4172+4]..[114,4172+57])
+                      attribute "ocaml.doc"
+                        [
+                          structure_item (utils/diffing.mli[115,4230+4]..[118,4347+6])
+                            Pstr_eval
+                            expression (utils/diffing.mli[115,4230+4]..[118,4347+6])
+                              Pexp_constant PConst_string("\n       [test st xl xr] tests if the elements [xl] and [xr] are\n        co  mpatible ([Ok]) or not ([Error]).\n    ",(utils/diffing.mli[115,4230+4]..[118,4347+6]),None)
+                        ]
+                      core_type (utils/diffing.mli[114,4172+14]..[114,4172+57])
+                        Ptyp_arrow
+                        Nolabel
+                        core_type (utils/diffing.mli[114,4172+14]..[114,4172+19])
+                          Ptyp_constr "state" (utils/diffing.mli[114,4172+14]..[114,4172+19])
+                          []
+                        core_type (utils/diffing.mli[114,4172+23]..[114,4172+57])
+                          Ptyp_arrow
+                          Nolabel
+                          core_type (utils/diffing.mli[114,4172+23]..[114,4172+27])
+                            Ptyp_constr "left" (utils/diffing.mli[114,4172+23]..[114,4172+27])
+                            []
+                          core_type (utils/diffing.mli[114,4172+31]..[114,4172+57])
+                            Ptyp_arrow
+                            Nolabel
+                            core_type (utils/diffing.mli[114,4172+31]..[114,4172+36])
+                              Ptyp_constr "right" (utils/diffing.mli[114,4172+31]..[114,4172+36])
+                              []
+                            core_type (utils/diffing.mli[114,4172+40]..[114,4172+57])
+                              Ptyp_constr "result" (utils/diffing.mli[114,4172+51]..[114,4172+57])
+                              [
+                                core_type (utils/diffing.mli[114,4172+41]..[114,4172+43])
+                                  Ptyp_constr "eq" (utils/diffing.mli[114,4172+41]..[114,4172+43])
+                                  []
+                                core_type (utils/diffing.mli[114,4172+45]..[114,4172+49])
+                                  Ptyp_constr "diff" (utils/diffing.mli[114,4172+45]..[114,4172+49])
+                                  []
+                              ]
+                      []
+                  signature_item (utils/diffing.mli[120,4355+4]..[120,4355+48])
+                    Psig_value
+                    value_description "update" (utils/diffing.mli[120,4355+8]..[120,4355+14]) (utils/diffing.mli[120,4355+4]..[120,4355+48])
+                      attribute "ocaml.doc"
+                        [
+                          structure_item (utils/diffing.mli[121,4404+4]..[124,4565+7])
+                            Pstr_eval
+                            expression (utils/diffing.mli[121,4404+4]..[124,4565+7])
+                              Pexp_constant PConst_string("  [update ch st] returns the new state after applying a change.\n         The [update_result] type also contains expansions in the variadic\n         case.\n     ",(utils/diffing.mli[121,4404+4]..[124,4565+7]),None)
+                        ]
+                      core_type (utils/diffing.mli[120,4355+16]..[120,4355+48])
+                        Ptyp_arrow
+                        Nolabel
+                        core_type (utils/diffing.mli[120,4355+16]..[120,4355+22])
+                          Ptyp_constr "change" (utils/diffing.mli[120,4355+16]..[120,4355+22])
+                          []
+                        core_type (utils/diffing.mli[120,4355+26]..[120,4355+48])
+                          Ptyp_arrow
+                          Nolabel
+                          core_type (utils/diffing.mli[120,4355+26]..[120,4355+31])
+                            Ptyp_constr "state" (utils/diffing.mli[120,4355+26]..[120,4355+31])
+                            []
+                          core_type (utils/diffing.mli[120,4355+35]..[120,4355+48])
+                            Ptyp_constr "update_result" (utils/diffing.mli[120,4355+35]..[120,4355+48])
+                            []
+                      []
+                ]
+          signature_item (utils/diffing.mli[127,4580+2]..[132,4781+5])
+            Psig_modtype "S" (utils/diffing.mli[127,4580+14]..[127,4580+15])
+              module_type (utils/diffing.mli[127,4580+18]..[132,4781+5])
+                Pmty_signature
+                [
+                  signature_item (utils/diffing.mli[128,4602+4]..[128,4602+57])
+                    Psig_value
+                    value_description "diff" (utils/diffing.mli[128,4602+8]..[128,4602+12]) (utils/diffing.mli[128,4602+4]..[128,4602+57])
+                      attribute "ocaml.doc"
+                        [
+                          structure_item (utils/diffing.mli[129,4660+4]..[131,4774+6])
+                            Pstr_eval
+                            expression (utils/diffing.mli[129,4660+4]..[131,4774+6])
+                              Pexp_constant PConst_string(" [diff state l r] computes the optimal patch between [l] and [r],\n        using the initial state [state].\n    ",(utils/diffing.mli[129,4660+4]..[131,4774+6]),None)
+                        ]
+                      core_type (utils/diffing.mli[128,4602+14]..[128,4602+57])
+                        Ptyp_arrow
+                        Nolabel
+                        core_type (utils/diffing.mli[128,4602+14]..[128,4602+19])
+                          Ptyp_constr "state" (utils/diffing.mli[128,4602+14]..[128,4602+19])
+                          []
+                        core_type (utils/diffing.mli[128,4602+23]..[128,4602+57])
+                          Ptyp_arrow
+                          Nolabel
+                          core_type (utils/diffing.mli[128,4602+23]..[128,4602+33])
+                            Ptyp_constr "array" (utils/diffing.mli[128,4602+28]..[128,4602+33])
+                            [
+                              core_type (utils/diffing.mli[128,4602+23]..[128,4602+27])
+                                Ptyp_constr "left" (utils/diffing.mli[128,4602+23]..[128,4602+27])
+                                []
+                            ]
+                          core_type (utils/diffing.mli[128,4602+37]..[128,4602+57])
+                            Ptyp_arrow
+                            Nolabel
+                            core_type (utils/diffing.mli[128,4602+37]..[128,4602+48])
+                              Ptyp_constr "array" (utils/diffing.mli[128,4602+43]..[128,4602+48])
+                              [
+                                core_type (utils/diffing.mli[128,4602+37]..[128,4602+42])
+                                  Ptyp_constr "right" (utils/diffing.mli[128,4602+37]..[128,4602+42])
+                                  []
+                              ]
+                            core_type (utils/diffing.mli[128,4602+52]..[128,4602+57])
+                              Ptyp_constr "patch" (utils/diffing.mli[128,4602+52]..[128,4602+57])
+                              []
+                      []
+                ]
+          signature_item (utils/diffing.mli[135,4789+2]..[135,4789+67])
+            Psig_module "Simple" (utils/diffing.mli[135,4789+9]..[135,4789+15])
+            module_type (utils/diffing.mli[135,4789+17]..[135,4789+67])
+              Pmty_functor "_" (_none_[0,0+-1]..[0,0+-1]) ghost
+              module_type (utils/diffing.mli[135,4789+18]..[135,4789+61])
+                Pmty_with
+                module_type (utils/diffing.mli[135,4789+18]..[135,4789+28])
+                  Pmty_ident "Parameters" (utils/diffing.mli[135,4789+18]..[135,4789+28])
+                [
+                  Pwith_typesubst "update_result" (utils/diffing.mli[135,4789+39]..[135,4789+52])
+                    type_declaration "update_result" (utils/diffing.mli[135,4789+39]..[135,4789+52]) (utils/diffing.mli[135,4789+34]..[135,4789+61])
+                      ptype_params =
+                        []
+                      ptype_cstrs =
+                        []
+                      ptype_kind =
+                        Ptype_abstract
+                      ptype_private = Public
+                      ptype_manifest =
+                        Some
+                          core_type (utils/diffing.mli[135,4789+56]..[135,4789+61])
+                            Ptyp_constr "state" (utils/diffing.mli[135,4789+56]..[135,4789+61])
+                            []
+                ]
+              module_type (utils/diffing.mli[135,4789+66]..[135,4789+67])
+                Pmty_ident "S" (utils/diffing.mli[135,4789+66]..[135,4789+67])
+          signature_item (utils/diffing.mli[142,5003+2]..[143,5027+67])
+            Psig_module "Left_variadic" (utils/diffing.mli[142,5003+9]..[142,5003+22])
+              attribute "ocaml.doc"
+                [
+                  structure_item (utils/diffing.mli[137,4858+2]..[141,4998+4])
+                    Pstr_eval
+                    expression (utils/diffing.mli[137,4858+2]..[141,4998+4])
+                      Pexp_constant PConst_string(" {1 Variadic diffing}\n\n      Variadic diffing allows to expand the lists being diffed during diffing.\n      in one specific direction.\n  ",(utils/diffing.mli[137,4858+2]..[141,4998+4]),None)
+                ]
+            module_type (utils/diffing.mli[143,5027+4]..[143,5027+67])
+              Pmty_functor "_" (_none_[0,0+-1]..[0,0+-1]) ghost
+              module_type (utils/diffing.mli[143,5027+5]..[143,5027+61])
+                Pmty_with
+                module_type (utils/diffing.mli[143,5027+5]..[143,5027+15])
+                  Pmty_ident "Parameters" (utils/diffing.mli[143,5027+5]..[143,5027+15])
+                [
+                  Pwith_typesubst "update_result" (utils/diffing.mli[143,5027+26]..[143,5027+39])
+                    type_declaration "update_result" (utils/diffing.mli[143,5027+26]..[143,5027+39]) (utils/diffing.mli[143,5027+21]..[143,5027+61])
+                      ptype_params =
+                        []
+                      ptype_cstrs =
+                        []
+                      ptype_kind =
+                        Ptype_abstract
+                      ptype_private = Public
+                      ptype_manifest =
+                        Some
+                          core_type (utils/diffing.mli[143,5027+43]..[143,5027+61])
+                            Ptyp_tuple
+                            [
+                              core_type (utils/diffing.mli[143,5027+43]..[143,5027+48])
+                                Ptyp_constr "state" (utils/diffing.mli[143,5027+43]..[143,5027+48])
+                                []
+                              core_type (utils/diffing.mli[143,5027+51]..[143,5027+61])
+                                Ptyp_constr "array" (utils/diffing.mli[143,5027+56]..[143,5027+61])
+                                [
+                                  core_type (utils/diffing.mli[143,5027+51]..[143,5027+55])
+                                    Ptyp_constr "left" (utils/diffing.mli[143,5027+51]..[143,5027+55])
+                                    []
+                                ]
+                            ]
+                ]
+              module_type (utils/diffing.mli[143,5027+66]..[143,5027+67])
+                Pmty_ident "S" (utils/diffing.mli[143,5027+66]..[143,5027+67])
+          signature_item (utils/diffing.mli[145,5096+2]..[146,5121+68])
+            Psig_module "Right_variadic" (utils/diffing.mli[145,5096+9]..[145,5096+23])
+            module_type (utils/diffing.mli[146,5121+4]..[146,5121+68])
+              Pmty_functor "_" (_none_[0,0+-1]..[0,0+-1]) ghost
+              module_type (utils/diffing.mli[146,5121+5]..[146,5121+62])
+                Pmty_with
+                module_type (utils/diffing.mli[146,5121+5]..[146,5121+15])
+                  Pmty_ident "Parameters" (utils/diffing.mli[146,5121+5]..[146,5121+15])
+                [
+                  Pwith_typesubst "update_result" (utils/diffing.mli[146,5121+26]..[146,5121+39])
+                    type_declaration "update_result" (utils/diffing.mli[146,5121+26]..[146,5121+39]) (utils/diffing.mli[146,5121+21]..[146,5121+62])
+                      ptype_params =
+                        []
+                      ptype_cstrs =
+                        []
+                      ptype_kind =
+                        Ptype_abstract
+                      ptype_private = Public
+                      ptype_manifest =
+                        Some
+                          core_type (utils/diffing.mli[146,5121+43]..[146,5121+62])
+                            Ptyp_tuple
+                            [
+                              core_type (utils/diffing.mli[146,5121+43]..[146,5121+48])
+                                Ptyp_constr "state" (utils/diffing.mli[146,5121+43]..[146,5121+48])
+                                []
+                              core_type (utils/diffing.mli[146,5121+51]..[146,5121+62])
+                                Ptyp_constr "array" (utils/diffing.mli[146,5121+57]..[146,5121+62])
+                                [
+                                  core_type (utils/diffing.mli[146,5121+51]..[146,5121+56])
+                                    Ptyp_constr "right" (utils/diffing.mli[146,5121+51]..[146,5121+56])
+                                    []
+                                ]
+                            ]
+                ]
+              module_type (utils/diffing.mli[146,5121+67]..[146,5121+68])
+                Pmty_ident "S" (utils/diffing.mli[146,5121+67]..[146,5121+68])
+        ]
+]
+

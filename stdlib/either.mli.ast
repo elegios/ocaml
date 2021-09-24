@@ -1,0 +1,611 @@
+[
+  signature_item (stdlib/either.mli[16,1079+0]..[36,1754+2])
+    Psig_attribute "ocaml.text"
+    [
+      structure_item (stdlib/either.mli[16,1079+0]..[36,1754+2])
+        Pstr_eval
+        expression (stdlib/either.mli[16,1079+0]..[36,1754+2])
+          Pexp_constant PConst_string(" Either type.\n\n    Either is the simplest and most generic sum/variant type:\n    a value of [('a, 'b) Either.t] is either a [Left (v : 'a)]\n    or a [Right (v : 'b)].\n\n    It is a natural choice in the API of generic functions where values\n    could fall in two different cases, possibly at different types,\n    without assigning a specific meaning to what each case should be.\n\n    For example:\n\n{[List.partition_map:\n    ('a -> ('b, 'c) Either.t) -> 'a list -> 'b list * 'c list]}\n\n    If you are looking for a parametrized type where\n    one alternative means success and the other means failure,\n    you should use the more specific type {!Result.t}.\n\n    @since 4.12\n",(stdlib/either.mli[16,1079+0]..[36,1754+2]),None)
+    ]
+  signature_item (stdlib/either.mli[56,2488+0]..[56,2488+42])
+    Psig_type Rec
+    [
+      type_declaration "t" (stdlib/either.mli[56,2488+14]..[56,2488+15]) (stdlib/either.mli[56,2488+0]..[56,2488+42])
+        attribute "ocaml.doc"
+          [
+            structure_item (stdlib/either.mli[57,2536+0]..[58,2580+49])
+              Pstr_eval
+              expression (stdlib/either.mli[57,2536+0]..[58,2580+49])
+                Pexp_constant PConst_string(" A value of [('a, 'b) Either.t] contains\n    either a value of ['a]  or a value of ['b] ",(stdlib/either.mli[57,2536+0]..[58,2580+49]),None)
+          ]
+        ptype_params =
+          [
+            core_type (stdlib/either.mli[56,2488+6]..[56,2488+8])
+              Ptyp_var a
+            core_type (stdlib/either.mli[56,2488+10]..[56,2488+12])
+              Ptyp_var b
+          ]
+        ptype_cstrs =
+          []
+        ptype_kind =
+          Ptype_variant
+            [
+              (stdlib/either.mli[56,2488+18]..[56,2488+28])
+                "Left" (stdlib/either.mli[56,2488+18]..[56,2488+22])
+                [
+                  core_type (stdlib/either.mli[56,2488+26]..[56,2488+28])
+                    Ptyp_var a
+                ]
+                None
+              (stdlib/either.mli[56,2488+29]..[56,2488+42])
+                "Right" (stdlib/either.mli[56,2488+31]..[56,2488+36])
+                [
+                  core_type (stdlib/either.mli[56,2488+40]..[56,2488+42])
+                    Ptyp_var b
+                ]
+                None
+            ]
+        ptype_private = Public
+        ptype_manifest =
+          None
+    ]
+  signature_item (stdlib/either.mli[60,2631+0]..[60,2631+27])
+    Psig_value
+    value_description "left" (stdlib/either.mli[60,2631+4]..[60,2631+8]) (stdlib/either.mli[60,2631+0]..[60,2631+27])
+      attribute "ocaml.doc"
+        [
+          structure_item (stdlib/either.mli[61,2659+0]..[61,2659+28])
+            Pstr_eval
+            expression (stdlib/either.mli[61,2659+0]..[61,2659+28])
+              Pexp_constant PConst_string(" [left v] is [Left v]. ",(stdlib/either.mli[61,2659+0]..[61,2659+28]),None)
+        ]
+      core_type (stdlib/either.mli[60,2631+11]..[60,2631+27])
+        Ptyp_arrow
+        Nolabel
+        core_type (stdlib/either.mli[60,2631+11]..[60,2631+13])
+          Ptyp_var a
+        core_type (stdlib/either.mli[60,2631+17]..[60,2631+27])
+          Ptyp_constr "t" (stdlib/either.mli[60,2631+26]..[60,2631+27])
+          [
+            core_type (stdlib/either.mli[60,2631+18]..[60,2631+20])
+              Ptyp_var a
+            core_type (stdlib/either.mli[60,2631+22]..[60,2631+24])
+              Ptyp_var b
+          ]
+      []
+  signature_item (stdlib/either.mli[63,2689+0]..[63,2689+28])
+    Psig_value
+    value_description "right" (stdlib/either.mli[63,2689+4]..[63,2689+9]) (stdlib/either.mli[63,2689+0]..[63,2689+28])
+      attribute "ocaml.doc"
+        [
+          structure_item (stdlib/either.mli[64,2718+0]..[64,2718+30])
+            Pstr_eval
+            expression (stdlib/either.mli[64,2718+0]..[64,2718+30])
+              Pexp_constant PConst_string(" [right v] is [Right v]. ",(stdlib/either.mli[64,2718+0]..[64,2718+30]),None)
+        ]
+      core_type (stdlib/either.mli[63,2689+12]..[63,2689+28])
+        Ptyp_arrow
+        Nolabel
+        core_type (stdlib/either.mli[63,2689+12]..[63,2689+14])
+          Ptyp_var b
+        core_type (stdlib/either.mli[63,2689+18]..[63,2689+28])
+          Ptyp_constr "t" (stdlib/either.mli[63,2689+27]..[63,2689+28])
+          [
+            core_type (stdlib/either.mli[63,2689+19]..[63,2689+21])
+              Ptyp_var a
+            core_type (stdlib/either.mli[63,2689+23]..[63,2689+25])
+              Ptyp_var b
+          ]
+      []
+  signature_item (stdlib/either.mli[66,2750+0]..[66,2750+32])
+    Psig_value
+    value_description "is_left" (stdlib/either.mli[66,2750+4]..[66,2750+11]) (stdlib/either.mli[66,2750+0]..[66,2750+32])
+      attribute "ocaml.doc"
+        [
+          structure_item (stdlib/either.mli[67,2783+0]..[67,2783+68])
+            Pstr_eval
+            expression (stdlib/either.mli[67,2783+0]..[67,2783+68])
+              Pexp_constant PConst_string(" [is_left (Left v)] is [true], [is_left (Right v)] is [false]. ",(stdlib/either.mli[67,2783+0]..[67,2783+68]),None)
+        ]
+      core_type (stdlib/either.mli[66,2750+14]..[66,2750+32])
+        Ptyp_arrow
+        Nolabel
+        core_type (stdlib/either.mli[66,2750+14]..[66,2750+24])
+          Ptyp_constr "t" (stdlib/either.mli[66,2750+23]..[66,2750+24])
+          [
+            core_type (stdlib/either.mli[66,2750+15]..[66,2750+17])
+              Ptyp_var a
+            core_type (stdlib/either.mli[66,2750+19]..[66,2750+21])
+              Ptyp_var b
+          ]
+        core_type (stdlib/either.mli[66,2750+28]..[66,2750+32])
+          Ptyp_constr "bool" (stdlib/either.mli[66,2750+28]..[66,2750+32])
+          []
+      []
+  signature_item (stdlib/either.mli[69,2853+0]..[69,2853+33])
+    Psig_value
+    value_description "is_right" (stdlib/either.mli[69,2853+4]..[69,2853+12]) (stdlib/either.mli[69,2853+0]..[69,2853+33])
+      attribute "ocaml.doc"
+        [
+          structure_item (stdlib/either.mli[70,2887+0]..[70,2887+70])
+            Pstr_eval
+            expression (stdlib/either.mli[70,2887+0]..[70,2887+70])
+              Pexp_constant PConst_string(" [is_right (Left v)] is [false], [is_right (Right v)] is [true]. ",(stdlib/either.mli[70,2887+0]..[70,2887+70]),None)
+        ]
+      core_type (stdlib/either.mli[69,2853+15]..[69,2853+33])
+        Ptyp_arrow
+        Nolabel
+        core_type (stdlib/either.mli[69,2853+15]..[69,2853+25])
+          Ptyp_constr "t" (stdlib/either.mli[69,2853+24]..[69,2853+25])
+          [
+            core_type (stdlib/either.mli[69,2853+16]..[69,2853+18])
+              Ptyp_var a
+            core_type (stdlib/either.mli[69,2853+20]..[69,2853+22])
+              Ptyp_var b
+          ]
+        core_type (stdlib/either.mli[69,2853+29]..[69,2853+33])
+          Ptyp_constr "bool" (stdlib/either.mli[69,2853+29]..[69,2853+33])
+          []
+      []
+  signature_item (stdlib/either.mli[72,2959+0]..[72,2959+39])
+    Psig_value
+    value_description "find_left" (stdlib/either.mli[72,2959+4]..[72,2959+13]) (stdlib/either.mli[72,2959+0]..[72,2959+39])
+      attribute "ocaml.doc"
+        [
+          structure_item (stdlib/either.mli[73,2999+0]..[73,2999+72])
+            Pstr_eval
+            expression (stdlib/either.mli[73,2999+0]..[73,2999+72])
+              Pexp_constant PConst_string(" [find_left (Left v)] is [Some v], [find_left (Right _)] is [None] ",(stdlib/either.mli[73,2999+0]..[73,2999+72]),None)
+        ]
+      core_type (stdlib/either.mli[72,2959+16]..[72,2959+39])
+        Ptyp_arrow
+        Nolabel
+        core_type (stdlib/either.mli[72,2959+16]..[72,2959+26])
+          Ptyp_constr "t" (stdlib/either.mli[72,2959+25]..[72,2959+26])
+          [
+            core_type (stdlib/either.mli[72,2959+17]..[72,2959+19])
+              Ptyp_var a
+            core_type (stdlib/either.mli[72,2959+21]..[72,2959+23])
+              Ptyp_var b
+          ]
+        core_type (stdlib/either.mli[72,2959+30]..[72,2959+39])
+          Ptyp_constr "option" (stdlib/either.mli[72,2959+33]..[72,2959+39])
+          [
+            core_type (stdlib/either.mli[72,2959+30]..[72,2959+32])
+              Ptyp_var a
+          ]
+      []
+  signature_item (stdlib/either.mli[75,3073+0]..[75,3073+40])
+    Psig_value
+    value_description "find_right" (stdlib/either.mli[75,3073+4]..[75,3073+14]) (stdlib/either.mli[75,3073+0]..[75,3073+40])
+      attribute "ocaml.doc"
+        [
+          structure_item (stdlib/either.mli[76,3114+0]..[76,3114+74])
+            Pstr_eval
+            expression (stdlib/either.mli[76,3114+0]..[76,3114+74])
+              Pexp_constant PConst_string(" [find_right (Right v)] is [Some v], [find_right (Left _)] is [None] ",(stdlib/either.mli[76,3114+0]..[76,3114+74]),None)
+        ]
+      core_type (stdlib/either.mli[75,3073+17]..[75,3073+40])
+        Ptyp_arrow
+        Nolabel
+        core_type (stdlib/either.mli[75,3073+17]..[75,3073+27])
+          Ptyp_constr "t" (stdlib/either.mli[75,3073+26]..[75,3073+27])
+          [
+            core_type (stdlib/either.mli[75,3073+18]..[75,3073+20])
+              Ptyp_var a
+            core_type (stdlib/either.mli[75,3073+22]..[75,3073+24])
+              Ptyp_var b
+          ]
+        core_type (stdlib/either.mli[75,3073+31]..[75,3073+40])
+          Ptyp_constr "option" (stdlib/either.mli[75,3073+34]..[75,3073+40])
+          [
+            core_type (stdlib/either.mli[75,3073+31]..[75,3073+33])
+              Ptyp_var b
+          ]
+      []
+  signature_item (stdlib/either.mli[78,3190+0]..[78,3190+57])
+    Psig_value
+    value_description "map_left" (stdlib/either.mli[78,3190+4]..[78,3190+12]) (stdlib/either.mli[78,3190+0]..[78,3190+57])
+      attribute "ocaml.doc"
+        [
+          structure_item (stdlib/either.mli[79,3248+0]..[80,3302+35])
+            Pstr_eval
+            expression (stdlib/either.mli[79,3248+0]..[80,3302+35])
+              Pexp_constant PConst_string(" [map_left f e] is [Left (f v)] if [e] is [Left v]\n    and [e] if [e] is [Right _]. ",(stdlib/either.mli[79,3248+0]..[80,3302+35]),None)
+        ]
+      core_type (stdlib/either.mli[78,3190+15]..[78,3190+57])
+        Ptyp_arrow
+        Nolabel
+        core_type (stdlib/either.mli[78,3190+16]..[78,3190+26])
+          Ptyp_arrow
+          Nolabel
+          core_type (stdlib/either.mli[78,3190+16]..[78,3190+19])
+            Ptyp_var a1
+          core_type (stdlib/either.mli[78,3190+23]..[78,3190+26])
+            Ptyp_var a2
+        core_type (stdlib/either.mli[78,3190+31]..[78,3190+57])
+          Ptyp_arrow
+          Nolabel
+          core_type (stdlib/either.mli[78,3190+31]..[78,3190+42])
+            Ptyp_constr "t" (stdlib/either.mli[78,3190+41]..[78,3190+42])
+            [
+              core_type (stdlib/either.mli[78,3190+32]..[78,3190+35])
+                Ptyp_var a1
+              core_type (stdlib/either.mli[78,3190+37]..[78,3190+39])
+                Ptyp_var b
+            ]
+          core_type (stdlib/either.mli[78,3190+46]..[78,3190+57])
+            Ptyp_constr "t" (stdlib/either.mli[78,3190+56]..[78,3190+57])
+            [
+              core_type (stdlib/either.mli[78,3190+47]..[78,3190+50])
+                Ptyp_var a2
+              core_type (stdlib/either.mli[78,3190+52]..[78,3190+54])
+                Ptyp_var b
+            ]
+      []
+  signature_item (stdlib/either.mli[82,3339+0]..[82,3339+58])
+    Psig_value
+    value_description "map_right" (stdlib/either.mli[82,3339+4]..[82,3339+13]) (stdlib/either.mli[82,3339+0]..[82,3339+58])
+      attribute "ocaml.doc"
+        [
+          structure_item (stdlib/either.mli[83,3398+0]..[84,3455+34])
+            Pstr_eval
+            expression (stdlib/either.mli[83,3398+0]..[84,3455+34])
+              Pexp_constant PConst_string(" [map_right f e] is [Right (f v)] if [e] is [Right v]\n    and [e] if [e] is [Left _]. ",(stdlib/either.mli[83,3398+0]..[84,3455+34]),None)
+        ]
+      core_type (stdlib/either.mli[82,3339+16]..[82,3339+58])
+        Ptyp_arrow
+        Nolabel
+        core_type (stdlib/either.mli[82,3339+17]..[82,3339+27])
+          Ptyp_arrow
+          Nolabel
+          core_type (stdlib/either.mli[82,3339+17]..[82,3339+20])
+            Ptyp_var b1
+          core_type (stdlib/either.mli[82,3339+24]..[82,3339+27])
+            Ptyp_var b2
+        core_type (stdlib/either.mli[82,3339+32]..[82,3339+58])
+          Ptyp_arrow
+          Nolabel
+          core_type (stdlib/either.mli[82,3339+32]..[82,3339+43])
+            Ptyp_constr "t" (stdlib/either.mli[82,3339+42]..[82,3339+43])
+            [
+              core_type (stdlib/either.mli[82,3339+33]..[82,3339+35])
+                Ptyp_var a
+              core_type (stdlib/either.mli[82,3339+37]..[82,3339+40])
+                Ptyp_var b1
+            ]
+          core_type (stdlib/either.mli[82,3339+47]..[82,3339+58])
+            Ptyp_constr "t" (stdlib/either.mli[82,3339+57]..[82,3339+58])
+            [
+              core_type (stdlib/either.mli[82,3339+48]..[82,3339+50])
+                Ptyp_var a
+              core_type (stdlib/either.mli[82,3339+52]..[82,3339+55])
+                Ptyp_var b2
+            ]
+      []
+  signature_item (stdlib/either.mli[86,3491+0]..[87,3501+73])
+    Psig_value
+    value_description "map" (stdlib/either.mli[86,3491+4]..[86,3491+7]) (stdlib/either.mli[86,3491+0]..[87,3501+73])
+      attribute "ocaml.doc"
+        [
+          structure_item (stdlib/either.mli[88,3575+0]..[89,3627+57])
+            Pstr_eval
+            expression (stdlib/either.mli[88,3575+0]..[89,3627+57])
+              Pexp_constant PConst_string(" [map ~left ~right (Left v)] is [Left (left v)],\n    [map ~left ~right (Right v)] is [Right (right v)]. ",(stdlib/either.mli[88,3575+0]..[89,3627+57]),None)
+        ]
+      core_type (stdlib/either.mli[87,3501+2]..[87,3501+73])
+        Ptyp_arrow
+        Labelled "left"
+        core_type (stdlib/either.mli[87,3501+8]..[87,3501+18])
+          Ptyp_arrow
+          Nolabel
+          core_type (stdlib/either.mli[87,3501+8]..[87,3501+11])
+            Ptyp_var a1
+          core_type (stdlib/either.mli[87,3501+15]..[87,3501+18])
+            Ptyp_var a2
+        core_type (stdlib/either.mli[87,3501+23]..[87,3501+73])
+          Ptyp_arrow
+          Labelled "right"
+          core_type (stdlib/either.mli[87,3501+30]..[87,3501+40])
+            Ptyp_arrow
+            Nolabel
+            core_type (stdlib/either.mli[87,3501+30]..[87,3501+33])
+              Ptyp_var b1
+            core_type (stdlib/either.mli[87,3501+37]..[87,3501+40])
+              Ptyp_var b2
+          core_type (stdlib/either.mli[87,3501+45]..[87,3501+73])
+            Ptyp_arrow
+            Nolabel
+            core_type (stdlib/either.mli[87,3501+45]..[87,3501+57])
+              Ptyp_constr "t" (stdlib/either.mli[87,3501+56]..[87,3501+57])
+              [
+                core_type (stdlib/either.mli[87,3501+46]..[87,3501+49])
+                  Ptyp_var a1
+                core_type (stdlib/either.mli[87,3501+51]..[87,3501+54])
+                  Ptyp_var b1
+              ]
+            core_type (stdlib/either.mli[87,3501+61]..[87,3501+73])
+              Ptyp_constr "t" (stdlib/either.mli[87,3501+72]..[87,3501+73])
+              [
+                core_type (stdlib/either.mli[87,3501+62]..[87,3501+65])
+                  Ptyp_var a2
+                core_type (stdlib/either.mli[87,3501+67]..[87,3501+70])
+                  Ptyp_var b2
+              ]
+      []
+  signature_item (stdlib/either.mli[91,3686+0]..[91,3686+66])
+    Psig_value
+    value_description "fold" (stdlib/either.mli[91,3686+4]..[91,3686+8]) (stdlib/either.mli[91,3686+0]..[91,3686+66])
+      attribute "ocaml.doc"
+        [
+          structure_item (stdlib/either.mli[92,3753+0]..[93,3803+50])
+            Pstr_eval
+            expression (stdlib/either.mli[92,3753+0]..[93,3803+50])
+              Pexp_constant PConst_string(" [fold ~left ~right (Left v)] is [left v], and\n    [fold ~left ~right (Right v)] is [right v]. ",(stdlib/either.mli[92,3753+0]..[93,3803+50]),None)
+        ]
+      core_type (stdlib/either.mli[91,3686+11]..[91,3686+66])
+        Ptyp_arrow
+        Labelled "left"
+        core_type (stdlib/either.mli[91,3686+17]..[91,3686+25])
+          Ptyp_arrow
+          Nolabel
+          core_type (stdlib/either.mli[91,3686+17]..[91,3686+19])
+            Ptyp_var a
+          core_type (stdlib/either.mli[91,3686+23]..[91,3686+25])
+            Ptyp_var c
+        core_type (stdlib/either.mli[91,3686+30]..[91,3686+66])
+          Ptyp_arrow
+          Labelled "right"
+          core_type (stdlib/either.mli[91,3686+37]..[91,3686+45])
+            Ptyp_arrow
+            Nolabel
+            core_type (stdlib/either.mli[91,3686+37]..[91,3686+39])
+              Ptyp_var b
+            core_type (stdlib/either.mli[91,3686+43]..[91,3686+45])
+              Ptyp_var c
+          core_type (stdlib/either.mli[91,3686+50]..[91,3686+66])
+            Ptyp_arrow
+            Nolabel
+            core_type (stdlib/either.mli[91,3686+50]..[91,3686+60])
+              Ptyp_constr "t" (stdlib/either.mli[91,3686+59]..[91,3686+60])
+              [
+                core_type (stdlib/either.mli[91,3686+51]..[91,3686+53])
+                  Ptyp_var a
+                core_type (stdlib/either.mli[91,3686+55]..[91,3686+57])
+                  Ptyp_var b
+              ]
+            core_type (stdlib/either.mli[91,3686+64]..[91,3686+66])
+              Ptyp_var c
+      []
+  signature_item (stdlib/either.mli[95,3855+0]..[95,3855+72])
+    Psig_value
+    value_description "iter" (stdlib/either.mli[95,3855+4]..[95,3855+8]) (stdlib/either.mli[95,3855+0]..[95,3855+72])
+      attribute "ocaml.doc"
+        [
+          structure_item (stdlib/either.mli[96,3928+0]..[97,3978+50])
+            Pstr_eval
+            expression (stdlib/either.mli[96,3928+0]..[97,3978+50])
+              Pexp_constant PConst_string(" [iter ~left ~right (Left v)] is [left v], and\n    [iter ~left ~right (Right v)] is [right v]. ",(stdlib/either.mli[96,3928+0]..[97,3978+50]),None)
+        ]
+      core_type (stdlib/either.mli[95,3855+11]..[95,3855+72])
+        Ptyp_arrow
+        Labelled "left"
+        core_type (stdlib/either.mli[95,3855+17]..[95,3855+27])
+          Ptyp_arrow
+          Nolabel
+          core_type (stdlib/either.mli[95,3855+17]..[95,3855+19])
+            Ptyp_var a
+          core_type (stdlib/either.mli[95,3855+23]..[95,3855+27])
+            Ptyp_constr "unit" (stdlib/either.mli[95,3855+23]..[95,3855+27])
+            []
+        core_type (stdlib/either.mli[95,3855+32]..[95,3855+72])
+          Ptyp_arrow
+          Labelled "right"
+          core_type (stdlib/either.mli[95,3855+39]..[95,3855+49])
+            Ptyp_arrow
+            Nolabel
+            core_type (stdlib/either.mli[95,3855+39]..[95,3855+41])
+              Ptyp_var b
+            core_type (stdlib/either.mli[95,3855+45]..[95,3855+49])
+              Ptyp_constr "unit" (stdlib/either.mli[95,3855+45]..[95,3855+49])
+              []
+          core_type (stdlib/either.mli[95,3855+54]..[95,3855+72])
+            Ptyp_arrow
+            Nolabel
+            core_type (stdlib/either.mli[95,3855+54]..[95,3855+64])
+              Ptyp_constr "t" (stdlib/either.mli[95,3855+63]..[95,3855+64])
+              [
+                core_type (stdlib/either.mli[95,3855+55]..[95,3855+57])
+                  Ptyp_var a
+                core_type (stdlib/either.mli[95,3855+59]..[95,3855+61])
+                  Ptyp_var b
+              ]
+            core_type (stdlib/either.mli[95,3855+68]..[95,3855+72])
+              Ptyp_constr "unit" (stdlib/either.mli[95,3855+68]..[95,3855+72])
+              []
+      []
+  signature_item (stdlib/either.mli[99,4030+0]..[99,4030+75])
+    Psig_value
+    value_description "for_all" (stdlib/either.mli[99,4030+4]..[99,4030+11]) (stdlib/either.mli[99,4030+0]..[99,4030+75])
+      attribute "ocaml.doc"
+        [
+          structure_item (stdlib/either.mli[100,4106+0]..[101,4159+53])
+            Pstr_eval
+            expression (stdlib/either.mli[100,4106+0]..[101,4159+53])
+              Pexp_constant PConst_string(" [for_all ~left ~right (Left v)] is [left v], and\n    [for_all ~left ~right (Right v)] is [right v]. ",(stdlib/either.mli[100,4106+0]..[101,4159+53]),None)
+        ]
+      core_type (stdlib/either.mli[99,4030+14]..[99,4030+75])
+        Ptyp_arrow
+        Labelled "left"
+        core_type (stdlib/either.mli[99,4030+20]..[99,4030+30])
+          Ptyp_arrow
+          Nolabel
+          core_type (stdlib/either.mli[99,4030+20]..[99,4030+22])
+            Ptyp_var a
+          core_type (stdlib/either.mli[99,4030+26]..[99,4030+30])
+            Ptyp_constr "bool" (stdlib/either.mli[99,4030+26]..[99,4030+30])
+            []
+        core_type (stdlib/either.mli[99,4030+35]..[99,4030+75])
+          Ptyp_arrow
+          Labelled "right"
+          core_type (stdlib/either.mli[99,4030+42]..[99,4030+52])
+            Ptyp_arrow
+            Nolabel
+            core_type (stdlib/either.mli[99,4030+42]..[99,4030+44])
+              Ptyp_var b
+            core_type (stdlib/either.mli[99,4030+48]..[99,4030+52])
+              Ptyp_constr "bool" (stdlib/either.mli[99,4030+48]..[99,4030+52])
+              []
+          core_type (stdlib/either.mli[99,4030+57]..[99,4030+75])
+            Ptyp_arrow
+            Nolabel
+            core_type (stdlib/either.mli[99,4030+57]..[99,4030+67])
+              Ptyp_constr "t" (stdlib/either.mli[99,4030+66]..[99,4030+67])
+              [
+                core_type (stdlib/either.mli[99,4030+58]..[99,4030+60])
+                  Ptyp_var a
+                core_type (stdlib/either.mli[99,4030+62]..[99,4030+64])
+                  Ptyp_var b
+              ]
+            core_type (stdlib/either.mli[99,4030+71]..[99,4030+75])
+              Ptyp_constr "bool" (stdlib/either.mli[99,4030+71]..[99,4030+75])
+              []
+      []
+  signature_item (stdlib/either.mli[103,4214+0]..[105,4283+34])
+    Psig_value
+    value_description "equal" (stdlib/either.mli[103,4214+4]..[103,4214+9]) (stdlib/either.mli[103,4214+0]..[105,4283+34])
+      attribute "ocaml.doc"
+        [
+          structure_item (stdlib/either.mli[106,4318+0]..[108,4465+17])
+            Pstr_eval
+            expression (stdlib/either.mli[106,4318+0]..[108,4465+17])
+              Pexp_constant PConst_string(" [equal ~left ~right e0 e1] tests equality of [e0] and [e1] using [left]\n    and [right] to respectively compare values wrapped by [Left _] and\n    [Right _]. ",(stdlib/either.mli[106,4318+0]..[108,4465+17]),None)
+        ]
+      core_type (stdlib/either.mli[104,4226+2]..[105,4283+34])
+        Ptyp_arrow
+        Labelled "left"
+        core_type (stdlib/either.mli[104,4226+8]..[104,4226+24])
+          Ptyp_arrow
+          Nolabel
+          core_type (stdlib/either.mli[104,4226+8]..[104,4226+10])
+            Ptyp_var a
+          core_type (stdlib/either.mli[104,4226+14]..[104,4226+24])
+            Ptyp_arrow
+            Nolabel
+            core_type (stdlib/either.mli[104,4226+14]..[104,4226+16])
+              Ptyp_var a
+            core_type (stdlib/either.mli[104,4226+20]..[104,4226+24])
+              Ptyp_constr "bool" (stdlib/either.mli[104,4226+20]..[104,4226+24])
+              []
+        core_type (stdlib/either.mli[104,4226+29]..[105,4283+34])
+          Ptyp_arrow
+          Labelled "right"
+          core_type (stdlib/either.mli[104,4226+36]..[104,4226+52])
+            Ptyp_arrow
+            Nolabel
+            core_type (stdlib/either.mli[104,4226+36]..[104,4226+38])
+              Ptyp_var b
+            core_type (stdlib/either.mli[104,4226+42]..[104,4226+52])
+              Ptyp_arrow
+              Nolabel
+              core_type (stdlib/either.mli[104,4226+42]..[104,4226+44])
+                Ptyp_var b
+              core_type (stdlib/either.mli[104,4226+48]..[104,4226+52])
+                Ptyp_constr "bool" (stdlib/either.mli[104,4226+48]..[104,4226+52])
+                []
+          core_type (stdlib/either.mli[105,4283+2]..[105,4283+34])
+            Ptyp_arrow
+            Nolabel
+            core_type (stdlib/either.mli[105,4283+2]..[105,4283+12])
+              Ptyp_constr "t" (stdlib/either.mli[105,4283+11]..[105,4283+12])
+              [
+                core_type (stdlib/either.mli[105,4283+3]..[105,4283+5])
+                  Ptyp_var a
+                core_type (stdlib/either.mli[105,4283+7]..[105,4283+9])
+                  Ptyp_var b
+              ]
+            core_type (stdlib/either.mli[105,4283+16]..[105,4283+34])
+              Ptyp_arrow
+              Nolabel
+              core_type (stdlib/either.mli[105,4283+16]..[105,4283+26])
+                Ptyp_constr "t" (stdlib/either.mli[105,4283+25]..[105,4283+26])
+                [
+                  core_type (stdlib/either.mli[105,4283+17]..[105,4283+19])
+                    Ptyp_var a
+                  core_type (stdlib/either.mli[105,4283+21]..[105,4283+23])
+                    Ptyp_var b
+                ]
+              core_type (stdlib/either.mli[105,4283+30]..[105,4283+34])
+                Ptyp_constr "bool" (stdlib/either.mli[105,4283+30]..[105,4283+34])
+                []
+      []
+  signature_item (stdlib/either.mli[110,4484+0]..[112,4553+33])
+    Psig_value
+    value_description "compare" (stdlib/either.mli[110,4484+4]..[110,4484+11]) (stdlib/either.mli[110,4484+0]..[112,4553+33])
+      attribute "ocaml.doc"
+        [
+          structure_item (stdlib/either.mli[113,4587+0]..[115,4745+57])
+            Pstr_eval
+            expression (stdlib/either.mli[113,4587+0]..[115,4745+57])
+              Pexp_constant PConst_string(" [compare ~left ~right e0 e1] totally orders [e0] and [e1] using [left] and\n    [right] to respectively compare values wrapped by [Left _ ] and [Right _].\n    [Left _] values are smaller than [Right _] values. ",(stdlib/either.mli[113,4587+0]..[115,4745+57]),None)
+        ]
+      core_type (stdlib/either.mli[111,4498+2]..[112,4553+33])
+        Ptyp_arrow
+        Labelled "left"
+        core_type (stdlib/either.mli[111,4498+8]..[111,4498+23])
+          Ptyp_arrow
+          Nolabel
+          core_type (stdlib/either.mli[111,4498+8]..[111,4498+10])
+            Ptyp_var a
+          core_type (stdlib/either.mli[111,4498+14]..[111,4498+23])
+            Ptyp_arrow
+            Nolabel
+            core_type (stdlib/either.mli[111,4498+14]..[111,4498+16])
+              Ptyp_var a
+            core_type (stdlib/either.mli[111,4498+20]..[111,4498+23])
+              Ptyp_constr "int" (stdlib/either.mli[111,4498+20]..[111,4498+23])
+              []
+        core_type (stdlib/either.mli[111,4498+28]..[112,4553+33])
+          Ptyp_arrow
+          Labelled "right"
+          core_type (stdlib/either.mli[111,4498+35]..[111,4498+50])
+            Ptyp_arrow
+            Nolabel
+            core_type (stdlib/either.mli[111,4498+35]..[111,4498+37])
+              Ptyp_var b
+            core_type (stdlib/either.mli[111,4498+41]..[111,4498+50])
+              Ptyp_arrow
+              Nolabel
+              core_type (stdlib/either.mli[111,4498+41]..[111,4498+43])
+                Ptyp_var b
+              core_type (stdlib/either.mli[111,4498+47]..[111,4498+50])
+                Ptyp_constr "int" (stdlib/either.mli[111,4498+47]..[111,4498+50])
+                []
+          core_type (stdlib/either.mli[112,4553+2]..[112,4553+33])
+            Ptyp_arrow
+            Nolabel
+            core_type (stdlib/either.mli[112,4553+2]..[112,4553+12])
+              Ptyp_constr "t" (stdlib/either.mli[112,4553+11]..[112,4553+12])
+              [
+                core_type (stdlib/either.mli[112,4553+3]..[112,4553+5])
+                  Ptyp_var a
+                core_type (stdlib/either.mli[112,4553+7]..[112,4553+9])
+                  Ptyp_var b
+              ]
+            core_type (stdlib/either.mli[112,4553+16]..[112,4553+33])
+              Ptyp_arrow
+              Nolabel
+              core_type (stdlib/either.mli[112,4553+16]..[112,4553+26])
+                Ptyp_constr "t" (stdlib/either.mli[112,4553+25]..[112,4553+26])
+                [
+                  core_type (stdlib/either.mli[112,4553+17]..[112,4553+19])
+                    Ptyp_var a
+                  core_type (stdlib/either.mli[112,4553+21]..[112,4553+23])
+                    Ptyp_var b
+                ]
+              core_type (stdlib/either.mli[112,4553+30]..[112,4553+33])
+                Ptyp_constr "int" (stdlib/either.mli[112,4553+30]..[112,4553+33])
+                []
+      []
+]
+

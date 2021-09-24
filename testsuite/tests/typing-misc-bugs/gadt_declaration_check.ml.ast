@@ -1,0 +1,62 @@
+[
+  structure_item (testsuite/tests/typing-misc-bugs/gadt_declaration_check.ml[4,23+0]..[4,23+14])
+    Pstr_type Rec
+    [
+      type_declaration "foo" (testsuite/tests/typing-misc-bugs/gadt_declaration_check.ml[4,23+5]..[4,23+8]) (testsuite/tests/typing-misc-bugs/gadt_declaration_check.ml[4,23+0]..[4,23+14])
+        ptype_params =
+          []
+        ptype_cstrs =
+          []
+        ptype_kind =
+          Ptype_variant
+            [
+              (testsuite/tests/typing-misc-bugs/gadt_declaration_check.ml[4,23+11]..[4,23+14])
+                "Foo" (testsuite/tests/typing-misc-bugs/gadt_declaration_check.ml[4,23+11]..[4,23+14])
+                []
+                None
+            ]
+        ptype_private = Public
+        ptype_manifest =
+          None
+    ]
+  structure_item (testsuite/tests/typing-misc-bugs/gadt_declaration_check.ml[5,40+0]..[7,67+3])
+    Pstr_extension "expect"
+    [
+      structure_item (testsuite/tests/typing-misc-bugs/gadt_declaration_check.ml[5,40+9]..[7,67+2])
+        Pstr_eval
+        expression (testsuite/tests/typing-misc-bugs/gadt_declaration_check.ml[5,40+9]..[7,67+2])
+          Pexp_constant PConst_string ("\ntype foo = Foo\n",(testsuite/tests/typing-misc-bugs/gadt_declaration_check.ml[5,40+11]..[7,67+0]),Some "")
+    ]
+  structure_item (testsuite/tests/typing-misc-bugs/gadt_declaration_check.ml[12,224+0]..[12,224+20])
+    Pstr_type Rec
+    [
+      type_declaration "bar" (testsuite/tests/typing-misc-bugs/gadt_declaration_check.ml[12,224+5]..[12,224+8]) (testsuite/tests/typing-misc-bugs/gadt_declaration_check.ml[12,224+0]..[12,224+20])
+        ptype_params =
+          []
+        ptype_cstrs =
+          []
+        ptype_kind =
+          Ptype_variant
+            [
+              (testsuite/tests/typing-misc-bugs/gadt_declaration_check.ml[12,224+11]..[12,224+20])
+                "Bar" (testsuite/tests/typing-misc-bugs/gadt_declaration_check.ml[12,224+11]..[12,224+14])
+                []
+                Some
+                  core_type (testsuite/tests/typing-misc-bugs/gadt_declaration_check.ml[12,224+17]..[12,224+20])
+                    Ptyp_constr "foo" (testsuite/tests/typing-misc-bugs/gadt_declaration_check.ml[12,224+17]..[12,224+20])
+                    []
+            ]
+        ptype_private = Public
+        ptype_manifest =
+          None
+    ]
+  structure_item (testsuite/tests/typing-misc-bugs/gadt_declaration_check.ml[13,247+0]..[19,433+3])
+    Pstr_extension "expect"
+    [
+      structure_item (testsuite/tests/typing-misc-bugs/gadt_declaration_check.ml[13,247+9]..[19,433+2])
+        Pstr_eval
+        expression (testsuite/tests/typing-misc-bugs/gadt_declaration_check.ml[13,247+9]..[19,433+2])
+          Pexp_constant PConst_string ("\nLine 1, characters 17-20:\n1 | type bar = Bar : foo;;\n                     ^^^\nError: Constraints are not satisfied in this type.\n       Type foo should be an instance of bar\n",(testsuite/tests/typing-misc-bugs/gadt_declaration_check.ml[13,247+11]..[19,433+0]),Some "")
+    ]
+]
+

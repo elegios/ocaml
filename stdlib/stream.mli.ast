@@ -1,0 +1,640 @@
+[
+  signature_item (stdlib/stream.mli[16,1079+0]..[16,1079+27])
+    Psig_attribute "ocaml.text"
+    [
+      structure_item (stdlib/stream.mli[16,1079+0]..[16,1079+27])
+        Pstr_eval
+        expression (stdlib/stream.mli[16,1079+0]..[16,1079+27])
+          Pexp_constant PConst_string(" Streams and parsers. ",(stdlib/stream.mli[16,1079+0]..[16,1079+27]),None)
+    ]
+  signature_item (stdlib/stream.mli[18,1108+0]..[18,1108+10])
+    Psig_type Rec
+    [
+      type_declaration "t" (stdlib/stream.mli[18,1108+9]..[18,1108+10]) (stdlib/stream.mli[18,1108+0]..[18,1108+10])
+        attribute "ocaml.doc"
+          [
+            structure_item (stdlib/stream.mli[19,1119+0]..[19,1119+55])
+              Pstr_eval
+              expression (stdlib/stream.mli[19,1119+0]..[19,1119+55])
+                Pexp_constant PConst_string(" The type of streams holding values of type ['a]. ",(stdlib/stream.mli[19,1119+0]..[19,1119+55]),None)
+          ]
+        ptype_params =
+          [
+            core_type (stdlib/stream.mli[18,1108+6]..[18,1108+8])
+              Ptyp_var a
+          ]
+        ptype_cstrs =
+          []
+        ptype_kind =
+          Ptype_abstract
+        ptype_private = Public
+        ptype_manifest =
+          None
+    ]
+  signature_item (stdlib/stream.mli[21,1176+0]..[21,1176+17])
+    Psig_exception
+    type_exception
+      ptyext_constructor =
+        extension_constructor (stdlib/stream.mli[21,1176+0]..[21,1176+17])
+          attribute "ocaml.doc"
+            [
+              structure_item (stdlib/stream.mli[22,1194+0]..[23,1264+27])
+                Pstr_eval
+                expression (stdlib/stream.mli[22,1194+0]..[23,1264+27])
+                  Pexp_constant PConst_string(" Raised by parsers when none of the first components of the stream\n   patterns is accepted. ",(stdlib/stream.mli[22,1194+0]..[23,1264+27]),None)
+            ]
+          pext_name = "Failure"
+          pext_kind =
+            Pext_decl
+              []
+              None
+  signature_item (stdlib/stream.mli[25,1293+0]..[25,1293+25])
+    Psig_exception
+    type_exception
+      ptyext_constructor =
+        extension_constructor (stdlib/stream.mli[25,1293+0]..[25,1293+25])
+          attribute "ocaml.doc"
+            [
+              structure_item (stdlib/stream.mli[26,1319+0]..[27,1389+64])
+                Pstr_eval
+                expression (stdlib/stream.mli[26,1319+0]..[27,1389+64])
+                  Pexp_constant PConst_string(" Raised by parsers when the first component of a stream pattern is\n   accepted, but one of the following components is rejected. ",(stdlib/stream.mli[26,1319+0]..[27,1389+64]),None)
+            ]
+          pext_name = "Error"
+          pext_kind =
+            Pext_decl
+              [
+                core_type (stdlib/stream.mli[25,1293+19]..[25,1293+25])
+                  Ptyp_constr "string" (stdlib/stream.mli[25,1293+19]..[25,1293+25])
+                  []
+              ]
+              None
+  signature_item (stdlib/stream.mli[30,1456+0]..[30,1456+26])
+    Psig_attribute "ocaml.text"
+    [
+      structure_item (stdlib/stream.mli[30,1456+0]..[30,1456+26])
+        Pstr_eval
+        expression (stdlib/stream.mli[30,1456+0]..[30,1456+26])
+          Pexp_constant PConst_string(" {1 Stream builders} ",(stdlib/stream.mli[30,1456+0]..[30,1456+26]),None)
+    ]
+  signature_item (stdlib/stream.mli[32,1484+0]..[32,1484+37])
+    Psig_value
+    value_description "from" (stdlib/stream.mli[32,1484+4]..[32,1484+8]) (stdlib/stream.mli[32,1484+0]..[32,1484+37])
+      attribute "ocaml.doc"
+        [
+          structure_item (stdlib/stream.mli[33,1522+0]..[42,1982+2])
+            Pstr_eval
+            expression (stdlib/stream.mli[33,1522+0]..[42,1982+2])
+              Pexp_constant PConst_string(" [Stream.from f] returns a stream built from the function [f].\n   To create a new stream element, the function [f] is called with\n   the current stream count. The user function [f] must return either\n   [Some <value>] for a value or [None] to specify the end of the\n   stream.\n\n   Do note that the indices passed to [f] may not start at [0] in the\n   general case. For example, [[< '0; '1; Stream.from f >]] would call\n   [f] the first time with count [2].\n",(stdlib/stream.mli[33,1522+0]..[42,1982+2]),None)
+        ]
+      core_type (stdlib/stream.mli[32,1484+11]..[32,1484+37])
+        Ptyp_arrow
+        Nolabel
+        core_type (stdlib/stream.mli[32,1484+12]..[32,1484+28])
+          Ptyp_arrow
+          Nolabel
+          core_type (stdlib/stream.mli[32,1484+12]..[32,1484+15])
+            Ptyp_constr "int" (stdlib/stream.mli[32,1484+12]..[32,1484+15])
+            []
+          core_type (stdlib/stream.mli[32,1484+19]..[32,1484+28])
+            Ptyp_constr "option" (stdlib/stream.mli[32,1484+22]..[32,1484+28])
+            [
+              core_type (stdlib/stream.mli[32,1484+19]..[32,1484+21])
+                Ptyp_var a
+            ]
+        core_type (stdlib/stream.mli[32,1484+33]..[32,1484+37])
+          Ptyp_constr "t" (stdlib/stream.mli[32,1484+36]..[32,1484+37])
+          [
+            core_type (stdlib/stream.mli[32,1484+33]..[32,1484+35])
+              Ptyp_var a
+          ]
+      []
+  signature_item (stdlib/stream.mli[44,1986+0]..[44,1986+29])
+    Psig_value
+    value_description "of_list" (stdlib/stream.mli[44,1986+4]..[44,1986+11]) (stdlib/stream.mli[44,1986+0]..[44,1986+29])
+      attribute "ocaml.doc"
+        [
+          structure_item (stdlib/stream.mli[45,2016+0]..[46,2083+12])
+            Pstr_eval
+            expression (stdlib/stream.mli[45,2016+0]..[46,2083+12])
+              Pexp_constant PConst_string(" Return the stream holding the elements of the list in the same\n   order. ",(stdlib/stream.mli[45,2016+0]..[46,2083+12]),None)
+        ]
+      core_type (stdlib/stream.mli[44,1986+14]..[44,1986+29])
+        Ptyp_arrow
+        Nolabel
+        core_type (stdlib/stream.mli[44,1986+14]..[44,1986+21])
+          Ptyp_constr "list" (stdlib/stream.mli[44,1986+17]..[44,1986+21])
+          [
+            core_type (stdlib/stream.mli[44,1986+14]..[44,1986+16])
+              Ptyp_var a
+          ]
+        core_type (stdlib/stream.mli[44,1986+25]..[44,1986+29])
+          Ptyp_constr "t" (stdlib/stream.mli[44,1986+28]..[44,1986+29])
+          [
+            core_type (stdlib/stream.mli[44,1986+25]..[44,1986+27])
+              Ptyp_var a
+          ]
+      []
+  signature_item (stdlib/stream.mli[48,2097+0]..[48,2097+32])
+    Psig_value
+    value_description "of_string" (stdlib/stream.mli[48,2097+4]..[48,2097+13]) (stdlib/stream.mli[48,2097+0]..[48,2097+32])
+      attribute "ocaml.doc"
+        [
+          structure_item (stdlib/stream.mli[49,2130+0]..[49,2130+67])
+            Pstr_eval
+            expression (stdlib/stream.mli[49,2130+0]..[49,2130+67])
+              Pexp_constant PConst_string(" Return the stream of the characters of the string parameter. ",(stdlib/stream.mli[49,2130+0]..[49,2130+67]),None)
+        ]
+      core_type (stdlib/stream.mli[48,2097+16]..[48,2097+32])
+        Ptyp_arrow
+        Nolabel
+        core_type (stdlib/stream.mli[48,2097+16]..[48,2097+22])
+          Ptyp_constr "string" (stdlib/stream.mli[48,2097+16]..[48,2097+22])
+          []
+        core_type (stdlib/stream.mli[48,2097+26]..[48,2097+32])
+          Ptyp_constr "t" (stdlib/stream.mli[48,2097+31]..[48,2097+32])
+          [
+            core_type (stdlib/stream.mli[48,2097+26]..[48,2097+30])
+              Ptyp_constr "char" (stdlib/stream.mli[48,2097+26]..[48,2097+30])
+              []
+          ]
+      []
+  signature_item (stdlib/stream.mli[51,2199+0]..[51,2199+30])
+    Psig_value
+    value_description "of_bytes" (stdlib/stream.mli[51,2199+4]..[51,2199+12]) (stdlib/stream.mli[51,2199+0]..[51,2199+30])
+      attribute "ocaml.doc"
+        [
+          structure_item (stdlib/stream.mli[52,2230+0]..[53,2294+20])
+            Pstr_eval
+            expression (stdlib/stream.mli[52,2230+0]..[53,2294+20])
+              Pexp_constant PConst_string(" Return the stream of the characters of the bytes parameter.\n    @since 4.02.0 ",(stdlib/stream.mli[52,2230+0]..[53,2294+20]),None)
+        ]
+      core_type (stdlib/stream.mli[51,2199+15]..[51,2199+30])
+        Ptyp_arrow
+        Nolabel
+        core_type (stdlib/stream.mli[51,2199+15]..[51,2199+20])
+          Ptyp_constr "bytes" (stdlib/stream.mli[51,2199+15]..[51,2199+20])
+          []
+        core_type (stdlib/stream.mli[51,2199+24]..[51,2199+30])
+          Ptyp_constr "t" (stdlib/stream.mli[51,2199+29]..[51,2199+30])
+          [
+            core_type (stdlib/stream.mli[51,2199+24]..[51,2199+28])
+              Ptyp_constr "char" (stdlib/stream.mli[51,2199+24]..[51,2199+28])
+              []
+          ]
+      []
+  signature_item (stdlib/stream.mli[55,2316+0]..[55,2316+37])
+    Psig_value
+    value_description "of_channel" (stdlib/stream.mli[55,2316+4]..[55,2316+14]) (stdlib/stream.mli[55,2316+0]..[55,2316+37])
+      attribute "ocaml.doc"
+        [
+          structure_item (stdlib/stream.mli[56,2354+0]..[56,2354+71])
+            Pstr_eval
+            expression (stdlib/stream.mli[56,2354+0]..[56,2354+71])
+              Pexp_constant PConst_string(" Return the stream of the characters read from the input channel. ",(stdlib/stream.mli[56,2354+0]..[56,2354+71]),None)
+        ]
+      core_type (stdlib/stream.mli[55,2316+17]..[55,2316+37])
+        Ptyp_arrow
+        Nolabel
+        core_type (stdlib/stream.mli[55,2316+17]..[55,2316+27])
+          Ptyp_constr "in_channel" (stdlib/stream.mli[55,2316+17]..[55,2316+27])
+          []
+        core_type (stdlib/stream.mli[55,2316+31]..[55,2316+37])
+          Ptyp_constr "t" (stdlib/stream.mli[55,2316+36]..[55,2316+37])
+          [
+            core_type (stdlib/stream.mli[55,2316+31]..[55,2316+35])
+              Ptyp_constr "char" (stdlib/stream.mli[55,2316+31]..[55,2316+35])
+              []
+          ]
+      []
+  signature_item (stdlib/stream.mli[59,2428+0]..[59,2428+26])
+    Psig_attribute "ocaml.text"
+    [
+      structure_item (stdlib/stream.mli[59,2428+0]..[59,2428+26])
+        Pstr_eval
+        expression (stdlib/stream.mli[59,2428+0]..[59,2428+26])
+          Pexp_constant PConst_string(" {1 Stream iterator} ",(stdlib/stream.mli[59,2428+0]..[59,2428+26]),None)
+    ]
+  signature_item (stdlib/stream.mli[61,2456+0]..[61,2456+39])
+    Psig_value
+    value_description "iter" (stdlib/stream.mli[61,2456+4]..[61,2456+8]) (stdlib/stream.mli[61,2456+0]..[61,2456+39])
+      attribute "ocaml.doc"
+        [
+          structure_item (stdlib/stream.mli[62,2496+0]..[63,2566+49])
+            Pstr_eval
+            expression (stdlib/stream.mli[62,2496+0]..[63,2566+49])
+              Pexp_constant PConst_string(" [Stream.iter f s] scans the whole stream s, applying function [f]\n   in turn to each stream element encountered. ",(stdlib/stream.mli[62,2496+0]..[63,2566+49]),None)
+        ]
+      core_type (stdlib/stream.mli[61,2456+11]..[61,2456+39])
+        Ptyp_arrow
+        Nolabel
+        core_type (stdlib/stream.mli[61,2456+12]..[61,2456+22])
+          Ptyp_arrow
+          Nolabel
+          core_type (stdlib/stream.mli[61,2456+12]..[61,2456+14])
+            Ptyp_var a
+          core_type (stdlib/stream.mli[61,2456+18]..[61,2456+22])
+            Ptyp_constr "unit" (stdlib/stream.mli[61,2456+18]..[61,2456+22])
+            []
+        core_type (stdlib/stream.mli[61,2456+27]..[61,2456+39])
+          Ptyp_arrow
+          Nolabel
+          core_type (stdlib/stream.mli[61,2456+27]..[61,2456+31])
+            Ptyp_constr "t" (stdlib/stream.mli[61,2456+30]..[61,2456+31])
+            [
+              core_type (stdlib/stream.mli[61,2456+27]..[61,2456+29])
+                Ptyp_var a
+            ]
+          core_type (stdlib/stream.mli[61,2456+35]..[61,2456+39])
+            Ptyp_constr "unit" (stdlib/stream.mli[61,2456+35]..[61,2456+39])
+            []
+      []
+  signature_item (stdlib/stream.mli[66,2618+0]..[66,2618+29])
+    Psig_attribute "ocaml.text"
+    [
+      structure_item (stdlib/stream.mli[66,2618+0]..[66,2618+29])
+        Pstr_eval
+        expression (stdlib/stream.mli[66,2618+0]..[66,2618+29])
+          Pexp_constant PConst_string(" {1 Predefined parsers} ",(stdlib/stream.mli[66,2618+0]..[66,2618+29]),None)
+    ]
+  signature_item (stdlib/stream.mli[68,2649+0]..[68,2649+21])
+    Psig_value
+    value_description "next" (stdlib/stream.mli[68,2649+4]..[68,2649+8]) (stdlib/stream.mli[68,2649+0]..[68,2649+21])
+      attribute "ocaml.doc"
+        [
+          structure_item (stdlib/stream.mli[69,2671+0]..[71,2748+51])
+            Pstr_eval
+            expression (stdlib/stream.mli[69,2671+0]..[71,2748+51])
+              Pexp_constant PConst_string(" Return the first element of the stream and remove it from the\n   stream.\n   @raise Stream.Failure if the stream is empty. ",(stdlib/stream.mli[69,2671+0]..[71,2748+51]),None)
+        ]
+      core_type (stdlib/stream.mli[68,2649+11]..[68,2649+21])
+        Ptyp_arrow
+        Nolabel
+        core_type (stdlib/stream.mli[68,2649+11]..[68,2649+15])
+          Ptyp_constr "t" (stdlib/stream.mli[68,2649+14]..[68,2649+15])
+          [
+            core_type (stdlib/stream.mli[68,2649+11]..[68,2649+13])
+              Ptyp_var a
+          ]
+        core_type (stdlib/stream.mli[68,2649+19]..[68,2649+21])
+          Ptyp_var a
+      []
+  signature_item (stdlib/stream.mli[73,2801+0]..[73,2801+24])
+    Psig_value
+    value_description "empty" (stdlib/stream.mli[73,2801+4]..[73,2801+9]) (stdlib/stream.mli[73,2801+0]..[73,2801+24])
+      attribute "ocaml.doc"
+        [
+          structure_item (stdlib/stream.mli[74,2826+0]..[74,2826+72])
+            Pstr_eval
+            expression (stdlib/stream.mli[74,2826+0]..[74,2826+72])
+              Pexp_constant PConst_string(" Return [()] if the stream is empty, else raise {!Stream.Failure}. ",(stdlib/stream.mli[74,2826+0]..[74,2826+72]),None)
+        ]
+      core_type (stdlib/stream.mli[73,2801+12]..[73,2801+24])
+        Ptyp_arrow
+        Nolabel
+        core_type (stdlib/stream.mli[73,2801+12]..[73,2801+16])
+          Ptyp_constr "t" (stdlib/stream.mli[73,2801+15]..[73,2801+16])
+          [
+            core_type (stdlib/stream.mli[73,2801+12]..[73,2801+14])
+              Ptyp_var a
+          ]
+        core_type (stdlib/stream.mli[73,2801+20]..[73,2801+24])
+          Ptyp_constr "unit" (stdlib/stream.mli[73,2801+20]..[73,2801+24])
+          []
+      []
+  signature_item (stdlib/stream.mli[77,2901+0]..[77,2901+27])
+    Psig_attribute "ocaml.text"
+    [
+      structure_item (stdlib/stream.mli[77,2901+0]..[77,2901+27])
+        Pstr_eval
+        expression (stdlib/stream.mli[77,2901+0]..[77,2901+27])
+          Pexp_constant PConst_string(" {1 Useful functions} ",(stdlib/stream.mli[77,2901+0]..[77,2901+27]),None)
+    ]
+  signature_item (stdlib/stream.mli[79,2930+0]..[79,2930+28])
+    Psig_value
+    value_description "peek" (stdlib/stream.mli[79,2930+4]..[79,2930+8]) (stdlib/stream.mli[79,2930+0]..[79,2930+28])
+      attribute "ocaml.doc"
+        [
+          structure_item (stdlib/stream.mli[80,2959+0]..[81,3028+26])
+            Pstr_eval
+            expression (stdlib/stream.mli[80,2959+0]..[81,3028+26])
+              Pexp_constant PConst_string(" Return [Some] of \"the first element\" of the stream, or [None] if\n   the stream is empty. ",(stdlib/stream.mli[80,2959+0]..[81,3028+26]),None)
+        ]
+      core_type (stdlib/stream.mli[79,2930+11]..[79,2930+28])
+        Ptyp_arrow
+        Nolabel
+        core_type (stdlib/stream.mli[79,2930+11]..[79,2930+15])
+          Ptyp_constr "t" (stdlib/stream.mli[79,2930+14]..[79,2930+15])
+          [
+            core_type (stdlib/stream.mli[79,2930+11]..[79,2930+13])
+              Ptyp_var a
+          ]
+        core_type (stdlib/stream.mli[79,2930+19]..[79,2930+28])
+          Ptyp_constr "option" (stdlib/stream.mli[79,2930+22]..[79,2930+28])
+          [
+            core_type (stdlib/stream.mli[79,2930+19]..[79,2930+21])
+              Ptyp_var a
+          ]
+      []
+  signature_item (stdlib/stream.mli[83,3056+0]..[83,3056+23])
+    Psig_value
+    value_description "junk" (stdlib/stream.mli[83,3056+4]..[83,3056+8]) (stdlib/stream.mli[83,3056+0]..[83,3056+23])
+      attribute "ocaml.doc"
+        [
+          structure_item (stdlib/stream.mli[84,3080+0]..[85,3144+16])
+            Pstr_eval
+            expression (stdlib/stream.mli[84,3080+0]..[85,3144+16])
+              Pexp_constant PConst_string(" Remove the first element of the stream, possibly unfreezing\n   it before. ",(stdlib/stream.mli[84,3080+0]..[85,3144+16]),None)
+        ]
+      core_type (stdlib/stream.mli[83,3056+11]..[83,3056+23])
+        Ptyp_arrow
+        Nolabel
+        core_type (stdlib/stream.mli[83,3056+11]..[83,3056+15])
+          Ptyp_constr "t" (stdlib/stream.mli[83,3056+14]..[83,3056+15])
+          [
+            core_type (stdlib/stream.mli[83,3056+11]..[83,3056+13])
+              Ptyp_var a
+          ]
+        core_type (stdlib/stream.mli[83,3056+19]..[83,3056+23])
+          Ptyp_constr "unit" (stdlib/stream.mli[83,3056+19]..[83,3056+23])
+          []
+      []
+  signature_item (stdlib/stream.mli[87,3162+0]..[87,3162+23])
+    Psig_value
+    value_description "count" (stdlib/stream.mli[87,3162+4]..[87,3162+9]) (stdlib/stream.mli[87,3162+0]..[87,3162+23])
+      attribute "ocaml.doc"
+        [
+          structure_item (stdlib/stream.mli[88,3186+0]..[89,3255+39])
+            Pstr_eval
+            expression (stdlib/stream.mli[88,3186+0]..[89,3255+39])
+              Pexp_constant PConst_string(" Return the current count of the stream elements, i.e. the number\n   of the stream elements discarded. ",(stdlib/stream.mli[88,3186+0]..[89,3255+39]),None)
+        ]
+      core_type (stdlib/stream.mli[87,3162+12]..[87,3162+23])
+        Ptyp_arrow
+        Nolabel
+        core_type (stdlib/stream.mli[87,3162+12]..[87,3162+16])
+          Ptyp_constr "t" (stdlib/stream.mli[87,3162+15]..[87,3162+16])
+          [
+            core_type (stdlib/stream.mli[87,3162+12]..[87,3162+14])
+              Ptyp_var a
+          ]
+        core_type (stdlib/stream.mli[87,3162+20]..[87,3162+23])
+          Ptyp_constr "int" (stdlib/stream.mli[87,3162+20]..[87,3162+23])
+          []
+      []
+  signature_item (stdlib/stream.mli[91,3296+0]..[91,3296+34])
+    Psig_value
+    value_description "npeek" (stdlib/stream.mli[91,3296+4]..[91,3296+9]) (stdlib/stream.mli[91,3296+0]..[91,3296+34])
+      attribute "ocaml.doc"
+        [
+          structure_item (stdlib/stream.mli[92,3331+0]..[94,3453+29])
+            Pstr_eval
+            expression (stdlib/stream.mli[92,3331+0]..[94,3453+29])
+              Pexp_constant PConst_string(" [npeek n] returns the list of the [n] first elements of\n   the stream, or all its remaining elements if less than [n]\n   elements are available. ",(stdlib/stream.mli[92,3331+0]..[94,3453+29]),None)
+        ]
+      core_type (stdlib/stream.mli[91,3296+12]..[91,3296+34])
+        Ptyp_arrow
+        Nolabel
+        core_type (stdlib/stream.mli[91,3296+12]..[91,3296+15])
+          Ptyp_constr "int" (stdlib/stream.mli[91,3296+12]..[91,3296+15])
+          []
+        core_type (stdlib/stream.mli[91,3296+19]..[91,3296+34])
+          Ptyp_arrow
+          Nolabel
+          core_type (stdlib/stream.mli[91,3296+19]..[91,3296+23])
+            Ptyp_constr "t" (stdlib/stream.mli[91,3296+22]..[91,3296+23])
+            [
+              core_type (stdlib/stream.mli[91,3296+19]..[91,3296+21])
+                Ptyp_var a
+            ]
+          core_type (stdlib/stream.mli[91,3296+27]..[91,3296+34])
+            Ptyp_constr "list" (stdlib/stream.mli[91,3296+30]..[91,3296+34])
+            [
+              core_type (stdlib/stream.mli[91,3296+27]..[91,3296+29])
+                Ptyp_var a
+            ]
+      []
+  signature_item (stdlib/stream.mli[96,3484+0]..[96,3484+7])
+    Psig_attribute "ocaml.text"
+    [
+      structure_item (stdlib/stream.mli[96,3484+0]..[96,3484+7])
+        Pstr_eval
+        expression (stdlib/stream.mli[96,3484+0]..[96,3484+7])
+          Pexp_constant PConst_string("/*",(stdlib/stream.mli[96,3484+0]..[96,3484+7]),None)
+    ]
+  signature_item (stdlib/stream.mli[100,3560+0]..[100,3560+31])
+    Psig_value
+    value_description "iapp" (stdlib/stream.mli[100,3560+4]..[100,3560+8]) (stdlib/stream.mli[100,3560+0]..[100,3560+31])
+      core_type (stdlib/stream.mli[100,3560+11]..[100,3560+31])
+        Ptyp_arrow
+        Nolabel
+        core_type (stdlib/stream.mli[100,3560+11]..[100,3560+15])
+          Ptyp_constr "t" (stdlib/stream.mli[100,3560+14]..[100,3560+15])
+          [
+            core_type (stdlib/stream.mli[100,3560+11]..[100,3560+13])
+              Ptyp_var a
+          ]
+        core_type (stdlib/stream.mli[100,3560+19]..[100,3560+31])
+          Ptyp_arrow
+          Nolabel
+          core_type (stdlib/stream.mli[100,3560+19]..[100,3560+23])
+            Ptyp_constr "t" (stdlib/stream.mli[100,3560+22]..[100,3560+23])
+            [
+              core_type (stdlib/stream.mli[100,3560+19]..[100,3560+21])
+                Ptyp_var a
+            ]
+          core_type (stdlib/stream.mli[100,3560+27]..[100,3560+31])
+            Ptyp_constr "t" (stdlib/stream.mli[100,3560+30]..[100,3560+31])
+            [
+              core_type (stdlib/stream.mli[100,3560+27]..[100,3560+29])
+                Ptyp_var a
+            ]
+      []
+  signature_item (stdlib/stream.mli[101,3592+0]..[101,3592+30])
+    Psig_value
+    value_description "icons" (stdlib/stream.mli[101,3592+4]..[101,3592+9]) (stdlib/stream.mli[101,3592+0]..[101,3592+30])
+      core_type (stdlib/stream.mli[101,3592+12]..[101,3592+30])
+        Ptyp_arrow
+        Nolabel
+        core_type (stdlib/stream.mli[101,3592+12]..[101,3592+14])
+          Ptyp_var a
+        core_type (stdlib/stream.mli[101,3592+18]..[101,3592+30])
+          Ptyp_arrow
+          Nolabel
+          core_type (stdlib/stream.mli[101,3592+18]..[101,3592+22])
+            Ptyp_constr "t" (stdlib/stream.mli[101,3592+21]..[101,3592+22])
+            [
+              core_type (stdlib/stream.mli[101,3592+18]..[101,3592+20])
+                Ptyp_var a
+            ]
+          core_type (stdlib/stream.mli[101,3592+26]..[101,3592+30])
+            Ptyp_constr "t" (stdlib/stream.mli[101,3592+29]..[101,3592+30])
+            [
+              core_type (stdlib/stream.mli[101,3592+26]..[101,3592+28])
+                Ptyp_var a
+            ]
+      []
+  signature_item (stdlib/stream.mli[102,3623+0]..[102,3623+22])
+    Psig_value
+    value_description "ising" (stdlib/stream.mli[102,3623+4]..[102,3623+9]) (stdlib/stream.mli[102,3623+0]..[102,3623+22])
+      core_type (stdlib/stream.mli[102,3623+12]..[102,3623+22])
+        Ptyp_arrow
+        Nolabel
+        core_type (stdlib/stream.mli[102,3623+12]..[102,3623+14])
+          Ptyp_var a
+        core_type (stdlib/stream.mli[102,3623+18]..[102,3623+22])
+          Ptyp_constr "t" (stdlib/stream.mli[102,3623+21]..[102,3623+22])
+          [
+            core_type (stdlib/stream.mli[102,3623+18]..[102,3623+20])
+              Ptyp_var a
+          ]
+      []
+  signature_item (stdlib/stream.mli[104,3647+0]..[104,3647+41])
+    Psig_value
+    value_description "lapp" (stdlib/stream.mli[104,3647+4]..[104,3647+8]) (stdlib/stream.mli[104,3647+0]..[104,3647+41])
+      core_type (stdlib/stream.mli[104,3647+11]..[104,3647+41])
+        Ptyp_arrow
+        Nolabel
+        core_type (stdlib/stream.mli[104,3647+12]..[104,3647+24])
+          Ptyp_arrow
+          Nolabel
+          core_type (stdlib/stream.mli[104,3647+12]..[104,3647+16])
+            Ptyp_constr "unit" (stdlib/stream.mli[104,3647+12]..[104,3647+16])
+            []
+          core_type (stdlib/stream.mli[104,3647+20]..[104,3647+24])
+            Ptyp_constr "t" (stdlib/stream.mli[104,3647+23]..[104,3647+24])
+            [
+              core_type (stdlib/stream.mli[104,3647+20]..[104,3647+22])
+                Ptyp_var a
+            ]
+        core_type (stdlib/stream.mli[104,3647+29]..[104,3647+41])
+          Ptyp_arrow
+          Nolabel
+          core_type (stdlib/stream.mli[104,3647+29]..[104,3647+33])
+            Ptyp_constr "t" (stdlib/stream.mli[104,3647+32]..[104,3647+33])
+            [
+              core_type (stdlib/stream.mli[104,3647+29]..[104,3647+31])
+                Ptyp_var a
+            ]
+          core_type (stdlib/stream.mli[104,3647+37]..[104,3647+41])
+            Ptyp_constr "t" (stdlib/stream.mli[104,3647+40]..[104,3647+41])
+            [
+              core_type (stdlib/stream.mli[104,3647+37]..[104,3647+39])
+                Ptyp_var a
+            ]
+      []
+  signature_item (stdlib/stream.mli[105,3689+0]..[105,3689+40])
+    Psig_value
+    value_description "lcons" (stdlib/stream.mli[105,3689+4]..[105,3689+9]) (stdlib/stream.mli[105,3689+0]..[105,3689+40])
+      core_type (stdlib/stream.mli[105,3689+12]..[105,3689+40])
+        Ptyp_arrow
+        Nolabel
+        core_type (stdlib/stream.mli[105,3689+13]..[105,3689+23])
+          Ptyp_arrow
+          Nolabel
+          core_type (stdlib/stream.mli[105,3689+13]..[105,3689+17])
+            Ptyp_constr "unit" (stdlib/stream.mli[105,3689+13]..[105,3689+17])
+            []
+          core_type (stdlib/stream.mli[105,3689+21]..[105,3689+23])
+            Ptyp_var a
+        core_type (stdlib/stream.mli[105,3689+28]..[105,3689+40])
+          Ptyp_arrow
+          Nolabel
+          core_type (stdlib/stream.mli[105,3689+28]..[105,3689+32])
+            Ptyp_constr "t" (stdlib/stream.mli[105,3689+31]..[105,3689+32])
+            [
+              core_type (stdlib/stream.mli[105,3689+28]..[105,3689+30])
+                Ptyp_var a
+            ]
+          core_type (stdlib/stream.mli[105,3689+36]..[105,3689+40])
+            Ptyp_constr "t" (stdlib/stream.mli[105,3689+39]..[105,3689+40])
+            [
+              core_type (stdlib/stream.mli[105,3689+36]..[105,3689+38])
+                Ptyp_var a
+            ]
+      []
+  signature_item (stdlib/stream.mli[106,3730+0]..[106,3730+32])
+    Psig_value
+    value_description "lsing" (stdlib/stream.mli[106,3730+4]..[106,3730+9]) (stdlib/stream.mli[106,3730+0]..[106,3730+32])
+      core_type (stdlib/stream.mli[106,3730+12]..[106,3730+32])
+        Ptyp_arrow
+        Nolabel
+        core_type (stdlib/stream.mli[106,3730+13]..[106,3730+23])
+          Ptyp_arrow
+          Nolabel
+          core_type (stdlib/stream.mli[106,3730+13]..[106,3730+17])
+            Ptyp_constr "unit" (stdlib/stream.mli[106,3730+13]..[106,3730+17])
+            []
+          core_type (stdlib/stream.mli[106,3730+21]..[106,3730+23])
+            Ptyp_var a
+        core_type (stdlib/stream.mli[106,3730+28]..[106,3730+32])
+          Ptyp_constr "t" (stdlib/stream.mli[106,3730+31]..[106,3730+32])
+          [
+            core_type (stdlib/stream.mli[106,3730+28]..[106,3730+30])
+              Ptyp_var a
+          ]
+      []
+  signature_item (stdlib/stream.mli[108,3764+0]..[108,3764+17])
+    Psig_value
+    value_description "sempty" (stdlib/stream.mli[108,3764+4]..[108,3764+10]) (stdlib/stream.mli[108,3764+0]..[108,3764+17])
+      core_type (stdlib/stream.mli[108,3764+13]..[108,3764+17])
+        Ptyp_constr "t" (stdlib/stream.mli[108,3764+16]..[108,3764+17])
+        [
+          core_type (stdlib/stream.mli[108,3764+13]..[108,3764+15])
+            Ptyp_var a
+        ]
+      []
+  signature_item (stdlib/stream.mli[109,3782+0]..[109,3782+34])
+    Psig_value
+    value_description "slazy" (stdlib/stream.mli[109,3782+4]..[109,3782+9]) (stdlib/stream.mli[109,3782+0]..[109,3782+34])
+      core_type (stdlib/stream.mli[109,3782+12]..[109,3782+34])
+        Ptyp_arrow
+        Nolabel
+        core_type (stdlib/stream.mli[109,3782+13]..[109,3782+25])
+          Ptyp_arrow
+          Nolabel
+          core_type (stdlib/stream.mli[109,3782+13]..[109,3782+17])
+            Ptyp_constr "unit" (stdlib/stream.mli[109,3782+13]..[109,3782+17])
+            []
+          core_type (stdlib/stream.mli[109,3782+21]..[109,3782+25])
+            Ptyp_constr "t" (stdlib/stream.mli[109,3782+24]..[109,3782+25])
+            [
+              core_type (stdlib/stream.mli[109,3782+21]..[109,3782+23])
+                Ptyp_var a
+            ]
+        core_type (stdlib/stream.mli[109,3782+30]..[109,3782+34])
+          Ptyp_constr "t" (stdlib/stream.mli[109,3782+33]..[109,3782+34])
+          [
+            core_type (stdlib/stream.mli[109,3782+30]..[109,3782+32])
+              Ptyp_var a
+          ]
+      []
+  signature_item (stdlib/stream.mli[111,3818+0]..[111,3818+39])
+    Psig_value
+    value_description "dump" (stdlib/stream.mli[111,3818+4]..[111,3818+8]) (stdlib/stream.mli[111,3818+0]..[111,3818+39])
+      core_type (stdlib/stream.mli[111,3818+11]..[111,3818+39])
+        Ptyp_arrow
+        Nolabel
+        core_type (stdlib/stream.mli[111,3818+12]..[111,3818+22])
+          Ptyp_arrow
+          Nolabel
+          core_type (stdlib/stream.mli[111,3818+12]..[111,3818+14])
+            Ptyp_var a
+          core_type (stdlib/stream.mli[111,3818+18]..[111,3818+22])
+            Ptyp_constr "unit" (stdlib/stream.mli[111,3818+18]..[111,3818+22])
+            []
+        core_type (stdlib/stream.mli[111,3818+27]..[111,3818+39])
+          Ptyp_arrow
+          Nolabel
+          core_type (stdlib/stream.mli[111,3818+27]..[111,3818+31])
+            Ptyp_constr "t" (stdlib/stream.mli[111,3818+30]..[111,3818+31])
+            [
+              core_type (stdlib/stream.mli[111,3818+27]..[111,3818+29])
+                Ptyp_var a
+            ]
+          core_type (stdlib/stream.mli[111,3818+35]..[111,3818+39])
+            Ptyp_constr "unit" (stdlib/stream.mli[111,3818+35]..[111,3818+39])
+            []
+      []
+]
+

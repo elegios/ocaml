@@ -1,0 +1,395 @@
+[
+  structure_item (testsuite/tests/typing-modules/nondep.ml[5,24+0]..[7,85+3])
+    Pstr_module
+    "F" (testsuite/tests/typing-modules/nondep.ml[5,24+7]..[5,24+8])
+      module_expr (testsuite/tests/typing-modules/nondep.ml[5,24+8]..[7,85+3])
+        Pmod_functor "X" (testsuite/tests/typing-modules/nondep.ml[5,24+9]..[5,24+10])
+        module_type (testsuite/tests/typing-modules/nondep.ml[5,24+13]..[5,24+27])
+          Pmty_signature
+          [
+            signature_item (testsuite/tests/typing-modules/nondep.ml[5,24+17]..[5,24+23])
+              Psig_type Rec
+              [
+                type_declaration "t" (testsuite/tests/typing-modules/nondep.ml[5,24+22]..[5,24+23]) (testsuite/tests/typing-modules/nondep.ml[5,24+17]..[5,24+23])
+                  ptype_params =
+                    []
+                  ptype_cstrs =
+                    []
+                  ptype_kind =
+                    Ptype_abstract
+                  ptype_private = Public
+                  ptype_manifest =
+                    None
+              ]
+          ]
+        module_expr (testsuite/tests/typing-modules/nondep.ml[5,24+31]..[7,85+3])
+          Pmod_structure
+          [
+            structure_item (testsuite/tests/typing-modules/nondep.ml[6,62+2]..[6,62+22])
+              Pstr_value Nonrec
+              [
+                <def>
+                  pattern (testsuite/tests/typing-modules/nondep.ml[6,62+6]..[6,62+7])
+                    Ppat_var "f" (testsuite/tests/typing-modules/nondep.ml[6,62+6]..[6,62+7])
+                  expression (testsuite/tests/typing-modules/nondep.ml[6,62+8]..[6,62+22]) ghost
+                    Pexp_fun
+                    Nolabel
+                    None
+                    pattern (testsuite/tests/typing-modules/nondep.ml[6,62+8]..[6,62+17])
+                      Ppat_constraint
+                      pattern (testsuite/tests/typing-modules/nondep.ml[6,62+9]..[6,62+10])
+                        Ppat_any
+                      core_type (testsuite/tests/typing-modules/nondep.ml[6,62+13]..[6,62+16])
+                        Ptyp_constr "X.t" (testsuite/tests/typing-modules/nondep.ml[6,62+13]..[6,62+16])
+                        []
+                    expression (testsuite/tests/typing-modules/nondep.ml[6,62+20]..[6,62+22])
+                      Pexp_construct "()" (testsuite/tests/typing-modules/nondep.ml[6,62+20]..[6,62+22])
+                      None
+              ]
+          ]
+  structure_item (testsuite/tests/typing-modules/nondep.ml[8,91+0]..[10,174+3])
+    Pstr_extension "expect"
+    [
+      structure_item (testsuite/tests/typing-modules/nondep.ml[8,91+9]..[10,174+2])
+        Pstr_eval
+        expression (testsuite/tests/typing-modules/nondep.ml[8,91+9]..[10,174+2])
+          Pexp_constant PConst_string ("\nmodule F : functor (X : sig type t end) -> sig val f : X.t -> unit end\n",(testsuite/tests/typing-modules/nondep.ml[8,91+11]..[10,174+0]),Some "")
+    ]
+  structure_item (testsuite/tests/typing-modules/nondep.ml[12,179+0]..[12,179+35])
+    Pstr_module
+    "M" (testsuite/tests/typing-modules/nondep.ml[12,179+7]..[12,179+8])
+      module_expr (testsuite/tests/typing-modules/nondep.ml[12,179+11]..[12,179+35])
+        Pmod_apply
+        module_expr (testsuite/tests/typing-modules/nondep.ml[12,179+11]..[12,179+12])
+          Pmod_ident "F" (testsuite/tests/typing-modules/nondep.ml[12,179+11]..[12,179+12])
+        module_expr (testsuite/tests/typing-modules/nondep.ml[12,179+13]..[12,179+34])
+          Pmod_structure
+          [
+            structure_item (testsuite/tests/typing-modules/nondep.ml[12,179+20]..[12,179+30])
+              Pstr_type Rec
+              [
+                type_declaration "t" (testsuite/tests/typing-modules/nondep.ml[12,179+25]..[12,179+26]) (testsuite/tests/typing-modules/nondep.ml[12,179+20]..[12,179+30])
+                  ptype_params =
+                    []
+                  ptype_cstrs =
+                    []
+                  ptype_kind =
+                    Ptype_variant
+                      [
+                        (testsuite/tests/typing-modules/nondep.ml[12,179+29]..[12,179+30])
+                          "T" (testsuite/tests/typing-modules/nondep.ml[12,179+29]..[12,179+30])
+                          []
+                          None
+                      ]
+                  ptype_private = Public
+                  ptype_manifest =
+                    None
+              ]
+          ]
+  structure_item (testsuite/tests/typing-modules/nondep.ml[13,217+0]..[21,551+3])
+    Pstr_extension "expect"
+    [
+      structure_item (testsuite/tests/typing-modules/nondep.ml[13,217+9]..[21,551+2])
+        Pstr_eval
+        expression (testsuite/tests/typing-modules/nondep.ml[13,217+9]..[21,551+2])
+          Pexp_constant PConst_string ("\nLine 1, characters 11-35:\n1 | module M = F(struct type t = T end);;\n               ^^^^^^^^^^^^^^^^^^^^^^^^\nError: This functor has type\n       functor (X : sig type t end) -> sig val f : X.t -> unit end\n       The parameter cannot be eliminated in the result type.\n       Please bind the argument to a module identifier.\n",(testsuite/tests/typing-modules/nondep.ml[13,217+11]..[21,551+0]),Some "")
+    ]
+  structure_item (testsuite/tests/typing-modules/nondep.ml[23,556+0]..[28,687+3])
+    Pstr_module
+    "M" (testsuite/tests/typing-modules/nondep.ml[23,556+7]..[23,556+8])
+      module_expr (testsuite/tests/typing-modules/nondep.ml[23,556+9]..[28,687+3])
+        Pmod_functor "X" (testsuite/tests/typing-modules/nondep.ml[23,556+10]..[23,556+11])
+        module_type (testsuite/tests/typing-modules/nondep.ml[23,556+14]..[23,556+53])
+          Pmty_signature
+          [
+            signature_item (testsuite/tests/typing-modules/nondep.ml[23,556+18]..[23,556+49])
+              Psig_type Rec
+              [
+                type_declaration "t" (testsuite/tests/typing-modules/nondep.ml[23,556+26]..[23,556+27]) (testsuite/tests/typing-modules/nondep.ml[23,556+18]..[23,556+49])
+                  ptype_params =
+                    [
+                      core_type (testsuite/tests/typing-modules/nondep.ml[23,556+23]..[23,556+25])
+                        Ptyp_var a
+                    ]
+                  ptype_cstrs =
+                    [
+                      <constraint> (testsuite/tests/typing-modules/nondep.ml[23,556+39]..[23,556+49])
+                        core_type (testsuite/tests/typing-modules/nondep.ml[23,556+39]..[23,556+41])
+                          Ptyp_var a
+                        core_type (testsuite/tests/typing-modules/nondep.ml[23,556+44]..[23,556+49])
+                          Ptyp_constr "float" (testsuite/tests/typing-modules/nondep.ml[23,556+44]..[23,556+49])
+                          []
+                    ]
+                  ptype_kind =
+                    Ptype_abstract
+                  ptype_private = Public
+                  ptype_manifest =
+                    None
+              ]
+          ]
+        module_expr (testsuite/tests/typing-modules/nondep.ml[23,556+57]..[28,687+3])
+          Pmod_structure
+          [
+            structure_item (testsuite/tests/typing-modules/nondep.ml[24,620+2]..[27,681+5])
+              Pstr_modtype "S" (testsuite/tests/typing-modules/nondep.ml[24,620+14]..[24,620+15])
+                module_type (testsuite/tests/typing-modules/nondep.ml[24,620+18]..[27,681+5])
+                  Pmty_signature
+                  [
+                    signature_item (testsuite/tests/typing-modules/nondep.ml[25,642+4]..[25,642+18])
+                      Psig_type Rec
+                      [
+                        type_declaration "t" (testsuite/tests/typing-modules/nondep.ml[25,642+9]..[25,642+10]) (testsuite/tests/typing-modules/nondep.ml[25,642+4]..[25,642+18])
+                          ptype_params =
+                            []
+                          ptype_cstrs =
+                            []
+                          ptype_kind =
+                            Ptype_abstract
+                          ptype_private = Public
+                          ptype_manifest =
+                            Some
+                              core_type (testsuite/tests/typing-modules/nondep.ml[25,642+13]..[25,642+18])
+                                Ptyp_constr "float" (testsuite/tests/typing-modules/nondep.ml[25,642+13]..[25,642+18])
+                                []
+                      ]
+                    signature_item (testsuite/tests/typing-modules/nondep.ml[26,661+4]..[26,661+19])
+                      Psig_value
+                      value_description "foo" (testsuite/tests/typing-modules/nondep.ml[26,661+8]..[26,661+11]) (testsuite/tests/typing-modules/nondep.ml[26,661+4]..[26,661+19])
+                        core_type (testsuite/tests/typing-modules/nondep.ml[26,661+14]..[26,661+19])
+                          Ptyp_constr "X.t" (testsuite/tests/typing-modules/nondep.ml[26,661+16]..[26,661+19])
+                          [
+                            core_type (testsuite/tests/typing-modules/nondep.ml[26,661+14]..[26,661+15])
+                              Ptyp_constr "t" (testsuite/tests/typing-modules/nondep.ml[26,661+14]..[26,661+15])
+                              []
+                          ]
+                        []
+                  ]
+          ]
+  structure_item (testsuite/tests/typing-modules/nondep.ml[30,692+0]..[30,692+63])
+    Pstr_module
+    "N" (testsuite/tests/typing-modules/nondep.ml[30,692+7]..[30,692+8])
+      module_expr (testsuite/tests/typing-modules/nondep.ml[30,692+11]..[30,692+63])
+        Pmod_apply
+        module_expr (testsuite/tests/typing-modules/nondep.ml[30,692+11]..[30,692+12])
+          Pmod_ident "M" (testsuite/tests/typing-modules/nondep.ml[30,692+11]..[30,692+12])
+        module_expr (testsuite/tests/typing-modules/nondep.ml[30,692+14]..[30,692+62])
+          Pmod_structure
+          [
+            structure_item (testsuite/tests/typing-modules/nondep.ml[30,692+21]..[30,692+58])
+              Pstr_type Rec
+              [
+                type_declaration "t" (testsuite/tests/typing-modules/nondep.ml[30,692+29]..[30,692+30]) (testsuite/tests/typing-modules/nondep.ml[30,692+21]..[30,692+58])
+                  ptype_params =
+                    [
+                      core_type (testsuite/tests/typing-modules/nondep.ml[30,692+26]..[30,692+28])
+                        Ptyp_var a
+                    ]
+                  ptype_cstrs =
+                    [
+                      <constraint> (testsuite/tests/typing-modules/nondep.ml[30,692+48]..[30,692+58])
+                        core_type (testsuite/tests/typing-modules/nondep.ml[30,692+48]..[30,692+50])
+                          Ptyp_var a
+                        core_type (testsuite/tests/typing-modules/nondep.ml[30,692+53]..[30,692+58])
+                          Ptyp_constr "float" (testsuite/tests/typing-modules/nondep.ml[30,692+53]..[30,692+58])
+                          []
+                    ]
+                  ptype_kind =
+                    Ptype_abstract
+                  ptype_private = Public
+                  ptype_manifest =
+                    Some
+                      core_type (testsuite/tests/typing-modules/nondep.ml[30,692+33]..[30,692+36])
+                        Ptyp_constr "int" (testsuite/tests/typing-modules/nondep.ml[30,692+33]..[30,692+36])
+                        []
+              ]
+          ]
+  structure_item (testsuite/tests/typing-modules/nondep.ml[32,757+0]..[37,978+3])
+    Pstr_extension "expect"
+    [
+      structure_item (testsuite/tests/typing-modules/nondep.ml[32,757+9]..[37,978+2])
+        Pstr_eval
+        expression (testsuite/tests/typing-modules/nondep.ml[32,757+9]..[37,978+2])
+          Pexp_constant PConst_string ("\nmodule M :\n  functor (X : sig type 'a t constraint 'a = float end) ->\n    sig module type S = sig type t = float val foo : t X.t end end\nmodule N : sig module type S = sig type t = float val foo : int end end\n",(testsuite/tests/typing-modules/nondep.ml[32,757+11]..[37,978+0]),Some "")
+    ]
+  structure_item (testsuite/tests/typing-modules/nondep.ml[39,983+0]..[39,983+24])
+    Pstr_type Rec
+    [
+      type_declaration "always_int" (testsuite/tests/typing-modules/nondep.ml[39,983+8]..[39,983+18]) (testsuite/tests/typing-modules/nondep.ml[39,983+0]..[39,983+24])
+        ptype_params =
+          [
+            core_type (testsuite/tests/typing-modules/nondep.ml[39,983+5]..[39,983+7])
+              Ptyp_var a
+          ]
+        ptype_cstrs =
+          []
+        ptype_kind =
+          Ptype_abstract
+        ptype_private = Public
+        ptype_manifest =
+          Some
+            core_type (testsuite/tests/typing-modules/nondep.ml[39,983+21]..[39,983+24])
+              Ptyp_constr "int" (testsuite/tests/typing-modules/nondep.ml[39,983+21]..[39,983+24])
+              []
+    ]
+  structure_item (testsuite/tests/typing-modules/nondep.ml[40,1008+0]..[40,1008+66])
+    Pstr_module
+    "F" (testsuite/tests/typing-modules/nondep.ml[40,1008+7]..[40,1008+8])
+      module_expr (testsuite/tests/typing-modules/nondep.ml[40,1008+9]..[40,1008+66])
+        Pmod_functor "X" (testsuite/tests/typing-modules/nondep.ml[40,1008+10]..[40,1008+11])
+        module_type (testsuite/tests/typing-modules/nondep.ml[40,1008+14]..[40,1008+28])
+          Pmty_signature
+          [
+            signature_item (testsuite/tests/typing-modules/nondep.ml[40,1008+18]..[40,1008+24])
+              Psig_type Rec
+              [
+                type_declaration "t" (testsuite/tests/typing-modules/nondep.ml[40,1008+23]..[40,1008+24]) (testsuite/tests/typing-modules/nondep.ml[40,1008+18]..[40,1008+24])
+                  ptype_params =
+                    []
+                  ptype_cstrs =
+                    []
+                  ptype_kind =
+                    Ptype_abstract
+                  ptype_private = Public
+                  ptype_manifest =
+                    None
+              ]
+          ]
+        module_expr (testsuite/tests/typing-modules/nondep.ml[40,1008+32]..[40,1008+66])
+          Pmod_structure
+          [
+            structure_item (testsuite/tests/typing-modules/nondep.ml[40,1008+39]..[40,1008+62])
+              Pstr_type Rec
+              [
+                type_declaration "s" (testsuite/tests/typing-modules/nondep.ml[40,1008+44]..[40,1008+45]) (testsuite/tests/typing-modules/nondep.ml[40,1008+39]..[40,1008+62])
+                  ptype_params =
+                    []
+                  ptype_cstrs =
+                    []
+                  ptype_kind =
+                    Ptype_abstract
+                  ptype_private = Public
+                  ptype_manifest =
+                    Some
+                      core_type (testsuite/tests/typing-modules/nondep.ml[40,1008+48]..[40,1008+62])
+                        Ptyp_constr "always_int" (testsuite/tests/typing-modules/nondep.ml[40,1008+52]..[40,1008+62])
+                        [
+                          core_type (testsuite/tests/typing-modules/nondep.ml[40,1008+48]..[40,1008+51])
+                            Ptyp_constr "X.t" (testsuite/tests/typing-modules/nondep.ml[40,1008+48]..[40,1008+51])
+                            []
+                        ]
+              ]
+          ]
+  structure_item (testsuite/tests/typing-modules/nondep.ml[41,1075+0]..[41,1075+36])
+    Pstr_module
+    "M" (testsuite/tests/typing-modules/nondep.ml[41,1075+7]..[41,1075+8])
+      module_expr (testsuite/tests/typing-modules/nondep.ml[41,1075+11]..[41,1075+36])
+        Pmod_apply
+        module_expr (testsuite/tests/typing-modules/nondep.ml[41,1075+11]..[41,1075+12])
+          Pmod_ident "F" (testsuite/tests/typing-modules/nondep.ml[41,1075+11]..[41,1075+12])
+        module_expr (testsuite/tests/typing-modules/nondep.ml[41,1075+14]..[41,1075+35])
+          Pmod_structure
+          [
+            structure_item (testsuite/tests/typing-modules/nondep.ml[41,1075+21]..[41,1075+31])
+              Pstr_type Rec
+              [
+                type_declaration "t" (testsuite/tests/typing-modules/nondep.ml[41,1075+26]..[41,1075+27]) (testsuite/tests/typing-modules/nondep.ml[41,1075+21]..[41,1075+31])
+                  ptype_params =
+                    []
+                  ptype_cstrs =
+                    []
+                  ptype_kind =
+                    Ptype_variant
+                      [
+                        (testsuite/tests/typing-modules/nondep.ml[41,1075+30]..[41,1075+31])
+                          "T" (testsuite/tests/typing-modules/nondep.ml[41,1075+30]..[41,1075+31])
+                          []
+                          None
+                      ]
+                  ptype_private = Public
+                  ptype_manifest =
+                    None
+              ]
+          ]
+  structure_item (testsuite/tests/typing-modules/nondep.ml[42,1112+0]..[46,1256+3])
+    Pstr_extension "expect"
+    [
+      structure_item (testsuite/tests/typing-modules/nondep.ml[42,1112+9]..[46,1256+2])
+        Pstr_eval
+        expression (testsuite/tests/typing-modules/nondep.ml[42,1112+9]..[46,1256+2])
+          Pexp_constant PConst_string ("\ntype 'a always_int = int\nmodule F : functor (X : sig type t end) -> sig type s = X.t always_int end\nmodule M : sig type s = int end\n",(testsuite/tests/typing-modules/nondep.ml[42,1112+11]..[46,1256+0]),Some "")
+    ]
+  structure_item (testsuite/tests/typing-modules/nondep.ml[48,1261+0]..[51,1372+3])
+    Pstr_module
+    "M" (testsuite/tests/typing-modules/nondep.ml[48,1261+7]..[48,1261+8])
+      module_expr (testsuite/tests/typing-modules/nondep.ml[48,1261+11]..[51,1372+3])
+        Pmod_structure
+        [
+          structure_item (testsuite/tests/typing-modules/nondep.ml[49,1279+2]..[49,1279+35])
+            Pstr_module
+            "F" (testsuite/tests/typing-modules/nondep.ml[49,1279+9]..[49,1279+10])
+              module_expr (testsuite/tests/typing-modules/nondep.ml[49,1279+11]..[49,1279+35])
+                Pmod_functor "X" (testsuite/tests/typing-modules/nondep.ml[49,1279+12]..[49,1279+13])
+                module_type (testsuite/tests/typing-modules/nondep.ml[49,1279+16]..[49,1279+30])
+                  Pmty_signature
+                  [
+                    signature_item (testsuite/tests/typing-modules/nondep.ml[49,1279+20]..[49,1279+26])
+                      Psig_type Rec
+                      [
+                        type_declaration "t" (testsuite/tests/typing-modules/nondep.ml[49,1279+25]..[49,1279+26]) (testsuite/tests/typing-modules/nondep.ml[49,1279+20]..[49,1279+26])
+                          ptype_params =
+                            []
+                          ptype_cstrs =
+                            []
+                          ptype_kind =
+                            Ptype_abstract
+                          ptype_private = Public
+                          ptype_manifest =
+                            None
+                      ]
+                  ]
+                module_expr (testsuite/tests/typing-modules/nondep.ml[49,1279+34]..[49,1279+35])
+                  Pmod_ident "X" (testsuite/tests/typing-modules/nondep.ml[49,1279+34]..[49,1279+35])
+          structure_item (testsuite/tests/typing-modules/nondep.ml[50,1315+2]..[50,1315+56])
+            Pstr_module
+            "Not_ok" (testsuite/tests/typing-modules/nondep.ml[50,1315+9]..[50,1315+15])
+              module_expr (testsuite/tests/typing-modules/nondep.ml[50,1315+18]..[50,1315+56])
+                Pmod_apply
+                module_expr (testsuite/tests/typing-modules/nondep.ml[50,1315+18]..[50,1315+19])
+                  Pmod_ident "F" (testsuite/tests/typing-modules/nondep.ml[50,1315+18]..[50,1315+19])
+                module_expr (testsuite/tests/typing-modules/nondep.ml[50,1315+21]..[50,1315+55])
+                  Pmod_structure
+                  [
+                    structure_item (testsuite/tests/typing-modules/nondep.ml[50,1315+28]..[50,1315+51])
+                      Pstr_type Rec
+                      [
+                        type_declaration "t" (testsuite/tests/typing-modules/nondep.ml[50,1315+33]..[50,1315+34]) (testsuite/tests/typing-modules/nondep.ml[50,1315+28]..[50,1315+51])
+                          ptype_params =
+                            []
+                          ptype_cstrs =
+                            []
+                          ptype_kind =
+                            Ptype_abstract
+                          ptype_private = Private
+                          ptype_manifest =
+                            Some
+                              core_type (testsuite/tests/typing-modules/nondep.ml[50,1315+45]..[50,1315+51])
+                                Ptyp_variant closed=Closed
+                                [
+                                  Rtag "A" true
+                                    []
+                                ]
+                                Some
+                                  []
+                      ]
+                  ]
+        ]
+  structure_item (testsuite/tests/typing-modules/nondep.ml[52,1376+0]..[58,1514+3])
+    Pstr_extension "expect"
+    [
+      structure_item (testsuite/tests/typing-modules/nondep.ml[52,1376+9]..[58,1514+2])
+        Pstr_eval
+        expression (testsuite/tests/typing-modules/nondep.ml[52,1376+9]..[58,1514+2])
+          Pexp_constant PConst_string ("\nmodule M :\n  sig\n    module F : functor (X : sig type t end) -> sig type t = X.t end\n    module Not_ok : sig type t end\n  end\n",(testsuite/tests/typing-modules/nondep.ml[52,1376+11]..[58,1514+0]),Some "")
+    ]
+]
+

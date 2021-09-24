@@ -1,0 +1,635 @@
+[
+  structure_item (testsuite/tests/typing-poly/error_messages.ml[5,24+0]..[5,24+30])
+    Pstr_type Rec
+    [
+      type_declaration "t" (testsuite/tests/typing-poly/error_messages.ml[5,24+5]..[5,24+6]) (testsuite/tests/typing-poly/error_messages.ml[5,24+0]..[5,24+30])
+        ptype_params =
+          []
+        ptype_cstrs =
+          []
+        ptype_kind =
+          Ptype_abstract
+        ptype_private = Public
+        ptype_manifest =
+          Some
+            core_type (testsuite/tests/typing-poly/error_messages.ml[5,24+9]..[5,24+30])
+              Ptyp_object Closed
+                method x
+                  core_type (testsuite/tests/typing-poly/error_messages.ml[5,24+15]..[5,24+28])
+                    Ptyp_poly 'a
+                    core_type (testsuite/tests/typing-poly/error_messages.ml[5,24+19]..[5,24+28])
+                      Ptyp_alias "a"
+                      core_type (testsuite/tests/typing-poly/error_messages.ml[5,24+19]..[5,24+22])
+                        Ptyp_constr "int" (testsuite/tests/typing-poly/error_messages.ml[5,24+19]..[5,24+22])
+                        []
+    ]
+  structure_item (testsuite/tests/typing-poly/error_messages.ml[6,55+0]..[12,250+3])
+    Pstr_extension "expect"
+    [
+      structure_item (testsuite/tests/typing-poly/error_messages.ml[6,55+10]..[12,250+2])
+        Pstr_eval
+        expression (testsuite/tests/typing-poly/error_messages.ml[6,55+10]..[12,250+2])
+          Pexp_constant PConst_string ("\nLine 1, characters 15-28:\n1 | type t = < x : 'a. int as 'a >\n                   ^^^^^^^^^^^^^\nError: The universal type variable 'a cannot be generalized: it is bound to\n       int.\n",(testsuite/tests/typing-poly/error_messages.ml[6,55+12]..[12,250+0]),Some "")
+    ]
+  structure_item (testsuite/tests/typing-poly/error_messages.ml[13,254+0]..[13,254+32])
+    Pstr_type Rec
+    [
+      type_declaration "u" (testsuite/tests/typing-poly/error_messages.ml[13,254+5]..[13,254+6]) (testsuite/tests/typing-poly/error_messages.ml[13,254+0]..[13,254+32])
+        ptype_params =
+          []
+        ptype_cstrs =
+          []
+        ptype_kind =
+          Ptype_abstract
+        ptype_private = Public
+        ptype_manifest =
+          Some
+            core_type (testsuite/tests/typing-poly/error_messages.ml[13,254+9]..[13,254+32])
+              Ptyp_object Closed
+                method x
+                  core_type (testsuite/tests/typing-poly/error_messages.ml[13,254+15]..[13,254+30])
+                    Ptyp_poly 'a 'b
+                    core_type (testsuite/tests/typing-poly/error_messages.ml[13,254+22]..[13,254+30])
+                      Ptyp_alias "b"
+                      core_type (testsuite/tests/typing-poly/error_messages.ml[13,254+22]..[13,254+24])
+                        Ptyp_var a
+    ]
+  structure_item (testsuite/tests/typing-poly/error_messages.ml[14,287+0]..[20,507+3])
+    Pstr_extension "expect"
+    [
+      structure_item (testsuite/tests/typing-poly/error_messages.ml[14,287+10]..[20,507+2])
+        Pstr_eval
+        expression (testsuite/tests/typing-poly/error_messages.ml[14,287+10]..[20,507+2])
+          Pexp_constant PConst_string ("\nLine 1, characters 15-30:\n1 | type u = < x : 'a 'b. 'a as 'b >\n                   ^^^^^^^^^^^^^^^\nError: The universal type variable 'b cannot be generalized:\n       it is already bound to another variable.\n",(testsuite/tests/typing-poly/error_messages.ml[14,287+12]..[20,507+0]),Some "")
+    ]
+  structure_item (testsuite/tests/typing-poly/error_messages.ml[21,511+0]..[21,511+35])
+    Pstr_type Rec
+    [
+      type_declaration "v" (testsuite/tests/typing-poly/error_messages.ml[21,511+5]..[21,511+6]) (testsuite/tests/typing-poly/error_messages.ml[21,511+0]..[21,511+35])
+        ptype_params =
+          []
+        ptype_cstrs =
+          []
+        ptype_kind =
+          Ptype_abstract
+        ptype_private = Public
+        ptype_manifest =
+          Some
+            core_type (testsuite/tests/typing-poly/error_messages.ml[21,511+9]..[21,511+35])
+              Ptyp_arrow
+              Nolabel
+              core_type (testsuite/tests/typing-poly/error_messages.ml[21,511+9]..[21,511+11])
+                Ptyp_var b
+              core_type (testsuite/tests/typing-poly/error_messages.ml[21,511+15]..[21,511+35])
+                Ptyp_object Closed
+                  method x
+                    core_type (testsuite/tests/typing-poly/error_messages.ml[21,511+21]..[21,511+33])
+                      Ptyp_poly 'a
+                      core_type (testsuite/tests/typing-poly/error_messages.ml[21,511+25]..[21,511+33])
+                        Ptyp_alias "a"
+                        core_type (testsuite/tests/typing-poly/error_messages.ml[21,511+25]..[21,511+27])
+                          Ptyp_var b
+    ]
+  structure_item (testsuite/tests/typing-poly/error_messages.ml[22,547+0]..[28,754+3])
+    Pstr_extension "expect"
+    [
+      structure_item (testsuite/tests/typing-poly/error_messages.ml[22,547+10]..[28,754+2])
+        Pstr_eval
+        expression (testsuite/tests/typing-poly/error_messages.ml[22,547+10]..[28,754+2])
+          Pexp_constant PConst_string ("\nLine 1, characters 21-33:\n1 | type v = 'b -> < x : 'a. 'b as 'a >\n                         ^^^^^^^^^^^^\nError: The universal type variable 'a cannot be generalized:\n       it escapes its scope.\n",(testsuite/tests/typing-poly/error_messages.ml[22,547+12]..[28,754+0]),Some "")
+    ]
+  structure_item (testsuite/tests/typing-poly/error_messages.ml[31,760+0]..[32,828+18])
+    Pstr_attribute "ocaml.text"
+    [
+      structure_item (testsuite/tests/typing-poly/error_messages.ml[31,760+0]..[32,828+18])
+        Pstr_eval
+        expression (testsuite/tests/typing-poly/error_messages.ml[31,760+0]..[32,828+18])
+          Pexp_constant PConst_string(" Check that renaming universal type variable is properly tracked\n    in printtyp ",(testsuite/tests/typing-poly/error_messages.ml[31,760+0]..[32,828+18]),None)
+    ]
+  structure_item (testsuite/tests/typing-poly/error_messages.ml[34,848+0]..[34,848+50])
+    Pstr_value Nonrec
+    [
+      <def>
+        pattern (testsuite/tests/typing-poly/error_messages.ml[34,848+4]..[34,848+5])
+          Ppat_var "f" (testsuite/tests/typing-poly/error_messages.ml[34,848+4]..[34,848+5])
+        expression (testsuite/tests/typing-poly/error_messages.ml[34,848+6]..[34,848+50]) ghost
+          Pexp_fun
+          Nolabel
+          None
+          pattern (testsuite/tests/typing-poly/error_messages.ml[34,848+6]..[34,848+26])
+            Ppat_constraint
+            pattern (testsuite/tests/typing-poly/error_messages.ml[34,848+7]..[34,848+8])
+              Ppat_var "x" (testsuite/tests/typing-poly/error_messages.ml[34,848+7]..[34,848+8])
+            core_type (testsuite/tests/typing-poly/error_messages.ml[34,848+9]..[34,848+25])
+              Ptyp_object Closed
+                method a
+                  core_type (testsuite/tests/typing-poly/error_messages.ml[34,848+12]..[34,848+14])
+                    Ptyp_var a
+                method b
+                  core_type (testsuite/tests/typing-poly/error_messages.ml[34,848+18]..[34,848+24])
+                    Ptyp_poly 'a
+                    core_type (testsuite/tests/typing-poly/error_messages.ml[34,848+22]..[34,848+24])
+                      Ptyp_var a
+          expression (testsuite/tests/typing-poly/error_messages.ml[34,848+27]..[34,848+50]) ghost
+            Pexp_fun
+            Nolabel
+            None
+            pattern (testsuite/tests/typing-poly/error_messages.ml[34,848+27]..[34,848+42])
+              Ppat_constraint
+              pattern (testsuite/tests/typing-poly/error_messages.ml[34,848+28]..[34,848+29])
+                Ppat_var "y" (testsuite/tests/typing-poly/error_messages.ml[34,848+28]..[34,848+29])
+              core_type (testsuite/tests/typing-poly/error_messages.ml[34,848+30]..[34,848+41])
+                Ptyp_object Closed
+                  method a
+                    core_type (testsuite/tests/typing-poly/error_messages.ml[34,848+33]..[34,848+35])
+                      Ptyp_var a
+                  method b
+                    core_type (testsuite/tests/typing-poly/error_messages.ml[34,848+38]..[34,848+40])
+                      Ptyp_var a
+            expression (testsuite/tests/typing-poly/error_messages.ml[34,848+45]..[34,848+50])
+              Pexp_apply
+              expression (testsuite/tests/typing-poly/error_messages.ml[34,848+47]..[34,848+48])
+                Pexp_ident "=" (testsuite/tests/typing-poly/error_messages.ml[34,848+47]..[34,848+48])
+              [
+                <arg>
+                Nolabel
+                  expression (testsuite/tests/typing-poly/error_messages.ml[34,848+45]..[34,848+46])
+                    Pexp_ident "x" (testsuite/tests/typing-poly/error_messages.ml[34,848+45]..[34,848+46])
+                <arg>
+                Nolabel
+                  expression (testsuite/tests/typing-poly/error_messages.ml[34,848+49]..[34,848+50])
+                    Pexp_ident "y" (testsuite/tests/typing-poly/error_messages.ml[34,848+49]..[34,848+50])
+              ]
+    ]
+  structure_item (testsuite/tests/typing-poly/error_messages.ml[35,899+0]..[43,1299+3])
+    Pstr_extension "expect"
+    [
+      structure_item (testsuite/tests/typing-poly/error_messages.ml[35,899+10]..[43,1299+2])
+        Pstr_eval
+        expression (testsuite/tests/typing-poly/error_messages.ml[35,899+10]..[43,1299+2])
+          Pexp_constant PConst_string ("\nLine 4, characters 49-50:\n4 | let f (x:<a:'a; b:'a. 'a>) (y:<a:'a;b:'a>) = x = y\n                                                     ^\nError: This expression has type < a : 'a; b : 'a >\n       but an expression was expected of type < a : 'a; b : 'a0. 'a0 >\n       The method b has type 'a, but the expected method type was 'a. 'a\n       The universal variable 'a would escape its scope\n",(testsuite/tests/typing-poly/error_messages.ml[35,899+12]..[43,1299+0]),Some "")
+    ]
+  structure_item (testsuite/tests/typing-poly/error_messages.ml[47,1321+0]..[49,1373+5])
+    Pstr_class_type
+    [
+      class_type_declaration (testsuite/tests/typing-poly/error_messages.ml[47,1321+0]..[49,1373+5])
+        attribute "ocaml.doc"
+          [
+            structure_item (testsuite/tests/typing-poly/error_messages.ml[46,1305+0]..[46,1305+15])
+              Pstr_eval
+              expression (testsuite/tests/typing-poly/error_messages.ml[46,1305+0]..[46,1305+15])
+                Pexp_constant PConst_string(" MPR 7565 ",(testsuite/tests/typing-poly/error_messages.ml[46,1305+0]..[46,1305+15]),None)
+          ]
+        pci_virt = Concrete
+        pci_params =
+          []
+        pci_name = "t_a" (testsuite/tests/typing-poly/error_messages.ml[47,1321+11]..[47,1321+14])
+        pci_expr =
+          class_type (testsuite/tests/typing-poly/error_messages.ml[47,1321+17]..[49,1373+5])
+            Pcty_signature
+            class_signature
+              core_type (testsuite/tests/typing-poly/error_messages.ml[47,1321+23]..[47,1321+23])
+                Ptyp_any
+              [
+                class_type_field (testsuite/tests/typing-poly/error_messages.ml[48,1345+4]..[48,1345+27])
+                  Pctf_method "f" Public Concrete
+                    core_type (testsuite/tests/typing-poly/error_messages.ml[48,1345+14]..[48,1345+27])
+                      Ptyp_poly 'a
+                      core_type (testsuite/tests/typing-poly/error_messages.ml[48,1345+18]..[48,1345+27])
+                        Ptyp_arrow
+                        Nolabel
+                        core_type (testsuite/tests/typing-poly/error_messages.ml[48,1345+18]..[48,1345+20])
+                          Ptyp_var a
+                        core_type (testsuite/tests/typing-poly/error_messages.ml[48,1345+24]..[48,1345+27])
+                          Ptyp_constr "int" (testsuite/tests/typing-poly/error_messages.ml[48,1345+24]..[48,1345+27])
+                          []
+              ]
+    ]
+  structure_item (testsuite/tests/typing-poly/error_messages.ml[50,1379+0]..[50,1379+23])
+    Pstr_value Nonrec
+    [
+      <def>
+        pattern (testsuite/tests/typing-poly/error_messages.ml[50,1379+4]..[50,1379+5])
+          Ppat_var "f" (testsuite/tests/typing-poly/error_messages.ml[50,1379+4]..[50,1379+5])
+        expression (testsuite/tests/typing-poly/error_messages.ml[50,1379+6]..[50,1379+23]) ghost
+          Pexp_fun
+          Nolabel
+          None
+          pattern (testsuite/tests/typing-poly/error_messages.ml[50,1379+6]..[50,1379+13])
+            Ppat_constraint
+            pattern (testsuite/tests/typing-poly/error_messages.ml[50,1379+7]..[50,1379+8])
+              Ppat_var "o" (testsuite/tests/typing-poly/error_messages.ml[50,1379+7]..[50,1379+8])
+            core_type (testsuite/tests/typing-poly/error_messages.ml[50,1379+9]..[50,1379+12])
+              Ptyp_constr "t_a" (testsuite/tests/typing-poly/error_messages.ml[50,1379+9]..[50,1379+12])
+              []
+          expression (testsuite/tests/typing-poly/error_messages.ml[50,1379+16]..[50,1379+23])
+            Pexp_apply
+            expression (testsuite/tests/typing-poly/error_messages.ml[50,1379+16]..[50,1379+21])
+              Pexp_send "f"
+              expression (testsuite/tests/typing-poly/error_messages.ml[50,1379+16]..[50,1379+17])
+                Pexp_ident "o" (testsuite/tests/typing-poly/error_messages.ml[50,1379+16]..[50,1379+17])
+            [
+              <arg>
+              Nolabel
+                expression (testsuite/tests/typing-poly/error_messages.ml[50,1379+22]..[50,1379+23])
+                  Pexp_constant PConst_int (0,None)
+            ]
+    ]
+  structure_item (testsuite/tests/typing-poly/error_messages.ml[51,1403+0]..[53,1440+5])
+    Pstr_value Nonrec
+    [
+      <def>
+        pattern (testsuite/tests/typing-poly/error_messages.ml[51,1403+4]..[51,1403+5])
+          Ppat_any
+        expression (testsuite/tests/typing-poly/error_messages.ml[51,1403+8]..[53,1440+5])
+          Pexp_apply
+          expression (testsuite/tests/typing-poly/error_messages.ml[51,1403+8]..[51,1403+9])
+            Pexp_ident "f" (testsuite/tests/typing-poly/error_messages.ml[51,1403+8]..[51,1403+9])
+          [
+            <arg>
+            Nolabel
+              expression (testsuite/tests/typing-poly/error_messages.ml[51,1403+10]..[53,1440+5])
+                Pexp_object
+                class_structure
+                  pattern (testsuite/tests/typing-poly/error_messages.ml[51,1403+17]..[51,1403+17]) ghost
+                    Ppat_any
+                  [
+                    class_field (testsuite/tests/typing-poly/error_messages.ml[52,1421+4]..[52,1421+18])
+                      Pcf_method Public
+                        "f" (testsuite/tests/typing-poly/error_messages.ml[52,1421+11]..[52,1421+12])
+                        Concrete Fresh
+                        expression (testsuite/tests/typing-poly/error_messages.ml[52,1421+13]..[52,1421+18]) ghost
+                          Pexp_poly
+                          expression (testsuite/tests/typing-poly/error_messages.ml[52,1421+13]..[52,1421+18]) ghost
+                            Pexp_fun
+                            Nolabel
+                            None
+                            pattern (testsuite/tests/typing-poly/error_messages.ml[52,1421+13]..[52,1421+14])
+                              Ppat_any
+                            expression (testsuite/tests/typing-poly/error_messages.ml[52,1421+17]..[52,1421+18])
+                              Pexp_constant PConst_int (0,None)
+                          None
+                  ]
+          ]
+    ]
+  structure_item (testsuite/tests/typing-poly/error_messages.ml[54,1448+0]..[67,1875+1])
+    Pstr_extension "expect"
+    [
+      structure_item (testsuite/tests/typing-poly/error_messages.ml[54,1448+10]..[66,1872+2])
+        Pstr_eval
+        expression (testsuite/tests/typing-poly/error_messages.ml[54,1448+10]..[66,1872+2])
+          Pexp_constant PConst_string ("\nclass type t_a = object method f : 'a -> int end\nval f : t_a -> int = <fun>\nLines 5-7, characters 10-5:\n5 | ..........(object\n6 |     method f _ = 0\n7 |  end)..\nError: This expression has type < f : 'a -> int >\n       but an expression was expected of type t_a\n       The method f has type 'a -> int, but the expected method type was\n       'a. 'a -> int\n       The universal variable 'a would escape its scope\n",(testsuite/tests/typing-poly/error_messages.ml[54,1448+12]..[66,1872+0]),Some "")
+    ]
+  structure_item (testsuite/tests/typing-poly/error_messages.ml[69,1878+0]..[69,1878+39])
+    Pstr_type Rec
+    [
+      type_declaration "uv" (testsuite/tests/typing-poly/error_messages.ml[69,1878+5]..[69,1878+7]) (testsuite/tests/typing-poly/error_messages.ml[69,1878+0]..[69,1878+39])
+        ptype_params =
+          []
+        ptype_cstrs =
+          []
+        ptype_kind =
+          Ptype_abstract
+        ptype_private = Public
+        ptype_manifest =
+          Some
+            core_type (testsuite/tests/typing-poly/error_messages.ml[69,1878+10]..[69,1878+39])
+              Ptyp_variant closed=Closed
+              [
+                Rtag "A" false
+                  [
+                    core_type (testsuite/tests/typing-poly/error_messages.ml[69,1878+18]..[69,1878+37])
+                      Ptyp_object Closed
+                        method f
+                          core_type (testsuite/tests/typing-poly/error_messages.ml[69,1878+22]..[69,1878+35])
+                            Ptyp_poly 'a
+                            core_type (testsuite/tests/typing-poly/error_messages.ml[69,1878+26]..[69,1878+35])
+                              Ptyp_arrow
+                              Nolabel
+                              core_type (testsuite/tests/typing-poly/error_messages.ml[69,1878+26]..[69,1878+28])
+                                Ptyp_var a
+                              core_type (testsuite/tests/typing-poly/error_messages.ml[69,1878+32]..[69,1878+35])
+                                Ptyp_constr "int" (testsuite/tests/typing-poly/error_messages.ml[69,1878+32]..[69,1878+35])
+                                []
+                  ]
+              ]
+              None
+    ]
+  structure_item (testsuite/tests/typing-poly/error_messages.ml[70,1918+0]..[70,1918+37])
+    Pstr_type Rec
+    [
+      type_declaration "v" (testsuite/tests/typing-poly/error_messages.ml[70,1918+8]..[70,1918+9]) (testsuite/tests/typing-poly/error_messages.ml[70,1918+0]..[70,1918+37])
+        ptype_params =
+          [
+            core_type (testsuite/tests/typing-poly/error_messages.ml[70,1918+5]..[70,1918+7])
+              Ptyp_var a
+          ]
+        ptype_cstrs =
+          []
+        ptype_kind =
+          Ptype_abstract
+        ptype_private = Public
+        ptype_manifest =
+          Some
+            core_type (testsuite/tests/typing-poly/error_messages.ml[70,1918+12]..[70,1918+37])
+              Ptyp_variant closed=Closed
+              [
+                Rtag "A" false
+                  [
+                    core_type (testsuite/tests/typing-poly/error_messages.ml[70,1918+20]..[70,1918+35])
+                      Ptyp_object Closed
+                        method f
+                          core_type (testsuite/tests/typing-poly/error_messages.ml[70,1918+24]..[70,1918+33])
+                            Ptyp_arrow
+                            Nolabel
+                            core_type (testsuite/tests/typing-poly/error_messages.ml[70,1918+24]..[70,1918+26])
+                              Ptyp_var a
+                            core_type (testsuite/tests/typing-poly/error_messages.ml[70,1918+30]..[70,1918+33])
+                              Ptyp_constr "int" (testsuite/tests/typing-poly/error_messages.ml[70,1918+30]..[70,1918+33])
+                              []
+                  ]
+              ]
+              None
+    ]
+  structure_item (testsuite/tests/typing-poly/error_messages.ml[71,1956+0]..[71,1956+25])
+    Pstr_value Nonrec
+    [
+      <def>
+        pattern (testsuite/tests/typing-poly/error_messages.ml[71,1956+4]..[71,1956+5])
+          Ppat_var "f" (testsuite/tests/typing-poly/error_messages.ml[71,1956+4]..[71,1956+5])
+        expression (testsuite/tests/typing-poly/error_messages.ml[71,1956+6]..[71,1956+25]) ghost
+          Pexp_fun
+          Nolabel
+          None
+          pattern (testsuite/tests/typing-poly/error_messages.ml[71,1956+6]..[71,1956+15])
+            Ppat_constraint
+            pattern (testsuite/tests/typing-poly/error_messages.ml[71,1956+7]..[71,1956+11])
+              Ppat_variant "A"
+              Some
+                pattern (testsuite/tests/typing-poly/error_messages.ml[71,1956+10]..[71,1956+11])
+                  Ppat_var "o" (testsuite/tests/typing-poly/error_messages.ml[71,1956+10]..[71,1956+11])
+            core_type (testsuite/tests/typing-poly/error_messages.ml[71,1956+12]..[71,1956+14])
+              Ptyp_constr "uv" (testsuite/tests/typing-poly/error_messages.ml[71,1956+12]..[71,1956+14])
+              []
+          expression (testsuite/tests/typing-poly/error_messages.ml[71,1956+18]..[71,1956+25])
+            Pexp_apply
+            expression (testsuite/tests/typing-poly/error_messages.ml[71,1956+18]..[71,1956+23])
+              Pexp_send "f"
+              expression (testsuite/tests/typing-poly/error_messages.ml[71,1956+18]..[71,1956+19])
+                Pexp_ident "o" (testsuite/tests/typing-poly/error_messages.ml[71,1956+18]..[71,1956+19])
+            [
+              <arg>
+              Nolabel
+                expression (testsuite/tests/typing-poly/error_messages.ml[71,1956+24]..[71,1956+25])
+                  Pexp_constant PConst_int (0,None)
+            ]
+    ]
+  structure_item (testsuite/tests/typing-poly/error_messages.ml[72,1982+0]..[72,1982+49])
+    Pstr_value Nonrec
+    [
+      <def>
+        pattern (testsuite/tests/typing-poly/error_messages.ml[72,1982+4]..[72,1982+6])
+          Ppat_construct "()" (testsuite/tests/typing-poly/error_messages.ml[72,1982+4]..[72,1982+6])
+          None
+        expression (testsuite/tests/typing-poly/error_messages.ml[72,1982+9]..[72,1982+49])
+          Pexp_apply
+          expression (testsuite/tests/typing-poly/error_messages.ml[72,1982+9]..[72,1982+10])
+            Pexp_ident "f" (testsuite/tests/typing-poly/error_messages.ml[72,1982+9]..[72,1982+10])
+          [
+            <arg>
+            Nolabel
+              expression (testsuite/tests/typing-poly/error_messages.ml[72,1982+11]..[72,1982+49])
+                Pexp_constraint
+                expression (testsuite/tests/typing-poly/error_messages.ml[72,1982+13]..[72,1982+43])
+                  Pexp_variant "A"
+                  Some
+                    expression (testsuite/tests/typing-poly/error_messages.ml[72,1982+16]..[72,1982+43])
+                      Pexp_object
+                      class_structure
+                        pattern (testsuite/tests/typing-poly/error_messages.ml[72,1982+23]..[72,1982+23]) ghost
+                          Ppat_any
+                        [
+                          class_field (testsuite/tests/typing-poly/error_messages.ml[72,1982+24]..[72,1982+38])
+                            Pcf_method Public
+                              "f" (testsuite/tests/typing-poly/error_messages.ml[72,1982+31]..[72,1982+32])
+                              Concrete Fresh
+                              expression (testsuite/tests/typing-poly/error_messages.ml[72,1982+33]..[72,1982+38]) ghost
+                                Pexp_poly
+                                expression (testsuite/tests/typing-poly/error_messages.ml[72,1982+33]..[72,1982+38]) ghost
+                                  Pexp_fun
+                                  Nolabel
+                                  None
+                                  pattern (testsuite/tests/typing-poly/error_messages.ml[72,1982+33]..[72,1982+34])
+                                    Ppat_any
+                                  expression (testsuite/tests/typing-poly/error_messages.ml[72,1982+37]..[72,1982+38])
+                                    Pexp_constant PConst_int (0,None)
+                                None
+                        ]
+                core_type (testsuite/tests/typing-poly/error_messages.ml[72,1982+45]..[72,1982+48])
+                  Ptyp_constr "v" (testsuite/tests/typing-poly/error_messages.ml[72,1982+47]..[72,1982+48])
+                  [
+                    core_type (testsuite/tests/typing-poly/error_messages.ml[72,1982+45]..[72,1982+46])
+                      Ptyp_any
+                  ]
+          ]
+    ]
+  structure_item (testsuite/tests/typing-poly/error_messages.ml[73,2034+0]..[85,2529+3])
+    Pstr_extension "expect"
+    [
+      structure_item (testsuite/tests/typing-poly/error_messages.ml[73,2034+10]..[85,2529+2])
+        Pstr_eval
+        expression (testsuite/tests/typing-poly/error_messages.ml[73,2034+10]..[85,2529+2])
+          Pexp_constant PConst_string ("\ntype uv = [ `A of < f : 'a. 'a -> int > ]\ntype 'a v = [ `A of < f : 'a -> int > ]\nval f : uv -> int = <fun>\nLine 4, characters 11-49:\n4 | let () = f ( `A (object method f _ = 0 end): _ v);;\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nError: This expression has type 'a v but an expression was expected of type\n         uv\n       The method f has type 'a -> int, but the expected method type was\n       'a. 'a -> int\n       The universal variable 'a would escape its scope\n",(testsuite/tests/typing-poly/error_messages.ml[73,2034+12]..[85,2529+0]),Some "")
+    ]
+  structure_item (testsuite/tests/typing-poly/error_messages.ml[89,2605+0]..[89,2605+49])
+    Pstr_value Nonrec
+    [
+      <def>
+        pattern (testsuite/tests/typing-poly/error_messages.ml[89,2605+4]..[89,2605+36]) ghost
+          Ppat_constraint
+          pattern (testsuite/tests/typing-poly/error_messages.ml[89,2605+4]..[89,2605+5])
+            Ppat_var "f" (testsuite/tests/typing-poly/error_messages.ml[89,2605+4]..[89,2605+5])
+          core_type (testsuite/tests/typing-poly/error_messages.ml[89,2605+7]..[89,2605+36]) ghost
+            Ptyp_poly 'a
+            core_type (testsuite/tests/typing-poly/error_messages.ml[89,2605+11]..[89,2605+36])
+              Ptyp_arrow
+              Nolabel
+              core_type (testsuite/tests/typing-poly/error_messages.ml[89,2605+12]..[89,2605+25])
+                Ptyp_alias "a"
+                core_type (testsuite/tests/typing-poly/error_messages.ml[89,2605+12]..[89,2605+19])
+                  Ptyp_variant closed=Open
+                  [
+                    Rtag "A" true
+                      []
+                  ]
+                  None
+              core_type (testsuite/tests/typing-poly/error_messages.ml[89,2605+30]..[89,2605+36])
+                Ptyp_variant closed=Closed
+                [
+                  Rtag "A" true
+                    []
+                ]
+                None
+        expression (testsuite/tests/typing-poly/error_messages.ml[89,2605+39]..[89,2605+49])
+          Pexp_fun
+          Nolabel
+          None
+          pattern (testsuite/tests/typing-poly/error_messages.ml[89,2605+43]..[89,2605+44])
+            Ppat_var "x" (testsuite/tests/typing-poly/error_messages.ml[89,2605+43]..[89,2605+44])
+          expression (testsuite/tests/typing-poly/error_messages.ml[89,2605+48]..[89,2605+49])
+            Pexp_ident "x" (testsuite/tests/typing-poly/error_messages.ml[89,2605+48]..[89,2605+49])
+    ]
+  structure_item (testsuite/tests/typing-poly/error_messages.ml[90,2655+0]..[98,2996+3])
+    Pstr_extension "expect"
+    [
+      structure_item (testsuite/tests/typing-poly/error_messages.ml[90,2655+10]..[98,2996+2])
+        Pstr_eval
+        expression (testsuite/tests/typing-poly/error_messages.ml[90,2655+10]..[98,2996+2])
+          Pexp_constant PConst_string ("\nLine 1, characters 48-49:\n1 | let f: 'a. ([> `A ] as 'a) -> [ `A ] = fun x -> x\n                                                    ^\nError: This expression has type [> `A ]\n       but an expression was expected of type [ `A ]\n       The first variant type is bound to the universal type variable 'a,\n       it cannot be closed\n",(testsuite/tests/typing-poly/error_messages.ml[90,2655+12]..[98,2996+0]),Some "")
+    ]
+  structure_item (testsuite/tests/typing-poly/error_messages.ml[100,3001+0]..[100,3001+49])
+    Pstr_value Nonrec
+    [
+      <def>
+        pattern (testsuite/tests/typing-poly/error_messages.ml[100,3001+4]..[100,3001+36]) ghost
+          Ppat_constraint
+          pattern (testsuite/tests/typing-poly/error_messages.ml[100,3001+4]..[100,3001+5])
+            Ppat_var "f" (testsuite/tests/typing-poly/error_messages.ml[100,3001+4]..[100,3001+5])
+          core_type (testsuite/tests/typing-poly/error_messages.ml[100,3001+7]..[100,3001+36]) ghost
+            Ptyp_poly 'a
+            core_type (testsuite/tests/typing-poly/error_messages.ml[100,3001+11]..[100,3001+36])
+              Ptyp_arrow
+              Nolabel
+              core_type (testsuite/tests/typing-poly/error_messages.ml[100,3001+11]..[100,3001+17])
+                Ptyp_variant closed=Closed
+                [
+                  Rtag "A" true
+                    []
+                ]
+                None
+              core_type (testsuite/tests/typing-poly/error_messages.ml[100,3001+22]..[100,3001+35])
+                Ptyp_alias "a"
+                core_type (testsuite/tests/typing-poly/error_messages.ml[100,3001+22]..[100,3001+29])
+                  Ptyp_variant closed=Open
+                  [
+                    Rtag "A" true
+                      []
+                  ]
+                  None
+        expression (testsuite/tests/typing-poly/error_messages.ml[100,3001+39]..[100,3001+49])
+          Pexp_fun
+          Nolabel
+          None
+          pattern (testsuite/tests/typing-poly/error_messages.ml[100,3001+43]..[100,3001+44])
+            Ppat_var "x" (testsuite/tests/typing-poly/error_messages.ml[100,3001+43]..[100,3001+44])
+          expression (testsuite/tests/typing-poly/error_messages.ml[100,3001+48]..[100,3001+49])
+            Pexp_ident "x" (testsuite/tests/typing-poly/error_messages.ml[100,3001+48]..[100,3001+49])
+    ]
+  structure_item (testsuite/tests/typing-poly/error_messages.ml[101,3051+0]..[109,3395+3])
+    Pstr_extension "expect"
+    [
+      structure_item (testsuite/tests/typing-poly/error_messages.ml[101,3051+10]..[109,3395+2])
+        Pstr_eval
+        expression (testsuite/tests/typing-poly/error_messages.ml[101,3051+10]..[109,3395+2])
+          Pexp_constant PConst_string ("\nLine 1, characters 48-49:\n1 | let f: 'a. [ `A ] -> ([> `A ] as 'a) = fun x -> x\n                                                    ^\nError: This expression has type [ `A ] but an expression was expected of type\n         [> `A ]\n       The second variant type is bound to the universal type variable 'a,\n       it cannot be closed\n",(testsuite/tests/typing-poly/error_messages.ml[101,3051+12]..[109,3395+0]),Some "")
+    ]
+  structure_item (testsuite/tests/typing-poly/error_messages.ml[112,3401+0]..[112,3401+54])
+    Pstr_value Nonrec
+    [
+      <def>
+        pattern (testsuite/tests/typing-poly/error_messages.ml[112,3401+4]..[112,3401+41]) ghost
+          Ppat_constraint
+          pattern (testsuite/tests/typing-poly/error_messages.ml[112,3401+4]..[112,3401+5])
+            Ppat_var "f" (testsuite/tests/typing-poly/error_messages.ml[112,3401+4]..[112,3401+5])
+          core_type (testsuite/tests/typing-poly/error_messages.ml[112,3401+7]..[112,3401+41]) ghost
+            Ptyp_poly 'a
+            core_type (testsuite/tests/typing-poly/error_messages.ml[112,3401+11]..[112,3401+41])
+              Ptyp_arrow
+              Nolabel
+              core_type (testsuite/tests/typing-poly/error_messages.ml[112,3401+11]..[112,3401+22])
+                Ptyp_variant closed=Closed
+                [
+                  Rtag "A" true
+                    []
+                  Rtag "B" true
+                    []
+                ]
+                None
+              core_type (testsuite/tests/typing-poly/error_messages.ml[112,3401+27]..[112,3401+40])
+                Ptyp_alias "a"
+                core_type (testsuite/tests/typing-poly/error_messages.ml[112,3401+27]..[112,3401+34])
+                  Ptyp_variant closed=Open
+                  [
+                    Rtag "A" true
+                      []
+                  ]
+                  None
+        expression (testsuite/tests/typing-poly/error_messages.ml[112,3401+44]..[112,3401+54])
+          Pexp_fun
+          Nolabel
+          None
+          pattern (testsuite/tests/typing-poly/error_messages.ml[112,3401+48]..[112,3401+49])
+            Ppat_var "x" (testsuite/tests/typing-poly/error_messages.ml[112,3401+48]..[112,3401+49])
+          expression (testsuite/tests/typing-poly/error_messages.ml[112,3401+53]..[112,3401+54])
+            Pexp_ident "x" (testsuite/tests/typing-poly/error_messages.ml[112,3401+53]..[112,3401+54])
+    ]
+  structure_item (testsuite/tests/typing-poly/error_messages.ml[113,3456+0]..[121,3813+3])
+    Pstr_extension "expect"
+    [
+      structure_item (testsuite/tests/typing-poly/error_messages.ml[113,3456+10]..[121,3813+2])
+        Pstr_eval
+        expression (testsuite/tests/typing-poly/error_messages.ml[113,3456+10]..[121,3813+2])
+          Pexp_constant PConst_string ("\nLine 1, characters 53-54:\n1 | let f: 'a. [ `A | `B ] -> ([> `A ] as 'a) = fun x -> x\n                                                         ^\nError: This expression has type [ `A | `B ]\n       but an expression was expected of type [> `A ]\n       The second variant type is bound to the universal type variable 'a,\n       it cannot be closed\n",(testsuite/tests/typing-poly/error_messages.ml[113,3456+12]..[121,3813+0]),Some "")
+    ]
+  structure_item (testsuite/tests/typing-poly/error_messages.ml[124,3819+0]..[124,3819+60])
+    Pstr_value Nonrec
+    [
+      <def>
+        pattern (testsuite/tests/typing-poly/error_messages.ml[124,3819+4]..[124,3819+47]) ghost
+          Ppat_constraint
+          pattern (testsuite/tests/typing-poly/error_messages.ml[124,3819+4]..[124,3819+5])
+            Ppat_var "f" (testsuite/tests/typing-poly/error_messages.ml[124,3819+4]..[124,3819+5])
+          core_type (testsuite/tests/typing-poly/error_messages.ml[124,3819+7]..[124,3819+47]) ghost
+            Ptyp_poly 'a
+            core_type (testsuite/tests/typing-poly/error_messages.ml[124,3819+11]..[124,3819+47])
+              Ptyp_arrow
+              Nolabel
+              core_type (testsuite/tests/typing-poly/error_messages.ml[124,3819+11]..[124,3819+28])
+                Ptyp_variant closed=Open
+                [
+                  Rtag "A" true
+                    []
+                  Rtag "B" true
+                    []
+                  Rtag "C" true
+                    []
+                ]
+                None
+              core_type (testsuite/tests/typing-poly/error_messages.ml[124,3819+33]..[124,3819+46])
+                Ptyp_alias "a"
+                core_type (testsuite/tests/typing-poly/error_messages.ml[124,3819+33]..[124,3819+40])
+                  Ptyp_variant closed=Open
+                  [
+                    Rtag "A" true
+                      []
+                  ]
+                  None
+        expression (testsuite/tests/typing-poly/error_messages.ml[124,3819+50]..[124,3819+60])
+          Pexp_fun
+          Nolabel
+          None
+          pattern (testsuite/tests/typing-poly/error_messages.ml[124,3819+54]..[124,3819+55])
+            Ppat_var "x" (testsuite/tests/typing-poly/error_messages.ml[124,3819+54]..[124,3819+55])
+          expression (testsuite/tests/typing-poly/error_messages.ml[124,3819+59]..[124,3819+60])
+            Pexp_ident "x" (testsuite/tests/typing-poly/error_messages.ml[124,3819+59]..[124,3819+60])
+    ]
+  structure_item (testsuite/tests/typing-poly/error_messages.ml[125,3880+0]..[133,4270+3])
+    Pstr_extension "expect"
+    [
+      structure_item (testsuite/tests/typing-poly/error_messages.ml[125,3880+10]..[133,4270+2])
+        Pstr_eval
+        expression (testsuite/tests/typing-poly/error_messages.ml[125,3880+10]..[133,4270+2])
+          Pexp_constant PConst_string ("\nLine 1, characters 59-60:\n1 | let f: 'a. [> `A | `B | `C ] -> ([> `A ] as 'a) = fun x -> x\n                                                               ^\nError: This expression has type [> `A | `B | `C ]\n       but an expression was expected of type [> `A ]\n       The second variant type is bound to the universal type variable 'a,\n       it may not allow the tag(s) `B, `C\n",(testsuite/tests/typing-poly/error_messages.ml[125,3880+12]..[133,4270+0]),Some "")
+    ]
+]
+

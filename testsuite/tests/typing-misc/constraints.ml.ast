@@ -1,0 +1,1462 @@
+[
+  structure_item (testsuite/tests/typing-misc/constraints.ml[5,24+0]..[5,24+32])
+    Pstr_type Rec
+    [
+      type_declaration "t" (testsuite/tests/typing-misc/constraints.ml[5,24+8]..[5,24+9]) (testsuite/tests/typing-misc/constraints.ml[5,24+0]..[5,24+32])
+        ptype_params =
+          [
+            core_type (testsuite/tests/typing-misc/constraints.ml[5,24+5]..[5,24+7])
+              Ptyp_var a
+          ]
+        ptype_cstrs =
+          []
+        ptype_kind =
+          Ptype_abstract
+        ptype_private = Public
+        ptype_manifest =
+          Some
+            core_type (testsuite/tests/typing-misc/constraints.ml[5,24+12]..[5,24+32])
+              Ptyp_alias "a"
+              core_type (testsuite/tests/typing-misc/constraints.ml[5,24+12]..[5,24+26])
+                Ptyp_variant closed=Closed
+                [
+                  Rtag "A" false
+                    [
+                      core_type (testsuite/tests/typing-misc/constraints.ml[5,24+19]..[5,24+25])
+                        Ptyp_constr "t" (testsuite/tests/typing-misc/constraints.ml[5,24+24]..[5,24+25])
+                        [
+                          core_type (testsuite/tests/typing-misc/constraints.ml[5,24+19]..[5,24+23])
+                            Ptyp_constr "t" (testsuite/tests/typing-misc/constraints.ml[5,24+22]..[5,24+23])
+                            [
+                              core_type (testsuite/tests/typing-misc/constraints.ml[5,24+19]..[5,24+21])
+                                Ptyp_var a
+                            ]
+                        ]
+                    ]
+                ]
+                None
+    ]
+  structure_item (testsuite/tests/typing-misc/constraints.ml[6,71+0]..[17,441+3])
+    Pstr_extension "expect"
+    [
+      structure_item (testsuite/tests/typing-misc/constraints.ml[6,71+9]..[17,441+2])
+        Pstr_eval
+        expression (testsuite/tests/typing-misc/constraints.ml[6,71+9]..[17,441+2])
+          Pexp_tuple
+          [
+            expression (testsuite/tests/typing-misc/constraints.ml[6,71+9]..[11,237+2])
+              Pexp_constant PConst_string ("\nLine 1, characters 0-32:\n1 | type 'a t = [`A of 'a t t] as 'a;; (* fails *)\n    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nError: The type abbreviation t is cyclic\n",(testsuite/tests/typing-misc/constraints.ml[6,71+11]..[11,237+0]),Some "")
+            expression (testsuite/tests/typing-misc/constraints.ml[11,237+4]..[17,441+2])
+              Pexp_construct "Principal" (testsuite/tests/typing-misc/constraints.ml[11,237+4]..[11,237+13])
+              Some
+                expression (testsuite/tests/typing-misc/constraints.ml[11,237+13]..[17,441+2])
+                  Pexp_constant PConst_string ("\nLine 1, characters 0-32:\n1 | type 'a t = [`A of 'a t t] as 'a;; (* fails *)\n    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nError: The definition of t contains a cycle:\n       [ `A of 'a t t ] as 'a\n",(testsuite/tests/typing-misc/constraints.ml[11,237+15]..[17,441+0]),Some "")
+          ]
+    ]
+  structure_item (testsuite/tests/typing-misc/constraints.ml[18,447+0]..[18,447+26])
+    Pstr_type Rec
+    [
+      type_declaration "t" (testsuite/tests/typing-misc/constraints.ml[18,447+8]..[18,447+9]) (testsuite/tests/typing-misc/constraints.ml[18,447+0]..[18,447+26])
+        ptype_params =
+          [
+            core_type (testsuite/tests/typing-misc/constraints.ml[18,447+5]..[18,447+7])
+              Ptyp_var a
+          ]
+        ptype_cstrs =
+          []
+        ptype_kind =
+          Ptype_abstract
+        ptype_private = Public
+        ptype_manifest =
+          Some
+            core_type (testsuite/tests/typing-misc/constraints.ml[18,447+12]..[18,447+26])
+              Ptyp_variant closed=Closed
+              [
+                Rtag "A" false
+                  [
+                    core_type (testsuite/tests/typing-misc/constraints.ml[18,447+19]..[18,447+25])
+                      Ptyp_constr "t" (testsuite/tests/typing-misc/constraints.ml[18,447+24]..[18,447+25])
+                      [
+                        core_type (testsuite/tests/typing-misc/constraints.ml[18,447+19]..[18,447+23])
+                          Ptyp_constr "t" (testsuite/tests/typing-misc/constraints.ml[18,447+22]..[18,447+23])
+                          [
+                            core_type (testsuite/tests/typing-misc/constraints.ml[18,447+19]..[18,447+21])
+                              Ptyp_var a
+                          ]
+                      ]
+                  ]
+              ]
+              None
+    ]
+  structure_item (testsuite/tests/typing-misc/constraints.ml[19,488+0]..[29,832+3])
+    Pstr_extension "expect"
+    [
+      structure_item (testsuite/tests/typing-misc/constraints.ml[19,488+9]..[29,832+2])
+        Pstr_eval
+        expression (testsuite/tests/typing-misc/constraints.ml[19,488+9]..[29,832+2])
+          Pexp_constant PConst_string ("\nLine 1, characters 0-26:\n1 | type 'a t = [`A of 'a t t];; (* fails *)\n    ^^^^^^^^^^^^^^^^^^^^^^^^^^\nError: This recursive type is not regular.\n       The type constructor t is defined as\n         type 'a t\n       but it is used as\n         'a t t.\n       All uses need to match the definition for the recursive type to be regular.\n",(testsuite/tests/typing-misc/constraints.ml[19,488+11]..[29,832+0]),Some "")
+    ]
+  structure_item (testsuite/tests/typing-misc/constraints.ml[30,838+0]..[30,838+47])
+    Pstr_type Rec
+    [
+      type_declaration "t" (testsuite/tests/typing-misc/constraints.ml[30,838+8]..[30,838+9]) (testsuite/tests/typing-misc/constraints.ml[30,838+0]..[30,838+47])
+        ptype_params =
+          [
+            core_type (testsuite/tests/typing-misc/constraints.ml[30,838+5]..[30,838+7])
+              Ptyp_var a
+          ]
+        ptype_cstrs =
+          [
+            <constraint> (testsuite/tests/typing-misc/constraints.ml[30,838+38]..[30,838+47])
+              core_type (testsuite/tests/typing-misc/constraints.ml[30,838+38]..[30,838+40])
+                Ptyp_var a
+              core_type (testsuite/tests/typing-misc/constraints.ml[30,838+43]..[30,838+47])
+                Ptyp_constr "t" (testsuite/tests/typing-misc/constraints.ml[30,838+46]..[30,838+47])
+                [
+                  core_type (testsuite/tests/typing-misc/constraints.ml[30,838+43]..[30,838+45])
+                    Ptyp_var a
+                ]
+          ]
+        ptype_kind =
+          Ptype_abstract
+        ptype_private = Public
+        ptype_manifest =
+          Some
+            core_type (testsuite/tests/typing-misc/constraints.ml[30,838+12]..[30,838+26])
+              Ptyp_variant closed=Closed
+              [
+                Rtag "A" false
+                  [
+                    core_type (testsuite/tests/typing-misc/constraints.ml[30,838+19]..[30,838+25])
+                      Ptyp_constr "t" (testsuite/tests/typing-misc/constraints.ml[30,838+24]..[30,838+25])
+                      [
+                        core_type (testsuite/tests/typing-misc/constraints.ml[30,838+19]..[30,838+23])
+                          Ptyp_constr "t" (testsuite/tests/typing-misc/constraints.ml[30,838+22]..[30,838+23])
+                          [
+                            core_type (testsuite/tests/typing-misc/constraints.ml[30,838+19]..[30,838+21])
+                              Ptyp_var a
+                          ]
+                      ]
+                  ]
+              ]
+              None
+    ]
+  structure_item (testsuite/tests/typing-misc/constraints.ml[31,911+0]..[36,1118+3])
+    Pstr_extension "expect"
+    [
+      structure_item (testsuite/tests/typing-misc/constraints.ml[31,911+9]..[36,1118+2])
+        Pstr_eval
+        expression (testsuite/tests/typing-misc/constraints.ml[31,911+9]..[36,1118+2])
+          Pexp_constant PConst_string ("\nLine 1, characters 0-47:\n1 | type 'a t = [`A of 'a t t] constraint 'a = 'a t;; (* fails since 4.04 *)\n    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nError: The type abbreviation t is cyclic\n",(testsuite/tests/typing-misc/constraints.ml[31,911+11]..[36,1118+0]),Some "")
+    ]
+  structure_item (testsuite/tests/typing-misc/constraints.ml[37,1124+0]..[37,1124+45])
+    Pstr_type Rec
+    [
+      type_declaration "t" (testsuite/tests/typing-misc/constraints.ml[37,1124+8]..[37,1124+9]) (testsuite/tests/typing-misc/constraints.ml[37,1124+0]..[37,1124+45])
+        ptype_params =
+          [
+            core_type (testsuite/tests/typing-misc/constraints.ml[37,1124+5]..[37,1124+7])
+              Ptyp_var a
+          ]
+        ptype_cstrs =
+          [
+            <constraint> (testsuite/tests/typing-misc/constraints.ml[37,1124+36]..[37,1124+45])
+              core_type (testsuite/tests/typing-misc/constraints.ml[37,1124+36]..[37,1124+38])
+                Ptyp_var a
+              core_type (testsuite/tests/typing-misc/constraints.ml[37,1124+41]..[37,1124+45])
+                Ptyp_constr "t" (testsuite/tests/typing-misc/constraints.ml[37,1124+44]..[37,1124+45])
+                [
+                  core_type (testsuite/tests/typing-misc/constraints.ml[37,1124+41]..[37,1124+43])
+                    Ptyp_var a
+                ]
+          ]
+        ptype_kind =
+          Ptype_abstract
+        ptype_private = Public
+        ptype_manifest =
+          Some
+            core_type (testsuite/tests/typing-misc/constraints.ml[37,1124+12]..[37,1124+24])
+              Ptyp_variant closed=Closed
+              [
+                Rtag "A" false
+                  [
+                    core_type (testsuite/tests/typing-misc/constraints.ml[37,1124+19]..[37,1124+23])
+                      Ptyp_constr "t" (testsuite/tests/typing-misc/constraints.ml[37,1124+22]..[37,1124+23])
+                      [
+                        core_type (testsuite/tests/typing-misc/constraints.ml[37,1124+19]..[37,1124+21])
+                          Ptyp_var a
+                      ]
+                  ]
+              ]
+              None
+    ]
+  structure_item (testsuite/tests/typing-misc/constraints.ml[38,1195+0]..[43,1398+3])
+    Pstr_extension "expect"
+    [
+      structure_item (testsuite/tests/typing-misc/constraints.ml[38,1195+9]..[43,1398+2])
+        Pstr_eval
+        expression (testsuite/tests/typing-misc/constraints.ml[38,1195+9]..[43,1398+2])
+          Pexp_constant PConst_string ("\nLine 1, characters 0-45:\n1 | type 'a t = [`A of 'a t] constraint 'a = 'a t;; (* fails since 4.04 *)\n    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nError: The type abbreviation t is cyclic\n",(testsuite/tests/typing-misc/constraints.ml[38,1195+11]..[43,1398+0]),Some "")
+    ]
+  structure_item (testsuite/tests/typing-misc/constraints.ml[44,1404+0]..[44,1404+28])
+    Pstr_type Rec
+    [
+      type_declaration "t" (testsuite/tests/typing-misc/constraints.ml[44,1404+8]..[44,1404+9]) (testsuite/tests/typing-misc/constraints.ml[44,1404+0]..[44,1404+28])
+        ptype_params =
+          [
+            core_type (testsuite/tests/typing-misc/constraints.ml[44,1404+5]..[44,1404+7])
+              Ptyp_var a
+          ]
+        ptype_cstrs =
+          []
+        ptype_kind =
+          Ptype_abstract
+        ptype_private = Public
+        ptype_manifest =
+          Some
+            core_type (testsuite/tests/typing-misc/constraints.ml[44,1404+12]..[44,1404+28])
+              Ptyp_alias "a"
+              core_type (testsuite/tests/typing-misc/constraints.ml[44,1404+12]..[44,1404+22])
+                Ptyp_variant closed=Closed
+                [
+                  Rtag "A" false
+                    [
+                      core_type (testsuite/tests/typing-misc/constraints.ml[44,1404+19]..[44,1404+21])
+                        Ptyp_var a
+                    ]
+                ]
+                None
+    ]
+  structure_item (testsuite/tests/typing-misc/constraints.ml[45,1435+0]..[49,1567+3])
+    Pstr_extension "expect"
+    [
+      structure_item (testsuite/tests/typing-misc/constraints.ml[45,1435+9]..[49,1567+2])
+        Pstr_eval
+        expression (testsuite/tests/typing-misc/constraints.ml[45,1435+9]..[49,1567+2])
+          Pexp_tuple
+          [
+            expression (testsuite/tests/typing-misc/constraints.ml[45,1435+9]..[47,1491+2])
+              Pexp_constant PConst_string ("\ntype 'a t = 'a constraint 'a = [ `A of 'a ]\n",(testsuite/tests/typing-misc/constraints.ml[45,1435+11]..[47,1491+0]),Some "")
+            expression (testsuite/tests/typing-misc/constraints.ml[47,1491+4]..[49,1567+2])
+              Pexp_construct "Principal" (testsuite/tests/typing-misc/constraints.ml[47,1491+4]..[47,1491+13])
+              Some
+                expression (testsuite/tests/typing-misc/constraints.ml[47,1491+13]..[49,1567+2])
+                  Pexp_constant PConst_string ("\ntype 'a t = [ `A of 'b ] as 'b constraint 'a = [ `A of 'a ]\n",(testsuite/tests/typing-misc/constraints.ml[47,1491+15]..[49,1567+0]),Some "")
+          ]
+    ]
+  structure_item (testsuite/tests/typing-misc/constraints.ml[50,1573+0]..[50,1573+61])
+    Pstr_type Rec
+    [
+      type_declaration "v" (testsuite/tests/typing-misc/constraints.ml[50,1573+8]..[50,1573+9]) (testsuite/tests/typing-misc/constraints.ml[50,1573+0]..[50,1573+41])
+        ptype_params =
+          [
+            core_type (testsuite/tests/typing-misc/constraints.ml[50,1573+5]..[50,1573+7])
+              Ptyp_var a
+          ]
+        ptype_cstrs =
+          [
+            <constraint> (testsuite/tests/typing-misc/constraints.ml[50,1573+35]..[50,1573+41])
+              core_type (testsuite/tests/typing-misc/constraints.ml[50,1573+35]..[50,1573+37])
+                Ptyp_var a
+              core_type (testsuite/tests/typing-misc/constraints.ml[50,1573+40]..[50,1573+41])
+                Ptyp_constr "t" (testsuite/tests/typing-misc/constraints.ml[50,1573+40]..[50,1573+41])
+                []
+          ]
+        ptype_kind =
+          Ptype_abstract
+        ptype_private = Public
+        ptype_manifest =
+          Some
+            core_type (testsuite/tests/typing-misc/constraints.ml[50,1573+12]..[50,1573+23])
+              Ptyp_variant closed=Closed
+              [
+                Rtag "A" false
+                  [
+                    core_type (testsuite/tests/typing-misc/constraints.ml[50,1573+19]..[50,1573+22])
+                      Ptyp_constr "v" (testsuite/tests/typing-misc/constraints.ml[50,1573+21]..[50,1573+22])
+                      [
+                        core_type (testsuite/tests/typing-misc/constraints.ml[50,1573+19]..[50,1573+20])
+                          Ptyp_constr "u" (testsuite/tests/typing-misc/constraints.ml[50,1573+19]..[50,1573+20])
+                          []
+                      ]
+                  ]
+              ]
+              None
+      type_declaration "t" (testsuite/tests/typing-misc/constraints.ml[50,1573+46]..[50,1573+47]) (testsuite/tests/typing-misc/constraints.ml[50,1573+42]..[50,1573+51])
+        ptype_params =
+          []
+        ptype_cstrs =
+          []
+        ptype_kind =
+          Ptype_abstract
+        ptype_private = Public
+        ptype_manifest =
+          Some
+            core_type (testsuite/tests/typing-misc/constraints.ml[50,1573+50]..[50,1573+51])
+              Ptyp_constr "u" (testsuite/tests/typing-misc/constraints.ml[50,1573+50]..[50,1573+51])
+              []
+      type_declaration "u" (testsuite/tests/typing-misc/constraints.ml[50,1573+56]..[50,1573+57]) (testsuite/tests/typing-misc/constraints.ml[50,1573+52]..[50,1573+61])
+        ptype_params =
+          []
+        ptype_cstrs =
+          []
+        ptype_kind =
+          Ptype_abstract
+        ptype_private = Public
+        ptype_manifest =
+          Some
+            core_type (testsuite/tests/typing-misc/constraints.ml[50,1573+60]..[50,1573+61])
+              Ptyp_constr "t" (testsuite/tests/typing-misc/constraints.ml[50,1573+60]..[50,1573+61])
+              []
+    ]
+  structure_item (testsuite/tests/typing-misc/constraints.ml[51,1649+0]..[57,1866+3])
+    Pstr_extension "expect"
+    [
+      structure_item (testsuite/tests/typing-misc/constraints.ml[51,1649+9]..[57,1866+2])
+        Pstr_eval
+        expression (testsuite/tests/typing-misc/constraints.ml[51,1649+9]..[57,1866+2])
+          Pexp_constant PConst_string ("\nLine 1, characters 0-41:\n1 | type 'a v = [`A of u v] constraint 'a = t and t = u and u = t;; (* fails *)\n    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nError: The definition of v contains a cycle:\n       t\n",(testsuite/tests/typing-misc/constraints.ml[51,1649+11]..[57,1866+0]),Some "")
+    ]
+  structure_item (testsuite/tests/typing-misc/constraints.ml[59,1873+0]..[59,1873+14])
+    Pstr_type Rec
+    [
+      type_declaration "t" (testsuite/tests/typing-misc/constraints.ml[59,1873+8]..[59,1873+9]) (testsuite/tests/typing-misc/constraints.ml[59,1873+0]..[59,1873+14])
+        ptype_params =
+          [
+            core_type (testsuite/tests/typing-misc/constraints.ml[59,1873+5]..[59,1873+7])
+              Ptyp_var a
+          ]
+        ptype_cstrs =
+          []
+        ptype_kind =
+          Ptype_abstract
+        ptype_private = Public
+        ptype_manifest =
+          Some
+            core_type (testsuite/tests/typing-misc/constraints.ml[59,1873+12]..[59,1873+14])
+              Ptyp_var a
+    ]
+  structure_item (testsuite/tests/typing-misc/constraints.ml[60,1890+0]..[60,1890+27])
+    Pstr_value Nonrec
+    [
+      <def>
+        pattern (testsuite/tests/typing-misc/constraints.ml[60,1890+4]..[60,1890+5])
+          Ppat_var "f" (testsuite/tests/typing-misc/constraints.ml[60,1890+4]..[60,1890+5])
+        expression (testsuite/tests/typing-misc/constraints.ml[60,1890+6]..[60,1890+27]) ghost
+          Pexp_fun
+          Nolabel
+          None
+          pattern (testsuite/tests/typing-misc/constraints.ml[60,1890+6]..[60,1890+22])
+            Ppat_constraint
+            pattern (testsuite/tests/typing-misc/constraints.ml[60,1890+7]..[60,1890+8])
+              Ppat_var "x" (testsuite/tests/typing-misc/constraints.ml[60,1890+7]..[60,1890+8])
+            core_type (testsuite/tests/typing-misc/constraints.ml[60,1890+11]..[60,1890+21])
+              Ptyp_alias "a"
+              core_type (testsuite/tests/typing-misc/constraints.ml[60,1890+11]..[60,1890+15])
+                Ptyp_constr "t" (testsuite/tests/typing-misc/constraints.ml[60,1890+14]..[60,1890+15])
+                [
+                  core_type (testsuite/tests/typing-misc/constraints.ml[60,1890+11]..[60,1890+13])
+                    Ptyp_var a
+                ]
+          expression (testsuite/tests/typing-misc/constraints.ml[60,1890+25]..[60,1890+27])
+            Pexp_construct "()" (testsuite/tests/typing-misc/constraints.ml[60,1890+25]..[60,1890+27])
+            None
+    ]
+  structure_item (testsuite/tests/typing-misc/constraints.ml[61,1929+0]..[64,1983+3])
+    Pstr_extension "expect"
+    [
+      structure_item (testsuite/tests/typing-misc/constraints.ml[61,1929+9]..[64,1983+2])
+        Pstr_eval
+        expression (testsuite/tests/typing-misc/constraints.ml[61,1929+9]..[64,1983+2])
+          Pexp_constant PConst_string ("\ntype 'a t = 'a\nval f : 'a -> unit = <fun>\n",(testsuite/tests/typing-misc/constraints.ml[61,1929+11]..[64,1983+0]),Some "")
+    ]
+  structure_item (testsuite/tests/typing-misc/constraints.ml[66,1990+0]..[66,1990+33])
+    Pstr_value Nonrec
+    [
+      <def>
+        pattern (testsuite/tests/typing-misc/constraints.ml[66,1990+4]..[66,1990+5])
+          Ppat_var "f" (testsuite/tests/typing-misc/constraints.ml[66,1990+4]..[66,1990+5])
+        expression (testsuite/tests/typing-misc/constraints.ml[66,1990+6]..[66,1990+33]) ghost
+          Pexp_fun
+          Nolabel
+          None
+          pattern (testsuite/tests/typing-misc/constraints.ml[66,1990+6]..[66,1990+16])
+            Ppat_constraint
+            pattern (testsuite/tests/typing-misc/constraints.ml[66,1990+7]..[66,1990+8])
+              Ppat_var "x" (testsuite/tests/typing-misc/constraints.ml[66,1990+7]..[66,1990+8])
+            core_type (testsuite/tests/typing-misc/constraints.ml[66,1990+11]..[66,1990+15])
+              Ptyp_constr "t" (testsuite/tests/typing-misc/constraints.ml[66,1990+14]..[66,1990+15])
+              [
+                core_type (testsuite/tests/typing-misc/constraints.ml[66,1990+11]..[66,1990+13])
+                  Ptyp_var a
+              ]
+          expression (testsuite/tests/typing-misc/constraints.ml[66,1990+17]..[66,1990+33]) ghost
+            Pexp_fun
+            Nolabel
+            None
+            pattern (testsuite/tests/typing-misc/constraints.ml[66,1990+17]..[66,1990+25])
+              Ppat_constraint
+              pattern (testsuite/tests/typing-misc/constraints.ml[66,1990+18]..[66,1990+19])
+                Ppat_var "y" (testsuite/tests/typing-misc/constraints.ml[66,1990+18]..[66,1990+19])
+              core_type (testsuite/tests/typing-misc/constraints.ml[66,1990+22]..[66,1990+24])
+                Ptyp_var a
+            expression (testsuite/tests/typing-misc/constraints.ml[66,1990+28]..[66,1990+33])
+              Pexp_apply
+              expression (testsuite/tests/typing-misc/constraints.ml[66,1990+30]..[66,1990+31])
+                Pexp_ident "=" (testsuite/tests/typing-misc/constraints.ml[66,1990+30]..[66,1990+31])
+              [
+                <arg>
+                Nolabel
+                  expression (testsuite/tests/typing-misc/constraints.ml[66,1990+28]..[66,1990+29])
+                    Pexp_ident "x" (testsuite/tests/typing-misc/constraints.ml[66,1990+28]..[66,1990+29])
+                <arg>
+                Nolabel
+                  expression (testsuite/tests/typing-misc/constraints.ml[66,1990+32]..[66,1990+33])
+                    Pexp_ident "y" (testsuite/tests/typing-misc/constraints.ml[66,1990+32]..[66,1990+33])
+              ]
+    ]
+  structure_item (testsuite/tests/typing-misc/constraints.ml[67,2026+0]..[69,2073+3])
+    Pstr_extension "expect"
+    [
+      structure_item (testsuite/tests/typing-misc/constraints.ml[67,2026+9]..[69,2073+2])
+        Pstr_eval
+        expression (testsuite/tests/typing-misc/constraints.ml[67,2026+9]..[69,2073+2])
+          Pexp_constant PConst_string ("\nval f : 'a t -> 'a -> bool = <fun>\n",(testsuite/tests/typing-misc/constraints.ml[67,2026+11]..[69,2073+0]),Some "")
+    ]
+  structure_item (testsuite/tests/typing-misc/constraints.ml[72,2094+0]..[77,2267+3])
+    Pstr_modtype "PR6505" (testsuite/tests/typing-misc/constraints.ml[72,2094+12]..[72,2094+18])
+      module_type (testsuite/tests/typing-misc/constraints.ml[72,2094+21]..[77,2267+3])
+        Pmty_signature
+        [
+          signature_item (testsuite/tests/typing-misc/constraints.ml[73,2119+2]..[74,2157+44])
+            Psig_type Rec
+            [
+              type_declaration "is_an_object" (testsuite/tests/typing-misc/constraints.ml[73,2119+10]..[73,2119+22]) (testsuite/tests/typing-misc/constraints.ml[73,2119+2]..[73,2119+37])
+                ptype_params =
+                  [
+                    core_type (testsuite/tests/typing-misc/constraints.ml[73,2119+7]..[73,2119+9])
+                      Ptyp_var o
+                  ]
+                ptype_cstrs =
+                  []
+                ptype_kind =
+                  Ptype_abstract
+                ptype_private = Public
+                ptype_manifest =
+                  Some
+                    core_type (testsuite/tests/typing-misc/constraints.ml[73,2119+25]..[73,2119+37])
+                      Ptyp_alias "o"
+                      core_type (testsuite/tests/typing-misc/constraints.ml[73,2119+25]..[73,2119+31])
+                        Ptyp_object Open
+              type_declaration "abs" (testsuite/tests/typing-misc/constraints.ml[74,2157+9]..[74,2157+12]) (testsuite/tests/typing-misc/constraints.ml[74,2157+2]..[74,2157+44])
+                ptype_params =
+                  [
+                    core_type (testsuite/tests/typing-misc/constraints.ml[74,2157+6]..[74,2157+8])
+                      Ptyp_var o
+                  ]
+                ptype_cstrs =
+                  [
+                    <constraint> (testsuite/tests/typing-misc/constraints.ml[74,2157+24]..[74,2157+44])
+                      core_type (testsuite/tests/typing-misc/constraints.ml[74,2157+24]..[74,2157+26])
+                        Ptyp_var o
+                      core_type (testsuite/tests/typing-misc/constraints.ml[74,2157+29]..[74,2157+44])
+                        Ptyp_constr "is_an_object" (testsuite/tests/typing-misc/constraints.ml[74,2157+32]..[74,2157+44])
+                        [
+                          core_type (testsuite/tests/typing-misc/constraints.ml[74,2157+29]..[74,2157+31])
+                            Ptyp_var o
+                        ]
+                  ]
+                ptype_kind =
+                  Ptype_abstract
+                ptype_private = Public
+                ptype_manifest =
+                  None
+            ]
+          signature_item (testsuite/tests/typing-misc/constraints.ml[75,2202+2]..[75,2202+37])
+            Psig_value
+            value_description "abs" (testsuite/tests/typing-misc/constraints.ml[75,2202+6]..[75,2202+9]) (testsuite/tests/typing-misc/constraints.ml[75,2202+2]..[75,2202+37])
+              core_type (testsuite/tests/typing-misc/constraints.ml[75,2202+12]..[75,2202+37])
+                Ptyp_arrow
+                Nolabel
+                core_type (testsuite/tests/typing-misc/constraints.ml[75,2202+12]..[75,2202+27])
+                  Ptyp_constr "is_an_object" (testsuite/tests/typing-misc/constraints.ml[75,2202+15]..[75,2202+27])
+                  [
+                    core_type (testsuite/tests/typing-misc/constraints.ml[75,2202+12]..[75,2202+14])
+                      Ptyp_var o
+                  ]
+                core_type (testsuite/tests/typing-misc/constraints.ml[75,2202+31]..[75,2202+37])
+                  Ptyp_constr "abs" (testsuite/tests/typing-misc/constraints.ml[75,2202+34]..[75,2202+37])
+                  [
+                    core_type (testsuite/tests/typing-misc/constraints.ml[75,2202+31]..[75,2202+33])
+                      Ptyp_var o
+                  ]
+              []
+          signature_item (testsuite/tests/typing-misc/constraints.ml[76,2240+2]..[76,2240+26])
+            Psig_value
+            value_description "unabs" (testsuite/tests/typing-misc/constraints.ml[76,2240+6]..[76,2240+11]) (testsuite/tests/typing-misc/constraints.ml[76,2240+2]..[76,2240+26])
+              core_type (testsuite/tests/typing-misc/constraints.ml[76,2240+14]..[76,2240+26])
+                Ptyp_arrow
+                Nolabel
+                core_type (testsuite/tests/typing-misc/constraints.ml[76,2240+14]..[76,2240+20])
+                  Ptyp_constr "abs" (testsuite/tests/typing-misc/constraints.ml[76,2240+17]..[76,2240+20])
+                  [
+                    core_type (testsuite/tests/typing-misc/constraints.ml[76,2240+14]..[76,2240+16])
+                      Ptyp_var o
+                  ]
+                core_type (testsuite/tests/typing-misc/constraints.ml[76,2240+24]..[76,2240+26])
+                  Ptyp_var o
+              []
+        ]
+  structure_item (testsuite/tests/typing-misc/constraints.ml[79,2286+0]..[85,2497+3])
+    Pstr_extension "expect"
+    [
+      structure_item (testsuite/tests/typing-misc/constraints.ml[79,2286+9]..[85,2497+2])
+        Pstr_eval
+        expression (testsuite/tests/typing-misc/constraints.ml[79,2286+9]..[85,2497+2])
+          Pexp_constant PConst_string ("\nLine 3, characters 2-44:\n3 |   and 'o abs constraint 'o = 'o is_an_object\n      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nError: The definition of abs contains a cycle:\n       'a is_an_object as 'a\n",(testsuite/tests/typing-misc/constraints.ml[79,2286+11]..[85,2497+0]),Some "")
+    ]
+  structure_item (testsuite/tests/typing-misc/constraints.ml[87,2504+0]..[91,2661+3])
+    Pstr_module
+    "PR6505a_old" (testsuite/tests/typing-misc/constraints.ml[87,2504+7]..[87,2504+18])
+      module_expr (testsuite/tests/typing-misc/constraints.ml[87,2504+21]..[91,2661+3])
+        Pmod_structure
+        [
+          structure_item (testsuite/tests/typing-misc/constraints.ml[88,2532+2]..[89,2570+54])
+            Pstr_type Rec
+            [
+              type_declaration "is_an_object" (testsuite/tests/typing-misc/constraints.ml[88,2532+10]..[88,2532+22]) (testsuite/tests/typing-misc/constraints.ml[88,2532+2]..[88,2532+37])
+                ptype_params =
+                  [
+                    core_type (testsuite/tests/typing-misc/constraints.ml[88,2532+7]..[88,2532+9])
+                      Ptyp_var o
+                  ]
+                ptype_cstrs =
+                  []
+                ptype_kind =
+                  Ptype_abstract
+                ptype_private = Public
+                ptype_manifest =
+                  Some
+                    core_type (testsuite/tests/typing-misc/constraints.ml[88,2532+25]..[88,2532+37])
+                      Ptyp_alias "o"
+                      core_type (testsuite/tests/typing-misc/constraints.ml[88,2532+25]..[88,2532+31])
+                        Ptyp_object Open
+              type_declaration "abs" (testsuite/tests/typing-misc/constraints.ml[89,2570+14]..[89,2570+17]) (testsuite/tests/typing-misc/constraints.ml[89,2570+2]..[89,2570+54])
+                ptype_params =
+                  [
+                    core_type (testsuite/tests/typing-misc/constraints.ml[89,2570+7]..[89,2570+9])
+                      Ptyp_var k
+                    core_type (testsuite/tests/typing-misc/constraints.ml[89,2570+10]..[89,2570+12])
+                      Ptyp_var l
+                  ]
+                ptype_cstrs =
+                  [
+                    <constraint> (testsuite/tests/typing-misc/constraints.ml[89,2570+34]..[89,2570+54])
+                      core_type (testsuite/tests/typing-misc/constraints.ml[89,2570+34]..[89,2570+36])
+                        Ptyp_var k
+                      core_type (testsuite/tests/typing-misc/constraints.ml[89,2570+39]..[89,2570+54])
+                        Ptyp_constr "is_an_object" (testsuite/tests/typing-misc/constraints.ml[89,2570+42]..[89,2570+54])
+                        [
+                          core_type (testsuite/tests/typing-misc/constraints.ml[89,2570+39]..[89,2570+41])
+                            Ptyp_var l
+                        ]
+                  ]
+                ptype_kind =
+                  Ptype_abstract
+                ptype_private = Public
+                ptype_manifest =
+                  Some
+                    core_type (testsuite/tests/typing-misc/constraints.ml[89,2570+20]..[89,2570+22])
+                      Ptyp_var l
+            ]
+          structure_item (testsuite/tests/typing-misc/constraints.ml[90,2625+2]..[90,2625+35])
+            Pstr_value Nonrec
+            [
+              <def>
+                pattern (testsuite/tests/typing-misc/constraints.ml[90,2625+6]..[90,2625+22]) ghost
+                  Ppat_constraint
+                  pattern (testsuite/tests/typing-misc/constraints.ml[90,2625+6]..[90,2625+7])
+                    Ppat_var "y" (testsuite/tests/typing-misc/constraints.ml[90,2625+6]..[90,2625+7])
+                  core_type (testsuite/tests/typing-misc/constraints.ml[90,2625+10]..[90,2625+22]) ghost
+                    Ptyp_poly
+                    core_type (testsuite/tests/typing-misc/constraints.ml[90,2625+10]..[90,2625+22])
+                      Ptyp_constr "abs" (testsuite/tests/typing-misc/constraints.ml[90,2625+19]..[90,2625+22])
+                      [
+                        core_type (testsuite/tests/typing-misc/constraints.ml[90,2625+11]..[90,2625+13])
+                          Ptyp_var o
+                        core_type (testsuite/tests/typing-misc/constraints.ml[90,2625+15]..[90,2625+17])
+                          Ptyp_var o
+                      ]
+                expression (testsuite/tests/typing-misc/constraints.ml[90,2625+6]..[90,2625+35])
+                  Pexp_constraint
+                  expression (testsuite/tests/typing-misc/constraints.ml[90,2625+25]..[90,2625+35])
+                    Pexp_object
+                    class_structure
+                      pattern (testsuite/tests/typing-misc/constraints.ml[90,2625+31]..[90,2625+31]) ghost
+                        Ppat_any
+                      []
+                  core_type (testsuite/tests/typing-misc/constraints.ml[90,2625+10]..[90,2625+22])
+                    Ptyp_constr "abs" (testsuite/tests/typing-misc/constraints.ml[90,2625+19]..[90,2625+22])
+                    [
+                      core_type (testsuite/tests/typing-misc/constraints.ml[90,2625+11]..[90,2625+13])
+                        Ptyp_var o
+                      core_type (testsuite/tests/typing-misc/constraints.ml[90,2625+15]..[90,2625+17])
+                        Ptyp_var o
+                    ]
+            ]
+        ]
+  structure_item (testsuite/tests/typing-misc/constraints.ml[92,2667+0]..[98,2900+3])
+    Pstr_extension "expect"
+    [
+      structure_item (testsuite/tests/typing-misc/constraints.ml[92,2667+9]..[98,2900+2])
+        Pstr_eval
+        expression (testsuite/tests/typing-misc/constraints.ml[92,2667+9]..[98,2900+2])
+          Pexp_constant PConst_string ("\nLine 3, characters 7-9:\n3 |   and ('k,'l) abs = 'l constraint 'k = 'l is_an_object\n           ^^\nError: Constraints are not satisfied in this type.\n       Type 'l is_an_object should be an instance of < .. > is_an_object\n",(testsuite/tests/typing-misc/constraints.ml[92,2667+11]..[98,2900+0]),Some "")
+    ]
+  structure_item (testsuite/tests/typing-misc/constraints.ml[100,2905+0]..[104,3059+3])
+    Pstr_module
+    "PR6505a" (testsuite/tests/typing-misc/constraints.ml[100,2905+7]..[100,2905+14])
+      module_expr (testsuite/tests/typing-misc/constraints.ml[100,2905+17]..[104,3059+3])
+        Pmod_structure
+        [
+          structure_item (testsuite/tests/typing-misc/constraints.ml[101,2929+2]..[101,2929+37])
+            Pstr_type Rec
+            [
+              type_declaration "is_an_object" (testsuite/tests/typing-misc/constraints.ml[101,2929+10]..[101,2929+22]) (testsuite/tests/typing-misc/constraints.ml[101,2929+2]..[101,2929+37])
+                ptype_params =
+                  [
+                    core_type (testsuite/tests/typing-misc/constraints.ml[101,2929+7]..[101,2929+9])
+                      Ptyp_var o
+                  ]
+                ptype_cstrs =
+                  []
+                ptype_kind =
+                  Ptype_abstract
+                ptype_private = Public
+                ptype_manifest =
+                  Some
+                    core_type (testsuite/tests/typing-misc/constraints.ml[101,2929+25]..[101,2929+37])
+                      Ptyp_alias "o"
+                      core_type (testsuite/tests/typing-misc/constraints.ml[101,2929+25]..[101,2929+31])
+                        Ptyp_object Open
+            ]
+          structure_item (testsuite/tests/typing-misc/constraints.ml[102,2967+2]..[102,2967+55])
+            Pstr_type Rec
+            [
+              type_declaration "abs" (testsuite/tests/typing-misc/constraints.ml[102,2967+15]..[102,2967+18]) (testsuite/tests/typing-misc/constraints.ml[102,2967+2]..[102,2967+55])
+                ptype_params =
+                  [
+                    core_type (testsuite/tests/typing-misc/constraints.ml[102,2967+8]..[102,2967+10])
+                      Ptyp_var k
+                    core_type (testsuite/tests/typing-misc/constraints.ml[102,2967+11]..[102,2967+13])
+                      Ptyp_var l
+                  ]
+                ptype_cstrs =
+                  [
+                    <constraint> (testsuite/tests/typing-misc/constraints.ml[102,2967+35]..[102,2967+55])
+                      core_type (testsuite/tests/typing-misc/constraints.ml[102,2967+35]..[102,2967+37])
+                        Ptyp_var k
+                      core_type (testsuite/tests/typing-misc/constraints.ml[102,2967+40]..[102,2967+55])
+                        Ptyp_constr "is_an_object" (testsuite/tests/typing-misc/constraints.ml[102,2967+43]..[102,2967+55])
+                        [
+                          core_type (testsuite/tests/typing-misc/constraints.ml[102,2967+40]..[102,2967+42])
+                            Ptyp_var l
+                        ]
+                  ]
+                ptype_kind =
+                  Ptype_abstract
+                ptype_private = Public
+                ptype_manifest =
+                  Some
+                    core_type (testsuite/tests/typing-misc/constraints.ml[102,2967+21]..[102,2967+23])
+                      Ptyp_var l
+            ]
+          structure_item (testsuite/tests/typing-misc/constraints.ml[103,3023+2]..[103,3023+35])
+            Pstr_value Nonrec
+            [
+              <def>
+                pattern (testsuite/tests/typing-misc/constraints.ml[103,3023+6]..[103,3023+22]) ghost
+                  Ppat_constraint
+                  pattern (testsuite/tests/typing-misc/constraints.ml[103,3023+6]..[103,3023+7])
+                    Ppat_var "y" (testsuite/tests/typing-misc/constraints.ml[103,3023+6]..[103,3023+7])
+                  core_type (testsuite/tests/typing-misc/constraints.ml[103,3023+10]..[103,3023+22]) ghost
+                    Ptyp_poly
+                    core_type (testsuite/tests/typing-misc/constraints.ml[103,3023+10]..[103,3023+22])
+                      Ptyp_constr "abs" (testsuite/tests/typing-misc/constraints.ml[103,3023+19]..[103,3023+22])
+                      [
+                        core_type (testsuite/tests/typing-misc/constraints.ml[103,3023+11]..[103,3023+13])
+                          Ptyp_var o
+                        core_type (testsuite/tests/typing-misc/constraints.ml[103,3023+15]..[103,3023+17])
+                          Ptyp_var o
+                      ]
+                expression (testsuite/tests/typing-misc/constraints.ml[103,3023+6]..[103,3023+35])
+                  Pexp_constraint
+                  expression (testsuite/tests/typing-misc/constraints.ml[103,3023+25]..[103,3023+35])
+                    Pexp_object
+                    class_structure
+                      pattern (testsuite/tests/typing-misc/constraints.ml[103,3023+31]..[103,3023+31]) ghost
+                        Ppat_any
+                      []
+                  core_type (testsuite/tests/typing-misc/constraints.ml[103,3023+10]..[103,3023+22])
+                    Ptyp_constr "abs" (testsuite/tests/typing-misc/constraints.ml[103,3023+19]..[103,3023+22])
+                    [
+                      core_type (testsuite/tests/typing-misc/constraints.ml[103,3023+11]..[103,3023+13])
+                        Ptyp_var o
+                      core_type (testsuite/tests/typing-misc/constraints.ml[103,3023+15]..[103,3023+17])
+                        Ptyp_var o
+                    ]
+            ]
+        ]
+  structure_item (testsuite/tests/typing-misc/constraints.ml[105,3065+0]..[105,3065+22])
+    Pstr_value Nonrec
+    [
+      <def>
+        pattern (testsuite/tests/typing-misc/constraints.ml[105,3065+4]..[105,3065+5])
+          Ppat_any
+        expression (testsuite/tests/typing-misc/constraints.ml[105,3065+8]..[105,3065+22])
+          Pexp_send "bang"
+          expression (testsuite/tests/typing-misc/constraints.ml[105,3065+8]..[105,3065+17])
+            Pexp_ident "PR6505a.y" (testsuite/tests/typing-misc/constraints.ml[105,3065+8]..[105,3065+17])
+    ]
+  structure_item (testsuite/tests/typing-misc/constraints.ml[106,3102+0]..[133,3953+3])
+    Pstr_extension "expect"
+    [
+      structure_item (testsuite/tests/typing-misc/constraints.ml[106,3102+9]..[133,3953+2])
+        Pstr_eval
+        expression (testsuite/tests/typing-misc/constraints.ml[106,3102+9]..[133,3953+2])
+          Pexp_tuple
+          [
+            expression (testsuite/tests/typing-misc/constraints.ml[106,3102+9]..[120,3564+2])
+              Pexp_constant PConst_string ("\nmodule PR6505a :\n  sig\n    type 'o is_an_object = 'o constraint 'o = < .. >\n    type ('a, 'b) abs = 'b constraint 'a = 'b is_an_object\n      constraint 'b = < .. >\n    val y : (<  > is_an_object, <  > is_an_object) abs\n  end\nLine 6, characters 8-17:\n6 | let _ = PR6505a.y#bang;; (* fails *)\n            ^^^^^^^^^\nError: This expression has type\n         (<  > PR6505a.is_an_object, <  > PR6505a.is_an_object) PR6505a.abs\n       It has no method bang\n",(testsuite/tests/typing-misc/constraints.ml[106,3102+11]..[120,3564+0]),Some "")
+            expression (testsuite/tests/typing-misc/constraints.ml[120,3564+4]..[133,3953+2])
+              Pexp_construct "Principal" (testsuite/tests/typing-misc/constraints.ml[120,3564+4]..[120,3564+13])
+              Some
+                expression (testsuite/tests/typing-misc/constraints.ml[120,3564+13]..[133,3953+2])
+                  Pexp_constant PConst_string ("\nmodule PR6505a :\n  sig\n    type 'o is_an_object = 'o constraint 'o = < .. >\n    type ('a, 'b) abs = 'b constraint 'a = 'b is_an_object\n      constraint 'b = < .. >\n    val y : (<  >, <  >) abs\n  end\nLine 6, characters 8-17:\n6 | let _ = PR6505a.y#bang;; (* fails *)\n            ^^^^^^^^^\nError: This expression has type (<  >, <  >) PR6505a.abs\n       It has no method bang\n",(testsuite/tests/typing-misc/constraints.ml[120,3564+15]..[133,3953+0]),Some "")
+          ]
+    ]
+  structure_item (testsuite/tests/typing-misc/constraints.ml[135,3958+0]..[139,4106+3])
+    Pstr_module
+    "PR6505b" (testsuite/tests/typing-misc/constraints.ml[135,3958+7]..[135,3958+14])
+      module_expr (testsuite/tests/typing-misc/constraints.ml[135,3958+17]..[139,4106+3])
+        Pmod_structure
+        [
+          structure_item (testsuite/tests/typing-misc/constraints.ml[136,3982+2]..[136,3982+35])
+            Pstr_type Rec
+            [
+              type_declaration "is_an_object" (testsuite/tests/typing-misc/constraints.ml[136,3982+10]..[136,3982+22]) (testsuite/tests/typing-misc/constraints.ml[136,3982+2]..[136,3982+35])
+                ptype_params =
+                  [
+                    core_type (testsuite/tests/typing-misc/constraints.ml[136,3982+7]..[136,3982+9])
+                      Ptyp_var o
+                  ]
+                ptype_cstrs =
+                  []
+                ptype_kind =
+                  Ptype_abstract
+                ptype_private = Public
+                ptype_manifest =
+                  Some
+                    core_type (testsuite/tests/typing-misc/constraints.ml[136,3982+25]..[136,3982+35])
+                      Ptyp_alias "o"
+                      core_type (testsuite/tests/typing-misc/constraints.ml[136,3982+25]..[136,3982+29])
+                        Ptyp_variant closed=Open
+                        []
+                        None
+            ]
+          structure_item (testsuite/tests/typing-misc/constraints.ml[137,4018+2]..[137,4018+55])
+            Pstr_type Rec
+            [
+              type_declaration "abs" (testsuite/tests/typing-misc/constraints.ml[137,4018+15]..[137,4018+18]) (testsuite/tests/typing-misc/constraints.ml[137,4018+2]..[137,4018+55])
+                ptype_params =
+                  [
+                    core_type (testsuite/tests/typing-misc/constraints.ml[137,4018+8]..[137,4018+10])
+                      Ptyp_var k
+                    core_type (testsuite/tests/typing-misc/constraints.ml[137,4018+11]..[137,4018+13])
+                      Ptyp_var l
+                  ]
+                ptype_cstrs =
+                  [
+                    <constraint> (testsuite/tests/typing-misc/constraints.ml[137,4018+35]..[137,4018+55])
+                      core_type (testsuite/tests/typing-misc/constraints.ml[137,4018+35]..[137,4018+37])
+                        Ptyp_var k
+                      core_type (testsuite/tests/typing-misc/constraints.ml[137,4018+40]..[137,4018+55])
+                        Ptyp_constr "is_an_object" (testsuite/tests/typing-misc/constraints.ml[137,4018+43]..[137,4018+55])
+                        [
+                          core_type (testsuite/tests/typing-misc/constraints.ml[137,4018+40]..[137,4018+42])
+                            Ptyp_var l
+                        ]
+                  ]
+                ptype_kind =
+                  Ptype_abstract
+                ptype_private = Public
+                ptype_manifest =
+                  Some
+                    core_type (testsuite/tests/typing-misc/constraints.ml[137,4018+21]..[137,4018+23])
+                      Ptyp_var l
+            ]
+          structure_item (testsuite/tests/typing-misc/constraints.ml[138,4074+2]..[138,4074+31])
+            Pstr_value Nonrec
+            [
+              <def>
+                pattern (testsuite/tests/typing-misc/constraints.ml[138,4074+6]..[138,4074+22]) ghost
+                  Ppat_constraint
+                  pattern (testsuite/tests/typing-misc/constraints.ml[138,4074+6]..[138,4074+7])
+                    Ppat_var "x" (testsuite/tests/typing-misc/constraints.ml[138,4074+6]..[138,4074+7])
+                  core_type (testsuite/tests/typing-misc/constraints.ml[138,4074+10]..[138,4074+22]) ghost
+                    Ptyp_poly
+                    core_type (testsuite/tests/typing-misc/constraints.ml[138,4074+10]..[138,4074+22])
+                      Ptyp_constr "abs" (testsuite/tests/typing-misc/constraints.ml[138,4074+19]..[138,4074+22])
+                      [
+                        core_type (testsuite/tests/typing-misc/constraints.ml[138,4074+11]..[138,4074+13])
+                          Ptyp_var a
+                        core_type (testsuite/tests/typing-misc/constraints.ml[138,4074+15]..[138,4074+17])
+                          Ptyp_var a
+                      ]
+                expression (testsuite/tests/typing-misc/constraints.ml[138,4074+6]..[138,4074+31])
+                  Pexp_constraint
+                  expression (testsuite/tests/typing-misc/constraints.ml[138,4074+25]..[138,4074+31])
+                    Pexp_variant "Foo"
+                    Some
+                      expression (testsuite/tests/typing-misc/constraints.ml[138,4074+30]..[138,4074+31])
+                        Pexp_constant PConst_int (6,None)
+                  core_type (testsuite/tests/typing-misc/constraints.ml[138,4074+10]..[138,4074+22])
+                    Ptyp_constr "abs" (testsuite/tests/typing-misc/constraints.ml[138,4074+19]..[138,4074+22])
+                    [
+                      core_type (testsuite/tests/typing-misc/constraints.ml[138,4074+11]..[138,4074+13])
+                        Ptyp_var a
+                      core_type (testsuite/tests/typing-misc/constraints.ml[138,4074+15]..[138,4074+17])
+                        Ptyp_var a
+                    ]
+            ]
+        ]
+  structure_item (testsuite/tests/typing-misc/constraints.ml[140,4112+0]..[140,4112+57])
+    Pstr_value Nonrec
+    [
+      <def>
+        pattern (testsuite/tests/typing-misc/constraints.ml[140,4112+4]..[140,4112+6])
+          Ppat_construct "()" (testsuite/tests/typing-misc/constraints.ml[140,4112+4]..[140,4112+6])
+          None
+        expression (testsuite/tests/typing-misc/constraints.ml[140,4112+9]..[140,4112+57])
+          Pexp_apply
+          expression (testsuite/tests/typing-misc/constraints.ml[140,4112+9]..[140,4112+22])
+            Pexp_ident "print_endline" (testsuite/tests/typing-misc/constraints.ml[140,4112+9]..[140,4112+22])
+          [
+            <arg>
+            Nolabel
+              expression (testsuite/tests/typing-misc/constraints.ml[140,4112+23]..[140,4112+57])
+                Pexp_match
+                expression (testsuite/tests/typing-misc/constraints.ml[140,4112+30]..[140,4112+39])
+                  Pexp_ident "PR6505b.x" (testsuite/tests/typing-misc/constraints.ml[140,4112+30]..[140,4112+39])
+                [
+                  <case>
+                    pattern (testsuite/tests/typing-misc/constraints.ml[140,4112+45]..[140,4112+51])
+                      Ppat_variant "Bar"
+                      Some
+                        pattern (testsuite/tests/typing-misc/constraints.ml[140,4112+50]..[140,4112+51])
+                          Ppat_var "s" (testsuite/tests/typing-misc/constraints.ml[140,4112+50]..[140,4112+51])
+                    expression (testsuite/tests/typing-misc/constraints.ml[140,4112+55]..[140,4112+56])
+                      Pexp_ident "s" (testsuite/tests/typing-misc/constraints.ml[140,4112+55]..[140,4112+56])
+                ]
+          ]
+    ]
+  structure_item (testsuite/tests/typing-misc/constraints.ml[141,4184+0]..[156,4764+3])
+    Pstr_extension "expect"
+    [
+      structure_item (testsuite/tests/typing-misc/constraints.ml[141,4184+9]..[156,4764+2])
+        Pstr_eval
+        expression (testsuite/tests/typing-misc/constraints.ml[141,4184+9]..[156,4764+2])
+          Pexp_constant PConst_string ("\nmodule PR6505b :\n  sig\n    type 'o is_an_object = 'o constraint 'o = [>  ]\n    type ('a, 'o) abs = 'o constraint 'a = 'o is_an_object\n      constraint 'o = [>  ]\n    val x : (([> `Foo of int ] as 'a) is_an_object, 'a is_an_object) abs\n  end\nLine 6, characters 23-57:\n6 | let () = print_endline (match PR6505b.x with `Bar s -> s);; (* fails *)\n                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nWarning 8 [partial-match]: this pattern-matching is not exhaustive.\nHere is an example of a case that is not matched:\n`Foo _\nException: Match_failure (\"\", 6, 23).\n",(testsuite/tests/typing-misc/constraints.ml[141,4184+11]..[156,4764+0]),Some "")
+    ]
+  structure_item (testsuite/tests/typing-misc/constraints.ml[160,4789+0]..[160,4789+36])
+    Pstr_type Rec
+    [
+      type_declaration "t" (testsuite/tests/typing-misc/constraints.ml[160,4789+8]..[160,4789+9]) (testsuite/tests/typing-misc/constraints.ml[160,4789+0]..[160,4789+36])
+        ptype_params =
+          [
+            core_type (testsuite/tests/typing-misc/constraints.ml[160,4789+5]..[160,4789+7])
+              Ptyp_var a
+          ]
+        ptype_cstrs =
+          [
+            <constraint> (testsuite/tests/typing-misc/constraints.ml[160,4789+27]..[160,4789+36])
+              core_type (testsuite/tests/typing-misc/constraints.ml[160,4789+27]..[160,4789+29])
+                Ptyp_var a
+              core_type (testsuite/tests/typing-misc/constraints.ml[160,4789+32]..[160,4789+36])
+                Ptyp_constr "t" (testsuite/tests/typing-misc/constraints.ml[160,4789+35]..[160,4789+36])
+                [
+                  core_type (testsuite/tests/typing-misc/constraints.ml[160,4789+32]..[160,4789+34])
+                    Ptyp_var b
+                ]
+          ]
+        ptype_kind =
+          Ptype_abstract
+        ptype_private = Public
+        ptype_manifest =
+          Some
+            core_type (testsuite/tests/typing-misc/constraints.ml[160,4789+12]..[160,4789+14])
+              Ptyp_var b
+    ]
+  structure_item (testsuite/tests/typing-misc/constraints.ml[161,4828+0]..[171,5180+3])
+    Pstr_extension "expect"
+    [
+      structure_item (testsuite/tests/typing-misc/constraints.ml[161,4828+9]..[171,5180+2])
+        Pstr_eval
+        expression (testsuite/tests/typing-misc/constraints.ml[161,4828+9]..[171,5180+2])
+          Pexp_constant PConst_string ("\nLine 1, characters 0-36:\n1 | type 'a t = 'b  constraint 'a = 'b t;;\n    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nError: This recursive type is not regular.\n       The type constructor t is defined as\n         type 'b t t\n       but it is used as\n         'b t.\n       All uses need to match the definition for the recursive type to be regular.\n",(testsuite/tests/typing-misc/constraints.ml[161,4828+11]..[171,5180+0]),Some "")
+    ]
+  structure_item (testsuite/tests/typing-misc/constraints.ml[173,5185+0]..[173,5185+42])
+    Pstr_type Rec
+    [
+      type_declaration "t" (testsuite/tests/typing-misc/constraints.ml[173,5185+8]..[173,5185+9]) (testsuite/tests/typing-misc/constraints.ml[173,5185+0]..[173,5185+42])
+        ptype_params =
+          [
+            core_type (testsuite/tests/typing-misc/constraints.ml[173,5185+5]..[173,5185+7])
+              Ptyp_var a
+          ]
+        ptype_cstrs =
+          [
+            <constraint> (testsuite/tests/typing-misc/constraints.ml[173,5185+26]..[173,5185+42])
+              core_type (testsuite/tests/typing-misc/constraints.ml[173,5185+26]..[173,5185+28])
+                Ptyp_var a
+              core_type (testsuite/tests/typing-misc/constraints.ml[173,5185+31]..[173,5185+42])
+                Ptyp_constr "t" (testsuite/tests/typing-misc/constraints.ml[173,5185+41]..[173,5185+42])
+                [
+                  core_type (testsuite/tests/typing-misc/constraints.ml[173,5185+32]..[173,5185+39])
+                    Ptyp_tuple
+                    [
+                      core_type (testsuite/tests/typing-misc/constraints.ml[173,5185+32]..[173,5185+34])
+                        Ptyp_var b
+                      core_type (testsuite/tests/typing-misc/constraints.ml[173,5185+37]..[173,5185+39])
+                        Ptyp_var b
+                    ]
+                ]
+          ]
+        ptype_kind =
+          Ptype_abstract
+        ptype_private = Public
+        ptype_manifest =
+          Some
+            core_type (testsuite/tests/typing-misc/constraints.ml[173,5185+12]..[173,5185+14])
+              Ptyp_var b
+    ]
+  structure_item (testsuite/tests/typing-misc/constraints.ml[174,5230+0]..[184,5608+3])
+    Pstr_extension "expect"
+    [
+      structure_item (testsuite/tests/typing-misc/constraints.ml[174,5230+9]..[184,5608+2])
+        Pstr_eval
+        expression (testsuite/tests/typing-misc/constraints.ml[174,5230+9]..[184,5608+2])
+          Pexp_constant PConst_string ("\nLine 1, characters 0-42:\n1 | type 'a t = 'b constraint 'a = ('b * 'b) t;;\n    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nError: This recursive type is not regular.\n       The type constructor t is defined as\n         type ('b * 'b) t t\n       but it is used as\n         ('b * 'b) t.\n       All uses need to match the definition for the recursive type to be regular.\n",(testsuite/tests/typing-misc/constraints.ml[174,5230+11]..[184,5608+0]),Some "")
+    ]
+  structure_item (testsuite/tests/typing-misc/constraints.ml[186,5613+0]..[186,5613+44])
+    Pstr_type Rec
+    [
+      type_declaration "t" (testsuite/tests/typing-misc/constraints.ml[186,5613+8]..[186,5613+9]) (testsuite/tests/typing-misc/constraints.ml[186,5613+0]..[186,5613+44])
+        ptype_params =
+          [
+            core_type (testsuite/tests/typing-misc/constraints.ml[186,5613+5]..[186,5613+7])
+              Ptyp_var a
+          ]
+        ptype_cstrs =
+          [
+            <constraint> (testsuite/tests/typing-misc/constraints.ml[186,5613+31]..[186,5613+44])
+              core_type (testsuite/tests/typing-misc/constraints.ml[186,5613+31]..[186,5613+37])
+                Ptyp_tuple
+                [
+                  core_type (testsuite/tests/typing-misc/constraints.ml[186,5613+31]..[186,5613+32])
+                    Ptyp_any
+                  core_type (testsuite/tests/typing-misc/constraints.ml[186,5613+35]..[186,5613+37])
+                    Ptyp_var a
+                ]
+              core_type (testsuite/tests/typing-misc/constraints.ml[186,5613+40]..[186,5613+44])
+                Ptyp_constr "t" (testsuite/tests/typing-misc/constraints.ml[186,5613+43]..[186,5613+44])
+                [
+                  core_type (testsuite/tests/typing-misc/constraints.ml[186,5613+40]..[186,5613+42])
+                    Ptyp_var b
+                ]
+          ]
+        ptype_kind =
+          Ptype_abstract
+        ptype_private = Public
+        ptype_manifest =
+          Some
+            core_type (testsuite/tests/typing-misc/constraints.ml[186,5613+12]..[186,5613+19])
+              Ptyp_tuple
+              [
+                core_type (testsuite/tests/typing-misc/constraints.ml[186,5613+12]..[186,5613+14])
+                  Ptyp_var a
+                core_type (testsuite/tests/typing-misc/constraints.ml[186,5613+17]..[186,5613+19])
+                  Ptyp_var b
+              ]
+    ]
+  structure_item (testsuite/tests/typing-misc/constraints.ml[187,5660+0]..[187,5660+40])
+    Pstr_type Rec
+    [
+      type_declaration "t" (testsuite/tests/typing-misc/constraints.ml[187,5660+8]..[187,5660+9]) (testsuite/tests/typing-misc/constraints.ml[187,5660+0]..[187,5660+40])
+        ptype_params =
+          [
+            core_type (testsuite/tests/typing-misc/constraints.ml[187,5660+5]..[187,5660+7])
+              Ptyp_var a
+          ]
+        ptype_cstrs =
+          [
+            <constraint> (testsuite/tests/typing-misc/constraints.ml[187,5660+31]..[187,5660+40])
+              core_type (testsuite/tests/typing-misc/constraints.ml[187,5660+31]..[187,5660+33])
+                Ptyp_var a
+              core_type (testsuite/tests/typing-misc/constraints.ml[187,5660+36]..[187,5660+40])
+                Ptyp_constr "t" (testsuite/tests/typing-misc/constraints.ml[187,5660+39]..[187,5660+40])
+                [
+                  core_type (testsuite/tests/typing-misc/constraints.ml[187,5660+36]..[187,5660+38])
+                    Ptyp_var b
+                ]
+          ]
+        ptype_kind =
+          Ptype_abstract
+        ptype_private = Public
+        ptype_manifest =
+          Some
+            core_type (testsuite/tests/typing-misc/constraints.ml[187,5660+12]..[187,5660+19])
+              Ptyp_tuple
+              [
+                core_type (testsuite/tests/typing-misc/constraints.ml[187,5660+12]..[187,5660+14])
+                  Ptyp_var a
+                core_type (testsuite/tests/typing-misc/constraints.ml[187,5660+17]..[187,5660+19])
+                  Ptyp_var b
+              ]
+    ]
+  structure_item (testsuite/tests/typing-misc/constraints.ml[188,5703+0]..[194,5893+3])
+    Pstr_extension "expect"
+    [
+      structure_item (testsuite/tests/typing-misc/constraints.ml[188,5703+9]..[194,5893+2])
+        Pstr_eval
+        expression (testsuite/tests/typing-misc/constraints.ml[188,5703+9]..[194,5893+2])
+          Pexp_constant PConst_string ("\ntype 'b t = 'b * 'b\nLine 2, characters 0-40:\n2 | type 'a t = 'a * 'b constraint 'a = 'b t;;\n    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nError: The type abbreviation t is cyclic\n",(testsuite/tests/typing-misc/constraints.ml[188,5703+11]..[194,5893+0]),Some "")
+    ]
+  structure_item (testsuite/tests/typing-misc/constraints.ml[196,5898+0]..[196,5898+49])
+    Pstr_type Rec
+    [
+      type_declaration "t" (testsuite/tests/typing-misc/constraints.ml[196,5898+8]..[196,5898+9]) (testsuite/tests/typing-misc/constraints.ml[196,5898+0]..[196,5898+49])
+        ptype_params =
+          [
+            core_type (testsuite/tests/typing-misc/constraints.ml[196,5898+5]..[196,5898+7])
+              Ptyp_var a
+          ]
+        ptype_cstrs =
+          [
+            <constraint> (testsuite/tests/typing-misc/constraints.ml[196,5898+40]..[196,5898+49])
+              core_type (testsuite/tests/typing-misc/constraints.ml[196,5898+40]..[196,5898+42])
+                Ptyp_var a
+              core_type (testsuite/tests/typing-misc/constraints.ml[196,5898+45]..[196,5898+49])
+                Ptyp_constr "t" (testsuite/tests/typing-misc/constraints.ml[196,5898+48]..[196,5898+49])
+                [
+                  core_type (testsuite/tests/typing-misc/constraints.ml[196,5898+45]..[196,5898+47])
+                    Ptyp_var b
+                ]
+          ]
+        ptype_kind =
+          Ptype_abstract
+        ptype_private = Public
+        ptype_manifest =
+          Some
+            core_type (testsuite/tests/typing-misc/constraints.ml[196,5898+12]..[196,5898+28])
+              Ptyp_object Closed
+                method a
+                  core_type (testsuite/tests/typing-misc/constraints.ml[196,5898+17]..[196,5898+19])
+                    Ptyp_var a
+                method b
+                  core_type (testsuite/tests/typing-misc/constraints.ml[196,5898+25]..[196,5898+27])
+                    Ptyp_var b
+    ]
+  structure_item (testsuite/tests/typing-misc/constraints.ml[197,5950+0]..[207,6328+3])
+    Pstr_extension "expect"
+    [
+      structure_item (testsuite/tests/typing-misc/constraints.ml[197,5950+9]..[207,6328+2])
+        Pstr_eval
+        expression (testsuite/tests/typing-misc/constraints.ml[197,5950+9]..[207,6328+2])
+          Pexp_constant PConst_string ("\nLine 1, characters 0-49:\n1 | type 'a t = <a : 'a; b : 'b> constraint 'a = 'b t;;\n    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nError: This recursive type is not regular.\n       The type constructor t is defined as\n         type 'b t t\n       but it is used as\n         'b t.\n       All uses need to match the definition for the recursive type to be regular.\n",(testsuite/tests/typing-misc/constraints.ml[197,5950+11]..[207,6328+0]),Some "")
+    ]
+  structure_item (testsuite/tests/typing-misc/constraints.ml[209,6333+0]..[209,6333+59])
+    Pstr_type Rec
+    [
+      type_declaration "t" (testsuite/tests/typing-misc/constraints.ml[209,6333+8]..[209,6333+9]) (testsuite/tests/typing-misc/constraints.ml[209,6333+0]..[209,6333+59])
+        ptype_params =
+          [
+            core_type (testsuite/tests/typing-misc/constraints.ml[209,6333+5]..[209,6333+7])
+              Ptyp_var a
+          ]
+        ptype_cstrs =
+          [
+            <constraint> (testsuite/tests/typing-misc/constraints.ml[209,6333+40]..[209,6333+59])
+              core_type (testsuite/tests/typing-misc/constraints.ml[209,6333+40]..[209,6333+52])
+                Ptyp_object Open
+                  method a
+                    core_type (testsuite/tests/typing-misc/constraints.ml[209,6333+45]..[209,6333+47])
+                      Ptyp_var a
+              core_type (testsuite/tests/typing-misc/constraints.ml[209,6333+55]..[209,6333+59])
+                Ptyp_constr "t" (testsuite/tests/typing-misc/constraints.ml[209,6333+58]..[209,6333+59])
+                [
+                  core_type (testsuite/tests/typing-misc/constraints.ml[209,6333+55]..[209,6333+57])
+                    Ptyp_var b
+                ]
+          ]
+        ptype_kind =
+          Ptype_abstract
+        ptype_private = Public
+        ptype_manifest =
+          Some
+            core_type (testsuite/tests/typing-misc/constraints.ml[209,6333+12]..[209,6333+28])
+              Ptyp_object Closed
+                method a
+                  core_type (testsuite/tests/typing-misc/constraints.ml[209,6333+17]..[209,6333+19])
+                    Ptyp_var a
+                method b
+                  core_type (testsuite/tests/typing-misc/constraints.ml[209,6333+25]..[209,6333+27])
+                    Ptyp_var b
+    ]
+  structure_item (testsuite/tests/typing-misc/constraints.ml[210,6395+0]..[216,6672+3])
+    Pstr_extension "expect"
+    [
+      structure_item (testsuite/tests/typing-misc/constraints.ml[210,6395+9]..[216,6672+2])
+        Pstr_eval
+        expression (testsuite/tests/typing-misc/constraints.ml[210,6395+9]..[216,6672+2])
+          Pexp_constant PConst_string ("\nLine 1, characters 0-59:\n1 | type 'a t = <a : 'a; b : 'b> constraint <a : 'a; ..> = 'b t;;\n    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nError: A type variable is unbound in this type declaration.\n       In method b: 'b the variable 'b is unbound\n",(testsuite/tests/typing-misc/constraints.ml[210,6395+11]..[216,6672+0]),Some "")
+    ]
+  structure_item (testsuite/tests/typing-misc/constraints.ml[218,6677+0]..[218,6677+62])
+    Pstr_recmodule
+    [
+      "M" (testsuite/tests/typing-misc/constraints.ml[218,6677+11]..[218,6677+12])
+        module_expr (testsuite/tests/typing-misc/constraints.ml[218,6677+13]..[218,6677+62])
+          Pmod_constraint
+          module_expr (testsuite/tests/typing-misc/constraints.ml[218,6677+61]..[218,6677+62])
+            Pmod_ident "M" (testsuite/tests/typing-misc/constraints.ml[218,6677+61]..[218,6677+62])
+          module_type (testsuite/tests/typing-misc/constraints.ml[218,6677+15]..[218,6677+58])
+            Pmty_signature
+            [
+              signature_item (testsuite/tests/typing-misc/constraints.ml[218,6677+19]..[218,6677+54])
+                Psig_type Rec
+                [
+                  type_declaration "t" (testsuite/tests/typing-misc/constraints.ml[218,6677+27]..[218,6677+28]) (testsuite/tests/typing-misc/constraints.ml[218,6677+19]..[218,6677+54])
+                    ptype_params =
+                      [
+                        core_type (testsuite/tests/typing-misc/constraints.ml[218,6677+24]..[218,6677+26])
+                          Ptyp_var a
+                      ]
+                    ptype_cstrs =
+                      [
+                        <constraint> (testsuite/tests/typing-misc/constraints.ml[218,6677+45]..[218,6677+54])
+                          core_type (testsuite/tests/typing-misc/constraints.ml[218,6677+45]..[218,6677+47])
+                            Ptyp_var a
+                          core_type (testsuite/tests/typing-misc/constraints.ml[218,6677+50]..[218,6677+54])
+                            Ptyp_constr "t" (testsuite/tests/typing-misc/constraints.ml[218,6677+53]..[218,6677+54])
+                            [
+                              core_type (testsuite/tests/typing-misc/constraints.ml[218,6677+50]..[218,6677+52])
+                                Ptyp_var b
+                            ]
+                      ]
+                    ptype_kind =
+                      Ptype_abstract
+                    ptype_private = Public
+                    ptype_manifest =
+                      Some
+                        core_type (testsuite/tests/typing-misc/constraints.ml[218,6677+31]..[218,6677+33])
+                          Ptyp_var b
+                ]
+            ]
+    ]
+  structure_item (testsuite/tests/typing-misc/constraints.ml[219,6742+0]..[229,7139+3])
+    Pstr_extension "expect"
+    [
+      structure_item (testsuite/tests/typing-misc/constraints.ml[219,6742+9]..[229,7139+2])
+        Pstr_eval
+        expression (testsuite/tests/typing-misc/constraints.ml[219,6742+9]..[229,7139+2])
+          Pexp_constant PConst_string ("\nLine 1, characters 19-54:\n1 | module rec M : sig type 'a t = 'b constraint 'a = 'b t end = M;;\n                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nError: This recursive type is not regular.\n       The type constructor t is defined as\n         type 'b t t\n       but it is used as\n         'b t.\n       All uses need to match the definition for the recursive type to be regular.\n",(testsuite/tests/typing-misc/constraints.ml[219,6742+11]..[229,7139+0]),Some "")
+    ]
+  structure_item (testsuite/tests/typing-misc/constraints.ml[230,7143+0]..[230,7143+69])
+    Pstr_recmodule
+    [
+      "M" (testsuite/tests/typing-misc/constraints.ml[230,7143+11]..[230,7143+12])
+        module_expr (testsuite/tests/typing-misc/constraints.ml[230,7143+13]..[230,7143+69])
+          Pmod_constraint
+          module_expr (testsuite/tests/typing-misc/constraints.ml[230,7143+68]..[230,7143+69])
+            Pmod_ident "M" (testsuite/tests/typing-misc/constraints.ml[230,7143+68]..[230,7143+69])
+          module_type (testsuite/tests/typing-misc/constraints.ml[230,7143+15]..[230,7143+65])
+            Pmty_signature
+            [
+              signature_item (testsuite/tests/typing-misc/constraints.ml[230,7143+19]..[230,7143+61])
+                Psig_type Rec
+                [
+                  type_declaration "t" (testsuite/tests/typing-misc/constraints.ml[230,7143+27]..[230,7143+28]) (testsuite/tests/typing-misc/constraints.ml[230,7143+19]..[230,7143+61])
+                    ptype_params =
+                      [
+                        core_type (testsuite/tests/typing-misc/constraints.ml[230,7143+24]..[230,7143+26])
+                          Ptyp_var a
+                      ]
+                    ptype_cstrs =
+                      [
+                        <constraint> (testsuite/tests/typing-misc/constraints.ml[230,7143+45]..[230,7143+61])
+                          core_type (testsuite/tests/typing-misc/constraints.ml[230,7143+45]..[230,7143+47])
+                            Ptyp_var a
+                          core_type (testsuite/tests/typing-misc/constraints.ml[230,7143+50]..[230,7143+61])
+                            Ptyp_constr "t" (testsuite/tests/typing-misc/constraints.ml[230,7143+60]..[230,7143+61])
+                            [
+                              core_type (testsuite/tests/typing-misc/constraints.ml[230,7143+51]..[230,7143+58])
+                                Ptyp_tuple
+                                [
+                                  core_type (testsuite/tests/typing-misc/constraints.ml[230,7143+51]..[230,7143+53])
+                                    Ptyp_var b
+                                  core_type (testsuite/tests/typing-misc/constraints.ml[230,7143+56]..[230,7143+58])
+                                    Ptyp_var b
+                                ]
+                            ]
+                      ]
+                    ptype_kind =
+                      Ptype_abstract
+                    ptype_private = Public
+                    ptype_manifest =
+                      Some
+                        core_type (testsuite/tests/typing-misc/constraints.ml[230,7143+31]..[230,7143+33])
+                          Ptyp_var b
+                ]
+            ]
+    ]
+  structure_item (testsuite/tests/typing-misc/constraints.ml[231,7215+0]..[241,7640+3])
+    Pstr_extension "expect"
+    [
+      structure_item (testsuite/tests/typing-misc/constraints.ml[231,7215+9]..[241,7640+2])
+        Pstr_eval
+        expression (testsuite/tests/typing-misc/constraints.ml[231,7215+9]..[241,7640+2])
+          Pexp_constant PConst_string ("\nLine 1, characters 19-61:\n1 | module rec M : sig type 'a t = 'b constraint 'a = ('b * 'b) t end = M;;\n                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nError: This recursive type is not regular.\n       The type constructor t is defined as\n         type ('b * 'b) t t\n       but it is used as\n         ('b * 'b) t.\n       All uses need to match the definition for the recursive type to be regular.\n",(testsuite/tests/typing-misc/constraints.ml[231,7215+11]..[241,7640+0]),Some "")
+    ]
+  structure_item (testsuite/tests/typing-misc/constraints.ml[243,7645+0]..[247,7718+3])
+    Pstr_modtype "S" (testsuite/tests/typing-misc/constraints.ml[243,7645+12]..[243,7645+13])
+      module_type (testsuite/tests/typing-misc/constraints.ml[244,7661+0]..[247,7718+3])
+        Pmty_signature
+        [
+          signature_item (testsuite/tests/typing-misc/constraints.ml[245,7665+2]..[245,7665+12])
+            Psig_type Rec
+            [
+              type_declaration "s" (testsuite/tests/typing-misc/constraints.ml[245,7665+11]..[245,7665+12]) (testsuite/tests/typing-misc/constraints.ml[245,7665+2]..[245,7665+12])
+                ptype_params =
+                  [
+                    core_type (testsuite/tests/typing-misc/constraints.ml[245,7665+8]..[245,7665+10])
+                      Ptyp_var a
+                  ]
+                ptype_cstrs =
+                  []
+                ptype_kind =
+                  Ptype_abstract
+                ptype_private = Public
+                ptype_manifest =
+                  None
+            ]
+          signature_item (testsuite/tests/typing-misc/constraints.ml[246,7678+2]..[246,7678+39])
+            Psig_type Rec
+            [
+              type_declaration "t" (testsuite/tests/typing-misc/constraints.ml[246,7678+11]..[246,7678+12]) (testsuite/tests/typing-misc/constraints.ml[246,7678+2]..[246,7678+39])
+                ptype_params =
+                  [
+                    core_type (testsuite/tests/typing-misc/constraints.ml[246,7678+8]..[246,7678+10])
+                      Ptyp_var a
+                  ]
+                ptype_cstrs =
+                  [
+                    <constraint> (testsuite/tests/typing-misc/constraints.ml[246,7678+30]..[246,7678+39])
+                      core_type (testsuite/tests/typing-misc/constraints.ml[246,7678+30]..[246,7678+32])
+                        Ptyp_var a
+                      core_type (testsuite/tests/typing-misc/constraints.ml[246,7678+35]..[246,7678+39])
+                        Ptyp_constr "s" (testsuite/tests/typing-misc/constraints.ml[246,7678+38]..[246,7678+39])
+                        [
+                          core_type (testsuite/tests/typing-misc/constraints.ml[246,7678+35]..[246,7678+37])
+                            Ptyp_var b
+                        ]
+                  ]
+                ptype_kind =
+                  Ptype_abstract
+                ptype_private = Public
+                ptype_manifest =
+                  Some
+                    core_type (testsuite/tests/typing-misc/constraints.ml[246,7678+15]..[246,7678+17])
+                      Ptyp_var b
+            ]
+        ]
+  structure_item (testsuite/tests/typing-misc/constraints.ml[248,7722+0]..[250,7805+3])
+    Pstr_extension "expect"
+    [
+      structure_item (testsuite/tests/typing-misc/constraints.ml[248,7722+9]..[250,7805+2])
+        Pstr_eval
+        expression (testsuite/tests/typing-misc/constraints.ml[248,7722+9]..[250,7805+2])
+          Pexp_constant PConst_string ("\nmodule type S = sig type !'a s type 'a t = 'b constraint 'a = 'b s end\n",(testsuite/tests/typing-misc/constraints.ml[248,7722+11]..[250,7805+0]),Some "")
+    ]
+  structure_item (testsuite/tests/typing-misc/constraints.ml[261,7949+0]..[263,7985+23])
+    Pstr_type Rec
+    [
+      type_declaration "t" (testsuite/tests/typing-misc/constraints.ml[261,7949+8]..[261,7949+9]) (testsuite/tests/typing-misc/constraints.ml[261,7949+0]..[263,7985+23])
+        ptype_params =
+          [
+            core_type (testsuite/tests/typing-misc/constraints.ml[261,7949+5]..[261,7949+7])
+              Ptyp_var a
+          ]
+        ptype_cstrs =
+          [
+            <constraint> (testsuite/tests/typing-misc/constraints.ml[262,7963+13]..[262,7963+21])
+              core_type (testsuite/tests/typing-misc/constraints.ml[262,7963+13]..[262,7963+15])
+                Ptyp_var a
+              core_type (testsuite/tests/typing-misc/constraints.ml[262,7963+18]..[262,7963+21])
+                Ptyp_constr "int" (testsuite/tests/typing-misc/constraints.ml[262,7963+18]..[262,7963+21])
+                []
+            <constraint> (testsuite/tests/typing-misc/constraints.ml[263,7985+13]..[263,7985+23])
+              core_type (testsuite/tests/typing-misc/constraints.ml[263,7985+13]..[263,7985+15])
+                Ptyp_var a
+              core_type (testsuite/tests/typing-misc/constraints.ml[263,7985+18]..[263,7985+23])
+                Ptyp_constr "float" (testsuite/tests/typing-misc/constraints.ml[263,7985+18]..[263,7985+23])
+                []
+          ]
+        ptype_kind =
+          Ptype_variant
+            [
+              (testsuite/tests/typing-misc/constraints.ml[261,7949+12]..[261,7949+13])
+                "T" (testsuite/tests/typing-misc/constraints.ml[261,7949+12]..[261,7949+13])
+                []
+                None
+            ]
+        ptype_private = Public
+        ptype_manifest =
+          None
+    ]
+  structure_item (testsuite/tests/typing-misc/constraints.ml[264,8009+0]..[270,8201+3])
+    Pstr_extension "expect"
+    [
+      structure_item (testsuite/tests/typing-misc/constraints.ml[264,8009+9]..[270,8201+2])
+        Pstr_eval
+        expression (testsuite/tests/typing-misc/constraints.ml[264,8009+9]..[270,8201+2])
+          Pexp_constant PConst_string ("\nLine 3, characters 13-23:\n3 |   constraint 'a = float\n                 ^^^^^^^^^^\nError: The type constraints are not consistent.\n       Type int is not compatible with type float\n",(testsuite/tests/typing-misc/constraints.ml[264,8009+11]..[270,8201+0]),Some "")
+    ]
+  structure_item (testsuite/tests/typing-misc/constraints.ml[272,8206+0]..[275,8287+20])
+    Pstr_type Rec
+    [
+      type_declaration "t" (testsuite/tests/typing-misc/constraints.ml[272,8206+13]..[272,8206+14]) (testsuite/tests/typing-misc/constraints.ml[272,8206+0]..[275,8287+20])
+        ptype_params =
+          [
+            core_type (testsuite/tests/typing-misc/constraints.ml[272,8206+6]..[272,8206+8])
+              Ptyp_var a
+            core_type (testsuite/tests/typing-misc/constraints.ml[272,8206+9]..[272,8206+11])
+              Ptyp_var b
+          ]
+        ptype_cstrs =
+          [
+            <constraint> (testsuite/tests/typing-misc/constraints.ml[273,8225+13]..[273,8225+30])
+              core_type (testsuite/tests/typing-misc/constraints.ml[273,8225+13]..[273,8225+15])
+                Ptyp_var a
+              core_type (testsuite/tests/typing-misc/constraints.ml[273,8225+18]..[273,8225+30])
+                Ptyp_arrow
+                Nolabel
+                core_type (testsuite/tests/typing-misc/constraints.ml[273,8225+18]..[273,8225+21])
+                  Ptyp_constr "int" (testsuite/tests/typing-misc/constraints.ml[273,8225+18]..[273,8225+21])
+                  []
+                core_type (testsuite/tests/typing-misc/constraints.ml[273,8225+25]..[273,8225+30])
+                  Ptyp_constr "float" (testsuite/tests/typing-misc/constraints.ml[273,8225+25]..[273,8225+30])
+                  []
+            <constraint> (testsuite/tests/typing-misc/constraints.ml[274,8256+13]..[274,8256+30])
+              core_type (testsuite/tests/typing-misc/constraints.ml[274,8256+13]..[274,8256+15])
+                Ptyp_var b
+              core_type (testsuite/tests/typing-misc/constraints.ml[274,8256+18]..[274,8256+30])
+                Ptyp_arrow
+                Nolabel
+                core_type (testsuite/tests/typing-misc/constraints.ml[274,8256+18]..[274,8256+22])
+                  Ptyp_constr "bool" (testsuite/tests/typing-misc/constraints.ml[274,8256+18]..[274,8256+22])
+                  []
+                core_type (testsuite/tests/typing-misc/constraints.ml[274,8256+26]..[274,8256+30])
+                  Ptyp_constr "char" (testsuite/tests/typing-misc/constraints.ml[274,8256+26]..[274,8256+30])
+                  []
+            <constraint> (testsuite/tests/typing-misc/constraints.ml[275,8287+13]..[275,8287+20])
+              core_type (testsuite/tests/typing-misc/constraints.ml[275,8287+13]..[275,8287+15])
+                Ptyp_var a
+              core_type (testsuite/tests/typing-misc/constraints.ml[275,8287+18]..[275,8287+20])
+                Ptyp_var b
+          ]
+        ptype_kind =
+          Ptype_variant
+            [
+              (testsuite/tests/typing-misc/constraints.ml[272,8206+17]..[272,8206+18])
+                "T" (testsuite/tests/typing-misc/constraints.ml[272,8206+17]..[272,8206+18])
+                []
+                None
+            ]
+        ptype_private = Public
+        ptype_manifest =
+          None
+    ]
+  structure_item (testsuite/tests/typing-misc/constraints.ml[276,8308+0]..[283,8559+3])
+    Pstr_extension "expect"
+    [
+      structure_item (testsuite/tests/typing-misc/constraints.ml[276,8308+9]..[283,8559+2])
+        Pstr_eval
+        expression (testsuite/tests/typing-misc/constraints.ml[276,8308+9]..[283,8559+2])
+          Pexp_constant PConst_string ("\nLine 4, characters 13-20:\n4 |   constraint 'a = 'b\n                 ^^^^^^^\nError: The type constraints are not consistent.\n       Type int -> float is not compatible with type bool -> char\n       Type int is not compatible with type bool\n",(testsuite/tests/typing-misc/constraints.ml[276,8308+11]..[283,8559+0]),Some "")
+    ]
+  structure_item (testsuite/tests/typing-misc/constraints.ml[285,8564+0]..[289,8676+3])
+    Pstr_class_type
+    [
+      class_type_declaration (testsuite/tests/typing-misc/constraints.ml[285,8564+0]..[289,8676+3])
+        pci_virt = Concrete
+        pci_params =
+          [
+            core_type (testsuite/tests/typing-misc/constraints.ml[285,8564+12]..[285,8564+14])
+              Ptyp_var a
+            core_type (testsuite/tests/typing-misc/constraints.ml[285,8564+16]..[285,8564+18])
+              Ptyp_var b
+          ]
+        pci_name = "a" (testsuite/tests/typing-misc/constraints.ml[285,8564+20]..[285,8564+21])
+        pci_expr =
+          class_type (testsuite/tests/typing-misc/constraints.ml[285,8564+24]..[289,8676+3])
+            Pcty_signature
+            class_signature
+              core_type (testsuite/tests/typing-misc/constraints.ml[285,8564+30]..[285,8564+30])
+                Ptyp_any
+              [
+                class_type_field (testsuite/tests/typing-misc/constraints.ml[286,8595+2]..[286,8595+20])
+                  Pctf_constraint
+                    core_type (testsuite/tests/typing-misc/constraints.ml[286,8595+13]..[286,8595+15])
+                      Ptyp_var a
+                    core_type (testsuite/tests/typing-misc/constraints.ml[286,8595+18]..[286,8595+20])
+                      Ptyp_var b
+                class_type_field (testsuite/tests/typing-misc/constraints.ml[287,8616+2]..[287,8616+27])
+                  Pctf_constraint
+                    core_type (testsuite/tests/typing-misc/constraints.ml[287,8616+13]..[287,8616+15])
+                      Ptyp_var a
+                    core_type (testsuite/tests/typing-misc/constraints.ml[287,8616+18]..[287,8616+27])
+                      Ptyp_tuple
+                      [
+                        core_type (testsuite/tests/typing-misc/constraints.ml[287,8616+18]..[287,8616+21])
+                          Ptyp_constr "int" (testsuite/tests/typing-misc/constraints.ml[287,8616+18]..[287,8616+21])
+                          []
+                        core_type (testsuite/tests/typing-misc/constraints.ml[287,8616+24]..[287,8616+27])
+                          Ptyp_constr "int" (testsuite/tests/typing-misc/constraints.ml[287,8616+24]..[287,8616+27])
+                          []
+                      ]
+                class_type_field (testsuite/tests/typing-misc/constraints.ml[288,8644+2]..[288,8644+31])
+                  Pctf_constraint
+                    core_type (testsuite/tests/typing-misc/constraints.ml[288,8644+13]..[288,8644+15])
+                      Ptyp_var b
+                    core_type (testsuite/tests/typing-misc/constraints.ml[288,8644+18]..[288,8644+31])
+                      Ptyp_tuple
+                      [
+                        core_type (testsuite/tests/typing-misc/constraints.ml[288,8644+18]..[288,8644+23])
+                          Ptyp_constr "float" (testsuite/tests/typing-misc/constraints.ml[288,8644+18]..[288,8644+23])
+                          []
+                        core_type (testsuite/tests/typing-misc/constraints.ml[288,8644+26]..[288,8644+31])
+                          Ptyp_constr "float" (testsuite/tests/typing-misc/constraints.ml[288,8644+26]..[288,8644+31])
+                          []
+                      ]
+              ]
+    ]
+  structure_item (testsuite/tests/typing-misc/constraints.ml[290,8682+0]..[297,8954+3])
+    Pstr_extension "expect"
+    [
+      structure_item (testsuite/tests/typing-misc/constraints.ml[290,8682+9]..[297,8954+2])
+        Pstr_eval
+        expression (testsuite/tests/typing-misc/constraints.ml[290,8682+9]..[297,8954+2])
+          Pexp_constant PConst_string ("\nLine 4, characters 2-31:\n4 |   constraint 'b = float * float\n      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nError: The class constraints are not consistent.\n       Type int * int is not compatible with type float * float\n       Type int is not compatible with type float\n",(testsuite/tests/typing-misc/constraints.ml[290,8682+11]..[297,8954+0]),Some "")
+    ]
+]
+

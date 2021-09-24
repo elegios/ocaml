@@ -1,0 +1,598 @@
+[
+  structure_item (asmcomp/linear.ml[15,1078+0]..[15,1078+9])
+    Pstr_open Fresh
+    module_expr (asmcomp/linear.ml[15,1078+5]..[15,1078+9])
+      Pmod_ident "Mach" (asmcomp/linear.ml[15,1078+5]..[15,1078+9])
+  structure_item (asmcomp/linear.ml[18,1159+0]..[18,1159+22])
+    Pstr_type Rec
+    [
+      type_declaration "label" (asmcomp/linear.ml[18,1159+5]..[18,1159+10]) (asmcomp/linear.ml[18,1159+0]..[18,1159+22])
+        ptype_params =
+          []
+        ptype_cstrs =
+          []
+        ptype_kind =
+          Ptype_abstract
+        ptype_private = Public
+        ptype_manifest =
+          Some
+            core_type (asmcomp/linear.ml[18,1159+13]..[18,1159+22])
+              Ptyp_constr "Cmm.label" (asmcomp/linear.ml[18,1159+13]..[18,1159+22])
+              []
+    ]
+  structure_item (asmcomp/linear.ml[20,1183+0]..[43,1748+31])
+    Pstr_type Rec
+    [
+      type_declaration "instruction" (asmcomp/linear.ml[20,1183+5]..[20,1183+16]) (asmcomp/linear.ml[20,1183+0]..[26,1335+21])
+        ptype_params =
+          []
+        ptype_cstrs =
+          []
+        ptype_kind =
+          Ptype_record
+            [
+              (asmcomp/linear.ml[21,1202+4]..[21,1202+35])
+                Mutable
+                "desc" (asmcomp/linear.ml[21,1202+12]..[21,1202+16])                core_type (asmcomp/linear.ml[21,1202+18]..[21,1202+34])
+                  Ptyp_constr "instruction_desc" (asmcomp/linear.ml[21,1202+18]..[21,1202+34])
+                  []
+              (asmcomp/linear.ml[22,1238+4]..[22,1238+30])
+                Mutable
+                "next" (asmcomp/linear.ml[22,1238+12]..[22,1238+16])                core_type (asmcomp/linear.ml[22,1238+18]..[22,1238+29])
+                  Ptyp_constr "instruction" (asmcomp/linear.ml[22,1238+18]..[22,1238+29])
+                  []
+              (asmcomp/linear.ml[23,1269+4]..[23,1269+21])
+                Immutable
+                "arg" (asmcomp/linear.ml[23,1269+4]..[23,1269+7])                core_type (asmcomp/linear.ml[23,1269+9]..[23,1269+20])
+                  Ptyp_constr "array" (asmcomp/linear.ml[23,1269+15]..[23,1269+20])
+                  [
+                    core_type (asmcomp/linear.ml[23,1269+9]..[23,1269+14])
+                      Ptyp_constr "Reg.t" (asmcomp/linear.ml[23,1269+9]..[23,1269+14])
+                      []
+                  ]
+              (asmcomp/linear.ml[24,1291+4]..[24,1291+21])
+                Immutable
+                "res" (asmcomp/linear.ml[24,1291+4]..[24,1291+7])                core_type (asmcomp/linear.ml[24,1291+9]..[24,1291+20])
+                  Ptyp_constr "array" (asmcomp/linear.ml[24,1291+15]..[24,1291+20])
+                  [
+                    core_type (asmcomp/linear.ml[24,1291+9]..[24,1291+14])
+                      Ptyp_constr "Reg.t" (asmcomp/linear.ml[24,1291+9]..[24,1291+14])
+                      []
+                  ]
+              (asmcomp/linear.ml[25,1313+4]..[25,1313+21])
+                Immutable
+                "dbg" (asmcomp/linear.ml[25,1313+4]..[25,1313+7])                core_type (asmcomp/linear.ml[25,1313+9]..[25,1313+20])
+                  Ptyp_constr "Debuginfo.t" (asmcomp/linear.ml[25,1313+9]..[25,1313+20])
+                  []
+              (asmcomp/linear.ml[26,1335+4]..[26,1335+19])
+                Immutable
+                "live" (asmcomp/linear.ml[26,1335+4]..[26,1335+8])                core_type (asmcomp/linear.ml[26,1335+10]..[26,1335+19])
+                  Ptyp_constr "Reg.Set.t" (asmcomp/linear.ml[26,1335+10]..[26,1335+19])
+                  []
+            ]
+        ptype_private = Public
+        ptype_manifest =
+          None
+      type_declaration "instruction_desc" (asmcomp/linear.ml[28,1358+4]..[28,1358+20]) (asmcomp/linear.ml[28,1358+0]..[43,1748+31])
+        ptype_params =
+          []
+        ptype_cstrs =
+          []
+        ptype_kind =
+          Ptype_variant
+            [
+              (asmcomp/linear.ml[29,1381+2]..[29,1381+13])
+                "Lprologue" (asmcomp/linear.ml[29,1381+4]..[29,1381+13])
+                []
+                None
+              (asmcomp/linear.ml[30,1395+2]..[30,1395+8])
+                "Lend" (asmcomp/linear.ml[30,1395+4]..[30,1395+8])
+                []
+                None
+              (asmcomp/linear.ml[31,1404+2]..[31,1404+25])
+                "Lop" (asmcomp/linear.ml[31,1404+4]..[31,1404+7])
+                [
+                  core_type (asmcomp/linear.ml[31,1404+11]..[31,1404+25])
+                    Ptyp_constr "Mach.operation" (asmcomp/linear.ml[31,1404+11]..[31,1404+25])
+                    []
+                ]
+                None
+              (asmcomp/linear.ml[32,1430+2]..[32,1430+18])
+                "Lreloadretaddr" (asmcomp/linear.ml[32,1430+4]..[32,1430+18])
+                []
+                None
+              (asmcomp/linear.ml[33,1449+2]..[33,1449+11])
+                "Lreturn" (asmcomp/linear.ml[33,1449+4]..[33,1449+11])
+                []
+                None
+              (asmcomp/linear.ml[34,1461+2]..[34,1461+19])
+                "Llabel" (asmcomp/linear.ml[34,1461+4]..[34,1461+10])
+                [
+                  core_type (asmcomp/linear.ml[34,1461+14]..[34,1461+19])
+                    Ptyp_constr "label" (asmcomp/linear.ml[34,1461+14]..[34,1461+19])
+                    []
+                ]
+                None
+              (asmcomp/linear.ml[35,1481+2]..[35,1481+20])
+                "Lbranch" (asmcomp/linear.ml[35,1481+4]..[35,1481+11])
+                [
+                  core_type (asmcomp/linear.ml[35,1481+15]..[35,1481+20])
+                    Ptyp_constr "label" (asmcomp/linear.ml[35,1481+15]..[35,1481+20])
+                    []
+                ]
+                None
+              (asmcomp/linear.ml[36,1502+2]..[36,1502+36])
+                "Lcondbranch" (asmcomp/linear.ml[36,1502+4]..[36,1502+15])
+                [
+                  core_type (asmcomp/linear.ml[36,1502+19]..[36,1502+28])
+                    Ptyp_constr "Mach.test" (asmcomp/linear.ml[36,1502+19]..[36,1502+28])
+                    []
+                  core_type (asmcomp/linear.ml[36,1502+31]..[36,1502+36])
+                    Ptyp_constr "label" (asmcomp/linear.ml[36,1502+31]..[36,1502+36])
+                    []
+                ]
+                None
+              (asmcomp/linear.ml[37,1539+2]..[37,1539+62])
+                "Lcondbranch3" (asmcomp/linear.ml[37,1539+4]..[37,1539+16])
+                [
+                  core_type (asmcomp/linear.ml[37,1539+20]..[37,1539+32])
+                    Ptyp_constr "option" (asmcomp/linear.ml[37,1539+26]..[37,1539+32])
+                    [
+                      core_type (asmcomp/linear.ml[37,1539+20]..[37,1539+25])
+                        Ptyp_constr "label" (asmcomp/linear.ml[37,1539+20]..[37,1539+25])
+                        []
+                    ]
+                  core_type (asmcomp/linear.ml[37,1539+35]..[37,1539+47])
+                    Ptyp_constr "option" (asmcomp/linear.ml[37,1539+41]..[37,1539+47])
+                    [
+                      core_type (asmcomp/linear.ml[37,1539+35]..[37,1539+40])
+                        Ptyp_constr "label" (asmcomp/linear.ml[37,1539+35]..[37,1539+40])
+                        []
+                    ]
+                  core_type (asmcomp/linear.ml[37,1539+50]..[37,1539+62])
+                    Ptyp_constr "option" (asmcomp/linear.ml[37,1539+56]..[37,1539+62])
+                    [
+                      core_type (asmcomp/linear.ml[37,1539+50]..[37,1539+55])
+                        Ptyp_constr "label" (asmcomp/linear.ml[37,1539+50]..[37,1539+55])
+                        []
+                    ]
+                ]
+                None
+              (asmcomp/linear.ml[38,1602+2]..[38,1602+26])
+                "Lswitch" (asmcomp/linear.ml[38,1602+4]..[38,1602+11])
+                [
+                  core_type (asmcomp/linear.ml[38,1602+15]..[38,1602+26])
+                    Ptyp_constr "array" (asmcomp/linear.ml[38,1602+21]..[38,1602+26])
+                    [
+                      core_type (asmcomp/linear.ml[38,1602+15]..[38,1602+20])
+                        Ptyp_constr "label" (asmcomp/linear.ml[38,1602+15]..[38,1602+20])
+                        []
+                    ]
+                ]
+                None
+              (asmcomp/linear.ml[39,1629+2]..[39,1629+14])
+                "Lentertrap" (asmcomp/linear.ml[39,1629+4]..[39,1629+14])
+                []
+                None
+              (asmcomp/linear.ml[40,1644+2]..[40,1644+48])
+                "Ladjust_trap_depth" (asmcomp/linear.ml[40,1644+4]..[40,1644+22])
+                [
+                  (asmcomp/linear.ml[40,1644+28]..[40,1644+46])
+                    Immutable
+                    "delta_traps" (asmcomp/linear.ml[40,1644+28]..[40,1644+39])                    core_type (asmcomp/linear.ml[40,1644+42]..[40,1644+45])
+                      Ptyp_constr "int" (asmcomp/linear.ml[40,1644+42]..[40,1644+45])
+                      []
+                ]
+                None
+              (asmcomp/linear.ml[41,1693+2]..[41,1693+41])
+                "Lpushtrap" (asmcomp/linear.ml[41,1693+4]..[41,1693+13])
+                [
+                  (asmcomp/linear.ml[41,1693+19]..[41,1693+39])
+                    Immutable
+                    "lbl_handler" (asmcomp/linear.ml[41,1693+19]..[41,1693+30])                    core_type (asmcomp/linear.ml[41,1693+33]..[41,1693+38])
+                      Ptyp_constr "label" (asmcomp/linear.ml[41,1693+33]..[41,1693+38])
+                      []
+                ]
+                None
+              (asmcomp/linear.ml[42,1735+2]..[42,1735+12])
+                "Lpoptrap" (asmcomp/linear.ml[42,1735+4]..[42,1735+12])
+                []
+                None
+              (asmcomp/linear.ml[43,1748+2]..[43,1748+31])
+                "Lraise" (asmcomp/linear.ml[43,1748+4]..[43,1748+10])
+                [
+                  core_type (asmcomp/linear.ml[43,1748+14]..[43,1748+31])
+                    Ptyp_constr "Lambda.raise_kind" (asmcomp/linear.ml[43,1748+14]..[43,1748+31])
+                    []
+                ]
+                None
+            ]
+        ptype_private = Public
+        ptype_manifest =
+          None
+    ]
+  structure_item (asmcomp/linear.ml[45,1781+0]..[48,1914+13])
+    Pstr_value Nonrec
+    [
+      <def>
+        pattern (asmcomp/linear.ml[45,1781+4]..[45,1781+19])
+          Ppat_var "has_fallthrough" (asmcomp/linear.ml[45,1781+4]..[45,1781+19])
+        expression (asmcomp/linear.ml[45,1781+22]..[48,1914+13])
+          Pexp_function
+          [
+            <case>
+              pattern (asmcomp/linear.ml[46,1812+4]..[47,1859+45])
+                Ppat_or
+                pattern (asmcomp/linear.ml[46,1812+4]..[47,1859+21])
+                  Ppat_or
+                  pattern (asmcomp/linear.ml[46,1812+4]..[46,1812+46])
+                    Ppat_or
+                    pattern (asmcomp/linear.ml[46,1812+4]..[46,1812+35])
+                      Ppat_or
+                      pattern (asmcomp/linear.ml[46,1812+4]..[46,1812+23])
+                        Ppat_or
+                        pattern (asmcomp/linear.ml[46,1812+4]..[46,1812+11])
+                          Ppat_construct "Lreturn" (asmcomp/linear.ml[46,1812+4]..[46,1812+11])
+                          None
+                        pattern (asmcomp/linear.ml[46,1812+14]..[46,1812+23])
+                          Ppat_construct "Lbranch" (asmcomp/linear.ml[46,1812+14]..[46,1812+21])
+                          Some
+                            []
+                            pattern (asmcomp/linear.ml[46,1812+22]..[46,1812+23])
+                              Ppat_any
+                      pattern (asmcomp/linear.ml[46,1812+26]..[46,1812+35])
+                        Ppat_construct "Lswitch" (asmcomp/linear.ml[46,1812+26]..[46,1812+33])
+                        Some
+                          []
+                          pattern (asmcomp/linear.ml[46,1812+34]..[46,1812+35])
+                            Ppat_any
+                    pattern (asmcomp/linear.ml[46,1812+38]..[46,1812+46])
+                      Ppat_construct "Lraise" (asmcomp/linear.ml[46,1812+38]..[46,1812+44])
+                      Some
+                        []
+                        pattern (asmcomp/linear.ml[46,1812+45]..[46,1812+46])
+                          Ppat_any
+                  pattern (asmcomp/linear.ml[47,1859+4]..[47,1859+21])
+                    Ppat_construct "Lop" (asmcomp/linear.ml[47,1859+4]..[47,1859+7])
+                    Some
+                      []
+                      pattern (asmcomp/linear.ml[47,1859+8]..[47,1859+21])
+                        Ppat_construct "Itailcall_ind" (asmcomp/linear.ml[47,1859+8]..[47,1859+21])
+                        None
+                pattern (asmcomp/linear.ml[47,1859+24]..[47,1859+45])
+                  Ppat_construct "Lop" (asmcomp/linear.ml[47,1859+24]..[47,1859+27])
+                  Some
+                    []
+                    pattern (asmcomp/linear.ml[47,1859+28]..[47,1859+45])
+                      Ppat_construct "Itailcall_imm" (asmcomp/linear.ml[47,1859+29]..[47,1859+42])
+                      Some
+                        []
+                        pattern (asmcomp/linear.ml[47,1859+43]..[47,1859+44])
+                          Ppat_any
+              expression (asmcomp/linear.ml[47,1859+49]..[47,1859+54])
+                Pexp_construct "false" (asmcomp/linear.ml[47,1859+49]..[47,1859+54])
+                None
+            <case>
+              pattern (asmcomp/linear.ml[48,1914+4]..[48,1914+5])
+                Ppat_any
+              expression (asmcomp/linear.ml[48,1914+9]..[48,1914+13])
+                Pexp_construct "true" (asmcomp/linear.ml[48,1914+9]..[48,1914+13])
+                None
+          ]
+    ]
+  structure_item (asmcomp/linear.ml[50,1929+0]..[60,2212+3])
+    Pstr_type Rec
+    [
+      type_declaration "fundecl" (asmcomp/linear.ml[50,1929+5]..[50,1929+12]) (asmcomp/linear.ml[50,1929+0]..[60,2212+3])
+        ptype_params =
+          []
+        ptype_cstrs =
+          []
+        ptype_kind =
+          Ptype_record
+            [
+              (asmcomp/linear.ml[51,1944+4]..[51,1944+21])
+                Immutable
+                "fun_name" (asmcomp/linear.ml[51,1944+4]..[51,1944+12])                core_type (asmcomp/linear.ml[51,1944+14]..[51,1944+20])
+                  Ptyp_constr "string" (asmcomp/linear.ml[51,1944+14]..[51,1944+20])
+                  []
+              (asmcomp/linear.ml[52,1966+4]..[52,1966+26])
+                Immutable
+                "fun_body" (asmcomp/linear.ml[52,1966+4]..[52,1966+12])                core_type (asmcomp/linear.ml[52,1966+14]..[52,1966+25])
+                  Ptyp_constr "instruction" (asmcomp/linear.ml[52,1966+14]..[52,1966+25])
+                  []
+              (asmcomp/linear.ml[53,1993+4]..[53,1993+19])
+                Immutable
+                "fun_fast" (asmcomp/linear.ml[53,1993+4]..[53,1993+12])                core_type (asmcomp/linear.ml[53,1993+14]..[53,1993+18])
+                  Ptyp_constr "bool" (asmcomp/linear.ml[53,1993+14]..[53,1993+18])
+                  []
+              (asmcomp/linear.ml[54,2013+4]..[54,2013+26])
+                Immutable
+                "fun_dbg" (asmcomp/linear.ml[54,2013+4]..[54,2013+11])                core_type (asmcomp/linear.ml[54,2013+14]..[54,2013+25])
+                  Ptyp_constr "Debuginfo.t" (asmcomp/linear.ml[54,2013+14]..[54,2013+25])
+                  []
+              (asmcomp/linear.ml[55,2040+4]..[55,2040+42])
+                Immutable
+                "fun_tailrec_entry_point_label" (asmcomp/linear.ml[55,2040+4]..[55,2040+33])                core_type (asmcomp/linear.ml[55,2040+36]..[55,2040+41])
+                  Ptyp_constr "label" (asmcomp/linear.ml[55,2040+36]..[55,2040+41])
+                  []
+              (asmcomp/linear.ml[56,2083+4]..[56,2083+29])
+                Immutable
+                "fun_contains_calls" (asmcomp/linear.ml[56,2083+4]..[56,2083+22])                core_type (asmcomp/linear.ml[56,2083+24]..[56,2083+28])
+                  Ptyp_constr "bool" (asmcomp/linear.ml[56,2083+24]..[56,2083+28])
+                  []
+              (asmcomp/linear.ml[57,2113+4]..[57,2113+35])
+                Immutable
+                "fun_num_stack_slots" (asmcomp/linear.ml[57,2113+4]..[57,2113+23])                core_type (asmcomp/linear.ml[57,2113+25]..[57,2113+34])
+                  Ptyp_constr "array" (asmcomp/linear.ml[57,2113+29]..[57,2113+34])
+                  [
+                    core_type (asmcomp/linear.ml[57,2113+25]..[57,2113+28])
+                      Ptyp_constr "int" (asmcomp/linear.ml[57,2113+25]..[57,2113+28])
+                      []
+                  ]
+              (asmcomp/linear.ml[58,2149+4]..[58,2149+29])
+                Immutable
+                "fun_frame_required" (asmcomp/linear.ml[58,2149+4]..[58,2149+22])                core_type (asmcomp/linear.ml[58,2149+24]..[58,2149+28])
+                  Ptyp_constr "bool" (asmcomp/linear.ml[58,2149+24]..[58,2149+28])
+                  []
+              (asmcomp/linear.ml[59,2179+4]..[59,2179+32])
+                Immutable
+                "fun_prologue_required" (asmcomp/linear.ml[59,2179+4]..[59,2179+25])                core_type (asmcomp/linear.ml[59,2179+27]..[59,2179+31])
+                  Ptyp_constr "bool" (asmcomp/linear.ml[59,2179+27]..[59,2179+31])
+                  []
+            ]
+        ptype_private = Public
+        ptype_manifest =
+          None
+    ]
+  structure_item (asmcomp/linear.ml[64,2238+0]..[66,2335+65])
+    Pstr_value Nonrec
+    [
+      <def>
+        pattern (asmcomp/linear.ml[64,2238+4]..[64,2238+23])
+          Ppat_var "invert_integer_test" (asmcomp/linear.ml[64,2238+4]..[64,2238+23])
+        expression (asmcomp/linear.ml[64,2238+26]..[66,2335+65])
+          Pexp_function
+          [
+            <case>
+              pattern (asmcomp/linear.ml[65,2273+4]..[65,2273+15])
+                Ppat_construct "Isigned" (asmcomp/linear.ml[65,2273+4]..[65,2273+11])
+                Some
+                  []
+                  pattern (asmcomp/linear.ml[65,2273+12]..[65,2273+15])
+                    Ppat_var "cmp" (asmcomp/linear.ml[65,2273+12]..[65,2273+15])
+              expression (asmcomp/linear.ml[65,2273+19]..[65,2273+61])
+                Pexp_construct "Isigned" (asmcomp/linear.ml[65,2273+19]..[65,2273+26])
+                Some
+                  expression (asmcomp/linear.ml[65,2273+26]..[65,2273+61])
+                    Pexp_apply
+                    expression (asmcomp/linear.ml[65,2273+27]..[65,2273+56])
+                      Pexp_ident "Cmm.negate_integer_comparison" (asmcomp/linear.ml[65,2273+27]..[65,2273+56])
+                    [
+                      <arg>
+                      Nolabel
+                        expression (asmcomp/linear.ml[65,2273+57]..[65,2273+60])
+                          Pexp_ident "cmp" (asmcomp/linear.ml[65,2273+57]..[65,2273+60])
+                    ]
+            <case>
+              pattern (asmcomp/linear.ml[66,2335+4]..[66,2335+17])
+                Ppat_construct "Iunsigned" (asmcomp/linear.ml[66,2335+4]..[66,2335+13])
+                Some
+                  []
+                  pattern (asmcomp/linear.ml[66,2335+14]..[66,2335+17])
+                    Ppat_var "cmp" (asmcomp/linear.ml[66,2335+14]..[66,2335+17])
+              expression (asmcomp/linear.ml[66,2335+21]..[66,2335+65])
+                Pexp_construct "Iunsigned" (asmcomp/linear.ml[66,2335+21]..[66,2335+30])
+                Some
+                  expression (asmcomp/linear.ml[66,2335+30]..[66,2335+65])
+                    Pexp_apply
+                    expression (asmcomp/linear.ml[66,2335+31]..[66,2335+60])
+                      Pexp_ident "Cmm.negate_integer_comparison" (asmcomp/linear.ml[66,2335+31]..[66,2335+60])
+                    [
+                      <arg>
+                      Nolabel
+                        expression (asmcomp/linear.ml[66,2335+61]..[66,2335+64])
+                          Pexp_ident "cmp" (asmcomp/linear.ml[66,2335+61]..[66,2335+64])
+                    ]
+          ]
+    ]
+  structure_item (asmcomp/linear.ml[68,2402+0]..[75,2702+25])
+    Pstr_value Nonrec
+    [
+      <def>
+        pattern (asmcomp/linear.ml[68,2402+4]..[68,2402+15])
+          Ppat_var "invert_test" (asmcomp/linear.ml[68,2402+4]..[68,2402+15])
+        expression (asmcomp/linear.ml[68,2402+18]..[75,2702+25])
+          Pexp_function
+          [
+            <case>
+              pattern (asmcomp/linear.ml[69,2429+4]..[69,2429+13])
+                Ppat_construct "Itruetest" (asmcomp/linear.ml[69,2429+4]..[69,2429+13])
+                None
+              expression (asmcomp/linear.ml[69,2429+17]..[69,2429+27])
+                Pexp_construct "Ifalsetest" (asmcomp/linear.ml[69,2429+17]..[69,2429+27])
+                None
+            <case>
+              pattern (asmcomp/linear.ml[70,2457+4]..[70,2457+14])
+                Ppat_construct "Ifalsetest" (asmcomp/linear.ml[70,2457+4]..[70,2457+14])
+                None
+              expression (asmcomp/linear.ml[70,2457+18]..[70,2457+27])
+                Pexp_construct "Itruetest" (asmcomp/linear.ml[70,2457+18]..[70,2457+27])
+                None
+            <case>
+              pattern (asmcomp/linear.ml[71,2485+4]..[71,2485+17])
+                Ppat_construct "Iinttest" (asmcomp/linear.ml[71,2485+4]..[71,2485+12])
+                Some
+                  []
+                  pattern (asmcomp/linear.ml[71,2485+12]..[71,2485+17])
+                    Ppat_var "cmp" (asmcomp/linear.ml[71,2485+13]..[71,2485+16])
+              expression (asmcomp/linear.ml[71,2485+21]..[71,2485+54])
+                Pexp_construct "Iinttest" (asmcomp/linear.ml[71,2485+21]..[71,2485+29])
+                Some
+                  expression (asmcomp/linear.ml[71,2485+29]..[71,2485+54])
+                    Pexp_apply
+                    expression (asmcomp/linear.ml[71,2485+30]..[71,2485+49])
+                      Pexp_ident "invert_integer_test" (asmcomp/linear.ml[71,2485+30]..[71,2485+49])
+                    [
+                      <arg>
+                      Nolabel
+                        expression (asmcomp/linear.ml[71,2485+50]..[71,2485+53])
+                          Pexp_ident "cmp" (asmcomp/linear.ml[71,2485+50]..[71,2485+53])
+                    ]
+            <case>
+              pattern (asmcomp/linear.ml[72,2540+4]..[72,2540+24])
+                Ppat_construct "Iinttest_imm" (asmcomp/linear.ml[72,2540+4]..[72,2540+16])
+                Some
+                  []
+                  pattern (asmcomp/linear.ml[72,2540+16]..[72,2540+24])
+                    Ppat_tuple
+                    [
+                      pattern (asmcomp/linear.ml[72,2540+17]..[72,2540+20])
+                        Ppat_var "cmp" (asmcomp/linear.ml[72,2540+17]..[72,2540+20])
+                      pattern (asmcomp/linear.ml[72,2540+22]..[72,2540+23])
+                        Ppat_var "n" (asmcomp/linear.ml[72,2540+22]..[72,2540+23])
+                    ]
+              expression (asmcomp/linear.ml[72,2540+28]..[72,2540+68])
+                Pexp_construct "Iinttest_imm" (asmcomp/linear.ml[72,2540+28]..[72,2540+40])
+                Some
+                  expression (asmcomp/linear.ml[72,2540+40]..[72,2540+68])
+                    Pexp_tuple
+                    [
+                      expression (asmcomp/linear.ml[72,2540+41]..[72,2540+64])
+                        Pexp_apply
+                        expression (asmcomp/linear.ml[72,2540+41]..[72,2540+60])
+                          Pexp_ident "invert_integer_test" (asmcomp/linear.ml[72,2540+41]..[72,2540+60])
+                        [
+                          <arg>
+                          Nolabel
+                            expression (asmcomp/linear.ml[72,2540+61]..[72,2540+64])
+                              Pexp_ident "cmp" (asmcomp/linear.ml[72,2540+61]..[72,2540+64])
+                        ]
+                      expression (asmcomp/linear.ml[72,2540+66]..[72,2540+67])
+                        Pexp_ident "n" (asmcomp/linear.ml[72,2540+66]..[72,2540+67])
+                    ]
+            <case>
+              pattern (asmcomp/linear.ml[73,2609+4]..[73,2609+19])
+                Ppat_construct "Ifloattest" (asmcomp/linear.ml[73,2609+4]..[73,2609+14])
+                Some
+                  []
+                  pattern (asmcomp/linear.ml[73,2609+14]..[73,2609+19])
+                    Ppat_var "cmp" (asmcomp/linear.ml[73,2609+15]..[73,2609+18])
+              expression (asmcomp/linear.ml[73,2609+23]..[73,2609+66])
+                Pexp_construct "Ifloattest" (asmcomp/linear.ml[73,2609+23]..[73,2609+33])
+                Some
+                  expression (asmcomp/linear.ml[73,2609+33]..[73,2609+66])
+                    Pexp_apply
+                    expression (asmcomp/linear.ml[73,2609+34]..[73,2609+61])
+                      Pexp_ident "Cmm.negate_float_comparison" (asmcomp/linear.ml[73,2609+34]..[73,2609+61])
+                    [
+                      <arg>
+                      Nolabel
+                        expression (asmcomp/linear.ml[73,2609+62]..[73,2609+65])
+                          Pexp_ident "cmp" (asmcomp/linear.ml[73,2609+62]..[73,2609+65])
+                    ]
+            <case>
+              pattern (asmcomp/linear.ml[74,2676+4]..[74,2676+13])
+                Ppat_construct "Ieventest" (asmcomp/linear.ml[74,2676+4]..[74,2676+13])
+                None
+              expression (asmcomp/linear.ml[74,2676+17]..[74,2676+25])
+                Pexp_construct "Ioddtest" (asmcomp/linear.ml[74,2676+17]..[74,2676+25])
+                None
+            <case>
+              pattern (asmcomp/linear.ml[75,2702+4]..[75,2702+12])
+                Ppat_construct "Ioddtest" (asmcomp/linear.ml[75,2702+4]..[75,2702+12])
+                None
+              expression (asmcomp/linear.ml[75,2702+16]..[75,2702+25])
+                Pexp_construct "Ieventest" (asmcomp/linear.ml[75,2702+16]..[75,2702+25])
+                None
+          ]
+    ]
+  structure_item (asmcomp/linear.ml[79,2758+0]..[85,2875+26])
+    Pstr_value Rec
+    [
+      <def>
+        pattern (asmcomp/linear.ml[79,2758+8]..[79,2758+17])
+          Ppat_var "end_instr" (asmcomp/linear.ml[79,2758+8]..[79,2758+17])
+        expression (asmcomp/linear.ml[80,2778+2]..[85,2875+26])
+          Pexp_record
+          [
+            "desc" (asmcomp/linear.ml[80,2778+4]..[80,2778+8])
+              expression (asmcomp/linear.ml[80,2778+11]..[80,2778+15])
+                Pexp_construct "Lend" (asmcomp/linear.ml[80,2778+11]..[80,2778+15])
+                None
+            "next" (asmcomp/linear.ml[81,2795+4]..[81,2795+8])
+              expression (asmcomp/linear.ml[81,2795+11]..[81,2795+20])
+                Pexp_ident "end_instr" (asmcomp/linear.ml[81,2795+11]..[81,2795+20])
+            "arg" (asmcomp/linear.ml[82,2817+4]..[82,2817+7])
+              expression (asmcomp/linear.ml[82,2817+10]..[82,2817+14])
+                Pexp_array
+                []
+            "res" (asmcomp/linear.ml[83,2833+4]..[83,2833+7])
+              expression (asmcomp/linear.ml[83,2833+10]..[83,2833+14])
+                Pexp_array
+                []
+            "dbg" (asmcomp/linear.ml[84,2849+4]..[84,2849+7])
+              expression (asmcomp/linear.ml[84,2849+10]..[84,2849+24])
+                Pexp_ident "Debuginfo.none" (asmcomp/linear.ml[84,2849+10]..[84,2849+24])
+            "live" (asmcomp/linear.ml[85,2875+4]..[85,2875+8])
+              expression (asmcomp/linear.ml[85,2875+11]..[85,2875+24])
+                Pexp_ident "Reg.Set.empty" (asmcomp/linear.ml[85,2875+11]..[85,2875+24])
+          ]
+          None
+    ]
+  structure_item (asmcomp/linear.ml[89,2950+0]..[91,3017+48])
+    Pstr_value Nonrec
+    [
+      <def>
+        pattern (asmcomp/linear.ml[89,2950+4]..[89,2950+14])
+          Ppat_var "instr_cons" (asmcomp/linear.ml[89,2950+4]..[89,2950+14])
+        expression (asmcomp/linear.ml[89,2950+15]..[91,3017+48]) ghost
+          Pexp_fun
+          Nolabel
+          None
+          pattern (asmcomp/linear.ml[89,2950+15]..[89,2950+16])
+            Ppat_var "d" (asmcomp/linear.ml[89,2950+15]..[89,2950+16])
+          expression (asmcomp/linear.ml[89,2950+17]..[91,3017+48]) ghost
+            Pexp_fun
+            Nolabel
+            None
+            pattern (asmcomp/linear.ml[89,2950+17]..[89,2950+18])
+              Ppat_var "a" (asmcomp/linear.ml[89,2950+17]..[89,2950+18])
+            expression (asmcomp/linear.ml[89,2950+19]..[91,3017+48]) ghost
+              Pexp_fun
+              Nolabel
+              None
+              pattern (asmcomp/linear.ml[89,2950+19]..[89,2950+20])
+                Ppat_var "r" (asmcomp/linear.ml[89,2950+19]..[89,2950+20])
+              expression (asmcomp/linear.ml[89,2950+21]..[91,3017+48]) ghost
+                Pexp_fun
+                Nolabel
+                None
+                pattern (asmcomp/linear.ml[89,2950+21]..[89,2950+22])
+                  Ppat_var "n" (asmcomp/linear.ml[89,2950+21]..[89,2950+22])
+                expression (asmcomp/linear.ml[90,2975+2]..[91,3017+48])
+                  Pexp_record
+                  [
+                    "desc" (asmcomp/linear.ml[90,2975+4]..[90,2975+8])
+                      expression (asmcomp/linear.ml[90,2975+11]..[90,2975+12])
+                        Pexp_ident "d" (asmcomp/linear.ml[90,2975+11]..[90,2975+12])
+                    "next" (asmcomp/linear.ml[90,2975+14]..[90,2975+18])
+                      expression (asmcomp/linear.ml[90,2975+21]..[90,2975+22])
+                        Pexp_ident "n" (asmcomp/linear.ml[90,2975+21]..[90,2975+22])
+                    "arg" (asmcomp/linear.ml[90,2975+24]..[90,2975+27])
+                      expression (asmcomp/linear.ml[90,2975+30]..[90,2975+31])
+                        Pexp_ident "a" (asmcomp/linear.ml[90,2975+30]..[90,2975+31])
+                    "res" (asmcomp/linear.ml[90,2975+33]..[90,2975+36])
+                      expression (asmcomp/linear.ml[90,2975+39]..[90,2975+40])
+                        Pexp_ident "r" (asmcomp/linear.ml[90,2975+39]..[90,2975+40])
+                    "dbg" (asmcomp/linear.ml[91,3017+4]..[91,3017+7])
+                      expression (asmcomp/linear.ml[91,3017+10]..[91,3017+24])
+                        Pexp_ident "Debuginfo.none" (asmcomp/linear.ml[91,3017+10]..[91,3017+24])
+                    "live" (asmcomp/linear.ml[91,3017+26]..[91,3017+30])
+                      expression (asmcomp/linear.ml[91,3017+33]..[91,3017+46])
+                        Pexp_ident "Reg.Set.empty" (asmcomp/linear.ml[91,3017+33]..[91,3017+46])
+                  ]
+                  None
+    ]
+]
+

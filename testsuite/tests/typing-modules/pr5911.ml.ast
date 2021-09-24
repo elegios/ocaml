@@ -1,0 +1,134 @@
+[
+  structure_item (testsuite/tests/typing-modules/pr5911.ml[5,24+0]..[8,63+3])
+    Pstr_modtype "S" (testsuite/tests/typing-modules/pr5911.ml[5,24+12]..[5,24+13])
+      module_type (testsuite/tests/typing-modules/pr5911.ml[5,24+16]..[8,63+3])
+        Pmty_signature
+        [
+          signature_item (testsuite/tests/typing-modules/pr5911.ml[6,44+1]..[6,44+7])
+            Psig_type Rec
+            [
+              type_declaration "t" (testsuite/tests/typing-modules/pr5911.ml[6,44+6]..[6,44+7]) (testsuite/tests/typing-modules/pr5911.ml[6,44+1]..[6,44+7])
+                ptype_params =
+                  []
+                ptype_cstrs =
+                  []
+                ptype_kind =
+                  Ptype_abstract
+                ptype_private = Public
+                ptype_manifest =
+                  None
+            ]
+          signature_item (testsuite/tests/typing-modules/pr5911.ml[7,52+1]..[7,52+10])
+            Psig_value
+            value_description "x" (testsuite/tests/typing-modules/pr5911.ml[7,52+5]..[7,52+6]) (testsuite/tests/typing-modules/pr5911.ml[7,52+1]..[7,52+10])
+              core_type (testsuite/tests/typing-modules/pr5911.ml[7,52+9]..[7,52+10])
+                Ptyp_constr "t" (testsuite/tests/typing-modules/pr5911.ml[7,52+9]..[7,52+10])
+                []
+              []
+        ]
+  structure_item (testsuite/tests/typing-modules/pr5911.ml[10,70+0]..[12,133+3])
+    Pstr_module
+    "Good" (testsuite/tests/typing-modules/pr5911.ml[10,70+7]..[10,70+11])
+      module_expr (testsuite/tests/typing-modules/pr5911.ml[10,70+12]..[12,133+3])
+        Pmod_functor "X" (testsuite/tests/typing-modules/pr5911.ml[10,70+13]..[10,70+14])
+        module_type (testsuite/tests/typing-modules/pr5911.ml[10,70+17]..[10,70+38])
+          Pmty_with
+          module_type (testsuite/tests/typing-modules/pr5911.ml[10,70+17]..[10,70+18])
+            Pmty_ident "S" (testsuite/tests/typing-modules/pr5911.ml[10,70+17]..[10,70+18])
+          [
+            Pwith_typesubst "t" (testsuite/tests/typing-modules/pr5911.ml[10,70+29]..[10,70+30])
+              type_declaration "t" (testsuite/tests/typing-modules/pr5911.ml[10,70+29]..[10,70+30]) (testsuite/tests/typing-modules/pr5911.ml[10,70+24]..[10,70+38])
+                ptype_params =
+                  []
+                ptype_cstrs =
+                  []
+                ptype_kind =
+                  Ptype_abstract
+                ptype_private = Public
+                ptype_manifest =
+                  Some
+                    core_type (testsuite/tests/typing-modules/pr5911.ml[10,70+34]..[10,70+38])
+                      Ptyp_constr "unit" (testsuite/tests/typing-modules/pr5911.ml[10,70+34]..[10,70+38])
+                      []
+          ]
+        module_expr (testsuite/tests/typing-modules/pr5911.ml[10,70+42]..[12,133+3])
+          Pmod_structure
+          [
+            structure_item (testsuite/tests/typing-modules/pr5911.ml[11,119+1]..[11,119+13])
+              Pstr_value Nonrec
+              [
+                <def>
+                  pattern (testsuite/tests/typing-modules/pr5911.ml[11,119+5]..[11,119+7])
+                    Ppat_construct "()" (testsuite/tests/typing-modules/pr5911.ml[11,119+5]..[11,119+7])
+                    None
+                  expression (testsuite/tests/typing-modules/pr5911.ml[11,119+10]..[11,119+13])
+                    Pexp_ident "X.x" (testsuite/tests/typing-modules/pr5911.ml[11,119+10]..[11,119+13])
+              ]
+          ]
+  structure_item (testsuite/tests/typing-modules/pr5911.ml[13,139+0]..[16,252+3])
+    Pstr_extension "expect"
+    [
+      structure_item (testsuite/tests/typing-modules/pr5911.ml[13,139+9]..[16,252+2])
+        Pstr_eval
+        expression (testsuite/tests/typing-modules/pr5911.ml[13,139+9]..[16,252+2])
+          Pexp_constant PConst_string ("\nmodule type S = sig type t val x : t end\nmodule Good : functor (X : sig val x : unit end) -> sig end\n",(testsuite/tests/typing-modules/pr5911.ml[13,139+11]..[16,252+0]),Some "")
+    ]
+  structure_item (testsuite/tests/typing-modules/pr5911.ml[18,259+0]..[18,259+36])
+    Pstr_modtype "T" (testsuite/tests/typing-modules/pr5911.ml[18,259+12]..[18,259+13])
+      module_type (testsuite/tests/typing-modules/pr5911.ml[18,259+16]..[18,259+36])
+        Pmty_signature
+        [
+          signature_item (testsuite/tests/typing-modules/pr5911.ml[18,259+20]..[18,259+32])
+            Psig_module "M" (testsuite/tests/typing-modules/pr5911.ml[18,259+27]..[18,259+28])
+            module_type (testsuite/tests/typing-modules/pr5911.ml[18,259+31]..[18,259+32])
+              Pmty_ident "S" (testsuite/tests/typing-modules/pr5911.ml[18,259+31]..[18,259+32])
+        ]
+  structure_item (testsuite/tests/typing-modules/pr5911.ml[20,299+0]..[22,364+3])
+    Pstr_module
+    "Bad" (testsuite/tests/typing-modules/pr5911.ml[20,299+7]..[20,299+10])
+      module_expr (testsuite/tests/typing-modules/pr5911.ml[20,299+11]..[22,364+3])
+        Pmod_functor "X" (testsuite/tests/typing-modules/pr5911.ml[20,299+12]..[20,299+13])
+        module_type (testsuite/tests/typing-modules/pr5911.ml[20,299+16]..[20,299+38])
+          Pmty_with
+          module_type (testsuite/tests/typing-modules/pr5911.ml[20,299+16]..[20,299+17])
+            Pmty_ident "T" (testsuite/tests/typing-modules/pr5911.ml[20,299+16]..[20,299+17])
+          [
+            Pwith_type "M.t" (testsuite/tests/typing-modules/pr5911.ml[20,299+28]..[20,299+31])
+              type_declaration "t" (testsuite/tests/typing-modules/pr5911.ml[20,299+28]..[20,299+31]) (testsuite/tests/typing-modules/pr5911.ml[20,299+23]..[20,299+38])
+                ptype_params =
+                  []
+                ptype_cstrs =
+                  []
+                ptype_kind =
+                  Ptype_abstract
+                ptype_private = Public
+                ptype_manifest =
+                  Some
+                    core_type (testsuite/tests/typing-modules/pr5911.ml[20,299+34]..[20,299+38])
+                      Ptyp_constr "unit" (testsuite/tests/typing-modules/pr5911.ml[20,299+34]..[20,299+38])
+                      []
+          ]
+        module_expr (testsuite/tests/typing-modules/pr5911.ml[20,299+42]..[22,364+3])
+          Pmod_structure
+          [
+            structure_item (testsuite/tests/typing-modules/pr5911.ml[21,348+1]..[21,348+15])
+              Pstr_value Nonrec
+              [
+                <def>
+                  pattern (testsuite/tests/typing-modules/pr5911.ml[21,348+5]..[21,348+7])
+                    Ppat_construct "()" (testsuite/tests/typing-modules/pr5911.ml[21,348+5]..[21,348+7])
+                    None
+                  expression (testsuite/tests/typing-modules/pr5911.ml[21,348+10]..[21,348+15])
+                    Pexp_ident "X.M.x" (testsuite/tests/typing-modules/pr5911.ml[21,348+10]..[21,348+15])
+              ]
+          ]
+  structure_item (testsuite/tests/typing-modules/pr5911.ml[23,370+0]..[27,510+3])
+    Pstr_extension "expect"
+    [
+      structure_item (testsuite/tests/typing-modules/pr5911.ml[23,370+9]..[27,510+2])
+        Pstr_eval
+        expression (testsuite/tests/typing-modules/pr5911.ml[23,370+9]..[27,510+2])
+          Pexp_constant PConst_string ("\nmodule type T = sig module M : S end\nmodule Bad :\n  functor (X : sig module M : sig type t = unit val x : t end end) -> sig end\n",(testsuite/tests/typing-modules/pr5911.ml[23,370+11]..[27,510+0]),Some "")
+    ]
+]
+

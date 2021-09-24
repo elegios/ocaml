@@ -1,0 +1,1512 @@
+[
+  structure_item (testsuite/tests/typing-misc/pr6416.ml[5,54+0]..[13,177+3])
+    Pstr_module
+    "M" (testsuite/tests/typing-misc/pr6416.ml[5,54+7]..[5,54+8])
+      module_expr (testsuite/tests/typing-misc/pr6416.ml[5,54+11]..[13,177+3])
+        Pmod_structure
+        [
+          structure_item (testsuite/tests/typing-misc/pr6416.ml[6,72+2]..[6,72+12])
+            Pstr_type Rec
+            [
+              type_declaration "t" (testsuite/tests/typing-misc/pr6416.ml[6,72+7]..[6,72+8]) (testsuite/tests/typing-misc/pr6416.ml[6,72+2]..[6,72+12])
+                ptype_params =
+                  []
+                ptype_cstrs =
+                  []
+                ptype_kind =
+                  Ptype_variant
+                    [
+                      (testsuite/tests/typing-misc/pr6416.ml[6,72+11]..[6,72+12])
+                        "A" (testsuite/tests/typing-misc/pr6416.ml[6,72+11]..[6,72+12])
+                        []
+                        None
+                    ]
+                ptype_private = Public
+                ptype_manifest =
+                  None
+            ]
+          structure_item (testsuite/tests/typing-misc/pr6416.ml[7,85+2]..[12,171+5])
+            Pstr_module
+            "M" (testsuite/tests/typing-misc/pr6416.ml[7,85+9]..[7,85+10])
+              module_expr (testsuite/tests/typing-misc/pr6416.ml[7,85+11]..[12,171+5])
+                Pmod_constraint
+                module_expr (testsuite/tests/typing-misc/pr6416.ml[9,124+8]..[12,171+5])
+                  Pmod_structure
+                  [
+                    structure_item (testsuite/tests/typing-misc/pr6416.ml[10,139+4]..[10,139+14])
+                      Pstr_type Rec
+                      [
+                        type_declaration "t" (testsuite/tests/typing-misc/pr6416.ml[10,139+9]..[10,139+10]) (testsuite/tests/typing-misc/pr6416.ml[10,139+4]..[10,139+14])
+                          ptype_params =
+                            []
+                          ptype_cstrs =
+                            []
+                          ptype_kind =
+                            Ptype_variant
+                              [
+                                (testsuite/tests/typing-misc/pr6416.ml[10,139+13]..[10,139+14])
+                                  "B" (testsuite/tests/typing-misc/pr6416.ml[10,139+13]..[10,139+14])
+                                  []
+                                  None
+                              ]
+                          ptype_private = Public
+                          ptype_manifest =
+                            None
+                      ]
+                    structure_item (testsuite/tests/typing-misc/pr6416.ml[11,154+4]..[11,154+16])
+                      Pstr_value Nonrec
+                      [
+                        <def>
+                          pattern (testsuite/tests/typing-misc/pr6416.ml[11,154+8]..[11,154+9])
+                            Ppat_var "f" (testsuite/tests/typing-misc/pr6416.ml[11,154+8]..[11,154+9])
+                          expression (testsuite/tests/typing-misc/pr6416.ml[11,154+10]..[11,154+16]) ghost
+                            Pexp_fun
+                            Nolabel
+                            None
+                            pattern (testsuite/tests/typing-misc/pr6416.ml[11,154+10]..[11,154+11])
+                              Ppat_construct "B" (testsuite/tests/typing-misc/pr6416.ml[11,154+10]..[11,154+11])
+                              None
+                            expression (testsuite/tests/typing-misc/pr6416.ml[11,154+14]..[11,154+16])
+                              Pexp_construct "()" (testsuite/tests/typing-misc/pr6416.ml[11,154+14]..[11,154+16])
+                              None
+                      ]
+                  ]
+                module_type (testsuite/tests/typing-misc/pr6416.ml[7,85+13]..[9,124+5])
+                  Pmty_signature
+                  [
+                    signature_item (testsuite/tests/typing-misc/pr6416.ml[8,102+4]..[8,102+21])
+                      Psig_value
+                      value_description "f" (testsuite/tests/typing-misc/pr6416.ml[8,102+8]..[8,102+9]) (testsuite/tests/typing-misc/pr6416.ml[8,102+4]..[8,102+21])
+                        core_type (testsuite/tests/typing-misc/pr6416.ml[8,102+12]..[8,102+21])
+                          Ptyp_arrow
+                          Nolabel
+                          core_type (testsuite/tests/typing-misc/pr6416.ml[8,102+12]..[8,102+13])
+                            Ptyp_constr "t" (testsuite/tests/typing-misc/pr6416.ml[8,102+12]..[8,102+13])
+                            []
+                          core_type (testsuite/tests/typing-misc/pr6416.ml[8,102+17]..[8,102+21])
+                            Ptyp_constr "unit" (testsuite/tests/typing-misc/pr6416.ml[8,102+17]..[8,102+21])
+                            []
+                        []
+                  ]
+        ]
+  structure_item (testsuite/tests/typing-misc/pr6416.ml[14,183+0]..[35,814+3])
+    Pstr_extension "expect"
+    [
+      structure_item (testsuite/tests/typing-misc/pr6416.ml[14,183+9]..[35,814+2])
+        Pstr_eval
+        expression (testsuite/tests/typing-misc/pr6416.ml[14,183+9]..[35,814+2])
+          Pexp_constant PConst_string ("\nLines 5-8, characters 8-5:\n5 | ........struct\n6 |     type t = B\n7 |     let f B = ()\n8 |   end\nError: Signature mismatch:\n       Modules do not match:\n         sig type t = B val f : t -> unit end\n       is not included in\n         sig val f : t -> unit end\n       Values do not match:\n         val f : t/1 -> unit\n       is not included in\n         val f : t/2 -> unit\n       The type t/1 -> unit is not compatible with the type t/2 -> unit\n       Type t/1 is not compatible with type t/2\n       Line 6, characters 4-14:\n         Definition of type t/1\n       Line 2, characters 2-12:\n         Definition of type t/2\n",(testsuite/tests/typing-misc/pr6416.ml[14,183+11]..[35,814+0]),Some "")
+    ]
+  structure_item (testsuite/tests/typing-misc/pr6416.ml[37,819+0]..[41,927+3])
+    Pstr_module
+    "N" (testsuite/tests/typing-misc/pr6416.ml[37,819+7]..[37,819+8])
+      module_expr (testsuite/tests/typing-misc/pr6416.ml[37,819+11]..[41,927+3])
+        Pmod_structure
+        [
+          structure_item (testsuite/tests/typing-misc/pr6416.ml[38,837+2]..[38,837+11])
+            Pstr_type Rec
+            [
+              type_declaration "t" (testsuite/tests/typing-misc/pr6416.ml[38,837+7]..[38,837+8]) (testsuite/tests/typing-misc/pr6416.ml[38,837+2]..[38,837+11])
+                ptype_params =
+                  []
+                ptype_cstrs =
+                  []
+                ptype_kind =
+                  Ptype_variant
+                    [
+                      (testsuite/tests/typing-misc/pr6416.ml[38,837+10]..[38,837+11])
+                        "A" (testsuite/tests/typing-misc/pr6416.ml[38,837+10]..[38,837+11])
+                        []
+                        None
+                    ]
+                ptype_private = Public
+                ptype_manifest =
+                  None
+            ]
+          structure_item (testsuite/tests/typing-misc/pr6416.ml[39,849+2]..[40,887+39])
+            Pstr_module
+            "M" (testsuite/tests/typing-misc/pr6416.ml[39,849+9]..[39,849+10])
+              module_expr (testsuite/tests/typing-misc/pr6416.ml[39,849+10]..[40,887+39])
+                Pmod_constraint
+                module_expr (testsuite/tests/typing-misc/pr6416.ml[40,887+2]..[40,887+39])
+                  Pmod_structure
+                  [
+                    structure_item (testsuite/tests/typing-misc/pr6416.ml[40,887+9]..[40,887+19])
+                      Pstr_type Rec
+                      [
+                        type_declaration "t" (testsuite/tests/typing-misc/pr6416.ml[40,887+14]..[40,887+15]) (testsuite/tests/typing-misc/pr6416.ml[40,887+9]..[40,887+19])
+                          ptype_params =
+                            []
+                          ptype_cstrs =
+                            []
+                          ptype_kind =
+                            Ptype_variant
+                              [
+                                (testsuite/tests/typing-misc/pr6416.ml[40,887+18]..[40,887+19])
+                                  "B" (testsuite/tests/typing-misc/pr6416.ml[40,887+18]..[40,887+19])
+                                  []
+                                  None
+                              ]
+                          ptype_private = Public
+                          ptype_manifest =
+                            None
+                      ]
+                    structure_item (testsuite/tests/typing-misc/pr6416.ml[40,887+20]..[40,887+35])
+                      Pstr_type Rec
+                      [
+                        type_declaration "u" (testsuite/tests/typing-misc/pr6416.ml[40,887+25]..[40,887+26]) (testsuite/tests/typing-misc/pr6416.ml[40,887+20]..[40,887+35])
+                          ptype_params =
+                            []
+                          ptype_cstrs =
+                            []
+                          ptype_kind =
+                            Ptype_variant
+                              [
+                                (testsuite/tests/typing-misc/pr6416.ml[40,887+29]..[40,887+35])
+                                  "A" (testsuite/tests/typing-misc/pr6416.ml[40,887+29]..[40,887+30])
+                                  [
+                                    core_type (testsuite/tests/typing-misc/pr6416.ml[40,887+34]..[40,887+35])
+                                      Ptyp_constr "t" (testsuite/tests/typing-misc/pr6416.ml[40,887+34]..[40,887+35])
+                                      []
+                                  ]
+                                  None
+                              ]
+                          ptype_private = Public
+                          ptype_manifest =
+                            None
+                      ]
+                  ]
+                module_type (testsuite/tests/typing-misc/pr6416.ml[39,849+12]..[39,849+35])
+                  Pmty_signature
+                  [
+                    signature_item (testsuite/tests/typing-misc/pr6416.ml[39,849+16]..[39,849+31])
+                      Psig_type Rec
+                      [
+                        type_declaration "u" (testsuite/tests/typing-misc/pr6416.ml[39,849+21]..[39,849+22]) (testsuite/tests/typing-misc/pr6416.ml[39,849+16]..[39,849+31])
+                          ptype_params =
+                            []
+                          ptype_cstrs =
+                            []
+                          ptype_kind =
+                            Ptype_variant
+                              [
+                                (testsuite/tests/typing-misc/pr6416.ml[39,849+25]..[39,849+31])
+                                  "A" (testsuite/tests/typing-misc/pr6416.ml[39,849+25]..[39,849+26])
+                                  [
+                                    core_type (testsuite/tests/typing-misc/pr6416.ml[39,849+30]..[39,849+31])
+                                      Ptyp_constr "t" (testsuite/tests/typing-misc/pr6416.ml[39,849+30]..[39,849+31])
+                                      []
+                                  ]
+                                  None
+                              ]
+                          ptype_private = Public
+                          ptype_manifest =
+                            None
+                      ]
+                  ]
+        ]
+  structure_item (testsuite/tests/typing-misc/pr6416.ml[42,933+0]..[64,1610+3])
+    Pstr_extension "expect"
+    [
+      structure_item (testsuite/tests/typing-misc/pr6416.ml[42,933+9]..[64,1610+2])
+        Pstr_eval
+        expression (testsuite/tests/typing-misc/pr6416.ml[42,933+9]..[64,1610+2])
+          Pexp_constant PConst_string ("\nLine 4, characters 2-39:\n4 |   struct type t = B type u = A of t end\n      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nError: Signature mismatch:\n       Modules do not match:\n         sig type t = B type u = A of t end\n       is not included in\n         sig type u = A of t end\n       Type declarations do not match:\n         type u = A of t/1\n       is not included in\n         type u = A of t/2\n       Constructors do not match:\n         A of t/1\n       is not the same as:\n         A of t/2\n       The type t/1 is not equal to the type t/2\n       Line 4, characters 9-19:\n         Definition of type t/1\n       Line 2, characters 2-11:\n         Definition of type t/2\n",(testsuite/tests/typing-misc/pr6416.ml[42,933+11]..[64,1610+0]),Some "")
+    ]
+  structure_item (testsuite/tests/typing-misc/pr6416.ml[66,1615+0]..[73,1775+3])
+    Pstr_module
+    "K" (testsuite/tests/typing-misc/pr6416.ml[66,1615+7]..[66,1615+8])
+      module_expr (testsuite/tests/typing-misc/pr6416.ml[66,1615+11]..[73,1775+3])
+        Pmod_structure
+        [
+          structure_item (testsuite/tests/typing-misc/pr6416.ml[67,1633+2]..[67,1633+15])
+            Pstr_modtype "s" (testsuite/tests/typing-misc/pr6416.ml[67,1633+14]..[67,1633+15])
+            #abstract          structure_item (testsuite/tests/typing-misc/pr6416.ml[68,1649+2]..[72,1767+7])
+            Pstr_module
+            "M" (testsuite/tests/typing-misc/pr6416.ml[68,1649+9]..[68,1649+10])
+              module_expr (testsuite/tests/typing-misc/pr6416.ml[68,1649+10]..[72,1767+7])
+                Pmod_constraint
+                module_expr (testsuite/tests/typing-misc/pr6416.ml[69,1704+4]..[72,1767+7])
+                  Pmod_structure
+                  [
+                    structure_item (testsuite/tests/typing-misc/pr6416.ml[70,1715+6]..[70,1715+19])
+                      Pstr_modtype "s" (testsuite/tests/typing-misc/pr6416.ml[70,1715+18]..[70,1715+19])
+                      #abstract                    structure_item (testsuite/tests/typing-misc/pr6416.ml[71,1735+6]..[71,1735+31])
+                      Pstr_module
+                      "A" (testsuite/tests/typing-misc/pr6416.ml[71,1735+13]..[71,1735+14])
+                        module_expr (testsuite/tests/typing-misc/pr6416.ml[71,1735+14]..[71,1735+31])
+                          Pmod_functor "X" (testsuite/tests/typing-misc/pr6416.ml[71,1735+15]..[71,1735+16])
+                          module_type (testsuite/tests/typing-misc/pr6416.ml[71,1735+17]..[71,1735+18])
+                            Pmty_ident "s" (testsuite/tests/typing-misc/pr6416.ml[71,1735+17]..[71,1735+18])
+                          module_expr (testsuite/tests/typing-misc/pr6416.ml[71,1735+21]..[71,1735+31])
+                            Pmod_structure
+                            []
+                  ]
+                module_type (testsuite/tests/typing-misc/pr6416.ml[68,1649+12]..[68,1649+52])
+                  Pmty_signature
+                  [
+                    signature_item (testsuite/tests/typing-misc/pr6416.ml[68,1649+16]..[68,1649+48])
+                      Psig_module "A" (testsuite/tests/typing-misc/pr6416.ml[68,1649+23]..[68,1649+24])
+                      module_type (testsuite/tests/typing-misc/pr6416.ml[68,1649+32]..[68,1649+48])
+                        Pmty_functor "X" (testsuite/tests/typing-misc/pr6416.ml[68,1649+33]..[68,1649+34])
+                        module_type (testsuite/tests/typing-misc/pr6416.ml[68,1649+35]..[68,1649+36])
+                          Pmty_ident "s" (testsuite/tests/typing-misc/pr6416.ml[68,1649+35]..[68,1649+36])
+                        module_type (testsuite/tests/typing-misc/pr6416.ml[68,1649+41]..[68,1649+48])
+                          Pmty_signature
+                          []
+                  ]
+        ]
+  structure_item (testsuite/tests/typing-misc/pr6416.ml[75,1782+0]..[99,2483+3])
+    Pstr_extension "expect"
+    [
+      structure_item (testsuite/tests/typing-misc/pr6416.ml[75,1782+9]..[99,2483+2])
+        Pstr_eval
+        expression (testsuite/tests/typing-misc/pr6416.ml[75,1782+9]..[99,2483+2])
+          Pexp_constant PConst_string ("\nLines 4-7, characters 4-7:\n4 | ....struct\n5 |       module type s\n6 |       module A(X:s) =struct end\n7 |     end\nError: Signature mismatch:\n       Modules do not match:\n         sig module type s module A : functor (X : s) -> sig end end\n       is not included in\n         sig module A : functor (X : s) -> sig end end\n       In module A:\n       Modules do not match:\n         functor (X : s/1) -> ...\n       is not included in\n         functor (X : s/2) -> ...\n       Module types do not match:\n         s/1\n       does not include\n         s/2\n       Line 5, characters 6-19:\n         Definition of module type s/1\n       Line 2, characters 2-15:\n         Definition of module type s/2\n",(testsuite/tests/typing-misc/pr6416.ml[75,1782+11]..[99,2483+0]),Some "")
+    ]
+  structure_item (testsuite/tests/typing-misc/pr6416.ml[101,2488+0]..[108,2655+3])
+    Pstr_module
+    "L" (testsuite/tests/typing-misc/pr6416.ml[101,2488+7]..[101,2488+8])
+      module_expr (testsuite/tests/typing-misc/pr6416.ml[101,2488+11]..[108,2655+3])
+        Pmod_structure
+        [
+          structure_item (testsuite/tests/typing-misc/pr6416.ml[102,2506+2]..[102,2506+30])
+            Pstr_module
+            "T" (testsuite/tests/typing-misc/pr6416.ml[102,2506+9]..[102,2506+10])
+              module_expr (testsuite/tests/typing-misc/pr6416.ml[102,2506+13]..[102,2506+30])
+                Pmod_structure
+                [
+                  structure_item (testsuite/tests/typing-misc/pr6416.ml[102,2506+20]..[102,2506+26])
+                    Pstr_type Rec
+                    [
+                      type_declaration "t" (testsuite/tests/typing-misc/pr6416.ml[102,2506+25]..[102,2506+26]) (testsuite/tests/typing-misc/pr6416.ml[102,2506+20]..[102,2506+26])
+                        ptype_params =
+                          []
+                        ptype_cstrs =
+                          []
+                        ptype_kind =
+                          Ptype_abstract
+                        ptype_private = Public
+                        ptype_manifest =
+                          None
+                    ]
+                ]
+          structure_item (testsuite/tests/typing-misc/pr6416.ml[103,2537+2]..[107,2647+7])
+            Pstr_module
+            "M" (testsuite/tests/typing-misc/pr6416.ml[103,2537+9]..[103,2537+10])
+              module_expr (testsuite/tests/typing-misc/pr6416.ml[103,2537+10]..[107,2647+7])
+                Pmod_constraint
+                module_expr (testsuite/tests/typing-misc/pr6416.ml[104,2577+4]..[107,2647+7])
+                  Pmod_structure
+                  [
+                    structure_item (testsuite/tests/typing-misc/pr6416.ml[105,2588+6]..[105,2588+34])
+                      Pstr_module
+                      "T" (testsuite/tests/typing-misc/pr6416.ml[105,2588+13]..[105,2588+14])
+                        module_expr (testsuite/tests/typing-misc/pr6416.ml[105,2588+17]..[105,2588+34])
+                          Pmod_structure
+                          [
+                            structure_item (testsuite/tests/typing-misc/pr6416.ml[105,2588+24]..[105,2588+30])
+                              Pstr_type Rec
+                              [
+                                type_declaration "t" (testsuite/tests/typing-misc/pr6416.ml[105,2588+29]..[105,2588+30]) (testsuite/tests/typing-misc/pr6416.ml[105,2588+24]..[105,2588+30])
+                                  ptype_params =
+                                    []
+                                  ptype_cstrs =
+                                    []
+                                  ptype_kind =
+                                    Ptype_abstract
+                                  ptype_private = Public
+                                  ptype_manifest =
+                                    None
+                              ]
+                          ]
+                    structure_item (testsuite/tests/typing-misc/pr6416.ml[106,2623+6]..[106,2623+23])
+                      Pstr_type Rec
+                      [
+                        type_declaration "t" (testsuite/tests/typing-misc/pr6416.ml[106,2623+11]..[106,2623+12]) (testsuite/tests/typing-misc/pr6416.ml[106,2623+6]..[106,2623+23])
+                          ptype_params =
+                            []
+                          ptype_cstrs =
+                            []
+                          ptype_kind =
+                            Ptype_variant
+                              [
+                                (testsuite/tests/typing-misc/pr6416.ml[106,2623+15]..[106,2623+23])
+                                  "A" (testsuite/tests/typing-misc/pr6416.ml[106,2623+15]..[106,2623+16])
+                                  [
+                                    core_type (testsuite/tests/typing-misc/pr6416.ml[106,2623+20]..[106,2623+23])
+                                      Ptyp_constr "T.t" (testsuite/tests/typing-misc/pr6416.ml[106,2623+20]..[106,2623+23])
+                                      []
+                                  ]
+                                  None
+                              ]
+                          ptype_private = Public
+                          ptype_manifest =
+                            None
+                      ]
+                  ]
+                module_type (testsuite/tests/typing-misc/pr6416.ml[103,2537+12]..[103,2537+37])
+                  Pmty_signature
+                  [
+                    signature_item (testsuite/tests/typing-misc/pr6416.ml[103,2537+16]..[103,2537+33])
+                      Psig_type Rec
+                      [
+                        type_declaration "t" (testsuite/tests/typing-misc/pr6416.ml[103,2537+21]..[103,2537+22]) (testsuite/tests/typing-misc/pr6416.ml[103,2537+16]..[103,2537+33])
+                          ptype_params =
+                            []
+                          ptype_cstrs =
+                            []
+                          ptype_kind =
+                            Ptype_variant
+                              [
+                                (testsuite/tests/typing-misc/pr6416.ml[103,2537+25]..[103,2537+33])
+                                  "A" (testsuite/tests/typing-misc/pr6416.ml[103,2537+25]..[103,2537+26])
+                                  [
+                                    core_type (testsuite/tests/typing-misc/pr6416.ml[103,2537+30]..[103,2537+33])
+                                      Ptyp_constr "T.t" (testsuite/tests/typing-misc/pr6416.ml[103,2537+30]..[103,2537+33])
+                                      []
+                                  ]
+                                  None
+                              ]
+                          ptype_private = Public
+                          ptype_manifest =
+                            None
+                      ]
+                  ]
+        ]
+  structure_item (testsuite/tests/typing-misc/pr6416.ml[109,2661+6]..[133,3388+3])
+    Pstr_extension "expect"
+    [
+      structure_item (testsuite/tests/typing-misc/pr6416.ml[109,2661+16]..[133,3388+2])
+        Pstr_eval
+        expression (testsuite/tests/typing-misc/pr6416.ml[109,2661+16]..[133,3388+2])
+          Pexp_constant PConst_string ("\nLines 4-7, characters 4-7:\n4 | ....struct\n5 |       module T = struct type t end\n6 |       type t = A of T.t\n7 |     end\nError: Signature mismatch:\n       Modules do not match:\n         sig module T : sig type t end type t = A of T.t end\n       is not included in\n         sig type t = A of T.t end\n       Type declarations do not match:\n         type t = A of T/1.t\n       is not included in\n         type t = A of T/2.t\n       Constructors do not match:\n         A of T/1.t\n       is not the same as:\n         A of T/2.t\n       The type T/1.t is not equal to the type T/2.t\n       Line 5, characters 6-34:\n         Definition of module T/1\n       Line 2, characters 2-30:\n         Definition of module T/2\n",(testsuite/tests/typing-misc/pr6416.ml[109,2661+18]..[133,3388+0]),Some "")
+    ]
+  structure_item (testsuite/tests/typing-misc/pr6416.ml[135,3393+0]..[140,3553+3])
+    Pstr_module
+    "O" (testsuite/tests/typing-misc/pr6416.ml[135,3393+7]..[135,3393+8])
+      module_expr (testsuite/tests/typing-misc/pr6416.ml[135,3393+11]..[140,3553+3])
+        Pmod_structure
+        [
+          structure_item (testsuite/tests/typing-misc/pr6416.ml[136,3411+2]..[136,3411+15])
+            Pstr_modtype "s" (testsuite/tests/typing-misc/pr6416.ml[136,3411+14]..[136,3411+15])
+            #abstract          structure_item (testsuite/tests/typing-misc/pr6416.ml[137,3427+2]..[137,3427+12])
+            Pstr_type Rec
+            [
+              type_declaration "t" (testsuite/tests/typing-misc/pr6416.ml[137,3427+7]..[137,3427+8]) (testsuite/tests/typing-misc/pr6416.ml[137,3427+2]..[137,3427+12])
+                ptype_params =
+                  []
+                ptype_cstrs =
+                  []
+                ptype_kind =
+                  Ptype_variant
+                    [
+                      (testsuite/tests/typing-misc/pr6416.ml[137,3427+11]..[137,3427+12])
+                        "A" (testsuite/tests/typing-misc/pr6416.ml[137,3427+11]..[137,3427+12])
+                        []
+                        None
+                    ]
+                ptype_private = Public
+                ptype_manifest =
+                  None
+            ]
+          structure_item (testsuite/tests/typing-misc/pr6416.ml[138,3440+2]..[139,3490+62])
+            Pstr_module
+            "M" (testsuite/tests/typing-misc/pr6416.ml[138,3440+9]..[138,3440+10])
+              module_expr (testsuite/tests/typing-misc/pr6416.ml[138,3440+10]..[139,3490+62])
+                Pmod_constraint
+                module_expr (testsuite/tests/typing-misc/pr6416.ml[139,3490+2]..[139,3490+62])
+                  Pmod_structure
+                  [
+                    structure_item (testsuite/tests/typing-misc/pr6416.ml[139,3490+9]..[139,3490+22])
+                      Pstr_modtype "s" (testsuite/tests/typing-misc/pr6416.ml[139,3490+21]..[139,3490+22])
+                      #abstract                    structure_item (testsuite/tests/typing-misc/pr6416.ml[139,3490+23]..[139,3490+33])
+                      Pstr_type Rec
+                      [
+                        type_declaration "t" (testsuite/tests/typing-misc/pr6416.ml[139,3490+28]..[139,3490+29]) (testsuite/tests/typing-misc/pr6416.ml[139,3490+23]..[139,3490+33])
+                          ptype_params =
+                            []
+                          ptype_cstrs =
+                            []
+                          ptype_kind =
+                            Ptype_variant
+                              [
+                                (testsuite/tests/typing-misc/pr6416.ml[139,3490+32]..[139,3490+33])
+                                  "B" (testsuite/tests/typing-misc/pr6416.ml[139,3490+32]..[139,3490+33])
+                                  []
+                                  None
+                              ]
+                          ptype_private = Public
+                          ptype_manifest =
+                            None
+                      ]
+                    structure_item (testsuite/tests/typing-misc/pr6416.ml[139,3490+34]..[139,3490+58])
+                      Pstr_value Nonrec
+                      [
+                        <def>
+                          pattern (testsuite/tests/typing-misc/pr6416.ml[139,3490+38]..[139,3490+39])
+                            Ppat_var "f" (testsuite/tests/typing-misc/pr6416.ml[139,3490+38]..[139,3490+39])
+                          expression (testsuite/tests/typing-misc/pr6416.ml[139,3490+40]..[139,3490+58]) ghost
+                            Pexp_fun
+                            Nolabel
+                            None
+                            pattern (testsuite/tests/typing-misc/pr6416.ml[139,3490+40]..[139,3490+52])
+                              Ppat_constraint
+                              pattern (testsuite/tests/typing-misc/pr6416.ml[139,3490+48]..[139,3490+49])
+                                Ppat_unpack "X" (testsuite/tests/typing-misc/pr6416.ml[139,3490+48]..[139,3490+49])
+                              core_type (testsuite/tests/typing-misc/pr6416.ml[139,3490+50]..[139,3490+51])
+                                Ptyp_package "s" (testsuite/tests/typing-misc/pr6416.ml[139,3490+50]..[139,3490+51])
+                                []
+                            expression (testsuite/tests/typing-misc/pr6416.ml[139,3490+53]..[139,3490+58]) ghost
+                              Pexp_fun
+                              Nolabel
+                              None
+                              pattern (testsuite/tests/typing-misc/pr6416.ml[139,3490+53]..[139,3490+54])
+                                Ppat_construct "A" (testsuite/tests/typing-misc/pr6416.ml[139,3490+53]..[139,3490+54])
+                                None
+                              expression (testsuite/tests/typing-misc/pr6416.ml[139,3490+57]..[139,3490+58])
+                                Pexp_construct "B" (testsuite/tests/typing-misc/pr6416.ml[139,3490+57]..[139,3490+58])
+                                None
+                      ]
+                  ]
+                module_type (testsuite/tests/typing-misc/pr6416.ml[138,3440+12]..[138,3440+47])
+                  Pmty_signature
+                  [
+                    signature_item (testsuite/tests/typing-misc/pr6416.ml[138,3440+16]..[138,3440+43])
+                      Psig_value
+                      value_description "f" (testsuite/tests/typing-misc/pr6416.ml[138,3440+20]..[138,3440+21]) (testsuite/tests/typing-misc/pr6416.ml[138,3440+16]..[138,3440+43])
+                        core_type (testsuite/tests/typing-misc/pr6416.ml[138,3440+23]..[138,3440+43])
+                          Ptyp_arrow
+                          Nolabel
+                          core_type (testsuite/tests/typing-misc/pr6416.ml[138,3440+23]..[138,3440+33])
+                            Ptyp_package "s" (testsuite/tests/typing-misc/pr6416.ml[138,3440+31]..[138,3440+32])
+                            []
+                          core_type (testsuite/tests/typing-misc/pr6416.ml[138,3440+37]..[138,3440+43])
+                            Ptyp_arrow
+                            Nolabel
+                            core_type (testsuite/tests/typing-misc/pr6416.ml[138,3440+37]..[138,3440+38])
+                              Ptyp_constr "t" (testsuite/tests/typing-misc/pr6416.ml[138,3440+37]..[138,3440+38])
+                              []
+                            core_type (testsuite/tests/typing-misc/pr6416.ml[138,3440+42]..[138,3440+43])
+                              Ptyp_constr "t" (testsuite/tests/typing-misc/pr6416.ml[138,3440+42]..[138,3440+43])
+                              []
+                        []
+                  ]
+        ]
+  structure_item (testsuite/tests/typing-misc/pr6416.ml[142,3560+0]..[166,4524+3])
+    Pstr_extension "expect"
+    [
+      structure_item (testsuite/tests/typing-misc/pr6416.ml[142,3560+9]..[166,4524+2])
+        Pstr_eval
+        expression (testsuite/tests/typing-misc/pr6416.ml[142,3560+9]..[166,4524+2])
+          Pexp_constant PConst_string ("\nLine 5, characters 2-62:\n5 |   struct module type s type t = B let f (module X:s) A = B end\n      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nError: Signature mismatch:\n       Modules do not match:\n         sig module type s type t = B val f : (module s) -> t/2 -> t/1 end\n       is not included in\n         sig val f : (module s) -> t -> t end\n       Values do not match:\n         val f : (module s/1) -> t/2 -> t/1\n       is not included in\n         val f : (module s/2) -> t/2 -> t/2\n       The type (module s/1) -> t/2 -> t/1 is not compatible with the type\n         (module s/2) -> t/2 -> t/2\n       Type (module s/1) is not compatible with type (module s/2)\n       Line 5, characters 23-33:\n         Definition of type t/1\n       Line 3, characters 2-12:\n         Definition of type t/2\n       Line 5, characters 9-22:\n         Definition of module type s/1\n       Line 2, characters 2-15:\n         Definition of module type s/2\n",(testsuite/tests/typing-misc/pr6416.ml[142,3560+11]..[166,4524+0]),Some "")
+    ]
+  structure_item (testsuite/tests/typing-misc/pr6416.ml[168,4529+0]..[173,4669+3])
+    Pstr_module
+    "P" (testsuite/tests/typing-misc/pr6416.ml[168,4529+7]..[168,4529+8])
+      module_expr (testsuite/tests/typing-misc/pr6416.ml[168,4529+11]..[173,4669+3])
+        Pmod_structure
+        [
+          structure_item (testsuite/tests/typing-misc/pr6416.ml[169,4547+2]..[169,4547+15])
+            Pstr_modtype "a" (testsuite/tests/typing-misc/pr6416.ml[169,4547+14]..[169,4547+15])
+            #abstract          structure_item (testsuite/tests/typing-misc/pr6416.ml[170,4563+2]..[170,4563+12])
+            Pstr_type Rec
+            [
+              type_declaration "a" (testsuite/tests/typing-misc/pr6416.ml[170,4563+7]..[170,4563+8]) (testsuite/tests/typing-misc/pr6416.ml[170,4563+2]..[170,4563+12])
+                ptype_params =
+                  []
+                ptype_cstrs =
+                  []
+                ptype_kind =
+                  Ptype_variant
+                    [
+                      (testsuite/tests/typing-misc/pr6416.ml[170,4563+11]..[170,4563+12])
+                        "A" (testsuite/tests/typing-misc/pr6416.ml[170,4563+11]..[170,4563+12])
+                        []
+                        None
+                    ]
+                ptype_private = Public
+                ptype_manifest =
+                  None
+            ]
+          structure_item (testsuite/tests/typing-misc/pr6416.ml[171,4576+3]..[172,4627+41])
+            Pstr_module
+            "M" (testsuite/tests/typing-misc/pr6416.ml[171,4576+10]..[171,4576+11])
+              module_expr (testsuite/tests/typing-misc/pr6416.ml[171,4576+12]..[172,4627+41])
+                Pmod_constraint
+                module_expr (testsuite/tests/typing-misc/pr6416.ml[172,4627+5]..[172,4627+41])
+                  Pmod_structure
+                  [
+                    structure_item (testsuite/tests/typing-misc/pr6416.ml[172,4627+12]..[172,4627+22])
+                      Pstr_type Rec
+                      [
+                        type_declaration "a" (testsuite/tests/typing-misc/pr6416.ml[172,4627+17]..[172,4627+18]) (testsuite/tests/typing-misc/pr6416.ml[172,4627+12]..[172,4627+22])
+                          ptype_params =
+                            []
+                          ptype_cstrs =
+                            []
+                          ptype_kind =
+                            Ptype_variant
+                              [
+                                (testsuite/tests/typing-misc/pr6416.ml[172,4627+21]..[172,4627+22])
+                                  "B" (testsuite/tests/typing-misc/pr6416.ml[172,4627+21]..[172,4627+22])
+                                  []
+                                  None
+                              ]
+                          ptype_private = Public
+                          ptype_manifest =
+                            None
+                      ]
+                    structure_item (testsuite/tests/typing-misc/pr6416.ml[172,4627+23]..[172,4627+37])
+                      Pstr_value Nonrec
+                      [
+                        <def>
+                          pattern (testsuite/tests/typing-misc/pr6416.ml[172,4627+27]..[172,4627+28])
+                            Ppat_var "f" (testsuite/tests/typing-misc/pr6416.ml[172,4627+27]..[172,4627+28])
+                          expression (testsuite/tests/typing-misc/pr6416.ml[172,4627+29]..[172,4627+37]) ghost
+                            Pexp_fun
+                            Nolabel
+                            None
+                            pattern (testsuite/tests/typing-misc/pr6416.ml[172,4627+29]..[172,4627+30])
+                              Ppat_construct "A" (testsuite/tests/typing-misc/pr6416.ml[172,4627+29]..[172,4627+30])
+                              None
+                            expression (testsuite/tests/typing-misc/pr6416.ml[172,4627+31]..[172,4627+37]) ghost
+                              Pexp_fun
+                              Nolabel
+                              None
+                              pattern (testsuite/tests/typing-misc/pr6416.ml[172,4627+31]..[172,4627+32])
+                                Ppat_any
+                              expression (testsuite/tests/typing-misc/pr6416.ml[172,4627+36]..[172,4627+37])
+                                Pexp_construct "B" (testsuite/tests/typing-misc/pr6416.ml[172,4627+36]..[172,4627+37])
+                                None
+                      ]
+                  ]
+                module_type (testsuite/tests/typing-misc/pr6416.ml[171,4576+14]..[171,4576+50])
+                  Pmty_signature
+                  [
+                    signature_item (testsuite/tests/typing-misc/pr6416.ml[171,4576+18]..[171,4576+45])
+                      Psig_value
+                      value_description "f" (testsuite/tests/typing-misc/pr6416.ml[171,4576+22]..[171,4576+23]) (testsuite/tests/typing-misc/pr6416.ml[171,4576+18]..[171,4576+45])
+                        core_type (testsuite/tests/typing-misc/pr6416.ml[171,4576+25]..[171,4576+45])
+                          Ptyp_arrow
+                          Nolabel
+                          core_type (testsuite/tests/typing-misc/pr6416.ml[171,4576+25]..[171,4576+26])
+                            Ptyp_constr "a" (testsuite/tests/typing-misc/pr6416.ml[171,4576+25]..[171,4576+26])
+                            []
+                          core_type (testsuite/tests/typing-misc/pr6416.ml[171,4576+30]..[171,4576+45])
+                            Ptyp_arrow
+                            Nolabel
+                            core_type (testsuite/tests/typing-misc/pr6416.ml[171,4576+30]..[171,4576+40])
+                              Ptyp_package "a" (testsuite/tests/typing-misc/pr6416.ml[171,4576+38]..[171,4576+39])
+                              []
+                            core_type (testsuite/tests/typing-misc/pr6416.ml[171,4576+44]..[171,4576+45])
+                              Ptyp_constr "a" (testsuite/tests/typing-misc/pr6416.ml[171,4576+44]..[171,4576+45])
+                              []
+                        []
+                  ]
+        ]
+  structure_item (testsuite/tests/typing-misc/pr6416.ml[175,4676+0]..[195,5400+3])
+    Pstr_extension "expect"
+    [
+      structure_item (testsuite/tests/typing-misc/pr6416.ml[175,4676+9]..[195,5400+2])
+        Pstr_eval
+        expression (testsuite/tests/typing-misc/pr6416.ml[175,4676+9]..[195,5400+2])
+          Pexp_constant PConst_string ("\nLine 5, characters 5-41:\n5 |    = struct type a = B let f A _  = B end\n         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nError: Signature mismatch:\n       Modules do not match:\n         sig type a = B val f : a/2 -> 'a -> a/1 end\n       is not included in\n         sig val f : a -> (module a) -> a end\n       Values do not match:\n         val f : a/2 -> 'a -> a/1\n       is not included in\n         val f : a/2 -> (module a) -> a/2\n       The type a/2 -> (module a) -> a/1 is not compatible with the type\n         a/2 -> (module a) -> a/2\n       Type a/1 is not compatible with type a/2\n       Line 5, characters 12-22:\n         Definition of type a/1\n       Line 3, characters 2-12:\n         Definition of type a/2\n",(testsuite/tests/typing-misc/pr6416.ml[175,4676+11]..[195,5400+0]),Some "")
+    ]
+  structure_item (testsuite/tests/typing-misc/pr6416.ml[197,5405+0]..[204,5599+3])
+    Pstr_module
+    "Q" (testsuite/tests/typing-misc/pr6416.ml[197,5405+7]..[197,5405+8])
+      module_expr (testsuite/tests/typing-misc/pr6416.ml[197,5405+11]..[204,5599+3])
+        Pmod_structure
+        [
+          structure_item (testsuite/tests/typing-misc/pr6416.ml[198,5423+2]..[198,5423+36])
+            Pstr_class
+            [
+              class_declaration (testsuite/tests/typing-misc/pr6416.ml[198,5423+2]..[198,5423+36])
+                pci_virt = Concrete
+                pci_params =
+                  []
+                pci_name = "a" (testsuite/tests/typing-misc/pr6416.ml[198,5423+8]..[198,5423+9])
+                pci_expr =
+                  class_expr (testsuite/tests/typing-misc/pr6416.ml[198,5423+12]..[198,5423+36])
+                    Pcl_structure
+                    class_structure
+                      pattern (testsuite/tests/typing-misc/pr6416.ml[198,5423+18]..[198,5423+18]) ghost
+                        Ppat_any
+                      [
+                        class_field (testsuite/tests/typing-misc/pr6416.ml[198,5423+19]..[198,5423+32])
+                          Pcf_method Public
+                            "m" (testsuite/tests/typing-misc/pr6416.ml[198,5423+26]..[198,5423+27])
+                            Concrete Fresh
+                            expression (testsuite/tests/typing-misc/pr6416.ml[198,5423+30]..[198,5423+32]) ghost
+                              Pexp_poly
+                              expression (testsuite/tests/typing-misc/pr6416.ml[198,5423+30]..[198,5423+32])
+                                Pexp_construct "()" (testsuite/tests/typing-misc/pr6416.ml[198,5423+30]..[198,5423+32])
+                                None
+                              None
+                      ]
+            ]
+          structure_item (testsuite/tests/typing-misc/pr6416.ml[199,5460+2]..[203,5593+5])
+            Pstr_module
+            "M" (testsuite/tests/typing-misc/pr6416.ml[199,5460+9]..[199,5460+10])
+              module_expr (testsuite/tests/typing-misc/pr6416.ml[199,5460+10]..[203,5593+5])
+                Pmod_constraint
+                module_expr (testsuite/tests/typing-misc/pr6416.ml[200,5493+2]..[203,5593+5])
+                  Pmod_structure
+                  [
+                    structure_item (testsuite/tests/typing-misc/pr6416.ml[201,5502+4]..[201,5502+74])
+                      Pstr_class
+                      [
+                        class_declaration (testsuite/tests/typing-misc/pr6416.ml[201,5502+4]..[201,5502+74])
+                          pci_virt = Concrete
+                          pci_params =
+                            []
+                          pci_name = "a" (testsuite/tests/typing-misc/pr6416.ml[201,5502+10]..[201,5502+11])
+                          pci_expr =
+                            class_expr (testsuite/tests/typing-misc/pr6416.ml[201,5502+14]..[201,5502+74])
+                              Pcl_structure
+                              class_structure
+                                pattern (testsuite/tests/typing-misc/pr6416.ml[201,5502+20]..[201,5502+20]) ghost
+                                  Ppat_any
+                                [
+                                  class_field (testsuite/tests/typing-misc/pr6416.ml[201,5502+21]..[201,5502+70])
+                                    Pcf_method Public
+                                      "c" (testsuite/tests/typing-misc/pr6416.ml[201,5502+28]..[201,5502+29])
+                                      Concrete Fresh
+                                      expression (testsuite/tests/typing-misc/pr6416.ml[201,5502+32]..[201,5502+70]) ghost
+                                        Pexp_poly
+                                        expression (testsuite/tests/typing-misc/pr6416.ml[201,5502+32]..[201,5502+70])
+                                          Pexp_letmodule "X" (testsuite/tests/typing-misc/pr6416.ml[201,5502+43]..[201,5502+44])
+                                          module_expr (testsuite/tests/typing-misc/pr6416.ml[201,5502+47]..[201,5502+64])
+                                            Pmod_structure
+                                            [
+                                              structure_item (testsuite/tests/typing-misc/pr6416.ml[201,5502+54]..[201,5502+60])
+                                                Pstr_type Rec
+                                                [
+                                                  type_declaration "t" (testsuite/tests/typing-misc/pr6416.ml[201,5502+59]..[201,5502+60]) (testsuite/tests/typing-misc/pr6416.ml[201,5502+54]..[201,5502+60])
+                                                    ptype_params =
+                                                      []
+                                                    ptype_cstrs =
+                                                      []
+                                                    ptype_kind =
+                                                      Ptype_abstract
+                                                    ptype_private = Public
+                                                    ptype_manifest =
+                                                      None
+                                                ]
+                                            ]
+                                          expression (testsuite/tests/typing-misc/pr6416.ml[201,5502+68]..[201,5502+70])
+                                            Pexp_construct "()" (testsuite/tests/typing-misc/pr6416.ml[201,5502+68]..[201,5502+70])
+                                            None
+                                        None
+                                ]
+                      ]
+                    structure_item (testsuite/tests/typing-misc/pr6416.ml[202,5577+4]..[202,5577+15])
+                      Pstr_class
+                      [
+                        class_declaration (testsuite/tests/typing-misc/pr6416.ml[202,5577+4]..[202,5577+15])
+                          pci_virt = Concrete
+                          pci_params =
+                            []
+                          pci_name = "b" (testsuite/tests/typing-misc/pr6416.ml[202,5577+10]..[202,5577+11])
+                          pci_expr =
+                            class_expr (testsuite/tests/typing-misc/pr6416.ml[202,5577+14]..[202,5577+15])
+                              Pcl_constr "a" (testsuite/tests/typing-misc/pr6416.ml[202,5577+14]..[202,5577+15])
+                              []
+                      ]
+                  ]
+                module_type (testsuite/tests/typing-misc/pr6416.ml[199,5460+12]..[199,5460+30])
+                  Pmty_signature
+                  [
+                    signature_item (testsuite/tests/typing-misc/pr6416.ml[199,5460+16]..[199,5460+26])
+                      Psig_class
+                      [
+                        class_description (testsuite/tests/typing-misc/pr6416.ml[199,5460+16]..[199,5460+26])
+                          pci_virt = Concrete
+                          pci_params =
+                            []
+                          pci_name = "b" (testsuite/tests/typing-misc/pr6416.ml[199,5460+22]..[199,5460+23])
+                          pci_expr =
+                            class_type (testsuite/tests/typing-misc/pr6416.ml[199,5460+25]..[199,5460+26])
+                              Pcty_constr "a" (testsuite/tests/typing-misc/pr6416.ml[199,5460+25]..[199,5460+26])
+                              []
+                      ]
+                  ]
+        ]
+  structure_item (testsuite/tests/typing-misc/pr6416.ml[207,5607+0]..[228,6279+3])
+    Pstr_extension "expect"
+    [
+      structure_item (testsuite/tests/typing-misc/pr6416.ml[207,5607+9]..[228,6279+2])
+        Pstr_eval
+        expression (testsuite/tests/typing-misc/pr6416.ml[207,5607+9]..[228,6279+2])
+          Pexp_constant PConst_string ("\nLines 4-7, characters 2-5:\n4 | ..struct\n5 |     class a = object method c = let module X = struct type t end in () end\n6 |     class b = a\n7 |   end\nError: Signature mismatch:\n       Modules do not match:\n         sig class a : object method c : unit end class b : a end\n       is not included in\n         sig class b : a end\n       Class declarations do not match:\n         class b : a\n       does not match\n         class b : a/2\n       The public method c cannot be hidden\n       The first class type has no method m\n       Line 5, characters 4-74:\n         Definition of class type a/1\n       Line 2, characters 2-36:\n         Definition of class type a/2\n",(testsuite/tests/typing-misc/pr6416.ml[207,5607+11]..[228,6279+0]),Some "")
+    ]
+  structure_item (testsuite/tests/typing-misc/pr6416.ml[230,6284+0]..[237,6449+3])
+    Pstr_module
+    "R" (testsuite/tests/typing-misc/pr6416.ml[230,6284+7]..[230,6284+8])
+      module_expr (testsuite/tests/typing-misc/pr6416.ml[230,6284+11]..[237,6449+3])
+        Pmod_structure
+        [
+          structure_item (testsuite/tests/typing-misc/pr6416.ml[231,6302+2]..[231,6302+42])
+            Pstr_class_type
+            [
+              class_type_declaration (testsuite/tests/typing-misc/pr6416.ml[231,6302+2]..[231,6302+42])
+                pci_virt = Concrete
+                pci_params =
+                  []
+                pci_name = "a" (testsuite/tests/typing-misc/pr6416.ml[231,6302+13]..[231,6302+14])
+                pci_expr =
+                  class_type (testsuite/tests/typing-misc/pr6416.ml[231,6302+17]..[231,6302+42])
+                    Pcty_signature
+                    class_signature
+                      core_type (testsuite/tests/typing-misc/pr6416.ml[231,6302+23]..[231,6302+23])
+                        Ptyp_any
+                      [
+                        class_type_field (testsuite/tests/typing-misc/pr6416.ml[231,6302+24]..[231,6302+38])
+                          Pctf_method "m" Public Concrete
+                            core_type (testsuite/tests/typing-misc/pr6416.ml[231,6302+34]..[231,6302+38])
+                              Ptyp_constr "unit" (testsuite/tests/typing-misc/pr6416.ml[231,6302+34]..[231,6302+38])
+                              []
+                      ]
+            ]
+          structure_item (testsuite/tests/typing-misc/pr6416.ml[232,6345+2]..[236,6443+5])
+            Pstr_module
+            "M" (testsuite/tests/typing-misc/pr6416.ml[232,6345+9]..[232,6345+10])
+              module_expr (testsuite/tests/typing-misc/pr6416.ml[232,6345+10]..[236,6443+5])
+                Pmod_constraint
+                module_expr (testsuite/tests/typing-misc/pr6416.ml[233,6383+2]..[236,6443+5])
+                  Pmod_structure
+                  [
+                    structure_item (testsuite/tests/typing-misc/pr6416.ml[234,6392+4]..[234,6392+29])
+                      Pstr_class_type
+                      [
+                        class_type_declaration (testsuite/tests/typing-misc/pr6416.ml[234,6392+4]..[234,6392+29])
+                          pci_virt = Concrete
+                          pci_params =
+                            []
+                          pci_name = "a" (testsuite/tests/typing-misc/pr6416.ml[234,6392+15]..[234,6392+16])
+                          pci_expr =
+                            class_type (testsuite/tests/typing-misc/pr6416.ml[234,6392+19]..[234,6392+29])
+                              Pcty_signature
+                              class_signature
+                                core_type (testsuite/tests/typing-misc/pr6416.ml[234,6392+25]..[234,6392+25])
+                                  Ptyp_any
+                                []
+                      ]
+                    structure_item (testsuite/tests/typing-misc/pr6416.ml[235,6422+4]..[235,6422+20])
+                      Pstr_class_type
+                      [
+                        class_type_declaration (testsuite/tests/typing-misc/pr6416.ml[235,6422+4]..[235,6422+20])
+                          pci_virt = Concrete
+                          pci_params =
+                            []
+                          pci_name = "b" (testsuite/tests/typing-misc/pr6416.ml[235,6422+15]..[235,6422+16])
+                          pci_expr =
+                            class_type (testsuite/tests/typing-misc/pr6416.ml[235,6422+19]..[235,6422+20])
+                              Pcty_constr "a" (testsuite/tests/typing-misc/pr6416.ml[235,6422+19]..[235,6422+20])
+                              []
+                      ]
+                  ]
+                module_type (testsuite/tests/typing-misc/pr6416.ml[232,6345+12]..[232,6345+35])
+                  Pmty_signature
+                  [
+                    signature_item (testsuite/tests/typing-misc/pr6416.ml[232,6345+16]..[232,6345+31])
+                      Psig_class_type
+                      [
+                        class_type_declaration (testsuite/tests/typing-misc/pr6416.ml[232,6345+16]..[232,6345+31])
+                          pci_virt = Concrete
+                          pci_params =
+                            []
+                          pci_name = "b" (testsuite/tests/typing-misc/pr6416.ml[232,6345+27]..[232,6345+28])
+                          pci_expr =
+                            class_type (testsuite/tests/typing-misc/pr6416.ml[232,6345+30]..[232,6345+31])
+                              Pcty_constr "a" (testsuite/tests/typing-misc/pr6416.ml[232,6345+30]..[232,6345+31])
+                              []
+                      ]
+                  ]
+        ]
+  structure_item (testsuite/tests/typing-misc/pr6416.ml[239,6456+0]..[259,7061+3])
+    Pstr_extension "expect"
+    [
+      structure_item (testsuite/tests/typing-misc/pr6416.ml[239,6456+9]..[259,7061+2])
+        Pstr_eval
+        expression (testsuite/tests/typing-misc/pr6416.ml[239,6456+9]..[259,7061+2])
+          Pexp_constant PConst_string ("\nLines 4-7, characters 2-5:\n4 | ..struct\n5 |     class type a = object end\n6 |     class type b = a\n7 |   end\nError: Signature mismatch:\n       Modules do not match:\n         sig class type a = object  end class type b = a end\n       is not included in\n         sig class type b = a end\n       Class type declarations do not match:\n         class type b = a/1\n       does not match\n         class type b = a/2\n       The first class type has no method m\n       Line 5, characters 4-29:\n         Definition of class type a/1\n       Line 2, characters 2-42:\n         Definition of class type a/2\n",(testsuite/tests/typing-misc/pr6416.ml[239,6456+11]..[259,7061+0]),Some "")
+    ]
+  structure_item (testsuite/tests/typing-misc/pr6416.ml[261,7066+0]..[264,7120+3])
+    Pstr_module
+    "S" (testsuite/tests/typing-misc/pr6416.ml[261,7066+7]..[261,7066+8])
+      module_expr (testsuite/tests/typing-misc/pr6416.ml[261,7066+11]..[264,7120+3])
+        Pmod_structure
+        [
+          structure_item (testsuite/tests/typing-misc/pr6416.ml[262,7084+2]..[262,7084+21])
+            Pstr_class
+            [
+              class_declaration (testsuite/tests/typing-misc/pr6416.ml[262,7084+2]..[262,7084+21])
+                pci_virt = Concrete
+                pci_params =
+                  []
+                pci_name = "a" (testsuite/tests/typing-misc/pr6416.ml[262,7084+8]..[262,7084+9])
+                pci_expr =
+                  class_expr (testsuite/tests/typing-misc/pr6416.ml[262,7084+11]..[262,7084+21])
+                    Pcl_structure
+                    class_structure
+                      pattern (testsuite/tests/typing-misc/pr6416.ml[262,7084+17]..[262,7084+17]) ghost
+                        Ppat_any
+                      []
+            ]
+          structure_item (testsuite/tests/typing-misc/pr6416.ml[263,7106+2]..[263,7106+13])
+            Pstr_class
+            [
+              class_declaration (testsuite/tests/typing-misc/pr6416.ml[263,7106+2]..[263,7106+13])
+                pci_virt = Concrete
+                pci_params =
+                  []
+                pci_name = "b" (testsuite/tests/typing-misc/pr6416.ml[263,7106+8]..[263,7106+9])
+                pci_expr =
+                  class_expr (testsuite/tests/typing-misc/pr6416.ml[263,7106+12]..[263,7106+13])
+                    Pcl_constr "a" (testsuite/tests/typing-misc/pr6416.ml[263,7106+12]..[263,7106+13])
+                    []
+            ]
+        ]
+  structure_item (testsuite/tests/typing-misc/pr6416.ml[266,7127+0]..[268,7192+3])
+    Pstr_extension "expect"
+    [
+      structure_item (testsuite/tests/typing-misc/pr6416.ml[266,7127+9]..[268,7192+2])
+        Pstr_eval
+        expression (testsuite/tests/typing-misc/pr6416.ml[266,7127+9]..[268,7192+2])
+          Pexp_constant PConst_string ("\nmodule S : sig class a : object  end class b : a end\n",(testsuite/tests/typing-misc/pr6416.ml[266,7127+11]..[268,7192+0]),Some "")
+    ]
+  structure_item (testsuite/tests/typing-misc/pr6416.ml[270,7197+0]..[284,7472+3])
+    Pstr_module
+    "X" (testsuite/tests/typing-misc/pr6416.ml[270,7197+7]..[270,7197+8])
+      module_expr (testsuite/tests/typing-misc/pr6416.ml[270,7197+8]..[284,7472+3])
+        Pmod_constraint
+        module_expr (testsuite/tests/typing-misc/pr6416.ml[277,7334+6]..[284,7472+3])
+          Pmod_structure
+          [
+            structure_item (testsuite/tests/typing-misc/pr6416.ml[278,7347+2]..[278,7347+8])
+              Pstr_type Rec
+              [
+                type_declaration "t" (testsuite/tests/typing-misc/pr6416.ml[278,7347+7]..[278,7347+8]) (testsuite/tests/typing-misc/pr6416.ml[278,7347+2]..[278,7347+8])
+                  ptype_params =
+                    []
+                  ptype_cstrs =
+                    []
+                  ptype_kind =
+                    Ptype_abstract
+                  ptype_private = Public
+                  ptype_manifest =
+                    None
+              ]
+            structure_item (testsuite/tests/typing-misc/pr6416.ml[279,7356+2]..[279,7356+38])
+              Pstr_class_type
+              [
+                class_type_declaration (testsuite/tests/typing-misc/pr6416.ml[279,7356+2]..[279,7356+38])
+                  pci_virt = Concrete
+                  pci_params =
+                    []
+                  pci_name = "a" (testsuite/tests/typing-misc/pr6416.ml[279,7356+13]..[279,7356+14])
+                  pci_expr =
+                    class_type (testsuite/tests/typing-misc/pr6416.ml[279,7356+17]..[279,7356+38])
+                      Pcty_signature
+                      class_signature
+                        core_type (testsuite/tests/typing-misc/pr6416.ml[279,7356+23]..[279,7356+23])
+                          Ptyp_any
+                        [
+                          class_type_field (testsuite/tests/typing-misc/pr6416.ml[279,7356+24]..[279,7356+34])
+                            Pctf_method "m" Public Concrete
+                              core_type (testsuite/tests/typing-misc/pr6416.ml[279,7356+33]..[279,7356+34])
+                                Ptyp_constr "t" (testsuite/tests/typing-misc/pr6416.ml[279,7356+33]..[279,7356+34])
+                                []
+                        ]
+              ]
+            structure_item (testsuite/tests/typing-misc/pr6416.ml[280,7395+2]..[283,7466+5])
+              Pstr_module
+              "K" (testsuite/tests/typing-misc/pr6416.ml[280,7395+9]..[280,7395+10])
+                module_expr (testsuite/tests/typing-misc/pr6416.ml[280,7395+13]..[283,7466+5])
+                  Pmod_structure
+                  [
+                    structure_item (testsuite/tests/typing-misc/pr6416.ml[281,7415+4]..[281,7415+10])
+                      Pstr_type Rec
+                      [
+                        type_declaration "t" (testsuite/tests/typing-misc/pr6416.ml[281,7415+9]..[281,7415+10]) (testsuite/tests/typing-misc/pr6416.ml[281,7415+4]..[281,7415+10])
+                          ptype_params =
+                            []
+                          ptype_cstrs =
+                            []
+                          ptype_kind =
+                            Ptype_abstract
+                          ptype_private = Public
+                          ptype_manifest =
+                            None
+                      ]
+                    structure_item (testsuite/tests/typing-misc/pr6416.ml[282,7426+4]..[282,7426+39])
+                      Pstr_class_type
+                      [
+                        class_type_declaration (testsuite/tests/typing-misc/pr6416.ml[282,7426+4]..[282,7426+39])
+                          pci_virt = Concrete
+                          pci_params =
+                            []
+                          pci_name = "c" (testsuite/tests/typing-misc/pr6416.ml[282,7426+15]..[282,7426+16])
+                          pci_expr =
+                            class_type (testsuite/tests/typing-misc/pr6416.ml[282,7426+19]..[282,7426+39])
+                              Pcty_signature
+                              class_signature
+                                core_type (testsuite/tests/typing-misc/pr6416.ml[282,7426+25]..[282,7426+25])
+                                  Ptyp_any
+                                [
+                                  class_type_field (testsuite/tests/typing-misc/pr6416.ml[282,7426+26]..[282,7426+35])
+                                    Pctf_inherit
+                                    class_type (testsuite/tests/typing-misc/pr6416.ml[282,7426+34]..[282,7426+35])
+                                      Pcty_constr "a" (testsuite/tests/typing-misc/pr6416.ml[282,7426+34]..[282,7426+35])
+                                      []
+                                ]
+                      ]
+                  ]
+          ]
+        module_type (testsuite/tests/typing-misc/pr6416.ml[270,7197+10]..[277,7334+3])
+          Pmty_signature
+          [
+            signature_item (testsuite/tests/typing-misc/pr6416.ml[271,7211+2]..[271,7211+8])
+              Psig_type Rec
+              [
+                type_declaration "t" (testsuite/tests/typing-misc/pr6416.ml[271,7211+7]..[271,7211+8]) (testsuite/tests/typing-misc/pr6416.ml[271,7211+2]..[271,7211+8])
+                  ptype_params =
+                    []
+                  ptype_cstrs =
+                    []
+                  ptype_kind =
+                    Ptype_abstract
+                  ptype_private = Public
+                  ptype_manifest =
+                    None
+              ]
+            signature_item (testsuite/tests/typing-misc/pr6416.ml[272,7220+2]..[272,7220+38])
+              Psig_class_type
+              [
+                class_type_declaration (testsuite/tests/typing-misc/pr6416.ml[272,7220+2]..[272,7220+38])
+                  pci_virt = Concrete
+                  pci_params =
+                    []
+                  pci_name = "a" (testsuite/tests/typing-misc/pr6416.ml[272,7220+13]..[272,7220+14])
+                  pci_expr =
+                    class_type (testsuite/tests/typing-misc/pr6416.ml[272,7220+17]..[272,7220+38])
+                      Pcty_signature
+                      class_signature
+                        core_type (testsuite/tests/typing-misc/pr6416.ml[272,7220+23]..[272,7220+23])
+                          Ptyp_any
+                        [
+                          class_type_field (testsuite/tests/typing-misc/pr6416.ml[272,7220+24]..[272,7220+34])
+                            Pctf_method "m" Public Concrete
+                              core_type (testsuite/tests/typing-misc/pr6416.ml[272,7220+33]..[272,7220+34])
+                                Ptyp_constr "t" (testsuite/tests/typing-misc/pr6416.ml[272,7220+33]..[272,7220+34])
+                                []
+                        ]
+              ]
+            signature_item (testsuite/tests/typing-misc/pr6416.ml[273,7259+2]..[276,7328+5])
+              Psig_module "K" (testsuite/tests/typing-misc/pr6416.ml[273,7259+9]..[273,7259+10])
+              module_type (testsuite/tests/typing-misc/pr6416.ml[273,7259+12]..[276,7328+5])
+                Pmty_signature
+                [
+                  signature_item (testsuite/tests/typing-misc/pr6416.ml[274,7275+4]..[274,7275+10])
+                    Psig_type Rec
+                    [
+                      type_declaration "t" (testsuite/tests/typing-misc/pr6416.ml[274,7275+9]..[274,7275+10]) (testsuite/tests/typing-misc/pr6416.ml[274,7275+4]..[274,7275+10])
+                        ptype_params =
+                          []
+                        ptype_cstrs =
+                          []
+                        ptype_kind =
+                          Ptype_abstract
+                        ptype_private = Public
+                        ptype_manifest =
+                          None
+                    ]
+                  signature_item (testsuite/tests/typing-misc/pr6416.ml[275,7286+4]..[275,7286+41])
+                    Psig_class_type
+                    [
+                      class_type_declaration (testsuite/tests/typing-misc/pr6416.ml[275,7286+4]..[275,7286+41])
+                        pci_virt = Concrete
+                        pci_params =
+                          []
+                        pci_name = "c" (testsuite/tests/typing-misc/pr6416.ml[275,7286+15]..[275,7286+16])
+                        pci_expr =
+                          class_type (testsuite/tests/typing-misc/pr6416.ml[275,7286+19]..[275,7286+41])
+                            Pcty_signature
+                            class_signature
+                              core_type (testsuite/tests/typing-misc/pr6416.ml[275,7286+25]..[275,7286+25])
+                                Ptyp_any
+                              [
+                                class_type_field (testsuite/tests/typing-misc/pr6416.ml[275,7286+26]..[275,7286+37])
+                                  Pctf_method "m" Public Concrete
+                                    core_type (testsuite/tests/typing-misc/pr6416.ml[275,7286+36]..[275,7286+37])
+                                      Ptyp_constr "t" (testsuite/tests/typing-misc/pr6416.ml[275,7286+36]..[275,7286+37])
+                                      []
+                              ]
+                    ]
+                ]
+          ]
+  structure_item (testsuite/tests/typing-misc/pr6416.ml[286,7479+0]..[325,8764+3])
+    Pstr_extension "expect"
+    [
+      structure_item (testsuite/tests/typing-misc/pr6416.ml[286,7479+9]..[325,8764+2])
+        Pstr_eval
+        expression (testsuite/tests/typing-misc/pr6416.ml[286,7479+9]..[325,8764+2])
+          Pexp_constant PConst_string ("\nLines 8-15, characters 6-3:\n 8 | ......struct\n 9 |   type t\n10 |   class type a = object method m:t end\n11 |   module K = struct\n12 |     type t\n13 |     class type c = object inherit a end\n14 |   end\n15 | end..\nError: Signature mismatch:\n       Modules do not match:\n         sig\n           type t\n           class type a = object method m : t end\n           module K : sig type t class type c = object method m : t/2 end end\n         end\n       is not included in\n         sig\n           type t\n           class type a = object method m : t end\n           module K : sig type t class type c = object method m : t end end\n         end\n       In module K:\n       Modules do not match:\n         sig type t = K.t class type c = object method m : t/2 end end\n       is not included in\n         sig type t class type c = object method m : t end end\n       In module K:\n       Class type declarations do not match:\n         class type c = object method m : t/2 end\n       does not match\n         class type c = object method m : t/1 end\n       The method m has type t/2 but is expected to have type t/1\n       Type t/2 is not equal to type t/1 = K.t\n       Line 12, characters 4-10:\n         Definition of type t/1\n       Line 9, characters 2-8:\n         Definition of type t/2\n",(testsuite/tests/typing-misc/pr6416.ml[286,7479+11]..[325,8764+0]),Some "")
+    ]
+  structure_item (testsuite/tests/typing-misc/pr6416.ml[328,8772+0]..[329,8817+59])
+    Pstr_recmodule
+    [
+      "M" (testsuite/tests/typing-misc/pr6416.ml[328,8772+11]..[328,8772+12])
+        module_expr (testsuite/tests/typing-misc/pr6416.ml[328,8772+12]..[329,8817+59])
+          Pmod_constraint
+          module_expr (testsuite/tests/typing-misc/pr6416.ml[329,8817+0]..[329,8817+59])
+            Pmod_structure
+            [
+              structure_item (testsuite/tests/typing-misc/pr6416.ml[329,8817+7]..[329,8817+13])
+                Pstr_type Rec
+                [
+                  type_declaration "t" (testsuite/tests/typing-misc/pr6416.ml[329,8817+12]..[329,8817+13]) (testsuite/tests/typing-misc/pr6416.ml[329,8817+7]..[329,8817+13])
+                    ptype_params =
+                      []
+                    ptype_cstrs =
+                      []
+                    ptype_kind =
+                      Ptype_abstract
+                    ptype_private = Public
+                    ptype_manifest =
+                      None
+                ]
+              structure_item (testsuite/tests/typing-misc/pr6416.ml[329,8817+14]..[329,8817+42])
+                Pstr_module
+                "M" (testsuite/tests/typing-misc/pr6416.ml[329,8817+21]..[329,8817+22])
+                  module_expr (testsuite/tests/typing-misc/pr6416.ml[329,8817+25]..[329,8817+42])
+                    Pmod_structure
+                    [
+                      structure_item (testsuite/tests/typing-misc/pr6416.ml[329,8817+32]..[329,8817+38])
+                        Pstr_type Rec
+                        [
+                          type_declaration "t" (testsuite/tests/typing-misc/pr6416.ml[329,8817+37]..[329,8817+38]) (testsuite/tests/typing-misc/pr6416.ml[329,8817+32]..[329,8817+38])
+                            ptype_params =
+                              []
+                            ptype_cstrs =
+                              []
+                            ptype_kind =
+                              Ptype_abstract
+                            ptype_private = Public
+                            ptype_manifest =
+                              None
+                        ]
+                    ]
+              structure_item (testsuite/tests/typing-misc/pr6416.ml[329,8817+43]..[329,8817+55])
+                Pstr_type Rec
+                [
+                  type_declaration "a" (testsuite/tests/typing-misc/pr6416.ml[329,8817+48]..[329,8817+49]) (testsuite/tests/typing-misc/pr6416.ml[329,8817+43]..[329,8817+55])
+                    ptype_params =
+                      []
+                    ptype_cstrs =
+                      []
+                    ptype_kind =
+                      Ptype_abstract
+                    ptype_private = Public
+                    ptype_manifest =
+                      Some
+                        core_type (testsuite/tests/typing-misc/pr6416.ml[329,8817+52]..[329,8817+55])
+                          Ptyp_constr "M.t" (testsuite/tests/typing-misc/pr6416.ml[329,8817+52]..[329,8817+55])
+                          []
+                ]
+            ]
+          module_type (testsuite/tests/typing-misc/pr6416.ml[328,8772+14]..[328,8772+41])
+            Pmty_signature
+            [
+              signature_item (testsuite/tests/typing-misc/pr6416.ml[328,8772+18]..[328,8772+24])
+                Psig_type Rec
+                [
+                  type_declaration "t" (testsuite/tests/typing-misc/pr6416.ml[328,8772+23]..[328,8772+24]) (testsuite/tests/typing-misc/pr6416.ml[328,8772+18]..[328,8772+24])
+                    ptype_params =
+                      []
+                    ptype_cstrs =
+                      []
+                    ptype_kind =
+                      Ptype_abstract
+                    ptype_private = Public
+                    ptype_manifest =
+                      None
+                ]
+              signature_item (testsuite/tests/typing-misc/pr6416.ml[328,8772+25]..[328,8772+37])
+                Psig_type Rec
+                [
+                  type_declaration "a" (testsuite/tests/typing-misc/pr6416.ml[328,8772+30]..[328,8772+31]) (testsuite/tests/typing-misc/pr6416.ml[328,8772+25]..[328,8772+37])
+                    ptype_params =
+                      []
+                    ptype_cstrs =
+                      []
+                    ptype_kind =
+                      Ptype_abstract
+                    ptype_private = Public
+                    ptype_manifest =
+                      Some
+                        core_type (testsuite/tests/typing-misc/pr6416.ml[328,8772+34]..[328,8772+37])
+                          Ptyp_constr "M.t" (testsuite/tests/typing-misc/pr6416.ml[328,8772+34]..[328,8772+37])
+                          []
+                ]
+            ]
+    ]
+  structure_item (testsuite/tests/typing-misc/pr6416.ml[331,8880+0]..[349,9550+3])
+    Pstr_extension "expect"
+    [
+      structure_item (testsuite/tests/typing-misc/pr6416.ml[331,8880+9]..[349,9550+2])
+        Pstr_eval
+        expression (testsuite/tests/typing-misc/pr6416.ml[331,8880+9]..[349,9550+2])
+          Pexp_constant PConst_string ("\nLine 2, characters 0-59:\n2 | struct type t module M = struct type t end type a = M.t end;;\n    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nError: Signature mismatch:\n       Modules do not match:\n         sig type t = M.t module M : sig type t = M.M.t end type a = M.t end\n       is not included in\n         sig type t type a = M.t end\n       Type declarations do not match:\n         type a = M/1.t\n       is not included in\n         type a = M/2.t\n       The type M/1.t = M/2.M.t is not equal to the type M/2.t\n       Line 2, characters 14-42:\n         Definition of module M/1\n       File \"_none_\", line 1:\n         Definition of module M/2\n",(testsuite/tests/typing-misc/pr6416.ml[331,8880+11]..[349,9550+0]),Some "")
+    ]
+  structure_item (testsuite/tests/typing-misc/pr6416.ml[353,9590+0]..[353,9590+10])
+    Pstr_type Rec
+    [
+      type_declaration "t" (testsuite/tests/typing-misc/pr6416.ml[353,9590+5]..[353,9590+6]) (testsuite/tests/typing-misc/pr6416.ml[353,9590+0]..[353,9590+10])
+        attribute "ocaml.doc"
+          [
+            structure_item (testsuite/tests/typing-misc/pr6416.ml[352,9556+0]..[352,9556+33])
+              Pstr_eval
+              expression (testsuite/tests/typing-misc/pr6416.ml[352,9556+0]..[352,9556+33])
+                Pexp_constant PConst_string(" Multiple redefinition of t ",(testsuite/tests/typing-misc/pr6416.ml[352,9556+0]..[352,9556+33]),None)
+          ]
+        ptype_params =
+          []
+        ptype_cstrs =
+          []
+        ptype_kind =
+          Ptype_variant
+            [
+              (testsuite/tests/typing-misc/pr6416.ml[353,9590+9]..[353,9590+10])
+                "A" (testsuite/tests/typing-misc/pr6416.ml[353,9590+9]..[353,9590+10])
+                []
+                None
+            ]
+        ptype_private = Public
+        ptype_manifest =
+          None
+    ]
+  structure_item (testsuite/tests/typing-misc/pr6416.ml[354,9603+0]..[354,9603+10])
+    Pstr_type Rec
+    [
+      type_declaration "t" (testsuite/tests/typing-misc/pr6416.ml[354,9603+5]..[354,9603+6]) (testsuite/tests/typing-misc/pr6416.ml[354,9603+0]..[354,9603+10])
+        ptype_params =
+          []
+        ptype_cstrs =
+          []
+        ptype_kind =
+          Ptype_variant
+            [
+              (testsuite/tests/typing-misc/pr6416.ml[354,9603+9]..[354,9603+10])
+                "B" (testsuite/tests/typing-misc/pr6416.ml[354,9603+9]..[354,9603+10])
+                []
+                None
+            ]
+        ptype_private = Public
+        ptype_manifest =
+          None
+    ]
+  structure_item (testsuite/tests/typing-misc/pr6416.ml[355,9616+0]..[355,9616+10])
+    Pstr_type Rec
+    [
+      type_declaration "t" (testsuite/tests/typing-misc/pr6416.ml[355,9616+5]..[355,9616+6]) (testsuite/tests/typing-misc/pr6416.ml[355,9616+0]..[355,9616+10])
+        ptype_params =
+          []
+        ptype_cstrs =
+          []
+        ptype_kind =
+          Ptype_variant
+            [
+              (testsuite/tests/typing-misc/pr6416.ml[355,9616+9]..[355,9616+10])
+                "C" (testsuite/tests/typing-misc/pr6416.ml[355,9616+9]..[355,9616+10])
+                []
+                None
+            ]
+        ptype_private = Public
+        ptype_manifest =
+          None
+    ]
+  structure_item (testsuite/tests/typing-misc/pr6416.ml[356,9629+0]..[356,9629+10])
+    Pstr_type Rec
+    [
+      type_declaration "t" (testsuite/tests/typing-misc/pr6416.ml[356,9629+5]..[356,9629+6]) (testsuite/tests/typing-misc/pr6416.ml[356,9629+0]..[356,9629+10])
+        ptype_params =
+          []
+        ptype_cstrs =
+          []
+        ptype_kind =
+          Ptype_variant
+            [
+              (testsuite/tests/typing-misc/pr6416.ml[356,9629+9]..[356,9629+10])
+                "D" (testsuite/tests/typing-misc/pr6416.ml[356,9629+9]..[356,9629+10])
+                []
+                None
+            ]
+        ptype_private = Public
+        ptype_manifest =
+          None
+    ]
+  structure_item (testsuite/tests/typing-misc/pr6416.ml[357,9642+0]..[359,9711+3])
+    Pstr_module
+    "M" (testsuite/tests/typing-misc/pr6416.ml[357,9642+7]..[357,9642+8])
+      module_expr (testsuite/tests/typing-misc/pr6416.ml[357,9642+8]..[359,9711+3])
+        Pmod_constraint
+        module_expr (testsuite/tests/typing-misc/pr6416.ml[357,9642+44]..[359,9711+3])
+          Pmod_structure
+          [
+            structure_item (testsuite/tests/typing-misc/pr6416.ml[358,9693+2]..[358,9693+17])
+              Pstr_value Nonrec
+              [
+                <def>
+                  pattern (testsuite/tests/typing-misc/pr6416.ml[358,9693+6]..[358,9693+7])
+                    Ppat_var "f" (testsuite/tests/typing-misc/pr6416.ml[358,9693+6]..[358,9693+7])
+                  expression (testsuite/tests/typing-misc/pr6416.ml[358,9693+8]..[358,9693+17]) ghost
+                    Pexp_fun
+                    Nolabel
+                    None
+                    pattern (testsuite/tests/typing-misc/pr6416.ml[358,9693+8]..[358,9693+9])
+                      Ppat_construct "A" (testsuite/tests/typing-misc/pr6416.ml[358,9693+8]..[358,9693+9])
+                      None
+                    expression (testsuite/tests/typing-misc/pr6416.ml[358,9693+10]..[358,9693+17]) ghost
+                      Pexp_fun
+                      Nolabel
+                      None
+                      pattern (testsuite/tests/typing-misc/pr6416.ml[358,9693+10]..[358,9693+11])
+                        Ppat_construct "B" (testsuite/tests/typing-misc/pr6416.ml[358,9693+10]..[358,9693+11])
+                        None
+                      expression (testsuite/tests/typing-misc/pr6416.ml[358,9693+12]..[358,9693+17]) ghost
+                        Pexp_fun
+                        Nolabel
+                        None
+                        pattern (testsuite/tests/typing-misc/pr6416.ml[358,9693+12]..[358,9693+13])
+                          Ppat_construct "C" (testsuite/tests/typing-misc/pr6416.ml[358,9693+12]..[358,9693+13])
+                          None
+                        expression (testsuite/tests/typing-misc/pr6416.ml[358,9693+16]..[358,9693+17])
+                          Pexp_construct "D" (testsuite/tests/typing-misc/pr6416.ml[358,9693+16]..[358,9693+17])
+                          None
+              ]
+          ]
+        module_type (testsuite/tests/typing-misc/pr6416.ml[357,9642+10]..[357,9642+41])
+          Pmty_signature
+          [
+            signature_item (testsuite/tests/typing-misc/pr6416.ml[357,9642+14]..[357,9642+37])
+              Psig_value
+              value_description "f" (testsuite/tests/typing-misc/pr6416.ml[357,9642+18]..[357,9642+19]) (testsuite/tests/typing-misc/pr6416.ml[357,9642+14]..[357,9642+37])
+                core_type (testsuite/tests/typing-misc/pr6416.ml[357,9642+21]..[357,9642+37])
+                  Ptyp_arrow
+                  Nolabel
+                  core_type (testsuite/tests/typing-misc/pr6416.ml[357,9642+21]..[357,9642+22])
+                    Ptyp_constr "t" (testsuite/tests/typing-misc/pr6416.ml[357,9642+21]..[357,9642+22])
+                    []
+                  core_type (testsuite/tests/typing-misc/pr6416.ml[357,9642+26]..[357,9642+37])
+                    Ptyp_arrow
+                    Nolabel
+                    core_type (testsuite/tests/typing-misc/pr6416.ml[357,9642+26]..[357,9642+27])
+                      Ptyp_constr "t" (testsuite/tests/typing-misc/pr6416.ml[357,9642+26]..[357,9642+27])
+                      []
+                    core_type (testsuite/tests/typing-misc/pr6416.ml[357,9642+31]..[357,9642+37])
+                      Ptyp_arrow
+                      Nolabel
+                      core_type (testsuite/tests/typing-misc/pr6416.ml[357,9642+31]..[357,9642+32])
+                        Ptyp_constr "t" (testsuite/tests/typing-misc/pr6416.ml[357,9642+31]..[357,9642+32])
+                        []
+                      core_type (testsuite/tests/typing-misc/pr6416.ml[357,9642+36]..[357,9642+37])
+                        Ptyp_constr "t" (testsuite/tests/typing-misc/pr6416.ml[357,9642+36]..[357,9642+37])
+                        []
+                []
+          ]
+  structure_item (testsuite/tests/typing-misc/pr6416.ml[360,9717+0]..[389,10612+3])
+    Pstr_extension "expect"
+    [
+      structure_item (testsuite/tests/typing-misc/pr6416.ml[360,9717+10]..[389,10612+2])
+        Pstr_eval
+        expression (testsuite/tests/typing-misc/pr6416.ml[360,9717+10]..[389,10612+2])
+          Pexp_constant PConst_string ("\ntype t = A\ntype t = B\ntype t = C\ntype t = D\nLines 5-7, characters 44-3:\n5 | ............................................struct\n6 |   let f A B C = D\n7 | end..\nError: Signature mismatch:\n       Modules do not match:\n         sig val f : t/2 -> t/3 -> t/4 -> t/1 end\n       is not included in\n         sig val f : t -> t -> t -> t end\n       Values do not match:\n         val f : t/2 -> t/3 -> t/4 -> t/1\n       is not included in\n         val f : t/1 -> t/1 -> t/1 -> t/1\n       The type t/2 -> t/3 -> t/4 -> t/1 is not compatible with the type\n         t/1 -> t/1 -> t/1 -> t/1\n       Type t/2 is not compatible with type t/1\n       Line 4, characters 0-10:\n         Definition of type t/1\n       Line 1, characters 0-10:\n         Definition of type t/2\n       Line 2, characters 0-10:\n         Definition of type t/3\n       Line 3, characters 0-10:\n         Definition of type t/4\n",(testsuite/tests/typing-misc/pr6416.ml[360,9717+12]..[389,10612+0]),Some "")
+    ]
+  structure_item (testsuite/tests/typing-misc/pr6416.ml[392,10661+0]..[395,10737+3])
+    Pstr_module
+    "Foo" (testsuite/tests/typing-misc/pr6416.ml[392,10661+7]..[392,10661+10])
+      attribute "ocaml.doc"
+        [
+          structure_item (testsuite/tests/typing-misc/pr6416.ml[391,10617+0]..[391,10617+43])
+            Pstr_eval
+            expression (testsuite/tests/typing-misc/pr6416.ml[391,10617+0]..[391,10617+43])
+              Pexp_constant PConst_string(" Check interaction with no-alias-deps ",(testsuite/tests/typing-misc/pr6416.ml[391,10617+0]..[391,10617+43]),None)
+        ]
+      module_expr (testsuite/tests/typing-misc/pr6416.ml[392,10661+13]..[395,10737+3])
+        Pmod_structure
+        [
+          structure_item (testsuite/tests/typing-misc/pr6416.ml[393,10681+2]..[393,10681+28])
+            Pstr_type Rec
+            [
+              type_declaration "info" (testsuite/tests/typing-misc/pr6416.ml[393,10681+7]..[393,10681+11]) (testsuite/tests/typing-misc/pr6416.ml[393,10681+2]..[393,10681+28])
+                ptype_params =
+                  []
+                ptype_cstrs =
+                  []
+                ptype_kind =
+                  Ptype_record
+                    [
+                      (testsuite/tests/typing-misc/pr6416.ml[393,10681+16]..[393,10681+26])
+                        Immutable
+                        "doc" (testsuite/tests/typing-misc/pr6416.ml[393,10681+16]..[393,10681+19])                        core_type (testsuite/tests/typing-misc/pr6416.ml[393,10681+22]..[393,10681+26])
+                          Ptyp_constr "unit" (testsuite/tests/typing-misc/pr6416.ml[393,10681+22]..[393,10681+26])
+                          []
+                    ]
+                ptype_private = Public
+                ptype_manifest =
+                  None
+            ]
+          structure_item (testsuite/tests/typing-misc/pr6416.ml[394,10710+2]..[394,10710+26])
+            Pstr_type Rec
+            [
+              type_declaration "t" (testsuite/tests/typing-misc/pr6416.ml[394,10710+7]..[394,10710+8]) (testsuite/tests/typing-misc/pr6416.ml[394,10710+2]..[394,10710+26])
+                ptype_params =
+                  []
+                ptype_cstrs =
+                  []
+                ptype_kind =
+                  Ptype_record
+                    [
+                      (testsuite/tests/typing-misc/pr6416.ml[394,10710+13]..[394,10710+24])
+                        Immutable
+                        "info" (testsuite/tests/typing-misc/pr6416.ml[394,10710+13]..[394,10710+17])                        core_type (testsuite/tests/typing-misc/pr6416.ml[394,10710+20]..[394,10710+24])
+                          Ptyp_constr "info" (testsuite/tests/typing-misc/pr6416.ml[394,10710+20]..[394,10710+24])
+                          []
+                    ]
+                ptype_private = Public
+                ptype_manifest =
+                  None
+            ]
+        ]
+  structure_item (testsuite/tests/typing-misc/pr6416.ml[396,10741+0]..[396,10741+41])
+    Pstr_value Nonrec
+    [
+      <def>
+        pattern (testsuite/tests/typing-misc/pr6416.ml[396,10741+4]..[396,10741+18])
+          Ppat_var "add_extra_info" (testsuite/tests/typing-misc/pr6416.ml[396,10741+4]..[396,10741+18])
+        expression (testsuite/tests/typing-misc/pr6416.ml[396,10741+19]..[396,10741+41]) ghost
+          Pexp_fun
+          Nolabel
+          None
+          pattern (testsuite/tests/typing-misc/pr6416.ml[396,10741+19]..[396,10741+22])
+            Ppat_var "arg" (testsuite/tests/typing-misc/pr6416.ml[396,10741+19]..[396,10741+22])
+          expression (testsuite/tests/typing-misc/pr6416.ml[396,10741+25]..[396,10741+41])
+            Pexp_field
+            expression (testsuite/tests/typing-misc/pr6416.ml[396,10741+25]..[396,10741+37])
+              Pexp_field
+              expression (testsuite/tests/typing-misc/pr6416.ml[396,10741+25]..[396,10741+28])
+                Pexp_ident "arg" (testsuite/tests/typing-misc/pr6416.ml[396,10741+25]..[396,10741+28])
+              "Foo.info" (testsuite/tests/typing-misc/pr6416.ml[396,10741+29]..[396,10741+37])
+            "doc" (testsuite/tests/typing-misc/pr6416.ml[396,10741+38]..[396,10741+41])
+    ]
+  structure_item (testsuite/tests/typing-misc/pr6416.ml[397,10783+0]..[406,11195+3])
+    Pstr_extension "expect"
+    [
+      structure_item (testsuite/tests/typing-misc/pr6416.ml[397,10783+10]..[406,11195+2])
+        Pstr_eval
+        expression (testsuite/tests/typing-misc/pr6416.ml[397,10783+10]..[406,11195+2])
+          Pexp_constant PConst_string ("\nmodule Foo : sig type info = { doc : unit; } type t = { info : info; } end\nLine 5, characters 38-41:\n5 | let add_extra_info arg = arg.Foo.info.doc\n                                          ^^^\nWarning 40 [name-out-of-scope]: doc was selected from type Foo.info.\nIt is not visible in the current scope, and will not\nbe selected if the type becomes unknown.\nval add_extra_info : Foo.t -> unit = <fun>\n",(testsuite/tests/typing-misc/pr6416.ml[397,10783+12]..[406,11195+0]),Some "")
+    ]
+  structure_item (testsuite/tests/typing-misc/pr6416.ml[409,11242+0]..[411,11291+3])
+    Pstr_module
+    "Bar" (testsuite/tests/typing-misc/pr6416.ml[409,11242+7]..[409,11242+10])
+      attribute "ocaml.doc"
+        [
+          structure_item (testsuite/tests/typing-misc/pr6416.ml[408,11200+0]..[408,11200+41])
+            Pstr_eval
+            expression (testsuite/tests/typing-misc/pr6416.ml[408,11200+0]..[408,11200+41])
+              Pexp_constant PConst_string(" Check type-directed disambiguation ",(testsuite/tests/typing-misc/pr6416.ml[408,11200+0]..[408,11200+41]),None)
+        ]
+      module_expr (testsuite/tests/typing-misc/pr6416.ml[409,11242+13]..[411,11291+3])
+        Pmod_structure
+        [
+          structure_item (testsuite/tests/typing-misc/pr6416.ml[410,11262+2]..[410,11262+28])
+            Pstr_type Rec
+            [
+              type_declaration "info" (testsuite/tests/typing-misc/pr6416.ml[410,11262+7]..[410,11262+11]) (testsuite/tests/typing-misc/pr6416.ml[410,11262+2]..[410,11262+28])
+                ptype_params =
+                  []
+                ptype_cstrs =
+                  []
+                ptype_kind =
+                  Ptype_record
+                    [
+                      (testsuite/tests/typing-misc/pr6416.ml[410,11262+16]..[410,11262+26])
+                        Immutable
+                        "doc" (testsuite/tests/typing-misc/pr6416.ml[410,11262+16]..[410,11262+19])                        core_type (testsuite/tests/typing-misc/pr6416.ml[410,11262+22]..[410,11262+26])
+                          Ptyp_constr "unit" (testsuite/tests/typing-misc/pr6416.ml[410,11262+22]..[410,11262+26])
+                          []
+                    ]
+                ptype_private = Public
+                ptype_manifest =
+                  None
+            ]
+        ]
+  structure_item (testsuite/tests/typing-misc/pr6416.ml[412,11297+0]..[414,11348+3])
+    Pstr_module
+    "Foo" (testsuite/tests/typing-misc/pr6416.ml[412,11297+7]..[412,11297+10])
+      module_expr (testsuite/tests/typing-misc/pr6416.ml[412,11297+13]..[414,11348+3])
+        Pmod_structure
+        [
+          structure_item (testsuite/tests/typing-misc/pr6416.ml[413,11317+2]..[413,11317+30])
+            Pstr_type Rec
+            [
+              type_declaration "t" (testsuite/tests/typing-misc/pr6416.ml[413,11317+7]..[413,11317+8]) (testsuite/tests/typing-misc/pr6416.ml[413,11317+2]..[413,11317+30])
+                ptype_params =
+                  []
+                ptype_cstrs =
+                  []
+                ptype_kind =
+                  Ptype_record
+                    [
+                      (testsuite/tests/typing-misc/pr6416.ml[413,11317+13]..[413,11317+28])
+                        Immutable
+                        "info" (testsuite/tests/typing-misc/pr6416.ml[413,11317+13]..[413,11317+17])                        core_type (testsuite/tests/typing-misc/pr6416.ml[413,11317+20]..[413,11317+28])
+                          Ptyp_constr "Bar.info" (testsuite/tests/typing-misc/pr6416.ml[413,11317+20]..[413,11317+28])
+                          []
+                    ]
+                ptype_private = Public
+                ptype_manifest =
+                  None
+            ]
+        ]
+  structure_item (testsuite/tests/typing-misc/pr6416.ml[415,11354+0]..[415,11354+23])
+    Pstr_module
+    "Bar" (testsuite/tests/typing-misc/pr6416.ml[415,11354+7]..[415,11354+10])
+      module_expr (testsuite/tests/typing-misc/pr6416.ml[415,11354+13]..[415,11354+23])
+        Pmod_structure
+        []
+  structure_item (testsuite/tests/typing-misc/pr6416.ml[416,11380+0]..[416,11380+41])
+    Pstr_value Nonrec
+    [
+      <def>
+        pattern (testsuite/tests/typing-misc/pr6416.ml[416,11380+4]..[416,11380+18])
+          Ppat_var "add_extra_info" (testsuite/tests/typing-misc/pr6416.ml[416,11380+4]..[416,11380+18])
+        expression (testsuite/tests/typing-misc/pr6416.ml[416,11380+19]..[416,11380+41]) ghost
+          Pexp_fun
+          Nolabel
+          None
+          pattern (testsuite/tests/typing-misc/pr6416.ml[416,11380+19]..[416,11380+22])
+            Ppat_var "arg" (testsuite/tests/typing-misc/pr6416.ml[416,11380+19]..[416,11380+22])
+          expression (testsuite/tests/typing-misc/pr6416.ml[416,11380+25]..[416,11380+41])
+            Pexp_field
+            expression (testsuite/tests/typing-misc/pr6416.ml[416,11380+25]..[416,11380+37])
+              Pexp_field
+              expression (testsuite/tests/typing-misc/pr6416.ml[416,11380+25]..[416,11380+28])
+                Pexp_ident "arg" (testsuite/tests/typing-misc/pr6416.ml[416,11380+25]..[416,11380+28])
+              "Foo.info" (testsuite/tests/typing-misc/pr6416.ml[416,11380+29]..[416,11380+37])
+            "doc" (testsuite/tests/typing-misc/pr6416.ml[416,11380+38]..[416,11380+41])
+    ]
+  structure_item (testsuite/tests/typing-misc/pr6416.ml[417,11422+0]..[428,11881+3])
+    Pstr_extension "expect"
+    [
+      structure_item (testsuite/tests/typing-misc/pr6416.ml[417,11422+9]..[428,11881+2])
+        Pstr_eval
+        expression (testsuite/tests/typing-misc/pr6416.ml[417,11422+9]..[428,11881+2])
+          Pexp_constant PConst_string ("\nmodule Bar : sig type info = { doc : unit; } end\nmodule Foo : sig type t = { info : Bar.info; } end\nmodule Bar : sig end\nLine 8, characters 38-41:\n8 | let add_extra_info arg = arg.Foo.info.doc\n                                          ^^^\nWarning 40 [name-out-of-scope]: doc was selected from type Bar/2.info.\nIt is not visible in the current scope, and will not\nbe selected if the type becomes unknown.\nval add_extra_info : Foo.t -> unit = <fun>\n",(testsuite/tests/typing-misc/pr6416.ml[417,11422+11]..[428,11881+0]),Some "")
+    ]
+]
+

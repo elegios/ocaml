@@ -1,0 +1,1799 @@
+[
+  structure_item (testsuite/tests/typing-unboxed-types/test_flat.ml[7,65+0]..[7,65+11])
+    Pstr_type Rec
+    [
+      type_declaration "abs" (testsuite/tests/typing-unboxed-types/test_flat.ml[7,65+8]..[7,65+11]) (testsuite/tests/typing-unboxed-types/test_flat.ml[7,65+0]..[7,65+11])
+        ptype_params =
+          [
+            core_type (testsuite/tests/typing-unboxed-types/test_flat.ml[7,65+5]..[7,65+7])
+              Ptyp_var a
+          ]
+        ptype_cstrs =
+          []
+        ptype_kind =
+          Ptype_abstract
+        ptype_private = Public
+        ptype_manifest =
+          None
+    ]
+  structure_item (testsuite/tests/typing-unboxed-types/test_flat.ml[8,79+0]..[8,79+46])
+    Pstr_type Rec
+    [
+      type_declaration "t16" (testsuite/tests/typing-unboxed-types/test_flat.ml[8,79+5]..[8,79+8]) (testsuite/tests/typing-unboxed-types/test_flat.ml[8,79+0]..[8,79+46])
+        attribute "ocaml.unboxed"
+          []
+        ptype_params =
+          []
+        ptype_cstrs =
+          []
+        ptype_kind =
+          Ptype_variant
+            [
+              (testsuite/tests/typing-unboxed-types/test_flat.ml[8,79+11]..[8,79+28])
+                "A" (testsuite/tests/typing-unboxed-types/test_flat.ml[8,79+11]..[8,79+12])
+                [
+                  core_type (testsuite/tests/typing-unboxed-types/test_flat.ml[8,79+15]..[8,79+21])
+                    Ptyp_constr "abs" (testsuite/tests/typing-unboxed-types/test_flat.ml[8,79+18]..[8,79+21])
+                    [
+                      core_type (testsuite/tests/typing-unboxed-types/test_flat.ml[8,79+15]..[8,79+17])
+                        Ptyp_var a
+                    ]
+                ]
+                Some
+                  core_type (testsuite/tests/typing-unboxed-types/test_flat.ml[8,79+25]..[8,79+28])
+                    Ptyp_constr "t16" (testsuite/tests/typing-unboxed-types/test_flat.ml[8,79+25]..[8,79+28])
+                    []
+            ]
+        ptype_private = Public
+        ptype_manifest =
+          None
+    ]
+  structure_item (testsuite/tests/typing-unboxed-types/test_flat.ml[9,128+0]..[18,503+3])
+    Pstr_extension "expect"
+    [
+      structure_item (testsuite/tests/typing-unboxed-types/test_flat.ml[9,128+9]..[18,503+2])
+        Pstr_eval
+        expression (testsuite/tests/typing-unboxed-types/test_flat.ml[9,128+9]..[18,503+2])
+          Pexp_constant PConst_string ("\ntype 'a abs\nLine 2, characters 0-46:\n2 | type t16 = A : 'a abs -> t16 [@@ocaml.unboxed];;\n    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nError: This type cannot be unboxed because\n       it might contain both float and non-float values,\n       depending on the instantiation of the existential variable 'a.\n       You should annotate it with [@@ocaml.boxed].\n",(testsuite/tests/typing-unboxed-types/test_flat.ml[9,128+11]..[18,503+0]),Some "")
+    ]
+  structure_item (testsuite/tests/typing-unboxed-types/test_flat.ml[21,581+0]..[21,581+50])
+    Pstr_type Rec
+    [
+      type_declaration "t18" (testsuite/tests/typing-unboxed-types/test_flat.ml[21,581+5]..[21,581+8]) (testsuite/tests/typing-unboxed-types/test_flat.ml[21,581+0]..[21,581+50])
+        attribute "ocaml.unboxed"
+          []
+        ptype_params =
+          []
+        ptype_cstrs =
+          []
+        ptype_kind =
+          Ptype_variant
+            [
+              (testsuite/tests/typing-unboxed-types/test_flat.ml[21,581+11]..[21,581+32])
+                "A" (testsuite/tests/typing-unboxed-types/test_flat.ml[21,581+11]..[21,581+12])
+                [
+                  core_type (testsuite/tests/typing-unboxed-types/test_flat.ml[21,581+15]..[21,581+25])
+                    Ptyp_constr "abs" (testsuite/tests/typing-unboxed-types/test_flat.ml[21,581+22]..[21,581+25])
+                    [
+                      core_type (testsuite/tests/typing-unboxed-types/test_flat.ml[21,581+15]..[21,581+21])
+                        Ptyp_constr "list" (testsuite/tests/typing-unboxed-types/test_flat.ml[21,581+17]..[21,581+21])
+                        [
+                          core_type (testsuite/tests/typing-unboxed-types/test_flat.ml[21,581+15]..[21,581+16])
+                            Ptyp_any
+                        ]
+                    ]
+                ]
+                Some
+                  core_type (testsuite/tests/typing-unboxed-types/test_flat.ml[21,581+29]..[21,581+32])
+                    Ptyp_constr "t18" (testsuite/tests/typing-unboxed-types/test_flat.ml[21,581+29]..[21,581+32])
+                    []
+            ]
+        ptype_private = Public
+        ptype_manifest =
+          None
+    ]
+  structure_item (testsuite/tests/typing-unboxed-types/test_flat.ml[22,634+0]..[30,1009+3])
+    Pstr_extension "expect"
+    [
+      structure_item (testsuite/tests/typing-unboxed-types/test_flat.ml[22,634+9]..[30,1009+2])
+        Pstr_eval
+        expression (testsuite/tests/typing-unboxed-types/test_flat.ml[22,634+9]..[30,1009+2])
+          Pexp_constant PConst_string ("\nLine 1, characters 0-50:\n1 | type t18 = A : _ list abs -> t18 [@@ocaml.unboxed];;\n    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nError: This type cannot be unboxed because\n       it might contain both float and non-float values,\n       depending on the instantiation of an unnamed existential variable.\n       You should annotate it with [@@ocaml.boxed].\n",(testsuite/tests/typing-unboxed-types/test_flat.ml[22,634+11]..[30,1009+0]),Some "")
+    ]
+  structure_item (testsuite/tests/typing-unboxed-types/test_flat.ml[34,1098+0]..[34,1098+38])
+    Pstr_type Rec
+    [
+      type_declaration "s" (testsuite/tests/typing-unboxed-types/test_flat.ml[34,1098+8]..[34,1098+9]) (testsuite/tests/typing-unboxed-types/test_flat.ml[34,1098+0]..[34,1098+38])
+        attribute "unboxed"
+          []
+        ptype_params =
+          [
+            core_type (testsuite/tests/typing-unboxed-types/test_flat.ml[34,1098+5]..[34,1098+7])
+              Ptyp_var a
+          ]
+        ptype_cstrs =
+          []
+        ptype_kind =
+          Ptype_variant
+            [
+              (testsuite/tests/typing-unboxed-types/test_flat.ml[34,1098+12]..[34,1098+26])
+                "S" (testsuite/tests/typing-unboxed-types/test_flat.ml[34,1098+12]..[34,1098+13])
+                [
+                  core_type (testsuite/tests/typing-unboxed-types/test_flat.ml[34,1098+16]..[34,1098+18])
+                    Ptyp_var a
+                ]
+                Some
+                  core_type (testsuite/tests/typing-unboxed-types/test_flat.ml[34,1098+22]..[34,1098+26])
+                    Ptyp_constr "s" (testsuite/tests/typing-unboxed-types/test_flat.ml[34,1098+25]..[34,1098+26])
+                    [
+                      core_type (testsuite/tests/typing-unboxed-types/test_flat.ml[34,1098+22]..[34,1098+24])
+                        Ptyp_var a
+                    ]
+            ]
+        ptype_private = Public
+        ptype_manifest =
+          None
+    ]
+  structure_item (testsuite/tests/typing-unboxed-types/test_flat.ml[35,1139+0]..[35,1139+34])
+    Pstr_type Rec
+    [
+      type_declaration "t" (testsuite/tests/typing-unboxed-types/test_flat.ml[35,1139+5]..[35,1139+6]) (testsuite/tests/typing-unboxed-types/test_flat.ml[35,1139+0]..[35,1139+34])
+        attribute "unboxed"
+          []
+        ptype_params =
+          []
+        ptype_cstrs =
+          []
+        ptype_kind =
+          Ptype_variant
+            [
+              (testsuite/tests/typing-unboxed-types/test_flat.ml[35,1139+9]..[35,1139+22])
+                "T" (testsuite/tests/typing-unboxed-types/test_flat.ml[35,1139+9]..[35,1139+10])
+                [
+                  core_type (testsuite/tests/typing-unboxed-types/test_flat.ml[35,1139+13]..[35,1139+17])
+                    Ptyp_constr "s" (testsuite/tests/typing-unboxed-types/test_flat.ml[35,1139+16]..[35,1139+17])
+                    [
+                      core_type (testsuite/tests/typing-unboxed-types/test_flat.ml[35,1139+13]..[35,1139+15])
+                        Ptyp_var a
+                    ]
+                ]
+                Some
+                  core_type (testsuite/tests/typing-unboxed-types/test_flat.ml[35,1139+21]..[35,1139+22])
+                    Ptyp_constr "t" (testsuite/tests/typing-unboxed-types/test_flat.ml[35,1139+21]..[35,1139+22])
+                    []
+            ]
+        ptype_private = Public
+        ptype_manifest =
+          None
+    ]
+  structure_item (testsuite/tests/typing-unboxed-types/test_flat.ml[36,1176+0]..[45,1554+3])
+    Pstr_extension "expect"
+    [
+      structure_item (testsuite/tests/typing-unboxed-types/test_flat.ml[36,1176+9]..[45,1554+2])
+        Pstr_eval
+        expression (testsuite/tests/typing-unboxed-types/test_flat.ml[36,1176+9]..[45,1554+2])
+          Pexp_constant PConst_string ("\ntype 'a s = S : 'a -> 'a s [@@unboxed]\nLine 2, characters 0-34:\n2 | type t = T : 'a s -> t [@@unboxed];;\n    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nError: This type cannot be unboxed because\n       it might contain both float and non-float values,\n       depending on the instantiation of the existential variable 'a.\n       You should annotate it with [@@ocaml.boxed].\n",(testsuite/tests/typing-unboxed-types/test_flat.ml[36,1176+11]..[45,1554+0]),Some "")
+    ]
+  structure_item (testsuite/tests/typing-unboxed-types/test_flat.ml[48,1619+0]..[48,1619+45])
+    Pstr_type Rec
+    [
+      type_declaration "s" (testsuite/tests/typing-unboxed-types/test_flat.ml[48,1619+8]..[48,1619+9]) (testsuite/tests/typing-unboxed-types/test_flat.ml[48,1619+0]..[48,1619+45])
+        attribute "unboxed"
+          []
+        ptype_params =
+          [
+            core_type (testsuite/tests/typing-unboxed-types/test_flat.ml[48,1619+5]..[48,1619+7])
+              Ptyp_var a
+          ]
+        ptype_cstrs =
+          []
+        ptype_kind =
+          Ptype_variant
+            [
+              (testsuite/tests/typing-unboxed-types/test_flat.ml[48,1619+12]..[48,1619+33])
+                "S" (testsuite/tests/typing-unboxed-types/test_flat.ml[48,1619+12]..[48,1619+13])
+                [
+                  core_type (testsuite/tests/typing-unboxed-types/test_flat.ml[48,1619+16]..[48,1619+18])
+                    Ptyp_var a
+                ]
+                Some
+                  core_type (testsuite/tests/typing-unboxed-types/test_flat.ml[48,1619+22]..[48,1619+33])
+                    Ptyp_constr "s" (testsuite/tests/typing-unboxed-types/test_flat.ml[48,1619+32]..[48,1619+33])
+                    [
+                      core_type (testsuite/tests/typing-unboxed-types/test_flat.ml[48,1619+22]..[48,1619+31])
+                        Ptyp_constr "option" (testsuite/tests/typing-unboxed-types/test_flat.ml[48,1619+25]..[48,1619+31])
+                        [
+                          core_type (testsuite/tests/typing-unboxed-types/test_flat.ml[48,1619+22]..[48,1619+24])
+                            Ptyp_var a
+                        ]
+                    ]
+            ]
+        ptype_private = Public
+        ptype_manifest =
+          None
+    ]
+  structure_item (testsuite/tests/typing-unboxed-types/test_flat.ml[49,1667+0]..[49,1667+34])
+    Pstr_type Rec
+    [
+      type_declaration "t" (testsuite/tests/typing-unboxed-types/test_flat.ml[49,1667+5]..[49,1667+6]) (testsuite/tests/typing-unboxed-types/test_flat.ml[49,1667+0]..[49,1667+34])
+        attribute "unboxed"
+          []
+        ptype_params =
+          []
+        ptype_cstrs =
+          []
+        ptype_kind =
+          Ptype_variant
+            [
+              (testsuite/tests/typing-unboxed-types/test_flat.ml[49,1667+9]..[49,1667+22])
+                "T" (testsuite/tests/typing-unboxed-types/test_flat.ml[49,1667+9]..[49,1667+10])
+                [
+                  core_type (testsuite/tests/typing-unboxed-types/test_flat.ml[49,1667+13]..[49,1667+17])
+                    Ptyp_constr "s" (testsuite/tests/typing-unboxed-types/test_flat.ml[49,1667+16]..[49,1667+17])
+                    [
+                      core_type (testsuite/tests/typing-unboxed-types/test_flat.ml[49,1667+13]..[49,1667+15])
+                        Ptyp_var a
+                    ]
+                ]
+                Some
+                  core_type (testsuite/tests/typing-unboxed-types/test_flat.ml[49,1667+21]..[49,1667+22])
+                    Ptyp_constr "t" (testsuite/tests/typing-unboxed-types/test_flat.ml[49,1667+21]..[49,1667+22])
+                    []
+            ]
+        ptype_private = Public
+        ptype_manifest =
+          None
+    ]
+  structure_item (testsuite/tests/typing-unboxed-types/test_flat.ml[50,1704+0]..[59,2089+3])
+    Pstr_extension "expect"
+    [
+      structure_item (testsuite/tests/typing-unboxed-types/test_flat.ml[50,1704+9]..[59,2089+2])
+        Pstr_eval
+        expression (testsuite/tests/typing-unboxed-types/test_flat.ml[50,1704+9]..[59,2089+2])
+          Pexp_constant PConst_string ("\ntype 'a s = S : 'a -> 'a option s [@@unboxed]\nLine 2, characters 0-34:\n2 | type t = T : 'a s -> t [@@unboxed];;\n    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nError: This type cannot be unboxed because\n       it might contain both float and non-float values,\n       depending on the instantiation of the existential variable 'a.\n       You should annotate it with [@@ocaml.boxed].\n",(testsuite/tests/typing-unboxed-types/test_flat.ml[50,1704+11]..[59,2089+0]),Some "")
+    ]
+  structure_item (testsuite/tests/typing-unboxed-types/test_flat.ml[62,2144+0]..[68,2304+3])
+    Pstr_module
+    "M" (testsuite/tests/typing-unboxed-types/test_flat.ml[62,2144+7]..[62,2144+8])
+      module_expr (testsuite/tests/typing-unboxed-types/test_flat.ml[62,2144+9]..[68,2304+3])
+        Pmod_constraint
+        module_expr (testsuite/tests/typing-unboxed-types/test_flat.ml[65,2231+6]..[68,2304+3])
+          Pmod_structure
+          [
+            structure_item (testsuite/tests/typing-unboxed-types/test_flat.ml[66,2244+2]..[66,2244+43])
+              Pstr_type Rec
+              [
+                type_declaration "r" (testsuite/tests/typing-unboxed-types/test_flat.ml[66,2244+10]..[66,2244+11]) (testsuite/tests/typing-unboxed-types/test_flat.ml[66,2244+2]..[66,2244+43])
+                  ptype_params =
+                    [
+                      core_type (testsuite/tests/typing-unboxed-types/test_flat.ml[66,2244+7]..[66,2244+9])
+                        Ptyp_var a
+                    ]
+                  ptype_cstrs =
+                    [
+                      <constraint> (testsuite/tests/typing-unboxed-types/test_flat.ml[66,2244+28]..[66,2244+43])
+                        core_type (testsuite/tests/typing-unboxed-types/test_flat.ml[66,2244+28]..[66,2244+30])
+                          Ptyp_var a
+                        core_type (testsuite/tests/typing-unboxed-types/test_flat.ml[66,2244+33]..[66,2244+43])
+                          Ptyp_arrow
+                          Nolabel
+                          core_type (testsuite/tests/typing-unboxed-types/test_flat.ml[66,2244+33]..[66,2244+37])
+                            Ptyp_constr "unit" (testsuite/tests/typing-unboxed-types/test_flat.ml[66,2244+33]..[66,2244+37])
+                            []
+                          core_type (testsuite/tests/typing-unboxed-types/test_flat.ml[66,2244+41]..[66,2244+43])
+                            Ptyp_var b
+                    ]
+                  ptype_kind =
+                    Ptype_abstract
+                  ptype_private = Public
+                  ptype_manifest =
+                    Some
+                      core_type (testsuite/tests/typing-unboxed-types/test_flat.ml[66,2244+14]..[66,2244+16])
+                        Ptyp_var b
+              ]
+            structure_item (testsuite/tests/typing-unboxed-types/test_flat.ml[67,2288+2]..[67,2288+15])
+              Pstr_value Nonrec
+              [
+                <def>
+                  pattern (testsuite/tests/typing-unboxed-types/test_flat.ml[67,2288+6]..[67,2288+9])
+                    Ppat_var "inj" (testsuite/tests/typing-unboxed-types/test_flat.ml[67,2288+6]..[67,2288+9])
+                  expression (testsuite/tests/typing-unboxed-types/test_flat.ml[67,2288+10]..[67,2288+15]) ghost
+                    Pexp_fun
+                    Nolabel
+                    None
+                    pattern (testsuite/tests/typing-unboxed-types/test_flat.ml[67,2288+10]..[67,2288+11])
+                      Ppat_var "x" (testsuite/tests/typing-unboxed-types/test_flat.ml[67,2288+10]..[67,2288+11])
+                    expression (testsuite/tests/typing-unboxed-types/test_flat.ml[67,2288+14]..[67,2288+15])
+                      Pexp_ident "x" (testsuite/tests/typing-unboxed-types/test_flat.ml[67,2288+14]..[67,2288+15])
+              ]
+          ]
+        module_type (testsuite/tests/typing-unboxed-types/test_flat.ml[62,2144+11]..[65,2231+3])
+          Pmty_signature
+          [
+            signature_item (testsuite/tests/typing-unboxed-types/test_flat.ml[63,2159+2]..[63,2159+38])
+              Psig_type Rec
+              [
+                type_declaration "r" (testsuite/tests/typing-unboxed-types/test_flat.ml[63,2159+10]..[63,2159+11]) (testsuite/tests/typing-unboxed-types/test_flat.ml[63,2159+2]..[63,2159+38])
+                  ptype_params =
+                    [
+                      core_type (testsuite/tests/typing-unboxed-types/test_flat.ml[63,2159+7]..[63,2159+9])
+                        Ptyp_var a
+                    ]
+                  ptype_cstrs =
+                    [
+                      <constraint> (testsuite/tests/typing-unboxed-types/test_flat.ml[63,2159+23]..[63,2159+38])
+                        core_type (testsuite/tests/typing-unboxed-types/test_flat.ml[63,2159+23]..[63,2159+25])
+                          Ptyp_var a
+                        core_type (testsuite/tests/typing-unboxed-types/test_flat.ml[63,2159+28]..[63,2159+38])
+                          Ptyp_arrow
+                          Nolabel
+                          core_type (testsuite/tests/typing-unboxed-types/test_flat.ml[63,2159+28]..[63,2159+32])
+                            Ptyp_constr "unit" (testsuite/tests/typing-unboxed-types/test_flat.ml[63,2159+28]..[63,2159+32])
+                            []
+                          core_type (testsuite/tests/typing-unboxed-types/test_flat.ml[63,2159+36]..[63,2159+38])
+                            Ptyp_var b
+                    ]
+                  ptype_kind =
+                    Ptype_abstract
+                  ptype_private = Public
+                  ptype_manifest =
+                    None
+              ]
+            signature_item (testsuite/tests/typing-unboxed-types/test_flat.ml[64,2198+2]..[64,2198+32])
+              Psig_value
+              value_description "inj" (testsuite/tests/typing-unboxed-types/test_flat.ml[64,2198+6]..[64,2198+9]) (testsuite/tests/typing-unboxed-types/test_flat.ml[64,2198+2]..[64,2198+32])
+                core_type (testsuite/tests/typing-unboxed-types/test_flat.ml[64,2198+12]..[64,2198+32])
+                  Ptyp_arrow
+                  Nolabel
+                  core_type (testsuite/tests/typing-unboxed-types/test_flat.ml[64,2198+12]..[64,2198+14])
+                    Ptyp_var b
+                  core_type (testsuite/tests/typing-unboxed-types/test_flat.ml[64,2198+18]..[64,2198+32])
+                    Ptyp_constr "r" (testsuite/tests/typing-unboxed-types/test_flat.ml[64,2198+31]..[64,2198+32])
+                    [
+                      core_type (testsuite/tests/typing-unboxed-types/test_flat.ml[64,2198+19]..[64,2198+29])
+                        Ptyp_arrow
+                        Nolabel
+                        core_type (testsuite/tests/typing-unboxed-types/test_flat.ml[64,2198+19]..[64,2198+23])
+                          Ptyp_constr "unit" (testsuite/tests/typing-unboxed-types/test_flat.ml[64,2198+19]..[64,2198+23])
+                          []
+                        core_type (testsuite/tests/typing-unboxed-types/test_flat.ml[64,2198+27]..[64,2198+29])
+                          Ptyp_var b
+                    ]
+                []
+          ]
+  structure_item (testsuite/tests/typing-unboxed-types/test_flat.ml[69,2310+0]..[72,2411+3])
+    Pstr_extension "expect"
+    [
+      structure_item (testsuite/tests/typing-unboxed-types/test_flat.ml[69,2310+9]..[72,2411+2])
+        Pstr_eval
+        expression (testsuite/tests/typing-unboxed-types/test_flat.ml[69,2310+9]..[72,2411+2])
+          Pexp_constant PConst_string ("\nmodule M :\n  sig type 'a r constraint 'a = unit -> 'b val inj : 'b -> (unit -> 'b) r end\n",(testsuite/tests/typing-unboxed-types/test_flat.ml[69,2310+11]..[72,2411+0]),Some "")
+    ]
+  structure_item (testsuite/tests/typing-unboxed-types/test_flat.ml[75,2431+0]..[75,2431+45])
+    Pstr_type Rec
+    [
+      type_declaration "t" (testsuite/tests/typing-unboxed-types/test_flat.ml[75,2431+5]..[75,2431+6]) (testsuite/tests/typing-unboxed-types/test_flat.ml[75,2431+0]..[75,2431+45])
+        attribute "unboxed"
+          []
+        ptype_params =
+          []
+        ptype_cstrs =
+          []
+        ptype_kind =
+          Ptype_variant
+            [
+              (testsuite/tests/typing-unboxed-types/test_flat.ml[75,2431+9]..[75,2431+33])
+                "T" (testsuite/tests/typing-unboxed-types/test_flat.ml[75,2431+9]..[75,2431+10])
+                [
+                  core_type (testsuite/tests/typing-unboxed-types/test_flat.ml[75,2431+13]..[75,2431+28])
+                    Ptyp_constr "M.r" (testsuite/tests/typing-unboxed-types/test_flat.ml[75,2431+25]..[75,2431+28])
+                    [
+                      core_type (testsuite/tests/typing-unboxed-types/test_flat.ml[75,2431+14]..[75,2431+23])
+                        Ptyp_arrow
+                        Nolabel
+                        core_type (testsuite/tests/typing-unboxed-types/test_flat.ml[75,2431+14]..[75,2431+18])
+                          Ptyp_constr "unit" (testsuite/tests/typing-unboxed-types/test_flat.ml[75,2431+14]..[75,2431+18])
+                          []
+                        core_type (testsuite/tests/typing-unboxed-types/test_flat.ml[75,2431+22]..[75,2431+23])
+                          Ptyp_any
+                    ]
+                ]
+                Some
+                  core_type (testsuite/tests/typing-unboxed-types/test_flat.ml[75,2431+32]..[75,2431+33])
+                    Ptyp_constr "t" (testsuite/tests/typing-unboxed-types/test_flat.ml[75,2431+32]..[75,2431+33])
+                    []
+            ]
+        ptype_private = Public
+        ptype_manifest =
+          None
+    ]
+  structure_item (testsuite/tests/typing-unboxed-types/test_flat.ml[76,2479+0]..[84,2844+3])
+    Pstr_extension "expect"
+    [
+      structure_item (testsuite/tests/typing-unboxed-types/test_flat.ml[76,2479+9]..[84,2844+2])
+        Pstr_eval
+        expression (testsuite/tests/typing-unboxed-types/test_flat.ml[76,2479+9]..[84,2844+2])
+          Pexp_constant PConst_string ("\nLine 1, characters 0-45:\n1 | type t = T : (unit -> _) M.r -> t [@@unboxed];;\n    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nError: This type cannot be unboxed because\n       it might contain both float and non-float values,\n       depending on the instantiation of an unnamed existential variable.\n       You should annotate it with [@@ocaml.boxed].\n",(testsuite/tests/typing-unboxed-types/test_flat.ml[76,2479+11]..[84,2844+0]),Some "")
+    ]
+  structure_item (testsuite/tests/typing-unboxed-types/test_flat.ml[87,2864+0]..[87,2864+59])
+    Pstr_type Rec
+    [
+      type_declaration "s" (testsuite/tests/typing-unboxed-types/test_flat.ml[87,2864+8]..[87,2864+9]) (testsuite/tests/typing-unboxed-types/test_flat.ml[87,2864+0]..[87,2864+59])
+        attribute "unboxed"
+          []
+        ptype_params =
+          [
+            core_type (testsuite/tests/typing-unboxed-types/test_flat.ml[87,2864+5]..[87,2864+7])
+              Ptyp_var a
+          ]
+        ptype_cstrs =
+          []
+        ptype_kind =
+          Ptype_variant
+            [
+              (testsuite/tests/typing-unboxed-types/test_flat.ml[87,2864+12]..[87,2864+47])
+                "S" (testsuite/tests/typing-unboxed-types/test_flat.ml[87,2864+12]..[87,2864+13])
+                [
+                  core_type (testsuite/tests/typing-unboxed-types/test_flat.ml[87,2864+16]..[87,2864+32])
+                    Ptyp_constr "M.r" (testsuite/tests/typing-unboxed-types/test_flat.ml[87,2864+29]..[87,2864+32])
+                    [
+                      core_type (testsuite/tests/typing-unboxed-types/test_flat.ml[87,2864+17]..[87,2864+27])
+                        Ptyp_arrow
+                        Nolabel
+                        core_type (testsuite/tests/typing-unboxed-types/test_flat.ml[87,2864+17]..[87,2864+21])
+                          Ptyp_constr "unit" (testsuite/tests/typing-unboxed-types/test_flat.ml[87,2864+17]..[87,2864+21])
+                          []
+                        core_type (testsuite/tests/typing-unboxed-types/test_flat.ml[87,2864+25]..[87,2864+27])
+                          Ptyp_var a
+                    ]
+                ]
+                Some
+                  core_type (testsuite/tests/typing-unboxed-types/test_flat.ml[87,2864+36]..[87,2864+47])
+                    Ptyp_constr "s" (testsuite/tests/typing-unboxed-types/test_flat.ml[87,2864+46]..[87,2864+47])
+                    [
+                      core_type (testsuite/tests/typing-unboxed-types/test_flat.ml[87,2864+36]..[87,2864+45])
+                        Ptyp_constr "option" (testsuite/tests/typing-unboxed-types/test_flat.ml[87,2864+39]..[87,2864+45])
+                        [
+                          core_type (testsuite/tests/typing-unboxed-types/test_flat.ml[87,2864+36]..[87,2864+38])
+                            Ptyp_var a
+                        ]
+                    ]
+            ]
+        ptype_private = Public
+        ptype_manifest =
+          None
+    ]
+  structure_item (testsuite/tests/typing-unboxed-types/test_flat.ml[88,2926+0]..[90,2998+3])
+    Pstr_extension "expect"
+    [
+      structure_item (testsuite/tests/typing-unboxed-types/test_flat.ml[88,2926+9]..[90,2998+2])
+        Pstr_eval
+        expression (testsuite/tests/typing-unboxed-types/test_flat.ml[88,2926+9]..[90,2998+2])
+          Pexp_constant PConst_string ("\ntype 'a s = S : (unit -> 'a) M.r -> 'a option s [@@unboxed]\n",(testsuite/tests/typing-unboxed-types/test_flat.ml[88,2926+11]..[90,2998+0]),Some "")
+    ]
+  structure_item (testsuite/tests/typing-unboxed-types/test_flat.ml[93,3018+0]..[93,3018+34])
+    Pstr_type Rec
+    [
+      type_declaration "t" (testsuite/tests/typing-unboxed-types/test_flat.ml[93,3018+5]..[93,3018+6]) (testsuite/tests/typing-unboxed-types/test_flat.ml[93,3018+0]..[93,3018+34])
+        attribute "unboxed"
+          []
+        ptype_params =
+          []
+        ptype_cstrs =
+          []
+        ptype_kind =
+          Ptype_variant
+            [
+              (testsuite/tests/typing-unboxed-types/test_flat.ml[93,3018+9]..[93,3018+22])
+                "T" (testsuite/tests/typing-unboxed-types/test_flat.ml[93,3018+9]..[93,3018+10])
+                [
+                  core_type (testsuite/tests/typing-unboxed-types/test_flat.ml[93,3018+13]..[93,3018+17])
+                    Ptyp_constr "s" (testsuite/tests/typing-unboxed-types/test_flat.ml[93,3018+16]..[93,3018+17])
+                    [
+                      core_type (testsuite/tests/typing-unboxed-types/test_flat.ml[93,3018+13]..[93,3018+15])
+                        Ptyp_var a
+                    ]
+                ]
+                Some
+                  core_type (testsuite/tests/typing-unboxed-types/test_flat.ml[93,3018+21]..[93,3018+22])
+                    Ptyp_constr "t" (testsuite/tests/typing-unboxed-types/test_flat.ml[93,3018+21]..[93,3018+22])
+                    []
+            ]
+        ptype_private = Public
+        ptype_manifest =
+          None
+    ]
+  structure_item (testsuite/tests/typing-unboxed-types/test_flat.ml[94,3055+0]..[102,3394+3])
+    Pstr_extension "expect"
+    [
+      structure_item (testsuite/tests/typing-unboxed-types/test_flat.ml[94,3055+9]..[102,3394+2])
+        Pstr_eval
+        expression (testsuite/tests/typing-unboxed-types/test_flat.ml[94,3055+9]..[102,3394+2])
+          Pexp_constant PConst_string ("\nLine 1, characters 0-34:\n1 | type t = T : 'a s -> t [@@unboxed];;\n    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nError: This type cannot be unboxed because\n       it might contain both float and non-float values,\n       depending on the instantiation of the existential variable 'a.\n       You should annotate it with [@@ocaml.boxed].\n",(testsuite/tests/typing-unboxed-types/test_flat.ml[94,3055+11]..[102,3394+0]),Some "")
+    ]
+  structure_item (testsuite/tests/typing-unboxed-types/test_flat.ml[105,3414+0]..[105,3414+40])
+    Pstr_type Rec
+    [
+      type_declaration "t" (testsuite/tests/typing-unboxed-types/test_flat.ml[105,3414+8]..[105,3414+9]) (testsuite/tests/typing-unboxed-types/test_flat.ml[105,3414+0]..[105,3414+40])
+        attribute "unboxed"
+          []
+        ptype_params =
+          [
+            core_type (testsuite/tests/typing-unboxed-types/test_flat.ml[105,3414+5]..[105,3414+7])
+              Ptyp_var a
+          ]
+        ptype_cstrs =
+          []
+        ptype_kind =
+          Ptype_variant
+            [
+              (testsuite/tests/typing-unboxed-types/test_flat.ml[105,3414+12]..[105,3414+28])
+                "T" (testsuite/tests/typing-unboxed-types/test_flat.ml[105,3414+12]..[105,3414+13])
+                [
+                  core_type (testsuite/tests/typing-unboxed-types/test_flat.ml[105,3414+16]..[105,3414+20])
+                    Ptyp_constr "s" (testsuite/tests/typing-unboxed-types/test_flat.ml[105,3414+19]..[105,3414+20])
+                    [
+                      core_type (testsuite/tests/typing-unboxed-types/test_flat.ml[105,3414+16]..[105,3414+18])
+                        Ptyp_var a
+                    ]
+                ]
+                Some
+                  core_type (testsuite/tests/typing-unboxed-types/test_flat.ml[105,3414+24]..[105,3414+28])
+                    Ptyp_constr "t" (testsuite/tests/typing-unboxed-types/test_flat.ml[105,3414+27]..[105,3414+28])
+                    [
+                      core_type (testsuite/tests/typing-unboxed-types/test_flat.ml[105,3414+24]..[105,3414+26])
+                        Ptyp_var a
+                    ]
+            ]
+        ptype_private = Public
+        ptype_manifest =
+          None
+    ]
+  structure_item (testsuite/tests/typing-unboxed-types/test_flat.ml[106,3457+0]..[108,3510+3])
+    Pstr_extension "expect"
+    [
+      structure_item (testsuite/tests/typing-unboxed-types/test_flat.ml[106,3457+9]..[108,3510+2])
+        Pstr_eval
+        expression (testsuite/tests/typing-unboxed-types/test_flat.ml[106,3457+9]..[108,3510+2])
+          Pexp_constant PConst_string ("\ntype 'a t = T : 'a s -> 'a t [@@unboxed]\n",(testsuite/tests/typing-unboxed-types/test_flat.ml[106,3457+11]..[108,3510+0]),Some "")
+    ]
+  structure_item (testsuite/tests/typing-unboxed-types/test_flat.ml[113,3687+0]..[119,3828+3])
+    Pstr_module
+    "N" (testsuite/tests/typing-unboxed-types/test_flat.ml[113,3687+7]..[113,3687+8])
+      module_expr (testsuite/tests/typing-unboxed-types/test_flat.ml[113,3687+9]..[119,3828+3])
+        Pmod_constraint
+        module_expr (testsuite/tests/typing-unboxed-types/test_flat.ml[116,3747+6]..[119,3828+3])
+          Pmod_structure
+          [
+            structure_item (testsuite/tests/typing-unboxed-types/test_flat.ml[117,3760+2]..[117,3760+49])
+              Pstr_type Rec
+              [
+                type_declaration "r" (testsuite/tests/typing-unboxed-types/test_flat.ml[117,3760+9]..[117,3760+10]) (testsuite/tests/typing-unboxed-types/test_flat.ml[117,3760+2]..[117,3760+49])
+                  attribute "unboxed"
+                    []
+                  ptype_params =
+                    [
+                      core_type (testsuite/tests/typing-unboxed-types/test_flat.ml[117,3760+7]..[117,3760+8])
+                        Ptyp_any
+                    ]
+                  ptype_cstrs =
+                    []
+                  ptype_kind =
+                    Ptype_variant
+                      [
+                        (testsuite/tests/typing-unboxed-types/test_flat.ml[117,3760+13]..[117,3760+37])
+                          "K" (testsuite/tests/typing-unboxed-types/test_flat.ml[117,3760+13]..[117,3760+14])
+                          [
+                            core_type (testsuite/tests/typing-unboxed-types/test_flat.ml[117,3760+17]..[117,3760+19])
+                              Ptyp_var b
+                          ]
+                          Some
+                            core_type (testsuite/tests/typing-unboxed-types/test_flat.ml[117,3760+23]..[117,3760+37])
+                              Ptyp_constr "r" (testsuite/tests/typing-unboxed-types/test_flat.ml[117,3760+36]..[117,3760+37])
+                              [
+                                core_type (testsuite/tests/typing-unboxed-types/test_flat.ml[117,3760+24]..[117,3760+34])
+                                  Ptyp_arrow
+                                  Nolabel
+                                  core_type (testsuite/tests/typing-unboxed-types/test_flat.ml[117,3760+24]..[117,3760+28])
+                                    Ptyp_constr "unit" (testsuite/tests/typing-unboxed-types/test_flat.ml[117,3760+24]..[117,3760+28])
+                                    []
+                                  core_type (testsuite/tests/typing-unboxed-types/test_flat.ml[117,3760+32]..[117,3760+34])
+                                    Ptyp_var b
+                              ]
+                      ]
+                  ptype_private = Public
+                  ptype_manifest =
+                    None
+              ]
+            structure_item (testsuite/tests/typing-unboxed-types/test_flat.ml[118,3810+2]..[118,3810+17])
+              Pstr_value Nonrec
+              [
+                <def>
+                  pattern (testsuite/tests/typing-unboxed-types/test_flat.ml[118,3810+6]..[118,3810+9])
+                    Ppat_var "inj" (testsuite/tests/typing-unboxed-types/test_flat.ml[118,3810+6]..[118,3810+9])
+                  expression (testsuite/tests/typing-unboxed-types/test_flat.ml[118,3810+10]..[118,3810+17]) ghost
+                    Pexp_fun
+                    Nolabel
+                    None
+                    pattern (testsuite/tests/typing-unboxed-types/test_flat.ml[118,3810+10]..[118,3810+11])
+                      Ppat_var "x" (testsuite/tests/typing-unboxed-types/test_flat.ml[118,3810+10]..[118,3810+11])
+                    expression (testsuite/tests/typing-unboxed-types/test_flat.ml[118,3810+14]..[118,3810+17])
+                      Pexp_construct "K" (testsuite/tests/typing-unboxed-types/test_flat.ml[118,3810+14]..[118,3810+15])
+                      Some
+                        expression (testsuite/tests/typing-unboxed-types/test_flat.ml[118,3810+16]..[118,3810+17])
+                          Pexp_ident "x" (testsuite/tests/typing-unboxed-types/test_flat.ml[118,3810+16]..[118,3810+17])
+              ]
+          ]
+        module_type (testsuite/tests/typing-unboxed-types/test_flat.ml[113,3687+11]..[116,3747+3])
+          Pmty_signature
+          [
+            signature_item (testsuite/tests/typing-unboxed-types/test_flat.ml[114,3702+2]..[114,3702+11])
+              Psig_type Rec
+              [
+                type_declaration "r" (testsuite/tests/typing-unboxed-types/test_flat.ml[114,3702+10]..[114,3702+11]) (testsuite/tests/typing-unboxed-types/test_flat.ml[114,3702+2]..[114,3702+11])
+                  ptype_params =
+                    [
+                      core_type (testsuite/tests/typing-unboxed-types/test_flat.ml[114,3702+7]..[114,3702+9])
+                        Ptyp_var a
+                    ]
+                  ptype_cstrs =
+                    []
+                  ptype_kind =
+                    Ptype_abstract
+                  ptype_private = Public
+                  ptype_manifest =
+                    None
+              ]
+            signature_item (testsuite/tests/typing-unboxed-types/test_flat.ml[115,3714+2]..[115,3714+32])
+              Psig_value
+              value_description "inj" (testsuite/tests/typing-unboxed-types/test_flat.ml[115,3714+6]..[115,3714+9]) (testsuite/tests/typing-unboxed-types/test_flat.ml[115,3714+2]..[115,3714+32])
+                core_type (testsuite/tests/typing-unboxed-types/test_flat.ml[115,3714+12]..[115,3714+32])
+                  Ptyp_arrow
+                  Nolabel
+                  core_type (testsuite/tests/typing-unboxed-types/test_flat.ml[115,3714+12]..[115,3714+14])
+                    Ptyp_var b
+                  core_type (testsuite/tests/typing-unboxed-types/test_flat.ml[115,3714+18]..[115,3714+32])
+                    Ptyp_constr "r" (testsuite/tests/typing-unboxed-types/test_flat.ml[115,3714+31]..[115,3714+32])
+                    [
+                      core_type (testsuite/tests/typing-unboxed-types/test_flat.ml[115,3714+19]..[115,3714+29])
+                        Ptyp_arrow
+                        Nolabel
+                        core_type (testsuite/tests/typing-unboxed-types/test_flat.ml[115,3714+19]..[115,3714+23])
+                          Ptyp_constr "unit" (testsuite/tests/typing-unboxed-types/test_flat.ml[115,3714+19]..[115,3714+23])
+                          []
+                        core_type (testsuite/tests/typing-unboxed-types/test_flat.ml[115,3714+27]..[115,3714+29])
+                          Ptyp_var b
+                    ]
+                []
+          ]
+  structure_item (testsuite/tests/typing-unboxed-types/test_flat.ml[120,3834+0]..[122,3906+3])
+    Pstr_extension "expect"
+    [
+      structure_item (testsuite/tests/typing-unboxed-types/test_flat.ml[120,3834+9]..[122,3906+2])
+        Pstr_eval
+        expression (testsuite/tests/typing-unboxed-types/test_flat.ml[120,3834+9]..[122,3906+2])
+          Pexp_constant PConst_string ("\nmodule N : sig type 'a r val inj : 'b -> (unit -> 'b) r end\n",(testsuite/tests/typing-unboxed-types/test_flat.ml[120,3834+11]..[122,3906+0]),Some "")
+    ]
+  structure_item (testsuite/tests/typing-unboxed-types/test_flat.ml[125,3926+0]..[125,3926+45])
+    Pstr_type Rec
+    [
+      type_declaration "t" (testsuite/tests/typing-unboxed-types/test_flat.ml[125,3926+5]..[125,3926+6]) (testsuite/tests/typing-unboxed-types/test_flat.ml[125,3926+0]..[125,3926+45])
+        attribute "unboxed"
+          []
+        ptype_params =
+          []
+        ptype_cstrs =
+          []
+        ptype_kind =
+          Ptype_variant
+            [
+              (testsuite/tests/typing-unboxed-types/test_flat.ml[125,3926+9]..[125,3926+33])
+                "T" (testsuite/tests/typing-unboxed-types/test_flat.ml[125,3926+9]..[125,3926+10])
+                [
+                  core_type (testsuite/tests/typing-unboxed-types/test_flat.ml[125,3926+13]..[125,3926+28])
+                    Ptyp_constr "N.r" (testsuite/tests/typing-unboxed-types/test_flat.ml[125,3926+25]..[125,3926+28])
+                    [
+                      core_type (testsuite/tests/typing-unboxed-types/test_flat.ml[125,3926+14]..[125,3926+23])
+                        Ptyp_arrow
+                        Nolabel
+                        core_type (testsuite/tests/typing-unboxed-types/test_flat.ml[125,3926+14]..[125,3926+18])
+                          Ptyp_constr "unit" (testsuite/tests/typing-unboxed-types/test_flat.ml[125,3926+14]..[125,3926+18])
+                          []
+                        core_type (testsuite/tests/typing-unboxed-types/test_flat.ml[125,3926+22]..[125,3926+23])
+                          Ptyp_any
+                    ]
+                ]
+                Some
+                  core_type (testsuite/tests/typing-unboxed-types/test_flat.ml[125,3926+32]..[125,3926+33])
+                    Ptyp_constr "t" (testsuite/tests/typing-unboxed-types/test_flat.ml[125,3926+32]..[125,3926+33])
+                    []
+            ]
+        ptype_private = Public
+        ptype_manifest =
+          None
+    ]
+  structure_item (testsuite/tests/typing-unboxed-types/test_flat.ml[126,3974+0]..[134,4339+3])
+    Pstr_extension "expect"
+    [
+      structure_item (testsuite/tests/typing-unboxed-types/test_flat.ml[126,3974+9]..[134,4339+2])
+        Pstr_eval
+        expression (testsuite/tests/typing-unboxed-types/test_flat.ml[126,3974+9]..[134,4339+2])
+          Pexp_constant PConst_string ("\nLine 1, characters 0-45:\n1 | type t = T : (unit -> _) N.r -> t [@@unboxed];;\n    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nError: This type cannot be unboxed because\n       it might contain both float and non-float values,\n       depending on the instantiation of an unnamed existential variable.\n       You should annotate it with [@@ocaml.boxed].\n",(testsuite/tests/typing-unboxed-types/test_flat.ml[126,3974+11]..[134,4339+0]),Some "")
+    ]
+  structure_item (testsuite/tests/typing-unboxed-types/test_flat.ml[137,4359+0]..[137,4359+59])
+    Pstr_type Rec
+    [
+      type_declaration "s" (testsuite/tests/typing-unboxed-types/test_flat.ml[137,4359+8]..[137,4359+9]) (testsuite/tests/typing-unboxed-types/test_flat.ml[137,4359+0]..[137,4359+59])
+        attribute "unboxed"
+          []
+        ptype_params =
+          [
+            core_type (testsuite/tests/typing-unboxed-types/test_flat.ml[137,4359+5]..[137,4359+7])
+              Ptyp_var a
+          ]
+        ptype_cstrs =
+          []
+        ptype_kind =
+          Ptype_variant
+            [
+              (testsuite/tests/typing-unboxed-types/test_flat.ml[137,4359+12]..[137,4359+47])
+                "S" (testsuite/tests/typing-unboxed-types/test_flat.ml[137,4359+12]..[137,4359+13])
+                [
+                  core_type (testsuite/tests/typing-unboxed-types/test_flat.ml[137,4359+16]..[137,4359+32])
+                    Ptyp_constr "N.r" (testsuite/tests/typing-unboxed-types/test_flat.ml[137,4359+29]..[137,4359+32])
+                    [
+                      core_type (testsuite/tests/typing-unboxed-types/test_flat.ml[137,4359+17]..[137,4359+27])
+                        Ptyp_arrow
+                        Nolabel
+                        core_type (testsuite/tests/typing-unboxed-types/test_flat.ml[137,4359+17]..[137,4359+21])
+                          Ptyp_constr "unit" (testsuite/tests/typing-unboxed-types/test_flat.ml[137,4359+17]..[137,4359+21])
+                          []
+                        core_type (testsuite/tests/typing-unboxed-types/test_flat.ml[137,4359+25]..[137,4359+27])
+                          Ptyp_var a
+                    ]
+                ]
+                Some
+                  core_type (testsuite/tests/typing-unboxed-types/test_flat.ml[137,4359+36]..[137,4359+47])
+                    Ptyp_constr "s" (testsuite/tests/typing-unboxed-types/test_flat.ml[137,4359+46]..[137,4359+47])
+                    [
+                      core_type (testsuite/tests/typing-unboxed-types/test_flat.ml[137,4359+36]..[137,4359+45])
+                        Ptyp_constr "option" (testsuite/tests/typing-unboxed-types/test_flat.ml[137,4359+39]..[137,4359+45])
+                        [
+                          core_type (testsuite/tests/typing-unboxed-types/test_flat.ml[137,4359+36]..[137,4359+38])
+                            Ptyp_var a
+                        ]
+                    ]
+            ]
+        ptype_private = Public
+        ptype_manifest =
+          None
+    ]
+  structure_item (testsuite/tests/typing-unboxed-types/test_flat.ml[138,4421+0]..[140,4493+3])
+    Pstr_extension "expect"
+    [
+      structure_item (testsuite/tests/typing-unboxed-types/test_flat.ml[138,4421+9]..[140,4493+2])
+        Pstr_eval
+        expression (testsuite/tests/typing-unboxed-types/test_flat.ml[138,4421+9]..[140,4493+2])
+          Pexp_constant PConst_string ("\ntype 'a s = S : (unit -> 'a) N.r -> 'a option s [@@unboxed]\n",(testsuite/tests/typing-unboxed-types/test_flat.ml[138,4421+11]..[140,4493+0]),Some "")
+    ]
+  structure_item (testsuite/tests/typing-unboxed-types/test_flat.ml[143,4540+0]..[144,4580+27])
+    Pstr_type Rec
+    [
+      type_declaration "s" (testsuite/tests/typing-unboxed-types/test_flat.ml[143,4540+7]..[143,4540+8]) (testsuite/tests/typing-unboxed-types/test_flat.ml[143,4540+0]..[143,4540+39])
+        attribute "unboxed"
+          []
+        ptype_params =
+          [
+            core_type (testsuite/tests/typing-unboxed-types/test_flat.ml[143,4540+5]..[143,4540+6])
+              Ptyp_any
+          ]
+        ptype_cstrs =
+          []
+        ptype_kind =
+          Ptype_variant
+            [
+              (testsuite/tests/typing-unboxed-types/test_flat.ml[143,4540+11]..[143,4540+26])
+                "S" (testsuite/tests/typing-unboxed-types/test_flat.ml[143,4540+11]..[143,4540+12])
+                [
+                  core_type (testsuite/tests/typing-unboxed-types/test_flat.ml[143,4540+15]..[143,4540+19])
+                    Ptyp_constr "t" (testsuite/tests/typing-unboxed-types/test_flat.ml[143,4540+18]..[143,4540+19])
+                    [
+                      core_type (testsuite/tests/typing-unboxed-types/test_flat.ml[143,4540+15]..[143,4540+17])
+                        Ptyp_var a
+                    ]
+                ]
+                Some
+                  core_type (testsuite/tests/typing-unboxed-types/test_flat.ml[143,4540+23]..[143,4540+26])
+                    Ptyp_constr "s" (testsuite/tests/typing-unboxed-types/test_flat.ml[143,4540+25]..[143,4540+26])
+                    [
+                      core_type (testsuite/tests/typing-unboxed-types/test_flat.ml[143,4540+23]..[143,4540+24])
+                        Ptyp_any
+                    ]
+            ]
+        ptype_private = Public
+        ptype_manifest =
+          None
+      type_declaration "t" (testsuite/tests/typing-unboxed-types/test_flat.ml[144,4580+7]..[144,4580+8]) (testsuite/tests/typing-unboxed-types/test_flat.ml[144,4580+1]..[144,4580+27])
+        ptype_params =
+          [
+            core_type (testsuite/tests/typing-unboxed-types/test_flat.ml[144,4580+5]..[144,4580+6])
+              Ptyp_any
+          ]
+        ptype_cstrs =
+          []
+        ptype_kind =
+          Ptype_variant
+            [
+              (testsuite/tests/typing-unboxed-types/test_flat.ml[144,4580+11]..[144,4580+27])
+                "T" (testsuite/tests/typing-unboxed-types/test_flat.ml[144,4580+11]..[144,4580+12])
+                [
+                  core_type (testsuite/tests/typing-unboxed-types/test_flat.ml[144,4580+15]..[144,4580+17])
+                    Ptyp_var a
+                ]
+                Some
+                  core_type (testsuite/tests/typing-unboxed-types/test_flat.ml[144,4580+21]..[144,4580+27])
+                    Ptyp_constr "t" (testsuite/tests/typing-unboxed-types/test_flat.ml[144,4580+26]..[144,4580+27])
+                    [
+                      core_type (testsuite/tests/typing-unboxed-types/test_flat.ml[144,4580+21]..[144,4580+25])
+                        Ptyp_constr "s" (testsuite/tests/typing-unboxed-types/test_flat.ml[144,4580+24]..[144,4580+25])
+                        [
+                          core_type (testsuite/tests/typing-unboxed-types/test_flat.ml[144,4580+21]..[144,4580+23])
+                            Ptyp_var a
+                        ]
+                    ]
+            ]
+        ptype_private = Public
+        ptype_manifest =
+          None
+    ]
+  structure_item (testsuite/tests/typing-unboxed-types/test_flat.ml[146,4611+0]..[149,4690+3])
+    Pstr_extension "expect"
+    [
+      structure_item (testsuite/tests/typing-unboxed-types/test_flat.ml[146,4611+9]..[149,4690+2])
+        Pstr_eval
+        expression (testsuite/tests/typing-unboxed-types/test_flat.ml[146,4611+9]..[149,4690+2])
+          Pexp_constant PConst_string ("\ntype _ s = S : 'a t -> 'b s [@@unboxed]\nand _ t = T : 'a -> 'a s t\n",(testsuite/tests/typing-unboxed-types/test_flat.ml[146,4611+11]..[149,4690+0]),Some "")
+    ]
+  structure_item (testsuite/tests/typing-unboxed-types/test_flat.ml[153,4779+0]..[153,4779+38])
+    Pstr_type Rec
+    [
+      type_declaration "s" (testsuite/tests/typing-unboxed-types/test_flat.ml[153,4779+8]..[153,4779+9]) (testsuite/tests/typing-unboxed-types/test_flat.ml[153,4779+0]..[153,4779+38])
+        attribute "unboxed"
+          []
+        ptype_params =
+          [
+            core_type (testsuite/tests/typing-unboxed-types/test_flat.ml[153,4779+5]..[153,4779+7])
+              Ptyp_var a
+          ]
+        ptype_cstrs =
+          []
+        ptype_kind =
+          Ptype_variant
+            [
+              (testsuite/tests/typing-unboxed-types/test_flat.ml[153,4779+12]..[153,4779+26])
+                "S" (testsuite/tests/typing-unboxed-types/test_flat.ml[153,4779+12]..[153,4779+13])
+                [
+                  core_type (testsuite/tests/typing-unboxed-types/test_flat.ml[153,4779+16]..[153,4779+18])
+                    Ptyp_var a
+                ]
+                Some
+                  core_type (testsuite/tests/typing-unboxed-types/test_flat.ml[153,4779+22]..[153,4779+26])
+                    Ptyp_constr "s" (testsuite/tests/typing-unboxed-types/test_flat.ml[153,4779+25]..[153,4779+26])
+                    [
+                      core_type (testsuite/tests/typing-unboxed-types/test_flat.ml[153,4779+22]..[153,4779+24])
+                        Ptyp_var a
+                    ]
+            ]
+        ptype_private = Public
+        ptype_manifest =
+          None
+    ]
+  structure_item (testsuite/tests/typing-unboxed-types/test_flat.ml[154,4820+0]..[154,4820+34])
+    Pstr_type Rec
+    [
+      type_declaration "t" (testsuite/tests/typing-unboxed-types/test_flat.ml[154,4820+5]..[154,4820+6]) (testsuite/tests/typing-unboxed-types/test_flat.ml[154,4820+0]..[154,4820+34])
+        attribute "unboxed"
+          []
+        ptype_params =
+          []
+        ptype_cstrs =
+          []
+        ptype_kind =
+          Ptype_variant
+            [
+              (testsuite/tests/typing-unboxed-types/test_flat.ml[154,4820+9]..[154,4820+22])
+                "T" (testsuite/tests/typing-unboxed-types/test_flat.ml[154,4820+9]..[154,4820+10])
+                [
+                  core_type (testsuite/tests/typing-unboxed-types/test_flat.ml[154,4820+13]..[154,4820+17])
+                    Ptyp_constr "s" (testsuite/tests/typing-unboxed-types/test_flat.ml[154,4820+16]..[154,4820+17])
+                    [
+                      core_type (testsuite/tests/typing-unboxed-types/test_flat.ml[154,4820+13]..[154,4820+15])
+                        Ptyp_var a
+                    ]
+                ]
+                Some
+                  core_type (testsuite/tests/typing-unboxed-types/test_flat.ml[154,4820+21]..[154,4820+22])
+                    Ptyp_constr "t" (testsuite/tests/typing-unboxed-types/test_flat.ml[154,4820+21]..[154,4820+22])
+                    []
+            ]
+        ptype_private = Public
+        ptype_manifest =
+          None
+    ]
+  structure_item (testsuite/tests/typing-unboxed-types/test_flat.ml[155,4857+0]..[164,5235+3])
+    Pstr_extension "expect"
+    [
+      structure_item (testsuite/tests/typing-unboxed-types/test_flat.ml[155,4857+9]..[164,5235+2])
+        Pstr_eval
+        expression (testsuite/tests/typing-unboxed-types/test_flat.ml[155,4857+9]..[164,5235+2])
+          Pexp_constant PConst_string ("\ntype 'a s = S : 'a -> 'a s [@@unboxed]\nLine 2, characters 0-34:\n2 | type t = T : 'a s -> t [@@unboxed];;\n    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nError: This type cannot be unboxed because\n       it might contain both float and non-float values,\n       depending on the instantiation of the existential variable 'a.\n       You should annotate it with [@@ocaml.boxed].\n",(testsuite/tests/typing-unboxed-types/test_flat.ml[155,4857+11]..[164,5235+0]),Some "")
+    ]
+  structure_item (testsuite/tests/typing-unboxed-types/test_flat.ml[167,5300+0]..[167,5300+45])
+    Pstr_type Rec
+    [
+      type_declaration "s" (testsuite/tests/typing-unboxed-types/test_flat.ml[167,5300+8]..[167,5300+9]) (testsuite/tests/typing-unboxed-types/test_flat.ml[167,5300+0]..[167,5300+45])
+        attribute "unboxed"
+          []
+        ptype_params =
+          [
+            core_type (testsuite/tests/typing-unboxed-types/test_flat.ml[167,5300+5]..[167,5300+7])
+              Ptyp_var a
+          ]
+        ptype_cstrs =
+          []
+        ptype_kind =
+          Ptype_variant
+            [
+              (testsuite/tests/typing-unboxed-types/test_flat.ml[167,5300+12]..[167,5300+33])
+                "S" (testsuite/tests/typing-unboxed-types/test_flat.ml[167,5300+12]..[167,5300+13])
+                [
+                  core_type (testsuite/tests/typing-unboxed-types/test_flat.ml[167,5300+16]..[167,5300+18])
+                    Ptyp_var a
+                ]
+                Some
+                  core_type (testsuite/tests/typing-unboxed-types/test_flat.ml[167,5300+22]..[167,5300+33])
+                    Ptyp_constr "s" (testsuite/tests/typing-unboxed-types/test_flat.ml[167,5300+32]..[167,5300+33])
+                    [
+                      core_type (testsuite/tests/typing-unboxed-types/test_flat.ml[167,5300+22]..[167,5300+31])
+                        Ptyp_constr "option" (testsuite/tests/typing-unboxed-types/test_flat.ml[167,5300+25]..[167,5300+31])
+                        [
+                          core_type (testsuite/tests/typing-unboxed-types/test_flat.ml[167,5300+22]..[167,5300+24])
+                            Ptyp_var a
+                        ]
+                    ]
+            ]
+        ptype_private = Public
+        ptype_manifest =
+          None
+    ]
+  structure_item (testsuite/tests/typing-unboxed-types/test_flat.ml[168,5348+0]..[168,5348+34])
+    Pstr_type Rec
+    [
+      type_declaration "t" (testsuite/tests/typing-unboxed-types/test_flat.ml[168,5348+5]..[168,5348+6]) (testsuite/tests/typing-unboxed-types/test_flat.ml[168,5348+0]..[168,5348+34])
+        attribute "unboxed"
+          []
+        ptype_params =
+          []
+        ptype_cstrs =
+          []
+        ptype_kind =
+          Ptype_variant
+            [
+              (testsuite/tests/typing-unboxed-types/test_flat.ml[168,5348+9]..[168,5348+22])
+                "T" (testsuite/tests/typing-unboxed-types/test_flat.ml[168,5348+9]..[168,5348+10])
+                [
+                  core_type (testsuite/tests/typing-unboxed-types/test_flat.ml[168,5348+13]..[168,5348+17])
+                    Ptyp_constr "s" (testsuite/tests/typing-unboxed-types/test_flat.ml[168,5348+16]..[168,5348+17])
+                    [
+                      core_type (testsuite/tests/typing-unboxed-types/test_flat.ml[168,5348+13]..[168,5348+15])
+                        Ptyp_var a
+                    ]
+                ]
+                Some
+                  core_type (testsuite/tests/typing-unboxed-types/test_flat.ml[168,5348+21]..[168,5348+22])
+                    Ptyp_constr "t" (testsuite/tests/typing-unboxed-types/test_flat.ml[168,5348+21]..[168,5348+22])
+                    []
+            ]
+        ptype_private = Public
+        ptype_manifest =
+          None
+    ]
+  structure_item (testsuite/tests/typing-unboxed-types/test_flat.ml[169,5385+0]..[178,5770+3])
+    Pstr_extension "expect"
+    [
+      structure_item (testsuite/tests/typing-unboxed-types/test_flat.ml[169,5385+9]..[178,5770+2])
+        Pstr_eval
+        expression (testsuite/tests/typing-unboxed-types/test_flat.ml[169,5385+9]..[178,5770+2])
+          Pexp_constant PConst_string ("\ntype 'a s = S : 'a -> 'a option s [@@unboxed]\nLine 2, characters 0-34:\n2 | type t = T : 'a s -> t [@@unboxed];;\n    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nError: This type cannot be unboxed because\n       it might contain both float and non-float values,\n       depending on the instantiation of the existential variable 'a.\n       You should annotate it with [@@ocaml.boxed].\n",(testsuite/tests/typing-unboxed-types/test_flat.ml[169,5385+11]..[178,5770+0]),Some "")
+    ]
+  structure_item (testsuite/tests/typing-unboxed-types/test_flat.ml[181,5825+0]..[187,5985+3])
+    Pstr_module
+    "M" (testsuite/tests/typing-unboxed-types/test_flat.ml[181,5825+7]..[181,5825+8])
+      module_expr (testsuite/tests/typing-unboxed-types/test_flat.ml[181,5825+9]..[187,5985+3])
+        Pmod_constraint
+        module_expr (testsuite/tests/typing-unboxed-types/test_flat.ml[184,5912+6]..[187,5985+3])
+          Pmod_structure
+          [
+            structure_item (testsuite/tests/typing-unboxed-types/test_flat.ml[185,5925+2]..[185,5925+43])
+              Pstr_type Rec
+              [
+                type_declaration "r" (testsuite/tests/typing-unboxed-types/test_flat.ml[185,5925+10]..[185,5925+11]) (testsuite/tests/typing-unboxed-types/test_flat.ml[185,5925+2]..[185,5925+43])
+                  ptype_params =
+                    [
+                      core_type (testsuite/tests/typing-unboxed-types/test_flat.ml[185,5925+7]..[185,5925+9])
+                        Ptyp_var a
+                    ]
+                  ptype_cstrs =
+                    [
+                      <constraint> (testsuite/tests/typing-unboxed-types/test_flat.ml[185,5925+28]..[185,5925+43])
+                        core_type (testsuite/tests/typing-unboxed-types/test_flat.ml[185,5925+28]..[185,5925+30])
+                          Ptyp_var a
+                        core_type (testsuite/tests/typing-unboxed-types/test_flat.ml[185,5925+33]..[185,5925+43])
+                          Ptyp_arrow
+                          Nolabel
+                          core_type (testsuite/tests/typing-unboxed-types/test_flat.ml[185,5925+33]..[185,5925+37])
+                            Ptyp_constr "unit" (testsuite/tests/typing-unboxed-types/test_flat.ml[185,5925+33]..[185,5925+37])
+                            []
+                          core_type (testsuite/tests/typing-unboxed-types/test_flat.ml[185,5925+41]..[185,5925+43])
+                            Ptyp_var b
+                    ]
+                  ptype_kind =
+                    Ptype_abstract
+                  ptype_private = Public
+                  ptype_manifest =
+                    Some
+                      core_type (testsuite/tests/typing-unboxed-types/test_flat.ml[185,5925+14]..[185,5925+16])
+                        Ptyp_var b
+              ]
+            structure_item (testsuite/tests/typing-unboxed-types/test_flat.ml[186,5969+2]..[186,5969+15])
+              Pstr_value Nonrec
+              [
+                <def>
+                  pattern (testsuite/tests/typing-unboxed-types/test_flat.ml[186,5969+6]..[186,5969+9])
+                    Ppat_var "inj" (testsuite/tests/typing-unboxed-types/test_flat.ml[186,5969+6]..[186,5969+9])
+                  expression (testsuite/tests/typing-unboxed-types/test_flat.ml[186,5969+10]..[186,5969+15]) ghost
+                    Pexp_fun
+                    Nolabel
+                    None
+                    pattern (testsuite/tests/typing-unboxed-types/test_flat.ml[186,5969+10]..[186,5969+11])
+                      Ppat_var "x" (testsuite/tests/typing-unboxed-types/test_flat.ml[186,5969+10]..[186,5969+11])
+                    expression (testsuite/tests/typing-unboxed-types/test_flat.ml[186,5969+14]..[186,5969+15])
+                      Pexp_ident "x" (testsuite/tests/typing-unboxed-types/test_flat.ml[186,5969+14]..[186,5969+15])
+              ]
+          ]
+        module_type (testsuite/tests/typing-unboxed-types/test_flat.ml[181,5825+11]..[184,5912+3])
+          Pmty_signature
+          [
+            signature_item (testsuite/tests/typing-unboxed-types/test_flat.ml[182,5840+2]..[182,5840+38])
+              Psig_type Rec
+              [
+                type_declaration "r" (testsuite/tests/typing-unboxed-types/test_flat.ml[182,5840+10]..[182,5840+11]) (testsuite/tests/typing-unboxed-types/test_flat.ml[182,5840+2]..[182,5840+38])
+                  ptype_params =
+                    [
+                      core_type (testsuite/tests/typing-unboxed-types/test_flat.ml[182,5840+7]..[182,5840+9])
+                        Ptyp_var a
+                    ]
+                  ptype_cstrs =
+                    [
+                      <constraint> (testsuite/tests/typing-unboxed-types/test_flat.ml[182,5840+23]..[182,5840+38])
+                        core_type (testsuite/tests/typing-unboxed-types/test_flat.ml[182,5840+23]..[182,5840+25])
+                          Ptyp_var a
+                        core_type (testsuite/tests/typing-unboxed-types/test_flat.ml[182,5840+28]..[182,5840+38])
+                          Ptyp_arrow
+                          Nolabel
+                          core_type (testsuite/tests/typing-unboxed-types/test_flat.ml[182,5840+28]..[182,5840+32])
+                            Ptyp_constr "unit" (testsuite/tests/typing-unboxed-types/test_flat.ml[182,5840+28]..[182,5840+32])
+                            []
+                          core_type (testsuite/tests/typing-unboxed-types/test_flat.ml[182,5840+36]..[182,5840+38])
+                            Ptyp_var b
+                    ]
+                  ptype_kind =
+                    Ptype_abstract
+                  ptype_private = Public
+                  ptype_manifest =
+                    None
+              ]
+            signature_item (testsuite/tests/typing-unboxed-types/test_flat.ml[183,5879+2]..[183,5879+32])
+              Psig_value
+              value_description "inj" (testsuite/tests/typing-unboxed-types/test_flat.ml[183,5879+6]..[183,5879+9]) (testsuite/tests/typing-unboxed-types/test_flat.ml[183,5879+2]..[183,5879+32])
+                core_type (testsuite/tests/typing-unboxed-types/test_flat.ml[183,5879+12]..[183,5879+32])
+                  Ptyp_arrow
+                  Nolabel
+                  core_type (testsuite/tests/typing-unboxed-types/test_flat.ml[183,5879+12]..[183,5879+14])
+                    Ptyp_var b
+                  core_type (testsuite/tests/typing-unboxed-types/test_flat.ml[183,5879+18]..[183,5879+32])
+                    Ptyp_constr "r" (testsuite/tests/typing-unboxed-types/test_flat.ml[183,5879+31]..[183,5879+32])
+                    [
+                      core_type (testsuite/tests/typing-unboxed-types/test_flat.ml[183,5879+19]..[183,5879+29])
+                        Ptyp_arrow
+                        Nolabel
+                        core_type (testsuite/tests/typing-unboxed-types/test_flat.ml[183,5879+19]..[183,5879+23])
+                          Ptyp_constr "unit" (testsuite/tests/typing-unboxed-types/test_flat.ml[183,5879+19]..[183,5879+23])
+                          []
+                        core_type (testsuite/tests/typing-unboxed-types/test_flat.ml[183,5879+27]..[183,5879+29])
+                          Ptyp_var b
+                    ]
+                []
+          ]
+  structure_item (testsuite/tests/typing-unboxed-types/test_flat.ml[188,5991+0]..[191,6092+3])
+    Pstr_extension "expect"
+    [
+      structure_item (testsuite/tests/typing-unboxed-types/test_flat.ml[188,5991+9]..[191,6092+2])
+        Pstr_eval
+        expression (testsuite/tests/typing-unboxed-types/test_flat.ml[188,5991+9]..[191,6092+2])
+          Pexp_constant PConst_string ("\nmodule M :\n  sig type 'a r constraint 'a = unit -> 'b val inj : 'b -> (unit -> 'b) r end\n",(testsuite/tests/typing-unboxed-types/test_flat.ml[188,5991+11]..[191,6092+0]),Some "")
+    ]
+  structure_item (testsuite/tests/typing-unboxed-types/test_flat.ml[194,6112+0]..[194,6112+45])
+    Pstr_type Rec
+    [
+      type_declaration "t" (testsuite/tests/typing-unboxed-types/test_flat.ml[194,6112+5]..[194,6112+6]) (testsuite/tests/typing-unboxed-types/test_flat.ml[194,6112+0]..[194,6112+45])
+        attribute "unboxed"
+          []
+        ptype_params =
+          []
+        ptype_cstrs =
+          []
+        ptype_kind =
+          Ptype_variant
+            [
+              (testsuite/tests/typing-unboxed-types/test_flat.ml[194,6112+9]..[194,6112+33])
+                "T" (testsuite/tests/typing-unboxed-types/test_flat.ml[194,6112+9]..[194,6112+10])
+                [
+                  core_type (testsuite/tests/typing-unboxed-types/test_flat.ml[194,6112+13]..[194,6112+28])
+                    Ptyp_constr "M.r" (testsuite/tests/typing-unboxed-types/test_flat.ml[194,6112+25]..[194,6112+28])
+                    [
+                      core_type (testsuite/tests/typing-unboxed-types/test_flat.ml[194,6112+14]..[194,6112+23])
+                        Ptyp_arrow
+                        Nolabel
+                        core_type (testsuite/tests/typing-unboxed-types/test_flat.ml[194,6112+14]..[194,6112+18])
+                          Ptyp_constr "unit" (testsuite/tests/typing-unboxed-types/test_flat.ml[194,6112+14]..[194,6112+18])
+                          []
+                        core_type (testsuite/tests/typing-unboxed-types/test_flat.ml[194,6112+22]..[194,6112+23])
+                          Ptyp_any
+                    ]
+                ]
+                Some
+                  core_type (testsuite/tests/typing-unboxed-types/test_flat.ml[194,6112+32]..[194,6112+33])
+                    Ptyp_constr "t" (testsuite/tests/typing-unboxed-types/test_flat.ml[194,6112+32]..[194,6112+33])
+                    []
+            ]
+        ptype_private = Public
+        ptype_manifest =
+          None
+    ]
+  structure_item (testsuite/tests/typing-unboxed-types/test_flat.ml[195,6160+0]..[203,6525+3])
+    Pstr_extension "expect"
+    [
+      structure_item (testsuite/tests/typing-unboxed-types/test_flat.ml[195,6160+9]..[203,6525+2])
+        Pstr_eval
+        expression (testsuite/tests/typing-unboxed-types/test_flat.ml[195,6160+9]..[203,6525+2])
+          Pexp_constant PConst_string ("\nLine 1, characters 0-45:\n1 | type t = T : (unit -> _) M.r -> t [@@unboxed];;\n    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nError: This type cannot be unboxed because\n       it might contain both float and non-float values,\n       depending on the instantiation of an unnamed existential variable.\n       You should annotate it with [@@ocaml.boxed].\n",(testsuite/tests/typing-unboxed-types/test_flat.ml[195,6160+11]..[203,6525+0]),Some "")
+    ]
+  structure_item (testsuite/tests/typing-unboxed-types/test_flat.ml[205,6532+0]..[205,6532+59])
+    Pstr_type Rec
+    [
+      type_declaration "s" (testsuite/tests/typing-unboxed-types/test_flat.ml[205,6532+8]..[205,6532+9]) (testsuite/tests/typing-unboxed-types/test_flat.ml[205,6532+0]..[205,6532+59])
+        attribute "unboxed"
+          []
+        ptype_params =
+          [
+            core_type (testsuite/tests/typing-unboxed-types/test_flat.ml[205,6532+5]..[205,6532+7])
+              Ptyp_var a
+          ]
+        ptype_cstrs =
+          []
+        ptype_kind =
+          Ptype_variant
+            [
+              (testsuite/tests/typing-unboxed-types/test_flat.ml[205,6532+12]..[205,6532+47])
+                "S" (testsuite/tests/typing-unboxed-types/test_flat.ml[205,6532+12]..[205,6532+13])
+                [
+                  core_type (testsuite/tests/typing-unboxed-types/test_flat.ml[205,6532+16]..[205,6532+32])
+                    Ptyp_constr "M.r" (testsuite/tests/typing-unboxed-types/test_flat.ml[205,6532+29]..[205,6532+32])
+                    [
+                      core_type (testsuite/tests/typing-unboxed-types/test_flat.ml[205,6532+17]..[205,6532+27])
+                        Ptyp_arrow
+                        Nolabel
+                        core_type (testsuite/tests/typing-unboxed-types/test_flat.ml[205,6532+17]..[205,6532+21])
+                          Ptyp_constr "unit" (testsuite/tests/typing-unboxed-types/test_flat.ml[205,6532+17]..[205,6532+21])
+                          []
+                        core_type (testsuite/tests/typing-unboxed-types/test_flat.ml[205,6532+25]..[205,6532+27])
+                          Ptyp_var a
+                    ]
+                ]
+                Some
+                  core_type (testsuite/tests/typing-unboxed-types/test_flat.ml[205,6532+36]..[205,6532+47])
+                    Ptyp_constr "s" (testsuite/tests/typing-unboxed-types/test_flat.ml[205,6532+46]..[205,6532+47])
+                    [
+                      core_type (testsuite/tests/typing-unboxed-types/test_flat.ml[205,6532+36]..[205,6532+45])
+                        Ptyp_constr "option" (testsuite/tests/typing-unboxed-types/test_flat.ml[205,6532+39]..[205,6532+45])
+                        [
+                          core_type (testsuite/tests/typing-unboxed-types/test_flat.ml[205,6532+36]..[205,6532+38])
+                            Ptyp_var a
+                        ]
+                    ]
+            ]
+        ptype_private = Public
+        ptype_manifest =
+          None
+    ]
+  structure_item (testsuite/tests/typing-unboxed-types/test_flat.ml[206,6594+0]..[208,6666+3])
+    Pstr_extension "expect"
+    [
+      structure_item (testsuite/tests/typing-unboxed-types/test_flat.ml[206,6594+9]..[208,6666+2])
+        Pstr_eval
+        expression (testsuite/tests/typing-unboxed-types/test_flat.ml[206,6594+9]..[208,6666+2])
+          Pexp_constant PConst_string ("\ntype 'a s = S : (unit -> 'a) M.r -> 'a option s [@@unboxed]\n",(testsuite/tests/typing-unboxed-types/test_flat.ml[206,6594+11]..[208,6666+0]),Some "")
+    ]
+  structure_item (testsuite/tests/typing-unboxed-types/test_flat.ml[211,6686+0]..[211,6686+34])
+    Pstr_type Rec
+    [
+      type_declaration "t" (testsuite/tests/typing-unboxed-types/test_flat.ml[211,6686+5]..[211,6686+6]) (testsuite/tests/typing-unboxed-types/test_flat.ml[211,6686+0]..[211,6686+34])
+        attribute "unboxed"
+          []
+        ptype_params =
+          []
+        ptype_cstrs =
+          []
+        ptype_kind =
+          Ptype_variant
+            [
+              (testsuite/tests/typing-unboxed-types/test_flat.ml[211,6686+9]..[211,6686+22])
+                "T" (testsuite/tests/typing-unboxed-types/test_flat.ml[211,6686+9]..[211,6686+10])
+                [
+                  core_type (testsuite/tests/typing-unboxed-types/test_flat.ml[211,6686+13]..[211,6686+17])
+                    Ptyp_constr "s" (testsuite/tests/typing-unboxed-types/test_flat.ml[211,6686+16]..[211,6686+17])
+                    [
+                      core_type (testsuite/tests/typing-unboxed-types/test_flat.ml[211,6686+13]..[211,6686+15])
+                        Ptyp_var a
+                    ]
+                ]
+                Some
+                  core_type (testsuite/tests/typing-unboxed-types/test_flat.ml[211,6686+21]..[211,6686+22])
+                    Ptyp_constr "t" (testsuite/tests/typing-unboxed-types/test_flat.ml[211,6686+21]..[211,6686+22])
+                    []
+            ]
+        ptype_private = Public
+        ptype_manifest =
+          None
+    ]
+  structure_item (testsuite/tests/typing-unboxed-types/test_flat.ml[212,6723+0]..[220,7062+3])
+    Pstr_extension "expect"
+    [
+      structure_item (testsuite/tests/typing-unboxed-types/test_flat.ml[212,6723+9]..[220,7062+2])
+        Pstr_eval
+        expression (testsuite/tests/typing-unboxed-types/test_flat.ml[212,6723+9]..[220,7062+2])
+          Pexp_constant PConst_string ("\nLine 1, characters 0-34:\n1 | type t = T : 'a s -> t [@@unboxed];;\n    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nError: This type cannot be unboxed because\n       it might contain both float and non-float values,\n       depending on the instantiation of the existential variable 'a.\n       You should annotate it with [@@ocaml.boxed].\n",(testsuite/tests/typing-unboxed-types/test_flat.ml[212,6723+11]..[220,7062+0]),Some "")
+    ]
+  structure_item (testsuite/tests/typing-unboxed-types/test_flat.ml[223,7082+0]..[223,7082+40])
+    Pstr_type Rec
+    [
+      type_declaration "t" (testsuite/tests/typing-unboxed-types/test_flat.ml[223,7082+8]..[223,7082+9]) (testsuite/tests/typing-unboxed-types/test_flat.ml[223,7082+0]..[223,7082+40])
+        attribute "unboxed"
+          []
+        ptype_params =
+          [
+            core_type (testsuite/tests/typing-unboxed-types/test_flat.ml[223,7082+5]..[223,7082+7])
+              Ptyp_var a
+          ]
+        ptype_cstrs =
+          []
+        ptype_kind =
+          Ptype_variant
+            [
+              (testsuite/tests/typing-unboxed-types/test_flat.ml[223,7082+12]..[223,7082+28])
+                "T" (testsuite/tests/typing-unboxed-types/test_flat.ml[223,7082+12]..[223,7082+13])
+                [
+                  core_type (testsuite/tests/typing-unboxed-types/test_flat.ml[223,7082+16]..[223,7082+20])
+                    Ptyp_constr "s" (testsuite/tests/typing-unboxed-types/test_flat.ml[223,7082+19]..[223,7082+20])
+                    [
+                      core_type (testsuite/tests/typing-unboxed-types/test_flat.ml[223,7082+16]..[223,7082+18])
+                        Ptyp_var a
+                    ]
+                ]
+                Some
+                  core_type (testsuite/tests/typing-unboxed-types/test_flat.ml[223,7082+24]..[223,7082+28])
+                    Ptyp_constr "t" (testsuite/tests/typing-unboxed-types/test_flat.ml[223,7082+27]..[223,7082+28])
+                    [
+                      core_type (testsuite/tests/typing-unboxed-types/test_flat.ml[223,7082+24]..[223,7082+26])
+                        Ptyp_var a
+                    ]
+            ]
+        ptype_private = Public
+        ptype_manifest =
+          None
+    ]
+  structure_item (testsuite/tests/typing-unboxed-types/test_flat.ml[224,7125+0]..[226,7178+3])
+    Pstr_extension "expect"
+    [
+      structure_item (testsuite/tests/typing-unboxed-types/test_flat.ml[224,7125+9]..[226,7178+2])
+        Pstr_eval
+        expression (testsuite/tests/typing-unboxed-types/test_flat.ml[224,7125+9]..[226,7178+2])
+          Pexp_constant PConst_string ("\ntype 'a t = T : 'a s -> 'a t [@@unboxed]\n",(testsuite/tests/typing-unboxed-types/test_flat.ml[224,7125+11]..[226,7178+0]),Some "")
+    ]
+  structure_item (testsuite/tests/typing-unboxed-types/test_flat.ml[230,7226+0]..[231,7266+27])
+    Pstr_type Rec
+    [
+      type_declaration "s" (testsuite/tests/typing-unboxed-types/test_flat.ml[230,7226+7]..[230,7226+8]) (testsuite/tests/typing-unboxed-types/test_flat.ml[230,7226+0]..[230,7226+39])
+        attribute "unboxed"
+          []
+        ptype_params =
+          [
+            core_type (testsuite/tests/typing-unboxed-types/test_flat.ml[230,7226+5]..[230,7226+6])
+              Ptyp_any
+          ]
+        ptype_cstrs =
+          []
+        ptype_kind =
+          Ptype_variant
+            [
+              (testsuite/tests/typing-unboxed-types/test_flat.ml[230,7226+11]..[230,7226+26])
+                "S" (testsuite/tests/typing-unboxed-types/test_flat.ml[230,7226+11]..[230,7226+12])
+                [
+                  core_type (testsuite/tests/typing-unboxed-types/test_flat.ml[230,7226+15]..[230,7226+19])
+                    Ptyp_constr "t" (testsuite/tests/typing-unboxed-types/test_flat.ml[230,7226+18]..[230,7226+19])
+                    [
+                      core_type (testsuite/tests/typing-unboxed-types/test_flat.ml[230,7226+15]..[230,7226+17])
+                        Ptyp_var a
+                    ]
+                ]
+                Some
+                  core_type (testsuite/tests/typing-unboxed-types/test_flat.ml[230,7226+23]..[230,7226+26])
+                    Ptyp_constr "s" (testsuite/tests/typing-unboxed-types/test_flat.ml[230,7226+25]..[230,7226+26])
+                    [
+                      core_type (testsuite/tests/typing-unboxed-types/test_flat.ml[230,7226+23]..[230,7226+24])
+                        Ptyp_any
+                    ]
+            ]
+        ptype_private = Public
+        ptype_manifest =
+          None
+      type_declaration "t" (testsuite/tests/typing-unboxed-types/test_flat.ml[231,7266+7]..[231,7266+8]) (testsuite/tests/typing-unboxed-types/test_flat.ml[231,7266+1]..[231,7266+27])
+        ptype_params =
+          [
+            core_type (testsuite/tests/typing-unboxed-types/test_flat.ml[231,7266+5]..[231,7266+6])
+              Ptyp_any
+          ]
+        ptype_cstrs =
+          []
+        ptype_kind =
+          Ptype_variant
+            [
+              (testsuite/tests/typing-unboxed-types/test_flat.ml[231,7266+11]..[231,7266+27])
+                "T" (testsuite/tests/typing-unboxed-types/test_flat.ml[231,7266+11]..[231,7266+12])
+                [
+                  core_type (testsuite/tests/typing-unboxed-types/test_flat.ml[231,7266+15]..[231,7266+17])
+                    Ptyp_var a
+                ]
+                Some
+                  core_type (testsuite/tests/typing-unboxed-types/test_flat.ml[231,7266+21]..[231,7266+27])
+                    Ptyp_constr "t" (testsuite/tests/typing-unboxed-types/test_flat.ml[231,7266+26]..[231,7266+27])
+                    [
+                      core_type (testsuite/tests/typing-unboxed-types/test_flat.ml[231,7266+21]..[231,7266+25])
+                        Ptyp_constr "s" (testsuite/tests/typing-unboxed-types/test_flat.ml[231,7266+24]..[231,7266+25])
+                        [
+                          core_type (testsuite/tests/typing-unboxed-types/test_flat.ml[231,7266+21]..[231,7266+23])
+                            Ptyp_var a
+                        ]
+                    ]
+            ]
+        ptype_private = Public
+        ptype_manifest =
+          None
+    ]
+  structure_item (testsuite/tests/typing-unboxed-types/test_flat.ml[233,7297+0]..[236,7376+3])
+    Pstr_extension "expect"
+    [
+      structure_item (testsuite/tests/typing-unboxed-types/test_flat.ml[233,7297+9]..[236,7376+2])
+        Pstr_eval
+        expression (testsuite/tests/typing-unboxed-types/test_flat.ml[233,7297+9]..[236,7376+2])
+          Pexp_constant PConst_string ("\ntype _ s = S : 'a t -> 'b s [@@unboxed]\nand _ t = T : 'a -> 'a s t\n",(testsuite/tests/typing-unboxed-types/test_flat.ml[233,7297+11]..[236,7376+0]),Some "")
+    ]
+  structure_item (testsuite/tests/typing-unboxed-types/test_flat.ml[254,8192+0]..[254,8192+74])
+    Pstr_type Rec
+    [
+      type_declaration "almost_eq" (testsuite/tests/typing-unboxed-types/test_flat.ml[254,8192+12]..[254,8192+21]) (testsuite/tests/typing-unboxed-types/test_flat.ml[254,8192+0]..[254,8192+74])
+        attribute "unboxed"
+          []
+        ptype_params =
+          [
+            core_type (testsuite/tests/typing-unboxed-types/test_flat.ml[254,8192+6]..[254,8192+7])
+              Ptyp_any
+            core_type (testsuite/tests/typing-unboxed-types/test_flat.ml[254,8192+9]..[254,8192+10])
+              Ptyp_any
+          ]
+        ptype_cstrs =
+          []
+        ptype_kind =
+          Ptype_variant
+            [
+              (testsuite/tests/typing-unboxed-types/test_flat.ml[254,8192+24]..[254,8192+62])
+                "Almost_refl" (testsuite/tests/typing-unboxed-types/test_flat.ml[254,8192+24]..[254,8192+35])
+                [
+                  core_type (testsuite/tests/typing-unboxed-types/test_flat.ml[254,8192+38]..[254,8192+40])
+                    Ptyp_var a
+                ]
+                Some
+                  core_type (testsuite/tests/typing-unboxed-types/test_flat.ml[254,8192+44]..[254,8192+62])
+                    Ptyp_constr "almost_eq" (testsuite/tests/typing-unboxed-types/test_flat.ml[254,8192+53]..[254,8192+62])
+                    [
+                      core_type (testsuite/tests/typing-unboxed-types/test_flat.ml[254,8192+45]..[254,8192+47])
+                        Ptyp_var a
+                      core_type (testsuite/tests/typing-unboxed-types/test_flat.ml[254,8192+49]..[254,8192+51])
+                        Ptyp_var a
+                    ]
+            ]
+        ptype_private = Public
+        ptype_manifest =
+          None
+    ]
+  structure_item (testsuite/tests/typing-unboxed-types/test_flat.ml[255,8267+0]..[257,8354+3])
+    Pstr_extension "expect"
+    [
+      structure_item (testsuite/tests/typing-unboxed-types/test_flat.ml[255,8267+9]..[257,8354+2])
+        Pstr_eval
+        expression (testsuite/tests/typing-unboxed-types/test_flat.ml[255,8267+9]..[257,8354+2])
+          Pexp_constant PConst_string ("\ntype (_, _) almost_eq = Almost_refl : 'a -> ('a, 'a) almost_eq [@@unboxed]\n",(testsuite/tests/typing-unboxed-types/test_flat.ml[255,8267+11]..[257,8354+0]),Some "")
+    ]
+  structure_item (testsuite/tests/typing-unboxed-types/test_flat.ml[260,8362+0]..[260,8362+61])
+    Pstr_type Rec
+    [
+      type_declaration "valid1" (testsuite/tests/typing-unboxed-types/test_flat.ml[260,8362+5]..[260,8362+11]) (testsuite/tests/typing-unboxed-types/test_flat.ml[260,8362+0]..[260,8362+61])
+        attribute "unboxed"
+          []
+        ptype_params =
+          []
+        ptype_cstrs =
+          []
+        ptype_kind =
+          Ptype_variant
+            [
+              (testsuite/tests/typing-unboxed-types/test_flat.ml[260,8362+14]..[260,8362+49])
+                "Any" (testsuite/tests/typing-unboxed-types/test_flat.ml[260,8362+14]..[260,8362+17])
+                [
+                  core_type (testsuite/tests/typing-unboxed-types/test_flat.ml[260,8362+20]..[260,8362+39])
+                    Ptyp_constr "almost_eq" (testsuite/tests/typing-unboxed-types/test_flat.ml[260,8362+30]..[260,8362+39])
+                    [
+                      core_type (testsuite/tests/typing-unboxed-types/test_flat.ml[260,8362+21]..[260,8362+23])
+                        Ptyp_var a
+                      core_type (testsuite/tests/typing-unboxed-types/test_flat.ml[260,8362+25]..[260,8362+28])
+                        Ptyp_constr "int" (testsuite/tests/typing-unboxed-types/test_flat.ml[260,8362+25]..[260,8362+28])
+                        []
+                    ]
+                ]
+                Some
+                  core_type (testsuite/tests/typing-unboxed-types/test_flat.ml[260,8362+43]..[260,8362+49])
+                    Ptyp_constr "valid1" (testsuite/tests/typing-unboxed-types/test_flat.ml[260,8362+43]..[260,8362+49])
+                    []
+            ]
+        ptype_private = Public
+        ptype_manifest =
+          None
+    ]
+  structure_item (testsuite/tests/typing-unboxed-types/test_flat.ml[261,8426+0]..[269,8819+3])
+    Pstr_extension "expect"
+    [
+      structure_item (testsuite/tests/typing-unboxed-types/test_flat.ml[261,8426+9]..[269,8819+2])
+        Pstr_eval
+        expression (testsuite/tests/typing-unboxed-types/test_flat.ml[261,8426+9]..[269,8819+2])
+          Pexp_constant PConst_string ("\nLine 1, characters 0-61:\n1 | type valid1 = Any : ('a, int) almost_eq -> valid1 [@@unboxed];;\n    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nError: This type cannot be unboxed because\n       it might contain both float and non-float values,\n       depending on the instantiation of the existential variable 'a.\n       You should annotate it with [@@ocaml.boxed].\n",(testsuite/tests/typing-unboxed-types/test_flat.ml[261,8426+11]..[269,8819+0]),Some "")
+    ]
+  structure_item (testsuite/tests/typing-unboxed-types/test_flat.ml[270,8825+0]..[270,8825+61])
+    Pstr_type Rec
+    [
+      type_declaration "valid2" (testsuite/tests/typing-unboxed-types/test_flat.ml[270,8825+5]..[270,8825+11]) (testsuite/tests/typing-unboxed-types/test_flat.ml[270,8825+0]..[270,8825+61])
+        attribute "unboxed"
+          []
+        ptype_params =
+          []
+        ptype_cstrs =
+          []
+        ptype_kind =
+          Ptype_variant
+            [
+              (testsuite/tests/typing-unboxed-types/test_flat.ml[270,8825+14]..[270,8825+49])
+                "Any" (testsuite/tests/typing-unboxed-types/test_flat.ml[270,8825+14]..[270,8825+17])
+                [
+                  core_type (testsuite/tests/typing-unboxed-types/test_flat.ml[270,8825+20]..[270,8825+39])
+                    Ptyp_constr "almost_eq" (testsuite/tests/typing-unboxed-types/test_flat.ml[270,8825+30]..[270,8825+39])
+                    [
+                      core_type (testsuite/tests/typing-unboxed-types/test_flat.ml[270,8825+21]..[270,8825+24])
+                        Ptyp_constr "int" (testsuite/tests/typing-unboxed-types/test_flat.ml[270,8825+21]..[270,8825+24])
+                        []
+                      core_type (testsuite/tests/typing-unboxed-types/test_flat.ml[270,8825+26]..[270,8825+28])
+                        Ptyp_var a
+                    ]
+                ]
+                Some
+                  core_type (testsuite/tests/typing-unboxed-types/test_flat.ml[270,8825+43]..[270,8825+49])
+                    Ptyp_constr "valid2" (testsuite/tests/typing-unboxed-types/test_flat.ml[270,8825+43]..[270,8825+49])
+                    []
+            ]
+        ptype_private = Public
+        ptype_manifest =
+          None
+    ]
+  structure_item (testsuite/tests/typing-unboxed-types/test_flat.ml[271,8889+0]..[273,8963+3])
+    Pstr_extension "expect"
+    [
+      structure_item (testsuite/tests/typing-unboxed-types/test_flat.ml[271,8889+9]..[273,8963+2])
+        Pstr_eval
+        expression (testsuite/tests/typing-unboxed-types/test_flat.ml[271,8889+9]..[273,8963+2])
+          Pexp_constant PConst_string ("\ntype valid2 = Any : (int, 'a) almost_eq -> valid2 [@@unboxed]\n",(testsuite/tests/typing-unboxed-types/test_flat.ml[271,8889+11]..[273,8963+0]),Some "")
+    ]
+  structure_item (testsuite/tests/typing-unboxed-types/test_flat.ml[276,9015+0]..[276,9015+60])
+    Pstr_type Rec
+    [
+      type_declaration "danger" (testsuite/tests/typing-unboxed-types/test_flat.ml[276,9015+5]..[276,9015+11]) (testsuite/tests/typing-unboxed-types/test_flat.ml[276,9015+0]..[276,9015+60])
+        attribute "unboxed"
+          []
+        ptype_params =
+          []
+        ptype_cstrs =
+          []
+        ptype_kind =
+          Ptype_variant
+            [
+              (testsuite/tests/typing-unboxed-types/test_flat.ml[276,9015+14]..[276,9015+48])
+                "Any" (testsuite/tests/typing-unboxed-types/test_flat.ml[276,9015+14]..[276,9015+17])
+                [
+                  core_type (testsuite/tests/typing-unboxed-types/test_flat.ml[276,9015+20]..[276,9015+38])
+                    Ptyp_constr "almost_eq" (testsuite/tests/typing-unboxed-types/test_flat.ml[276,9015+29]..[276,9015+38])
+                    [
+                      core_type (testsuite/tests/typing-unboxed-types/test_flat.ml[276,9015+21]..[276,9015+23])
+                        Ptyp_var a
+                      core_type (testsuite/tests/typing-unboxed-types/test_flat.ml[276,9015+25]..[276,9015+27])
+                        Ptyp_var a
+                    ]
+                ]
+                Some
+                  core_type (testsuite/tests/typing-unboxed-types/test_flat.ml[276,9015+42]..[276,9015+48])
+                    Ptyp_constr "danger" (testsuite/tests/typing-unboxed-types/test_flat.ml[276,9015+42]..[276,9015+48])
+                    []
+            ]
+        ptype_private = Public
+        ptype_manifest =
+          None
+    ]
+  structure_item (testsuite/tests/typing-unboxed-types/test_flat.ml[277,9078+0]..[285,9469+3])
+    Pstr_extension "expect"
+    [
+      structure_item (testsuite/tests/typing-unboxed-types/test_flat.ml[277,9078+9]..[285,9469+2])
+        Pstr_eval
+        expression (testsuite/tests/typing-unboxed-types/test_flat.ml[277,9078+9]..[285,9469+2])
+          Pexp_constant PConst_string ("\nLine 1, characters 0-60:\n1 | type danger = Any : ('a, 'a) almost_eq -> danger [@@unboxed];;\n    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nError: This type cannot be unboxed because\n       it might contain both float and non-float values,\n       depending on the instantiation of the existential variable 'a.\n       You should annotate it with [@@ocaml.boxed].\n",(testsuite/tests/typing-unboxed-types/test_flat.ml[277,9078+11]..[285,9469+0]),Some "")
+    ]
+  structure_item (testsuite/tests/typing-unboxed-types/test_flat.ml[289,9518+0]..[289,9518+52])
+    Pstr_type Rec
+    [
+      type_declaration "stream" (testsuite/tests/typing-unboxed-types/test_flat.ml[289,9518+8]..[289,9518+14]) (testsuite/tests/typing-unboxed-types/test_flat.ml[289,9518+0]..[289,9518+52])
+        ptype_params =
+          [
+            core_type (testsuite/tests/typing-unboxed-types/test_flat.ml[289,9518+5]..[289,9518+7])
+              Ptyp_var a
+          ]
+        ptype_cstrs =
+          []
+        ptype_kind =
+          Ptype_abstract
+        ptype_private = Public
+        ptype_manifest =
+          Some
+            core_type (testsuite/tests/typing-unboxed-types/test_flat.ml[289,9518+17]..[289,9518+52])
+              Ptyp_arrow
+              Nolabel
+              core_type (testsuite/tests/typing-unboxed-types/test_flat.ml[289,9518+17]..[289,9518+21])
+                Ptyp_constr "unit" (testsuite/tests/typing-unboxed-types/test_flat.ml[289,9518+17]..[289,9518+21])
+                []
+              core_type (testsuite/tests/typing-unboxed-types/test_flat.ml[289,9518+25]..[289,9518+52])
+                Ptyp_variant closed=Closed
+                [
+                  Rtag "Cons" false
+                    [
+                      core_type (testsuite/tests/typing-unboxed-types/test_flat.ml[289,9518+36]..[289,9518+50])
+                        Ptyp_tuple
+                        [
+                          core_type (testsuite/tests/typing-unboxed-types/test_flat.ml[289,9518+36]..[289,9518+38])
+                            Ptyp_var a
+                          core_type (testsuite/tests/typing-unboxed-types/test_flat.ml[289,9518+41]..[289,9518+50])
+                            Ptyp_constr "stream" (testsuite/tests/typing-unboxed-types/test_flat.ml[289,9518+44]..[289,9518+50])
+                            [
+                              core_type (testsuite/tests/typing-unboxed-types/test_flat.ml[289,9518+41]..[289,9518+43])
+                                Ptyp_var a
+                            ]
+                        ]
+                    ]
+                ]
+                None
+    ]
+  structure_item (testsuite/tests/typing-unboxed-types/test_flat.ml[290,9573+0]..[290,9573+35])
+    Pstr_type Rec
+    [
+      type_declaration "safe" (testsuite/tests/typing-unboxed-types/test_flat.ml[290,9573+5]..[290,9573+9]) (testsuite/tests/typing-unboxed-types/test_flat.ml[290,9573+0]..[290,9573+35])
+        ptype_params =
+          []
+        ptype_cstrs =
+          []
+        ptype_kind =
+          Ptype_variant
+            [
+              (testsuite/tests/typing-unboxed-types/test_flat.ml[290,9573+12]..[290,9573+35])
+                "Any" (testsuite/tests/typing-unboxed-types/test_flat.ml[290,9573+12]..[290,9573+15])
+                [
+                  core_type (testsuite/tests/typing-unboxed-types/test_flat.ml[290,9573+18]..[290,9573+27])
+                    Ptyp_constr "stream" (testsuite/tests/typing-unboxed-types/test_flat.ml[290,9573+21]..[290,9573+27])
+                    [
+                      core_type (testsuite/tests/typing-unboxed-types/test_flat.ml[290,9573+18]..[290,9573+20])
+                        Ptyp_var a
+                    ]
+                ]
+                Some
+                  core_type (testsuite/tests/typing-unboxed-types/test_flat.ml[290,9573+31]..[290,9573+35])
+                    Ptyp_constr "safe" (testsuite/tests/typing-unboxed-types/test_flat.ml[290,9573+31]..[290,9573+35])
+                    []
+            ]
+        ptype_private = Public
+        ptype_manifest =
+          None
+    ]
+  structure_item (testsuite/tests/typing-unboxed-types/test_flat.ml[291,9611+0]..[294,9712+3])
+    Pstr_extension "expect"
+    [
+      structure_item (testsuite/tests/typing-unboxed-types/test_flat.ml[291,9611+9]..[294,9712+2])
+        Pstr_eval
+        expression (testsuite/tests/typing-unboxed-types/test_flat.ml[291,9611+9]..[294,9712+2])
+          Pexp_constant PConst_string ("\ntype 'a stream = unit -> [ `Cons of 'a * 'a stream ]\ntype safe = Any : 'a stream -> safe\n",(testsuite/tests/typing-unboxed-types/test_flat.ml[291,9611+11]..[294,9712+0]),Some "")
+    ]
+  structure_item (testsuite/tests/typing-unboxed-types/test_flat.ml[296,9719+0]..[296,9719+71])
+    Pstr_type Rec
+    [
+      type_declaration "infinite_full_tree" (testsuite/tests/typing-unboxed-types/test_flat.ml[296,9719+8]..[296,9719+26]) (testsuite/tests/typing-unboxed-types/test_flat.ml[296,9719+0]..[296,9719+71])
+        ptype_params =
+          [
+            core_type (testsuite/tests/typing-unboxed-types/test_flat.ml[296,9719+5]..[296,9719+7])
+              Ptyp_var a
+          ]
+        ptype_cstrs =
+          []
+        ptype_kind =
+          Ptype_abstract
+        ptype_private = Public
+        ptype_manifest =
+          Some
+            core_type (testsuite/tests/typing-unboxed-types/test_flat.ml[296,9719+29]..[296,9719+71])
+              Ptyp_arrow
+              Nolabel
+              core_type (testsuite/tests/typing-unboxed-types/test_flat.ml[296,9719+29]..[296,9719+33])
+                Ptyp_constr "unit" (testsuite/tests/typing-unboxed-types/test_flat.ml[296,9719+29]..[296,9719+33])
+                []
+              core_type (testsuite/tests/typing-unboxed-types/test_flat.ml[296,9719+37]..[296,9719+71])
+                Ptyp_variant closed=Closed
+                [
+                  Rtag "Node" false
+                    [
+                      core_type (testsuite/tests/typing-unboxed-types/test_flat.ml[296,9719+48]..[296,9719+69])
+                        Ptyp_tuple
+                        [
+                          core_type (testsuite/tests/typing-unboxed-types/test_flat.ml[296,9719+48]..[296,9719+50])
+                            Ptyp_var a
+                          core_type (testsuite/tests/typing-unboxed-types/test_flat.ml[296,9719+53]..[296,9719+69])
+                            Ptyp_constr "stream" (testsuite/tests/typing-unboxed-types/test_flat.ml[296,9719+63]..[296,9719+69])
+                            [
+                              core_type (testsuite/tests/typing-unboxed-types/test_flat.ml[296,9719+54]..[296,9719+61])
+                                Ptyp_tuple
+                                [
+                                  core_type (testsuite/tests/typing-unboxed-types/test_flat.ml[296,9719+54]..[296,9719+56])
+                                    Ptyp_var a
+                                  core_type (testsuite/tests/typing-unboxed-types/test_flat.ml[296,9719+59]..[296,9719+61])
+                                    Ptyp_var a
+                                ]
+                            ]
+                        ]
+                    ]
+                ]
+                None
+    ]
+  structure_item (testsuite/tests/typing-unboxed-types/test_flat.ml[297,9793+0]..[297,9793+47])
+    Pstr_type Rec
+    [
+      type_declaration "safe_again" (testsuite/tests/typing-unboxed-types/test_flat.ml[297,9793+5]..[297,9793+15]) (testsuite/tests/typing-unboxed-types/test_flat.ml[297,9793+0]..[297,9793+47])
+        ptype_params =
+          []
+        ptype_cstrs =
+          []
+        ptype_kind =
+          Ptype_variant
+            [
+              (testsuite/tests/typing-unboxed-types/test_flat.ml[297,9793+18]..[297,9793+47])
+                "Any" (testsuite/tests/typing-unboxed-types/test_flat.ml[297,9793+18]..[297,9793+21])
+                [
+                  core_type (testsuite/tests/typing-unboxed-types/test_flat.ml[297,9793+24]..[297,9793+33])
+                    Ptyp_constr "stream" (testsuite/tests/typing-unboxed-types/test_flat.ml[297,9793+27]..[297,9793+33])
+                    [
+                      core_type (testsuite/tests/typing-unboxed-types/test_flat.ml[297,9793+24]..[297,9793+26])
+                        Ptyp_var a
+                    ]
+                ]
+                Some
+                  core_type (testsuite/tests/typing-unboxed-types/test_flat.ml[297,9793+37]..[297,9793+47])
+                    Ptyp_constr "safe_again" (testsuite/tests/typing-unboxed-types/test_flat.ml[297,9793+37]..[297,9793+47])
+                    []
+            ]
+        ptype_private = Public
+        ptype_manifest =
+          None
+    ]
+  structure_item (testsuite/tests/typing-unboxed-types/test_flat.ml[298,9843+0]..[301,9975+3])
+    Pstr_extension "expect"
+    [
+      structure_item (testsuite/tests/typing-unboxed-types/test_flat.ml[298,9843+9]..[301,9975+2])
+        Pstr_eval
+        expression (testsuite/tests/typing-unboxed-types/test_flat.ml[298,9843+9]..[301,9975+2])
+          Pexp_constant PConst_string ("\ntype 'a infinite_full_tree = unit -> [ `Node of 'a * ('a * 'a) stream ]\ntype safe_again = Any : 'a stream -> safe_again\n",(testsuite/tests/typing-unboxed-types/test_flat.ml[298,9843+11]..[301,9975+0]),Some "")
+    ]
+  structure_item (testsuite/tests/typing-unboxed-types/test_flat.ml[307,10254+0]..[307,10254+33])
+    Pstr_type Rec
+    [
+      type_declaration "id" (testsuite/tests/typing-unboxed-types/test_flat.ml[307,10254+8]..[307,10254+10]) (testsuite/tests/typing-unboxed-types/test_flat.ml[307,10254+0]..[307,10254+33])
+        attribute "ocaml.doc"
+          [
+            structure_item (testsuite/tests/typing-unboxed-types/test_flat.ml[303,9982+0]..[306,10193+60])
+              Pstr_eval
+              expression (testsuite/tests/typing-unboxed-types/test_flat.ml[303,9982+0]..[306,10193+60])
+                Pexp_constant PConst_string(" Note: there are no tests of rejected cyclic types, because\n    the type declarations that would be required to check these cases\n    (unproductive cycles in the type declaration) are already rejected by the\n    type-checker, before separability checking. See below ",(testsuite/tests/typing-unboxed-types/test_flat.ml[303,9982+0]..[306,10193+60]),None)
+          ]
+        attribute "unboxed"
+          []
+        ptype_params =
+          [
+            core_type (testsuite/tests/typing-unboxed-types/test_flat.ml[307,10254+5]..[307,10254+7])
+              Ptyp_var a
+          ]
+        ptype_cstrs =
+          []
+        ptype_kind =
+          Ptype_variant
+            [
+              (testsuite/tests/typing-unboxed-types/test_flat.ml[307,10254+13]..[307,10254+21])
+                "Id" (testsuite/tests/typing-unboxed-types/test_flat.ml[307,10254+13]..[307,10254+15])
+                [
+                  core_type (testsuite/tests/typing-unboxed-types/test_flat.ml[307,10254+19]..[307,10254+21])
+                    Ptyp_var a
+                ]
+                None
+            ]
+        ptype_private = Public
+        ptype_manifest =
+          None
+    ]
+  structure_item (testsuite/tests/typing-unboxed-types/test_flat.ml[308,10288+0]..[308,10288+21])
+    Pstr_type Rec
+    [
+      type_declaration "cycle" (testsuite/tests/typing-unboxed-types/test_flat.ml[308,10288+5]..[308,10288+10]) (testsuite/tests/typing-unboxed-types/test_flat.ml[308,10288+0]..[308,10288+21])
+        ptype_params =
+          []
+        ptype_cstrs =
+          []
+        ptype_kind =
+          Ptype_abstract
+        ptype_private = Public
+        ptype_manifest =
+          Some
+            core_type (testsuite/tests/typing-unboxed-types/test_flat.ml[308,10288+13]..[308,10288+21])
+              Ptyp_constr "id" (testsuite/tests/typing-unboxed-types/test_flat.ml[308,10288+19]..[308,10288+21])
+              [
+                core_type (testsuite/tests/typing-unboxed-types/test_flat.ml[308,10288+13]..[308,10288+18])
+                  Ptyp_constr "cycle" (testsuite/tests/typing-unboxed-types/test_flat.ml[308,10288+13]..[308,10288+18])
+                  []
+              ]
+    ]
+  structure_item (testsuite/tests/typing-unboxed-types/test_flat.ml[309,10310+0]..[315,10478+3])
+    Pstr_extension "expect"
+    [
+      structure_item (testsuite/tests/typing-unboxed-types/test_flat.ml[309,10310+9]..[315,10478+2])
+        Pstr_eval
+        expression (testsuite/tests/typing-unboxed-types/test_flat.ml[309,10310+9]..[315,10478+2])
+          Pexp_constant PConst_string ("\ntype 'a id = Id of 'a [@@unboxed]\nLine 2, characters 0-21:\n2 | type cycle = cycle id\n    ^^^^^^^^^^^^^^^^^^^^^\nError: The type abbreviation cycle is cyclic\n",(testsuite/tests/typing-unboxed-types/test_flat.ml[309,10310+11]..[315,10478+0]),Some "")
+    ]
+]
+

@@ -1,0 +1,277 @@
+[
+  signature_item (otherlibs/systhreads/semaphore.mli[16,1080+0]..[24,1293+16])
+    Psig_attribute "ocaml.text"
+    [
+      structure_item (otherlibs/systhreads/semaphore.mli[16,1080+0]..[24,1293+16])
+        Pstr_eval
+        expression (otherlibs/systhreads/semaphore.mli[16,1080+0]..[24,1293+16])
+          Pexp_constant PConst_string(" Semaphores\n\n  A semaphore is a thread synchronization device that can be used to\n  control access to a shared resource.\n\n  Two flavors of semaphores are provided: counting semaphores and\n  binary semaphores.\n\n  @since 4.12 ",(otherlibs/systhreads/semaphore.mli[16,1080+0]..[24,1293+16]),None)
+    ]
+  signature_item (otherlibs/systhreads/semaphore.mli[26,1311+0]..[26,1311+30])
+    Psig_attribute "ocaml.text"
+    [
+      structure_item (otherlibs/systhreads/semaphore.mli[26,1311+0]..[26,1311+30])
+        Pstr_eval
+        expression (otherlibs/systhreads/semaphore.mli[26,1311+0]..[26,1311+30])
+          Pexp_constant PConst_string(" {2 Counting semaphores} ",(otherlibs/systhreads/semaphore.mli[26,1311+0]..[26,1311+30]),None)
+    ]
+  signature_item (otherlibs/systhreads/semaphore.mli[28,1343+0]..[42,2027+16])
+    Psig_attribute "ocaml.text"
+    [
+      structure_item (otherlibs/systhreads/semaphore.mli[28,1343+0]..[42,2027+16])
+        Pstr_eval
+        expression (otherlibs/systhreads/semaphore.mli[28,1343+0]..[42,2027+16])
+          Pexp_constant PConst_string("\n  A counting semaphore is a counter that can be accessed concurrently\n  by several threads.  The typical use is to synchronize producers and\n  consumers of a resource by counting how many units of the resource\n  are available.\n\n  The two basic operations on semaphores are:\n- \"release\" (also called \"V\", \"post\", \"up\", and \"signal\"), which\n  increments the value of the counter.  This corresponds to producing\n  one more unit of the shared resource and making it available to others.\n- \"acquire\" (also called \"P\", \"wait\", \"down\", and \"pend\"), which\n  waits until the counter is greater than zero and decrements it.\n  This corresponds to consuming one unit of the shared resource.\n\n  @since 4.12 ",(otherlibs/systhreads/semaphore.mli[28,1343+0]..[42,2027+16]),None)
+    ]
+  signature_item (otherlibs/systhreads/semaphore.mli[44,2045+0]..[85,3405+3])
+    Psig_module "Counting" (otherlibs/systhreads/semaphore.mli[44,2045+7]..[44,2045+15])
+    module_type (otherlibs/systhreads/semaphore.mli[44,2045+18]..[85,3405+3])
+      Pmty_signature
+      [
+        signature_item (otherlibs/systhreads/semaphore.mli[46,2068+0]..[46,2068+6])
+          Psig_type Rec
+          [
+            type_declaration "t" (otherlibs/systhreads/semaphore.mli[46,2068+5]..[46,2068+6]) (otherlibs/systhreads/semaphore.mli[46,2068+0]..[46,2068+6])
+              attribute "ocaml.doc"
+                [
+                  structure_item (otherlibs/systhreads/semaphore.mli[47,2075+0]..[47,2075+39])
+                    Pstr_eval
+                    expression (otherlibs/systhreads/semaphore.mli[47,2075+0]..[47,2075+39])
+                      Pexp_constant PConst_string(" The type of counting semaphores. ",(otherlibs/systhreads/semaphore.mli[47,2075+0]..[47,2075+39]),None)
+                ]
+              ptype_params =
+                []
+              ptype_cstrs =
+                []
+              ptype_kind =
+                Ptype_abstract
+              ptype_private = Public
+              ptype_manifest =
+                None
+          ]
+        signature_item (otherlibs/systhreads/semaphore.mli[49,2116+0]..[49,2116+19])
+          Psig_value
+          value_description "make" (otherlibs/systhreads/semaphore.mli[49,2116+4]..[49,2116+8]) (otherlibs/systhreads/semaphore.mli[49,2116+0]..[49,2116+19])
+            attribute "ocaml.doc"
+              [
+                structure_item (otherlibs/systhreads/semaphore.mli[50,2136+0]..[54,2294+2])
+                  Pstr_eval
+                  expression (otherlibs/systhreads/semaphore.mli[50,2136+0]..[54,2294+2])
+                    Pexp_constant PConst_string(" [make n] returns a new counting semaphore, with initial value [n].\n    The initial value [n] must be nonnegative.\n\n    @raise Invalid_argument if [n < 0]\n",(otherlibs/systhreads/semaphore.mli[50,2136+0]..[54,2294+2]),None)
+              ]
+            core_type (otherlibs/systhreads/semaphore.mli[49,2116+11]..[49,2116+19])
+              Ptyp_arrow
+              Nolabel
+              core_type (otherlibs/systhreads/semaphore.mli[49,2116+11]..[49,2116+14])
+                Ptyp_constr "int" (otherlibs/systhreads/semaphore.mli[49,2116+11]..[49,2116+14])
+                []
+              core_type (otherlibs/systhreads/semaphore.mli[49,2116+18]..[49,2116+19])
+                Ptyp_constr "t" (otherlibs/systhreads/semaphore.mli[49,2116+18]..[49,2116+19])
+                []
+            []
+        signature_item (otherlibs/systhreads/semaphore.mli[56,2298+0]..[56,2298+23])
+          Psig_value
+          value_description "release" (otherlibs/systhreads/semaphore.mli[56,2298+4]..[56,2298+11]) (otherlibs/systhreads/semaphore.mli[56,2298+0]..[56,2298+23])
+            attribute "ocaml.doc"
+              [
+                structure_item (otherlibs/systhreads/semaphore.mli[57,2322+0]..[64,2682+2])
+                  Pstr_eval
+                  expression (otherlibs/systhreads/semaphore.mli[57,2322+0]..[64,2682+2])
+                    Pexp_constant PConst_string(" [release s] increments the value of semaphore [s].\n    If other threads are waiting on [s], one of them is restarted.\n    If the current value of [s] is equal to [max_int], the value of\n    the semaphore is unchanged and a [Sys_error] exception is raised\n    to signal overflow.\n\n    @raise Sys_error if the value of the semaphore would overflow [max_int]\n",(otherlibs/systhreads/semaphore.mli[57,2322+0]..[64,2682+2]),None)
+              ]
+            core_type (otherlibs/systhreads/semaphore.mli[56,2298+14]..[56,2298+23])
+              Ptyp_arrow
+              Nolabel
+              core_type (otherlibs/systhreads/semaphore.mli[56,2298+14]..[56,2298+15])
+                Ptyp_constr "t" (otherlibs/systhreads/semaphore.mli[56,2298+14]..[56,2298+15])
+                []
+              core_type (otherlibs/systhreads/semaphore.mli[56,2298+19]..[56,2298+23])
+                Ptyp_constr "unit" (otherlibs/systhreads/semaphore.mli[56,2298+19]..[56,2298+23])
+                []
+            []
+        signature_item (otherlibs/systhreads/semaphore.mli[66,2686+0]..[66,2686+23])
+          Psig_value
+          value_description "acquire" (otherlibs/systhreads/semaphore.mli[66,2686+4]..[66,2686+11]) (otherlibs/systhreads/semaphore.mli[66,2686+0]..[66,2686+23])
+            attribute "ocaml.doc"
+              [
+                structure_item (otherlibs/systhreads/semaphore.mli[67,2710+0]..[69,2859+2])
+                  Pstr_eval
+                  expression (otherlibs/systhreads/semaphore.mli[67,2710+0]..[69,2859+2])
+                    Pexp_constant PConst_string(" [acquire s] blocks the calling thread until the value of semaphore [s]\n    is not zero, then atomically decrements the value of [s] and returns.\n",(otherlibs/systhreads/semaphore.mli[67,2710+0]..[69,2859+2]),None)
+              ]
+            core_type (otherlibs/systhreads/semaphore.mli[66,2686+14]..[66,2686+23])
+              Ptyp_arrow
+              Nolabel
+              core_type (otherlibs/systhreads/semaphore.mli[66,2686+14]..[66,2686+15])
+                Ptyp_constr "t" (otherlibs/systhreads/semaphore.mli[66,2686+14]..[66,2686+15])
+                []
+              core_type (otherlibs/systhreads/semaphore.mli[66,2686+19]..[66,2686+23])
+                Ptyp_constr "unit" (otherlibs/systhreads/semaphore.mli[66,2686+19]..[66,2686+23])
+                []
+            []
+        signature_item (otherlibs/systhreads/semaphore.mli[71,2863+0]..[71,2863+27])
+          Psig_value
+          value_description "try_acquire" (otherlibs/systhreads/semaphore.mli[71,2863+4]..[71,2863+15]) (otherlibs/systhreads/semaphore.mli[71,2863+0]..[71,2863+27])
+            attribute "ocaml.doc"
+              [
+                structure_item (otherlibs/systhreads/semaphore.mli[72,2891+0]..[75,3077+2])
+                  Pstr_eval
+                  expression (otherlibs/systhreads/semaphore.mli[72,2891+0]..[75,3077+2])
+                    Pexp_constant PConst_string(" [try_acquire s] immediately returns [false] if the value of semaphore [s]\n    is zero.  Otherwise, the value of [s] is atomically decremented\n    and [try_acquire s] returns [true].\n",(otherlibs/systhreads/semaphore.mli[72,2891+0]..[75,3077+2]),None)
+              ]
+            core_type (otherlibs/systhreads/semaphore.mli[71,2863+18]..[71,2863+27])
+              Ptyp_arrow
+              Nolabel
+              core_type (otherlibs/systhreads/semaphore.mli[71,2863+18]..[71,2863+19])
+                Ptyp_constr "t" (otherlibs/systhreads/semaphore.mli[71,2863+18]..[71,2863+19])
+                []
+              core_type (otherlibs/systhreads/semaphore.mli[71,2863+23]..[71,2863+27])
+                Ptyp_constr "bool" (otherlibs/systhreads/semaphore.mli[71,2863+23]..[71,2863+27])
+                []
+            []
+        signature_item (otherlibs/systhreads/semaphore.mli[77,3081+0]..[77,3081+24])
+          Psig_value
+          value_description "get_value" (otherlibs/systhreads/semaphore.mli[77,3081+4]..[77,3081+13]) (otherlibs/systhreads/semaphore.mli[77,3081+0]..[77,3081+24])
+            attribute "ocaml.doc"
+              [
+                structure_item (otherlibs/systhreads/semaphore.mli[78,3106+0]..[83,3401+2])
+                  Pstr_eval
+                  expression (otherlibs/systhreads/semaphore.mli[78,3106+0]..[83,3401+2])
+                    Pexp_constant PConst_string(" [get_value s] returns the current value of semaphore [s].\n    The current value can be modified at any time by concurrent\n    {!release} and {!acquire} operations.  Hence, the [get_value]\n    operation is racy, and its result should only be used for debugging\n    or informational messages.\n",(otherlibs/systhreads/semaphore.mli[78,3106+0]..[83,3401+2]),None)
+              ]
+            core_type (otherlibs/systhreads/semaphore.mli[77,3081+16]..[77,3081+24])
+              Ptyp_arrow
+              Nolabel
+              core_type (otherlibs/systhreads/semaphore.mli[77,3081+16]..[77,3081+17])
+                Ptyp_constr "t" (otherlibs/systhreads/semaphore.mli[77,3081+16]..[77,3081+17])
+                []
+              core_type (otherlibs/systhreads/semaphore.mli[77,3081+21]..[77,3081+24])
+                Ptyp_constr "int" (otherlibs/systhreads/semaphore.mli[77,3081+21]..[77,3081+24])
+                []
+            []
+      ]
+  signature_item (otherlibs/systhreads/semaphore.mli[87,3410+0]..[87,3410+28])
+    Psig_attribute "ocaml.text"
+    [
+      structure_item (otherlibs/systhreads/semaphore.mli[87,3410+0]..[87,3410+28])
+        Pstr_eval
+        expression (otherlibs/systhreads/semaphore.mli[87,3410+0]..[87,3410+28])
+          Pexp_constant PConst_string(" {2 Binary semaphores} ",(otherlibs/systhreads/semaphore.mli[87,3410+0]..[87,3410+28]),None)
+    ]
+  signature_item (otherlibs/systhreads/semaphore.mli[89,3440+0]..[108,4372+2])
+    Psig_attribute "ocaml.text"
+    [
+      structure_item (otherlibs/systhreads/semaphore.mli[89,3440+0]..[108,4372+2])
+        Pstr_eval
+        expression (otherlibs/systhreads/semaphore.mli[89,3440+0]..[108,4372+2])
+          Pexp_constant PConst_string(" Binary semaphores are a variant of counting semaphores\n    where semaphores can only take two values, 0 and 1.\n\n    A binary semaphore can be used to control access to a single\n    shared resource, with value 1 meaning \"resource is available\" and\n    value 0 meaning \"resource is unavailable\".\n\n    The \"release\" operation of a binary semaphore sets its value to 1,\n    and \"acquire\" waits until the value is 1 and sets it to 0.\n\n    A binary semaphore can be used instead of a mutex (see module\n    {!Mutex}) when the mutex discipline (of unlocking the mutex from the\n    thread that locked it) is too restrictive.  The \"acquire\" operation\n    corresponds to locking the mutex, and the \"release\" operation to\n    unlocking it, but \"release\" can be performed in a thread different\n    than the one that performed the \"acquire\".  Likewise, it is safe\n    to release a binary semaphore that is already available.\n\n    @since 4.12\n",(otherlibs/systhreads/semaphore.mli[89,3440+0]..[108,4372+2]),None)
+    ]
+  signature_item (otherlibs/systhreads/semaphore.mli[110,4376+0]..[140,5264+3])
+    Psig_module "Binary" (otherlibs/systhreads/semaphore.mli[110,4376+7]..[110,4376+13])
+    module_type (otherlibs/systhreads/semaphore.mli[110,4376+16]..[140,5264+3])
+      Pmty_signature
+      [
+        signature_item (otherlibs/systhreads/semaphore.mli[112,4397+0]..[112,4397+6])
+          Psig_type Rec
+          [
+            type_declaration "t" (otherlibs/systhreads/semaphore.mli[112,4397+5]..[112,4397+6]) (otherlibs/systhreads/semaphore.mli[112,4397+0]..[112,4397+6])
+              attribute "ocaml.doc"
+                [
+                  structure_item (otherlibs/systhreads/semaphore.mli[113,4404+0]..[113,4404+37])
+                    Pstr_eval
+                    expression (otherlibs/systhreads/semaphore.mli[113,4404+0]..[113,4404+37])
+                      Pexp_constant PConst_string(" The type of binary semaphores. ",(otherlibs/systhreads/semaphore.mli[113,4404+0]..[113,4404+37]),None)
+                ]
+              ptype_params =
+                []
+              ptype_cstrs =
+                []
+              ptype_kind =
+                Ptype_abstract
+              ptype_private = Public
+              ptype_manifest =
+                None
+          ]
+        signature_item (otherlibs/systhreads/semaphore.mli[115,4443+0]..[115,4443+20])
+          Psig_value
+          value_description "make" (otherlibs/systhreads/semaphore.mli[115,4443+4]..[115,4443+8]) (otherlibs/systhreads/semaphore.mli[115,4443+0]..[115,4443+20])
+            attribute "ocaml.doc"
+              [
+                structure_item (otherlibs/systhreads/semaphore.mli[116,4464+0]..[120,4685+2])
+                  Pstr_eval
+                  expression (otherlibs/systhreads/semaphore.mli[116,4464+0]..[120,4685+2])
+                    Pexp_constant PConst_string(" [make b] returns a new binary semaphore.\n    If [b] is [true], the initial value of the semaphore is 1, meaning\n    \"available\".  If [b] is [false], the initial value of the\n    semaphore is 0, meaning \"unavailable\".\n",(otherlibs/systhreads/semaphore.mli[116,4464+0]..[120,4685+2]),None)
+              ]
+            core_type (otherlibs/systhreads/semaphore.mli[115,4443+11]..[115,4443+20])
+              Ptyp_arrow
+              Nolabel
+              core_type (otherlibs/systhreads/semaphore.mli[115,4443+11]..[115,4443+15])
+                Ptyp_constr "bool" (otherlibs/systhreads/semaphore.mli[115,4443+11]..[115,4443+15])
+                []
+              core_type (otherlibs/systhreads/semaphore.mli[115,4443+19]..[115,4443+20])
+                Ptyp_constr "t" (otherlibs/systhreads/semaphore.mli[115,4443+19]..[115,4443+20])
+                []
+            []
+        signature_item (otherlibs/systhreads/semaphore.mli[122,4689+0]..[122,4689+23])
+          Psig_value
+          value_description "release" (otherlibs/systhreads/semaphore.mli[122,4689+4]..[122,4689+11]) (otherlibs/systhreads/semaphore.mli[122,4689+0]..[122,4689+23])
+            attribute "ocaml.doc"
+              [
+                structure_item (otherlibs/systhreads/semaphore.mli[123,4713+0]..[126,4876+2])
+                  Pstr_eval
+                  expression (otherlibs/systhreads/semaphore.mli[123,4713+0]..[126,4876+2])
+                    Pexp_constant PConst_string(" [release s] sets the value of semaphore [s] to 1, putting it in the\n    \"available\" state.  If other threads are waiting on [s], one of them is\n    restarted.\n",(otherlibs/systhreads/semaphore.mli[123,4713+0]..[126,4876+2]),None)
+              ]
+            core_type (otherlibs/systhreads/semaphore.mli[122,4689+14]..[122,4689+23])
+              Ptyp_arrow
+              Nolabel
+              core_type (otherlibs/systhreads/semaphore.mli[122,4689+14]..[122,4689+15])
+                Ptyp_constr "t" (otherlibs/systhreads/semaphore.mli[122,4689+14]..[122,4689+15])
+                []
+              core_type (otherlibs/systhreads/semaphore.mli[122,4689+19]..[122,4689+23])
+                Ptyp_constr "unit" (otherlibs/systhreads/semaphore.mli[122,4689+19]..[122,4689+23])
+                []
+            []
+        signature_item (otherlibs/systhreads/semaphore.mli[128,4880+0]..[128,4880+23])
+          Psig_value
+          value_description "acquire" (otherlibs/systhreads/semaphore.mli[128,4880+4]..[128,4880+11]) (otherlibs/systhreads/semaphore.mli[128,4880+0]..[128,4880+23])
+            attribute "ocaml.doc"
+              [
+                structure_item (otherlibs/systhreads/semaphore.mli[129,4904+0]..[132,5048+2])
+                  Pstr_eval
+                  expression (otherlibs/systhreads/semaphore.mli[129,4904+0]..[132,5048+2])
+                    Pexp_constant PConst_string(" [acquire s] blocks the calling thread until the semaphore [s]\n    has value 1 (is available), then atomically sets it to 0\n    and returns.\n",(otherlibs/systhreads/semaphore.mli[129,4904+0]..[132,5048+2]),None)
+              ]
+            core_type (otherlibs/systhreads/semaphore.mli[128,4880+14]..[128,4880+23])
+              Ptyp_arrow
+              Nolabel
+              core_type (otherlibs/systhreads/semaphore.mli[128,4880+14]..[128,4880+15])
+                Ptyp_constr "t" (otherlibs/systhreads/semaphore.mli[128,4880+14]..[128,4880+15])
+                []
+              core_type (otherlibs/systhreads/semaphore.mli[128,4880+19]..[128,4880+23])
+                Ptyp_constr "unit" (otherlibs/systhreads/semaphore.mli[128,4880+19]..[128,4880+23])
+                []
+            []
+        signature_item (otherlibs/systhreads/semaphore.mli[134,5052+0]..[134,5052+27])
+          Psig_value
+          value_description "try_acquire" (otherlibs/systhreads/semaphore.mli[134,5052+4]..[134,5052+15]) (otherlibs/systhreads/semaphore.mli[134,5052+0]..[134,5052+27])
+            attribute "ocaml.doc"
+              [
+                structure_item (otherlibs/systhreads/semaphore.mli[135,5080+0]..[138,5260+2])
+                  Pstr_eval
+                  expression (otherlibs/systhreads/semaphore.mli[135,5080+0]..[138,5260+2])
+                    Pexp_constant PConst_string(" [try_acquire s] immediately returns [false] if the semaphore [s]\n    has value 0.  If [s] has value 1, its value is atomically set to 0\n    and [try_acquire s] returns [true].\n",(otherlibs/systhreads/semaphore.mli[135,5080+0]..[138,5260+2]),None)
+              ]
+            core_type (otherlibs/systhreads/semaphore.mli[134,5052+18]..[134,5052+27])
+              Ptyp_arrow
+              Nolabel
+              core_type (otherlibs/systhreads/semaphore.mli[134,5052+18]..[134,5052+19])
+                Ptyp_constr "t" (otherlibs/systhreads/semaphore.mli[134,5052+18]..[134,5052+19])
+                []
+              core_type (otherlibs/systhreads/semaphore.mli[134,5052+23]..[134,5052+27])
+                Ptyp_constr "bool" (otherlibs/systhreads/semaphore.mli[134,5052+23]..[134,5052+27])
+                []
+            []
+      ]
+]
+

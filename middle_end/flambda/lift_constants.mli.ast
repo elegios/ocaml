@@ -1,0 +1,38 @@
+[
+  signature_item (middle_end/flambda/lift_constants.mli[17,1156+0]..[17,1156+39])
+    Psig_attribute "ocaml.warning"
+    [
+      structure_item (middle_end/flambda/lift_constants.mli[17,1156+18]..[17,1156+38])
+        Pstr_eval
+        expression (middle_end/flambda/lift_constants.mli[17,1156+18]..[17,1156+38])
+          Pexp_constant PConst_string("+a-4-9-30-40-41-42",(middle_end/flambda/lift_constants.mli[17,1156+19]..[17,1156+37]),None)
+    ]
+  signature_item (middle_end/flambda/lift_constants.mli[19,1197+0]..[60,3479+2])
+    Psig_attribute "ocaml.text"
+    [
+      structure_item (middle_end/flambda/lift_constants.mli[19,1197+0]..[60,3479+2])
+        Pstr_eval
+        expression (middle_end/flambda/lift_constants.mli[19,1197+0]..[60,3479+2])
+          Pexp_constant PConst_string(" The aim of this pass is to assign symbols to values known to be\n    constant (in other words, whose values we know at compile time), with\n    appropriate sharing of constants, and replace the occurrences of the\n    constants with their corresponding symbols.\n\n    This pass uses the results of two other passes, [Inconstant_idents] and\n    [Alias_analysis].  The relationship between these two deserves some\n    attention.\n\n    [Inconstant_idents] is a \"backwards\" analysis that propagates implications\n    about inconstantness of variables and set of closures IDs.\n\n    [Alias_analysis] is a \"forwards\" analysis that is analogous to the\n    propagation of [Simple_value_approx.t] values during [Inline_and_simplify].\n    It gives us information about relationships between values but not actually\n    about their constantness.\n\n    Combining these two into a single pass has been attempted previously,\n    but was not thought to be successful; this experiment could be repeated in\n    the future.  (If \"constant\" is considered as \"top\" and \"inconstant\" is\n    considered as \"bottom\", then [Alias_analysis] corresponds to a least fixed\n    point and [Inconstant_idents] corresponds to a greatest fixed point.)\n\n    At a high level, this pass operates as follows.  Symbols are assigned to\n    variables known to be constant and their defining expressions examined.\n    Based on the results of [Alias_analysis], we simplify the destructive\n    elements within the defining expressions (specifically, projection of\n    fields from blocks), to eventually yield [Flambda.constant_defining_value]s\n    that are entirely constructive.  These will be bound to symbols in the\n    resulting program.\n\n    Another approach to this pass could be to only use the results of\n    [Inconstant_idents] and then repeatedly lift constants and run\n    [Inline_and_simplify] until a fixpoint.  It was thought more robust to\n    instead use [Alias_analysis], where the fixpointing involves a less\n    complicated function.\n\n    We still run [Inline_and_simplify] once after this pass since the lifting\n    of constants may enable more functions to become closed; the simplification\n    pass provides an easy way of cleaning up (e.g. making sure [free_vars]\n    maps in sets of closures are correct).\n",(middle_end/flambda/lift_constants.mli[19,1197+0]..[60,3479+2]),None)
+    ]
+  signature_item (middle_end/flambda/lift_constants.mli[62,3483+0]..[65,3560+20])
+    Psig_value
+    value_description "lift_constants" (middle_end/flambda/lift_constants.mli[62,3483+4]..[62,3483+18]) (middle_end/flambda/lift_constants.mli[62,3483+0]..[65,3560+20])
+      core_type (middle_end/flambda/lift_constants.mli[63,3502+5]..[65,3560+20])
+        Ptyp_arrow
+        Nolabel
+        core_type (middle_end/flambda/lift_constants.mli[63,3502+5]..[63,3502+20])
+          Ptyp_constr "Flambda.program" (middle_end/flambda/lift_constants.mli[63,3502+5]..[63,3502+20])
+          []
+        core_type (middle_end/flambda/lift_constants.mli[64,3523+5]..[65,3560+20])
+          Ptyp_arrow
+          Labelled "backend"
+          core_type (middle_end/flambda/lift_constants.mli[64,3523+13]..[64,3523+36])
+            Ptyp_package "Backend_intf.S" (middle_end/flambda/lift_constants.mli[64,3523+21]..[64,3523+35])
+            []
+          core_type (middle_end/flambda/lift_constants.mli[65,3560+5]..[65,3560+20])
+            Ptyp_constr "Flambda.program" (middle_end/flambda/lift_constants.mli[65,3560+5]..[65,3560+20])
+            []
+      []
+]
+

@@ -1,0 +1,145 @@
+[
+  structure_item (testsuite/tests/typing-objects/abstract_rows.ml[4,23+0]..[4,23+16])
+    Pstr_type Rec
+    [
+      type_declaration "u" (testsuite/tests/typing-objects/abstract_rows.ml[4,23+5]..[4,23+6]) (testsuite/tests/typing-objects/abstract_rows.ml[4,23+0]..[4,23+16])
+        ptype_params =
+          []
+        ptype_cstrs =
+          []
+        ptype_kind =
+          Ptype_abstract
+        ptype_private = Public
+        ptype_manifest =
+          Some
+            core_type (testsuite/tests/typing-objects/abstract_rows.ml[4,23+9]..[4,23+16])
+              Ptyp_object Closed
+                method x
+                  core_type (testsuite/tests/typing-objects/abstract_rows.ml[4,23+12]..[4,23+15])
+                    Ptyp_constr "int" (testsuite/tests/typing-objects/abstract_rows.ml[4,23+12]..[4,23+15])
+                    []
+    ]
+  structure_item (testsuite/tests/typing-objects/abstract_rows.ml[5,40+0]..[5,40+24])
+    Pstr_type Rec
+    [
+      type_declaration "t" (testsuite/tests/typing-objects/abstract_rows.ml[5,40+5]..[5,40+6]) (testsuite/tests/typing-objects/abstract_rows.ml[5,40+0]..[5,40+24])
+        ptype_params =
+          []
+        ptype_cstrs =
+          []
+        ptype_kind =
+          Ptype_abstract
+        ptype_private = Private
+        ptype_manifest =
+          Some
+            core_type (testsuite/tests/typing-objects/abstract_rows.ml[5,40+17]..[5,40+24])
+              Ptyp_object Open
+                Oinherit
+                  core_type (testsuite/tests/typing-objects/abstract_rows.ml[5,40+18]..[5,40+19])
+                    Ptyp_constr "u" (testsuite/tests/typing-objects/abstract_rows.ml[5,40+18]..[5,40+19])
+                    []
+    ]
+  structure_item (testsuite/tests/typing-objects/abstract_rows.ml[7,66+0]..[7,66+25])
+    Pstr_value Nonrec
+    [
+      <def>
+        pattern (testsuite/tests/typing-objects/abstract_rows.ml[7,66+4]..[7,66+5])
+          Ppat_var "f" (testsuite/tests/typing-objects/abstract_rows.ml[7,66+4]..[7,66+5])
+        expression (testsuite/tests/typing-objects/abstract_rows.ml[7,66+6]..[7,66+25]) ghost
+          Pexp_fun
+          Nolabel
+          None
+          pattern (testsuite/tests/typing-objects/abstract_rows.ml[7,66+6]..[7,66+11])
+            Ppat_constraint
+            pattern (testsuite/tests/typing-objects/abstract_rows.ml[7,66+7]..[7,66+8])
+              Ppat_var "x" (testsuite/tests/typing-objects/abstract_rows.ml[7,66+7]..[7,66+8])
+            core_type (testsuite/tests/typing-objects/abstract_rows.ml[7,66+9]..[7,66+10])
+              Ptyp_constr "t" (testsuite/tests/typing-objects/abstract_rows.ml[7,66+9]..[7,66+10])
+              []
+          expression (testsuite/tests/typing-objects/abstract_rows.ml[7,66+12]..[7,66+25]) ghost
+            Pexp_fun
+            Nolabel
+            None
+            pattern (testsuite/tests/typing-objects/abstract_rows.ml[7,66+12]..[7,66+17])
+              Ppat_constraint
+              pattern (testsuite/tests/typing-objects/abstract_rows.ml[7,66+13]..[7,66+14])
+                Ppat_var "y" (testsuite/tests/typing-objects/abstract_rows.ml[7,66+13]..[7,66+14])
+              core_type (testsuite/tests/typing-objects/abstract_rows.ml[7,66+15]..[7,66+16])
+                Ptyp_constr "u" (testsuite/tests/typing-objects/abstract_rows.ml[7,66+15]..[7,66+16])
+                []
+            expression (testsuite/tests/typing-objects/abstract_rows.ml[7,66+20]..[7,66+25])
+              Pexp_apply
+              expression (testsuite/tests/typing-objects/abstract_rows.ml[7,66+22]..[7,66+23])
+                Pexp_ident "=" (testsuite/tests/typing-objects/abstract_rows.ml[7,66+22]..[7,66+23])
+              [
+                <arg>
+                Nolabel
+                  expression (testsuite/tests/typing-objects/abstract_rows.ml[7,66+20]..[7,66+21])
+                    Pexp_ident "x" (testsuite/tests/typing-objects/abstract_rows.ml[7,66+20]..[7,66+21])
+                <arg>
+                Nolabel
+                  expression (testsuite/tests/typing-objects/abstract_rows.ml[7,66+24]..[7,66+25])
+                    Pexp_ident "y" (testsuite/tests/typing-objects/abstract_rows.ml[7,66+24]..[7,66+25])
+              ]
+    ]
+  structure_item (testsuite/tests/typing-objects/abstract_rows.ml[8,94+0]..[16,394+3])
+    Pstr_extension "expect"
+    [
+      structure_item (testsuite/tests/typing-objects/abstract_rows.ml[8,94+9]..[16,394+2])
+        Pstr_eval
+        expression (testsuite/tests/typing-objects/abstract_rows.ml[8,94+9]..[16,394+2])
+          Pexp_constant PConst_string ("\ntype u = < x : int >\ntype t = private < x : int; .. >\nLine 4, characters 24-25:\n4 | let f (x:t) (y:u) = x = y;;\n                            ^\nError: This expression has type u but an expression was expected of type t\n       The second object type has an abstract row, it cannot be closed\n",(testsuite/tests/typing-objects/abstract_rows.ml[8,94+11]..[16,394+0]),Some "")
+    ]
+  structure_item (testsuite/tests/typing-objects/abstract_rows.ml[19,400+0]..[19,400+25])
+    Pstr_value Nonrec
+    [
+      <def>
+        pattern (testsuite/tests/typing-objects/abstract_rows.ml[19,400+4]..[19,400+5])
+          Ppat_var "g" (testsuite/tests/typing-objects/abstract_rows.ml[19,400+4]..[19,400+5])
+        expression (testsuite/tests/typing-objects/abstract_rows.ml[19,400+6]..[19,400+25]) ghost
+          Pexp_fun
+          Nolabel
+          None
+          pattern (testsuite/tests/typing-objects/abstract_rows.ml[19,400+6]..[19,400+11])
+            Ppat_constraint
+            pattern (testsuite/tests/typing-objects/abstract_rows.ml[19,400+7]..[19,400+8])
+              Ppat_var "x" (testsuite/tests/typing-objects/abstract_rows.ml[19,400+7]..[19,400+8])
+            core_type (testsuite/tests/typing-objects/abstract_rows.ml[19,400+9]..[19,400+10])
+              Ptyp_constr "u" (testsuite/tests/typing-objects/abstract_rows.ml[19,400+9]..[19,400+10])
+              []
+          expression (testsuite/tests/typing-objects/abstract_rows.ml[19,400+12]..[19,400+25]) ghost
+            Pexp_fun
+            Nolabel
+            None
+            pattern (testsuite/tests/typing-objects/abstract_rows.ml[19,400+12]..[19,400+17])
+              Ppat_constraint
+              pattern (testsuite/tests/typing-objects/abstract_rows.ml[19,400+13]..[19,400+14])
+                Ppat_var "y" (testsuite/tests/typing-objects/abstract_rows.ml[19,400+13]..[19,400+14])
+              core_type (testsuite/tests/typing-objects/abstract_rows.ml[19,400+15]..[19,400+16])
+                Ptyp_constr "t" (testsuite/tests/typing-objects/abstract_rows.ml[19,400+15]..[19,400+16])
+                []
+            expression (testsuite/tests/typing-objects/abstract_rows.ml[19,400+20]..[19,400+25])
+              Pexp_apply
+              expression (testsuite/tests/typing-objects/abstract_rows.ml[19,400+22]..[19,400+23])
+                Pexp_ident "=" (testsuite/tests/typing-objects/abstract_rows.ml[19,400+22]..[19,400+23])
+              [
+                <arg>
+                Nolabel
+                  expression (testsuite/tests/typing-objects/abstract_rows.ml[19,400+20]..[19,400+21])
+                    Pexp_ident "x" (testsuite/tests/typing-objects/abstract_rows.ml[19,400+20]..[19,400+21])
+                <arg>
+                Nolabel
+                  expression (testsuite/tests/typing-objects/abstract_rows.ml[19,400+24]..[19,400+25])
+                    Pexp_ident "y" (testsuite/tests/typing-objects/abstract_rows.ml[19,400+24]..[19,400+25])
+              ]
+    ]
+  structure_item (testsuite/tests/typing-objects/abstract_rows.ml[20,428+0]..[26,673+3])
+    Pstr_extension "expect"
+    [
+      structure_item (testsuite/tests/typing-objects/abstract_rows.ml[20,428+9]..[26,673+2])
+        Pstr_eval
+        expression (testsuite/tests/typing-objects/abstract_rows.ml[20,428+9]..[26,673+2])
+          Pexp_constant PConst_string ("\nLine 1, characters 24-25:\n1 | let g (x:u) (y:t) = x = y;;\n                            ^\nError: This expression has type t but an expression was expected of type u\n       The first object type has an abstract row, it cannot be closed\n",(testsuite/tests/typing-objects/abstract_rows.ml[20,428+11]..[26,673+0]),Some "")
+    ]
+]
+

@@ -1,0 +1,205 @@
+[
+  structure_item (testsuite/tests/typing-gadts/pr9759.ml[7,53+0]..[9,116+33])
+    Pstr_type Rec
+    [
+      type_declaration "general" (testsuite/tests/typing-gadts/pr9759.ml[7,53+8]..[7,53+15]) (testsuite/tests/typing-gadts/pr9759.ml[7,53+0]..[7,53+48])
+        ptype_params =
+          [
+            core_type (testsuite/tests/typing-gadts/pr9759.ml[7,53+5]..[7,53+7])
+              Ptyp_var a
+          ]
+        ptype_cstrs =
+          []
+        ptype_kind =
+          Ptype_record
+            [
+              (testsuite/tests/typing-gadts/pr9759.ml[7,53+20]..[7,53+35])
+                Immutable
+                "indir" (testsuite/tests/typing-gadts/pr9759.ml[7,53+20]..[7,53+25])                core_type (testsuite/tests/typing-gadts/pr9759.ml[7,53+27]..[7,53+34])
+                  Ptyp_constr "desc" (testsuite/tests/typing-gadts/pr9759.ml[7,53+30]..[7,53+34])
+                  [
+                    core_type (testsuite/tests/typing-gadts/pr9759.ml[7,53+27]..[7,53+29])
+                      Ptyp_var a
+                  ]
+              (testsuite/tests/typing-gadts/pr9759.ml[7,53+36]..[7,53+46])
+                Immutable
+                "unit" (testsuite/tests/typing-gadts/pr9759.ml[7,53+36]..[7,53+40])                core_type (testsuite/tests/typing-gadts/pr9759.ml[7,53+42]..[7,53+46])
+                  Ptyp_constr "unit" (testsuite/tests/typing-gadts/pr9759.ml[7,53+42]..[7,53+46])
+                  []
+            ]
+        ptype_private = Public
+        ptype_manifest =
+          None
+      type_declaration "desc" (testsuite/tests/typing-gadts/pr9759.ml[8,102+7]..[8,102+11]) (testsuite/tests/typing-gadts/pr9759.ml[8,102+0]..[9,116+33])
+        ptype_params =
+          [
+            core_type (testsuite/tests/typing-gadts/pr9759.ml[8,102+4]..[8,102+6])
+              Ptyp_var a
+          ]
+        ptype_cstrs =
+          []
+        ptype_kind =
+          Ptype_variant
+            [
+              (testsuite/tests/typing-gadts/pr9759.ml[9,116+2]..[9,116+33])
+                "C" (testsuite/tests/typing-gadts/pr9759.ml[9,116+4]..[9,116+5])
+                [
+                  core_type (testsuite/tests/typing-gadts/pr9759.ml[9,116+8]..[9,116+20])
+                    Ptyp_constr "general" (testsuite/tests/typing-gadts/pr9759.ml[9,116+13]..[9,116+20])
+                    [
+                      core_type (testsuite/tests/typing-gadts/pr9759.ml[9,116+8]..[9,116+12])
+                        Ptyp_constr "unit" (testsuite/tests/typing-gadts/pr9759.ml[9,116+8]..[9,116+12])
+                        []
+                    ]
+                ]
+                Some
+                  core_type (testsuite/tests/typing-gadts/pr9759.ml[9,116+24]..[9,116+33])
+                    Ptyp_constr "desc" (testsuite/tests/typing-gadts/pr9759.ml[9,116+29]..[9,116+33])
+                    [
+                      core_type (testsuite/tests/typing-gadts/pr9759.ml[9,116+24]..[9,116+28])
+                        Ptyp_constr "unit" (testsuite/tests/typing-gadts/pr9759.ml[9,116+24]..[9,116+28])
+                        []
+                    ]
+            ]
+        ptype_private = Public
+        ptype_manifest =
+          None
+    ]
+  structure_item (testsuite/tests/typing-gadts/pr9759.ml[10,153+0]..[13,261+3])
+    Pstr_extension "expect"
+    [
+      structure_item (testsuite/tests/typing-gadts/pr9759.ml[10,153+9]..[13,261+2])
+        Pstr_eval
+        expression (testsuite/tests/typing-gadts/pr9759.ml[10,153+9]..[13,261+2])
+          Pexp_constant PConst_string ("\ntype 'a general = { indir : 'a desc; unit : unit; }\nand 'a desc = C : unit general -> unit desc\n",(testsuite/tests/typing-gadts/pr9759.ml[10,153+11]..[13,261+0]),Some "")
+    ]
+  structure_item (testsuite/tests/typing-gadts/pr9759.ml[15,266+0]..[24,479+19])
+    Pstr_value Rec
+    [
+      <def>
+        pattern (testsuite/tests/typing-gadts/pr9759.ml[15,266+8]..[15,266+45]) ghost
+          Ppat_constraint
+          pattern (testsuite/tests/typing-gadts/pr9759.ml[15,266+8]..[15,266+11])
+            Ppat_var "foo" (testsuite/tests/typing-gadts/pr9759.ml[15,266+8]..[15,266+11])
+          core_type (testsuite/tests/typing-gadts/pr9759.ml[15,266+8]..[24,479+19]) ghost
+            Ptyp_poly 'k
+            core_type (testsuite/tests/typing-gadts/pr9759.ml[15,266+23]..[15,266+45])
+              Ptyp_arrow
+              Nolabel
+              core_type (testsuite/tests/typing-gadts/pr9759.ml[15,266+23]..[15,266+32])
+                Ptyp_constr "general" (testsuite/tests/typing-gadts/pr9759.ml[15,266+25]..[15,266+32])
+                [
+                  core_type (testsuite/tests/typing-gadts/pr9759.ml[15,266+23]..[15,266+24])
+                    Ptyp_var k
+                ]
+              core_type (testsuite/tests/typing-gadts/pr9759.ml[15,266+36]..[15,266+45])
+                Ptyp_constr "general" (testsuite/tests/typing-gadts/pr9759.ml[15,266+38]..[15,266+45])
+                [
+                  core_type (testsuite/tests/typing-gadts/pr9759.ml[15,266+36]..[15,266+37])
+                    Ptyp_var k
+                ]
+        expression (testsuite/tests/typing-gadts/pr9759.ml[15,266+8]..[24,479+19])
+          Pexp_newtype "k"
+          expression (testsuite/tests/typing-gadts/pr9759.ml[15,266+8]..[24,479+19])
+            Pexp_constraint
+            expression (testsuite/tests/typing-gadts/pr9759.ml[15,266+48]..[24,479+19])
+              Pexp_fun
+              Nolabel
+              None
+              pattern (testsuite/tests/typing-gadts/pr9759.ml[15,266+52]..[15,266+53])
+                Ppat_var "g" (testsuite/tests/typing-gadts/pr9759.ml[15,266+52]..[15,266+53])
+              expression (testsuite/tests/typing-gadts/pr9759.ml[16,323+2]..[24,479+19])
+                Pexp_match
+                expression (testsuite/tests/typing-gadts/pr9759.ml[16,323+8]..[16,323+15])
+                  Pexp_field
+                  expression (testsuite/tests/typing-gadts/pr9759.ml[16,323+8]..[16,323+9])
+                    Pexp_ident "g" (testsuite/tests/typing-gadts/pr9759.ml[16,323+8]..[16,323+9])
+                  "indir" (testsuite/tests/typing-gadts/pr9759.ml[16,323+10]..[16,323+15])
+                [
+                  <case>
+                    pattern (testsuite/tests/typing-gadts/pr9759.ml[17,344+4]..[17,344+8])
+                      Ppat_construct "C" (testsuite/tests/typing-gadts/pr9759.ml[17,344+4]..[17,344+5])
+                      Some
+                        []
+                        pattern (testsuite/tests/typing-gadts/pr9759.ml[17,344+6]..[17,344+8])
+                          Ppat_var "g'" (testsuite/tests/typing-gadts/pr9759.ml[17,344+6]..[17,344+8])
+                    expression (testsuite/tests/typing-gadts/pr9759.ml[18,356+6]..[22,449+16])
+                      Pexp_let Nonrec
+                      [
+                        <def>
+                          pattern (testsuite/tests/typing-gadts/pr9759.ml[18,356+10]..[18,356+16])
+                            Ppat_var "new_g'" (testsuite/tests/typing-gadts/pr9759.ml[18,356+10]..[18,356+16])
+                          expression (testsuite/tests/typing-gadts/pr9759.ml[18,356+19]..[18,356+25])
+                            Pexp_apply
+                            expression (testsuite/tests/typing-gadts/pr9759.ml[18,356+19]..[18,356+22])
+                              Pexp_ident "foo" (testsuite/tests/typing-gadts/pr9759.ml[18,356+19]..[18,356+22])
+                            [
+                              <arg>
+                              Nolabel
+                                expression (testsuite/tests/typing-gadts/pr9759.ml[18,356+23]..[18,356+25])
+                                  Pexp_ident "g'" (testsuite/tests/typing-gadts/pr9759.ml[18,356+23]..[18,356+25])
+                            ]
+                      ]
+                      expression (testsuite/tests/typing-gadts/pr9759.ml[19,385+6]..[22,449+16])
+                        Pexp_ifthenelse
+                        expression (testsuite/tests/typing-gadts/pr9759.ml[19,385+9]..[19,385+13])
+                          Pexp_construct "true" (testsuite/tests/typing-gadts/pr9759.ml[19,385+9]..[19,385+13])
+                          None
+                        expression (testsuite/tests/typing-gadts/pr9759.ml[20,404+8]..[20,404+33])
+                          Pexp_record
+                          [
+                            "indir" (testsuite/tests/typing-gadts/pr9759.ml[20,404+16]..[20,404+21])
+                              expression (testsuite/tests/typing-gadts/pr9759.ml[20,404+24]..[20,404+32])
+                                Pexp_construct "C" (testsuite/tests/typing-gadts/pr9759.ml[20,404+24]..[20,404+25])
+                                Some
+                                  expression (testsuite/tests/typing-gadts/pr9759.ml[20,404+26]..[20,404+32])
+                                    Pexp_ident "new_g'" (testsuite/tests/typing-gadts/pr9759.ml[20,404+26]..[20,404+32])
+                          ]
+                          Some
+                            expression (testsuite/tests/typing-gadts/pr9759.ml[20,404+9]..[20,404+10])
+                              Pexp_ident "g" (testsuite/tests/typing-gadts/pr9759.ml[20,404+9]..[20,404+10])
+                        Some
+                          expression (testsuite/tests/typing-gadts/pr9759.ml[22,449+10]..[22,449+16])
+                            Pexp_ident "new_g'" (testsuite/tests/typing-gadts/pr9759.ml[22,449+10]..[22,449+16])
+                  <case>
+                    pattern (testsuite/tests/typing-gadts/pr9759.ml[23,466+4]..[23,466+9])
+                      Ppat_var "indir" (testsuite/tests/typing-gadts/pr9759.ml[23,466+4]..[23,466+9])
+                    expression (testsuite/tests/typing-gadts/pr9759.ml[24,479+5]..[24,479+19])
+                      Pexp_record
+                      [
+                        "indir" (testsuite/tests/typing-gadts/pr9759.ml[24,479+13]..[24,479+18]) ghost
+                          expression (testsuite/tests/typing-gadts/pr9759.ml[24,479+13]..[24,479+18])
+                            Pexp_ident "indir" (testsuite/tests/typing-gadts/pr9759.ml[24,479+13]..[24,479+18])
+                      ]
+                      Some
+                        expression (testsuite/tests/typing-gadts/pr9759.ml[24,479+6]..[24,479+7])
+                          Pexp_ident "g" (testsuite/tests/typing-gadts/pr9759.ml[24,479+6]..[24,479+7])
+                ]
+            core_type (testsuite/tests/typing-gadts/pr9759.ml[15,266+23]..[15,266+45])
+              Ptyp_arrow
+              Nolabel
+              core_type (testsuite/tests/typing-gadts/pr9759.ml[15,266+23]..[15,266+32])
+                Ptyp_constr "general" (testsuite/tests/typing-gadts/pr9759.ml[15,266+25]..[15,266+32])
+                [
+                  core_type (testsuite/tests/typing-gadts/pr9759.ml[15,266+23]..[15,266+24])
+                    Ptyp_constr "k" (testsuite/tests/typing-gadts/pr9759.ml[15,266+23]..[15,266+24])
+                    []
+                ]
+              core_type (testsuite/tests/typing-gadts/pr9759.ml[15,266+36]..[15,266+45])
+                Ptyp_constr "general" (testsuite/tests/typing-gadts/pr9759.ml[15,266+38]..[15,266+45])
+                [
+                  core_type (testsuite/tests/typing-gadts/pr9759.ml[15,266+36]..[15,266+37])
+                    Ptyp_constr "k" (testsuite/tests/typing-gadts/pr9759.ml[15,266+36]..[15,266+37])
+                    []
+                ]
+    ]
+  structure_item (testsuite/tests/typing-gadts/pr9759.ml[25,502+0]..[31,668+3])
+    Pstr_extension "expect"
+    [
+      structure_item (testsuite/tests/typing-gadts/pr9759.ml[25,502+9]..[31,668+2])
+        Pstr_eval
+        expression (testsuite/tests/typing-gadts/pr9759.ml[25,502+9]..[31,668+2])
+          Pexp_constant PConst_string ("\nLine 9, characters 4-9:\n9 |   | indir ->\n        ^^^^^\nWarning 11 [redundant-case]: this match case is unused.\nval foo : 'k general -> 'k general = <fun>\n",(testsuite/tests/typing-gadts/pr9759.ml[25,502+11]..[31,668+0]),Some "")
+    ]
+]
+

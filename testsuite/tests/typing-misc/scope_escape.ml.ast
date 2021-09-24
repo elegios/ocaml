@@ -1,0 +1,72 @@
+[
+  structure_item (testsuite/tests/typing-misc/scope_escape.ml[5,24+0]..[5,24+14])
+    Pstr_value Nonrec
+    [
+      <def>
+        pattern (testsuite/tests/typing-misc/scope_escape.ml[5,24+4]..[5,24+5])
+          Ppat_var "x" (testsuite/tests/typing-misc/scope_escape.ml[5,24+4]..[5,24+5])
+        expression (testsuite/tests/typing-misc/scope_escape.ml[5,24+8]..[5,24+14])
+          Pexp_apply
+          expression (testsuite/tests/typing-misc/scope_escape.ml[5,24+8]..[5,24+11])
+            Pexp_ident "ref" (testsuite/tests/typing-misc/scope_escape.ml[5,24+8]..[5,24+11])
+          [
+            <arg>
+            Nolabel
+              expression (testsuite/tests/typing-misc/scope_escape.ml[5,24+12]..[5,24+14])
+                Pexp_construct "[]" (testsuite/tests/typing-misc/scope_escape.ml[5,24+12]..[5,24+14])
+                None
+          ]
+    ]
+  structure_item (testsuite/tests/typing-misc/scope_escape.ml[6,39+0]..[6,39+53])
+    Pstr_module
+    "M" (testsuite/tests/typing-misc/scope_escape.ml[6,39+7]..[6,39+8])
+      module_expr (testsuite/tests/typing-misc/scope_escape.ml[6,39+11]..[6,39+53])
+        Pmod_structure
+        [
+          structure_item (testsuite/tests/typing-misc/scope_escape.ml[6,39+18]..[6,39+24])
+            Pstr_type Rec
+            [
+              type_declaration "t" (testsuite/tests/typing-misc/scope_escape.ml[6,39+23]..[6,39+24]) (testsuite/tests/typing-misc/scope_escape.ml[6,39+18]..[6,39+24])
+                ptype_params =
+                  []
+                ptype_cstrs =
+                  []
+                ptype_kind =
+                  Ptype_abstract
+                ptype_private = Public
+                ptype_manifest =
+                  None
+            ]
+          structure_item (testsuite/tests/typing-misc/scope_escape.ml[6,39+25]..[6,39+49])
+            Pstr_value Nonrec
+            [
+              <def>
+                pattern (testsuite/tests/typing-misc/scope_escape.ml[6,39+29]..[6,39+30])
+                  Ppat_any
+                expression (testsuite/tests/typing-misc/scope_escape.ml[6,39+33]..[6,39+49])
+                  Pexp_constraint
+                  expression (testsuite/tests/typing-misc/scope_escape.ml[6,39+34]..[6,39+35])
+                    Pexp_ident "x" (testsuite/tests/typing-misc/scope_escape.ml[6,39+34]..[6,39+35])
+                  core_type (testsuite/tests/typing-misc/scope_escape.ml[6,39+38]..[6,39+48])
+                    Ptyp_constr "ref" (testsuite/tests/typing-misc/scope_escape.ml[6,39+45]..[6,39+48])
+                    [
+                      core_type (testsuite/tests/typing-misc/scope_escape.ml[6,39+38]..[6,39+44])
+                        Ptyp_constr "list" (testsuite/tests/typing-misc/scope_escape.ml[6,39+40]..[6,39+44])
+                        [
+                          core_type (testsuite/tests/typing-misc/scope_escape.ml[6,39+38]..[6,39+39])
+                            Ptyp_constr "t" (testsuite/tests/typing-misc/scope_escape.ml[6,39+38]..[6,39+39])
+                            []
+                        ]
+                    ]
+            ]
+        ]
+  structure_item (testsuite/tests/typing-misc/scope_escape.ml[7,95+0]..[15,434+3])
+    Pstr_extension "expect"
+    [
+      structure_item (testsuite/tests/typing-misc/scope_escape.ml[7,95+9]..[15,434+2])
+        Pstr_eval
+        expression (testsuite/tests/typing-misc/scope_escape.ml[7,95+9]..[15,434+2])
+          Pexp_constant PConst_string ("\nval x : '_weak1 list ref = {contents = []}\nLine 2, characters 34-35:\n2 | module M = struct type t let _ = (x : t list ref) end;;\n                                      ^\nError: This expression has type 'weak1 list ref\n       but an expression was expected of type t list ref\n       The type constructor t would escape its scope\n",(testsuite/tests/typing-misc/scope_escape.ml[7,95+11]..[15,434+0]),Some "")
+    ]
+]
+

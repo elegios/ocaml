@@ -1,0 +1,57 @@
+[
+  structure_item (testsuite/tests/typing-modules/normalize_path.ml[5,24+0]..[10,87+3])
+    Pstr_module
+    "X" (testsuite/tests/typing-modules/normalize_path.ml[5,24+7]..[5,24+8])
+      module_expr (testsuite/tests/typing-modules/normalize_path.ml[5,24+11]..[10,87+3])
+        Pmod_structure
+        [
+          structure_item (testsuite/tests/typing-modules/normalize_path.ml[7,43+2]..[7,43+17])
+            Pstr_module
+            "B" (testsuite/tests/typing-modules/normalize_path.ml[7,43+9]..[7,43+10])
+              module_expr (testsuite/tests/typing-modules/normalize_path.ml[7,43+13]..[7,43+17])
+                Pmod_ident "List" (testsuite/tests/typing-modules/normalize_path.ml[7,43+13]..[7,43+17])
+          structure_item (testsuite/tests/typing-modules/normalize_path.ml[9,62+2]..[9,62+24])
+            Pstr_exception
+            type_exception
+              ptyext_constructor =
+                extension_constructor (testsuite/tests/typing-modules/normalize_path.ml[9,62+2]..[9,62+24])
+                  pext_name = "B"
+                  pext_kind =
+                    Pext_decl
+                      [
+                        (testsuite/tests/typing-modules/normalize_path.ml[9,62+18]..[9,62+23])
+                          Immutable
+                          "x" (testsuite/tests/typing-modules/normalize_path.ml[9,62+18]..[9,62+19])                          core_type (testsuite/tests/typing-modules/normalize_path.ml[9,62+20]..[9,62+23])
+                            Ptyp_constr "int" (testsuite/tests/typing-modules/normalize_path.ml[9,62+20]..[9,62+23])
+                            []
+                      ]
+                      None
+        ]
+  structure_item (testsuite/tests/typing-modules/normalize_path.ml[12,92+0]..[12,92+17])
+    Pstr_value Nonrec
+    [
+      <def>
+        pattern (testsuite/tests/typing-modules/normalize_path.ml[12,92+4]..[12,92+5])
+          Ppat_any
+        expression (testsuite/tests/typing-modules/normalize_path.ml[12,92+8]..[12,92+17])
+          Pexp_construct "X.B" (testsuite/tests/typing-modules/normalize_path.ml[12,92+8]..[12,92+11])
+          Some
+            expression (testsuite/tests/typing-modules/normalize_path.ml[12,92+12]..[12,92+17])
+              Pexp_record
+              [
+                "x" (testsuite/tests/typing-modules/normalize_path.ml[12,92+13]..[12,92+14])
+                  expression (testsuite/tests/typing-modules/normalize_path.ml[12,92+15]..[12,92+16])
+                    Pexp_constant PConst_int (2,None)
+              ]
+              None
+    ]
+  structure_item (testsuite/tests/typing-modules/normalize_path.ml[14,113+0]..[17,210+3])
+    Pstr_extension "expect"
+    [
+      structure_item (testsuite/tests/typing-modules/normalize_path.ml[14,113+9]..[17,210+2])
+        Pstr_eval
+        expression (testsuite/tests/typing-modules/normalize_path.ml[14,113+9]..[17,210+2])
+          Pexp_constant PConst_string ("\nmodule X : sig module B = List exception B of { x : int; } end\n- : exn = X.B {x = 2}\n",(testsuite/tests/typing-modules/normalize_path.ml[14,113+11]..[17,210+0]),Some "")
+    ]
+]
+

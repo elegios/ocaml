@@ -1,0 +1,185 @@
+[
+  signature_item (utils/local_store.mli[16,1079+0]..[21,1387+64])
+    Psig_attribute "ocaml.text"
+    [
+      structure_item (utils/local_store.mli[16,1079+0]..[21,1387+64])
+        Pstr_eval
+        expression (utils/local_store.mli[16,1079+0]..[21,1387+64])
+          Pexp_constant PConst_string(" This module provides some facilities for creating references (and hash\n    tables) which can easily be snapshoted and restored to an arbitrary version.\n\n    It is used throughout the frontend (read: typechecker), to register all\n    (well, hopefully) the global state. Thus making it easy for tools like\n    Merlin to go back and forth typechecking different files. ",(utils/local_store.mli[16,1079+0]..[21,1387+64]),None)
+    ]
+  signature_item (utils/local_store.mli[23,1453+0]..[23,1453+19])
+    Psig_attribute "ocaml.text"
+    [
+      structure_item (utils/local_store.mli[23,1453+0]..[23,1453+19])
+        Pstr_eval
+        expression (utils/local_store.mli[23,1453+0]..[23,1453+19])
+          Pexp_constant PConst_string(" {1 Creators} ",(utils/local_store.mli[23,1453+0]..[23,1453+19]),None)
+    ]
+  signature_item (utils/local_store.mli[25,1474+0]..[25,1474+24])
+    Psig_value
+    value_description "s_ref" (utils/local_store.mli[25,1474+4]..[25,1474+9]) (utils/local_store.mli[25,1474+0]..[25,1474+24])
+      attribute "ocaml.doc"
+        [
+          structure_item (utils/local_store.mli[26,1499+0]..[27,1576+13])
+            Pstr_eval
+            expression (utils/local_store.mli[26,1499+0]..[27,1576+13])
+              Pexp_constant PConst_string(" Similar to {!ref}, except the allocated reference is registered into the\n    store. ",(utils/local_store.mli[26,1499+0]..[27,1576+13]),None)
+        ]
+      core_type (utils/local_store.mli[25,1474+12]..[25,1474+24])
+        Ptyp_arrow
+        Nolabel
+        core_type (utils/local_store.mli[25,1474+12]..[25,1474+14])
+          Ptyp_var a
+        core_type (utils/local_store.mli[25,1474+18]..[25,1474+24])
+          Ptyp_constr "ref" (utils/local_store.mli[25,1474+21]..[25,1474+24])
+          [
+            core_type (utils/local_store.mli[25,1474+18]..[25,1474+20])
+              Ptyp_var a
+          ]
+      []
+  signature_item (utils/local_store.mli[29,1591+0]..[29,1591+40])
+    Psig_value
+    value_description "s_table" (utils/local_store.mli[29,1591+4]..[29,1591+11]) (utils/local_store.mli[29,1591+0]..[29,1591+40])
+      attribute "ocaml.doc"
+        [
+          structure_item (utils/local_store.mli[30,1632+0]..[38,1937+2])
+            Pstr_eval
+            expression (utils/local_store.mli[30,1632+0]..[38,1937+2])
+              Pexp_constant PConst_string(" Used to register hash tables. Those also need to be placed into refs to be\n    easily swapped out, but one can't just \"snapshot\" the initial value to\n    create fresh instances, so instead an initializer is required.\n\n    Use it like this:\n    {[\n      let my_table = s_table Hashtbl.create 42\n    ]}\n",(utils/local_store.mli[30,1632+0]..[38,1937+2]),None)
+        ]
+      core_type (utils/local_store.mli[29,1591+14]..[29,1591+40])
+        Ptyp_arrow
+        Nolabel
+        core_type (utils/local_store.mli[29,1591+15]..[29,1591+23])
+          Ptyp_arrow
+          Nolabel
+          core_type (utils/local_store.mli[29,1591+15]..[29,1591+17])
+            Ptyp_var a
+          core_type (utils/local_store.mli[29,1591+21]..[29,1591+23])
+            Ptyp_var b
+        core_type (utils/local_store.mli[29,1591+28]..[29,1591+40])
+          Ptyp_arrow
+          Nolabel
+          core_type (utils/local_store.mli[29,1591+28]..[29,1591+30])
+            Ptyp_var a
+          core_type (utils/local_store.mli[29,1591+34]..[29,1591+40])
+            Ptyp_constr "ref" (utils/local_store.mli[29,1591+37]..[29,1591+40])
+            [
+              core_type (utils/local_store.mli[29,1591+34]..[29,1591+36])
+                Ptyp_var b
+            ]
+      []
+  signature_item (utils/local_store.mli[40,1941+0]..[43,2046+57])
+    Psig_attribute "ocaml.text"
+    [
+      structure_item (utils/local_store.mli[40,1941+0]..[43,2046+57])
+        Pstr_eval
+        expression (utils/local_store.mli[40,1941+0]..[43,2046+57])
+          Pexp_constant PConst_string(" {1 State management}\n\n    Note: all the following functions are currently unused inside the compiler\n    codebase. Merlin is their only user at the moment. ",(utils/local_store.mli[40,1941+0]..[43,2046+57]),None)
+    ]
+  signature_item (utils/local_store.mli[45,2105+0]..[45,2105+10])
+    Psig_type Rec
+    [
+      type_declaration "store" (utils/local_store.mli[45,2105+5]..[45,2105+10]) (utils/local_store.mli[45,2105+0]..[45,2105+10])
+        ptype_params =
+          []
+        ptype_cstrs =
+          []
+        ptype_kind =
+          Ptype_abstract
+        ptype_private = Public
+        ptype_manifest =
+          None
+    ]
+  signature_item (utils/local_store.mli[47,2117+0]..[47,2117+25])
+    Psig_value
+    value_description "fresh" (utils/local_store.mli[47,2117+4]..[47,2117+9]) (utils/local_store.mli[47,2117+0]..[47,2117+25])
+      attribute "ocaml.doc"
+        [
+          structure_item (utils/local_store.mli[48,2143+0]..[52,2337+35])
+            Pstr_eval
+            expression (utils/local_store.mli[48,2143+0]..[52,2337+35])
+              Pexp_constant PConst_string(" Returns a fresh instance of the store.\n\n    The first time this function is called, it snapshots the value of all the\n    registered references, later calls to [fresh] will return instances\n    initialized to those values. ",(utils/local_store.mli[48,2143+0]..[52,2337+35]),None)
+        ]
+      core_type (utils/local_store.mli[47,2117+12]..[47,2117+25])
+        Ptyp_arrow
+        Nolabel
+        core_type (utils/local_store.mli[47,2117+12]..[47,2117+16])
+          Ptyp_constr "unit" (utils/local_store.mli[47,2117+12]..[47,2117+16])
+          []
+        core_type (utils/local_store.mli[47,2117+20]..[47,2117+25])
+          Ptyp_constr "store" (utils/local_store.mli[47,2117+20]..[47,2117+25])
+          []
+      []
+  signature_item (utils/local_store.mli[54,2374+0]..[54,2374+44])
+    Psig_value
+    value_description "with_store" (utils/local_store.mli[54,2374+4]..[54,2374+14]) (utils/local_store.mli[54,2374+0]..[54,2374+44])
+      attribute "ocaml.doc"
+        [
+          structure_item (utils/local_store.mli[55,2419+0]..[58,2611+15])
+            Pstr_eval
+            expression (utils/local_store.mli[55,2419+0]..[58,2611+15])
+              Pexp_constant PConst_string(" [with_scope s f] resets all the registered references to the value they have\n    in [s] for the run of [f].\n    If [f] updates any of the registered refs, [s] is updated to remember those\n    changes. ",(utils/local_store.mli[55,2419+0]..[58,2611+15]),None)
+        ]
+      core_type (utils/local_store.mli[54,2374+17]..[54,2374+44])
+        Ptyp_arrow
+        Nolabel
+        core_type (utils/local_store.mli[54,2374+17]..[54,2374+22])
+          Ptyp_constr "store" (utils/local_store.mli[54,2374+17]..[54,2374+22])
+          []
+        core_type (utils/local_store.mli[54,2374+26]..[54,2374+44])
+          Ptyp_arrow
+          Nolabel
+          core_type (utils/local_store.mli[54,2374+27]..[54,2374+37])
+            Ptyp_arrow
+            Nolabel
+            core_type (utils/local_store.mli[54,2374+27]..[54,2374+31])
+              Ptyp_constr "unit" (utils/local_store.mli[54,2374+27]..[54,2374+31])
+              []
+            core_type (utils/local_store.mli[54,2374+35]..[54,2374+37])
+              Ptyp_var a
+          core_type (utils/local_store.mli[54,2374+42]..[54,2374+44])
+            Ptyp_var a
+      []
+  signature_item (utils/local_store.mli[60,2628+0]..[60,2628+24])
+    Psig_value
+    value_description "reset" (utils/local_store.mli[60,2628+4]..[60,2628+9]) (utils/local_store.mli[60,2628+0]..[60,2628+24])
+      attribute "ocaml.doc"
+        [
+          structure_item (utils/local_store.mli[61,2653+0]..[62,2732+38])
+            Pstr_eval
+            expression (utils/local_store.mli[61,2653+0]..[62,2732+38])
+              Pexp_constant PConst_string(" Resets all the references to the initial snapshot (i.e. to the same values\n    that new instances start with). ",(utils/local_store.mli[61,2653+0]..[62,2732+38]),None)
+        ]
+      core_type (utils/local_store.mli[60,2628+12]..[60,2628+24])
+        Ptyp_arrow
+        Nolabel
+        core_type (utils/local_store.mli[60,2628+12]..[60,2628+16])
+          Ptyp_constr "unit" (utils/local_store.mli[60,2628+12]..[60,2628+16])
+          []
+        core_type (utils/local_store.mli[60,2628+20]..[60,2628+24])
+          Ptyp_constr "unit" (utils/local_store.mli[60,2628+20]..[60,2628+24])
+          []
+      []
+  signature_item (utils/local_store.mli[64,2772+0]..[64,2772+27])
+    Psig_value
+    value_description "is_bound" (utils/local_store.mli[64,2772+4]..[64,2772+12]) (utils/local_store.mli[64,2772+0]..[64,2772+27])
+      attribute "ocaml.doc"
+        [
+          structure_item (utils/local_store.mli[65,2800+0]..[66,2878+51])
+            Pstr_eval
+            expression (utils/local_store.mli[65,2800+0]..[66,2878+51])
+              Pexp_constant PConst_string(" Returns [true] when a scope is active (i.e. when called from the callback\n    passed to {!with_scope}), [false] otherwise. ",(utils/local_store.mli[65,2800+0]..[66,2878+51]),None)
+        ]
+      core_type (utils/local_store.mli[64,2772+15]..[64,2772+27])
+        Ptyp_arrow
+        Nolabel
+        core_type (utils/local_store.mli[64,2772+15]..[64,2772+19])
+          Ptyp_constr "unit" (utils/local_store.mli[64,2772+15]..[64,2772+19])
+          []
+        core_type (utils/local_store.mli[64,2772+23]..[64,2772+27])
+          Ptyp_constr "bool" (utils/local_store.mli[64,2772+23]..[64,2772+27])
+          []
+      []
+]
+

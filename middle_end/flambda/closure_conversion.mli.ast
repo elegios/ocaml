@@ -1,0 +1,49 @@
+[
+  signature_item (middle_end/flambda/closure_conversion.mli[17,1156+0]..[17,1156+39])
+    Psig_attribute "ocaml.warning"
+    [
+      structure_item (middle_end/flambda/closure_conversion.mli[17,1156+18]..[17,1156+38])
+        Pstr_eval
+        expression (middle_end/flambda/closure_conversion.mli[17,1156+18]..[17,1156+38])
+          Pexp_constant PConst_string("+a-4-9-30-40-41-42",(middle_end/flambda/closure_conversion.mli[17,1156+19]..[17,1156+37]),None)
+    ]
+  signature_item (middle_end/flambda/closure_conversion.mli[47,2654+0]..[52,2772+20])
+    Psig_value
+    value_description "lambda_to_flambda" (middle_end/flambda/closure_conversion.mli[47,2654+4]..[47,2654+21]) (middle_end/flambda/closure_conversion.mli[47,2654+0]..[52,2772+20])
+      attribute "ocaml.doc"
+        [
+          structure_item (middle_end/flambda/closure_conversion.mli[19,1197+0]..[46,2651+2])
+            Pstr_eval
+            expression (middle_end/flambda/closure_conversion.mli[19,1197+0]..[46,2651+2])
+              Pexp_constant PConst_string(" Generation of [Flambda] intermediate language code from [Lambda] code\n  by performing a form of closure conversion.\n\n  Function declarations (which may bind one or more variables identifying\n  functions, possibly with mutual recursion) are transformed to\n  [Set_of_closures] expressions.  [Project_closure] expressions are then\n  used to select a closure for a particular function from a [Set_of_closures]\n  expression.  The [Set_of_closures] expressions say nothing about the\n  actual runtime layout of the closures; this is handled when [Flambda] code\n  is translated to [Clambda] code.\n\n  The following transformations are also performed during closure\n  conversion:\n  - Constant blocks (by which is meant things wrapped in [Lambda.Const_block])\n    are converted to applications of the [Pmakeblock] primitive.\n  - [Levent] debugging event nodes are removed and the information within\n    them attached to function, method and [raise] calls.\n  - Tuplified functions are converted to curried functions and a stub\n    function emitted to call the curried version.  For example:\n      let rec f (x, y) = f (x + 1, y + 1)\n    is transformed to:\n      let rec internal_f x y = f (x + 1,y + 1)\n      and f (x, y) = internal_f x y  (* [f] is marked as a stub function *)\n  - The [Pdirapply] and [Prevapply] application primitives are removed and\n    converted to normal [Flambda] application nodes.\n\n  The [lambda_to_flambda] function is not re-entrant.\n",(middle_end/flambda/closure_conversion.mli[19,1197+0]..[46,2651+2]),None)
+        ]
+      core_type (middle_end/flambda/closure_conversion.mli[48,2676+5]..[52,2772+20])
+        Ptyp_arrow
+        Labelled "backend"
+        core_type (middle_end/flambda/closure_conversion.mli[48,2676+13]..[48,2676+36])
+          Ptyp_package "Backend_intf.S" (middle_end/flambda/closure_conversion.mli[48,2676+21]..[48,2676+35])
+          []
+        core_type (middle_end/flambda/closure_conversion.mli[49,2713+5]..[52,2772+20])
+          Ptyp_arrow
+          Labelled "module_ident"
+          core_type (middle_end/flambda/closure_conversion.mli[49,2713+18]..[49,2713+25])
+            Ptyp_constr "Ident.t" (middle_end/flambda/closure_conversion.mli[49,2713+18]..[49,2713+25])
+            []
+          core_type (middle_end/flambda/closure_conversion.mli[50,2739+5]..[52,2772+20])
+            Ptyp_arrow
+            Labelled "size"
+            core_type (middle_end/flambda/closure_conversion.mli[50,2739+10]..[50,2739+13])
+              Ptyp_constr "int" (middle_end/flambda/closure_conversion.mli[50,2739+10]..[50,2739+13])
+              []
+            core_type (middle_end/flambda/closure_conversion.mli[51,2753+5]..[52,2772+20])
+              Ptyp_arrow
+              Nolabel
+              core_type (middle_end/flambda/closure_conversion.mli[51,2753+5]..[51,2753+18])
+                Ptyp_constr "Lambda.lambda" (middle_end/flambda/closure_conversion.mli[51,2753+5]..[51,2753+18])
+                []
+              core_type (middle_end/flambda/closure_conversion.mli[52,2772+5]..[52,2772+20])
+                Ptyp_constr "Flambda.program" (middle_end/flambda/closure_conversion.mli[52,2772+5]..[52,2772+20])
+                []
+      []
+]
+

@@ -1,0 +1,606 @@
+[
+  signature_item (utils/diffing_with_keys.mli[16,1079+0]..[30,1657+2])
+    Psig_attribute "ocaml.text"
+    [
+      structure_item (utils/diffing_with_keys.mli[16,1079+0]..[30,1657+2])
+        Pstr_eval
+        expression (utils/diffing_with_keys.mli[16,1079+0]..[30,1657+2])
+          Pexp_constant PConst_string("\n\n   When diffing lists where each element has a distinct key, we can refine\n   the diffing patch by introducing two composite edit moves: swaps and moves.\n\n   [Swap]s exchange the position of two elements. [Swap] cost is set to\n   [2 * change - epsilon].\n   [Move]s change the position of one element. [Move] cost is set to\n   [delete + addition - epsilon].\n\n   When the cost [delete + addition] is greater than [change] and with those\n   specific weights, the optimal patch with [Swap]s and [Move]s can be computed\n   directly and cheaply from the original optimal patch.\n\n",(utils/diffing_with_keys.mli[16,1079+0]..[30,1657+2]),None)
+    ]
+  signature_item (utils/diffing_with_keys.mli[32,1661+0]..[32,1661+38])
+    Psig_type Rec
+    [
+      type_declaration "with_pos" (utils/diffing_with_keys.mli[32,1661+8]..[32,1661+16]) (utils/diffing_with_keys.mli[32,1661+0]..[32,1661+38])
+        ptype_params =
+          [
+            core_type (utils/diffing_with_keys.mli[32,1661+5]..[32,1661+7])
+              Ptyp_var a
+          ]
+        ptype_cstrs =
+          []
+        ptype_kind =
+          Ptype_record
+            [
+              (utils/diffing_with_keys.mli[32,1661+20]..[32,1661+29])
+                Immutable
+                "pos" (utils/diffing_with_keys.mli[32,1661+20]..[32,1661+23])                core_type (utils/diffing_with_keys.mli[32,1661+25]..[32,1661+28])
+                  Ptyp_constr "int" (utils/diffing_with_keys.mli[32,1661+25]..[32,1661+28])
+                  []
+              (utils/diffing_with_keys.mli[32,1661+30]..[32,1661+37])
+                Immutable
+                "data" (utils/diffing_with_keys.mli[32,1661+30]..[32,1661+34])                core_type (utils/diffing_with_keys.mli[32,1661+35]..[32,1661+37])
+                  Ptyp_var a
+            ]
+        ptype_private = Public
+        ptype_manifest =
+          None
+    ]
+  signature_item (utils/diffing_with_keys.mli[33,1700+0]..[33,1700+41])
+    Psig_value
+    value_description "with_pos" (utils/diffing_with_keys.mli[33,1700+4]..[33,1700+12]) (utils/diffing_with_keys.mli[33,1700+0]..[33,1700+41])
+      core_type (utils/diffing_with_keys.mli[33,1700+14]..[33,1700+41])
+        Ptyp_arrow
+        Nolabel
+        core_type (utils/diffing_with_keys.mli[33,1700+14]..[33,1700+21])
+          Ptyp_constr "list" (utils/diffing_with_keys.mli[33,1700+17]..[33,1700+21])
+          [
+            core_type (utils/diffing_with_keys.mli[33,1700+14]..[33,1700+16])
+              Ptyp_var a
+          ]
+        core_type (utils/diffing_with_keys.mli[33,1700+25]..[33,1700+41])
+          Ptyp_constr "list" (utils/diffing_with_keys.mli[33,1700+37]..[33,1700+41])
+          [
+            core_type (utils/diffing_with_keys.mli[33,1700+25]..[33,1700+36])
+              Ptyp_constr "with_pos" (utils/diffing_with_keys.mli[33,1700+28]..[33,1700+36])
+              [
+                core_type (utils/diffing_with_keys.mli[33,1700+25]..[33,1700+27])
+                  Ptyp_var a
+              ]
+          ]
+      []
+  signature_item (utils/diffing_with_keys.mli[35,1743+0]..[37,1842+56])
+    Psig_type Rec
+    [
+      type_declaration "mismatch" (utils/diffing_with_keys.mli[35,1743+19]..[35,1743+27]) (utils/diffing_with_keys.mli[35,1743+0]..[37,1842+56])
+        ptype_params =
+          [
+            core_type (utils/diffing_with_keys.mli[35,1743+6]..[35,1743+8])
+              Ptyp_var l
+            core_type (utils/diffing_with_keys.mli[35,1743+9]..[35,1743+11])
+              Ptyp_var r
+            core_type (utils/diffing_with_keys.mli[35,1743+12]..[35,1743+17])
+              Ptyp_var diff
+          ]
+        ptype_cstrs =
+          []
+        ptype_kind =
+          Ptype_variant
+            [
+              (utils/diffing_with_keys.mli[36,1773+2]..[36,1773+68])
+                "Name" (utils/diffing_with_keys.mli[36,1773+4]..[36,1773+8])
+                [
+                  (utils/diffing_with_keys.mli[36,1773+13]..[36,1773+21])
+                    Immutable
+                    "pos" (utils/diffing_with_keys.mli[36,1773+13]..[36,1773+16])                    core_type (utils/diffing_with_keys.mli[36,1773+17]..[36,1773+20])
+                      Ptyp_constr "int" (utils/diffing_with_keys.mli[36,1773+17]..[36,1773+20])
+                      []
+                  (utils/diffing_with_keys.mli[36,1773+22]..[36,1773+33])
+                    Immutable
+                    "got" (utils/diffing_with_keys.mli[36,1773+22]..[36,1773+25])                    core_type (utils/diffing_with_keys.mli[36,1773+26]..[36,1773+32])
+                      Ptyp_constr "string" (utils/diffing_with_keys.mli[36,1773+26]..[36,1773+32])
+                      []
+                  (utils/diffing_with_keys.mli[36,1773+34]..[36,1773+50])
+                    Immutable
+                    "expected" (utils/diffing_with_keys.mli[36,1773+34]..[36,1773+42])                    core_type (utils/diffing_with_keys.mli[36,1773+43]..[36,1773+49])
+                      Ptyp_constr "string" (utils/diffing_with_keys.mli[36,1773+43]..[36,1773+49])
+                      []
+                  (utils/diffing_with_keys.mli[36,1773+51]..[36,1773+67])
+                    Immutable
+                    "types_match" (utils/diffing_with_keys.mli[36,1773+51]..[36,1773+62])                    core_type (utils/diffing_with_keys.mli[36,1773+63]..[36,1773+67])
+                      Ptyp_constr "bool" (utils/diffing_with_keys.mli[36,1773+63]..[36,1773+67])
+                      []
+                ]
+                None
+              (utils/diffing_with_keys.mli[37,1842+2]..[37,1842+56])
+                "Type" (utils/diffing_with_keys.mli[37,1842+4]..[37,1842+8])
+                [
+                  (utils/diffing_with_keys.mli[37,1842+13]..[37,1842+21])
+                    Immutable
+                    "pos" (utils/diffing_with_keys.mli[37,1842+13]..[37,1842+16])                    core_type (utils/diffing_with_keys.mli[37,1842+17]..[37,1842+20])
+                      Ptyp_constr "int" (utils/diffing_with_keys.mli[37,1842+17]..[37,1842+20])
+                      []
+                  (utils/diffing_with_keys.mli[37,1842+22]..[37,1842+29])
+                    Immutable
+                    "got" (utils/diffing_with_keys.mli[37,1842+22]..[37,1842+25])                    core_type (utils/diffing_with_keys.mli[37,1842+26]..[37,1842+28])
+                      Ptyp_var l
+                  (utils/diffing_with_keys.mli[37,1842+30]..[37,1842+42])
+                    Immutable
+                    "expected" (utils/diffing_with_keys.mli[37,1842+30]..[37,1842+38])                    core_type (utils/diffing_with_keys.mli[37,1842+39]..[37,1842+41])
+                      Ptyp_var r
+                  (utils/diffing_with_keys.mli[37,1842+43]..[37,1842+55])
+                    Immutable
+                    "reason" (utils/diffing_with_keys.mli[37,1842+43]..[37,1842+49])                    core_type (utils/diffing_with_keys.mli[37,1842+50]..[37,1842+55])
+                      Ptyp_var diff
+                ]
+                None
+            ]
+        ptype_private = Public
+        ptype_manifest =
+          None
+    ]
+  signature_item (utils/diffing_with_keys.mli[42,1999+0]..[47,2208+34])
+    Psig_type Rec
+    [
+      type_declaration "change" (utils/diffing_with_keys.mli[42,1999+19]..[42,1999+25]) (utils/diffing_with_keys.mli[42,1999+0]..[47,2208+34])
+        attribute "ocaml.doc"
+          [
+            structure_item (utils/diffing_with_keys.mli[39,1900+0]..[41,1996+2])
+              Pstr_eval
+              expression (utils/diffing_with_keys.mli[39,1900+0]..[41,1996+2])
+                Pexp_constant PConst_string(" This specialized version of changes introduces two composite\n    changes: [Move] and [Swap]\n",(utils/diffing_with_keys.mli[39,1900+0]..[41,1996+2]),None)
+          ]
+        ptype_params =
+          [
+            core_type (utils/diffing_with_keys.mli[42,1999+6]..[42,1999+8])
+              Ptyp_var l
+            core_type (utils/diffing_with_keys.mli[42,1999+9]..[42,1999+11])
+              Ptyp_var r
+            core_type (utils/diffing_with_keys.mli[42,1999+12]..[42,1999+17])
+              Ptyp_var diff
+          ]
+        ptype_cstrs =
+          []
+        ptype_kind =
+          Ptype_variant
+            [
+              (utils/diffing_with_keys.mli[43,2027+2]..[43,2027+36])
+                "Change" (utils/diffing_with_keys.mli[43,2027+4]..[43,2027+10])
+                [
+                  core_type (utils/diffing_with_keys.mli[43,2027+14]..[43,2027+36])
+                    Ptyp_constr "mismatch" (utils/diffing_with_keys.mli[43,2027+28]..[43,2027+36])
+                    [
+                      core_type (utils/diffing_with_keys.mli[43,2027+15]..[43,2027+17])
+                        Ptyp_var l
+                      core_type (utils/diffing_with_keys.mli[43,2027+18]..[43,2027+20])
+                        Ptyp_var r
+                      core_type (utils/diffing_with_keys.mli[43,2027+21]..[43,2027+26])
+                        Ptyp_var diff
+                    ]
+                ]
+                None
+              (utils/diffing_with_keys.mli[44,2064+2]..[44,2064+59])
+                "Swap" (utils/diffing_with_keys.mli[44,2064+4]..[44,2064+8])
+                [
+                  (utils/diffing_with_keys.mli[44,2064+14]..[44,2064+29])
+                    Immutable
+                    "pos" (utils/diffing_with_keys.mli[44,2064+14]..[44,2064+17])                    core_type (utils/diffing_with_keys.mli[44,2064+19]..[44,2064+28])
+                      Ptyp_tuple
+                      [
+                        core_type (utils/diffing_with_keys.mli[44,2064+19]..[44,2064+22])
+                          Ptyp_constr "int" (utils/diffing_with_keys.mli[44,2064+19]..[44,2064+22])
+                          []
+                        core_type (utils/diffing_with_keys.mli[44,2064+25]..[44,2064+28])
+                          Ptyp_constr "int" (utils/diffing_with_keys.mli[44,2064+25]..[44,2064+28])
+                          []
+                      ]
+                  (utils/diffing_with_keys.mli[44,2064+30]..[44,2064+44])
+                    Immutable
+                    "first" (utils/diffing_with_keys.mli[44,2064+30]..[44,2064+35])                    core_type (utils/diffing_with_keys.mli[44,2064+37]..[44,2064+43])
+                      Ptyp_constr "string" (utils/diffing_with_keys.mli[44,2064+37]..[44,2064+43])
+                      []
+                  (utils/diffing_with_keys.mli[44,2064+45]..[44,2064+57])
+                    Immutable
+                    "last" (utils/diffing_with_keys.mli[44,2064+45]..[44,2064+49])                    core_type (utils/diffing_with_keys.mli[44,2064+51]..[44,2064+57])
+                      Ptyp_constr "string" (utils/diffing_with_keys.mli[44,2064+51]..[44,2064+57])
+                      []
+                ]
+                None
+              (utils/diffing_with_keys.mli[45,2124+2]..[45,2124+48])
+                "Move" (utils/diffing_with_keys.mli[45,2124+4]..[45,2124+8])
+                [
+                  (utils/diffing_with_keys.mli[45,2124+13]..[45,2124+25])
+                    Immutable
+                    "name" (utils/diffing_with_keys.mli[45,2124+13]..[45,2124+17])                    core_type (utils/diffing_with_keys.mli[45,2124+18]..[45,2124+24])
+                      Ptyp_constr "string" (utils/diffing_with_keys.mli[45,2124+18]..[45,2124+24])
+                      []
+                  (utils/diffing_with_keys.mli[45,2124+26]..[45,2124+34])
+                    Immutable
+                    "got" (utils/diffing_with_keys.mli[45,2124+26]..[45,2124+29])                    core_type (utils/diffing_with_keys.mli[45,2124+30]..[45,2124+33])
+                      Ptyp_constr "int" (utils/diffing_with_keys.mli[45,2124+30]..[45,2124+33])
+                      []
+                  (utils/diffing_with_keys.mli[45,2124+35]..[45,2124+47])
+                    Immutable
+                    "expected" (utils/diffing_with_keys.mli[45,2124+35]..[45,2124+43])                    core_type (utils/diffing_with_keys.mli[45,2124+44]..[45,2124+47])
+                      Ptyp_constr "int" (utils/diffing_with_keys.mli[45,2124+44]..[45,2124+47])
+                      []
+                ]
+                None
+              (utils/diffing_with_keys.mli[46,2173+2]..[46,2173+34])
+                "Insert" (utils/diffing_with_keys.mli[46,2173+4]..[46,2173+10])
+                [
+                  (utils/diffing_with_keys.mli[46,2173+15]..[46,2173+23])
+                    Immutable
+                    "pos" (utils/diffing_with_keys.mli[46,2173+15]..[46,2173+18])                    core_type (utils/diffing_with_keys.mli[46,2173+19]..[46,2173+22])
+                      Ptyp_constr "int" (utils/diffing_with_keys.mli[46,2173+19]..[46,2173+22])
+                      []
+                  (utils/diffing_with_keys.mli[46,2173+24]..[46,2173+33])
+                    Immutable
+                    "insert" (utils/diffing_with_keys.mli[46,2173+24]..[46,2173+30])                    core_type (utils/diffing_with_keys.mli[46,2173+31]..[46,2173+33])
+                      Ptyp_var r
+                ]
+                None
+              (utils/diffing_with_keys.mli[47,2208+2]..[47,2208+34])
+                "Delete" (utils/diffing_with_keys.mli[47,2208+4]..[47,2208+10])
+                [
+                  (utils/diffing_with_keys.mli[47,2208+15]..[47,2208+23])
+                    Immutable
+                    "pos" (utils/diffing_with_keys.mli[47,2208+15]..[47,2208+18])                    core_type (utils/diffing_with_keys.mli[47,2208+19]..[47,2208+22])
+                      Ptyp_constr "int" (utils/diffing_with_keys.mli[47,2208+19]..[47,2208+22])
+                      []
+                  (utils/diffing_with_keys.mli[47,2208+24]..[47,2208+33])
+                    Immutable
+                    "delete" (utils/diffing_with_keys.mli[47,2208+24]..[47,2208+30])                    core_type (utils/diffing_with_keys.mli[47,2208+31]..[47,2208+33])
+                      Ptyp_var l
+                ]
+                None
+            ]
+        ptype_private = Public
+        ptype_manifest =
+          None
+    ]
+  signature_item (utils/diffing_with_keys.mli[49,2244+0]..[49,2244+60])
+    Psig_value
+    value_description "prefix" (utils/diffing_with_keys.mli[49,2244+4]..[49,2244+10]) (utils/diffing_with_keys.mli[49,2244+0]..[49,2244+60])
+      core_type (utils/diffing_with_keys.mli[49,2244+12]..[49,2244+60])
+        Ptyp_arrow
+        Nolabel
+        core_type (utils/diffing_with_keys.mli[49,2244+12]..[49,2244+28])
+          Ptyp_constr "Format.formatter" (utils/diffing_with_keys.mli[49,2244+12]..[49,2244+28])
+          []
+        core_type (utils/diffing_with_keys.mli[49,2244+32]..[49,2244+60])
+          Ptyp_arrow
+          Nolabel
+          core_type (utils/diffing_with_keys.mli[49,2244+32]..[49,2244+52])
+            Ptyp_constr "change" (utils/diffing_with_keys.mli[49,2244+46]..[49,2244+52])
+            [
+              core_type (utils/diffing_with_keys.mli[49,2244+33]..[49,2244+35])
+                Ptyp_var l
+              core_type (utils/diffing_with_keys.mli[49,2244+36]..[49,2244+38])
+                Ptyp_var r
+              core_type (utils/diffing_with_keys.mli[49,2244+39]..[49,2244+44])
+                Ptyp_var diff
+            ]
+          core_type (utils/diffing_with_keys.mli[49,2244+56]..[49,2244+60])
+            Ptyp_constr "unit" (utils/diffing_with_keys.mli[49,2244+56]..[49,2244+60])
+            []
+      []
+  signature_item (utils/diffing_with_keys.mli[51,2306+0]..[77,3044+3])
+    Psig_module "Define" (utils/diffing_with_keys.mli[51,2306+7]..[51,2306+13])
+    module_type (utils/diffing_with_keys.mli[51,2306+13]..[77,3044+3])
+      Pmty_functor "D" (utils/diffing_with_keys.mli[51,2306+14]..[51,2306+15])
+      module_type (utils/diffing_with_keys.mli[51,2306+16]..[51,2306+49])
+        Pmty_with
+        module_type (utils/diffing_with_keys.mli[51,2306+16]..[51,2306+28])
+          Pmty_ident "Diffing.Defs" (utils/diffing_with_keys.mli[51,2306+16]..[51,2306+28])
+        [
+          Pwith_typesubst "eq" (utils/diffing_with_keys.mli[51,2306+39]..[51,2306+41])
+            type_declaration "eq" (utils/diffing_with_keys.mli[51,2306+39]..[51,2306+41]) (utils/diffing_with_keys.mli[51,2306+34]..[51,2306+49])
+              ptype_params =
+                []
+              ptype_cstrs =
+                []
+              ptype_kind =
+                Ptype_abstract
+              ptype_private = Public
+              ptype_manifest =
+                Some
+                  core_type (utils/diffing_with_keys.mli[51,2306+45]..[51,2306+49])
+                    Ptyp_constr "unit" (utils/diffing_with_keys.mli[51,2306+45]..[51,2306+49])
+                    []
+        ]
+      module_type (utils/diffing_with_keys.mli[51,2306+52]..[77,3044+3])
+        Pmty_signature
+        [
+          signature_item (utils/diffing_with_keys.mli[53,2363+2]..[53,2363+48])
+            Psig_type Rec
+            [
+              type_declaration "diff" (utils/diffing_with_keys.mli[53,2363+7]..[53,2363+11]) (utils/diffing_with_keys.mli[53,2363+2]..[53,2363+48])
+                ptype_params =
+                  []
+                ptype_cstrs =
+                  []
+                ptype_kind =
+                  Ptype_abstract
+                ptype_private = Public
+                ptype_manifest =
+                  Some
+                    core_type (utils/diffing_with_keys.mli[53,2363+14]..[53,2363+48])
+                      Ptyp_constr "mismatch" (utils/diffing_with_keys.mli[53,2363+40]..[53,2363+48])
+                      [
+                        core_type (utils/diffing_with_keys.mli[53,2363+15]..[53,2363+21])
+                          Ptyp_constr "D.left" (utils/diffing_with_keys.mli[53,2363+15]..[53,2363+21])
+                          []
+                        core_type (utils/diffing_with_keys.mli[53,2363+23]..[53,2363+30])
+                          Ptyp_constr "D.right" (utils/diffing_with_keys.mli[53,2363+23]..[53,2363+30])
+                          []
+                        core_type (utils/diffing_with_keys.mli[53,2363+32]..[53,2363+38])
+                          Ptyp_constr "D.diff" (utils/diffing_with_keys.mli[53,2363+32]..[53,2363+38])
+                          []
+                      ]
+            ]
+          signature_item (utils/diffing_with_keys.mli[54,2412+2]..[54,2412+29])
+            Psig_type Rec
+            [
+              type_declaration "left" (utils/diffing_with_keys.mli[54,2412+7]..[54,2412+11]) (utils/diffing_with_keys.mli[54,2412+2]..[54,2412+29])
+                ptype_params =
+                  []
+                ptype_cstrs =
+                  []
+                ptype_kind =
+                  Ptype_abstract
+                ptype_private = Public
+                ptype_manifest =
+                  Some
+                    core_type (utils/diffing_with_keys.mli[54,2412+14]..[54,2412+29])
+                      Ptyp_constr "with_pos" (utils/diffing_with_keys.mli[54,2412+21]..[54,2412+29])
+                      [
+                        core_type (utils/diffing_with_keys.mli[54,2412+14]..[54,2412+20])
+                          Ptyp_constr "D.left" (utils/diffing_with_keys.mli[54,2412+14]..[54,2412+20])
+                          []
+                      ]
+            ]
+          signature_item (utils/diffing_with_keys.mli[55,2442+2]..[55,2442+31])
+            Psig_type Rec
+            [
+              type_declaration "right" (utils/diffing_with_keys.mli[55,2442+7]..[55,2442+12]) (utils/diffing_with_keys.mli[55,2442+2]..[55,2442+31])
+                ptype_params =
+                  []
+                ptype_cstrs =
+                  []
+                ptype_kind =
+                  Ptype_abstract
+                ptype_private = Public
+                ptype_manifest =
+                  Some
+                    core_type (utils/diffing_with_keys.mli[55,2442+15]..[55,2442+31])
+                      Ptyp_constr "with_pos" (utils/diffing_with_keys.mli[55,2442+23]..[55,2442+31])
+                      [
+                        core_type (utils/diffing_with_keys.mli[55,2442+15]..[55,2442+22])
+                          Ptyp_constr "D.right" (utils/diffing_with_keys.mli[55,2442+15]..[55,2442+22])
+                          []
+                      ]
+            ]
+          signature_item (utils/diffing_with_keys.mli[58,2514+2]..[58,2514+56])
+            Psig_type Rec
+            [
+              type_declaration "composite_change" (utils/diffing_with_keys.mli[58,2514+7]..[58,2514+23]) (utils/diffing_with_keys.mli[58,2514+2]..[58,2514+56])
+                attribute "ocaml.doc"
+                  [
+                    structure_item (utils/diffing_with_keys.mli[57,2475+2]..[57,2475+38])
+                      Pstr_eval
+                      expression (utils/diffing_with_keys.mli[57,2475+2]..[57,2475+38])
+                        Pexp_constant PConst_string(" Composite changes and patches ",(utils/diffing_with_keys.mli[57,2475+2]..[57,2475+38]),None)
+                  ]
+                ptype_params =
+                  []
+                ptype_cstrs =
+                  []
+                ptype_kind =
+                  Ptype_abstract
+                ptype_private = Public
+                ptype_manifest =
+                  Some
+                    core_type (utils/diffing_with_keys.mli[58,2514+26]..[58,2514+56])
+                      Ptyp_constr "change" (utils/diffing_with_keys.mli[58,2514+50]..[58,2514+56])
+                      [
+                        core_type (utils/diffing_with_keys.mli[58,2514+27]..[58,2514+33])
+                          Ptyp_constr "D.left" (utils/diffing_with_keys.mli[58,2514+27]..[58,2514+33])
+                          []
+                        core_type (utils/diffing_with_keys.mli[58,2514+34]..[58,2514+41])
+                          Ptyp_constr "D.right" (utils/diffing_with_keys.mli[58,2514+34]..[58,2514+41])
+                          []
+                        core_type (utils/diffing_with_keys.mli[58,2514+42]..[58,2514+48])
+                          Ptyp_constr "D.diff" (utils/diffing_with_keys.mli[58,2514+42]..[58,2514+48])
+                          []
+                      ]
+            ]
+          signature_item (utils/diffing_with_keys.mli[59,2571+2]..[59,2571+36])
+            Psig_type Rec
+            [
+              type_declaration "patch" (utils/diffing_with_keys.mli[59,2571+7]..[59,2571+12]) (utils/diffing_with_keys.mli[59,2571+2]..[59,2571+36])
+                ptype_params =
+                  []
+                ptype_cstrs =
+                  []
+                ptype_kind =
+                  Ptype_abstract
+                ptype_private = Public
+                ptype_manifest =
+                  Some
+                    core_type (utils/diffing_with_keys.mli[59,2571+15]..[59,2571+36])
+                      Ptyp_constr "list" (utils/diffing_with_keys.mli[59,2571+32]..[59,2571+36])
+                      [
+                        core_type (utils/diffing_with_keys.mli[59,2571+15]..[59,2571+31])
+                          Ptyp_constr "composite_change" (utils/diffing_with_keys.mli[59,2571+15]..[59,2571+31])
+                          []
+                      ]
+            ]
+          signature_item (utils/diffing_with_keys.mli[62,2633+2]..[62,2633+53])
+            Psig_type Rec
+            [
+              type_declaration "change" (utils/diffing_with_keys.mli[62,2633+7]..[62,2633+13]) (utils/diffing_with_keys.mli[62,2633+2]..[62,2633+53])
+                attribute "ocaml.doc"
+                  [
+                    structure_item (utils/diffing_with_keys.mli[61,2609+2]..[61,2609+23])
+                      Pstr_eval
+                      expression (utils/diffing_with_keys.mli[61,2609+2]..[61,2609+23])
+                        Pexp_constant PConst_string(" Atomic changes ",(utils/diffing_with_keys.mli[61,2609+2]..[61,2609+23]),None)
+                  ]
+                ptype_params =
+                  []
+                ptype_cstrs =
+                  []
+                ptype_kind =
+                  Ptype_abstract
+                ptype_private = Public
+                ptype_manifest =
+                  Some
+                    core_type (utils/diffing_with_keys.mli[62,2633+16]..[62,2633+53])
+                      Ptyp_constr "Diffing.change" (utils/diffing_with_keys.mli[62,2633+39]..[62,2633+53])
+                      [
+                        core_type (utils/diffing_with_keys.mli[62,2633+17]..[62,2633+21])
+                          Ptyp_constr "left" (utils/diffing_with_keys.mli[62,2633+17]..[62,2633+21])
+                          []
+                        core_type (utils/diffing_with_keys.mli[62,2633+22]..[62,2633+27])
+                          Ptyp_constr "right" (utils/diffing_with_keys.mli[62,2633+22]..[62,2633+27])
+                          []
+                        core_type (utils/diffing_with_keys.mli[62,2633+28]..[62,2633+32])
+                          Ptyp_constr "unit" (utils/diffing_with_keys.mli[62,2633+28]..[62,2633+32])
+                          []
+                        core_type (utils/diffing_with_keys.mli[62,2633+33]..[62,2633+37])
+                          Ptyp_constr "diff" (utils/diffing_with_keys.mli[62,2633+33]..[62,2633+37])
+                          []
+                      ]
+            ]
+          signature_item (utils/diffing_with_keys.mli[64,2688+2]..[71,2929+5])
+            Psig_modtype "Parameters" (utils/diffing_with_keys.mli[64,2688+14]..[64,2688+24])
+              module_type (utils/diffing_with_keys.mli[64,2688+27]..[71,2929+5])
+                Pmty_signature
+                [
+                  signature_item (utils/diffing_with_keys.mli[65,2719+4]..[65,2719+29])
+                    Psig_value
+                    value_description "weight" (utils/diffing_with_keys.mli[65,2719+8]..[65,2719+14]) (utils/diffing_with_keys.mli[65,2719+4]..[65,2719+29])
+                      core_type (utils/diffing_with_keys.mli[65,2719+16]..[65,2719+29])
+                        Ptyp_arrow
+                        Nolabel
+                        core_type (utils/diffing_with_keys.mli[65,2719+16]..[65,2719+22])
+                          Ptyp_constr "change" (utils/diffing_with_keys.mli[65,2719+16]..[65,2719+22])
+                          []
+                        core_type (utils/diffing_with_keys.mli[65,2719+26]..[65,2719+29])
+                          Ptyp_constr "int" (utils/diffing_with_keys.mli[65,2719+26]..[65,2719+29])
+                          []
+                      []
+                  signature_item (utils/diffing_with_keys.mli[66,2749+4]..[66,2749+61])
+                    Psig_value
+                    value_description "test" (utils/diffing_with_keys.mli[66,2749+8]..[66,2749+12]) (utils/diffing_with_keys.mli[66,2749+4]..[66,2749+61])
+                      core_type (utils/diffing_with_keys.mli[66,2749+14]..[66,2749+61])
+                        Ptyp_arrow
+                        Nolabel
+                        core_type (utils/diffing_with_keys.mli[66,2749+14]..[66,2749+21])
+                          Ptyp_constr "D.state" (utils/diffing_with_keys.mli[66,2749+14]..[66,2749+21])
+                          []
+                        core_type (utils/diffing_with_keys.mli[66,2749+25]..[66,2749+61])
+                          Ptyp_arrow
+                          Nolabel
+                          core_type (utils/diffing_with_keys.mli[66,2749+25]..[66,2749+29])
+                            Ptyp_constr "left" (utils/diffing_with_keys.mli[66,2749+25]..[66,2749+29])
+                            []
+                          core_type (utils/diffing_with_keys.mli[66,2749+33]..[66,2749+61])
+                            Ptyp_arrow
+                            Nolabel
+                            core_type (utils/diffing_with_keys.mli[66,2749+33]..[66,2749+38])
+                              Ptyp_constr "right" (utils/diffing_with_keys.mli[66,2749+33]..[66,2749+38])
+                              []
+                            core_type (utils/diffing_with_keys.mli[66,2749+42]..[66,2749+61])
+                              Ptyp_constr "result" (utils/diffing_with_keys.mli[66,2749+55]..[66,2749+61])
+                              [
+                                core_type (utils/diffing_with_keys.mli[66,2749+43]..[66,2749+47])
+                                  Ptyp_constr "unit" (utils/diffing_with_keys.mli[66,2749+43]..[66,2749+47])
+                                  []
+                                core_type (utils/diffing_with_keys.mli[66,2749+49]..[66,2749+53])
+                                  Ptyp_constr "diff" (utils/diffing_with_keys.mli[66,2749+49]..[66,2749+53])
+                                  []
+                              ]
+                      []
+                  signature_item (utils/diffing_with_keys.mli[67,2811+4]..[67,2811+44])
+                    Psig_value
+                    value_description "update" (utils/diffing_with_keys.mli[67,2811+8]..[67,2811+14]) (utils/diffing_with_keys.mli[67,2811+4]..[67,2811+44])
+                      core_type (utils/diffing_with_keys.mli[67,2811+16]..[67,2811+44])
+                        Ptyp_arrow
+                        Nolabel
+                        core_type (utils/diffing_with_keys.mli[67,2811+16]..[67,2811+22])
+                          Ptyp_constr "change" (utils/diffing_with_keys.mli[67,2811+16]..[67,2811+22])
+                          []
+                        core_type (utils/diffing_with_keys.mli[67,2811+26]..[67,2811+44])
+                          Ptyp_arrow
+                          Nolabel
+                          core_type (utils/diffing_with_keys.mli[67,2811+26]..[67,2811+33])
+                            Ptyp_constr "D.state" (utils/diffing_with_keys.mli[67,2811+26]..[67,2811+33])
+                            []
+                          core_type (utils/diffing_with_keys.mli[67,2811+37]..[67,2811+44])
+                            Ptyp_constr "D.state" (utils/diffing_with_keys.mli[67,2811+37]..[67,2811+44])
+                            []
+                      []
+                  signature_item (utils/diffing_with_keys.mli[69,2857+4]..[69,2857+34])
+                    Psig_value
+                    value_description "key_left" (utils/diffing_with_keys.mli[69,2857+8]..[69,2857+16]) (utils/diffing_with_keys.mli[69,2857+4]..[69,2857+34])
+                      core_type (utils/diffing_with_keys.mli[69,2857+18]..[69,2857+34])
+                        Ptyp_arrow
+                        Nolabel
+                        core_type (utils/diffing_with_keys.mli[69,2857+18]..[69,2857+24])
+                          Ptyp_constr "D.left" (utils/diffing_with_keys.mli[69,2857+18]..[69,2857+24])
+                          []
+                        core_type (utils/diffing_with_keys.mli[69,2857+28]..[69,2857+34])
+                          Ptyp_constr "string" (utils/diffing_with_keys.mli[69,2857+28]..[69,2857+34])
+                          []
+                      []
+                  signature_item (utils/diffing_with_keys.mli[70,2892+4]..[70,2892+36])
+                    Psig_value
+                    value_description "key_right" (utils/diffing_with_keys.mli[70,2892+8]..[70,2892+17]) (utils/diffing_with_keys.mli[70,2892+4]..[70,2892+36])
+                      core_type (utils/diffing_with_keys.mli[70,2892+19]..[70,2892+36])
+                        Ptyp_arrow
+                        Nolabel
+                        core_type (utils/diffing_with_keys.mli[70,2892+19]..[70,2892+26])
+                          Ptyp_constr "D.right" (utils/diffing_with_keys.mli[70,2892+19]..[70,2892+26])
+                          []
+                        core_type (utils/diffing_with_keys.mli[70,2892+30]..[70,2892+36])
+                          Ptyp_constr "string" (utils/diffing_with_keys.mli[70,2892+30]..[70,2892+36])
+                          []
+                      []
+                ]
+          signature_item (utils/diffing_with_keys.mli[73,2936+2]..[75,3035+7])
+            Psig_module "Simple" (utils/diffing_with_keys.mli[73,2936+9]..[73,2936+15])
+            module_type (utils/diffing_with_keys.mli[73,2936+17]..[75,3035+7])
+              Pmty_functor "_" (_none_[0,0+-1]..[0,0+-1]) ghost
+              module_type (utils/diffing_with_keys.mli[73,2936+17]..[73,2936+27])
+                Pmty_ident "Parameters" (utils/diffing_with_keys.mli[73,2936+17]..[73,2936+27])
+              module_type (utils/diffing_with_keys.mli[73,2936+31]..[75,3035+7])
+                Pmty_signature
+                [
+                  signature_item (utils/diffing_with_keys.mli[74,2971+6]..[74,2971+63])
+                    Psig_value
+                    value_description "diff" (utils/diffing_with_keys.mli[74,2971+10]..[74,2971+14]) (utils/diffing_with_keys.mli[74,2971+6]..[74,2971+63])
+                      core_type (utils/diffing_with_keys.mli[74,2971+16]..[74,2971+63])
+                        Ptyp_arrow
+                        Nolabel
+                        core_type (utils/diffing_with_keys.mli[74,2971+16]..[74,2971+23])
+                          Ptyp_constr "D.state" (utils/diffing_with_keys.mli[74,2971+16]..[74,2971+23])
+                          []
+                        core_type (utils/diffing_with_keys.mli[74,2971+27]..[74,2971+63])
+                          Ptyp_arrow
+                          Nolabel
+                          core_type (utils/diffing_with_keys.mli[74,2971+27]..[74,2971+38])
+                            Ptyp_constr "list" (utils/diffing_with_keys.mli[74,2971+34]..[74,2971+38])
+                            [
+                              core_type (utils/diffing_with_keys.mli[74,2971+27]..[74,2971+33])
+                                Ptyp_constr "D.left" (utils/diffing_with_keys.mli[74,2971+27]..[74,2971+33])
+                                []
+                            ]
+                          core_type (utils/diffing_with_keys.mli[74,2971+42]..[74,2971+63])
+                            Ptyp_arrow
+                            Nolabel
+                            core_type (utils/diffing_with_keys.mli[74,2971+42]..[74,2971+54])
+                              Ptyp_constr "list" (utils/diffing_with_keys.mli[74,2971+50]..[74,2971+54])
+                              [
+                                core_type (utils/diffing_with_keys.mli[74,2971+42]..[74,2971+49])
+                                  Ptyp_constr "D.right" (utils/diffing_with_keys.mli[74,2971+42]..[74,2971+49])
+                                  []
+                              ]
+                            core_type (utils/diffing_with_keys.mli[74,2971+58]..[74,2971+63])
+                              Ptyp_constr "patch" (utils/diffing_with_keys.mli[74,2971+58]..[74,2971+63])
+                              []
+                      []
+                ]
+        ]
+]
+

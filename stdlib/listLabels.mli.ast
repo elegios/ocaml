@@ -1,0 +1,2505 @@
+[
+  signature_item (stdlib/listLabels.mli[24,1286+0]..[38,1935+3])
+    Psig_attribute "ocaml.text"
+    [
+      structure_item (stdlib/listLabels.mli[24,1286+0]..[38,1935+3])
+        Pstr_eval
+        expression (stdlib/listLabels.mli[24,1286+0]..[38,1935+3])
+          Pexp_constant PConst_string(" List operations.\n\n   Some functions are flagged as not tail-recursive.  A tail-recursive\n   function uses constant stack space, while a non-tail-recursive function\n   uses stack space proportional to the length of its list argument, which\n   can be a problem with very long lists.  When the function takes several\n   list arguments, an approximate formula giving stack usage (in some\n   unspecified constant unit) is shown in parentheses.\n\n   The above considerations can usually be ignored if your lists are not\n   longer than about 10000 elements.\n\n   The labeled version of this module can be used as described in the\n   {!StdLabels} module.\n ",(stdlib/listLabels.mli[24,1286+0]..[38,1935+3]),None)
+    ]
+  signature_item (stdlib/listLabels.mli[40,1940+0]..[40,1940+47])
+    Psig_type Rec
+    [
+      type_declaration "t" (stdlib/listLabels.mli[40,1940+8]..[40,1940+9]) (stdlib/listLabels.mli[40,1940+0]..[40,1940+47])
+        attribute "ocaml.doc"
+          [
+            structure_item (stdlib/listLabels.mli[41,1993+0]..[41,1993+38])
+              Pstr_eval
+              expression (stdlib/listLabels.mli[41,1993+0]..[41,1993+38])
+                Pexp_constant PConst_string(" An alias for the type of lists. ",(stdlib/listLabels.mli[41,1993+0]..[41,1993+38]),None)
+          ]
+        ptype_params =
+          [
+            core_type (stdlib/listLabels.mli[40,1940+5]..[40,1940+7])
+              Ptyp_var a
+          ]
+        ptype_cstrs =
+          []
+        ptype_kind =
+          Ptype_variant
+            [
+              (stdlib/listLabels.mli[40,1940+22]..[40,1940+24])
+                "[]" (stdlib/listLabels.mli[40,1940+22]..[40,1940+24])
+                []
+                None
+              (stdlib/listLabels.mli[40,1940+25]..[40,1940+47])
+                "::" (stdlib/listLabels.mli[40,1940+27]..[40,1940+31])
+                [
+                  core_type (stdlib/listLabels.mli[40,1940+35]..[40,1940+37])
+                    Ptyp_var a
+                  core_type (stdlib/listLabels.mli[40,1940+40]..[40,1940+47])
+                    Ptyp_constr "list" (stdlib/listLabels.mli[40,1940+43]..[40,1940+47])
+                    [
+                      core_type (stdlib/listLabels.mli[40,1940+40]..[40,1940+42])
+                        Ptyp_var a
+                    ]
+                ]
+                None
+            ]
+        ptype_private = Public
+        ptype_manifest =
+          Some
+            core_type (stdlib/listLabels.mli[40,1940+12]..[40,1940+19])
+              Ptyp_constr "list" (stdlib/listLabels.mli[40,1940+15]..[40,1940+19])
+              [
+                core_type (stdlib/listLabels.mli[40,1940+12]..[40,1940+14])
+                  Ptyp_var a
+              ]
+    ]
+  signature_item (stdlib/listLabels.mli[43,2033+0]..[43,2033+27])
+    Psig_value
+    value_description "length" (stdlib/listLabels.mli[43,2033+4]..[43,2033+10]) (stdlib/listLabels.mli[43,2033+0]..[43,2033+27])
+      attribute "ocaml.doc"
+        [
+          structure_item (stdlib/listLabels.mli[44,2061+0]..[44,2061+64])
+            Pstr_eval
+            expression (stdlib/listLabels.mli[44,2061+0]..[44,2061+64])
+              Pexp_constant PConst_string(" Return the length (number of elements) of the given list. ",(stdlib/listLabels.mli[44,2061+0]..[44,2061+64]),None)
+        ]
+      core_type (stdlib/listLabels.mli[43,2033+13]..[43,2033+27])
+        Ptyp_arrow
+        Nolabel
+        core_type (stdlib/listLabels.mli[43,2033+13]..[43,2033+20])
+          Ptyp_constr "list" (stdlib/listLabels.mli[43,2033+16]..[43,2033+20])
+          [
+            core_type (stdlib/listLabels.mli[43,2033+13]..[43,2033+15])
+              Ptyp_var a
+          ]
+        core_type (stdlib/listLabels.mli[43,2033+24]..[43,2033+27])
+          Ptyp_constr "int" (stdlib/listLabels.mli[43,2033+24]..[43,2033+27])
+          []
+      []
+  signature_item (stdlib/listLabels.mli[46,2127+0]..[46,2127+47])
+    Psig_value
+    value_description "compare_lengths" (stdlib/listLabels.mli[46,2127+4]..[46,2127+19]) (stdlib/listLabels.mli[46,2127+0]..[46,2127+47])
+      attribute "ocaml.doc"
+        [
+          structure_item (stdlib/listLabels.mli[47,2175+0]..[51,2391+3])
+            Pstr_eval
+            expression (stdlib/listLabels.mli[47,2175+0]..[51,2391+3])
+              Pexp_constant PConst_string(" Compare the lengths of two lists. [compare_lengths l1 l2] is\n   equivalent to [compare (length l1) (length l2)], except that\n   the computation stops after reaching the end of the shortest list.\n   @since 4.05.0\n ",(stdlib/listLabels.mli[47,2175+0]..[51,2391+3]),None)
+        ]
+      core_type (stdlib/listLabels.mli[46,2127+22]..[46,2127+47])
+        Ptyp_arrow
+        Nolabel
+        core_type (stdlib/listLabels.mli[46,2127+22]..[46,2127+29])
+          Ptyp_constr "list" (stdlib/listLabels.mli[46,2127+25]..[46,2127+29])
+          [
+            core_type (stdlib/listLabels.mli[46,2127+22]..[46,2127+24])
+              Ptyp_var a
+          ]
+        core_type (stdlib/listLabels.mli[46,2127+33]..[46,2127+47])
+          Ptyp_arrow
+          Nolabel
+          core_type (stdlib/listLabels.mli[46,2127+33]..[46,2127+40])
+            Ptyp_constr "list" (stdlib/listLabels.mli[46,2127+36]..[46,2127+40])
+            [
+              core_type (stdlib/listLabels.mli[46,2127+33]..[46,2127+35])
+                Ptyp_var b
+            ]
+          core_type (stdlib/listLabels.mli[46,2127+44]..[46,2127+47])
+            Ptyp_constr "int" (stdlib/listLabels.mli[46,2127+44]..[46,2127+47])
+            []
+      []
+  signature_item (stdlib/listLabels.mli[53,2396+0]..[53,2396+51])
+    Psig_value
+    value_description "compare_length_with" (stdlib/listLabels.mli[53,2396+4]..[53,2396+23]) (stdlib/listLabels.mli[53,2396+0]..[53,2396+51])
+      attribute "ocaml.doc"
+        [
+          structure_item (stdlib/listLabels.mli[54,2448+0]..[58,2668+3])
+            Pstr_eval
+            expression (stdlib/listLabels.mli[54,2448+0]..[58,2668+3])
+              Pexp_constant PConst_string(" Compare the length of a list to an integer. [compare_length_with l len] is\n   equivalent to [compare (length l) len], except that the computation stops\n   after at most [len] iterations on the list.\n   @since 4.05.0\n ",(stdlib/listLabels.mli[54,2448+0]..[58,2668+3]),None)
+        ]
+      core_type (stdlib/listLabels.mli[53,2396+26]..[53,2396+51])
+        Ptyp_arrow
+        Nolabel
+        core_type (stdlib/listLabels.mli[53,2396+26]..[53,2396+33])
+          Ptyp_constr "list" (stdlib/listLabels.mli[53,2396+29]..[53,2396+33])
+          [
+            core_type (stdlib/listLabels.mli[53,2396+26]..[53,2396+28])
+              Ptyp_var a
+          ]
+        core_type (stdlib/listLabels.mli[53,2396+37]..[53,2396+51])
+          Ptyp_arrow
+          Labelled "len"
+          core_type (stdlib/listLabels.mli[53,2396+41]..[53,2396+44])
+            Ptyp_constr "int" (stdlib/listLabels.mli[53,2396+41]..[53,2396+44])
+            []
+          core_type (stdlib/listLabels.mli[53,2396+48]..[53,2396+51])
+            Ptyp_constr "int" (stdlib/listLabels.mli[53,2396+48]..[53,2396+51])
+            []
+      []
+  signature_item (stdlib/listLabels.mli[60,2673+0]..[60,2673+35])
+    Psig_value
+    value_description "cons" (stdlib/listLabels.mli[60,2673+4]..[60,2673+8]) (stdlib/listLabels.mli[60,2673+0]..[60,2673+35])
+      attribute "ocaml.doc"
+        [
+          structure_item (stdlib/listLabels.mli[61,2709+0]..[63,2779+3])
+            Pstr_eval
+            expression (stdlib/listLabels.mli[61,2709+0]..[63,2779+3])
+              Pexp_constant PConst_string(" [cons x xs] is [x :: xs]\n    @since 4.03.0 (4.05.0 in ListLabels)\n ",(stdlib/listLabels.mli[61,2709+0]..[63,2779+3]),None)
+        ]
+      core_type (stdlib/listLabels.mli[60,2673+11]..[60,2673+35])
+        Ptyp_arrow
+        Nolabel
+        core_type (stdlib/listLabels.mli[60,2673+11]..[60,2673+13])
+          Ptyp_var a
+        core_type (stdlib/listLabels.mli[60,2673+17]..[60,2673+35])
+          Ptyp_arrow
+          Nolabel
+          core_type (stdlib/listLabels.mli[60,2673+17]..[60,2673+24])
+            Ptyp_constr "list" (stdlib/listLabels.mli[60,2673+20]..[60,2673+24])
+            [
+              core_type (stdlib/listLabels.mli[60,2673+17]..[60,2673+19])
+                Ptyp_var a
+            ]
+          core_type (stdlib/listLabels.mli[60,2673+28]..[60,2673+35])
+            Ptyp_constr "list" (stdlib/listLabels.mli[60,2673+31]..[60,2673+35])
+            [
+              core_type (stdlib/listLabels.mli[60,2673+28]..[60,2673+30])
+                Ptyp_var a
+            ]
+      []
+  signature_item (stdlib/listLabels.mli[65,2784+0]..[65,2784+22])
+    Psig_value
+    value_description "hd" (stdlib/listLabels.mli[65,2784+4]..[65,2784+6]) (stdlib/listLabels.mli[65,2784+0]..[65,2784+22])
+      attribute "ocaml.doc"
+        [
+          structure_item (stdlib/listLabels.mli[66,2807+0]..[68,2895+3])
+            Pstr_eval
+            expression (stdlib/listLabels.mli[66,2807+0]..[68,2895+3])
+              Pexp_constant PConst_string(" Return the first element of the given list.\n   @raise Failure if the list is empty.\n ",(stdlib/listLabels.mli[66,2807+0]..[68,2895+3]),None)
+        ]
+      core_type (stdlib/listLabels.mli[65,2784+9]..[65,2784+22])
+        Ptyp_arrow
+        Nolabel
+        core_type (stdlib/listLabels.mli[65,2784+9]..[65,2784+16])
+          Ptyp_constr "list" (stdlib/listLabels.mli[65,2784+12]..[65,2784+16])
+          [
+            core_type (stdlib/listLabels.mli[65,2784+9]..[65,2784+11])
+              Ptyp_var a
+          ]
+        core_type (stdlib/listLabels.mli[65,2784+20]..[65,2784+22])
+          Ptyp_var a
+      []
+  signature_item (stdlib/listLabels.mli[70,2900+0]..[70,2900+27])
+    Psig_value
+    value_description "tl" (stdlib/listLabels.mli[70,2900+4]..[70,2900+6]) (stdlib/listLabels.mli[70,2900+0]..[70,2900+27])
+      attribute "ocaml.doc"
+        [
+          structure_item (stdlib/listLabels.mli[71,2928+0]..[73,3021+3])
+            Pstr_eval
+            expression (stdlib/listLabels.mli[71,2928+0]..[73,3021+3])
+              Pexp_constant PConst_string(" Return the given list without its first element.\n   @raise Failure if the list is empty.\n ",(stdlib/listLabels.mli[71,2928+0]..[73,3021+3]),None)
+        ]
+      core_type (stdlib/listLabels.mli[70,2900+9]..[70,2900+27])
+        Ptyp_arrow
+        Nolabel
+        core_type (stdlib/listLabels.mli[70,2900+9]..[70,2900+16])
+          Ptyp_constr "list" (stdlib/listLabels.mli[70,2900+12]..[70,2900+16])
+          [
+            core_type (stdlib/listLabels.mli[70,2900+9]..[70,2900+11])
+              Ptyp_var a
+          ]
+        core_type (stdlib/listLabels.mli[70,2900+20]..[70,2900+27])
+          Ptyp_constr "list" (stdlib/listLabels.mli[70,2900+23]..[70,2900+27])
+          [
+            core_type (stdlib/listLabels.mli[70,2900+20]..[70,2900+22])
+              Ptyp_var a
+          ]
+      []
+  signature_item (stdlib/listLabels.mli[75,3026+0]..[75,3026+30])
+    Psig_value
+    value_description "nth" (stdlib/listLabels.mli[75,3026+4]..[75,3026+7]) (stdlib/listLabels.mli[75,3026+0]..[75,3026+30])
+      attribute "ocaml.doc"
+        [
+          structure_item (stdlib/listLabels.mli[76,3057+0]..[80,3255+3])
+            Pstr_eval
+            expression (stdlib/listLabels.mli[76,3057+0]..[80,3255+3])
+              Pexp_constant PConst_string(" Return the [n]-th element of the given list.\n   The first element (head of the list) is at position 0.\n   @raise Failure if the list is too short.\n   @raise Invalid_argument if [n] is negative.\n ",(stdlib/listLabels.mli[76,3057+0]..[80,3255+3]),None)
+        ]
+      core_type (stdlib/listLabels.mli[75,3026+10]..[75,3026+30])
+        Ptyp_arrow
+        Nolabel
+        core_type (stdlib/listLabels.mli[75,3026+10]..[75,3026+17])
+          Ptyp_constr "list" (stdlib/listLabels.mli[75,3026+13]..[75,3026+17])
+          [
+            core_type (stdlib/listLabels.mli[75,3026+10]..[75,3026+12])
+              Ptyp_var a
+          ]
+        core_type (stdlib/listLabels.mli[75,3026+21]..[75,3026+30])
+          Ptyp_arrow
+          Nolabel
+          core_type (stdlib/listLabels.mli[75,3026+21]..[75,3026+24])
+            Ptyp_constr "int" (stdlib/listLabels.mli[75,3026+21]..[75,3026+24])
+            []
+          core_type (stdlib/listLabels.mli[75,3026+28]..[75,3026+30])
+            Ptyp_var a
+      []
+  signature_item (stdlib/listLabels.mli[82,3260+0]..[82,3260+41])
+    Psig_value
+    value_description "nth_opt" (stdlib/listLabels.mli[82,3260+4]..[82,3260+11]) (stdlib/listLabels.mli[82,3260+0]..[82,3260+41])
+      attribute "ocaml.doc"
+        [
+          structure_item (stdlib/listLabels.mli[83,3302+0]..[88,3518+3])
+            Pstr_eval
+            expression (stdlib/listLabels.mli[83,3302+0]..[88,3518+3])
+              Pexp_constant PConst_string(" Return the [n]-th element of the given list.\n    The first element (head of the list) is at position 0.\n    Return [None] if the list is too short.\n    @raise Invalid_argument if [n] is negative.\n    @since 4.05\n ",(stdlib/listLabels.mli[83,3302+0]..[88,3518+3]),None)
+        ]
+      core_type (stdlib/listLabels.mli[82,3260+14]..[82,3260+41])
+        Ptyp_arrow
+        Nolabel
+        core_type (stdlib/listLabels.mli[82,3260+14]..[82,3260+21])
+          Ptyp_constr "list" (stdlib/listLabels.mli[82,3260+17]..[82,3260+21])
+          [
+            core_type (stdlib/listLabels.mli[82,3260+14]..[82,3260+16])
+              Ptyp_var a
+          ]
+        core_type (stdlib/listLabels.mli[82,3260+25]..[82,3260+41])
+          Ptyp_arrow
+          Nolabel
+          core_type (stdlib/listLabels.mli[82,3260+25]..[82,3260+28])
+            Ptyp_constr "int" (stdlib/listLabels.mli[82,3260+25]..[82,3260+28])
+            []
+          core_type (stdlib/listLabels.mli[82,3260+32]..[82,3260+41])
+            Ptyp_constr "option" (stdlib/listLabels.mli[82,3260+35]..[82,3260+41])
+            [
+              core_type (stdlib/listLabels.mli[82,3260+32]..[82,3260+34])
+                Ptyp_var a
+            ]
+      []
+  signature_item (stdlib/listLabels.mli[90,3523+0]..[90,3523+28])
+    Psig_value
+    value_description "rev" (stdlib/listLabels.mli[90,3523+4]..[90,3523+7]) (stdlib/listLabels.mli[90,3523+0]..[90,3523+28])
+      attribute "ocaml.doc"
+        [
+          structure_item (stdlib/listLabels.mli[91,3552+0]..[91,3552+21])
+            Pstr_eval
+            expression (stdlib/listLabels.mli[91,3552+0]..[91,3552+21])
+              Pexp_constant PConst_string(" List reversal. ",(stdlib/listLabels.mli[91,3552+0]..[91,3552+21]),None)
+        ]
+      core_type (stdlib/listLabels.mli[90,3523+10]..[90,3523+28])
+        Ptyp_arrow
+        Nolabel
+        core_type (stdlib/listLabels.mli[90,3523+10]..[90,3523+17])
+          Ptyp_constr "list" (stdlib/listLabels.mli[90,3523+13]..[90,3523+17])
+          [
+            core_type (stdlib/listLabels.mli[90,3523+10]..[90,3523+12])
+              Ptyp_var a
+          ]
+        core_type (stdlib/listLabels.mli[90,3523+21]..[90,3523+28])
+          Ptyp_constr "list" (stdlib/listLabels.mli[90,3523+24]..[90,3523+28])
+          [
+            core_type (stdlib/listLabels.mli[90,3523+21]..[90,3523+23])
+              Ptyp_var a
+          ]
+      []
+  signature_item (stdlib/listLabels.mli[93,3575+0]..[93,3575+46])
+    Psig_value
+    value_description "init" (stdlib/listLabels.mli[93,3575+4]..[93,3575+8]) (stdlib/listLabels.mli[93,3575+0]..[93,3575+46])
+      attribute "ocaml.doc"
+        [
+          structure_item (stdlib/listLabels.mli[94,3622+0]..[97,3757+3])
+            Pstr_eval
+            expression (stdlib/listLabels.mli[94,3622+0]..[97,3757+3])
+              Pexp_constant PConst_string(" [init ~len ~f] is [f 0; f 1; ...; f (len-1)], evaluated left to right.\n    @raise Invalid_argument if [len < 0].\n    @since 4.06.0\n ",(stdlib/listLabels.mli[94,3622+0]..[97,3757+3]),None)
+        ]
+      core_type (stdlib/listLabels.mli[93,3575+11]..[93,3575+46])
+        Ptyp_arrow
+        Labelled "len"
+        core_type (stdlib/listLabels.mli[93,3575+15]..[93,3575+18])
+          Ptyp_constr "int" (stdlib/listLabels.mli[93,3575+15]..[93,3575+18])
+          []
+        core_type (stdlib/listLabels.mli[93,3575+22]..[93,3575+46])
+          Ptyp_arrow
+          Labelled "f"
+          core_type (stdlib/listLabels.mli[93,3575+25]..[93,3575+34])
+            Ptyp_arrow
+            Nolabel
+            core_type (stdlib/listLabels.mli[93,3575+25]..[93,3575+28])
+              Ptyp_constr "int" (stdlib/listLabels.mli[93,3575+25]..[93,3575+28])
+              []
+            core_type (stdlib/listLabels.mli[93,3575+32]..[93,3575+34])
+              Ptyp_var a
+          core_type (stdlib/listLabels.mli[93,3575+39]..[93,3575+46])
+            Ptyp_constr "list" (stdlib/listLabels.mli[93,3575+42]..[93,3575+46])
+            [
+              core_type (stdlib/listLabels.mli[93,3575+39]..[93,3575+41])
+                Ptyp_var a
+            ]
+      []
+  signature_item (stdlib/listLabels.mli[99,3762+0]..[99,3762+42])
+    Psig_value
+    value_description "append" (stdlib/listLabels.mli[99,3762+4]..[99,3762+10]) (stdlib/listLabels.mli[99,3762+0]..[99,3762+42])
+      attribute "ocaml.doc"
+        [
+          structure_item (stdlib/listLabels.mli[100,3805+0]..[103,3977+3])
+            Pstr_eval
+            expression (stdlib/listLabels.mli[100,3805+0]..[103,3977+3])
+              Pexp_constant PConst_string(" Concatenate two lists. Same function as the infix operator [@].\n   Not tail-recursive (length of the first argument). The [@]\n   operator is not tail-recursive either.\n ",(stdlib/listLabels.mli[100,3805+0]..[103,3977+3]),None)
+        ]
+      core_type (stdlib/listLabels.mli[99,3762+13]..[99,3762+42])
+        Ptyp_arrow
+        Nolabel
+        core_type (stdlib/listLabels.mli[99,3762+13]..[99,3762+20])
+          Ptyp_constr "list" (stdlib/listLabels.mli[99,3762+16]..[99,3762+20])
+          [
+            core_type (stdlib/listLabels.mli[99,3762+13]..[99,3762+15])
+              Ptyp_var a
+          ]
+        core_type (stdlib/listLabels.mli[99,3762+24]..[99,3762+42])
+          Ptyp_arrow
+          Nolabel
+          core_type (stdlib/listLabels.mli[99,3762+24]..[99,3762+31])
+            Ptyp_constr "list" (stdlib/listLabels.mli[99,3762+27]..[99,3762+31])
+            [
+              core_type (stdlib/listLabels.mli[99,3762+24]..[99,3762+26])
+                Ptyp_var a
+            ]
+          core_type (stdlib/listLabels.mli[99,3762+35]..[99,3762+42])
+            Ptyp_constr "list" (stdlib/listLabels.mli[99,3762+38]..[99,3762+42])
+            [
+              core_type (stdlib/listLabels.mli[99,3762+35]..[99,3762+37])
+                Ptyp_var a
+            ]
+      []
+  signature_item (stdlib/listLabels.mli[105,3982+0]..[105,3982+46])
+    Psig_value
+    value_description "rev_append" (stdlib/listLabels.mli[105,3982+4]..[105,3982+14]) (stdlib/listLabels.mli[105,3982+0]..[105,3982+46])
+      attribute "ocaml.doc"
+        [
+          structure_item (stdlib/listLabels.mli[106,4029+0]..[109,4202+3])
+            Pstr_eval
+            expression (stdlib/listLabels.mli[106,4029+0]..[109,4202+3])
+              Pexp_constant PConst_string(" [rev_append l1 l2] reverses [l1] and concatenates it with [l2].\n   This is equivalent to [(]{!rev}[ l1) @ l2], but [rev_append] is\n   tail-recursive and more efficient.\n ",(stdlib/listLabels.mli[106,4029+0]..[109,4202+3]),None)
+        ]
+      core_type (stdlib/listLabels.mli[105,3982+17]..[105,3982+46])
+        Ptyp_arrow
+        Nolabel
+        core_type (stdlib/listLabels.mli[105,3982+17]..[105,3982+24])
+          Ptyp_constr "list" (stdlib/listLabels.mli[105,3982+20]..[105,3982+24])
+          [
+            core_type (stdlib/listLabels.mli[105,3982+17]..[105,3982+19])
+              Ptyp_var a
+          ]
+        core_type (stdlib/listLabels.mli[105,3982+28]..[105,3982+46])
+          Ptyp_arrow
+          Nolabel
+          core_type (stdlib/listLabels.mli[105,3982+28]..[105,3982+35])
+            Ptyp_constr "list" (stdlib/listLabels.mli[105,3982+31]..[105,3982+35])
+            [
+              core_type (stdlib/listLabels.mli[105,3982+28]..[105,3982+30])
+                Ptyp_var a
+            ]
+          core_type (stdlib/listLabels.mli[105,3982+39]..[105,3982+46])
+            Ptyp_constr "list" (stdlib/listLabels.mli[105,3982+42]..[105,3982+46])
+            [
+              core_type (stdlib/listLabels.mli[105,3982+39]..[105,3982+41])
+                Ptyp_var a
+            ]
+      []
+  signature_item (stdlib/listLabels.mli[111,4207+0]..[111,4207+36])
+    Psig_value
+    value_description "concat" (stdlib/listLabels.mli[111,4207+4]..[111,4207+10]) (stdlib/listLabels.mli[111,4207+0]..[111,4207+36])
+      attribute "ocaml.doc"
+        [
+          structure_item (stdlib/listLabels.mli[112,4244+0]..[116,4463+3])
+            Pstr_eval
+            expression (stdlib/listLabels.mli[112,4244+0]..[116,4463+3])
+              Pexp_constant PConst_string(" Concatenate a list of lists. The elements of the argument are all\n   concatenated together (in the same order) to give the result.\n   Not tail-recursive\n   (length of the argument + length of the longest sub-list).\n ",(stdlib/listLabels.mli[112,4244+0]..[116,4463+3]),None)
+        ]
+      core_type (stdlib/listLabels.mli[111,4207+13]..[111,4207+36])
+        Ptyp_arrow
+        Nolabel
+        core_type (stdlib/listLabels.mli[111,4207+13]..[111,4207+25])
+          Ptyp_constr "list" (stdlib/listLabels.mli[111,4207+21]..[111,4207+25])
+          [
+            core_type (stdlib/listLabels.mli[111,4207+13]..[111,4207+20])
+              Ptyp_constr "list" (stdlib/listLabels.mli[111,4207+16]..[111,4207+20])
+              [
+                core_type (stdlib/listLabels.mli[111,4207+13]..[111,4207+15])
+                  Ptyp_var a
+              ]
+          ]
+        core_type (stdlib/listLabels.mli[111,4207+29]..[111,4207+36])
+          Ptyp_constr "list" (stdlib/listLabels.mli[111,4207+32]..[111,4207+36])
+          [
+            core_type (stdlib/listLabels.mli[111,4207+29]..[111,4207+31])
+              Ptyp_var a
+          ]
+      []
+  signature_item (stdlib/listLabels.mli[118,4468+0]..[118,4468+37])
+    Psig_value
+    value_description "flatten" (stdlib/listLabels.mli[118,4468+4]..[118,4468+11]) (stdlib/listLabels.mli[118,4468+0]..[118,4468+37])
+      attribute "ocaml.doc"
+        [
+          structure_item (stdlib/listLabels.mli[119,4506+0]..[121,4610+3])
+            Pstr_eval
+            expression (stdlib/listLabels.mli[119,4506+0]..[121,4610+3])
+              Pexp_constant PConst_string(" Same as {!concat}. Not tail-recursive\n   (length of the argument + length of the longest sub-list).\n ",(stdlib/listLabels.mli[119,4506+0]..[121,4610+3]),None)
+        ]
+      core_type (stdlib/listLabels.mli[118,4468+14]..[118,4468+37])
+        Ptyp_arrow
+        Nolabel
+        core_type (stdlib/listLabels.mli[118,4468+14]..[118,4468+26])
+          Ptyp_constr "list" (stdlib/listLabels.mli[118,4468+22]..[118,4468+26])
+          [
+            core_type (stdlib/listLabels.mli[118,4468+14]..[118,4468+21])
+              Ptyp_constr "list" (stdlib/listLabels.mli[118,4468+17]..[118,4468+21])
+              [
+                core_type (stdlib/listLabels.mli[118,4468+14]..[118,4468+16])
+                  Ptyp_var a
+              ]
+          ]
+        core_type (stdlib/listLabels.mli[118,4468+30]..[118,4468+37])
+          Ptyp_constr "list" (stdlib/listLabels.mli[118,4468+33]..[118,4468+37])
+          [
+            core_type (stdlib/listLabels.mli[118,4468+30]..[118,4468+32])
+              Ptyp_var a
+          ]
+      []
+  signature_item (stdlib/listLabels.mli[124,4616+0]..[124,4616+21])
+    Psig_attribute "ocaml.text"
+    [
+      structure_item (stdlib/listLabels.mli[124,4616+0]..[124,4616+21])
+        Pstr_eval
+        expression (stdlib/listLabels.mli[124,4616+0]..[124,4616+21])
+          Pexp_constant PConst_string(" {1 Comparison} ",(stdlib/listLabels.mli[124,4616+0]..[124,4616+21]),None)
+    ]
+  signature_item (stdlib/listLabels.mli[126,4639+0]..[126,4639+63])
+    Psig_value
+    value_description "equal" (stdlib/listLabels.mli[126,4639+4]..[126,4639+9]) (stdlib/listLabels.mli[126,4639+0]..[126,4639+63])
+      attribute "ocaml.doc"
+        [
+          structure_item (stdlib/listLabels.mli[127,4703+0]..[138,5101+2])
+            Pstr_eval
+            expression (stdlib/listLabels.mli[127,4703+0]..[138,5101+2])
+              Pexp_constant PConst_string(" [equal eq [a1; ...; an] [b1; ..; bm]] holds when\n    the two input lists have the same length, and for each\n    pair of elements [ai], [bi] at the same position we have\n    [eq ai bi].\n\n    Note: the [eq] function may be called even if the\n    lists have different length. If you know your equality\n    function is costly, you may want to check {!compare_lengths}\n    first.\n\n    @since 4.12.0\n",(stdlib/listLabels.mli[127,4703+0]..[138,5101+2]),None)
+        ]
+      core_type (stdlib/listLabels.mli[126,4639+12]..[126,4639+63])
+        Ptyp_arrow
+        Labelled "eq"
+        core_type (stdlib/listLabels.mli[126,4639+16]..[126,4639+32])
+          Ptyp_arrow
+          Nolabel
+          core_type (stdlib/listLabels.mli[126,4639+16]..[126,4639+18])
+            Ptyp_var a
+          core_type (stdlib/listLabels.mli[126,4639+22]..[126,4639+32])
+            Ptyp_arrow
+            Nolabel
+            core_type (stdlib/listLabels.mli[126,4639+22]..[126,4639+24])
+              Ptyp_var a
+            core_type (stdlib/listLabels.mli[126,4639+28]..[126,4639+32])
+              Ptyp_constr "bool" (stdlib/listLabels.mli[126,4639+28]..[126,4639+32])
+              []
+        core_type (stdlib/listLabels.mli[126,4639+37]..[126,4639+63])
+          Ptyp_arrow
+          Nolabel
+          core_type (stdlib/listLabels.mli[126,4639+37]..[126,4639+44])
+            Ptyp_constr "list" (stdlib/listLabels.mli[126,4639+40]..[126,4639+44])
+            [
+              core_type (stdlib/listLabels.mli[126,4639+37]..[126,4639+39])
+                Ptyp_var a
+            ]
+          core_type (stdlib/listLabels.mli[126,4639+48]..[126,4639+63])
+            Ptyp_arrow
+            Nolabel
+            core_type (stdlib/listLabels.mli[126,4639+48]..[126,4639+55])
+              Ptyp_constr "list" (stdlib/listLabels.mli[126,4639+51]..[126,4639+55])
+              [
+                core_type (stdlib/listLabels.mli[126,4639+48]..[126,4639+50])
+                  Ptyp_var a
+              ]
+            core_type (stdlib/listLabels.mli[126,4639+59]..[126,4639+63])
+              Ptyp_constr "bool" (stdlib/listLabels.mli[126,4639+59]..[126,4639+63])
+              []
+      []
+  signature_item (stdlib/listLabels.mli[140,5105+0]..[140,5105+64])
+    Psig_value
+    value_description "compare" (stdlib/listLabels.mli[140,5105+4]..[140,5105+11]) (stdlib/listLabels.mli[140,5105+0]..[140,5105+64])
+      attribute "ocaml.doc"
+        [
+          structure_item (stdlib/listLabels.mli[141,5170+0]..[154,5693+2])
+            Pstr_eval
+            expression (stdlib/listLabels.mli[141,5170+0]..[154,5693+2])
+              Pexp_constant PConst_string(" [compare cmp [a1; ...; an] [b1; ...; bm]] performs\n    a lexicographic comparison of the two input lists,\n    using the same ['a -> 'a -> int] interface as {!Stdlib.compare}:\n\n    - [a1 :: l1] is smaller than [a2 :: l2] (negative result)\n      if [a1] is smaller than [a2], or if they are equal (0 result)\n      and [l1] is smaller than [l2]\n    - the empty list [[]] is strictly smaller than non-empty lists\n\n    Note: the [cmp] function will be called even if the lists have\n    different lengths.\n\n    @since 4.12.0\n",(stdlib/listLabels.mli[141,5170+0]..[154,5693+2]),None)
+        ]
+      core_type (stdlib/listLabels.mli[140,5105+14]..[140,5105+64])
+        Ptyp_arrow
+        Labelled "cmp"
+        core_type (stdlib/listLabels.mli[140,5105+19]..[140,5105+34])
+          Ptyp_arrow
+          Nolabel
+          core_type (stdlib/listLabels.mli[140,5105+19]..[140,5105+21])
+            Ptyp_var a
+          core_type (stdlib/listLabels.mli[140,5105+25]..[140,5105+34])
+            Ptyp_arrow
+            Nolabel
+            core_type (stdlib/listLabels.mli[140,5105+25]..[140,5105+27])
+              Ptyp_var a
+            core_type (stdlib/listLabels.mli[140,5105+31]..[140,5105+34])
+              Ptyp_constr "int" (stdlib/listLabels.mli[140,5105+31]..[140,5105+34])
+              []
+        core_type (stdlib/listLabels.mli[140,5105+39]..[140,5105+64])
+          Ptyp_arrow
+          Nolabel
+          core_type (stdlib/listLabels.mli[140,5105+39]..[140,5105+46])
+            Ptyp_constr "list" (stdlib/listLabels.mli[140,5105+42]..[140,5105+46])
+            [
+              core_type (stdlib/listLabels.mli[140,5105+39]..[140,5105+41])
+                Ptyp_var a
+            ]
+          core_type (stdlib/listLabels.mli[140,5105+50]..[140,5105+64])
+            Ptyp_arrow
+            Nolabel
+            core_type (stdlib/listLabels.mli[140,5105+50]..[140,5105+57])
+              Ptyp_constr "list" (stdlib/listLabels.mli[140,5105+53]..[140,5105+57])
+              [
+                core_type (stdlib/listLabels.mli[140,5105+50]..[140,5105+52])
+                  Ptyp_var a
+              ]
+            core_type (stdlib/listLabels.mli[140,5105+61]..[140,5105+64])
+              Ptyp_constr "int" (stdlib/listLabels.mli[140,5105+61]..[140,5105+64])
+              []
+      []
+  signature_item (stdlib/listLabels.mli[156,5697+0]..[156,5697+20])
+    Psig_attribute "ocaml.text"
+    [
+      structure_item (stdlib/listLabels.mli[156,5697+0]..[156,5697+20])
+        Pstr_eval
+        expression (stdlib/listLabels.mli[156,5697+0]..[156,5697+20])
+          Pexp_constant PConst_string(" {1 Iterators} ",(stdlib/listLabels.mli[156,5697+0]..[156,5697+20]),None)
+    ]
+  signature_item (stdlib/listLabels.mli[159,5720+0]..[159,5720+44])
+    Psig_value
+    value_description "iter" (stdlib/listLabels.mli[159,5720+4]..[159,5720+8]) (stdlib/listLabels.mli[159,5720+0]..[159,5720+44])
+      attribute "ocaml.doc"
+        [
+          structure_item (stdlib/listLabels.mli[160,5765+0]..[163,5905+3])
+            Pstr_eval
+            expression (stdlib/listLabels.mli[160,5765+0]..[163,5905+3])
+              Pexp_constant PConst_string(" [iter ~f [a1; ...; an]] applies function [f] in turn to\n   [a1; ...; an]. It is equivalent to\n   [begin f a1; f a2; ...; f an; () end].\n ",(stdlib/listLabels.mli[160,5765+0]..[163,5905+3]),None)
+        ]
+      core_type (stdlib/listLabels.mli[159,5720+11]..[159,5720+44])
+        Ptyp_arrow
+        Labelled "f"
+        core_type (stdlib/listLabels.mli[159,5720+14]..[159,5720+24])
+          Ptyp_arrow
+          Nolabel
+          core_type (stdlib/listLabels.mli[159,5720+14]..[159,5720+16])
+            Ptyp_var a
+          core_type (stdlib/listLabels.mli[159,5720+20]..[159,5720+24])
+            Ptyp_constr "unit" (stdlib/listLabels.mli[159,5720+20]..[159,5720+24])
+            []
+        core_type (stdlib/listLabels.mli[159,5720+29]..[159,5720+44])
+          Ptyp_arrow
+          Nolabel
+          core_type (stdlib/listLabels.mli[159,5720+29]..[159,5720+36])
+            Ptyp_constr "list" (stdlib/listLabels.mli[159,5720+32]..[159,5720+36])
+            [
+              core_type (stdlib/listLabels.mli[159,5720+29]..[159,5720+31])
+                Ptyp_var a
+            ]
+          core_type (stdlib/listLabels.mli[159,5720+40]..[159,5720+44])
+            Ptyp_constr "unit" (stdlib/listLabels.mli[159,5720+40]..[159,5720+44])
+            []
+      []
+  signature_item (stdlib/listLabels.mli[165,5910+0]..[165,5910+52])
+    Psig_value
+    value_description "iteri" (stdlib/listLabels.mli[165,5910+4]..[165,5910+9]) (stdlib/listLabels.mli[165,5910+0]..[165,5910+52])
+      attribute "ocaml.doc"
+        [
+          structure_item (stdlib/listLabels.mli[166,5963+0]..[170,6143+3])
+            Pstr_eval
+            expression (stdlib/listLabels.mli[166,5963+0]..[170,6143+3])
+              Pexp_constant PConst_string(" Same as {!iter}, but the function is applied to the index of\n   the element as first argument (counting from 0), and the element\n   itself as second argument.\n   @since 4.00.0\n ",(stdlib/listLabels.mli[166,5963+0]..[170,6143+3]),None)
+        ]
+      core_type (stdlib/listLabels.mli[165,5910+12]..[165,5910+52])
+        Ptyp_arrow
+        Labelled "f"
+        core_type (stdlib/listLabels.mli[165,5910+15]..[165,5910+32])
+          Ptyp_arrow
+          Nolabel
+          core_type (stdlib/listLabels.mli[165,5910+15]..[165,5910+18])
+            Ptyp_constr "int" (stdlib/listLabels.mli[165,5910+15]..[165,5910+18])
+            []
+          core_type (stdlib/listLabels.mli[165,5910+22]..[165,5910+32])
+            Ptyp_arrow
+            Nolabel
+            core_type (stdlib/listLabels.mli[165,5910+22]..[165,5910+24])
+              Ptyp_var a
+            core_type (stdlib/listLabels.mli[165,5910+28]..[165,5910+32])
+              Ptyp_constr "unit" (stdlib/listLabels.mli[165,5910+28]..[165,5910+32])
+              []
+        core_type (stdlib/listLabels.mli[165,5910+37]..[165,5910+52])
+          Ptyp_arrow
+          Nolabel
+          core_type (stdlib/listLabels.mli[165,5910+37]..[165,5910+44])
+            Ptyp_constr "list" (stdlib/listLabels.mli[165,5910+40]..[165,5910+44])
+            [
+              core_type (stdlib/listLabels.mli[165,5910+37]..[165,5910+39])
+                Ptyp_var a
+            ]
+          core_type (stdlib/listLabels.mli[165,5910+48]..[165,5910+52])
+            Ptyp_constr "unit" (stdlib/listLabels.mli[165,5910+48]..[165,5910+52])
+            []
+      []
+  signature_item (stdlib/listLabels.mli[172,6148+0]..[172,6148+44])
+    Psig_value
+    value_description "map" (stdlib/listLabels.mli[172,6148+4]..[172,6148+7]) (stdlib/listLabels.mli[172,6148+0]..[172,6148+44])
+      attribute "ocaml.doc"
+        [
+          structure_item (stdlib/listLabels.mli[173,6193+0]..[176,6359+3])
+            Pstr_eval
+            expression (stdlib/listLabels.mli[173,6193+0]..[176,6359+3])
+              Pexp_constant PConst_string(" [map ~f [a1; ...; an]] applies function [f] to [a1, ..., an],\n   and builds the list [[f a1; ...; f an]]\n   with the results returned by [f]. Not tail-recursive.\n ",(stdlib/listLabels.mli[173,6193+0]..[176,6359+3]),None)
+        ]
+      core_type (stdlib/listLabels.mli[172,6148+10]..[172,6148+44])
+        Ptyp_arrow
+        Labelled "f"
+        core_type (stdlib/listLabels.mli[172,6148+13]..[172,6148+21])
+          Ptyp_arrow
+          Nolabel
+          core_type (stdlib/listLabels.mli[172,6148+13]..[172,6148+15])
+            Ptyp_var a
+          core_type (stdlib/listLabels.mli[172,6148+19]..[172,6148+21])
+            Ptyp_var b
+        core_type (stdlib/listLabels.mli[172,6148+26]..[172,6148+44])
+          Ptyp_arrow
+          Nolabel
+          core_type (stdlib/listLabels.mli[172,6148+26]..[172,6148+33])
+            Ptyp_constr "list" (stdlib/listLabels.mli[172,6148+29]..[172,6148+33])
+            [
+              core_type (stdlib/listLabels.mli[172,6148+26]..[172,6148+28])
+                Ptyp_var a
+            ]
+          core_type (stdlib/listLabels.mli[172,6148+37]..[172,6148+44])
+            Ptyp_constr "list" (stdlib/listLabels.mli[172,6148+40]..[172,6148+44])
+            [
+              core_type (stdlib/listLabels.mli[172,6148+37]..[172,6148+39])
+                Ptyp_var b
+            ]
+      []
+  signature_item (stdlib/listLabels.mli[178,6364+0]..[178,6364+52])
+    Psig_value
+    value_description "mapi" (stdlib/listLabels.mli[178,6364+4]..[178,6364+8]) (stdlib/listLabels.mli[178,6364+0]..[178,6364+52])
+      attribute "ocaml.doc"
+        [
+          structure_item (stdlib/listLabels.mli[179,6417+0]..[183,6616+3])
+            Pstr_eval
+            expression (stdlib/listLabels.mli[179,6417+0]..[183,6616+3])
+              Pexp_constant PConst_string(" Same as {!map}, but the function is applied to the index of\n   the element as first argument (counting from 0), and the element\n   itself as second argument. Not tail-recursive.\n   @since 4.00.0\n ",(stdlib/listLabels.mli[179,6417+0]..[183,6616+3]),None)
+        ]
+      core_type (stdlib/listLabels.mli[178,6364+11]..[178,6364+52])
+        Ptyp_arrow
+        Labelled "f"
+        core_type (stdlib/listLabels.mli[178,6364+14]..[178,6364+29])
+          Ptyp_arrow
+          Nolabel
+          core_type (stdlib/listLabels.mli[178,6364+14]..[178,6364+17])
+            Ptyp_constr "int" (stdlib/listLabels.mli[178,6364+14]..[178,6364+17])
+            []
+          core_type (stdlib/listLabels.mli[178,6364+21]..[178,6364+29])
+            Ptyp_arrow
+            Nolabel
+            core_type (stdlib/listLabels.mli[178,6364+21]..[178,6364+23])
+              Ptyp_var a
+            core_type (stdlib/listLabels.mli[178,6364+27]..[178,6364+29])
+              Ptyp_var b
+        core_type (stdlib/listLabels.mli[178,6364+34]..[178,6364+52])
+          Ptyp_arrow
+          Nolabel
+          core_type (stdlib/listLabels.mli[178,6364+34]..[178,6364+41])
+            Ptyp_constr "list" (stdlib/listLabels.mli[178,6364+37]..[178,6364+41])
+            [
+              core_type (stdlib/listLabels.mli[178,6364+34]..[178,6364+36])
+                Ptyp_var a
+            ]
+          core_type (stdlib/listLabels.mli[178,6364+45]..[178,6364+52])
+            Ptyp_constr "list" (stdlib/listLabels.mli[178,6364+48]..[178,6364+52])
+            [
+              core_type (stdlib/listLabels.mli[178,6364+45]..[178,6364+47])
+                Ptyp_var b
+            ]
+      []
+  signature_item (stdlib/listLabels.mli[185,6621+0]..[185,6621+48])
+    Psig_value
+    value_description "rev_map" (stdlib/listLabels.mli[185,6621+4]..[185,6621+11]) (stdlib/listLabels.mli[185,6621+0]..[185,6621+48])
+      attribute "ocaml.doc"
+        [
+          structure_item (stdlib/listLabels.mli[186,6670+0]..[189,6787+3])
+            Pstr_eval
+            expression (stdlib/listLabels.mli[186,6670+0]..[189,6787+3])
+              Pexp_constant PConst_string(" [rev_map ~f l] gives the same result as\n   {!rev}[ (]{!map}[ f l)], but is tail-recursive and\n   more efficient.\n ",(stdlib/listLabels.mli[186,6670+0]..[189,6787+3]),None)
+        ]
+      core_type (stdlib/listLabels.mli[185,6621+14]..[185,6621+48])
+        Ptyp_arrow
+        Labelled "f"
+        core_type (stdlib/listLabels.mli[185,6621+17]..[185,6621+25])
+          Ptyp_arrow
+          Nolabel
+          core_type (stdlib/listLabels.mli[185,6621+17]..[185,6621+19])
+            Ptyp_var a
+          core_type (stdlib/listLabels.mli[185,6621+23]..[185,6621+25])
+            Ptyp_var b
+        core_type (stdlib/listLabels.mli[185,6621+30]..[185,6621+48])
+          Ptyp_arrow
+          Nolabel
+          core_type (stdlib/listLabels.mli[185,6621+30]..[185,6621+37])
+            Ptyp_constr "list" (stdlib/listLabels.mli[185,6621+33]..[185,6621+37])
+            [
+              core_type (stdlib/listLabels.mli[185,6621+30]..[185,6621+32])
+                Ptyp_var a
+            ]
+          core_type (stdlib/listLabels.mli[185,6621+41]..[185,6621+48])
+            Ptyp_constr "list" (stdlib/listLabels.mli[185,6621+44]..[185,6621+48])
+            [
+              core_type (stdlib/listLabels.mli[185,6621+41]..[185,6621+43])
+                Ptyp_var b
+            ]
+      []
+  signature_item (stdlib/listLabels.mli[191,6792+0]..[191,6792+58])
+    Psig_value
+    value_description "filter_map" (stdlib/listLabels.mli[191,6792+4]..[191,6792+14]) (stdlib/listLabels.mli[191,6792+0]..[191,6792+58])
+      attribute "ocaml.doc"
+        [
+          structure_item (stdlib/listLabels.mli[192,6851+0]..[196,7030+3])
+            Pstr_eval
+            expression (stdlib/listLabels.mli[192,6851+0]..[196,7030+3])
+              Pexp_constant PConst_string(" [filter_map ~f l] applies [f] to every element of [l], filters\n    out the [None] elements and returns the list of the arguments of\n    the [Some] elements.\n    @since 4.08.0\n ",(stdlib/listLabels.mli[192,6851+0]..[196,7030+3]),None)
+        ]
+      core_type (stdlib/listLabels.mli[191,6792+17]..[191,6792+58])
+        Ptyp_arrow
+        Labelled "f"
+        core_type (stdlib/listLabels.mli[191,6792+20]..[191,6792+35])
+          Ptyp_arrow
+          Nolabel
+          core_type (stdlib/listLabels.mli[191,6792+20]..[191,6792+22])
+            Ptyp_var a
+          core_type (stdlib/listLabels.mli[191,6792+26]..[191,6792+35])
+            Ptyp_constr "option" (stdlib/listLabels.mli[191,6792+29]..[191,6792+35])
+            [
+              core_type (stdlib/listLabels.mli[191,6792+26]..[191,6792+28])
+                Ptyp_var b
+            ]
+        core_type (stdlib/listLabels.mli[191,6792+40]..[191,6792+58])
+          Ptyp_arrow
+          Nolabel
+          core_type (stdlib/listLabels.mli[191,6792+40]..[191,6792+47])
+            Ptyp_constr "list" (stdlib/listLabels.mli[191,6792+43]..[191,6792+47])
+            [
+              core_type (stdlib/listLabels.mli[191,6792+40]..[191,6792+42])
+                Ptyp_var a
+            ]
+          core_type (stdlib/listLabels.mli[191,6792+51]..[191,6792+58])
+            Ptyp_constr "list" (stdlib/listLabels.mli[191,6792+54]..[191,6792+58])
+            [
+              core_type (stdlib/listLabels.mli[191,6792+51]..[191,6792+53])
+                Ptyp_var b
+            ]
+      []
+  signature_item (stdlib/listLabels.mli[198,7035+0]..[198,7035+56])
+    Psig_value
+    value_description "concat_map" (stdlib/listLabels.mli[198,7035+4]..[198,7035+14]) (stdlib/listLabels.mli[198,7035+0]..[198,7035+56])
+      attribute "ocaml.doc"
+        [
+          structure_item (stdlib/listLabels.mli[199,7092+0]..[202,7205+2])
+            Pstr_eval
+            expression (stdlib/listLabels.mli[199,7092+0]..[202,7205+2])
+              Pexp_constant PConst_string(" [concat_map ~f l] gives the same result as\n    {!concat}[ (]{!map}[ f l)]. Tail-recursive.\n    @since 4.10.0\n",(stdlib/listLabels.mli[199,7092+0]..[202,7205+2]),None)
+        ]
+      core_type (stdlib/listLabels.mli[198,7035+17]..[198,7035+56])
+        Ptyp_arrow
+        Labelled "f"
+        core_type (stdlib/listLabels.mli[198,7035+20]..[198,7035+33])
+          Ptyp_arrow
+          Nolabel
+          core_type (stdlib/listLabels.mli[198,7035+20]..[198,7035+22])
+            Ptyp_var a
+          core_type (stdlib/listLabels.mli[198,7035+26]..[198,7035+33])
+            Ptyp_constr "list" (stdlib/listLabels.mli[198,7035+29]..[198,7035+33])
+            [
+              core_type (stdlib/listLabels.mli[198,7035+26]..[198,7035+28])
+                Ptyp_var b
+            ]
+        core_type (stdlib/listLabels.mli[198,7035+38]..[198,7035+56])
+          Ptyp_arrow
+          Nolabel
+          core_type (stdlib/listLabels.mli[198,7035+38]..[198,7035+45])
+            Ptyp_constr "list" (stdlib/listLabels.mli[198,7035+41]..[198,7035+45])
+            [
+              core_type (stdlib/listLabels.mli[198,7035+38]..[198,7035+40])
+                Ptyp_var a
+            ]
+          core_type (stdlib/listLabels.mli[198,7035+49]..[198,7035+56])
+            Ptyp_constr "list" (stdlib/listLabels.mli[198,7035+52]..[198,7035+56])
+            [
+              core_type (stdlib/listLabels.mli[198,7035+49]..[198,7035+51])
+                Ptyp_var b
+            ]
+      []
+  signature_item (stdlib/listLabels.mli[204,7209+0]..[205,7229+63])
+    Psig_value
+    value_description "fold_left_map" (stdlib/listLabels.mli[204,7209+4]..[204,7209+17]) (stdlib/listLabels.mli[204,7209+0]..[205,7229+63])
+      attribute "ocaml.doc"
+        [
+          structure_item (stdlib/listLabels.mli[206,7293+0]..[209,7428+2])
+            Pstr_eval
+            expression (stdlib/listLabels.mli[206,7293+0]..[209,7428+2])
+              Pexp_constant PConst_string(" [fold_left_map] is  a combination of [fold_left] and [map] that threads an\n    accumulator through calls to [f].\n    @since 4.11.0\n",(stdlib/listLabels.mli[206,7293+0]..[209,7428+2]),None)
+        ]
+      core_type (stdlib/listLabels.mli[205,7229+2]..[205,7229+63])
+        Ptyp_arrow
+        Labelled "f"
+        core_type (stdlib/listLabels.mli[205,7229+5]..[205,7229+24])
+          Ptyp_arrow
+          Nolabel
+          core_type (stdlib/listLabels.mli[205,7229+5]..[205,7229+7])
+            Ptyp_var a
+          core_type (stdlib/listLabels.mli[205,7229+11]..[205,7229+24])
+            Ptyp_arrow
+            Nolabel
+            core_type (stdlib/listLabels.mli[205,7229+11]..[205,7229+13])
+              Ptyp_var b
+            core_type (stdlib/listLabels.mli[205,7229+17]..[205,7229+24])
+              Ptyp_tuple
+              [
+                core_type (stdlib/listLabels.mli[205,7229+17]..[205,7229+19])
+                  Ptyp_var a
+                core_type (stdlib/listLabels.mli[205,7229+22]..[205,7229+24])
+                  Ptyp_var c
+              ]
+        core_type (stdlib/listLabels.mli[205,7229+29]..[205,7229+63])
+          Ptyp_arrow
+          Labelled "init"
+          core_type (stdlib/listLabels.mli[205,7229+34]..[205,7229+36])
+            Ptyp_var a
+          core_type (stdlib/listLabels.mli[205,7229+40]..[205,7229+63])
+            Ptyp_arrow
+            Nolabel
+            core_type (stdlib/listLabels.mli[205,7229+40]..[205,7229+47])
+              Ptyp_constr "list" (stdlib/listLabels.mli[205,7229+43]..[205,7229+47])
+              [
+                core_type (stdlib/listLabels.mli[205,7229+40]..[205,7229+42])
+                  Ptyp_var b
+              ]
+            core_type (stdlib/listLabels.mli[205,7229+51]..[205,7229+63])
+              Ptyp_tuple
+              [
+                core_type (stdlib/listLabels.mli[205,7229+51]..[205,7229+53])
+                  Ptyp_var a
+                core_type (stdlib/listLabels.mli[205,7229+56]..[205,7229+63])
+                  Ptyp_constr "list" (stdlib/listLabels.mli[205,7229+59]..[205,7229+63])
+                  [
+                    core_type (stdlib/listLabels.mli[205,7229+56]..[205,7229+58])
+                      Ptyp_var c
+                  ]
+              ]
+      []
+  signature_item (stdlib/listLabels.mli[211,7432+0]..[211,7432+62])
+    Psig_value
+    value_description "fold_left" (stdlib/listLabels.mli[211,7432+4]..[211,7432+13]) (stdlib/listLabels.mli[211,7432+0]..[211,7432+62])
+      attribute "ocaml.doc"
+        [
+          structure_item (stdlib/listLabels.mli[212,7495+0]..[214,7577+3])
+            Pstr_eval
+            expression (stdlib/listLabels.mli[212,7495+0]..[214,7577+3])
+              Pexp_constant PConst_string(" [fold_left ~f ~init [b1; ...; bn]] is\n   [f (... (f (f init b1) b2) ...) bn].\n ",(stdlib/listLabels.mli[212,7495+0]..[214,7577+3]),None)
+        ]
+      core_type (stdlib/listLabels.mli[211,7432+16]..[211,7432+62])
+        Ptyp_arrow
+        Labelled "f"
+        core_type (stdlib/listLabels.mli[211,7432+19]..[211,7432+33])
+          Ptyp_arrow
+          Nolabel
+          core_type (stdlib/listLabels.mli[211,7432+19]..[211,7432+21])
+            Ptyp_var a
+          core_type (stdlib/listLabels.mli[211,7432+25]..[211,7432+33])
+            Ptyp_arrow
+            Nolabel
+            core_type (stdlib/listLabels.mli[211,7432+25]..[211,7432+27])
+              Ptyp_var b
+            core_type (stdlib/listLabels.mli[211,7432+31]..[211,7432+33])
+              Ptyp_var a
+        core_type (stdlib/listLabels.mli[211,7432+38]..[211,7432+62])
+          Ptyp_arrow
+          Labelled "init"
+          core_type (stdlib/listLabels.mli[211,7432+43]..[211,7432+45])
+            Ptyp_var a
+          core_type (stdlib/listLabels.mli[211,7432+49]..[211,7432+62])
+            Ptyp_arrow
+            Nolabel
+            core_type (stdlib/listLabels.mli[211,7432+49]..[211,7432+56])
+              Ptyp_constr "list" (stdlib/listLabels.mli[211,7432+52]..[211,7432+56])
+              [
+                core_type (stdlib/listLabels.mli[211,7432+49]..[211,7432+51])
+                  Ptyp_var b
+              ]
+            core_type (stdlib/listLabels.mli[211,7432+60]..[211,7432+62])
+              Ptyp_var a
+      []
+  signature_item (stdlib/listLabels.mli[216,7582+0]..[216,7582+63])
+    Psig_value
+    value_description "fold_right" (stdlib/listLabels.mli[216,7582+4]..[216,7582+14]) (stdlib/listLabels.mli[216,7582+0]..[216,7582+63])
+      attribute "ocaml.doc"
+        [
+          structure_item (stdlib/listLabels.mli[217,7646+0]..[219,7749+3])
+            Pstr_eval
+            expression (stdlib/listLabels.mli[217,7646+0]..[219,7749+3])
+              Pexp_constant PConst_string(" [fold_right ~f [a1; ...; an] ~init] is\n   [f a1 (f a2 (... (f an init) ...))]. Not tail-recursive.\n ",(stdlib/listLabels.mli[217,7646+0]..[219,7749+3]),None)
+        ]
+      core_type (stdlib/listLabels.mli[216,7582+17]..[216,7582+63])
+        Ptyp_arrow
+        Labelled "f"
+        core_type (stdlib/listLabels.mli[216,7582+20]..[216,7582+34])
+          Ptyp_arrow
+          Nolabel
+          core_type (stdlib/listLabels.mli[216,7582+20]..[216,7582+22])
+            Ptyp_var a
+          core_type (stdlib/listLabels.mli[216,7582+26]..[216,7582+34])
+            Ptyp_arrow
+            Nolabel
+            core_type (stdlib/listLabels.mli[216,7582+26]..[216,7582+28])
+              Ptyp_var b
+            core_type (stdlib/listLabels.mli[216,7582+32]..[216,7582+34])
+              Ptyp_var b
+        core_type (stdlib/listLabels.mli[216,7582+39]..[216,7582+63])
+          Ptyp_arrow
+          Nolabel
+          core_type (stdlib/listLabels.mli[216,7582+39]..[216,7582+46])
+            Ptyp_constr "list" (stdlib/listLabels.mli[216,7582+42]..[216,7582+46])
+            [
+              core_type (stdlib/listLabels.mli[216,7582+39]..[216,7582+41])
+                Ptyp_var a
+            ]
+          core_type (stdlib/listLabels.mli[216,7582+50]..[216,7582+63])
+            Ptyp_arrow
+            Labelled "init"
+            core_type (stdlib/listLabels.mli[216,7582+55]..[216,7582+57])
+              Ptyp_var b
+            core_type (stdlib/listLabels.mli[216,7582+61]..[216,7582+63])
+              Ptyp_var b
+      []
+  signature_item (stdlib/listLabels.mli[222,7755+0]..[222,7755+33])
+    Psig_attribute "ocaml.text"
+    [
+      structure_item (stdlib/listLabels.mli[222,7755+0]..[222,7755+33])
+        Pstr_eval
+        expression (stdlib/listLabels.mli[222,7755+0]..[222,7755+33])
+          Pexp_constant PConst_string(" {1 Iterators on two lists} ",(stdlib/listLabels.mli[222,7755+0]..[222,7755+33]),None)
+    ]
+  signature_item (stdlib/listLabels.mli[225,7791+0]..[225,7791+62])
+    Psig_value
+    value_description "iter2" (stdlib/listLabels.mli[225,7791+4]..[225,7791+9]) (stdlib/listLabels.mli[225,7791+0]..[225,7791+62])
+      attribute "ocaml.doc"
+        [
+          structure_item (stdlib/listLabels.mli[226,7854+0]..[230,8028+3])
+            Pstr_eval
+            expression (stdlib/listLabels.mli[226,7854+0]..[230,8028+3])
+              Pexp_constant PConst_string(" [iter2 ~f [a1; ...; an] [b1; ...; bn]] calls in turn\n   [f a1 b1; ...; f an bn].\n   @raise Invalid_argument if the two lists are determined\n   to have different lengths.\n ",(stdlib/listLabels.mli[226,7854+0]..[230,8028+3]),None)
+        ]
+      core_type (stdlib/listLabels.mli[225,7791+12]..[225,7791+62])
+        Ptyp_arrow
+        Labelled "f"
+        core_type (stdlib/listLabels.mli[225,7791+15]..[225,7791+31])
+          Ptyp_arrow
+          Nolabel
+          core_type (stdlib/listLabels.mli[225,7791+15]..[225,7791+17])
+            Ptyp_var a
+          core_type (stdlib/listLabels.mli[225,7791+21]..[225,7791+31])
+            Ptyp_arrow
+            Nolabel
+            core_type (stdlib/listLabels.mli[225,7791+21]..[225,7791+23])
+              Ptyp_var b
+            core_type (stdlib/listLabels.mli[225,7791+27]..[225,7791+31])
+              Ptyp_constr "unit" (stdlib/listLabels.mli[225,7791+27]..[225,7791+31])
+              []
+        core_type (stdlib/listLabels.mli[225,7791+36]..[225,7791+62])
+          Ptyp_arrow
+          Nolabel
+          core_type (stdlib/listLabels.mli[225,7791+36]..[225,7791+43])
+            Ptyp_constr "list" (stdlib/listLabels.mli[225,7791+39]..[225,7791+43])
+            [
+              core_type (stdlib/listLabels.mli[225,7791+36]..[225,7791+38])
+                Ptyp_var a
+            ]
+          core_type (stdlib/listLabels.mli[225,7791+47]..[225,7791+62])
+            Ptyp_arrow
+            Nolabel
+            core_type (stdlib/listLabels.mli[225,7791+47]..[225,7791+54])
+              Ptyp_constr "list" (stdlib/listLabels.mli[225,7791+50]..[225,7791+54])
+              [
+                core_type (stdlib/listLabels.mli[225,7791+47]..[225,7791+49])
+                  Ptyp_var b
+              ]
+            core_type (stdlib/listLabels.mli[225,7791+58]..[225,7791+62])
+              Ptyp_constr "unit" (stdlib/listLabels.mli[225,7791+58]..[225,7791+62])
+              []
+      []
+  signature_item (stdlib/listLabels.mli[232,8033+0]..[232,8033+62])
+    Psig_value
+    value_description "map2" (stdlib/listLabels.mli[232,8033+4]..[232,8033+8]) (stdlib/listLabels.mli[232,8033+0]..[232,8033+62])
+      attribute "ocaml.doc"
+        [
+          structure_item (stdlib/listLabels.mli[233,8096+0]..[237,8280+3])
+            Pstr_eval
+            expression (stdlib/listLabels.mli[233,8096+0]..[237,8280+3])
+              Pexp_constant PConst_string(" [map2 ~f [a1; ...; an] [b1; ...; bn]] is\n   [[f a1 b1; ...; f an bn]].\n   @raise Invalid_argument if the two lists are determined\n   to have different lengths. Not tail-recursive.\n ",(stdlib/listLabels.mli[233,8096+0]..[237,8280+3]),None)
+        ]
+      core_type (stdlib/listLabels.mli[232,8033+11]..[232,8033+62])
+        Ptyp_arrow
+        Labelled "f"
+        core_type (stdlib/listLabels.mli[232,8033+14]..[232,8033+28])
+          Ptyp_arrow
+          Nolabel
+          core_type (stdlib/listLabels.mli[232,8033+14]..[232,8033+16])
+            Ptyp_var a
+          core_type (stdlib/listLabels.mli[232,8033+20]..[232,8033+28])
+            Ptyp_arrow
+            Nolabel
+            core_type (stdlib/listLabels.mli[232,8033+20]..[232,8033+22])
+              Ptyp_var b
+            core_type (stdlib/listLabels.mli[232,8033+26]..[232,8033+28])
+              Ptyp_var c
+        core_type (stdlib/listLabels.mli[232,8033+33]..[232,8033+62])
+          Ptyp_arrow
+          Nolabel
+          core_type (stdlib/listLabels.mli[232,8033+33]..[232,8033+40])
+            Ptyp_constr "list" (stdlib/listLabels.mli[232,8033+36]..[232,8033+40])
+            [
+              core_type (stdlib/listLabels.mli[232,8033+33]..[232,8033+35])
+                Ptyp_var a
+            ]
+          core_type (stdlib/listLabels.mli[232,8033+44]..[232,8033+62])
+            Ptyp_arrow
+            Nolabel
+            core_type (stdlib/listLabels.mli[232,8033+44]..[232,8033+51])
+              Ptyp_constr "list" (stdlib/listLabels.mli[232,8033+47]..[232,8033+51])
+              [
+                core_type (stdlib/listLabels.mli[232,8033+44]..[232,8033+46])
+                  Ptyp_var b
+              ]
+            core_type (stdlib/listLabels.mli[232,8033+55]..[232,8033+62])
+              Ptyp_constr "list" (stdlib/listLabels.mli[232,8033+58]..[232,8033+62])
+              [
+                core_type (stdlib/listLabels.mli[232,8033+55]..[232,8033+57])
+                  Ptyp_var c
+              ]
+      []
+  signature_item (stdlib/listLabels.mli[239,8285+0]..[239,8285+66])
+    Psig_value
+    value_description "rev_map2" (stdlib/listLabels.mli[239,8285+4]..[239,8285+12]) (stdlib/listLabels.mli[239,8285+0]..[239,8285+66])
+      attribute "ocaml.doc"
+        [
+          structure_item (stdlib/listLabels.mli[240,8352+0]..[243,8479+3])
+            Pstr_eval
+            expression (stdlib/listLabels.mli[240,8352+0]..[243,8479+3])
+              Pexp_constant PConst_string(" [rev_map2 ~f l1 l2] gives the same result as\n   {!rev}[ (]{!map2}[ f l1 l2)], but is tail-recursive and\n   more efficient.\n ",(stdlib/listLabels.mli[240,8352+0]..[243,8479+3]),None)
+        ]
+      core_type (stdlib/listLabels.mli[239,8285+15]..[239,8285+66])
+        Ptyp_arrow
+        Labelled "f"
+        core_type (stdlib/listLabels.mli[239,8285+18]..[239,8285+32])
+          Ptyp_arrow
+          Nolabel
+          core_type (stdlib/listLabels.mli[239,8285+18]..[239,8285+20])
+            Ptyp_var a
+          core_type (stdlib/listLabels.mli[239,8285+24]..[239,8285+32])
+            Ptyp_arrow
+            Nolabel
+            core_type (stdlib/listLabels.mli[239,8285+24]..[239,8285+26])
+              Ptyp_var b
+            core_type (stdlib/listLabels.mli[239,8285+30]..[239,8285+32])
+              Ptyp_var c
+        core_type (stdlib/listLabels.mli[239,8285+37]..[239,8285+66])
+          Ptyp_arrow
+          Nolabel
+          core_type (stdlib/listLabels.mli[239,8285+37]..[239,8285+44])
+            Ptyp_constr "list" (stdlib/listLabels.mli[239,8285+40]..[239,8285+44])
+            [
+              core_type (stdlib/listLabels.mli[239,8285+37]..[239,8285+39])
+                Ptyp_var a
+            ]
+          core_type (stdlib/listLabels.mli[239,8285+48]..[239,8285+66])
+            Ptyp_arrow
+            Nolabel
+            core_type (stdlib/listLabels.mli[239,8285+48]..[239,8285+55])
+              Ptyp_constr "list" (stdlib/listLabels.mli[239,8285+51]..[239,8285+55])
+              [
+                core_type (stdlib/listLabels.mli[239,8285+48]..[239,8285+50])
+                  Ptyp_var b
+              ]
+            core_type (stdlib/listLabels.mli[239,8285+59]..[239,8285+66])
+              Ptyp_constr "list" (stdlib/listLabels.mli[239,8285+62]..[239,8285+66])
+              [
+                core_type (stdlib/listLabels.mli[239,8285+59]..[239,8285+61])
+                  Ptyp_var c
+              ]
+      []
+  signature_item (stdlib/listLabels.mli[245,8484+0]..[246,8501+65])
+    Psig_value
+    value_description "fold_left2" (stdlib/listLabels.mli[245,8484+4]..[245,8484+14]) (stdlib/listLabels.mli[245,8484+0]..[246,8501+65])
+      attribute "ocaml.doc"
+        [
+          structure_item (stdlib/listLabels.mli[247,8567+0]..[251,8762+3])
+            Pstr_eval
+            expression (stdlib/listLabels.mli[247,8567+0]..[251,8762+3])
+              Pexp_constant PConst_string(" [fold_left2 ~f ~init [a1; ...; an] [b1; ...; bn]] is\n   [f (... (f (f init a1 b1) a2 b2) ...) an bn].\n   @raise Invalid_argument if the two lists are determined\n   to have different lengths.\n ",(stdlib/listLabels.mli[247,8567+0]..[251,8762+3]),None)
+        ]
+      core_type (stdlib/listLabels.mli[246,8501+2]..[246,8501+65])
+        Ptyp_arrow
+        Labelled "f"
+        core_type (stdlib/listLabels.mli[246,8501+5]..[246,8501+25])
+          Ptyp_arrow
+          Nolabel
+          core_type (stdlib/listLabels.mli[246,8501+5]..[246,8501+7])
+            Ptyp_var a
+          core_type (stdlib/listLabels.mli[246,8501+11]..[246,8501+25])
+            Ptyp_arrow
+            Nolabel
+            core_type (stdlib/listLabels.mli[246,8501+11]..[246,8501+13])
+              Ptyp_var b
+            core_type (stdlib/listLabels.mli[246,8501+17]..[246,8501+25])
+              Ptyp_arrow
+              Nolabel
+              core_type (stdlib/listLabels.mli[246,8501+17]..[246,8501+19])
+                Ptyp_var c
+              core_type (stdlib/listLabels.mli[246,8501+23]..[246,8501+25])
+                Ptyp_var a
+        core_type (stdlib/listLabels.mli[246,8501+30]..[246,8501+65])
+          Ptyp_arrow
+          Labelled "init"
+          core_type (stdlib/listLabels.mli[246,8501+35]..[246,8501+37])
+            Ptyp_var a
+          core_type (stdlib/listLabels.mli[246,8501+41]..[246,8501+65])
+            Ptyp_arrow
+            Nolabel
+            core_type (stdlib/listLabels.mli[246,8501+41]..[246,8501+48])
+              Ptyp_constr "list" (stdlib/listLabels.mli[246,8501+44]..[246,8501+48])
+              [
+                core_type (stdlib/listLabels.mli[246,8501+41]..[246,8501+43])
+                  Ptyp_var b
+              ]
+            core_type (stdlib/listLabels.mli[246,8501+52]..[246,8501+65])
+              Ptyp_arrow
+              Nolabel
+              core_type (stdlib/listLabels.mli[246,8501+52]..[246,8501+59])
+                Ptyp_constr "list" (stdlib/listLabels.mli[246,8501+55]..[246,8501+59])
+                [
+                  core_type (stdlib/listLabels.mli[246,8501+52]..[246,8501+54])
+                    Ptyp_var c
+                ]
+              core_type (stdlib/listLabels.mli[246,8501+63]..[246,8501+65])
+                Ptyp_var a
+      []
+  signature_item (stdlib/listLabels.mli[253,8767+0]..[254,8785+65])
+    Psig_value
+    value_description "fold_right2" (stdlib/listLabels.mli[253,8767+4]..[253,8767+15]) (stdlib/listLabels.mli[253,8767+0]..[254,8785+65])
+      attribute "ocaml.doc"
+        [
+          structure_item (stdlib/listLabels.mli[255,8851+0]..[259,9067+3])
+            Pstr_eval
+            expression (stdlib/listLabels.mli[255,8851+0]..[259,9067+3])
+              Pexp_constant PConst_string(" [fold_right2 ~f [a1; ...; an] [b1; ...; bn] ~init] is\n   [f a1 b1 (f a2 b2 (... (f an bn init) ...))].\n   @raise Invalid_argument if the two lists are determined\n   to have different lengths. Not tail-recursive.\n ",(stdlib/listLabels.mli[255,8851+0]..[259,9067+3]),None)
+        ]
+      core_type (stdlib/listLabels.mli[254,8785+2]..[254,8785+65])
+        Ptyp_arrow
+        Labelled "f"
+        core_type (stdlib/listLabels.mli[254,8785+5]..[254,8785+25])
+          Ptyp_arrow
+          Nolabel
+          core_type (stdlib/listLabels.mli[254,8785+5]..[254,8785+7])
+            Ptyp_var a
+          core_type (stdlib/listLabels.mli[254,8785+11]..[254,8785+25])
+            Ptyp_arrow
+            Nolabel
+            core_type (stdlib/listLabels.mli[254,8785+11]..[254,8785+13])
+              Ptyp_var b
+            core_type (stdlib/listLabels.mli[254,8785+17]..[254,8785+25])
+              Ptyp_arrow
+              Nolabel
+              core_type (stdlib/listLabels.mli[254,8785+17]..[254,8785+19])
+                Ptyp_var c
+              core_type (stdlib/listLabels.mli[254,8785+23]..[254,8785+25])
+                Ptyp_var c
+        core_type (stdlib/listLabels.mli[254,8785+30]..[254,8785+65])
+          Ptyp_arrow
+          Nolabel
+          core_type (stdlib/listLabels.mli[254,8785+30]..[254,8785+37])
+            Ptyp_constr "list" (stdlib/listLabels.mli[254,8785+33]..[254,8785+37])
+            [
+              core_type (stdlib/listLabels.mli[254,8785+30]..[254,8785+32])
+                Ptyp_var a
+            ]
+          core_type (stdlib/listLabels.mli[254,8785+41]..[254,8785+65])
+            Ptyp_arrow
+            Nolabel
+            core_type (stdlib/listLabels.mli[254,8785+41]..[254,8785+48])
+              Ptyp_constr "list" (stdlib/listLabels.mli[254,8785+44]..[254,8785+48])
+              [
+                core_type (stdlib/listLabels.mli[254,8785+41]..[254,8785+43])
+                  Ptyp_var b
+              ]
+            core_type (stdlib/listLabels.mli[254,8785+52]..[254,8785+65])
+              Ptyp_arrow
+              Labelled "init"
+              core_type (stdlib/listLabels.mli[254,8785+57]..[254,8785+59])
+                Ptyp_var c
+              core_type (stdlib/listLabels.mli[254,8785+63]..[254,8785+65])
+                Ptyp_var c
+      []
+  signature_item (stdlib/listLabels.mli[262,9073+0]..[262,9073+24])
+    Psig_attribute "ocaml.text"
+    [
+      structure_item (stdlib/listLabels.mli[262,9073+0]..[262,9073+24])
+        Pstr_eval
+        expression (stdlib/listLabels.mli[262,9073+0]..[262,9073+24])
+          Pexp_constant PConst_string(" {1 List scanning} ",(stdlib/listLabels.mli[262,9073+0]..[262,9073+24]),None)
+    ]
+  signature_item (stdlib/listLabels.mli[265,9100+0]..[265,9100+47])
+    Psig_value
+    value_description "for_all" (stdlib/listLabels.mli[265,9100+4]..[265,9100+11]) (stdlib/listLabels.mli[265,9100+0]..[265,9100+47])
+      attribute "ocaml.doc"
+        [
+          structure_item (stdlib/listLabels.mli[266,9148+0]..[270,9360+3])
+            Pstr_eval
+            expression (stdlib/listLabels.mli[266,9148+0]..[270,9360+3])
+              Pexp_constant PConst_string(" [for_all ~f [a1; ...; an]] checks if all elements of the list\n   satisfy the predicate [f]. That is, it returns\n   [(f a1) && (f a2) && ... && (f an)] for a non-empty list and\n   [true] if the list is empty.\n ",(stdlib/listLabels.mli[266,9148+0]..[270,9360+3]),None)
+        ]
+      core_type (stdlib/listLabels.mli[265,9100+14]..[265,9100+47])
+        Ptyp_arrow
+        Labelled "f"
+        core_type (stdlib/listLabels.mli[265,9100+17]..[265,9100+27])
+          Ptyp_arrow
+          Nolabel
+          core_type (stdlib/listLabels.mli[265,9100+17]..[265,9100+19])
+            Ptyp_var a
+          core_type (stdlib/listLabels.mli[265,9100+23]..[265,9100+27])
+            Ptyp_constr "bool" (stdlib/listLabels.mli[265,9100+23]..[265,9100+27])
+            []
+        core_type (stdlib/listLabels.mli[265,9100+32]..[265,9100+47])
+          Ptyp_arrow
+          Nolabel
+          core_type (stdlib/listLabels.mli[265,9100+32]..[265,9100+39])
+            Ptyp_constr "list" (stdlib/listLabels.mli[265,9100+35]..[265,9100+39])
+            [
+              core_type (stdlib/listLabels.mli[265,9100+32]..[265,9100+34])
+                Ptyp_var a
+            ]
+          core_type (stdlib/listLabels.mli[265,9100+43]..[265,9100+47])
+            Ptyp_constr "bool" (stdlib/listLabels.mli[265,9100+43]..[265,9100+47])
+            []
+      []
+  signature_item (stdlib/listLabels.mli[272,9365+0]..[272,9365+46])
+    Psig_value
+    value_description "exists" (stdlib/listLabels.mli[272,9365+4]..[272,9365+10]) (stdlib/listLabels.mli[272,9365+0]..[272,9365+46])
+      attribute "ocaml.doc"
+        [
+          structure_item (stdlib/listLabels.mli[273,9412+0]..[277,9634+3])
+            Pstr_eval
+            expression (stdlib/listLabels.mli[273,9412+0]..[277,9634+3])
+              Pexp_constant PConst_string(" [exists ~f [a1; ...; an]] checks if at least one element of\n   the list satisfies the predicate [f]. That is, it returns\n   [(f a1) || (f a2) || ... || (f an)] for a non-empty list and\n   [false] if the list is empty.\n ",(stdlib/listLabels.mli[273,9412+0]..[277,9634+3]),None)
+        ]
+      core_type (stdlib/listLabels.mli[272,9365+13]..[272,9365+46])
+        Ptyp_arrow
+        Labelled "f"
+        core_type (stdlib/listLabels.mli[272,9365+16]..[272,9365+26])
+          Ptyp_arrow
+          Nolabel
+          core_type (stdlib/listLabels.mli[272,9365+16]..[272,9365+18])
+            Ptyp_var a
+          core_type (stdlib/listLabels.mli[272,9365+22]..[272,9365+26])
+            Ptyp_constr "bool" (stdlib/listLabels.mli[272,9365+22]..[272,9365+26])
+            []
+        core_type (stdlib/listLabels.mli[272,9365+31]..[272,9365+46])
+          Ptyp_arrow
+          Nolabel
+          core_type (stdlib/listLabels.mli[272,9365+31]..[272,9365+38])
+            Ptyp_constr "list" (stdlib/listLabels.mli[272,9365+34]..[272,9365+38])
+            [
+              core_type (stdlib/listLabels.mli[272,9365+31]..[272,9365+33])
+                Ptyp_var a
+            ]
+          core_type (stdlib/listLabels.mli[272,9365+42]..[272,9365+46])
+            Ptyp_constr "bool" (stdlib/listLabels.mli[272,9365+42]..[272,9365+46])
+            []
+      []
+  signature_item (stdlib/listLabels.mli[279,9639+0]..[279,9639+65])
+    Psig_value
+    value_description "for_all2" (stdlib/listLabels.mli[279,9639+4]..[279,9639+12]) (stdlib/listLabels.mli[279,9639+0]..[279,9639+65])
+      attribute "ocaml.doc"
+        [
+          structure_item (stdlib/listLabels.mli[280,9705+0]..[283,9852+3])
+            Pstr_eval
+            expression (stdlib/listLabels.mli[280,9705+0]..[283,9852+3])
+              Pexp_constant PConst_string(" Same as {!for_all}, but for a two-argument predicate.\n   @raise Invalid_argument if the two lists are determined\n   to have different lengths.\n ",(stdlib/listLabels.mli[280,9705+0]..[283,9852+3]),None)
+        ]
+      core_type (stdlib/listLabels.mli[279,9639+15]..[279,9639+65])
+        Ptyp_arrow
+        Labelled "f"
+        core_type (stdlib/listLabels.mli[279,9639+18]..[279,9639+34])
+          Ptyp_arrow
+          Nolabel
+          core_type (stdlib/listLabels.mli[279,9639+18]..[279,9639+20])
+            Ptyp_var a
+          core_type (stdlib/listLabels.mli[279,9639+24]..[279,9639+34])
+            Ptyp_arrow
+            Nolabel
+            core_type (stdlib/listLabels.mli[279,9639+24]..[279,9639+26])
+              Ptyp_var b
+            core_type (stdlib/listLabels.mli[279,9639+30]..[279,9639+34])
+              Ptyp_constr "bool" (stdlib/listLabels.mli[279,9639+30]..[279,9639+34])
+              []
+        core_type (stdlib/listLabels.mli[279,9639+39]..[279,9639+65])
+          Ptyp_arrow
+          Nolabel
+          core_type (stdlib/listLabels.mli[279,9639+39]..[279,9639+46])
+            Ptyp_constr "list" (stdlib/listLabels.mli[279,9639+42]..[279,9639+46])
+            [
+              core_type (stdlib/listLabels.mli[279,9639+39]..[279,9639+41])
+                Ptyp_var a
+            ]
+          core_type (stdlib/listLabels.mli[279,9639+50]..[279,9639+65])
+            Ptyp_arrow
+            Nolabel
+            core_type (stdlib/listLabels.mli[279,9639+50]..[279,9639+57])
+              Ptyp_constr "list" (stdlib/listLabels.mli[279,9639+53]..[279,9639+57])
+              [
+                core_type (stdlib/listLabels.mli[279,9639+50]..[279,9639+52])
+                  Ptyp_var b
+              ]
+            core_type (stdlib/listLabels.mli[279,9639+61]..[279,9639+65])
+              Ptyp_constr "bool" (stdlib/listLabels.mli[279,9639+61]..[279,9639+65])
+              []
+      []
+  signature_item (stdlib/listLabels.mli[285,9857+0]..[285,9857+64])
+    Psig_value
+    value_description "exists2" (stdlib/listLabels.mli[285,9857+4]..[285,9857+11]) (stdlib/listLabels.mli[285,9857+0]..[285,9857+64])
+      attribute "ocaml.doc"
+        [
+          structure_item (stdlib/listLabels.mli[286,9922+0]..[289,10068+3])
+            Pstr_eval
+            expression (stdlib/listLabels.mli[286,9922+0]..[289,10068+3])
+              Pexp_constant PConst_string(" Same as {!exists}, but for a two-argument predicate.\n   @raise Invalid_argument if the two lists are determined\n   to have different lengths.\n ",(stdlib/listLabels.mli[286,9922+0]..[289,10068+3]),None)
+        ]
+      core_type (stdlib/listLabels.mli[285,9857+14]..[285,9857+64])
+        Ptyp_arrow
+        Labelled "f"
+        core_type (stdlib/listLabels.mli[285,9857+17]..[285,9857+33])
+          Ptyp_arrow
+          Nolabel
+          core_type (stdlib/listLabels.mli[285,9857+17]..[285,9857+19])
+            Ptyp_var a
+          core_type (stdlib/listLabels.mli[285,9857+23]..[285,9857+33])
+            Ptyp_arrow
+            Nolabel
+            core_type (stdlib/listLabels.mli[285,9857+23]..[285,9857+25])
+              Ptyp_var b
+            core_type (stdlib/listLabels.mli[285,9857+29]..[285,9857+33])
+              Ptyp_constr "bool" (stdlib/listLabels.mli[285,9857+29]..[285,9857+33])
+              []
+        core_type (stdlib/listLabels.mli[285,9857+38]..[285,9857+64])
+          Ptyp_arrow
+          Nolabel
+          core_type (stdlib/listLabels.mli[285,9857+38]..[285,9857+45])
+            Ptyp_constr "list" (stdlib/listLabels.mli[285,9857+41]..[285,9857+45])
+            [
+              core_type (stdlib/listLabels.mli[285,9857+38]..[285,9857+40])
+                Ptyp_var a
+            ]
+          core_type (stdlib/listLabels.mli[285,9857+49]..[285,9857+64])
+            Ptyp_arrow
+            Nolabel
+            core_type (stdlib/listLabels.mli[285,9857+49]..[285,9857+56])
+              Ptyp_constr "list" (stdlib/listLabels.mli[285,9857+52]..[285,9857+56])
+              [
+                core_type (stdlib/listLabels.mli[285,9857+49]..[285,9857+51])
+                  Ptyp_var b
+              ]
+            core_type (stdlib/listLabels.mli[285,9857+60]..[285,9857+64])
+              Ptyp_constr "bool" (stdlib/listLabels.mli[285,9857+60]..[285,9857+64])
+              []
+      []
+  signature_item (stdlib/listLabels.mli[291,10073+0]..[291,10073+35])
+    Psig_value
+    value_description "mem" (stdlib/listLabels.mli[291,10073+4]..[291,10073+7]) (stdlib/listLabels.mli[291,10073+0]..[291,10073+35])
+      attribute "ocaml.doc"
+        [
+          structure_item (stdlib/listLabels.mli[292,10109+0]..[294,10189+3])
+            Pstr_eval
+            expression (stdlib/listLabels.mli[292,10109+0]..[294,10189+3])
+              Pexp_constant PConst_string(" [mem a ~set] is true if and only if [a] is equal\n   to an element of [set].\n ",(stdlib/listLabels.mli[292,10109+0]..[294,10189+3]),None)
+        ]
+      core_type (stdlib/listLabels.mli[291,10073+10]..[291,10073+35])
+        Ptyp_arrow
+        Nolabel
+        core_type (stdlib/listLabels.mli[291,10073+10]..[291,10073+12])
+          Ptyp_var a
+        core_type (stdlib/listLabels.mli[291,10073+16]..[291,10073+35])
+          Ptyp_arrow
+          Labelled "set"
+          core_type (stdlib/listLabels.mli[291,10073+20]..[291,10073+27])
+            Ptyp_constr "list" (stdlib/listLabels.mli[291,10073+23]..[291,10073+27])
+            [
+              core_type (stdlib/listLabels.mli[291,10073+20]..[291,10073+22])
+                Ptyp_var a
+            ]
+          core_type (stdlib/listLabels.mli[291,10073+31]..[291,10073+35])
+            Ptyp_constr "bool" (stdlib/listLabels.mli[291,10073+31]..[291,10073+35])
+            []
+      []
+  signature_item (stdlib/listLabels.mli[296,10194+0]..[296,10194+36])
+    Psig_value
+    value_description "memq" (stdlib/listLabels.mli[296,10194+4]..[296,10194+8]) (stdlib/listLabels.mli[296,10194+0]..[296,10194+36])
+      attribute "ocaml.doc"
+        [
+          structure_item (stdlib/listLabels.mli[297,10231+0]..[299,10338+3])
+            Pstr_eval
+            expression (stdlib/listLabels.mli[297,10231+0]..[299,10338+3])
+              Pexp_constant PConst_string(" Same as {!mem}, but uses physical equality instead of structural\n   equality to compare list elements.\n ",(stdlib/listLabels.mli[297,10231+0]..[299,10338+3]),None)
+        ]
+      core_type (stdlib/listLabels.mli[296,10194+11]..[296,10194+36])
+        Ptyp_arrow
+        Nolabel
+        core_type (stdlib/listLabels.mli[296,10194+11]..[296,10194+13])
+          Ptyp_var a
+        core_type (stdlib/listLabels.mli[296,10194+17]..[296,10194+36])
+          Ptyp_arrow
+          Labelled "set"
+          core_type (stdlib/listLabels.mli[296,10194+21]..[296,10194+28])
+            Ptyp_constr "list" (stdlib/listLabels.mli[296,10194+24]..[296,10194+28])
+            [
+              core_type (stdlib/listLabels.mli[296,10194+21]..[296,10194+23])
+                Ptyp_var a
+            ]
+          core_type (stdlib/listLabels.mli[296,10194+32]..[296,10194+36])
+            Ptyp_constr "bool" (stdlib/listLabels.mli[296,10194+32]..[296,10194+36])
+            []
+      []
+  signature_item (stdlib/listLabels.mli[302,10344+0]..[302,10344+25])
+    Psig_attribute "ocaml.text"
+    [
+      structure_item (stdlib/listLabels.mli[302,10344+0]..[302,10344+25])
+        Pstr_eval
+        expression (stdlib/listLabels.mli[302,10344+0]..[302,10344+25])
+          Pexp_constant PConst_string(" {1 List searching} ",(stdlib/listLabels.mli[302,10344+0]..[302,10344+25]),None)
+    ]
+  signature_item (stdlib/listLabels.mli[305,10372+0]..[305,10372+42])
+    Psig_value
+    value_description "find" (stdlib/listLabels.mli[305,10372+4]..[305,10372+8]) (stdlib/listLabels.mli[305,10372+0]..[305,10372+42])
+      attribute "ocaml.doc"
+        [
+          structure_item (stdlib/listLabels.mli[306,10415+0]..[310,10590+3])
+            Pstr_eval
+            expression (stdlib/listLabels.mli[306,10415+0]..[310,10590+3])
+              Pexp_constant PConst_string(" [find ~f l] returns the first element of the list [l]\n   that satisfies the predicate [f].\n   @raise Not_found if there is no value that satisfies [f] in the\n   list [l].\n ",(stdlib/listLabels.mli[306,10415+0]..[310,10590+3]),None)
+        ]
+      core_type (stdlib/listLabels.mli[305,10372+11]..[305,10372+42])
+        Ptyp_arrow
+        Labelled "f"
+        core_type (stdlib/listLabels.mli[305,10372+14]..[305,10372+24])
+          Ptyp_arrow
+          Nolabel
+          core_type (stdlib/listLabels.mli[305,10372+14]..[305,10372+16])
+            Ptyp_var a
+          core_type (stdlib/listLabels.mli[305,10372+20]..[305,10372+24])
+            Ptyp_constr "bool" (stdlib/listLabels.mli[305,10372+20]..[305,10372+24])
+            []
+        core_type (stdlib/listLabels.mli[305,10372+29]..[305,10372+42])
+          Ptyp_arrow
+          Nolabel
+          core_type (stdlib/listLabels.mli[305,10372+29]..[305,10372+36])
+            Ptyp_constr "list" (stdlib/listLabels.mli[305,10372+32]..[305,10372+36])
+            [
+              core_type (stdlib/listLabels.mli[305,10372+29]..[305,10372+31])
+                Ptyp_var a
+            ]
+          core_type (stdlib/listLabels.mli[305,10372+40]..[305,10372+42])
+            Ptyp_var a
+      []
+  signature_item (stdlib/listLabels.mli[312,10595+0]..[312,10595+53])
+    Psig_value
+    value_description "find_opt" (stdlib/listLabels.mli[312,10595+4]..[312,10595+12]) (stdlib/listLabels.mli[312,10595+0]..[312,10595+53])
+      attribute "ocaml.doc"
+        [
+          structure_item (stdlib/listLabels.mli[313,10649+0]..[318,10837+3])
+            Pstr_eval
+            expression (stdlib/listLabels.mli[313,10649+0]..[318,10837+3])
+              Pexp_constant PConst_string(" [find ~f l] returns the first element of the list [l]\n   that satisfies the predicate [f].\n   Returns [None] if there is no value that satisfies [f] in the\n   list [l].\n   @since 4.05\n ",(stdlib/listLabels.mli[313,10649+0]..[318,10837+3]),None)
+        ]
+      core_type (stdlib/listLabels.mli[312,10595+15]..[312,10595+53])
+        Ptyp_arrow
+        Labelled "f"
+        core_type (stdlib/listLabels.mli[312,10595+18]..[312,10595+28])
+          Ptyp_arrow
+          Nolabel
+          core_type (stdlib/listLabels.mli[312,10595+18]..[312,10595+20])
+            Ptyp_var a
+          core_type (stdlib/listLabels.mli[312,10595+24]..[312,10595+28])
+            Ptyp_constr "bool" (stdlib/listLabels.mli[312,10595+24]..[312,10595+28])
+            []
+        core_type (stdlib/listLabels.mli[312,10595+33]..[312,10595+53])
+          Ptyp_arrow
+          Nolabel
+          core_type (stdlib/listLabels.mli[312,10595+33]..[312,10595+40])
+            Ptyp_constr "list" (stdlib/listLabels.mli[312,10595+36]..[312,10595+40])
+            [
+              core_type (stdlib/listLabels.mli[312,10595+33]..[312,10595+35])
+                Ptyp_var a
+            ]
+          core_type (stdlib/listLabels.mli[312,10595+44]..[312,10595+53])
+            Ptyp_constr "option" (stdlib/listLabels.mli[312,10595+47]..[312,10595+53])
+            [
+              core_type (stdlib/listLabels.mli[312,10595+44]..[312,10595+46])
+                Ptyp_var a
+            ]
+      []
+  signature_item (stdlib/listLabels.mli[320,10842+0]..[320,10842+58])
+    Psig_value
+    value_description "find_map" (stdlib/listLabels.mli[320,10842+4]..[320,10842+12]) (stdlib/listLabels.mli[320,10842+0]..[320,10842+58])
+      attribute "ocaml.doc"
+        [
+          structure_item (stdlib/listLabels.mli[321,10901+0]..[325,11068+2])
+            Pstr_eval
+            expression (stdlib/listLabels.mli[321,10901+0]..[325,11068+2])
+              Pexp_constant PConst_string(" [find_map ~f l] applies [f] to the elements of [l] in order,\n    and returns the first result of the form [Some v], or [None]\n    if none exist.\n    @since 4.10.0\n",(stdlib/listLabels.mli[321,10901+0]..[325,11068+2]),None)
+        ]
+      core_type (stdlib/listLabels.mli[320,10842+15]..[320,10842+58])
+        Ptyp_arrow
+        Labelled "f"
+        core_type (stdlib/listLabels.mli[320,10842+18]..[320,10842+33])
+          Ptyp_arrow
+          Nolabel
+          core_type (stdlib/listLabels.mli[320,10842+18]..[320,10842+20])
+            Ptyp_var a
+          core_type (stdlib/listLabels.mli[320,10842+24]..[320,10842+33])
+            Ptyp_constr "option" (stdlib/listLabels.mli[320,10842+27]..[320,10842+33])
+            [
+              core_type (stdlib/listLabels.mli[320,10842+24]..[320,10842+26])
+                Ptyp_var b
+            ]
+        core_type (stdlib/listLabels.mli[320,10842+38]..[320,10842+58])
+          Ptyp_arrow
+          Nolabel
+          core_type (stdlib/listLabels.mli[320,10842+38]..[320,10842+45])
+            Ptyp_constr "list" (stdlib/listLabels.mli[320,10842+41]..[320,10842+45])
+            [
+              core_type (stdlib/listLabels.mli[320,10842+38]..[320,10842+40])
+                Ptyp_var a
+            ]
+          core_type (stdlib/listLabels.mli[320,10842+49]..[320,10842+58])
+            Ptyp_constr "option" (stdlib/listLabels.mli[320,10842+52]..[320,10842+58])
+            [
+              core_type (stdlib/listLabels.mli[320,10842+49]..[320,10842+51])
+                Ptyp_var b
+            ]
+      []
+  signature_item (stdlib/listLabels.mli[327,11072+0]..[327,11072+49])
+    Psig_value
+    value_description "filter" (stdlib/listLabels.mli[327,11072+4]..[327,11072+10]) (stdlib/listLabels.mli[327,11072+0]..[327,11072+49])
+      attribute "ocaml.doc"
+        [
+          structure_item (stdlib/listLabels.mli[328,11122+0]..[331,11277+3])
+            Pstr_eval
+            expression (stdlib/listLabels.mli[328,11122+0]..[331,11277+3])
+              Pexp_constant PConst_string(" [filter ~f l] returns all the elements of the list [l]\n   that satisfy the predicate [f]. The order of the elements\n   in the input list is preserved.\n ",(stdlib/listLabels.mli[328,11122+0]..[331,11277+3]),None)
+        ]
+      core_type (stdlib/listLabels.mli[327,11072+13]..[327,11072+49])
+        Ptyp_arrow
+        Labelled "f"
+        core_type (stdlib/listLabels.mli[327,11072+16]..[327,11072+26])
+          Ptyp_arrow
+          Nolabel
+          core_type (stdlib/listLabels.mli[327,11072+16]..[327,11072+18])
+            Ptyp_var a
+          core_type (stdlib/listLabels.mli[327,11072+22]..[327,11072+26])
+            Ptyp_constr "bool" (stdlib/listLabels.mli[327,11072+22]..[327,11072+26])
+            []
+        core_type (stdlib/listLabels.mli[327,11072+31]..[327,11072+49])
+          Ptyp_arrow
+          Nolabel
+          core_type (stdlib/listLabels.mli[327,11072+31]..[327,11072+38])
+            Ptyp_constr "list" (stdlib/listLabels.mli[327,11072+34]..[327,11072+38])
+            [
+              core_type (stdlib/listLabels.mli[327,11072+31]..[327,11072+33])
+                Ptyp_var a
+            ]
+          core_type (stdlib/listLabels.mli[327,11072+42]..[327,11072+49])
+            Ptyp_constr "list" (stdlib/listLabels.mli[327,11072+45]..[327,11072+49])
+            [
+              core_type (stdlib/listLabels.mli[327,11072+42]..[327,11072+44])
+                Ptyp_var a
+            ]
+      []
+  signature_item (stdlib/listLabels.mli[333,11282+0]..[333,11282+51])
+    Psig_value
+    value_description "find_all" (stdlib/listLabels.mli[333,11282+4]..[333,11282+12]) (stdlib/listLabels.mli[333,11282+0]..[333,11282+51])
+      attribute "ocaml.doc"
+        [
+          structure_item (stdlib/listLabels.mli[334,11334+0]..[335,11380+3])
+            Pstr_eval
+            expression (stdlib/listLabels.mli[334,11334+0]..[335,11380+3])
+              Pexp_constant PConst_string(" [find_all] is another name for {!filter}.\n ",(stdlib/listLabels.mli[334,11334+0]..[335,11380+3]),None)
+        ]
+      core_type (stdlib/listLabels.mli[333,11282+15]..[333,11282+51])
+        Ptyp_arrow
+        Labelled "f"
+        core_type (stdlib/listLabels.mli[333,11282+18]..[333,11282+28])
+          Ptyp_arrow
+          Nolabel
+          core_type (stdlib/listLabels.mli[333,11282+18]..[333,11282+20])
+            Ptyp_var a
+          core_type (stdlib/listLabels.mli[333,11282+24]..[333,11282+28])
+            Ptyp_constr "bool" (stdlib/listLabels.mli[333,11282+24]..[333,11282+28])
+            []
+        core_type (stdlib/listLabels.mli[333,11282+33]..[333,11282+51])
+          Ptyp_arrow
+          Nolabel
+          core_type (stdlib/listLabels.mli[333,11282+33]..[333,11282+40])
+            Ptyp_constr "list" (stdlib/listLabels.mli[333,11282+36]..[333,11282+40])
+            [
+              core_type (stdlib/listLabels.mli[333,11282+33]..[333,11282+35])
+                Ptyp_var a
+            ]
+          core_type (stdlib/listLabels.mli[333,11282+44]..[333,11282+51])
+            Ptyp_constr "list" (stdlib/listLabels.mli[333,11282+47]..[333,11282+51])
+            [
+              core_type (stdlib/listLabels.mli[333,11282+44]..[333,11282+46])
+                Ptyp_var a
+            ]
+      []
+  signature_item (stdlib/listLabels.mli[337,11385+0]..[337,11385+57])
+    Psig_value
+    value_description "filteri" (stdlib/listLabels.mli[337,11385+4]..[337,11385+11]) (stdlib/listLabels.mli[337,11385+0]..[337,11385+57])
+      attribute "ocaml.doc"
+        [
+          structure_item (stdlib/listLabels.mli[338,11443+0]..[342,11626+2])
+            Pstr_eval
+            expression (stdlib/listLabels.mli[338,11443+0]..[342,11626+2])
+              Pexp_constant PConst_string(" Same as {!filter}, but the predicate is applied to the index of\n   the element as first argument (counting from 0), and the element\n   itself as second argument.\n   @since 4.11.0\n",(stdlib/listLabels.mli[338,11443+0]..[342,11626+2]),None)
+        ]
+      core_type (stdlib/listLabels.mli[337,11385+14]..[337,11385+57])
+        Ptyp_arrow
+        Labelled "f"
+        core_type (stdlib/listLabels.mli[337,11385+17]..[337,11385+34])
+          Ptyp_arrow
+          Nolabel
+          core_type (stdlib/listLabels.mli[337,11385+17]..[337,11385+20])
+            Ptyp_constr "int" (stdlib/listLabels.mli[337,11385+17]..[337,11385+20])
+            []
+          core_type (stdlib/listLabels.mli[337,11385+24]..[337,11385+34])
+            Ptyp_arrow
+            Nolabel
+            core_type (stdlib/listLabels.mli[337,11385+24]..[337,11385+26])
+              Ptyp_var a
+            core_type (stdlib/listLabels.mli[337,11385+30]..[337,11385+34])
+              Ptyp_constr "bool" (stdlib/listLabels.mli[337,11385+30]..[337,11385+34])
+              []
+        core_type (stdlib/listLabels.mli[337,11385+39]..[337,11385+57])
+          Ptyp_arrow
+          Nolabel
+          core_type (stdlib/listLabels.mli[337,11385+39]..[337,11385+46])
+            Ptyp_constr "list" (stdlib/listLabels.mli[337,11385+42]..[337,11385+46])
+            [
+              core_type (stdlib/listLabels.mli[337,11385+39]..[337,11385+41])
+                Ptyp_var a
+            ]
+          core_type (stdlib/listLabels.mli[337,11385+50]..[337,11385+57])
+            Ptyp_constr "list" (stdlib/listLabels.mli[337,11385+53]..[337,11385+57])
+            [
+              core_type (stdlib/listLabels.mli[337,11385+50]..[337,11385+52])
+                Ptyp_var a
+            ]
+      []
+  signature_item (stdlib/listLabels.mli[344,11630+0]..[344,11630+62])
+    Psig_value
+    value_description "partition" (stdlib/listLabels.mli[344,11630+4]..[344,11630+13]) (stdlib/listLabels.mli[344,11630+0]..[344,11630+62])
+      attribute "ocaml.doc"
+        [
+          structure_item (stdlib/listLabels.mli[345,11693+0]..[350,11975+3])
+            Pstr_eval
+            expression (stdlib/listLabels.mli[345,11693+0]..[350,11975+3])
+              Pexp_constant PConst_string(" [partition ~f l] returns a pair of lists [(l1, l2)], where\n   [l1] is the list of all the elements of [l] that\n   satisfy the predicate [f], and [l2] is the list of all the\n   elements of [l] that do not satisfy [f].\n   The order of the elements in the input list is preserved.\n ",(stdlib/listLabels.mli[345,11693+0]..[350,11975+3]),None)
+        ]
+      core_type (stdlib/listLabels.mli[344,11630+16]..[344,11630+62])
+        Ptyp_arrow
+        Labelled "f"
+        core_type (stdlib/listLabels.mli[344,11630+19]..[344,11630+29])
+          Ptyp_arrow
+          Nolabel
+          core_type (stdlib/listLabels.mli[344,11630+19]..[344,11630+21])
+            Ptyp_var a
+          core_type (stdlib/listLabels.mli[344,11630+25]..[344,11630+29])
+            Ptyp_constr "bool" (stdlib/listLabels.mli[344,11630+25]..[344,11630+29])
+            []
+        core_type (stdlib/listLabels.mli[344,11630+34]..[344,11630+62])
+          Ptyp_arrow
+          Nolabel
+          core_type (stdlib/listLabels.mli[344,11630+34]..[344,11630+41])
+            Ptyp_constr "list" (stdlib/listLabels.mli[344,11630+37]..[344,11630+41])
+            [
+              core_type (stdlib/listLabels.mli[344,11630+34]..[344,11630+36])
+                Ptyp_var a
+            ]
+          core_type (stdlib/listLabels.mli[344,11630+45]..[344,11630+62])
+            Ptyp_tuple
+            [
+              core_type (stdlib/listLabels.mli[344,11630+45]..[344,11630+52])
+                Ptyp_constr "list" (stdlib/listLabels.mli[344,11630+48]..[344,11630+52])
+                [
+                  core_type (stdlib/listLabels.mli[344,11630+45]..[344,11630+47])
+                    Ptyp_var a
+                ]
+              core_type (stdlib/listLabels.mli[344,11630+55]..[344,11630+62])
+                Ptyp_constr "list" (stdlib/listLabels.mli[344,11630+58]..[344,11630+62])
+                [
+                  core_type (stdlib/listLabels.mli[344,11630+55]..[344,11630+57])
+                    Ptyp_var a
+                ]
+            ]
+      []
+  signature_item (stdlib/listLabels.mli[352,11980+0]..[352,11980+79])
+    Psig_value
+    value_description "partition_map" (stdlib/listLabels.mli[352,11980+4]..[352,11980+17]) (stdlib/listLabels.mli[352,11980+0]..[352,11980+79])
+      attribute "ocaml.doc"
+        [
+          structure_item (stdlib/listLabels.mli[353,12060+0]..[365,12553+2])
+            Pstr_eval
+            expression (stdlib/listLabels.mli[353,12060+0]..[365,12553+2])
+              Pexp_constant PConst_string(" [partition_map f l] returns a pair of lists [(l1, l2)] such that,\n    for each element [x] of the input list [l]:\n    - if [f x] is [Left y1], then [y1] is in [l1], and\n    - if [f x] is [Right y2], then [y2] is in [l2].\n\n    The output elements are included in [l1] and [l2] in the same\n    relative order as the corresponding input elements in [l].\n\n    In particular, [partition_map (fun x -> if f x then Left x else Right x) l]\n    is equivalent to [partition f l].\n\n    @since 4.12.0\n",(stdlib/listLabels.mli[353,12060+0]..[365,12553+2]),None)
+        ]
+      core_type (stdlib/listLabels.mli[352,11980+20]..[352,11980+79])
+        Ptyp_arrow
+        Labelled "f"
+        core_type (stdlib/listLabels.mli[352,11980+23]..[352,11980+46])
+          Ptyp_arrow
+          Nolabel
+          core_type (stdlib/listLabels.mli[352,11980+23]..[352,11980+25])
+            Ptyp_var a
+          core_type (stdlib/listLabels.mli[352,11980+29]..[352,11980+46])
+            Ptyp_constr "Either.t" (stdlib/listLabels.mli[352,11980+38]..[352,11980+46])
+            [
+              core_type (stdlib/listLabels.mli[352,11980+30]..[352,11980+32])
+                Ptyp_var b
+              core_type (stdlib/listLabels.mli[352,11980+34]..[352,11980+36])
+                Ptyp_var c
+            ]
+        core_type (stdlib/listLabels.mli[352,11980+51]..[352,11980+79])
+          Ptyp_arrow
+          Nolabel
+          core_type (stdlib/listLabels.mli[352,11980+51]..[352,11980+58])
+            Ptyp_constr "list" (stdlib/listLabels.mli[352,11980+54]..[352,11980+58])
+            [
+              core_type (stdlib/listLabels.mli[352,11980+51]..[352,11980+53])
+                Ptyp_var a
+            ]
+          core_type (stdlib/listLabels.mli[352,11980+62]..[352,11980+79])
+            Ptyp_tuple
+            [
+              core_type (stdlib/listLabels.mli[352,11980+62]..[352,11980+69])
+                Ptyp_constr "list" (stdlib/listLabels.mli[352,11980+65]..[352,11980+69])
+                [
+                  core_type (stdlib/listLabels.mli[352,11980+62]..[352,11980+64])
+                    Ptyp_var b
+                ]
+              core_type (stdlib/listLabels.mli[352,11980+72]..[352,11980+79])
+                Ptyp_constr "list" (stdlib/listLabels.mli[352,11980+75]..[352,11980+79])
+                [
+                  core_type (stdlib/listLabels.mli[352,11980+72]..[352,11980+74])
+                    Ptyp_var c
+                ]
+            ]
+      []
+  signature_item (stdlib/listLabels.mli[368,12558+0]..[368,12558+28])
+    Psig_attribute "ocaml.text"
+    [
+      structure_item (stdlib/listLabels.mli[368,12558+0]..[368,12558+28])
+        Pstr_eval
+        expression (stdlib/listLabels.mli[368,12558+0]..[368,12558+28])
+          Pexp_constant PConst_string(" {1 Association lists} ",(stdlib/listLabels.mli[368,12558+0]..[368,12558+28]),None)
+    ]
+  signature_item (stdlib/listLabels.mli[371,12589+0]..[371,12589+38])
+    Psig_value
+    value_description "assoc" (stdlib/listLabels.mli[371,12589+4]..[371,12589+9]) (stdlib/listLabels.mli[371,12589+0]..[371,12589+38])
+      attribute "ocaml.doc"
+        [
+          structure_item (stdlib/listLabels.mli[372,12628+0]..[378,12899+3])
+            Pstr_eval
+            expression (stdlib/listLabels.mli[372,12628+0]..[378,12899+3])
+              Pexp_constant PConst_string(" [assoc a l] returns the value associated with key [a] in the list of\n   pairs [l]. That is,\n   [assoc a [ ...; (a,b); ...] = b]\n   if [(a,b)] is the leftmost binding of [a] in list [l].\n   @raise Not_found if there is no value associated with [a] in the\n   list [l].\n ",(stdlib/listLabels.mli[372,12628+0]..[378,12899+3]),None)
+        ]
+      core_type (stdlib/listLabels.mli[371,12589+12]..[371,12589+38])
+        Ptyp_arrow
+        Nolabel
+        core_type (stdlib/listLabels.mli[371,12589+12]..[371,12589+14])
+          Ptyp_var a
+        core_type (stdlib/listLabels.mli[371,12589+18]..[371,12589+38])
+          Ptyp_arrow
+          Nolabel
+          core_type (stdlib/listLabels.mli[371,12589+18]..[371,12589+32])
+            Ptyp_constr "list" (stdlib/listLabels.mli[371,12589+28]..[371,12589+32])
+            [
+              core_type (stdlib/listLabels.mli[371,12589+19]..[371,12589+26])
+                Ptyp_tuple
+                [
+                  core_type (stdlib/listLabels.mli[371,12589+19]..[371,12589+21])
+                    Ptyp_var a
+                  core_type (stdlib/listLabels.mli[371,12589+24]..[371,12589+26])
+                    Ptyp_var b
+                ]
+            ]
+          core_type (stdlib/listLabels.mli[371,12589+36]..[371,12589+38])
+            Ptyp_var b
+      []
+  signature_item (stdlib/listLabels.mli[380,12904+0]..[380,12904+49])
+    Psig_value
+    value_description "assoc_opt" (stdlib/listLabels.mli[380,12904+4]..[380,12904+13]) (stdlib/listLabels.mli[380,12904+0]..[380,12904+49])
+      attribute "ocaml.doc"
+        [
+          structure_item (stdlib/listLabels.mli[381,12954+0]..[388,13257+3])
+            Pstr_eval
+            expression (stdlib/listLabels.mli[381,12954+0]..[388,13257+3])
+              Pexp_constant PConst_string(" [assoc_opt a l] returns the value associated with key [a] in the list of\n    pairs [l]. That is,\n    [assoc_opt a [ ...; (a,b); ...] = Some b]\n    if [(a,b)] is the leftmost binding of [a] in list [l].\n    Returns [None] if there is no value associated with [a] in the\n    list [l].\n    @since 4.05\n ",(stdlib/listLabels.mli[381,12954+0]..[388,13257+3]),None)
+        ]
+      core_type (stdlib/listLabels.mli[380,12904+16]..[380,12904+49])
+        Ptyp_arrow
+        Nolabel
+        core_type (stdlib/listLabels.mli[380,12904+16]..[380,12904+18])
+          Ptyp_var a
+        core_type (stdlib/listLabels.mli[380,12904+22]..[380,12904+49])
+          Ptyp_arrow
+          Nolabel
+          core_type (stdlib/listLabels.mli[380,12904+22]..[380,12904+36])
+            Ptyp_constr "list" (stdlib/listLabels.mli[380,12904+32]..[380,12904+36])
+            [
+              core_type (stdlib/listLabels.mli[380,12904+23]..[380,12904+30])
+                Ptyp_tuple
+                [
+                  core_type (stdlib/listLabels.mli[380,12904+23]..[380,12904+25])
+                    Ptyp_var a
+                  core_type (stdlib/listLabels.mli[380,12904+28]..[380,12904+30])
+                    Ptyp_var b
+                ]
+            ]
+          core_type (stdlib/listLabels.mli[380,12904+40]..[380,12904+49])
+            Ptyp_constr "option" (stdlib/listLabels.mli[380,12904+43]..[380,12904+49])
+            [
+              core_type (stdlib/listLabels.mli[380,12904+40]..[380,12904+42])
+                Ptyp_var b
+            ]
+      []
+  signature_item (stdlib/listLabels.mli[390,13262+0]..[390,13262+37])
+    Psig_value
+    value_description "assq" (stdlib/listLabels.mli[390,13262+4]..[390,13262+8]) (stdlib/listLabels.mli[390,13262+0]..[390,13262+37])
+      attribute "ocaml.doc"
+        [
+          structure_item (stdlib/listLabels.mli[391,13300+0]..[393,13400+3])
+            Pstr_eval
+            expression (stdlib/listLabels.mli[391,13300+0]..[393,13400+3])
+              Pexp_constant PConst_string(" Same as {!assoc}, but uses physical equality instead of\n   structural equality to compare keys.\n ",(stdlib/listLabels.mli[391,13300+0]..[393,13400+3]),None)
+        ]
+      core_type (stdlib/listLabels.mli[390,13262+11]..[390,13262+37])
+        Ptyp_arrow
+        Nolabel
+        core_type (stdlib/listLabels.mli[390,13262+11]..[390,13262+13])
+          Ptyp_var a
+        core_type (stdlib/listLabels.mli[390,13262+17]..[390,13262+37])
+          Ptyp_arrow
+          Nolabel
+          core_type (stdlib/listLabels.mli[390,13262+17]..[390,13262+31])
+            Ptyp_constr "list" (stdlib/listLabels.mli[390,13262+27]..[390,13262+31])
+            [
+              core_type (stdlib/listLabels.mli[390,13262+18]..[390,13262+25])
+                Ptyp_tuple
+                [
+                  core_type (stdlib/listLabels.mli[390,13262+18]..[390,13262+20])
+                    Ptyp_var a
+                  core_type (stdlib/listLabels.mli[390,13262+23]..[390,13262+25])
+                    Ptyp_var b
+                ]
+            ]
+          core_type (stdlib/listLabels.mli[390,13262+35]..[390,13262+37])
+            Ptyp_var b
+      []
+  signature_item (stdlib/listLabels.mli[395,13405+0]..[395,13405+48])
+    Psig_value
+    value_description "assq_opt" (stdlib/listLabels.mli[395,13405+4]..[395,13405+12]) (stdlib/listLabels.mli[395,13405+0]..[395,13405+48])
+      attribute "ocaml.doc"
+        [
+          structure_item (stdlib/listLabels.mli[396,13454+0]..[399,13575+3])
+            Pstr_eval
+            expression (stdlib/listLabels.mli[396,13454+0]..[399,13575+3])
+              Pexp_constant PConst_string(" Same as {!assoc_opt}, but uses physical equality instead of\n   structural equality to compare keys.\n   @since 4.05.0\n ",(stdlib/listLabels.mli[396,13454+0]..[399,13575+3]),None)
+        ]
+      core_type (stdlib/listLabels.mli[395,13405+15]..[395,13405+48])
+        Ptyp_arrow
+        Nolabel
+        core_type (stdlib/listLabels.mli[395,13405+15]..[395,13405+17])
+          Ptyp_var a
+        core_type (stdlib/listLabels.mli[395,13405+21]..[395,13405+48])
+          Ptyp_arrow
+          Nolabel
+          core_type (stdlib/listLabels.mli[395,13405+21]..[395,13405+35])
+            Ptyp_constr "list" (stdlib/listLabels.mli[395,13405+31]..[395,13405+35])
+            [
+              core_type (stdlib/listLabels.mli[395,13405+22]..[395,13405+29])
+                Ptyp_tuple
+                [
+                  core_type (stdlib/listLabels.mli[395,13405+22]..[395,13405+24])
+                    Ptyp_var a
+                  core_type (stdlib/listLabels.mli[395,13405+27]..[395,13405+29])
+                    Ptyp_var b
+                ]
+            ]
+          core_type (stdlib/listLabels.mli[395,13405+39]..[395,13405+48])
+            Ptyp_constr "option" (stdlib/listLabels.mli[395,13405+42]..[395,13405+48])
+            [
+              core_type (stdlib/listLabels.mli[395,13405+39]..[395,13405+41])
+                Ptyp_var b
+            ]
+      []
+  signature_item (stdlib/listLabels.mli[401,13580+0]..[401,13580+48])
+    Psig_value
+    value_description "mem_assoc" (stdlib/listLabels.mli[401,13580+4]..[401,13580+13]) (stdlib/listLabels.mli[401,13580+0]..[401,13580+48])
+      attribute "ocaml.doc"
+        [
+          structure_item (stdlib/listLabels.mli[402,13629+0]..[404,13752+3])
+            Pstr_eval
+            expression (stdlib/listLabels.mli[402,13629+0]..[404,13752+3])
+              Pexp_constant PConst_string(" Same as {!assoc}, but simply return [true] if a binding exists,\n   and [false] if no bindings exist for the given key.\n ",(stdlib/listLabels.mli[402,13629+0]..[404,13752+3]),None)
+        ]
+      core_type (stdlib/listLabels.mli[401,13580+16]..[401,13580+48])
+        Ptyp_arrow
+        Nolabel
+        core_type (stdlib/listLabels.mli[401,13580+16]..[401,13580+18])
+          Ptyp_var a
+        core_type (stdlib/listLabels.mli[401,13580+22]..[401,13580+48])
+          Ptyp_arrow
+          Labelled "map"
+          core_type (stdlib/listLabels.mli[401,13580+26]..[401,13580+40])
+            Ptyp_constr "list" (stdlib/listLabels.mli[401,13580+36]..[401,13580+40])
+            [
+              core_type (stdlib/listLabels.mli[401,13580+27]..[401,13580+34])
+                Ptyp_tuple
+                [
+                  core_type (stdlib/listLabels.mli[401,13580+27]..[401,13580+29])
+                    Ptyp_var a
+                  core_type (stdlib/listLabels.mli[401,13580+32]..[401,13580+34])
+                    Ptyp_var b
+                ]
+            ]
+          core_type (stdlib/listLabels.mli[401,13580+44]..[401,13580+48])
+            Ptyp_constr "bool" (stdlib/listLabels.mli[401,13580+44]..[401,13580+48])
+            []
+      []
+  signature_item (stdlib/listLabels.mli[406,13757+0]..[406,13757+47])
+    Psig_value
+    value_description "mem_assq" (stdlib/listLabels.mli[406,13757+4]..[406,13757+12]) (stdlib/listLabels.mli[406,13757+0]..[406,13757+47])
+      attribute "ocaml.doc"
+        [
+          structure_item (stdlib/listLabels.mli[407,13805+0]..[409,13909+3])
+            Pstr_eval
+            expression (stdlib/listLabels.mli[407,13805+0]..[409,13909+3])
+              Pexp_constant PConst_string(" Same as {!mem_assoc}, but uses physical equality instead of\n   structural equality to compare keys.\n ",(stdlib/listLabels.mli[407,13805+0]..[409,13909+3]),None)
+        ]
+      core_type (stdlib/listLabels.mli[406,13757+15]..[406,13757+47])
+        Ptyp_arrow
+        Nolabel
+        core_type (stdlib/listLabels.mli[406,13757+15]..[406,13757+17])
+          Ptyp_var a
+        core_type (stdlib/listLabels.mli[406,13757+21]..[406,13757+47])
+          Ptyp_arrow
+          Labelled "map"
+          core_type (stdlib/listLabels.mli[406,13757+25]..[406,13757+39])
+            Ptyp_constr "list" (stdlib/listLabels.mli[406,13757+35]..[406,13757+39])
+            [
+              core_type (stdlib/listLabels.mli[406,13757+26]..[406,13757+33])
+                Ptyp_tuple
+                [
+                  core_type (stdlib/listLabels.mli[406,13757+26]..[406,13757+28])
+                    Ptyp_var a
+                  core_type (stdlib/listLabels.mli[406,13757+31]..[406,13757+33])
+                    Ptyp_var b
+                ]
+            ]
+          core_type (stdlib/listLabels.mli[406,13757+43]..[406,13757+47])
+            Ptyp_constr "bool" (stdlib/listLabels.mli[406,13757+43]..[406,13757+47])
+            []
+      []
+  signature_item (stdlib/listLabels.mli[411,13914+0]..[411,13914+57])
+    Psig_value
+    value_description "remove_assoc" (stdlib/listLabels.mli[411,13914+4]..[411,13914+16]) (stdlib/listLabels.mli[411,13914+0]..[411,13914+57])
+      attribute "ocaml.doc"
+        [
+          structure_item (stdlib/listLabels.mli[412,13972+0]..[415,14096+3])
+            Pstr_eval
+            expression (stdlib/listLabels.mli[412,13972+0]..[415,14096+3])
+              Pexp_constant PConst_string(" [remove_assoc a l] returns the list of\n   pairs [l] without the first pair with key [a], if any.\n   Not tail-recursive.\n ",(stdlib/listLabels.mli[412,13972+0]..[415,14096+3]),None)
+        ]
+      core_type (stdlib/listLabels.mli[411,13914+19]..[411,13914+57])
+        Ptyp_arrow
+        Nolabel
+        core_type (stdlib/listLabels.mli[411,13914+19]..[411,13914+21])
+          Ptyp_var a
+        core_type (stdlib/listLabels.mli[411,13914+25]..[411,13914+57])
+          Ptyp_arrow
+          Nolabel
+          core_type (stdlib/listLabels.mli[411,13914+25]..[411,13914+39])
+            Ptyp_constr "list" (stdlib/listLabels.mli[411,13914+35]..[411,13914+39])
+            [
+              core_type (stdlib/listLabels.mli[411,13914+26]..[411,13914+33])
+                Ptyp_tuple
+                [
+                  core_type (stdlib/listLabels.mli[411,13914+26]..[411,13914+28])
+                    Ptyp_var a
+                  core_type (stdlib/listLabels.mli[411,13914+31]..[411,13914+33])
+                    Ptyp_var b
+                ]
+            ]
+          core_type (stdlib/listLabels.mli[411,13914+43]..[411,13914+57])
+            Ptyp_constr "list" (stdlib/listLabels.mli[411,13914+53]..[411,13914+57])
+            [
+              core_type (stdlib/listLabels.mli[411,13914+44]..[411,13914+51])
+                Ptyp_tuple
+                [
+                  core_type (stdlib/listLabels.mli[411,13914+44]..[411,13914+46])
+                    Ptyp_var a
+                  core_type (stdlib/listLabels.mli[411,13914+49]..[411,13914+51])
+                    Ptyp_var b
+                ]
+            ]
+      []
+  signature_item (stdlib/listLabels.mli[417,14101+0]..[417,14101+56])
+    Psig_value
+    value_description "remove_assq" (stdlib/listLabels.mli[417,14101+4]..[417,14101+15]) (stdlib/listLabels.mli[417,14101+0]..[417,14101+56])
+      attribute "ocaml.doc"
+        [
+          structure_item (stdlib/listLabels.mli[418,14158+0]..[420,14285+3])
+            Pstr_eval
+            expression (stdlib/listLabels.mli[418,14158+0]..[420,14285+3])
+              Pexp_constant PConst_string(" Same as {!remove_assoc}, but uses physical equality instead\n   of structural equality to compare keys. Not tail-recursive.\n ",(stdlib/listLabels.mli[418,14158+0]..[420,14285+3]),None)
+        ]
+      core_type (stdlib/listLabels.mli[417,14101+18]..[417,14101+56])
+        Ptyp_arrow
+        Nolabel
+        core_type (stdlib/listLabels.mli[417,14101+18]..[417,14101+20])
+          Ptyp_var a
+        core_type (stdlib/listLabels.mli[417,14101+24]..[417,14101+56])
+          Ptyp_arrow
+          Nolabel
+          core_type (stdlib/listLabels.mli[417,14101+24]..[417,14101+38])
+            Ptyp_constr "list" (stdlib/listLabels.mli[417,14101+34]..[417,14101+38])
+            [
+              core_type (stdlib/listLabels.mli[417,14101+25]..[417,14101+32])
+                Ptyp_tuple
+                [
+                  core_type (stdlib/listLabels.mli[417,14101+25]..[417,14101+27])
+                    Ptyp_var a
+                  core_type (stdlib/listLabels.mli[417,14101+30]..[417,14101+32])
+                    Ptyp_var b
+                ]
+            ]
+          core_type (stdlib/listLabels.mli[417,14101+42]..[417,14101+56])
+            Ptyp_constr "list" (stdlib/listLabels.mli[417,14101+52]..[417,14101+56])
+            [
+              core_type (stdlib/listLabels.mli[417,14101+43]..[417,14101+50])
+                Ptyp_tuple
+                [
+                  core_type (stdlib/listLabels.mli[417,14101+43]..[417,14101+45])
+                    Ptyp_var a
+                  core_type (stdlib/listLabels.mli[417,14101+48]..[417,14101+50])
+                    Ptyp_var b
+                ]
+            ]
+      []
+  signature_item (stdlib/listLabels.mli[423,14291+0]..[423,14291+25])
+    Psig_attribute "ocaml.text"
+    [
+      structure_item (stdlib/listLabels.mli[423,14291+0]..[423,14291+25])
+        Pstr_eval
+        expression (stdlib/listLabels.mli[423,14291+0]..[423,14291+25])
+          Pexp_constant PConst_string(" {1 Lists of pairs} ",(stdlib/listLabels.mli[423,14291+0]..[423,14291+25]),None)
+    ]
+  signature_item (stdlib/listLabels.mli[426,14319+0]..[426,14319+47])
+    Psig_value
+    value_description "split" (stdlib/listLabels.mli[426,14319+4]..[426,14319+9]) (stdlib/listLabels.mli[426,14319+0]..[426,14319+47])
+      attribute "ocaml.doc"
+        [
+          structure_item (stdlib/listLabels.mli[427,14367+0]..[430,14514+3])
+            Pstr_eval
+            expression (stdlib/listLabels.mli[427,14367+0]..[430,14514+3])
+              Pexp_constant PConst_string(" Transform a list of pairs into a pair of lists:\n   [split [(a1,b1); ...; (an,bn)]] is [([a1; ...; an], [b1; ...; bn])].\n   Not tail-recursive.\n ",(stdlib/listLabels.mli[427,14367+0]..[430,14514+3]),None)
+        ]
+      core_type (stdlib/listLabels.mli[426,14319+12]..[426,14319+47])
+        Ptyp_arrow
+        Nolabel
+        core_type (stdlib/listLabels.mli[426,14319+12]..[426,14319+26])
+          Ptyp_constr "list" (stdlib/listLabels.mli[426,14319+22]..[426,14319+26])
+          [
+            core_type (stdlib/listLabels.mli[426,14319+13]..[426,14319+20])
+              Ptyp_tuple
+              [
+                core_type (stdlib/listLabels.mli[426,14319+13]..[426,14319+15])
+                  Ptyp_var a
+                core_type (stdlib/listLabels.mli[426,14319+18]..[426,14319+20])
+                  Ptyp_var b
+              ]
+          ]
+        core_type (stdlib/listLabels.mli[426,14319+30]..[426,14319+47])
+          Ptyp_tuple
+          [
+            core_type (stdlib/listLabels.mli[426,14319+30]..[426,14319+37])
+              Ptyp_constr "list" (stdlib/listLabels.mli[426,14319+33]..[426,14319+37])
+              [
+                core_type (stdlib/listLabels.mli[426,14319+30]..[426,14319+32])
+                  Ptyp_var a
+              ]
+            core_type (stdlib/listLabels.mli[426,14319+40]..[426,14319+47])
+              Ptyp_constr "list" (stdlib/listLabels.mli[426,14319+43]..[426,14319+47])
+              [
+                core_type (stdlib/listLabels.mli[426,14319+40]..[426,14319+42])
+                  Ptyp_var b
+              ]
+          ]
+      []
+  signature_item (stdlib/listLabels.mli[432,14519+0]..[432,14519+50])
+    Psig_value
+    value_description "combine" (stdlib/listLabels.mli[432,14519+4]..[432,14519+11]) (stdlib/listLabels.mli[432,14519+0]..[432,14519+50])
+      attribute "ocaml.doc"
+        [
+          structure_item (stdlib/listLabels.mli[433,14570+0]..[438,14787+3])
+            Pstr_eval
+            expression (stdlib/listLabels.mli[433,14570+0]..[438,14787+3])
+              Pexp_constant PConst_string(" Transform a pair of lists into a list of pairs:\n   [combine [a1; ...; an] [b1; ...; bn]] is\n   [[(a1,b1); ...; (an,bn)]].\n   @raise Invalid_argument if the two lists\n   have different lengths. Not tail-recursive.\n ",(stdlib/listLabels.mli[433,14570+0]..[438,14787+3]),None)
+        ]
+      core_type (stdlib/listLabels.mli[432,14519+14]..[432,14519+50])
+        Ptyp_arrow
+        Nolabel
+        core_type (stdlib/listLabels.mli[432,14519+14]..[432,14519+21])
+          Ptyp_constr "list" (stdlib/listLabels.mli[432,14519+17]..[432,14519+21])
+          [
+            core_type (stdlib/listLabels.mli[432,14519+14]..[432,14519+16])
+              Ptyp_var a
+          ]
+        core_type (stdlib/listLabels.mli[432,14519+25]..[432,14519+50])
+          Ptyp_arrow
+          Nolabel
+          core_type (stdlib/listLabels.mli[432,14519+25]..[432,14519+32])
+            Ptyp_constr "list" (stdlib/listLabels.mli[432,14519+28]..[432,14519+32])
+            [
+              core_type (stdlib/listLabels.mli[432,14519+25]..[432,14519+27])
+                Ptyp_var b
+            ]
+          core_type (stdlib/listLabels.mli[432,14519+36]..[432,14519+50])
+            Ptyp_constr "list" (stdlib/listLabels.mli[432,14519+46]..[432,14519+50])
+            [
+              core_type (stdlib/listLabels.mli[432,14519+37]..[432,14519+44])
+                Ptyp_tuple
+                [
+                  core_type (stdlib/listLabels.mli[432,14519+37]..[432,14519+39])
+                    Ptyp_var a
+                  core_type (stdlib/listLabels.mli[432,14519+42]..[432,14519+44])
+                    Ptyp_var b
+                ]
+            ]
+      []
+  signature_item (stdlib/listLabels.mli[441,14793+0]..[441,14793+18])
+    Psig_attribute "ocaml.text"
+    [
+      structure_item (stdlib/listLabels.mli[441,14793+0]..[441,14793+18])
+        Pstr_eval
+        expression (stdlib/listLabels.mli[441,14793+0]..[441,14793+18])
+          Pexp_constant PConst_string(" {1 Sorting} ",(stdlib/listLabels.mli[441,14793+0]..[441,14793+18]),None)
+    ]
+  signature_item (stdlib/listLabels.mli[444,14814+0]..[444,14814+54])
+    Psig_value
+    value_description "sort" (stdlib/listLabels.mli[444,14814+4]..[444,14814+8]) (stdlib/listLabels.mli[444,14814+0]..[444,14814+54])
+      attribute "ocaml.doc"
+        [
+          structure_item (stdlib/listLabels.mli[445,14869+0]..[458,15532+3])
+            Pstr_eval
+            expression (stdlib/listLabels.mli[445,14869+0]..[458,15532+3])
+              Pexp_constant PConst_string(" Sort a list in increasing order according to a comparison\n   function. The comparison function must return 0 if its arguments\n   compare as equal, a positive integer if the first is greater,\n   and a negative integer if the first is smaller (see Array.sort for\n   a complete specification). For example,\n   {!Stdlib.compare} is a suitable comparison function.\n   The resulting list is sorted in increasing order.\n   {!sort} is guaranteed to run in constant heap space\n   (in addition to the size of the result list) and logarithmic\n   stack space.\n\n   The current implementation uses Merge Sort. It runs in constant\n   heap space and logarithmic stack space.\n ",(stdlib/listLabels.mli[445,14869+0]..[458,15532+3]),None)
+        ]
+      core_type (stdlib/listLabels.mli[444,14814+11]..[444,14814+54])
+        Ptyp_arrow
+        Labelled "cmp"
+        core_type (stdlib/listLabels.mli[444,14814+16]..[444,14814+31])
+          Ptyp_arrow
+          Nolabel
+          core_type (stdlib/listLabels.mli[444,14814+16]..[444,14814+18])
+            Ptyp_var a
+          core_type (stdlib/listLabels.mli[444,14814+22]..[444,14814+31])
+            Ptyp_arrow
+            Nolabel
+            core_type (stdlib/listLabels.mli[444,14814+22]..[444,14814+24])
+              Ptyp_var a
+            core_type (stdlib/listLabels.mli[444,14814+28]..[444,14814+31])
+              Ptyp_constr "int" (stdlib/listLabels.mli[444,14814+28]..[444,14814+31])
+              []
+        core_type (stdlib/listLabels.mli[444,14814+36]..[444,14814+54])
+          Ptyp_arrow
+          Nolabel
+          core_type (stdlib/listLabels.mli[444,14814+36]..[444,14814+43])
+            Ptyp_constr "list" (stdlib/listLabels.mli[444,14814+39]..[444,14814+43])
+            [
+              core_type (stdlib/listLabels.mli[444,14814+36]..[444,14814+38])
+                Ptyp_var a
+            ]
+          core_type (stdlib/listLabels.mli[444,14814+47]..[444,14814+54])
+            Ptyp_constr "list" (stdlib/listLabels.mli[444,14814+50]..[444,14814+54])
+            [
+              core_type (stdlib/listLabels.mli[444,14814+47]..[444,14814+49])
+                Ptyp_var a
+            ]
+      []
+  signature_item (stdlib/listLabels.mli[460,15537+0]..[460,15537+61])
+    Psig_value
+    value_description "stable_sort" (stdlib/listLabels.mli[460,15537+4]..[460,15537+15]) (stdlib/listLabels.mli[460,15537+0]..[460,15537+61])
+      attribute "ocaml.doc"
+        [
+          structure_item (stdlib/listLabels.mli[461,15599+0]..[467,15859+3])
+            Pstr_eval
+            expression (stdlib/listLabels.mli[461,15599+0]..[467,15859+3])
+              Pexp_constant PConst_string(" Same as {!sort}, but the sorting algorithm is guaranteed to\n   be stable (i.e. elements that compare equal are kept in their\n   original order).\n\n   The current implementation uses Merge Sort. It runs in constant\n   heap space and logarithmic stack space.\n ",(stdlib/listLabels.mli[461,15599+0]..[467,15859+3]),None)
+        ]
+      core_type (stdlib/listLabels.mli[460,15537+18]..[460,15537+61])
+        Ptyp_arrow
+        Labelled "cmp"
+        core_type (stdlib/listLabels.mli[460,15537+23]..[460,15537+38])
+          Ptyp_arrow
+          Nolabel
+          core_type (stdlib/listLabels.mli[460,15537+23]..[460,15537+25])
+            Ptyp_var a
+          core_type (stdlib/listLabels.mli[460,15537+29]..[460,15537+38])
+            Ptyp_arrow
+            Nolabel
+            core_type (stdlib/listLabels.mli[460,15537+29]..[460,15537+31])
+              Ptyp_var a
+            core_type (stdlib/listLabels.mli[460,15537+35]..[460,15537+38])
+              Ptyp_constr "int" (stdlib/listLabels.mli[460,15537+35]..[460,15537+38])
+              []
+        core_type (stdlib/listLabels.mli[460,15537+43]..[460,15537+61])
+          Ptyp_arrow
+          Nolabel
+          core_type (stdlib/listLabels.mli[460,15537+43]..[460,15537+50])
+            Ptyp_constr "list" (stdlib/listLabels.mli[460,15537+46]..[460,15537+50])
+            [
+              core_type (stdlib/listLabels.mli[460,15537+43]..[460,15537+45])
+                Ptyp_var a
+            ]
+          core_type (stdlib/listLabels.mli[460,15537+54]..[460,15537+61])
+            Ptyp_constr "list" (stdlib/listLabels.mli[460,15537+57]..[460,15537+61])
+            [
+              core_type (stdlib/listLabels.mli[460,15537+54]..[460,15537+56])
+                Ptyp_var a
+            ]
+      []
+  signature_item (stdlib/listLabels.mli[469,15864+0]..[469,15864+59])
+    Psig_value
+    value_description "fast_sort" (stdlib/listLabels.mli[469,15864+4]..[469,15864+13]) (stdlib/listLabels.mli[469,15864+0]..[469,15864+59])
+      attribute "ocaml.doc"
+        [
+          structure_item (stdlib/listLabels.mli[470,15924+0]..[472,16005+3])
+            Pstr_eval
+            expression (stdlib/listLabels.mli[470,15924+0]..[472,16005+3])
+              Pexp_constant PConst_string(" Same as {!sort} or {!stable_sort}, whichever is\n    faster on typical input.\n ",(stdlib/listLabels.mli[470,15924+0]..[472,16005+3]),None)
+        ]
+      core_type (stdlib/listLabels.mli[469,15864+16]..[469,15864+59])
+        Ptyp_arrow
+        Labelled "cmp"
+        core_type (stdlib/listLabels.mli[469,15864+21]..[469,15864+36])
+          Ptyp_arrow
+          Nolabel
+          core_type (stdlib/listLabels.mli[469,15864+21]..[469,15864+23])
+            Ptyp_var a
+          core_type (stdlib/listLabels.mli[469,15864+27]..[469,15864+36])
+            Ptyp_arrow
+            Nolabel
+            core_type (stdlib/listLabels.mli[469,15864+27]..[469,15864+29])
+              Ptyp_var a
+            core_type (stdlib/listLabels.mli[469,15864+33]..[469,15864+36])
+              Ptyp_constr "int" (stdlib/listLabels.mli[469,15864+33]..[469,15864+36])
+              []
+        core_type (stdlib/listLabels.mli[469,15864+41]..[469,15864+59])
+          Ptyp_arrow
+          Nolabel
+          core_type (stdlib/listLabels.mli[469,15864+41]..[469,15864+48])
+            Ptyp_constr "list" (stdlib/listLabels.mli[469,15864+44]..[469,15864+48])
+            [
+              core_type (stdlib/listLabels.mli[469,15864+41]..[469,15864+43])
+                Ptyp_var a
+            ]
+          core_type (stdlib/listLabels.mli[469,15864+52]..[469,15864+59])
+            Ptyp_constr "list" (stdlib/listLabels.mli[469,15864+55]..[469,15864+59])
+            [
+              core_type (stdlib/listLabels.mli[469,15864+52]..[469,15864+54])
+                Ptyp_var a
+            ]
+      []
+  signature_item (stdlib/listLabels.mli[474,16010+0]..[474,16010+59])
+    Psig_value
+    value_description "sort_uniq" (stdlib/listLabels.mli[474,16010+4]..[474,16010+13]) (stdlib/listLabels.mli[474,16010+0]..[474,16010+59])
+      attribute "ocaml.doc"
+        [
+          structure_item (stdlib/listLabels.mli[475,16070+0]..[477,16160+3])
+            Pstr_eval
+            expression (stdlib/listLabels.mli[475,16070+0]..[477,16160+3])
+              Pexp_constant PConst_string(" Same as {!sort}, but also remove duplicates.\n    @since 4.02.0 (4.03.0 in ListLabels)\n ",(stdlib/listLabels.mli[475,16070+0]..[477,16160+3]),None)
+        ]
+      core_type (stdlib/listLabels.mli[474,16010+16]..[474,16010+59])
+        Ptyp_arrow
+        Labelled "cmp"
+        core_type (stdlib/listLabels.mli[474,16010+21]..[474,16010+36])
+          Ptyp_arrow
+          Nolabel
+          core_type (stdlib/listLabels.mli[474,16010+21]..[474,16010+23])
+            Ptyp_var a
+          core_type (stdlib/listLabels.mli[474,16010+27]..[474,16010+36])
+            Ptyp_arrow
+            Nolabel
+            core_type (stdlib/listLabels.mli[474,16010+27]..[474,16010+29])
+              Ptyp_var a
+            core_type (stdlib/listLabels.mli[474,16010+33]..[474,16010+36])
+              Ptyp_constr "int" (stdlib/listLabels.mli[474,16010+33]..[474,16010+36])
+              []
+        core_type (stdlib/listLabels.mli[474,16010+41]..[474,16010+59])
+          Ptyp_arrow
+          Nolabel
+          core_type (stdlib/listLabels.mli[474,16010+41]..[474,16010+48])
+            Ptyp_constr "list" (stdlib/listLabels.mli[474,16010+44]..[474,16010+48])
+            [
+              core_type (stdlib/listLabels.mli[474,16010+41]..[474,16010+43])
+                Ptyp_var a
+            ]
+          core_type (stdlib/listLabels.mli[474,16010+52]..[474,16010+59])
+            Ptyp_constr "list" (stdlib/listLabels.mli[474,16010+55]..[474,16010+59])
+            [
+              core_type (stdlib/listLabels.mli[474,16010+52]..[474,16010+54])
+                Ptyp_var a
+            ]
+      []
+  signature_item (stdlib/listLabels.mli[479,16165+0]..[479,16165+66])
+    Psig_value
+    value_description "merge" (stdlib/listLabels.mli[479,16165+4]..[479,16165+9]) (stdlib/listLabels.mli[479,16165+0]..[479,16165+66])
+      attribute "ocaml.doc"
+        [
+          structure_item (stdlib/listLabels.mli[480,16232+0]..[487,16602+3])
+            Pstr_eval
+            expression (stdlib/listLabels.mli[480,16232+0]..[487,16602+3])
+              Pexp_constant PConst_string(" Merge two lists:\n    Assuming that [l1] and [l2] are sorted according to the\n    comparison function [cmp], [merge ~cmp l1 l2] will return a\n    sorted list containing all the elements of [l1] and [l2].\n    If several elements compare equal, the elements of [l1] will be\n    before the elements of [l2].\n    Not tail-recursive (sum of the lengths of the arguments).\n ",(stdlib/listLabels.mli[480,16232+0]..[487,16602+3]),None)
+        ]
+      core_type (stdlib/listLabels.mli[479,16165+12]..[479,16165+66])
+        Ptyp_arrow
+        Labelled "cmp"
+        core_type (stdlib/listLabels.mli[479,16165+17]..[479,16165+32])
+          Ptyp_arrow
+          Nolabel
+          core_type (stdlib/listLabels.mli[479,16165+17]..[479,16165+19])
+            Ptyp_var a
+          core_type (stdlib/listLabels.mli[479,16165+23]..[479,16165+32])
+            Ptyp_arrow
+            Nolabel
+            core_type (stdlib/listLabels.mli[479,16165+23]..[479,16165+25])
+              Ptyp_var a
+            core_type (stdlib/listLabels.mli[479,16165+29]..[479,16165+32])
+              Ptyp_constr "int" (stdlib/listLabels.mli[479,16165+29]..[479,16165+32])
+              []
+        core_type (stdlib/listLabels.mli[479,16165+37]..[479,16165+66])
+          Ptyp_arrow
+          Nolabel
+          core_type (stdlib/listLabels.mli[479,16165+37]..[479,16165+44])
+            Ptyp_constr "list" (stdlib/listLabels.mli[479,16165+40]..[479,16165+44])
+            [
+              core_type (stdlib/listLabels.mli[479,16165+37]..[479,16165+39])
+                Ptyp_var a
+            ]
+          core_type (stdlib/listLabels.mli[479,16165+48]..[479,16165+66])
+            Ptyp_arrow
+            Nolabel
+            core_type (stdlib/listLabels.mli[479,16165+48]..[479,16165+55])
+              Ptyp_constr "list" (stdlib/listLabels.mli[479,16165+51]..[479,16165+55])
+              [
+                core_type (stdlib/listLabels.mli[479,16165+48]..[479,16165+50])
+                  Ptyp_var a
+              ]
+            core_type (stdlib/listLabels.mli[479,16165+59]..[479,16165+66])
+              Ptyp_constr "list" (stdlib/listLabels.mli[479,16165+62]..[479,16165+66])
+              [
+                core_type (stdlib/listLabels.mli[479,16165+59]..[479,16165+61])
+                  Ptyp_var a
+              ]
+      []
+  signature_item (stdlib/listLabels.mli[489,16607+0]..[489,16607+30])
+    Psig_attribute "ocaml.text"
+    [
+      structure_item (stdlib/listLabels.mli[489,16607+0]..[489,16607+30])
+        Pstr_eval
+        expression (stdlib/listLabels.mli[489,16607+0]..[489,16607+30])
+          Pexp_constant PConst_string(" {1 Lists and Sequences} ",(stdlib/listLabels.mli[489,16607+0]..[489,16607+30]),None)
+    ]
+  signature_item (stdlib/listLabels.mli[491,16639+0]..[491,16639+32])
+    Psig_value
+    value_description "to_seq" (stdlib/listLabels.mli[491,16639+4]..[491,16639+10]) (stdlib/listLabels.mli[491,16639+0]..[491,16639+32])
+      attribute "ocaml.doc"
+        [
+          structure_item (stdlib/listLabels.mli[492,16672+0]..[494,16713+3])
+            Pstr_eval
+            expression (stdlib/listLabels.mli[492,16672+0]..[494,16713+3])
+              Pexp_constant PConst_string(" Iterate on the list.\n    @since 4.07\n ",(stdlib/listLabels.mli[492,16672+0]..[494,16713+3]),None)
+        ]
+      core_type (stdlib/listLabels.mli[491,16639+13]..[491,16639+32])
+        Ptyp_arrow
+        Nolabel
+        core_type (stdlib/listLabels.mli[491,16639+13]..[491,16639+20])
+          Ptyp_constr "list" (stdlib/listLabels.mli[491,16639+16]..[491,16639+20])
+          [
+            core_type (stdlib/listLabels.mli[491,16639+13]..[491,16639+15])
+              Ptyp_var a
+          ]
+        core_type (stdlib/listLabels.mli[491,16639+24]..[491,16639+32])
+          Ptyp_constr "Seq.t" (stdlib/listLabels.mli[491,16639+27]..[491,16639+32])
+          [
+            core_type (stdlib/listLabels.mli[491,16639+24]..[491,16639+26])
+              Ptyp_var a
+          ]
+      []
+  signature_item (stdlib/listLabels.mli[496,16718+0]..[496,16718+32])
+    Psig_value
+    value_description "of_seq" (stdlib/listLabels.mli[496,16718+4]..[496,16718+10]) (stdlib/listLabels.mli[496,16718+0]..[496,16718+32])
+      attribute "ocaml.doc"
+        [
+          structure_item (stdlib/listLabels.mli[497,16751+0]..[499,16802+3])
+            Pstr_eval
+            expression (stdlib/listLabels.mli[497,16751+0]..[499,16802+3])
+              Pexp_constant PConst_string(" Create a list from a sequence.\n    @since 4.07\n ",(stdlib/listLabels.mli[497,16751+0]..[499,16802+3]),None)
+        ]
+      core_type (stdlib/listLabels.mli[496,16718+13]..[496,16718+32])
+        Ptyp_arrow
+        Nolabel
+        core_type (stdlib/listLabels.mli[496,16718+13]..[496,16718+21])
+          Ptyp_constr "Seq.t" (stdlib/listLabels.mli[496,16718+16]..[496,16718+21])
+          [
+            core_type (stdlib/listLabels.mli[496,16718+13]..[496,16718+15])
+              Ptyp_var a
+          ]
+        core_type (stdlib/listLabels.mli[496,16718+25]..[496,16718+32])
+          Ptyp_constr "list" (stdlib/listLabels.mli[496,16718+28]..[496,16718+32])
+          [
+            core_type (stdlib/listLabels.mli[496,16718+25]..[496,16718+27])
+              Ptyp_var a
+          ]
+      []
+]
+

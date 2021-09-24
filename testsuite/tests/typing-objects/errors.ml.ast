@@ -1,0 +1,180 @@
+[
+  structure_item (testsuite/tests/typing-objects/errors.ml[5,24+0]..[5,24+75])
+    Pstr_class_type
+    [
+      class_type_declaration (testsuite/tests/typing-objects/errors.ml[5,24+0]..[5,24+75])
+        pci_virt = Virtual
+        pci_params =
+          [
+            core_type (testsuite/tests/typing-objects/errors.ml[5,24+20]..[5,24+22])
+              Ptyp_var a
+          ]
+        pci_name = "c" (testsuite/tests/typing-objects/errors.ml[5,24+24]..[5,24+25])
+        pci_expr =
+          class_type (testsuite/tests/typing-objects/errors.ml[5,24+28]..[5,24+75])
+            Pcty_signature
+            class_signature
+              core_type (testsuite/tests/typing-objects/errors.ml[5,24+34]..[5,24+34])
+                Ptyp_any
+              [
+                class_type_field (testsuite/tests/typing-objects/errors.ml[5,24+35]..[5,24+71])
+                  Pctf_constraint
+                    core_type (testsuite/tests/typing-objects/errors.ml[5,24+46]..[5,24+48])
+                      Ptyp_var a
+                    core_type (testsuite/tests/typing-objects/errors.ml[5,24+51]..[5,24+71])
+                      Ptyp_variant closed=Closed
+                      [
+                        Rtag "A" false
+                          [
+                            core_type (testsuite/tests/typing-objects/errors.ml[5,24+59]..[5,24+62])
+                              Ptyp_constr "int" (testsuite/tests/typing-objects/errors.ml[5,24+59]..[5,24+62])
+                              []
+                            core_type (testsuite/tests/typing-objects/errors.ml[5,24+65]..[5,24+70])
+                              Ptyp_constr "float" (testsuite/tests/typing-objects/errors.ml[5,24+65]..[5,24+70])
+                              []
+                          ]
+                      ]
+                      Some
+                        []
+              ]
+    ]
+  structure_item (testsuite/tests/typing-objects/errors.ml[6,100+0]..[15,536+3])
+    Pstr_extension "expect"
+    [
+      structure_item (testsuite/tests/typing-objects/errors.ml[6,100+10]..[15,536+2])
+        Pstr_eval
+        expression (testsuite/tests/typing-objects/errors.ml[6,100+10]..[15,536+2])
+          Pexp_constant PConst_string ("\nLine 1, characters 0-75:\n1 | class type virtual ['a] c = object constraint 'a = [<`A of int & float] end\n    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nError: The type of this class,\n       class virtual ['a] c :\n         object constraint 'a = _[< `A of int & float ] end,\n       contains non-collapsible conjunctive types in constraints.\n       Type int is not compatible with type float\n",(testsuite/tests/typing-objects/errors.ml[6,100+12]..[15,536+0]),Some "")
+    ]
+  structure_item (testsuite/tests/typing-objects/errors.ml[17,541+0]..[19,581+3])
+    Pstr_class_type
+    [
+      class_type_declaration (testsuite/tests/typing-objects/errors.ml[17,541+0]..[19,581+3])
+        pci_virt = Concrete
+        pci_params =
+          []
+        pci_name = "ct" (testsuite/tests/typing-objects/errors.ml[17,541+11]..[17,541+13])
+        pci_expr =
+          class_type (testsuite/tests/typing-objects/errors.ml[17,541+16]..[19,581+3])
+            Pcty_signature
+            class_signature
+              core_type (testsuite/tests/typing-objects/errors.ml[17,541+22]..[17,541+22])
+                Ptyp_any
+              [
+                class_type_field (testsuite/tests/typing-objects/errors.ml[18,564+2]..[18,564+16])
+                  Pctf_method "x" Public Concrete
+                    core_type (testsuite/tests/typing-objects/errors.ml[18,564+13]..[18,564+16])
+                      Ptyp_constr "int" (testsuite/tests/typing-objects/errors.ml[18,564+13]..[18,564+16])
+                      []
+              ]
+    ]
+  structure_item (testsuite/tests/typing-objects/errors.ml[21,586+0]..[23,640+3])
+    Pstr_class
+    [
+      class_declaration (testsuite/tests/typing-objects/errors.ml[21,586+0]..[23,640+3])
+        pci_virt = Concrete
+        pci_params =
+          []
+        pci_name = "c" (testsuite/tests/typing-objects/errors.ml[21,586+6]..[21,586+7])
+        pci_expr =
+          class_expr (testsuite/tests/typing-objects/errors.ml[21,586+8]..[23,640+3])
+            Pcl_fun
+            Nolabel
+            None
+            pattern (testsuite/tests/typing-objects/errors.ml[21,586+8]..[21,586+24])
+              Ppat_constraint
+              pattern (testsuite/tests/typing-objects/errors.ml[21,586+9]..[21,586+10])
+                Ppat_var "y" (testsuite/tests/typing-objects/errors.ml[21,586+9]..[21,586+10])
+              core_type (testsuite/tests/typing-objects/errors.ml[21,586+13]..[21,586+23])
+                Ptyp_tuple
+                [
+                  core_type (testsuite/tests/typing-objects/errors.ml[21,586+13]..[21,586+15])
+                    Ptyp_var a
+                  core_type (testsuite/tests/typing-objects/errors.ml[21,586+18]..[21,586+23])
+                    Ptyp_constr "float" (testsuite/tests/typing-objects/errors.ml[21,586+18]..[21,586+23])
+                    []
+                ]
+            class_expr (testsuite/tests/typing-objects/errors.ml[21,586+25]..[23,640+3])
+              Pcl_constraint
+              class_expr (testsuite/tests/typing-objects/errors.ml[21,586+32]..[23,640+3])
+                Pcl_structure
+                class_structure
+                  pattern (testsuite/tests/typing-objects/errors.ml[21,586+38]..[21,586+38]) ghost
+                    Ppat_any
+                  [
+                    class_field (testsuite/tests/typing-objects/errors.ml[22,625+2]..[22,625+14])
+                      Pcf_method Public
+                        "x" (testsuite/tests/typing-objects/errors.ml[22,625+9]..[22,625+10])
+                        Concrete Fresh
+                        expression (testsuite/tests/typing-objects/errors.ml[22,625+13]..[22,625+14]) ghost
+                          Pexp_poly
+                          expression (testsuite/tests/typing-objects/errors.ml[22,625+13]..[22,625+14])
+                            Pexp_ident "y" (testsuite/tests/typing-objects/errors.ml[22,625+13]..[22,625+14])
+                          None
+                  ]
+              class_type (testsuite/tests/typing-objects/errors.ml[21,586+27]..[21,586+29])
+                Pcty_constr "ct" (testsuite/tests/typing-objects/errors.ml[21,586+27]..[21,586+29])
+                []
+    ]
+  structure_item (testsuite/tests/typing-objects/errors.ml[24,644+0]..[36,1143+3])
+    Pstr_extension "expect"
+    [
+      structure_item (testsuite/tests/typing-objects/errors.ml[24,644+9]..[36,1143+2])
+        Pstr_eval
+        expression (testsuite/tests/typing-objects/errors.ml[24,644+9]..[36,1143+2])
+          Pexp_constant PConst_string ("\nclass type ct = object method x : int end\nLines 5-7, characters 32-3:\n5 | ................................object\n6 |   method x = y\n7 | end\nError: The class type object method x : 'a * float end\n       is not matched by the class type ct\n       The class type object method x : 'a * float end\n       is not matched by the class type object method x : int end\n       The method x has type 'a * float but is expected to have type int\n       Type 'a * float is not compatible with type int\n",(testsuite/tests/typing-objects/errors.ml[24,644+11]..[36,1143+0]),Some "")
+    ]
+  structure_item (testsuite/tests/typing-objects/errors.ml[38,1148+0]..[38,1148+14])
+    Pstr_value Nonrec
+    [
+      <def>
+        pattern (testsuite/tests/typing-objects/errors.ml[38,1148+4]..[38,1148+7])
+          Ppat_var "foo" (testsuite/tests/typing-objects/errors.ml[38,1148+4]..[38,1148+7])
+        expression (testsuite/tests/typing-objects/errors.ml[38,1148+10]..[38,1148+14])
+          Pexp_send "m"
+          expression (testsuite/tests/typing-objects/errors.ml[38,1148+10]..[38,1148+12])
+            Pexp_constant PConst_int (42,None)
+    ]
+  structure_item (testsuite/tests/typing-objects/errors.ml[39,1165+0]..[44,1298+3])
+    Pstr_extension "expect"
+    [
+      structure_item (testsuite/tests/typing-objects/errors.ml[39,1165+9]..[44,1298+2])
+        Pstr_eval
+        expression (testsuite/tests/typing-objects/errors.ml[39,1165+9]..[44,1298+2])
+          Pexp_constant PConst_string ("\nLine 1, characters 10-12:\n1 | let foo = 42#m;;\n              ^^\nError: This expression is not an object; it has type int\n",(testsuite/tests/typing-objects/errors.ml[39,1165+11]..[44,1298+0]),Some "")
+    ]
+  structure_item (testsuite/tests/typing-objects/errors.ml[46,1303+0]..[46,1303+49])
+    Pstr_value Nonrec
+    [
+      <def>
+        pattern (testsuite/tests/typing-objects/errors.ml[46,1303+4]..[46,1303+7])
+          Ppat_var "foo" (testsuite/tests/typing-objects/errors.ml[46,1303+4]..[46,1303+7])
+        expression (testsuite/tests/typing-objects/errors.ml[46,1303+10]..[46,1303+49])
+          Pexp_object
+          class_structure
+            pattern (testsuite/tests/typing-objects/errors.ml[46,1303+17]..[46,1303+23])
+              Ppat_var "self" (testsuite/tests/typing-objects/errors.ml[46,1303+18]..[46,1303+22])
+            [
+              class_field (testsuite/tests/typing-objects/errors.ml[46,1303+24]..[46,1303+45])
+                Pcf_method Public
+                  "foo" (testsuite/tests/typing-objects/errors.ml[46,1303+31]..[46,1303+34])
+                  Concrete Fresh
+                  expression (testsuite/tests/typing-objects/errors.ml[46,1303+37]..[46,1303+45]) ghost
+                    Pexp_poly
+                    expression (testsuite/tests/typing-objects/errors.ml[46,1303+37]..[46,1303+45])
+                      Pexp_send "bar"
+                      expression (testsuite/tests/typing-objects/errors.ml[46,1303+37]..[46,1303+41])
+                        Pexp_ident "self" (testsuite/tests/typing-objects/errors.ml[46,1303+37]..[46,1303+41])
+                    None
+            ]
+    ]
+  structure_item (testsuite/tests/typing-objects/errors.ml[47,1355+0]..[52,1536+3])
+    Pstr_extension "expect"
+    [
+      structure_item (testsuite/tests/typing-objects/errors.ml[47,1355+9]..[52,1536+2])
+        Pstr_eval
+        expression (testsuite/tests/typing-objects/errors.ml[47,1355+9]..[52,1536+2])
+          Pexp_constant PConst_string ("\nLine 1, characters 37-41:\n1 | let foo = object (self) method foo = self#bar end;;\n                                         ^^^^\nError: This expression has no method bar\n",(testsuite/tests/typing-objects/errors.ml[47,1355+11]..[52,1536+0]),Some "")
+    ]
+]
+

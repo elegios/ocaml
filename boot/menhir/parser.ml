@@ -2,11 +2,14 @@
 (* This generated code requires the following version of MenhirLib: *)
 
 let () =
-  MenhirLib.StaticVersion.require_20210419
+  MenhirLib.StaticVersion.require_20211012
 
 module MenhirBasics = struct
   
   exception Error = Parsing.Parse_error
+  
+  let _eRR : exn =
+    Error
   
   type token = 
     | WITH
@@ -18,7 +21,7 @@ module MenhirBasics = struct
     | UIDENT of (
 # 756 "parsing/parser.mly"
        (string)
-# 22 "parsing/parser.ml"
+# 25 "parsing/parser.ml"
   )
     | TYPE
     | TRY
@@ -30,7 +33,7 @@ module MenhirBasics = struct
     | STRING of (
 # 743 "parsing/parser.mly"
        (string * Location.t * string option)
-# 34 "parsing/parser.ml"
+# 37 "parsing/parser.ml"
   )
     | STAR
     | SIG
@@ -43,12 +46,12 @@ module MenhirBasics = struct
     | QUOTED_STRING_ITEM of (
 # 747 "parsing/parser.mly"
        (string * Location.t * string * Location.t * string option)
-# 47 "parsing/parser.ml"
+# 50 "parsing/parser.ml"
   )
     | QUOTED_STRING_EXPR of (
 # 745 "parsing/parser.mly"
        (string * Location.t * string * Location.t * string option)
-# 52 "parsing/parser.ml"
+# 55 "parsing/parser.ml"
   )
     | QUOTE
     | QUESTION
@@ -56,7 +59,7 @@ module MenhirBasics = struct
     | PREFIXOP of (
 # 729 "parsing/parser.mly"
        (string)
-# 60 "parsing/parser.ml"
+# 63 "parsing/parser.ml"
   )
     | PLUSEQ
     | PLUSDOT
@@ -66,7 +69,7 @@ module MenhirBasics = struct
     | OPTLABEL of (
 # 722 "parsing/parser.mly"
        (string)
-# 70 "parsing/parser.ml"
+# 73 "parsing/parser.ml"
   )
     | OPEN
     | OF
@@ -84,12 +87,12 @@ module MenhirBasics = struct
     | LIDENT of (
 # 705 "parsing/parser.mly"
        (string)
-# 88 "parsing/parser.ml"
+# 91 "parsing/parser.ml"
   )
     | LETOP of (
 # 687 "parsing/parser.mly"
        (string)
-# 93 "parsing/parser.ml"
+# 96 "parsing/parser.ml"
   )
     | LET
     | LESSMINUS
@@ -109,39 +112,39 @@ module MenhirBasics = struct
     | LABEL of (
 # 692 "parsing/parser.mly"
        (string)
-# 113 "parsing/parser.ml"
+# 116 "parsing/parser.ml"
   )
     | INT of (
 # 691 "parsing/parser.mly"
        (string * char option)
-# 118 "parsing/parser.ml"
+# 121 "parsing/parser.ml"
   )
     | INITIALIZER
     | INHERIT
     | INFIXOP4 of (
 # 685 "parsing/parser.mly"
        (string)
-# 125 "parsing/parser.ml"
+# 128 "parsing/parser.ml"
   )
     | INFIXOP3 of (
 # 684 "parsing/parser.mly"
        (string)
-# 130 "parsing/parser.ml"
+# 133 "parsing/parser.ml"
   )
     | INFIXOP2 of (
 # 683 "parsing/parser.mly"
        (string)
-# 135 "parsing/parser.ml"
+# 138 "parsing/parser.ml"
   )
     | INFIXOP1 of (
 # 682 "parsing/parser.mly"
        (string)
-# 140 "parsing/parser.ml"
+# 143 "parsing/parser.ml"
   )
     | INFIXOP0 of (
 # 681 "parsing/parser.mly"
        (string)
-# 145 "parsing/parser.ml"
+# 148 "parsing/parser.ml"
   )
     | INCLUDE
     | IN
@@ -149,7 +152,7 @@ module MenhirBasics = struct
     | HASHOP of (
 # 740 "parsing/parser.mly"
        (string)
-# 153 "parsing/parser.ml"
+# 156 "parsing/parser.ml"
   )
     | HASH
     | GREATERRBRACKET
@@ -162,7 +165,7 @@ module MenhirBasics = struct
     | FLOAT of (
 # 670 "parsing/parser.mly"
        (string * char option)
-# 166 "parsing/parser.ml"
+# 169 "parsing/parser.ml"
   )
     | FALSE
     | EXTERNAL
@@ -176,7 +179,7 @@ module MenhirBasics = struct
     | DOTOP of (
 # 686 "parsing/parser.mly"
        (string)
-# 180 "parsing/parser.ml"
+# 183 "parsing/parser.ml"
   )
     | DOTDOT
     | DOT
@@ -184,14 +187,14 @@ module MenhirBasics = struct
     | DOCSTRING of (
 # 764 "parsing/parser.mly"
        (Docstrings.docstring)
-# 188 "parsing/parser.ml"
+# 191 "parsing/parser.ml"
   )
     | DO
     | CONSTRAINT
     | COMMENT of (
 # 763 "parsing/parser.mly"
        (string * Location.t)
-# 195 "parsing/parser.ml"
+# 198 "parsing/parser.ml"
   )
     | COMMA
     | COLONGREATER
@@ -202,7 +205,7 @@ module MenhirBasics = struct
     | CHAR of (
 # 650 "parsing/parser.mly"
        (char)
-# 206 "parsing/parser.ml"
+# 209 "parsing/parser.ml"
   )
     | BEGIN
     | BARRBRACKET
@@ -215,7 +218,7 @@ module MenhirBasics = struct
     | ANDOP of (
 # 688 "parsing/parser.mly"
        (string)
-# 219 "parsing/parser.ml"
+# 222 "parsing/parser.ml"
   )
     | AND
     | AMPERSAND
@@ -224,9 +227,6 @@ module MenhirBasics = struct
 end
 
 include MenhirBasics
-
-let _eRR =
-  MenhirBasics.Error
 
 # 25 "parsing/parser.mly"
   

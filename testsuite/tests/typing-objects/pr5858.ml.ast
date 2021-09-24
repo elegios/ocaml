@@ -1,0 +1,54 @@
+[
+  structure_item (testsuite/tests/typing-objects/pr5858.ml[5,24+0]..[5,24+25])
+    Pstr_class_type
+    [
+      class_type_declaration (testsuite/tests/typing-objects/pr5858.ml[5,24+0]..[5,24+25])
+        pci_virt = Concrete
+        pci_params =
+          []
+        pci_name = "c" (testsuite/tests/typing-objects/pr5858.ml[5,24+11]..[5,24+12])
+        pci_expr =
+          class_type (testsuite/tests/typing-objects/pr5858.ml[5,24+15]..[5,24+25])
+            Pcty_signature
+            class_signature
+              core_type (testsuite/tests/typing-objects/pr5858.ml[5,24+21]..[5,24+21])
+                Ptyp_any
+              []
+    ]
+  structure_item (testsuite/tests/typing-objects/pr5858.ml[6,52+0]..[8,91+3])
+    Pstr_extension "expect"
+    [
+      structure_item (testsuite/tests/typing-objects/pr5858.ml[6,52+9]..[8,91+2])
+        Pstr_eval
+        expression (testsuite/tests/typing-objects/pr5858.ml[6,52+9]..[8,91+2])
+          Pexp_constant PConst_string ("\nclass type c = object  end\n",(testsuite/tests/typing-objects/pr5858.ml[6,52+11]..[8,91+0]),Some "")
+    ]
+  structure_item (testsuite/tests/typing-objects/pr5858.ml[10,96+0]..[10,96+34])
+    Pstr_modtype "S" (testsuite/tests/typing-objects/pr5858.ml[10,96+12]..[10,96+13])
+      module_type (testsuite/tests/typing-objects/pr5858.ml[10,96+16]..[10,96+34])
+        Pmty_signature
+        [
+          signature_item (testsuite/tests/typing-objects/pr5858.ml[10,96+20]..[10,96+30])
+            Psig_class
+            [
+              class_description (testsuite/tests/typing-objects/pr5858.ml[10,96+20]..[10,96+30])
+                pci_virt = Concrete
+                pci_params =
+                  []
+                pci_name = "c" (testsuite/tests/typing-objects/pr5858.ml[10,96+26]..[10,96+27])
+                pci_expr =
+                  class_type (testsuite/tests/typing-objects/pr5858.ml[10,96+29]..[10,96+30])
+                    Pcty_constr "c" (testsuite/tests/typing-objects/pr5858.ml[10,96+29]..[10,96+30])
+                    []
+            ]
+        ]
+  structure_item (testsuite/tests/typing-objects/pr5858.ml[11,133+0]..[16,301+3])
+    Pstr_extension "expect"
+    [
+      structure_item (testsuite/tests/typing-objects/pr5858.ml[11,133+9]..[16,301+2])
+        Pstr_eval
+        expression (testsuite/tests/typing-objects/pr5858.ml[11,133+9]..[16,301+2])
+          Pexp_constant PConst_string ("\nLine 1, characters 29-30:\n1 | module type S = sig class c: c end;;\n                                 ^\nError: The class type c is not yet completely defined\n",(testsuite/tests/typing-objects/pr5858.ml[11,133+11]..[16,301+0]),Some "")
+    ]
+]
+

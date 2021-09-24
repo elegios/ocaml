@@ -1,0 +1,612 @@
+[
+  structure_item (asmcomp/liveness.ml[19,1168+0]..[19,1168+9])
+    Pstr_open Fresh
+    module_expr (asmcomp/liveness.ml[19,1168+5]..[19,1168+9])
+      Pmod_ident "Mach" (asmcomp/liveness.ml[19,1168+5]..[19,1168+9])
+  structure_item (asmcomp/liveness.ml[21,1179+0]..[26,1309+3])
+    Pstr_module
+    "Domain" (asmcomp/liveness.ml[21,1179+7]..[21,1179+13])
+      module_expr (asmcomp/liveness.ml[21,1179+16]..[26,1309+3])
+        Pmod_structure
+        [
+          structure_item (asmcomp/liveness.ml[22,1202+2]..[22,1202+20])
+            Pstr_type Rec
+            [
+              type_declaration "t" (asmcomp/liveness.ml[22,1202+7]..[22,1202+8]) (asmcomp/liveness.ml[22,1202+2]..[22,1202+20])
+                ptype_params =
+                  []
+                ptype_cstrs =
+                  []
+                ptype_kind =
+                  Ptype_abstract
+                ptype_private = Public
+                ptype_manifest =
+                  Some
+                    core_type (asmcomp/liveness.ml[22,1202+11]..[22,1202+20])
+                      Ptyp_constr "Reg.Set.t" (asmcomp/liveness.ml[22,1202+11]..[22,1202+20])
+                      []
+            ]
+          structure_item (asmcomp/liveness.ml[23,1223+2]..[23,1223+25])
+            Pstr_value Nonrec
+            [
+              <def>
+                pattern (asmcomp/liveness.ml[23,1223+6]..[23,1223+9])
+                  Ppat_var "bot" (asmcomp/liveness.ml[23,1223+6]..[23,1223+9])
+                expression (asmcomp/liveness.ml[23,1223+12]..[23,1223+25])
+                  Pexp_ident "Reg.Set.empty" (asmcomp/liveness.ml[23,1223+12]..[23,1223+25])
+            ]
+          structure_item (asmcomp/liveness.ml[24,1249+2]..[24,1249+26])
+            Pstr_value Nonrec
+            [
+              <def>
+                pattern (asmcomp/liveness.ml[24,1249+6]..[24,1249+10])
+                  Ppat_var "join" (asmcomp/liveness.ml[24,1249+6]..[24,1249+10])
+                expression (asmcomp/liveness.ml[24,1249+13]..[24,1249+26])
+                  Pexp_ident "Reg.Set.union" (asmcomp/liveness.ml[24,1249+13]..[24,1249+26])
+            ]
+          structure_item (asmcomp/liveness.ml[25,1276+2]..[25,1276+32])
+            Pstr_value Nonrec
+            [
+              <def>
+                pattern (asmcomp/liveness.ml[25,1276+6]..[25,1276+15])
+                  Ppat_var "lessequal" (asmcomp/liveness.ml[25,1276+6]..[25,1276+15])
+                expression (asmcomp/liveness.ml[25,1276+18]..[25,1276+32])
+                  Pexp_ident "Reg.Set.subset" (asmcomp/liveness.ml[25,1276+18]..[25,1276+32])
+            ]
+        ]
+  structure_item (asmcomp/liveness.ml[28,1314+0]..[28,1314+43])
+    Pstr_module
+    "Analyzer" (asmcomp/liveness.ml[28,1314+7]..[28,1314+15])
+      module_expr (asmcomp/liveness.ml[28,1314+18]..[28,1314+43])
+        Pmod_apply
+        module_expr (asmcomp/liveness.ml[28,1314+18]..[28,1314+35])
+          Pmod_ident "Dataflow.Backward" (asmcomp/liveness.ml[28,1314+18]..[28,1314+35])
+        module_expr (asmcomp/liveness.ml[28,1314+36]..[28,1314+42])
+          Pmod_ident "Domain" (asmcomp/liveness.ml[28,1314+36]..[28,1314+42])
+  structure_item (asmcomp/liveness.ml[30,1359+0]..[67,2787+33])
+    Pstr_value Nonrec
+    [
+      <def>
+        pattern (asmcomp/liveness.ml[30,1359+4]..[30,1359+12])
+          Ppat_var "transfer" (asmcomp/liveness.ml[30,1359+4]..[30,1359+12])
+        expression (asmcomp/liveness.ml[30,1359+13]..[67,2787+33]) ghost
+          Pexp_fun
+          Nolabel
+          None
+          pattern (asmcomp/liveness.ml[30,1359+13]..[30,1359+14])
+            Ppat_var "i" (asmcomp/liveness.ml[30,1359+13]..[30,1359+14])
+          expression (asmcomp/liveness.ml[30,1359+15]..[67,2787+33]) ghost
+            Pexp_fun
+            Labelled "next"
+            None
+            pattern (asmcomp/liveness.ml[30,1359+16]..[30,1359+20])
+              Ppat_var "next" (asmcomp/liveness.ml[30,1359+16]..[30,1359+20])
+            expression (asmcomp/liveness.ml[30,1359+21]..[67,2787+33]) ghost
+              Pexp_fun
+              Labelled "exn"
+              None
+              pattern (asmcomp/liveness.ml[30,1359+22]..[30,1359+25])
+                Ppat_var "exn" (asmcomp/liveness.ml[30,1359+22]..[30,1359+25])
+              expression (asmcomp/liveness.ml[31,1387+2]..[67,2787+33])
+                Pexp_match
+                expression (asmcomp/liveness.ml[31,1387+8]..[31,1387+14])
+                  Pexp_field
+                  expression (asmcomp/liveness.ml[31,1387+8]..[31,1387+9])
+                    Pexp_ident "i" (asmcomp/liveness.ml[31,1387+8]..[31,1387+9])
+                  "desc" (asmcomp/liveness.ml[31,1387+10]..[31,1387+14])
+                [
+                  <case>
+                    pattern (asmcomp/liveness.ml[32,1407+4]..[32,1407+55])
+                      Ppat_or
+                      pattern (asmcomp/liveness.ml[32,1407+4]..[32,1407+32])
+                        Ppat_or
+                        pattern (asmcomp/liveness.ml[32,1407+4]..[32,1407+11])
+                          Ppat_construct "Ireturn" (asmcomp/liveness.ml[32,1407+4]..[32,1407+11])
+                          None
+                        pattern (asmcomp/liveness.ml[32,1407+14]..[32,1407+32])
+                          Ppat_construct "Iop" (asmcomp/liveness.ml[32,1407+14]..[32,1407+17])
+                          Some
+                            []
+                            pattern (asmcomp/liveness.ml[32,1407+17]..[32,1407+32])
+                              Ppat_construct "Itailcall_ind" (asmcomp/liveness.ml[32,1407+18]..[32,1407+31])
+                              None
+                      pattern (asmcomp/liveness.ml[32,1407+35]..[32,1407+55])
+                        Ppat_construct "Iop" (asmcomp/liveness.ml[32,1407+35]..[32,1407+38])
+                        Some
+                          []
+                          pattern (asmcomp/liveness.ml[32,1407+38]..[32,1407+55])
+                            Ppat_construct "Itailcall_imm" (asmcomp/liveness.ml[32,1407+39]..[32,1407+52])
+                            Some
+                              []
+                              pattern (asmcomp/liveness.ml[32,1407+53]..[32,1407+54])
+                                Ppat_any
+                    expression (asmcomp/liveness.ml[33,1466+6]..[34,1527+28])
+                      Pexp_sequence
+                      expression (asmcomp/liveness.ml[33,1466+6]..[33,1466+29])
+                        Pexp_setfield
+                        expression (asmcomp/liveness.ml[33,1466+6]..[33,1466+7])
+                          Pexp_ident "i" (asmcomp/liveness.ml[33,1466+6]..[33,1466+7])
+                        "live" (asmcomp/liveness.ml[33,1466+8]..[33,1466+12])
+                        expression (asmcomp/liveness.ml[33,1466+16]..[33,1466+29])
+                          Pexp_ident "Reg.Set.empty" (asmcomp/liveness.ml[33,1466+16]..[33,1466+29])
+                      expression (asmcomp/liveness.ml[34,1527+6]..[34,1527+28])
+                        Pexp_apply
+                        expression (asmcomp/liveness.ml[34,1527+6]..[34,1527+22])
+                          Pexp_ident "Reg.set_of_array" (asmcomp/liveness.ml[34,1527+6]..[34,1527+22])
+                        [
+                          <arg>
+                          Nolabel
+                            expression (asmcomp/liveness.ml[34,1527+23]..[34,1527+28])
+                              Pexp_field
+                              expression (asmcomp/liveness.ml[34,1527+23]..[34,1527+24])
+                                Pexp_ident "i" (asmcomp/liveness.ml[34,1527+23]..[34,1527+24])
+                              "arg" (asmcomp/liveness.ml[34,1527+25]..[34,1527+28])
+                        ]
+                  <case>
+                    pattern (asmcomp/liveness.ml[35,1556+4]..[35,1556+10])
+                      Ppat_construct "Iop" (asmcomp/liveness.ml[35,1556+4]..[35,1556+7])
+                      Some
+                        []
+                        pattern (asmcomp/liveness.ml[35,1556+8]..[35,1556+10])
+                          Ppat_var "op" (asmcomp/liveness.ml[35,1556+8]..[35,1556+10])
+                    expression (asmcomp/liveness.ml[36,1570+6]..[57,2569+9])
+                      Pexp_ifthenelse
+                      expression (asmcomp/liveness.ml[36,1570+9]..[39,1792+43])
+                        Pexp_apply
+                        expression (asmcomp/liveness.ml[37,1638+6]..[37,1638+8])
+                          Pexp_ident "&&" (asmcomp/liveness.ml[37,1638+6]..[37,1638+8])
+                        [
+                          <arg>
+                          Nolabel
+                            expression (asmcomp/liveness.ml[36,1570+9]..[36,1570+29])
+                              Pexp_apply
+                              expression (asmcomp/liveness.ml[36,1570+9]..[36,1570+26])
+                                Pexp_ident "operation_is_pure" (asmcomp/liveness.ml[36,1570+9]..[36,1570+26])
+                              [
+                                <arg>
+                                Nolabel
+                                  expression (asmcomp/liveness.ml[36,1570+27]..[36,1570+29])
+                                    Pexp_ident "op" (asmcomp/liveness.ml[36,1570+27]..[36,1570+29])
+                              ]
+                          <arg>
+                          Nolabel
+                            expression (asmcomp/liveness.ml[37,1638+9]..[39,1792+43])
+                              Pexp_apply
+                              expression (asmcomp/liveness.ml[38,1717+6]..[38,1717+8])
+                                Pexp_ident "&&" (asmcomp/liveness.ml[38,1717+6]..[38,1717+8])
+                              [
+                                <arg>
+                                Nolabel
+                                  expression (asmcomp/liveness.ml[37,1638+9]..[37,1638+42])
+                                    Pexp_apply
+                                    expression (asmcomp/liveness.ml[37,1638+9]..[37,1638+31])
+                                      Pexp_ident "Reg.disjoint_set_array" (asmcomp/liveness.ml[37,1638+9]..[37,1638+31])
+                                    [
+                                      <arg>
+                                      Nolabel
+                                        expression (asmcomp/liveness.ml[37,1638+32]..[37,1638+36])
+                                          Pexp_ident "next" (asmcomp/liveness.ml[37,1638+32]..[37,1638+36])
+                                      <arg>
+                                      Nolabel
+                                        expression (asmcomp/liveness.ml[37,1638+37]..[37,1638+42])
+                                          Pexp_field
+                                          expression (asmcomp/liveness.ml[37,1638+37]..[37,1638+38])
+                                            Pexp_ident "i" (asmcomp/liveness.ml[37,1638+37]..[37,1638+38])
+                                          "res" (asmcomp/liveness.ml[37,1638+39]..[37,1638+42])
+                                    ]
+                                <arg>
+                                Nolabel
+                                  expression (asmcomp/liveness.ml[38,1717+9]..[39,1792+43])
+                                    Pexp_apply
+                                    expression (asmcomp/liveness.ml[39,1792+6]..[39,1792+8])
+                                      Pexp_ident "&&" (asmcomp/liveness.ml[39,1792+6]..[39,1792+8])
+                                    [
+                                      <arg>
+                                      Nolabel
+                                        expression (asmcomp/liveness.ml[38,1717+9]..[38,1717+43])
+                                          Pexp_apply
+                                          expression (asmcomp/liveness.ml[38,1717+9]..[38,1717+12])
+                                            Pexp_ident "not" (asmcomp/liveness.ml[38,1717+9]..[38,1717+12])
+                                          [
+                                            <arg>
+                                            Nolabel
+                                              expression (asmcomp/liveness.ml[38,1717+13]..[38,1717+43])
+                                                Pexp_apply
+                                                expression (asmcomp/liveness.ml[38,1717+14]..[38,1717+36])
+                                                  Pexp_ident "Proc.regs_are_volatile" (asmcomp/liveness.ml[38,1717+14]..[38,1717+36])
+                                                [
+                                                  <arg>
+                                                  Nolabel
+                                                    expression (asmcomp/liveness.ml[38,1717+37]..[38,1717+42])
+                                                      Pexp_field
+                                                      expression (asmcomp/liveness.ml[38,1717+37]..[38,1717+38])
+                                                        Pexp_ident "i" (asmcomp/liveness.ml[38,1717+37]..[38,1717+38])
+                                                      "arg" (asmcomp/liveness.ml[38,1717+39]..[38,1717+42])
+                                                ]
+                                          ]
+                                      <arg>
+                                      Nolabel
+                                        expression (asmcomp/liveness.ml[39,1792+9]..[39,1792+43])
+                                          Pexp_apply
+                                          expression (asmcomp/liveness.ml[39,1792+9]..[39,1792+12])
+                                            Pexp_ident "not" (asmcomp/liveness.ml[39,1792+9]..[39,1792+12])
+                                          [
+                                            <arg>
+                                            Nolabel
+                                              expression (asmcomp/liveness.ml[39,1792+13]..[39,1792+43])
+                                                Pexp_apply
+                                                expression (asmcomp/liveness.ml[39,1792+14]..[39,1792+36])
+                                                  Pexp_ident "Proc.regs_are_volatile" (asmcomp/liveness.ml[39,1792+14]..[39,1792+36])
+                                                [
+                                                  <arg>
+                                                  Nolabel
+                                                    expression (asmcomp/liveness.ml[39,1792+37]..[39,1792+42])
+                                                      Pexp_field
+                                                      expression (asmcomp/liveness.ml[39,1792+37]..[39,1792+38])
+                                                        Pexp_ident "i" (asmcomp/liveness.ml[39,1792+37]..[39,1792+38])
+                                                      "res" (asmcomp/liveness.ml[39,1792+39]..[39,1792+42])
+                                                ]
+                                          ]
+                                    ]
+                              ]
+                        ]
+                      expression (asmcomp/liveness.ml[40,1867+11]..[44,1987+9])
+                        Pexp_sequence
+                        expression (asmcomp/liveness.ml[42,1950+8]..[42,1950+22])
+                          Pexp_setfield
+                          expression (asmcomp/liveness.ml[42,1950+8]..[42,1950+9])
+                            Pexp_ident "i" (asmcomp/liveness.ml[42,1950+8]..[42,1950+9])
+                          "live" (asmcomp/liveness.ml[42,1950+10]..[42,1950+14])
+                          expression (asmcomp/liveness.ml[42,1950+18]..[42,1950+22])
+                            Pexp_ident "next" (asmcomp/liveness.ml[42,1950+18]..[42,1950+22])
+                        expression (asmcomp/liveness.ml[43,1974+8]..[43,1974+12])
+                          Pexp_ident "next" (asmcomp/liveness.ml[43,1974+8]..[43,1974+12])
+                      Some
+                        expression (asmcomp/liveness.ml[44,1987+15]..[57,2569+9])
+                          Pexp_let Nonrec
+                          [
+                            <def>
+                              pattern (asmcomp/liveness.ml[45,2008+12]..[45,2008+19])
+                                Ppat_var "across1" (asmcomp/liveness.ml[45,2008+12]..[45,2008+19])
+                              expression (asmcomp/liveness.ml[45,2008+22]..[45,2008+51])
+                                Pexp_apply
+                                expression (asmcomp/liveness.ml[45,2008+22]..[45,2008+40])
+                                  Pexp_ident "Reg.diff_set_array" (asmcomp/liveness.ml[45,2008+22]..[45,2008+40])
+                                [
+                                  <arg>
+                                  Nolabel
+                                    expression (asmcomp/liveness.ml[45,2008+41]..[45,2008+45])
+                                      Pexp_ident "next" (asmcomp/liveness.ml[45,2008+41]..[45,2008+45])
+                                  <arg>
+                                  Nolabel
+                                    expression (asmcomp/liveness.ml[45,2008+46]..[45,2008+51])
+                                      Pexp_field
+                                      expression (asmcomp/liveness.ml[45,2008+46]..[45,2008+47])
+                                        Pexp_ident "i" (asmcomp/liveness.ml[45,2008+46]..[45,2008+47])
+                                      "res" (asmcomp/liveness.ml[45,2008+48]..[45,2008+51])
+                                ]
+                          ]
+                          expression (asmcomp/liveness.ml[46,2063+8]..[56,2530+38])
+                            Pexp_let Nonrec
+                            [
+                              <def>
+                                pattern (asmcomp/liveness.ml[46,2063+12]..[46,2063+18])
+                                  Ppat_var "across" (asmcomp/liveness.ml[46,2063+12]..[46,2063+18])
+                                expression (asmcomp/liveness.ml[52,2401+10]..[54,2478+22])
+                                  Pexp_ifthenelse
+                                  expression (asmcomp/liveness.ml[52,2401+13]..[52,2401+35])
+                                    Pexp_apply
+                                    expression (asmcomp/liveness.ml[52,2401+13]..[52,2401+32])
+                                      Pexp_ident "operation_can_raise" (asmcomp/liveness.ml[52,2401+13]..[52,2401+32])
+                                    [
+                                      <arg>
+                                      Nolabel
+                                        expression (asmcomp/liveness.ml[52,2401+33]..[52,2401+35])
+                                          Pexp_ident "op" (asmcomp/liveness.ml[52,2401+33]..[52,2401+35])
+                                    ]
+                                  expression (asmcomp/liveness.ml[53,2437+15]..[53,2437+40])
+                                    Pexp_apply
+                                    expression (asmcomp/liveness.ml[53,2437+15]..[53,2437+28])
+                                      Pexp_ident "Reg.Set.union" (asmcomp/liveness.ml[53,2437+15]..[53,2437+28])
+                                    [
+                                      <arg>
+                                      Nolabel
+                                        expression (asmcomp/liveness.ml[53,2437+29]..[53,2437+36])
+                                          Pexp_ident "across1" (asmcomp/liveness.ml[53,2437+29]..[53,2437+36])
+                                      <arg>
+                                      Nolabel
+                                        expression (asmcomp/liveness.ml[53,2437+37]..[53,2437+40])
+                                          Pexp_ident "exn" (asmcomp/liveness.ml[53,2437+37]..[53,2437+40])
+                                    ]
+                                  Some
+                                    expression (asmcomp/liveness.ml[54,2478+15]..[54,2478+22])
+                                      Pexp_ident "across1" (asmcomp/liveness.ml[54,2478+15]..[54,2478+22])
+                            ]
+                            expression (asmcomp/liveness.ml[55,2504+8]..[56,2530+38])
+                              Pexp_sequence
+                              expression (asmcomp/liveness.ml[55,2504+8]..[55,2504+24])
+                                Pexp_setfield
+                                expression (asmcomp/liveness.ml[55,2504+8]..[55,2504+9])
+                                  Pexp_ident "i" (asmcomp/liveness.ml[55,2504+8]..[55,2504+9])
+                                "live" (asmcomp/liveness.ml[55,2504+10]..[55,2504+14])
+                                expression (asmcomp/liveness.ml[55,2504+18]..[55,2504+24])
+                                  Pexp_ident "across" (asmcomp/liveness.ml[55,2504+18]..[55,2504+24])
+                              expression (asmcomp/liveness.ml[56,2530+8]..[56,2530+38])
+                                Pexp_apply
+                                expression (asmcomp/liveness.ml[56,2530+8]..[56,2530+25])
+                                  Pexp_ident "Reg.add_set_array" (asmcomp/liveness.ml[56,2530+8]..[56,2530+25])
+                                [
+                                  <arg>
+                                  Nolabel
+                                    expression (asmcomp/liveness.ml[56,2530+26]..[56,2530+32])
+                                      Pexp_ident "across" (asmcomp/liveness.ml[56,2530+26]..[56,2530+32])
+                                  <arg>
+                                  Nolabel
+                                    expression (asmcomp/liveness.ml[56,2530+33]..[56,2530+38])
+                                      Pexp_field
+                                      expression (asmcomp/liveness.ml[56,2530+33]..[56,2530+34])
+                                        Pexp_ident "i" (asmcomp/liveness.ml[56,2530+33]..[56,2530+34])
+                                      "arg" (asmcomp/liveness.ml[56,2530+35]..[56,2530+38])
+                                ]
+                  <case>
+                    pattern (asmcomp/liveness.ml[58,2579+4]..[59,2597+13])
+                      Ppat_or
+                      pattern (asmcomp/liveness.ml[58,2579+4]..[58,2579+17])
+                        Ppat_construct "Iifthenelse" (asmcomp/liveness.ml[58,2579+4]..[58,2579+15])
+                        Some
+                          []
+                          pattern (asmcomp/liveness.ml[58,2579+16]..[58,2579+17])
+                            Ppat_any
+                      pattern (asmcomp/liveness.ml[59,2597+4]..[59,2597+13])
+                        Ppat_construct "Iswitch" (asmcomp/liveness.ml[59,2597+4]..[59,2597+11])
+                        Some
+                          []
+                          pattern (asmcomp/liveness.ml[59,2597+12]..[59,2597+13])
+                            Ppat_any
+                    expression (asmcomp/liveness.ml[60,2614+6]..[61,2636+34])
+                      Pexp_sequence
+                      expression (asmcomp/liveness.ml[60,2614+6]..[60,2614+20])
+                        Pexp_setfield
+                        expression (asmcomp/liveness.ml[60,2614+6]..[60,2614+7])
+                          Pexp_ident "i" (asmcomp/liveness.ml[60,2614+6]..[60,2614+7])
+                        "live" (asmcomp/liveness.ml[60,2614+8]..[60,2614+12])
+                        expression (asmcomp/liveness.ml[60,2614+16]..[60,2614+20])
+                          Pexp_ident "next" (asmcomp/liveness.ml[60,2614+16]..[60,2614+20])
+                      expression (asmcomp/liveness.ml[61,2636+6]..[61,2636+34])
+                        Pexp_apply
+                        expression (asmcomp/liveness.ml[61,2636+6]..[61,2636+23])
+                          Pexp_ident "Reg.add_set_array" (asmcomp/liveness.ml[61,2636+6]..[61,2636+23])
+                        [
+                          <arg>
+                          Nolabel
+                            expression (asmcomp/liveness.ml[61,2636+24]..[61,2636+28])
+                              Pexp_ident "next" (asmcomp/liveness.ml[61,2636+24]..[61,2636+28])
+                          <arg>
+                          Nolabel
+                            expression (asmcomp/liveness.ml[61,2636+29]..[61,2636+34])
+                              Pexp_field
+                              expression (asmcomp/liveness.ml[61,2636+29]..[61,2636+30])
+                                Pexp_ident "i" (asmcomp/liveness.ml[61,2636+29]..[61,2636+30])
+                              "arg" (asmcomp/liveness.ml[61,2636+31]..[61,2636+34])
+                        ]
+                  <case>
+                    pattern (asmcomp/liveness.ml[62,2671+4]..[62,2671+42])
+                      Ppat_or
+                      pattern (asmcomp/liveness.ml[62,2671+4]..[62,2671+29])
+                        Ppat_or
+                        pattern (asmcomp/liveness.ml[62,2671+4]..[62,2671+19])
+                          Ppat_or
+                          pattern (asmcomp/liveness.ml[62,2671+4]..[62,2671+8])
+                            Ppat_construct "Iend" (asmcomp/liveness.ml[62,2671+4]..[62,2671+8])
+                            None
+                          pattern (asmcomp/liveness.ml[62,2671+11]..[62,2671+19])
+                            Ppat_construct "Icatch" (asmcomp/liveness.ml[62,2671+11]..[62,2671+17])
+                            Some
+                              []
+                              pattern (asmcomp/liveness.ml[62,2671+18]..[62,2671+19])
+                                Ppat_any
+                        pattern (asmcomp/liveness.ml[62,2671+22]..[62,2671+29])
+                          Ppat_construct "Iexit" (asmcomp/liveness.ml[62,2671+22]..[62,2671+27])
+                          Some
+                            []
+                            pattern (asmcomp/liveness.ml[62,2671+28]..[62,2671+29])
+                              Ppat_any
+                      pattern (asmcomp/liveness.ml[62,2671+32]..[62,2671+42])
+                        Ppat_construct "Itrywith" (asmcomp/liveness.ml[62,2671+32]..[62,2671+40])
+                        Some
+                          []
+                          pattern (asmcomp/liveness.ml[62,2671+41]..[62,2671+42])
+                            Ppat_any
+                    expression (asmcomp/liveness.ml[63,2717+6]..[64,2739+10])
+                      Pexp_sequence
+                      expression (asmcomp/liveness.ml[63,2717+6]..[63,2717+20])
+                        Pexp_setfield
+                        expression (asmcomp/liveness.ml[63,2717+6]..[63,2717+7])
+                          Pexp_ident "i" (asmcomp/liveness.ml[63,2717+6]..[63,2717+7])
+                        "live" (asmcomp/liveness.ml[63,2717+8]..[63,2717+12])
+                        expression (asmcomp/liveness.ml[63,2717+16]..[63,2717+20])
+                          Pexp_ident "next" (asmcomp/liveness.ml[63,2717+16]..[63,2717+20])
+                      expression (asmcomp/liveness.ml[64,2739+6]..[64,2739+10])
+                        Pexp_ident "next" (asmcomp/liveness.ml[64,2739+6]..[64,2739+10])
+                  <case>
+                    pattern (asmcomp/liveness.ml[65,2750+4]..[65,2750+12])
+                      Ppat_construct "Iraise" (asmcomp/liveness.ml[65,2750+4]..[65,2750+10])
+                      Some
+                        []
+                        pattern (asmcomp/liveness.ml[65,2750+11]..[65,2750+12])
+                          Ppat_any
+                    expression (asmcomp/liveness.ml[66,2766+6]..[67,2787+33])
+                      Pexp_sequence
+                      expression (asmcomp/liveness.ml[66,2766+6]..[66,2766+19])
+                        Pexp_setfield
+                        expression (asmcomp/liveness.ml[66,2766+6]..[66,2766+7])
+                          Pexp_ident "i" (asmcomp/liveness.ml[66,2766+6]..[66,2766+7])
+                        "live" (asmcomp/liveness.ml[66,2766+8]..[66,2766+12])
+                        expression (asmcomp/liveness.ml[66,2766+16]..[66,2766+19])
+                          Pexp_ident "exn" (asmcomp/liveness.ml[66,2766+16]..[66,2766+19])
+                      expression (asmcomp/liveness.ml[67,2787+6]..[67,2787+33])
+                        Pexp_apply
+                        expression (asmcomp/liveness.ml[67,2787+6]..[67,2787+23])
+                          Pexp_ident "Reg.add_set_array" (asmcomp/liveness.ml[67,2787+6]..[67,2787+23])
+                        [
+                          <arg>
+                          Nolabel
+                            expression (asmcomp/liveness.ml[67,2787+24]..[67,2787+27])
+                              Pexp_ident "exn" (asmcomp/liveness.ml[67,2787+24]..[67,2787+27])
+                          <arg>
+                          Nolabel
+                            expression (asmcomp/liveness.ml[67,2787+28]..[67,2787+33])
+                              Pexp_field
+                              expression (asmcomp/liveness.ml[67,2787+28]..[67,2787+29])
+                                Pexp_ident "i" (asmcomp/liveness.ml[67,2787+28]..[67,2787+29])
+                              "arg" (asmcomp/liveness.ml[67,2787+30]..[67,2787+33])
+                        ]
+                ]
+    ]
+  structure_item (asmcomp/liveness.ml[69,2822+0]..[70,2854+51])
+    Pstr_value Nonrec
+    [
+      <def>
+        pattern (asmcomp/liveness.ml[69,2822+4]..[69,2822+14])
+          Ppat_var "exnhandler" (asmcomp/liveness.ml[69,2822+4]..[69,2822+14])
+        expression (asmcomp/liveness.ml[69,2822+15]..[70,2854+51]) ghost
+          Pexp_fun
+          Nolabel
+          None
+          pattern (asmcomp/liveness.ml[69,2822+15]..[69,2822+29])
+            Ppat_var "before_handler" (asmcomp/liveness.ml[69,2822+15]..[69,2822+29])
+          expression (asmcomp/liveness.ml[70,2854+2]..[70,2854+51])
+            Pexp_apply
+            expression (asmcomp/liveness.ml[70,2854+2]..[70,2854+16])
+              Pexp_ident "Reg.Set.remove" (asmcomp/liveness.ml[70,2854+2]..[70,2854+16])
+            [
+              <arg>
+              Nolabel
+                expression (asmcomp/liveness.ml[70,2854+17]..[70,2854+36])
+                  Pexp_ident "Proc.loc_exn_bucket" (asmcomp/liveness.ml[70,2854+17]..[70,2854+36])
+              <arg>
+              Nolabel
+                expression (asmcomp/liveness.ml[70,2854+37]..[70,2854+51])
+                  Pexp_ident "before_handler" (asmcomp/liveness.ml[70,2854+37]..[70,2854+51])
+            ]
+    ]
+  structure_item (asmcomp/liveness.ml[72,2907+0]..[80,3296+5])
+    Pstr_value Nonrec
+    [
+      <def>
+        pattern (asmcomp/liveness.ml[72,2907+4]..[72,2907+11])
+          Ppat_var "fundecl" (asmcomp/liveness.ml[72,2907+4]..[72,2907+11])
+        expression (asmcomp/liveness.ml[72,2907+12]..[80,3296+5]) ghost
+          Pexp_fun
+          Nolabel
+          None
+          pattern (asmcomp/liveness.ml[72,2907+12]..[72,2907+13])
+            Ppat_var "f" (asmcomp/liveness.ml[72,2907+12]..[72,2907+13])
+          expression (asmcomp/liveness.ml[73,2923+2]..[80,3296+5])
+            Pexp_let Nonrec
+            [
+              <def>
+                pattern (asmcomp/liveness.ml[73,2923+6]..[73,2923+25])
+                  Ppat_tuple
+                  [
+                    pattern (asmcomp/liveness.ml[73,2923+7]..[73,2923+21])
+                      Ppat_var "initially_live" (asmcomp/liveness.ml[73,2923+7]..[73,2923+21])
+                    pattern (asmcomp/liveness.ml[73,2923+23]..[73,2923+24])
+                      Ppat_any
+                  ]
+                expression (asmcomp/liveness.ml[74,2951+4]..[74,2951+53])
+                  Pexp_apply
+                  expression (asmcomp/liveness.ml[74,2951+4]..[74,2951+20])
+                    Pexp_ident "Analyzer.analyze" (asmcomp/liveness.ml[74,2951+4]..[74,2951+20])
+                  [
+                    <arg>
+                    Labelled "exnhandler"
+                      expression (asmcomp/liveness.ml[74,2951+22]..[74,2951+32])
+                        Pexp_ident "exnhandler" (asmcomp/liveness.ml[74,2951+22]..[74,2951+32])
+                    <arg>
+                    Labelled "transfer"
+                      expression (asmcomp/liveness.ml[74,2951+34]..[74,2951+42])
+                        Pexp_ident "transfer" (asmcomp/liveness.ml[74,2951+34]..[74,2951+42])
+                    <arg>
+                    Nolabel
+                      expression (asmcomp/liveness.ml[74,2951+43]..[74,2951+53])
+                        Pexp_field
+                        expression (asmcomp/liveness.ml[74,2951+43]..[74,2951+44])
+                          Pexp_ident "f" (asmcomp/liveness.ml[74,2951+43]..[74,2951+44])
+                        "fun_body" (asmcomp/liveness.ml[74,2951+45]..[74,2951+53])
+                  ]
+            ]
+            expression (asmcomp/liveness.ml[76,3081+2]..[80,3296+5])
+              Pexp_let Nonrec
+              [
+                <def>
+                  pattern (asmcomp/liveness.ml[76,3081+6]..[76,3081+16])
+                    Ppat_var "wrong_live" (asmcomp/liveness.ml[76,3081+6]..[76,3081+16])
+                  expression (asmcomp/liveness.ml[76,3081+19]..[76,3081+76])
+                    Pexp_apply
+                    expression (asmcomp/liveness.ml[76,3081+19]..[76,3081+31])
+                      Pexp_ident "Reg.Set.diff" (asmcomp/liveness.ml[76,3081+19]..[76,3081+31])
+                    [
+                      <arg>
+                      Nolabel
+                        expression (asmcomp/liveness.ml[76,3081+32]..[76,3081+46])
+                          Pexp_ident "initially_live" (asmcomp/liveness.ml[76,3081+32]..[76,3081+46])
+                      <arg>
+                      Nolabel
+                        expression (asmcomp/liveness.ml[76,3081+47]..[76,3081+76])
+                          Pexp_apply
+                          expression (asmcomp/liveness.ml[76,3081+48]..[76,3081+64])
+                            Pexp_ident "Reg.set_of_array" (asmcomp/liveness.ml[76,3081+48]..[76,3081+64])
+                          [
+                            <arg>
+                            Nolabel
+                              expression (asmcomp/liveness.ml[76,3081+65]..[76,3081+75])
+                                Pexp_field
+                                expression (asmcomp/liveness.ml[76,3081+65]..[76,3081+66])
+                                  Pexp_ident "f" (asmcomp/liveness.ml[76,3081+65]..[76,3081+66])
+                                "fun_args" (asmcomp/liveness.ml[76,3081+67]..[76,3081+75])
+                          ]
+                    ]
+              ]
+              expression (asmcomp/liveness.ml[77,3161+2]..[80,3296+5])
+                Pexp_ifthenelse
+                expression (asmcomp/liveness.ml[77,3161+5]..[77,3161+38])
+                  Pexp_apply
+                  expression (asmcomp/liveness.ml[77,3161+5]..[77,3161+8])
+                    Pexp_ident "not" (asmcomp/liveness.ml[77,3161+5]..[77,3161+8])
+                  [
+                    <arg>
+                    Nolabel
+                      expression (asmcomp/liveness.ml[77,3161+9]..[77,3161+38])
+                        Pexp_apply
+                        expression (asmcomp/liveness.ml[77,3161+10]..[77,3161+26])
+                          Pexp_ident "Reg.Set.is_empty" (asmcomp/liveness.ml[77,3161+10]..[77,3161+26])
+                        [
+                          <arg>
+                          Nolabel
+                            expression (asmcomp/liveness.ml[77,3161+27]..[77,3161+37])
+                              Pexp_ident "wrong_live" (asmcomp/liveness.ml[77,3161+27]..[77,3161+37])
+                        ]
+                  ]
+                expression (asmcomp/liveness.ml[77,3161+44]..[80,3296+5])
+                  Pexp_apply
+                  expression (asmcomp/liveness.ml[78,3211+4]..[78,3211+21])
+                    Pexp_ident "Misc.fatal_errorf" (asmcomp/liveness.ml[78,3211+4]..[78,3211+21])
+                  [
+                    <arg>
+                    Nolabel
+                      expression (asmcomp/liveness.ml[78,3211+22]..[78,3211+50])
+                        Pexp_constant PConst_string("@[Liveness.fundecl:@\n%a@]",(asmcomp/liveness.ml[78,3211+23]..[78,3211+49]),None)
+                    <arg>
+                    Nolabel
+                      expression (asmcomp/liveness.ml[79,3262+6]..[79,3262+22])
+                        Pexp_ident "Printmach.regset" (asmcomp/liveness.ml[79,3262+6]..[79,3262+22])
+                    <arg>
+                    Nolabel
+                      expression (asmcomp/liveness.ml[79,3262+23]..[79,3262+33])
+                        Pexp_ident "wrong_live" (asmcomp/liveness.ml[79,3262+23]..[79,3262+33])
+                  ]
+                None
+    ]
+]
+

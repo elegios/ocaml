@@ -1,0 +1,301 @@
+[
+  structure_item (ocamltest/modifier_parser.ml[18,1152+0]..[18,1152+21])
+    Pstr_open Fresh
+    module_expr (ocamltest/modifier_parser.ml[18,1152+5]..[18,1152+21])
+      Pmod_ident "Ocamltest_stdlib" (ocamltest/modifier_parser.ml[18,1152+5]..[18,1152+21])
+  structure_item (ocamltest/modifier_parser.ml[20,1175+0]..[31,1591+58])
+    Pstr_value Nonrec
+    [
+      <def>
+        pattern (ocamltest/modifier_parser.ml[20,1175+4]..[20,1175+22])
+          Ppat_var "modifier_of_string" (ocamltest/modifier_parser.ml[20,1175+4]..[20,1175+22])
+        expression (ocamltest/modifier_parser.ml[20,1175+23]..[31,1591+58]) ghost
+          Pexp_fun
+          Nolabel
+          None
+          pattern (ocamltest/modifier_parser.ml[20,1175+23]..[20,1175+26])
+            Ppat_var "str" (ocamltest/modifier_parser.ml[20,1175+23]..[20,1175+26])
+          expression (ocamltest/modifier_parser.ml[21,1204+2]..[31,1591+58])
+            Pexp_let Nonrec
+            [
+              <def>
+                pattern (ocamltest/modifier_parser.ml[21,1204+6]..[21,1204+12])
+                  Ppat_var "lexbuf" (ocamltest/modifier_parser.ml[21,1204+6]..[21,1204+12])
+                expression (ocamltest/modifier_parser.ml[21,1204+15]..[21,1204+37])
+                  Pexp_apply
+                  expression (ocamltest/modifier_parser.ml[21,1204+15]..[21,1204+33])
+                    Pexp_ident "Lexing.from_string" (ocamltest/modifier_parser.ml[21,1204+15]..[21,1204+33])
+                  [
+                    <arg>
+                    Nolabel
+                      expression (ocamltest/modifier_parser.ml[21,1204+34]..[21,1204+37])
+                        Pexp_ident "str" (ocamltest/modifier_parser.ml[21,1204+34]..[21,1204+37])
+                  ]
+            ]
+            expression (ocamltest/modifier_parser.ml[22,1245+2]..[31,1591+58])
+              Pexp_let Nonrec
+              [
+                <def>
+                  pattern (ocamltest/modifier_parser.ml[22,1245+6]..[22,1245+27])
+                    Ppat_tuple
+                    [
+                      pattern (ocamltest/modifier_parser.ml[22,1245+6]..[22,1245+19])
+                        Ppat_var "variable_name" (ocamltest/modifier_parser.ml[22,1245+6]..[22,1245+19])
+                      pattern (ocamltest/modifier_parser.ml[22,1245+21]..[22,1245+27])
+                        Ppat_var "result" (ocamltest/modifier_parser.ml[22,1245+21]..[22,1245+27])
+                    ]
+                  expression (ocamltest/modifier_parser.ml[22,1245+30]..[22,1245+55])
+                    Pexp_apply
+                    expression (ocamltest/modifier_parser.ml[22,1245+30]..[22,1245+48])
+                      Pexp_ident "Tsl_lexer.modifier" (ocamltest/modifier_parser.ml[22,1245+30]..[22,1245+48])
+                    [
+                      <arg>
+                      Nolabel
+                        expression (ocamltest/modifier_parser.ml[22,1245+49]..[22,1245+55])
+                          Pexp_ident "lexbuf" (ocamltest/modifier_parser.ml[22,1245+49]..[22,1245+55])
+                    ]
+              ]
+              expression (ocamltest/modifier_parser.ml[23,1304+2]..[31,1591+58])
+                Pexp_let Nonrec
+                [
+                  <def>
+                    pattern (ocamltest/modifier_parser.ml[23,1304+6]..[23,1304+14])
+                      Ppat_var "variable" (ocamltest/modifier_parser.ml[23,1304+6]..[23,1304+14])
+                    expression (ocamltest/modifier_parser.ml[24,1321+4]..[26,1437+31])
+                      Pexp_match
+                      expression (ocamltest/modifier_parser.ml[24,1321+10]..[24,1321+47])
+                        Pexp_apply
+                        expression (ocamltest/modifier_parser.ml[24,1321+10]..[24,1321+33])
+                          Pexp_ident "Variables.find_variable" (ocamltest/modifier_parser.ml[24,1321+10]..[24,1321+33])
+                        [
+                          <arg>
+                          Nolabel
+                            expression (ocamltest/modifier_parser.ml[24,1321+34]..[24,1321+47])
+                              Pexp_ident "variable_name" (ocamltest/modifier_parser.ml[24,1321+34]..[24,1321+47])
+                        ]
+                      [
+                        <case>
+                          pattern (ocamltest/modifier_parser.ml[25,1374+6]..[25,1374+10])
+                            Ppat_construct "None" (ocamltest/modifier_parser.ml[25,1374+6]..[25,1374+10])
+                            None
+                          expression (ocamltest/modifier_parser.ml[25,1374+14]..[25,1374+62])
+                            Pexp_apply
+                            expression (ocamltest/modifier_parser.ml[25,1374+14]..[25,1374+19])
+                              Pexp_ident "raise" (ocamltest/modifier_parser.ml[25,1374+14]..[25,1374+19])
+                            [
+                              <arg>
+                              Nolabel
+                                expression (ocamltest/modifier_parser.ml[25,1374+20]..[25,1374+62])
+                                  Pexp_construct "Variables.No_such_variable" (ocamltest/modifier_parser.ml[25,1374+21]..[25,1374+47])
+                                  Some
+                                    expression (ocamltest/modifier_parser.ml[25,1374+48]..[25,1374+61])
+                                      Pexp_ident "variable_name" (ocamltest/modifier_parser.ml[25,1374+48]..[25,1374+61])
+                            ]
+                        <case>
+                          pattern (ocamltest/modifier_parser.ml[26,1437+6]..[26,1437+19])
+                            Ppat_construct "Some" (ocamltest/modifier_parser.ml[26,1437+6]..[26,1437+10])
+                            Some
+                              []
+                              pattern (ocamltest/modifier_parser.ml[26,1437+11]..[26,1437+19])
+                                Ppat_var "variable" (ocamltest/modifier_parser.ml[26,1437+11]..[26,1437+19])
+                          expression (ocamltest/modifier_parser.ml[26,1437+23]..[26,1437+31])
+                            Pexp_ident "variable" (ocamltest/modifier_parser.ml[26,1437+23]..[26,1437+31])
+                      ]
+                ]
+                expression (ocamltest/modifier_parser.ml[28,1474+2]..[31,1591+58])
+                  Pexp_match
+                  expression (ocamltest/modifier_parser.ml[28,1474+8]..[28,1474+14])
+                    Pexp_ident "result" (ocamltest/modifier_parser.ml[28,1474+8]..[28,1474+14])
+                  [
+                    <case>
+                      pattern (ocamltest/modifier_parser.ml[29,1494+4]..[29,1494+11])
+                        Ppat_variant "Remove"
+                        None
+                      expression (ocamltest/modifier_parser.ml[29,1494+15]..[29,1494+43])
+                        Pexp_construct "Environments.Remove" (ocamltest/modifier_parser.ml[29,1494+15]..[29,1494+34])
+                        Some
+                          expression (ocamltest/modifier_parser.ml[29,1494+35]..[29,1494+43])
+                            Pexp_ident "variable" (ocamltest/modifier_parser.ml[29,1494+35]..[29,1494+43])
+                    <case>
+                      pattern (ocamltest/modifier_parser.ml[30,1538+4]..[30,1538+14])
+                        Ppat_variant "Add"
+                        Some
+                          pattern (ocamltest/modifier_parser.ml[30,1538+9]..[30,1538+14])
+                            Ppat_var "value" (ocamltest/modifier_parser.ml[30,1538+9]..[30,1538+14])
+                      expression (ocamltest/modifier_parser.ml[30,1538+18]..[30,1538+52])
+                        Pexp_construct "Environments.Add" (ocamltest/modifier_parser.ml[30,1538+18]..[30,1538+34])
+                        Some
+                          expression (ocamltest/modifier_parser.ml[30,1538+35]..[30,1538+52])
+                            Pexp_tuple
+                            [
+                              expression (ocamltest/modifier_parser.ml[30,1538+36]..[30,1538+44])
+                                Pexp_ident "variable" (ocamltest/modifier_parser.ml[30,1538+36]..[30,1538+44])
+                              expression (ocamltest/modifier_parser.ml[30,1538+46]..[30,1538+51])
+                                Pexp_ident "value" (ocamltest/modifier_parser.ml[30,1538+46]..[30,1538+51])
+                            ]
+                    <case>
+                      pattern (ocamltest/modifier_parser.ml[31,1591+4]..[31,1591+17])
+                        Ppat_variant "Append"
+                        Some
+                          pattern (ocamltest/modifier_parser.ml[31,1591+12]..[31,1591+17])
+                            Ppat_var "value" (ocamltest/modifier_parser.ml[31,1591+12]..[31,1591+17])
+                      expression (ocamltest/modifier_parser.ml[31,1591+21]..[31,1591+58])
+                        Pexp_construct "Environments.Append" (ocamltest/modifier_parser.ml[31,1591+21]..[31,1591+40])
+                        Some
+                          expression (ocamltest/modifier_parser.ml[31,1591+41]..[31,1591+58])
+                            Pexp_tuple
+                            [
+                              expression (ocamltest/modifier_parser.ml[31,1591+42]..[31,1591+50])
+                                Pexp_ident "variable" (ocamltest/modifier_parser.ml[31,1591+42]..[31,1591+50])
+                              expression (ocamltest/modifier_parser.ml[31,1591+52]..[31,1591+57])
+                                Pexp_ident "value" (ocamltest/modifier_parser.ml[31,1591+52]..[31,1591+57])
+                            ]
+                  ]
+    ]
+  structure_item (ocamltest/modifier_parser.ml[33,1651+0]..[41,1951+20])
+    Pstr_value Nonrec
+    [
+      <def>
+        pattern (ocamltest/modifier_parser.ml[33,1651+4]..[33,1651+21])
+          Ppat_var "modifiers_of_file" (ocamltest/modifier_parser.ml[33,1651+4]..[33,1651+21])
+        expression (ocamltest/modifier_parser.ml[33,1651+22]..[41,1951+20]) ghost
+          Pexp_fun
+          Nolabel
+          None
+          pattern (ocamltest/modifier_parser.ml[33,1651+22]..[33,1651+30])
+            Ppat_var "filename" (ocamltest/modifier_parser.ml[33,1651+22]..[33,1651+30])
+          expression (ocamltest/modifier_parser.ml[34,1684+2]..[41,1951+20])
+            Pexp_let Nonrec
+            [
+              <def>
+                pattern (ocamltest/modifier_parser.ml[34,1684+6]..[34,1684+8])
+                  Ppat_var "ic" (ocamltest/modifier_parser.ml[34,1684+6]..[34,1684+8])
+                expression (ocamltest/modifier_parser.ml[34,1684+11]..[34,1684+27])
+                  Pexp_apply
+                  expression (ocamltest/modifier_parser.ml[34,1684+11]..[34,1684+18])
+                    Pexp_ident "open_in" (ocamltest/modifier_parser.ml[34,1684+11]..[34,1684+18])
+                  [
+                    <arg>
+                    Nolabel
+                      expression (ocamltest/modifier_parser.ml[34,1684+19]..[34,1684+27])
+                        Pexp_ident "filename" (ocamltest/modifier_parser.ml[34,1684+19]..[34,1684+27])
+                  ]
+            ]
+            expression (ocamltest/modifier_parser.ml[35,1715+2]..[41,1951+20])
+              Pexp_let Rec
+              [
+                <def>
+                  pattern (ocamltest/modifier_parser.ml[35,1715+10]..[35,1715+28])
+                    Ppat_var "modifiers_of_lines" (ocamltest/modifier_parser.ml[35,1715+10]..[35,1715+28])
+                  expression (ocamltest/modifier_parser.ml[35,1715+29]..[38,1816+73]) ghost
+                    Pexp_fun
+                    Nolabel
+                    None
+                    pattern (ocamltest/modifier_parser.ml[35,1715+29]..[35,1715+32])
+                      Ppat_var "acc" (ocamltest/modifier_parser.ml[35,1715+29]..[35,1715+32])
+                    expression (ocamltest/modifier_parser.ml[35,1715+35]..[38,1816+73])
+                      Pexp_match
+                      expression (ocamltest/modifier_parser.ml[35,1715+41]..[35,1715+58])
+                        Pexp_apply
+                        expression (ocamltest/modifier_parser.ml[35,1715+41]..[35,1715+55])
+                          Pexp_ident "input_line_opt" (ocamltest/modifier_parser.ml[35,1715+41]..[35,1715+55])
+                        [
+                          <arg>
+                          Nolabel
+                            expression (ocamltest/modifier_parser.ml[35,1715+56]..[35,1715+58])
+                              Pexp_ident "ic" (ocamltest/modifier_parser.ml[35,1715+56]..[35,1715+58])
+                        ]
+                      [
+                        <case>
+                          pattern (ocamltest/modifier_parser.ml[36,1779+6]..[36,1779+10])
+                            Ppat_construct "None" (ocamltest/modifier_parser.ml[36,1779+6]..[36,1779+10])
+                            None
+                          expression (ocamltest/modifier_parser.ml[36,1779+14]..[36,1779+17])
+                            Pexp_ident "acc" (ocamltest/modifier_parser.ml[36,1779+14]..[36,1779+17])
+                        <case>
+                          pattern (ocamltest/modifier_parser.ml[37,1797+6]..[37,1797+15])
+                            Ppat_construct "Some" (ocamltest/modifier_parser.ml[37,1797+6]..[37,1797+10])
+                            Some
+                              []
+                              pattern (ocamltest/modifier_parser.ml[37,1797+11]..[37,1797+15])
+                                Ppat_var "line" (ocamltest/modifier_parser.ml[37,1797+11]..[37,1797+15])
+                          expression (ocamltest/modifier_parser.ml[38,1816+6]..[38,1816+73])
+                            Pexp_apply
+                            expression (ocamltest/modifier_parser.ml[38,1816+6]..[38,1816+24])
+                              Pexp_ident "modifiers_of_lines" (ocamltest/modifier_parser.ml[38,1816+6]..[38,1816+24])
+                            [
+                              <arg>
+                              Nolabel
+                                expression (ocamltest/modifier_parser.ml[38,1816+25]..[38,1816+73])
+                                  Pexp_construct "::" (ocamltest/modifier_parser.ml[38,1816+66]..[38,1816+68])
+                                  Some
+                                    expression (ocamltest/modifier_parser.ml[38,1816+26]..[38,1816+72]) ghost
+                                      Pexp_tuple
+                                      [
+                                        expression (ocamltest/modifier_parser.ml[38,1816+26]..[38,1816+65])
+                                          Pexp_apply
+                                          expression (ocamltest/modifier_parser.ml[38,1816+27]..[38,1816+45])
+                                            Pexp_ident "modifier_of_string" (ocamltest/modifier_parser.ml[38,1816+27]..[38,1816+45])
+                                          [
+                                            <arg>
+                                            Nolabel
+                                              expression (ocamltest/modifier_parser.ml[38,1816+46]..[38,1816+64])
+                                                Pexp_apply
+                                                expression (ocamltest/modifier_parser.ml[38,1816+47]..[38,1816+58])
+                                                  Pexp_ident "String.trim" (ocamltest/modifier_parser.ml[38,1816+47]..[38,1816+58])
+                                                [
+                                                  <arg>
+                                                  Nolabel
+                                                    expression (ocamltest/modifier_parser.ml[38,1816+59]..[38,1816+63])
+                                                      Pexp_ident "line" (ocamltest/modifier_parser.ml[38,1816+59]..[38,1816+63])
+                                                ]
+                                          ]
+                                        expression (ocamltest/modifier_parser.ml[38,1816+69]..[38,1816+72])
+                                          Pexp_ident "acc" (ocamltest/modifier_parser.ml[38,1816+69]..[38,1816+72])
+                                      ]
+                            ]
+                      ]
+              ]
+              expression (ocamltest/modifier_parser.ml[39,1893+2]..[41,1951+20])
+                Pexp_let Nonrec
+                [
+                  <def>
+                    pattern (ocamltest/modifier_parser.ml[39,1893+6]..[39,1893+15])
+                      Ppat_var "modifiers" (ocamltest/modifier_parser.ml[39,1893+6]..[39,1893+15])
+                    expression (ocamltest/modifier_parser.ml[39,1893+18]..[39,1893+39])
+                      Pexp_apply
+                      expression (ocamltest/modifier_parser.ml[39,1893+18]..[39,1893+36])
+                        Pexp_ident "modifiers_of_lines" (ocamltest/modifier_parser.ml[39,1893+18]..[39,1893+36])
+                      [
+                        <arg>
+                        Nolabel
+                          expression (ocamltest/modifier_parser.ml[39,1893+37]..[39,1893+39])
+                            Pexp_construct "[]" (ocamltest/modifier_parser.ml[39,1893+37]..[39,1893+39])
+                            None
+                      ]
+                ]
+                expression (ocamltest/modifier_parser.ml[40,1936+2]..[41,1951+20])
+                  Pexp_sequence
+                  expression (ocamltest/modifier_parser.ml[40,1936+2]..[40,1936+13])
+                    Pexp_apply
+                    expression (ocamltest/modifier_parser.ml[40,1936+2]..[40,1936+10])
+                      Pexp_ident "close_in" (ocamltest/modifier_parser.ml[40,1936+2]..[40,1936+10])
+                    [
+                      <arg>
+                      Nolabel
+                        expression (ocamltest/modifier_parser.ml[40,1936+11]..[40,1936+13])
+                          Pexp_ident "ic" (ocamltest/modifier_parser.ml[40,1936+11]..[40,1936+13])
+                    ]
+                  expression (ocamltest/modifier_parser.ml[41,1951+2]..[41,1951+20])
+                    Pexp_apply
+                    expression (ocamltest/modifier_parser.ml[41,1951+2]..[41,1951+10])
+                      Pexp_ident "List.rev" (ocamltest/modifier_parser.ml[41,1951+2]..[41,1951+10])
+                    [
+                      <arg>
+                      Nolabel
+                        expression (ocamltest/modifier_parser.ml[41,1951+11]..[41,1951+20])
+                          Pexp_ident "modifiers" (ocamltest/modifier_parser.ml[41,1951+11]..[41,1951+20])
+                    ]
+    ]
+]
+

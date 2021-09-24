@@ -1,0 +1,65 @@
+File "testsuite/tests/typing-misc/pr6939-flat-float-array.ml", line 1:
+Warning 24 [bad-module-name]: bad source file name: "Pr6939-flat-float-array" is not a valid module name.
+[
+  structure_item (testsuite/tests/typing-misc/pr6939-flat-float-array.ml[6,47+0]..[6,47+23])
+    Pstr_value Rec
+    [
+      <def>
+        pattern (testsuite/tests/typing-misc/pr6939-flat-float-array.ml[6,47+8]..[6,47+9])
+          Ppat_var "x" (testsuite/tests/typing-misc/pr6939-flat-float-array.ml[6,47+8]..[6,47+9])
+        expression (testsuite/tests/typing-misc/pr6939-flat-float-array.ml[6,47+12]..[6,47+23])
+          Pexp_sequence
+          expression (testsuite/tests/typing-misc/pr6939-flat-float-array.ml[6,47+12]..[6,47+19])
+            Pexp_array
+            [
+              expression (testsuite/tests/typing-misc/pr6939-flat-float-array.ml[6,47+15]..[6,47+16])
+                Pexp_ident "x" (testsuite/tests/typing-misc/pr6939-flat-float-array.ml[6,47+15]..[6,47+16])
+            ]
+          expression (testsuite/tests/typing-misc/pr6939-flat-float-array.ml[6,47+21]..[6,47+23])
+            Pexp_constant PConst_float (1.,None)
+    ]
+  structure_item (testsuite/tests/typing-misc/pr6939-flat-float-array.ml[7,73+0]..[16,399+3])
+    Pstr_extension "expect"
+    [
+      structure_item (testsuite/tests/typing-misc/pr6939-flat-float-array.ml[7,73+9]..[16,399+2])
+        Pstr_eval
+        expression (testsuite/tests/typing-misc/pr6939-flat-float-array.ml[7,73+9]..[16,399+2])
+          Pexp_constant PConst_string ("\nLine 1, characters 12-19:\n1 | let rec x = [| x |]; 1.;;\n                ^^^^^^^\nWarning 10 [non-unit-statement]: this expression should have type unit.\nLine 1, characters 12-23:\n1 | let rec x = [| x |]; 1.;;\n                ^^^^^^^^^^^\nError: This kind of expression is not allowed as right-hand side of `let rec'\n",(testsuite/tests/typing-misc/pr6939-flat-float-array.ml[7,73+11]..[16,399+0]),Some "")
+    ]
+  structure_item (testsuite/tests/typing-misc/pr6939-flat-float-array.ml[18,406+0]..[18,406+43])
+    Pstr_value Rec
+    [
+      <def>
+        pattern (testsuite/tests/typing-misc/pr6939-flat-float-array.ml[18,406+8]..[18,406+9])
+          Ppat_var "x" (testsuite/tests/typing-misc/pr6939-flat-float-array.ml[18,406+8]..[18,406+9])
+        expression (testsuite/tests/typing-misc/pr6939-flat-float-array.ml[18,406+12]..[18,406+32])
+          Pexp_let Nonrec
+          [
+            <def>
+              pattern (testsuite/tests/typing-misc/pr6939-flat-float-array.ml[18,406+16]..[18,406+17])
+                Ppat_var "u" (testsuite/tests/typing-misc/pr6939-flat-float-array.ml[18,406+16]..[18,406+17])
+              expression (testsuite/tests/typing-misc/pr6939-flat-float-array.ml[18,406+20]..[18,406+25])
+                Pexp_array
+                [
+                  expression (testsuite/tests/typing-misc/pr6939-flat-float-array.ml[18,406+22]..[18,406+23])
+                    Pexp_ident "y" (testsuite/tests/typing-misc/pr6939-flat-float-array.ml[18,406+22]..[18,406+23])
+                ]
+          ]
+          expression (testsuite/tests/typing-misc/pr6939-flat-float-array.ml[18,406+29]..[18,406+32])
+            Pexp_constant PConst_float (10.,None)
+      <def>
+        pattern (testsuite/tests/typing-misc/pr6939-flat-float-array.ml[18,406+37]..[18,406+38])
+          Ppat_var "y" (testsuite/tests/typing-misc/pr6939-flat-float-array.ml[18,406+37]..[18,406+38])
+        expression (testsuite/tests/typing-misc/pr6939-flat-float-array.ml[18,406+41]..[18,406+43])
+          Pexp_constant PConst_float (1.,None)
+    ]
+  structure_item (testsuite/tests/typing-misc/pr6939-flat-float-array.ml[19,452+0]..[24,655+3])
+    Pstr_extension "expect"
+    [
+      structure_item (testsuite/tests/typing-misc/pr6939-flat-float-array.ml[19,452+9]..[24,655+2])
+        Pstr_eval
+        expression (testsuite/tests/typing-misc/pr6939-flat-float-array.ml[19,452+9]..[24,655+2])
+          Pexp_constant PConst_string ("\nLine 1, characters 12-32:\n1 | let rec x = let u = [|y|] in 10. and y = 1.;;\n                ^^^^^^^^^^^^^^^^^^^^\nError: This kind of expression is not allowed as right-hand side of `let rec'\n",(testsuite/tests/typing-misc/pr6939-flat-float-array.ml[19,452+11]..[24,655+0]),Some "")
+    ]
+]
+

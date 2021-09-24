@@ -1,0 +1,396 @@
+[
+  signature_item (driver/compile_common.mli[15,1002+0]..[15,1002+63])
+    Psig_attribute "ocaml.text"
+    [
+      structure_item (driver/compile_common.mli[15,1002+0]..[15,1002+63])
+        Pstr_eval
+        expression (driver/compile_common.mli[15,1002+0]..[15,1002+63])
+          Pexp_constant PConst_string(" Common compilation pipeline between bytecode and native. ",(driver/compile_common.mli[15,1002+0]..[15,1002+63]),None)
+    ]
+  signature_item (driver/compile_common.mli[17,1067+0]..[17,1067+25])
+    Psig_attribute "ocaml.text"
+    [
+      structure_item (driver/compile_common.mli[17,1067+0]..[17,1067+25])
+        Pstr_eval
+        expression (driver/compile_common.mli[17,1067+0]..[17,1067+25])
+          Pexp_constant PConst_string(" {2 Initialization} ",(driver/compile_common.mli[17,1067+0]..[17,1067+25]),None)
+    ]
+  signature_item (driver/compile_common.mli[19,1094+0]..[27,1267+1])
+    Psig_type Rec
+    [
+      type_declaration "info" (driver/compile_common.mli[19,1094+5]..[19,1094+9]) (driver/compile_common.mli[19,1094+0]..[27,1267+1])
+        attribute "ocaml.doc"
+          [
+            structure_item (driver/compile_common.mli[28,1269+0]..[28,1269+44])
+              Pstr_eval
+              expression (driver/compile_common.mli[28,1269+0]..[28,1269+44])
+                Pexp_constant PConst_string(" Information needed to compile a file. ",(driver/compile_common.mli[28,1269+0]..[28,1269+44]),None)
+          ]
+        ptype_params =
+          []
+        ptype_cstrs =
+          []
+        ptype_kind =
+          Ptype_record
+            [
+              (driver/compile_common.mli[20,1108+2]..[20,1108+23])
+                Immutable
+                "source_file" (driver/compile_common.mli[20,1108+2]..[20,1108+13])                core_type (driver/compile_common.mli[20,1108+16]..[20,1108+22])
+                  Ptyp_constr "string" (driver/compile_common.mli[20,1108+16]..[20,1108+22])
+                  []
+              (driver/compile_common.mli[21,1132+2]..[21,1132+23])
+                Immutable
+                "module_name" (driver/compile_common.mli[21,1132+2]..[21,1132+13])                core_type (driver/compile_common.mli[21,1132+16]..[21,1132+22])
+                  Ptyp_constr "string" (driver/compile_common.mli[21,1132+16]..[21,1132+22])
+                  []
+              (driver/compile_common.mli[22,1156+2]..[22,1156+25])
+                Immutable
+                "output_prefix" (driver/compile_common.mli[22,1156+2]..[22,1156+15])                core_type (driver/compile_common.mli[22,1156+18]..[22,1156+24])
+                  Ptyp_constr "string" (driver/compile_common.mli[22,1156+18]..[22,1156+24])
+                  []
+              (driver/compile_common.mli[23,1182+2]..[23,1182+14])
+                Immutable
+                "env" (driver/compile_common.mli[23,1182+2]..[23,1182+5])                core_type (driver/compile_common.mli[23,1182+8]..[23,1182+13])
+                  Ptyp_constr "Env.t" (driver/compile_common.mli[23,1182+8]..[23,1182+13])
+                  []
+              (driver/compile_common.mli[24,1197+2]..[24,1197+30])
+                Immutable
+                "ppf_dump" (driver/compile_common.mli[24,1197+2]..[24,1197+10])                core_type (driver/compile_common.mli[24,1197+13]..[24,1197+29])
+                  Ptyp_constr "Format.formatter" (driver/compile_common.mli[24,1197+13]..[24,1197+29])
+                  []
+              (driver/compile_common.mli[25,1228+2]..[25,1228+21])
+                Immutable
+                "tool_name" (driver/compile_common.mli[25,1228+2]..[25,1228+11])                core_type (driver/compile_common.mli[25,1228+14]..[25,1228+20])
+                  Ptyp_constr "string" (driver/compile_common.mli[25,1228+14]..[25,1228+20])
+                  []
+              (driver/compile_common.mli[26,1250+2]..[26,1250+16])
+                Immutable
+                "native" (driver/compile_common.mli[26,1250+2]..[26,1250+8])                core_type (driver/compile_common.mli[26,1250+11]..[26,1250+15])
+                  Ptyp_constr "bool" (driver/compile_common.mli[26,1250+11]..[26,1250+15])
+                  []
+            ]
+        ptype_private = Public
+        ptype_manifest =
+          None
+    ]
+  signature_item (driver/compile_common.mli[30,1315+0]..[36,1441+20])
+    Psig_value
+    value_description "with_info" (driver/compile_common.mli[30,1315+4]..[30,1315+13]) (driver/compile_common.mli[30,1315+0]..[36,1441+20])
+      attribute "ocaml.doc"
+        [
+          structure_item (driver/compile_common.mli[37,1462+0]..[46,1950+2])
+            Pstr_eval
+            expression (driver/compile_common.mli[37,1462+0]..[46,1950+2])
+              Pexp_constant PConst_string(" [with_info ~native ~tool_name ~source_file ~output_prefix ~dump_ext k]\n   invokes its continuation [k] with an [info] structure built from\n   its input, after initializing various global variables. This info\n   structure and the initialized global state are not valid anymore\n   after the continuation returns.\n\n   Due to current implementation limitations in the compiler, it is\n   unsafe to try to compile several distinct compilation units by\n   calling [with_info] several times.\n",(driver/compile_common.mli[37,1462+0]..[46,1950+2]),None)
+        ]
+      core_type (driver/compile_common.mli[31,1331+2]..[36,1441+20])
+        Ptyp_arrow
+        Labelled "native"
+        core_type (driver/compile_common.mli[31,1331+9]..[31,1331+13])
+          Ptyp_constr "bool" (driver/compile_common.mli[31,1331+9]..[31,1331+13])
+          []
+        core_type (driver/compile_common.mli[32,1348+2]..[36,1441+20])
+          Ptyp_arrow
+          Labelled "tool_name"
+          core_type (driver/compile_common.mli[32,1348+12]..[32,1348+18])
+            Ptyp_constr "string" (driver/compile_common.mli[32,1348+12]..[32,1348+18])
+            []
+          core_type (driver/compile_common.mli[33,1370+2]..[36,1441+20])
+            Ptyp_arrow
+            Labelled "source_file"
+            core_type (driver/compile_common.mli[33,1370+14]..[33,1370+20])
+              Ptyp_constr "string" (driver/compile_common.mli[33,1370+14]..[33,1370+20])
+              []
+            core_type (driver/compile_common.mli[34,1394+2]..[36,1441+20])
+              Ptyp_arrow
+              Labelled "output_prefix"
+              core_type (driver/compile_common.mli[34,1394+16]..[34,1394+22])
+                Ptyp_constr "string" (driver/compile_common.mli[34,1394+16]..[34,1394+22])
+                []
+              core_type (driver/compile_common.mli[35,1420+2]..[36,1441+20])
+                Ptyp_arrow
+                Labelled "dump_ext"
+                core_type (driver/compile_common.mli[35,1420+11]..[35,1420+17])
+                  Ptyp_constr "string" (driver/compile_common.mli[35,1420+11]..[35,1420+17])
+                  []
+                core_type (driver/compile_common.mli[36,1441+2]..[36,1441+20])
+                  Ptyp_arrow
+                  Nolabel
+                  core_type (driver/compile_common.mli[36,1441+3]..[36,1441+13])
+                    Ptyp_arrow
+                    Nolabel
+                    core_type (driver/compile_common.mli[36,1441+3]..[36,1441+7])
+                      Ptyp_constr "info" (driver/compile_common.mli[36,1441+3]..[36,1441+7])
+                      []
+                    core_type (driver/compile_common.mli[36,1441+11]..[36,1441+13])
+                      Ptyp_var a
+                  core_type (driver/compile_common.mli[36,1441+18]..[36,1441+20])
+                    Ptyp_var a
+      []
+  signature_item (driver/compile_common.mli[48,1954+0]..[48,1954+21])
+    Psig_attribute "ocaml.text"
+    [
+      structure_item (driver/compile_common.mli[48,1954+0]..[48,1954+21])
+        Pstr_eval
+        expression (driver/compile_common.mli[48,1954+0]..[48,1954+21])
+          Pexp_constant PConst_string(" {2 Interfaces} ",(driver/compile_common.mli[48,1954+0]..[48,1954+21]),None)
+    ]
+  signature_item (driver/compile_common.mli[50,1977+0]..[50,1977+44])
+    Psig_value
+    value_description "parse_intf" (driver/compile_common.mli[50,1977+4]..[50,1977+14]) (driver/compile_common.mli[50,1977+0]..[50,1977+44])
+      attribute "ocaml.doc"
+        [
+          structure_item (driver/compile_common.mli[51,2022+0]..[51,2022+70])
+            Pstr_eval
+            expression (driver/compile_common.mli[51,2022+0]..[51,2022+70])
+              Pexp_constant PConst_string(" [parse_intf info] parses an interface (usually an [.mli] file). ",(driver/compile_common.mli[51,2022+0]..[51,2022+70]),None)
+        ]
+      core_type (driver/compile_common.mli[50,1977+17]..[50,1977+44])
+        Ptyp_arrow
+        Nolabel
+        core_type (driver/compile_common.mli[50,1977+17]..[50,1977+21])
+          Ptyp_constr "info" (driver/compile_common.mli[50,1977+17]..[50,1977+21])
+          []
+        core_type (driver/compile_common.mli[50,1977+25]..[50,1977+44])
+          Ptyp_constr "Parsetree.signature" (driver/compile_common.mli[50,1977+25]..[50,1977+44])
+          []
+      []
+  signature_item (driver/compile_common.mli[53,2094+0]..[53,2094+71])
+    Psig_value
+    value_description "typecheck_intf" (driver/compile_common.mli[53,2094+4]..[53,2094+18]) (driver/compile_common.mli[53,2094+0]..[53,2094+71])
+      attribute "ocaml.doc"
+        [
+          structure_item (driver/compile_common.mli[54,2166+0]..[56,2285+2])
+            Pstr_eval
+            expression (driver/compile_common.mli[54,2166+0]..[56,2285+2])
+              Pexp_constant PConst_string(" [typecheck_intf info parsetree] typechecks an interface and returns\n    the typedtree of the associated signature.\n",(driver/compile_common.mli[54,2166+0]..[56,2285+2]),None)
+        ]
+      core_type (driver/compile_common.mli[53,2094+21]..[53,2094+71])
+        Ptyp_arrow
+        Nolabel
+        core_type (driver/compile_common.mli[53,2094+21]..[53,2094+25])
+          Ptyp_constr "info" (driver/compile_common.mli[53,2094+21]..[53,2094+25])
+          []
+        core_type (driver/compile_common.mli[53,2094+29]..[53,2094+71])
+          Ptyp_arrow
+          Nolabel
+          core_type (driver/compile_common.mli[53,2094+29]..[53,2094+48])
+            Ptyp_constr "Parsetree.signature" (driver/compile_common.mli[53,2094+29]..[53,2094+48])
+            []
+          core_type (driver/compile_common.mli[53,2094+52]..[53,2094+71])
+            Ptyp_constr "Typedtree.signature" (driver/compile_common.mli[53,2094+52]..[53,2094+71])
+            []
+      []
+  signature_item (driver/compile_common.mli[58,2289+0]..[58,2289+79])
+    Psig_value
+    value_description "emit_signature" (driver/compile_common.mli[58,2289+4]..[58,2289+18]) (driver/compile_common.mli[58,2289+0]..[58,2289+79])
+      attribute "ocaml.doc"
+        [
+          structure_item (driver/compile_common.mli[59,2369+0]..[61,2473+2])
+            Pstr_eval
+            expression (driver/compile_common.mli[59,2369+0]..[61,2473+2])
+              Pexp_constant PConst_string(" [emit_signature info parsetree typedtree] emits the [.cmi] file\n    containing the given signature.\n",(driver/compile_common.mli[59,2369+0]..[61,2473+2]),None)
+        ]
+      core_type (driver/compile_common.mli[58,2289+21]..[58,2289+79])
+        Ptyp_arrow
+        Nolabel
+        core_type (driver/compile_common.mli[58,2289+21]..[58,2289+25])
+          Ptyp_constr "info" (driver/compile_common.mli[58,2289+21]..[58,2289+25])
+          []
+        core_type (driver/compile_common.mli[58,2289+29]..[58,2289+79])
+          Ptyp_arrow
+          Nolabel
+          core_type (driver/compile_common.mli[58,2289+29]..[58,2289+48])
+            Ptyp_constr "Parsetree.signature" (driver/compile_common.mli[58,2289+29]..[58,2289+48])
+            []
+          core_type (driver/compile_common.mli[58,2289+52]..[58,2289+79])
+            Ptyp_arrow
+            Nolabel
+            core_type (driver/compile_common.mli[58,2289+52]..[58,2289+71])
+              Ptyp_constr "Typedtree.signature" (driver/compile_common.mli[58,2289+52]..[58,2289+71])
+              []
+            core_type (driver/compile_common.mli[58,2289+75]..[58,2289+79])
+              Ptyp_constr "unit" (driver/compile_common.mli[58,2289+75]..[58,2289+79])
+              []
+      []
+  signature_item (driver/compile_common.mli[63,2477+0]..[63,2477+28])
+    Psig_value
+    value_description "interface" (driver/compile_common.mli[63,2477+4]..[63,2477+13]) (driver/compile_common.mli[63,2477+0]..[63,2477+28])
+      attribute "ocaml.doc"
+        [
+          structure_item (driver/compile_common.mli[64,2506+0]..[64,2506+56])
+            Pstr_eval
+            expression (driver/compile_common.mli[64,2506+0]..[64,2506+56])
+              Pexp_constant PConst_string(" The complete compilation pipeline for interfaces. ",(driver/compile_common.mli[64,2506+0]..[64,2506+56]),None)
+        ]
+      core_type (driver/compile_common.mli[63,2477+16]..[63,2477+28])
+        Ptyp_arrow
+        Nolabel
+        core_type (driver/compile_common.mli[63,2477+16]..[63,2477+20])
+          Ptyp_constr "info" (driver/compile_common.mli[63,2477+16]..[63,2477+20])
+          []
+        core_type (driver/compile_common.mli[63,2477+24]..[63,2477+28])
+          Ptyp_constr "unit" (driver/compile_common.mli[63,2477+24]..[63,2477+28])
+          []
+      []
+  signature_item (driver/compile_common.mli[66,2564+0]..[66,2564+26])
+    Psig_attribute "ocaml.text"
+    [
+      structure_item (driver/compile_common.mli[66,2564+0]..[66,2564+26])
+        Pstr_eval
+        expression (driver/compile_common.mli[66,2564+0]..[66,2564+26])
+          Pexp_constant PConst_string(" {2 Implementations} ",(driver/compile_common.mli[66,2564+0]..[66,2564+26]),None)
+    ]
+  signature_item (driver/compile_common.mli[68,2592+0]..[68,2592+44])
+    Psig_value
+    value_description "parse_impl" (driver/compile_common.mli[68,2592+4]..[68,2592+14]) (driver/compile_common.mli[68,2592+0]..[68,2592+44])
+      attribute "ocaml.doc"
+        [
+          structure_item (driver/compile_common.mli[69,2637+0]..[69,2637+74])
+            Pstr_eval
+            expression (driver/compile_common.mli[69,2637+0]..[69,2637+74])
+              Pexp_constant PConst_string(" [parse_impl info] parses an implementation (usually an [.ml] file). ",(driver/compile_common.mli[69,2637+0]..[69,2637+74]),None)
+        ]
+      core_type (driver/compile_common.mli[68,2592+17]..[68,2592+44])
+        Ptyp_arrow
+        Nolabel
+        core_type (driver/compile_common.mli[68,2592+17]..[68,2592+21])
+          Ptyp_constr "info" (driver/compile_common.mli[68,2592+17]..[68,2592+21])
+          []
+        core_type (driver/compile_common.mli[68,2592+25]..[68,2592+44])
+          Ptyp_constr "Parsetree.structure" (driver/compile_common.mli[68,2592+25]..[68,2592+44])
+          []
+      []
+  signature_item (driver/compile_common.mli[71,2713+0]..[71,2713+76])
+    Psig_value
+    value_description "typecheck_impl" (driver/compile_common.mli[71,2713+4]..[71,2713+18]) (driver/compile_common.mli[71,2713+0]..[71,2713+76])
+      attribute "ocaml.doc"
+        [
+          structure_item (driver/compile_common.mli[72,2790+0]..[75,2983+2])
+            Pstr_eval
+            expression (driver/compile_common.mli[72,2790+0]..[75,2983+2])
+              Pexp_constant PConst_string(" [typecheck_impl info parsetree] typechecks an implementation and returns\n    the typedtree of the associated module, its public interface, and a\n    coercion against that public interface.\n",(driver/compile_common.mli[72,2790+0]..[75,2983+2]),None)
+        ]
+      core_type (driver/compile_common.mli[71,2713+21]..[71,2713+76])
+        Ptyp_arrow
+        Nolabel
+        core_type (driver/compile_common.mli[71,2713+21]..[71,2713+25])
+          Ptyp_constr "info" (driver/compile_common.mli[71,2713+21]..[71,2713+25])
+          []
+        core_type (driver/compile_common.mli[71,2713+29]..[71,2713+76])
+          Ptyp_arrow
+          Nolabel
+          core_type (driver/compile_common.mli[71,2713+29]..[71,2713+48])
+            Ptyp_constr "Parsetree.structure" (driver/compile_common.mli[71,2713+29]..[71,2713+48])
+            []
+          core_type (driver/compile_common.mli[71,2713+52]..[71,2713+76])
+            Ptyp_constr "Typedtree.implementation" (driver/compile_common.mli[71,2713+52]..[71,2713+76])
+            []
+      []
+  signature_item (driver/compile_common.mli[77,2987+0]..[78,3008+68])
+    Psig_value
+    value_description "implementation" (driver/compile_common.mli[77,2987+4]..[77,2987+18]) (driver/compile_common.mli[77,2987+0]..[78,3008+68])
+      attribute "ocaml.doc"
+        [
+          structure_item (driver/compile_common.mli[79,3077+0]..[79,3077+61])
+            Pstr_eval
+            expression (driver/compile_common.mli[79,3077+0]..[79,3077+61])
+              Pexp_constant PConst_string(" The complete compilation pipeline for implementations. ",(driver/compile_common.mli[79,3077+0]..[79,3077+61]),None)
+        ]
+      core_type (driver/compile_common.mli[78,3008+2]..[78,3008+68])
+        Ptyp_arrow
+        Nolabel
+        core_type (driver/compile_common.mli[78,3008+2]..[78,3008+6])
+          Ptyp_constr "info" (driver/compile_common.mli[78,3008+2]..[78,3008+6])
+          []
+        core_type (driver/compile_common.mli[78,3008+10]..[78,3008+68])
+          Ptyp_arrow
+          Labelled "backend"
+          core_type (driver/compile_common.mli[78,3008+19]..[78,3008+59])
+            Ptyp_arrow
+            Nolabel
+            core_type (driver/compile_common.mli[78,3008+19]..[78,3008+23])
+              Ptyp_constr "info" (driver/compile_common.mli[78,3008+19]..[78,3008+23])
+              []
+            core_type (driver/compile_common.mli[78,3008+27]..[78,3008+59])
+              Ptyp_arrow
+              Nolabel
+              core_type (driver/compile_common.mli[78,3008+27]..[78,3008+51])
+                Ptyp_constr "Typedtree.implementation" (driver/compile_common.mli[78,3008+27]..[78,3008+51])
+                []
+              core_type (driver/compile_common.mli[78,3008+55]..[78,3008+59])
+                Ptyp_constr "unit" (driver/compile_common.mli[78,3008+55]..[78,3008+59])
+                []
+          core_type (driver/compile_common.mli[78,3008+64]..[78,3008+68])
+            Ptyp_constr "unit" (driver/compile_common.mli[78,3008+64]..[78,3008+68])
+            []
+      []
+  signature_item (driver/compile_common.mli[81,3140+0]..[81,3140+26])
+    Psig_attribute "ocaml.text"
+    [
+      structure_item (driver/compile_common.mli[81,3140+0]..[81,3140+26])
+        Pstr_eval
+        expression (driver/compile_common.mli[81,3140+0]..[81,3140+26])
+          Pexp_constant PConst_string(" {2 Build artifacts} ",(driver/compile_common.mli[81,3140+0]..[81,3140+26]),None)
+    ]
+  signature_item (driver/compile_common.mli[83,3168+0]..[83,3168+24])
+    Psig_value
+    value_description "cmo" (driver/compile_common.mli[83,3168+4]..[83,3168+7]) (driver/compile_common.mli[83,3168+0]..[83,3168+24])
+      core_type (driver/compile_common.mli[83,3168+10]..[83,3168+24])
+        Ptyp_arrow
+        Nolabel
+        core_type (driver/compile_common.mli[83,3168+10]..[83,3168+14])
+          Ptyp_constr "info" (driver/compile_common.mli[83,3168+10]..[83,3168+14])
+          []
+        core_type (driver/compile_common.mli[83,3168+18]..[83,3168+24])
+          Ptyp_constr "string" (driver/compile_common.mli[83,3168+18]..[83,3168+24])
+          []
+      []
+  signature_item (driver/compile_common.mli[84,3193+0]..[84,3193+24])
+    Psig_value
+    value_description "cmx" (driver/compile_common.mli[84,3193+4]..[84,3193+7]) (driver/compile_common.mli[84,3193+0]..[84,3193+24])
+      core_type (driver/compile_common.mli[84,3193+10]..[84,3193+24])
+        Ptyp_arrow
+        Nolabel
+        core_type (driver/compile_common.mli[84,3193+10]..[84,3193+14])
+          Ptyp_constr "info" (driver/compile_common.mli[84,3193+10]..[84,3193+14])
+          []
+        core_type (driver/compile_common.mli[84,3193+18]..[84,3193+24])
+          Ptyp_constr "string" (driver/compile_common.mli[84,3193+18]..[84,3193+24])
+          []
+      []
+  signature_item (driver/compile_common.mli[85,3218+0]..[85,3218+24])
+    Psig_value
+    value_description "obj" (driver/compile_common.mli[85,3218+4]..[85,3218+7]) (driver/compile_common.mli[85,3218+0]..[85,3218+24])
+      core_type (driver/compile_common.mli[85,3218+10]..[85,3218+24])
+        Ptyp_arrow
+        Nolabel
+        core_type (driver/compile_common.mli[85,3218+10]..[85,3218+14])
+          Ptyp_constr "info" (driver/compile_common.mli[85,3218+10]..[85,3218+14])
+          []
+        core_type (driver/compile_common.mli[85,3218+18]..[85,3218+24])
+          Ptyp_constr "string" (driver/compile_common.mli[85,3218+18]..[85,3218+24])
+          []
+      []
+  signature_item (driver/compile_common.mli[86,3243+0]..[86,3243+26])
+    Psig_value
+    value_description "annot" (driver/compile_common.mli[86,3243+4]..[86,3243+9]) (driver/compile_common.mli[86,3243+0]..[86,3243+26])
+      attribute "ocaml.doc"
+        [
+          structure_item (driver/compile_common.mli[87,3270+0]..[89,3372+2])
+            Pstr_eval
+            expression (driver/compile_common.mli[87,3270+0]..[89,3372+2])
+              Pexp_constant PConst_string(" Return the filename of some compiler build artifacts associated\n    with the file being compiled.\n",(driver/compile_common.mli[87,3270+0]..[89,3372+2]),None)
+        ]
+      core_type (driver/compile_common.mli[86,3243+12]..[86,3243+26])
+        Ptyp_arrow
+        Nolabel
+        core_type (driver/compile_common.mli[86,3243+12]..[86,3243+16])
+          Ptyp_constr "info" (driver/compile_common.mli[86,3243+12]..[86,3243+16])
+          []
+        core_type (driver/compile_common.mli[86,3243+20]..[86,3243+26])
+          Ptyp_constr "string" (driver/compile_common.mli[86,3243+20]..[86,3243+26])
+          []
+      []
+]
+

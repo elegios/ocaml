@@ -1,0 +1,554 @@
+[
+  signature_item (file_formats/cmt_format.mli[16,1079+0]..[16,1079+33])
+    Psig_attribute "ocaml.text"
+    [
+      structure_item (file_formats/cmt_format.mli[16,1079+0]..[16,1079+33])
+        Pstr_eval
+        expression (file_formats/cmt_format.mli[16,1079+0]..[16,1079+33])
+          Pexp_constant PConst_string(" cmt and cmti files format. ",(file_formats/cmt_format.mli[16,1079+0]..[16,1079+33]),None)
+    ]
+  signature_item (file_formats/cmt_format.mli[18,1114+0]..[18,1114+9])
+    Psig_open Fresh "Misc" (file_formats/cmt_format.mli[18,1114+5]..[18,1114+9])
+  signature_item (file_formats/cmt_format.mli[20,1125+0]..[32,1653+35])
+    Psig_attribute "ocaml.text"
+    [
+      structure_item (file_formats/cmt_format.mli[20,1125+0]..[32,1653+35])
+        Pstr_eval
+        expression (file_formats/cmt_format.mli[20,1125+0]..[32,1653+35])
+          Pexp_constant PConst_string(" The layout of a cmt file is as follows:\n      <cmt> := \\{<cmi>\\} <cmt magic> \\{cmt infos\\} \\{<source info>\\}\n    where <cmi> is the cmi file format:\n      <cmi> := <cmi magic> <cmi info>.\n    More precisely, the optional <cmi> part must be present if and only if\n    the file is:\n    - a cmti, or\n    - a cmt, for a ml file which has no corresponding mli (hence no\n    corresponding cmti).\n\n    Thus, we provide a common reading function for cmi and cmt(i)\n    files which returns an option for each of the three parts: cmi\n    info, cmt info, source info. ",(file_formats/cmt_format.mli[20,1125+0]..[32,1653+35]),None)
+    ]
+  signature_item (file_formats/cmt_format.mli[34,1690+0]..[34,1690+14])
+    Psig_open Fresh "Typedtree" (file_formats/cmt_format.mli[34,1690+5]..[34,1690+14])
+  signature_item (file_formats/cmt_format.mli[36,1706+0]..[51,2252+38])
+    Psig_type Rec
+    [
+      type_declaration "binary_annots" (file_formats/cmt_format.mli[36,1706+5]..[36,1706+18]) (file_formats/cmt_format.mli[36,1706+0]..[41,1878+42])
+        ptype_params =
+          []
+        ptype_cstrs =
+          []
+        ptype_kind =
+          Ptype_variant
+            [
+              (file_formats/cmt_format.mli[37,1727+2]..[37,1727+43])
+                "Packed" (file_formats/cmt_format.mli[37,1727+4]..[37,1727+10])
+                [
+                  core_type (file_formats/cmt_format.mli[37,1727+14]..[37,1727+29])
+                    Ptyp_constr "Types.signature" (file_formats/cmt_format.mli[37,1727+14]..[37,1727+29])
+                    []
+                  core_type (file_formats/cmt_format.mli[37,1727+32]..[37,1727+43])
+                    Ptyp_constr "list" (file_formats/cmt_format.mli[37,1727+39]..[37,1727+43])
+                    [
+                      core_type (file_formats/cmt_format.mli[37,1727+32]..[37,1727+38])
+                        Ptyp_constr "string" (file_formats/cmt_format.mli[37,1727+32]..[37,1727+38])
+                        []
+                    ]
+                ]
+                None
+              (file_formats/cmt_format.mli[38,1771+2]..[38,1771+31])
+                "Implementation" (file_formats/cmt_format.mli[38,1771+4]..[38,1771+18])
+                [
+                  core_type (file_formats/cmt_format.mli[38,1771+22]..[38,1771+31])
+                    Ptyp_constr "structure" (file_formats/cmt_format.mli[38,1771+22]..[38,1771+31])
+                    []
+                ]
+                None
+              (file_formats/cmt_format.mli[39,1803+2]..[39,1803+26])
+                "Interface" (file_formats/cmt_format.mli[39,1803+4]..[39,1803+13])
+                [
+                  core_type (file_formats/cmt_format.mli[39,1803+17]..[39,1803+26])
+                    Ptyp_constr "signature" (file_formats/cmt_format.mli[39,1803+17]..[39,1803+26])
+                    []
+                ]
+                None
+              (file_formats/cmt_format.mli[40,1830+2]..[40,1830+47])
+                "Partial_implementation" (file_formats/cmt_format.mli[40,1830+4]..[40,1830+26])
+                [
+                  core_type (file_formats/cmt_format.mli[40,1830+30]..[40,1830+47])
+                    Ptyp_constr "array" (file_formats/cmt_format.mli[40,1830+42]..[40,1830+47])
+                    [
+                      core_type (file_formats/cmt_format.mli[40,1830+30]..[40,1830+41])
+                        Ptyp_constr "binary_part" (file_formats/cmt_format.mli[40,1830+30]..[40,1830+41])
+                        []
+                    ]
+                ]
+                None
+              (file_formats/cmt_format.mli[41,1878+2]..[41,1878+42])
+                "Partial_interface" (file_formats/cmt_format.mli[41,1878+4]..[41,1878+21])
+                [
+                  core_type (file_formats/cmt_format.mli[41,1878+25]..[41,1878+42])
+                    Ptyp_constr "array" (file_formats/cmt_format.mli[41,1878+37]..[41,1878+42])
+                    [
+                      core_type (file_formats/cmt_format.mli[41,1878+25]..[41,1878+36])
+                        Ptyp_constr "binary_part" (file_formats/cmt_format.mli[41,1878+25]..[41,1878+36])
+                        []
+                    ]
+                ]
+                None
+            ]
+        ptype_private = Public
+        ptype_manifest =
+          None
+      type_declaration "binary_part" (file_formats/cmt_format.mli[43,1922+4]..[43,1922+15]) (file_formats/cmt_format.mli[43,1922+0]..[51,2252+38])
+        ptype_params =
+          []
+        ptype_cstrs =
+          []
+        ptype_kind =
+          Ptype_variant
+            [
+              (file_formats/cmt_format.mli[44,1940+2]..[44,1940+34])
+                "Partial_structure" (file_formats/cmt_format.mli[44,1940+4]..[44,1940+21])
+                [
+                  core_type (file_formats/cmt_format.mli[44,1940+25]..[44,1940+34])
+                    Ptyp_constr "structure" (file_formats/cmt_format.mli[44,1940+25]..[44,1940+34])
+                    []
+                ]
+                None
+              (file_formats/cmt_format.mli[45,1975+2]..[45,1975+44])
+                "Partial_structure_item" (file_formats/cmt_format.mli[45,1975+4]..[45,1975+26])
+                [
+                  core_type (file_formats/cmt_format.mli[45,1975+30]..[45,1975+44])
+                    Ptyp_constr "structure_item" (file_formats/cmt_format.mli[45,1975+30]..[45,1975+44])
+                    []
+                ]
+                None
+              (file_formats/cmt_format.mli[46,2020+2]..[46,2020+36])
+                "Partial_expression" (file_formats/cmt_format.mli[46,2020+4]..[46,2020+22])
+                [
+                  core_type (file_formats/cmt_format.mli[46,2020+26]..[46,2020+36])
+                    Ptyp_constr "expression" (file_formats/cmt_format.mli[46,2020+26]..[46,2020+36])
+                    []
+                ]
+                None
+              (file_formats/cmt_format.mli[47,2057+2]..[47,2057+77])
+                "Partial_pattern" (file_formats/cmt_format.mli[47,2057+4]..[47,2057+19])
+                [
+                  core_type (file_formats/cmt_format.mli[47,2057+22]..[47,2057+41])
+                    Ptyp_constr "pattern_category" (file_formats/cmt_format.mli[47,2057+25]..[47,2057+41])
+                    [
+                      core_type (file_formats/cmt_format.mli[47,2057+22]..[47,2057+24])
+                        Ptyp_var k
+                    ]
+                  core_type (file_formats/cmt_format.mli[47,2057+44]..[47,2057+62])
+                    Ptyp_constr "general_pattern" (file_formats/cmt_format.mli[47,2057+47]..[47,2057+62])
+                    [
+                      core_type (file_formats/cmt_format.mli[47,2057+44]..[47,2057+46])
+                        Ptyp_var k
+                    ]
+                ]
+                Some
+                  core_type (file_formats/cmt_format.mli[47,2057+66]..[47,2057+77])
+                    Ptyp_constr "binary_part" (file_formats/cmt_format.mli[47,2057+66]..[47,2057+77])
+                    []
+              (file_formats/cmt_format.mli[48,2135+2]..[48,2135+36])
+                "Partial_class_expr" (file_formats/cmt_format.mli[48,2135+4]..[48,2135+22])
+                [
+                  core_type (file_formats/cmt_format.mli[48,2135+26]..[48,2135+36])
+                    Ptyp_constr "class_expr" (file_formats/cmt_format.mli[48,2135+26]..[48,2135+36])
+                    []
+                ]
+                None
+              (file_formats/cmt_format.mli[49,2172+2]..[49,2172+34])
+                "Partial_signature" (file_formats/cmt_format.mli[49,2172+4]..[49,2172+21])
+                [
+                  core_type (file_formats/cmt_format.mli[49,2172+25]..[49,2172+34])
+                    Ptyp_constr "signature" (file_formats/cmt_format.mli[49,2172+25]..[49,2172+34])
+                    []
+                ]
+                None
+              (file_formats/cmt_format.mli[50,2207+2]..[50,2207+44])
+                "Partial_signature_item" (file_formats/cmt_format.mli[50,2207+4]..[50,2207+26])
+                [
+                  core_type (file_formats/cmt_format.mli[50,2207+30]..[50,2207+44])
+                    Ptyp_constr "signature_item" (file_formats/cmt_format.mli[50,2207+30]..[50,2207+44])
+                    []
+                ]
+                None
+              (file_formats/cmt_format.mli[51,2252+2]..[51,2252+38])
+                "Partial_module_type" (file_formats/cmt_format.mli[51,2252+4]..[51,2252+23])
+                [
+                  core_type (file_formats/cmt_format.mli[51,2252+27]..[51,2252+38])
+                    Ptyp_constr "module_type" (file_formats/cmt_format.mli[51,2252+27]..[51,2252+38])
+                    []
+                ]
+                None
+            ]
+        ptype_private = Public
+        ptype_manifest =
+          None
+    ]
+  signature_item (file_formats/cmt_format.mli[53,2292+0]..[68,2772+1])
+    Psig_type Rec
+    [
+      type_declaration "cmt_infos" (file_formats/cmt_format.mli[53,2292+5]..[53,2292+14]) (file_formats/cmt_format.mli[53,2292+0]..[68,2772+1])
+        ptype_params =
+          []
+        ptype_cstrs =
+          []
+        ptype_kind =
+          Ptype_record
+            [
+              (file_formats/cmt_format.mli[54,2311+2]..[54,2311+24])
+                Immutable
+                "cmt_modname" (file_formats/cmt_format.mli[54,2311+2]..[54,2311+13])                core_type (file_formats/cmt_format.mli[54,2311+16]..[54,2311+23])
+                  Ptyp_constr "modname" (file_formats/cmt_format.mli[54,2311+16]..[54,2311+23])
+                  []
+              (file_formats/cmt_format.mli[55,2336+2]..[55,2336+29])
+                Immutable
+                "cmt_annots" (file_formats/cmt_format.mli[55,2336+2]..[55,2336+12])                core_type (file_formats/cmt_format.mli[55,2336+15]..[55,2336+28])
+                  Ptyp_constr "binary_annots" (file_formats/cmt_format.mli[55,2336+15]..[55,2336+28])
+                  []
+              (file_formats/cmt_format.mli[56,2366+2]..[57,2393+61])
+                Immutable
+                "cmt_value_dependencies" (file_formats/cmt_format.mli[56,2366+2]..[56,2366+24])                core_type (file_formats/cmt_format.mli[57,2393+4]..[57,2393+60])
+                  Ptyp_constr "list" (file_formats/cmt_format.mli[57,2393+56]..[57,2393+60])
+                  [
+                    core_type (file_formats/cmt_format.mli[57,2393+5]..[57,2393+54])
+                      Ptyp_tuple
+                      [
+                        core_type (file_formats/cmt_format.mli[57,2393+5]..[57,2393+28])
+                          Ptyp_constr "Types.value_description" (file_formats/cmt_format.mli[57,2393+5]..[57,2393+28])
+                          []
+                        core_type (file_formats/cmt_format.mli[57,2393+31]..[57,2393+54])
+                          Ptyp_constr "Types.value_description" (file_formats/cmt_format.mli[57,2393+31]..[57,2393+54])
+                          []
+                      ]
+                  ]
+              (file_formats/cmt_format.mli[58,2455+2]..[58,2455+44])
+                Immutable
+                "cmt_comments" (file_formats/cmt_format.mli[58,2455+2]..[58,2455+14])                core_type (file_formats/cmt_format.mli[58,2455+17]..[58,2455+43])
+                  Ptyp_constr "list" (file_formats/cmt_format.mli[58,2455+39]..[58,2455+43])
+                  [
+                    core_type (file_formats/cmt_format.mli[58,2455+18]..[58,2455+37])
+                      Ptyp_tuple
+                      [
+                        core_type (file_formats/cmt_format.mli[58,2455+18]..[58,2455+24])
+                          Ptyp_constr "string" (file_formats/cmt_format.mli[58,2455+18]..[58,2455+24])
+                          []
+                        core_type (file_formats/cmt_format.mli[58,2455+27]..[58,2455+37])
+                          Ptyp_constr "Location.t" (file_formats/cmt_format.mli[58,2455+27]..[58,2455+37])
+                          []
+                      ]
+                  ]
+              (file_formats/cmt_format.mli[59,2500+2]..[59,2500+26])
+                Immutable
+                "cmt_args" (file_formats/cmt_format.mli[59,2500+2]..[59,2500+10])                core_type (file_formats/cmt_format.mli[59,2500+13]..[59,2500+25])
+                  Ptyp_constr "array" (file_formats/cmt_format.mli[59,2500+20]..[59,2500+25])
+                  [
+                    core_type (file_formats/cmt_format.mli[59,2500+13]..[59,2500+19])
+                      Ptyp_constr "string" (file_formats/cmt_format.mli[59,2500+13]..[59,2500+19])
+                      []
+                  ]
+              (file_formats/cmt_format.mli[60,2527+2]..[60,2527+33])
+                Immutable
+                "cmt_sourcefile" (file_formats/cmt_format.mli[60,2527+2]..[60,2527+16])                core_type (file_formats/cmt_format.mli[60,2527+19]..[60,2527+32])
+                  Ptyp_constr "option" (file_formats/cmt_format.mli[60,2527+26]..[60,2527+32])
+                  [
+                    core_type (file_formats/cmt_format.mli[60,2527+19]..[60,2527+25])
+                      Ptyp_constr "string" (file_formats/cmt_format.mli[60,2527+19]..[60,2527+25])
+                      []
+                  ]
+              (file_formats/cmt_format.mli[61,2561+2]..[61,2561+24])
+                Immutable
+                "cmt_builddir" (file_formats/cmt_format.mli[61,2561+2]..[61,2561+14])                core_type (file_formats/cmt_format.mli[61,2561+17]..[61,2561+23])
+                  Ptyp_constr "string" (file_formats/cmt_format.mli[61,2561+17]..[61,2561+23])
+                  []
+              (file_formats/cmt_format.mli[62,2586+2]..[62,2586+29])
+                Immutable
+                "cmt_loadpath" (file_formats/cmt_format.mli[62,2586+2]..[62,2586+14])                core_type (file_formats/cmt_format.mli[62,2586+17]..[62,2586+28])
+                  Ptyp_constr "list" (file_formats/cmt_format.mli[62,2586+24]..[62,2586+28])
+                  [
+                    core_type (file_formats/cmt_format.mli[62,2586+17]..[62,2586+23])
+                      Ptyp_constr "string" (file_formats/cmt_format.mli[62,2586+17]..[62,2586+23])
+                      []
+                  ]
+              (file_formats/cmt_format.mli[63,2616+2]..[63,2616+36])
+                Immutable
+                "cmt_source_digest" (file_formats/cmt_format.mli[63,2616+2]..[63,2616+19])                core_type (file_formats/cmt_format.mli[63,2616+22]..[63,2616+35])
+                  Ptyp_constr "option" (file_formats/cmt_format.mli[63,2616+29]..[63,2616+35])
+                  [
+                    core_type (file_formats/cmt_format.mli[63,2616+22]..[63,2616+28])
+                      Ptyp_constr "string" (file_formats/cmt_format.mli[63,2616+22]..[63,2616+28])
+                      []
+                  ]
+              (file_formats/cmt_format.mli[64,2653+2]..[64,2653+26])
+                Immutable
+                "cmt_initial_env" (file_formats/cmt_format.mli[64,2653+2]..[64,2653+17])                core_type (file_formats/cmt_format.mli[64,2653+20]..[64,2653+25])
+                  Ptyp_constr "Env.t" (file_formats/cmt_format.mli[64,2653+20]..[64,2653+25])
+                  []
+              (file_formats/cmt_format.mli[65,2680+2]..[65,2680+21])
+                Immutable
+                "cmt_imports" (file_formats/cmt_format.mli[65,2680+2]..[65,2680+13])                core_type (file_formats/cmt_format.mli[65,2680+16]..[65,2680+20])
+                  Ptyp_constr "crcs" (file_formats/cmt_format.mli[65,2680+16]..[65,2680+20])
+                  []
+              (file_formats/cmt_format.mli[66,2702+2]..[66,2702+41])
+                Immutable
+                "cmt_interface_digest" (file_formats/cmt_format.mli[66,2702+2]..[66,2702+22])                core_type (file_formats/cmt_format.mli[66,2702+25]..[66,2702+40])
+                  Ptyp_constr "option" (file_formats/cmt_format.mli[66,2702+34]..[66,2702+40])
+                  [
+                    core_type (file_formats/cmt_format.mli[66,2702+25]..[66,2702+33])
+                      Ptyp_constr "Digest.t" (file_formats/cmt_format.mli[66,2702+25]..[66,2702+33])
+                      []
+                  ]
+              (file_formats/cmt_format.mli[67,2744+2]..[67,2744+27])
+                Immutable
+                "cmt_use_summaries" (file_formats/cmt_format.mli[67,2744+2]..[67,2744+19])                core_type (file_formats/cmt_format.mli[67,2744+22]..[67,2744+26])
+                  Ptyp_constr "bool" (file_formats/cmt_format.mli[67,2744+22]..[67,2744+26])
+                  []
+            ]
+        ptype_private = Public
+        ptype_manifest =
+          None
+    ]
+  signature_item (file_formats/cmt_format.mli[70,2775+0]..[71,2788+29])
+    Psig_type Rec
+    [
+      type_declaration "error" (file_formats/cmt_format.mli[70,2775+5]..[70,2775+10]) (file_formats/cmt_format.mli[70,2775+0]..[71,2788+29])
+        ptype_params =
+          []
+        ptype_cstrs =
+          []
+        ptype_kind =
+          Ptype_variant
+            [
+              (file_formats/cmt_format.mli[71,2788+4]..[71,2788+29])
+                "Not_a_typedtree" (file_formats/cmt_format.mli[71,2788+4]..[71,2788+19])
+                [
+                  core_type (file_formats/cmt_format.mli[71,2788+23]..[71,2788+29])
+                    Ptyp_constr "string" (file_formats/cmt_format.mli[71,2788+23]..[71,2788+29])
+                    []
+                ]
+                None
+            ]
+        ptype_private = Public
+        ptype_manifest =
+          None
+    ]
+  signature_item (file_formats/cmt_format.mli[73,2819+0]..[73,2819+24])
+    Psig_exception
+    type_exception
+      ptyext_constructor =
+        extension_constructor (file_formats/cmt_format.mli[73,2819+0]..[73,2819+24])
+          pext_name = "Error"
+          pext_kind =
+            Pext_decl
+              [
+                core_type (file_formats/cmt_format.mli[73,2819+19]..[73,2819+24])
+                  Ptyp_constr "error" (file_formats/cmt_format.mli[73,2819+19]..[73,2819+24])
+                  []
+              ]
+              None
+  signature_item (file_formats/cmt_format.mli[83,3186+0]..[83,3186+67])
+    Psig_value
+    value_description "read" (file_formats/cmt_format.mli[83,3186+4]..[83,3186+8]) (file_formats/cmt_format.mli[83,3186+0]..[83,3186+67])
+      attribute "ocaml.doc"
+        [
+          structure_item (file_formats/cmt_format.mli[75,2845+0]..[82,3183+2])
+            Pstr_eval
+            expression (file_formats/cmt_format.mli[75,2845+0]..[82,3183+2])
+              Pexp_constant PConst_string(" [read filename] opens filename, and extract both the cmi_infos, if\n    it exists, and the cmt_infos, if it exists. Thus, it can be used\n    with .cmi, .cmt and .cmti files.\n\n    .cmti files always contain a cmi_infos at the beginning. .cmt files\n    only contain a cmi_infos at the beginning if there is no associated\n    .cmti file.\n",(file_formats/cmt_format.mli[75,2845+0]..[82,3183+2]),None)
+        ]
+      core_type (file_formats/cmt_format.mli[83,3186+11]..[83,3186+67])
+        Ptyp_arrow
+        Nolabel
+        core_type (file_formats/cmt_format.mli[83,3186+11]..[83,3186+17])
+          Ptyp_constr "string" (file_formats/cmt_format.mli[83,3186+11]..[83,3186+17])
+          []
+        core_type (file_formats/cmt_format.mli[83,3186+21]..[83,3186+67])
+          Ptyp_tuple
+          [
+            core_type (file_formats/cmt_format.mli[83,3186+21]..[83,3186+48])
+              Ptyp_constr "option" (file_formats/cmt_format.mli[83,3186+42]..[83,3186+48])
+              [
+                core_type (file_formats/cmt_format.mli[83,3186+21]..[83,3186+41])
+                  Ptyp_constr "Cmi_format.cmi_infos" (file_formats/cmt_format.mli[83,3186+21]..[83,3186+41])
+                  []
+              ]
+            core_type (file_formats/cmt_format.mli[83,3186+51]..[83,3186+67])
+              Ptyp_constr "option" (file_formats/cmt_format.mli[83,3186+61]..[83,3186+67])
+              [
+                core_type (file_formats/cmt_format.mli[83,3186+51]..[83,3186+60])
+                  Ptyp_constr "cmt_infos" (file_formats/cmt_format.mli[83,3186+51]..[83,3186+60])
+                  []
+              ]
+          ]
+      []
+  signature_item (file_formats/cmt_format.mli[85,3255+0]..[85,3255+34])
+    Psig_value
+    value_description "read_cmt" (file_formats/cmt_format.mli[85,3255+4]..[85,3255+12]) (file_formats/cmt_format.mli[85,3255+0]..[85,3255+34])
+      core_type (file_formats/cmt_format.mli[85,3255+15]..[85,3255+34])
+        Ptyp_arrow
+        Nolabel
+        core_type (file_formats/cmt_format.mli[85,3255+15]..[85,3255+21])
+          Ptyp_constr "string" (file_formats/cmt_format.mli[85,3255+15]..[85,3255+21])
+          []
+        core_type (file_formats/cmt_format.mli[85,3255+25]..[85,3255+34])
+          Ptyp_constr "cmt_infos" (file_formats/cmt_format.mli[85,3255+25]..[85,3255+34])
+          []
+      []
+  signature_item (file_formats/cmt_format.mli[86,3290+0]..[86,3290+45])
+    Psig_value
+    value_description "read_cmi" (file_formats/cmt_format.mli[86,3290+4]..[86,3290+12]) (file_formats/cmt_format.mli[86,3290+0]..[86,3290+45])
+      core_type (file_formats/cmt_format.mli[86,3290+15]..[86,3290+45])
+        Ptyp_arrow
+        Nolabel
+        core_type (file_formats/cmt_format.mli[86,3290+15]..[86,3290+21])
+          Ptyp_constr "string" (file_formats/cmt_format.mli[86,3290+15]..[86,3290+21])
+          []
+        core_type (file_formats/cmt_format.mli[86,3290+25]..[86,3290+45])
+          Ptyp_constr "Cmi_format.cmi_infos" (file_formats/cmt_format.mli[86,3290+25]..[86,3290+45])
+          []
+      []
+  signature_item (file_formats/cmt_format.mli[90,3440+0]..[97,3679+6])
+    Psig_value
+    value_description "save_cmt" (file_formats/cmt_format.mli[90,3440+4]..[90,3440+12]) (file_formats/cmt_format.mli[90,3440+0]..[97,3679+6])
+      attribute "ocaml.doc"
+        [
+          structure_item (file_formats/cmt_format.mli[88,3337+0]..[89,3410+29])
+            Pstr_eval
+            expression (file_formats/cmt_format.mli[88,3337+0]..[89,3410+29])
+              Pexp_constant PConst_string(" [save_cmt filename modname binary_annots sourcefile initial_env cmi]\n    writes a cmt(i) file.  ",(file_formats/cmt_format.mli[88,3337+0]..[89,3410+29]),None)
+        ]
+      core_type (file_formats/cmt_format.mli[91,3455+2]..[97,3679+6])
+        Ptyp_arrow
+        Nolabel
+        core_type (file_formats/cmt_format.mli[91,3455+2]..[91,3455+8])
+          Ptyp_constr "string" (file_formats/cmt_format.mli[91,3455+2]..[91,3455+8])
+          []
+        core_type (file_formats/cmt_format.mli[92,3499+2]..[97,3679+6])
+          Ptyp_arrow
+          Nolabel
+          core_type (file_formats/cmt_format.mli[92,3499+2]..[92,3499+8])
+            Ptyp_constr "string" (file_formats/cmt_format.mli[92,3499+2]..[92,3499+8])
+            []
+          core_type (file_formats/cmt_format.mli[93,3530+2]..[97,3679+6])
+            Ptyp_arrow
+            Nolabel
+            core_type (file_formats/cmt_format.mli[93,3530+2]..[93,3530+15])
+              Ptyp_constr "binary_annots" (file_formats/cmt_format.mli[93,3530+2]..[93,3530+15])
+              []
+            core_type (file_formats/cmt_format.mli[94,3549+2]..[97,3679+6])
+              Ptyp_arrow
+              Nolabel
+              core_type (file_formats/cmt_format.mli[94,3549+2]..[94,3549+15])
+                Ptyp_constr "option" (file_formats/cmt_format.mli[94,3549+9]..[94,3549+15])
+                [
+                  core_type (file_formats/cmt_format.mli[94,3549+2]..[94,3549+8])
+                    Ptyp_constr "string" (file_formats/cmt_format.mli[94,3549+2]..[94,3549+8])
+                    []
+                ]
+              core_type (file_formats/cmt_format.mli[95,3587+2]..[97,3679+6])
+                Ptyp_arrow
+                Nolabel
+                core_type (file_formats/cmt_format.mli[95,3587+2]..[95,3587+7])
+                  Ptyp_constr "Env.t" (file_formats/cmt_format.mli[95,3587+2]..[95,3587+7])
+                  []
+                core_type (file_formats/cmt_format.mli[96,3616+2]..[97,3679+6])
+                  Ptyp_arrow
+                  Nolabel
+                  core_type (file_formats/cmt_format.mli[96,3616+2]..[96,3616+29])
+                    Ptyp_constr "option" (file_formats/cmt_format.mli[96,3616+23]..[96,3616+29])
+                    [
+                      core_type (file_formats/cmt_format.mli[96,3616+2]..[96,3616+22])
+                        Ptyp_constr "Cmi_format.cmi_infos" (file_formats/cmt_format.mli[96,3616+2]..[96,3616+22])
+                        []
+                    ]
+                  core_type (file_formats/cmt_format.mli[97,3679+2]..[97,3679+6])
+                    Ptyp_constr "unit" (file_formats/cmt_format.mli[97,3679+2]..[97,3679+6])
+                    []
+      []
+  signature_item (file_formats/cmt_format.mli[101,3718+0]..[101,3718+44])
+    Psig_value
+    value_description "read_magic_number" (file_formats/cmt_format.mli[101,3718+4]..[101,3718+21]) (file_formats/cmt_format.mli[101,3718+0]..[101,3718+44])
+      core_type (file_formats/cmt_format.mli[101,3718+24]..[101,3718+44])
+        Ptyp_arrow
+        Nolabel
+        core_type (file_formats/cmt_format.mli[101,3718+24]..[101,3718+34])
+          Ptyp_constr "in_channel" (file_formats/cmt_format.mli[101,3718+24]..[101,3718+34])
+          []
+        core_type (file_formats/cmt_format.mli[101,3718+38]..[101,3718+44])
+          Ptyp_constr "string" (file_formats/cmt_format.mli[101,3718+38]..[101,3718+44])
+          []
+      []
+  signature_item (file_formats/cmt_format.mli[103,3764+0]..[103,3764+23])
+    Psig_value
+    value_description "clear" (file_formats/cmt_format.mli[103,3764+4]..[103,3764+9]) (file_formats/cmt_format.mli[103,3764+0]..[103,3764+23])
+      core_type (file_formats/cmt_format.mli[103,3764+11]..[103,3764+23])
+        Ptyp_arrow
+        Nolabel
+        core_type (file_formats/cmt_format.mli[103,3764+11]..[103,3764+15])
+          Ptyp_constr "unit" (file_formats/cmt_format.mli[103,3764+11]..[103,3764+15])
+          []
+        core_type (file_formats/cmt_format.mli[103,3764+19]..[103,3764+23])
+          Ptyp_constr "unit" (file_formats/cmt_format.mli[103,3764+19]..[103,3764+23])
+          []
+      []
+  signature_item (file_formats/cmt_format.mli[105,3789+0]..[105,3789+40])
+    Psig_value
+    value_description "add_saved_type" (file_formats/cmt_format.mli[105,3789+4]..[105,3789+18]) (file_formats/cmt_format.mli[105,3789+0]..[105,3789+40])
+      core_type (file_formats/cmt_format.mli[105,3789+21]..[105,3789+40])
+        Ptyp_arrow
+        Nolabel
+        core_type (file_formats/cmt_format.mli[105,3789+21]..[105,3789+32])
+          Ptyp_constr "binary_part" (file_formats/cmt_format.mli[105,3789+21]..[105,3789+32])
+          []
+        core_type (file_formats/cmt_format.mli[105,3789+36]..[105,3789+40])
+          Ptyp_constr "unit" (file_formats/cmt_format.mli[105,3789+36]..[105,3789+40])
+          []
+      []
+  signature_item (file_formats/cmt_format.mli[106,3830+0]..[106,3830+46])
+    Psig_value
+    value_description "get_saved_types" (file_formats/cmt_format.mli[106,3830+4]..[106,3830+19]) (file_formats/cmt_format.mli[106,3830+0]..[106,3830+46])
+      core_type (file_formats/cmt_format.mli[106,3830+22]..[106,3830+46])
+        Ptyp_arrow
+        Nolabel
+        core_type (file_formats/cmt_format.mli[106,3830+22]..[106,3830+26])
+          Ptyp_constr "unit" (file_formats/cmt_format.mli[106,3830+22]..[106,3830+26])
+          []
+        core_type (file_formats/cmt_format.mli[106,3830+30]..[106,3830+46])
+          Ptyp_constr "list" (file_formats/cmt_format.mli[106,3830+42]..[106,3830+46])
+          [
+            core_type (file_formats/cmt_format.mli[106,3830+30]..[106,3830+41])
+              Ptyp_constr "binary_part" (file_formats/cmt_format.mli[106,3830+30]..[106,3830+41])
+              []
+          ]
+      []
+  signature_item (file_formats/cmt_format.mli[107,3877+0]..[107,3877+46])
+    Psig_value
+    value_description "set_saved_types" (file_formats/cmt_format.mli[107,3877+4]..[107,3877+19]) (file_formats/cmt_format.mli[107,3877+0]..[107,3877+46])
+      core_type (file_formats/cmt_format.mli[107,3877+22]..[107,3877+46])
+        Ptyp_arrow
+        Nolabel
+        core_type (file_formats/cmt_format.mli[107,3877+22]..[107,3877+38])
+          Ptyp_constr "list" (file_formats/cmt_format.mli[107,3877+34]..[107,3877+38])
+          [
+            core_type (file_formats/cmt_format.mli[107,3877+22]..[107,3877+33])
+              Ptyp_constr "binary_part" (file_formats/cmt_format.mli[107,3877+22]..[107,3877+33])
+              []
+          ]
+        core_type (file_formats/cmt_format.mli[107,3877+42]..[107,3877+46])
+          Ptyp_constr "unit" (file_formats/cmt_format.mli[107,3877+42]..[107,3877+46])
+          []
+      []
+  signature_item (file_formats/cmt_format.mli[109,3925+0]..[110,3954+60])
+    Psig_value
+    value_description "record_value_dependency" (file_formats/cmt_format.mli[109,3925+4]..[109,3925+27]) (file_formats/cmt_format.mli[109,3925+0]..[110,3954+60])
+      core_type (file_formats/cmt_format.mli[110,3954+2]..[110,3954+60])
+        Ptyp_arrow
+        Nolabel
+        core_type (file_formats/cmt_format.mli[110,3954+2]..[110,3954+25])
+          Ptyp_constr "Types.value_description" (file_formats/cmt_format.mli[110,3954+2]..[110,3954+25])
+          []
+        core_type (file_formats/cmt_format.mli[110,3954+29]..[110,3954+60])
+          Ptyp_arrow
+          Nolabel
+          core_type (file_formats/cmt_format.mli[110,3954+29]..[110,3954+52])
+            Ptyp_constr "Types.value_description" (file_formats/cmt_format.mli[110,3954+29]..[110,3954+52])
+            []
+          core_type (file_formats/cmt_format.mli[110,3954+56]..[110,3954+60])
+            Ptyp_constr "unit" (file_formats/cmt_format.mli[110,3954+56]..[110,3954+60])
+            []
+      []
+]
+

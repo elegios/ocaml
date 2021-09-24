@@ -1,0 +1,1298 @@
+[
+  signature_item (stdlib/gc.mli[17,1156+0]..[17,1156+66])
+    Psig_attribute "ocaml.text"
+    [
+      structure_item (stdlib/gc.mli[17,1156+0]..[17,1156+66])
+        Pstr_eval
+        expression (stdlib/gc.mli[17,1156+0]..[17,1156+66])
+          Pexp_constant PConst_string(" Memory management control and statistics; finalised values. ",(stdlib/gc.mli[17,1156+0]..[17,1156+66]),None)
+    ]
+  signature_item (stdlib/gc.mli[19,1224+0]..[79,3131+1])
+    Psig_type Rec
+    [
+      type_declaration "stat" (stdlib/gc.mli[19,1224+5]..[19,1224+9]) (stdlib/gc.mli[19,1224+0]..[79,3131+1])
+        attribute "ocaml.doc"
+          [
+            structure_item (stdlib/gc.mli[80,3133+0]..[86,3449+2])
+              Pstr_eval
+              expression (stdlib/gc.mli[80,3133+0]..[86,3449+2])
+                Pexp_constant PConst_string(" The memory management counters are returned in a [stat] record.\n\n   The total amount of memory allocated by the program since it was started\n   is (in words) [minor_words + major_words - promoted_words].  Multiply by\n   the word size (4 on a 32-bit machine, 8 on a 64-bit machine) to get\n   the number of bytes.\n",(stdlib/gc.mli[80,3133+0]..[86,3449+2]),None)
+          ]
+        ptype_params =
+          []
+        ptype_cstrs =
+          []
+        ptype_kind =
+          Ptype_record
+            [
+              (stdlib/gc.mli[20,1236+4]..[20,1236+24])
+                attribute "ocaml.doc"
+                  [
+                    structure_item (stdlib/gc.mli[21,1261+4]..[22,1319+34])
+                      Pstr_eval
+                      expression (stdlib/gc.mli[21,1261+4]..[22,1319+34])
+                        Pexp_constant PConst_string(" Number of words allocated in the minor heap since\n       the program was started. ",(stdlib/gc.mli[21,1261+4]..[22,1319+34]),None)
+                  ]
+                Immutable
+                "minor_words" (stdlib/gc.mli[20,1236+4]..[20,1236+15])                core_type (stdlib/gc.mli[20,1236+18]..[20,1236+23])
+                  Ptyp_constr "float" (stdlib/gc.mli[20,1236+18]..[20,1236+23])
+                  []
+              (stdlib/gc.mli[24,1355+4]..[24,1355+27])
+                attribute "ocaml.doc"
+                  [
+                    structure_item (stdlib/gc.mli[25,1383+4]..[27,1508+40])
+                      Pstr_eval
+                      expression (stdlib/gc.mli[25,1383+4]..[27,1508+40])
+                        Pexp_constant PConst_string(" Number of words allocated in the minor heap that\n       survived a minor collection and were moved to the major heap\n       since the program was started. ",(stdlib/gc.mli[25,1383+4]..[27,1508+40]),None)
+                  ]
+                Immutable
+                "promoted_words" (stdlib/gc.mli[24,1355+4]..[24,1355+18])                core_type (stdlib/gc.mli[24,1355+21]..[24,1355+26])
+                  Ptyp_constr "float" (stdlib/gc.mli[24,1355+21]..[24,1355+26])
+                  []
+              (stdlib/gc.mli[29,1550+4]..[29,1550+24])
+                attribute "ocaml.doc"
+                  [
+                    structure_item (stdlib/gc.mli[30,1575+4]..[31,1638+60])
+                      Pstr_eval
+                      expression (stdlib/gc.mli[30,1575+4]..[31,1638+60])
+                        Pexp_constant PConst_string(" Number of words allocated in the major heap, including\n       the promoted words, since the program was started. ",(stdlib/gc.mli[30,1575+4]..[31,1638+60]),None)
+                  ]
+                Immutable
+                "major_words" (stdlib/gc.mli[29,1550+4]..[29,1550+15])                core_type (stdlib/gc.mli[29,1550+18]..[29,1550+23])
+                  Ptyp_constr "float" (stdlib/gc.mli[29,1550+18]..[29,1550+23])
+                  []
+              (stdlib/gc.mli[33,1700+4]..[33,1700+28])
+                attribute "ocaml.doc"
+                  [
+                    structure_item (stdlib/gc.mli[34,1729+4]..[34,1729+69])
+                      Pstr_eval
+                      expression (stdlib/gc.mli[34,1729+4]..[34,1729+69])
+                        Pexp_constant PConst_string(" Number of minor collections since the program was started. ",(stdlib/gc.mli[34,1729+4]..[34,1729+69]),None)
+                  ]
+                Immutable
+                "minor_collections" (stdlib/gc.mli[33,1700+4]..[33,1700+21])                core_type (stdlib/gc.mli[33,1700+24]..[33,1700+27])
+                  Ptyp_constr "int" (stdlib/gc.mli[33,1700+24]..[33,1700+27])
+                  []
+              (stdlib/gc.mli[36,1800+4]..[36,1800+28])
+                attribute "ocaml.doc"
+                  [
+                    structure_item (stdlib/gc.mli[37,1829+4]..[38,1899+23])
+                      Pstr_eval
+                      expression (stdlib/gc.mli[37,1829+4]..[38,1899+23])
+                        Pexp_constant PConst_string(" Number of major collection cycles completed since the program\n        was started. ",(stdlib/gc.mli[37,1829+4]..[38,1899+23]),None)
+                  ]
+                Immutable
+                "major_collections" (stdlib/gc.mli[36,1800+4]..[36,1800+21])                core_type (stdlib/gc.mli[36,1800+24]..[36,1800+27])
+                  Ptyp_constr "int" (stdlib/gc.mli[36,1800+24]..[36,1800+27])
+                  []
+              (stdlib/gc.mli[40,1924+4]..[40,1924+21])
+                attribute "ocaml.doc"
+                  [
+                    structure_item (stdlib/gc.mli[41,1946+4]..[41,1946+50])
+                      Pstr_eval
+                      expression (stdlib/gc.mli[41,1946+4]..[41,1946+50])
+                        Pexp_constant PConst_string(" Total size of the major heap, in words. ",(stdlib/gc.mli[41,1946+4]..[41,1946+50]),None)
+                  ]
+                Immutable
+                "heap_words" (stdlib/gc.mli[40,1924+4]..[40,1924+14])                core_type (stdlib/gc.mli[40,1924+17]..[40,1924+20])
+                  Ptyp_constr "int" (stdlib/gc.mli[40,1924+17]..[40,1924+20])
+                  []
+              (stdlib/gc.mli[43,1998+4]..[43,1998+22])
+                attribute "ocaml.doc"
+                  [
+                    structure_item (stdlib/gc.mli[44,2021+4]..[44,2021+77])
+                      Pstr_eval
+                      expression (stdlib/gc.mli[44,2021+4]..[44,2021+77])
+                        Pexp_constant PConst_string(" Number of contiguous pieces of memory that make up the major heap. ",(stdlib/gc.mli[44,2021+4]..[44,2021+77]),None)
+                  ]
+                Immutable
+                "heap_chunks" (stdlib/gc.mli[43,1998+4]..[43,1998+15])                core_type (stdlib/gc.mli[43,1998+18]..[43,1998+21])
+                  Ptyp_constr "int" (stdlib/gc.mli[43,1998+18]..[43,1998+21])
+                  []
+              (stdlib/gc.mli[46,2100+4]..[46,2100+21])
+                attribute "ocaml.doc"
+                  [
+                    structure_item (stdlib/gc.mli[47,2122+4]..[48,2199+16])
+                      Pstr_eval
+                      expression (stdlib/gc.mli[47,2122+4]..[48,2199+16])
+                        Pexp_constant PConst_string(" Number of words of live data in the major heap, including the header\n       words. ",(stdlib/gc.mli[47,2122+4]..[48,2199+16]),None)
+                  ]
+                Immutable
+                "live_words" (stdlib/gc.mli[46,2100+4]..[46,2100+14])                core_type (stdlib/gc.mli[46,2100+17]..[46,2100+20])
+                  Ptyp_constr "int" (stdlib/gc.mli[46,2100+17]..[46,2100+20])
+                  []
+              (stdlib/gc.mli[50,2217+4]..[50,2217+22])
+                attribute "ocaml.doc"
+                  [
+                    structure_item (stdlib/gc.mli[51,2240+4]..[51,2240+51])
+                      Pstr_eval
+                      expression (stdlib/gc.mli[51,2240+4]..[51,2240+51])
+                        Pexp_constant PConst_string(" Number of live blocks in the major heap. ",(stdlib/gc.mli[51,2240+4]..[51,2240+51]),None)
+                  ]
+                Immutable
+                "live_blocks" (stdlib/gc.mli[50,2217+4]..[50,2217+15])                core_type (stdlib/gc.mli[50,2217+18]..[50,2217+21])
+                  Ptyp_constr "int" (stdlib/gc.mli[50,2217+18]..[50,2217+21])
+                  []
+              (stdlib/gc.mli[53,2293+4]..[53,2293+21])
+                attribute "ocaml.doc"
+                  [
+                    structure_item (stdlib/gc.mli[54,2315+4]..[54,2315+44])
+                      Pstr_eval
+                      expression (stdlib/gc.mli[54,2315+4]..[54,2315+44])
+                        Pexp_constant PConst_string(" Number of words in the free list. ",(stdlib/gc.mli[54,2315+4]..[54,2315+44]),None)
+                  ]
+                Immutable
+                "free_words" (stdlib/gc.mli[53,2293+4]..[53,2293+14])                core_type (stdlib/gc.mli[53,2293+17]..[53,2293+20])
+                  Ptyp_constr "int" (stdlib/gc.mli[53,2293+17]..[53,2293+20])
+                  []
+              (stdlib/gc.mli[56,2361+4]..[56,2361+22])
+                attribute "ocaml.doc"
+                  [
+                    structure_item (stdlib/gc.mli[57,2384+4]..[57,2384+45])
+                      Pstr_eval
+                      expression (stdlib/gc.mli[57,2384+4]..[57,2384+45])
+                        Pexp_constant PConst_string(" Number of blocks in the free list. ",(stdlib/gc.mli[57,2384+4]..[57,2384+45]),None)
+                  ]
+                Immutable
+                "free_blocks" (stdlib/gc.mli[56,2361+4]..[56,2361+15])                core_type (stdlib/gc.mli[56,2361+18]..[56,2361+21])
+                  Ptyp_constr "int" (stdlib/gc.mli[56,2361+18]..[56,2361+21])
+                  []
+              (stdlib/gc.mli[59,2431+4]..[59,2431+23])
+                attribute "ocaml.doc"
+                  [
+                    structure_item (stdlib/gc.mli[60,2455+4]..[60,2455+65])
+                      Pstr_eval
+                      expression (stdlib/gc.mli[60,2455+4]..[60,2455+65])
+                        Pexp_constant PConst_string(" Size (in words) of the largest block in the free list. ",(stdlib/gc.mli[60,2455+4]..[60,2455+65]),None)
+                  ]
+                Immutable
+                "largest_free" (stdlib/gc.mli[59,2431+4]..[59,2431+16])                core_type (stdlib/gc.mli[59,2431+19]..[59,2431+22])
+                  Ptyp_constr "int" (stdlib/gc.mli[59,2431+19]..[59,2431+22])
+                  []
+              (stdlib/gc.mli[62,2522+4]..[62,2522+20])
+                attribute "ocaml.doc"
+                  [
+                    structure_item (stdlib/gc.mli[63,2543+4]..[65,2672+43])
+                      Pstr_eval
+                      expression (stdlib/gc.mli[63,2543+4]..[65,2672+43])
+                        Pexp_constant PConst_string(" Number of wasted words due to fragmentation.  These are\n       1-words free blocks placed between two live blocks.  They\n       are not available for allocation. ",(stdlib/gc.mli[63,2543+4]..[65,2672+43]),None)
+                  ]
+                Immutable
+                "fragments" (stdlib/gc.mli[62,2522+4]..[62,2522+13])                core_type (stdlib/gc.mli[62,2522+16]..[62,2522+19])
+                  Ptyp_constr "int" (stdlib/gc.mli[62,2522+16]..[62,2522+19])
+                  []
+              (stdlib/gc.mli[67,2717+4]..[67,2717+22])
+                attribute "ocaml.doc"
+                  [
+                    structure_item (stdlib/gc.mli[68,2740+4]..[68,2740+68])
+                      Pstr_eval
+                      expression (stdlib/gc.mli[68,2740+4]..[68,2740+68])
+                        Pexp_constant PConst_string(" Number of heap compactions since the program was started. ",(stdlib/gc.mli[68,2740+4]..[68,2740+68]),None)
+                  ]
+                Immutable
+                "compactions" (stdlib/gc.mli[67,2717+4]..[67,2717+15])                core_type (stdlib/gc.mli[67,2717+18]..[67,2717+21])
+                  Ptyp_constr "int" (stdlib/gc.mli[67,2717+18]..[67,2717+21])
+                  []
+              (stdlib/gc.mli[70,2810+4]..[70,2810+25])
+                attribute "ocaml.doc"
+                  [
+                    structure_item (stdlib/gc.mli[71,2836+4]..[71,2836+60])
+                      Pstr_eval
+                      expression (stdlib/gc.mli[71,2836+4]..[71,2836+60])
+                        Pexp_constant PConst_string(" Maximum size reached by the major heap, in words. ",(stdlib/gc.mli[71,2836+4]..[71,2836+60]),None)
+                  ]
+                Immutable
+                "top_heap_words" (stdlib/gc.mli[70,2810+4]..[70,2810+18])                core_type (stdlib/gc.mli[70,2810+21]..[70,2810+24])
+                  Ptyp_constr "int" (stdlib/gc.mli[70,2810+21]..[70,2810+24])
+                  []
+              (stdlib/gc.mli[73,2898+4]..[73,2898+20])
+                attribute "ocaml.doc"
+                  [
+                    structure_item (stdlib/gc.mli[74,2919+4]..[74,2919+61])
+                      Pstr_eval
+                      expression (stdlib/gc.mli[74,2919+4]..[74,2919+61])
+                        Pexp_constant PConst_string(" Current size of the stack, in words. @since 3.12.0 ",(stdlib/gc.mli[74,2919+4]..[74,2919+61]),None)
+                  ]
+                Immutable
+                "stack_size" (stdlib/gc.mli[73,2898+4]..[73,2898+14])                core_type (stdlib/gc.mli[73,2898+16]..[73,2898+19])
+                  Ptyp_constr "int" (stdlib/gc.mli[73,2898+16]..[73,2898+19])
+                  []
+              (stdlib/gc.mli[76,2982+4]..[76,2982+34])
+                attribute "ocaml.doc"
+                  [
+                    structure_item (stdlib/gc.mli[77,3017+4]..[78,3093+37])
+                      Pstr_eval
+                      expression (stdlib/gc.mli[77,3017+4]..[78,3093+37])
+                        Pexp_constant PConst_string(" Number of forced full major collections completed since the program\n        was started. @since 4.12.0 ",(stdlib/gc.mli[77,3017+4]..[78,3093+37]),None)
+                  ]
+                Immutable
+                "forced_major_collections" (stdlib/gc.mli[76,2982+4]..[76,2982+28])                core_type (stdlib/gc.mli[76,2982+30]..[76,2982+33])
+                  Ptyp_constr "int" (stdlib/gc.mli[76,2982+30]..[76,2982+33])
+                  []
+            ]
+        ptype_private = Public
+        ptype_manifest =
+          None
+    ]
+  signature_item (stdlib/gc.mli[88,3453+0]..[226,9850+3])
+    Psig_type Rec
+    [
+      type_declaration "control" (stdlib/gc.mli[88,3453+5]..[88,3453+12]) (stdlib/gc.mli[88,3453+0]..[226,9850+3])
+        attribute "ocaml.doc"
+          [
+            structure_item (stdlib/gc.mli[227,9854+0]..[230,10046+18])
+              Pstr_eval
+              expression (stdlib/gc.mli[227,9854+0]..[230,10046+18])
+                Pexp_constant PConst_string(" The GC parameters are given as a [control] record.  Note that\n    these parameters can also be initialised by setting the\n    OCAMLRUNPARAM environment variable.  See the documentation of\n    [ocamlrun]. ",(stdlib/gc.mli[227,9854+0]..[230,10046+18]),None)
+          ]
+        ptype_params =
+          []
+        ptype_cstrs =
+          []
+        ptype_kind =
+          Ptype_record
+            [
+              (stdlib/gc.mli[89,3468+4]..[90,3503+80])
+                attribute "ocaml.deprecated_mutable"
+                  [
+                    structure_item (stdlib/gc.mli[90,3503+31]..[90,3503+79])
+                      Pstr_eval
+                      expression (stdlib/gc.mli[90,3503+31]..[90,3503+79])
+                        Pexp_constant PConst_string("Use {(Gc.get()) with Gc.minor_heap_size = ...}",(stdlib/gc.mli[90,3503+32]..[90,3503+78]),None)
+                  ]
+                attribute "ocaml.doc"
+                  [
+                    structure_item (stdlib/gc.mli[91,3584+4]..[92,3641+73])
+                      Pstr_eval
+                      expression (stdlib/gc.mli[91,3584+4]..[92,3641+73])
+                        Pexp_constant PConst_string(" The size (in words) of the minor heap.  Changing\n       this parameter will trigger a minor collection.  Default: 256k. ",(stdlib/gc.mli[91,3584+4]..[92,3641+73]),None)
+                  ]
+                Mutable
+                "minor_heap_size" (stdlib/gc.mli[89,3468+12]..[89,3468+27])                core_type (stdlib/gc.mli[89,3468+30]..[89,3468+33])
+                  Ptyp_constr "int" (stdlib/gc.mli[89,3468+30]..[89,3468+33])
+                  []
+              (stdlib/gc.mli[94,3716+4]..[96,3787+63])
+                attribute "ocaml.deprecated_mutable"
+                  [
+                    structure_item (stdlib/gc.mli[96,3787+9]..[96,3787+62])
+                      Pstr_eval
+                      expression (stdlib/gc.mli[96,3787+9]..[96,3787+62])
+                        Pexp_constant PConst_string("Use {(Gc.get()) with Gc.major_heap_increment = ...}",(stdlib/gc.mli[96,3787+10]..[96,3787+61]),None)
+                  ]
+                attribute "ocaml.doc"
+                  [
+                    structure_item (stdlib/gc.mli[97,3851+4]..[101,4135+71])
+                      Pstr_eval
+                      expression (stdlib/gc.mli[97,3851+4]..[101,4135+71])
+                        Pexp_constant PConst_string(" How much to add to the major heap when increasing it. If this\n        number is less than or equal to 1000, it is a percentage of\n        the current heap size (i.e. setting it to 100 will double the heap\n        size at each increase). If it is more than 1000, it is a fixed\n        number of words that will be added to the heap. Default: 15. ",(stdlib/gc.mli[97,3851+4]..[101,4135+71]),None)
+                  ]
+                Mutable
+                "major_heap_increment" (stdlib/gc.mli[94,3716+12]..[94,3716+32])                core_type (stdlib/gc.mli[94,3716+35]..[94,3716+38])
+                  Ptyp_constr "int" (stdlib/gc.mli[94,3716+35]..[94,3716+38])
+                  []
+              (stdlib/gc.mli[103,4208+4]..[104,4242+79])
+                attribute "ocaml.deprecated_mutable"
+                  [
+                    structure_item (stdlib/gc.mli[104,4242+31]..[104,4242+78])
+                      Pstr_eval
+                      expression (stdlib/gc.mli[104,4242+31]..[104,4242+78])
+                        Pexp_constant PConst_string("Use {(Gc.get()) with Gc.space_overhead = ...}",(stdlib/gc.mli[104,4242+32]..[104,4242+77]),None)
+                  ]
+                attribute "ocaml.doc"
+                  [
+                    structure_item (stdlib/gc.mli[105,4322+4]..[111,4695+23])
+                      Pstr_eval
+                      expression (stdlib/gc.mli[105,4322+4]..[111,4695+23])
+                        Pexp_constant PConst_string(" The major GC speed is computed from this parameter.\n       This is the memory that will be \"wasted\" because the GC does not\n       immediately collect unreachable blocks.  It is expressed as a\n       percentage of the memory used for live data.\n       The GC will work more (use more CPU time and collect\n       blocks more eagerly) if [space_overhead] is smaller.\n       Default: 120. ",(stdlib/gc.mli[105,4322+4]..[111,4695+23]),None)
+                  ]
+                Mutable
+                "space_overhead" (stdlib/gc.mli[103,4208+12]..[103,4208+26])                core_type (stdlib/gc.mli[103,4208+29]..[103,4208+32])
+                  Ptyp_constr "int" (stdlib/gc.mli[103,4208+29]..[103,4208+32])
+                  []
+              (stdlib/gc.mli[113,4720+4]..[114,4747+72])
+                attribute "ocaml.deprecated_mutable"
+                  [
+                    structure_item (stdlib/gc.mli[114,4747+31]..[114,4747+71])
+                      Pstr_eval
+                      expression (stdlib/gc.mli[114,4747+31]..[114,4747+71])
+                        Pexp_constant PConst_string("Use {(Gc.get()) with Gc.verbose = ...}",(stdlib/gc.mli[114,4747+32]..[114,4747+70]),None)
+                  ]
+                attribute "ocaml.doc"
+                  [
+                    structure_item (stdlib/gc.mli[115,4820+4]..[129,5591+21])
+                      Pstr_eval
+                      expression (stdlib/gc.mli[115,4820+4]..[129,5591+21])
+                        Pexp_constant PConst_string(" This value controls the GC messages on standard error output.\n       It is a sum of some of the following flags, to print messages\n       on the corresponding events:\n       - [0x001] Start and end of major GC cycle.\n       - [0x002] Minor collection and major GC slice.\n       - [0x004] Growing and shrinking of the heap.\n       - [0x008] Resizing of stacks and memory manager tables.\n       - [0x010] Heap compaction.\n       - [0x020] Change of GC parameters.\n       - [0x040] Computation of major GC slice size.\n       - [0x080] Calling of finalisation functions.\n       - [0x100] Bytecode executable and shared library search at start-up.\n       - [0x200] Computation of compaction-triggering condition.\n       - [0x400] Output GC statistics at program exit.\n       Default: 0. ",(stdlib/gc.mli[115,4820+4]..[129,5591+21]),None)
+                  ]
+                Mutable
+                "verbose" (stdlib/gc.mli[113,4720+12]..[113,4720+19])                core_type (stdlib/gc.mli[113,4720+22]..[113,4720+25])
+                  Ptyp_constr "int" (stdlib/gc.mli[113,4720+22]..[113,4720+25])
+                  []
+              (stdlib/gc.mli[131,5614+4]..[132,5646+77])
+                attribute "ocaml.deprecated_mutable"
+                  [
+                    structure_item (stdlib/gc.mli[132,5646+31]..[132,5646+76])
+                      Pstr_eval
+                      expression (stdlib/gc.mli[132,5646+31]..[132,5646+76])
+                        Pexp_constant PConst_string("Use {(Gc.get()) with Gc.max_overhead = ...}",(stdlib/gc.mli[132,5646+32]..[132,5646+75]),None)
+                  ]
+                attribute "ocaml.doc"
+                  [
+                    structure_item (stdlib/gc.mli[133,5724+4]..[141,6226+23])
+                      Pstr_eval
+                      expression (stdlib/gc.mli[133,5724+4]..[141,6226+23])
+                        Pexp_constant PConst_string(" Heap compaction is triggered when the estimated amount\n       of \"wasted\" memory is more than [max_overhead] percent of the\n       amount of live data.  If [max_overhead] is set to 0, heap\n       compaction is triggered at the end of each major GC cycle\n       (this setting is intended for testing purposes only).\n       If [max_overhead >= 1000000], compaction is never triggered.\n       If compaction is permanently disabled, it is strongly suggested\n       to set [allocation_policy] to 2.\n       Default: 500. ",(stdlib/gc.mli[133,5724+4]..[141,6226+23]),None)
+                  ]
+                Mutable
+                "max_overhead" (stdlib/gc.mli[131,5614+12]..[131,5614+24])                core_type (stdlib/gc.mli[131,5614+27]..[131,5614+30])
+                  Ptyp_constr "int" (stdlib/gc.mli[131,5614+27]..[131,5614+30])
+                  []
+              (stdlib/gc.mli[143,6251+4]..[144,6282+76])
+                attribute "ocaml.deprecated_mutable"
+                  [
+                    structure_item (stdlib/gc.mli[144,6282+31]..[144,6282+75])
+                      Pstr_eval
+                      expression (stdlib/gc.mli[144,6282+31]..[144,6282+75])
+                        Pexp_constant PConst_string("Use {(Gc.get()) with Gc.stack_limit = ...}",(stdlib/gc.mli[144,6282+32]..[144,6282+74]),None)
+                  ]
+                attribute "ocaml.doc"
+                  [
+                    structure_item (stdlib/gc.mli[145,6359+4]..[147,6492+61])
+                      Pstr_eval
+                      expression (stdlib/gc.mli[145,6359+4]..[147,6492+61])
+                        Pexp_constant PConst_string(" The maximum size of the stack (in words).  This is only\n       relevant to the byte-code runtime, as the native code runtime\n       uses the operating system's stack.  Default: 1024k. ",(stdlib/gc.mli[145,6359+4]..[147,6492+61]),None)
+                  ]
+                Mutable
+                "stack_limit" (stdlib/gc.mli[143,6251+12]..[143,6251+23])                core_type (stdlib/gc.mli[143,6251+26]..[143,6251+29])
+                  Ptyp_constr "int" (stdlib/gc.mli[143,6251+26]..[143,6251+29])
+                  []
+              (stdlib/gc.mli[149,6555+4]..[151,6623+60])
+                attribute "ocaml.deprecated_mutable"
+                  [
+                    structure_item (stdlib/gc.mli[151,6623+9]..[151,6623+59])
+                      Pstr_eval
+                      expression (stdlib/gc.mli[151,6623+9]..[151,6623+59])
+                        Pexp_constant PConst_string("Use {(Gc.get()) with Gc.allocation_policy = ...}",(stdlib/gc.mli[151,6623+10]..[151,6623+58]),None)
+                  ]
+                attribute "ocaml.doc"
+                  [
+                    structure_item (stdlib/gc.mli[152,6684+4]..[185,8020+24])
+                      Pstr_eval
+                      expression (stdlib/gc.mli[152,6684+4]..[185,8020+24])
+                        Pexp_constant PConst_string(" The policy used for allocating in the major heap.\n        Possible values are 0, 1 and 2.\n\n        - 0 is the next-fit policy, which is usually fast but can\n          result in fragmentation, increasing memory consumption.\n\n        - 1 is the first-fit policy, which avoids fragmentation but\n          has corner cases (in certain realistic workloads) where it\n          is sensibly slower.\n\n        - 2 is the best-fit policy, which is fast and avoids\n          fragmentation. In our experiments it is faster and uses less\n          memory than both next-fit and first-fit.\n          (since OCaml 4.10)\n\n        The default is best-fit.\n\n        On one example that was known to be bad for next-fit and first-fit,\n        next-fit takes 28s using 855Mio of memory,\n        first-fit takes 47s using 566Mio of memory,\n        best-fit takes 27s using 545Mio of memory.\n\n        Note: If you change to next-fit, you may need to reduce\n        the [space_overhead] setting, for example using [80] instead\n        of the default [120] which is tuned for best-fit. Otherwise,\n        your program will need more memory.\n\n        Note: changing the allocation policy at run-time forces\n        a heap compaction, which is a lengthy operation unless the\n        heap is small (e.g. at the start of the program).\n\n        Default: 2.\n\n        @since 3.11.0 ",(stdlib/gc.mli[152,6684+4]..[185,8020+24]),None)
+                  ]
+                Mutable
+                "allocation_policy" (stdlib/gc.mli[149,6555+12]..[149,6555+29])                core_type (stdlib/gc.mli[149,6555+32]..[149,6555+35])
+                  Ptyp_constr "int" (stdlib/gc.mli[149,6555+32]..[149,6555+35])
+                  []
+              (stdlib/gc.mli[187,8046+4]..[187,8046+22])
+                attribute "ocaml.doc"
+                  [
+                    structure_item (stdlib/gc.mli[188,8069+4]..[191,8220+36])
+                      Pstr_eval
+                      expression (stdlib/gc.mli[188,8069+4]..[191,8220+36])
+                        Pexp_constant PConst_string(" The size of the window used by the major GC for smoothing\n        out variations in its workload. This is an integer between\n        1 and 50.\n        Default: 1. @since 4.03.0 ",(stdlib/gc.mli[188,8069+4]..[191,8220+36]),None)
+                  ]
+                Immutable
+                "window_size" (stdlib/gc.mli[187,8046+4]..[187,8046+15])                core_type (stdlib/gc.mli[187,8046+18]..[187,8046+21])
+                  Ptyp_constr "int" (stdlib/gc.mli[187,8046+18]..[187,8046+21])
+                  []
+              (stdlib/gc.mli[193,8258+4]..[193,8258+29])
+                attribute "ocaml.doc"
+                  [
+                    structure_item (stdlib/gc.mli[194,8288+4]..[204,8844+24])
+                      Pstr_eval
+                      expression (stdlib/gc.mli[194,8288+4]..[204,8844+24])
+                        Pexp_constant PConst_string(" Target ratio of floating garbage to major heap size for\n        out-of-heap memory held by custom values located in the major\n        heap. The GC speed is adjusted to try to use this much memory\n        for dead values that are not yet collected. Expressed as a\n        percentage of major heap size. The default value keeps the\n        out-of-heap floating garbage about the same size as the\n        in-heap overhead.\n        Note: this only applies to values allocated with\n        [caml_alloc_custom_mem] (e.g. bigarrays).\n        Default: 44.\n        @since 4.08.0 ",(stdlib/gc.mli[194,8288+4]..[204,8844+24]),None)
+                  ]
+                Immutable
+                "custom_major_ratio" (stdlib/gc.mli[193,8258+4]..[193,8258+22])                core_type (stdlib/gc.mli[193,8258+25]..[193,8258+28])
+                  Ptyp_constr "int" (stdlib/gc.mli[193,8258+25]..[193,8258+28])
+                  []
+              (stdlib/gc.mli[206,8870+4]..[206,8870+29])
+                attribute "ocaml.doc"
+                  [
+                    structure_item (stdlib/gc.mli[207,8900+4]..[214,9295+24])
+                      Pstr_eval
+                      expression (stdlib/gc.mli[207,8900+4]..[214,9295+24])
+                        Pexp_constant PConst_string(" Bound on floating garbage for out-of-heap memory held by\n        custom values in the minor heap. A minor GC is triggered when\n        this much memory is held by custom values located in the minor\n        heap. Expressed as a percentage of minor heap size.\n        Note: this only applies to values allocated with\n        [caml_alloc_custom_mem] (e.g. bigarrays).\n        Default: 100.\n        @since 4.08.0 ",(stdlib/gc.mli[207,8900+4]..[214,9295+24]),None)
+                  ]
+                Immutable
+                "custom_minor_ratio" (stdlib/gc.mli[206,8870+4]..[206,8870+22])                core_type (stdlib/gc.mli[206,8870+25]..[206,8870+28])
+                  Ptyp_constr "int" (stdlib/gc.mli[206,8870+25]..[206,8870+28])
+                  []
+              (stdlib/gc.mli[216,9321+4]..[216,9321+32])
+                attribute "ocaml.doc"
+                  [
+                    structure_item (stdlib/gc.mli[217,9354+4]..[225,9825+24])
+                      Pstr_eval
+                      expression (stdlib/gc.mli[217,9354+4]..[225,9825+24])
+                        Pexp_constant PConst_string(" Maximum amount of out-of-heap memory for each custom value\n        allocated in the minor heap. When a custom value is allocated\n        on the minor heap and holds more than this many bytes, only\n        this value is counted against [custom_minor_ratio] and the\n        rest is directly counted against [custom_major_ratio].\n        Note: this only applies to values allocated with\n        [caml_alloc_custom_mem] (e.g. bigarrays).\n        Default: 8192 bytes.\n        @since 4.08.0 ",(stdlib/gc.mli[217,9354+4]..[225,9825+24]),None)
+                  ]
+                Immutable
+                "custom_minor_max_size" (stdlib/gc.mli[216,9321+4]..[216,9321+25])                core_type (stdlib/gc.mli[216,9321+28]..[216,9321+31])
+                  Ptyp_constr "int" (stdlib/gc.mli[216,9321+28]..[216,9321+31])
+                  []
+            ]
+        ptype_private = Public
+        ptype_manifest =
+          None
+    ]
+  signature_item (stdlib/gc.mli[232,10066+0]..[232,10066+45])
+    Psig_value
+    value_description "stat" (stdlib/gc.mli[232,10066+9]..[232,10066+13]) (stdlib/gc.mli[232,10066+0]..[232,10066+45])
+      attribute "ocaml.doc"
+        [
+          structure_item (stdlib/gc.mli[233,10112+0]..[235,10251+17])
+            Pstr_eval
+            expression (stdlib/gc.mli[233,10112+0]..[235,10251+17])
+              Pexp_constant PConst_string(" Return the current values of the memory management counters in a\n   [stat] record.  This function examines every heap block to get the\n   statistics. ",(stdlib/gc.mli[233,10112+0]..[235,10251+17]),None)
+        ]
+      core_type (stdlib/gc.mli[232,10066+16]..[232,10066+28])
+        Ptyp_arrow
+        Nolabel
+        core_type (stdlib/gc.mli[232,10066+16]..[232,10066+20])
+          Ptyp_constr "unit" (stdlib/gc.mli[232,10066+16]..[232,10066+20])
+          []
+        core_type (stdlib/gc.mli[232,10066+24]..[232,10066+28])
+          Ptyp_constr "stat" (stdlib/gc.mli[232,10066+24]..[232,10066+28])
+          []
+      [
+        "caml_gc_stat"
+      ]
+  signature_item (stdlib/gc.mli[237,10270+0]..[237,10270+57])
+    Psig_value
+    value_description "quick_stat" (stdlib/gc.mli[237,10270+9]..[237,10270+19]) (stdlib/gc.mli[237,10270+0]..[237,10270+57])
+      attribute "ocaml.doc"
+        [
+          structure_item (stdlib/gc.mli[238,10328+0]..[241,10544+24])
+            Pstr_eval
+            expression (stdlib/gc.mli[238,10328+0]..[241,10544+24])
+              Pexp_constant PConst_string(" Same as [stat] except that [live_words], [live_blocks], [free_words],\n    [free_blocks], [largest_free], and [fragments] are set to 0.  This\n    function is much faster than [stat] because it does not need to go\n    through the heap. ",(stdlib/gc.mli[238,10328+0]..[241,10544+24]),None)
+        ]
+      core_type (stdlib/gc.mli[237,10270+22]..[237,10270+34])
+        Ptyp_arrow
+        Nolabel
+        core_type (stdlib/gc.mli[237,10270+22]..[237,10270+26])
+          Ptyp_constr "unit" (stdlib/gc.mli[237,10270+22]..[237,10270+26])
+          []
+        core_type (stdlib/gc.mli[237,10270+30]..[237,10270+34])
+          Ptyp_constr "stat" (stdlib/gc.mli[237,10270+30]..[237,10270+34])
+          []
+      [
+        "caml_gc_quick_stat"
+      ]
+  signature_item (stdlib/gc.mli[243,10570+0]..[243,10570+70])
+    Psig_value
+    value_description "counters" (stdlib/gc.mli[243,10570+9]..[243,10570+17]) (stdlib/gc.mli[243,10570+0]..[243,10570+70])
+      attribute "ocaml.doc"
+        [
+          structure_item (stdlib/gc.mli[244,10641+0]..[245,10713+34])
+            Pstr_eval
+            expression (stdlib/gc.mli[244,10641+0]..[245,10713+34])
+              Pexp_constant PConst_string(" Return [(minor_words, promoted_words, major_words)].  This function\n    is as fast as [quick_stat]. ",(stdlib/gc.mli[244,10641+0]..[245,10713+34]),None)
+        ]
+      core_type (stdlib/gc.mli[243,10570+20]..[243,10570+49])
+        Ptyp_arrow
+        Nolabel
+        core_type (stdlib/gc.mli[243,10570+20]..[243,10570+24])
+          Ptyp_constr "unit" (stdlib/gc.mli[243,10570+20]..[243,10570+24])
+          []
+        core_type (stdlib/gc.mli[243,10570+28]..[243,10570+49])
+          Ptyp_tuple
+          [
+            core_type (stdlib/gc.mli[243,10570+28]..[243,10570+33])
+              Ptyp_constr "float" (stdlib/gc.mli[243,10570+28]..[243,10570+33])
+              []
+            core_type (stdlib/gc.mli[243,10570+36]..[243,10570+41])
+              Ptyp_constr "float" (stdlib/gc.mli[243,10570+36]..[243,10570+41])
+              []
+            core_type (stdlib/gc.mli[243,10570+44]..[243,10570+49])
+              Ptyp_constr "float" (stdlib/gc.mli[243,10570+44]..[243,10570+49])
+              []
+          ]
+      [
+        "caml_gc_counters"
+      ]
+  signature_item (stdlib/gc.mli[247,10749+0]..[248,10799+55])
+    Psig_value
+    value_description "minor_words" (stdlib/gc.mli[247,10749+9]..[247,10749+20]) (stdlib/gc.mli[247,10749+0]..[248,10799+55])
+      attribute "ocaml.doc"
+        [
+          structure_item (stdlib/gc.mli[249,10855+0]..[255,11106+18])
+            Pstr_eval
+            expression (stdlib/gc.mli[249,10855+0]..[255,11106+18])
+              Pexp_constant PConst_string(" Number of words allocated in the minor heap since the program was\n    started. This number is accurate in byte-code programs, but only an\n    approximation in programs compiled to native code.\n\n    In native code this function does not allocate.\n\n    @since 4.04 ",(stdlib/gc.mli[249,10855+0]..[255,11106+18]),None)
+        ]
+      core_type (stdlib/gc.mli[247,10749+23]..[247,10749+49])
+        Ptyp_arrow
+        Nolabel
+        core_type (stdlib/gc.mli[247,10749+23]..[247,10749+27])
+          Ptyp_constr "unit" (stdlib/gc.mli[247,10749+23]..[247,10749+27])
+          []
+        core_type (stdlib/gc.mli[247,10749+32]..[247,10749+37])
+          attribute "unboxed"
+            []
+          Ptyp_constr "float" (stdlib/gc.mli[247,10749+32]..[247,10749+37])
+          []
+      [
+        "caml_gc_minor_words"
+        "caml_gc_minor_words_unboxed"
+      ]
+  signature_item (stdlib/gc.mli[257,11126+0]..[257,11126+46])
+    Psig_value
+    value_description "get" (stdlib/gc.mli[257,11126+9]..[257,11126+12]) (stdlib/gc.mli[257,11126+0]..[257,11126+46])
+      attribute "ocaml.doc"
+        [
+          structure_item (stdlib/gc.mli[258,11173+0]..[258,11173+76])
+            Pstr_eval
+            expression (stdlib/gc.mli[258,11173+0]..[258,11173+76])
+              Pexp_constant PConst_string(" Return the current values of the GC parameters in a [control] record. ",(stdlib/gc.mli[258,11173+0]..[258,11173+76]),None)
+        ]
+      core_type (stdlib/gc.mli[257,11126+15]..[257,11126+30])
+        Ptyp_arrow
+        Nolabel
+        core_type (stdlib/gc.mli[257,11126+15]..[257,11126+19])
+          Ptyp_constr "unit" (stdlib/gc.mli[257,11126+15]..[257,11126+19])
+          []
+        core_type (stdlib/gc.mli[257,11126+23]..[257,11126+30])
+          Ptyp_constr "control" (stdlib/gc.mli[257,11126+23]..[257,11126+30])
+          []
+      [
+        "caml_gc_get"
+      ]
+  signature_item (stdlib/gc.mli[260,11251+0]..[260,11251+46])
+    Psig_value
+    value_description "set" (stdlib/gc.mli[260,11251+9]..[260,11251+12]) (stdlib/gc.mli[260,11251+0]..[260,11251+46])
+      attribute "ocaml.doc"
+        [
+          structure_item (stdlib/gc.mli[261,11298+0]..[262,11375+74])
+            Pstr_eval
+            expression (stdlib/gc.mli[261,11298+0]..[262,11375+74])
+              Pexp_constant PConst_string(" [set r] changes the GC parameters according to the [control] record [r].\n   The normal usage is: [Gc.set { (Gc.get()) with Gc.verbose = 0x00d }] ",(stdlib/gc.mli[261,11298+0]..[262,11375+74]),None)
+        ]
+      core_type (stdlib/gc.mli[260,11251+15]..[260,11251+30])
+        Ptyp_arrow
+        Nolabel
+        core_type (stdlib/gc.mli[260,11251+15]..[260,11251+22])
+          Ptyp_constr "control" (stdlib/gc.mli[260,11251+15]..[260,11251+22])
+          []
+        core_type (stdlib/gc.mli[260,11251+26]..[260,11251+30])
+          Ptyp_constr "unit" (stdlib/gc.mli[260,11251+26]..[260,11251+30])
+          []
+      [
+        "caml_gc_set"
+      ]
+  signature_item (stdlib/gc.mli[264,11451+0]..[264,11451+47])
+    Psig_value
+    value_description "minor" (stdlib/gc.mli[264,11451+9]..[264,11451+14]) (stdlib/gc.mli[264,11451+0]..[264,11451+47])
+      attribute "ocaml.doc"
+        [
+          structure_item (stdlib/gc.mli[265,11499+0]..[265,11499+34])
+            Pstr_eval
+            expression (stdlib/gc.mli[265,11499+0]..[265,11499+34])
+              Pexp_constant PConst_string(" Trigger a minor collection. ",(stdlib/gc.mli[265,11499+0]..[265,11499+34]),None)
+        ]
+      core_type (stdlib/gc.mli[264,11451+17]..[264,11451+29])
+        Ptyp_arrow
+        Nolabel
+        core_type (stdlib/gc.mli[264,11451+17]..[264,11451+21])
+          Ptyp_constr "unit" (stdlib/gc.mli[264,11451+17]..[264,11451+21])
+          []
+        core_type (stdlib/gc.mli[264,11451+25]..[264,11451+29])
+          Ptyp_constr "unit" (stdlib/gc.mli[264,11451+25]..[264,11451+29])
+          []
+      [
+        "caml_gc_minor"
+      ]
+  signature_item (stdlib/gc.mli[267,11535+0]..[267,11535+57])
+    Psig_value
+    value_description "major_slice" (stdlib/gc.mli[267,11535+9]..[267,11535+20]) (stdlib/gc.mli[267,11535+0]..[267,11535+57])
+      attribute "ocaml.doc"
+        [
+          structure_item (stdlib/gc.mli[268,11593+0]..[273,11888+67])
+            Pstr_eval
+            expression (stdlib/gc.mli[268,11593+0]..[273,11888+67])
+              Pexp_constant PConst_string(" [major_slice n]\n    Do a minor collection and a slice of major collection. [n] is the\n    size of the slice: the GC will do enough work to free (on average)\n    [n] words of memory. If [n] = 0, the GC will try to do enough work\n    to ensure that the next automatic slice has no work to do.\n    This function returns an unspecified integer (currently: 0). ",(stdlib/gc.mli[268,11593+0]..[273,11888+67]),None)
+        ]
+      core_type (stdlib/gc.mli[267,11535+23]..[267,11535+33])
+        Ptyp_arrow
+        Nolabel
+        core_type (stdlib/gc.mli[267,11535+23]..[267,11535+26])
+          Ptyp_constr "int" (stdlib/gc.mli[267,11535+23]..[267,11535+26])
+          []
+        core_type (stdlib/gc.mli[267,11535+30]..[267,11535+33])
+          Ptyp_constr "int" (stdlib/gc.mli[267,11535+30]..[267,11535+33])
+          []
+      [
+        "caml_gc_major_slice"
+      ]
+  signature_item (stdlib/gc.mli[275,11957+0]..[275,11957+47])
+    Psig_value
+    value_description "major" (stdlib/gc.mli[275,11957+9]..[275,11957+14]) (stdlib/gc.mli[275,11957+0]..[275,11957+47])
+      attribute "ocaml.doc"
+        [
+          structure_item (stdlib/gc.mli[276,12005+0]..[276,12005+75])
+            Pstr_eval
+            expression (stdlib/gc.mli[276,12005+0]..[276,12005+75])
+              Pexp_constant PConst_string(" Do a minor collection and finish the current major collection cycle. ",(stdlib/gc.mli[276,12005+0]..[276,12005+75]),None)
+        ]
+      core_type (stdlib/gc.mli[275,11957+17]..[275,11957+29])
+        Ptyp_arrow
+        Nolabel
+        core_type (stdlib/gc.mli[275,11957+17]..[275,11957+21])
+          Ptyp_constr "unit" (stdlib/gc.mli[275,11957+17]..[275,11957+21])
+          []
+        core_type (stdlib/gc.mli[275,11957+25]..[275,11957+29])
+          Ptyp_constr "unit" (stdlib/gc.mli[275,11957+25]..[275,11957+29])
+          []
+      [
+        "caml_gc_major"
+      ]
+  signature_item (stdlib/gc.mli[278,12082+0]..[278,12082+57])
+    Psig_value
+    value_description "full_major" (stdlib/gc.mli[278,12082+9]..[278,12082+19]) (stdlib/gc.mli[278,12082+0]..[278,12082+57])
+      attribute "ocaml.doc"
+        [
+          structure_item (stdlib/gc.mli[279,12140+0]..[281,12280+25])
+            Pstr_eval
+            expression (stdlib/gc.mli[279,12140+0]..[281,12280+25])
+              Pexp_constant PConst_string(" Do a minor collection, finish the current major collection cycle,\n   and perform a complete new cycle.  This will collect all currently\n   unreachable blocks. ",(stdlib/gc.mli[279,12140+0]..[281,12280+25]),None)
+        ]
+      core_type (stdlib/gc.mli[278,12082+22]..[278,12082+34])
+        Ptyp_arrow
+        Nolabel
+        core_type (stdlib/gc.mli[278,12082+22]..[278,12082+26])
+          Ptyp_constr "unit" (stdlib/gc.mli[278,12082+22]..[278,12082+26])
+          []
+        core_type (stdlib/gc.mli[278,12082+30]..[278,12082+34])
+          Ptyp_constr "unit" (stdlib/gc.mli[278,12082+30]..[278,12082+34])
+          []
+      [
+        "caml_gc_full_major"
+      ]
+  signature_item (stdlib/gc.mli[283,12307+0]..[283,12307+54])
+    Psig_value
+    value_description "compact" (stdlib/gc.mli[283,12307+9]..[283,12307+16]) (stdlib/gc.mli[283,12307+0]..[283,12307+54])
+      attribute "ocaml.doc"
+        [
+          structure_item (stdlib/gc.mli[284,12362+0]..[285,12436+40])
+            Pstr_eval
+            expression (stdlib/gc.mli[284,12362+0]..[285,12436+40])
+              Pexp_constant PConst_string(" Perform a full major collection and compact the heap.  Note that heap\n   compaction is a lengthy operation. ",(stdlib/gc.mli[284,12362+0]..[285,12436+40]),None)
+        ]
+      core_type (stdlib/gc.mli[283,12307+19]..[283,12307+31])
+        Ptyp_arrow
+        Nolabel
+        core_type (stdlib/gc.mli[283,12307+19]..[283,12307+23])
+          Ptyp_constr "unit" (stdlib/gc.mli[283,12307+19]..[283,12307+23])
+          []
+        core_type (stdlib/gc.mli[283,12307+27]..[283,12307+31])
+          Ptyp_constr "unit" (stdlib/gc.mli[283,12307+27]..[283,12307+31])
+          []
+      [
+        "caml_gc_compaction"
+      ]
+  signature_item (stdlib/gc.mli[287,12478+0]..[287,12478+36])
+    Psig_value
+    value_description "print_stat" (stdlib/gc.mli[287,12478+4]..[287,12478+14]) (stdlib/gc.mli[287,12478+0]..[287,12478+36])
+      attribute "ocaml.doc"
+        [
+          structure_item (stdlib/gc.mli[288,12515+0]..[289,12582+53])
+            Pstr_eval
+            expression (stdlib/gc.mli[288,12515+0]..[289,12582+53])
+              Pexp_constant PConst_string(" Print the current values of the memory management counters (in\n   human-readable form) into the channel argument. ",(stdlib/gc.mli[288,12515+0]..[289,12582+53]),None)
+        ]
+      core_type (stdlib/gc.mli[287,12478+17]..[287,12478+36])
+        Ptyp_arrow
+        Nolabel
+        core_type (stdlib/gc.mli[287,12478+17]..[287,12478+28])
+          Ptyp_constr "out_channel" (stdlib/gc.mli[287,12478+17]..[287,12478+28])
+          []
+        core_type (stdlib/gc.mli[287,12478+32]..[287,12478+36])
+          Ptyp_constr "unit" (stdlib/gc.mli[287,12478+32]..[287,12478+36])
+          []
+      []
+  signature_item (stdlib/gc.mli[291,12637+0]..[291,12637+35])
+    Psig_value
+    value_description "allocated_bytes" (stdlib/gc.mli[291,12637+4]..[291,12637+19]) (stdlib/gc.mli[291,12637+0]..[291,12637+35])
+      attribute "ocaml.doc"
+        [
+          structure_item (stdlib/gc.mli[292,12673+0]..[294,12810+36])
+            Pstr_eval
+            expression (stdlib/gc.mli[292,12673+0]..[294,12810+36])
+              Pexp_constant PConst_string(" Return the total number of bytes allocated since the program was\n   started.  It is returned as a [float] to avoid overflow problems\n   with [int] on 32-bit machines. ",(stdlib/gc.mli[292,12673+0]..[294,12810+36]),None)
+        ]
+      core_type (stdlib/gc.mli[291,12637+22]..[291,12637+35])
+        Ptyp_arrow
+        Nolabel
+        core_type (stdlib/gc.mli[291,12637+22]..[291,12637+26])
+          Ptyp_constr "unit" (stdlib/gc.mli[291,12637+22]..[291,12637+26])
+          []
+        core_type (stdlib/gc.mli[291,12637+30]..[291,12637+35])
+          Ptyp_constr "float" (stdlib/gc.mli[291,12637+30]..[291,12637+35])
+          []
+      []
+  signature_item (stdlib/gc.mli[296,12848+0]..[296,12848+61])
+    Psig_value
+    value_description "get_minor_free" (stdlib/gc.mli[296,12848+9]..[296,12848+23]) (stdlib/gc.mli[296,12848+0]..[296,12848+61])
+      attribute "ocaml.doc"
+        [
+          structure_item (stdlib/gc.mli[297,12910+0]..[299,12980+20])
+            Pstr_eval
+            expression (stdlib/gc.mli[297,12910+0]..[299,12980+20])
+              Pexp_constant PConst_string(" Return the current size of the free space inside the minor heap.\n\n    @since 4.03.0 ",(stdlib/gc.mli[297,12910+0]..[299,12980+20]),None)
+        ]
+      core_type (stdlib/gc.mli[296,12848+26]..[296,12848+37])
+        Ptyp_arrow
+        Nolabel
+        core_type (stdlib/gc.mli[296,12848+26]..[296,12848+30])
+          Ptyp_constr "unit" (stdlib/gc.mli[296,12848+26]..[296,12848+30])
+          []
+        core_type (stdlib/gc.mli[296,12848+34]..[296,12848+37])
+          Ptyp_constr "int" (stdlib/gc.mli[296,12848+34]..[296,12848+37])
+          []
+      [
+        "caml_get_minor_free"
+      ]
+  signature_item (stdlib/gc.mli[301,13002+0]..[301,13002+70])
+    Psig_value
+    value_description "get_bucket" (stdlib/gc.mli[301,13002+9]..[301,13002+19]) (stdlib/gc.mli[301,13002+0]..[301,13002+70])
+      attribute "noalloc"
+        []
+      attribute "ocaml.doc"
+        [
+          structure_item (stdlib/gc.mli[302,13073+0]..[307,13321+20])
+            Pstr_eval
+            expression (stdlib/gc.mli[302,13073+0]..[307,13321+20])
+              Pexp_constant PConst_string(" [get_bucket n] returns the current size of the [n]-th future bucket\n    of the GC smoothing system. The unit is one millionth of a full GC.\n    @raise Invalid_argument if [n] is negative, return 0 if n is larger\n    than the smoothing window.\n\n    @since 4.03.0 ",(stdlib/gc.mli[302,13073+0]..[307,13321+20]),None)
+        ]
+      core_type (stdlib/gc.mli[301,13002+22]..[301,13002+32])
+        Ptyp_arrow
+        Nolabel
+        core_type (stdlib/gc.mli[301,13002+22]..[301,13002+25])
+          Ptyp_constr "int" (stdlib/gc.mli[301,13002+22]..[301,13002+25])
+          []
+        core_type (stdlib/gc.mli[301,13002+29]..[301,13002+32])
+          Ptyp_constr "int" (stdlib/gc.mli[301,13002+29]..[301,13002+32])
+          []
+      [
+        "caml_get_major_bucket"
+      ]
+  signature_item (stdlib/gc.mli[309,13343+0]..[309,13343+71])
+    Psig_value
+    value_description "get_credit" (stdlib/gc.mli[309,13343+9]..[309,13343+19]) (stdlib/gc.mli[309,13343+0]..[309,13343+71])
+      attribute "noalloc"
+        []
+      attribute "ocaml.doc"
+        [
+          structure_item (stdlib/gc.mli[310,13415+0]..[314,13575+20])
+            Pstr_eval
+            expression (stdlib/gc.mli[310,13415+0]..[314,13575+20])
+              Pexp_constant PConst_string(" [get_credit ()] returns the current size of the \"work done in advance\"\n    counter of the GC smoothing system. The unit is one millionth of a\n    full GC.\n\n    @since 4.03.0 ",(stdlib/gc.mli[310,13415+0]..[314,13575+20]),None)
+        ]
+      core_type (stdlib/gc.mli[309,13343+22]..[309,13343+33])
+        Ptyp_arrow
+        Nolabel
+        core_type (stdlib/gc.mli[309,13343+22]..[309,13343+26])
+          Ptyp_constr "unit" (stdlib/gc.mli[309,13343+22]..[309,13343+26])
+          []
+        core_type (stdlib/gc.mli[309,13343+30]..[309,13343+33])
+          Ptyp_constr "int" (stdlib/gc.mli[309,13343+30]..[309,13343+33])
+          []
+      [
+        "caml_get_major_credit"
+      ]
+  signature_item (stdlib/gc.mli[316,13597+0]..[316,13597+74])
+    Psig_value
+    value_description "huge_fallback_count" (stdlib/gc.mli[316,13597+9]..[316,13597+28]) (stdlib/gc.mli[316,13597+0]..[316,13597+74])
+      attribute "ocaml.doc"
+        [
+          structure_item (stdlib/gc.mli[317,13672+0]..[319,13823+20])
+            Pstr_eval
+            expression (stdlib/gc.mli[317,13672+0]..[319,13823+20])
+              Pexp_constant PConst_string(" Return the number of times we tried to map huge pages and had to fall\n    back to small pages. This is always 0 if [OCAMLRUNPARAM] contains [H=1].\n    @since 4.03.0 ",(stdlib/gc.mli[317,13672+0]..[319,13823+20]),None)
+        ]
+      core_type (stdlib/gc.mli[316,13597+31]..[316,13597+42])
+        Ptyp_arrow
+        Nolabel
+        core_type (stdlib/gc.mli[316,13597+31]..[316,13597+35])
+          Ptyp_constr "unit" (stdlib/gc.mli[316,13597+31]..[316,13597+35])
+          []
+        core_type (stdlib/gc.mli[316,13597+39]..[316,13597+42])
+          Ptyp_constr "int" (stdlib/gc.mli[316,13597+39]..[316,13597+42])
+          []
+      [
+        "caml_gc_huge_fallback_count"
+      ]
+  signature_item (stdlib/gc.mli[321,13845+0]..[321,13845+41])
+    Psig_value
+    value_description "finalise" (stdlib/gc.mli[321,13845+4]..[321,13845+12]) (stdlib/gc.mli[321,13845+0]..[321,13845+41])
+      attribute "ocaml.doc"
+        [
+          structure_item (stdlib/gc.mli[322,13887+0]..[385,17158+2])
+            Pstr_eval
+            expression (stdlib/gc.mli[322,13887+0]..[385,17158+2])
+              Pexp_constant PConst_string(" [finalise f v] registers [f] as a finalisation function for [v].\n   [v] must be heap-allocated.  [f] will be called with [v] as\n   argument at some point between the first time [v] becomes unreachable\n   (including through weak pointers) and the time [v] is collected by\n   the GC. Several functions can\n   be registered for the same value, or even several instances of the\n   same function.  Each instance will be called once (or never,\n   if the program terminates before [v] becomes unreachable).\n\n   The GC will call the finalisation functions in the order of\n   deallocation.  When several values become unreachable at the\n   same time (i.e. during the same GC cycle), the finalisation\n   functions will be called in the reverse order of the corresponding\n   calls to [finalise].  If [finalise] is called in the same order\n   as the values are allocated, that means each value is finalised\n   before the values it depends upon.  Of course, this becomes\n   false if additional dependencies are introduced by assignments.\n\n   In the presence of multiple OCaml threads it should be assumed that\n   any particular finaliser may be executed in any of the threads.\n\n   Anything reachable from the closure of finalisation functions\n   is considered reachable, so the following code will not work\n   as expected:\n   - [ let v = ... in Gc.finalise (fun _ -> ...v...) v ]\n\n   Instead you should make sure that [v] is not in the closure of\n   the finalisation function by writing:\n   - [ let f = fun x -> ...  let v = ... in Gc.finalise f v ]\n\n\n   The [f] function can use all features of OCaml, including\n   assignments that make the value reachable again.  It can also\n   loop forever (in this case, the other\n   finalisation functions will not be called during the execution of f,\n   unless it calls [finalise_release]).\n   It can call [finalise] on [v] or other values to register other\n   functions or even itself.  It can raise an exception; in this case\n   the exception will interrupt whatever the program was doing when\n   the function was called.\n\n\n   [finalise] will raise [Invalid_argument] if [v] is not\n   guaranteed to be heap-allocated.  Some examples of values that are not\n   heap-allocated are integers, constant constructors, booleans,\n   the empty array, the empty list, the unit value.  The exact list\n   of what is heap-allocated or not is implementation-dependent.\n   Some constant values can be heap-allocated but never deallocated\n   during the lifetime of the program, for example a list of integer\n   constants; this is also implementation-dependent.\n   Note that values of types [float] are sometimes allocated and\n   sometimes not, so finalising them is unsafe, and [finalise] will\n   also raise [Invalid_argument] for them. Values of type ['a Lazy.t]\n   (for any ['a]) are like [float] in this respect, except that the\n   compiler sometimes optimizes them in a way that prevents [finalise]\n   from detecting them. In this case, it will not raise\n   [Invalid_argument], but you should still avoid calling [finalise]\n   on lazy values.\n\n\n   The results of calling {!String.make}, {!Bytes.make}, {!Bytes.create},\n   {!Array.make}, and {!Stdlib.ref} are guaranteed to be\n   heap-allocated and non-constant except when the length argument is [0].\n",(stdlib/gc.mli[322,13887+0]..[385,17158+2]),None)
+        ]
+      core_type (stdlib/gc.mli[321,13845+15]..[321,13845+41])
+        Ptyp_arrow
+        Nolabel
+        core_type (stdlib/gc.mli[321,13845+16]..[321,13845+26])
+          Ptyp_arrow
+          Nolabel
+          core_type (stdlib/gc.mli[321,13845+16]..[321,13845+18])
+            Ptyp_var a
+          core_type (stdlib/gc.mli[321,13845+22]..[321,13845+26])
+            Ptyp_constr "unit" (stdlib/gc.mli[321,13845+22]..[321,13845+26])
+            []
+        core_type (stdlib/gc.mli[321,13845+31]..[321,13845+41])
+          Ptyp_arrow
+          Nolabel
+          core_type (stdlib/gc.mli[321,13845+31]..[321,13845+33])
+            Ptyp_var a
+          core_type (stdlib/gc.mli[321,13845+37]..[321,13845+41])
+            Ptyp_constr "unit" (stdlib/gc.mli[321,13845+37]..[321,13845+41])
+            []
+      []
+  signature_item (stdlib/gc.mli[387,17162+0]..[387,17162+48])
+    Psig_value
+    value_description "finalise_last" (stdlib/gc.mli[387,17162+4]..[387,17162+17]) (stdlib/gc.mli[387,17162+0]..[387,17162+48])
+      attribute "ocaml.doc"
+        [
+          structure_item (stdlib/gc.mli[388,17211+0]..[400,17900+2])
+            Pstr_eval
+            expression (stdlib/gc.mli[388,17211+0]..[400,17900+2])
+              Pexp_constant PConst_string(" same as {!finalise} except the value is not given as argument. So\n    you can't use the given value for the computation of the\n    finalisation function. The benefit is that the function is called\n    after the value is unreachable for the last time instead of the\n    first time. So contrary to {!finalise} the value will never be\n    reachable again or used again. In particular every weak pointer\n    and ephemeron that contained this value as key or data is unset\n    before running the finalisation function. Moreover the finalisation\n    functions attached with {!finalise} are always called before the\n    finalisation functions attached with {!finalise_last}.\n\n    @since 4.04\n",(stdlib/gc.mli[388,17211+0]..[400,17900+2]),None)
+        ]
+      core_type (stdlib/gc.mli[387,17162+20]..[387,17162+48])
+        Ptyp_arrow
+        Nolabel
+        core_type (stdlib/gc.mli[387,17162+21]..[387,17162+33])
+          Ptyp_arrow
+          Nolabel
+          core_type (stdlib/gc.mli[387,17162+21]..[387,17162+25])
+            Ptyp_constr "unit" (stdlib/gc.mli[387,17162+21]..[387,17162+25])
+            []
+          core_type (stdlib/gc.mli[387,17162+29]..[387,17162+33])
+            Ptyp_constr "unit" (stdlib/gc.mli[387,17162+29]..[387,17162+33])
+            []
+        core_type (stdlib/gc.mli[387,17162+38]..[387,17162+48])
+          Ptyp_arrow
+          Nolabel
+          core_type (stdlib/gc.mli[387,17162+38]..[387,17162+40])
+            Ptyp_var a
+          core_type (stdlib/gc.mli[387,17162+44]..[387,17162+48])
+            Ptyp_constr "unit" (stdlib/gc.mli[387,17162+44]..[387,17162+48])
+            []
+      []
+  signature_item (stdlib/gc.mli[402,17904+0]..[402,17904+35])
+    Psig_value
+    value_description "finalise_release" (stdlib/gc.mli[402,17904+4]..[402,17904+20]) (stdlib/gc.mli[402,17904+0]..[402,17904+35])
+      attribute "ocaml.doc"
+        [
+          structure_item (stdlib/gc.mli[403,17940+0]..[405,18081+37])
+            Pstr_eval
+            expression (stdlib/gc.mli[403,17940+0]..[405,18081+37])
+              Pexp_constant PConst_string(" A finalisation function may call [finalise_release] to tell the\n    GC that it can launch the next finalisation function without waiting\n    for the current one to return. ",(stdlib/gc.mli[403,17940+0]..[405,18081+37]),None)
+        ]
+      core_type (stdlib/gc.mli[402,17904+23]..[402,17904+35])
+        Ptyp_arrow
+        Nolabel
+        core_type (stdlib/gc.mli[402,17904+23]..[402,17904+27])
+          Ptyp_constr "unit" (stdlib/gc.mli[402,17904+23]..[402,17904+27])
+          []
+        core_type (stdlib/gc.mli[402,17904+31]..[402,17904+35])
+          Ptyp_constr "unit" (stdlib/gc.mli[402,17904+31]..[402,17904+35])
+          []
+      []
+  signature_item (stdlib/gc.mli[407,18120+0]..[407,18120+10])
+    Psig_type Rec
+    [
+      type_declaration "alarm" (stdlib/gc.mli[407,18120+5]..[407,18120+10]) (stdlib/gc.mli[407,18120+0]..[407,18120+10])
+        attribute "ocaml.doc"
+          [
+            structure_item (stdlib/gc.mli[408,18131+0]..[410,18276+24])
+              Pstr_eval
+              expression (stdlib/gc.mli[408,18131+0]..[410,18276+24])
+                Pexp_constant PConst_string(" An alarm is a piece of data that calls a user function at the end of\n   each major GC cycle.  The following functions are provided to create\n   and delete alarms. ",(stdlib/gc.mli[408,18131+0]..[410,18276+24]),None)
+          ]
+        ptype_params =
+          []
+        ptype_cstrs =
+          []
+        ptype_kind =
+          Ptype_abstract
+        ptype_private = Public
+        ptype_manifest =
+          None
+    ]
+  signature_item (stdlib/gc.mli[412,18302+0]..[412,18302+42])
+    Psig_value
+    value_description "create_alarm" (stdlib/gc.mli[412,18302+4]..[412,18302+16]) (stdlib/gc.mli[412,18302+0]..[412,18302+42])
+      attribute "ocaml.doc"
+        [
+          structure_item (stdlib/gc.mli[413,18345+0]..[416,18539+33])
+            Pstr_eval
+            expression (stdlib/gc.mli[413,18345+0]..[416,18539+33])
+              Pexp_constant PConst_string(" [create_alarm f] will arrange for [f] to be called at the end of each\n   major GC cycle, starting with the current cycle or the next one.\n   A value of type [alarm] is returned that you can\n   use to call [delete_alarm]. ",(stdlib/gc.mli[413,18345+0]..[416,18539+33]),None)
+        ]
+      core_type (stdlib/gc.mli[412,18302+19]..[412,18302+42])
+        Ptyp_arrow
+        Nolabel
+        core_type (stdlib/gc.mli[412,18302+20]..[412,18302+32])
+          Ptyp_arrow
+          Nolabel
+          core_type (stdlib/gc.mli[412,18302+20]..[412,18302+24])
+            Ptyp_constr "unit" (stdlib/gc.mli[412,18302+20]..[412,18302+24])
+            []
+          core_type (stdlib/gc.mli[412,18302+28]..[412,18302+32])
+            Ptyp_constr "unit" (stdlib/gc.mli[412,18302+28]..[412,18302+32])
+            []
+        core_type (stdlib/gc.mli[412,18302+37]..[412,18302+42])
+          Ptyp_constr "alarm" (stdlib/gc.mli[412,18302+37]..[412,18302+42])
+          []
+      []
+  signature_item (stdlib/gc.mli[418,18574+0]..[418,18574+32])
+    Psig_value
+    value_description "delete_alarm" (stdlib/gc.mli[418,18574+4]..[418,18574+16]) (stdlib/gc.mli[418,18574+0]..[418,18574+32])
+      attribute "ocaml.doc"
+        [
+          structure_item (stdlib/gc.mli[419,18607+0]..[420,18675+59])
+            Pstr_eval
+            expression (stdlib/gc.mli[419,18607+0]..[420,18675+59])
+              Pexp_constant PConst_string(" [delete_alarm a] will stop the calls to the function associated\n   to [a]. Calling [delete_alarm a] again has no effect. ",(stdlib/gc.mli[419,18607+0]..[420,18675+59]),None)
+        ]
+      core_type (stdlib/gc.mli[418,18574+19]..[418,18574+32])
+        Ptyp_arrow
+        Nolabel
+        core_type (stdlib/gc.mli[418,18574+19]..[418,18574+24])
+          Ptyp_constr "alarm" (stdlib/gc.mli[418,18574+19]..[418,18574+24])
+          []
+        core_type (stdlib/gc.mli[418,18574+28]..[418,18574+32])
+          Ptyp_constr "unit" (stdlib/gc.mli[418,18574+28]..[418,18574+32])
+          []
+      []
+  signature_item (stdlib/gc.mli[422,18736+0]..[422,18736+62])
+    Psig_value
+    value_description "eventlog_pause" (stdlib/gc.mli[422,18736+9]..[422,18736+23]) (stdlib/gc.mli[422,18736+0]..[422,18736+62])
+      attribute "ocaml.doc"
+        [
+          structure_item (stdlib/gc.mli[423,18799+0]..[428,19095+49])
+            Pstr_eval
+            expression (stdlib/gc.mli[423,18799+0]..[428,19095+49])
+              Pexp_constant PConst_string(" [eventlog_pause ()] will pause the collection of traces in the\n   runtime.\n   Traces are collected if the program is linked to the instrumented runtime\n   and started with the environment variable OCAML_EVENTLOG_ENABLED.\n   Events are flushed to disk after pausing, and no new events will be\n   recorded until [eventlog_resume] is called. ",(stdlib/gc.mli[423,18799+0]..[428,19095+49]),None)
+        ]
+      core_type (stdlib/gc.mli[422,18736+26]..[422,18736+38])
+        Ptyp_arrow
+        Nolabel
+        core_type (stdlib/gc.mli[422,18736+26]..[422,18736+30])
+          Ptyp_constr "unit" (stdlib/gc.mli[422,18736+26]..[422,18736+30])
+          []
+        core_type (stdlib/gc.mli[422,18736+34]..[422,18736+38])
+          Ptyp_constr "unit" (stdlib/gc.mli[422,18736+34]..[422,18736+38])
+          []
+      [
+        "caml_eventlog_pause"
+      ]
+  signature_item (stdlib/gc.mli[430,19146+0]..[430,19146+64])
+    Psig_value
+    value_description "eventlog_resume" (stdlib/gc.mli[430,19146+9]..[430,19146+24]) (stdlib/gc.mli[430,19146+0]..[430,19146+64])
+      attribute "ocaml.doc"
+        [
+          structure_item (stdlib/gc.mli[431,19211+0]..[437,19591+37])
+            Pstr_eval
+            expression (stdlib/gc.mli[431,19211+0]..[437,19591+37])
+              Pexp_constant PConst_string(" [eventlog_resume ()] will resume the collection of traces in the\n   runtime.\n   Traces are collected if the program is linked to the instrumented runtime\n   and started with the environment variable OCAML_EVENTLOG_ENABLED.\n   This call can be used after calling [eventlog_pause], or if the program\n   was started with OCAML_EVENTLOG_ENABLED=p. (which pauses the collection of\n   traces before the first event.) ",(stdlib/gc.mli[431,19211+0]..[437,19591+37]),None)
+        ]
+      core_type (stdlib/gc.mli[430,19146+27]..[430,19146+39])
+        Ptyp_arrow
+        Nolabel
+        core_type (stdlib/gc.mli[430,19146+27]..[430,19146+31])
+          Ptyp_constr "unit" (stdlib/gc.mli[430,19146+27]..[430,19146+31])
+          []
+        core_type (stdlib/gc.mli[430,19146+35]..[430,19146+39])
+          Ptyp_constr "unit" (stdlib/gc.mli[430,19146+35]..[430,19146+39])
+          []
+      [
+        "caml_eventlog_resume"
+      ]
+  signature_item (stdlib/gc.mli[457,20428+0]..[540,23690+3])
+    Psig_module "Memprof" (stdlib/gc.mli[457,20428+7]..[457,20428+14])
+      attribute "ocaml.doc"
+        [
+          structure_item (stdlib/gc.mli[440,19631+0]..[456,20414+13])
+            Pstr_eval
+            expression (stdlib/gc.mli[440,19631+0]..[456,20414+13])
+              Pexp_constant PConst_string(" [Memprof] is a sampling engine for allocated memory words. Every\n   allocated word has a probability of being sampled equal to a\n   configurable sampling rate. Once a block is sampled, it becomes\n   tracked. A tracked block triggers a user-defined callback as soon\n   as it is allocated, promoted or deallocated.\n\n   Since blocks are composed of several words, a block can potentially\n   be sampled several times. If a block is sampled several times, then\n   each of the callback is called once for each event of this block:\n   the multiplicity is given in the [n_samples] field of the\n   [allocation] structure.\n\n   This engine makes it possible to implement a low-overhead memory\n   profiler as an OCaml library.\n\n   Note: this API is EXPERIMENTAL. It may change without prior\n   notice. ",(stdlib/gc.mli[440,19631+0]..[456,20414+13]),None)
+        ]
+    module_type (stdlib/gc.mli[458,20445+2]..[540,23690+3])
+      Pmty_signature
+      [
+        signature_item (stdlib/gc.mli[459,20451+4]..[459,20451+54])
+          Psig_type Rec
+          [
+            type_declaration "allocation_source" (stdlib/gc.mli[459,20451+9]..[459,20451+26]) (stdlib/gc.mli[459,20451+4]..[459,20451+54])
+              ptype_params =
+                []
+              ptype_cstrs =
+                []
+              ptype_kind =
+                Ptype_variant
+                  [
+                    (stdlib/gc.mli[459,20451+29]..[459,20451+35])
+                      "Normal" (stdlib/gc.mli[459,20451+29]..[459,20451+35])
+                      []
+                      None
+                    (stdlib/gc.mli[459,20451+36]..[459,20451+45])
+                      "Marshal" (stdlib/gc.mli[459,20451+38]..[459,20451+45])
+                      []
+                      None
+                    (stdlib/gc.mli[459,20451+46]..[459,20451+54])
+                      "Custom" (stdlib/gc.mli[459,20451+48]..[459,20451+54])
+                      []
+                      None
+                  ]
+              ptype_private = Public
+              ptype_manifest =
+                None
+          ]
+        signature_item (stdlib/gc.mli[460,20506+4]..[472,20884+7])
+          Psig_type Rec
+          [
+            type_declaration "allocation" (stdlib/gc.mli[460,20506+9]..[460,20506+19]) (stdlib/gc.mli[460,20506+4]..[472,20884+7])
+              attribute "ocaml.doc"
+                [
+                  structure_item (stdlib/gc.mli[473,20892+4]..[475,21025+36])
+                    Pstr_eval
+                    expression (stdlib/gc.mli[473,20892+4]..[475,21025+36])
+                      Pexp_constant PConst_string(" The type of metadata associated with allocations. This is the\n       type of records passed to the callback triggered by the\n       sampling of an allocation. ",(stdlib/gc.mli[473,20892+4]..[475,21025+36]),None)
+                ]
+              ptype_params =
+                []
+              ptype_cstrs =
+                []
+              ptype_kind =
+                Ptype_record
+                  [
+                    (stdlib/gc.mli[461,20536+8]..[461,20536+24])
+                      attribute "ocaml.doc"
+                        [
+                          structure_item (stdlib/gc.mli[462,20561+8]..[462,20561+58])
+                            Pstr_eval
+                            expression (stdlib/gc.mli[462,20561+8]..[462,20561+58])
+                              Pexp_constant PConst_string(" The number of samples in this block (>= 1). ",(stdlib/gc.mli[462,20561+8]..[462,20561+58]),None)
+                        ]
+                      Immutable
+                      "n_samples" (stdlib/gc.mli[461,20536+8]..[461,20536+17])                      core_type (stdlib/gc.mli[461,20536+20]..[461,20536+23])
+                        Ptyp_constr "int" (stdlib/gc.mli[461,20536+20]..[461,20536+23])
+                        []
+                    (stdlib/gc.mli[464,20621+8]..[464,20621+19])
+                      attribute "ocaml.doc"
+                        [
+                          structure_item (stdlib/gc.mli[465,20641+8]..[465,20641+69])
+                            Pstr_eval
+                            expression (stdlib/gc.mli[465,20641+8]..[465,20641+69])
+                              Pexp_constant PConst_string(" The size of the block, in words, excluding the header. ",(stdlib/gc.mli[465,20641+8]..[465,20641+69]),None)
+                        ]
+                      Immutable
+                      "size" (stdlib/gc.mli[464,20621+8]..[464,20621+12])                      core_type (stdlib/gc.mli[464,20621+15]..[464,20621+18])
+                        Ptyp_constr "int" (stdlib/gc.mli[464,20621+15]..[464,20621+18])
+                        []
+                    (stdlib/gc.mli[467,20712+8]..[467,20712+35])
+                      attribute "ocaml.doc"
+                        [
+                          structure_item (stdlib/gc.mli[468,20748+8]..[468,20748+42])
+                            Pstr_eval
+                            expression (stdlib/gc.mli[468,20748+8]..[468,20748+42])
+                              Pexp_constant PConst_string(" The type of the allocation. ",(stdlib/gc.mli[468,20748+8]..[468,20748+42]),None)
+                        ]
+                      Immutable
+                      "source" (stdlib/gc.mli[467,20712+8]..[467,20712+14])                      core_type (stdlib/gc.mli[467,20712+17]..[467,20712+34])
+                        Ptyp_constr "allocation_source" (stdlib/gc.mli[467,20712+17]..[467,20712+34])
+                        []
+                    (stdlib/gc.mli[470,20792+8]..[470,20792+42])
+                      attribute "ocaml.doc"
+                        [
+                          structure_item (stdlib/gc.mli[471,20835+8]..[471,20835+48])
+                            Pstr_eval
+                            expression (stdlib/gc.mli[471,20835+8]..[471,20835+48])
+                              Pexp_constant PConst_string(" The callstack for the allocation. ",(stdlib/gc.mli[471,20835+8]..[471,20835+48]),None)
+                        ]
+                      Immutable
+                      "callstack" (stdlib/gc.mli[470,20792+8]..[470,20792+17])                      core_type (stdlib/gc.mli[470,20792+20]..[470,20792+42])
+                        Ptyp_constr "Printexc.raw_backtrace" (stdlib/gc.mli[470,20792+20]..[470,20792+42])
+                        []
+                  ]
+              ptype_private = Private
+              ptype_manifest =
+                None
+          ]
+        signature_item (stdlib/gc.mli[477,21063+4]..[483,21311+5])
+          Psig_type Rec
+          [
+            type_declaration "tracker" (stdlib/gc.mli[477,21063+26]..[477,21063+33]) (stdlib/gc.mli[477,21063+4]..[483,21311+5])
+              attribute "ocaml.doc"
+                [
+                  structure_item (stdlib/gc.mli[484,21317+4]..[496,21907+7])
+                    Pstr_eval
+                    expression (stdlib/gc.mli[484,21317+4]..[496,21907+7])
+                      Pexp_constant PConst_string("\n       A [('minor, 'major) tracker] describes how memprof should track\n       sampled blocks over their lifetime, keeping a user-defined piece\n       of metadata for each of them: ['minor] is the type of metadata\n       to keep for minor blocks, and ['major] the type of metadata\n       for major blocks.\n\n       When using threads, it is guaranteed that allocation callbacks are\n       always run in the thread where the allocation takes place.\n\n       If an allocation-tracking or promotion-tracking function returns [None],\n       memprof stops tracking the corresponding value.\n     ",(stdlib/gc.mli[484,21317+4]..[496,21907+7]),None)
+                ]
+              ptype_params =
+                [
+                  core_type (stdlib/gc.mli[477,21063+10]..[477,21063+16])
+                    Ptyp_var minor
+                  core_type (stdlib/gc.mli[477,21063+18]..[477,21063+24])
+                    Ptyp_var major
+                ]
+              ptype_cstrs =
+                []
+              ptype_kind =
+                Ptype_record
+                  [
+                    (stdlib/gc.mli[478,21101+6]..[478,21101+47])
+                      Immutable
+                      "alloc_minor" (stdlib/gc.mli[478,21101+6]..[478,21101+17])                      core_type (stdlib/gc.mli[478,21101+19]..[478,21101+46])
+                        Ptyp_arrow
+                        Nolabel
+                        core_type (stdlib/gc.mli[478,21101+19]..[478,21101+29])
+                          Ptyp_constr "allocation" (stdlib/gc.mli[478,21101+19]..[478,21101+29])
+                          []
+                        core_type (stdlib/gc.mli[478,21101+33]..[478,21101+46])
+                          Ptyp_constr "option" (stdlib/gc.mli[478,21101+40]..[478,21101+46])
+                          [
+                            core_type (stdlib/gc.mli[478,21101+33]..[478,21101+39])
+                              Ptyp_var minor
+                          ]
+                    (stdlib/gc.mli[479,21149+6]..[479,21149+47])
+                      Immutable
+                      "alloc_major" (stdlib/gc.mli[479,21149+6]..[479,21149+17])                      core_type (stdlib/gc.mli[479,21149+19]..[479,21149+46])
+                        Ptyp_arrow
+                        Nolabel
+                        core_type (stdlib/gc.mli[479,21149+19]..[479,21149+29])
+                          Ptyp_constr "allocation" (stdlib/gc.mli[479,21149+19]..[479,21149+29])
+                          []
+                        core_type (stdlib/gc.mli[479,21149+33]..[479,21149+46])
+                          Ptyp_constr "option" (stdlib/gc.mli[479,21149+40]..[479,21149+46])
+                          [
+                            core_type (stdlib/gc.mli[479,21149+33]..[479,21149+39])
+                              Ptyp_var major
+                          ]
+                    (stdlib/gc.mli[480,21197+6]..[480,21197+39])
+                      Immutable
+                      "promote" (stdlib/gc.mli[480,21197+6]..[480,21197+13])                      core_type (stdlib/gc.mli[480,21197+15]..[480,21197+38])
+                        Ptyp_arrow
+                        Nolabel
+                        core_type (stdlib/gc.mli[480,21197+15]..[480,21197+21])
+                          Ptyp_var minor
+                        core_type (stdlib/gc.mli[480,21197+25]..[480,21197+38])
+                          Ptyp_constr "option" (stdlib/gc.mli[480,21197+32]..[480,21197+38])
+                          [
+                            core_type (stdlib/gc.mli[480,21197+25]..[480,21197+31])
+                              Ptyp_var major
+                          ]
+                    (stdlib/gc.mli[481,21237+6]..[481,21237+36])
+                      Immutable
+                      "dealloc_minor" (stdlib/gc.mli[481,21237+6]..[481,21237+19])                      core_type (stdlib/gc.mli[481,21237+21]..[481,21237+35])
+                        Ptyp_arrow
+                        Nolabel
+                        core_type (stdlib/gc.mli[481,21237+21]..[481,21237+27])
+                          Ptyp_var minor
+                        core_type (stdlib/gc.mli[481,21237+31]..[481,21237+35])
+                          Ptyp_constr "unit" (stdlib/gc.mli[481,21237+31]..[481,21237+35])
+                          []
+                    (stdlib/gc.mli[482,21274+6]..[482,21274+36])
+                      Immutable
+                      "dealloc_major" (stdlib/gc.mli[482,21274+6]..[482,21274+19])                      core_type (stdlib/gc.mli[482,21274+21]..[482,21274+35])
+                        Ptyp_arrow
+                        Nolabel
+                        core_type (stdlib/gc.mli[482,21274+21]..[482,21274+27])
+                          Ptyp_var major
+                        core_type (stdlib/gc.mli[482,21274+31]..[482,21274+35])
+                          Ptyp_constr "unit" (stdlib/gc.mli[482,21274+31]..[482,21274+35])
+                          []
+                  ]
+              ptype_private = Public
+              ptype_manifest =
+                None
+          ]
+        signature_item (stdlib/gc.mli[498,21916+4]..[498,21916+46])
+          Psig_value
+          value_description "null_tracker" (stdlib/gc.mli[498,21916+8]..[498,21916+20]) (stdlib/gc.mli[498,21916+4]..[498,21916+46])
+            attribute "ocaml.doc"
+              [
+                structure_item (stdlib/gc.mli[499,21963+4]..[499,21963+57])
+                  Pstr_eval
+                  expression (stdlib/gc.mli[499,21963+4]..[499,21963+57])
+                    Pexp_constant PConst_string(" Default callbacks simply return [None] or [()] ",(stdlib/gc.mli[499,21963+4]..[499,21963+57]),None)
+              ]
+            core_type (stdlib/gc.mli[498,21916+22]..[498,21916+46])
+              Ptyp_constr "tracker" (stdlib/gc.mli[498,21916+39]..[498,21916+46])
+              [
+                core_type (stdlib/gc.mli[498,21916+23]..[498,21916+29])
+                  Ptyp_var minor
+                core_type (stdlib/gc.mli[498,21916+31]..[498,21916+37])
+                  Ptyp_var major
+              ]
+            []
+        signature_item (stdlib/gc.mli[501,22022+4]..[505,22130+10])
+          Psig_value
+          value_description "start" (stdlib/gc.mli[501,22022+8]..[501,22022+13]) (stdlib/gc.mli[501,22022+4]..[505,22130+10])
+            attribute "ocaml.doc"
+              [
+                structure_item (stdlib/gc.mli[506,22141+4]..[528,23229+59])
+                  Pstr_eval
+                  expression (stdlib/gc.mli[506,22141+4]..[528,23229+59])
+                    Pexp_constant PConst_string(" Start the sampling with the given parameters. Fails if\n       sampling is already active.\n\n       The parameter [sampling_rate] is the sampling rate in samples\n       per word (including headers). Usually, with cheap callbacks, a\n       rate of 1e-4 has no visible effect on performance, and 1e-3\n       causes the program to run a few percent slower\n\n       The parameter [callstack_size] is the length of the callstack\n       recorded at every sample. Its default is [max_int].\n\n       The parameter [tracker] determines how to track sampled blocks\n       over their lifetime in the minor and major heap.\n\n       Sampling is temporarily disabled when calling a callback\n       for the current thread. So they do not need to be re-entrant if\n       the program is single-threaded. However, if threads are used,\n       it is possible that a context switch occurs during a callback,\n       in this case the callback functions must be re-entrant.\n\n       Note that the callback can be postponed slightly after the\n       actual event. The callstack passed to the callback is always\n       accurate, but the program state may have evolved. ",(stdlib/gc.mli[506,22141+4]..[528,23229+59]),None)
+              ]
+            core_type (stdlib/gc.mli[502,22038+6]..[505,22130+10])
+              Ptyp_arrow
+              Labelled "sampling_rate"
+              core_type (stdlib/gc.mli[502,22038+20]..[502,22038+25])
+                Ptyp_constr "float" (stdlib/gc.mli[502,22038+20]..[502,22038+25])
+                []
+              core_type (stdlib/gc.mli[503,22067+6]..[505,22130+10])
+                Ptyp_arrow
+                Optional "callstack_size"
+                core_type (stdlib/gc.mli[503,22067+22]..[503,22067+25])
+                  Ptyp_constr "int" (stdlib/gc.mli[503,22067+22]..[503,22067+25])
+                  []
+                core_type (stdlib/gc.mli[504,22096+6]..[505,22130+10])
+                  Ptyp_arrow
+                  Nolabel
+                  core_type (stdlib/gc.mli[504,22096+6]..[504,22096+30])
+                    Ptyp_constr "tracker" (stdlib/gc.mli[504,22096+23]..[504,22096+30])
+                    [
+                      core_type (stdlib/gc.mli[504,22096+7]..[504,22096+13])
+                        Ptyp_var minor
+                      core_type (stdlib/gc.mli[504,22096+15]..[504,22096+21])
+                        Ptyp_var major
+                    ]
+                  core_type (stdlib/gc.mli[505,22130+6]..[505,22130+10])
+                    Ptyp_constr "unit" (stdlib/gc.mli[505,22130+6]..[505,22130+10])
+                    []
+            []
+        signature_item (stdlib/gc.mli[530,23290+4]..[530,23290+27])
+          Psig_value
+          value_description "stop" (stdlib/gc.mli[530,23290+8]..[530,23290+12]) (stdlib/gc.mli[530,23290+4]..[530,23290+27])
+            attribute "ocaml.doc"
+              [
+                structure_item (stdlib/gc.mli[531,23318+4]..[539,23618+71])
+                  Pstr_eval
+                  expression (stdlib/gc.mli[531,23318+4]..[539,23618+71])
+                    Pexp_constant PConst_string(" Stop the sampling. Fails if sampling is not active.\n\n        This function does not allocate memory.\n\n        All the already tracked blocks are discarded. If there are\n        pending postponed callbacks, they may be discarded.\n\n        Calling [stop] when a callback is running can lead to\n        callbacks not being called even though some events happened. ",(stdlib/gc.mli[531,23318+4]..[539,23618+71]),None)
+              ]
+            core_type (stdlib/gc.mli[530,23290+15]..[530,23290+27])
+              Ptyp_arrow
+              Nolabel
+              core_type (stdlib/gc.mli[530,23290+15]..[530,23290+19])
+                Ptyp_constr "unit" (stdlib/gc.mli[530,23290+15]..[530,23290+19])
+                []
+              core_type (stdlib/gc.mli[530,23290+23]..[530,23290+27])
+                Ptyp_constr "unit" (stdlib/gc.mli[530,23290+23]..[530,23290+27])
+                []
+            []
+      ]
+]
+

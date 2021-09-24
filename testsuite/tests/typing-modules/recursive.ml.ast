@@ -1,0 +1,41 @@
+[
+  structure_item (testsuite/tests/typing-modules/recursive.ml[7,39+0]..[7,39+39])
+    Pstr_recmodule
+    [
+      "T" (testsuite/tests/typing-modules/recursive.ml[7,39+11]..[7,39+12])
+        module_expr (testsuite/tests/typing-modules/recursive.ml[7,39+13]..[7,39+39])
+          Pmod_constraint
+          module_expr (testsuite/tests/typing-modules/recursive.ml[7,39+38]..[7,39+39])
+            Pmod_ident "T" (testsuite/tests/typing-modules/recursive.ml[7,39+38]..[7,39+39])
+          module_type (testsuite/tests/typing-modules/recursive.ml[7,39+15]..[7,39+35])
+            Pmty_signature
+            [
+              signature_item (testsuite/tests/typing-modules/recursive.ml[7,39+19]..[7,39+31])
+                Psig_type Rec
+                [
+                  type_declaration "t" (testsuite/tests/typing-modules/recursive.ml[7,39+24]..[7,39+25]) (testsuite/tests/typing-modules/recursive.ml[7,39+19]..[7,39+31])
+                    ptype_params =
+                      []
+                    ptype_cstrs =
+                      []
+                    ptype_kind =
+                      Ptype_abstract
+                    ptype_private = Public
+                    ptype_manifest =
+                      Some
+                        core_type (testsuite/tests/typing-modules/recursive.ml[7,39+28]..[7,39+31])
+                          Ptyp_constr "T.t" (testsuite/tests/typing-modules/recursive.ml[7,39+28]..[7,39+31])
+                          []
+                ]
+            ]
+    ]
+  structure_item (testsuite/tests/typing-modules/recursive.ml[8,81+0]..[13,251+3])
+    Pstr_extension "expect"
+    [
+      structure_item (testsuite/tests/typing-modules/recursive.ml[8,81+9]..[13,251+2])
+        Pstr_eval
+        expression (testsuite/tests/typing-modules/recursive.ml[8,81+9]..[13,251+2])
+          Pexp_constant PConst_string ("\nLine 1, characters 0-39:\n1 | module rec T : sig type t = T.t end = T;;\n    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nError: The type abbreviation T.t is cyclic\n",(testsuite/tests/typing-modules/recursive.ml[8,81+11]..[13,251+0]),Some "")
+    ]
+]
+

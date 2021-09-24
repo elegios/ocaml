@@ -1,0 +1,106 @@
+[
+  structure_item (testsuite/tests/typing-misc/pr6634.ml[5,25+0]..[5,25+12])
+    Pstr_type Rec
+    [
+      type_declaration "t" (testsuite/tests/typing-misc/pr6634.ml[5,25+5]..[5,25+6]) (testsuite/tests/typing-misc/pr6634.ml[5,25+0]..[5,25+12])
+        ptype_params =
+          []
+        ptype_cstrs =
+          []
+        ptype_kind =
+          Ptype_abstract
+        ptype_private = Public
+        ptype_manifest =
+          Some
+            core_type (testsuite/tests/typing-misc/pr6634.ml[5,25+9]..[5,25+12])
+              Ptyp_constr "int" (testsuite/tests/typing-misc/pr6634.ml[5,25+9]..[5,25+12])
+              []
+    ]
+  structure_item (testsuite/tests/typing-misc/pr6634.ml[6,38+0]..[9,118+3])
+    Pstr_module
+    "M" (testsuite/tests/typing-misc/pr6634.ml[6,38+7]..[6,38+8])
+      module_expr (testsuite/tests/typing-misc/pr6634.ml[6,38+9]..[9,118+3])
+        Pmod_constraint
+        module_expr (testsuite/tests/typing-misc/pr6634.ml[7,90+0]..[9,118+3])
+          Pmod_structure
+          [
+            structure_item (testsuite/tests/typing-misc/pr6634.ml[8,97+2]..[8,97+20])
+              Pstr_type Rec
+              [
+                type_declaration "t" (testsuite/tests/typing-misc/pr6634.ml[8,97+7]..[8,97+8]) (testsuite/tests/typing-misc/pr6634.ml[8,97+2]..[8,97+20])
+                  ptype_params =
+                    []
+                  ptype_cstrs =
+                    []
+                  ptype_kind =
+                    Ptype_abstract
+                  ptype_private = Public
+                  ptype_manifest =
+                    Some
+                      core_type (testsuite/tests/typing-misc/pr6634.ml[8,97+11]..[8,97+20])
+                        Ptyp_variant closed=Closed
+                        [
+                          Rtag "T" false
+                            [
+                              core_type (testsuite/tests/typing-misc/pr6634.ml[8,97+18]..[8,97+19])
+                                Ptyp_constr "t" (testsuite/tests/typing-misc/pr6634.ml[8,97+18]..[8,97+19])
+                                []
+                            ]
+                        ]
+                        None
+              ]
+          ]
+        module_type (testsuite/tests/typing-misc/pr6634.ml[6,38+11]..[6,38+49])
+          Pmty_with
+          module_type (testsuite/tests/typing-misc/pr6634.ml[6,38+11]..[6,38+25])
+            Pmty_signature
+            [
+              signature_item (testsuite/tests/typing-misc/pr6634.ml[6,38+15]..[6,38+21])
+                Psig_type Rec
+                [
+                  type_declaration "t" (testsuite/tests/typing-misc/pr6634.ml[6,38+20]..[6,38+21]) (testsuite/tests/typing-misc/pr6634.ml[6,38+15]..[6,38+21])
+                    ptype_params =
+                      []
+                    ptype_cstrs =
+                      []
+                    ptype_kind =
+                      Ptype_abstract
+                    ptype_private = Public
+                    ptype_manifest =
+                      None
+                ]
+            ]
+          [
+            Pwith_type "t" (testsuite/tests/typing-misc/pr6634.ml[6,38+36]..[6,38+37])
+              type_declaration "t" (testsuite/tests/typing-misc/pr6634.ml[6,38+36]..[6,38+37]) (testsuite/tests/typing-misc/pr6634.ml[6,38+31]..[6,38+49])
+                ptype_params =
+                  []
+                ptype_cstrs =
+                  []
+                ptype_kind =
+                  Ptype_abstract
+                ptype_private = Public
+                ptype_manifest =
+                  Some
+                    core_type (testsuite/tests/typing-misc/pr6634.ml[6,38+40]..[6,38+49])
+                      Ptyp_variant closed=Closed
+                      [
+                        Rtag "T" false
+                          [
+                            core_type (testsuite/tests/typing-misc/pr6634.ml[6,38+47]..[6,38+48])
+                              Ptyp_constr "t" (testsuite/tests/typing-misc/pr6634.ml[6,38+47]..[6,38+48])
+                              []
+                          ]
+                      ]
+                      None
+          ]
+  structure_item (testsuite/tests/typing-misc/pr6634.ml[11,125+0]..[33,811+3])
+    Pstr_extension "expect"
+    [
+      structure_item (testsuite/tests/typing-misc/pr6634.ml[11,125+9]..[33,811+2])
+        Pstr_eval
+        expression (testsuite/tests/typing-misc/pr6634.ml[11,125+9]..[33,811+2])
+          Pexp_constant PConst_string ("\ntype t = int\nLines 3-5, characters 0-3:\n3 | struct\n4 |   type t = [`T of t]\n5 | end..\nError: Signature mismatch:\n       Modules do not match:\n         sig type t = [ `T of t ] end\n       is not included in\n         sig type t = [ `T of t ] end\n       Type declarations do not match:\n         type t = [ `T of t/2 ]\n       is not included in\n         type t = [ `T of t/1 ]\n       The type [ `T of t/1 ] is not equal to the type [ `T of t/2 ]\n       Type t/1 = [ `T of t/1 ] is not equal to type t/2 = int\n       Types for tag `T are incompatible\n       Line 4, characters 2-20:\n         Definition of type t/1\n       Line 1, characters 0-12:\n         Definition of type t/2\n",(testsuite/tests/typing-misc/pr6634.ml[11,125+11]..[33,811+0]),Some "")
+    ]
+]
+

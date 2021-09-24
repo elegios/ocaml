@@ -1,0 +1,682 @@
+[
+  structure_item (testsuite/tests/typing-misc/variant.ml[7,39+0]..[12,137+3])
+    Pstr_recmodule
+    [
+      "X" (testsuite/tests/typing-misc/variant.ml[7,39+11]..[7,39+12])
+        module_expr (testsuite/tests/typing-misc/variant.ml[7,39+13]..[12,137+3])
+          Pmod_constraint
+          module_expr (testsuite/tests/typing-misc/variant.ml[9,79+6]..[12,137+3])
+            Pmod_structure
+            [
+              structure_item (testsuite/tests/typing-misc/variant.ml[10,92+1]..[10,92+15])
+                Pstr_type Rec
+                [
+                  type_declaration "t" (testsuite/tests/typing-misc/variant.ml[10,92+6]..[10,92+7]) (testsuite/tests/typing-misc/variant.ml[10,92+1]..[10,92+15])
+                    ptype_params =
+                      []
+                    ptype_cstrs =
+                      []
+                    ptype_kind =
+                      Ptype_variant
+                        [
+                          (testsuite/tests/typing-misc/variant.ml[10,92+10]..[10,92+11])
+                            "A" (testsuite/tests/typing-misc/variant.ml[10,92+10]..[10,92+11])
+                            []
+                            None
+                          (testsuite/tests/typing-misc/variant.ml[10,92+12]..[10,92+15])
+                            "B" (testsuite/tests/typing-misc/variant.ml[10,92+14]..[10,92+15])
+                            []
+                            None
+                        ]
+                    ptype_private = Public
+                    ptype_manifest =
+                      None
+                ]
+              structure_item (testsuite/tests/typing-misc/variant.ml[11,108+1]..[11,108+28])
+                Pstr_value Nonrec
+                [
+                  <def>
+                    pattern (testsuite/tests/typing-misc/variant.ml[11,108+5]..[11,108+6])
+                      Ppat_var "f" (testsuite/tests/typing-misc/variant.ml[11,108+5]..[11,108+6])
+                    expression (testsuite/tests/typing-misc/variant.ml[11,108+9]..[11,108+28])
+                      Pexp_function
+                      [
+                        <case>
+                          pattern (testsuite/tests/typing-misc/variant.ml[11,108+18]..[11,108+23])
+                            Ppat_or
+                            pattern (testsuite/tests/typing-misc/variant.ml[11,108+18]..[11,108+19])
+                              Ppat_construct "A" (testsuite/tests/typing-misc/variant.ml[11,108+18]..[11,108+19])
+                              None
+                            pattern (testsuite/tests/typing-misc/variant.ml[11,108+22]..[11,108+23])
+                              Ppat_construct "B" (testsuite/tests/typing-misc/variant.ml[11,108+22]..[11,108+23])
+                              None
+                          expression (testsuite/tests/typing-misc/variant.ml[11,108+27]..[11,108+28])
+                            Pexp_constant PConst_int (0,None)
+                      ]
+                ]
+            ]
+          module_type (testsuite/tests/typing-misc/variant.ml[7,39+15]..[9,79+3])
+            Pmty_signature
+            [
+              signature_item (testsuite/tests/typing-misc/variant.ml[8,58+1]..[8,58+20])
+                Psig_type Rec
+                [
+                  type_declaration "t" (testsuite/tests/typing-misc/variant.ml[8,58+6]..[8,58+7]) (testsuite/tests/typing-misc/variant.ml[8,58+1]..[8,58+20])
+                    ptype_params =
+                      []
+                    ptype_cstrs =
+                      []
+                    ptype_kind =
+                      Ptype_abstract
+                    ptype_private = Public
+                    ptype_manifest =
+                      Some
+                        core_type (testsuite/tests/typing-misc/variant.ml[8,58+10]..[8,58+20])
+                          Ptyp_tuple
+                          [
+                            core_type (testsuite/tests/typing-misc/variant.ml[8,58+10]..[8,58+13])
+                              Ptyp_constr "int" (testsuite/tests/typing-misc/variant.ml[8,58+10]..[8,58+13])
+                              []
+                            core_type (testsuite/tests/typing-misc/variant.ml[8,58+16]..[8,58+20])
+                              Ptyp_constr "bool" (testsuite/tests/typing-misc/variant.ml[8,58+16]..[8,58+20])
+                              []
+                          ]
+                ]
+            ]
+    ]
+  structure_item (testsuite/tests/typing-misc/variant.ml[13,143+0]..[29,616+3])
+    Pstr_extension "expect"
+    [
+      structure_item (testsuite/tests/typing-misc/variant.ml[13,143+9]..[29,616+2])
+        Pstr_eval
+        expression (testsuite/tests/typing-misc/variant.ml[13,143+9]..[29,616+2])
+          Pexp_constant PConst_string ("\nLines 3-6, characters 6-3:\n3 | ......struct\n4 |  type t = A | B\n5 |  let f = function A | B -> 0\n6 | end..\nError: Signature mismatch:\n       Modules do not match:\n         sig type t = X.t = A | B val f : t -> int end\n       is not included in\n         sig type t = int * bool end\n       Type declarations do not match:\n         type t = X.t = A | B\n       is not included in\n         type t = int * bool\n       The type X.t is not equal to the type int * bool\n",(testsuite/tests/typing-misc/variant.ml[13,143+11]..[29,616+0]),Some "")
+    ]
+  structure_item (testsuite/tests/typing-misc/variant.ml[34,639+0]..[37,787+3])
+    Pstr_module
+    "Make" (testsuite/tests/typing-misc/variant.ml[34,639+7]..[34,639+11])
+      module_expr (testsuite/tests/typing-misc/variant.ml[34,639+12]..[37,787+3])
+        Pmod_functor "X" (testsuite/tests/typing-misc/variant.ml[34,639+13]..[34,639+14])
+        module_type (testsuite/tests/typing-misc/variant.ml[34,639+17]..[34,639+47])
+          Pmty_signature
+          [
+            signature_item (testsuite/tests/typing-misc/variant.ml[34,639+21]..[34,639+43])
+              Psig_value
+              value_description "f" (testsuite/tests/typing-misc/variant.ml[34,639+25]..[34,639+26]) (testsuite/tests/typing-misc/variant.ml[34,639+21]..[34,639+43])
+                core_type (testsuite/tests/typing-misc/variant.ml[34,639+29]..[34,639+43])
+                  Ptyp_arrow
+                  Nolabel
+                  core_type (testsuite/tests/typing-misc/variant.ml[34,639+29]..[34,639+35])
+                    Ptyp_variant closed=Closed
+                    [
+                      Rtag "A" true
+                        []
+                    ]
+                    None
+                  core_type (testsuite/tests/typing-misc/variant.ml[34,639+39]..[34,639+43])
+                    Ptyp_constr "unit" (testsuite/tests/typing-misc/variant.ml[34,639+39]..[34,639+43])
+                    []
+                []
+          ]
+        module_expr (testsuite/tests/typing-misc/variant.ml[34,639+51]..[37,787+3])
+          Pmod_structure
+          [
+            structure_item (testsuite/tests/typing-misc/variant.ml[35,697+1]..[35,697+57])
+              Pstr_value Nonrec
+              [
+                <def>
+                  pattern (testsuite/tests/typing-misc/variant.ml[35,697+5]..[35,697+9])
+                    Ppat_var "make" (testsuite/tests/typing-misc/variant.ml[35,697+5]..[35,697+9])
+                  expression (testsuite/tests/typing-misc/variant.ml[35,697+10]..[35,697+57]) ghost
+                    Pexp_fun
+                    Nolabel
+                    None
+                    pattern (testsuite/tests/typing-misc/variant.ml[35,697+10]..[35,697+12])
+                      Ppat_var "f1" (testsuite/tests/typing-misc/variant.ml[35,697+10]..[35,697+12])
+                    expression (testsuite/tests/typing-misc/variant.ml[35,697+13]..[35,697+57]) ghost
+                      Pexp_fun
+                      Nolabel
+                      None
+                      pattern (testsuite/tests/typing-misc/variant.ml[35,697+13]..[35,697+15])
+                        Ppat_var "f2" (testsuite/tests/typing-misc/variant.ml[35,697+13]..[35,697+15])
+                      expression (testsuite/tests/typing-misc/variant.ml[35,697+16]..[35,697+57]) ghost
+                        Pexp_fun
+                        Nolabel
+                        None
+                        pattern (testsuite/tests/typing-misc/variant.ml[35,697+16]..[35,697+19])
+                          Ppat_var "arg" (testsuite/tests/typing-misc/variant.ml[35,697+16]..[35,697+19])
+                        expression (testsuite/tests/typing-misc/variant.ml[35,697+22]..[35,697+57])
+                          Pexp_match
+                          expression (testsuite/tests/typing-misc/variant.ml[35,697+28]..[35,697+31])
+                            Pexp_ident "arg" (testsuite/tests/typing-misc/variant.ml[35,697+28]..[35,697+31])
+                          [
+                            <case>
+                              pattern (testsuite/tests/typing-misc/variant.ml[35,697+37]..[35,697+39])
+                                Ppat_variant "A"
+                                None
+                              expression (testsuite/tests/typing-misc/variant.ml[35,697+43]..[35,697+57])
+                                Pexp_sequence
+                                expression (testsuite/tests/typing-misc/variant.ml[35,697+43]..[35,697+49])
+                                  Pexp_apply
+                                  expression (testsuite/tests/typing-misc/variant.ml[35,697+43]..[35,697+45])
+                                    Pexp_ident "f1" (testsuite/tests/typing-misc/variant.ml[35,697+43]..[35,697+45])
+                                  [
+                                    <arg>
+                                    Nolabel
+                                      expression (testsuite/tests/typing-misc/variant.ml[35,697+46]..[35,697+49])
+                                        Pexp_ident "arg" (testsuite/tests/typing-misc/variant.ml[35,697+46]..[35,697+49])
+                                  ]
+                                expression (testsuite/tests/typing-misc/variant.ml[35,697+51]..[35,697+57])
+                                  Pexp_apply
+                                  expression (testsuite/tests/typing-misc/variant.ml[35,697+51]..[35,697+53])
+                                    Pexp_ident "f2" (testsuite/tests/typing-misc/variant.ml[35,697+51]..[35,697+53])
+                                  [
+                                    <arg>
+                                    Nolabel
+                                      expression (testsuite/tests/typing-misc/variant.ml[35,697+54]..[35,697+57])
+                                        Pexp_ident "arg" (testsuite/tests/typing-misc/variant.ml[35,697+54]..[35,697+57])
+                                  ]
+                          ]
+              ]
+            structure_item (testsuite/tests/typing-misc/variant.ml[36,755+1]..[36,755+31])
+              Pstr_value Nonrec
+              [
+                <def>
+                  pattern (testsuite/tests/typing-misc/variant.ml[36,755+5]..[36,755+6])
+                    Ppat_var "f" (testsuite/tests/typing-misc/variant.ml[36,755+5]..[36,755+6])
+                  expression (testsuite/tests/typing-misc/variant.ml[36,755+9]..[36,755+31])
+                    Pexp_apply
+                    expression (testsuite/tests/typing-misc/variant.ml[36,755+9]..[36,755+13])
+                      Pexp_ident "make" (testsuite/tests/typing-misc/variant.ml[36,755+9]..[36,755+13])
+                    [
+                      <arg>
+                      Nolabel
+                        expression (testsuite/tests/typing-misc/variant.ml[36,755+14]..[36,755+17])
+                          Pexp_ident "X.f" (testsuite/tests/typing-misc/variant.ml[36,755+14]..[36,755+17])
+                      <arg>
+                      Nolabel
+                        expression (testsuite/tests/typing-misc/variant.ml[36,755+18]..[36,755+31])
+                          Pexp_fun
+                          Nolabel
+                          None
+                          pattern (testsuite/tests/typing-misc/variant.ml[36,755+23]..[36,755+24])
+                            Ppat_any
+                          expression (testsuite/tests/typing-misc/variant.ml[36,755+28]..[36,755+30])
+                            Pexp_construct "()" (testsuite/tests/typing-misc/variant.ml[36,755+28]..[36,755+30])
+                            None
+                    ]
+              ]
+          ]
+  structure_item (testsuite/tests/typing-misc/variant.ml[38,793+0]..[45,981+3])
+    Pstr_extension "expect"
+    [
+      structure_item (testsuite/tests/typing-misc/variant.ml[38,793+9]..[45,981+2])
+        Pstr_eval
+        expression (testsuite/tests/typing-misc/variant.ml[38,793+9]..[45,981+2])
+          Pexp_constant PConst_string ("\nmodule Make :\n  functor (X : sig val f : [ `A ] -> unit end) ->\n    sig\n      val make : (([< `A ] as 'a) -> 'b) -> ('a -> 'c) -> 'a -> 'c\n      val f : [ `A ] -> unit\n    end\n",(testsuite/tests/typing-misc/variant.ml[38,793+11]..[45,981+0]),Some "")
+    ]
+  structure_item (testsuite/tests/typing-misc/variant.ml[49,1002+0]..[49,1002+50])
+    Pstr_type Rec
+    [
+      type_declaration "def" (testsuite/tests/typing-misc/variant.ml[49,1002+13]..[49,1002+16]) (testsuite/tests/typing-misc/variant.ml[49,1002+0]..[49,1002+50])
+        ptype_params =
+          [
+            core_type (testsuite/tests/typing-misc/variant.ml[49,1002+6]..[49,1002+8])
+              Ptyp_var a
+            core_type (testsuite/tests/typing-misc/variant.ml[49,1002+9]..[49,1002+11])
+              Ptyp_var b
+          ]
+        ptype_cstrs =
+          [
+            <constraint> (testsuite/tests/typing-misc/variant.ml[49,1002+39]..[49,1002+50])
+              core_type (testsuite/tests/typing-misc/variant.ml[49,1002+39]..[49,1002+41])
+                Ptyp_var b
+              core_type (testsuite/tests/typing-misc/variant.ml[49,1002+44]..[49,1002+50])
+                Ptyp_variant closed=Open
+                [
+                  Rtag "A" true
+                    []
+                ]
+                None
+          ]
+        ptype_kind =
+          Ptype_variant
+            [
+              (testsuite/tests/typing-misc/variant.ml[49,1002+19]..[49,1002+27])
+                "X" (testsuite/tests/typing-misc/variant.ml[49,1002+19]..[49,1002+20])
+                [
+                  core_type (testsuite/tests/typing-misc/variant.ml[49,1002+24]..[49,1002+27])
+                    Ptyp_constr "int" (testsuite/tests/typing-misc/variant.ml[49,1002+24]..[49,1002+27])
+                    []
+                ]
+                None
+            ]
+        ptype_private = Public
+        ptype_manifest =
+          None
+    ]
+  structure_item (testsuite/tests/typing-misc/variant.ml[51,1054+0]..[51,1054+39])
+    Pstr_type Rec
+    [
+      type_declaration "arity" (testsuite/tests/typing-misc/variant.ml[51,1054+5]..[51,1054+10]) (testsuite/tests/typing-misc/variant.ml[51,1054+0]..[51,1054+39])
+        ptype_params =
+          []
+        ptype_cstrs =
+          []
+        ptype_kind =
+          Ptype_variant
+            [
+              (testsuite/tests/typing-misc/variant.ml[51,1054+31]..[51,1054+39])
+                "X" (testsuite/tests/typing-misc/variant.ml[51,1054+31]..[51,1054+32])
+                [
+                  core_type (testsuite/tests/typing-misc/variant.ml[51,1054+36]..[51,1054+39])
+                    Ptyp_constr "int" (testsuite/tests/typing-misc/variant.ml[51,1054+36]..[51,1054+39])
+                    []
+                ]
+                None
+            ]
+        ptype_private = Public
+        ptype_manifest =
+          Some
+            core_type (testsuite/tests/typing-misc/variant.ml[51,1054+13]..[51,1054+28])
+              Ptyp_constr "def" (testsuite/tests/typing-misc/variant.ml[51,1054+25]..[51,1054+28])
+              [
+                core_type (testsuite/tests/typing-misc/variant.ml[51,1054+14]..[51,1054+17])
+                  Ptyp_constr "int" (testsuite/tests/typing-misc/variant.ml[51,1054+14]..[51,1054+17])
+                  []
+                core_type (testsuite/tests/typing-misc/variant.ml[51,1054+19]..[51,1054+23])
+                  Ptyp_variant closed=Closed
+                  [
+                    Rtag "A" true
+                      []
+                  ]
+                  None
+              ]
+    ]
+  structure_item (testsuite/tests/typing-misc/variant.ml[52,1096+0]..[60,1408+3])
+    Pstr_extension "expect"
+    [
+      structure_item (testsuite/tests/typing-misc/variant.ml[52,1096+9]..[60,1408+2])
+        Pstr_eval
+        expression (testsuite/tests/typing-misc/variant.ml[52,1096+9]..[60,1408+2])
+          Pexp_constant PConst_string ("\ntype ('a, 'b) def = X of int constraint 'b = [> `A ]\nLine 3, characters 0-39:\n3 | type arity = (int, [`A]) def = X of int;;\n    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nError: This variant or record definition does not match that of type\n         (int, [ `A ]) def\n       They have different arities.\n",(testsuite/tests/typing-misc/variant.ml[52,1096+11]..[60,1408+0]),Some "")
+    ]
+  structure_item (testsuite/tests/typing-misc/variant.ml[62,1413+0]..[62,1413+41])
+    Pstr_type Rec
+    [
+      type_declaration "ct" (testsuite/tests/typing-misc/variant.ml[62,1413+13]..[62,1413+15]) (testsuite/tests/typing-misc/variant.ml[62,1413+0]..[62,1413+41])
+        ptype_params =
+          [
+            core_type (testsuite/tests/typing-misc/variant.ml[62,1413+6]..[62,1413+8])
+              Ptyp_var a
+            core_type (testsuite/tests/typing-misc/variant.ml[62,1413+9]..[62,1413+11])
+              Ptyp_var b
+          ]
+        ptype_cstrs =
+          []
+        ptype_kind =
+          Ptype_variant
+            [
+              (testsuite/tests/typing-misc/variant.ml[62,1413+33]..[62,1413+41])
+                "X" (testsuite/tests/typing-misc/variant.ml[62,1413+33]..[62,1413+34])
+                [
+                  core_type (testsuite/tests/typing-misc/variant.ml[62,1413+38]..[62,1413+41])
+                    Ptyp_constr "int" (testsuite/tests/typing-misc/variant.ml[62,1413+38]..[62,1413+41])
+                    []
+                ]
+                None
+            ]
+        ptype_private = Public
+        ptype_manifest =
+          Some
+            core_type (testsuite/tests/typing-misc/variant.ml[62,1413+18]..[62,1413+30])
+              Ptyp_constr "def" (testsuite/tests/typing-misc/variant.ml[62,1413+27]..[62,1413+30])
+              [
+                core_type (testsuite/tests/typing-misc/variant.ml[62,1413+19]..[62,1413+22])
+                  Ptyp_constr "int" (testsuite/tests/typing-misc/variant.ml[62,1413+19]..[62,1413+22])
+                  []
+                core_type (testsuite/tests/typing-misc/variant.ml[62,1413+23]..[62,1413+25])
+                  Ptyp_var b
+              ]
+    ]
+  structure_item (testsuite/tests/typing-misc/variant.ml[63,1457+0]..[71,1764+3])
+    Pstr_extension "expect"
+    [
+      structure_item (testsuite/tests/typing-misc/variant.ml[63,1457+9]..[71,1764+2])
+        Pstr_eval
+        expression (testsuite/tests/typing-misc/variant.ml[63,1457+9]..[71,1764+2])
+          Pexp_constant PConst_string ("\nLine 1, characters 0-41:\n1 | type ('a,'b) ct = (int,'b) def = X of int;;\n    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nError: This variant or record definition does not match that of type\n         (int, [> `A ]) def\n       Their parameters differ\n       The type int is not equal to the type 'a\n",(testsuite/tests/typing-misc/variant.ml[63,1457+11]..[71,1764+0]),Some "")
+    ]
+  structure_item (testsuite/tests/typing-misc/variant.ml[73,1769+0]..[73,1769+65])
+    Pstr_type Rec
+    [
+      type_declaration "kind" (testsuite/tests/typing-misc/variant.ml[73,1769+13]..[73,1769+17]) (testsuite/tests/typing-misc/variant.ml[73,1769+0]..[73,1769+65])
+        ptype_params =
+          [
+            core_type (testsuite/tests/typing-misc/variant.ml[73,1769+6]..[73,1769+8])
+              Ptyp_var a
+            core_type (testsuite/tests/typing-misc/variant.ml[73,1769+9]..[73,1769+11])
+              Ptyp_var b
+          ]
+        ptype_cstrs =
+          [
+            <constraint> (testsuite/tests/typing-misc/variant.ml[73,1769+54]..[73,1769+65])
+              core_type (testsuite/tests/typing-misc/variant.ml[73,1769+54]..[73,1769+56])
+                Ptyp_var b
+              core_type (testsuite/tests/typing-misc/variant.ml[73,1769+59]..[73,1769+65])
+                Ptyp_variant closed=Open
+                [
+                  Rtag "A" true
+                    []
+                ]
+                None
+          ]
+        ptype_kind =
+          Ptype_record
+            [
+              (testsuite/tests/typing-misc/variant.ml[73,1769+36]..[73,1769+41])
+                Immutable
+                "a" (testsuite/tests/typing-misc/variant.ml[73,1769+36]..[73,1769+37])                core_type (testsuite/tests/typing-misc/variant.ml[73,1769+38]..[73,1769+41])
+                  Ptyp_constr "int" (testsuite/tests/typing-misc/variant.ml[73,1769+38]..[73,1769+41])
+                  []
+            ]
+        ptype_private = Public
+        ptype_manifest =
+          Some
+            core_type (testsuite/tests/typing-misc/variant.ml[73,1769+20]..[73,1769+32])
+              Ptyp_constr "def" (testsuite/tests/typing-misc/variant.ml[73,1769+29]..[73,1769+32])
+              [
+                core_type (testsuite/tests/typing-misc/variant.ml[73,1769+21]..[73,1769+23])
+                  Ptyp_var a
+                core_type (testsuite/tests/typing-misc/variant.ml[73,1769+25]..[73,1769+27])
+                  Ptyp_var b
+              ]
+    ]
+  structure_item (testsuite/tests/typing-misc/variant.ml[74,1837+0]..[81,2139+3])
+    Pstr_extension "expect"
+    [
+      structure_item (testsuite/tests/typing-misc/variant.ml[74,1837+9]..[81,2139+2])
+        Pstr_eval
+        expression (testsuite/tests/typing-misc/variant.ml[74,1837+9]..[81,2139+2])
+          Pexp_constant PConst_string ("\nLine 1, characters 0-65:\n1 | type ('a,'b) kind = ('a, 'b) def = {a:int} constraint 'b = [> `A];;\n    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nError: This variant or record definition does not match that of type\n         ('a, [> `A ]) def\n       Their kinds differ.\n",(testsuite/tests/typing-misc/variant.ml[74,1837+11]..[81,2139+0]),Some "")
+    ]
+  structure_item (testsuite/tests/typing-misc/variant.ml[83,2144+0]..[83,2144+28])
+    Pstr_type Rec
+    [
+      type_declaration "d" (testsuite/tests/typing-misc/variant.ml[83,2144+5]..[83,2144+6]) (testsuite/tests/typing-misc/variant.ml[83,2144+0]..[83,2144+28])
+        ptype_params =
+          []
+        ptype_cstrs =
+          []
+        ptype_kind =
+          Ptype_variant
+            [
+              (testsuite/tests/typing-misc/variant.ml[83,2144+9]..[83,2144+17])
+                "X" (testsuite/tests/typing-misc/variant.ml[83,2144+9]..[83,2144+10])
+                [
+                  core_type (testsuite/tests/typing-misc/variant.ml[83,2144+14]..[83,2144+17])
+                    Ptyp_constr "int" (testsuite/tests/typing-misc/variant.ml[83,2144+14]..[83,2144+17])
+                    []
+                ]
+                None
+              (testsuite/tests/typing-misc/variant.ml[83,2144+18]..[83,2144+28])
+                "Y" (testsuite/tests/typing-misc/variant.ml[83,2144+20]..[83,2144+21])
+                [
+                  core_type (testsuite/tests/typing-misc/variant.ml[83,2144+25]..[83,2144+28])
+                    Ptyp_constr "int" (testsuite/tests/typing-misc/variant.ml[83,2144+25]..[83,2144+28])
+                    []
+                ]
+                None
+            ]
+        ptype_private = Public
+        ptype_manifest =
+          None
+    ]
+  structure_item (testsuite/tests/typing-misc/variant.ml[85,2174+0]..[85,2174+27])
+    Pstr_type Rec
+    [
+      type_declaration "missing" (testsuite/tests/typing-misc/variant.ml[85,2174+5]..[85,2174+12]) (testsuite/tests/typing-misc/variant.ml[85,2174+0]..[85,2174+27])
+        ptype_params =
+          []
+        ptype_cstrs =
+          []
+        ptype_kind =
+          Ptype_variant
+            [
+              (testsuite/tests/typing-misc/variant.ml[85,2174+19]..[85,2174+27])
+                "X" (testsuite/tests/typing-misc/variant.ml[85,2174+19]..[85,2174+20])
+                [
+                  core_type (testsuite/tests/typing-misc/variant.ml[85,2174+24]..[85,2174+27])
+                    Ptyp_constr "int" (testsuite/tests/typing-misc/variant.ml[85,2174+24]..[85,2174+27])
+                    []
+                ]
+                None
+            ]
+        ptype_private = Public
+        ptype_manifest =
+          Some
+            core_type (testsuite/tests/typing-misc/variant.ml[85,2174+15]..[85,2174+16])
+              Ptyp_constr "d" (testsuite/tests/typing-misc/variant.ml[85,2174+15]..[85,2174+16])
+              []
+    ]
+  structure_item (testsuite/tests/typing-misc/variant.ml[86,2202+0]..[93,2475+3])
+    Pstr_extension "expect"
+    [
+      structure_item (testsuite/tests/typing-misc/variant.ml[86,2202+9]..[93,2475+2])
+        Pstr_eval
+        expression (testsuite/tests/typing-misc/variant.ml[86,2202+9]..[93,2475+2])
+          Pexp_constant PConst_string ("\ntype d = X of int | Y of int\nLine 3, characters 0-27:\n3 | type missing = d = X of int\n    ^^^^^^^^^^^^^^^^^^^^^^^^^^^\nError: This variant or record definition does not match that of type d\n       An extra constructor, Y, is provided in the original definition.\n",(testsuite/tests/typing-misc/variant.ml[86,2202+11]..[93,2475+0]),Some "")
+    ]
+  structure_item (testsuite/tests/typing-misc/variant.ml[95,2480+0]..[95,2480+32])
+    Pstr_type Rec
+    [
+      type_declaration "wrong_type" (testsuite/tests/typing-misc/variant.ml[95,2480+5]..[95,2480+15]) (testsuite/tests/typing-misc/variant.ml[95,2480+0]..[95,2480+32])
+        ptype_params =
+          []
+        ptype_cstrs =
+          []
+        ptype_kind =
+          Ptype_variant
+            [
+              (testsuite/tests/typing-misc/variant.ml[95,2480+22]..[95,2480+32])
+                "X" (testsuite/tests/typing-misc/variant.ml[95,2480+22]..[95,2480+23])
+                [
+                  core_type (testsuite/tests/typing-misc/variant.ml[95,2480+27]..[95,2480+32])
+                    Ptyp_constr "float" (testsuite/tests/typing-misc/variant.ml[95,2480+27]..[95,2480+32])
+                    []
+                ]
+                None
+            ]
+        ptype_private = Public
+        ptype_manifest =
+          Some
+            core_type (testsuite/tests/typing-misc/variant.ml[95,2480+18]..[95,2480+19])
+              Ptyp_constr "d" (testsuite/tests/typing-misc/variant.ml[95,2480+18]..[95,2480+19])
+              []
+    ]
+  structure_item (testsuite/tests/typing-misc/variant.ml[96,2513+0]..[107,2923+3])
+    Pstr_extension "expect"
+    [
+      structure_item (testsuite/tests/typing-misc/variant.ml[96,2513+9]..[107,2923+2])
+        Pstr_eval
+        expression (testsuite/tests/typing-misc/variant.ml[96,2513+9]..[107,2923+2])
+          Pexp_constant PConst_string ("\nLine 1, characters 0-32:\n1 | type wrong_type = d = X of float\n    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nError: This variant or record definition does not match that of type d\n       1. Constructors do not match:\n         X of int\n       is not the same as:\n         X of float\n       The type int is not equal to the type float\n       2. An extra constructor, Y, is provided in the original definition.\n",(testsuite/tests/typing-misc/variant.ml[96,2513+11]..[107,2923+0]),Some "")
+    ]
+  structure_item (testsuite/tests/typing-misc/variant.ml[109,2928+0]..[109,2928+24])
+    Pstr_type Rec
+    [
+      type_declaration "mono" (testsuite/tests/typing-misc/variant.ml[109,2928+5]..[109,2928+9]) (testsuite/tests/typing-misc/variant.ml[109,2928+0]..[109,2928+24])
+        ptype_params =
+          []
+        ptype_cstrs =
+          []
+        ptype_kind =
+          Ptype_variant
+            [
+              (testsuite/tests/typing-misc/variant.ml[109,2928+12]..[109,2928+24])
+                "Foo" (testsuite/tests/typing-misc/variant.ml[109,2928+12]..[109,2928+15])
+                [
+                  core_type (testsuite/tests/typing-misc/variant.ml[109,2928+19]..[109,2928+24])
+                    Ptyp_constr "float" (testsuite/tests/typing-misc/variant.ml[109,2928+19]..[109,2928+24])
+                    []
+                ]
+                None
+            ]
+        ptype_private = Public
+        ptype_manifest =
+          None
+    ]
+  structure_item (testsuite/tests/typing-misc/variant.ml[110,2953+0]..[110,2953+46])
+    Pstr_type Rec
+    [
+      type_declaration "unboxed" (testsuite/tests/typing-misc/variant.ml[110,2953+5]..[110,2953+12]) (testsuite/tests/typing-misc/variant.ml[110,2953+0]..[110,2953+46])
+        attribute "unboxed"
+          []
+        ptype_params =
+          []
+        ptype_cstrs =
+          []
+        ptype_kind =
+          Ptype_variant
+            [
+              (testsuite/tests/typing-misc/variant.ml[110,2953+22]..[110,2953+34])
+                "Foo" (testsuite/tests/typing-misc/variant.ml[110,2953+22]..[110,2953+25])
+                [
+                  core_type (testsuite/tests/typing-misc/variant.ml[110,2953+29]..[110,2953+34])
+                    Ptyp_constr "float" (testsuite/tests/typing-misc/variant.ml[110,2953+29]..[110,2953+34])
+                    []
+                ]
+                None
+            ]
+        ptype_private = Public
+        ptype_manifest =
+          Some
+            core_type (testsuite/tests/typing-misc/variant.ml[110,2953+15]..[110,2953+19])
+              Ptyp_constr "mono" (testsuite/tests/typing-misc/variant.ml[110,2953+15]..[110,2953+19])
+              []
+    ]
+  structure_item (testsuite/tests/typing-misc/variant.ml[111,3000+0]..[119,3336+3])
+    Pstr_extension "expect"
+    [
+      structure_item (testsuite/tests/typing-misc/variant.ml[111,3000+9]..[119,3336+2])
+        Pstr_eval
+        expression (testsuite/tests/typing-misc/variant.ml[111,3000+9]..[119,3336+2])
+          Pexp_constant PConst_string ("\ntype mono = Foo of float\nLine 2, characters 0-46:\n2 | type unboxed = mono = Foo of float [@@unboxed]\n    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nError: This variant or record definition does not match that of type mono\n       Their internal representations differ:\n       this definition uses unboxed representation.\n",(testsuite/tests/typing-misc/variant.ml[111,3000+11]..[119,3336+0]),Some "")
+    ]
+  structure_item (testsuite/tests/typing-misc/variant.ml[121,3341+0]..[121,3341+35])
+    Pstr_type Rec
+    [
+      type_declaration "perm" (testsuite/tests/typing-misc/variant.ml[121,3341+5]..[121,3341+9]) (testsuite/tests/typing-misc/variant.ml[121,3341+0]..[121,3341+35])
+        ptype_params =
+          []
+        ptype_cstrs =
+          []
+        ptype_kind =
+          Ptype_variant
+            [
+              (testsuite/tests/typing-misc/variant.ml[121,3341+16]..[121,3341+24])
+                "Y" (testsuite/tests/typing-misc/variant.ml[121,3341+16]..[121,3341+17])
+                [
+                  core_type (testsuite/tests/typing-misc/variant.ml[121,3341+21]..[121,3341+24])
+                    Ptyp_constr "int" (testsuite/tests/typing-misc/variant.ml[121,3341+21]..[121,3341+24])
+                    []
+                ]
+                None
+              (testsuite/tests/typing-misc/variant.ml[121,3341+25]..[121,3341+35])
+                "X" (testsuite/tests/typing-misc/variant.ml[121,3341+27]..[121,3341+28])
+                [
+                  core_type (testsuite/tests/typing-misc/variant.ml[121,3341+32]..[121,3341+35])
+                    Ptyp_constr "int" (testsuite/tests/typing-misc/variant.ml[121,3341+32]..[121,3341+35])
+                    []
+                ]
+                None
+            ]
+        ptype_private = Public
+        ptype_manifest =
+          Some
+            core_type (testsuite/tests/typing-misc/variant.ml[121,3341+12]..[121,3341+13])
+              Ptyp_constr "d" (testsuite/tests/typing-misc/variant.ml[121,3341+12]..[121,3341+13])
+              []
+    ]
+  structure_item (testsuite/tests/typing-misc/variant.ml[122,3377+0]..[128,3612+3])
+    Pstr_extension "expect"
+    [
+      structure_item (testsuite/tests/typing-misc/variant.ml[122,3377+9]..[128,3612+2])
+        Pstr_eval
+        expression (testsuite/tests/typing-misc/variant.ml[122,3377+9]..[128,3612+2])
+          Pexp_constant PConst_string ("\nLine 1, characters 0-35:\n1 | type perm = d = Y of int | X of int\n    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nError: This variant or record definition does not match that of type d\n       Constructors X and Y have been swapped.\n",(testsuite/tests/typing-misc/variant.ml[122,3377+11]..[128,3612+0]),Some "")
+    ]
+  structure_item (testsuite/tests/typing-misc/variant.ml[130,3617+0]..[134,3693+3])
+    Pstr_module
+    "M" (testsuite/tests/typing-misc/variant.ml[130,3617+7]..[130,3617+8])
+      module_expr (testsuite/tests/typing-misc/variant.ml[130,3617+9]..[134,3693+3])
+        Pmod_constraint
+        module_expr (testsuite/tests/typing-misc/variant.ml[132,3654+6]..[134,3693+3])
+          Pmod_structure
+          [
+            structure_item (testsuite/tests/typing-misc/variant.ml[133,3667+2]..[133,3667+25])
+              Pstr_type Rec
+              [
+                type_declaration "t" (testsuite/tests/typing-misc/variant.ml[133,3667+7]..[133,3667+8]) (testsuite/tests/typing-misc/variant.ml[133,3667+2]..[133,3667+25])
+                  ptype_params =
+                    []
+                  ptype_cstrs =
+                    []
+                  ptype_kind =
+                    Ptype_variant
+                      [
+                        (testsuite/tests/typing-misc/variant.ml[133,3667+11]..[133,3667+25])
+                          "Foo" (testsuite/tests/typing-misc/variant.ml[133,3667+11]..[133,3667+14])
+                          [
+                            core_type (testsuite/tests/typing-misc/variant.ml[133,3667+17]..[133,3667+20])
+                              Ptyp_constr "int" (testsuite/tests/typing-misc/variant.ml[133,3667+17]..[133,3667+20])
+                              []
+                          ]
+                          Some
+                            core_type (testsuite/tests/typing-misc/variant.ml[133,3667+24]..[133,3667+25])
+                              Ptyp_constr "t" (testsuite/tests/typing-misc/variant.ml[133,3667+24]..[133,3667+25])
+                              []
+                      ]
+                  ptype_private = Public
+                  ptype_manifest =
+                    None
+              ]
+          ]
+        module_type (testsuite/tests/typing-misc/variant.ml[130,3617+11]..[132,3654+3])
+          Pmty_signature
+          [
+            signature_item (testsuite/tests/typing-misc/variant.ml[131,3632+2]..[131,3632+21])
+              Psig_type Rec
+              [
+                type_declaration "t" (testsuite/tests/typing-misc/variant.ml[131,3632+7]..[131,3632+8]) (testsuite/tests/typing-misc/variant.ml[131,3632+2]..[131,3632+21])
+                  ptype_params =
+                    []
+                  ptype_cstrs =
+                    []
+                  ptype_kind =
+                    Ptype_variant
+                      [
+                        (testsuite/tests/typing-misc/variant.ml[131,3632+11]..[131,3632+21])
+                          "Foo" (testsuite/tests/typing-misc/variant.ml[131,3632+11]..[131,3632+14])
+                          [
+                            core_type (testsuite/tests/typing-misc/variant.ml[131,3632+18]..[131,3632+21])
+                              Ptyp_constr "int" (testsuite/tests/typing-misc/variant.ml[131,3632+18]..[131,3632+21])
+                              []
+                          ]
+                          None
+                      ]
+                  ptype_private = Public
+                  ptype_manifest =
+                    None
+              ]
+          ]
+  structure_item (testsuite/tests/typing-misc/variant.ml[135,3699+0]..[154,4253+3])
+    Pstr_extension "expect"
+    [
+      structure_item (testsuite/tests/typing-misc/variant.ml[135,3699+9]..[154,4253+2])
+        Pstr_eval
+        expression (testsuite/tests/typing-misc/variant.ml[135,3699+9]..[154,4253+2])
+          Pexp_constant PConst_string ("\nLines 3-5, characters 6-3:\n3 | ......struct\n4 |   type t = Foo : int -> t\n5 | end..\nError: Signature mismatch:\n       Modules do not match:\n         sig type t = Foo : int -> t end\n       is not included in\n         sig type t = Foo of int end\n       Type declarations do not match:\n         type t = Foo : int -> t\n       is not included in\n         type t = Foo of int\n       Constructors do not match:\n         Foo : int -> t\n       is not the same as:\n         Foo of int\n       The first has explicit return type and the second doesn't.\n",(testsuite/tests/typing-misc/variant.ml[135,3699+11]..[154,4253+0]),Some "")
+    ]
+]
+

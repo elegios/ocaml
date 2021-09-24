@@ -1,0 +1,75 @@
+[
+  structure_item (testsuite/tests/typing-objects/pr6907_bad.ml[5,24+0]..[7,82+3])
+    Pstr_class_type
+    [
+      class_type_declaration (testsuite/tests/typing-objects/pr6907_bad.ml[5,24+0]..[7,82+3])
+        pci_virt = Concrete
+        pci_params =
+          [
+            core_type (testsuite/tests/typing-objects/pr6907_bad.ml[5,24+12]..[5,24+14])
+              Ptyp_var e
+          ]
+        pci_name = "t" (testsuite/tests/typing-objects/pr6907_bad.ml[5,24+16]..[5,24+17])
+        pci_expr =
+          class_type (testsuite/tests/typing-objects/pr6907_bad.ml[5,24+20]..[7,82+3])
+            Pcty_signature
+            class_signature
+              core_type (testsuite/tests/typing-objects/pr6907_bad.ml[5,24+27]..[5,24+29])
+                Ptyp_var s
+              [
+                class_type_field (testsuite/tests/typing-objects/pr6907_bad.ml[6,55+2]..[6,55+26])
+                  Pctf_method "update" Public Concrete
+                    core_type (testsuite/tests/typing-objects/pr6907_bad.ml[6,55+18]..[6,55+26])
+                      Ptyp_arrow
+                      Nolabel
+                      core_type (testsuite/tests/typing-objects/pr6907_bad.ml[6,55+18]..[6,55+20])
+                        Ptyp_var e
+                      core_type (testsuite/tests/typing-objects/pr6907_bad.ml[6,55+24]..[6,55+26])
+                        Ptyp_var s
+              ]
+    ]
+  structure_item (testsuite/tests/typing-objects/pr6907_bad.ml[8,88+0]..[10,161+3])
+    Pstr_extension "expect"
+    [
+      structure_item (testsuite/tests/typing-objects/pr6907_bad.ml[8,88+9]..[10,161+2])
+        Pstr_eval
+        expression (testsuite/tests/typing-objects/pr6907_bad.ml[8,88+9]..[10,161+2])
+          Pexp_constant PConst_string ("\nclass type ['e] t = object ('a) method update : 'e -> 'a end\n",(testsuite/tests/typing-objects/pr6907_bad.ml[8,88+11]..[10,161+0]),Some "")
+    ]
+  structure_item (testsuite/tests/typing-objects/pr6907_bad.ml[12,168+0]..[14,216+3])
+    Pstr_modtype "S" (testsuite/tests/typing-objects/pr6907_bad.ml[12,168+12]..[12,168+13])
+      module_type (testsuite/tests/typing-objects/pr6907_bad.ml[12,168+16]..[14,216+3])
+        Pmty_signature
+        [
+          signature_item (testsuite/tests/typing-objects/pr6907_bad.ml[13,188+2]..[13,188+27])
+            Psig_class
+            [
+              class_description (testsuite/tests/typing-objects/pr6907_bad.ml[13,188+2]..[13,188+27])
+                pci_virt = Concrete
+                pci_params =
+                  []
+                pci_name = "base" (testsuite/tests/typing-objects/pr6907_bad.ml[13,188+8]..[13,188+12])
+                pci_expr =
+                  class_type (testsuite/tests/typing-objects/pr6907_bad.ml[13,188+15]..[13,188+27])
+                    Pcty_arrow
+                    Nolabel
+                    core_type (testsuite/tests/typing-objects/pr6907_bad.ml[13,188+15]..[13,188+17])
+                      Ptyp_var e
+                    class_type (testsuite/tests/typing-objects/pr6907_bad.ml[13,188+21]..[13,188+27])
+                      Pcty_constr "t" (testsuite/tests/typing-objects/pr6907_bad.ml[13,188+26]..[13,188+27])
+                      [
+                        core_type (testsuite/tests/typing-objects/pr6907_bad.ml[13,188+22]..[13,188+24])
+                          Ptyp_var e
+                      ]
+            ]
+        ]
+  structure_item (testsuite/tests/typing-objects/pr6907_bad.ml[15,222+0]..[22,477+3])
+    Pstr_extension "expect"
+    [
+      structure_item (testsuite/tests/typing-objects/pr6907_bad.ml[15,222+9]..[22,477+2])
+        Pstr_eval
+        expression (testsuite/tests/typing-objects/pr6907_bad.ml[15,222+9]..[22,477+2])
+          Pexp_constant PConst_string ("\nLine 2, characters 2-27:\n2 |   class base : 'e -> ['e] t\n      ^^^^^^^^^^^^^^^^^^^^^^^^^\nError: Some type variables are unbound in this type:\n         class base : 'e -> ['e] t\n       The method update has type 'e -> #base where 'e is unbound\n",(testsuite/tests/typing-objects/pr6907_bad.ml[15,222+11]..[22,477+0]),Some "")
+    ]
+]
+

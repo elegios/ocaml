@@ -1,0 +1,513 @@
+[
+  signature_item (stdlib/printf.mli[16,1079+0]..[16,1079+34])
+    Psig_attribute "ocaml.text"
+    [
+      structure_item (stdlib/printf.mli[16,1079+0]..[16,1079+34])
+        Pstr_eval
+        expression (stdlib/printf.mli[16,1079+0]..[16,1079+34])
+          Pexp_constant PConst_string(" Formatted output functions. ",(stdlib/printf.mli[16,1079+0]..[16,1079+34]),None)
+    ]
+  signature_item (stdlib/printf.mli[18,1115+0]..[18,1115+65])
+    Psig_value
+    value_description "fprintf" (stdlib/printf.mli[18,1115+4]..[18,1115+11]) (stdlib/printf.mli[18,1115+0]..[18,1115+65])
+      attribute "ocaml.doc"
+        [
+          structure_item (stdlib/printf.mli[19,1181+0]..[127,6822+65])
+            Pstr_eval
+            expression (stdlib/printf.mli[19,1181+0]..[127,6822+65])
+              Pexp_constant PConst_string(" [fprintf outchan format arg1 ... argN] formats the arguments\n   [arg1] to [argN] according to the format string [format], and\n   outputs the resulting string on the channel [outchan].\n\n   The format string is a character string which contains two types of\n   objects: plain characters, which are simply copied to the output\n   channel, and conversion specifications, each of which causes\n   conversion and printing of arguments.\n\n   Conversion specifications have the following form:\n\n   [% [flags] [width] [.precision] type]\n\n   In short, a conversion specification consists in the [%] character,\n   followed by optional modifiers and a type which is made of one or\n   two characters.\n\n   The types and their meanings are:\n\n   - [d], [i]: convert an integer argument to signed decimal.\n     The flag [#] adds underscores to large values for readability.\n   - [u], [n], [l], [L], or [N]: convert an integer argument to\n     unsigned decimal.  Warning: [n], [l], [L], and [N] are\n     used for [scanf], and should not be used for [printf].\n     The flag [#] adds underscores to large values for readability.\n   - [x]: convert an integer argument to unsigned hexadecimal,\n     using lowercase letters.\n     The flag [#] adds a [0x] prefix to non zero values.\n   - [X]: convert an integer argument to unsigned hexadecimal,\n     using uppercase letters.\n     The flag [#] adds a [0X] prefix to non zero values.\n   - [o]: convert an integer argument to unsigned octal.\n     The flag [#] adds a [0] prefix to non zero values.\n   - [s]: insert a string argument.\n   - [S]: convert a string argument to OCaml syntax (double quotes, escapes).\n   - [c]: insert a character argument.\n   - [C]: convert a character argument to OCaml syntax\n     (single quotes, escapes).\n   - [f]: convert a floating-point argument to decimal notation,\n     in the style [dddd.ddd].\n   - [F]: convert a floating-point argument to OCaml syntax ([dddd.]\n     or [dddd.ddd] or [d.ddd e+-dd]).\n     Converts to hexadecimal with the [#] flag (see [h]).\n   - [e] or [E]: convert a floating-point argument to decimal notation,\n     in the style [d.ddd e+-dd] (mantissa and exponent).\n   - [g] or [G]: convert a floating-point argument to decimal notation,\n     in style [f] or [e], [E] (whichever is more compact). Moreover,\n     any trailing zeros are removed from the fractional part of the result\n     and the decimal-point character is removed if there is no fractional\n     part remaining.\n   - [h] or [H]: convert a floating-point argument to hexadecimal notation,\n     in the style [0xh.hhhh p+-dd] (hexadecimal mantissa, exponent in\n     decimal and denotes a power of 2).\n   - [B]: convert a boolean argument to the string [true] or [false]\n   - [b]: convert a boolean argument (deprecated; do not use in new\n     programs).\n   - [ld], [li], [lu], [lx], [lX], [lo]: convert an [int32] argument to\n     the format specified by the second letter (decimal, hexadecimal, etc).\n   - [nd], [ni], [nu], [nx], [nX], [no]: convert a [nativeint] argument to\n     the format specified by the second letter.\n   - [Ld], [Li], [Lu], [Lx], [LX], [Lo]: convert an [int64] argument to\n     the format specified by the second letter.\n   - [a]: user-defined printer. Take two arguments and apply the\n     first one to [outchan] (the current output channel) and to the\n     second argument. The first argument must therefore have type\n     [out_channel -> 'b -> unit] and the second ['b].\n     The output produced by the function is inserted in the output of\n     [fprintf] at the current point.\n   - [t]: same as [%a], but take only one argument (with type\n     [out_channel -> unit]) and apply it to [outchan].\n   - [\\{ fmt %\\}]: convert a format string argument to its type digest.\n     The argument must have the same type as the internal format string\n     [fmt].\n   - [( fmt %)]: format string substitution. Take a format string\n     argument and substitute it to the internal format string [fmt]\n     to print following arguments. The argument must have the same\n     type as the internal format string [fmt].\n   - [!]: take no argument and flush the output.\n   - [%]: take no argument and output one [%] character.\n   - [\\@]: take no argument and output one [\\@] character.\n   - [,]: take no argument and output nothing: a no-op delimiter for\n     conversion specifications.\n\n   The optional [flags] are:\n   - [-]: left-justify the output (default is right justification).\n   - [0]: for numerical conversions, pad with zeroes instead of spaces.\n   - [+]: for signed numerical conversions, prefix number with a [+]\n     sign if positive.\n   - space: for signed numerical conversions, prefix number with a\n     space if positive.\n   - [#]: request an alternate formatting style for the integer types\n     and the floating-point type [F].\n\n   The optional [width] is an integer indicating the minimal\n   width of the result. For instance, [%6d] prints an integer,\n   prefixing it with spaces to fill at least 6 characters.\n\n   The optional [precision] is a dot [.] followed by an integer\n   indicating how many digits follow the decimal point in the [%f],\n   [%e], [%E], [%h], and [%H] conversions or the maximum number of\n   significant digits to appear for the [%F], [%g] and [%G] conversions.\n   For instance, [%.4f] prints a [float] with 4 fractional digits.\n\n   The integer in a [width] or [precision] can also be specified as\n   [*], in which case an extra integer argument is taken to specify\n   the corresponding [width] or [precision]. This integer argument\n   precedes immediately the argument to print.\n   For instance, [%.*f] prints a [float] with as many fractional\n   digits as the value of the argument given before the float. ",(stdlib/printf.mli[19,1181+0]..[127,6822+65]),None)
+        ]
+      core_type (stdlib/printf.mli[18,1115+14]..[18,1115+65])
+        Ptyp_arrow
+        Nolabel
+        core_type (stdlib/printf.mli[18,1115+14]..[18,1115+25])
+          Ptyp_constr "out_channel" (stdlib/printf.mli[18,1115+14]..[18,1115+25])
+          []
+        core_type (stdlib/printf.mli[18,1115+29]..[18,1115+65])
+          Ptyp_arrow
+          Nolabel
+          core_type (stdlib/printf.mli[18,1115+29]..[18,1115+59])
+            Ptyp_constr "format" (stdlib/printf.mli[18,1115+53]..[18,1115+59])
+            [
+              core_type (stdlib/printf.mli[18,1115+30]..[18,1115+32])
+                Ptyp_var a
+              core_type (stdlib/printf.mli[18,1115+34]..[18,1115+45])
+                Ptyp_constr "out_channel" (stdlib/printf.mli[18,1115+34]..[18,1115+45])
+                []
+              core_type (stdlib/printf.mli[18,1115+47]..[18,1115+51])
+                Ptyp_constr "unit" (stdlib/printf.mli[18,1115+47]..[18,1115+51])
+                []
+            ]
+          core_type (stdlib/printf.mli[18,1115+63]..[18,1115+65])
+            Ptyp_var a
+      []
+  signature_item (stdlib/printf.mli[129,6889+0]..[129,6889+49])
+    Psig_value
+    value_description "printf" (stdlib/printf.mli[129,6889+4]..[129,6889+10]) (stdlib/printf.mli[129,6889+0]..[129,6889+49])
+      attribute "ocaml.doc"
+        [
+          structure_item (stdlib/printf.mli[130,6939+0]..[130,6939+57])
+            Pstr_eval
+            expression (stdlib/printf.mli[130,6939+0]..[130,6939+57])
+              Pexp_constant PConst_string(" Same as {!Printf.fprintf}, but output on [stdout]. ",(stdlib/printf.mli[130,6939+0]..[130,6939+57]),None)
+        ]
+      core_type (stdlib/printf.mli[129,6889+13]..[129,6889+49])
+        Ptyp_arrow
+        Nolabel
+        core_type (stdlib/printf.mli[129,6889+13]..[129,6889+43])
+          Ptyp_constr "format" (stdlib/printf.mli[129,6889+37]..[129,6889+43])
+          [
+            core_type (stdlib/printf.mli[129,6889+14]..[129,6889+16])
+              Ptyp_var a
+            core_type (stdlib/printf.mli[129,6889+18]..[129,6889+29])
+              Ptyp_constr "out_channel" (stdlib/printf.mli[129,6889+18]..[129,6889+29])
+              []
+            core_type (stdlib/printf.mli[129,6889+31]..[129,6889+35])
+              Ptyp_constr "unit" (stdlib/printf.mli[129,6889+31]..[129,6889+35])
+              []
+          ]
+        core_type (stdlib/printf.mli[129,6889+47]..[129,6889+49])
+          Ptyp_var a
+      []
+  signature_item (stdlib/printf.mli[132,6998+0]..[132,6998+50])
+    Psig_value
+    value_description "eprintf" (stdlib/printf.mli[132,6998+4]..[132,6998+11]) (stdlib/printf.mli[132,6998+0]..[132,6998+50])
+      attribute "ocaml.doc"
+        [
+          structure_item (stdlib/printf.mli[133,7049+0]..[133,7049+57])
+            Pstr_eval
+            expression (stdlib/printf.mli[133,7049+0]..[133,7049+57])
+              Pexp_constant PConst_string(" Same as {!Printf.fprintf}, but output on [stderr]. ",(stdlib/printf.mli[133,7049+0]..[133,7049+57]),None)
+        ]
+      core_type (stdlib/printf.mli[132,6998+14]..[132,6998+50])
+        Ptyp_arrow
+        Nolabel
+        core_type (stdlib/printf.mli[132,6998+14]..[132,6998+44])
+          Ptyp_constr "format" (stdlib/printf.mli[132,6998+38]..[132,6998+44])
+          [
+            core_type (stdlib/printf.mli[132,6998+15]..[132,6998+17])
+              Ptyp_var a
+            core_type (stdlib/printf.mli[132,6998+19]..[132,6998+30])
+              Ptyp_constr "out_channel" (stdlib/printf.mli[132,6998+19]..[132,6998+30])
+              []
+            core_type (stdlib/printf.mli[132,6998+32]..[132,6998+36])
+              Ptyp_constr "unit" (stdlib/printf.mli[132,6998+32]..[132,6998+36])
+              []
+          ]
+        core_type (stdlib/printf.mli[132,6998+48]..[132,6998+50])
+          Ptyp_var a
+      []
+  signature_item (stdlib/printf.mli[135,7108+0]..[135,7108+45])
+    Psig_value
+    value_description "sprintf" (stdlib/printf.mli[135,7108+4]..[135,7108+11]) (stdlib/printf.mli[135,7108+0]..[135,7108+45])
+      attribute "ocaml.doc"
+        [
+          structure_item (stdlib/printf.mli[136,7154+0]..[137,7231+72])
+            Pstr_eval
+            expression (stdlib/printf.mli[136,7154+0]..[137,7231+72])
+              Pexp_constant PConst_string(" Same as {!Printf.fprintf}, but instead of printing on an output channel,\n   return a string containing the result of formatting the arguments. ",(stdlib/printf.mli[136,7154+0]..[137,7231+72]),None)
+        ]
+      core_type (stdlib/printf.mli[135,7108+14]..[135,7108+45])
+        Ptyp_arrow
+        Nolabel
+        core_type (stdlib/printf.mli[135,7108+14]..[135,7108+39])
+          Ptyp_constr "format" (stdlib/printf.mli[135,7108+33]..[135,7108+39])
+          [
+            core_type (stdlib/printf.mli[135,7108+15]..[135,7108+17])
+              Ptyp_var a
+            core_type (stdlib/printf.mli[135,7108+19]..[135,7108+23])
+              Ptyp_constr "unit" (stdlib/printf.mli[135,7108+19]..[135,7108+23])
+              []
+            core_type (stdlib/printf.mli[135,7108+25]..[135,7108+31])
+              Ptyp_constr "string" (stdlib/printf.mli[135,7108+25]..[135,7108+31])
+              []
+          ]
+        core_type (stdlib/printf.mli[135,7108+43]..[135,7108+45])
+          Ptyp_var a
+      []
+  signature_item (stdlib/printf.mli[139,7305+0]..[139,7305+59])
+    Psig_value
+    value_description "bprintf" (stdlib/printf.mli[139,7305+4]..[139,7305+11]) (stdlib/printf.mli[139,7305+0]..[139,7305+59])
+      attribute "ocaml.doc"
+        [
+          structure_item (stdlib/printf.mli[140,7365+0]..[142,7507+29])
+            Pstr_eval
+            expression (stdlib/printf.mli[140,7365+0]..[142,7507+29])
+              Pexp_constant PConst_string(" Same as {!Printf.fprintf}, but instead of printing on an output channel,\n   append the formatted arguments to the given extensible buffer\n   (see module {!Buffer}). ",(stdlib/printf.mli[140,7365+0]..[142,7507+29]),None)
+        ]
+      core_type (stdlib/printf.mli[139,7305+14]..[139,7305+59])
+        Ptyp_arrow
+        Nolabel
+        core_type (stdlib/printf.mli[139,7305+14]..[139,7305+22])
+          Ptyp_constr "Buffer.t" (stdlib/printf.mli[139,7305+14]..[139,7305+22])
+          []
+        core_type (stdlib/printf.mli[139,7305+26]..[139,7305+59])
+          Ptyp_arrow
+          Nolabel
+          core_type (stdlib/printf.mli[139,7305+26]..[139,7305+53])
+            Ptyp_constr "format" (stdlib/printf.mli[139,7305+47]..[139,7305+53])
+            [
+              core_type (stdlib/printf.mli[139,7305+27]..[139,7305+29])
+                Ptyp_var a
+              core_type (stdlib/printf.mli[139,7305+31]..[139,7305+39])
+                Ptyp_constr "Buffer.t" (stdlib/printf.mli[139,7305+31]..[139,7305+39])
+                []
+              core_type (stdlib/printf.mli[139,7305+41]..[139,7305+45])
+                Ptyp_constr "unit" (stdlib/printf.mli[139,7305+41]..[139,7305+45])
+                []
+            ]
+          core_type (stdlib/printf.mli[139,7305+57]..[139,7305+59])
+            Ptyp_var a
+      []
+  signature_item (stdlib/printf.mli[144,7538+0]..[144,7538+53])
+    Psig_value
+    value_description "ifprintf" (stdlib/printf.mli[144,7538+4]..[144,7538+12]) (stdlib/printf.mli[144,7538+0]..[144,7538+53])
+      attribute "ocaml.doc"
+        [
+          structure_item (stdlib/printf.mli[145,7592+0]..[148,7734+2])
+            Pstr_eval
+            expression (stdlib/printf.mli[145,7592+0]..[148,7734+2])
+              Pexp_constant PConst_string(" Same as {!Printf.fprintf}, but does not print anything.\n    Useful to ignore some material when conditionally printing.\n    @since 3.10.0\n",(stdlib/printf.mli[145,7592+0]..[148,7734+2]),None)
+        ]
+      core_type (stdlib/printf.mli[144,7538+15]..[144,7538+53])
+        Ptyp_arrow
+        Nolabel
+        core_type (stdlib/printf.mli[144,7538+15]..[144,7538+17])
+          Ptyp_var b
+        core_type (stdlib/printf.mli[144,7538+21]..[144,7538+53])
+          Ptyp_arrow
+          Nolabel
+          core_type (stdlib/printf.mli[144,7538+21]..[144,7538+47])
+            Ptyp_constr "format4" (stdlib/printf.mli[144,7538+40]..[144,7538+47])
+            [
+              core_type (stdlib/printf.mli[144,7538+22]..[144,7538+24])
+                Ptyp_var a
+              core_type (stdlib/printf.mli[144,7538+26]..[144,7538+28])
+                Ptyp_var b
+              core_type (stdlib/printf.mli[144,7538+30]..[144,7538+32])
+                Ptyp_var c
+              core_type (stdlib/printf.mli[144,7538+34]..[144,7538+38])
+                Ptyp_constr "unit" (stdlib/printf.mli[144,7538+34]..[144,7538+38])
+                []
+            ]
+          core_type (stdlib/printf.mli[144,7538+51]..[144,7538+53])
+            Ptyp_var a
+      []
+  signature_item (stdlib/printf.mli[150,7738+0]..[150,7738+60])
+    Psig_value
+    value_description "ibprintf" (stdlib/printf.mli[150,7738+4]..[150,7738+12]) (stdlib/printf.mli[150,7738+0]..[150,7738+60])
+      attribute "ocaml.doc"
+        [
+          structure_item (stdlib/printf.mli[151,7799+0]..[154,7941+2])
+            Pstr_eval
+            expression (stdlib/printf.mli[151,7799+0]..[154,7941+2])
+              Pexp_constant PConst_string(" Same as {!Printf.bprintf}, but does not print anything.\n    Useful to ignore some material when conditionally printing.\n    @since 4.11.0\n",(stdlib/printf.mli[151,7799+0]..[154,7941+2]),None)
+        ]
+      core_type (stdlib/printf.mli[150,7738+15]..[150,7738+60])
+        Ptyp_arrow
+        Nolabel
+        core_type (stdlib/printf.mli[150,7738+15]..[150,7738+23])
+          Ptyp_constr "Buffer.t" (stdlib/printf.mli[150,7738+15]..[150,7738+23])
+          []
+        core_type (stdlib/printf.mli[150,7738+27]..[150,7738+60])
+          Ptyp_arrow
+          Nolabel
+          core_type (stdlib/printf.mli[150,7738+27]..[150,7738+54])
+            Ptyp_constr "format" (stdlib/printf.mli[150,7738+48]..[150,7738+54])
+            [
+              core_type (stdlib/printf.mli[150,7738+28]..[150,7738+30])
+                Ptyp_var a
+              core_type (stdlib/printf.mli[150,7738+32]..[150,7738+40])
+                Ptyp_constr "Buffer.t" (stdlib/printf.mli[150,7738+32]..[150,7738+40])
+                []
+              core_type (stdlib/printf.mli[150,7738+42]..[150,7738+46])
+                Ptyp_constr "unit" (stdlib/printf.mli[150,7738+42]..[150,7738+46])
+                []
+            ]
+          core_type (stdlib/printf.mli[150,7738+58]..[150,7738+60])
+            Ptyp_var a
+      []
+  signature_item (stdlib/printf.mli[156,7945+0]..[156,7945+53])
+    Psig_attribute "ocaml.text"
+    [
+      structure_item (stdlib/printf.mli[156,7945+0]..[156,7945+53])
+        Pstr_eval
+        expression (stdlib/printf.mli[156,7945+0]..[156,7945+53])
+          Pexp_constant PConst_string(" Formatted output functions with continuations. ",(stdlib/printf.mli[156,7945+0]..[156,7945+53]),None)
+    ]
+  signature_item (stdlib/printf.mli[158,8000+0]..[159,8053+55])
+    Psig_value
+    value_description "kfprintf" (stdlib/printf.mli[158,8000+4]..[158,8000+12]) (stdlib/printf.mli[158,8000+0]..[159,8053+55])
+      attribute "ocaml.doc"
+        [
+          structure_item (stdlib/printf.mli[160,8109+0]..[163,8259+2])
+            Pstr_eval
+            expression (stdlib/printf.mli[160,8109+0]..[163,8259+2])
+              Pexp_constant PConst_string(" Same as [fprintf], but instead of returning immediately,\n   passes the out channel to its first argument at the end of printing.\n   @since 3.09.0\n",(stdlib/printf.mli[160,8109+0]..[163,8259+2]),None)
+        ]
+      core_type (stdlib/printf.mli[158,8000+15]..[159,8053+55])
+        Ptyp_arrow
+        Nolabel
+        core_type (stdlib/printf.mli[158,8000+16]..[158,8000+33])
+          Ptyp_arrow
+          Nolabel
+          core_type (stdlib/printf.mli[158,8000+16]..[158,8000+27])
+            Ptyp_constr "out_channel" (stdlib/printf.mli[158,8000+16]..[158,8000+27])
+            []
+          core_type (stdlib/printf.mli[158,8000+31]..[158,8000+33])
+            Ptyp_var d
+        core_type (stdlib/printf.mli[158,8000+38]..[159,8053+55])
+          Ptyp_arrow
+          Nolabel
+          core_type (stdlib/printf.mli[158,8000+38]..[158,8000+49])
+            Ptyp_constr "out_channel" (stdlib/printf.mli[158,8000+38]..[158,8000+49])
+            []
+          core_type (stdlib/printf.mli[159,8053+14]..[159,8053+55])
+            Ptyp_arrow
+            Nolabel
+            core_type (stdlib/printf.mli[159,8053+14]..[159,8053+49])
+              Ptyp_constr "format4" (stdlib/printf.mli[159,8053+42]..[159,8053+49])
+              [
+                core_type (stdlib/printf.mli[159,8053+15]..[159,8053+17])
+                  Ptyp_var a
+                core_type (stdlib/printf.mli[159,8053+19]..[159,8053+30])
+                  Ptyp_constr "out_channel" (stdlib/printf.mli[159,8053+19]..[159,8053+30])
+                  []
+                core_type (stdlib/printf.mli[159,8053+32]..[159,8053+36])
+                  Ptyp_constr "unit" (stdlib/printf.mli[159,8053+32]..[159,8053+36])
+                  []
+                core_type (stdlib/printf.mli[159,8053+38]..[159,8053+40])
+                  Ptyp_var d
+              ]
+            core_type (stdlib/printf.mli[159,8053+53]..[159,8053+55])
+              Ptyp_var a
+      []
+  signature_item (stdlib/printf.mli[165,8263+0]..[165,8263+66])
+    Psig_value
+    value_description "ikfprintf" (stdlib/printf.mli[165,8263+4]..[165,8263+13]) (stdlib/printf.mli[165,8263+0]..[165,8263+66])
+      attribute "ocaml.doc"
+        [
+          structure_item (stdlib/printf.mli[166,8330+0]..[169,8469+2])
+            Pstr_eval
+            expression (stdlib/printf.mli[166,8330+0]..[169,8469+2])
+              Pexp_constant PConst_string(" Same as [kfprintf] above, but does not print anything.\n   Useful to ignore some material when conditionally printing.\n   @since 4.01.0\n",(stdlib/printf.mli[166,8330+0]..[169,8469+2]),None)
+        ]
+      core_type (stdlib/printf.mli[165,8263+16]..[165,8263+66])
+        Ptyp_arrow
+        Nolabel
+        core_type (stdlib/printf.mli[165,8263+17]..[165,8263+25])
+          Ptyp_arrow
+          Nolabel
+          core_type (stdlib/printf.mli[165,8263+17]..[165,8263+19])
+            Ptyp_var b
+          core_type (stdlib/printf.mli[165,8263+23]..[165,8263+25])
+            Ptyp_var d
+        core_type (stdlib/printf.mli[165,8263+30]..[165,8263+66])
+          Ptyp_arrow
+          Nolabel
+          core_type (stdlib/printf.mli[165,8263+30]..[165,8263+32])
+            Ptyp_var b
+          core_type (stdlib/printf.mli[165,8263+36]..[165,8263+66])
+            Ptyp_arrow
+            Nolabel
+            core_type (stdlib/printf.mli[165,8263+36]..[165,8263+60])
+              Ptyp_constr "format4" (stdlib/printf.mli[165,8263+53]..[165,8263+60])
+              [
+                core_type (stdlib/printf.mli[165,8263+37]..[165,8263+39])
+                  Ptyp_var a
+                core_type (stdlib/printf.mli[165,8263+41]..[165,8263+43])
+                  Ptyp_var b
+                core_type (stdlib/printf.mli[165,8263+45]..[165,8263+47])
+                  Ptyp_var c
+                core_type (stdlib/printf.mli[165,8263+49]..[165,8263+51])
+                  Ptyp_var d
+              ]
+            core_type (stdlib/printf.mli[165,8263+64]..[165,8263+66])
+              Ptyp_var a
+      []
+  signature_item (stdlib/printf.mli[171,8473+0]..[171,8473+69])
+    Psig_value
+    value_description "ksprintf" (stdlib/printf.mli[171,8473+4]..[171,8473+12]) (stdlib/printf.mli[171,8473+0]..[171,8473+69])
+      attribute "ocaml.doc"
+        [
+          structure_item (stdlib/printf.mli[172,8543+0]..[175,8662+2])
+            Pstr_eval
+            expression (stdlib/printf.mli[172,8543+0]..[175,8662+2])
+              Pexp_constant PConst_string(" Same as [sprintf] above, but instead of returning the string,\n   passes it to the first argument.\n   @since 3.09.0\n",(stdlib/printf.mli[172,8543+0]..[175,8662+2]),None)
+        ]
+      core_type (stdlib/printf.mli[171,8473+15]..[171,8473+69])
+        Ptyp_arrow
+        Nolabel
+        core_type (stdlib/printf.mli[171,8473+16]..[171,8473+28])
+          Ptyp_arrow
+          Nolabel
+          core_type (stdlib/printf.mli[171,8473+16]..[171,8473+22])
+            Ptyp_constr "string" (stdlib/printf.mli[171,8473+16]..[171,8473+22])
+            []
+          core_type (stdlib/printf.mli[171,8473+26]..[171,8473+28])
+            Ptyp_var d
+        core_type (stdlib/printf.mli[171,8473+33]..[171,8473+69])
+          Ptyp_arrow
+          Nolabel
+          core_type (stdlib/printf.mli[171,8473+33]..[171,8473+63])
+            Ptyp_constr "format4" (stdlib/printf.mli[171,8473+56]..[171,8473+63])
+            [
+              core_type (stdlib/printf.mli[171,8473+34]..[171,8473+36])
+                Ptyp_var a
+              core_type (stdlib/printf.mli[171,8473+38]..[171,8473+42])
+                Ptyp_constr "unit" (stdlib/printf.mli[171,8473+38]..[171,8473+42])
+                []
+              core_type (stdlib/printf.mli[171,8473+44]..[171,8473+50])
+                Ptyp_constr "string" (stdlib/printf.mli[171,8473+44]..[171,8473+50])
+                []
+              core_type (stdlib/printf.mli[171,8473+52]..[171,8473+54])
+                Ptyp_var d
+            ]
+          core_type (stdlib/printf.mli[171,8473+67]..[171,8473+69])
+            Ptyp_var a
+      []
+  signature_item (stdlib/printf.mli[177,8666+0]..[178,8713+52])
+    Psig_value
+    value_description "kbprintf" (stdlib/printf.mli[177,8666+4]..[177,8666+12]) (stdlib/printf.mli[177,8666+0]..[178,8713+52])
+      attribute "ocaml.doc"
+        [
+          structure_item (stdlib/printf.mli[179,8766+0]..[182,8911+2])
+            Pstr_eval
+            expression (stdlib/printf.mli[179,8766+0]..[182,8911+2])
+              Pexp_constant PConst_string(" Same as [bprintf], but instead of returning immediately,\n   passes the buffer to its first argument at the end of printing.\n   @since 3.10.0\n",(stdlib/printf.mli[179,8766+0]..[182,8911+2]),None)
+        ]
+      core_type (stdlib/printf.mli[177,8666+15]..[178,8713+52])
+        Ptyp_arrow
+        Nolabel
+        core_type (stdlib/printf.mli[177,8666+16]..[177,8666+30])
+          Ptyp_arrow
+          Nolabel
+          core_type (stdlib/printf.mli[177,8666+16]..[177,8666+24])
+            Ptyp_constr "Buffer.t" (stdlib/printf.mli[177,8666+16]..[177,8666+24])
+            []
+          core_type (stdlib/printf.mli[177,8666+28]..[177,8666+30])
+            Ptyp_var d
+        core_type (stdlib/printf.mli[177,8666+35]..[178,8713+52])
+          Ptyp_arrow
+          Nolabel
+          core_type (stdlib/printf.mli[177,8666+35]..[177,8666+43])
+            Ptyp_constr "Buffer.t" (stdlib/printf.mli[177,8666+35]..[177,8666+43])
+            []
+          core_type (stdlib/printf.mli[178,8713+14]..[178,8713+52])
+            Ptyp_arrow
+            Nolabel
+            core_type (stdlib/printf.mli[178,8713+14]..[178,8713+46])
+              Ptyp_constr "format4" (stdlib/printf.mli[178,8713+39]..[178,8713+46])
+              [
+                core_type (stdlib/printf.mli[178,8713+15]..[178,8713+17])
+                  Ptyp_var a
+                core_type (stdlib/printf.mli[178,8713+19]..[178,8713+27])
+                  Ptyp_constr "Buffer.t" (stdlib/printf.mli[178,8713+19]..[178,8713+27])
+                  []
+                core_type (stdlib/printf.mli[178,8713+29]..[178,8713+33])
+                  Ptyp_constr "unit" (stdlib/printf.mli[178,8713+29]..[178,8713+33])
+                  []
+                core_type (stdlib/printf.mli[178,8713+35]..[178,8713+37])
+                  Ptyp_var d
+              ]
+            core_type (stdlib/printf.mli[178,8713+50]..[178,8713+52])
+              Ptyp_var a
+      []
+  signature_item (stdlib/printf.mli[184,8915+0]..[185,8963+53])
+    Psig_value
+    value_description "ikbprintf" (stdlib/printf.mli[184,8915+4]..[184,8915+13]) (stdlib/printf.mli[184,8915+0]..[185,8963+53])
+      attribute "ocaml.doc"
+        [
+          structure_item (stdlib/printf.mli[186,9017+0]..[189,9156+2])
+            Pstr_eval
+            expression (stdlib/printf.mli[186,9017+0]..[189,9156+2])
+              Pexp_constant PConst_string(" Same as [kbprintf] above, but does not print anything.\n   Useful to ignore some material when conditionally printing.\n   @since 4.11.0\n",(stdlib/printf.mli[186,9017+0]..[189,9156+2]),None)
+        ]
+      core_type (stdlib/printf.mli[184,8915+16]..[185,8963+53])
+        Ptyp_arrow
+        Nolabel
+        core_type (stdlib/printf.mli[184,8915+17]..[184,8915+31])
+          Ptyp_arrow
+          Nolabel
+          core_type (stdlib/printf.mli[184,8915+17]..[184,8915+25])
+            Ptyp_constr "Buffer.t" (stdlib/printf.mli[184,8915+17]..[184,8915+25])
+            []
+          core_type (stdlib/printf.mli[184,8915+29]..[184,8915+31])
+            Ptyp_var d
+        core_type (stdlib/printf.mli[184,8915+36]..[185,8963+53])
+          Ptyp_arrow
+          Nolabel
+          core_type (stdlib/printf.mli[184,8915+36]..[184,8915+44])
+            Ptyp_constr "Buffer.t" (stdlib/printf.mli[184,8915+36]..[184,8915+44])
+            []
+          core_type (stdlib/printf.mli[185,8963+15]..[185,8963+53])
+            Ptyp_arrow
+            Nolabel
+            core_type (stdlib/printf.mli[185,8963+15]..[185,8963+47])
+              Ptyp_constr "format4" (stdlib/printf.mli[185,8963+40]..[185,8963+47])
+              [
+                core_type (stdlib/printf.mli[185,8963+16]..[185,8963+18])
+                  Ptyp_var a
+                core_type (stdlib/printf.mli[185,8963+20]..[185,8963+28])
+                  Ptyp_constr "Buffer.t" (stdlib/printf.mli[185,8963+20]..[185,8963+28])
+                  []
+                core_type (stdlib/printf.mli[185,8963+30]..[185,8963+34])
+                  Ptyp_constr "unit" (stdlib/printf.mli[185,8963+30]..[185,8963+34])
+                  []
+                core_type (stdlib/printf.mli[185,8963+36]..[185,8963+38])
+                  Ptyp_var d
+              ]
+            core_type (stdlib/printf.mli[185,8963+51]..[185,8963+53])
+              Ptyp_var a
+      []
+  signature_item (stdlib/printf.mli[191,9160+0]..[191,9160+17])
+    Psig_attribute "ocaml.text"
+    [
+      structure_item (stdlib/printf.mli[191,9160+0]..[191,9160+17])
+        Pstr_eval
+        expression (stdlib/printf.mli[191,9160+0]..[191,9160+17])
+          Pexp_constant PConst_string(" Deprecated ",(stdlib/printf.mli[191,9160+0]..[191,9160+17]),None)
+    ]
+  signature_item (stdlib/printf.mli[193,9179+0]..[193,9179+68])
+    Psig_value
+    value_description "kprintf" (stdlib/printf.mli[193,9179+4]..[193,9179+11]) (stdlib/printf.mli[193,9179+0]..[193,9179+68])
+      attribute "ocaml.doc"
+        [
+          structure_item (stdlib/printf.mli[194,9248+0]..[194,9248+43])
+            Pstr_eval
+            expression (stdlib/printf.mli[194,9248+0]..[194,9248+43])
+              Pexp_constant PConst_string(" A deprecated synonym for [ksprintf]. ",(stdlib/printf.mli[194,9248+0]..[194,9248+43]),None)
+        ]
+      core_type (stdlib/printf.mli[193,9179+14]..[193,9179+68])
+        Ptyp_arrow
+        Nolabel
+        core_type (stdlib/printf.mli[193,9179+15]..[193,9179+27])
+          Ptyp_arrow
+          Nolabel
+          core_type (stdlib/printf.mli[193,9179+15]..[193,9179+21])
+            Ptyp_constr "string" (stdlib/printf.mli[193,9179+15]..[193,9179+21])
+            []
+          core_type (stdlib/printf.mli[193,9179+25]..[193,9179+27])
+            Ptyp_var b
+        core_type (stdlib/printf.mli[193,9179+32]..[193,9179+68])
+          Ptyp_arrow
+          Nolabel
+          core_type (stdlib/printf.mli[193,9179+32]..[193,9179+62])
+            Ptyp_constr "format4" (stdlib/printf.mli[193,9179+55]..[193,9179+62])
+            [
+              core_type (stdlib/printf.mli[193,9179+33]..[193,9179+35])
+                Ptyp_var a
+              core_type (stdlib/printf.mli[193,9179+37]..[193,9179+41])
+                Ptyp_constr "unit" (stdlib/printf.mli[193,9179+37]..[193,9179+41])
+                []
+              core_type (stdlib/printf.mli[193,9179+43]..[193,9179+49])
+                Ptyp_constr "string" (stdlib/printf.mli[193,9179+43]..[193,9179+49])
+                []
+              core_type (stdlib/printf.mli[193,9179+51]..[193,9179+53])
+                Ptyp_var b
+            ]
+          core_type (stdlib/printf.mli[193,9179+66]..[193,9179+68])
+            Ptyp_var a
+      []
+]
+

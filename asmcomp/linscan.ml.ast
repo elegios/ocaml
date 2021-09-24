@@ -1,0 +1,2126 @@
+[
+  structure_item (asmcomp/linscan.ml[19,1198+0]..[19,1198+13])
+    Pstr_open Fresh
+    module_expr (asmcomp/linscan.ml[19,1198+5]..[19,1198+13])
+      Pmod_ident "Interval" (asmcomp/linscan.ml[19,1198+5]..[19,1198+13])
+  structure_item (asmcomp/linscan.ml[20,1212+0]..[20,1212+8])
+    Pstr_open Fresh
+    module_expr (asmcomp/linscan.ml[20,1212+5]..[20,1212+8])
+      Pmod_ident "Reg" (asmcomp/linscan.ml[20,1212+5]..[20,1212+8])
+  structure_item (asmcomp/linscan.ml[24,1263+0]..[29,1411+3])
+    Pstr_type Rec
+    [
+      type_declaration "class_intervals" (asmcomp/linscan.ml[24,1263+5]..[24,1263+20]) (asmcomp/linscan.ml[24,1263+0]..[29,1411+3])
+        ptype_params =
+          []
+        ptype_cstrs =
+          []
+        ptype_kind =
+          Ptype_record
+            [
+              (asmcomp/linscan.ml[26,1290+4]..[26,1290+38])
+                Mutable
+                "ci_fixed" (asmcomp/linscan.ml[26,1290+12]..[26,1290+20])                core_type (asmcomp/linscan.ml[26,1290+22]..[26,1290+37])
+                  Ptyp_constr "list" (asmcomp/linscan.ml[26,1290+33]..[26,1290+37])
+                  [
+                    core_type (asmcomp/linscan.ml[26,1290+22]..[26,1290+32])
+                      Ptyp_constr "Interval.t" (asmcomp/linscan.ml[26,1290+22]..[26,1290+32])
+                      []
+                  ]
+              (asmcomp/linscan.ml[27,1329+4]..[27,1329+39])
+                Mutable
+                "ci_active" (asmcomp/linscan.ml[27,1329+12]..[27,1329+21])                core_type (asmcomp/linscan.ml[27,1329+23]..[27,1329+38])
+                  Ptyp_constr "list" (asmcomp/linscan.ml[27,1329+34]..[27,1329+38])
+                  [
+                    core_type (asmcomp/linscan.ml[27,1329+23]..[27,1329+33])
+                      Ptyp_constr "Interval.t" (asmcomp/linscan.ml[27,1329+23]..[27,1329+33])
+                      []
+                  ]
+              (asmcomp/linscan.ml[28,1369+4]..[28,1369+41])
+                Mutable
+                "ci_inactive" (asmcomp/linscan.ml[28,1369+12]..[28,1369+23])                core_type (asmcomp/linscan.ml[28,1369+25]..[28,1369+40])
+                  Ptyp_constr "list" (asmcomp/linscan.ml[28,1369+36]..[28,1369+40])
+                  [
+                    core_type (asmcomp/linscan.ml[28,1369+25]..[28,1369+35])
+                      Ptyp_constr "Interval.t" (asmcomp/linscan.ml[28,1369+25]..[28,1369+35])
+                      []
+                  ]
+            ]
+        ptype_private = Public
+        ptype_manifest =
+          None
+    ]
+  structure_item (asmcomp/linscan.ml[31,1416+0]..[35,1532+2])
+    Pstr_value Nonrec
+    [
+      <def>
+        pattern (asmcomp/linscan.ml[31,1416+4]..[31,1416+10])
+          Ppat_var "active" (asmcomp/linscan.ml[31,1416+4]..[31,1416+10])
+        expression (asmcomp/linscan.ml[31,1416+13]..[35,1532+2])
+          Pexp_apply
+          expression (asmcomp/linscan.ml[31,1416+13]..[31,1416+23])
+            Pexp_ident "Array.init" (asmcomp/linscan.ml[31,1416+13]..[31,1416+23])
+          [
+            <arg>
+            Nolabel
+              expression (asmcomp/linscan.ml[31,1416+24]..[31,1416+49])
+                Pexp_ident "Proc.num_register_classes" (asmcomp/linscan.ml[31,1416+24]..[31,1416+49])
+            <arg>
+            Nolabel
+              expression (asmcomp/linscan.ml[31,1416+50]..[35,1532+2])
+                Pexp_fun
+                Nolabel
+                None
+                pattern (asmcomp/linscan.ml[31,1416+55]..[31,1416+56])
+                  Ppat_any
+                expression (asmcomp/linscan.ml[31,1416+60]..[35,1532+1])
+                  Pexp_record
+                  [
+                    "ci_fixed" (asmcomp/linscan.ml[32,1478+2]..[32,1478+10])
+                      expression (asmcomp/linscan.ml[32,1478+13]..[32,1478+15])
+                        Pexp_construct "[]" (asmcomp/linscan.ml[32,1478+13]..[32,1478+15])
+                        None
+                    "ci_active" (asmcomp/linscan.ml[33,1495+2]..[33,1495+11])
+                      expression (asmcomp/linscan.ml[33,1495+14]..[33,1495+16])
+                        Pexp_construct "[]" (asmcomp/linscan.ml[33,1495+14]..[33,1495+16])
+                        None
+                    "ci_inactive" (asmcomp/linscan.ml[34,1513+2]..[34,1513+13])
+                      expression (asmcomp/linscan.ml[34,1513+16]..[34,1513+18])
+                        Pexp_construct "[]" (asmcomp/linscan.ml[34,1513+16]..[34,1513+18])
+                        None
+                  ]
+                  None
+          ]
+    ]
+  structure_item (asmcomp/linscan.ml[39,1592+0]..[42,1700+47])
+    Pstr_value Rec
+    [
+      <def>
+        pattern (asmcomp/linscan.ml[39,1592+8]..[39,1592+30])
+          Ppat_var "insert_interval_sorted" (asmcomp/linscan.ml[39,1592+8]..[39,1592+30])
+        expression (asmcomp/linscan.ml[39,1592+31]..[42,1700+47]) ghost
+          Pexp_fun
+          Nolabel
+          None
+          pattern (asmcomp/linscan.ml[39,1592+31]..[39,1592+32])
+            Ppat_var "i" (asmcomp/linscan.ml[39,1592+31]..[39,1592+32])
+          expression (asmcomp/linscan.ml[39,1592+35]..[42,1700+47])
+            Pexp_function
+            [
+              <case>
+                pattern (asmcomp/linscan.ml[40,1636+4]..[40,1636+6])
+                  Ppat_construct "[]" (asmcomp/linscan.ml[40,1636+4]..[40,1636+6])
+                  None
+                expression (asmcomp/linscan.ml[40,1636+10]..[40,1636+13])
+                  Pexp_construct "::" (asmcomp/linscan.ml[40,1636+11]..[40,1636+13]) ghost
+                  Some
+                    expression (asmcomp/linscan.ml[40,1636+11]..[40,1636+13]) ghost
+                      Pexp_tuple
+                      [
+                        expression (asmcomp/linscan.ml[40,1636+11]..[40,1636+12])
+                          Pexp_ident "i" (asmcomp/linscan.ml[40,1636+11]..[40,1636+12])
+                        expression (asmcomp/linscan.ml[40,1636+12]..[40,1636+13]) ghost
+                          Pexp_construct "[]" (asmcomp/linscan.ml[40,1636+12]..[40,1636+13]) ghost
+                          None
+                      ]
+              <case>
+                pattern (asmcomp/linscan.ml[41,1650+4]..[41,1650+16])
+                  Ppat_alias "il" (asmcomp/linscan.ml[41,1650+14]..[41,1650+16])
+                  pattern (asmcomp/linscan.ml[41,1650+4]..[41,1650+10])
+                    Ppat_construct "::" (asmcomp/linscan.ml[41,1650+6]..[41,1650+8])
+                    Some
+                      []
+                      pattern (asmcomp/linscan.ml[41,1650+4]..[41,1650+10]) ghost
+                        Ppat_tuple
+                        [
+                          pattern (asmcomp/linscan.ml[41,1650+4]..[41,1650+5])
+                            Ppat_var "j" (asmcomp/linscan.ml[41,1650+4]..[41,1650+5])
+                          pattern (asmcomp/linscan.ml[41,1650+9]..[41,1650+10])
+                            Ppat_any
+                        ]
+                <when>
+                  expression (asmcomp/linscan.ml[41,1650+22]..[41,1650+38])
+                    Pexp_apply
+                    expression (asmcomp/linscan.ml[41,1650+29]..[41,1650+31])
+                      Pexp_ident "<=" (asmcomp/linscan.ml[41,1650+29]..[41,1650+31])
+                    [
+                      <arg>
+                      Nolabel
+                        expression (asmcomp/linscan.ml[41,1650+22]..[41,1650+28])
+                          Pexp_field
+                          expression (asmcomp/linscan.ml[41,1650+22]..[41,1650+23])
+                            Pexp_ident "j" (asmcomp/linscan.ml[41,1650+22]..[41,1650+23])
+                          "iend" (asmcomp/linscan.ml[41,1650+24]..[41,1650+28])
+                      <arg>
+                      Nolabel
+                        expression (asmcomp/linscan.ml[41,1650+32]..[41,1650+38])
+                          Pexp_field
+                          expression (asmcomp/linscan.ml[41,1650+32]..[41,1650+33])
+                            Pexp_ident "i" (asmcomp/linscan.ml[41,1650+32]..[41,1650+33])
+                          "iend" (asmcomp/linscan.ml[41,1650+34]..[41,1650+38])
+                    ]
+                expression (asmcomp/linscan.ml[41,1650+42]..[41,1650+49])
+                  Pexp_construct "::" (asmcomp/linscan.ml[41,1650+44]..[41,1650+46])
+                  Some
+                    expression (asmcomp/linscan.ml[41,1650+42]..[41,1650+49]) ghost
+                      Pexp_tuple
+                      [
+                        expression (asmcomp/linscan.ml[41,1650+42]..[41,1650+43])
+                          Pexp_ident "i" (asmcomp/linscan.ml[41,1650+42]..[41,1650+43])
+                        expression (asmcomp/linscan.ml[41,1650+47]..[41,1650+49])
+                          Pexp_ident "il" (asmcomp/linscan.ml[41,1650+47]..[41,1650+49])
+                      ]
+              <case>
+                pattern (asmcomp/linscan.ml[42,1700+4]..[42,1700+11])
+                  Ppat_construct "::" (asmcomp/linscan.ml[42,1700+6]..[42,1700+8])
+                  Some
+                    []
+                    pattern (asmcomp/linscan.ml[42,1700+4]..[42,1700+11]) ghost
+                      Ppat_tuple
+                      [
+                        pattern (asmcomp/linscan.ml[42,1700+4]..[42,1700+5])
+                          Ppat_var "j" (asmcomp/linscan.ml[42,1700+4]..[42,1700+5])
+                        pattern (asmcomp/linscan.ml[42,1700+9]..[42,1700+11])
+                          Ppat_var "il" (asmcomp/linscan.ml[42,1700+9]..[42,1700+11])
+                      ]
+                expression (asmcomp/linscan.ml[42,1700+15]..[42,1700+47])
+                  Pexp_construct "::" (asmcomp/linscan.ml[42,1700+17]..[42,1700+19])
+                  Some
+                    expression (asmcomp/linscan.ml[42,1700+15]..[42,1700+47]) ghost
+                      Pexp_tuple
+                      [
+                        expression (asmcomp/linscan.ml[42,1700+15]..[42,1700+16])
+                          Pexp_ident "j" (asmcomp/linscan.ml[42,1700+15]..[42,1700+16])
+                        expression (asmcomp/linscan.ml[42,1700+20]..[42,1700+47])
+                          Pexp_apply
+                          expression (asmcomp/linscan.ml[42,1700+20]..[42,1700+42])
+                            Pexp_ident "insert_interval_sorted" (asmcomp/linscan.ml[42,1700+20]..[42,1700+42])
+                          [
+                            <arg>
+                            Nolabel
+                              expression (asmcomp/linscan.ml[42,1700+43]..[42,1700+44])
+                                Pexp_ident "i" (asmcomp/linscan.ml[42,1700+43]..[42,1700+44])
+                            <arg>
+                            Nolabel
+                              expression (asmcomp/linscan.ml[42,1700+45]..[42,1700+47])
+                                Pexp_ident "il" (asmcomp/linscan.ml[42,1700+45]..[42,1700+47])
+                          ]
+                      ]
+            ]
+    ]
+  structure_item (asmcomp/linscan.ml[44,1749+0]..[48,1912+11])
+    Pstr_value Rec
+    [
+      <def>
+        pattern (asmcomp/linscan.ml[44,1749+8]..[44,1749+29])
+          Ppat_var "release_expired_fixed" (asmcomp/linscan.ml[44,1749+8]..[44,1749+29])
+        expression (asmcomp/linscan.ml[44,1749+30]..[48,1912+11]) ghost
+          Pexp_fun
+          Nolabel
+          None
+          pattern (asmcomp/linscan.ml[44,1749+30]..[44,1749+33])
+            Ppat_var "pos" (asmcomp/linscan.ml[44,1749+30]..[44,1749+33])
+          expression (asmcomp/linscan.ml[44,1749+36]..[48,1912+11])
+            Pexp_function
+            [
+              <case>
+                pattern (asmcomp/linscan.ml[45,1794+4]..[45,1794+11])
+                  Ppat_construct "::" (asmcomp/linscan.ml[45,1794+6]..[45,1794+8])
+                  Some
+                    []
+                    pattern (asmcomp/linscan.ml[45,1794+4]..[45,1794+11]) ghost
+                      Ppat_tuple
+                      [
+                        pattern (asmcomp/linscan.ml[45,1794+4]..[45,1794+5])
+                          Ppat_var "i" (asmcomp/linscan.ml[45,1794+4]..[45,1794+5])
+                        pattern (asmcomp/linscan.ml[45,1794+9]..[45,1794+11])
+                          Ppat_var "il" (asmcomp/linscan.ml[45,1794+9]..[45,1794+11])
+                      ]
+                <when>
+                  expression (asmcomp/linscan.ml[45,1794+17]..[45,1794+30])
+                    Pexp_apply
+                    expression (asmcomp/linscan.ml[45,1794+24]..[45,1794+26])
+                      Pexp_ident ">=" (asmcomp/linscan.ml[45,1794+24]..[45,1794+26])
+                    [
+                      <arg>
+                      Nolabel
+                        expression (asmcomp/linscan.ml[45,1794+17]..[45,1794+23])
+                          Pexp_field
+                          expression (asmcomp/linscan.ml[45,1794+17]..[45,1794+18])
+                            Pexp_ident "i" (asmcomp/linscan.ml[45,1794+17]..[45,1794+18])
+                          "iend" (asmcomp/linscan.ml[45,1794+19]..[45,1794+23])
+                      <arg>
+                      Nolabel
+                        expression (asmcomp/linscan.ml[45,1794+27]..[45,1794+30])
+                          Pexp_ident "pos" (asmcomp/linscan.ml[45,1794+27]..[45,1794+30])
+                    ]
+                expression (asmcomp/linscan.ml[46,1828+6]..[47,1872+39])
+                  Pexp_sequence
+                  expression (asmcomp/linscan.ml[46,1828+6]..[46,1828+42])
+                    Pexp_apply
+                    expression (asmcomp/linscan.ml[46,1828+6]..[46,1828+36])
+                      Pexp_ident "Interval.remove_expired_ranges" (asmcomp/linscan.ml[46,1828+6]..[46,1828+36])
+                    [
+                      <arg>
+                      Nolabel
+                        expression (asmcomp/linscan.ml[46,1828+37]..[46,1828+38])
+                          Pexp_ident "i" (asmcomp/linscan.ml[46,1828+37]..[46,1828+38])
+                      <arg>
+                      Nolabel
+                        expression (asmcomp/linscan.ml[46,1828+39]..[46,1828+42])
+                          Pexp_ident "pos" (asmcomp/linscan.ml[46,1828+39]..[46,1828+42])
+                    ]
+                  expression (asmcomp/linscan.ml[47,1872+6]..[47,1872+39])
+                    Pexp_construct "::" (asmcomp/linscan.ml[47,1872+8]..[47,1872+10])
+                    Some
+                      expression (asmcomp/linscan.ml[47,1872+6]..[47,1872+39]) ghost
+                        Pexp_tuple
+                        [
+                          expression (asmcomp/linscan.ml[47,1872+6]..[47,1872+7])
+                            Pexp_ident "i" (asmcomp/linscan.ml[47,1872+6]..[47,1872+7])
+                          expression (asmcomp/linscan.ml[47,1872+11]..[47,1872+39])
+                            Pexp_apply
+                            expression (asmcomp/linscan.ml[47,1872+11]..[47,1872+32])
+                              Pexp_ident "release_expired_fixed" (asmcomp/linscan.ml[47,1872+11]..[47,1872+32])
+                            [
+                              <arg>
+                              Nolabel
+                                expression (asmcomp/linscan.ml[47,1872+33]..[47,1872+36])
+                                  Pexp_ident "pos" (asmcomp/linscan.ml[47,1872+33]..[47,1872+36])
+                              <arg>
+                              Nolabel
+                                expression (asmcomp/linscan.ml[47,1872+37]..[47,1872+39])
+                                  Pexp_ident "il" (asmcomp/linscan.ml[47,1872+37]..[47,1872+39])
+                            ]
+                        ]
+              <case>
+                pattern (asmcomp/linscan.ml[48,1912+4]..[48,1912+5])
+                  Ppat_any
+                expression (asmcomp/linscan.ml[48,1912+9]..[48,1912+11])
+                  Pexp_construct "[]" (asmcomp/linscan.ml[48,1912+9]..[48,1912+11])
+                  None
+            ]
+    ]
+  structure_item (asmcomp/linscan.ml[50,1925+0]..[59,2270+11])
+    Pstr_value Rec
+    [
+      <def>
+        pattern (asmcomp/linscan.ml[50,1925+8]..[50,1925+30])
+          Ppat_var "release_expired_active" (asmcomp/linscan.ml[50,1925+8]..[50,1925+30])
+        expression (asmcomp/linscan.ml[50,1925+31]..[59,2270+11]) ghost
+          Pexp_fun
+          Nolabel
+          None
+          pattern (asmcomp/linscan.ml[50,1925+31]..[50,1925+33])
+            Ppat_var "ci" (asmcomp/linscan.ml[50,1925+31]..[50,1925+33])
+          expression (asmcomp/linscan.ml[50,1925+34]..[59,2270+11]) ghost
+            Pexp_fun
+            Nolabel
+            None
+            pattern (asmcomp/linscan.ml[50,1925+34]..[50,1925+37])
+              Ppat_var "pos" (asmcomp/linscan.ml[50,1925+34]..[50,1925+37])
+            expression (asmcomp/linscan.ml[50,1925+40]..[59,2270+11])
+              Pexp_function
+              [
+                <case>
+                  pattern (asmcomp/linscan.ml[51,1974+4]..[51,1974+11])
+                    Ppat_construct "::" (asmcomp/linscan.ml[51,1974+6]..[51,1974+8])
+                    Some
+                      []
+                      pattern (asmcomp/linscan.ml[51,1974+4]..[51,1974+11]) ghost
+                        Ppat_tuple
+                        [
+                          pattern (asmcomp/linscan.ml[51,1974+4]..[51,1974+5])
+                            Ppat_var "i" (asmcomp/linscan.ml[51,1974+4]..[51,1974+5])
+                          pattern (asmcomp/linscan.ml[51,1974+9]..[51,1974+11])
+                            Ppat_var "il" (asmcomp/linscan.ml[51,1974+9]..[51,1974+11])
+                        ]
+                  <when>
+                    expression (asmcomp/linscan.ml[51,1974+17]..[51,1974+30])
+                      Pexp_apply
+                      expression (asmcomp/linscan.ml[51,1974+24]..[51,1974+26])
+                        Pexp_ident ">=" (asmcomp/linscan.ml[51,1974+24]..[51,1974+26])
+                      [
+                        <arg>
+                        Nolabel
+                          expression (asmcomp/linscan.ml[51,1974+17]..[51,1974+23])
+                            Pexp_field
+                            expression (asmcomp/linscan.ml[51,1974+17]..[51,1974+18])
+                              Pexp_ident "i" (asmcomp/linscan.ml[51,1974+17]..[51,1974+18])
+                            "iend" (asmcomp/linscan.ml[51,1974+19]..[51,1974+23])
+                        <arg>
+                        Nolabel
+                          expression (asmcomp/linscan.ml[51,1974+27]..[51,1974+30])
+                            Pexp_ident "pos" (asmcomp/linscan.ml[51,1974+27]..[51,1974+30])
+                      ]
+                  expression (asmcomp/linscan.ml[52,2008+6]..[58,2260+9])
+                    Pexp_sequence
+                    expression (asmcomp/linscan.ml[52,2008+6]..[52,2008+42])
+                      Pexp_apply
+                      expression (asmcomp/linscan.ml[52,2008+6]..[52,2008+36])
+                        Pexp_ident "Interval.remove_expired_ranges" (asmcomp/linscan.ml[52,2008+6]..[52,2008+36])
+                      [
+                        <arg>
+                        Nolabel
+                          expression (asmcomp/linscan.ml[52,2008+37]..[52,2008+38])
+                            Pexp_ident "i" (asmcomp/linscan.ml[52,2008+37]..[52,2008+38])
+                        <arg>
+                        Nolabel
+                          expression (asmcomp/linscan.ml[52,2008+39]..[52,2008+42])
+                            Pexp_ident "pos" (asmcomp/linscan.ml[52,2008+39]..[52,2008+42])
+                      ]
+                    expression (asmcomp/linscan.ml[53,2052+6]..[58,2260+9])
+                      Pexp_ifthenelse
+                      expression (asmcomp/linscan.ml[53,2052+9]..[53,2052+31])
+                        Pexp_apply
+                        expression (asmcomp/linscan.ml[53,2052+9]..[53,2052+25])
+                          Pexp_ident "Interval.is_live" (asmcomp/linscan.ml[53,2052+9]..[53,2052+25])
+                        [
+                          <arg>
+                          Nolabel
+                            expression (asmcomp/linscan.ml[53,2052+26]..[53,2052+27])
+                              Pexp_ident "i" (asmcomp/linscan.ml[53,2052+26]..[53,2052+27])
+                          <arg>
+                          Nolabel
+                            expression (asmcomp/linscan.ml[53,2052+28]..[53,2052+31])
+                              Pexp_ident "pos" (asmcomp/linscan.ml[53,2052+28]..[53,2052+31])
+                        ]
+                      expression (asmcomp/linscan.ml[54,2089+8]..[54,2089+45])
+                        Pexp_construct "::" (asmcomp/linscan.ml[54,2089+10]..[54,2089+12])
+                        Some
+                          expression (asmcomp/linscan.ml[54,2089+8]..[54,2089+45]) ghost
+                            Pexp_tuple
+                            [
+                              expression (asmcomp/linscan.ml[54,2089+8]..[54,2089+9])
+                                Pexp_ident "i" (asmcomp/linscan.ml[54,2089+8]..[54,2089+9])
+                              expression (asmcomp/linscan.ml[54,2089+13]..[54,2089+45])
+                                Pexp_apply
+                                expression (asmcomp/linscan.ml[54,2089+13]..[54,2089+35])
+                                  Pexp_ident "release_expired_active" (asmcomp/linscan.ml[54,2089+13]..[54,2089+35])
+                                [
+                                  <arg>
+                                  Nolabel
+                                    expression (asmcomp/linscan.ml[54,2089+36]..[54,2089+38])
+                                      Pexp_ident "ci" (asmcomp/linscan.ml[54,2089+36]..[54,2089+38])
+                                  <arg>
+                                  Nolabel
+                                    expression (asmcomp/linscan.ml[54,2089+39]..[54,2089+42])
+                                      Pexp_ident "pos" (asmcomp/linscan.ml[54,2089+39]..[54,2089+42])
+                                  <arg>
+                                  Nolabel
+                                    expression (asmcomp/linscan.ml[54,2089+43]..[54,2089+45])
+                                      Pexp_ident "il" (asmcomp/linscan.ml[54,2089+43]..[54,2089+45])
+                                ]
+                            ]
+                      Some
+                        expression (asmcomp/linscan.ml[55,2135+11]..[58,2260+9])
+                          Pexp_sequence
+                          expression (asmcomp/linscan.ml[56,2152+8]..[56,2152+65])
+                            Pexp_setfield
+                            expression (asmcomp/linscan.ml[56,2152+8]..[56,2152+10])
+                              Pexp_ident "ci" (asmcomp/linscan.ml[56,2152+8]..[56,2152+10])
+                            "ci_inactive" (asmcomp/linscan.ml[56,2152+11]..[56,2152+22])
+                            expression (asmcomp/linscan.ml[56,2152+26]..[56,2152+65])
+                              Pexp_apply
+                              expression (asmcomp/linscan.ml[56,2152+26]..[56,2152+48])
+                                Pexp_ident "insert_interval_sorted" (asmcomp/linscan.ml[56,2152+26]..[56,2152+48])
+                              [
+                                <arg>
+                                Nolabel
+                                  expression (asmcomp/linscan.ml[56,2152+49]..[56,2152+50])
+                                    Pexp_ident "i" (asmcomp/linscan.ml[56,2152+49]..[56,2152+50])
+                                <arg>
+                                Nolabel
+                                  expression (asmcomp/linscan.ml[56,2152+51]..[56,2152+65])
+                                    Pexp_field
+                                    expression (asmcomp/linscan.ml[56,2152+51]..[56,2152+53])
+                                      Pexp_ident "ci" (asmcomp/linscan.ml[56,2152+51]..[56,2152+53])
+                                    "ci_inactive" (asmcomp/linscan.ml[56,2152+54]..[56,2152+65])
+                              ]
+                          expression (asmcomp/linscan.ml[57,2219+8]..[57,2219+40])
+                            Pexp_apply
+                            expression (asmcomp/linscan.ml[57,2219+8]..[57,2219+30])
+                              Pexp_ident "release_expired_active" (asmcomp/linscan.ml[57,2219+8]..[57,2219+30])
+                            [
+                              <arg>
+                              Nolabel
+                                expression (asmcomp/linscan.ml[57,2219+31]..[57,2219+33])
+                                  Pexp_ident "ci" (asmcomp/linscan.ml[57,2219+31]..[57,2219+33])
+                              <arg>
+                              Nolabel
+                                expression (asmcomp/linscan.ml[57,2219+34]..[57,2219+37])
+                                  Pexp_ident "pos" (asmcomp/linscan.ml[57,2219+34]..[57,2219+37])
+                              <arg>
+                              Nolabel
+                                expression (asmcomp/linscan.ml[57,2219+38]..[57,2219+40])
+                                  Pexp_ident "il" (asmcomp/linscan.ml[57,2219+38]..[57,2219+40])
+                            ]
+                <case>
+                  pattern (asmcomp/linscan.ml[59,2270+4]..[59,2270+5])
+                    Ppat_any
+                  expression (asmcomp/linscan.ml[59,2270+9]..[59,2270+11])
+                    Pexp_construct "[]" (asmcomp/linscan.ml[59,2270+9]..[59,2270+11])
+                    None
+              ]
+    ]
+  structure_item (asmcomp/linscan.ml[61,2283+0]..[70,2636+11])
+    Pstr_value Rec
+    [
+      <def>
+        pattern (asmcomp/linscan.ml[61,2283+8]..[61,2283+32])
+          Ppat_var "release_expired_inactive" (asmcomp/linscan.ml[61,2283+8]..[61,2283+32])
+        expression (asmcomp/linscan.ml[61,2283+33]..[70,2636+11]) ghost
+          Pexp_fun
+          Nolabel
+          None
+          pattern (asmcomp/linscan.ml[61,2283+33]..[61,2283+35])
+            Ppat_var "ci" (asmcomp/linscan.ml[61,2283+33]..[61,2283+35])
+          expression (asmcomp/linscan.ml[61,2283+36]..[70,2636+11]) ghost
+            Pexp_fun
+            Nolabel
+            None
+            pattern (asmcomp/linscan.ml[61,2283+36]..[61,2283+39])
+              Ppat_var "pos" (asmcomp/linscan.ml[61,2283+36]..[61,2283+39])
+            expression (asmcomp/linscan.ml[61,2283+42]..[70,2636+11])
+              Pexp_function
+              [
+                <case>
+                  pattern (asmcomp/linscan.ml[62,2334+4]..[62,2334+11])
+                    Ppat_construct "::" (asmcomp/linscan.ml[62,2334+6]..[62,2334+8])
+                    Some
+                      []
+                      pattern (asmcomp/linscan.ml[62,2334+4]..[62,2334+11]) ghost
+                        Ppat_tuple
+                        [
+                          pattern (asmcomp/linscan.ml[62,2334+4]..[62,2334+5])
+                            Ppat_var "i" (asmcomp/linscan.ml[62,2334+4]..[62,2334+5])
+                          pattern (asmcomp/linscan.ml[62,2334+9]..[62,2334+11])
+                            Ppat_var "il" (asmcomp/linscan.ml[62,2334+9]..[62,2334+11])
+                        ]
+                  <when>
+                    expression (asmcomp/linscan.ml[62,2334+17]..[62,2334+30])
+                      Pexp_apply
+                      expression (asmcomp/linscan.ml[62,2334+24]..[62,2334+26])
+                        Pexp_ident ">=" (asmcomp/linscan.ml[62,2334+24]..[62,2334+26])
+                      [
+                        <arg>
+                        Nolabel
+                          expression (asmcomp/linscan.ml[62,2334+17]..[62,2334+23])
+                            Pexp_field
+                            expression (asmcomp/linscan.ml[62,2334+17]..[62,2334+18])
+                              Pexp_ident "i" (asmcomp/linscan.ml[62,2334+17]..[62,2334+18])
+                            "iend" (asmcomp/linscan.ml[62,2334+19]..[62,2334+23])
+                        <arg>
+                        Nolabel
+                          expression (asmcomp/linscan.ml[62,2334+27]..[62,2334+30])
+                            Pexp_ident "pos" (asmcomp/linscan.ml[62,2334+27]..[62,2334+30])
+                      ]
+                  expression (asmcomp/linscan.ml[63,2368+6]..[69,2626+9])
+                    Pexp_sequence
+                    expression (asmcomp/linscan.ml[63,2368+6]..[63,2368+42])
+                      Pexp_apply
+                      expression (asmcomp/linscan.ml[63,2368+6]..[63,2368+36])
+                        Pexp_ident "Interval.remove_expired_ranges" (asmcomp/linscan.ml[63,2368+6]..[63,2368+36])
+                      [
+                        <arg>
+                        Nolabel
+                          expression (asmcomp/linscan.ml[63,2368+37]..[63,2368+38])
+                            Pexp_ident "i" (asmcomp/linscan.ml[63,2368+37]..[63,2368+38])
+                        <arg>
+                        Nolabel
+                          expression (asmcomp/linscan.ml[63,2368+39]..[63,2368+42])
+                            Pexp_ident "pos" (asmcomp/linscan.ml[63,2368+39]..[63,2368+42])
+                      ]
+                    expression (asmcomp/linscan.ml[64,2412+6]..[69,2626+9])
+                      Pexp_ifthenelse
+                      expression (asmcomp/linscan.ml[64,2412+9]..[64,2412+37])
+                        Pexp_apply
+                        expression (asmcomp/linscan.ml[64,2412+9]..[64,2412+12])
+                          Pexp_ident "not" (asmcomp/linscan.ml[64,2412+9]..[64,2412+12])
+                        [
+                          <arg>
+                          Nolabel
+                            expression (asmcomp/linscan.ml[64,2412+13]..[64,2412+37])
+                              Pexp_apply
+                              expression (asmcomp/linscan.ml[64,2412+14]..[64,2412+30])
+                                Pexp_ident "Interval.is_live" (asmcomp/linscan.ml[64,2412+14]..[64,2412+30])
+                              [
+                                <arg>
+                                Nolabel
+                                  expression (asmcomp/linscan.ml[64,2412+31]..[64,2412+32])
+                                    Pexp_ident "i" (asmcomp/linscan.ml[64,2412+31]..[64,2412+32])
+                                <arg>
+                                Nolabel
+                                  expression (asmcomp/linscan.ml[64,2412+33]..[64,2412+36])
+                                    Pexp_ident "pos" (asmcomp/linscan.ml[64,2412+33]..[64,2412+36])
+                              ]
+                        ]
+                      expression (asmcomp/linscan.ml[65,2455+8]..[65,2455+47])
+                        Pexp_construct "::" (asmcomp/linscan.ml[65,2455+10]..[65,2455+12])
+                        Some
+                          expression (asmcomp/linscan.ml[65,2455+8]..[65,2455+47]) ghost
+                            Pexp_tuple
+                            [
+                              expression (asmcomp/linscan.ml[65,2455+8]..[65,2455+9])
+                                Pexp_ident "i" (asmcomp/linscan.ml[65,2455+8]..[65,2455+9])
+                              expression (asmcomp/linscan.ml[65,2455+13]..[65,2455+47])
+                                Pexp_apply
+                                expression (asmcomp/linscan.ml[65,2455+13]..[65,2455+37])
+                                  Pexp_ident "release_expired_inactive" (asmcomp/linscan.ml[65,2455+13]..[65,2455+37])
+                                [
+                                  <arg>
+                                  Nolabel
+                                    expression (asmcomp/linscan.ml[65,2455+38]..[65,2455+40])
+                                      Pexp_ident "ci" (asmcomp/linscan.ml[65,2455+38]..[65,2455+40])
+                                  <arg>
+                                  Nolabel
+                                    expression (asmcomp/linscan.ml[65,2455+41]..[65,2455+44])
+                                      Pexp_ident "pos" (asmcomp/linscan.ml[65,2455+41]..[65,2455+44])
+                                  <arg>
+                                  Nolabel
+                                    expression (asmcomp/linscan.ml[65,2455+45]..[65,2455+47])
+                                      Pexp_ident "il" (asmcomp/linscan.ml[65,2455+45]..[65,2455+47])
+                                ]
+                            ]
+                      Some
+                        expression (asmcomp/linscan.ml[66,2503+11]..[69,2626+9])
+                          Pexp_sequence
+                          expression (asmcomp/linscan.ml[67,2520+8]..[67,2520+61])
+                            Pexp_setfield
+                            expression (asmcomp/linscan.ml[67,2520+8]..[67,2520+10])
+                              Pexp_ident "ci" (asmcomp/linscan.ml[67,2520+8]..[67,2520+10])
+                            "ci_active" (asmcomp/linscan.ml[67,2520+11]..[67,2520+20])
+                            expression (asmcomp/linscan.ml[67,2520+24]..[67,2520+61])
+                              Pexp_apply
+                              expression (asmcomp/linscan.ml[67,2520+24]..[67,2520+46])
+                                Pexp_ident "insert_interval_sorted" (asmcomp/linscan.ml[67,2520+24]..[67,2520+46])
+                              [
+                                <arg>
+                                Nolabel
+                                  expression (asmcomp/linscan.ml[67,2520+47]..[67,2520+48])
+                                    Pexp_ident "i" (asmcomp/linscan.ml[67,2520+47]..[67,2520+48])
+                                <arg>
+                                Nolabel
+                                  expression (asmcomp/linscan.ml[67,2520+49]..[67,2520+61])
+                                    Pexp_field
+                                    expression (asmcomp/linscan.ml[67,2520+49]..[67,2520+51])
+                                      Pexp_ident "ci" (asmcomp/linscan.ml[67,2520+49]..[67,2520+51])
+                                    "ci_active" (asmcomp/linscan.ml[67,2520+52]..[67,2520+61])
+                              ]
+                          expression (asmcomp/linscan.ml[68,2583+8]..[68,2583+42])
+                            Pexp_apply
+                            expression (asmcomp/linscan.ml[68,2583+8]..[68,2583+32])
+                              Pexp_ident "release_expired_inactive" (asmcomp/linscan.ml[68,2583+8]..[68,2583+32])
+                            [
+                              <arg>
+                              Nolabel
+                                expression (asmcomp/linscan.ml[68,2583+33]..[68,2583+35])
+                                  Pexp_ident "ci" (asmcomp/linscan.ml[68,2583+33]..[68,2583+35])
+                              <arg>
+                              Nolabel
+                                expression (asmcomp/linscan.ml[68,2583+36]..[68,2583+39])
+                                  Pexp_ident "pos" (asmcomp/linscan.ml[68,2583+36]..[68,2583+39])
+                              <arg>
+                              Nolabel
+                                expression (asmcomp/linscan.ml[68,2583+40]..[68,2583+42])
+                                  Pexp_ident "il" (asmcomp/linscan.ml[68,2583+40]..[68,2583+42])
+                            ]
+                <case>
+                  pattern (asmcomp/linscan.ml[70,2636+4]..[70,2636+5])
+                    Ppat_any
+                  expression (asmcomp/linscan.ml[70,2636+9]..[70,2636+11])
+                    Pexp_construct "[]" (asmcomp/linscan.ml[70,2636+9]..[70,2636+11])
+                    None
+              ]
+    ]
+  structure_item (asmcomp/linscan.ml[74,2699+0]..[79,2885+21])
+    Pstr_value Nonrec
+    [
+      <def>
+        pattern (asmcomp/linscan.ml[74,2699+4]..[74,2699+23])
+          Ppat_var "allocate_stack_slot" (asmcomp/linscan.ml[74,2699+4]..[74,2699+23])
+        expression (asmcomp/linscan.ml[74,2699+24]..[79,2885+21]) ghost
+          Pexp_fun
+          Nolabel
+          None
+          pattern (asmcomp/linscan.ml[74,2699+24]..[74,2699+39])
+            Ppat_var "num_stack_slots" (asmcomp/linscan.ml[74,2699+24]..[74,2699+39])
+          expression (asmcomp/linscan.ml[74,2699+40]..[79,2885+21]) ghost
+            Pexp_fun
+            Nolabel
+            None
+            pattern (asmcomp/linscan.ml[74,2699+40]..[74,2699+41])
+              Ppat_var "i" (asmcomp/linscan.ml[74,2699+40]..[74,2699+41])
+            expression (asmcomp/linscan.ml[75,2743+2]..[79,2885+21])
+              Pexp_let Nonrec
+              [
+                <def>
+                  pattern (asmcomp/linscan.ml[75,2743+6]..[75,2743+8])
+                    Ppat_var "cl" (asmcomp/linscan.ml[75,2743+6]..[75,2743+8])
+                  expression (asmcomp/linscan.ml[75,2743+11]..[75,2743+36])
+                    Pexp_apply
+                    expression (asmcomp/linscan.ml[75,2743+11]..[75,2743+30])
+                      Pexp_ident "Proc.register_class" (asmcomp/linscan.ml[75,2743+11]..[75,2743+30])
+                    [
+                      <arg>
+                      Nolabel
+                        expression (asmcomp/linscan.ml[75,2743+31]..[75,2743+36])
+                          Pexp_field
+                          expression (asmcomp/linscan.ml[75,2743+31]..[75,2743+32])
+                            Pexp_ident "i" (asmcomp/linscan.ml[75,2743+31]..[75,2743+32])
+                          "reg" (asmcomp/linscan.ml[75,2743+33]..[75,2743+36])
+                    ]
+              ]
+              expression (asmcomp/linscan.ml[76,2783+2]..[79,2885+21])
+                Pexp_let Nonrec
+                [
+                  <def>
+                    pattern (asmcomp/linscan.ml[76,2783+6]..[76,2783+8])
+                      Ppat_var "ss" (asmcomp/linscan.ml[76,2783+6]..[76,2783+8])
+                    expression (asmcomp/linscan.ml[76,2783+11]..[76,2783+31])
+                      Pexp_apply
+                      expression (asmcomp/linscan.ml[76,2783+11]..[76,2783+31]) ghost
+                        Pexp_ident "Array.get" (asmcomp/linscan.ml[76,2783+11]..[76,2783+31]) ghost
+                      [
+                        <arg>
+                        Nolabel
+                          expression (asmcomp/linscan.ml[76,2783+11]..[76,2783+26])
+                            Pexp_ident "num_stack_slots" (asmcomp/linscan.ml[76,2783+11]..[76,2783+26])
+                        <arg>
+                        Nolabel
+                          expression (asmcomp/linscan.ml[76,2783+28]..[76,2783+30])
+                            Pexp_ident "cl" (asmcomp/linscan.ml[76,2783+28]..[76,2783+30])
+                      ]
+                ]
+                expression (asmcomp/linscan.ml[77,2818+2]..[79,2885+21])
+                  Pexp_sequence
+                  expression (asmcomp/linscan.ml[77,2818+2]..[77,2818+33])
+                    Pexp_apply
+                    expression (asmcomp/linscan.ml[77,2818+2]..[77,2818+33]) ghost
+                      Pexp_ident "Array.set" (asmcomp/linscan.ml[77,2818+2]..[77,2818+33]) ghost
+                    [
+                      <arg>
+                      Nolabel
+                        expression (asmcomp/linscan.ml[77,2818+2]..[77,2818+17])
+                          Pexp_ident "num_stack_slots" (asmcomp/linscan.ml[77,2818+2]..[77,2818+17])
+                      <arg>
+                      Nolabel
+                        expression (asmcomp/linscan.ml[77,2818+19]..[77,2818+21])
+                          Pexp_ident "cl" (asmcomp/linscan.ml[77,2818+19]..[77,2818+21])
+                      <arg>
+                      Nolabel
+                        expression (asmcomp/linscan.ml[77,2818+26]..[77,2818+33])
+                          Pexp_apply
+                          expression (asmcomp/linscan.ml[77,2818+26]..[77,2818+30])
+                            Pexp_ident "succ" (asmcomp/linscan.ml[77,2818+26]..[77,2818+30])
+                          [
+                            <arg>
+                            Nolabel
+                              expression (asmcomp/linscan.ml[77,2818+31]..[77,2818+33])
+                                Pexp_ident "ss" (asmcomp/linscan.ml[77,2818+31]..[77,2818+33])
+                          ]
+                    ]
+                  expression (asmcomp/linscan.ml[78,2853+2]..[79,2885+21])
+                    Pexp_sequence
+                    expression (asmcomp/linscan.ml[78,2853+2]..[78,2853+30])
+                      Pexp_setfield
+                      expression (asmcomp/linscan.ml[78,2853+2]..[78,2853+7])
+                        Pexp_field
+                        expression (asmcomp/linscan.ml[78,2853+2]..[78,2853+3])
+                          Pexp_ident "i" (asmcomp/linscan.ml[78,2853+2]..[78,2853+3])
+                        "reg" (asmcomp/linscan.ml[78,2853+4]..[78,2853+7])
+                      "loc" (asmcomp/linscan.ml[78,2853+8]..[78,2853+11])
+                      expression (asmcomp/linscan.ml[78,2853+15]..[78,2853+30])
+                        Pexp_construct "Stack" (asmcomp/linscan.ml[78,2853+15]..[78,2853+20])
+                        Some
+                          expression (asmcomp/linscan.ml[78,2853+20]..[78,2853+30])
+                            Pexp_construct "Local" (asmcomp/linscan.ml[78,2853+21]..[78,2853+26])
+                            Some
+                              expression (asmcomp/linscan.ml[78,2853+27]..[78,2853+29])
+                                Pexp_ident "ss" (asmcomp/linscan.ml[78,2853+27]..[78,2853+29])
+                    expression (asmcomp/linscan.ml[79,2885+2]..[79,2885+21])
+                      Pexp_setfield
+                      expression (asmcomp/linscan.ml[79,2885+2]..[79,2885+7])
+                        Pexp_field
+                        expression (asmcomp/linscan.ml[79,2885+2]..[79,2885+3])
+                          Pexp_ident "i" (asmcomp/linscan.ml[79,2885+2]..[79,2885+3])
+                        "reg" (asmcomp/linscan.ml[79,2885+4]..[79,2885+7])
+                      "spill" (asmcomp/linscan.ml[79,2885+8]..[79,2885+13])
+                      expression (asmcomp/linscan.ml[79,2885+17]..[79,2885+21])
+                        Pexp_construct "true" (asmcomp/linscan.ml[79,2885+17]..[79,2885+21])
+                        None
+    ]
+  structure_item (asmcomp/linscan.ml[85,3064+0]..[137,5300+5])
+    Pstr_value Nonrec
+    [
+      <def>
+        pattern (asmcomp/linscan.ml[85,3064+4]..[85,3064+26])
+          Ppat_var "allocate_free_register" (asmcomp/linscan.ml[85,3064+4]..[85,3064+26])
+        expression (asmcomp/linscan.ml[85,3064+27]..[137,5300+5]) ghost
+          Pexp_fun
+          Nolabel
+          None
+          pattern (asmcomp/linscan.ml[85,3064+27]..[85,3064+42])
+            Ppat_var "num_stack_slots" (asmcomp/linscan.ml[85,3064+27]..[85,3064+42])
+          expression (asmcomp/linscan.ml[85,3064+43]..[137,5300+5]) ghost
+            Pexp_fun
+            Nolabel
+            None
+            pattern (asmcomp/linscan.ml[85,3064+43]..[85,3064+44])
+              Ppat_var "i" (asmcomp/linscan.ml[85,3064+43]..[85,3064+44])
+            expression (asmcomp/linscan.ml[86,3111+2]..[137,5300+5])
+              Pexp_match
+              expression (asmcomp/linscan.ml[86,3111+14]..[86,3111+36])
+                Pexp_tuple
+                [
+                  expression (asmcomp/linscan.ml[86,3111+14]..[86,3111+23])
+                    Pexp_field
+                    expression (asmcomp/linscan.ml[86,3111+14]..[86,3111+19])
+                      Pexp_field
+                      expression (asmcomp/linscan.ml[86,3111+14]..[86,3111+15])
+                        Pexp_ident "i" (asmcomp/linscan.ml[86,3111+14]..[86,3111+15])
+                      "reg" (asmcomp/linscan.ml[86,3111+16]..[86,3111+19])
+                    "loc" (asmcomp/linscan.ml[86,3111+20]..[86,3111+23])
+                  expression (asmcomp/linscan.ml[86,3111+25]..[86,3111+36])
+                    Pexp_field
+                    expression (asmcomp/linscan.ml[86,3111+25]..[86,3111+30])
+                      Pexp_field
+                      expression (asmcomp/linscan.ml[86,3111+25]..[86,3111+26])
+                        Pexp_ident "i" (asmcomp/linscan.ml[86,3111+25]..[86,3111+26])
+                      "reg" (asmcomp/linscan.ml[86,3111+27]..[86,3111+30])
+                    "spill" (asmcomp/linscan.ml[86,3111+31]..[86,3111+36])
+                ]
+              [
+                <case>
+                  pattern (asmcomp/linscan.ml[87,3153+4]..[87,3153+17])
+                    Ppat_tuple
+                    [
+                      pattern (asmcomp/linscan.ml[87,3153+4]..[87,3153+11])
+                        Ppat_construct "Unknown" (asmcomp/linscan.ml[87,3153+4]..[87,3153+11])
+                        None
+                      pattern (asmcomp/linscan.ml[87,3153+13]..[87,3153+17])
+                        Ppat_construct "true" (asmcomp/linscan.ml[87,3153+13]..[87,3153+17])
+                        None
+                    ]
+                  expression (asmcomp/linscan.ml[89,3241+6]..[89,3241+43])
+                    Pexp_apply
+                    expression (asmcomp/linscan.ml[89,3241+6]..[89,3241+25])
+                      Pexp_ident "allocate_stack_slot" (asmcomp/linscan.ml[89,3241+6]..[89,3241+25])
+                    [
+                      <arg>
+                      Nolabel
+                        expression (asmcomp/linscan.ml[89,3241+26]..[89,3241+41])
+                          Pexp_ident "num_stack_slots" (asmcomp/linscan.ml[89,3241+26]..[89,3241+41])
+                      <arg>
+                      Nolabel
+                        expression (asmcomp/linscan.ml[89,3241+42]..[89,3241+43])
+                          Pexp_ident "i" (asmcomp/linscan.ml[89,3241+42]..[89,3241+43])
+                    ]
+                <case>
+                  pattern (asmcomp/linscan.ml[90,3285+4]..[90,3285+14])
+                    Ppat_tuple
+                    [
+                      pattern (asmcomp/linscan.ml[90,3285+4]..[90,3285+11])
+                        Ppat_construct "Unknown" (asmcomp/linscan.ml[90,3285+4]..[90,3285+11])
+                        None
+                      pattern (asmcomp/linscan.ml[90,3285+13]..[90,3285+14])
+                        Ppat_any
+                    ]
+                  expression (asmcomp/linscan.ml[92,3371+6]..[135,5278+9])
+                    Pexp_let Nonrec
+                    [
+                      <def>
+                        pattern (asmcomp/linscan.ml[92,3371+10]..[92,3371+12])
+                          Ppat_var "cl" (asmcomp/linscan.ml[92,3371+10]..[92,3371+12])
+                        expression (asmcomp/linscan.ml[92,3371+15]..[92,3371+40])
+                          Pexp_apply
+                          expression (asmcomp/linscan.ml[92,3371+15]..[92,3371+34])
+                            Pexp_ident "Proc.register_class" (asmcomp/linscan.ml[92,3371+15]..[92,3371+34])
+                          [
+                            <arg>
+                            Nolabel
+                              expression (asmcomp/linscan.ml[92,3371+35]..[92,3371+40])
+                                Pexp_field
+                                expression (asmcomp/linscan.ml[92,3371+35]..[92,3371+36])
+                                  Pexp_ident "i" (asmcomp/linscan.ml[92,3371+35]..[92,3371+36])
+                                "reg" (asmcomp/linscan.ml[92,3371+37]..[92,3371+40])
+                          ]
+                    ]
+                    expression (asmcomp/linscan.ml[93,3415+6]..[135,5278+9])
+                      Pexp_match
+                      expression (asmcomp/linscan.ml[93,3415+18]..[93,3415+51])
+                        Pexp_apply
+                        expression (asmcomp/linscan.ml[93,3415+18]..[93,3415+51]) ghost
+                          Pexp_ident "Array.get" (asmcomp/linscan.ml[93,3415+18]..[93,3415+51]) ghost
+                        [
+                          <arg>
+                          Nolabel
+                            expression (asmcomp/linscan.ml[93,3415+18]..[93,3415+46])
+                              Pexp_ident "Proc.num_available_registers" (asmcomp/linscan.ml[93,3415+18]..[93,3415+46])
+                          <arg>
+                          Nolabel
+                            expression (asmcomp/linscan.ml[93,3415+48]..[93,3415+50])
+                              Pexp_ident "cl" (asmcomp/linscan.ml[93,3415+48]..[93,3415+50])
+                        ]
+                      [
+                        <case>
+                          pattern (asmcomp/linscan.ml[94,3472+8]..[94,3472+9])
+                            Ppat_constant PConst_int (0,None)
+                          expression (asmcomp/linscan.ml[96,3549+10]..[96,3549+25])
+                            Pexp_apply
+                            expression (asmcomp/linscan.ml[96,3549+10]..[96,3549+15])
+                              Pexp_ident "raise" (asmcomp/linscan.ml[96,3549+10]..[96,3549+15])
+                            [
+                              <arg>
+                              Nolabel
+                                expression (asmcomp/linscan.ml[96,3549+16]..[96,3549+25])
+                                  Pexp_construct "Not_found" (asmcomp/linscan.ml[96,3549+16]..[96,3549+25])
+                                  None
+                            ]
+                        <case>
+                          pattern (asmcomp/linscan.ml[97,3575+8]..[97,3575+10])
+                            Ppat_var "rn" (asmcomp/linscan.ml[97,3575+8]..[97,3575+10])
+                          expression (asmcomp/linscan.ml[98,3589+10]..[134,5259+18])
+                            Pexp_let Nonrec
+                            [
+                              <def>
+                                pattern (asmcomp/linscan.ml[98,3589+14]..[98,3589+16])
+                                  Ppat_var "ci" (asmcomp/linscan.ml[98,3589+14]..[98,3589+16])
+                                expression (asmcomp/linscan.ml[98,3589+19]..[98,3589+30])
+                                  Pexp_apply
+                                  expression (asmcomp/linscan.ml[98,3589+19]..[98,3589+30]) ghost
+                                    Pexp_ident "Array.get" (asmcomp/linscan.ml[98,3589+19]..[98,3589+30]) ghost
+                                  [
+                                    <arg>
+                                    Nolabel
+                                      expression (asmcomp/linscan.ml[98,3589+19]..[98,3589+25])
+                                        Pexp_ident "active" (asmcomp/linscan.ml[98,3589+19]..[98,3589+25])
+                                    <arg>
+                                    Nolabel
+                                      expression (asmcomp/linscan.ml[98,3589+27]..[98,3589+29])
+                                        Pexp_ident "cl" (asmcomp/linscan.ml[98,3589+27]..[98,3589+29])
+                                  ]
+                            ]
+                            expression (asmcomp/linscan.ml[99,3623+10]..[134,5259+18])
+                              Pexp_let Nonrec
+                              [
+                                <def>
+                                  pattern (asmcomp/linscan.ml[99,3623+14]..[99,3623+16])
+                                    Ppat_var "r0" (asmcomp/linscan.ml[99,3623+14]..[99,3623+16])
+                                  expression (asmcomp/linscan.ml[99,3623+19]..[99,3623+53])
+                                    Pexp_apply
+                                    expression (asmcomp/linscan.ml[99,3623+19]..[99,3623+53]) ghost
+                                      Pexp_ident "Array.get" (asmcomp/linscan.ml[99,3623+19]..[99,3623+53]) ghost
+                                    [
+                                      <arg>
+                                      Nolabel
+                                        expression (asmcomp/linscan.ml[99,3623+19]..[99,3623+48])
+                                          Pexp_ident "Proc.first_available_register" (asmcomp/linscan.ml[99,3623+19]..[99,3623+48])
+                                      <arg>
+                                      Nolabel
+                                        expression (asmcomp/linscan.ml[99,3623+50]..[99,3623+52])
+                                          Pexp_ident "cl" (asmcomp/linscan.ml[99,3623+50]..[99,3623+52])
+                                    ]
+                              ]
+                              expression (asmcomp/linscan.ml[105,4000+10]..[134,5259+18])
+                                Pexp_let Nonrec
+                                [
+                                  <def>
+                                    pattern (asmcomp/linscan.ml[105,4000+14]..[105,4000+21])
+                                      Ppat_var "regmask" (asmcomp/linscan.ml[105,4000+14]..[105,4000+21])
+                                    expression (asmcomp/linscan.ml[105,4000+24]..[105,4000+42])
+                                      Pexp_apply
+                                      expression (asmcomp/linscan.ml[105,4000+24]..[105,4000+34])
+                                        Pexp_ident "Array.make" (asmcomp/linscan.ml[105,4000+24]..[105,4000+34])
+                                      [
+                                        <arg>
+                                        Nolabel
+                                          expression (asmcomp/linscan.ml[105,4000+35]..[105,4000+37])
+                                            Pexp_ident "rn" (asmcomp/linscan.ml[105,4000+35]..[105,4000+37])
+                                        <arg>
+                                        Nolabel
+                                          expression (asmcomp/linscan.ml[105,4000+38]..[105,4000+42])
+                                            Pexp_construct "true" (asmcomp/linscan.ml[105,4000+38]..[105,4000+42])
+                                            None
+                                      ]
+                                ]
+                                expression (asmcomp/linscan.ml[107,4115+10]..[134,5259+18])
+                                  Pexp_sequence
+                                  expression (asmcomp/linscan.ml[107,4115+10]..[112,4281+24])
+                                    Pexp_apply
+                                    expression (asmcomp/linscan.ml[107,4115+10]..[107,4115+19])
+                                      Pexp_ident "List.iter" (asmcomp/linscan.ml[107,4115+10]..[107,4115+19])
+                                    [
+                                      <arg>
+                                      Nolabel
+                                        expression (asmcomp/linscan.ml[108,4135+12]..[111,4258+22])
+                                          Pexp_function
+                                          [
+                                            <case>
+                                              pattern (asmcomp/linscan.ml[109,4157+14]..[109,4157+35])
+                                                Ppat_record Closed
+                                                [
+                                                  "reg" (asmcomp/linscan.ml[109,4157+15]..[109,4157+18])
+                                                    pattern (asmcomp/linscan.ml[109,4157+21]..[109,4157+34])
+                                                      Ppat_record Closed
+                                                      [
+                                                        "loc" (asmcomp/linscan.ml[109,4157+22]..[109,4157+25])
+                                                          pattern (asmcomp/linscan.ml[109,4157+28]..[109,4157+33])
+                                                            Ppat_construct "Reg" (asmcomp/linscan.ml[109,4157+28]..[109,4157+31])
+                                                            Some
+                                                              []
+                                                              pattern (asmcomp/linscan.ml[109,4157+32]..[109,4157+33])
+                                                                Ppat_var "r" (asmcomp/linscan.ml[109,4157+32]..[109,4157+33])
+                                                      ]
+                                                ]
+                                              expression (asmcomp/linscan.ml[110,4196+16]..[110,4196+61])
+                                                Pexp_ifthenelse
+                                                expression (asmcomp/linscan.ml[110,4196+19]..[110,4196+30])
+                                                  Pexp_apply
+                                                  expression (asmcomp/linscan.ml[110,4196+26]..[110,4196+27])
+                                                    Pexp_ident "<" (asmcomp/linscan.ml[110,4196+26]..[110,4196+27])
+                                                  [
+                                                    <arg>
+                                                    Nolabel
+                                                      expression (asmcomp/linscan.ml[110,4196+19]..[110,4196+25])
+                                                        Pexp_apply
+                                                        expression (asmcomp/linscan.ml[110,4196+21]..[110,4196+22])
+                                                          Pexp_ident "-" (asmcomp/linscan.ml[110,4196+21]..[110,4196+22])
+                                                        [
+                                                          <arg>
+                                                          Nolabel
+                                                            expression (asmcomp/linscan.ml[110,4196+19]..[110,4196+20])
+                                                              Pexp_ident "r" (asmcomp/linscan.ml[110,4196+19]..[110,4196+20])
+                                                          <arg>
+                                                          Nolabel
+                                                            expression (asmcomp/linscan.ml[110,4196+23]..[110,4196+25])
+                                                              Pexp_ident "r0" (asmcomp/linscan.ml[110,4196+23]..[110,4196+25])
+                                                        ]
+                                                    <arg>
+                                                    Nolabel
+                                                      expression (asmcomp/linscan.ml[110,4196+28]..[110,4196+30])
+                                                        Pexp_ident "rn" (asmcomp/linscan.ml[110,4196+28]..[110,4196+30])
+                                                  ]
+                                                expression (asmcomp/linscan.ml[110,4196+36]..[110,4196+61])
+                                                  Pexp_apply
+                                                  expression (asmcomp/linscan.ml[110,4196+36]..[110,4196+61]) ghost
+                                                    Pexp_ident "Array.set" (asmcomp/linscan.ml[110,4196+36]..[110,4196+61]) ghost
+                                                  [
+                                                    <arg>
+                                                    Nolabel
+                                                      expression (asmcomp/linscan.ml[110,4196+36]..[110,4196+43])
+                                                        Pexp_ident "regmask" (asmcomp/linscan.ml[110,4196+36]..[110,4196+43])
+                                                    <arg>
+                                                    Nolabel
+                                                      expression (asmcomp/linscan.ml[110,4196+45]..[110,4196+51])
+                                                        Pexp_apply
+                                                        expression (asmcomp/linscan.ml[110,4196+47]..[110,4196+48])
+                                                          Pexp_ident "-" (asmcomp/linscan.ml[110,4196+47]..[110,4196+48])
+                                                        [
+                                                          <arg>
+                                                          Nolabel
+                                                            expression (asmcomp/linscan.ml[110,4196+45]..[110,4196+46])
+                                                              Pexp_ident "r" (asmcomp/linscan.ml[110,4196+45]..[110,4196+46])
+                                                          <arg>
+                                                          Nolabel
+                                                            expression (asmcomp/linscan.ml[110,4196+49]..[110,4196+51])
+                                                              Pexp_ident "r0" (asmcomp/linscan.ml[110,4196+49]..[110,4196+51])
+                                                        ]
+                                                    <arg>
+                                                    Nolabel
+                                                      expression (asmcomp/linscan.ml[110,4196+56]..[110,4196+61])
+                                                        Pexp_construct "false" (asmcomp/linscan.ml[110,4196+56]..[110,4196+61])
+                                                        None
+                                                  ]
+                                                None
+                                            <case>
+                                              pattern (asmcomp/linscan.ml[111,4258+14]..[111,4258+15])
+                                                Ppat_any
+                                              expression (asmcomp/linscan.ml[111,4258+19]..[111,4258+21])
+                                                Pexp_construct "()" (asmcomp/linscan.ml[111,4258+19]..[111,4258+21])
+                                                None
+                                          ]
+                                      <arg>
+                                      Nolabel
+                                        expression (asmcomp/linscan.ml[112,4281+12]..[112,4281+24])
+                                          Pexp_field
+                                          expression (asmcomp/linscan.ml[112,4281+12]..[112,4281+14])
+                                            Pexp_ident "ci" (asmcomp/linscan.ml[112,4281+12]..[112,4281+14])
+                                          "ci_active" (asmcomp/linscan.ml[112,4281+15]..[112,4281+24])
+                                    ]
+                                  expression (asmcomp/linscan.ml[114,4379+10]..[134,5259+18])
+                                    Pexp_let Nonrec
+                                    [
+                                      <def>
+                                        pattern (asmcomp/linscan.ml[114,4379+14]..[114,4379+38])
+                                          Ppat_var "remove_bound_overlapping" (asmcomp/linscan.ml[114,4379+14]..[114,4379+38])
+                                        expression (asmcomp/linscan.ml[114,4379+41]..[119,4616+21])
+                                          Pexp_function
+                                          [
+                                            <case>
+                                              pattern (asmcomp/linscan.ml[115,4429+14]..[115,4429+40])
+                                                Ppat_alias "j" (asmcomp/linscan.ml[115,4429+39]..[115,4429+40])
+                                                pattern (asmcomp/linscan.ml[115,4429+14]..[115,4429+35])
+                                                  Ppat_record Closed
+                                                  [
+                                                    "reg" (asmcomp/linscan.ml[115,4429+15]..[115,4429+18])
+                                                      pattern (asmcomp/linscan.ml[115,4429+21]..[115,4429+34])
+                                                        Ppat_record Closed
+                                                        [
+                                                          "loc" (asmcomp/linscan.ml[115,4429+22]..[115,4429+25])
+                                                            pattern (asmcomp/linscan.ml[115,4429+28]..[115,4429+33])
+                                                              Ppat_construct "Reg" (asmcomp/linscan.ml[115,4429+28]..[115,4429+31])
+                                                              Some
+                                                                []
+                                                                pattern (asmcomp/linscan.ml[115,4429+32]..[115,4429+33])
+                                                                  Ppat_var "r" (asmcomp/linscan.ml[115,4429+32]..[115,4429+33])
+                                                        ]
+                                                  ]
+                                              expression (asmcomp/linscan.ml[116,4473+16]..[118,4574+41])
+                                                Pexp_ifthenelse
+                                                expression (asmcomp/linscan.ml[116,4473+19]..[117,4526+42])
+                                                  Pexp_apply
+                                                  expression (asmcomp/linscan.ml[116,4473+33]..[116,4473+35])
+                                                    Pexp_ident "&&" (asmcomp/linscan.ml[116,4473+33]..[116,4473+35])
+                                                  [
+                                                    <arg>
+                                                    Nolabel
+                                                      expression (asmcomp/linscan.ml[116,4473+19]..[116,4473+32])
+                                                        Pexp_apply
+                                                        expression (asmcomp/linscan.ml[116,4473+27]..[116,4473+28])
+                                                          Pexp_ident "<" (asmcomp/linscan.ml[116,4473+27]..[116,4473+28])
+                                                        [
+                                                          <arg>
+                                                          Nolabel
+                                                            expression (asmcomp/linscan.ml[116,4473+20]..[116,4473+26])
+                                                              Pexp_apply
+                                                              expression (asmcomp/linscan.ml[116,4473+22]..[116,4473+23])
+                                                                Pexp_ident "-" (asmcomp/linscan.ml[116,4473+22]..[116,4473+23])
+                                                              [
+                                                                <arg>
+                                                                Nolabel
+                                                                  expression (asmcomp/linscan.ml[116,4473+20]..[116,4473+21])
+                                                                    Pexp_ident "r" (asmcomp/linscan.ml[116,4473+20]..[116,4473+21])
+                                                                <arg>
+                                                                Nolabel
+                                                                  expression (asmcomp/linscan.ml[116,4473+24]..[116,4473+26])
+                                                                    Pexp_ident "r0" (asmcomp/linscan.ml[116,4473+24]..[116,4473+26])
+                                                              ]
+                                                          <arg>
+                                                          Nolabel
+                                                            expression (asmcomp/linscan.ml[116,4473+29]..[116,4473+31])
+                                                              Pexp_ident "rn" (asmcomp/linscan.ml[116,4473+29]..[116,4473+31])
+                                                        ]
+                                                    <arg>
+                                                    Nolabel
+                                                      expression (asmcomp/linscan.ml[116,4473+36]..[117,4526+42])
+                                                        Pexp_apply
+                                                        expression (asmcomp/linscan.ml[117,4526+19]..[117,4526+21])
+                                                          Pexp_ident "&&" (asmcomp/linscan.ml[117,4526+19]..[117,4526+21])
+                                                        [
+                                                          <arg>
+                                                          Nolabel
+                                                            expression (asmcomp/linscan.ml[116,4473+36]..[116,4473+52])
+                                                              Pexp_apply
+                                                              expression (asmcomp/linscan.ml[116,4473+36]..[116,4473+52]) ghost
+                                                                Pexp_ident "Array.get" (asmcomp/linscan.ml[116,4473+36]..[116,4473+52]) ghost
+                                                              [
+                                                                <arg>
+                                                                Nolabel
+                                                                  expression (asmcomp/linscan.ml[116,4473+36]..[116,4473+43])
+                                                                    Pexp_ident "regmask" (asmcomp/linscan.ml[116,4473+36]..[116,4473+43])
+                                                                <arg>
+                                                                Nolabel
+                                                                  expression (asmcomp/linscan.ml[116,4473+45]..[116,4473+51])
+                                                                    Pexp_apply
+                                                                    expression (asmcomp/linscan.ml[116,4473+47]..[116,4473+48])
+                                                                      Pexp_ident "-" (asmcomp/linscan.ml[116,4473+47]..[116,4473+48])
+                                                                    [
+                                                                      <arg>
+                                                                      Nolabel
+expression (asmcomp/linscan.ml[116,4473+45]..[116,4473+46])
+  Pexp_ident "r" (asmcomp/linscan.ml[116,4473+45]..[116,4473+46])
+                                                                      <arg>
+                                                                      Nolabel
+expression (asmcomp/linscan.ml[116,4473+49]..[116,4473+51])
+  Pexp_ident "r0" (asmcomp/linscan.ml[116,4473+49]..[116,4473+51])
+                                                                    ]
+                                                              ]
+                                                          <arg>
+                                                          Nolabel
+                                                            expression (asmcomp/linscan.ml[117,4526+22]..[117,4526+42])
+                                                              Pexp_apply
+                                                              expression (asmcomp/linscan.ml[117,4526+22]..[117,4526+38])
+                                                                Pexp_ident "Interval.overlap" (asmcomp/linscan.ml[117,4526+22]..[117,4526+38])
+                                                              [
+                                                                <arg>
+                                                                Nolabel
+                                                                  expression (asmcomp/linscan.ml[117,4526+39]..[117,4526+40])
+                                                                    Pexp_ident "j" (asmcomp/linscan.ml[117,4526+39]..[117,4526+40])
+                                                                <arg>
+                                                                Nolabel
+                                                                  expression (asmcomp/linscan.ml[117,4526+41]..[117,4526+42])
+                                                                    Pexp_ident "i" (asmcomp/linscan.ml[117,4526+41]..[117,4526+42])
+                                                              ]
+                                                        ]
+                                                  ]
+                                                expression (asmcomp/linscan.ml[118,4574+16]..[118,4574+41])
+                                                  Pexp_apply
+                                                  expression (asmcomp/linscan.ml[118,4574+16]..[118,4574+41]) ghost
+                                                    Pexp_ident "Array.set" (asmcomp/linscan.ml[118,4574+16]..[118,4574+41]) ghost
+                                                  [
+                                                    <arg>
+                                                    Nolabel
+                                                      expression (asmcomp/linscan.ml[118,4574+16]..[118,4574+23])
+                                                        Pexp_ident "regmask" (asmcomp/linscan.ml[118,4574+16]..[118,4574+23])
+                                                    <arg>
+                                                    Nolabel
+                                                      expression (asmcomp/linscan.ml[118,4574+25]..[118,4574+31])
+                                                        Pexp_apply
+                                                        expression (asmcomp/linscan.ml[118,4574+27]..[118,4574+28])
+                                                          Pexp_ident "-" (asmcomp/linscan.ml[118,4574+27]..[118,4574+28])
+                                                        [
+                                                          <arg>
+                                                          Nolabel
+                                                            expression (asmcomp/linscan.ml[118,4574+25]..[118,4574+26])
+                                                              Pexp_ident "r" (asmcomp/linscan.ml[118,4574+25]..[118,4574+26])
+                                                          <arg>
+                                                          Nolabel
+                                                            expression (asmcomp/linscan.ml[118,4574+29]..[118,4574+31])
+                                                              Pexp_ident "r0" (asmcomp/linscan.ml[118,4574+29]..[118,4574+31])
+                                                        ]
+                                                    <arg>
+                                                    Nolabel
+                                                      expression (asmcomp/linscan.ml[118,4574+36]..[118,4574+41])
+                                                        Pexp_construct "false" (asmcomp/linscan.ml[118,4574+36]..[118,4574+41])
+                                                        None
+                                                  ]
+                                                None
+                                            <case>
+                                              pattern (asmcomp/linscan.ml[119,4616+14]..[119,4616+15])
+                                                Ppat_any
+                                              expression (asmcomp/linscan.ml[119,4616+19]..[119,4616+21])
+                                                Pexp_construct "()" (asmcomp/linscan.ml[119,4616+19]..[119,4616+21])
+                                                None
+                                          ]
+                                    ]
+                                    expression (asmcomp/linscan.ml[120,4641+10]..[134,5259+18])
+                                      Pexp_sequence
+                                      expression (asmcomp/linscan.ml[120,4641+10]..[120,4641+59])
+                                        Pexp_apply
+                                        expression (asmcomp/linscan.ml[120,4641+10]..[120,4641+19])
+                                          Pexp_ident "List.iter" (asmcomp/linscan.ml[120,4641+10]..[120,4641+19])
+                                        [
+                                          <arg>
+                                          Nolabel
+                                            expression (asmcomp/linscan.ml[120,4641+20]..[120,4641+44])
+                                              Pexp_ident "remove_bound_overlapping" (asmcomp/linscan.ml[120,4641+20]..[120,4641+44])
+                                          <arg>
+                                          Nolabel
+                                            expression (asmcomp/linscan.ml[120,4641+45]..[120,4641+59])
+                                              Pexp_field
+                                              expression (asmcomp/linscan.ml[120,4641+45]..[120,4641+47])
+                                                Pexp_ident "ci" (asmcomp/linscan.ml[120,4641+45]..[120,4641+47])
+                                              "ci_inactive" (asmcomp/linscan.ml[120,4641+48]..[120,4641+59])
+                                        ]
+                                      expression (asmcomp/linscan.ml[121,4702+10]..[134,5259+18])
+                                        Pexp_sequence
+                                        expression (asmcomp/linscan.ml[121,4702+10]..[121,4702+56])
+                                          Pexp_apply
+                                          expression (asmcomp/linscan.ml[121,4702+10]..[121,4702+19])
+                                            Pexp_ident "List.iter" (asmcomp/linscan.ml[121,4702+10]..[121,4702+19])
+                                          [
+                                            <arg>
+                                            Nolabel
+                                              expression (asmcomp/linscan.ml[121,4702+20]..[121,4702+44])
+                                                Pexp_ident "remove_bound_overlapping" (asmcomp/linscan.ml[121,4702+20]..[121,4702+44])
+                                            <arg>
+                                            Nolabel
+                                              expression (asmcomp/linscan.ml[121,4702+45]..[121,4702+56])
+                                                Pexp_field
+                                                expression (asmcomp/linscan.ml[121,4702+45]..[121,4702+47])
+                                                  Pexp_ident "ci" (asmcomp/linscan.ml[121,4702+45]..[121,4702+47])
+                                                "ci_fixed" (asmcomp/linscan.ml[121,4702+48]..[121,4702+56])
+                                          ]
+                                        expression (asmcomp/linscan.ml[123,4816+10]..[134,5259+18])
+                                          Pexp_let Rec
+                                          [
+                                            <def>
+                                              pattern (asmcomp/linscan.ml[123,4816+18]..[123,4816+24])
+                                                Ppat_var "assign" (asmcomp/linscan.ml[123,4816+18]..[123,4816+24])
+                                              expression (asmcomp/linscan.ml[123,4816+25]..[133,5226+29]) ghost
+                                                Pexp_fun
+                                                Nolabel
+                                                None
+                                                pattern (asmcomp/linscan.ml[123,4816+25]..[123,4816+26])
+                                                  Ppat_var "r" (asmcomp/linscan.ml[123,4816+25]..[123,4816+26])
+                                                expression (asmcomp/linscan.ml[124,4845+12]..[133,5226+29])
+                                                  Pexp_ifthenelse
+                                                  expression (asmcomp/linscan.ml[124,4845+15]..[124,4845+21])
+                                                    Pexp_apply
+                                                    expression (asmcomp/linscan.ml[124,4845+17]..[124,4845+18])
+                                                      Pexp_ident "=" (asmcomp/linscan.ml[124,4845+17]..[124,4845+18])
+                                                    [
+                                                      <arg>
+                                                      Nolabel
+                                                        expression (asmcomp/linscan.ml[124,4845+15]..[124,4845+16])
+                                                          Pexp_ident "r" (asmcomp/linscan.ml[124,4845+15]..[124,4845+16])
+                                                      <arg>
+                                                      Nolabel
+                                                        expression (asmcomp/linscan.ml[124,4845+19]..[124,4845+21])
+                                                          Pexp_ident "rn" (asmcomp/linscan.ml[124,4845+19]..[124,4845+21])
+                                                    ]
+                                                  expression (asmcomp/linscan.ml[125,4872+14]..[125,4872+29])
+                                                    Pexp_apply
+                                                    expression (asmcomp/linscan.ml[125,4872+14]..[125,4872+19])
+                                                      Pexp_ident "raise" (asmcomp/linscan.ml[125,4872+14]..[125,4872+19])
+                                                    [
+                                                      <arg>
+                                                      Nolabel
+                                                        expression (asmcomp/linscan.ml[125,4872+20]..[125,4872+29])
+                                                          Pexp_construct "Not_found" (asmcomp/linscan.ml[125,4872+20]..[125,4872+29])
+                                                          None
+                                                    ]
+                                                  Some
+                                                    expression (asmcomp/linscan.ml[126,4902+17]..[133,5226+29])
+                                                      Pexp_ifthenelse
+                                                      expression (asmcomp/linscan.ml[126,4902+20]..[126,4902+31])
+                                                        Pexp_apply
+                                                        expression (asmcomp/linscan.ml[126,4902+20]..[126,4902+31]) ghost
+                                                          Pexp_ident "Array.get" (asmcomp/linscan.ml[126,4902+20]..[126,4902+31]) ghost
+                                                        [
+                                                          <arg>
+                                                          Nolabel
+                                                            expression (asmcomp/linscan.ml[126,4902+20]..[126,4902+27])
+                                                              Pexp_ident "regmask" (asmcomp/linscan.ml[126,4902+20]..[126,4902+27])
+                                                          <arg>
+                                                          Nolabel
+                                                            expression (asmcomp/linscan.ml[126,4902+29]..[126,4902+30])
+                                                              Pexp_ident "r" (asmcomp/linscan.ml[126,4902+29]..[126,4902+30])
+                                                        ]
+                                                      expression (asmcomp/linscan.ml[126,4902+37]..[132,5205+15])
+                                                        Pexp_sequence
+                                                        expression (asmcomp/linscan.ml[129,5060+14]..[129,5060+39])
+                                                          Pexp_setfield
+                                                          expression (asmcomp/linscan.ml[129,5060+14]..[129,5060+19])
+                                                            Pexp_field
+                                                            expression (asmcomp/linscan.ml[129,5060+14]..[129,5060+15])
+                                                              Pexp_ident "i" (asmcomp/linscan.ml[129,5060+14]..[129,5060+15])
+                                                            "reg" (asmcomp/linscan.ml[129,5060+16]..[129,5060+19])
+                                                          "loc" (asmcomp/linscan.ml[129,5060+20]..[129,5060+23])
+                                                          expression (asmcomp/linscan.ml[129,5060+27]..[129,5060+39])
+                                                            Pexp_construct "Reg" (asmcomp/linscan.ml[129,5060+27]..[129,5060+30])
+                                                            Some
+                                                              expression (asmcomp/linscan.ml[129,5060+31]..[129,5060+39])
+                                                                Pexp_apply
+                                                                expression (asmcomp/linscan.ml[129,5060+35]..[129,5060+36])
+                                                                  Pexp_ident "+" (asmcomp/linscan.ml[129,5060+35]..[129,5060+36])
+                                                                [
+                                                                  <arg>
+                                                                  Nolabel
+                                                                    expression (asmcomp/linscan.ml[129,5060+32]..[129,5060+34])
+                                                                      Pexp_ident "r0" (asmcomp/linscan.ml[129,5060+32]..[129,5060+34])
+                                                                  <arg>
+                                                                  Nolabel
+                                                                    expression (asmcomp/linscan.ml[129,5060+37]..[129,5060+38])
+                                                                      Pexp_ident "r" (asmcomp/linscan.ml[129,5060+37]..[129,5060+38])
+                                                                ]
+                                                        expression (asmcomp/linscan.ml[130,5101+14]..[131,5137+67])
+                                                          Pexp_sequence
+                                                          expression (asmcomp/linscan.ml[130,5101+14]..[130,5101+34])
+                                                            Pexp_setfield
+                                                            expression (asmcomp/linscan.ml[130,5101+14]..[130,5101+19])
+                                                              Pexp_field
+                                                              expression (asmcomp/linscan.ml[130,5101+14]..[130,5101+15])
+                                                                Pexp_ident "i" (asmcomp/linscan.ml[130,5101+14]..[130,5101+15])
+                                                              "reg" (asmcomp/linscan.ml[130,5101+16]..[130,5101+19])
+                                                            "spill" (asmcomp/linscan.ml[130,5101+20]..[130,5101+25])
+                                                            expression (asmcomp/linscan.ml[130,5101+29]..[130,5101+34])
+                                                              Pexp_construct "false" (asmcomp/linscan.ml[130,5101+29]..[130,5101+34])
+                                                              None
+                                                          expression (asmcomp/linscan.ml[131,5137+14]..[131,5137+67])
+                                                            Pexp_setfield
+                                                            expression (asmcomp/linscan.ml[131,5137+14]..[131,5137+16])
+                                                              Pexp_ident "ci" (asmcomp/linscan.ml[131,5137+14]..[131,5137+16])
+                                                            "ci_active" (asmcomp/linscan.ml[131,5137+17]..[131,5137+26])
+                                                            expression (asmcomp/linscan.ml[131,5137+30]..[131,5137+67])
+                                                              Pexp_apply
+                                                              expression (asmcomp/linscan.ml[131,5137+30]..[131,5137+52])
+                                                                Pexp_ident "insert_interval_sorted" (asmcomp/linscan.ml[131,5137+30]..[131,5137+52])
+                                                              [
+                                                                <arg>
+                                                                Nolabel
+                                                                  expression (asmcomp/linscan.ml[131,5137+53]..[131,5137+54])
+                                                                    Pexp_ident "i" (asmcomp/linscan.ml[131,5137+53]..[131,5137+54])
+                                                                <arg>
+                                                                Nolabel
+                                                                  expression (asmcomp/linscan.ml[131,5137+55]..[131,5137+67])
+                                                                    Pexp_field
+                                                                    expression (asmcomp/linscan.ml[131,5137+55]..[131,5137+57])
+                                                                      Pexp_ident "ci" (asmcomp/linscan.ml[131,5137+55]..[131,5137+57])
+                                                                    "ci_active" (asmcomp/linscan.ml[131,5137+58]..[131,5137+67])
+                                                              ]
+                                                      Some
+                                                        expression (asmcomp/linscan.ml[133,5226+14]..[133,5226+29])
+                                                          Pexp_apply
+                                                          expression (asmcomp/linscan.ml[133,5226+14]..[133,5226+20])
+                                                            Pexp_ident "assign" (asmcomp/linscan.ml[133,5226+14]..[133,5226+20])
+                                                          [
+                                                            <arg>
+                                                            Nolabel
+                                                              expression (asmcomp/linscan.ml[133,5226+21]..[133,5226+29])
+                                                                Pexp_apply
+                                                                expression (asmcomp/linscan.ml[133,5226+22]..[133,5226+26])
+                                                                  Pexp_ident "succ" (asmcomp/linscan.ml[133,5226+22]..[133,5226+26])
+                                                                [
+                                                                  <arg>
+                                                                  Nolabel
+                                                                    expression (asmcomp/linscan.ml[133,5226+27]..[133,5226+28])
+                                                                      Pexp_ident "r" (asmcomp/linscan.ml[133,5226+27]..[133,5226+28])
+                                                                ]
+                                                          ]
+                                          ]
+                                          expression (asmcomp/linscan.ml[134,5259+10]..[134,5259+18])
+                                            Pexp_apply
+                                            expression (asmcomp/linscan.ml[134,5259+10]..[134,5259+16])
+                                              Pexp_ident "assign" (asmcomp/linscan.ml[134,5259+10]..[134,5259+16])
+                                            [
+                                              <arg>
+                                              Nolabel
+                                                expression (asmcomp/linscan.ml[134,5259+17]..[134,5259+18])
+                                                  Pexp_constant PConst_int (0,None)
+                                            ]
+                      ]
+                <case>
+                  pattern (asmcomp/linscan.ml[136,5288+4]..[136,5288+5])
+                    Ppat_any
+                  expression (asmcomp/linscan.ml[136,5288+9]..[136,5288+11])
+                    Pexp_construct "()" (asmcomp/linscan.ml[136,5288+9]..[136,5288+11])
+                    None
+              ]
+    ]
+  structure_item (asmcomp/linscan.ml[139,5307+0]..[162,6415+43])
+    Pstr_value Nonrec
+    [
+      <def>
+        pattern (asmcomp/linscan.ml[139,5307+4]..[139,5307+29])
+          Ppat_var "allocate_blocked_register" (asmcomp/linscan.ml[139,5307+4]..[139,5307+29])
+        expression (asmcomp/linscan.ml[139,5307+30]..[162,6415+43]) ghost
+          Pexp_fun
+          Nolabel
+          None
+          pattern (asmcomp/linscan.ml[139,5307+30]..[139,5307+45])
+            Ppat_var "num_stack_slots" (asmcomp/linscan.ml[139,5307+30]..[139,5307+45])
+          expression (asmcomp/linscan.ml[139,5307+46]..[162,6415+43]) ghost
+            Pexp_fun
+            Nolabel
+            None
+            pattern (asmcomp/linscan.ml[139,5307+46]..[139,5307+47])
+              Ppat_var "i" (asmcomp/linscan.ml[139,5307+46]..[139,5307+47])
+            expression (asmcomp/linscan.ml[140,5357+2]..[162,6415+43])
+              Pexp_let Nonrec
+              [
+                <def>
+                  pattern (asmcomp/linscan.ml[140,5357+6]..[140,5357+8])
+                    Ppat_var "cl" (asmcomp/linscan.ml[140,5357+6]..[140,5357+8])
+                  expression (asmcomp/linscan.ml[140,5357+11]..[140,5357+36])
+                    Pexp_apply
+                    expression (asmcomp/linscan.ml[140,5357+11]..[140,5357+30])
+                      Pexp_ident "Proc.register_class" (asmcomp/linscan.ml[140,5357+11]..[140,5357+30])
+                    [
+                      <arg>
+                      Nolabel
+                        expression (asmcomp/linscan.ml[140,5357+31]..[140,5357+36])
+                          Pexp_field
+                          expression (asmcomp/linscan.ml[140,5357+31]..[140,5357+32])
+                            Pexp_ident "i" (asmcomp/linscan.ml[140,5357+31]..[140,5357+32])
+                          "reg" (asmcomp/linscan.ml[140,5357+33]..[140,5357+36])
+                    ]
+              ]
+              expression (asmcomp/linscan.ml[141,5397+2]..[162,6415+43])
+                Pexp_let Nonrec
+                [
+                  <def>
+                    pattern (asmcomp/linscan.ml[141,5397+6]..[141,5397+8])
+                      Ppat_var "ci" (asmcomp/linscan.ml[141,5397+6]..[141,5397+8])
+                    expression (asmcomp/linscan.ml[141,5397+11]..[141,5397+22])
+                      Pexp_apply
+                      expression (asmcomp/linscan.ml[141,5397+11]..[141,5397+22]) ghost
+                        Pexp_ident "Array.get" (asmcomp/linscan.ml[141,5397+11]..[141,5397+22]) ghost
+                      [
+                        <arg>
+                        Nolabel
+                          expression (asmcomp/linscan.ml[141,5397+11]..[141,5397+17])
+                            Pexp_ident "active" (asmcomp/linscan.ml[141,5397+11]..[141,5397+17])
+                        <arg>
+                        Nolabel
+                          expression (asmcomp/linscan.ml[141,5397+19]..[141,5397+21])
+                            Pexp_ident "cl" (asmcomp/linscan.ml[141,5397+19]..[141,5397+21])
+                      ]
+                ]
+                expression (asmcomp/linscan.ml[142,5423+2]..[162,6415+43])
+                  Pexp_match
+                  expression (asmcomp/linscan.ml[142,5423+8]..[142,5423+20])
+                    Pexp_field
+                    expression (asmcomp/linscan.ml[142,5423+8]..[142,5423+10])
+                      Pexp_ident "ci" (asmcomp/linscan.ml[142,5423+8]..[142,5423+10])
+                    "ci_active" (asmcomp/linscan.ml[142,5423+11]..[142,5423+20])
+                  [
+                    <case>
+                      pattern (asmcomp/linscan.ml[143,5449+4]..[143,5449+15])
+                        Ppat_construct "::" (asmcomp/linscan.ml[143,5449+10]..[143,5449+12])
+                        Some
+                          []
+                          pattern (asmcomp/linscan.ml[143,5449+4]..[143,5449+15]) ghost
+                            Ppat_tuple
+                            [
+                              pattern (asmcomp/linscan.ml[143,5449+4]..[143,5449+9])
+                                Ppat_var "ilast" (asmcomp/linscan.ml[143,5449+4]..[143,5449+9])
+                              pattern (asmcomp/linscan.ml[143,5449+13]..[143,5449+15])
+                                Ppat_var "il" (asmcomp/linscan.ml[143,5449+13]..[143,5449+15])
+                            ]
+                      <when>
+                        expression (asmcomp/linscan.ml[144,5470+6]..[149,5736+73])
+                          Pexp_apply
+                          expression (asmcomp/linscan.ml[144,5470+26]..[144,5470+28])
+                            Pexp_ident "&&" (asmcomp/linscan.ml[144,5470+26]..[144,5470+28])
+                          [
+                            <arg>
+                            Nolabel
+                              expression (asmcomp/linscan.ml[144,5470+6]..[144,5470+25])
+                                Pexp_apply
+                                expression (asmcomp/linscan.ml[144,5470+17]..[144,5470+18])
+                                  Pexp_ident ">" (asmcomp/linscan.ml[144,5470+17]..[144,5470+18])
+                                [
+                                  <arg>
+                                  Nolabel
+                                    expression (asmcomp/linscan.ml[144,5470+6]..[144,5470+16])
+                                      Pexp_field
+                                      expression (asmcomp/linscan.ml[144,5470+6]..[144,5470+11])
+                                        Pexp_ident "ilast" (asmcomp/linscan.ml[144,5470+6]..[144,5470+11])
+                                      "iend" (asmcomp/linscan.ml[144,5470+12]..[144,5470+16])
+                                  <arg>
+                                  Nolabel
+                                    expression (asmcomp/linscan.ml[144,5470+19]..[144,5470+25])
+                                      Pexp_field
+                                      expression (asmcomp/linscan.ml[144,5470+19]..[144,5470+20])
+                                        Pexp_ident "i" (asmcomp/linscan.ml[144,5470+19]..[144,5470+20])
+                                      "iend" (asmcomp/linscan.ml[144,5470+21]..[144,5470+25])
+                                ]
+                            <arg>
+                            Nolabel
+                              expression (asmcomp/linscan.ml[146,5570+6]..[149,5736+73])
+                                Pexp_let Nonrec
+                                [
+                                  <def>
+                                    pattern (asmcomp/linscan.ml[146,5570+10]..[146,5570+13])
+                                      Ppat_var "chk" (asmcomp/linscan.ml[146,5570+10]..[146,5570+13])
+                                    expression (asmcomp/linscan.ml[146,5570+14]..[146,5570+67]) ghost
+                                      Pexp_fun
+                                      Nolabel
+                                      None
+                                      pattern (asmcomp/linscan.ml[146,5570+14]..[146,5570+15])
+                                        Ppat_var "r" (asmcomp/linscan.ml[146,5570+14]..[146,5570+15])
+                                      expression (asmcomp/linscan.ml[146,5570+18]..[146,5570+67])
+                                        Pexp_apply
+                                        expression (asmcomp/linscan.ml[146,5570+44]..[146,5570+46])
+                                          Pexp_ident "&&" (asmcomp/linscan.ml[146,5570+44]..[146,5570+46])
+                                        [
+                                          <arg>
+                                          Nolabel
+                                            expression (asmcomp/linscan.ml[146,5570+18]..[146,5570+43])
+                                              Pexp_apply
+                                              expression (asmcomp/linscan.ml[146,5570+28]..[146,5570+29])
+                                                Pexp_ident "=" (asmcomp/linscan.ml[146,5570+28]..[146,5570+29])
+                                              [
+                                                <arg>
+                                                Nolabel
+                                                  expression (asmcomp/linscan.ml[146,5570+18]..[146,5570+27])
+                                                    Pexp_field
+                                                    expression (asmcomp/linscan.ml[146,5570+18]..[146,5570+23])
+                                                      Pexp_field
+                                                      expression (asmcomp/linscan.ml[146,5570+18]..[146,5570+19])
+                                                        Pexp_ident "r" (asmcomp/linscan.ml[146,5570+18]..[146,5570+19])
+                                                      "reg" (asmcomp/linscan.ml[146,5570+20]..[146,5570+23])
+                                                    "loc" (asmcomp/linscan.ml[146,5570+24]..[146,5570+27])
+                                                <arg>
+                                                Nolabel
+                                                  expression (asmcomp/linscan.ml[146,5570+30]..[146,5570+43])
+                                                    Pexp_field
+                                                    expression (asmcomp/linscan.ml[146,5570+30]..[146,5570+39])
+                                                      Pexp_field
+                                                      expression (asmcomp/linscan.ml[146,5570+30]..[146,5570+35])
+                                                        Pexp_ident "ilast" (asmcomp/linscan.ml[146,5570+30]..[146,5570+35])
+                                                      "reg" (asmcomp/linscan.ml[146,5570+36]..[146,5570+39])
+                                                    "loc" (asmcomp/linscan.ml[146,5570+40]..[146,5570+43])
+                                              ]
+                                          <arg>
+                                          Nolabel
+                                            expression (asmcomp/linscan.ml[146,5570+47]..[146,5570+67])
+                                              Pexp_apply
+                                              expression (asmcomp/linscan.ml[146,5570+47]..[146,5570+63])
+                                                Pexp_ident "Interval.overlap" (asmcomp/linscan.ml[146,5570+47]..[146,5570+63])
+                                              [
+                                                <arg>
+                                                Nolabel
+                                                  expression (asmcomp/linscan.ml[146,5570+64]..[146,5570+65])
+                                                    Pexp_ident "r" (asmcomp/linscan.ml[146,5570+64]..[146,5570+65])
+                                                <arg>
+                                                Nolabel
+                                                  expression (asmcomp/linscan.ml[146,5570+66]..[146,5570+67])
+                                                    Pexp_ident "i" (asmcomp/linscan.ml[146,5570+66]..[146,5570+67])
+                                              ]
+                                        ]
+                                ]
+                                expression (asmcomp/linscan.ml[149,5736+6]..[149,5736+73])
+                                  Pexp_apply
+                                  expression (asmcomp/linscan.ml[149,5736+6]..[149,5736+9])
+                                    Pexp_ident "not" (asmcomp/linscan.ml[149,5736+6]..[149,5736+9])
+                                  [
+                                    <arg>
+                                    Nolabel
+                                      expression (asmcomp/linscan.ml[149,5736+10]..[149,5736+73])
+                                        Pexp_apply
+                                        expression (asmcomp/linscan.ml[149,5736+39]..[149,5736+41])
+                                          Pexp_ident "||" (asmcomp/linscan.ml[149,5736+39]..[149,5736+41])
+                                        [
+                                          <arg>
+                                          Nolabel
+                                            expression (asmcomp/linscan.ml[149,5736+11]..[149,5736+38])
+                                              Pexp_apply
+                                              expression (asmcomp/linscan.ml[149,5736+11]..[149,5736+22])
+                                                Pexp_ident "List.exists" (asmcomp/linscan.ml[149,5736+11]..[149,5736+22])
+                                              [
+                                                <arg>
+                                                Nolabel
+                                                  expression (asmcomp/linscan.ml[149,5736+23]..[149,5736+26])
+                                                    Pexp_ident "chk" (asmcomp/linscan.ml[149,5736+23]..[149,5736+26])
+                                                <arg>
+                                                Nolabel
+                                                  expression (asmcomp/linscan.ml[149,5736+27]..[149,5736+38])
+                                                    Pexp_field
+                                                    expression (asmcomp/linscan.ml[149,5736+27]..[149,5736+29])
+                                                      Pexp_ident "ci" (asmcomp/linscan.ml[149,5736+27]..[149,5736+29])
+                                                    "ci_fixed" (asmcomp/linscan.ml[149,5736+30]..[149,5736+38])
+                                              ]
+                                          <arg>
+                                          Nolabel
+                                            expression (asmcomp/linscan.ml[149,5736+42]..[149,5736+72])
+                                              Pexp_apply
+                                              expression (asmcomp/linscan.ml[149,5736+42]..[149,5736+53])
+                                                Pexp_ident "List.exists" (asmcomp/linscan.ml[149,5736+42]..[149,5736+53])
+                                              [
+                                                <arg>
+                                                Nolabel
+                                                  expression (asmcomp/linscan.ml[149,5736+54]..[149,5736+57])
+                                                    Pexp_ident "chk" (asmcomp/linscan.ml[149,5736+54]..[149,5736+57])
+                                                <arg>
+                                                Nolabel
+                                                  expression (asmcomp/linscan.ml[149,5736+58]..[149,5736+72])
+                                                    Pexp_field
+                                                    expression (asmcomp/linscan.ml[149,5736+58]..[149,5736+60])
+                                                      Pexp_ident "ci" (asmcomp/linscan.ml[149,5736+58]..[149,5736+60])
+                                                    "ci_inactive" (asmcomp/linscan.ml[149,5736+61]..[149,5736+72])
+                                              ]
+                                        ]
+                                  ]
+                          ]
+                      expression (asmcomp/linscan.ml[151,5817+6]..[157,6175+47])
+                        Pexp_sequence
+                        expression (asmcomp/linscan.ml[151,5817+6]..[151,5817+72])
+                          Pexp_match
+                          expression (asmcomp/linscan.ml[151,5817+18]..[151,5817+31])
+                            Pexp_field
+                            expression (asmcomp/linscan.ml[151,5817+18]..[151,5817+27])
+                              Pexp_field
+                              expression (asmcomp/linscan.ml[151,5817+18]..[151,5817+23])
+                                Pexp_ident "ilast" (asmcomp/linscan.ml[151,5817+18]..[151,5817+23])
+                              "reg" (asmcomp/linscan.ml[151,5817+24]..[151,5817+27])
+                            "loc" (asmcomp/linscan.ml[151,5817+28]..[151,5817+31])
+                          [
+                            <case>
+                              pattern (asmcomp/linscan.ml[151,5817+37]..[151,5817+42])
+                                Ppat_construct "Reg" (asmcomp/linscan.ml[151,5817+37]..[151,5817+40])
+                                Some
+                                  []
+                                  pattern (asmcomp/linscan.ml[151,5817+41]..[151,5817+42])
+                                    Ppat_any
+                              expression (asmcomp/linscan.ml[151,5817+46]..[151,5817+48])
+                                Pexp_construct "()" (asmcomp/linscan.ml[151,5817+46]..[151,5817+48])
+                                None
+                            <case>
+                              pattern (asmcomp/linscan.ml[151,5817+51]..[151,5817+52])
+                                Ppat_any
+                              expression (asmcomp/linscan.ml[151,5817+56]..[151,5817+68])
+                                Pexp_assert
+                                expression (asmcomp/linscan.ml[151,5817+63]..[151,5817+68])
+                                  Pexp_construct "false" (asmcomp/linscan.ml[151,5817+63]..[151,5817+68])
+                                  None
+                          ]
+                        expression (asmcomp/linscan.ml[153,5956+6]..[157,6175+47])
+                          Pexp_sequence
+                          expression (asmcomp/linscan.ml[153,5956+6]..[153,5956+32])
+                            Pexp_setfield
+                            expression (asmcomp/linscan.ml[153,5956+6]..[153,5956+11])
+                              Pexp_field
+                              expression (asmcomp/linscan.ml[153,5956+6]..[153,5956+7])
+                                Pexp_ident "i" (asmcomp/linscan.ml[153,5956+6]..[153,5956+7])
+                              "reg" (asmcomp/linscan.ml[153,5956+8]..[153,5956+11])
+                            "loc" (asmcomp/linscan.ml[153,5956+12]..[153,5956+15])
+                            expression (asmcomp/linscan.ml[153,5956+19]..[153,5956+32])
+                              Pexp_field
+                              expression (asmcomp/linscan.ml[153,5956+19]..[153,5956+28])
+                                Pexp_field
+                                expression (asmcomp/linscan.ml[153,5956+19]..[153,5956+24])
+                                  Pexp_ident "ilast" (asmcomp/linscan.ml[153,5956+19]..[153,5956+24])
+                                "reg" (asmcomp/linscan.ml[153,5956+25]..[153,5956+28])
+                              "loc" (asmcomp/linscan.ml[153,5956+29]..[153,5956+32])
+                          expression (asmcomp/linscan.ml[155,6062+6]..[157,6175+47])
+                            Pexp_sequence
+                            expression (asmcomp/linscan.ml[155,6062+6]..[155,6062+49])
+                              Pexp_setfield
+                              expression (asmcomp/linscan.ml[155,6062+6]..[155,6062+8])
+                                Pexp_ident "ci" (asmcomp/linscan.ml[155,6062+6]..[155,6062+8])
+                              "ci_active" (asmcomp/linscan.ml[155,6062+9]..[155,6062+18])
+                              expression (asmcomp/linscan.ml[155,6062+22]..[155,6062+49])
+                                Pexp_apply
+                                expression (asmcomp/linscan.ml[155,6062+22]..[155,6062+44])
+                                  Pexp_ident "insert_interval_sorted" (asmcomp/linscan.ml[155,6062+22]..[155,6062+44])
+                                [
+                                  <arg>
+                                  Nolabel
+                                    expression (asmcomp/linscan.ml[155,6062+45]..[155,6062+46])
+                                      Pexp_ident "i" (asmcomp/linscan.ml[155,6062+45]..[155,6062+46])
+                                  <arg>
+                                  Nolabel
+                                    expression (asmcomp/linscan.ml[155,6062+47]..[155,6062+49])
+                                      Pexp_ident "il" (asmcomp/linscan.ml[155,6062+47]..[155,6062+49])
+                                ]
+                            expression (asmcomp/linscan.ml[157,6175+6]..[157,6175+47])
+                              Pexp_apply
+                              expression (asmcomp/linscan.ml[157,6175+6]..[157,6175+25])
+                                Pexp_ident "allocate_stack_slot" (asmcomp/linscan.ml[157,6175+6]..[157,6175+25])
+                              [
+                                <arg>
+                                Nolabel
+                                  expression (asmcomp/linscan.ml[157,6175+26]..[157,6175+41])
+                                    Pexp_ident "num_stack_slots" (asmcomp/linscan.ml[157,6175+26]..[157,6175+41])
+                                <arg>
+                                Nolabel
+                                  expression (asmcomp/linscan.ml[157,6175+42]..[157,6175+47])
+                                    Pexp_ident "ilast" (asmcomp/linscan.ml[157,6175+42]..[157,6175+47])
+                              ]
+                    <case>
+                      pattern (asmcomp/linscan.ml[158,6223+4]..[158,6223+5])
+                        Ppat_any
+                      expression (asmcomp/linscan.ml[162,6415+6]..[162,6415+43])
+                        Pexp_apply
+                        expression (asmcomp/linscan.ml[162,6415+6]..[162,6415+25])
+                          Pexp_ident "allocate_stack_slot" (asmcomp/linscan.ml[162,6415+6]..[162,6415+25])
+                        [
+                          <arg>
+                          Nolabel
+                            expression (asmcomp/linscan.ml[162,6415+26]..[162,6415+41])
+                              Pexp_ident "num_stack_slots" (asmcomp/linscan.ml[162,6415+26]..[162,6415+41])
+                          <arg>
+                          Nolabel
+                            expression (asmcomp/linscan.ml[162,6415+42]..[162,6415+43])
+                              Pexp_ident "i" (asmcomp/linscan.ml[162,6415+42]..[162,6415+43])
+                        ]
+                  ]
+    ]
+  structure_item (asmcomp/linscan.ml[164,6460+0]..[179,7040+49])
+    Pstr_value Nonrec
+    [
+      <def>
+        pattern (asmcomp/linscan.ml[164,6460+4]..[164,6460+17])
+          Ppat_var "walk_interval" (asmcomp/linscan.ml[164,6460+4]..[164,6460+17])
+        expression (asmcomp/linscan.ml[164,6460+18]..[179,7040+49]) ghost
+          Pexp_fun
+          Nolabel
+          None
+          pattern (asmcomp/linscan.ml[164,6460+18]..[164,6460+33])
+            Ppat_var "num_stack_slots" (asmcomp/linscan.ml[164,6460+18]..[164,6460+33])
+          expression (asmcomp/linscan.ml[164,6460+34]..[179,7040+49]) ghost
+            Pexp_fun
+            Nolabel
+            None
+            pattern (asmcomp/linscan.ml[164,6460+34]..[164,6460+35])
+              Ppat_var "i" (asmcomp/linscan.ml[164,6460+34]..[164,6460+35])
+            expression (asmcomp/linscan.ml[165,6498+2]..[179,7040+49])
+              Pexp_let Nonrec
+              [
+                <def>
+                  pattern (asmcomp/linscan.ml[165,6498+6]..[165,6498+9])
+                    Ppat_var "pos" (asmcomp/linscan.ml[165,6498+6]..[165,6498+9])
+                  expression (asmcomp/linscan.ml[165,6498+12]..[165,6498+37])
+                    Pexp_apply
+                    expression (asmcomp/linscan.ml[165,6498+21]..[165,6498+25])
+                      Pexp_ident "land" (asmcomp/linscan.ml[165,6498+21]..[165,6498+25])
+                    [
+                      <arg>
+                      Nolabel
+                        expression (asmcomp/linscan.ml[165,6498+12]..[165,6498+20])
+                          Pexp_field
+                          expression (asmcomp/linscan.ml[165,6498+12]..[165,6498+13])
+                            Pexp_ident "i" (asmcomp/linscan.ml[165,6498+12]..[165,6498+13])
+                          "ibegin" (asmcomp/linscan.ml[165,6498+14]..[165,6498+20])
+                      <arg>
+                      Nolabel
+                        expression (asmcomp/linscan.ml[165,6498+26]..[165,6498+37])
+                          Pexp_apply
+                          expression (asmcomp/linscan.ml[165,6498+27]..[165,6498+31])
+                            Pexp_ident "lnot" (asmcomp/linscan.ml[165,6498+27]..[165,6498+31])
+                          [
+                            <arg>
+                            Nolabel
+                              expression (asmcomp/linscan.ml[165,6498+32]..[165,6498+36])
+                                Pexp_constant PConst_int (0x01,None)
+                          ]
+                    ]
+              ]
+              expression (asmcomp/linscan.ml[167,6616+2]..[179,7040+49])
+                Pexp_sequence
+                expression (asmcomp/linscan.ml[167,6616+2]..[172,6842+10])
+                  Pexp_apply
+                  expression (asmcomp/linscan.ml[167,6616+2]..[167,6616+12])
+                    Pexp_ident "Array.iter" (asmcomp/linscan.ml[167,6616+2]..[167,6616+12])
+                  [
+                    <arg>
+                    Nolabel
+                      expression (asmcomp/linscan.ml[168,6629+4]..[171,6770+71])
+                        Pexp_fun
+                        Nolabel
+                        None
+                        pattern (asmcomp/linscan.ml[168,6629+9]..[168,6629+11])
+                          Ppat_var "ci" (asmcomp/linscan.ml[168,6629+9]..[168,6629+11])
+                        expression (asmcomp/linscan.ml[169,6644+6]..[171,6770+70])
+                          Pexp_sequence
+                          expression (asmcomp/linscan.ml[169,6644+6]..[169,6644+58])
+                            Pexp_setfield
+                            expression (asmcomp/linscan.ml[169,6644+6]..[169,6644+8])
+                              Pexp_ident "ci" (asmcomp/linscan.ml[169,6644+6]..[169,6644+8])
+                            "ci_fixed" (asmcomp/linscan.ml[169,6644+9]..[169,6644+17])
+                            expression (asmcomp/linscan.ml[169,6644+21]..[169,6644+58])
+                              Pexp_apply
+                              expression (asmcomp/linscan.ml[169,6644+21]..[169,6644+42])
+                                Pexp_ident "release_expired_fixed" (asmcomp/linscan.ml[169,6644+21]..[169,6644+42])
+                              [
+                                <arg>
+                                Nolabel
+                                  expression (asmcomp/linscan.ml[169,6644+43]..[169,6644+46])
+                                    Pexp_ident "pos" (asmcomp/linscan.ml[169,6644+43]..[169,6644+46])
+                                <arg>
+                                Nolabel
+                                  expression (asmcomp/linscan.ml[169,6644+47]..[169,6644+58])
+                                    Pexp_field
+                                    expression (asmcomp/linscan.ml[169,6644+47]..[169,6644+49])
+                                      Pexp_ident "ci" (asmcomp/linscan.ml[169,6644+47]..[169,6644+49])
+                                    "ci_fixed" (asmcomp/linscan.ml[169,6644+50]..[169,6644+58])
+                              ]
+                          expression (asmcomp/linscan.ml[170,6704+6]..[171,6770+70])
+                            Pexp_sequence
+                            expression (asmcomp/linscan.ml[170,6704+6]..[170,6704+64])
+                              Pexp_setfield
+                              expression (asmcomp/linscan.ml[170,6704+6]..[170,6704+8])
+                                Pexp_ident "ci" (asmcomp/linscan.ml[170,6704+6]..[170,6704+8])
+                              "ci_active" (asmcomp/linscan.ml[170,6704+9]..[170,6704+18])
+                              expression (asmcomp/linscan.ml[170,6704+22]..[170,6704+64])
+                                Pexp_apply
+                                expression (asmcomp/linscan.ml[170,6704+22]..[170,6704+44])
+                                  Pexp_ident "release_expired_active" (asmcomp/linscan.ml[170,6704+22]..[170,6704+44])
+                                [
+                                  <arg>
+                                  Nolabel
+                                    expression (asmcomp/linscan.ml[170,6704+45]..[170,6704+47])
+                                      Pexp_ident "ci" (asmcomp/linscan.ml[170,6704+45]..[170,6704+47])
+                                  <arg>
+                                  Nolabel
+                                    expression (asmcomp/linscan.ml[170,6704+48]..[170,6704+51])
+                                      Pexp_ident "pos" (asmcomp/linscan.ml[170,6704+48]..[170,6704+51])
+                                  <arg>
+                                  Nolabel
+                                    expression (asmcomp/linscan.ml[170,6704+52]..[170,6704+64])
+                                      Pexp_field
+                                      expression (asmcomp/linscan.ml[170,6704+52]..[170,6704+54])
+                                        Pexp_ident "ci" (asmcomp/linscan.ml[170,6704+52]..[170,6704+54])
+                                      "ci_active" (asmcomp/linscan.ml[170,6704+55]..[170,6704+64])
+                                ]
+                            expression (asmcomp/linscan.ml[171,6770+6]..[171,6770+70])
+                              Pexp_setfield
+                              expression (asmcomp/linscan.ml[171,6770+6]..[171,6770+8])
+                                Pexp_ident "ci" (asmcomp/linscan.ml[171,6770+6]..[171,6770+8])
+                              "ci_inactive" (asmcomp/linscan.ml[171,6770+9]..[171,6770+20])
+                              expression (asmcomp/linscan.ml[171,6770+24]..[171,6770+70])
+                                Pexp_apply
+                                expression (asmcomp/linscan.ml[171,6770+24]..[171,6770+48])
+                                  Pexp_ident "release_expired_inactive" (asmcomp/linscan.ml[171,6770+24]..[171,6770+48])
+                                [
+                                  <arg>
+                                  Nolabel
+                                    expression (asmcomp/linscan.ml[171,6770+49]..[171,6770+51])
+                                      Pexp_ident "ci" (asmcomp/linscan.ml[171,6770+49]..[171,6770+51])
+                                  <arg>
+                                  Nolabel
+                                    expression (asmcomp/linscan.ml[171,6770+52]..[171,6770+55])
+                                      Pexp_ident "pos" (asmcomp/linscan.ml[171,6770+52]..[171,6770+55])
+                                  <arg>
+                                  Nolabel
+                                    expression (asmcomp/linscan.ml[171,6770+56]..[171,6770+70])
+                                      Pexp_field
+                                      expression (asmcomp/linscan.ml[171,6770+56]..[171,6770+58])
+                                        Pexp_ident "ci" (asmcomp/linscan.ml[171,6770+56]..[171,6770+58])
+                                      "ci_inactive" (asmcomp/linscan.ml[171,6770+59]..[171,6770+70])
+                                ]
+                    <arg>
+                    Nolabel
+                      expression (asmcomp/linscan.ml[172,6842+4]..[172,6842+10])
+                        Pexp_ident "active" (asmcomp/linscan.ml[172,6842+4]..[172,6842+10])
+                  ]
+                expression (asmcomp/linscan.ml[173,6854+2]..[179,7040+49])
+                  Pexp_try
+                  expression (asmcomp/linscan.ml[175,6902+4]..[175,6902+44])
+                    Pexp_apply
+                    expression (asmcomp/linscan.ml[175,6902+4]..[175,6902+26])
+                      Pexp_ident "allocate_free_register" (asmcomp/linscan.ml[175,6902+4]..[175,6902+26])
+                    [
+                      <arg>
+                      Nolabel
+                        expression (asmcomp/linscan.ml[175,6902+27]..[175,6902+42])
+                          Pexp_ident "num_stack_slots" (asmcomp/linscan.ml[175,6902+27]..[175,6902+42])
+                      <arg>
+                      Nolabel
+                        expression (asmcomp/linscan.ml[175,6902+43]..[175,6902+44])
+                          Pexp_ident "i" (asmcomp/linscan.ml[175,6902+43]..[175,6902+44])
+                    ]
+                  [
+                    <case>
+                      pattern (asmcomp/linscan.ml[177,6954+4]..[177,6954+13])
+                        Ppat_construct "Not_found" (asmcomp/linscan.ml[177,6954+4]..[177,6954+13])
+                        None
+                      expression (asmcomp/linscan.ml[179,7040+6]..[179,7040+49])
+                        Pexp_apply
+                        expression (asmcomp/linscan.ml[179,7040+6]..[179,7040+31])
+                          Pexp_ident "allocate_blocked_register" (asmcomp/linscan.ml[179,7040+6]..[179,7040+31])
+                        [
+                          <arg>
+                          Nolabel
+                            expression (asmcomp/linscan.ml[179,7040+32]..[179,7040+47])
+                              Pexp_ident "num_stack_slots" (asmcomp/linscan.ml[179,7040+32]..[179,7040+47])
+                          <arg>
+                          Nolabel
+                            expression (asmcomp/linscan.ml[179,7040+48]..[179,7040+49])
+                              Pexp_ident "i" (asmcomp/linscan.ml[179,7040+48]..[179,7040+49])
+                        ]
+                  ]
+    ]
+  structure_item (asmcomp/linscan.ml[181,7091+0]..[201,7819+17])
+    Pstr_value Nonrec
+    [
+      <def>
+        pattern (asmcomp/linscan.ml[181,7091+4]..[181,7091+22])
+          Ppat_var "allocate_registers" (asmcomp/linscan.ml[181,7091+4]..[181,7091+22])
+        expression (asmcomp/linscan.ml[181,7091+22]..[201,7819+17]) ghost
+          Pexp_fun
+          Nolabel
+          None
+          pattern (asmcomp/linscan.ml[181,7091+22]..[181,7091+24])
+            Ppat_construct "()" (asmcomp/linscan.ml[181,7091+22]..[181,7091+24])
+            None
+          expression (asmcomp/linscan.ml[183,7172+2]..[201,7819+17])
+            Pexp_sequence
+            expression (asmcomp/linscan.ml[183,7172+2]..[190,7357+6])
+              Pexp_for Up
+              pattern (asmcomp/linscan.ml[183,7172+6]..[183,7172+8])
+                Ppat_var "cl" (asmcomp/linscan.ml[183,7172+6]..[183,7172+8])
+              expression (asmcomp/linscan.ml[183,7172+11]..[183,7172+12])
+                Pexp_constant PConst_int (0,None)
+              expression (asmcomp/linscan.ml[183,7172+16]..[183,7172+45])
+                Pexp_apply
+                expression (asmcomp/linscan.ml[183,7172+42]..[183,7172+43])
+                  Pexp_ident "-" (asmcomp/linscan.ml[183,7172+42]..[183,7172+43])
+                [
+                  <arg>
+                  Nolabel
+                    expression (asmcomp/linscan.ml[183,7172+16]..[183,7172+41])
+                      Pexp_ident "Proc.num_register_classes" (asmcomp/linscan.ml[183,7172+16]..[183,7172+41])
+                  <arg>
+                  Nolabel
+                    expression (asmcomp/linscan.ml[183,7172+44]..[183,7172+45])
+                      Pexp_constant PConst_int (1,None)
+                ]
+              expression (asmcomp/linscan.ml[185,7263+4]..[189,7350+5])
+                Pexp_apply
+                expression (asmcomp/linscan.ml[185,7263+4]..[189,7350+5]) ghost
+                  Pexp_ident "Array.set" (asmcomp/linscan.ml[185,7263+4]..[189,7350+5]) ghost
+                [
+                  <arg>
+                  Nolabel
+                    expression (asmcomp/linscan.ml[185,7263+4]..[185,7263+10])
+                      Pexp_ident "active" (asmcomp/linscan.ml[185,7263+4]..[185,7263+10])
+                  <arg>
+                  Nolabel
+                    expression (asmcomp/linscan.ml[185,7263+12]..[185,7263+14])
+                      Pexp_ident "cl" (asmcomp/linscan.ml[185,7263+12]..[185,7263+14])
+                  <arg>
+                  Nolabel
+                    expression (asmcomp/linscan.ml[185,7263+19]..[189,7350+5])
+                      Pexp_record
+                      [
+                        "ci_fixed" (asmcomp/linscan.ml[186,7284+6]..[186,7284+14])
+                          expression (asmcomp/linscan.ml[186,7284+17]..[186,7284+19])
+                            Pexp_construct "[]" (asmcomp/linscan.ml[186,7284+17]..[186,7284+19])
+                            None
+                        "ci_active" (asmcomp/linscan.ml[187,7305+6]..[187,7305+15])
+                          expression (asmcomp/linscan.ml[187,7305+18]..[187,7305+20])
+                            Pexp_construct "[]" (asmcomp/linscan.ml[187,7305+18]..[187,7305+20])
+                            None
+                        "ci_inactive" (asmcomp/linscan.ml[188,7327+6]..[188,7327+17])
+                          expression (asmcomp/linscan.ml[188,7327+20]..[188,7327+22])
+                            Pexp_construct "[]" (asmcomp/linscan.ml[188,7327+20]..[188,7327+22])
+                            None
+                      ]
+                      None
+                ]
+            expression (asmcomp/linscan.ml[192,7401+2]..[201,7819+17])
+              Pexp_let Nonrec
+              [
+                <def>
+                  pattern (asmcomp/linscan.ml[192,7401+6]..[192,7401+21])
+                    Ppat_var "num_stack_slots" (asmcomp/linscan.ml[192,7401+6]..[192,7401+21])
+                  expression (asmcomp/linscan.ml[192,7401+24]..[192,7401+62])
+                    Pexp_apply
+                    expression (asmcomp/linscan.ml[192,7401+24]..[192,7401+34])
+                      Pexp_ident "Array.make" (asmcomp/linscan.ml[192,7401+24]..[192,7401+34])
+                    [
+                      <arg>
+                      Nolabel
+                        expression (asmcomp/linscan.ml[192,7401+35]..[192,7401+60])
+                          Pexp_ident "Proc.num_register_classes" (asmcomp/linscan.ml[192,7401+35]..[192,7401+60])
+                      <arg>
+                      Nolabel
+                        expression (asmcomp/linscan.ml[192,7401+61]..[192,7401+62])
+                          Pexp_constant PConst_int (0,None)
+                    ]
+              ]
+              expression (asmcomp/linscan.ml[194,7524+2]..[201,7819+17])
+                Pexp_sequence
+                expression (asmcomp/linscan.ml[194,7524+2]..[198,7662+36])
+                  Pexp_apply
+                  expression (asmcomp/linscan.ml[194,7524+2]..[194,7524+11])
+                    Pexp_ident "List.iter" (asmcomp/linscan.ml[194,7524+2]..[194,7524+11])
+                  [
+                    <arg>
+                    Nolabel
+                      expression (asmcomp/linscan.ml[195,7536+4]..[197,7603+58])
+                        Pexp_fun
+                        Nolabel
+                        None
+                        pattern (asmcomp/linscan.ml[195,7536+9]..[195,7536+10])
+                          Ppat_var "i" (asmcomp/linscan.ml[195,7536+9]..[195,7536+10])
+                        expression (asmcomp/linscan.ml[196,7550+6]..[197,7603+57])
+                          Pexp_let Nonrec
+                          [
+                            <def>
+                              pattern (asmcomp/linscan.ml[196,7550+10]..[196,7550+12])
+                                Ppat_var "ci" (asmcomp/linscan.ml[196,7550+10]..[196,7550+12])
+                              expression (asmcomp/linscan.ml[196,7550+15]..[196,7550+49])
+                                Pexp_apply
+                                expression (asmcomp/linscan.ml[196,7550+15]..[196,7550+49]) ghost
+                                  Pexp_ident "Array.get" (asmcomp/linscan.ml[196,7550+15]..[196,7550+49]) ghost
+                                [
+                                  <arg>
+                                  Nolabel
+                                    expression (asmcomp/linscan.ml[196,7550+15]..[196,7550+21])
+                                      Pexp_ident "active" (asmcomp/linscan.ml[196,7550+15]..[196,7550+21])
+                                  <arg>
+                                  Nolabel
+                                    expression (asmcomp/linscan.ml[196,7550+23]..[196,7550+48])
+                                      Pexp_apply
+                                      expression (asmcomp/linscan.ml[196,7550+23]..[196,7550+42])
+                                        Pexp_ident "Proc.register_class" (asmcomp/linscan.ml[196,7550+23]..[196,7550+42])
+                                      [
+                                        <arg>
+                                        Nolabel
+                                          expression (asmcomp/linscan.ml[196,7550+43]..[196,7550+48])
+                                            Pexp_field
+                                            expression (asmcomp/linscan.ml[196,7550+43]..[196,7550+44])
+                                              Pexp_ident "i" (asmcomp/linscan.ml[196,7550+43]..[196,7550+44])
+                                            "reg" (asmcomp/linscan.ml[196,7550+45]..[196,7550+48])
+                                      ]
+                                ]
+                          ]
+                          expression (asmcomp/linscan.ml[197,7603+6]..[197,7603+57])
+                            Pexp_setfield
+                            expression (asmcomp/linscan.ml[197,7603+6]..[197,7603+8])
+                              Pexp_ident "ci" (asmcomp/linscan.ml[197,7603+6]..[197,7603+8])
+                            "ci_fixed" (asmcomp/linscan.ml[197,7603+9]..[197,7603+17])
+                            expression (asmcomp/linscan.ml[197,7603+21]..[197,7603+57])
+                              Pexp_apply
+                              expression (asmcomp/linscan.ml[197,7603+21]..[197,7603+43])
+                                Pexp_ident "insert_interval_sorted" (asmcomp/linscan.ml[197,7603+21]..[197,7603+43])
+                              [
+                                <arg>
+                                Nolabel
+                                  expression (asmcomp/linscan.ml[197,7603+44]..[197,7603+45])
+                                    Pexp_ident "i" (asmcomp/linscan.ml[197,7603+44]..[197,7603+45])
+                                <arg>
+                                Nolabel
+                                  expression (asmcomp/linscan.ml[197,7603+46]..[197,7603+57])
+                                    Pexp_field
+                                    expression (asmcomp/linscan.ml[197,7603+46]..[197,7603+48])
+                                      Pexp_ident "ci" (asmcomp/linscan.ml[197,7603+46]..[197,7603+48])
+                                    "ci_fixed" (asmcomp/linscan.ml[197,7603+49]..[197,7603+57])
+                              ]
+                    <arg>
+                    Nolabel
+                      expression (asmcomp/linscan.ml[198,7662+4]..[198,7662+36])
+                        Pexp_apply
+                        expression (asmcomp/linscan.ml[198,7662+5]..[198,7662+33])
+                          Pexp_ident "Interval.all_fixed_intervals" (asmcomp/linscan.ml[198,7662+5]..[198,7662+33])
+                        [
+                          <arg>
+                          Nolabel
+                            expression (asmcomp/linscan.ml[198,7662+33]..[198,7662+35])
+                              Pexp_construct "()" (asmcomp/linscan.ml[198,7662+33]..[198,7662+35])
+                              None
+                        ]
+                  ]
+                expression (asmcomp/linscan.ml[200,7747+2]..[201,7819+17])
+                  Pexp_sequence
+                  expression (asmcomp/linscan.ml[200,7747+2]..[200,7747+70])
+                    Pexp_apply
+                    expression (asmcomp/linscan.ml[200,7747+2]..[200,7747+11])
+                      Pexp_ident "List.iter" (asmcomp/linscan.ml[200,7747+2]..[200,7747+11])
+                    [
+                      <arg>
+                      Nolabel
+                        expression (asmcomp/linscan.ml[200,7747+12]..[200,7747+43])
+                          Pexp_apply
+                          expression (asmcomp/linscan.ml[200,7747+13]..[200,7747+26])
+                            Pexp_ident "walk_interval" (asmcomp/linscan.ml[200,7747+13]..[200,7747+26])
+                          [
+                            <arg>
+                            Nolabel
+                              expression (asmcomp/linscan.ml[200,7747+27]..[200,7747+42])
+                                Pexp_ident "num_stack_slots" (asmcomp/linscan.ml[200,7747+27]..[200,7747+42])
+                          ]
+                      <arg>
+                      Nolabel
+                        expression (asmcomp/linscan.ml[200,7747+44]..[200,7747+70])
+                          Pexp_apply
+                          expression (asmcomp/linscan.ml[200,7747+45]..[200,7747+67])
+                            Pexp_ident "Interval.all_intervals" (asmcomp/linscan.ml[200,7747+45]..[200,7747+67])
+                          [
+                            <arg>
+                            Nolabel
+                              expression (asmcomp/linscan.ml[200,7747+67]..[200,7747+69])
+                                Pexp_construct "()" (asmcomp/linscan.ml[200,7747+67]..[200,7747+69])
+                                None
+                          ]
+                    ]
+                  expression (asmcomp/linscan.ml[201,7819+2]..[201,7819+17])
+                    Pexp_ident "num_stack_slots" (asmcomp/linscan.ml[201,7819+2]..[201,7819+17])
+    ]
+]
+

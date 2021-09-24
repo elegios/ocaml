@@ -1,0 +1,91 @@
+[
+  structure_item (testsuite/tests/typing-gadts/pr7520.ml[5,24+0]..[5,24+37])
+    Pstr_type Rec
+    [
+      type_declaration "eq" (testsuite/tests/typing-gadts/pr7520.ml[5,24+14]..[5,24+16]) (testsuite/tests/typing-gadts/pr7520.ml[5,24+0]..[5,24+37])
+        ptype_params =
+          [
+            core_type (testsuite/tests/typing-gadts/pr7520.ml[5,24+6]..[5,24+8])
+              Ptyp_var a
+            core_type (testsuite/tests/typing-gadts/pr7520.ml[5,24+10]..[5,24+12])
+              Ptyp_var b
+          ]
+        ptype_cstrs =
+          []
+        ptype_kind =
+          Ptype_variant
+            [
+              (testsuite/tests/typing-gadts/pr7520.ml[5,24+19]..[5,24+37])
+                "Refl" (testsuite/tests/typing-gadts/pr7520.ml[5,24+19]..[5,24+23])
+                []
+                Some
+                  core_type (testsuite/tests/typing-gadts/pr7520.ml[5,24+26]..[5,24+37])
+                    Ptyp_constr "eq" (testsuite/tests/typing-gadts/pr7520.ml[5,24+35]..[5,24+37])
+                    [
+                      core_type (testsuite/tests/typing-gadts/pr7520.ml[5,24+27]..[5,24+29])
+                        Ptyp_var a
+                      core_type (testsuite/tests/typing-gadts/pr7520.ml[5,24+31]..[5,24+33])
+                        Ptyp_var a
+                    ]
+            ]
+        ptype_private = Public
+        ptype_manifest =
+          None
+    ]
+  structure_item (testsuite/tests/typing-gadts/pr7520.ml[6,62+0]..[6,62+29])
+    Pstr_type Rec
+    [
+      type_declaration "empty" (testsuite/tests/typing-gadts/pr7520.ml[6,62+5]..[6,62+10]) (testsuite/tests/typing-gadts/pr7520.ml[6,62+0]..[6,62+29])
+        ptype_params =
+          []
+        ptype_cstrs =
+          []
+        ptype_kind =
+          Ptype_abstract
+        ptype_private = Public
+        ptype_manifest =
+          Some
+            core_type (testsuite/tests/typing-gadts/pr7520.ml[6,62+13]..[6,62+29])
+              Ptyp_constr "eq" (testsuite/tests/typing-gadts/pr7520.ml[6,62+27]..[6,62+29])
+              [
+                core_type (testsuite/tests/typing-gadts/pr7520.ml[6,62+14]..[6,62+17])
+                  Ptyp_constr "int" (testsuite/tests/typing-gadts/pr7520.ml[6,62+14]..[6,62+17])
+                  []
+                core_type (testsuite/tests/typing-gadts/pr7520.ml[6,62+19]..[6,62+25])
+                  Ptyp_constr "string" (testsuite/tests/typing-gadts/pr7520.ml[6,62+19]..[6,62+25])
+                  []
+              ]
+    ]
+  structure_item (testsuite/tests/typing-gadts/pr7520.ml[8,93+0]..[8,93+38])
+    Pstr_value Nonrec
+    [
+      <def>
+        pattern (testsuite/tests/typing-gadts/pr7520.ml[8,93+4]..[8,93+5])
+          Ppat_var "f" (testsuite/tests/typing-gadts/pr7520.ml[8,93+4]..[8,93+5])
+        expression (testsuite/tests/typing-gadts/pr7520.ml[8,93+8]..[8,93+38])
+          Pexp_function
+          [
+            <case>
+              pattern (testsuite/tests/typing-gadts/pr7520.ml[8,93+17]..[8,93+33])
+                Ppat_variant "Foo"
+                Some
+                  pattern (testsuite/tests/typing-gadts/pr7520.ml[8,93+22]..[8,93+33])
+                    Ppat_constraint
+                    pattern (testsuite/tests/typing-gadts/pr7520.ml[8,93+23]..[8,93+24])
+                      Ppat_any
+                    core_type (testsuite/tests/typing-gadts/pr7520.ml[8,93+27]..[8,93+32])
+                      Ptyp_constr "empty" (testsuite/tests/typing-gadts/pr7520.ml[8,93+27]..[8,93+32])
+                      []
+              expression (testsuite/tests/typing-gadts/pr7520.ml[8,93+37]..[8,93+38])
+                Pexp_unreachable          ]
+    ]
+  structure_item (testsuite/tests/typing-gadts/pr7520.ml[9,132+0]..[13,253+3])
+    Pstr_extension "expect"
+    [
+      structure_item (testsuite/tests/typing-gadts/pr7520.ml[9,132+9]..[13,253+2])
+        Pstr_eval
+        expression (testsuite/tests/typing-gadts/pr7520.ml[9,132+9]..[13,253+2])
+          Pexp_constant PConst_string ("\ntype ('a, 'b) eq = Refl : ('a, 'a) eq\ntype empty = (int, string) eq\nval f : [< `Foo of empty ] -> 'a = <fun>\n",(testsuite/tests/typing-gadts/pr7520.ml[9,132+11]..[13,253+0]),Some "")
+    ]
+]
+

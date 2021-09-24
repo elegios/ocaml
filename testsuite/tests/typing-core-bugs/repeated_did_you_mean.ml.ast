@@ -1,0 +1,49 @@
+[
+  structure_item (testsuite/tests/typing-core-bugs/repeated_did_you_mean.ml[7,40+0]..[7,40+12])
+    Pstr_value Nonrec
+    [
+      <def>
+        pattern (testsuite/tests/typing-core-bugs/repeated_did_you_mean.ml[7,40+4]..[7,40+7])
+          Ppat_var "foo" (testsuite/tests/typing-core-bugs/repeated_did_you_mean.ml[7,40+4]..[7,40+7])
+        expression (testsuite/tests/typing-core-bugs/repeated_did_you_mean.ml[7,40+10]..[7,40+12])
+          Pexp_constant PConst_int (12,None)
+    ]
+  structure_item (testsuite/tests/typing-core-bugs/repeated_did_you_mean.ml[8,53+0]..[10,86+3])
+    Pstr_module
+    "M" (testsuite/tests/typing-core-bugs/repeated_did_you_mean.ml[8,53+7]..[8,53+8])
+      module_expr (testsuite/tests/typing-core-bugs/repeated_did_you_mean.ml[8,53+11]..[10,86+3])
+        Pmod_structure
+        [
+          structure_item (testsuite/tests/typing-core-bugs/repeated_did_you_mean.ml[9,71+2]..[9,71+14])
+            Pstr_value Nonrec
+            [
+              <def>
+                pattern (testsuite/tests/typing-core-bugs/repeated_did_you_mean.ml[9,71+6]..[9,71+9])
+                  Ppat_var "foo" (testsuite/tests/typing-core-bugs/repeated_did_you_mean.ml[9,71+6]..[9,71+9])
+                expression (testsuite/tests/typing-core-bugs/repeated_did_you_mean.ml[9,71+12]..[9,71+14])
+                  Pexp_constant PConst_int (13,None)
+            ]
+        ]
+  structure_item (testsuite/tests/typing-core-bugs/repeated_did_you_mean.ml[11,90+0]..[11,90+6])
+    Pstr_open Fresh
+    module_expr (testsuite/tests/typing-core-bugs/repeated_did_you_mean.ml[11,90+5]..[11,90+6])
+      Pmod_ident "M" (testsuite/tests/typing-core-bugs/repeated_did_you_mean.ml[11,90+5]..[11,90+6])
+  structure_item (testsuite/tests/typing-core-bugs/repeated_did_you_mean.ml[13,98+0]..[13,98+11])
+    Pstr_value Nonrec
+    [
+      <def>
+        pattern (testsuite/tests/typing-core-bugs/repeated_did_you_mean.ml[13,98+4]..[13,98+5])
+          Ppat_any
+        expression (testsuite/tests/typing-core-bugs/repeated_did_you_mean.ml[13,98+8]..[13,98+11])
+          Pexp_ident "fox" (testsuite/tests/typing-core-bugs/repeated_did_you_mean.ml[13,98+8]..[13,98+11])
+    ]
+  structure_item (testsuite/tests/typing-core-bugs/repeated_did_you_mean.ml[14,112+0]..[22,284+3])
+    Pstr_extension "expect"
+    [
+      structure_item (testsuite/tests/typing-core-bugs/repeated_did_you_mean.ml[14,112+9]..[22,284+2])
+        Pstr_eval
+        expression (testsuite/tests/typing-core-bugs/repeated_did_you_mean.ml[14,112+9]..[22,284+2])
+          Pexp_constant PConst_string ("\nval foo : int = 12\nmodule M : sig val foo : int end\nLine 7, characters 8-11:\n7 | let _ = fox;;\n            ^^^\nError: Unbound value fox\nHint: Did you mean foo?\n",(testsuite/tests/typing-core-bugs/repeated_did_you_mean.ml[14,112+11]..[22,284+0]),Some "")
+    ]
+]
+

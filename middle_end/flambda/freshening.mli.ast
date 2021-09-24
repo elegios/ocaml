@@ -1,0 +1,755 @@
+[
+  signature_item (middle_end/flambda/freshening.mli[17,1156+0]..[17,1156+39])
+    Psig_attribute "ocaml.warning"
+    [
+      structure_item (middle_end/flambda/freshening.mli[17,1156+18]..[17,1156+38])
+        Pstr_eval
+        expression (middle_end/flambda/freshening.mli[17,1156+18]..[17,1156+38])
+          Pexp_constant PConst_string("+a-4-9-30-40-41-42",(middle_end/flambda/freshening.mli[17,1156+19]..[17,1156+37]),None)
+    ]
+  signature_item (middle_end/flambda/freshening.mli[19,1197+0]..[19,1197+41])
+    Psig_attribute "ocaml.text"
+    [
+      structure_item (middle_end/flambda/freshening.mli[19,1197+0]..[19,1197+41])
+        Pstr_eval
+        expression (middle_end/flambda/freshening.mli[19,1197+0]..[19,1197+41])
+          Pexp_constant PConst_string(" Freshening of various identifiers. ",(middle_end/flambda/freshening.mli[19,1197+0]..[19,1197+41]),None)
+    ]
+  signature_item (middle_end/flambda/freshening.mli[22,1319+0]..[22,1319+6])
+    Psig_type Rec
+    [
+      type_declaration "t" (middle_end/flambda/freshening.mli[22,1319+5]..[22,1319+6]) (middle_end/flambda/freshening.mli[22,1319+0]..[22,1319+6])
+        attribute "ocaml.doc"
+          [
+            structure_item (middle_end/flambda/freshening.mli[21,1240+0]..[21,1240+78])
+              Pstr_eval
+              expression (middle_end/flambda/freshening.mli[21,1240+0]..[21,1240+78])
+                Pexp_constant PConst_string(" A table used for freshening variables and static exception identifiers. ",(middle_end/flambda/freshening.mli[21,1240+0]..[21,1240+78]),None)
+          ]
+        ptype_params =
+          []
+        ptype_cstrs =
+          []
+        ptype_kind =
+          Ptype_abstract
+        ptype_private = Public
+        ptype_manifest =
+          None
+    ]
+  signature_item (middle_end/flambda/freshening.mli[23,1326+0]..[23,1326+14])
+    Psig_type Rec
+    [
+      type_declaration "subst" (middle_end/flambda/freshening.mli[23,1326+5]..[23,1326+10]) (middle_end/flambda/freshening.mli[23,1326+0]..[23,1326+14])
+        ptype_params =
+          []
+        ptype_cstrs =
+          []
+        ptype_kind =
+          Ptype_abstract
+        ptype_private = Public
+        ptype_manifest =
+          Some
+            core_type (middle_end/flambda/freshening.mli[23,1326+13]..[23,1326+14])
+              Ptyp_constr "t" (middle_end/flambda/freshening.mli[23,1326+13]..[23,1326+14])
+              []
+    ]
+  signature_item (middle_end/flambda/freshening.mli[27,1428+0]..[27,1428+13])
+    Psig_value
+    value_description "empty" (middle_end/flambda/freshening.mli[27,1428+4]..[27,1428+9]) (middle_end/flambda/freshening.mli[27,1428+0]..[27,1428+13])
+      attribute "ocaml.doc"
+        [
+          structure_item (middle_end/flambda/freshening.mli[25,1342+0]..[26,1409+18])
+            Pstr_eval
+            expression (middle_end/flambda/freshening.mli[25,1342+0]..[26,1409+18])
+              Pexp_constant PConst_string(" The freshening that does nothing.  This is the unique inactive\n    freshening. ",(middle_end/flambda/freshening.mli[25,1342+0]..[26,1409+18]),None)
+        ]
+      core_type (middle_end/flambda/freshening.mli[27,1428+12]..[27,1428+13])
+        Ptyp_constr "t" (middle_end/flambda/freshening.mli[27,1428+12]..[27,1428+13])
+        []
+      []
+  signature_item (middle_end/flambda/freshening.mli[29,1443+0]..[29,1443+24])
+    Psig_value
+    value_description "is_empty" (middle_end/flambda/freshening.mli[29,1443+4]..[29,1443+12]) (middle_end/flambda/freshening.mli[29,1443+0]..[29,1443+24])
+      core_type (middle_end/flambda/freshening.mli[29,1443+15]..[29,1443+24])
+        Ptyp_arrow
+        Nolabel
+        core_type (middle_end/flambda/freshening.mli[29,1443+15]..[29,1443+16])
+          Ptyp_constr "t" (middle_end/flambda/freshening.mli[29,1443+15]..[29,1443+16])
+          []
+        core_type (middle_end/flambda/freshening.mli[29,1443+20]..[29,1443+24])
+          Ptyp_constr "bool" (middle_end/flambda/freshening.mli[29,1443+20]..[29,1443+24])
+          []
+      []
+  signature_item (middle_end/flambda/freshening.mli[34,1672+0]..[34,1672+21])
+    Psig_value
+    value_description "activate" (middle_end/flambda/freshening.mli[34,1672+4]..[34,1672+12]) (middle_end/flambda/freshening.mli[34,1672+0]..[34,1672+21])
+      attribute "ocaml.doc"
+        [
+          structure_item (middle_end/flambda/freshening.mli[31,1469+0]..[33,1605+66])
+            Pstr_eval
+            expression (middle_end/flambda/freshening.mli[31,1469+0]..[33,1605+66])
+              Pexp_constant PConst_string(" Activate the freshening.  Without activation, operations to request\n    freshenings have no effect (cf. the documentation below for\n    [add_variable]).  As such, the inactive renaming is unique. ",(middle_end/flambda/freshening.mli[31,1469+0]..[33,1605+66]),None)
+        ]
+      core_type (middle_end/flambda/freshening.mli[34,1672+15]..[34,1672+21])
+        Ptyp_arrow
+        Nolabel
+        core_type (middle_end/flambda/freshening.mli[34,1672+15]..[34,1672+16])
+          Ptyp_constr "t" (middle_end/flambda/freshening.mli[34,1672+15]..[34,1672+16])
+          []
+        core_type (middle_end/flambda/freshening.mli[34,1672+20]..[34,1672+21])
+          Ptyp_constr "t" (middle_end/flambda/freshening.mli[34,1672+20]..[34,1672+21])
+          []
+      []
+  signature_item (middle_end/flambda/freshening.mli[38,1800+0]..[38,1800+46])
+    Psig_value
+    value_description "empty_preserving_activation_state" (middle_end/flambda/freshening.mli[38,1800+4]..[38,1800+37]) (middle_end/flambda/freshening.mli[38,1800+0]..[38,1800+46])
+      attribute "ocaml.doc"
+        [
+          structure_item (middle_end/flambda/freshening.mli[36,1695+0]..[37,1768+31])
+            Pstr_eval
+            expression (middle_end/flambda/freshening.mli[36,1695+0]..[37,1768+31])
+              Pexp_constant PConst_string(" Given the inactive freshening, return the same; otherwise, return an\n    empty active freshening. ",(middle_end/flambda/freshening.mli[36,1695+0]..[37,1768+31]),None)
+        ]
+      core_type (middle_end/flambda/freshening.mli[38,1800+40]..[38,1800+46])
+        Ptyp_arrow
+        Nolabel
+        core_type (middle_end/flambda/freshening.mli[38,1800+40]..[38,1800+41])
+          Ptyp_constr "t" (middle_end/flambda/freshening.mli[38,1800+40]..[38,1800+41])
+          []
+        core_type (middle_end/flambda/freshening.mli[38,1800+45]..[38,1800+46])
+          Ptyp_constr "t" (middle_end/flambda/freshening.mli[38,1800+45]..[38,1800+46])
+          []
+      []
+  signature_item (middle_end/flambda/freshening.mli[49,2212+0]..[49,2212+52])
+    Psig_value
+    value_description "add_variable" (middle_end/flambda/freshening.mli[49,2212+4]..[49,2212+16]) (middle_end/flambda/freshening.mli[49,2212+0]..[49,2212+52])
+      attribute "ocaml.doc"
+        [
+          structure_item (middle_end/flambda/freshening.mli[40,1848+0]..[48,2209+2])
+            Pstr_eval
+            expression (middle_end/flambda/freshening.mli[40,1848+0]..[48,2209+2])
+              Pexp_constant PConst_string(" [add_variable t var]\n    If [t] is active:\n      It returns a fresh variable [new_var] and adds [var] -> [new_var]\n      to the freshening.\n      If a renaming [other_var] -> [var] or [symbol] -> [var] was already\n      present in [t], it will also add [other_var] -> [new_var] and\n      [symbol] -> [new_var].\n    If [t] is inactive, this is the identity.\n",(middle_end/flambda/freshening.mli[40,1848+0]..[48,2209+2]),None)
+        ]
+      core_type (middle_end/flambda/freshening.mli[49,2212+19]..[49,2212+52])
+        Ptyp_arrow
+        Nolabel
+        core_type (middle_end/flambda/freshening.mli[49,2212+19]..[49,2212+20])
+          Ptyp_constr "t" (middle_end/flambda/freshening.mli[49,2212+19]..[49,2212+20])
+          []
+        core_type (middle_end/flambda/freshening.mli[49,2212+24]..[49,2212+52])
+          Ptyp_arrow
+          Nolabel
+          core_type (middle_end/flambda/freshening.mli[49,2212+24]..[49,2212+34])
+            Ptyp_constr "Variable.t" (middle_end/flambda/freshening.mli[49,2212+24]..[49,2212+34])
+            []
+          core_type (middle_end/flambda/freshening.mli[49,2212+38]..[49,2212+52])
+            Ptyp_tuple
+            [
+              core_type (middle_end/flambda/freshening.mli[49,2212+38]..[49,2212+48])
+                Ptyp_constr "Variable.t" (middle_end/flambda/freshening.mli[49,2212+38]..[49,2212+48])
+                []
+              core_type (middle_end/flambda/freshening.mli[49,2212+51]..[49,2212+52])
+                Ptyp_constr "t" (middle_end/flambda/freshening.mli[49,2212+51]..[49,2212+52])
+                []
+            ]
+      []
+  signature_item (middle_end/flambda/freshening.mli[53,2353+0]..[56,2400+24])
+    Psig_value
+    value_description "add_variables'" (middle_end/flambda/freshening.mli[53,2353+4]..[53,2353+18]) (middle_end/flambda/freshening.mli[53,2353+0]..[56,2400+24])
+      attribute "ocaml.doc"
+        [
+          structure_item (middle_end/flambda/freshening.mli[51,2266+0]..[52,2334+18])
+            Pstr_eval
+            expression (middle_end/flambda/freshening.mli[51,2266+0]..[52,2334+18])
+              Pexp_constant PConst_string(" Like [add_variable], but for multiple variables, each freshened\n    separately. ",(middle_end/flambda/freshening.mli[51,2266+0]..[52,2334+18]),None)
+        ]
+      core_type (middle_end/flambda/freshening.mli[54,2372+5]..[56,2400+24])
+        Ptyp_arrow
+        Nolabel
+        core_type (middle_end/flambda/freshening.mli[54,2372+5]..[54,2372+6])
+          Ptyp_constr "t" (middle_end/flambda/freshening.mli[54,2372+5]..[54,2372+6])
+          []
+        core_type (middle_end/flambda/freshening.mli[55,2379+5]..[56,2400+24])
+          Ptyp_arrow
+          Nolabel
+          core_type (middle_end/flambda/freshening.mli[55,2379+5]..[55,2379+20])
+            Ptyp_constr "list" (middle_end/flambda/freshening.mli[55,2379+16]..[55,2379+20])
+            [
+              core_type (middle_end/flambda/freshening.mli[55,2379+5]..[55,2379+15])
+                Ptyp_constr "Variable.t" (middle_end/flambda/freshening.mli[55,2379+5]..[55,2379+15])
+                []
+            ]
+          core_type (middle_end/flambda/freshening.mli[56,2400+5]..[56,2400+24])
+            Ptyp_tuple
+            [
+              core_type (middle_end/flambda/freshening.mli[56,2400+5]..[56,2400+20])
+                Ptyp_constr "list" (middle_end/flambda/freshening.mli[56,2400+16]..[56,2400+20])
+                [
+                  core_type (middle_end/flambda/freshening.mli[56,2400+5]..[56,2400+15])
+                    Ptyp_constr "Variable.t" (middle_end/flambda/freshening.mli[56,2400+5]..[56,2400+15])
+                    []
+                ]
+              core_type (middle_end/flambda/freshening.mli[56,2400+23]..[56,2400+24])
+                Ptyp_constr "t" (middle_end/flambda/freshening.mli[56,2400+23]..[56,2400+24])
+                []
+            ]
+      []
+  signature_item (middle_end/flambda/freshening.mli[60,2529+0]..[63,2582+31])
+    Psig_value
+    value_description "add_variables" (middle_end/flambda/freshening.mli[60,2529+4]..[60,2529+17]) (middle_end/flambda/freshening.mli[60,2529+0]..[63,2582+31])
+      attribute "ocaml.doc"
+        [
+          structure_item (middle_end/flambda/freshening.mli[58,2426+0]..[59,2500+28])
+            Pstr_eval
+            expression (middle_end/flambda/freshening.mli[58,2426+0]..[59,2500+28])
+              Pexp_constant PConst_string(" Like [add_variables'], but passes through the second component of the\n    input list unchanged. ",(middle_end/flambda/freshening.mli[58,2426+0]..[59,2500+28]),None)
+        ]
+      core_type (middle_end/flambda/freshening.mli[61,2547+5]..[63,2582+31])
+        Ptyp_arrow
+        Nolabel
+        core_type (middle_end/flambda/freshening.mli[61,2547+5]..[61,2547+6])
+          Ptyp_constr "t" (middle_end/flambda/freshening.mli[61,2547+5]..[61,2547+6])
+          []
+        core_type (middle_end/flambda/freshening.mli[62,2554+5]..[63,2582+31])
+          Ptyp_arrow
+          Nolabel
+          core_type (middle_end/flambda/freshening.mli[62,2554+5]..[62,2554+27])
+            Ptyp_constr "list" (middle_end/flambda/freshening.mli[62,2554+23]..[62,2554+27])
+            [
+              core_type (middle_end/flambda/freshening.mli[62,2554+6]..[62,2554+21])
+                Ptyp_tuple
+                [
+                  core_type (middle_end/flambda/freshening.mli[62,2554+6]..[62,2554+16])
+                    Ptyp_constr "Variable.t" (middle_end/flambda/freshening.mli[62,2554+6]..[62,2554+16])
+                    []
+                  core_type (middle_end/flambda/freshening.mli[62,2554+19]..[62,2554+21])
+                    Ptyp_var a
+                ]
+            ]
+          core_type (middle_end/flambda/freshening.mli[63,2582+5]..[63,2582+31])
+            Ptyp_tuple
+            [
+              core_type (middle_end/flambda/freshening.mli[63,2582+5]..[63,2582+27])
+                Ptyp_constr "list" (middle_end/flambda/freshening.mli[63,2582+23]..[63,2582+27])
+                [
+                  core_type (middle_end/flambda/freshening.mli[63,2582+6]..[63,2582+21])
+                    Ptyp_tuple
+                    [
+                      core_type (middle_end/flambda/freshening.mli[63,2582+6]..[63,2582+16])
+                        Ptyp_constr "Variable.t" (middle_end/flambda/freshening.mli[63,2582+6]..[63,2582+16])
+                        []
+                      core_type (middle_end/flambda/freshening.mli[63,2582+19]..[63,2582+21])
+                        Ptyp_var a
+                    ]
+                ]
+              core_type (middle_end/flambda/freshening.mli[63,2582+30]..[63,2582+31])
+                Ptyp_constr "t" (middle_end/flambda/freshening.mli[63,2582+30]..[63,2582+31])
+                []
+            ]
+      []
+  signature_item (middle_end/flambda/freshening.mli[66,2670+0]..[66,2670+76])
+    Psig_value
+    value_description "add_mutable_variable" (middle_end/flambda/freshening.mli[66,2670+4]..[66,2670+24]) (middle_end/flambda/freshening.mli[66,2670+0]..[66,2670+76])
+      attribute "ocaml.doc"
+        [
+          structure_item (middle_end/flambda/freshening.mli[65,2615+0]..[65,2615+54])
+            Pstr_eval
+            expression (middle_end/flambda/freshening.mli[65,2615+0]..[65,2615+54])
+              Pexp_constant PConst_string(" Like [add_variable], but for mutable variables. ",(middle_end/flambda/freshening.mli[65,2615+0]..[65,2615+54]),None)
+        ]
+      core_type (middle_end/flambda/freshening.mli[66,2670+27]..[66,2670+76])
+        Ptyp_arrow
+        Nolabel
+        core_type (middle_end/flambda/freshening.mli[66,2670+27]..[66,2670+28])
+          Ptyp_constr "t" (middle_end/flambda/freshening.mli[66,2670+27]..[66,2670+28])
+          []
+        core_type (middle_end/flambda/freshening.mli[66,2670+32]..[66,2670+76])
+          Ptyp_arrow
+          Nolabel
+          core_type (middle_end/flambda/freshening.mli[66,2670+32]..[66,2670+50])
+            Ptyp_constr "Mutable_variable.t" (middle_end/flambda/freshening.mli[66,2670+32]..[66,2670+50])
+            []
+          core_type (middle_end/flambda/freshening.mli[66,2670+54]..[66,2670+76])
+            Ptyp_tuple
+            [
+              core_type (middle_end/flambda/freshening.mli[66,2670+54]..[66,2670+72])
+                Ptyp_constr "Mutable_variable.t" (middle_end/flambda/freshening.mli[66,2670+54]..[66,2670+72])
+                []
+              core_type (middle_end/flambda/freshening.mli[66,2670+75]..[66,2670+76])
+                Ptyp_constr "t" (middle_end/flambda/freshening.mli[66,2670+75]..[66,2670+76])
+                []
+            ]
+      []
+  signature_item (middle_end/flambda/freshening.mli[69,2816+0]..[69,2816+76])
+    Psig_value
+    value_description "add_static_exception" (middle_end/flambda/freshening.mli[69,2816+4]..[69,2816+24]) (middle_end/flambda/freshening.mli[69,2816+0]..[69,2816+76])
+      attribute "ocaml.doc"
+        [
+          structure_item (middle_end/flambda/freshening.mli[68,2748+0]..[68,2748+67])
+            Pstr_eval
+            expression (middle_end/flambda/freshening.mli[68,2748+0]..[68,2748+67])
+              Pexp_constant PConst_string(" As for [add_variable], but for static exception identifiers. ",(middle_end/flambda/freshening.mli[68,2748+0]..[68,2748+67]),None)
+        ]
+      core_type (middle_end/flambda/freshening.mli[69,2816+27]..[69,2816+76])
+        Ptyp_arrow
+        Nolabel
+        core_type (middle_end/flambda/freshening.mli[69,2816+27]..[69,2816+28])
+          Ptyp_constr "t" (middle_end/flambda/freshening.mli[69,2816+27]..[69,2816+28])
+          []
+        core_type (middle_end/flambda/freshening.mli[69,2816+32]..[69,2816+76])
+          Ptyp_arrow
+          Nolabel
+          core_type (middle_end/flambda/freshening.mli[69,2816+32]..[69,2816+50])
+            Ptyp_constr "Static_exception.t" (middle_end/flambda/freshening.mli[69,2816+32]..[69,2816+50])
+            []
+          core_type (middle_end/flambda/freshening.mli[69,2816+54]..[69,2816+76])
+            Ptyp_tuple
+            [
+              core_type (middle_end/flambda/freshening.mli[69,2816+54]..[69,2816+72])
+                Ptyp_constr "Static_exception.t" (middle_end/flambda/freshening.mli[69,2816+54]..[69,2816+72])
+                []
+              core_type (middle_end/flambda/freshening.mli[69,2816+75]..[69,2816+76])
+                Ptyp_constr "t" (middle_end/flambda/freshening.mli[69,2816+75]..[69,2816+76])
+                []
+            ]
+      []
+  signature_item (middle_end/flambda/freshening.mli[73,3036+0]..[73,3036+50])
+    Psig_value
+    value_description "apply_variable" (middle_end/flambda/freshening.mli[73,3036+4]..[73,3036+18]) (middle_end/flambda/freshening.mli[73,3036+0]..[73,3036+50])
+      attribute "ocaml.doc"
+        [
+          structure_item (middle_end/flambda/freshening.mli[71,2894+0]..[72,2958+77])
+            Pstr_eval
+            expression (middle_end/flambda/freshening.mli[71,2894+0]..[72,2958+77])
+              Pexp_constant PConst_string(" [apply_variable t var] applies the freshening [t] to [var].\n    If no renaming is specified in [t] for [var] it is returned unchanged. ",(middle_end/flambda/freshening.mli[71,2894+0]..[72,2958+77]),None)
+        ]
+      core_type (middle_end/flambda/freshening.mli[73,3036+21]..[73,3036+50])
+        Ptyp_arrow
+        Nolabel
+        core_type (middle_end/flambda/freshening.mli[73,3036+21]..[73,3036+22])
+          Ptyp_constr "t" (middle_end/flambda/freshening.mli[73,3036+21]..[73,3036+22])
+          []
+        core_type (middle_end/flambda/freshening.mli[73,3036+26]..[73,3036+50])
+          Ptyp_arrow
+          Nolabel
+          core_type (middle_end/flambda/freshening.mli[73,3036+26]..[73,3036+36])
+            Ptyp_constr "Variable.t" (middle_end/flambda/freshening.mli[73,3036+26]..[73,3036+36])
+            []
+          core_type (middle_end/flambda/freshening.mli[73,3036+40]..[73,3036+50])
+            Ptyp_constr "Variable.t" (middle_end/flambda/freshening.mli[73,3036+40]..[73,3036+50])
+            []
+      []
+  signature_item (middle_end/flambda/freshening.mli[76,3147+0]..[76,3147+74])
+    Psig_value
+    value_description "apply_mutable_variable" (middle_end/flambda/freshening.mli[76,3147+4]..[76,3147+26]) (middle_end/flambda/freshening.mli[76,3147+0]..[76,3147+74])
+      attribute "ocaml.doc"
+        [
+          structure_item (middle_end/flambda/freshening.mli[75,3088+0]..[75,3088+58])
+            Pstr_eval
+            expression (middle_end/flambda/freshening.mli[75,3088+0]..[75,3088+58])
+              Pexp_constant PConst_string(" As for [apply_variable], but for mutable variables. ",(middle_end/flambda/freshening.mli[75,3088+0]..[75,3088+58]),None)
+        ]
+      core_type (middle_end/flambda/freshening.mli[76,3147+29]..[76,3147+74])
+        Ptyp_arrow
+        Nolabel
+        core_type (middle_end/flambda/freshening.mli[76,3147+29]..[76,3147+30])
+          Ptyp_constr "t" (middle_end/flambda/freshening.mli[76,3147+29]..[76,3147+30])
+          []
+        core_type (middle_end/flambda/freshening.mli[76,3147+34]..[76,3147+74])
+          Ptyp_arrow
+          Nolabel
+          core_type (middle_end/flambda/freshening.mli[76,3147+34]..[76,3147+52])
+            Ptyp_constr "Mutable_variable.t" (middle_end/flambda/freshening.mli[76,3147+34]..[76,3147+52])
+            []
+          core_type (middle_end/flambda/freshening.mli[76,3147+56]..[76,3147+74])
+            Ptyp_constr "Mutable_variable.t" (middle_end/flambda/freshening.mli[76,3147+56]..[76,3147+74])
+            []
+      []
+  signature_item (middle_end/flambda/freshening.mli[79,3293+0]..[79,3293+74])
+    Psig_value
+    value_description "apply_static_exception" (middle_end/flambda/freshening.mli[79,3293+4]..[79,3293+26]) (middle_end/flambda/freshening.mli[79,3293+0]..[79,3293+74])
+      attribute "ocaml.doc"
+        [
+          structure_item (middle_end/flambda/freshening.mli[78,3223+0]..[78,3223+69])
+            Pstr_eval
+            expression (middle_end/flambda/freshening.mli[78,3223+0]..[78,3223+69])
+              Pexp_constant PConst_string(" As for [apply_variable], but for static exception identifiers. ",(middle_end/flambda/freshening.mli[78,3223+0]..[78,3223+69]),None)
+        ]
+      core_type (middle_end/flambda/freshening.mli[79,3293+29]..[79,3293+74])
+        Ptyp_arrow
+        Nolabel
+        core_type (middle_end/flambda/freshening.mli[79,3293+29]..[79,3293+30])
+          Ptyp_constr "t" (middle_end/flambda/freshening.mli[79,3293+29]..[79,3293+30])
+          []
+        core_type (middle_end/flambda/freshening.mli[79,3293+34]..[79,3293+74])
+          Ptyp_arrow
+          Nolabel
+          core_type (middle_end/flambda/freshening.mli[79,3293+34]..[79,3293+52])
+            Ptyp_constr "Static_exception.t" (middle_end/flambda/freshening.mli[79,3293+34]..[79,3293+52])
+            []
+          core_type (middle_end/flambda/freshening.mli[79,3293+56]..[79,3293+74])
+            Ptyp_constr "Static_exception.t" (middle_end/flambda/freshening.mli[79,3293+56]..[79,3293+74])
+            []
+      []
+  signature_item (middle_end/flambda/freshening.mli[87,3633+0]..[91,3768+34])
+    Psig_value
+    value_description "rewrite_recursive_calls_with_symbols" (middle_end/flambda/freshening.mli[87,3633+4]..[87,3633+40]) (middle_end/flambda/freshening.mli[87,3633+0]..[91,3768+34])
+      attribute "ocaml.doc"
+        [
+          structure_item (middle_end/flambda/freshening.mli[81,3369+0]..[86,3630+2])
+            Pstr_eval
+            expression (middle_end/flambda/freshening.mli[81,3369+0]..[86,3630+2])
+              Pexp_constant PConst_string(" Replace recursive accesses to the closures in the set through\n    [Symbol] by the corresponding [Var]. This is used to recover\n    the recursive call when importing code from another compilation unit.\n\n    If the renaming is inactive, this is the identity.\n",(middle_end/flambda/freshening.mli[81,3369+0]..[86,3630+2]),None)
+        ]
+      core_type (middle_end/flambda/freshening.mli[88,3674+5]..[91,3768+34])
+        Ptyp_arrow
+        Nolabel
+        core_type (middle_end/flambda/freshening.mli[88,3674+5]..[88,3674+6])
+          Ptyp_constr "t" (middle_end/flambda/freshening.mli[88,3674+5]..[88,3674+6])
+          []
+        core_type (middle_end/flambda/freshening.mli[89,3681+5]..[91,3768+34])
+          Ptyp_arrow
+          Nolabel
+          core_type (middle_end/flambda/freshening.mli[89,3681+5]..[89,3681+34])
+            Ptyp_constr "Flambda.function_declarations" (middle_end/flambda/freshening.mli[89,3681+5]..[89,3681+34])
+            []
+          core_type (middle_end/flambda/freshening.mli[90,3716+5]..[91,3768+34])
+            Ptyp_arrow
+            Labelled "make_closure_symbol"
+            core_type (middle_end/flambda/freshening.mli[90,3716+26]..[90,3716+50])
+              Ptyp_arrow
+              Nolabel
+              core_type (middle_end/flambda/freshening.mli[90,3716+26]..[90,3716+38])
+                Ptyp_constr "Closure_id.t" (middle_end/flambda/freshening.mli[90,3716+26]..[90,3716+38])
+                []
+              core_type (middle_end/flambda/freshening.mli[90,3716+42]..[90,3716+50])
+                Ptyp_constr "Symbol.t" (middle_end/flambda/freshening.mli[90,3716+42]..[90,3716+50])
+                []
+            core_type (middle_end/flambda/freshening.mli[91,3768+5]..[91,3768+34])
+              Ptyp_constr "Flambda.function_declarations" (middle_end/flambda/freshening.mli[91,3768+5]..[91,3768+34])
+              []
+      []
+  signature_item (middle_end/flambda/freshening.mli[95,3934+0]..[137,5387+3])
+    Psig_module "Project_var" (middle_end/flambda/freshening.mli[95,3934+7]..[95,3934+18])
+    module_type (middle_end/flambda/freshening.mli[95,3934+21]..[137,5387+3])
+      Pmty_signature
+      [
+        signature_item (middle_end/flambda/freshening.mli[114,4684+2]..[114,4684+8])
+          Psig_type Rec
+          [
+            type_declaration "t" (middle_end/flambda/freshening.mli[114,4684+7]..[114,4684+8]) (middle_end/flambda/freshening.mli[114,4684+2]..[114,4684+8])
+              attribute "ocaml.doc"
+                [
+                  structure_item (middle_end/flambda/freshening.mli[96,3959+2]..[113,4678+5])
+                    Pstr_eval
+                    expression (middle_end/flambda/freshening.mli[96,3959+2]..[113,4678+5])
+                      Pexp_constant PConst_string(" A table used for freshening of identifiers in [Project_closure] and\n      [Move_within_set_of_closures] (\"ids of closures\"); and [Project_var]\n      (\"bound vars of closures\") expressions.\n\n      This information is propagated bottom up and populated when inlining a\n      function containing a closure declaration.\n\n      For instance,\n        [let f x =\n           let g y = ... x ... in\n           ... g.x ...           (Project_var x)\n           ... g 1 ...           (Apply (Project_closure g ...))\n           ]\n\n      If f is inlined, g is renamed. The approximation of g will carry this\n      table such that later the access to the field x of g and selection of\n      g in the closure can be substituted.\n   ",(middle_end/flambda/freshening.mli[96,3959+2]..[113,4678+5]),None)
+                ]
+              ptype_params =
+                []
+              ptype_cstrs =
+                []
+              ptype_kind =
+                Ptype_abstract
+              ptype_private = Public
+              ptype_manifest =
+                None
+          ]
+        signature_item (middle_end/flambda/freshening.mli[117,4736+2]..[117,4736+15])
+          Psig_value
+          value_description "empty" (middle_end/flambda/freshening.mli[117,4736+6]..[117,4736+11]) (middle_end/flambda/freshening.mli[117,4736+2]..[117,4736+15])
+            core_type (middle_end/flambda/freshening.mli[117,4736+14]..[117,4736+15])
+              Ptyp_constr "t" (middle_end/flambda/freshening.mli[117,4736+14]..[117,4736+15])
+              []
+            []
+        signature_item (middle_end/flambda/freshening.mli[120,4794+2]..[120,4794+41])
+          Psig_value
+          value_description "compose" (middle_end/flambda/freshening.mli[120,4794+6]..[120,4794+13]) (middle_end/flambda/freshening.mli[120,4794+2]..[120,4794+41])
+            attribute "ocaml.doc"
+              [
+                structure_item (middle_end/flambda/freshening.mli[119,4753+2]..[119,4753+40])
+                  Pstr_eval
+                  expression (middle_end/flambda/freshening.mli[119,4753+2]..[119,4753+40])
+                    Pexp_constant PConst_string(" Composition of two freshenings. ",(middle_end/flambda/freshening.mli[119,4753+2]..[119,4753+40]),None)
+              ]
+            core_type (middle_end/flambda/freshening.mli[120,4794+16]..[120,4794+41])
+              Ptyp_arrow
+              Labelled "earlier"
+              core_type (middle_end/flambda/freshening.mli[120,4794+24]..[120,4794+25])
+                Ptyp_constr "t" (middle_end/flambda/freshening.mli[120,4794+24]..[120,4794+25])
+                []
+              core_type (middle_end/flambda/freshening.mli[120,4794+29]..[120,4794+41])
+                Ptyp_arrow
+                Labelled "later"
+                core_type (middle_end/flambda/freshening.mli[120,4794+35]..[120,4794+36])
+                  Ptyp_constr "t" (middle_end/flambda/freshening.mli[120,4794+35]..[120,4794+36])
+                  []
+                core_type (middle_end/flambda/freshening.mli[120,4794+40]..[120,4794+41])
+                  Ptyp_constr "t" (middle_end/flambda/freshening.mli[120,4794+40]..[120,4794+41])
+                  []
+            []
+        signature_item (middle_end/flambda/freshening.mli[128,5117+2]..[128,5117+58])
+          Psig_value
+          value_description "apply_closure_id" (middle_end/flambda/freshening.mli[128,5117+6]..[128,5117+22]) (middle_end/flambda/freshening.mli[128,5117+2]..[128,5117+58])
+            attribute "ocaml.doc"
+              [
+                structure_item (middle_end/flambda/freshening.mli[122,4837+2]..[127,5112+4])
+                  Pstr_eval
+                  expression (middle_end/flambda/freshening.mli[122,4837+2]..[127,5112+4])
+                    Pexp_constant PConst_string(" Freshen a closure ID based on the given renaming.  The same ID is\n      returned if the renaming does not affect it.\n      If dealing with approximations, you probably want to use\n      [Simple_value_approx.freshen_and_check_closure_id] instead of this\n      function.\n  ",(middle_end/flambda/freshening.mli[122,4837+2]..[127,5112+4]),None)
+              ]
+            core_type (middle_end/flambda/freshening.mli[128,5117+25]..[128,5117+58])
+              Ptyp_arrow
+              Nolabel
+              core_type (middle_end/flambda/freshening.mli[128,5117+25]..[128,5117+26])
+                Ptyp_constr "t" (middle_end/flambda/freshening.mli[128,5117+25]..[128,5117+26])
+                []
+              core_type (middle_end/flambda/freshening.mli[128,5117+30]..[128,5117+58])
+                Ptyp_arrow
+                Nolabel
+                core_type (middle_end/flambda/freshening.mli[128,5117+30]..[128,5117+42])
+                  Ptyp_constr "Closure_id.t" (middle_end/flambda/freshening.mli[128,5117+30]..[128,5117+42])
+                  []
+                core_type (middle_end/flambda/freshening.mli[128,5117+46]..[128,5117+58])
+                  Ptyp_constr "Closure_id.t" (middle_end/flambda/freshening.mli[128,5117+46]..[128,5117+58])
+                  []
+            []
+        signature_item (middle_end/flambda/freshening.mli[131,5246+2]..[134,5314+27])
+          Psig_value
+          value_description "apply_var_within_closure" (middle_end/flambda/freshening.mli[131,5246+6]..[131,5246+30]) (middle_end/flambda/freshening.mli[131,5246+2]..[134,5314+27])
+            attribute "ocaml.doc"
+              [
+                structure_item (middle_end/flambda/freshening.mli[130,5177+2]..[130,5177+68])
+                  Pstr_eval
+                  expression (middle_end/flambda/freshening.mli[130,5177+2]..[130,5177+68])
+                    Pexp_constant PConst_string(" Like [apply_closure_id], but for variables within closures. ",(middle_end/flambda/freshening.mli[130,5177+2]..[130,5177+68]),None)
+              ]
+            core_type (middle_end/flambda/freshening.mli[132,5277+7]..[134,5314+27])
+              Ptyp_arrow
+              Nolabel
+              core_type (middle_end/flambda/freshening.mli[132,5277+7]..[132,5277+8])
+                Ptyp_constr "t" (middle_end/flambda/freshening.mli[132,5277+7]..[132,5277+8])
+                []
+              core_type (middle_end/flambda/freshening.mli[133,5286+7]..[134,5314+27])
+                Ptyp_arrow
+                Nolabel
+                core_type (middle_end/flambda/freshening.mli[133,5286+7]..[133,5286+27])
+                  Ptyp_constr "Var_within_closure.t" (middle_end/flambda/freshening.mli[133,5286+7]..[133,5286+27])
+                  []
+                core_type (middle_end/flambda/freshening.mli[134,5314+7]..[134,5314+27])
+                  Ptyp_constr "Var_within_closure.t" (middle_end/flambda/freshening.mli[134,5314+7]..[134,5314+27])
+                  []
+            []
+        signature_item (middle_end/flambda/freshening.mli[136,5343+2]..[136,5343+43])
+          Psig_value
+          value_description "print" (middle_end/flambda/freshening.mli[136,5343+6]..[136,5343+11]) (middle_end/flambda/freshening.mli[136,5343+2]..[136,5343+43])
+            core_type (middle_end/flambda/freshening.mli[136,5343+14]..[136,5343+43])
+              Ptyp_arrow
+              Nolabel
+              core_type (middle_end/flambda/freshening.mli[136,5343+14]..[136,5343+30])
+                Ptyp_constr "Format.formatter" (middle_end/flambda/freshening.mli[136,5343+14]..[136,5343+30])
+                []
+              core_type (middle_end/flambda/freshening.mli[136,5343+34]..[136,5343+43])
+                Ptyp_arrow
+                Nolabel
+                core_type (middle_end/flambda/freshening.mli[136,5343+34]..[136,5343+35])
+                  Ptyp_constr "t" (middle_end/flambda/freshening.mli[136,5343+34]..[136,5343+35])
+                  []
+                core_type (middle_end/flambda/freshening.mli[136,5343+39]..[136,5343+43])
+                  Ptyp_constr "unit" (middle_end/flambda/freshening.mli[136,5343+39]..[136,5343+43])
+                  []
+            []
+      ]
+  signature_item (middle_end/flambda/freshening.mli[140,5443+0]..[148,5702+19])
+    Psig_value
+    value_description "apply_function_decls_and_free_vars" (middle_end/flambda/freshening.mli[140,5443+4]..[140,5443+38]) (middle_end/flambda/freshening.mli[140,5443+0]..[148,5702+19])
+      core_type (middle_end/flambda/freshening.mli[141,5482+5]..[148,5702+19])
+        Ptyp_arrow
+        Nolabel
+        core_type (middle_end/flambda/freshening.mli[141,5482+5]..[141,5482+6])
+          Ptyp_constr "t" (middle_end/flambda/freshening.mli[141,5482+5]..[141,5482+6])
+          []
+        core_type (middle_end/flambda/freshening.mli[142,5489+5]..[148,5702+19])
+          Ptyp_arrow
+          Nolabel
+          core_type (middle_end/flambda/freshening.mli[142,5489+5]..[142,5489+49])
+            Ptyp_constr "Variable.Map.t" (middle_end/flambda/freshening.mli[142,5489+35]..[142,5489+49])
+            [
+              core_type (middle_end/flambda/freshening.mli[142,5489+6]..[142,5489+33])
+                Ptyp_tuple
+                [
+                  core_type (middle_end/flambda/freshening.mli[142,5489+6]..[142,5489+28])
+                    Ptyp_constr "Flambda.specialised_to" (middle_end/flambda/freshening.mli[142,5489+6]..[142,5489+28])
+                    []
+                  core_type (middle_end/flambda/freshening.mli[142,5489+31]..[142,5489+33])
+                    Ptyp_var a
+                ]
+            ]
+          core_type (middle_end/flambda/freshening.mli[143,5539+5]..[148,5702+19])
+            Ptyp_arrow
+            Nolabel
+            core_type (middle_end/flambda/freshening.mli[143,5539+5]..[143,5539+34])
+              Ptyp_constr "Flambda.function_declarations" (middle_end/flambda/freshening.mli[143,5539+5]..[143,5539+34])
+              []
+            core_type (middle_end/flambda/freshening.mli[144,5574+5]..[148,5702+19])
+              Ptyp_arrow
+              Labelled "only_freshen_parameters"
+              core_type (middle_end/flambda/freshening.mli[144,5574+29]..[144,5574+33])
+                Ptyp_constr "bool" (middle_end/flambda/freshening.mli[144,5574+29]..[144,5574+33])
+                []
+              core_type (middle_end/flambda/freshening.mli[145,5608+5]..[148,5702+19])
+                Ptyp_tuple
+                [
+                  core_type (middle_end/flambda/freshening.mli[145,5608+5]..[145,5608+49])
+                    Ptyp_constr "Variable.Map.t" (middle_end/flambda/freshening.mli[145,5608+35]..[145,5608+49])
+                    [
+                      core_type (middle_end/flambda/freshening.mli[145,5608+6]..[145,5608+33])
+                        Ptyp_tuple
+                        [
+                          core_type (middle_end/flambda/freshening.mli[145,5608+6]..[145,5608+28])
+                            Ptyp_constr "Flambda.specialised_to" (middle_end/flambda/freshening.mli[145,5608+6]..[145,5608+28])
+                            []
+                          core_type (middle_end/flambda/freshening.mli[145,5608+31]..[145,5608+33])
+                            Ptyp_var a
+                        ]
+                    ]
+                  core_type (middle_end/flambda/freshening.mli[146,5658+6]..[146,5658+35])
+                    Ptyp_constr "Flambda.function_declarations" (middle_end/flambda/freshening.mli[146,5658+6]..[146,5658+35])
+                    []
+                  core_type (middle_end/flambda/freshening.mli[147,5694+6]..[147,5694+7])
+                    Ptyp_constr "t" (middle_end/flambda/freshening.mli[147,5694+6]..[147,5694+7])
+                    []
+                  core_type (middle_end/flambda/freshening.mli[148,5702+6]..[148,5702+19])
+                    Ptyp_constr "Project_var.t" (middle_end/flambda/freshening.mli[148,5702+6]..[148,5702+19])
+                    []
+                ]
+      []
+  signature_item (middle_end/flambda/freshening.mli[150,5723+0]..[150,5723+51])
+    Psig_value
+    value_description "does_not_freshen" (middle_end/flambda/freshening.mli[150,5723+4]..[150,5723+20]) (middle_end/flambda/freshening.mli[150,5723+0]..[150,5723+51])
+      core_type (middle_end/flambda/freshening.mli[150,5723+23]..[150,5723+51])
+        Ptyp_arrow
+        Nolabel
+        core_type (middle_end/flambda/freshening.mli[150,5723+23]..[150,5723+24])
+          Ptyp_constr "t" (middle_end/flambda/freshening.mli[150,5723+23]..[150,5723+24])
+          []
+        core_type (middle_end/flambda/freshening.mli[150,5723+28]..[150,5723+51])
+          Ptyp_arrow
+          Nolabel
+          core_type (middle_end/flambda/freshening.mli[150,5723+28]..[150,5723+43])
+            Ptyp_constr "list" (middle_end/flambda/freshening.mli[150,5723+39]..[150,5723+43])
+            [
+              core_type (middle_end/flambda/freshening.mli[150,5723+28]..[150,5723+38])
+                Ptyp_constr "Variable.t" (middle_end/flambda/freshening.mli[150,5723+28]..[150,5723+38])
+                []
+            ]
+          core_type (middle_end/flambda/freshening.mli[150,5723+47]..[150,5723+51])
+            Ptyp_constr "bool" (middle_end/flambda/freshening.mli[150,5723+47]..[150,5723+51])
+            []
+      []
+  signature_item (middle_end/flambda/freshening.mli[152,5776+0]..[152,5776+41])
+    Psig_value
+    value_description "print" (middle_end/flambda/freshening.mli[152,5776+4]..[152,5776+9]) (middle_end/flambda/freshening.mli[152,5776+0]..[152,5776+41])
+      core_type (middle_end/flambda/freshening.mli[152,5776+12]..[152,5776+41])
+        Ptyp_arrow
+        Nolabel
+        core_type (middle_end/flambda/freshening.mli[152,5776+12]..[152,5776+28])
+          Ptyp_constr "Format.formatter" (middle_end/flambda/freshening.mli[152,5776+12]..[152,5776+28])
+          []
+        core_type (middle_end/flambda/freshening.mli[152,5776+32]..[152,5776+41])
+          Ptyp_arrow
+          Nolabel
+          core_type (middle_end/flambda/freshening.mli[152,5776+32]..[152,5776+33])
+            Ptyp_constr "t" (middle_end/flambda/freshening.mli[152,5776+32]..[152,5776+33])
+            []
+          core_type (middle_end/flambda/freshening.mli[152,5776+37]..[152,5776+41])
+            Ptyp_constr "unit" (middle_end/flambda/freshening.mli[152,5776+37]..[152,5776+41])
+            []
+      []
+  signature_item (middle_end/flambda/freshening.mli[157,5954+0]..[161,6085+42])
+    Psig_value
+    value_description "freshen_projection_relation" (middle_end/flambda/freshening.mli[157,5954+4]..[157,5954+31]) (middle_end/flambda/freshening.mli[157,5954+0]..[161,6085+42])
+      attribute "ocaml.doc"
+        [
+          structure_item (middle_end/flambda/freshening.mli[154,5819+0]..[155,5891+13])
+            Pstr_eval
+            expression (middle_end/flambda/freshening.mli[154,5819+0]..[155,5891+13])
+              Pexp_constant PConst_string(" N.B. This does not freshen the domain of the supplied map, only the\n    range. ",(middle_end/flambda/freshening.mli[154,5819+0]..[155,5891+13]),None)
+        ]
+      core_type (middle_end/flambda/freshening.mli[158,5986+5]..[161,6085+42])
+        Ptyp_arrow
+        Nolabel
+        core_type (middle_end/flambda/freshening.mli[158,5986+5]..[158,5986+42])
+          Ptyp_constr "Variable.Map.t" (middle_end/flambda/freshening.mli[158,5986+28]..[158,5986+42])
+          [
+            core_type (middle_end/flambda/freshening.mli[158,5986+5]..[158,5986+27])
+              Ptyp_constr "Flambda.specialised_to" (middle_end/flambda/freshening.mli[158,5986+5]..[158,5986+27])
+              []
+          ]
+        core_type (middle_end/flambda/freshening.mli[159,6029+5]..[161,6085+42])
+          Ptyp_arrow
+          Labelled "freshening"
+          core_type (middle_end/flambda/freshening.mli[159,6029+16]..[159,6029+17])
+            Ptyp_constr "t" (middle_end/flambda/freshening.mli[159,6029+16]..[159,6029+17])
+            []
+          core_type (middle_end/flambda/freshening.mli[160,6047+5]..[161,6085+42])
+            Ptyp_arrow
+            Labelled "closure_freshening"
+            core_type (middle_end/flambda/freshening.mli[160,6047+24]..[160,6047+37])
+              Ptyp_constr "Project_var.t" (middle_end/flambda/freshening.mli[160,6047+24]..[160,6047+37])
+              []
+            core_type (middle_end/flambda/freshening.mli[161,6085+5]..[161,6085+42])
+              Ptyp_constr "Variable.Map.t" (middle_end/flambda/freshening.mli[161,6085+28]..[161,6085+42])
+              [
+                core_type (middle_end/flambda/freshening.mli[161,6085+5]..[161,6085+27])
+                  Ptyp_constr "Flambda.specialised_to" (middle_end/flambda/freshening.mli[161,6085+5]..[161,6085+27])
+                  []
+              ]
+      []
+  signature_item (middle_end/flambda/freshening.mli[163,6129+0]..[167,6268+49])
+    Psig_value
+    value_description "freshen_projection_relation'" (middle_end/flambda/freshening.mli[163,6129+4]..[163,6129+32]) (middle_end/flambda/freshening.mli[163,6129+0]..[167,6268+49])
+      core_type (middle_end/flambda/freshening.mli[164,6162+5]..[167,6268+49])
+        Ptyp_arrow
+        Nolabel
+        core_type (middle_end/flambda/freshening.mli[164,6162+5]..[164,6162+49])
+          Ptyp_constr "Variable.Map.t" (middle_end/flambda/freshening.mli[164,6162+35]..[164,6162+49])
+          [
+            core_type (middle_end/flambda/freshening.mli[164,6162+6]..[164,6162+33])
+              Ptyp_tuple
+              [
+                core_type (middle_end/flambda/freshening.mli[164,6162+6]..[164,6162+28])
+                  Ptyp_constr "Flambda.specialised_to" (middle_end/flambda/freshening.mli[164,6162+6]..[164,6162+28])
+                  []
+                core_type (middle_end/flambda/freshening.mli[164,6162+31]..[164,6162+33])
+                  Ptyp_var a
+              ]
+          ]
+        core_type (middle_end/flambda/freshening.mli[165,6212+5]..[167,6268+49])
+          Ptyp_arrow
+          Labelled "freshening"
+          core_type (middle_end/flambda/freshening.mli[165,6212+16]..[165,6212+17])
+            Ptyp_constr "t" (middle_end/flambda/freshening.mli[165,6212+16]..[165,6212+17])
+            []
+          core_type (middle_end/flambda/freshening.mli[166,6230+5]..[167,6268+49])
+            Ptyp_arrow
+            Labelled "closure_freshening"
+            core_type (middle_end/flambda/freshening.mli[166,6230+24]..[166,6230+37])
+              Ptyp_constr "Project_var.t" (middle_end/flambda/freshening.mli[166,6230+24]..[166,6230+37])
+              []
+            core_type (middle_end/flambda/freshening.mli[167,6268+5]..[167,6268+49])
+              Ptyp_constr "Variable.Map.t" (middle_end/flambda/freshening.mli[167,6268+35]..[167,6268+49])
+              [
+                core_type (middle_end/flambda/freshening.mli[167,6268+6]..[167,6268+33])
+                  Ptyp_tuple
+                  [
+                    core_type (middle_end/flambda/freshening.mli[167,6268+6]..[167,6268+28])
+                      Ptyp_constr "Flambda.specialised_to" (middle_end/flambda/freshening.mli[167,6268+6]..[167,6268+28])
+                      []
+                    core_type (middle_end/flambda/freshening.mli[167,6268+31]..[167,6268+33])
+                      Ptyp_var a
+                  ]
+              ]
+      []
+]
+

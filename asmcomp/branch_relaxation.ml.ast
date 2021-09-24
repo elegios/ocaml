@@ -1,0 +1,2051 @@
+[
+  structure_item (asmcomp/branch_relaxation.ml[17,1156+0]..[17,1156+9])
+    Pstr_open Fresh
+    module_expr (asmcomp/branch_relaxation.ml[17,1156+5]..[17,1156+9])
+      Pmod_ident "Mach" (asmcomp/branch_relaxation.ml[17,1156+5]..[17,1156+9])
+  structure_item (asmcomp/branch_relaxation.ml[18,1166+0]..[18,1166+11])
+    Pstr_open Fresh
+    module_expr (asmcomp/branch_relaxation.ml[18,1166+5]..[18,1166+11])
+      Pmod_ident "Linear" (asmcomp/branch_relaxation.ml[18,1166+5]..[18,1166+11])
+  structure_item (asmcomp/branch_relaxation.ml[20,1179+0]..[151,6722+3])
+    Pstr_module
+    "Make" (asmcomp/branch_relaxation.ml[20,1179+7]..[20,1179+11])
+      module_expr (asmcomp/branch_relaxation.ml[20,1179+12]..[151,6722+3])
+        Pmod_functor "T" (asmcomp/branch_relaxation.ml[20,1179+13]..[20,1179+14])
+        module_type (asmcomp/branch_relaxation.ml[20,1179+17]..[20,1179+41])
+          Pmty_ident "Branch_relaxation_intf.S" (asmcomp/branch_relaxation.ml[20,1179+17]..[20,1179+41])
+        module_expr (asmcomp/branch_relaxation.ml[20,1179+45]..[151,6722+3])
+          Pmod_structure
+          [
+            structure_item (asmcomp/branch_relaxation.ml[21,1231+2]..[29,1507+25])
+              Pstr_value Nonrec
+              [
+                <def>
+                  pattern (asmcomp/branch_relaxation.ml[21,1231+6]..[21,1231+15])
+                    Ppat_var "label_map" (asmcomp/branch_relaxation.ml[21,1231+6]..[21,1231+15])
+                  expression (asmcomp/branch_relaxation.ml[21,1231+16]..[29,1507+25]) ghost
+                    Pexp_fun
+                    Nolabel
+                    None
+                    pattern (asmcomp/branch_relaxation.ml[21,1231+16]..[21,1231+17])
+                      Ppat_var "f" (asmcomp/branch_relaxation.ml[21,1231+16]..[21,1231+17])
+                    expression (asmcomp/branch_relaxation.ml[22,1251+4]..[29,1507+25])
+                      Pexp_let Nonrec
+                      [
+                        <def>
+                          pattern (asmcomp/branch_relaxation.ml[22,1251+8]..[22,1251+11])
+                            Ppat_var "map" (asmcomp/branch_relaxation.ml[22,1251+8]..[22,1251+11])
+                          expression (asmcomp/branch_relaxation.ml[22,1251+14]..[22,1251+31])
+                            Pexp_apply
+                            expression (asmcomp/branch_relaxation.ml[22,1251+14]..[22,1251+28])
+                              Pexp_ident "Hashtbl.create" (asmcomp/branch_relaxation.ml[22,1251+14]..[22,1251+28])
+                            [
+                              <arg>
+                              Nolabel
+                                expression (asmcomp/branch_relaxation.ml[22,1251+29]..[22,1251+31])
+                                  Pexp_constant PConst_int (37,None)
+                            ]
+                      ]
+                      expression (asmcomp/branch_relaxation.ml[23,1286+4]..[29,1507+25])
+                        Pexp_let Rec
+                        [
+                          <def>
+                            pattern (asmcomp/branch_relaxation.ml[23,1286+12]..[23,1286+20])
+                              Ppat_var "fill_map" (asmcomp/branch_relaxation.ml[23,1286+12]..[23,1286+20])
+                            expression (asmcomp/branch_relaxation.ml[23,1286+21]..[27,1441+58]) ghost
+                              Pexp_fun
+                              Nolabel
+                              None
+                              pattern (asmcomp/branch_relaxation.ml[23,1286+21]..[23,1286+23])
+                                Ppat_var "pc" (asmcomp/branch_relaxation.ml[23,1286+21]..[23,1286+23])
+                              expression (asmcomp/branch_relaxation.ml[23,1286+24]..[27,1441+58]) ghost
+                                Pexp_fun
+                                Nolabel
+                                None
+                                pattern (asmcomp/branch_relaxation.ml[23,1286+24]..[23,1286+29])
+                                  Ppat_var "instr" (asmcomp/branch_relaxation.ml[23,1286+24]..[23,1286+29])
+                                expression (asmcomp/branch_relaxation.ml[24,1318+6]..[27,1441+58])
+                                  Pexp_match
+                                  expression (asmcomp/branch_relaxation.ml[24,1318+12]..[24,1318+22])
+                                    Pexp_field
+                                    expression (asmcomp/branch_relaxation.ml[24,1318+12]..[24,1318+17])
+                                      Pexp_ident "instr" (asmcomp/branch_relaxation.ml[24,1318+12]..[24,1318+17])
+                                    "desc" (asmcomp/branch_relaxation.ml[24,1318+18]..[24,1318+22])
+                                  [
+                                    <case>
+                                      pattern (asmcomp/branch_relaxation.ml[25,1346+8]..[25,1346+12])
+                                        Ppat_construct "Lend" (asmcomp/branch_relaxation.ml[25,1346+8]..[25,1346+12])
+                                        None
+                                      expression (asmcomp/branch_relaxation.ml[25,1346+16]..[25,1346+25])
+                                        Pexp_tuple
+                                        [
+                                          expression (asmcomp/branch_relaxation.ml[25,1346+17]..[25,1346+19])
+                                            Pexp_ident "pc" (asmcomp/branch_relaxation.ml[25,1346+17]..[25,1346+19])
+                                          expression (asmcomp/branch_relaxation.ml[25,1346+21]..[25,1346+24])
+                                            Pexp_ident "map" (asmcomp/branch_relaxation.ml[25,1346+21]..[25,1346+24])
+                                        ]
+                                    <case>
+                                      pattern (asmcomp/branch_relaxation.ml[26,1372+8]..[26,1372+18])
+                                        Ppat_construct "Llabel" (asmcomp/branch_relaxation.ml[26,1372+8]..[26,1372+14])
+                                        Some
+                                          []
+                                          pattern (asmcomp/branch_relaxation.ml[26,1372+15]..[26,1372+18])
+                                            Ppat_var "lbl" (asmcomp/branch_relaxation.ml[26,1372+15]..[26,1372+18])
+                                      expression (asmcomp/branch_relaxation.ml[26,1372+22]..[26,1372+68])
+                                        Pexp_sequence
+                                        expression (asmcomp/branch_relaxation.ml[26,1372+22]..[26,1372+44])
+                                          Pexp_apply
+                                          expression (asmcomp/branch_relaxation.ml[26,1372+22]..[26,1372+33])
+                                            Pexp_ident "Hashtbl.add" (asmcomp/branch_relaxation.ml[26,1372+22]..[26,1372+33])
+                                          [
+                                            <arg>
+                                            Nolabel
+                                              expression (asmcomp/branch_relaxation.ml[26,1372+34]..[26,1372+37])
+                                                Pexp_ident "map" (asmcomp/branch_relaxation.ml[26,1372+34]..[26,1372+37])
+                                            <arg>
+                                            Nolabel
+                                              expression (asmcomp/branch_relaxation.ml[26,1372+38]..[26,1372+41])
+                                                Pexp_ident "lbl" (asmcomp/branch_relaxation.ml[26,1372+38]..[26,1372+41])
+                                            <arg>
+                                            Nolabel
+                                              expression (asmcomp/branch_relaxation.ml[26,1372+42]..[26,1372+44])
+                                                Pexp_ident "pc" (asmcomp/branch_relaxation.ml[26,1372+42]..[26,1372+44])
+                                          ]
+                                        expression (asmcomp/branch_relaxation.ml[26,1372+46]..[26,1372+68])
+                                          Pexp_apply
+                                          expression (asmcomp/branch_relaxation.ml[26,1372+46]..[26,1372+54])
+                                            Pexp_ident "fill_map" (asmcomp/branch_relaxation.ml[26,1372+46]..[26,1372+54])
+                                          [
+                                            <arg>
+                                            Nolabel
+                                              expression (asmcomp/branch_relaxation.ml[26,1372+55]..[26,1372+57])
+                                                Pexp_ident "pc" (asmcomp/branch_relaxation.ml[26,1372+55]..[26,1372+57])
+                                            <arg>
+                                            Nolabel
+                                              expression (asmcomp/branch_relaxation.ml[26,1372+58]..[26,1372+68])
+                                                Pexp_field
+                                                expression (asmcomp/branch_relaxation.ml[26,1372+58]..[26,1372+63])
+                                                  Pexp_ident "instr" (asmcomp/branch_relaxation.ml[26,1372+58]..[26,1372+63])
+                                                "next" (asmcomp/branch_relaxation.ml[26,1372+64]..[26,1372+68])
+                                          ]
+                                    <case>
+                                      pattern (asmcomp/branch_relaxation.ml[27,1441+8]..[27,1441+10])
+                                        Ppat_var "op" (asmcomp/branch_relaxation.ml[27,1441+8]..[27,1441+10])
+                                      expression (asmcomp/branch_relaxation.ml[27,1441+14]..[27,1441+58])
+                                        Pexp_apply
+                                        expression (asmcomp/branch_relaxation.ml[27,1441+14]..[27,1441+22])
+                                          Pexp_ident "fill_map" (asmcomp/branch_relaxation.ml[27,1441+14]..[27,1441+22])
+                                        [
+                                          <arg>
+                                          Nolabel
+                                            expression (asmcomp/branch_relaxation.ml[27,1441+23]..[27,1441+47])
+                                              Pexp_apply
+                                              expression (asmcomp/branch_relaxation.ml[27,1441+27]..[27,1441+28])
+                                                Pexp_ident "+" (asmcomp/branch_relaxation.ml[27,1441+27]..[27,1441+28])
+                                              [
+                                                <arg>
+                                                Nolabel
+                                                  expression (asmcomp/branch_relaxation.ml[27,1441+24]..[27,1441+26])
+                                                    Pexp_ident "pc" (asmcomp/branch_relaxation.ml[27,1441+24]..[27,1441+26])
+                                                <arg>
+                                                Nolabel
+                                                  expression (asmcomp/branch_relaxation.ml[27,1441+29]..[27,1441+46])
+                                                    Pexp_apply
+                                                    expression (asmcomp/branch_relaxation.ml[27,1441+29]..[27,1441+41])
+                                                      Pexp_ident "T.instr_size" (asmcomp/branch_relaxation.ml[27,1441+29]..[27,1441+41])
+                                                    [
+                                                      <arg>
+                                                      Nolabel
+                                                        expression (asmcomp/branch_relaxation.ml[27,1441+42]..[27,1441+43])
+                                                          Pexp_ident "f" (asmcomp/branch_relaxation.ml[27,1441+42]..[27,1441+43])
+                                                      <arg>
+                                                      Nolabel
+                                                        expression (asmcomp/branch_relaxation.ml[27,1441+44]..[27,1441+46])
+                                                          Pexp_ident "op" (asmcomp/branch_relaxation.ml[27,1441+44]..[27,1441+46])
+                                                    ]
+                                              ]
+                                          <arg>
+                                          Nolabel
+                                            expression (asmcomp/branch_relaxation.ml[27,1441+48]..[27,1441+58])
+                                              Pexp_field
+                                              expression (asmcomp/branch_relaxation.ml[27,1441+48]..[27,1441+53])
+                                                Pexp_ident "instr" (asmcomp/branch_relaxation.ml[27,1441+48]..[27,1441+53])
+                                              "next" (asmcomp/branch_relaxation.ml[27,1441+54]..[27,1441+58])
+                                        ]
+                                  ]
+                        ]
+                        expression (asmcomp/branch_relaxation.ml[29,1507+4]..[29,1507+25])
+                          Pexp_apply
+                          expression (asmcomp/branch_relaxation.ml[29,1507+4]..[29,1507+12])
+                            Pexp_ident "fill_map" (asmcomp/branch_relaxation.ml[29,1507+4]..[29,1507+12])
+                          [
+                            <arg>
+                            Nolabel
+                              expression (asmcomp/branch_relaxation.ml[29,1507+13]..[29,1507+14])
+                                Pexp_constant PConst_int (0,None)
+                            <arg>
+                            Nolabel
+                              expression (asmcomp/branch_relaxation.ml[29,1507+15]..[29,1507+25])
+                                Pexp_field
+                                expression (asmcomp/branch_relaxation.ml[29,1507+15]..[29,1507+16])
+                                  Pexp_ident "f" (asmcomp/branch_relaxation.ml[29,1507+15]..[29,1507+16])
+                                "fun_body" (asmcomp/branch_relaxation.ml[29,1507+17]..[29,1507+25])
+                          ]
+              ]
+            structure_item (asmcomp/branch_relaxation.ml[31,1534+2]..[34,1712+61])
+              Pstr_value Nonrec
+              [
+                <def>
+                  pattern (asmcomp/branch_relaxation.ml[31,1534+6]..[31,1534+22])
+                    Ppat_var "branch_overflows" (asmcomp/branch_relaxation.ml[31,1534+6]..[31,1534+22])
+                  expression (asmcomp/branch_relaxation.ml[31,1534+23]..[34,1712+61]) ghost
+                    Pexp_fun
+                    Nolabel
+                    None
+                    pattern (asmcomp/branch_relaxation.ml[31,1534+23]..[31,1534+26])
+                      Ppat_var "map" (asmcomp/branch_relaxation.ml[31,1534+23]..[31,1534+26])
+                    expression (asmcomp/branch_relaxation.ml[31,1534+27]..[34,1712+61]) ghost
+                      Pexp_fun
+                      Nolabel
+                      None
+                      pattern (asmcomp/branch_relaxation.ml[31,1534+27]..[31,1534+36])
+                        Ppat_var "pc_branch" (asmcomp/branch_relaxation.ml[31,1534+27]..[31,1534+36])
+                      expression (asmcomp/branch_relaxation.ml[31,1534+37]..[34,1712+61]) ghost
+                        Pexp_fun
+                        Nolabel
+                        None
+                        pattern (asmcomp/branch_relaxation.ml[31,1534+37]..[31,1534+45])
+                          Ppat_var "lbl_dest" (asmcomp/branch_relaxation.ml[31,1534+37]..[31,1534+45])
+                        expression (asmcomp/branch_relaxation.ml[31,1534+46]..[34,1712+61]) ghost
+                          Pexp_fun
+                          Nolabel
+                          None
+                          pattern (asmcomp/branch_relaxation.ml[31,1534+46]..[31,1534+63])
+                            Ppat_var "max_branch_offset" (asmcomp/branch_relaxation.ml[31,1534+46]..[31,1534+63])
+                          expression (asmcomp/branch_relaxation.ml[32,1600+4]..[34,1712+61])
+                            Pexp_let Nonrec
+                            [
+                              <def>
+                                pattern (asmcomp/branch_relaxation.ml[32,1600+8]..[32,1600+15])
+                                  Ppat_var "pc_dest" (asmcomp/branch_relaxation.ml[32,1600+8]..[32,1600+15])
+                                expression (asmcomp/branch_relaxation.ml[32,1600+18]..[32,1600+43])
+                                  Pexp_apply
+                                  expression (asmcomp/branch_relaxation.ml[32,1600+18]..[32,1600+30])
+                                    Pexp_ident "Hashtbl.find" (asmcomp/branch_relaxation.ml[32,1600+18]..[32,1600+30])
+                                  [
+                                    <arg>
+                                    Nolabel
+                                      expression (asmcomp/branch_relaxation.ml[32,1600+31]..[32,1600+34])
+                                        Pexp_ident "map" (asmcomp/branch_relaxation.ml[32,1600+31]..[32,1600+34])
+                                    <arg>
+                                    Nolabel
+                                      expression (asmcomp/branch_relaxation.ml[32,1600+35]..[32,1600+43])
+                                        Pexp_ident "lbl_dest" (asmcomp/branch_relaxation.ml[32,1600+35]..[32,1600+43])
+                                  ]
+                            ]
+                            expression (asmcomp/branch_relaxation.ml[33,1647+4]..[34,1712+61])
+                              Pexp_let Nonrec
+                              [
+                                <def>
+                                  pattern (asmcomp/branch_relaxation.ml[33,1647+8]..[33,1647+13])
+                                    Ppat_var "delta" (asmcomp/branch_relaxation.ml[33,1647+8]..[33,1647+13])
+                                  expression (asmcomp/branch_relaxation.ml[33,1647+16]..[33,1647+61])
+                                    Pexp_apply
+                                    expression (asmcomp/branch_relaxation.ml[33,1647+24]..[33,1647+25])
+                                      Pexp_ident "-" (asmcomp/branch_relaxation.ml[33,1647+24]..[33,1647+25])
+                                    [
+                                      <arg>
+                                      Nolabel
+                                        expression (asmcomp/branch_relaxation.ml[33,1647+16]..[33,1647+23])
+                                          Pexp_ident "pc_dest" (asmcomp/branch_relaxation.ml[33,1647+16]..[33,1647+23])
+                                      <arg>
+                                      Nolabel
+                                        expression (asmcomp/branch_relaxation.ml[33,1647+26]..[33,1647+61])
+                                          Pexp_apply
+                                          expression (asmcomp/branch_relaxation.ml[33,1647+37]..[33,1647+38])
+                                            Pexp_ident "+" (asmcomp/branch_relaxation.ml[33,1647+37]..[33,1647+38])
+                                          [
+                                            <arg>
+                                            Nolabel
+                                              expression (asmcomp/branch_relaxation.ml[33,1647+27]..[33,1647+36])
+                                                Pexp_ident "pc_branch" (asmcomp/branch_relaxation.ml[33,1647+27]..[33,1647+36])
+                                            <arg>
+                                            Nolabel
+                                              expression (asmcomp/branch_relaxation.ml[33,1647+39]..[33,1647+60])
+                                                Pexp_ident "T.offset_pc_at_branch" (asmcomp/branch_relaxation.ml[33,1647+39]..[33,1647+60])
+                                          ]
+                                    ]
+                              ]
+                              expression (asmcomp/branch_relaxation.ml[34,1712+4]..[34,1712+61])
+                                Pexp_apply
+                                expression (asmcomp/branch_relaxation.ml[34,1712+32]..[34,1712+34])
+                                  Pexp_ident "||" (asmcomp/branch_relaxation.ml[34,1712+32]..[34,1712+34])
+                                [
+                                  <arg>
+                                  Nolabel
+                                    expression (asmcomp/branch_relaxation.ml[34,1712+4]..[34,1712+31])
+                                      Pexp_apply
+                                      expression (asmcomp/branch_relaxation.ml[34,1712+10]..[34,1712+12])
+                                        Pexp_ident "<=" (asmcomp/branch_relaxation.ml[34,1712+10]..[34,1712+12])
+                                      [
+                                        <arg>
+                                        Nolabel
+                                          expression (asmcomp/branch_relaxation.ml[34,1712+4]..[34,1712+9])
+                                            Pexp_ident "delta" (asmcomp/branch_relaxation.ml[34,1712+4]..[34,1712+9])
+                                        <arg>
+                                        Nolabel
+                                          expression (asmcomp/branch_relaxation.ml[34,1712+13]..[34,1712+31])
+                                            Pexp_apply
+                                            expression (asmcomp/branch_relaxation.ml[34,1712+13]..[34,1712+14])
+                                              Pexp_ident "~-" (asmcomp/branch_relaxation.ml[34,1712+13]..[34,1712+14])
+                                            [
+                                              <arg>
+                                              Nolabel
+                                                expression (asmcomp/branch_relaxation.ml[34,1712+14]..[34,1712+31])
+                                                  Pexp_ident "max_branch_offset" (asmcomp/branch_relaxation.ml[34,1712+14]..[34,1712+31])
+                                            ]
+                                      ]
+                                  <arg>
+                                  Nolabel
+                                    expression (asmcomp/branch_relaxation.ml[34,1712+35]..[34,1712+61])
+                                      Pexp_apply
+                                      expression (asmcomp/branch_relaxation.ml[34,1712+41]..[34,1712+43])
+                                        Pexp_ident ">=" (asmcomp/branch_relaxation.ml[34,1712+41]..[34,1712+43])
+                                      [
+                                        <arg>
+                                        Nolabel
+                                          expression (asmcomp/branch_relaxation.ml[34,1712+35]..[34,1712+40])
+                                            Pexp_ident "delta" (asmcomp/branch_relaxation.ml[34,1712+35]..[34,1712+40])
+                                        <arg>
+                                        Nolabel
+                                          expression (asmcomp/branch_relaxation.ml[34,1712+44]..[34,1712+61])
+                                            Pexp_ident "max_branch_offset" (asmcomp/branch_relaxation.ml[34,1712+44]..[34,1712+61])
+                                      ]
+                                ]
+              ]
+            structure_item (asmcomp/branch_relaxation.ml[36,1775+2]..[40,1920+63])
+              Pstr_value Nonrec
+              [
+                <def>
+                  pattern (asmcomp/branch_relaxation.ml[36,1775+6]..[36,1775+26])
+                    Ppat_var "opt_branch_overflows" (asmcomp/branch_relaxation.ml[36,1775+6]..[36,1775+26])
+                  expression (asmcomp/branch_relaxation.ml[36,1775+27]..[40,1920+63]) ghost
+                    Pexp_fun
+                    Nolabel
+                    None
+                    pattern (asmcomp/branch_relaxation.ml[36,1775+27]..[36,1775+30])
+                      Ppat_var "map" (asmcomp/branch_relaxation.ml[36,1775+27]..[36,1775+30])
+                    expression (asmcomp/branch_relaxation.ml[36,1775+31]..[40,1920+63]) ghost
+                      Pexp_fun
+                      Nolabel
+                      None
+                      pattern (asmcomp/branch_relaxation.ml[36,1775+31]..[36,1775+40])
+                        Ppat_var "pc_branch" (asmcomp/branch_relaxation.ml[36,1775+31]..[36,1775+40])
+                      expression (asmcomp/branch_relaxation.ml[36,1775+41]..[40,1920+63]) ghost
+                        Pexp_fun
+                        Nolabel
+                        None
+                        pattern (asmcomp/branch_relaxation.ml[36,1775+41]..[36,1775+53])
+                          Ppat_var "opt_lbl_dest" (asmcomp/branch_relaxation.ml[36,1775+41]..[36,1775+53])
+                        expression (asmcomp/branch_relaxation.ml[36,1775+54]..[40,1920+63]) ghost
+                          Pexp_fun
+                          Nolabel
+                          None
+                          pattern (asmcomp/branch_relaxation.ml[36,1775+54]..[36,1775+71])
+                            Ppat_var "max_branch_offset" (asmcomp/branch_relaxation.ml[36,1775+54]..[36,1775+71])
+                          expression (asmcomp/branch_relaxation.ml[37,1849+4]..[40,1920+63])
+                            Pexp_match
+                            expression (asmcomp/branch_relaxation.ml[37,1849+10]..[37,1849+22])
+                              Pexp_ident "opt_lbl_dest" (asmcomp/branch_relaxation.ml[37,1849+10]..[37,1849+22])
+                            [
+                              <case>
+                                pattern (asmcomp/branch_relaxation.ml[38,1877+6]..[38,1877+10])
+                                  Ppat_construct "None" (asmcomp/branch_relaxation.ml[38,1877+6]..[38,1877+10])
+                                  None
+                                expression (asmcomp/branch_relaxation.ml[38,1877+14]..[38,1877+19])
+                                  Pexp_construct "false" (asmcomp/branch_relaxation.ml[38,1877+14]..[38,1877+19])
+                                  None
+                              <case>
+                                pattern (asmcomp/branch_relaxation.ml[39,1897+6]..[39,1897+19])
+                                  Ppat_construct "Some" (asmcomp/branch_relaxation.ml[39,1897+6]..[39,1897+10])
+                                  Some
+                                    []
+                                    pattern (asmcomp/branch_relaxation.ml[39,1897+11]..[39,1897+19])
+                                      Ppat_var "lbl_dest" (asmcomp/branch_relaxation.ml[39,1897+11]..[39,1897+19])
+                                expression (asmcomp/branch_relaxation.ml[40,1920+6]..[40,1920+63])
+                                  Pexp_apply
+                                  expression (asmcomp/branch_relaxation.ml[40,1920+6]..[40,1920+22])
+                                    Pexp_ident "branch_overflows" (asmcomp/branch_relaxation.ml[40,1920+6]..[40,1920+22])
+                                  [
+                                    <arg>
+                                    Nolabel
+                                      expression (asmcomp/branch_relaxation.ml[40,1920+23]..[40,1920+26])
+                                        Pexp_ident "map" (asmcomp/branch_relaxation.ml[40,1920+23]..[40,1920+26])
+                                    <arg>
+                                    Nolabel
+                                      expression (asmcomp/branch_relaxation.ml[40,1920+27]..[40,1920+36])
+                                        Pexp_ident "pc_branch" (asmcomp/branch_relaxation.ml[40,1920+27]..[40,1920+36])
+                                    <arg>
+                                    Nolabel
+                                      expression (asmcomp/branch_relaxation.ml[40,1920+37]..[40,1920+45])
+                                        Pexp_ident "lbl_dest" (asmcomp/branch_relaxation.ml[40,1920+37]..[40,1920+45])
+                                    <arg>
+                                    Nolabel
+                                      expression (asmcomp/branch_relaxation.ml[40,1920+46]..[40,1920+63])
+                                        Pexp_ident "max_branch_offset" (asmcomp/branch_relaxation.ml[40,1920+46]..[40,1920+63])
+                                  ]
+                            ]
+              ]
+            structure_item (asmcomp/branch_relaxation.ml[42,1985+2]..[74,3581+72])
+              Pstr_value Nonrec
+              [
+                <def>
+                  pattern (asmcomp/branch_relaxation.ml[42,1985+6]..[42,1985+21])
+                    Ppat_var "instr_overflows" (asmcomp/branch_relaxation.ml[42,1985+6]..[42,1985+21])
+                  expression (asmcomp/branch_relaxation.ml[42,1985+22]..[74,3581+72]) ghost
+                    Pexp_fun
+                    Labelled "code_size"
+                    None
+                    pattern (asmcomp/branch_relaxation.ml[42,1985+23]..[42,1985+32])
+                      Ppat_var "code_size" (asmcomp/branch_relaxation.ml[42,1985+23]..[42,1985+32])
+                    expression (asmcomp/branch_relaxation.ml[42,1985+33]..[74,3581+72]) ghost
+                      Pexp_fun
+                      Labelled "max_out_of_line_code_offset"
+                      None
+                      pattern (asmcomp/branch_relaxation.ml[42,1985+34]..[42,1985+61])
+                        Ppat_var "max_out_of_line_code_offset" (asmcomp/branch_relaxation.ml[42,1985+34]..[42,1985+61])
+                      expression (asmcomp/branch_relaxation.ml[42,1985+62]..[74,3581+72]) ghost
+                        Pexp_fun
+                        Nolabel
+                        None
+                        pattern (asmcomp/branch_relaxation.ml[42,1985+62]..[42,1985+67])
+                          Ppat_var "instr" (asmcomp/branch_relaxation.ml[42,1985+62]..[42,1985+67])
+                        expression (asmcomp/branch_relaxation.ml[42,1985+68]..[74,3581+72]) ghost
+                          Pexp_fun
+                          Nolabel
+                          None
+                          pattern (asmcomp/branch_relaxation.ml[42,1985+68]..[42,1985+71])
+                            Ppat_var "map" (asmcomp/branch_relaxation.ml[42,1985+68]..[42,1985+71])
+                          expression (asmcomp/branch_relaxation.ml[42,1985+72]..[74,3581+72]) ghost
+                            Pexp_fun
+                            Nolabel
+                            None
+                            pattern (asmcomp/branch_relaxation.ml[42,1985+72]..[42,1985+74])
+                              Ppat_var "pc" (asmcomp/branch_relaxation.ml[42,1985+72]..[42,1985+74])
+                            expression (asmcomp/branch_relaxation.ml[43,2062+4]..[74,3581+72])
+                              Pexp_match
+                              expression (asmcomp/branch_relaxation.ml[43,2062+10]..[43,2062+49])
+                                Pexp_apply
+                                expression (asmcomp/branch_relaxation.ml[43,2062+10]..[43,2062+38])
+                                  Pexp_ident "T.Cond_branch.classify_instr" (asmcomp/branch_relaxation.ml[43,2062+10]..[43,2062+38])
+                                [
+                                  <arg>
+                                  Nolabel
+                                    expression (asmcomp/branch_relaxation.ml[43,2062+39]..[43,2062+49])
+                                      Pexp_field
+                                      expression (asmcomp/branch_relaxation.ml[43,2062+39]..[43,2062+44])
+                                        Pexp_ident "instr" (asmcomp/branch_relaxation.ml[43,2062+39]..[43,2062+44])
+                                      "desc" (asmcomp/branch_relaxation.ml[43,2062+45]..[43,2062+49])
+                                ]
+                              [
+                                <case>
+                                  pattern (asmcomp/branch_relaxation.ml[44,2117+6]..[44,2117+10])
+                                    Ppat_construct "None" (asmcomp/branch_relaxation.ml[44,2117+6]..[44,2117+10])
+                                    None
+                                  expression (asmcomp/branch_relaxation.ml[44,2117+14]..[44,2117+19])
+                                    Pexp_construct "false" (asmcomp/branch_relaxation.ml[44,2117+14]..[44,2117+19])
+                                    None
+                                <case>
+                                  pattern (asmcomp/branch_relaxation.ml[45,2137+6]..[45,2137+17])
+                                    Ppat_construct "Some" (asmcomp/branch_relaxation.ml[45,2137+6]..[45,2137+10])
+                                    Some
+                                      []
+                                      pattern (asmcomp/branch_relaxation.ml[45,2137+11]..[45,2137+17])
+                                        Ppat_var "branch" (asmcomp/branch_relaxation.ml[45,2137+11]..[45,2137+17])
+                                  expression (asmcomp/branch_relaxation.ml[46,2158+6]..[74,3581+72])
+                                    Pexp_let Nonrec
+                                    [
+                                      <def>
+                                        pattern (asmcomp/branch_relaxation.ml[46,2158+10]..[46,2158+27])
+                                          Ppat_var "max_branch_offset" (asmcomp/branch_relaxation.ml[46,2158+10]..[46,2158+27])
+                                        expression (asmcomp/branch_relaxation.ml[50,2393+8]..[50,2393+50])
+                                          Pexp_apply
+                                          expression (asmcomp/branch_relaxation.ml[50,2393+46]..[50,2393+47])
+                                            Pexp_ident "-" (asmcomp/branch_relaxation.ml[50,2393+46]..[50,2393+47])
+                                          [
+                                            <arg>
+                                            Nolabel
+                                              expression (asmcomp/branch_relaxation.ml[50,2393+8]..[50,2393+45])
+                                                Pexp_apply
+                                                expression (asmcomp/branch_relaxation.ml[50,2393+8]..[50,2393+38])
+                                                  Pexp_ident "T.Cond_branch.max_displacement" (asmcomp/branch_relaxation.ml[50,2393+8]..[50,2393+38])
+                                                [
+                                                  <arg>
+                                                  Nolabel
+                                                    expression (asmcomp/branch_relaxation.ml[50,2393+39]..[50,2393+45])
+                                                      Pexp_ident "branch" (asmcomp/branch_relaxation.ml[50,2393+39]..[50,2393+45])
+                                                ]
+                                            <arg>
+                                            Nolabel
+                                              expression (asmcomp/branch_relaxation.ml[50,2393+48]..[50,2393+50])
+                                                Pexp_constant PConst_int (12,None)
+                                          ]
+                                    ]
+                                    expression (asmcomp/branch_relaxation.ml[52,2453+6]..[74,3581+72])
+                                      Pexp_match
+                                      expression (asmcomp/branch_relaxation.ml[52,2453+12]..[52,2453+22])
+                                        Pexp_field
+                                        expression (asmcomp/branch_relaxation.ml[52,2453+12]..[52,2453+17])
+                                          Pexp_ident "instr" (asmcomp/branch_relaxation.ml[52,2453+12]..[52,2453+17])
+                                        "desc" (asmcomp/branch_relaxation.ml[52,2453+18]..[52,2453+22])
+                                      [
+                                        <case>
+                                          pattern (asmcomp/branch_relaxation.ml[53,2481+8]..[57,2625+25])
+                                            Ppat_or
+                                            pattern (asmcomp/branch_relaxation.ml[53,2481+8]..[56,2583+41])
+                                              Ppat_or
+                                              pattern (asmcomp/branch_relaxation.ml[53,2481+8]..[55,2548+34])
+                                                Ppat_or
+                                                pattern (asmcomp/branch_relaxation.ml[53,2481+8]..[54,2504+43])
+                                                  Ppat_or
+                                                  pattern (asmcomp/branch_relaxation.ml[53,2481+8]..[53,2481+22])
+                                                    Ppat_construct "Lop" (asmcomp/branch_relaxation.ml[53,2481+8]..[53,2481+11])
+                                                    Some
+                                                      []
+                                                      pattern (asmcomp/branch_relaxation.ml[53,2481+12]..[53,2481+22])
+                                                        Ppat_construct "Ialloc" (asmcomp/branch_relaxation.ml[53,2481+13]..[53,2481+19])
+                                                        Some
+                                                          []
+                                                          pattern (asmcomp/branch_relaxation.ml[53,2481+20]..[53,2481+21])
+                                                            Ppat_any
+                                                  pattern (asmcomp/branch_relaxation.ml[54,2504+8]..[54,2504+43])
+                                                    Ppat_construct "Lop" (asmcomp/branch_relaxation.ml[54,2504+8]..[54,2504+11])
+                                                    Some
+                                                      []
+                                                      pattern (asmcomp/branch_relaxation.ml[54,2504+12]..[54,2504+43])
+                                                        Ppat_construct "Ipoll" (asmcomp/branch_relaxation.ml[54,2504+13]..[54,2504+18])
+                                                        Some
+                                                          []
+                                                          pattern (asmcomp/branch_relaxation.ml[54,2504+19]..[54,2504+42])
+                                                            Ppat_record Closed
+                                                            [
+                                                              "return_label" (asmcomp/branch_relaxation.ml[54,2504+21]..[54,2504+33])
+                                                                pattern (asmcomp/branch_relaxation.ml[54,2504+36]..[54,2504+40])
+                                                                  Ppat_construct "None" (asmcomp/branch_relaxation.ml[54,2504+36]..[54,2504+40])
+                                                                  None
+                                                            ]
+                                                pattern (asmcomp/branch_relaxation.ml[55,2548+8]..[55,2548+34])
+                                                  Ppat_construct "Lop" (asmcomp/branch_relaxation.ml[55,2548+8]..[55,2548+11])
+                                                  Some
+                                                    []
+                                                    pattern (asmcomp/branch_relaxation.ml[55,2548+12]..[55,2548+34])
+                                                      Ppat_construct "Iintop" (asmcomp/branch_relaxation.ml[55,2548+13]..[55,2548+19])
+                                                      Some
+                                                        []
+                                                        pattern (asmcomp/branch_relaxation.ml[55,2548+20]..[55,2548+33])
+                                                          Ppat_construct "Icheckbound" (asmcomp/branch_relaxation.ml[55,2548+21]..[55,2548+32])
+                                                          None
+                                              pattern (asmcomp/branch_relaxation.ml[56,2583+8]..[56,2583+41])
+                                                Ppat_construct "Lop" (asmcomp/branch_relaxation.ml[56,2583+8]..[56,2583+11])
+                                                Some
+                                                  []
+                                                  pattern (asmcomp/branch_relaxation.ml[56,2583+12]..[56,2583+41])
+                                                    Ppat_construct "Iintop_imm" (asmcomp/branch_relaxation.ml[56,2583+13]..[56,2583+23])
+                                                    Some
+                                                      []
+                                                      pattern (asmcomp/branch_relaxation.ml[56,2583+24]..[56,2583+40])
+                                                        Ppat_tuple
+                                                        [
+                                                          pattern (asmcomp/branch_relaxation.ml[56,2583+25]..[56,2583+36])
+                                                            Ppat_construct "Icheckbound" (asmcomp/branch_relaxation.ml[56,2583+25]..[56,2583+36])
+                                                            None
+                                                          pattern (asmcomp/branch_relaxation.ml[56,2583+38]..[56,2583+39])
+                                                            Ppat_any
+                                                        ]
+                                            pattern (asmcomp/branch_relaxation.ml[57,2625+8]..[57,2625+25])
+                                              Ppat_construct "Lop" (asmcomp/branch_relaxation.ml[57,2625+8]..[57,2625+11])
+                                              Some
+                                                []
+                                                pattern (asmcomp/branch_relaxation.ml[57,2625+12]..[57,2625+25])
+                                                  Ppat_construct "Ispecific" (asmcomp/branch_relaxation.ml[57,2625+13]..[57,2625+22])
+                                                  Some
+                                                    []
+                                                    pattern (asmcomp/branch_relaxation.ml[57,2625+23]..[57,2625+24])
+                                                      Ppat_any
+                                          expression (asmcomp/branch_relaxation.ml[61,2873+8]..[61,2873+73])
+                                            Pexp_apply
+                                            expression (asmcomp/branch_relaxation.ml[61,2873+53]..[61,2873+55])
+                                              Pexp_ident ">=" (asmcomp/branch_relaxation.ml[61,2873+53]..[61,2873+55])
+                                            [
+                                              <arg>
+                                              Nolabel
+                                                expression (asmcomp/branch_relaxation.ml[61,2873+8]..[61,2873+52])
+                                                  Pexp_apply
+                                                  expression (asmcomp/branch_relaxation.ml[61,2873+48]..[61,2873+49])
+                                                    Pexp_ident "-" (asmcomp/branch_relaxation.ml[61,2873+48]..[61,2873+49])
+                                                  [
+                                                    <arg>
+                                                    Nolabel
+                                                      expression (asmcomp/branch_relaxation.ml[61,2873+8]..[61,2873+47])
+                                                        Pexp_apply
+                                                        expression (asmcomp/branch_relaxation.ml[61,2873+18]..[61,2873+19])
+                                                          Pexp_ident "+" (asmcomp/branch_relaxation.ml[61,2873+18]..[61,2873+19])
+                                                        [
+                                                          <arg>
+                                                          Nolabel
+                                                            expression (asmcomp/branch_relaxation.ml[61,2873+8]..[61,2873+17])
+                                                              Pexp_ident "code_size" (asmcomp/branch_relaxation.ml[61,2873+8]..[61,2873+17])
+                                                          <arg>
+                                                          Nolabel
+                                                            expression (asmcomp/branch_relaxation.ml[61,2873+20]..[61,2873+47])
+                                                              Pexp_ident "max_out_of_line_code_offset" (asmcomp/branch_relaxation.ml[61,2873+20]..[61,2873+47])
+                                                        ]
+                                                    <arg>
+                                                    Nolabel
+                                                      expression (asmcomp/branch_relaxation.ml[61,2873+50]..[61,2873+52])
+                                                        Pexp_ident "pc" (asmcomp/branch_relaxation.ml[61,2873+50]..[61,2873+52])
+                                                  ]
+                                              <arg>
+                                              Nolabel
+                                                expression (asmcomp/branch_relaxation.ml[61,2873+56]..[61,2873+73])
+                                                  Pexp_ident "max_branch_offset" (asmcomp/branch_relaxation.ml[61,2873+56]..[61,2873+73])
+                                            ]
+                                        <case>
+                                          pattern (asmcomp/branch_relaxation.ml[62,2947+8]..[62,2947+28])
+                                            Ppat_construct "Lcondbranch" (asmcomp/branch_relaxation.ml[62,2947+8]..[62,2947+19])
+                                            Some
+                                              []
+                                              pattern (asmcomp/branch_relaxation.ml[62,2947+20]..[62,2947+28])
+                                                Ppat_tuple
+                                                [
+                                                  pattern (asmcomp/branch_relaxation.ml[62,2947+21]..[62,2947+22])
+                                                    Ppat_any
+                                                  pattern (asmcomp/branch_relaxation.ml[62,2947+24]..[62,2947+27])
+                                                    Ppat_var "lbl" (asmcomp/branch_relaxation.ml[62,2947+24]..[62,2947+27])
+                                                ]
+                                          expression (asmcomp/branch_relaxation.ml[63,2979+8]..[63,2979+53])
+                                            Pexp_apply
+                                            expression (asmcomp/branch_relaxation.ml[63,2979+8]..[63,2979+24])
+                                              Pexp_ident "branch_overflows" (asmcomp/branch_relaxation.ml[63,2979+8]..[63,2979+24])
+                                            [
+                                              <arg>
+                                              Nolabel
+                                                expression (asmcomp/branch_relaxation.ml[63,2979+25]..[63,2979+28])
+                                                  Pexp_ident "map" (asmcomp/branch_relaxation.ml[63,2979+25]..[63,2979+28])
+                                              <arg>
+                                              Nolabel
+                                                expression (asmcomp/branch_relaxation.ml[63,2979+29]..[63,2979+31])
+                                                  Pexp_ident "pc" (asmcomp/branch_relaxation.ml[63,2979+29]..[63,2979+31])
+                                              <arg>
+                                              Nolabel
+                                                expression (asmcomp/branch_relaxation.ml[63,2979+32]..[63,2979+35])
+                                                  Pexp_ident "lbl" (asmcomp/branch_relaxation.ml[63,2979+32]..[63,2979+35])
+                                              <arg>
+                                              Nolabel
+                                                expression (asmcomp/branch_relaxation.ml[63,2979+36]..[63,2979+53])
+                                                  Pexp_ident "max_branch_offset" (asmcomp/branch_relaxation.ml[63,2979+36]..[63,2979+53])
+                                            ]
+                                        <case>
+                                          pattern (asmcomp/branch_relaxation.ml[64,3033+8]..[64,3033+39])
+                                            Ppat_construct "Lcondbranch3" (asmcomp/branch_relaxation.ml[64,3033+8]..[64,3033+20])
+                                            Some
+                                              []
+                                              pattern (asmcomp/branch_relaxation.ml[64,3033+21]..[64,3033+39])
+                                                Ppat_tuple
+                                                [
+                                                  pattern (asmcomp/branch_relaxation.ml[64,3033+22]..[64,3033+26])
+                                                    Ppat_var "lbl0" (asmcomp/branch_relaxation.ml[64,3033+22]..[64,3033+26])
+                                                  pattern (asmcomp/branch_relaxation.ml[64,3033+28]..[64,3033+32])
+                                                    Ppat_var "lbl1" (asmcomp/branch_relaxation.ml[64,3033+28]..[64,3033+32])
+                                                  pattern (asmcomp/branch_relaxation.ml[64,3033+34]..[64,3033+38])
+                                                    Ppat_var "lbl2" (asmcomp/branch_relaxation.ml[64,3033+34]..[64,3033+38])
+                                                ]
+                                          expression (asmcomp/branch_relaxation.ml[65,3076+8]..[67,3199+63])
+                                            Pexp_apply
+                                            expression (asmcomp/branch_relaxation.ml[66,3135+10]..[66,3135+12])
+                                              Pexp_ident "||" (asmcomp/branch_relaxation.ml[66,3135+10]..[66,3135+12])
+                                            [
+                                              <arg>
+                                              Nolabel
+                                                expression (asmcomp/branch_relaxation.ml[65,3076+8]..[65,3076+58])
+                                                  Pexp_apply
+                                                  expression (asmcomp/branch_relaxation.ml[65,3076+8]..[65,3076+28])
+                                                    Pexp_ident "opt_branch_overflows" (asmcomp/branch_relaxation.ml[65,3076+8]..[65,3076+28])
+                                                  [
+                                                    <arg>
+                                                    Nolabel
+                                                      expression (asmcomp/branch_relaxation.ml[65,3076+29]..[65,3076+32])
+                                                        Pexp_ident "map" (asmcomp/branch_relaxation.ml[65,3076+29]..[65,3076+32])
+                                                    <arg>
+                                                    Nolabel
+                                                      expression (asmcomp/branch_relaxation.ml[65,3076+33]..[65,3076+35])
+                                                        Pexp_ident "pc" (asmcomp/branch_relaxation.ml[65,3076+33]..[65,3076+35])
+                                                    <arg>
+                                                    Nolabel
+                                                      expression (asmcomp/branch_relaxation.ml[65,3076+36]..[65,3076+40])
+                                                        Pexp_ident "lbl0" (asmcomp/branch_relaxation.ml[65,3076+36]..[65,3076+40])
+                                                    <arg>
+                                                    Nolabel
+                                                      expression (asmcomp/branch_relaxation.ml[65,3076+41]..[65,3076+58])
+                                                        Pexp_ident "max_branch_offset" (asmcomp/branch_relaxation.ml[65,3076+41]..[65,3076+58])
+                                                  ]
+                                              <arg>
+                                              Nolabel
+                                                expression (asmcomp/branch_relaxation.ml[66,3135+13]..[67,3199+63])
+                                                  Pexp_apply
+                                                  expression (asmcomp/branch_relaxation.ml[67,3199+10]..[67,3199+12])
+                                                    Pexp_ident "||" (asmcomp/branch_relaxation.ml[67,3199+10]..[67,3199+12])
+                                                  [
+                                                    <arg>
+                                                    Nolabel
+                                                      expression (asmcomp/branch_relaxation.ml[66,3135+13]..[66,3135+63])
+                                                        Pexp_apply
+                                                        expression (asmcomp/branch_relaxation.ml[66,3135+13]..[66,3135+33])
+                                                          Pexp_ident "opt_branch_overflows" (asmcomp/branch_relaxation.ml[66,3135+13]..[66,3135+33])
+                                                        [
+                                                          <arg>
+                                                          Nolabel
+                                                            expression (asmcomp/branch_relaxation.ml[66,3135+34]..[66,3135+37])
+                                                              Pexp_ident "map" (asmcomp/branch_relaxation.ml[66,3135+34]..[66,3135+37])
+                                                          <arg>
+                                                          Nolabel
+                                                            expression (asmcomp/branch_relaxation.ml[66,3135+38]..[66,3135+40])
+                                                              Pexp_ident "pc" (asmcomp/branch_relaxation.ml[66,3135+38]..[66,3135+40])
+                                                          <arg>
+                                                          Nolabel
+                                                            expression (asmcomp/branch_relaxation.ml[66,3135+41]..[66,3135+45])
+                                                              Pexp_ident "lbl1" (asmcomp/branch_relaxation.ml[66,3135+41]..[66,3135+45])
+                                                          <arg>
+                                                          Nolabel
+                                                            expression (asmcomp/branch_relaxation.ml[66,3135+46]..[66,3135+63])
+                                                              Pexp_ident "max_branch_offset" (asmcomp/branch_relaxation.ml[66,3135+46]..[66,3135+63])
+                                                        ]
+                                                    <arg>
+                                                    Nolabel
+                                                      expression (asmcomp/branch_relaxation.ml[67,3199+13]..[67,3199+63])
+                                                        Pexp_apply
+                                                        expression (asmcomp/branch_relaxation.ml[67,3199+13]..[67,3199+33])
+                                                          Pexp_ident "opt_branch_overflows" (asmcomp/branch_relaxation.ml[67,3199+13]..[67,3199+33])
+                                                        [
+                                                          <arg>
+                                                          Nolabel
+                                                            expression (asmcomp/branch_relaxation.ml[67,3199+34]..[67,3199+37])
+                                                              Pexp_ident "map" (asmcomp/branch_relaxation.ml[67,3199+34]..[67,3199+37])
+                                                          <arg>
+                                                          Nolabel
+                                                            expression (asmcomp/branch_relaxation.ml[67,3199+38]..[67,3199+40])
+                                                              Pexp_ident "pc" (asmcomp/branch_relaxation.ml[67,3199+38]..[67,3199+40])
+                                                          <arg>
+                                                          Nolabel
+                                                            expression (asmcomp/branch_relaxation.ml[67,3199+41]..[67,3199+45])
+                                                              Pexp_ident "lbl2" (asmcomp/branch_relaxation.ml[67,3199+41]..[67,3199+45])
+                                                          <arg>
+                                                          Nolabel
+                                                            expression (asmcomp/branch_relaxation.ml[67,3199+46]..[67,3199+63])
+                                                              Pexp_ident "max_branch_offset" (asmcomp/branch_relaxation.ml[67,3199+46]..[67,3199+63])
+                                                        ]
+                                                  ]
+                                            ]
+                                        <case>
+                                          pattern (asmcomp/branch_relaxation.ml[68,3263+8]..[68,3263+47])
+                                            Ppat_construct "Lop" (asmcomp/branch_relaxation.ml[68,3263+8]..[68,3263+11])
+                                            Some
+                                              []
+                                              pattern (asmcomp/branch_relaxation.ml[68,3263+12]..[68,3263+47])
+                                                Ppat_construct "Ipoll" (asmcomp/branch_relaxation.ml[68,3263+13]..[68,3263+18])
+                                                Some
+                                                  []
+                                                  pattern (asmcomp/branch_relaxation.ml[68,3263+19]..[68,3263+46])
+                                                    Ppat_record Closed
+                                                    [
+                                                      "return_label" (asmcomp/branch_relaxation.ml[68,3263+21]..[68,3263+33])
+                                                        pattern (asmcomp/branch_relaxation.ml[68,3263+36]..[68,3263+44])
+                                                          Ppat_construct "Some" (asmcomp/branch_relaxation.ml[68,3263+36]..[68,3263+40])
+                                                          Some
+                                                            []
+                                                            pattern (asmcomp/branch_relaxation.ml[68,3263+41]..[68,3263+44])
+                                                              Ppat_var "lbl" (asmcomp/branch_relaxation.ml[68,3263+41]..[68,3263+44])
+                                                    ]
+                                          expression (asmcomp/branch_relaxation.ml[71,3437+8]..[72,3511+56])
+                                            Pexp_apply
+                                            expression (asmcomp/branch_relaxation.ml[72,3511+8]..[72,3511+10])
+                                              Pexp_ident "||" (asmcomp/branch_relaxation.ml[72,3511+8]..[72,3511+10])
+                                            [
+                                              <arg>
+                                              Nolabel
+                                                expression (asmcomp/branch_relaxation.ml[71,3437+8]..[71,3437+73])
+                                                  Pexp_apply
+                                                  expression (asmcomp/branch_relaxation.ml[71,3437+53]..[71,3437+55])
+                                                    Pexp_ident ">=" (asmcomp/branch_relaxation.ml[71,3437+53]..[71,3437+55])
+                                                  [
+                                                    <arg>
+                                                    Nolabel
+                                                      expression (asmcomp/branch_relaxation.ml[71,3437+8]..[71,3437+52])
+                                                        Pexp_apply
+                                                        expression (asmcomp/branch_relaxation.ml[71,3437+48]..[71,3437+49])
+                                                          Pexp_ident "-" (asmcomp/branch_relaxation.ml[71,3437+48]..[71,3437+49])
+                                                        [
+                                                          <arg>
+                                                          Nolabel
+                                                            expression (asmcomp/branch_relaxation.ml[71,3437+8]..[71,3437+47])
+                                                              Pexp_apply
+                                                              expression (asmcomp/branch_relaxation.ml[71,3437+18]..[71,3437+19])
+                                                                Pexp_ident "+" (asmcomp/branch_relaxation.ml[71,3437+18]..[71,3437+19])
+                                                              [
+                                                                <arg>
+                                                                Nolabel
+                                                                  expression (asmcomp/branch_relaxation.ml[71,3437+8]..[71,3437+17])
+                                                                    Pexp_ident "code_size" (asmcomp/branch_relaxation.ml[71,3437+8]..[71,3437+17])
+                                                                <arg>
+                                                                Nolabel
+                                                                  expression (asmcomp/branch_relaxation.ml[71,3437+20]..[71,3437+47])
+                                                                    Pexp_ident "max_out_of_line_code_offset" (asmcomp/branch_relaxation.ml[71,3437+20]..[71,3437+47])
+                                                              ]
+                                                          <arg>
+                                                          Nolabel
+                                                            expression (asmcomp/branch_relaxation.ml[71,3437+50]..[71,3437+52])
+                                                              Pexp_ident "pc" (asmcomp/branch_relaxation.ml[71,3437+50]..[71,3437+52])
+                                                        ]
+                                                    <arg>
+                                                    Nolabel
+                                                      expression (asmcomp/branch_relaxation.ml[71,3437+56]..[71,3437+73])
+                                                        Pexp_ident "max_branch_offset" (asmcomp/branch_relaxation.ml[71,3437+56]..[71,3437+73])
+                                                  ]
+                                              <arg>
+                                              Nolabel
+                                                expression (asmcomp/branch_relaxation.ml[72,3511+11]..[72,3511+56])
+                                                  Pexp_apply
+                                                  expression (asmcomp/branch_relaxation.ml[72,3511+11]..[72,3511+27])
+                                                    Pexp_ident "branch_overflows" (asmcomp/branch_relaxation.ml[72,3511+11]..[72,3511+27])
+                                                  [
+                                                    <arg>
+                                                    Nolabel
+                                                      expression (asmcomp/branch_relaxation.ml[72,3511+28]..[72,3511+31])
+                                                        Pexp_ident "map" (asmcomp/branch_relaxation.ml[72,3511+28]..[72,3511+31])
+                                                    <arg>
+                                                    Nolabel
+                                                      expression (asmcomp/branch_relaxation.ml[72,3511+32]..[72,3511+34])
+                                                        Pexp_ident "pc" (asmcomp/branch_relaxation.ml[72,3511+32]..[72,3511+34])
+                                                    <arg>
+                                                    Nolabel
+                                                      expression (asmcomp/branch_relaxation.ml[72,3511+35]..[72,3511+38])
+                                                        Pexp_ident "lbl" (asmcomp/branch_relaxation.ml[72,3511+35]..[72,3511+38])
+                                                    <arg>
+                                                    Nolabel
+                                                      expression (asmcomp/branch_relaxation.ml[72,3511+39]..[72,3511+56])
+                                                        Pexp_ident "max_branch_offset" (asmcomp/branch_relaxation.ml[72,3511+39]..[72,3511+56])
+                                                  ]
+                                            ]
+                                        <case>
+                                          pattern (asmcomp/branch_relaxation.ml[73,3568+8]..[73,3568+9])
+                                            Ppat_any
+                                          expression (asmcomp/branch_relaxation.ml[74,3581+8]..[74,3581+72])
+                                            Pexp_apply
+                                            expression (asmcomp/branch_relaxation.ml[74,3581+8]..[74,3581+24])
+                                              Pexp_ident "Misc.fatal_error" (asmcomp/branch_relaxation.ml[74,3581+8]..[74,3581+24])
+                                            [
+                                              <arg>
+                                              Nolabel
+                                                expression (asmcomp/branch_relaxation.ml[74,3581+25]..[74,3581+72])
+                                                  Pexp_constant PConst_string("Unsupported instruction for branch relaxation",(asmcomp/branch_relaxation.ml[74,3581+26]..[74,3581+71]),None)
+                                            ]
+                                      ]
+                              ]
+              ]
+            structure_item (asmcomp/branch_relaxation.ml[76,3655+2]..[135,6118+28])
+              Pstr_value Nonrec
+              [
+                <def>
+                  pattern (asmcomp/branch_relaxation.ml[76,3655+6]..[76,3655+20])
+                    Ppat_var "fixup_branches" (asmcomp/branch_relaxation.ml[76,3655+6]..[76,3655+20])
+                  expression (asmcomp/branch_relaxation.ml[76,3655+21]..[135,6118+28]) ghost
+                    Pexp_fun
+                    Labelled "code_size"
+                    None
+                    pattern (asmcomp/branch_relaxation.ml[76,3655+22]..[76,3655+31])
+                      Ppat_var "code_size" (asmcomp/branch_relaxation.ml[76,3655+22]..[76,3655+31])
+                    expression (asmcomp/branch_relaxation.ml[76,3655+32]..[135,6118+28]) ghost
+                      Pexp_fun
+                      Labelled "max_out_of_line_code_offset"
+                      None
+                      pattern (asmcomp/branch_relaxation.ml[76,3655+33]..[76,3655+60])
+                        Ppat_var "max_out_of_line_code_offset" (asmcomp/branch_relaxation.ml[76,3655+33]..[76,3655+60])
+                      expression (asmcomp/branch_relaxation.ml[76,3655+61]..[135,6118+28]) ghost
+                        Pexp_fun
+                        Nolabel
+                        None
+                        pattern (asmcomp/branch_relaxation.ml[76,3655+61]..[76,3655+64])
+                          Ppat_var "map" (asmcomp/branch_relaxation.ml[76,3655+61]..[76,3655+64])
+                        expression (asmcomp/branch_relaxation.ml[76,3655+65]..[135,6118+28]) ghost
+                          Pexp_fun
+                          Nolabel
+                          None
+                          pattern (asmcomp/branch_relaxation.ml[76,3655+65]..[76,3655+66])
+                            Ppat_var "f" (asmcomp/branch_relaxation.ml[76,3655+65]..[76,3655+66])
+                          expression (asmcomp/branch_relaxation.ml[77,3724+4]..[135,6118+28])
+                            Pexp_let Nonrec
+                            [
+                              <def>
+                                pattern (asmcomp/branch_relaxation.ml[77,3724+8]..[77,3724+24])
+                                  Ppat_var "expand_optbranch" (asmcomp/branch_relaxation.ml[77,3724+8]..[77,3724+24])
+                                expression (asmcomp/branch_relaxation.ml[77,3724+25]..[82,3898+23]) ghost
+                                  Pexp_fun
+                                  Nolabel
+                                  None
+                                  pattern (asmcomp/branch_relaxation.ml[77,3724+25]..[77,3724+28])
+                                    Ppat_var "lbl" (asmcomp/branch_relaxation.ml[77,3724+25]..[77,3724+28])
+                                  expression (asmcomp/branch_relaxation.ml[77,3724+29]..[82,3898+23]) ghost
+                                    Pexp_fun
+                                    Nolabel
+                                    None
+                                    pattern (asmcomp/branch_relaxation.ml[77,3724+29]..[77,3724+30])
+                                      Ppat_var "n" (asmcomp/branch_relaxation.ml[77,3724+29]..[77,3724+30])
+                                    expression (asmcomp/branch_relaxation.ml[77,3724+31]..[82,3898+23]) ghost
+                                      Pexp_fun
+                                      Nolabel
+                                      None
+                                      pattern (asmcomp/branch_relaxation.ml[77,3724+31]..[77,3724+34])
+                                        Ppat_var "arg" (asmcomp/branch_relaxation.ml[77,3724+31]..[77,3724+34])
+                                      expression (asmcomp/branch_relaxation.ml[77,3724+35]..[82,3898+23]) ghost
+                                        Pexp_fun
+                                        Nolabel
+                                        None
+                                        pattern (asmcomp/branch_relaxation.ml[77,3724+35]..[77,3724+39])
+                                          Ppat_var "next" (asmcomp/branch_relaxation.ml[77,3724+35]..[77,3724+39])
+                                        expression (asmcomp/branch_relaxation.ml[78,3766+6]..[82,3898+23])
+                                          Pexp_match
+                                          expression (asmcomp/branch_relaxation.ml[78,3766+12]..[78,3766+15])
+                                            Pexp_ident "lbl" (asmcomp/branch_relaxation.ml[78,3766+12]..[78,3766+15])
+                                          [
+                                            <case>
+                                              pattern (asmcomp/branch_relaxation.ml[79,3787+8]..[79,3787+12])
+                                                Ppat_construct "None" (asmcomp/branch_relaxation.ml[79,3787+8]..[79,3787+12])
+                                                None
+                                              expression (asmcomp/branch_relaxation.ml[79,3787+16]..[79,3787+20])
+                                                Pexp_ident "next" (asmcomp/branch_relaxation.ml[79,3787+16]..[79,3787+20])
+                                            <case>
+                                              pattern (asmcomp/branch_relaxation.ml[80,3808+8]..[80,3808+14])
+                                                Ppat_construct "Some" (asmcomp/branch_relaxation.ml[80,3808+8]..[80,3808+12])
+                                                Some
+                                                  []
+                                                  pattern (asmcomp/branch_relaxation.ml[80,3808+13]..[80,3808+14])
+                                                    Ppat_var "l" (asmcomp/branch_relaxation.ml[80,3808+13]..[80,3808+14])
+                                              expression (asmcomp/branch_relaxation.ml[81,3826+8]..[82,3898+23])
+                                                Pexp_apply
+                                                expression (asmcomp/branch_relaxation.ml[81,3826+8]..[81,3826+18])
+                                                  Pexp_ident "instr_cons" (asmcomp/branch_relaxation.ml[81,3826+8]..[81,3826+18])
+                                                [
+                                                  <arg>
+                                                  Nolabel
+                                                    expression (asmcomp/branch_relaxation.ml[81,3826+19]..[81,3826+71])
+                                                      Pexp_construct "Lcondbranch" (asmcomp/branch_relaxation.ml[81,3826+20]..[81,3826+31])
+                                                      Some
+                                                        expression (asmcomp/branch_relaxation.ml[81,3826+32]..[81,3826+70])
+                                                          Pexp_tuple
+                                                          [
+                                                            expression (asmcomp/branch_relaxation.ml[81,3826+33]..[81,3826+66])
+                                                              Pexp_construct "Iinttest_imm" (asmcomp/branch_relaxation.ml[81,3826+33]..[81,3826+45])
+                                                              Some
+                                                                expression (asmcomp/branch_relaxation.ml[81,3826+46]..[81,3826+66])
+                                                                  Pexp_tuple
+                                                                  [
+                                                                    expression (asmcomp/branch_relaxation.ml[81,3826+47]..[81,3826+62])
+                                                                      Pexp_construct "Isigned" (asmcomp/branch_relaxation.ml[81,3826+47]..[81,3826+54])
+                                                                      Some
+expression (asmcomp/branch_relaxation.ml[81,3826+55]..[81,3826+62])
+  Pexp_construct "Cmm.Ceq" (asmcomp/branch_relaxation.ml[81,3826+55]..[81,3826+62])
+  None
+                                                                    expression (asmcomp/branch_relaxation.ml[81,3826+64]..[81,3826+65])
+                                                                      Pexp_ident "n" (asmcomp/branch_relaxation.ml[81,3826+64]..[81,3826+65])
+                                                                  ]
+                                                            expression (asmcomp/branch_relaxation.ml[81,3826+68]..[81,3826+69])
+                                                              Pexp_ident "l" (asmcomp/branch_relaxation.ml[81,3826+68]..[81,3826+69])
+                                                          ]
+                                                  <arg>
+                                                  Nolabel
+                                                    expression (asmcomp/branch_relaxation.ml[82,3898+10]..[82,3898+13])
+                                                      Pexp_ident "arg" (asmcomp/branch_relaxation.ml[82,3898+10]..[82,3898+13])
+                                                  <arg>
+                                                  Nolabel
+                                                    expression (asmcomp/branch_relaxation.ml[82,3898+14]..[82,3898+18])
+                                                      Pexp_array
+                                                      []
+                                                  <arg>
+                                                  Nolabel
+                                                    expression (asmcomp/branch_relaxation.ml[82,3898+19]..[82,3898+23])
+                                                      Pexp_ident "next" (asmcomp/branch_relaxation.ml[82,3898+19]..[82,3898+23])
+                                                ]
+                                          ]
+                            ]
+                            expression (asmcomp/branch_relaxation.ml[84,3929+4]..[135,6118+28])
+                              Pexp_let Rec
+                              [
+                                <def>
+                                  pattern (asmcomp/branch_relaxation.ml[84,3929+12]..[84,3929+17])
+                                    Ppat_var "fixup" (asmcomp/branch_relaxation.ml[84,3929+12]..[84,3929+17])
+                                  expression (asmcomp/branch_relaxation.ml[84,3929+18]..[133,6086+24]) ghost
+                                    Pexp_fun
+                                    Nolabel
+                                    None
+                                    pattern (asmcomp/branch_relaxation.ml[84,3929+18]..[84,3929+25])
+                                      Ppat_var "did_fix" (asmcomp/branch_relaxation.ml[84,3929+18]..[84,3929+25])
+                                    expression (asmcomp/branch_relaxation.ml[84,3929+26]..[133,6086+24]) ghost
+                                      Pexp_fun
+                                      Nolabel
+                                      None
+                                      pattern (asmcomp/branch_relaxation.ml[84,3929+26]..[84,3929+28])
+                                        Ppat_var "pc" (asmcomp/branch_relaxation.ml[84,3929+26]..[84,3929+28])
+                                      expression (asmcomp/branch_relaxation.ml[84,3929+29]..[133,6086+24]) ghost
+                                        Pexp_fun
+                                        Nolabel
+                                        None
+                                        pattern (asmcomp/branch_relaxation.ml[84,3929+29]..[84,3929+34])
+                                          Ppat_var "instr" (asmcomp/branch_relaxation.ml[84,3929+29]..[84,3929+34])
+                                        expression (asmcomp/branch_relaxation.ml[85,3966+6]..[133,6086+24])
+                                          Pexp_match
+                                          expression (asmcomp/branch_relaxation.ml[85,3966+12]..[85,3966+22])
+                                            Pexp_field
+                                            expression (asmcomp/branch_relaxation.ml[85,3966+12]..[85,3966+17])
+                                              Pexp_ident "instr" (asmcomp/branch_relaxation.ml[85,3966+12]..[85,3966+17])
+                                            "desc" (asmcomp/branch_relaxation.ml[85,3966+18]..[85,3966+22])
+                                          [
+                                            <case>
+                                              pattern (asmcomp/branch_relaxation.ml[86,3994+8]..[86,3994+12])
+                                                Ppat_construct "Lend" (asmcomp/branch_relaxation.ml[86,3994+8]..[86,3994+12])
+                                                None
+                                              expression (asmcomp/branch_relaxation.ml[86,3994+16]..[86,3994+23])
+                                                Pexp_ident "did_fix" (asmcomp/branch_relaxation.ml[86,3994+16]..[86,3994+23])
+                                            <case>
+                                              pattern (asmcomp/branch_relaxation.ml[87,4018+8]..[87,4018+9])
+                                                Ppat_any
+                                              expression (asmcomp/branch_relaxation.ml[88,4031+8]..[133,6086+24])
+                                                Pexp_let Nonrec
+                                                [
+                                                  <def>
+                                                    pattern (asmcomp/branch_relaxation.ml[88,4031+12]..[88,4031+21])
+                                                      Ppat_var "overflows" (asmcomp/branch_relaxation.ml[88,4031+12]..[88,4031+21])
+                                                    expression (asmcomp/branch_relaxation.ml[89,4055+10]..[89,4055+78])
+                                                      Pexp_apply
+                                                      expression (asmcomp/branch_relaxation.ml[89,4055+10]..[89,4055+25])
+                                                        Pexp_ident "instr_overflows" (asmcomp/branch_relaxation.ml[89,4055+10]..[89,4055+25])
+                                                      [
+                                                        <arg>
+                                                        Labelled "code_size"
+                                                          expression (asmcomp/branch_relaxation.ml[89,4055+27]..[89,4055+36])
+                                                            Pexp_ident "code_size" (asmcomp/branch_relaxation.ml[89,4055+27]..[89,4055+36])
+                                                        <arg>
+                                                        Labelled "max_out_of_line_code_offset"
+                                                          expression (asmcomp/branch_relaxation.ml[89,4055+38]..[89,4055+65])
+                                                            Pexp_ident "max_out_of_line_code_offset" (asmcomp/branch_relaxation.ml[89,4055+38]..[89,4055+65])
+                                                        <arg>
+                                                        Nolabel
+                                                          expression (asmcomp/branch_relaxation.ml[89,4055+66]..[89,4055+71])
+                                                            Pexp_ident "instr" (asmcomp/branch_relaxation.ml[89,4055+66]..[89,4055+71])
+                                                        <arg>
+                                                        Nolabel
+                                                          expression (asmcomp/branch_relaxation.ml[89,4055+72]..[89,4055+75])
+                                                            Pexp_ident "map" (asmcomp/branch_relaxation.ml[89,4055+72]..[89,4055+75])
+                                                        <arg>
+                                                        Nolabel
+                                                          expression (asmcomp/branch_relaxation.ml[89,4055+76]..[89,4055+78])
+                                                            Pexp_ident "pc" (asmcomp/branch_relaxation.ml[89,4055+76]..[89,4055+78])
+                                                      ]
+                                                ]
+                                                expression (asmcomp/branch_relaxation.ml[91,4145+8]..[133,6086+24])
+                                                  Pexp_ifthenelse
+                                                  expression (asmcomp/branch_relaxation.ml[91,4145+11]..[91,4145+24])
+                                                    Pexp_apply
+                                                    expression (asmcomp/branch_relaxation.ml[91,4145+11]..[91,4145+14])
+                                                      Pexp_ident "not" (asmcomp/branch_relaxation.ml[91,4145+11]..[91,4145+14])
+                                                    [
+                                                      <arg>
+                                                      Nolabel
+                                                        expression (asmcomp/branch_relaxation.ml[91,4145+15]..[91,4145+24])
+                                                          Pexp_ident "overflows" (asmcomp/branch_relaxation.ml[91,4145+15]..[91,4145+24])
+                                                    ]
+                                                  expression (asmcomp/branch_relaxation.ml[92,4175+10]..[92,4175+67])
+                                                    Pexp_apply
+                                                    expression (asmcomp/branch_relaxation.ml[92,4175+10]..[92,4175+15])
+                                                      Pexp_ident "fixup" (asmcomp/branch_relaxation.ml[92,4175+10]..[92,4175+15])
+                                                    [
+                                                      <arg>
+                                                      Nolabel
+                                                        expression (asmcomp/branch_relaxation.ml[92,4175+16]..[92,4175+23])
+                                                          Pexp_ident "did_fix" (asmcomp/branch_relaxation.ml[92,4175+16]..[92,4175+23])
+                                                      <arg>
+                                                      Nolabel
+                                                        expression (asmcomp/branch_relaxation.ml[92,4175+24]..[92,4175+56])
+                                                          Pexp_apply
+                                                          expression (asmcomp/branch_relaxation.ml[92,4175+28]..[92,4175+29])
+                                                            Pexp_ident "+" (asmcomp/branch_relaxation.ml[92,4175+28]..[92,4175+29])
+                                                          [
+                                                            <arg>
+                                                            Nolabel
+                                                              expression (asmcomp/branch_relaxation.ml[92,4175+25]..[92,4175+27])
+                                                                Pexp_ident "pc" (asmcomp/branch_relaxation.ml[92,4175+25]..[92,4175+27])
+                                                            <arg>
+                                                            Nolabel
+                                                              expression (asmcomp/branch_relaxation.ml[92,4175+30]..[92,4175+55])
+                                                                Pexp_apply
+                                                                expression (asmcomp/branch_relaxation.ml[92,4175+30]..[92,4175+42])
+                                                                  Pexp_ident "T.instr_size" (asmcomp/branch_relaxation.ml[92,4175+30]..[92,4175+42])
+                                                                [
+                                                                  <arg>
+                                                                  Nolabel
+                                                                    expression (asmcomp/branch_relaxation.ml[92,4175+43]..[92,4175+44])
+                                                                      Pexp_ident "f" (asmcomp/branch_relaxation.ml[92,4175+43]..[92,4175+44])
+                                                                  <arg>
+                                                                  Nolabel
+                                                                    expression (asmcomp/branch_relaxation.ml[92,4175+45]..[92,4175+55])
+                                                                      Pexp_field
+                                                                      expression (asmcomp/branch_relaxation.ml[92,4175+45]..[92,4175+50])
+Pexp_ident "instr" (asmcomp/branch_relaxation.ml[92,4175+45]..[92,4175+50])
+                                                                      "desc" (asmcomp/branch_relaxation.ml[92,4175+51]..[92,4175+55])
+                                                                ]
+                                                          ]
+                                                      <arg>
+                                                      Nolabel
+                                                        expression (asmcomp/branch_relaxation.ml[92,4175+57]..[92,4175+67])
+                                                          Pexp_field
+                                                          expression (asmcomp/branch_relaxation.ml[92,4175+57]..[92,4175+62])
+                                                            Pexp_ident "instr" (asmcomp/branch_relaxation.ml[92,4175+57]..[92,4175+62])
+                                                          "next" (asmcomp/branch_relaxation.ml[92,4175+63]..[92,4175+67])
+                                                    ]
+                                                  Some
+                                                    expression (asmcomp/branch_relaxation.ml[94,4256+10]..[133,6086+24])
+                                                      Pexp_match
+                                                      expression (asmcomp/branch_relaxation.ml[94,4256+16]..[94,4256+26])
+                                                        Pexp_field
+                                                        expression (asmcomp/branch_relaxation.ml[94,4256+16]..[94,4256+21])
+                                                          Pexp_ident "instr" (asmcomp/branch_relaxation.ml[94,4256+16]..[94,4256+21])
+                                                        "desc" (asmcomp/branch_relaxation.ml[94,4256+22]..[94,4256+26])
+                                                      [
+                                                        <case>
+                                                          pattern (asmcomp/branch_relaxation.ml[95,4288+12]..[95,4288+40])
+                                                            Ppat_construct "Lop" (asmcomp/branch_relaxation.ml[95,4288+12]..[95,4288+15])
+                                                            Some
+                                                              []
+                                                              pattern (asmcomp/branch_relaxation.ml[95,4288+16]..[95,4288+40])
+                                                                Ppat_construct "Ipoll" (asmcomp/branch_relaxation.ml[95,4288+17]..[95,4288+22])
+                                                                Some
+                                                                  []
+                                                                  pattern (asmcomp/branch_relaxation.ml[95,4288+23]..[95,4288+39])
+                                                                    Ppat_record Closed
+                                                                    [
+                                                                      "return_label" (asmcomp/branch_relaxation.ml[95,4288+25]..[95,4288+37]) ghost
+pattern (asmcomp/branch_relaxation.ml[95,4288+25]..[95,4288+37])
+  Ppat_var "return_label" (asmcomp/branch_relaxation.ml[95,4288+25]..[95,4288+37])
+                                                                    ]
+                                                          expression (asmcomp/branch_relaxation.ml[96,4332+12]..[97,4386+66])
+                                                            Pexp_sequence
+                                                            expression (asmcomp/branch_relaxation.ml[96,4332+12]..[96,4332+52])
+                                                              Pexp_setfield
+                                                              expression (asmcomp/branch_relaxation.ml[96,4332+12]..[96,4332+17])
+                                                                Pexp_ident "instr" (asmcomp/branch_relaxation.ml[96,4332+12]..[96,4332+17])
+                                                              "desc" (asmcomp/branch_relaxation.ml[96,4332+18]..[96,4332+22])
+                                                              expression (asmcomp/branch_relaxation.ml[96,4332+26]..[96,4332+52])
+                                                                Pexp_apply
+                                                                expression (asmcomp/branch_relaxation.ml[96,4332+26]..[96,4332+38])
+                                                                  Pexp_ident "T.relax_poll" (asmcomp/branch_relaxation.ml[96,4332+26]..[96,4332+38])
+                                                                [
+                                                                  <arg>
+                                                                  Labelled "return_label"
+                                                                    expression (asmcomp/branch_relaxation.ml[96,4332+40]..[96,4332+52])
+                                                                      Pexp_ident "return_label" (asmcomp/branch_relaxation.ml[96,4332+40]..[96,4332+52])
+                                                                ]
+                                                            expression (asmcomp/branch_relaxation.ml[97,4386+12]..[97,4386+66])
+                                                              Pexp_apply
+                                                              expression (asmcomp/branch_relaxation.ml[97,4386+12]..[97,4386+17])
+                                                                Pexp_ident "fixup" (asmcomp/branch_relaxation.ml[97,4386+12]..[97,4386+17])
+                                                              [
+                                                                <arg>
+                                                                Nolabel
+                                                                  expression (asmcomp/branch_relaxation.ml[97,4386+18]..[97,4386+22])
+                                                                    Pexp_construct "true" (asmcomp/branch_relaxation.ml[97,4386+18]..[97,4386+22])
+                                                                    None
+                                                                <arg>
+                                                                Nolabel
+                                                                  expression (asmcomp/branch_relaxation.ml[97,4386+23]..[97,4386+55])
+                                                                    Pexp_apply
+                                                                    expression (asmcomp/branch_relaxation.ml[97,4386+27]..[97,4386+28])
+                                                                      Pexp_ident "+" (asmcomp/branch_relaxation.ml[97,4386+27]..[97,4386+28])
+                                                                    [
+                                                                      <arg>
+                                                                      Nolabel
+expression (asmcomp/branch_relaxation.ml[97,4386+24]..[97,4386+26])
+  Pexp_ident "pc" (asmcomp/branch_relaxation.ml[97,4386+24]..[97,4386+26])
+                                                                      <arg>
+                                                                      Nolabel
+expression (asmcomp/branch_relaxation.ml[97,4386+29]..[97,4386+54])
+  Pexp_apply
+  expression (asmcomp/branch_relaxation.ml[97,4386+29]..[97,4386+41])
+    Pexp_ident "T.instr_size" (asmcomp/branch_relaxation.ml[97,4386+29]..[97,4386+41])
+  [
+    <arg>
+    Nolabel
+      expression (asmcomp/branch_relaxation.ml[97,4386+42]..[97,4386+43])
+        Pexp_ident "f" (asmcomp/branch_relaxation.ml[97,4386+42]..[97,4386+43])
+    <arg>
+    Nolabel
+      expression (asmcomp/branch_relaxation.ml[97,4386+44]..[97,4386+54])
+        Pexp_field
+        expression (asmcomp/branch_relaxation.ml[97,4386+44]..[97,4386+49])
+          Pexp_ident "instr" (asmcomp/branch_relaxation.ml[97,4386+44]..[97,4386+49])
+        "desc" (asmcomp/branch_relaxation.ml[97,4386+50]..[97,4386+54])
+  ]
+                                                                    ]
+                                                                <arg>
+                                                                Nolabel
+                                                                  expression (asmcomp/branch_relaxation.ml[97,4386+56]..[97,4386+66])
+                                                                    Pexp_field
+                                                                    expression (asmcomp/branch_relaxation.ml[97,4386+56]..[97,4386+61])
+                                                                      Pexp_ident "instr" (asmcomp/branch_relaxation.ml[97,4386+56]..[97,4386+61])
+                                                                    "next" (asmcomp/branch_relaxation.ml[97,4386+62]..[97,4386+66])
+                                                              ]
+                                                        <case>
+                                                          pattern (asmcomp/branch_relaxation.ml[98,4453+12]..[98,4453+55])
+                                                            Ppat_construct "Lop" (asmcomp/branch_relaxation.ml[98,4453+12]..[98,4453+15])
+                                                            Some
+                                                              []
+                                                              pattern (asmcomp/branch_relaxation.ml[98,4453+16]..[98,4453+55])
+                                                                Ppat_construct "Ialloc" (asmcomp/branch_relaxation.ml[98,4453+17]..[98,4453+23])
+                                                                Some
+                                                                  []
+                                                                  pattern (asmcomp/branch_relaxation.ml[98,4453+24]..[98,4453+54])
+                                                                    Ppat_record Closed
+                                                                    [
+                                                                      "bytes" (asmcomp/branch_relaxation.ml[98,4453+26]..[98,4453+31])
+pattern (asmcomp/branch_relaxation.ml[98,4453+34]..[98,4453+43])
+  Ppat_var "num_bytes" (asmcomp/branch_relaxation.ml[98,4453+34]..[98,4453+43])
+                                                                      "dbginfo" (asmcomp/branch_relaxation.ml[98,4453+45]..[98,4453+52]) ghost
+pattern (asmcomp/branch_relaxation.ml[98,4453+45]..[98,4453+52])
+  Ppat_var "dbginfo" (asmcomp/branch_relaxation.ml[98,4453+45]..[98,4453+52])
+                                                                    ]
+                                                          expression (asmcomp/branch_relaxation.ml[99,4512+12]..[100,4578+66])
+                                                            Pexp_sequence
+                                                            expression (asmcomp/branch_relaxation.ml[99,4512+12]..[99,4512+64])
+                                                              Pexp_setfield
+                                                              expression (asmcomp/branch_relaxation.ml[99,4512+12]..[99,4512+17])
+                                                                Pexp_ident "instr" (asmcomp/branch_relaxation.ml[99,4512+12]..[99,4512+17])
+                                                              "desc" (asmcomp/branch_relaxation.ml[99,4512+18]..[99,4512+22])
+                                                              expression (asmcomp/branch_relaxation.ml[99,4512+26]..[99,4512+64])
+                                                                Pexp_apply
+                                                                expression (asmcomp/branch_relaxation.ml[99,4512+26]..[99,4512+44])
+                                                                  Pexp_ident "T.relax_allocation" (asmcomp/branch_relaxation.ml[99,4512+26]..[99,4512+44])
+                                                                [
+                                                                  <arg>
+                                                                  Labelled "num_bytes"
+                                                                    expression (asmcomp/branch_relaxation.ml[99,4512+46]..[99,4512+55])
+                                                                      Pexp_ident "num_bytes" (asmcomp/branch_relaxation.ml[99,4512+46]..[99,4512+55])
+                                                                  <arg>
+                                                                  Labelled "dbginfo"
+                                                                    expression (asmcomp/branch_relaxation.ml[99,4512+57]..[99,4512+64])
+                                                                      Pexp_ident "dbginfo" (asmcomp/branch_relaxation.ml[99,4512+57]..[99,4512+64])
+                                                                ]
+                                                            expression (asmcomp/branch_relaxation.ml[100,4578+12]..[100,4578+66])
+                                                              Pexp_apply
+                                                              expression (asmcomp/branch_relaxation.ml[100,4578+12]..[100,4578+17])
+                                                                Pexp_ident "fixup" (asmcomp/branch_relaxation.ml[100,4578+12]..[100,4578+17])
+                                                              [
+                                                                <arg>
+                                                                Nolabel
+                                                                  expression (asmcomp/branch_relaxation.ml[100,4578+18]..[100,4578+22])
+                                                                    Pexp_construct "true" (asmcomp/branch_relaxation.ml[100,4578+18]..[100,4578+22])
+                                                                    None
+                                                                <arg>
+                                                                Nolabel
+                                                                  expression (asmcomp/branch_relaxation.ml[100,4578+23]..[100,4578+55])
+                                                                    Pexp_apply
+                                                                    expression (asmcomp/branch_relaxation.ml[100,4578+27]..[100,4578+28])
+                                                                      Pexp_ident "+" (asmcomp/branch_relaxation.ml[100,4578+27]..[100,4578+28])
+                                                                    [
+                                                                      <arg>
+                                                                      Nolabel
+expression (asmcomp/branch_relaxation.ml[100,4578+24]..[100,4578+26])
+  Pexp_ident "pc" (asmcomp/branch_relaxation.ml[100,4578+24]..[100,4578+26])
+                                                                      <arg>
+                                                                      Nolabel
+expression (asmcomp/branch_relaxation.ml[100,4578+29]..[100,4578+54])
+  Pexp_apply
+  expression (asmcomp/branch_relaxation.ml[100,4578+29]..[100,4578+41])
+    Pexp_ident "T.instr_size" (asmcomp/branch_relaxation.ml[100,4578+29]..[100,4578+41])
+  [
+    <arg>
+    Nolabel
+      expression (asmcomp/branch_relaxation.ml[100,4578+42]..[100,4578+43])
+        Pexp_ident "f" (asmcomp/branch_relaxation.ml[100,4578+42]..[100,4578+43])
+    <arg>
+    Nolabel
+      expression (asmcomp/branch_relaxation.ml[100,4578+44]..[100,4578+54])
+        Pexp_field
+        expression (asmcomp/branch_relaxation.ml[100,4578+44]..[100,4578+49])
+          Pexp_ident "instr" (asmcomp/branch_relaxation.ml[100,4578+44]..[100,4578+49])
+        "desc" (asmcomp/branch_relaxation.ml[100,4578+50]..[100,4578+54])
+  ]
+                                                                    ]
+                                                                <arg>
+                                                                Nolabel
+                                                                  expression (asmcomp/branch_relaxation.ml[100,4578+56]..[100,4578+66])
+                                                                    Pexp_field
+                                                                    expression (asmcomp/branch_relaxation.ml[100,4578+56]..[100,4578+61])
+                                                                      Pexp_ident "instr" (asmcomp/branch_relaxation.ml[100,4578+56]..[100,4578+61])
+                                                                    "next" (asmcomp/branch_relaxation.ml[100,4578+62]..[100,4578+66])
+                                                              ]
+                                                        <case>
+                                                          pattern (asmcomp/branch_relaxation.ml[101,4645+12]..[101,4645+38])
+                                                            Ppat_construct "Lop" (asmcomp/branch_relaxation.ml[101,4645+12]..[101,4645+15])
+                                                            Some
+                                                              []
+                                                              pattern (asmcomp/branch_relaxation.ml[101,4645+16]..[101,4645+38])
+                                                                Ppat_construct "Iintop" (asmcomp/branch_relaxation.ml[101,4645+17]..[101,4645+23])
+                                                                Some
+                                                                  []
+                                                                  pattern (asmcomp/branch_relaxation.ml[101,4645+24]..[101,4645+37])
+                                                                    Ppat_construct "Icheckbound" (asmcomp/branch_relaxation.ml[101,4645+25]..[101,4645+36])
+                                                                    None
+                                                          expression (asmcomp/branch_relaxation.ml[102,4687+12]..[103,4742+66])
+                                                            Pexp_sequence
+                                                            expression (asmcomp/branch_relaxation.ml[102,4687+12]..[102,4687+53])
+                                                              Pexp_setfield
+                                                              expression (asmcomp/branch_relaxation.ml[102,4687+12]..[102,4687+17])
+                                                                Pexp_ident "instr" (asmcomp/branch_relaxation.ml[102,4687+12]..[102,4687+17])
+                                                              "desc" (asmcomp/branch_relaxation.ml[102,4687+18]..[102,4687+22])
+                                                              expression (asmcomp/branch_relaxation.ml[102,4687+26]..[102,4687+53])
+                                                                Pexp_apply
+                                                                expression (asmcomp/branch_relaxation.ml[102,4687+26]..[102,4687+50])
+                                                                  Pexp_ident "T.relax_intop_checkbound" (asmcomp/branch_relaxation.ml[102,4687+26]..[102,4687+50])
+                                                                [
+                                                                  <arg>
+                                                                  Nolabel
+                                                                    expression (asmcomp/branch_relaxation.ml[102,4687+51]..[102,4687+53])
+                                                                      Pexp_construct "()" (asmcomp/branch_relaxation.ml[102,4687+51]..[102,4687+53])
+                                                                      None
+                                                                ]
+                                                            expression (asmcomp/branch_relaxation.ml[103,4742+12]..[103,4742+66])
+                                                              Pexp_apply
+                                                              expression (asmcomp/branch_relaxation.ml[103,4742+12]..[103,4742+17])
+                                                                Pexp_ident "fixup" (asmcomp/branch_relaxation.ml[103,4742+12]..[103,4742+17])
+                                                              [
+                                                                <arg>
+                                                                Nolabel
+                                                                  expression (asmcomp/branch_relaxation.ml[103,4742+18]..[103,4742+22])
+                                                                    Pexp_construct "true" (asmcomp/branch_relaxation.ml[103,4742+18]..[103,4742+22])
+                                                                    None
+                                                                <arg>
+                                                                Nolabel
+                                                                  expression (asmcomp/branch_relaxation.ml[103,4742+23]..[103,4742+55])
+                                                                    Pexp_apply
+                                                                    expression (asmcomp/branch_relaxation.ml[103,4742+27]..[103,4742+28])
+                                                                      Pexp_ident "+" (asmcomp/branch_relaxation.ml[103,4742+27]..[103,4742+28])
+                                                                    [
+                                                                      <arg>
+                                                                      Nolabel
+expression (asmcomp/branch_relaxation.ml[103,4742+24]..[103,4742+26])
+  Pexp_ident "pc" (asmcomp/branch_relaxation.ml[103,4742+24]..[103,4742+26])
+                                                                      <arg>
+                                                                      Nolabel
+expression (asmcomp/branch_relaxation.ml[103,4742+29]..[103,4742+54])
+  Pexp_apply
+  expression (asmcomp/branch_relaxation.ml[103,4742+29]..[103,4742+41])
+    Pexp_ident "T.instr_size" (asmcomp/branch_relaxation.ml[103,4742+29]..[103,4742+41])
+  [
+    <arg>
+    Nolabel
+      expression (asmcomp/branch_relaxation.ml[103,4742+42]..[103,4742+43])
+        Pexp_ident "f" (asmcomp/branch_relaxation.ml[103,4742+42]..[103,4742+43])
+    <arg>
+    Nolabel
+      expression (asmcomp/branch_relaxation.ml[103,4742+44]..[103,4742+54])
+        Pexp_field
+        expression (asmcomp/branch_relaxation.ml[103,4742+44]..[103,4742+49])
+          Pexp_ident "instr" (asmcomp/branch_relaxation.ml[103,4742+44]..[103,4742+49])
+        "desc" (asmcomp/branch_relaxation.ml[103,4742+50]..[103,4742+54])
+  ]
+                                                                    ]
+                                                                <arg>
+                                                                Nolabel
+                                                                  expression (asmcomp/branch_relaxation.ml[103,4742+56]..[103,4742+66])
+                                                                    Pexp_field
+                                                                    expression (asmcomp/branch_relaxation.ml[103,4742+56]..[103,4742+61])
+                                                                      Pexp_ident "instr" (asmcomp/branch_relaxation.ml[103,4742+56]..[103,4742+61])
+                                                                    "next" (asmcomp/branch_relaxation.ml[103,4742+62]..[103,4742+66])
+                                                              ]
+                                                        <case>
+                                                          pattern (asmcomp/branch_relaxation.ml[104,4809+12]..[104,4809+49])
+                                                            Ppat_construct "Lop" (asmcomp/branch_relaxation.ml[104,4809+12]..[104,4809+15])
+                                                            Some
+                                                              []
+                                                              pattern (asmcomp/branch_relaxation.ml[104,4809+16]..[104,4809+49])
+                                                                Ppat_construct "Iintop_imm" (asmcomp/branch_relaxation.ml[104,4809+17]..[104,4809+27])
+                                                                Some
+                                                                  []
+                                                                  pattern (asmcomp/branch_relaxation.ml[104,4809+28]..[104,4809+48])
+                                                                    Ppat_tuple
+                                                                    [
+                                                                      pattern (asmcomp/branch_relaxation.ml[104,4809+29]..[104,4809+40])
+Ppat_construct "Icheckbound" (asmcomp/branch_relaxation.ml[104,4809+29]..[104,4809+40])
+None
+                                                                      pattern (asmcomp/branch_relaxation.ml[104,4809+42]..[104,4809+47])
+Ppat_var "bound" (asmcomp/branch_relaxation.ml[104,4809+42]..[104,4809+47])
+                                                                    ]
+                                                          expression (asmcomp/branch_relaxation.ml[105,4862+12]..[107,4939+66])
+                                                            Pexp_sequence
+                                                            expression (asmcomp/branch_relaxation.ml[105,4862+12]..[106,4885+52])
+                                                              Pexp_setfield
+                                                              expression (asmcomp/branch_relaxation.ml[105,4862+12]..[105,4862+17])
+                                                                Pexp_ident "instr" (asmcomp/branch_relaxation.ml[105,4862+12]..[105,4862+17])
+                                                              "desc" (asmcomp/branch_relaxation.ml[105,4862+18]..[105,4862+22])
+                                                              expression (asmcomp/branch_relaxation.ml[106,4885+17]..[106,4885+52])
+                                                                Pexp_apply
+                                                                expression (asmcomp/branch_relaxation.ml[106,4885+17]..[106,4885+45])
+                                                                  Pexp_ident "T.relax_intop_imm_checkbound" (asmcomp/branch_relaxation.ml[106,4885+17]..[106,4885+45])
+                                                                [
+                                                                  <arg>
+                                                                  Labelled "bound"
+                                                                    expression (asmcomp/branch_relaxation.ml[106,4885+47]..[106,4885+52])
+                                                                      Pexp_ident "bound" (asmcomp/branch_relaxation.ml[106,4885+47]..[106,4885+52])
+                                                                ]
+                                                            expression (asmcomp/branch_relaxation.ml[107,4939+12]..[107,4939+66])
+                                                              Pexp_apply
+                                                              expression (asmcomp/branch_relaxation.ml[107,4939+12]..[107,4939+17])
+                                                                Pexp_ident "fixup" (asmcomp/branch_relaxation.ml[107,4939+12]..[107,4939+17])
+                                                              [
+                                                                <arg>
+                                                                Nolabel
+                                                                  expression (asmcomp/branch_relaxation.ml[107,4939+18]..[107,4939+22])
+                                                                    Pexp_construct "true" (asmcomp/branch_relaxation.ml[107,4939+18]..[107,4939+22])
+                                                                    None
+                                                                <arg>
+                                                                Nolabel
+                                                                  expression (asmcomp/branch_relaxation.ml[107,4939+23]..[107,4939+55])
+                                                                    Pexp_apply
+                                                                    expression (asmcomp/branch_relaxation.ml[107,4939+27]..[107,4939+28])
+                                                                      Pexp_ident "+" (asmcomp/branch_relaxation.ml[107,4939+27]..[107,4939+28])
+                                                                    [
+                                                                      <arg>
+                                                                      Nolabel
+expression (asmcomp/branch_relaxation.ml[107,4939+24]..[107,4939+26])
+  Pexp_ident "pc" (asmcomp/branch_relaxation.ml[107,4939+24]..[107,4939+26])
+                                                                      <arg>
+                                                                      Nolabel
+expression (asmcomp/branch_relaxation.ml[107,4939+29]..[107,4939+54])
+  Pexp_apply
+  expression (asmcomp/branch_relaxation.ml[107,4939+29]..[107,4939+41])
+    Pexp_ident "T.instr_size" (asmcomp/branch_relaxation.ml[107,4939+29]..[107,4939+41])
+  [
+    <arg>
+    Nolabel
+      expression (asmcomp/branch_relaxation.ml[107,4939+42]..[107,4939+43])
+        Pexp_ident "f" (asmcomp/branch_relaxation.ml[107,4939+42]..[107,4939+43])
+    <arg>
+    Nolabel
+      expression (asmcomp/branch_relaxation.ml[107,4939+44]..[107,4939+54])
+        Pexp_field
+        expression (asmcomp/branch_relaxation.ml[107,4939+44]..[107,4939+49])
+          Pexp_ident "instr" (asmcomp/branch_relaxation.ml[107,4939+44]..[107,4939+49])
+        "desc" (asmcomp/branch_relaxation.ml[107,4939+50]..[107,4939+54])
+  ]
+                                                                    ]
+                                                                <arg>
+                                                                Nolabel
+                                                                  expression (asmcomp/branch_relaxation.ml[107,4939+56]..[107,4939+66])
+                                                                    Pexp_field
+                                                                    expression (asmcomp/branch_relaxation.ml[107,4939+56]..[107,4939+61])
+                                                                      Pexp_ident "instr" (asmcomp/branch_relaxation.ml[107,4939+56]..[107,4939+61])
+                                                                    "next" (asmcomp/branch_relaxation.ml[107,4939+62]..[107,4939+66])
+                                                              ]
+                                                        <case>
+                                                          pattern (asmcomp/branch_relaxation.ml[108,5006+12]..[108,5006+36])
+                                                            Ppat_construct "Lop" (asmcomp/branch_relaxation.ml[108,5006+12]..[108,5006+15])
+                                                            Some
+                                                              []
+                                                              pattern (asmcomp/branch_relaxation.ml[108,5006+16]..[108,5006+36])
+                                                                Ppat_construct "Ispecific" (asmcomp/branch_relaxation.ml[108,5006+17]..[108,5006+26])
+                                                                Some
+                                                                  []
+                                                                  pattern (asmcomp/branch_relaxation.ml[108,5006+27]..[108,5006+35])
+                                                                    Ppat_var "specific" (asmcomp/branch_relaxation.ml[108,5006+27]..[108,5006+35])
+                                                          expression (asmcomp/branch_relaxation.ml[109,5046+12]..[110,5102+66])
+                                                            Pexp_sequence
+                                                            expression (asmcomp/branch_relaxation.ml[109,5046+12]..[109,5046+54])
+                                                              Pexp_setfield
+                                                              expression (asmcomp/branch_relaxation.ml[109,5046+12]..[109,5046+17])
+                                                                Pexp_ident "instr" (asmcomp/branch_relaxation.ml[109,5046+12]..[109,5046+17])
+                                                              "desc" (asmcomp/branch_relaxation.ml[109,5046+18]..[109,5046+22])
+                                                              expression (asmcomp/branch_relaxation.ml[109,5046+26]..[109,5046+54])
+                                                                Pexp_apply
+                                                                expression (asmcomp/branch_relaxation.ml[109,5046+26]..[109,5046+45])
+                                                                  Pexp_ident "T.relax_specific_op" (asmcomp/branch_relaxation.ml[109,5046+26]..[109,5046+45])
+                                                                [
+                                                                  <arg>
+                                                                  Nolabel
+                                                                    expression (asmcomp/branch_relaxation.ml[109,5046+46]..[109,5046+54])
+                                                                      Pexp_ident "specific" (asmcomp/branch_relaxation.ml[109,5046+46]..[109,5046+54])
+                                                                ]
+                                                            expression (asmcomp/branch_relaxation.ml[110,5102+12]..[110,5102+66])
+                                                              Pexp_apply
+                                                              expression (asmcomp/branch_relaxation.ml[110,5102+12]..[110,5102+17])
+                                                                Pexp_ident "fixup" (asmcomp/branch_relaxation.ml[110,5102+12]..[110,5102+17])
+                                                              [
+                                                                <arg>
+                                                                Nolabel
+                                                                  expression (asmcomp/branch_relaxation.ml[110,5102+18]..[110,5102+22])
+                                                                    Pexp_construct "true" (asmcomp/branch_relaxation.ml[110,5102+18]..[110,5102+22])
+                                                                    None
+                                                                <arg>
+                                                                Nolabel
+                                                                  expression (asmcomp/branch_relaxation.ml[110,5102+23]..[110,5102+55])
+                                                                    Pexp_apply
+                                                                    expression (asmcomp/branch_relaxation.ml[110,5102+27]..[110,5102+28])
+                                                                      Pexp_ident "+" (asmcomp/branch_relaxation.ml[110,5102+27]..[110,5102+28])
+                                                                    [
+                                                                      <arg>
+                                                                      Nolabel
+expression (asmcomp/branch_relaxation.ml[110,5102+24]..[110,5102+26])
+  Pexp_ident "pc" (asmcomp/branch_relaxation.ml[110,5102+24]..[110,5102+26])
+                                                                      <arg>
+                                                                      Nolabel
+expression (asmcomp/branch_relaxation.ml[110,5102+29]..[110,5102+54])
+  Pexp_apply
+  expression (asmcomp/branch_relaxation.ml[110,5102+29]..[110,5102+41])
+    Pexp_ident "T.instr_size" (asmcomp/branch_relaxation.ml[110,5102+29]..[110,5102+41])
+  [
+    <arg>
+    Nolabel
+      expression (asmcomp/branch_relaxation.ml[110,5102+42]..[110,5102+43])
+        Pexp_ident "f" (asmcomp/branch_relaxation.ml[110,5102+42]..[110,5102+43])
+    <arg>
+    Nolabel
+      expression (asmcomp/branch_relaxation.ml[110,5102+44]..[110,5102+54])
+        Pexp_field
+        expression (asmcomp/branch_relaxation.ml[110,5102+44]..[110,5102+49])
+          Pexp_ident "instr" (asmcomp/branch_relaxation.ml[110,5102+44]..[110,5102+49])
+        "desc" (asmcomp/branch_relaxation.ml[110,5102+50]..[110,5102+54])
+  ]
+                                                                    ]
+                                                                <arg>
+                                                                Nolabel
+                                                                  expression (asmcomp/branch_relaxation.ml[110,5102+56]..[110,5102+66])
+                                                                    Pexp_field
+                                                                    expression (asmcomp/branch_relaxation.ml[110,5102+56]..[110,5102+61])
+                                                                      Pexp_ident "instr" (asmcomp/branch_relaxation.ml[110,5102+56]..[110,5102+61])
+                                                                    "next" (asmcomp/branch_relaxation.ml[110,5102+62]..[110,5102+66])
+                                                              ]
+                                                        <case>
+                                                          pattern (asmcomp/branch_relaxation.ml[111,5169+12]..[111,5169+35])
+                                                            Ppat_construct "Lcondbranch" (asmcomp/branch_relaxation.ml[111,5169+12]..[111,5169+23])
+                                                            Some
+                                                              []
+                                                              pattern (asmcomp/branch_relaxation.ml[111,5169+24]..[111,5169+35])
+                                                                Ppat_tuple
+                                                                [
+                                                                  pattern (asmcomp/branch_relaxation.ml[111,5169+25]..[111,5169+29])
+                                                                    Ppat_var "test" (asmcomp/branch_relaxation.ml[111,5169+25]..[111,5169+29])
+                                                                  pattern (asmcomp/branch_relaxation.ml[111,5169+31]..[111,5169+34])
+                                                                    Ppat_var "lbl" (asmcomp/branch_relaxation.ml[111,5169+31]..[111,5169+34])
+                                                                ]
+                                                          expression (asmcomp/branch_relaxation.ml[112,5208+12]..[119,5497+66])
+                                                            Pexp_let Nonrec
+                                                            [
+                                                              <def>
+                                                                pattern (asmcomp/branch_relaxation.ml[112,5208+16]..[112,5208+20])
+                                                                  Ppat_var "lbl2" (asmcomp/branch_relaxation.ml[112,5208+16]..[112,5208+20])
+                                                                expression (asmcomp/branch_relaxation.ml[112,5208+23]..[112,5208+38])
+                                                                  Pexp_apply
+                                                                  expression (asmcomp/branch_relaxation.ml[112,5208+23]..[112,5208+36])
+                                                                    Pexp_ident "Cmm.new_label" (asmcomp/branch_relaxation.ml[112,5208+23]..[112,5208+36])
+                                                                  [
+                                                                    <arg>
+                                                                    Nolabel
+                                                                      expression (asmcomp/branch_relaxation.ml[112,5208+36]..[112,5208+38])
+Pexp_construct "()" (asmcomp/branch_relaxation.ml[112,5208+36]..[112,5208+38])
+None
+                                                                  ]
+                                                            ]
+                                                            expression (asmcomp/branch_relaxation.ml[113,5250+12]..[119,5497+66])
+                                                              Pexp_let Nonrec
+                                                              [
+                                                                <def>
+                                                                  pattern (asmcomp/branch_relaxation.ml[113,5250+16]..[113,5250+20])
+                                                                    Ppat_var "cont" (asmcomp/branch_relaxation.ml[113,5250+16]..[113,5250+20])
+                                                                  expression (asmcomp/branch_relaxation.ml[114,5273+14]..[115,5322+63])
+                                                                    Pexp_apply
+                                                                    expression (asmcomp/branch_relaxation.ml[114,5273+14]..[114,5273+24])
+                                                                      Pexp_ident "instr_cons" (asmcomp/branch_relaxation.ml[114,5273+14]..[114,5273+24])
+                                                                    [
+                                                                      <arg>
+                                                                      Nolabel
+expression (asmcomp/branch_relaxation.ml[114,5273+25]..[114,5273+38])
+  Pexp_construct "Lbranch" (asmcomp/branch_relaxation.ml[114,5273+26]..[114,5273+33])
+  Some
+    expression (asmcomp/branch_relaxation.ml[114,5273+34]..[114,5273+37])
+      Pexp_ident "lbl" (asmcomp/branch_relaxation.ml[114,5273+34]..[114,5273+37])
+                                                                      <arg>
+                                                                      Nolabel
+expression (asmcomp/branch_relaxation.ml[114,5273+39]..[114,5273+43])
+  Pexp_array
+  []
+                                                                      <arg>
+                                                                      Nolabel
+expression (asmcomp/branch_relaxation.ml[114,5273+44]..[114,5273+48])
+  Pexp_array
+  []
+                                                                      <arg>
+                                                                      Nolabel
+expression (asmcomp/branch_relaxation.ml[115,5322+16]..[115,5322+63])
+  Pexp_apply
+  expression (asmcomp/branch_relaxation.ml[115,5322+17]..[115,5322+27])
+    Pexp_ident "instr_cons" (asmcomp/branch_relaxation.ml[115,5322+17]..[115,5322+27])
+  [
+    <arg>
+    Nolabel
+      expression (asmcomp/branch_relaxation.ml[115,5322+28]..[115,5322+41])
+        Pexp_construct "Llabel" (asmcomp/branch_relaxation.ml[115,5322+29]..[115,5322+35])
+        Some
+          expression (asmcomp/branch_relaxation.ml[115,5322+36]..[115,5322+40])
+            Pexp_ident "lbl2" (asmcomp/branch_relaxation.ml[115,5322+36]..[115,5322+40])
+    <arg>
+    Nolabel
+      expression (asmcomp/branch_relaxation.ml[115,5322+42]..[115,5322+46])
+        Pexp_array
+        []
+    <arg>
+    Nolabel
+      expression (asmcomp/branch_relaxation.ml[115,5322+47]..[115,5322+51])
+        Pexp_array
+        []
+    <arg>
+    Nolabel
+      expression (asmcomp/branch_relaxation.ml[115,5322+52]..[115,5322+62])
+        Pexp_field
+        expression (asmcomp/branch_relaxation.ml[115,5322+52]..[115,5322+57])
+          Pexp_ident "instr" (asmcomp/branch_relaxation.ml[115,5322+52]..[115,5322+57])
+        "next" (asmcomp/branch_relaxation.ml[115,5322+58]..[115,5322+62])
+  ]
+                                                                    ]
+                                                              ]
+                                                              expression (asmcomp/branch_relaxation.ml[117,5401+12]..[119,5497+66])
+                                                                Pexp_sequence
+                                                                expression (asmcomp/branch_relaxation.ml[117,5401+12]..[117,5401+62])
+                                                                  Pexp_setfield
+                                                                  expression (asmcomp/branch_relaxation.ml[117,5401+12]..[117,5401+17])
+                                                                    Pexp_ident "instr" (asmcomp/branch_relaxation.ml[117,5401+12]..[117,5401+17])
+                                                                  "desc" (asmcomp/branch_relaxation.ml[117,5401+18]..[117,5401+22])
+                                                                  expression (asmcomp/branch_relaxation.ml[117,5401+26]..[117,5401+62])
+                                                                    Pexp_construct "Lcondbranch" (asmcomp/branch_relaxation.ml[117,5401+26]..[117,5401+37])
+                                                                    Some
+                                                                      expression (asmcomp/branch_relaxation.ml[117,5401+38]..[117,5401+62])
+Pexp_tuple
+[
+  expression (asmcomp/branch_relaxation.ml[117,5401+39]..[117,5401+55])
+    Pexp_apply
+    expression (asmcomp/branch_relaxation.ml[117,5401+39]..[117,5401+50])
+      Pexp_ident "invert_test" (asmcomp/branch_relaxation.ml[117,5401+39]..[117,5401+50])
+    [
+      <arg>
+      Nolabel
+        expression (asmcomp/branch_relaxation.ml[117,5401+51]..[117,5401+55])
+          Pexp_ident "test" (asmcomp/branch_relaxation.ml[117,5401+51]..[117,5401+55])
+    ]
+  expression (asmcomp/branch_relaxation.ml[117,5401+57]..[117,5401+61])
+    Pexp_ident "lbl2" (asmcomp/branch_relaxation.ml[117,5401+57]..[117,5401+61])
+]
+                                                                expression (asmcomp/branch_relaxation.ml[118,5465+12]..[119,5497+66])
+                                                                  Pexp_sequence
+                                                                  expression (asmcomp/branch_relaxation.ml[118,5465+12]..[118,5465+30])
+                                                                    Pexp_setfield
+                                                                    expression (asmcomp/branch_relaxation.ml[118,5465+12]..[118,5465+17])
+                                                                      Pexp_ident "instr" (asmcomp/branch_relaxation.ml[118,5465+12]..[118,5465+17])
+                                                                    "next" (asmcomp/branch_relaxation.ml[118,5465+18]..[118,5465+22])
+                                                                    expression (asmcomp/branch_relaxation.ml[118,5465+26]..[118,5465+30])
+                                                                      Pexp_ident "cont" (asmcomp/branch_relaxation.ml[118,5465+26]..[118,5465+30])
+                                                                  expression (asmcomp/branch_relaxation.ml[119,5497+12]..[119,5497+66])
+                                                                    Pexp_apply
+                                                                    expression (asmcomp/branch_relaxation.ml[119,5497+12]..[119,5497+17])
+                                                                      Pexp_ident "fixup" (asmcomp/branch_relaxation.ml[119,5497+12]..[119,5497+17])
+                                                                    [
+                                                                      <arg>
+                                                                      Nolabel
+expression (asmcomp/branch_relaxation.ml[119,5497+18]..[119,5497+22])
+  Pexp_construct "true" (asmcomp/branch_relaxation.ml[119,5497+18]..[119,5497+22])
+  None
+                                                                      <arg>
+                                                                      Nolabel
+expression (asmcomp/branch_relaxation.ml[119,5497+23]..[119,5497+55])
+  Pexp_apply
+  expression (asmcomp/branch_relaxation.ml[119,5497+27]..[119,5497+28])
+    Pexp_ident "+" (asmcomp/branch_relaxation.ml[119,5497+27]..[119,5497+28])
+  [
+    <arg>
+    Nolabel
+      expression (asmcomp/branch_relaxation.ml[119,5497+24]..[119,5497+26])
+        Pexp_ident "pc" (asmcomp/branch_relaxation.ml[119,5497+24]..[119,5497+26])
+    <arg>
+    Nolabel
+      expression (asmcomp/branch_relaxation.ml[119,5497+29]..[119,5497+54])
+        Pexp_apply
+        expression (asmcomp/branch_relaxation.ml[119,5497+29]..[119,5497+41])
+          Pexp_ident "T.instr_size" (asmcomp/branch_relaxation.ml[119,5497+29]..[119,5497+41])
+        [
+          <arg>
+          Nolabel
+            expression (asmcomp/branch_relaxation.ml[119,5497+42]..[119,5497+43])
+              Pexp_ident "f" (asmcomp/branch_relaxation.ml[119,5497+42]..[119,5497+43])
+          <arg>
+          Nolabel
+            expression (asmcomp/branch_relaxation.ml[119,5497+44]..[119,5497+54])
+              Pexp_field
+              expression (asmcomp/branch_relaxation.ml[119,5497+44]..[119,5497+49])
+                Pexp_ident "instr" (asmcomp/branch_relaxation.ml[119,5497+44]..[119,5497+49])
+              "desc" (asmcomp/branch_relaxation.ml[119,5497+50]..[119,5497+54])
+        ]
+  ]
+                                                                      <arg>
+                                                                      Nolabel
+expression (asmcomp/branch_relaxation.ml[119,5497+56]..[119,5497+66])
+  Pexp_field
+  expression (asmcomp/branch_relaxation.ml[119,5497+56]..[119,5497+61])
+    Pexp_ident "instr" (asmcomp/branch_relaxation.ml[119,5497+56]..[119,5497+61])
+  "next" (asmcomp/branch_relaxation.ml[119,5497+62]..[119,5497+66])
+                                                                    ]
+                                                        <case>
+                                                          pattern (asmcomp/branch_relaxation.ml[120,5564+12]..[120,5564+43])
+                                                            Ppat_construct "Lcondbranch3" (asmcomp/branch_relaxation.ml[120,5564+12]..[120,5564+24])
+                                                            Some
+                                                              []
+                                                              pattern (asmcomp/branch_relaxation.ml[120,5564+25]..[120,5564+43])
+                                                                Ppat_tuple
+                                                                [
+                                                                  pattern (asmcomp/branch_relaxation.ml[120,5564+26]..[120,5564+30])
+                                                                    Ppat_var "lbl0" (asmcomp/branch_relaxation.ml[120,5564+26]..[120,5564+30])
+                                                                  pattern (asmcomp/branch_relaxation.ml[120,5564+32]..[120,5564+36])
+                                                                    Ppat_var "lbl1" (asmcomp/branch_relaxation.ml[120,5564+32]..[120,5564+36])
+                                                                  pattern (asmcomp/branch_relaxation.ml[120,5564+38]..[120,5564+42])
+                                                                    Ppat_var "lbl2" (asmcomp/branch_relaxation.ml[120,5564+38]..[120,5564+42])
+                                                                ]
+                                                          expression (asmcomp/branch_relaxation.ml[121,5611+12]..[128,5888+31])
+                                                            Pexp_let Nonrec
+                                                            [
+                                                              <def>
+                                                                pattern (asmcomp/branch_relaxation.ml[121,5611+16]..[121,5611+20])
+                                                                  Ppat_var "cont" (asmcomp/branch_relaxation.ml[121,5611+16]..[121,5611+20])
+                                                                expression (asmcomp/branch_relaxation.ml[122,5634+14]..[124,5733+65])
+                                                                  Pexp_apply
+                                                                  expression (asmcomp/branch_relaxation.ml[122,5634+14]..[122,5634+30])
+                                                                    Pexp_ident "expand_optbranch" (asmcomp/branch_relaxation.ml[122,5634+14]..[122,5634+30])
+                                                                  [
+                                                                    <arg>
+                                                                    Nolabel
+                                                                      expression (asmcomp/branch_relaxation.ml[122,5634+31]..[122,5634+35])
+Pexp_ident "lbl0" (asmcomp/branch_relaxation.ml[122,5634+31]..[122,5634+35])
+                                                                    <arg>
+                                                                    Nolabel
+                                                                      expression (asmcomp/branch_relaxation.ml[122,5634+36]..[122,5634+37])
+Pexp_constant PConst_int (0,None)
+                                                                    <arg>
+                                                                    Nolabel
+                                                                      expression (asmcomp/branch_relaxation.ml[122,5634+38]..[122,5634+47])
+Pexp_field
+expression (asmcomp/branch_relaxation.ml[122,5634+38]..[122,5634+43])
+  Pexp_ident "instr" (asmcomp/branch_relaxation.ml[122,5634+38]..[122,5634+43])
+"arg" (asmcomp/branch_relaxation.ml[122,5634+44]..[122,5634+47])
+                                                                    <arg>
+                                                                    Nolabel
+                                                                      expression (asmcomp/branch_relaxation.ml[123,5682+16]..[124,5733+65])
+Pexp_apply
+expression (asmcomp/branch_relaxation.ml[123,5682+17]..[123,5682+33])
+  Pexp_ident "expand_optbranch" (asmcomp/branch_relaxation.ml[123,5682+17]..[123,5682+33])
+[
+  <arg>
+  Nolabel
+    expression (asmcomp/branch_relaxation.ml[123,5682+34]..[123,5682+38])
+      Pexp_ident "lbl1" (asmcomp/branch_relaxation.ml[123,5682+34]..[123,5682+38])
+  <arg>
+  Nolabel
+    expression (asmcomp/branch_relaxation.ml[123,5682+39]..[123,5682+40])
+      Pexp_constant PConst_int (1,None)
+  <arg>
+  Nolabel
+    expression (asmcomp/branch_relaxation.ml[123,5682+41]..[123,5682+50])
+      Pexp_field
+      expression (asmcomp/branch_relaxation.ml[123,5682+41]..[123,5682+46])
+        Pexp_ident "instr" (asmcomp/branch_relaxation.ml[123,5682+41]..[123,5682+46])
+      "arg" (asmcomp/branch_relaxation.ml[123,5682+47]..[123,5682+50])
+  <arg>
+  Nolabel
+    expression (asmcomp/branch_relaxation.ml[124,5733+18]..[124,5733+64])
+      Pexp_apply
+      expression (asmcomp/branch_relaxation.ml[124,5733+19]..[124,5733+35])
+        Pexp_ident "expand_optbranch" (asmcomp/branch_relaxation.ml[124,5733+19]..[124,5733+35])
+      [
+        <arg>
+        Nolabel
+          expression (asmcomp/branch_relaxation.ml[124,5733+36]..[124,5733+40])
+            Pexp_ident "lbl2" (asmcomp/branch_relaxation.ml[124,5733+36]..[124,5733+40])
+        <arg>
+        Nolabel
+          expression (asmcomp/branch_relaxation.ml[124,5733+41]..[124,5733+42])
+            Pexp_constant PConst_int (2,None)
+        <arg>
+        Nolabel
+          expression (asmcomp/branch_relaxation.ml[124,5733+43]..[124,5733+52])
+            Pexp_field
+            expression (asmcomp/branch_relaxation.ml[124,5733+43]..[124,5733+48])
+              Pexp_ident "instr" (asmcomp/branch_relaxation.ml[124,5733+43]..[124,5733+48])
+            "arg" (asmcomp/branch_relaxation.ml[124,5733+49]..[124,5733+52])
+        <arg>
+        Nolabel
+          expression (asmcomp/branch_relaxation.ml[124,5733+53]..[124,5733+63])
+            Pexp_field
+            expression (asmcomp/branch_relaxation.ml[124,5733+53]..[124,5733+58])
+              Pexp_ident "instr" (asmcomp/branch_relaxation.ml[124,5733+53]..[124,5733+58])
+            "next" (asmcomp/branch_relaxation.ml[124,5733+59]..[124,5733+63])
+      ]
+]
+                                                                  ]
+                                                            ]
+                                                            expression (asmcomp/branch_relaxation.ml[126,5814+12]..[128,5888+31])
+                                                              Pexp_sequence
+                                                              expression (asmcomp/branch_relaxation.ml[126,5814+12]..[126,5814+35])
+                                                                Pexp_setfield
+                                                                expression (asmcomp/branch_relaxation.ml[126,5814+12]..[126,5814+17])
+                                                                  Pexp_ident "instr" (asmcomp/branch_relaxation.ml[126,5814+12]..[126,5814+17])
+                                                                "desc" (asmcomp/branch_relaxation.ml[126,5814+18]..[126,5814+22])
+                                                                expression (asmcomp/branch_relaxation.ml[126,5814+26]..[126,5814+35])
+                                                                  Pexp_field
+                                                                  expression (asmcomp/branch_relaxation.ml[126,5814+26]..[126,5814+30])
+                                                                    Pexp_ident "cont" (asmcomp/branch_relaxation.ml[126,5814+26]..[126,5814+30])
+                                                                  "desc" (asmcomp/branch_relaxation.ml[126,5814+31]..[126,5814+35])
+                                                              expression (asmcomp/branch_relaxation.ml[127,5851+12]..[128,5888+31])
+                                                                Pexp_sequence
+                                                                expression (asmcomp/branch_relaxation.ml[127,5851+12]..[127,5851+35])
+                                                                  Pexp_setfield
+                                                                  expression (asmcomp/branch_relaxation.ml[127,5851+12]..[127,5851+17])
+                                                                    Pexp_ident "instr" (asmcomp/branch_relaxation.ml[127,5851+12]..[127,5851+17])
+                                                                  "next" (asmcomp/branch_relaxation.ml[127,5851+18]..[127,5851+22])
+                                                                  expression (asmcomp/branch_relaxation.ml[127,5851+26]..[127,5851+35])
+                                                                    Pexp_field
+                                                                    expression (asmcomp/branch_relaxation.ml[127,5851+26]..[127,5851+30])
+                                                                      Pexp_ident "cont" (asmcomp/branch_relaxation.ml[127,5851+26]..[127,5851+30])
+                                                                    "next" (asmcomp/branch_relaxation.ml[127,5851+31]..[127,5851+35])
+                                                                expression (asmcomp/branch_relaxation.ml[128,5888+12]..[128,5888+31])
+                                                                  Pexp_apply
+                                                                  expression (asmcomp/branch_relaxation.ml[128,5888+12]..[128,5888+17])
+                                                                    Pexp_ident "fixup" (asmcomp/branch_relaxation.ml[128,5888+12]..[128,5888+17])
+                                                                  [
+                                                                    <arg>
+                                                                    Nolabel
+                                                                      expression (asmcomp/branch_relaxation.ml[128,5888+18]..[128,5888+22])
+Pexp_construct "true" (asmcomp/branch_relaxation.ml[128,5888+18]..[128,5888+22])
+None
+                                                                    <arg>
+                                                                    Nolabel
+                                                                      expression (asmcomp/branch_relaxation.ml[128,5888+23]..[128,5888+25])
+Pexp_ident "pc" (asmcomp/branch_relaxation.ml[128,5888+23]..[128,5888+25])
+                                                                    <arg>
+                                                                    Nolabel
+                                                                      expression (asmcomp/branch_relaxation.ml[128,5888+26]..[128,5888+31])
+Pexp_ident "instr" (asmcomp/branch_relaxation.ml[128,5888+26]..[128,5888+31])
+                                                                  ]
+                                                        <case>
+                                                          pattern (asmcomp/branch_relaxation.ml[129,5920+12]..[129,5920+13])
+                                                            Ppat_any
+                                                          expression (asmcomp/branch_relaxation.ml[133,6086+12]..[133,6086+24])
+                                                            Pexp_assert
+                                                            expression (asmcomp/branch_relaxation.ml[133,6086+19]..[133,6086+24])
+                                                              Pexp_construct "false" (asmcomp/branch_relaxation.ml[133,6086+19]..[133,6086+24])
+                                                              None
+                                                      ]
+                                          ]
+                              ]
+                              expression (asmcomp/branch_relaxation.ml[135,6118+4]..[135,6118+28])
+                                Pexp_apply
+                                expression (asmcomp/branch_relaxation.ml[135,6118+4]..[135,6118+9])
+                                  Pexp_ident "fixup" (asmcomp/branch_relaxation.ml[135,6118+4]..[135,6118+9])
+                                [
+                                  <arg>
+                                  Nolabel
+                                    expression (asmcomp/branch_relaxation.ml[135,6118+10]..[135,6118+15])
+                                      Pexp_construct "false" (asmcomp/branch_relaxation.ml[135,6118+10]..[135,6118+15])
+                                      None
+                                  <arg>
+                                  Nolabel
+                                    expression (asmcomp/branch_relaxation.ml[135,6118+16]..[135,6118+17])
+                                      Pexp_constant PConst_int (0,None)
+                                  <arg>
+                                  Nolabel
+                                    expression (asmcomp/branch_relaxation.ml[135,6118+18]..[135,6118+28])
+                                      Pexp_field
+                                      expression (asmcomp/branch_relaxation.ml[135,6118+18]..[135,6118+19])
+                                        Pexp_ident "f" (asmcomp/branch_relaxation.ml[135,6118+18]..[135,6118+19])
+                                      "fun_body" (asmcomp/branch_relaxation.ml[135,6118+20]..[135,6118+28])
+                                ]
+              ]
+            structure_item (asmcomp/branch_relaxation.ml[139,6219+2]..[150,6710+11])
+              Pstr_value Rec
+              [
+                <def>
+                  pattern (asmcomp/branch_relaxation.ml[139,6219+10]..[139,6219+15])
+                    Ppat_var "relax" (asmcomp/branch_relaxation.ml[139,6219+10]..[139,6219+15])
+                  expression (asmcomp/branch_relaxation.ml[139,6219+16]..[150,6710+11]) ghost
+                    Pexp_fun
+                    Nolabel
+                    None
+                    pattern (asmcomp/branch_relaxation.ml[139,6219+16]..[139,6219+17])
+                      Ppat_var "f" (asmcomp/branch_relaxation.ml[139,6219+16]..[139,6219+17])
+                    expression (asmcomp/branch_relaxation.ml[139,6219+18]..[150,6710+11]) ghost
+                      Pexp_fun
+                      Labelled "max_out_of_line_code_offset"
+                      None
+                      pattern (asmcomp/branch_relaxation.ml[139,6219+19]..[139,6219+46])
+                        Ppat_var "max_out_of_line_code_offset" (asmcomp/branch_relaxation.ml[139,6219+19]..[139,6219+46])
+                      expression (asmcomp/branch_relaxation.ml[140,6268+4]..[150,6710+11])
+                        Pexp_let Nonrec
+                        [
+                          <def>
+                            pattern (asmcomp/branch_relaxation.ml[140,6268+8]..[140,6268+33])
+                              Ppat_var "min_of_max_branch_offsets" (asmcomp/branch_relaxation.ml[140,6268+8]..[140,6268+33])
+                            expression (asmcomp/branch_relaxation.ml[141,6304+6]..[144,6463+33])
+                              Pexp_apply
+                              expression (asmcomp/branch_relaxation.ml[141,6304+6]..[141,6304+20])
+                                Pexp_ident "List.fold_left" (asmcomp/branch_relaxation.ml[141,6304+6]..[141,6304+20])
+                              [
+                                <arg>
+                                Nolabel
+                                  expression (asmcomp/branch_relaxation.ml[141,6304+21]..[143,6410+52])
+                                    Pexp_fun
+                                    Nolabel
+                                    None
+                                    pattern (asmcomp/branch_relaxation.ml[141,6304+26]..[141,6304+51])
+                                      Ppat_var "min_of_max_branch_offsets" (asmcomp/branch_relaxation.ml[141,6304+26]..[141,6304+51])
+                                    expression (asmcomp/branch_relaxation.ml[141,6304+52]..[143,6410+51]) ghost
+                                      Pexp_fun
+                                      Nolabel
+                                      None
+                                      pattern (asmcomp/branch_relaxation.ml[141,6304+52]..[141,6304+58])
+                                        Ppat_var "branch" (asmcomp/branch_relaxation.ml[141,6304+52]..[141,6304+58])
+                                      expression (asmcomp/branch_relaxation.ml[142,6366+10]..[143,6410+51])
+                                        Pexp_apply
+                                        expression (asmcomp/branch_relaxation.ml[142,6366+10]..[142,6366+17])
+                                          Pexp_ident "Int.min" (asmcomp/branch_relaxation.ml[142,6366+10]..[142,6366+17])
+                                        [
+                                          <arg>
+                                          Nolabel
+                                            expression (asmcomp/branch_relaxation.ml[142,6366+18]..[142,6366+43])
+                                              Pexp_ident "min_of_max_branch_offsets" (asmcomp/branch_relaxation.ml[142,6366+18]..[142,6366+43])
+                                          <arg>
+                                          Nolabel
+                                            expression (asmcomp/branch_relaxation.ml[143,6410+12]..[143,6410+51])
+                                              Pexp_apply
+                                              expression (asmcomp/branch_relaxation.ml[143,6410+13]..[143,6410+43])
+                                                Pexp_ident "T.Cond_branch.max_displacement" (asmcomp/branch_relaxation.ml[143,6410+13]..[143,6410+43])
+                                              [
+                                                <arg>
+                                                Nolabel
+                                                  expression (asmcomp/branch_relaxation.ml[143,6410+44]..[143,6410+50])
+                                                    Pexp_ident "branch" (asmcomp/branch_relaxation.ml[143,6410+44]..[143,6410+50])
+                                              ]
+                                        ]
+                                <arg>
+                                Nolabel
+                                  expression (asmcomp/branch_relaxation.ml[144,6463+8]..[144,6463+15])
+                                    Pexp_ident "max_int" (asmcomp/branch_relaxation.ml[144,6463+8]..[144,6463+15])
+                                <arg>
+                                Nolabel
+                                  expression (asmcomp/branch_relaxation.ml[144,6463+16]..[144,6463+33])
+                                    Pexp_ident "T.Cond_branch.all" (asmcomp/branch_relaxation.ml[144,6463+16]..[144,6463+33])
+                              ]
+                        ]
+                        expression (asmcomp/branch_relaxation.ml[146,6504+4]..[150,6710+11])
+                          Pexp_let Nonrec
+                          [
+                            <def>
+                              pattern (asmcomp/branch_relaxation.ml[146,6504+8]..[146,6504+24])
+                                Ppat_tuple
+                                [
+                                  pattern (asmcomp/branch_relaxation.ml[146,6504+9]..[146,6504+18])
+                                    Ppat_var "code_size" (asmcomp/branch_relaxation.ml[146,6504+9]..[146,6504+18])
+                                  pattern (asmcomp/branch_relaxation.ml[146,6504+20]..[146,6504+23])
+                                    Ppat_var "map" (asmcomp/branch_relaxation.ml[146,6504+20]..[146,6504+23])
+                                ]
+                              expression (asmcomp/branch_relaxation.ml[146,6504+27]..[146,6504+38])
+                                Pexp_apply
+                                expression (asmcomp/branch_relaxation.ml[146,6504+27]..[146,6504+36])
+                                  Pexp_ident "label_map" (asmcomp/branch_relaxation.ml[146,6504+27]..[146,6504+36])
+                                [
+                                  <arg>
+                                  Nolabel
+                                    expression (asmcomp/branch_relaxation.ml[146,6504+37]..[146,6504+38])
+                                      Pexp_ident "f" (asmcomp/branch_relaxation.ml[146,6504+37]..[146,6504+38])
+                                ]
+                          ]
+                          expression (asmcomp/branch_relaxation.ml[147,6546+4]..[150,6710+11])
+                            Pexp_ifthenelse
+                            expression (asmcomp/branch_relaxation.ml[147,6546+7]..[148,6592+71])
+                              Pexp_apply
+                              expression (asmcomp/branch_relaxation.ml[148,6592+8]..[148,6592+10])
+                                Pexp_ident "&&" (asmcomp/branch_relaxation.ml[148,6592+8]..[148,6592+10])
+                              [
+                                <arg>
+                                Nolabel
+                                  expression (asmcomp/branch_relaxation.ml[147,6546+7]..[147,6546+45])
+                                    Pexp_apply
+                                    expression (asmcomp/branch_relaxation.ml[147,6546+17]..[147,6546+19])
+                                      Pexp_ident ">=" (asmcomp/branch_relaxation.ml[147,6546+17]..[147,6546+19])
+                                    [
+                                      <arg>
+                                      Nolabel
+                                        expression (asmcomp/branch_relaxation.ml[147,6546+7]..[147,6546+16])
+                                          Pexp_ident "code_size" (asmcomp/branch_relaxation.ml[147,6546+7]..[147,6546+16])
+                                      <arg>
+                                      Nolabel
+                                        expression (asmcomp/branch_relaxation.ml[147,6546+20]..[147,6546+45])
+                                          Pexp_ident "min_of_max_branch_offsets" (asmcomp/branch_relaxation.ml[147,6546+20]..[147,6546+45])
+                                    ]
+                                <arg>
+                                Nolabel
+                                  expression (asmcomp/branch_relaxation.ml[148,6592+11]..[148,6592+71])
+                                    Pexp_apply
+                                    expression (asmcomp/branch_relaxation.ml[148,6592+11]..[148,6592+25])
+                                      Pexp_ident "fixup_branches" (asmcomp/branch_relaxation.ml[148,6592+11]..[148,6592+25])
+                                    [
+                                      <arg>
+                                      Labelled "code_size"
+                                        expression (asmcomp/branch_relaxation.ml[148,6592+27]..[148,6592+36])
+                                          Pexp_ident "code_size" (asmcomp/branch_relaxation.ml[148,6592+27]..[148,6592+36])
+                                      <arg>
+                                      Labelled "max_out_of_line_code_offset"
+                                        expression (asmcomp/branch_relaxation.ml[148,6592+38]..[148,6592+65])
+                                          Pexp_ident "max_out_of_line_code_offset" (asmcomp/branch_relaxation.ml[148,6592+38]..[148,6592+65])
+                                      <arg>
+                                      Nolabel
+                                        expression (asmcomp/branch_relaxation.ml[148,6592+66]..[148,6592+69])
+                                          Pexp_ident "map" (asmcomp/branch_relaxation.ml[148,6592+66]..[148,6592+69])
+                                      <arg>
+                                      Nolabel
+                                        expression (asmcomp/branch_relaxation.ml[148,6592+70]..[148,6592+71])
+                                          Pexp_ident "f" (asmcomp/branch_relaxation.ml[148,6592+70]..[148,6592+71])
+                                    ]
+                              ]
+                            expression (asmcomp/branch_relaxation.ml[149,6664+9]..[149,6664+45])
+                              Pexp_apply
+                              expression (asmcomp/branch_relaxation.ml[149,6664+9]..[149,6664+14])
+                                Pexp_ident "relax" (asmcomp/branch_relaxation.ml[149,6664+9]..[149,6664+14])
+                              [
+                                <arg>
+                                Nolabel
+                                  expression (asmcomp/branch_relaxation.ml[149,6664+15]..[149,6664+16])
+                                    Pexp_ident "f" (asmcomp/branch_relaxation.ml[149,6664+15]..[149,6664+16])
+                                <arg>
+                                Labelled "max_out_of_line_code_offset"
+                                  expression (asmcomp/branch_relaxation.ml[149,6664+18]..[149,6664+45])
+                                    Pexp_ident "max_out_of_line_code_offset" (asmcomp/branch_relaxation.ml[149,6664+18]..[149,6664+45])
+                              ]
+                            Some
+                              expression (asmcomp/branch_relaxation.ml[150,6710+9]..[150,6710+11])
+                                Pexp_construct "()" (asmcomp/branch_relaxation.ml[150,6710+9]..[150,6710+11])
+                                None
+              ]
+          ]
+]
+

@@ -1,0 +1,351 @@
+[
+  structure_item (testsuite/tests/typing-objects-bugs/pr4018_bad.ml[9,134+0]..[12,245+6])
+    Pstr_class
+    [
+      class_declaration (testsuite/tests/typing-objects-bugs/pr4018_bad.ml[9,134+0]..[12,245+6])
+        pci_virt = Virtual
+        pci_params =
+          [
+            core_type (testsuite/tests/typing-objects-bugs/pr4018_bad.ml[9,134+15]..[9,134+23])
+              Ptyp_var subject
+            core_type (testsuite/tests/typing-objects-bugs/pr4018_bad.ml[9,134+25]..[9,134+31])
+              Ptyp_var event
+          ]
+        pci_name = "observer" (testsuite/tests/typing-objects-bugs/pr4018_bad.ml[9,134+33]..[9,134+41])
+        pci_expr =
+          class_expr (testsuite/tests/typing-objects-bugs/pr4018_bad.ml[10,178+3]..[12,245+6])
+            Pcl_structure
+            class_structure
+              pattern (testsuite/tests/typing-objects-bugs/pr4018_bad.ml[10,178+9]..[10,178+9]) ghost
+                Ppat_any
+              [
+                class_field (testsuite/tests/typing-objects-bugs/pr4018_bad.ml[11,188+5]..[11,188+56])
+                  Pcf_method Public
+                    "notify" (testsuite/tests/typing-objects-bugs/pr4018_bad.ml[11,188+20]..[11,188+26])
+                    Virtual
+                    core_type (testsuite/tests/typing-objects-bugs/pr4018_bad.ml[11,188+29]..[11,188+56])
+                      Ptyp_arrow
+                      Nolabel
+                      core_type (testsuite/tests/typing-objects-bugs/pr4018_bad.ml[11,188+29]..[11,188+37])
+                        Ptyp_var subject
+                      core_type (testsuite/tests/typing-objects-bugs/pr4018_bad.ml[11,188+42]..[11,188+56])
+                        Ptyp_arrow
+                        Nolabel
+                        core_type (testsuite/tests/typing-objects-bugs/pr4018_bad.ml[11,188+42]..[11,188+48])
+                          Ptyp_var event
+                        core_type (testsuite/tests/typing-objects-bugs/pr4018_bad.ml[11,188+52]..[11,188+56])
+                          Ptyp_constr "unit" (testsuite/tests/typing-objects-bugs/pr4018_bad.ml[11,188+52]..[11,188+56])
+                          []
+              ]
+    ]
+  structure_item (testsuite/tests/typing-objects-bugs/pr4018_bad.ml[14,253+0]..[20,539+6])
+    Pstr_class
+    [
+      class_declaration (testsuite/tests/typing-objects-bugs/pr4018_bad.ml[14,253+0]..[20,539+6])
+        pci_virt = Concrete
+        pci_params =
+          [
+            core_type (testsuite/tests/typing-objects-bugs/pr4018_bad.ml[14,253+7]..[14,253+13])
+              Ptyp_var event
+          ]
+        pci_name = "subject" (testsuite/tests/typing-objects-bugs/pr4018_bad.ml[14,253+15]..[14,253+22])
+        pci_expr =
+          class_expr (testsuite/tests/typing-objects-bugs/pr4018_bad.ml[15,278+3]..[20,539+6])
+            Pcl_structure
+            class_structure
+              pattern (testsuite/tests/typing-objects-bugs/pr4018_bad.ml[15,278+10]..[15,278+27])
+                Ppat_constraint
+                pattern (testsuite/tests/typing-objects-bugs/pr4018_bad.ml[15,278+11]..[15,278+15])
+                  Ppat_var "self" (testsuite/tests/typing-objects-bugs/pr4018_bad.ml[15,278+11]..[15,278+15])
+                core_type (testsuite/tests/typing-objects-bugs/pr4018_bad.ml[15,278+18]..[15,278+26])
+                  Ptyp_var subject
+              [
+                class_field (testsuite/tests/typing-objects-bugs/pr4018_bad.ml[16,306+5]..[16,306+69])
+                  Pcf_val Mutable
+                    "observers" (testsuite/tests/typing-objects-bugs/pr4018_bad.ml[16,306+17]..[16,306+26])
+                    Concrete Fresh
+                    expression (testsuite/tests/typing-objects-bugs/pr4018_bad.ml[16,306+29]..[16,306+69])
+                      Pexp_constraint
+                      expression (testsuite/tests/typing-objects-bugs/pr4018_bad.ml[16,306+30]..[16,306+32])
+                        Pexp_construct "[]" (testsuite/tests/typing-objects-bugs/pr4018_bad.ml[16,306+30]..[16,306+32])
+                        None
+                      core_type (testsuite/tests/typing-objects-bugs/pr4018_bad.ml[16,306+34]..[16,306+68])
+                        Ptyp_constr "list" (testsuite/tests/typing-objects-bugs/pr4018_bad.ml[16,306+64]..[16,306+68])
+                        [
+                          core_type (testsuite/tests/typing-objects-bugs/pr4018_bad.ml[16,306+35]..[16,306+62])
+                            Ptyp_constr "observer" (testsuite/tests/typing-objects-bugs/pr4018_bad.ml[16,306+54]..[16,306+62])
+                            [
+                              core_type (testsuite/tests/typing-objects-bugs/pr4018_bad.ml[16,306+36]..[16,306+44])
+                                Ptyp_var subject
+                              core_type (testsuite/tests/typing-objects-bugs/pr4018_bad.ml[16,306+46]..[16,306+52])
+                                Ptyp_var event
+                            ]
+                        ]
+                class_field (testsuite/tests/typing-objects-bugs/pr4018_bad.ml[17,376+5]..[17,376+62])
+                  Pcf_method Public
+                    "add_observer" (testsuite/tests/typing-objects-bugs/pr4018_bad.ml[17,376+12]..[17,376+24])
+                    Concrete Fresh
+                    expression (testsuite/tests/typing-objects-bugs/pr4018_bad.ml[17,376+25]..[17,376+62]) ghost
+                      Pexp_poly
+                      expression (testsuite/tests/typing-objects-bugs/pr4018_bad.ml[17,376+25]..[17,376+62]) ghost
+                        Pexp_fun
+                        Nolabel
+                        None
+                        pattern (testsuite/tests/typing-objects-bugs/pr4018_bad.ml[17,376+25]..[17,376+28])
+                          Ppat_var "obs" (testsuite/tests/typing-objects-bugs/pr4018_bad.ml[17,376+25]..[17,376+28])
+                        expression (testsuite/tests/typing-objects-bugs/pr4018_bad.ml[17,376+31]..[17,376+62])
+                          Pexp_setinstvar "observers" (testsuite/tests/typing-objects-bugs/pr4018_bad.ml[17,376+31]..[17,376+40])
+                          expression (testsuite/tests/typing-objects-bugs/pr4018_bad.ml[17,376+44]..[17,376+62])
+                            Pexp_construct "::" (testsuite/tests/typing-objects-bugs/pr4018_bad.ml[17,376+49]..[17,376+51])
+                            Some
+                              expression (testsuite/tests/typing-objects-bugs/pr4018_bad.ml[17,376+45]..[17,376+61]) ghost
+                                Pexp_tuple
+                                [
+                                  expression (testsuite/tests/typing-objects-bugs/pr4018_bad.ml[17,376+45]..[17,376+48])
+                                    Pexp_ident "obs" (testsuite/tests/typing-objects-bugs/pr4018_bad.ml[17,376+45]..[17,376+48])
+                                  expression (testsuite/tests/typing-objects-bugs/pr4018_bad.ml[17,376+52]..[17,376+61])
+                                    Pexp_ident "observers" (testsuite/tests/typing-objects-bugs/pr4018_bad.ml[17,376+52]..[17,376+61])
+                                ]
+                      None
+                class_field (testsuite/tests/typing-objects-bugs/pr4018_bad.ml[18,439+5]..[19,483+55])
+                  Pcf_method Public
+                    "notify_observers" (testsuite/tests/typing-objects-bugs/pr4018_bad.ml[18,439+12]..[18,439+28])
+                    Concrete Fresh
+                    expression (testsuite/tests/typing-objects-bugs/pr4018_bad.ml[18,439+29]..[19,483+55]) ghost
+                      Pexp_poly
+                      expression (testsuite/tests/typing-objects-bugs/pr4018_bad.ml[18,439+29]..[19,483+55]) ghost
+                        Pexp_fun
+                        Nolabel
+                        None
+                        pattern (testsuite/tests/typing-objects-bugs/pr4018_bad.ml[18,439+29]..[18,439+41])
+                          Ppat_constraint
+                          pattern (testsuite/tests/typing-objects-bugs/pr4018_bad.ml[18,439+30]..[18,439+31])
+                            Ppat_var "e" (testsuite/tests/typing-objects-bugs/pr4018_bad.ml[18,439+30]..[18,439+31])
+                          core_type (testsuite/tests/typing-objects-bugs/pr4018_bad.ml[18,439+34]..[18,439+40])
+                            Ptyp_var event
+                        expression (testsuite/tests/typing-objects-bugs/pr4018_bad.ml[19,483+9]..[19,483+55])
+                          Pexp_apply
+                          expression (testsuite/tests/typing-objects-bugs/pr4018_bad.ml[19,483+9]..[19,483+18])
+                            Pexp_ident "List.iter" (testsuite/tests/typing-objects-bugs/pr4018_bad.ml[19,483+9]..[19,483+18])
+                          [
+                            <arg>
+                            Nolabel
+                              expression (testsuite/tests/typing-objects-bugs/pr4018_bad.ml[19,483+19]..[19,483+45])
+                                Pexp_fun
+                                Nolabel
+                                None
+                                pattern (testsuite/tests/typing-objects-bugs/pr4018_bad.ml[19,483+24]..[19,483+25])
+                                  Ppat_var "x" (testsuite/tests/typing-objects-bugs/pr4018_bad.ml[19,483+24]..[19,483+25])
+                                expression (testsuite/tests/typing-objects-bugs/pr4018_bad.ml[19,483+29]..[19,483+44])
+                                  Pexp_apply
+                                  expression (testsuite/tests/typing-objects-bugs/pr4018_bad.ml[19,483+29]..[19,483+37])
+                                    Pexp_send "notify"
+                                    expression (testsuite/tests/typing-objects-bugs/pr4018_bad.ml[19,483+29]..[19,483+30])
+                                      Pexp_ident "x" (testsuite/tests/typing-objects-bugs/pr4018_bad.ml[19,483+29]..[19,483+30])
+                                  [
+                                    <arg>
+                                    Nolabel
+                                      expression (testsuite/tests/typing-objects-bugs/pr4018_bad.ml[19,483+38]..[19,483+42])
+                                        Pexp_ident "self" (testsuite/tests/typing-objects-bugs/pr4018_bad.ml[19,483+38]..[19,483+42])
+                                    <arg>
+                                    Nolabel
+                                      expression (testsuite/tests/typing-objects-bugs/pr4018_bad.ml[19,483+43]..[19,483+44])
+                                        Pexp_ident "e" (testsuite/tests/typing-objects-bugs/pr4018_bad.ml[19,483+43]..[19,483+44])
+                                  ]
+                            <arg>
+                            Nolabel
+                              expression (testsuite/tests/typing-objects-bugs/pr4018_bad.ml[19,483+46]..[19,483+55])
+                                Pexp_ident "observers" (testsuite/tests/typing-objects-bugs/pr4018_bad.ml[19,483+46]..[19,483+55])
+                          ]
+                      None
+              ]
+    ]
+  structure_item (testsuite/tests/typing-objects-bugs/pr4018_bad.ml[22,547+0]..[22,547+13])
+    Pstr_type Rec
+    [
+      type_declaration "id" (testsuite/tests/typing-objects-bugs/pr4018_bad.ml[22,547+5]..[22,547+7]) (testsuite/tests/typing-objects-bugs/pr4018_bad.ml[22,547+0]..[22,547+13])
+        ptype_params =
+          []
+        ptype_cstrs =
+          []
+        ptype_kind =
+          Ptype_abstract
+        ptype_private = Public
+        ptype_manifest =
+          Some
+            core_type (testsuite/tests/typing-objects-bugs/pr4018_bad.ml[22,547+10]..[22,547+13])
+              Ptyp_constr "int" (testsuite/tests/typing-objects-bugs/pr4018_bad.ml[22,547+10]..[22,547+13])
+              []
+    ]
+  structure_item (testsuite/tests/typing-objects-bugs/pr4018_bad.ml[24,562+0]..[30,729+5])
+    Pstr_class
+    [
+      class_declaration (testsuite/tests/typing-objects-bugs/pr4018_bad.ml[24,562+0]..[30,729+5])
+        pci_virt = Concrete
+        pci_params =
+          []
+        pci_name = "entity" (testsuite/tests/typing-objects-bugs/pr4018_bad.ml[24,562+6]..[24,562+12])
+        pci_expr =
+          class_expr (testsuite/tests/typing-objects-bugs/pr4018_bad.ml[24,562+13]..[30,729+5])
+            Pcl_fun
+            Nolabel
+            None
+            pattern (testsuite/tests/typing-objects-bugs/pr4018_bad.ml[24,562+13]..[24,562+22])
+              Ppat_constraint
+              pattern (testsuite/tests/typing-objects-bugs/pr4018_bad.ml[24,562+14]..[24,562+16])
+                Ppat_var "id" (testsuite/tests/typing-objects-bugs/pr4018_bad.ml[24,562+14]..[24,562+16])
+              core_type (testsuite/tests/typing-objects-bugs/pr4018_bad.ml[24,562+19]..[24,562+21])
+                Ptyp_constr "id" (testsuite/tests/typing-objects-bugs/pr4018_bad.ml[24,562+19]..[24,562+21])
+                []
+            class_expr (testsuite/tests/typing-objects-bugs/pr4018_bad.ml[25,587+2]..[30,729+5])
+              Pcl_structure
+              class_structure
+                pattern (testsuite/tests/typing-objects-bugs/pr4018_bad.ml[25,587+8]..[25,587+8]) ghost
+                  Ppat_any
+                [
+                  class_field (testsuite/tests/typing-objects-bugs/pr4018_bad.ml[26,596+4]..[26,596+41])
+                    Pcf_val Immutable
+                      "ent_destroy_subject" (testsuite/tests/typing-objects-bugs/pr4018_bad.ml[26,596+8]..[26,596+27])
+                      Concrete Fresh
+                      expression (testsuite/tests/typing-objects-bugs/pr4018_bad.ml[26,596+30]..[26,596+41])
+                        Pexp_new "subject" (testsuite/tests/typing-objects-bugs/pr4018_bad.ml[26,596+34]..[26,596+41])
+                  class_field (testsuite/tests/typing-objects-bugs/pr4018_bad.ml[27,638+4]..[27,638+63])
+                    Pcf_method Public
+                      "destroy_subject" (testsuite/tests/typing-objects-bugs/pr4018_bad.ml[27,638+11]..[27,638+26])
+                      Concrete Fresh
+                      expression (testsuite/tests/typing-objects-bugs/pr4018_bad.ml[27,638+29]..[27,638+63]) ghost
+                        Pexp_poly
+                        expression (testsuite/tests/typing-objects-bugs/pr4018_bad.ml[27,638+44]..[27,638+63])
+                          Pexp_ident "ent_destroy_subject" (testsuite/tests/typing-objects-bugs/pr4018_bad.ml[27,638+44]..[27,638+63])
+                        Some
+                          core_type (testsuite/tests/typing-objects-bugs/pr4018_bad.ml[27,638+29]..[27,638+41])
+                            Ptyp_constr "subject" (testsuite/tests/typing-objects-bugs/pr4018_bad.ml[27,638+34]..[27,638+41])
+                            [
+                              core_type (testsuite/tests/typing-objects-bugs/pr4018_bad.ml[27,638+30]..[27,638+32])
+                                Ptyp_constr "id" (testsuite/tests/typing-objects-bugs/pr4018_bad.ml[27,638+30]..[27,638+32])
+                                []
+                            ]
+                  class_field (testsuite/tests/typing-objects-bugs/pr4018_bad.ml[29,703+4]..[29,703+25])
+                    Pcf_method Public
+                      "entity_id" (testsuite/tests/typing-objects-bugs/pr4018_bad.ml[29,703+11]..[29,703+20])
+                      Concrete Fresh
+                      expression (testsuite/tests/typing-objects-bugs/pr4018_bad.ml[29,703+23]..[29,703+25]) ghost
+                        Pexp_poly
+                        expression (testsuite/tests/typing-objects-bugs/pr4018_bad.ml[29,703+23]..[29,703+25])
+                          Pexp_ident "id" (testsuite/tests/typing-objects-bugs/pr4018_bad.ml[29,703+23]..[29,703+25])
+                        None
+                ]
+    ]
+  structure_item (testsuite/tests/typing-objects-bugs/pr4018_bad.ml[32,736+0]..[40,946+5])
+    Pstr_class
+    [
+      class_declaration (testsuite/tests/typing-objects-bugs/pr4018_bad.ml[32,736+0]..[40,946+5])
+        pci_virt = Concrete
+        pci_params =
+          [
+            core_type (testsuite/tests/typing-objects-bugs/pr4018_bad.ml[32,736+7]..[32,736+14])
+              Ptyp_var entity
+          ]
+        pci_name = "entity_container" (testsuite/tests/typing-objects-bugs/pr4018_bad.ml[32,736+16]..[32,736+32])
+        pci_expr =
+          class_expr (testsuite/tests/typing-objects-bugs/pr4018_bad.ml[33,771+2]..[40,946+5])
+            Pcl_structure
+            class_structure
+              pattern (testsuite/tests/typing-objects-bugs/pr4018_bad.ml[33,771+9]..[33,771+15])
+                Ppat_var "self" (testsuite/tests/typing-objects-bugs/pr4018_bad.ml[33,771+10]..[33,771+14])
+              [
+                class_field (testsuite/tests/typing-objects-bugs/pr4018_bad.ml[34,787+4]..[34,787+46])
+                  Pcf_inherit Fresh
+                    class_expr (testsuite/tests/typing-objects-bugs/pr4018_bad.ml[34,787+12]..[34,787+34])
+                      Pcl_constr "observer" (testsuite/tests/typing-objects-bugs/pr4018_bad.ml[34,787+26]..[34,787+34])
+                      [
+                        core_type (testsuite/tests/typing-objects-bugs/pr4018_bad.ml[34,787+13]..[34,787+20])
+                          Ptyp_var entity
+                        core_type (testsuite/tests/typing-objects-bugs/pr4018_bad.ml[34,787+22]..[34,787+24])
+                          Ptyp_constr "id" (testsuite/tests/typing-objects-bugs/pr4018_bad.ml[34,787+22]..[34,787+24])
+                          []
+                      ]
+                    Some
+                      "observer" (testsuite/tests/typing-objects-bugs/pr4018_bad.ml[34,787+38]..[34,787+46])
+                class_field (testsuite/tests/typing-objects-bugs/pr4018_bad.ml[36,835+4]..[37,873+43])
+                  Pcf_method Public
+                    "add_entity" (testsuite/tests/typing-objects-bugs/pr4018_bad.ml[36,835+11]..[36,835+21])
+                    Concrete Fresh
+                    expression (testsuite/tests/typing-objects-bugs/pr4018_bad.ml[36,835+22]..[37,873+43]) ghost
+                      Pexp_poly
+                      expression (testsuite/tests/typing-objects-bugs/pr4018_bad.ml[36,835+22]..[37,873+43]) ghost
+                        Pexp_fun
+                        Nolabel
+                        None
+                        pattern (testsuite/tests/typing-objects-bugs/pr4018_bad.ml[36,835+22]..[36,835+35])
+                          Ppat_constraint
+                          pattern (testsuite/tests/typing-objects-bugs/pr4018_bad.ml[36,835+23]..[36,835+24])
+                            Ppat_var "e" (testsuite/tests/typing-objects-bugs/pr4018_bad.ml[36,835+23]..[36,835+24])
+                          core_type (testsuite/tests/typing-objects-bugs/pr4018_bad.ml[36,835+27]..[36,835+34])
+                            Ptyp_var entity
+                        expression (testsuite/tests/typing-objects-bugs/pr4018_bad.ml[37,873+6]..[37,873+43])
+                          Pexp_apply
+                          expression (testsuite/tests/typing-objects-bugs/pr4018_bad.ml[37,873+6]..[37,873+36])
+                            Pexp_send "add_observer"
+                            expression (testsuite/tests/typing-objects-bugs/pr4018_bad.ml[37,873+6]..[37,873+23])
+                              Pexp_send "destroy_subject"
+                              expression (testsuite/tests/typing-objects-bugs/pr4018_bad.ml[37,873+6]..[37,873+7])
+                                Pexp_ident "e" (testsuite/tests/typing-objects-bugs/pr4018_bad.ml[37,873+6]..[37,873+7])
+                          [
+                            <arg>
+                            Nolabel
+                              expression (testsuite/tests/typing-objects-bugs/pr4018_bad.ml[37,873+37]..[37,873+43])
+                                Pexp_ident "self" (testsuite/tests/typing-objects-bugs/pr4018_bad.ml[37,873+38]..[37,873+42])
+                          ]
+                      None
+                class_field (testsuite/tests/typing-objects-bugs/pr4018_bad.ml[39,918+4]..[39,918+27])
+                  Pcf_method Public
+                    "notify" (testsuite/tests/typing-objects-bugs/pr4018_bad.ml[39,918+11]..[39,918+17])
+                    Concrete Fresh
+                    expression (testsuite/tests/typing-objects-bugs/pr4018_bad.ml[39,918+18]..[39,918+27]) ghost
+                      Pexp_poly
+                      expression (testsuite/tests/typing-objects-bugs/pr4018_bad.ml[39,918+18]..[39,918+27]) ghost
+                        Pexp_fun
+                        Nolabel
+                        None
+                        pattern (testsuite/tests/typing-objects-bugs/pr4018_bad.ml[39,918+18]..[39,918+19])
+                          Ppat_any
+                        expression (testsuite/tests/typing-objects-bugs/pr4018_bad.ml[39,918+20]..[39,918+27]) ghost
+                          Pexp_fun
+                          Nolabel
+                          None
+                          pattern (testsuite/tests/typing-objects-bugs/pr4018_bad.ml[39,918+20]..[39,918+22])
+                            Ppat_var "id" (testsuite/tests/typing-objects-bugs/pr4018_bad.ml[39,918+20]..[39,918+22])
+                          expression (testsuite/tests/typing-objects-bugs/pr4018_bad.ml[39,918+25]..[39,918+27])
+                            Pexp_construct "()" (testsuite/tests/typing-objects-bugs/pr4018_bad.ml[39,918+25]..[39,918+27])
+                            None
+                      None
+              ]
+    ]
+  structure_item (testsuite/tests/typing-objects-bugs/pr4018_bad.ml[42,953+0]..[42,953+40])
+    Pstr_value Nonrec
+    [
+      <def>
+        pattern (testsuite/tests/typing-objects-bugs/pr4018_bad.ml[42,953+4]..[42,953+5])
+          Ppat_var "f" (testsuite/tests/typing-objects-bugs/pr4018_bad.ml[42,953+4]..[42,953+5])
+        expression (testsuite/tests/typing-objects-bugs/pr4018_bad.ml[42,953+6]..[42,953+40]) ghost
+          Pexp_fun
+          Nolabel
+          None
+          pattern (testsuite/tests/typing-objects-bugs/pr4018_bad.ml[42,953+6]..[42,953+35])
+            Ppat_constraint
+            pattern (testsuite/tests/typing-objects-bugs/pr4018_bad.ml[42,953+7]..[42,953+8])
+              Ppat_var "x" (testsuite/tests/typing-objects-bugs/pr4018_bad.ml[42,953+7]..[42,953+8])
+            core_type (testsuite/tests/typing-objects-bugs/pr4018_bad.ml[42,953+11]..[42,953+34])
+              Ptyp_constr "entity_container" (testsuite/tests/typing-objects-bugs/pr4018_bad.ml[42,953+18]..[42,953+34])
+              [
+                core_type (testsuite/tests/typing-objects-bugs/pr4018_bad.ml[42,953+11]..[42,953+17])
+                  Ptyp_constr "entity" (testsuite/tests/typing-objects-bugs/pr4018_bad.ml[42,953+11]..[42,953+17])
+                  []
+              ]
+          expression (testsuite/tests/typing-objects-bugs/pr4018_bad.ml[42,953+38]..[42,953+40])
+            Pexp_construct "()" (testsuite/tests/typing-objects-bugs/pr4018_bad.ml[42,953+38]..[42,953+40])
+            None
+    ]
+]
+

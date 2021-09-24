@@ -1,0 +1,1302 @@
+[
+  structure_item (typing/envaux.ml[17,1156+0]..[17,1156+8])
+    Pstr_open Fresh
+    module_expr (typing/envaux.ml[17,1156+5]..[17,1156+8])
+      Pmod_ident "Env" (typing/envaux.ml[17,1156+5]..[17,1156+8])
+  structure_item (typing/envaux.ml[19,1166+0]..[20,1179+30])
+    Pstr_type Rec
+    [
+      type_declaration "error" (typing/envaux.ml[19,1166+5]..[19,1166+10]) (typing/envaux.ml[19,1166+0]..[20,1179+30])
+        ptype_params =
+          []
+        ptype_cstrs =
+          []
+        ptype_kind =
+          Ptype_variant
+            [
+              (typing/envaux.ml[20,1179+4]..[20,1179+30])
+                "Module_not_found" (typing/envaux.ml[20,1179+4]..[20,1179+20])
+                [
+                  core_type (typing/envaux.ml[20,1179+24]..[20,1179+30])
+                    Ptyp_constr "Path.t" (typing/envaux.ml[20,1179+24]..[20,1179+30])
+                    []
+                ]
+                None
+            ]
+        ptype_private = Public
+        ptype_manifest =
+          None
+    ]
+  structure_item (typing/envaux.ml[22,1211+0]..[22,1211+24])
+    Pstr_exception
+    type_exception
+      ptyext_constructor =
+        extension_constructor (typing/envaux.ml[22,1211+0]..[22,1211+24])
+          pext_name = "Error"
+          pext_kind =
+            Pext_decl
+              [
+                core_type (typing/envaux.ml[22,1211+19]..[22,1211+24])
+                  Ptyp_constr "error" (typing/envaux.ml[22,1211+19]..[22,1211+24])
+                  []
+              ]
+              None
+  structure_item (typing/envaux.ml[24,1237+0]..[25,1253+66])
+    Pstr_value Nonrec
+    [
+      <def>
+        pattern (typing/envaux.ml[24,1237+4]..[24,1237+13])
+          Ppat_var "env_cache" (typing/envaux.ml[24,1237+4]..[24,1237+13])
+        expression (typing/envaux.ml[25,1253+2]..[25,1253+66])
+          Pexp_constraint
+          expression (typing/envaux.ml[25,1253+3]..[25,1253+20])
+            Pexp_apply
+            expression (typing/envaux.ml[25,1253+3]..[25,1253+17])
+              Pexp_ident "Hashtbl.create" (typing/envaux.ml[25,1253+3]..[25,1253+17])
+            [
+              <arg>
+              Nolabel
+                expression (typing/envaux.ml[25,1253+18]..[25,1253+20])
+                  Pexp_constant PConst_int (59,None)
+            ]
+          core_type (typing/envaux.ml[25,1253+23]..[25,1253+65])
+            Ptyp_constr "Hashtbl.t" (typing/envaux.ml[25,1253+56]..[25,1253+65])
+            [
+              core_type (typing/envaux.ml[25,1253+25]..[25,1253+46])
+                Ptyp_tuple
+                [
+                  core_type (typing/envaux.ml[25,1253+25]..[25,1253+36])
+                    Ptyp_constr "Env.summary" (typing/envaux.ml[25,1253+25]..[25,1253+36])
+                    []
+                  core_type (typing/envaux.ml[25,1253+39]..[25,1253+46])
+                    Ptyp_constr "Subst.t" (typing/envaux.ml[25,1253+39]..[25,1253+46])
+                    []
+                ]
+              core_type (typing/envaux.ml[25,1253+49]..[25,1253+54])
+                Ptyp_constr "Env.t" (typing/envaux.ml[25,1253+49]..[25,1253+54])
+                []
+            ]
+    ]
+  structure_item (typing/envaux.ml[27,1321+0]..[29,1369+19])
+    Pstr_value Nonrec
+    [
+      <def>
+        pattern (typing/envaux.ml[27,1321+4]..[27,1321+15])
+          Ppat_var "reset_cache" (typing/envaux.ml[27,1321+4]..[27,1321+15])
+        expression (typing/envaux.ml[27,1321+16]..[29,1369+19]) ghost
+          Pexp_fun
+          Nolabel
+          None
+          pattern (typing/envaux.ml[27,1321+16]..[27,1321+18])
+            Ppat_construct "()" (typing/envaux.ml[27,1321+16]..[27,1321+18])
+            None
+          expression (typing/envaux.ml[28,1342+2]..[29,1369+19])
+            Pexp_sequence
+            expression (typing/envaux.ml[28,1342+2]..[28,1342+25])
+              Pexp_apply
+              expression (typing/envaux.ml[28,1342+2]..[28,1342+15])
+                Pexp_ident "Hashtbl.clear" (typing/envaux.ml[28,1342+2]..[28,1342+15])
+              [
+                <arg>
+                Nolabel
+                  expression (typing/envaux.ml[28,1342+16]..[28,1342+25])
+                    Pexp_ident "env_cache" (typing/envaux.ml[28,1342+16]..[28,1342+25])
+              ]
+            expression (typing/envaux.ml[29,1369+2]..[29,1369+19])
+              Pexp_apply
+              expression (typing/envaux.ml[29,1369+2]..[29,1369+17])
+                Pexp_ident "Env.reset_cache" (typing/envaux.ml[29,1369+2]..[29,1369+17])
+              [
+                <arg>
+                Nolabel
+                  expression (typing/envaux.ml[29,1369+17]..[29,1369+19])
+                    Pexp_construct "()" (typing/envaux.ml[29,1369+17]..[29,1369+19])
+                    None
+              ]
+    ]
+  structure_item (typing/envaux.ml[31,1390+0]..[97,4217+9])
+    Pstr_value Rec
+    [
+      <def>
+        pattern (typing/envaux.ml[31,1390+8]..[31,1390+24])
+          Ppat_var "env_from_summary" (typing/envaux.ml[31,1390+8]..[31,1390+24])
+        expression (typing/envaux.ml[31,1390+25]..[97,4217+9]) ghost
+          Pexp_fun
+          Nolabel
+          None
+          pattern (typing/envaux.ml[31,1390+25]..[31,1390+28])
+            Ppat_var "sum" (typing/envaux.ml[31,1390+25]..[31,1390+28])
+          expression (typing/envaux.ml[31,1390+29]..[97,4217+9]) ghost
+            Pexp_fun
+            Nolabel
+            None
+            pattern (typing/envaux.ml[31,1390+29]..[31,1390+34])
+              Ppat_var "subst" (typing/envaux.ml[31,1390+29]..[31,1390+34])
+            expression (typing/envaux.ml[32,1427+2]..[97,4217+9])
+              Pexp_try
+              expression (typing/envaux.ml[33,1433+4]..[33,1433+39])
+                Pexp_apply
+                expression (typing/envaux.ml[33,1433+4]..[33,1433+16])
+                  Pexp_ident "Hashtbl.find" (typing/envaux.ml[33,1433+4]..[33,1433+16])
+                [
+                  <arg>
+                  Nolabel
+                    expression (typing/envaux.ml[33,1433+17]..[33,1433+26])
+                      Pexp_ident "env_cache" (typing/envaux.ml[33,1433+17]..[33,1433+26])
+                  <arg>
+                  Nolabel
+                    expression (typing/envaux.ml[33,1433+27]..[33,1433+39])
+                      Pexp_tuple
+                      [
+                        expression (typing/envaux.ml[33,1433+28]..[33,1433+31])
+                          Pexp_ident "sum" (typing/envaux.ml[33,1433+28]..[33,1433+31])
+                        expression (typing/envaux.ml[33,1433+33]..[33,1433+38])
+                          Pexp_ident "subst" (typing/envaux.ml[33,1433+33]..[33,1433+38])
+                      ]
+                ]
+              [
+                <case>
+                  pattern (typing/envaux.ml[34,1473+7]..[34,1473+16])
+                    Ppat_construct "Not_found" (typing/envaux.ml[34,1473+7]..[34,1473+16])
+                    None
+                  expression (typing/envaux.ml[35,1493+4]..[97,4217+9])
+                    Pexp_let Nonrec
+                    [
+                      <def>
+                        pattern (typing/envaux.ml[35,1493+8]..[35,1493+11])
+                          Ppat_var "env" (typing/envaux.ml[35,1493+8]..[35,1493+11])
+                        expression (typing/envaux.ml[36,1507+6]..[94,4114+49])
+                          Pexp_match
+                          expression (typing/envaux.ml[36,1507+12]..[36,1507+15])
+                            Pexp_ident "sum" (typing/envaux.ml[36,1507+12]..[36,1507+15])
+                          [
+                            <case>
+                              pattern (typing/envaux.ml[37,1528+8]..[37,1528+17])
+                                Ppat_construct "Env_empty" (typing/envaux.ml[37,1528+8]..[37,1528+17])
+                                None
+                              expression (typing/envaux.ml[38,1549+10]..[38,1549+19])
+                                Pexp_ident "Env.empty" (typing/envaux.ml[38,1549+10]..[38,1549+19])
+                            <case>
+                              pattern (typing/envaux.ml[39,1569+8]..[39,1569+30])
+                                Ppat_construct "Env_value" (typing/envaux.ml[39,1569+8]..[39,1569+17])
+                                Some
+                                  []
+                                  pattern (typing/envaux.ml[39,1569+17]..[39,1569+30])
+                                    Ppat_tuple
+                                    [
+                                      pattern (typing/envaux.ml[39,1569+18]..[39,1569+19])
+                                        Ppat_var "s" (typing/envaux.ml[39,1569+18]..[39,1569+19])
+                                      pattern (typing/envaux.ml[39,1569+21]..[39,1569+23])
+                                        Ppat_var "id" (typing/envaux.ml[39,1569+21]..[39,1569+23])
+                                      pattern (typing/envaux.ml[39,1569+25]..[39,1569+29])
+                                        Ppat_var "desc" (typing/envaux.ml[39,1569+25]..[39,1569+29])
+                                    ]
+                              expression (typing/envaux.ml[40,1603+10]..[41,1667+50])
+                                Pexp_apply
+                                expression (typing/envaux.ml[40,1603+10]..[40,1603+23])
+                                  Pexp_ident "Env.add_value" (typing/envaux.ml[40,1603+10]..[40,1603+23])
+                                [
+                                  <arg>
+                                  Nolabel
+                                    expression (typing/envaux.ml[40,1603+24]..[40,1603+26])
+                                      Pexp_ident "id" (typing/envaux.ml[40,1603+24]..[40,1603+26])
+                                  <arg>
+                                  Nolabel
+                                    expression (typing/envaux.ml[40,1603+27]..[40,1603+63])
+                                      Pexp_apply
+                                      expression (typing/envaux.ml[40,1603+28]..[40,1603+51])
+                                        Pexp_ident "Subst.value_description" (typing/envaux.ml[40,1603+28]..[40,1603+51])
+                                      [
+                                        <arg>
+                                        Nolabel
+                                          expression (typing/envaux.ml[40,1603+52]..[40,1603+57])
+                                            Pexp_ident "subst" (typing/envaux.ml[40,1603+52]..[40,1603+57])
+                                        <arg>
+                                        Nolabel
+                                          expression (typing/envaux.ml[40,1603+58]..[40,1603+62])
+                                            Pexp_ident "desc" (typing/envaux.ml[40,1603+58]..[40,1603+62])
+                                      ]
+                                  <arg>
+                                  Nolabel
+                                    expression (typing/envaux.ml[41,1667+24]..[41,1667+50])
+                                      Pexp_apply
+                                      expression (typing/envaux.ml[41,1667+25]..[41,1667+41])
+                                        Pexp_ident "env_from_summary" (typing/envaux.ml[41,1667+25]..[41,1667+41])
+                                      [
+                                        <arg>
+                                        Nolabel
+                                          expression (typing/envaux.ml[41,1667+42]..[41,1667+43])
+                                            Pexp_ident "s" (typing/envaux.ml[41,1667+42]..[41,1667+43])
+                                        <arg>
+                                        Nolabel
+                                          expression (typing/envaux.ml[41,1667+44]..[41,1667+49])
+                                            Pexp_ident "subst" (typing/envaux.ml[41,1667+44]..[41,1667+49])
+                                      ]
+                                ]
+                            <case>
+                              pattern (typing/envaux.ml[42,1718+8]..[42,1718+29])
+                                Ppat_construct "Env_type" (typing/envaux.ml[42,1718+8]..[42,1718+16])
+                                Some
+                                  []
+                                  pattern (typing/envaux.ml[42,1718+16]..[42,1718+29])
+                                    Ppat_tuple
+                                    [
+                                      pattern (typing/envaux.ml[42,1718+17]..[42,1718+18])
+                                        Ppat_var "s" (typing/envaux.ml[42,1718+17]..[42,1718+18])
+                                      pattern (typing/envaux.ml[42,1718+20]..[42,1718+22])
+                                        Ppat_var "id" (typing/envaux.ml[42,1718+20]..[42,1718+22])
+                                      pattern (typing/envaux.ml[42,1718+24]..[42,1718+28])
+                                        Ppat_var "desc" (typing/envaux.ml[42,1718+24]..[42,1718+28])
+                                    ]
+                              expression (typing/envaux.ml[43,1751+10]..[45,1838+38])
+                                Pexp_apply
+                                expression (typing/envaux.ml[43,1751+10]..[43,1751+22])
+                                  Pexp_ident "Env.add_type" (typing/envaux.ml[43,1751+10]..[43,1751+22])
+                                [
+                                  <arg>
+                                  Labelled "check"
+                                    expression (typing/envaux.ml[43,1751+30]..[43,1751+35])
+                                      Pexp_construct "false" (typing/envaux.ml[43,1751+30]..[43,1751+35])
+                                      None
+                                  <arg>
+                                  Nolabel
+                                    expression (typing/envaux.ml[43,1751+36]..[43,1751+38])
+                                      Pexp_ident "id" (typing/envaux.ml[43,1751+36]..[43,1751+38])
+                                  <arg>
+                                  Nolabel
+                                    expression (typing/envaux.ml[44,1790+12]..[44,1790+47])
+                                      Pexp_apply
+                                      expression (typing/envaux.ml[44,1790+13]..[44,1790+35])
+                                        Pexp_ident "Subst.type_declaration" (typing/envaux.ml[44,1790+13]..[44,1790+35])
+                                      [
+                                        <arg>
+                                        Nolabel
+                                          expression (typing/envaux.ml[44,1790+36]..[44,1790+41])
+                                            Pexp_ident "subst" (typing/envaux.ml[44,1790+36]..[44,1790+41])
+                                        <arg>
+                                        Nolabel
+                                          expression (typing/envaux.ml[44,1790+42]..[44,1790+46])
+                                            Pexp_ident "desc" (typing/envaux.ml[44,1790+42]..[44,1790+46])
+                                      ]
+                                  <arg>
+                                  Nolabel
+                                    expression (typing/envaux.ml[45,1838+12]..[45,1838+38])
+                                      Pexp_apply
+                                      expression (typing/envaux.ml[45,1838+13]..[45,1838+29])
+                                        Pexp_ident "env_from_summary" (typing/envaux.ml[45,1838+13]..[45,1838+29])
+                                      [
+                                        <arg>
+                                        Nolabel
+                                          expression (typing/envaux.ml[45,1838+30]..[45,1838+31])
+                                            Pexp_ident "s" (typing/envaux.ml[45,1838+30]..[45,1838+31])
+                                        <arg>
+                                        Nolabel
+                                          expression (typing/envaux.ml[45,1838+32]..[45,1838+37])
+                                            Pexp_ident "subst" (typing/envaux.ml[45,1838+32]..[45,1838+37])
+                                      ]
+                                ]
+                            <case>
+                              pattern (typing/envaux.ml[46,1877+8]..[46,1877+34])
+                                Ppat_construct "Env_extension" (typing/envaux.ml[46,1877+8]..[46,1877+21])
+                                Some
+                                  []
+                                  pattern (typing/envaux.ml[46,1877+21]..[46,1877+34])
+                                    Ppat_tuple
+                                    [
+                                      pattern (typing/envaux.ml[46,1877+22]..[46,1877+23])
+                                        Ppat_var "s" (typing/envaux.ml[46,1877+22]..[46,1877+23])
+                                      pattern (typing/envaux.ml[46,1877+25]..[46,1877+27])
+                                        Ppat_var "id" (typing/envaux.ml[46,1877+25]..[46,1877+27])
+                                      pattern (typing/envaux.ml[46,1877+29]..[46,1877+33])
+                                        Ppat_var "desc" (typing/envaux.ml[46,1877+29]..[46,1877+33])
+                                    ]
+                              expression (typing/envaux.ml[47,1915+10]..[49,2026+38])
+                                Pexp_apply
+                                expression (typing/envaux.ml[47,1915+10]..[47,1915+27])
+                                  Pexp_ident "Env.add_extension" (typing/envaux.ml[47,1915+10]..[47,1915+27])
+                                [
+                                  <arg>
+                                  Labelled "check"
+                                    expression (typing/envaux.ml[47,1915+35]..[47,1915+40])
+                                      Pexp_construct "false" (typing/envaux.ml[47,1915+35]..[47,1915+40])
+                                      None
+                                  <arg>
+                                  Labelled "rebind"
+                                    expression (typing/envaux.ml[47,1915+49]..[47,1915+54])
+                                      Pexp_construct "false" (typing/envaux.ml[47,1915+49]..[47,1915+54])
+                                      None
+                                  <arg>
+                                  Nolabel
+                                    expression (typing/envaux.ml[47,1915+55]..[47,1915+57])
+                                      Pexp_ident "id" (typing/envaux.ml[47,1915+55]..[47,1915+57])
+                                  <arg>
+                                  Nolabel
+                                    expression (typing/envaux.ml[48,1973+12]..[48,1973+52])
+                                      Pexp_apply
+                                      expression (typing/envaux.ml[48,1973+13]..[48,1973+40])
+                                        Pexp_ident "Subst.extension_constructor" (typing/envaux.ml[48,1973+13]..[48,1973+40])
+                                      [
+                                        <arg>
+                                        Nolabel
+                                          expression (typing/envaux.ml[48,1973+41]..[48,1973+46])
+                                            Pexp_ident "subst" (typing/envaux.ml[48,1973+41]..[48,1973+46])
+                                        <arg>
+                                        Nolabel
+                                          expression (typing/envaux.ml[48,1973+47]..[48,1973+51])
+                                            Pexp_ident "desc" (typing/envaux.ml[48,1973+47]..[48,1973+51])
+                                      ]
+                                  <arg>
+                                  Nolabel
+                                    expression (typing/envaux.ml[49,2026+12]..[49,2026+38])
+                                      Pexp_apply
+                                      expression (typing/envaux.ml[49,2026+13]..[49,2026+29])
+                                        Pexp_ident "env_from_summary" (typing/envaux.ml[49,2026+13]..[49,2026+29])
+                                      [
+                                        <arg>
+                                        Nolabel
+                                          expression (typing/envaux.ml[49,2026+30]..[49,2026+31])
+                                            Pexp_ident "s" (typing/envaux.ml[49,2026+30]..[49,2026+31])
+                                        <arg>
+                                        Nolabel
+                                          expression (typing/envaux.ml[49,2026+32]..[49,2026+37])
+                                            Pexp_ident "subst" (typing/envaux.ml[49,2026+32]..[49,2026+37])
+                                      ]
+                                ]
+                            <case>
+                              pattern (typing/envaux.ml[50,2065+8]..[50,2065+37])
+                                Ppat_construct "Env_module" (typing/envaux.ml[50,2065+8]..[50,2065+18])
+                                Some
+                                  []
+                                  pattern (typing/envaux.ml[50,2065+18]..[50,2065+37])
+                                    Ppat_tuple
+                                    [
+                                      pattern (typing/envaux.ml[50,2065+19]..[50,2065+20])
+                                        Ppat_var "s" (typing/envaux.ml[50,2065+19]..[50,2065+20])
+                                      pattern (typing/envaux.ml[50,2065+22]..[50,2065+24])
+                                        Ppat_var "id" (typing/envaux.ml[50,2065+22]..[50,2065+24])
+                                      pattern (typing/envaux.ml[50,2065+26]..[50,2065+30])
+                                        Ppat_var "pres" (typing/envaux.ml[50,2065+26]..[50,2065+30])
+                                      pattern (typing/envaux.ml[50,2065+32]..[50,2065+36])
+                                        Ppat_var "desc" (typing/envaux.ml[50,2065+32]..[50,2065+36])
+                                    ]
+                              expression (typing/envaux.ml[51,2106+10]..[53,2219+38])
+                                Pexp_apply
+                                expression (typing/envaux.ml[51,2106+10]..[51,2106+36])
+                                  Pexp_ident "Env.add_module_declaration" (typing/envaux.ml[51,2106+10]..[51,2106+36])
+                                [
+                                  <arg>
+                                  Labelled "check"
+                                    expression (typing/envaux.ml[51,2106+44]..[51,2106+49])
+                                      Pexp_construct "false" (typing/envaux.ml[51,2106+44]..[51,2106+49])
+                                      None
+                                  <arg>
+                                  Nolabel
+                                    expression (typing/envaux.ml[51,2106+50]..[51,2106+52])
+                                      Pexp_ident "id" (typing/envaux.ml[51,2106+50]..[51,2106+52])
+                                  <arg>
+                                  Nolabel
+                                    expression (typing/envaux.ml[51,2106+53]..[51,2106+57])
+                                      Pexp_ident "pres" (typing/envaux.ml[51,2106+53]..[51,2106+57])
+                                  <arg>
+                                  Nolabel
+                                    expression (typing/envaux.ml[52,2164+12]..[52,2164+54])
+                                      Pexp_apply
+                                      expression (typing/envaux.ml[52,2164+13]..[52,2164+37])
+                                        Pexp_ident "Subst.module_declaration" (typing/envaux.ml[52,2164+13]..[52,2164+37])
+                                      [
+                                        <arg>
+                                        Nolabel
+                                          expression (typing/envaux.ml[52,2164+38]..[52,2164+42])
+                                            Pexp_construct "Keep" (typing/envaux.ml[52,2164+38]..[52,2164+42])
+                                            None
+                                        <arg>
+                                        Nolabel
+                                          expression (typing/envaux.ml[52,2164+43]..[52,2164+48])
+                                            Pexp_ident "subst" (typing/envaux.ml[52,2164+43]..[52,2164+48])
+                                        <arg>
+                                        Nolabel
+                                          expression (typing/envaux.ml[52,2164+49]..[52,2164+53])
+                                            Pexp_ident "desc" (typing/envaux.ml[52,2164+49]..[52,2164+53])
+                                      ]
+                                  <arg>
+                                  Nolabel
+                                    expression (typing/envaux.ml[53,2219+12]..[53,2219+38])
+                                      Pexp_apply
+                                      expression (typing/envaux.ml[53,2219+13]..[53,2219+29])
+                                        Pexp_ident "env_from_summary" (typing/envaux.ml[53,2219+13]..[53,2219+29])
+                                      [
+                                        <arg>
+                                        Nolabel
+                                          expression (typing/envaux.ml[53,2219+30]..[53,2219+31])
+                                            Pexp_ident "s" (typing/envaux.ml[53,2219+30]..[53,2219+31])
+                                        <arg>
+                                        Nolabel
+                                          expression (typing/envaux.ml[53,2219+32]..[53,2219+37])
+                                            Pexp_ident "subst" (typing/envaux.ml[53,2219+32]..[53,2219+37])
+                                      ]
+                                ]
+                            <case>
+                              pattern (typing/envaux.ml[54,2258+8]..[54,2258+32])
+                                Ppat_construct "Env_modtype" (typing/envaux.ml[54,2258+8]..[54,2258+19])
+                                Some
+                                  []
+                                  pattern (typing/envaux.ml[54,2258+19]..[54,2258+32])
+                                    Ppat_tuple
+                                    [
+                                      pattern (typing/envaux.ml[54,2258+20]..[54,2258+21])
+                                        Ppat_var "s" (typing/envaux.ml[54,2258+20]..[54,2258+21])
+                                      pattern (typing/envaux.ml[54,2258+23]..[54,2258+25])
+                                        Ppat_var "id" (typing/envaux.ml[54,2258+23]..[54,2258+25])
+                                      pattern (typing/envaux.ml[54,2258+27]..[54,2258+31])
+                                        Ppat_var "desc" (typing/envaux.ml[54,2258+27]..[54,2258+31])
+                                    ]
+                              expression (typing/envaux.ml[55,2294+10]..[56,2367+52])
+                                Pexp_apply
+                                expression (typing/envaux.ml[55,2294+10]..[55,2294+25])
+                                  Pexp_ident "Env.add_modtype" (typing/envaux.ml[55,2294+10]..[55,2294+25])
+                                [
+                                  <arg>
+                                  Nolabel
+                                    expression (typing/envaux.ml[55,2294+26]..[55,2294+28])
+                                      Pexp_ident "id" (typing/envaux.ml[55,2294+26]..[55,2294+28])
+                                  <arg>
+                                  Nolabel
+                                    expression (typing/envaux.ml[55,2294+29]..[55,2294+72])
+                                      Pexp_apply
+                                      expression (typing/envaux.ml[55,2294+30]..[55,2294+55])
+                                        Pexp_ident "Subst.modtype_declaration" (typing/envaux.ml[55,2294+30]..[55,2294+55])
+                                      [
+                                        <arg>
+                                        Nolabel
+                                          expression (typing/envaux.ml[55,2294+56]..[55,2294+60])
+                                            Pexp_construct "Keep" (typing/envaux.ml[55,2294+56]..[55,2294+60])
+                                            None
+                                        <arg>
+                                        Nolabel
+                                          expression (typing/envaux.ml[55,2294+61]..[55,2294+66])
+                                            Pexp_ident "subst" (typing/envaux.ml[55,2294+61]..[55,2294+66])
+                                        <arg>
+                                        Nolabel
+                                          expression (typing/envaux.ml[55,2294+67]..[55,2294+71])
+                                            Pexp_ident "desc" (typing/envaux.ml[55,2294+67]..[55,2294+71])
+                                      ]
+                                  <arg>
+                                  Nolabel
+                                    expression (typing/envaux.ml[56,2367+26]..[56,2367+52])
+                                      Pexp_apply
+                                      expression (typing/envaux.ml[56,2367+27]..[56,2367+43])
+                                        Pexp_ident "env_from_summary" (typing/envaux.ml[56,2367+27]..[56,2367+43])
+                                      [
+                                        <arg>
+                                        Nolabel
+                                          expression (typing/envaux.ml[56,2367+44]..[56,2367+45])
+                                            Pexp_ident "s" (typing/envaux.ml[56,2367+44]..[56,2367+45])
+                                        <arg>
+                                        Nolabel
+                                          expression (typing/envaux.ml[56,2367+46]..[56,2367+51])
+                                            Pexp_ident "subst" (typing/envaux.ml[56,2367+46]..[56,2367+51])
+                                      ]
+                                ]
+                            <case>
+                              pattern (typing/envaux.ml[57,2420+8]..[57,2420+30])
+                                Ppat_construct "Env_class" (typing/envaux.ml[57,2420+8]..[57,2420+17])
+                                Some
+                                  []
+                                  pattern (typing/envaux.ml[57,2420+17]..[57,2420+30])
+                                    Ppat_tuple
+                                    [
+                                      pattern (typing/envaux.ml[57,2420+18]..[57,2420+19])
+                                        Ppat_var "s" (typing/envaux.ml[57,2420+18]..[57,2420+19])
+                                      pattern (typing/envaux.ml[57,2420+21]..[57,2420+23])
+                                        Ppat_var "id" (typing/envaux.ml[57,2420+21]..[57,2420+23])
+                                      pattern (typing/envaux.ml[57,2420+25]..[57,2420+29])
+                                        Ppat_var "desc" (typing/envaux.ml[57,2420+25]..[57,2420+29])
+                                    ]
+                              expression (typing/envaux.ml[58,2454+10]..[59,2518+50])
+                                Pexp_apply
+                                expression (typing/envaux.ml[58,2454+10]..[58,2454+23])
+                                  Pexp_ident "Env.add_class" (typing/envaux.ml[58,2454+10]..[58,2454+23])
+                                [
+                                  <arg>
+                                  Nolabel
+                                    expression (typing/envaux.ml[58,2454+24]..[58,2454+26])
+                                      Pexp_ident "id" (typing/envaux.ml[58,2454+24]..[58,2454+26])
+                                  <arg>
+                                  Nolabel
+                                    expression (typing/envaux.ml[58,2454+27]..[58,2454+63])
+                                      Pexp_apply
+                                      expression (typing/envaux.ml[58,2454+28]..[58,2454+51])
+                                        Pexp_ident "Subst.class_declaration" (typing/envaux.ml[58,2454+28]..[58,2454+51])
+                                      [
+                                        <arg>
+                                        Nolabel
+                                          expression (typing/envaux.ml[58,2454+52]..[58,2454+57])
+                                            Pexp_ident "subst" (typing/envaux.ml[58,2454+52]..[58,2454+57])
+                                        <arg>
+                                        Nolabel
+                                          expression (typing/envaux.ml[58,2454+58]..[58,2454+62])
+                                            Pexp_ident "desc" (typing/envaux.ml[58,2454+58]..[58,2454+62])
+                                      ]
+                                  <arg>
+                                  Nolabel
+                                    expression (typing/envaux.ml[59,2518+24]..[59,2518+50])
+                                      Pexp_apply
+                                      expression (typing/envaux.ml[59,2518+25]..[59,2518+41])
+                                        Pexp_ident "env_from_summary" (typing/envaux.ml[59,2518+25]..[59,2518+41])
+                                      [
+                                        <arg>
+                                        Nolabel
+                                          expression (typing/envaux.ml[59,2518+42]..[59,2518+43])
+                                            Pexp_ident "s" (typing/envaux.ml[59,2518+42]..[59,2518+43])
+                                        <arg>
+                                        Nolabel
+                                          expression (typing/envaux.ml[59,2518+44]..[59,2518+49])
+                                            Pexp_ident "subst" (typing/envaux.ml[59,2518+44]..[59,2518+49])
+                                      ]
+                                ]
+                            <case>
+                              pattern (typing/envaux.ml[60,2569+8]..[60,2569+32])
+                                Ppat_construct "Env_cltype" (typing/envaux.ml[60,2569+8]..[60,2569+18])
+                                Some
+                                  []
+                                  pattern (typing/envaux.ml[60,2569+19]..[60,2569+32])
+                                    Ppat_tuple
+                                    [
+                                      pattern (typing/envaux.ml[60,2569+20]..[60,2569+21])
+                                        Ppat_var "s" (typing/envaux.ml[60,2569+20]..[60,2569+21])
+                                      pattern (typing/envaux.ml[60,2569+23]..[60,2569+25])
+                                        Ppat_var "id" (typing/envaux.ml[60,2569+23]..[60,2569+25])
+                                      pattern (typing/envaux.ml[60,2569+27]..[60,2569+31])
+                                        Ppat_var "desc" (typing/envaux.ml[60,2569+27]..[60,2569+31])
+                                    ]
+                              expression (typing/envaux.ml[61,2605+10]..[62,2671+51])
+                                Pexp_apply
+                                expression (typing/envaux.ml[61,2605+10]..[61,2605+24])
+                                  Pexp_ident "Env.add_cltype" (typing/envaux.ml[61,2605+10]..[61,2605+24])
+                                [
+                                  <arg>
+                                  Nolabel
+                                    expression (typing/envaux.ml[61,2605+25]..[61,2605+27])
+                                      Pexp_ident "id" (typing/envaux.ml[61,2605+25]..[61,2605+27])
+                                  <arg>
+                                  Nolabel
+                                    expression (typing/envaux.ml[61,2605+28]..[61,2605+65])
+                                      Pexp_apply
+                                      expression (typing/envaux.ml[61,2605+29]..[61,2605+53])
+                                        Pexp_ident "Subst.cltype_declaration" (typing/envaux.ml[61,2605+29]..[61,2605+53])
+                                      [
+                                        <arg>
+                                        Nolabel
+                                          expression (typing/envaux.ml[61,2605+54]..[61,2605+59])
+                                            Pexp_ident "subst" (typing/envaux.ml[61,2605+54]..[61,2605+59])
+                                        <arg>
+                                        Nolabel
+                                          expression (typing/envaux.ml[61,2605+60]..[61,2605+64])
+                                            Pexp_ident "desc" (typing/envaux.ml[61,2605+60]..[61,2605+64])
+                                      ]
+                                  <arg>
+                                  Nolabel
+                                    expression (typing/envaux.ml[62,2671+25]..[62,2671+51])
+                                      Pexp_apply
+                                      expression (typing/envaux.ml[62,2671+26]..[62,2671+42])
+                                        Pexp_ident "env_from_summary" (typing/envaux.ml[62,2671+26]..[62,2671+42])
+                                      [
+                                        <arg>
+                                        Nolabel
+                                          expression (typing/envaux.ml[62,2671+43]..[62,2671+44])
+                                            Pexp_ident "s" (typing/envaux.ml[62,2671+43]..[62,2671+44])
+                                        <arg>
+                                        Nolabel
+                                          expression (typing/envaux.ml[62,2671+45]..[62,2671+50])
+                                            Pexp_ident "subst" (typing/envaux.ml[62,2671+45]..[62,2671+50])
+                                      ]
+                                ]
+                            <case>
+                              pattern (typing/envaux.ml[63,2723+8]..[63,2723+25])
+                                Ppat_construct "Env_open" (typing/envaux.ml[63,2723+8]..[63,2723+16])
+                                Some
+                                  []
+                                  pattern (typing/envaux.ml[63,2723+16]..[63,2723+25])
+                                    Ppat_tuple
+                                    [
+                                      pattern (typing/envaux.ml[63,2723+17]..[63,2723+18])
+                                        Ppat_var "s" (typing/envaux.ml[63,2723+17]..[63,2723+18])
+                                      pattern (typing/envaux.ml[63,2723+20]..[63,2723+24])
+                                        Ppat_var "path" (typing/envaux.ml[63,2723+20]..[63,2723+24])
+                                    ]
+                              expression (typing/envaux.ml[64,2752+10]..[70,3068+13])
+                                Pexp_let Nonrec
+                                [
+                                  <def>
+                                    pattern (typing/envaux.ml[64,2752+14]..[64,2752+17])
+                                      Ppat_var "env" (typing/envaux.ml[64,2752+14]..[64,2752+17])
+                                    expression (typing/envaux.ml[64,2752+20]..[64,2752+44])
+                                      Pexp_apply
+                                      expression (typing/envaux.ml[64,2752+20]..[64,2752+36])
+                                        Pexp_ident "env_from_summary" (typing/envaux.ml[64,2752+20]..[64,2752+36])
+                                      [
+                                        <arg>
+                                        Nolabel
+                                          expression (typing/envaux.ml[64,2752+37]..[64,2752+38])
+                                            Pexp_ident "s" (typing/envaux.ml[64,2752+37]..[64,2752+38])
+                                        <arg>
+                                        Nolabel
+                                          expression (typing/envaux.ml[64,2752+39]..[64,2752+44])
+                                            Pexp_ident "subst" (typing/envaux.ml[64,2752+39]..[64,2752+44])
+                                      ]
+                                ]
+                                expression (typing/envaux.ml[65,2800+10]..[70,3068+13])
+                                  Pexp_let Nonrec
+                                  [
+                                    <def>
+                                      pattern (typing/envaux.ml[65,2800+14]..[65,2800+19])
+                                        Ppat_var "path'" (typing/envaux.ml[65,2800+14]..[65,2800+19])
+                                      expression (typing/envaux.ml[65,2800+22]..[65,2800+50])
+                                        Pexp_apply
+                                        expression (typing/envaux.ml[65,2800+22]..[65,2800+39])
+                                          Pexp_ident "Subst.module_path" (typing/envaux.ml[65,2800+22]..[65,2800+39])
+                                        [
+                                          <arg>
+                                          Nolabel
+                                            expression (typing/envaux.ml[65,2800+40]..[65,2800+45])
+                                              Pexp_ident "subst" (typing/envaux.ml[65,2800+40]..[65,2800+45])
+                                          <arg>
+                                          Nolabel
+                                            expression (typing/envaux.ml[65,2800+46]..[65,2800+50])
+                                              Pexp_ident "path" (typing/envaux.ml[65,2800+46]..[65,2800+50])
+                                        ]
+                                  ]
+                                  expression (typing/envaux.ml[66,2854+10]..[70,3068+13])
+                                    Pexp_match
+                                    expression (typing/envaux.ml[66,2854+22]..[66,2854+68])
+                                      Pexp_apply
+                                      expression (typing/envaux.ml[66,2854+22]..[66,2854+40])
+                                        Pexp_ident "Env.open_signature" (typing/envaux.ml[66,2854+22]..[66,2854+40])
+                                      [
+                                        <arg>
+                                        Nolabel
+                                          expression (typing/envaux.ml[66,2854+41]..[66,2854+58])
+                                            Pexp_construct "Asttypes.Override" (typing/envaux.ml[66,2854+41]..[66,2854+58])
+                                            None
+                                        <arg>
+                                        Nolabel
+                                          expression (typing/envaux.ml[66,2854+59]..[66,2854+64])
+                                            Pexp_ident "path'" (typing/envaux.ml[66,2854+59]..[66,2854+64])
+                                        <arg>
+                                        Nolabel
+                                          expression (typing/envaux.ml[66,2854+65]..[66,2854+68])
+                                            Pexp_ident "env" (typing/envaux.ml[66,2854+65]..[66,2854+68])
+                                      ]
+                                    [
+                                      <case>
+                                        pattern (typing/envaux.ml[67,2928+12]..[67,2928+18])
+                                          Ppat_construct "Ok" (typing/envaux.ml[67,2928+12]..[67,2928+14])
+                                          Some
+                                            []
+                                            pattern (typing/envaux.ml[67,2928+15]..[67,2928+18])
+                                              Ppat_var "env" (typing/envaux.ml[67,2928+15]..[67,2928+18])
+                                        expression (typing/envaux.ml[67,2928+22]..[67,2928+25])
+                                          Pexp_ident "env" (typing/envaux.ml[67,2928+22]..[67,2928+25])
+                                      <case>
+                                        pattern (typing/envaux.ml[68,2954+12]..[68,2954+26])
+                                          Ppat_construct "Error" (typing/envaux.ml[68,2954+12]..[68,2954+17])
+                                          Some
+                                            []
+                                            pattern (typing/envaux.ml[68,2954+18]..[68,2954+26])
+                                              Ppat_variant "Functor"
+                                              None
+                                        expression (typing/envaux.ml[68,2954+30]..[68,2954+42])
+                                          Pexp_assert
+                                          expression (typing/envaux.ml[68,2954+37]..[68,2954+42])
+                                            Pexp_construct "false" (typing/envaux.ml[68,2954+37]..[68,2954+42])
+                                            None
+                                      <case>
+                                        pattern (typing/envaux.ml[69,2997+12]..[69,2997+28])
+                                          Ppat_construct "Error" (typing/envaux.ml[69,2997+12]..[69,2997+17])
+                                          Some
+                                            []
+                                            pattern (typing/envaux.ml[69,2997+18]..[69,2997+28])
+                                              Ppat_variant "Not_found"
+                                              None
+                                        expression (typing/envaux.ml[69,2997+32]..[69,2997+70])
+                                          Pexp_apply
+                                          expression (typing/envaux.ml[69,2997+32]..[69,2997+37])
+                                            Pexp_ident "raise" (typing/envaux.ml[69,2997+32]..[69,2997+37])
+                                          [
+                                            <arg>
+                                            Nolabel
+                                              expression (typing/envaux.ml[69,2997+38]..[69,2997+70])
+                                                Pexp_construct "Error" (typing/envaux.ml[69,2997+39]..[69,2997+44])
+                                                Some
+                                                  expression (typing/envaux.ml[69,2997+45]..[69,2997+69])
+                                                    Pexp_construct "Module_not_found" (typing/envaux.ml[69,2997+46]..[69,2997+62])
+                                                    Some
+                                                      expression (typing/envaux.ml[69,2997+63]..[69,2997+68])
+                                                        Pexp_ident "path'" (typing/envaux.ml[69,2997+63]..[69,2997+68])
+                                          ]
+                                    ]
+                            <case>
+                              pattern (typing/envaux.ml[71,3082+8]..[71,3082+59])
+                                Ppat_construct "Env_functor_arg" (typing/envaux.ml[71,3082+8]..[71,3082+23])
+                                Some
+                                  []
+                                  pattern (typing/envaux.ml[71,3082+23]..[71,3082+59])
+                                    Ppat_tuple
+                                    [
+                                      pattern (typing/envaux.ml[71,3082+24]..[71,3082+53])
+                                        Ppat_construct "Env_module" (typing/envaux.ml[71,3082+24]..[71,3082+34])
+                                        Some
+                                          []
+                                          pattern (typing/envaux.ml[71,3082+34]..[71,3082+53])
+                                            Ppat_tuple
+                                            [
+                                              pattern (typing/envaux.ml[71,3082+35]..[71,3082+36])
+                                                Ppat_var "s" (typing/envaux.ml[71,3082+35]..[71,3082+36])
+                                              pattern (typing/envaux.ml[71,3082+38]..[71,3082+40])
+                                                Ppat_var "id" (typing/envaux.ml[71,3082+38]..[71,3082+40])
+                                              pattern (typing/envaux.ml[71,3082+42]..[71,3082+46])
+                                                Ppat_var "pres" (typing/envaux.ml[71,3082+42]..[71,3082+46])
+                                              pattern (typing/envaux.ml[71,3082+48]..[71,3082+52])
+                                                Ppat_var "desc" (typing/envaux.ml[71,3082+48]..[71,3082+52])
+                                            ]
+                                      pattern (typing/envaux.ml[71,3082+55]..[71,3082+58])
+                                        Ppat_var "id'" (typing/envaux.ml[71,3082+55]..[71,3082+58])
+                                    ]
+                              <when>
+                                expression (typing/envaux.ml[72,3142+17]..[72,3142+34])
+                                  Pexp_apply
+                                  expression (typing/envaux.ml[72,3142+17]..[72,3142+27])
+                                    Pexp_ident "Ident.same" (typing/envaux.ml[72,3142+17]..[72,3142+27])
+                                  [
+                                    <arg>
+                                    Nolabel
+                                      expression (typing/envaux.ml[72,3142+28]..[72,3142+30])
+                                        Pexp_ident "id" (typing/envaux.ml[72,3142+28]..[72,3142+30])
+                                    <arg>
+                                    Nolabel
+                                      expression (typing/envaux.ml[72,3142+31]..[72,3142+34])
+                                        Pexp_ident "id'" (typing/envaux.ml[72,3142+31]..[72,3142+34])
+                                  ]
+                              expression (typing/envaux.ml[73,3180+10]..[75,3293+48])
+                                Pexp_apply
+                                expression (typing/envaux.ml[73,3180+10]..[73,3180+36])
+                                  Pexp_ident "Env.add_module_declaration" (typing/envaux.ml[73,3180+10]..[73,3180+36])
+                                [
+                                  <arg>
+                                  Labelled "check"
+                                    expression (typing/envaux.ml[73,3180+44]..[73,3180+49])
+                                      Pexp_construct "false" (typing/envaux.ml[73,3180+44]..[73,3180+49])
+                                      None
+                                  <arg>
+                                  Nolabel
+                                    expression (typing/envaux.ml[74,3230+12]..[74,3230+14])
+                                      Pexp_ident "id" (typing/envaux.ml[74,3230+12]..[74,3230+14])
+                                  <arg>
+                                  Nolabel
+                                    expression (typing/envaux.ml[74,3230+15]..[74,3230+19])
+                                      Pexp_ident "pres" (typing/envaux.ml[74,3230+15]..[74,3230+19])
+                                  <arg>
+                                  Nolabel
+                                    expression (typing/envaux.ml[74,3230+20]..[74,3230+62])
+                                      Pexp_apply
+                                      expression (typing/envaux.ml[74,3230+21]..[74,3230+45])
+                                        Pexp_ident "Subst.module_declaration" (typing/envaux.ml[74,3230+21]..[74,3230+45])
+                                      [
+                                        <arg>
+                                        Nolabel
+                                          expression (typing/envaux.ml[74,3230+46]..[74,3230+50])
+                                            Pexp_construct "Keep" (typing/envaux.ml[74,3230+46]..[74,3230+50])
+                                            None
+                                        <arg>
+                                        Nolabel
+                                          expression (typing/envaux.ml[74,3230+51]..[74,3230+56])
+                                            Pexp_ident "subst" (typing/envaux.ml[74,3230+51]..[74,3230+56])
+                                        <arg>
+                                        Nolabel
+                                          expression (typing/envaux.ml[74,3230+57]..[74,3230+61])
+                                            Pexp_ident "desc" (typing/envaux.ml[74,3230+57]..[74,3230+61])
+                                      ]
+                                  <arg>
+                                  Labelled "arg"
+                                    expression (typing/envaux.ml[75,3293+17]..[75,3293+21])
+                                      Pexp_construct "true" (typing/envaux.ml[75,3293+17]..[75,3293+21])
+                                      None
+                                  <arg>
+                                  Nolabel
+                                    expression (typing/envaux.ml[75,3293+22]..[75,3293+48])
+                                      Pexp_apply
+                                      expression (typing/envaux.ml[75,3293+23]..[75,3293+39])
+                                        Pexp_ident "env_from_summary" (typing/envaux.ml[75,3293+23]..[75,3293+39])
+                                      [
+                                        <arg>
+                                        Nolabel
+                                          expression (typing/envaux.ml[75,3293+40]..[75,3293+41])
+                                            Pexp_ident "s" (typing/envaux.ml[75,3293+40]..[75,3293+41])
+                                        <arg>
+                                        Nolabel
+                                          expression (typing/envaux.ml[75,3293+42]..[75,3293+47])
+                                            Pexp_ident "subst" (typing/envaux.ml[75,3293+42]..[75,3293+47])
+                                      ]
+                                ]
+                            <case>
+                              pattern (typing/envaux.ml[76,3342+8]..[76,3342+25])
+                                Ppat_construct "Env_functor_arg" (typing/envaux.ml[76,3342+8]..[76,3342+23])
+                                Some
+                                  []
+                                  pattern (typing/envaux.ml[76,3342+24]..[76,3342+25])
+                                    Ppat_any
+                              expression (typing/envaux.ml[76,3342+29]..[76,3342+41])
+                                Pexp_assert
+                                expression (typing/envaux.ml[76,3342+36]..[76,3342+41])
+                                  Pexp_construct "false" (typing/envaux.ml[76,3342+36]..[76,3342+41])
+                                  None
+                            <case>
+                              pattern (typing/envaux.ml[77,3384+8]..[77,3384+31])
+                                Ppat_construct "Env_constraints" (typing/envaux.ml[77,3384+8]..[77,3384+23])
+                                Some
+                                  []
+                                  pattern (typing/envaux.ml[77,3384+23]..[77,3384+31])
+                                    Ppat_tuple
+                                    [
+                                      pattern (typing/envaux.ml[77,3384+24]..[77,3384+25])
+                                        Ppat_var "s" (typing/envaux.ml[77,3384+24]..[77,3384+25])
+                                      pattern (typing/envaux.ml[77,3384+27]..[77,3384+30])
+                                        Ppat_var "map" (typing/envaux.ml[77,3384+27]..[77,3384+30])
+                                    ]
+                              expression (typing/envaux.ml[78,3419+10]..[82,3588+42])
+                                Pexp_apply
+                                expression (typing/envaux.ml[78,3419+10]..[78,3419+23])
+                                  Pexp_ident "Path.Map.fold" (typing/envaux.ml[78,3419+10]..[78,3419+23])
+                                [
+                                  <arg>
+                                  Nolabel
+                                    expression (typing/envaux.ml[79,3443+12]..[81,3535+52])
+                                      Pexp_fun
+                                      Nolabel
+                                      None
+                                      pattern (typing/envaux.ml[79,3443+17]..[79,3443+21])
+                                        Ppat_var "path" (typing/envaux.ml[79,3443+17]..[79,3443+21])
+                                      expression (typing/envaux.ml[79,3443+22]..[81,3535+51]) ghost
+                                        Pexp_fun
+                                        Nolabel
+                                        None
+                                        pattern (typing/envaux.ml[79,3443+22]..[79,3443+26])
+                                          Ppat_var "info" (typing/envaux.ml[79,3443+22]..[79,3443+26])
+                                        expression (typing/envaux.ml[80,3473+14]..[81,3535+51])
+                                          Pexp_apply
+                                          expression (typing/envaux.ml[80,3473+14]..[80,3473+32])
+                                            Pexp_ident "Env.add_local_type" (typing/envaux.ml[80,3473+14]..[80,3473+32])
+                                          [
+                                            <arg>
+                                            Nolabel
+                                              expression (typing/envaux.ml[80,3473+33]..[80,3473+61])
+                                                Pexp_apply
+                                                expression (typing/envaux.ml[80,3473+34]..[80,3473+49])
+                                                  Pexp_ident "Subst.type_path" (typing/envaux.ml[80,3473+34]..[80,3473+49])
+                                                [
+                                                  <arg>
+                                                  Nolabel
+                                                    expression (typing/envaux.ml[80,3473+50]..[80,3473+55])
+                                                      Pexp_ident "subst" (typing/envaux.ml[80,3473+50]..[80,3473+55])
+                                                  <arg>
+                                                  Nolabel
+                                                    expression (typing/envaux.ml[80,3473+56]..[80,3473+60])
+                                                      Pexp_ident "path" (typing/envaux.ml[80,3473+56]..[80,3473+60])
+                                                ]
+                                            <arg>
+                                            Nolabel
+                                              expression (typing/envaux.ml[81,3535+16]..[81,3535+51])
+                                                Pexp_apply
+                                                expression (typing/envaux.ml[81,3535+17]..[81,3535+39])
+                                                  Pexp_ident "Subst.type_declaration" (typing/envaux.ml[81,3535+17]..[81,3535+39])
+                                                [
+                                                  <arg>
+                                                  Nolabel
+                                                    expression (typing/envaux.ml[81,3535+40]..[81,3535+45])
+                                                      Pexp_ident "subst" (typing/envaux.ml[81,3535+40]..[81,3535+45])
+                                                  <arg>
+                                                  Nolabel
+                                                    expression (typing/envaux.ml[81,3535+46]..[81,3535+50])
+                                                      Pexp_ident "info" (typing/envaux.ml[81,3535+46]..[81,3535+50])
+                                                ]
+                                          ]
+                                  <arg>
+                                  Nolabel
+                                    expression (typing/envaux.ml[82,3588+12]..[82,3588+15])
+                                      Pexp_ident "map" (typing/envaux.ml[82,3588+12]..[82,3588+15])
+                                  <arg>
+                                  Nolabel
+                                    expression (typing/envaux.ml[82,3588+16]..[82,3588+42])
+                                      Pexp_apply
+                                      expression (typing/envaux.ml[82,3588+17]..[82,3588+33])
+                                        Pexp_ident "env_from_summary" (typing/envaux.ml[82,3588+17]..[82,3588+33])
+                                      [
+                                        <arg>
+                                        Nolabel
+                                          expression (typing/envaux.ml[82,3588+34]..[82,3588+35])
+                                            Pexp_ident "s" (typing/envaux.ml[82,3588+34]..[82,3588+35])
+                                        <arg>
+                                        Nolabel
+                                          expression (typing/envaux.ml[82,3588+36]..[82,3588+41])
+                                            Pexp_ident "subst" (typing/envaux.ml[82,3588+36]..[82,3588+41])
+                                      ]
+                                ]
+                            <case>
+                              pattern (typing/envaux.ml[83,3631+8]..[83,3631+24])
+                                Ppat_construct "Env_copy_types" (typing/envaux.ml[83,3631+8]..[83,3631+22])
+                                Some
+                                  []
+                                  pattern (typing/envaux.ml[83,3631+23]..[83,3631+24])
+                                    Ppat_var "s" (typing/envaux.ml[83,3631+23]..[83,3631+24])
+                              expression (typing/envaux.ml[84,3659+10]..[85,3707+40])
+                                Pexp_let Nonrec
+                                [
+                                  <def>
+                                    pattern (typing/envaux.ml[84,3659+14]..[84,3659+17])
+                                      Ppat_var "env" (typing/envaux.ml[84,3659+14]..[84,3659+17])
+                                    expression (typing/envaux.ml[84,3659+20]..[84,3659+44])
+                                      Pexp_apply
+                                      expression (typing/envaux.ml[84,3659+20]..[84,3659+36])
+                                        Pexp_ident "env_from_summary" (typing/envaux.ml[84,3659+20]..[84,3659+36])
+                                      [
+                                        <arg>
+                                        Nolabel
+                                          expression (typing/envaux.ml[84,3659+37]..[84,3659+38])
+                                            Pexp_ident "s" (typing/envaux.ml[84,3659+37]..[84,3659+38])
+                                        <arg>
+                                        Nolabel
+                                          expression (typing/envaux.ml[84,3659+39]..[84,3659+44])
+                                            Pexp_ident "subst" (typing/envaux.ml[84,3659+39]..[84,3659+44])
+                                      ]
+                                ]
+                                expression (typing/envaux.ml[85,3707+10]..[85,3707+40])
+                                  Pexp_apply
+                                  expression (typing/envaux.ml[85,3707+10]..[85,3707+32])
+                                    Pexp_ident "Env.make_copy_of_types" (typing/envaux.ml[85,3707+10]..[85,3707+32])
+                                  [
+                                    <arg>
+                                    Nolabel
+                                      expression (typing/envaux.ml[85,3707+33]..[85,3707+36])
+                                        Pexp_ident "env" (typing/envaux.ml[85,3707+33]..[85,3707+36])
+                                    <arg>
+                                    Nolabel
+                                      expression (typing/envaux.ml[85,3707+37]..[85,3707+40])
+                                        Pexp_ident "env" (typing/envaux.ml[85,3707+37]..[85,3707+40])
+                                  ]
+                            <case>
+                              pattern (typing/envaux.ml[86,3748+8]..[86,3748+30])
+                                Ppat_construct "Env_persistent" (typing/envaux.ml[86,3748+8]..[86,3748+22])
+                                Some
+                                  []
+                                  pattern (typing/envaux.ml[86,3748+23]..[86,3748+30])
+                                    Ppat_tuple
+                                    [
+                                      pattern (typing/envaux.ml[86,3748+24]..[86,3748+25])
+                                        Ppat_var "s" (typing/envaux.ml[86,3748+24]..[86,3748+25])
+                                      pattern (typing/envaux.ml[86,3748+27]..[86,3748+29])
+                                        Ppat_var "id" (typing/envaux.ml[86,3748+27]..[86,3748+29])
+                                    ]
+                              expression (typing/envaux.ml[87,3782+10]..[88,3830+45])
+                                Pexp_let Nonrec
+                                [
+                                  <def>
+                                    pattern (typing/envaux.ml[87,3782+14]..[87,3782+17])
+                                      Ppat_var "env" (typing/envaux.ml[87,3782+14]..[87,3782+17])
+                                    expression (typing/envaux.ml[87,3782+20]..[87,3782+44])
+                                      Pexp_apply
+                                      expression (typing/envaux.ml[87,3782+20]..[87,3782+36])
+                                        Pexp_ident "env_from_summary" (typing/envaux.ml[87,3782+20]..[87,3782+36])
+                                      [
+                                        <arg>
+                                        Nolabel
+                                          expression (typing/envaux.ml[87,3782+37]..[87,3782+38])
+                                            Pexp_ident "s" (typing/envaux.ml[87,3782+37]..[87,3782+38])
+                                        <arg>
+                                        Nolabel
+                                          expression (typing/envaux.ml[87,3782+39]..[87,3782+44])
+                                            Pexp_ident "subst" (typing/envaux.ml[87,3782+39]..[87,3782+44])
+                                      ]
+                                ]
+                                expression (typing/envaux.ml[88,3830+10]..[88,3830+45])
+                                  Pexp_apply
+                                  expression (typing/envaux.ml[88,3830+10]..[88,3830+38])
+                                    Pexp_ident "Env.add_persistent_structure" (typing/envaux.ml[88,3830+10]..[88,3830+38])
+                                  [
+                                    <arg>
+                                    Nolabel
+                                      expression (typing/envaux.ml[88,3830+39]..[88,3830+41])
+                                        Pexp_ident "id" (typing/envaux.ml[88,3830+39]..[88,3830+41])
+                                    <arg>
+                                    Nolabel
+                                      expression (typing/envaux.ml[88,3830+42]..[88,3830+45])
+                                        Pexp_ident "env" (typing/envaux.ml[88,3830+42]..[88,3830+45])
+                                  ]
+                            <case>
+                              pattern (typing/envaux.ml[89,3876+8]..[89,3876+42])
+                                Ppat_construct "Env_value_unbound" (typing/envaux.ml[89,3876+8]..[89,3876+25])
+                                Some
+                                  []
+                                  pattern (typing/envaux.ml[89,3876+26]..[89,3876+42])
+                                    Ppat_tuple
+                                    [
+                                      pattern (typing/envaux.ml[89,3876+27]..[89,3876+28])
+                                        Ppat_var "s" (typing/envaux.ml[89,3876+27]..[89,3876+28])
+                                      pattern (typing/envaux.ml[89,3876+30]..[89,3876+33])
+                                        Ppat_var "str" (typing/envaux.ml[89,3876+30]..[89,3876+33])
+                                      pattern (typing/envaux.ml[89,3876+35]..[89,3876+41])
+                                        Ppat_var "reason" (typing/envaux.ml[89,3876+35]..[89,3876+41])
+                                    ]
+                              expression (typing/envaux.ml[90,3922+10]..[91,3970+48])
+                                Pexp_let Nonrec
+                                [
+                                  <def>
+                                    pattern (typing/envaux.ml[90,3922+14]..[90,3922+17])
+                                      Ppat_var "env" (typing/envaux.ml[90,3922+14]..[90,3922+17])
+                                    expression (typing/envaux.ml[90,3922+20]..[90,3922+44])
+                                      Pexp_apply
+                                      expression (typing/envaux.ml[90,3922+20]..[90,3922+36])
+                                        Pexp_ident "env_from_summary" (typing/envaux.ml[90,3922+20]..[90,3922+36])
+                                      [
+                                        <arg>
+                                        Nolabel
+                                          expression (typing/envaux.ml[90,3922+37]..[90,3922+38])
+                                            Pexp_ident "s" (typing/envaux.ml[90,3922+37]..[90,3922+38])
+                                        <arg>
+                                        Nolabel
+                                          expression (typing/envaux.ml[90,3922+39]..[90,3922+44])
+                                            Pexp_ident "subst" (typing/envaux.ml[90,3922+39]..[90,3922+44])
+                                      ]
+                                ]
+                                expression (typing/envaux.ml[91,3970+10]..[91,3970+48])
+                                  Pexp_apply
+                                  expression (typing/envaux.ml[91,3970+10]..[91,3970+33])
+                                    Pexp_ident "Env.enter_unbound_value" (typing/envaux.ml[91,3970+10]..[91,3970+33])
+                                  [
+                                    <arg>
+                                    Nolabel
+                                      expression (typing/envaux.ml[91,3970+34]..[91,3970+37])
+                                        Pexp_ident "str" (typing/envaux.ml[91,3970+34]..[91,3970+37])
+                                    <arg>
+                                    Nolabel
+                                      expression (typing/envaux.ml[91,3970+38]..[91,3970+44])
+                                        Pexp_ident "reason" (typing/envaux.ml[91,3970+38]..[91,3970+44])
+                                    <arg>
+                                    Nolabel
+                                      expression (typing/envaux.ml[91,3970+45]..[91,3970+48])
+                                        Pexp_ident "env" (typing/envaux.ml[91,3970+45]..[91,3970+48])
+                                  ]
+                            <case>
+                              pattern (typing/envaux.ml[92,4019+8]..[92,4019+43])
+                                Ppat_construct "Env_module_unbound" (typing/envaux.ml[92,4019+8]..[92,4019+26])
+                                Some
+                                  []
+                                  pattern (typing/envaux.ml[92,4019+27]..[92,4019+43])
+                                    Ppat_tuple
+                                    [
+                                      pattern (typing/envaux.ml[92,4019+28]..[92,4019+29])
+                                        Ppat_var "s" (typing/envaux.ml[92,4019+28]..[92,4019+29])
+                                      pattern (typing/envaux.ml[92,4019+31]..[92,4019+34])
+                                        Ppat_var "str" (typing/envaux.ml[92,4019+31]..[92,4019+34])
+                                      pattern (typing/envaux.ml[92,4019+36]..[92,4019+42])
+                                        Ppat_var "reason" (typing/envaux.ml[92,4019+36]..[92,4019+42])
+                                    ]
+                              expression (typing/envaux.ml[93,4066+10]..[94,4114+49])
+                                Pexp_let Nonrec
+                                [
+                                  <def>
+                                    pattern (typing/envaux.ml[93,4066+14]..[93,4066+17])
+                                      Ppat_var "env" (typing/envaux.ml[93,4066+14]..[93,4066+17])
+                                    expression (typing/envaux.ml[93,4066+20]..[93,4066+44])
+                                      Pexp_apply
+                                      expression (typing/envaux.ml[93,4066+20]..[93,4066+36])
+                                        Pexp_ident "env_from_summary" (typing/envaux.ml[93,4066+20]..[93,4066+36])
+                                      [
+                                        <arg>
+                                        Nolabel
+                                          expression (typing/envaux.ml[93,4066+37]..[93,4066+38])
+                                            Pexp_ident "s" (typing/envaux.ml[93,4066+37]..[93,4066+38])
+                                        <arg>
+                                        Nolabel
+                                          expression (typing/envaux.ml[93,4066+39]..[93,4066+44])
+                                            Pexp_ident "subst" (typing/envaux.ml[93,4066+39]..[93,4066+44])
+                                      ]
+                                ]
+                                expression (typing/envaux.ml[94,4114+10]..[94,4114+49])
+                                  Pexp_apply
+                                  expression (typing/envaux.ml[94,4114+10]..[94,4114+34])
+                                    Pexp_ident "Env.enter_unbound_module" (typing/envaux.ml[94,4114+10]..[94,4114+34])
+                                  [
+                                    <arg>
+                                    Nolabel
+                                      expression (typing/envaux.ml[94,4114+35]..[94,4114+38])
+                                        Pexp_ident "str" (typing/envaux.ml[94,4114+35]..[94,4114+38])
+                                    <arg>
+                                    Nolabel
+                                      expression (typing/envaux.ml[94,4114+39]..[94,4114+45])
+                                        Pexp_ident "reason" (typing/envaux.ml[94,4114+39]..[94,4114+45])
+                                    <arg>
+                                    Nolabel
+                                      expression (typing/envaux.ml[94,4114+46]..[94,4114+49])
+                                        Pexp_ident "env" (typing/envaux.ml[94,4114+46]..[94,4114+49])
+                                  ]
+                          ]
+                    ]
+                    expression (typing/envaux.ml[96,4171+6]..[97,4217+9])
+                      Pexp_sequence
+                      expression (typing/envaux.ml[96,4171+6]..[96,4171+44])
+                        Pexp_apply
+                        expression (typing/envaux.ml[96,4171+6]..[96,4171+17])
+                          Pexp_ident "Hashtbl.add" (typing/envaux.ml[96,4171+6]..[96,4171+17])
+                        [
+                          <arg>
+                          Nolabel
+                            expression (typing/envaux.ml[96,4171+18]..[96,4171+27])
+                              Pexp_ident "env_cache" (typing/envaux.ml[96,4171+18]..[96,4171+27])
+                          <arg>
+                          Nolabel
+                            expression (typing/envaux.ml[96,4171+28]..[96,4171+40])
+                              Pexp_tuple
+                              [
+                                expression (typing/envaux.ml[96,4171+29]..[96,4171+32])
+                                  Pexp_ident "sum" (typing/envaux.ml[96,4171+29]..[96,4171+32])
+                                expression (typing/envaux.ml[96,4171+34]..[96,4171+39])
+                                  Pexp_ident "subst" (typing/envaux.ml[96,4171+34]..[96,4171+39])
+                              ]
+                          <arg>
+                          Nolabel
+                            expression (typing/envaux.ml[96,4171+41]..[96,4171+44])
+                              Pexp_ident "env" (typing/envaux.ml[96,4171+41]..[96,4171+44])
+                        ]
+                      expression (typing/envaux.ml[97,4217+6]..[97,4217+9])
+                        Pexp_ident "env" (typing/envaux.ml[97,4217+6]..[97,4217+9])
+              ]
+    ]
+  structure_item (typing/envaux.ml[99,4228+0]..[100,4258+46])
+    Pstr_value Nonrec
+    [
+      <def>
+        pattern (typing/envaux.ml[99,4228+4]..[99,4228+23])
+          Ppat_var "env_of_only_summary" (typing/envaux.ml[99,4228+4]..[99,4228+23])
+        expression (typing/envaux.ml[99,4228+24]..[100,4258+46]) ghost
+          Pexp_fun
+          Nolabel
+          None
+          pattern (typing/envaux.ml[99,4228+24]..[99,4228+27])
+            Ppat_var "env" (typing/envaux.ml[99,4228+24]..[99,4228+27])
+          expression (typing/envaux.ml[100,4258+2]..[100,4258+46])
+            Pexp_apply
+            expression (typing/envaux.ml[100,4258+2]..[100,4258+25])
+              Pexp_ident "Env.env_of_only_summary" (typing/envaux.ml[100,4258+2]..[100,4258+25])
+            [
+              <arg>
+              Nolabel
+                expression (typing/envaux.ml[100,4258+26]..[100,4258+42])
+                  Pexp_ident "env_from_summary" (typing/envaux.ml[100,4258+26]..[100,4258+42])
+              <arg>
+              Nolabel
+                expression (typing/envaux.ml[100,4258+43]..[100,4258+46])
+                  Pexp_ident "env" (typing/envaux.ml[100,4258+43]..[100,4258+46])
+            ]
+    ]
+  structure_item (typing/envaux.ml[104,4326+0]..[104,4326+11])
+    Pstr_open Fresh
+    module_expr (typing/envaux.ml[104,4326+5]..[104,4326+11])
+      Pmod_ident "Format" (typing/envaux.ml[104,4326+5]..[104,4326+11])
+  structure_item (typing/envaux.ml[106,4339+0]..[108,4397+64])
+    Pstr_value Nonrec
+    [
+      <def>
+        pattern (typing/envaux.ml[106,4339+4]..[106,4339+16])
+          Ppat_var "report_error" (typing/envaux.ml[106,4339+4]..[106,4339+16])
+        expression (typing/envaux.ml[106,4339+17]..[108,4397+64]) ghost
+          Pexp_fun
+          Nolabel
+          None
+          pattern (typing/envaux.ml[106,4339+17]..[106,4339+20])
+            Ppat_var "ppf" (typing/envaux.ml[106,4339+17]..[106,4339+20])
+          expression (typing/envaux.ml[106,4339+23]..[108,4397+64])
+            Pexp_function
+            [
+              <case>
+                pattern (typing/envaux.ml[107,4371+4]..[107,4371+22])
+                  Ppat_construct "Module_not_found" (typing/envaux.ml[107,4371+4]..[107,4371+20])
+                  Some
+                    []
+                    pattern (typing/envaux.ml[107,4371+21]..[107,4371+22])
+                      Ppat_var "p" (typing/envaux.ml[107,4371+21]..[107,4371+22])
+                expression (typing/envaux.ml[108,4397+6]..[108,4397+64])
+                  Pexp_apply
+                  expression (typing/envaux.ml[108,4397+6]..[108,4397+13])
+                    Pexp_ident "fprintf" (typing/envaux.ml[108,4397+6]..[108,4397+13])
+                  [
+                    <arg>
+                    Nolabel
+                      expression (typing/envaux.ml[108,4397+14]..[108,4397+17])
+                        Pexp_ident "ppf" (typing/envaux.ml[108,4397+14]..[108,4397+17])
+                    <arg>
+                    Nolabel
+                      expression (typing/envaux.ml[108,4397+18]..[108,4397+48])
+                        Pexp_constant PConst_string("@[Cannot find module %a@].@.",(typing/envaux.ml[108,4397+19]..[108,4397+47]),None)
+                    <arg>
+                    Nolabel
+                      expression (typing/envaux.ml[108,4397+49]..[108,4397+62])
+                        Pexp_ident "Printtyp.path" (typing/envaux.ml[108,4397+49]..[108,4397+62])
+                    <arg>
+                    Nolabel
+                      expression (typing/envaux.ml[108,4397+63]..[108,4397+64])
+                        Pexp_ident "p" (typing/envaux.ml[108,4397+63]..[108,4397+64])
+                  ]
+            ]
+    ]
+  structure_item (typing/envaux.ml[110,4463+0]..[115,4613+5])
+    Pstr_value Nonrec
+    [
+      <def>
+        pattern (typing/envaux.ml[110,4463+4]..[110,4463+6])
+          Ppat_construct "()" (typing/envaux.ml[110,4463+4]..[110,4463+6])
+          None
+        expression (typing/envaux.ml[111,4472+2]..[115,4613+5])
+          Pexp_apply
+          expression (typing/envaux.ml[111,4472+2]..[111,4472+32])
+            Pexp_ident "Location.register_error_of_exn" (typing/envaux.ml[111,4472+2]..[111,4472+32])
+          [
+            <arg>
+            Nolabel
+              expression (typing/envaux.ml[112,4505+4]..[115,4613+5])
+                Pexp_function
+                [
+                  <case>
+                    pattern (typing/envaux.ml[113,4519+8]..[113,4519+17])
+                      Ppat_construct "Error" (typing/envaux.ml[113,4519+8]..[113,4519+13])
+                      Some
+                        []
+                        pattern (typing/envaux.ml[113,4519+14]..[113,4519+17])
+                          Ppat_var "err" (typing/envaux.ml[113,4519+14]..[113,4519+17])
+                    expression (typing/envaux.ml[113,4519+21]..[113,4519+75])
+                      Pexp_construct "Some" (typing/envaux.ml[113,4519+21]..[113,4519+25])
+                      Some
+                        expression (typing/envaux.ml[113,4519+26]..[113,4519+75])
+                          Pexp_apply
+                          expression (typing/envaux.ml[113,4519+27]..[113,4519+57])
+                            Pexp_ident "Location.error_of_printer_file" (typing/envaux.ml[113,4519+27]..[113,4519+57])
+                          [
+                            <arg>
+                            Nolabel
+                              expression (typing/envaux.ml[113,4519+58]..[113,4519+70])
+                                Pexp_ident "report_error" (typing/envaux.ml[113,4519+58]..[113,4519+70])
+                            <arg>
+                            Nolabel
+                              expression (typing/envaux.ml[113,4519+71]..[113,4519+74])
+                                Pexp_ident "err" (typing/envaux.ml[113,4519+71]..[113,4519+74])
+                          ]
+                  <case>
+                    pattern (typing/envaux.ml[114,4595+8]..[114,4595+9])
+                      Ppat_any
+                    expression (typing/envaux.ml[114,4595+13]..[114,4595+17])
+                      Pexp_construct "None" (typing/envaux.ml[114,4595+13]..[114,4595+17])
+                      None
+                ]
+          ]
+    ]
+]
+

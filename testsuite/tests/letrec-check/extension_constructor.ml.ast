@@ -1,0 +1,90 @@
+[
+  structure_item (testsuite/tests/letrec-check/extension_constructor.ml[9,153+0]..[10,169+28])
+    Pstr_modtype "T" (testsuite/tests/letrec-check/extension_constructor.ml[9,153+12]..[9,153+13])
+      module_type (testsuite/tests/letrec-check/extension_constructor.ml[10,169+2]..[10,169+28])
+        Pmty_signature
+        [
+          signature_item (testsuite/tests/letrec-check/extension_constructor.ml[10,169+6]..[10,169+24])
+            Psig_exception
+            type_exception
+              ptyext_constructor =
+                extension_constructor (testsuite/tests/letrec-check/extension_constructor.ml[10,169+6]..[10,169+24])
+                  pext_name = "A"
+                  pext_kind =
+                    Pext_decl
+                      [
+                        core_type (testsuite/tests/letrec-check/extension_constructor.ml[10,169+21]..[10,169+24])
+                          Ptyp_constr "int" (testsuite/tests/letrec-check/extension_constructor.ml[10,169+21]..[10,169+24])
+                          []
+                      ]
+                      None
+        ]
+  structure_item (testsuite/tests/letrec-check/extension_constructor.ml[11,200+0]..[13,255+3])
+    Pstr_extension "expect"
+    [
+      structure_item (testsuite/tests/letrec-check/extension_constructor.ml[11,200+9]..[13,255+2])
+        Pstr_eval
+        expression (testsuite/tests/letrec-check/extension_constructor.ml[11,200+9]..[13,255+2])
+          Pexp_constant PConst_string ("\nmodule type T = sig exception A of int end\n",(testsuite/tests/letrec-check/extension_constructor.ml[11,200+11]..[13,255+0]),Some "")
+    ]
+  structure_item (testsuite/tests/letrec-check/extension_constructor.ml[15,262+0]..[19,334+46])
+    Pstr_value Rec
+    [
+      <def>
+        pattern (testsuite/tests/letrec-check/extension_constructor.ml[15,262+8]..[15,262+9])
+          Ppat_var "x" (testsuite/tests/letrec-check/extension_constructor.ml[15,262+8]..[15,262+9])
+        expression (testsuite/tests/letrec-check/extension_constructor.ml[16,274+2]..[17,302+8])
+          Pexp_letmodule "M" (testsuite/tests/letrec-check/extension_constructor.ml[16,274+13]..[16,274+14])
+          module_expr (testsuite/tests/letrec-check/extension_constructor.ml[16,274+17]..[16,274+24])
+            Pmod_unpack
+            expression (testsuite/tests/letrec-check/extension_constructor.ml[16,274+22]..[16,274+23])
+              Pexp_ident "m" (testsuite/tests/letrec-check/extension_constructor.ml[16,274+22]..[16,274+23])
+          expression (testsuite/tests/letrec-check/extension_constructor.ml[17,302+2]..[17,302+8])
+            Pexp_construct "M.A" (testsuite/tests/letrec-check/extension_constructor.ml[17,302+2]..[17,302+5])
+            Some
+              expression (testsuite/tests/letrec-check/extension_constructor.ml[17,302+6]..[17,302+8])
+                Pexp_constant PConst_int (42,None)
+      <def>
+        pattern (testsuite/tests/letrec-check/extension_constructor.ml[18,311+4]..[18,311+20])
+          Ppat_constraint
+          pattern (testsuite/tests/letrec-check/extension_constructor.ml[18,311+5]..[18,311+6])
+            Ppat_var "m" (testsuite/tests/letrec-check/extension_constructor.ml[18,311+5]..[18,311+6])
+          core_type (testsuite/tests/letrec-check/extension_constructor.ml[18,311+9]..[18,311+19])
+            Ptyp_package "T" (testsuite/tests/letrec-check/extension_constructor.ml[18,311+17]..[18,311+18])
+            []
+        expression (testsuite/tests/letrec-check/extension_constructor.ml[19,334+2]..[19,334+46])
+          Pexp_constraint
+          expression (testsuite/tests/letrec-check/extension_constructor.ml[19,334+2]..[19,334+46]) ghost
+            Pexp_pack
+            module_expr (testsuite/tests/letrec-check/extension_constructor.ml[19,334+11]..[19,334+40])
+              Pmod_structure
+              [
+                structure_item (testsuite/tests/letrec-check/extension_constructor.ml[19,334+18]..[19,334+36])
+                  Pstr_exception
+                  type_exception
+                    ptyext_constructor =
+                      extension_constructor (testsuite/tests/letrec-check/extension_constructor.ml[19,334+18]..[19,334+36])
+                        pext_name = "A"
+                        pext_kind =
+                          Pext_decl
+                            [
+                              core_type (testsuite/tests/letrec-check/extension_constructor.ml[19,334+33]..[19,334+36])
+                                Ptyp_constr "int" (testsuite/tests/letrec-check/extension_constructor.ml[19,334+33]..[19,334+36])
+                                []
+                            ]
+                            None
+              ]
+          core_type (testsuite/tests/letrec-check/extension_constructor.ml[19,334+44]..[19,334+45])
+            Ptyp_package "T" (testsuite/tests/letrec-check/extension_constructor.ml[19,334+44]..[19,334+45])
+            []
+    ]
+  structure_item (testsuite/tests/letrec-check/extension_constructor.ml[20,383+0]..[25,545+3])
+    Pstr_extension "expect"
+    [
+      structure_item (testsuite/tests/letrec-check/extension_constructor.ml[20,383+9]..[25,545+2])
+        Pstr_eval
+        expression (testsuite/tests/letrec-check/extension_constructor.ml[20,383+9]..[25,545+2])
+          Pexp_constant PConst_string ("\nLines 2-3, characters 2-8:\n2 | ..let module M = (val m) in\n3 |   M.A 42\nError: This kind of expression is not allowed as right-hand side of `let rec'\n",(testsuite/tests/letrec-check/extension_constructor.ml[20,383+11]..[25,545+0]),Some "")
+    ]
+]
+

@@ -1,0 +1,92 @@
+[
+  structure_item (testsuite/tests/typing-fstclassmod/aliases.ml[5,24+0]..[5,24+21])
+    Pstr_module
+    "M" (testsuite/tests/typing-fstclassmod/aliases.ml[5,24+7]..[5,24+8])
+      module_expr (testsuite/tests/typing-fstclassmod/aliases.ml[5,24+11]..[5,24+21])
+        Pmod_structure
+        []
+  structure_item (testsuite/tests/typing-fstclassmod/aliases.ml[7,47+0]..[11,96+3])
+    Pstr_modtype "S" (testsuite/tests/typing-fstclassmod/aliases.ml[7,47+12]..[7,47+13])
+      module_type (testsuite/tests/typing-fstclassmod/aliases.ml[7,47+16]..[11,96+3])
+        Pmty_signature
+        [
+          signature_item (testsuite/tests/typing-fstclassmod/aliases.ml[8,67+2]..[8,67+18])
+            Psig_module "Alias" (testsuite/tests/typing-fstclassmod/aliases.ml[8,67+9]..[8,67+14])
+            module_type (testsuite/tests/typing-fstclassmod/aliases.ml[8,67+17]..[8,67+18])
+              Pmty_alias "M" (testsuite/tests/typing-fstclassmod/aliases.ml[8,67+17]..[8,67+18])
+          signature_item (testsuite/tests/typing-fstclassmod/aliases.ml[10,87+2]..[10,87+8])
+            Psig_type Rec
+            [
+              type_declaration "t" (testsuite/tests/typing-fstclassmod/aliases.ml[10,87+7]..[10,87+8]) (testsuite/tests/typing-fstclassmod/aliases.ml[10,87+2]..[10,87+8])
+                ptype_params =
+                  []
+                ptype_cstrs =
+                  []
+                ptype_kind =
+                  Ptype_abstract
+                ptype_private = Public
+                ptype_manifest =
+                  None
+            ]
+        ]
+  structure_item (testsuite/tests/typing-fstclassmod/aliases.ml[13,101+0]..[13,101+35])
+    Pstr_modtype "T" (testsuite/tests/typing-fstclassmod/aliases.ml[13,101+12]..[13,101+13])
+      module_type (testsuite/tests/typing-fstclassmod/aliases.ml[13,101+16]..[13,101+35])
+        Pmty_with
+        module_type (testsuite/tests/typing-fstclassmod/aliases.ml[13,101+16]..[13,101+17])
+          Pmty_ident "S" (testsuite/tests/typing-fstclassmod/aliases.ml[13,101+16]..[13,101+17])
+        [
+          Pwith_type "t" (testsuite/tests/typing-fstclassmod/aliases.ml[13,101+28]..[13,101+29])
+            type_declaration "t" (testsuite/tests/typing-fstclassmod/aliases.ml[13,101+28]..[13,101+29]) (testsuite/tests/typing-fstclassmod/aliases.ml[13,101+23]..[13,101+35])
+              ptype_params =
+                []
+              ptype_cstrs =
+                []
+              ptype_kind =
+                Ptype_abstract
+              ptype_private = Public
+              ptype_manifest =
+                Some
+                  core_type (testsuite/tests/typing-fstclassmod/aliases.ml[13,101+32]..[13,101+35])
+                    Ptyp_constr "int" (testsuite/tests/typing-fstclassmod/aliases.ml[13,101+32]..[13,101+35])
+                    []
+        ]
+  structure_item (testsuite/tests/typing-fstclassmod/aliases.ml[15,138+0]..[15,138+58])
+    Pstr_value Nonrec
+    [
+      <def>
+        pattern (testsuite/tests/typing-fstclassmod/aliases.ml[15,138+4]..[15,138+5])
+          Ppat_var "h" (testsuite/tests/typing-fstclassmod/aliases.ml[15,138+4]..[15,138+5])
+        expression (testsuite/tests/typing-fstclassmod/aliases.ml[15,138+6]..[15,138+58]) ghost
+          Pexp_fun
+          Nolabel
+          None
+          pattern (testsuite/tests/typing-fstclassmod/aliases.ml[15,138+6]..[15,138+7])
+            Ppat_var "x" (testsuite/tests/typing-fstclassmod/aliases.ml[15,138+6]..[15,138+7])
+          expression (testsuite/tests/typing-fstclassmod/aliases.ml[15,138+10]..[15,138+58])
+            Pexp_coerce
+            expression (testsuite/tests/typing-fstclassmod/aliases.ml[15,138+11]..[15,138+12])
+              Pexp_ident "x" (testsuite/tests/typing-fstclassmod/aliases.ml[15,138+11]..[15,138+12])
+            Some
+              core_type (testsuite/tests/typing-fstclassmod/aliases.ml[15,138+15]..[15,138+43])
+                Ptyp_package "S" (testsuite/tests/typing-fstclassmod/aliases.ml[15,138+23]..[15,138+24])
+                [
+                  with type "t" (testsuite/tests/typing-fstclassmod/aliases.ml[15,138+35]..[15,138+36])
+                  core_type (testsuite/tests/typing-fstclassmod/aliases.ml[15,138+39]..[15,138+42])
+                    Ptyp_constr "int" (testsuite/tests/typing-fstclassmod/aliases.ml[15,138+39]..[15,138+42])
+                    []
+                ]
+            core_type (testsuite/tests/typing-fstclassmod/aliases.ml[15,138+47]..[15,138+57])
+              Ptyp_package "T" (testsuite/tests/typing-fstclassmod/aliases.ml[15,138+55]..[15,138+56])
+              []
+    ]
+  structure_item (testsuite/tests/typing-fstclassmod/aliases.ml[17,200+0]..[22,393+3])
+    Pstr_extension "expect"
+    [
+      structure_item (testsuite/tests/typing-fstclassmod/aliases.ml[17,200+10]..[22,393+2])
+        Pstr_eval
+        expression (testsuite/tests/typing-fstclassmod/aliases.ml[17,200+10]..[22,393+2])
+          Pexp_constant PConst_string ("\nmodule M : sig end\nmodule type S = sig module Alias = M type t end\nmodule type T = sig module Alias = M type t = int end\nval h : (module S with type t = int) -> (module T) = <fun>\n",(testsuite/tests/typing-fstclassmod/aliases.ml[17,200+12]..[22,393+0]),Some "")
+    ]
+]
+

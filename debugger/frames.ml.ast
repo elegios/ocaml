@@ -1,0 +1,1140 @@
+[
+  structure_item (debugger/frames.ml[19,1231+0]..[19,1231+13])
+    Pstr_open Fresh
+    module_expr (debugger/frames.ml[19,1231+5]..[19,1231+13])
+      Pmod_ident "Instruct" (debugger/frames.ml[19,1231+5]..[19,1231+13])
+  structure_item (debugger/frames.ml[20,1245+0]..[20,1245+13])
+    Pstr_open Fresh
+    module_expr (debugger/frames.ml[20,1245+5]..[20,1245+13])
+      Pmod_ident "Debugcom" (debugger/frames.ml[20,1245+5]..[20,1245+13])
+  structure_item (debugger/frames.ml[21,1259+0]..[21,1259+11])
+    Pstr_open Fresh
+    module_expr (debugger/frames.ml[21,1259+5]..[21,1259+11])
+      Pmod_ident "Events" (debugger/frames.ml[21,1259+5]..[21,1259+11])
+  structure_item (debugger/frames.ml[22,1271+0]..[22,1271+12])
+    Pstr_open Fresh
+    module_expr (debugger/frames.ml[22,1271+5]..[22,1271+12])
+      Pmod_ident "Symbols" (debugger/frames.ml[22,1271+5]..[22,1271+12])
+  structure_item (debugger/frames.ml[25,1312+0]..[25,1312+25])
+    Pstr_value Nonrec
+    [
+      <def>
+        pattern (debugger/frames.ml[25,1312+4]..[25,1312+17])
+          Ppat_var "current_frame" (debugger/frames.ml[25,1312+4]..[25,1312+17])
+        expression (debugger/frames.ml[25,1312+20]..[25,1312+25])
+          Pexp_apply
+          expression (debugger/frames.ml[25,1312+20]..[25,1312+23])
+            Pexp_ident "ref" (debugger/frames.ml[25,1312+20]..[25,1312+23])
+          [
+            <arg>
+            Nolabel
+              expression (debugger/frames.ml[25,1312+24]..[25,1312+25])
+                Pexp_constant PConst_int (0,None)
+          ]
+    ]
+  structure_item (debugger/frames.ml[28,1372+0]..[28,1372+51])
+    Pstr_value Nonrec
+    [
+      <def>
+        pattern (debugger/frames.ml[28,1372+4]..[28,1372+18])
+          Ppat_var "selected_event" (debugger/frames.ml[28,1372+4]..[28,1372+18])
+        expression (debugger/frames.ml[28,1372+21]..[28,1372+51])
+          Pexp_apply
+          expression (debugger/frames.ml[28,1372+21]..[28,1372+24])
+            Pexp_ident "ref" (debugger/frames.ml[28,1372+21]..[28,1372+24])
+          [
+            <arg>
+            Nolabel
+              expression (debugger/frames.ml[28,1372+25]..[28,1372+51])
+                Pexp_constraint
+                expression (debugger/frames.ml[28,1372+26]..[28,1372+30])
+                  Pexp_construct "None" (debugger/frames.ml[28,1372+26]..[28,1372+30])
+                  None
+                core_type (debugger/frames.ml[28,1372+33]..[28,1372+50])
+                  Ptyp_constr "option" (debugger/frames.ml[28,1372+44]..[28,1372+50])
+                  [
+                    core_type (debugger/frames.ml[28,1372+33]..[28,1372+43])
+                      Ptyp_constr "code_event" (debugger/frames.ml[28,1372+33]..[28,1372+43])
+                      []
+                  ]
+          ]
+    ]
+  structure_item (debugger/frames.ml[32,1504+0]..[39,1679+80])
+    Pstr_value Nonrec
+    [
+      <def>
+        pattern (debugger/frames.ml[32,1504+4]..[32,1504+18])
+          Ppat_var "selected_point" (debugger/frames.ml[32,1504+4]..[32,1504+18])
+        expression (debugger/frames.ml[32,1504+19]..[39,1679+80]) ghost
+          Pexp_fun
+          Nolabel
+          None
+          pattern (debugger/frames.ml[32,1504+19]..[32,1504+21])
+            Ppat_construct "()" (debugger/frames.ml[32,1504+19]..[32,1504+21])
+            None
+          expression (debugger/frames.ml[33,1528+2]..[39,1679+80])
+            Pexp_match
+            expression (debugger/frames.ml[33,1528+8]..[33,1528+23])
+              Pexp_apply
+              expression (debugger/frames.ml[33,1528+8]..[33,1528+9])
+                Pexp_ident "!" (debugger/frames.ml[33,1528+8]..[33,1528+9])
+              [
+                <arg>
+                Nolabel
+                  expression (debugger/frames.ml[33,1528+9]..[33,1528+23])
+                    Pexp_ident "selected_event" (debugger/frames.ml[33,1528+9]..[33,1528+23])
+              ]
+            [
+              <case>
+                pattern (debugger/frames.ml[34,1557+4]..[34,1557+8])
+                  Ppat_construct "None" (debugger/frames.ml[34,1557+4]..[34,1557+8])
+                  None
+                expression (debugger/frames.ml[35,1569+6]..[35,1569+21])
+                  Pexp_apply
+                  expression (debugger/frames.ml[35,1569+6]..[35,1569+11])
+                    Pexp_ident "raise" (debugger/frames.ml[35,1569+6]..[35,1569+11])
+                  [
+                    <arg>
+                    Nolabel
+                      expression (debugger/frames.ml[35,1569+12]..[35,1569+21])
+                        Pexp_construct "Not_found" (debugger/frames.ml[35,1569+12]..[35,1569+21])
+                        None
+                  ]
+              <case>
+                pattern (debugger/frames.ml[36,1591+4]..[36,1591+19])
+                  Ppat_construct "Some" (debugger/frames.ml[36,1591+4]..[36,1591+8])
+                  Some
+                    []
+                    pattern (debugger/frames.ml[36,1591+9]..[36,1591+19])
+                      Ppat_record Closed
+                      [
+                        "ev_ev" (debugger/frames.ml[36,1591+10]..[36,1591+15])
+                          pattern (debugger/frames.ml[36,1591+16]..[36,1591+18])
+                            Ppat_var "ev" (debugger/frames.ml[36,1591+16]..[36,1591+18])
+                      ]
+                expression (debugger/frames.ml[37,1614+6]..[39,1679+80])
+                  Pexp_tuple
+                  [
+                    expression (debugger/frames.ml[37,1614+7]..[37,1614+19])
+                      Pexp_field
+                      expression (debugger/frames.ml[37,1614+7]..[37,1614+9])
+                        Pexp_ident "ev" (debugger/frames.ml[37,1614+7]..[37,1614+9])
+                      "ev_module" (debugger/frames.ml[37,1614+10]..[37,1614+19])
+                    expression (debugger/frames.ml[38,1635+7]..[38,1635+42])
+                      Pexp_field
+                      expression (debugger/frames.ml[38,1635+7]..[38,1635+26])
+                        Pexp_apply
+                        expression (debugger/frames.ml[38,1635+8]..[38,1635+22])
+                          Pexp_ident "Events.get_pos" (debugger/frames.ml[38,1635+8]..[38,1635+22])
+                        [
+                          <arg>
+                          Nolabel
+                            expression (debugger/frames.ml[38,1635+23]..[38,1635+25])
+                              Pexp_ident "ev" (debugger/frames.ml[38,1635+23]..[38,1635+25])
+                        ]
+                      "Lexing.pos_lnum" (debugger/frames.ml[38,1635+27]..[38,1635+42])
+                    expression (debugger/frames.ml[39,1679+7]..[39,1679+79])
+                      Pexp_apply
+                      expression (debugger/frames.ml[39,1679+43]..[39,1679+44])
+                        Pexp_ident "-" (debugger/frames.ml[39,1679+43]..[39,1679+44])
+                      [
+                        <arg>
+                        Nolabel
+                          expression (debugger/frames.ml[39,1679+7]..[39,1679+42])
+                            Pexp_field
+                            expression (debugger/frames.ml[39,1679+7]..[39,1679+26])
+                              Pexp_apply
+                              expression (debugger/frames.ml[39,1679+8]..[39,1679+22])
+                                Pexp_ident "Events.get_pos" (debugger/frames.ml[39,1679+8]..[39,1679+22])
+                              [
+                                <arg>
+                                Nolabel
+                                  expression (debugger/frames.ml[39,1679+23]..[39,1679+25])
+                                    Pexp_ident "ev" (debugger/frames.ml[39,1679+23]..[39,1679+25])
+                              ]
+                            "Lexing.pos_cnum" (debugger/frames.ml[39,1679+27]..[39,1679+42])
+                        <arg>
+                        Nolabel
+                          expression (debugger/frames.ml[39,1679+45]..[39,1679+79])
+                            Pexp_field
+                            expression (debugger/frames.ml[39,1679+45]..[39,1679+64])
+                              Pexp_apply
+                              expression (debugger/frames.ml[39,1679+46]..[39,1679+60])
+                                Pexp_ident "Events.get_pos" (debugger/frames.ml[39,1679+46]..[39,1679+60])
+                              [
+                                <arg>
+                                Nolabel
+                                  expression (debugger/frames.ml[39,1679+61]..[39,1679+63])
+                                    Pexp_ident "ev" (debugger/frames.ml[39,1679+61]..[39,1679+63])
+                              ]
+                            "Lexing.pos_bol" (debugger/frames.ml[39,1679+65]..[39,1679+79])
+                      ]
+                  ]
+            ]
+    ]
+  structure_item (debugger/frames.ml[41,1761+0]..[48,1923+11])
+    Pstr_value Nonrec
+    [
+      <def>
+        pattern (debugger/frames.ml[41,1761+4]..[41,1761+28])
+          Ppat_var "selected_event_is_before" (debugger/frames.ml[41,1761+4]..[41,1761+28])
+        expression (debugger/frames.ml[41,1761+29]..[48,1923+11]) ghost
+          Pexp_fun
+          Nolabel
+          None
+          pattern (debugger/frames.ml[41,1761+29]..[41,1761+31])
+            Ppat_construct "()" (debugger/frames.ml[41,1761+29]..[41,1761+31])
+            None
+          expression (debugger/frames.ml[42,1795+2]..[48,1923+11])
+            Pexp_match
+            expression (debugger/frames.ml[42,1795+8]..[42,1795+23])
+              Pexp_apply
+              expression (debugger/frames.ml[42,1795+8]..[42,1795+9])
+                Pexp_ident "!" (debugger/frames.ml[42,1795+8]..[42,1795+9])
+              [
+                <arg>
+                Nolabel
+                  expression (debugger/frames.ml[42,1795+9]..[42,1795+23])
+                    Pexp_ident "selected_event" (debugger/frames.ml[42,1795+9]..[42,1795+23])
+              ]
+            [
+              <case>
+                pattern (debugger/frames.ml[43,1824+4]..[43,1824+8])
+                  Ppat_construct "None" (debugger/frames.ml[43,1824+4]..[43,1824+8])
+                  None
+                expression (debugger/frames.ml[44,1836+6]..[44,1836+21])
+                  Pexp_apply
+                  expression (debugger/frames.ml[44,1836+6]..[44,1836+11])
+                    Pexp_ident "raise" (debugger/frames.ml[44,1836+6]..[44,1836+11])
+                  [
+                    <arg>
+                    Nolabel
+                      expression (debugger/frames.ml[44,1836+12]..[44,1836+21])
+                        Pexp_construct "Not_found" (debugger/frames.ml[44,1836+12]..[44,1836+21])
+                        None
+                  ]
+              <case>
+                pattern (debugger/frames.ml[45,1858+4]..[45,1858+41])
+                  Ppat_construct "Some" (debugger/frames.ml[45,1858+4]..[45,1858+8])
+                  Some
+                    []
+                    pattern (debugger/frames.ml[45,1858+9]..[45,1858+41])
+                      Ppat_record Closed
+                      [
+                        "ev_ev" (debugger/frames.ml[45,1858+10]..[45,1858+15])
+                          pattern (debugger/frames.ml[45,1858+16]..[45,1858+40])
+                            Ppat_record Closed
+                            [
+                              "ev_kind" (debugger/frames.ml[45,1858+17]..[45,1858+24])
+                                pattern (debugger/frames.ml[45,1858+27]..[45,1858+39])
+                                  Ppat_construct "Event_before" (debugger/frames.ml[45,1858+27]..[45,1858+39])
+                                  None
+                            ]
+                      ]
+                expression (debugger/frames.ml[46,1903+6]..[46,1903+10])
+                  Pexp_construct "true" (debugger/frames.ml[46,1903+6]..[46,1903+10])
+                  None
+              <case>
+                pattern (debugger/frames.ml[47,1914+4]..[47,1914+5])
+                  Ppat_any
+                expression (debugger/frames.ml[48,1923+6]..[48,1923+11])
+                  Pexp_construct "false" (debugger/frames.ml[48,1923+6]..[48,1923+11])
+                  None
+            ]
+    ]
+  structure_item (debugger/frames.ml[53,2066+0]..[58,2289+5])
+    Pstr_value Rec
+    [
+      <def>
+        pattern (debugger/frames.ml[53,2066+8]..[53,2066+15])
+          Ppat_var "move_up" (debugger/frames.ml[53,2066+8]..[53,2066+15])
+        expression (debugger/frames.ml[53,2066+16]..[58,2289+5]) ghost
+          Pexp_fun
+          Nolabel
+          None
+          pattern (debugger/frames.ml[53,2066+16]..[53,2066+27])
+            Ppat_var "frame_count" (debugger/frames.ml[53,2066+16]..[53,2066+27])
+          expression (debugger/frames.ml[53,2066+28]..[58,2289+5]) ghost
+            Pexp_fun
+            Nolabel
+            None
+            pattern (debugger/frames.ml[53,2066+28]..[53,2066+33])
+              Ppat_var "event" (debugger/frames.ml[53,2066+28]..[53,2066+33])
+            expression (debugger/frames.ml[54,2102+2]..[58,2289+5])
+              Pexp_ifthenelse
+              expression (debugger/frames.ml[54,2102+5]..[54,2102+21])
+                Pexp_apply
+                expression (debugger/frames.ml[54,2102+17]..[54,2102+19])
+                  Pexp_ident "<=" (debugger/frames.ml[54,2102+17]..[54,2102+19])
+                [
+                  <arg>
+                  Nolabel
+                    expression (debugger/frames.ml[54,2102+5]..[54,2102+16])
+                      Pexp_ident "frame_count" (debugger/frames.ml[54,2102+5]..[54,2102+16])
+                  <arg>
+                  Nolabel
+                    expression (debugger/frames.ml[54,2102+20]..[54,2102+21])
+                      Pexp_constant PConst_int (0,None)
+                ]
+              expression (debugger/frames.ml[54,2102+27]..[54,2102+32])
+                Pexp_ident "event" (debugger/frames.ml[54,2102+27]..[54,2102+32])
+              Some
+                expression (debugger/frames.ml[54,2102+38]..[58,2289+5])
+                  Pexp_let Nonrec
+                  [
+                    <def>
+                      pattern (debugger/frames.ml[55,2146+8]..[55,2146+16])
+                        Ppat_tuple
+                        [
+                          pattern (debugger/frames.ml[55,2146+9]..[55,2146+11])
+                            Ppat_var "sp" (debugger/frames.ml[55,2146+9]..[55,2146+11])
+                          pattern (debugger/frames.ml[55,2146+13]..[55,2146+15])
+                            Ppat_var "pc" (debugger/frames.ml[55,2146+13]..[55,2146+15])
+                        ]
+                      expression (debugger/frames.ml[55,2146+19]..[55,2146+52])
+                        Pexp_apply
+                        expression (debugger/frames.ml[55,2146+19]..[55,2146+27])
+                          Pexp_ident "up_frame" (debugger/frames.ml[55,2146+19]..[55,2146+27])
+                        [
+                          <arg>
+                          Nolabel
+                            expression (debugger/frames.ml[55,2146+28]..[55,2146+52])
+                              Pexp_field
+                              expression (debugger/frames.ml[55,2146+28]..[55,2146+39])
+                                Pexp_field
+                                expression (debugger/frames.ml[55,2146+28]..[55,2146+33])
+                                  Pexp_ident "event" (debugger/frames.ml[55,2146+28]..[55,2146+33])
+                                "ev_ev" (debugger/frames.ml[55,2146+34]..[55,2146+39])
+                              "ev_stacksize" (debugger/frames.ml[55,2146+40]..[55,2146+52])
+                        ]
+                  ]
+                  expression (debugger/frames.ml[56,2202+4]..[57,2238+50])
+                    Pexp_sequence
+                    expression (debugger/frames.ml[56,2202+4]..[56,2202+34])
+                      Pexp_ifthenelse
+                      expression (debugger/frames.ml[56,2202+7]..[56,2202+13])
+                        Pexp_apply
+                        expression (debugger/frames.ml[56,2202+10]..[56,2202+11])
+                          Pexp_ident "<" (debugger/frames.ml[56,2202+10]..[56,2202+11])
+                        [
+                          <arg>
+                          Nolabel
+                            expression (debugger/frames.ml[56,2202+7]..[56,2202+9])
+                              Pexp_ident "sp" (debugger/frames.ml[56,2202+7]..[56,2202+9])
+                          <arg>
+                          Nolabel
+                            expression (debugger/frames.ml[56,2202+12]..[56,2202+13])
+                              Pexp_constant PConst_int (0,None)
+                        ]
+                      expression (debugger/frames.ml[56,2202+19]..[56,2202+34])
+                        Pexp_apply
+                        expression (debugger/frames.ml[56,2202+19]..[56,2202+24])
+                          Pexp_ident "raise" (debugger/frames.ml[56,2202+19]..[56,2202+24])
+                        [
+                          <arg>
+                          Nolabel
+                            expression (debugger/frames.ml[56,2202+25]..[56,2202+34])
+                              Pexp_construct "Not_found" (debugger/frames.ml[56,2202+25]..[56,2202+34])
+                              None
+                        ]
+                      None
+                    expression (debugger/frames.ml[57,2238+4]..[57,2238+50])
+                      Pexp_apply
+                      expression (debugger/frames.ml[57,2238+4]..[57,2238+11])
+                        Pexp_ident "move_up" (debugger/frames.ml[57,2238+4]..[57,2238+11])
+                      [
+                        <arg>
+                        Nolabel
+                          expression (debugger/frames.ml[57,2238+12]..[57,2238+29])
+                            Pexp_apply
+                            expression (debugger/frames.ml[57,2238+25]..[57,2238+26])
+                              Pexp_ident "-" (debugger/frames.ml[57,2238+25]..[57,2238+26])
+                            [
+                              <arg>
+                              Nolabel
+                                expression (debugger/frames.ml[57,2238+13]..[57,2238+24])
+                                  Pexp_ident "frame_count" (debugger/frames.ml[57,2238+13]..[57,2238+24])
+                              <arg>
+                              Nolabel
+                                expression (debugger/frames.ml[57,2238+27]..[57,2238+28])
+                                  Pexp_constant PConst_int (1,None)
+                            ]
+                        <arg>
+                        Nolabel
+                          expression (debugger/frames.ml[57,2238+30]..[57,2238+50])
+                            Pexp_apply
+                            expression (debugger/frames.ml[57,2238+31]..[57,2238+46])
+                              Pexp_ident "any_event_at_pc" (debugger/frames.ml[57,2238+31]..[57,2238+46])
+                            [
+                              <arg>
+                              Nolabel
+                                expression (debugger/frames.ml[57,2238+47]..[57,2238+49])
+                                  Pexp_ident "pc" (debugger/frames.ml[57,2238+47]..[57,2238+49])
+                            ]
+                      ]
+    ]
+  structure_item (debugger/frames.ml[63,2423+0]..[82,3084+19])
+    Pstr_value Nonrec
+    [
+      <def>
+        pattern (debugger/frames.ml[63,2423+4]..[63,2423+16])
+          Ppat_var "select_frame" (debugger/frames.ml[63,2423+4]..[63,2423+16])
+        expression (debugger/frames.ml[63,2423+17]..[82,3084+19]) ghost
+          Pexp_fun
+          Nolabel
+          None
+          pattern (debugger/frames.ml[63,2423+17]..[63,2423+29])
+            Ppat_var "frame_number" (debugger/frames.ml[63,2423+17]..[63,2423+29])
+          expression (debugger/frames.ml[64,2455+2]..[82,3084+19])
+            Pexp_sequence
+            expression (debugger/frames.ml[64,2455+2]..[64,2455+42])
+              Pexp_ifthenelse
+              expression (debugger/frames.ml[64,2455+5]..[64,2455+21])
+                Pexp_apply
+                expression (debugger/frames.ml[64,2455+18]..[64,2455+19])
+                  Pexp_ident "<" (debugger/frames.ml[64,2455+18]..[64,2455+19])
+                [
+                  <arg>
+                  Nolabel
+                    expression (debugger/frames.ml[64,2455+5]..[64,2455+17])
+                      Pexp_ident "frame_number" (debugger/frames.ml[64,2455+5]..[64,2455+17])
+                  <arg>
+                  Nolabel
+                    expression (debugger/frames.ml[64,2455+20]..[64,2455+21])
+                      Pexp_constant PConst_int (0,None)
+                ]
+              expression (debugger/frames.ml[64,2455+27]..[64,2455+42])
+                Pexp_apply
+                expression (debugger/frames.ml[64,2455+27]..[64,2455+32])
+                  Pexp_ident "raise" (debugger/frames.ml[64,2455+27]..[64,2455+32])
+                [
+                  <arg>
+                  Nolabel
+                    expression (debugger/frames.ml[64,2455+33]..[64,2455+42])
+                      Pexp_construct "Not_found" (debugger/frames.ml[64,2455+33]..[64,2455+42])
+                      None
+                ]
+              None
+            expression (debugger/frames.ml[65,2499+2]..[82,3084+19])
+              Pexp_let Nonrec
+              [
+                <def>
+                  pattern (debugger/frames.ml[65,2499+6]..[65,2499+21])
+                    Ppat_tuple
+                    [
+                      pattern (debugger/frames.ml[65,2499+7]..[65,2499+17])
+                        Ppat_var "initial_sp" (debugger/frames.ml[65,2499+7]..[65,2499+17])
+                      pattern (debugger/frames.ml[65,2499+19]..[65,2499+20])
+                        Ppat_any
+                    ]
+                  expression (debugger/frames.ml[65,2499+24]..[65,2499+35])
+                    Pexp_apply
+                    expression (debugger/frames.ml[65,2499+24]..[65,2499+33])
+                      Pexp_ident "get_frame" (debugger/frames.ml[65,2499+24]..[65,2499+33])
+                    [
+                      <arg>
+                      Nolabel
+                        expression (debugger/frames.ml[65,2499+33]..[65,2499+35])
+                          Pexp_construct "()" (debugger/frames.ml[65,2499+33]..[65,2499+35])
+                          None
+                    ]
+              ]
+              expression (debugger/frames.ml[66,2538+2]..[82,3084+19])
+                Pexp_try
+                expression (debugger/frames.ml[67,2544+4]..[79,2996+41])
+                  Pexp_match
+                  expression (debugger/frames.ml[67,2544+10]..[67,2544+24])
+                    Pexp_apply
+                    expression (debugger/frames.ml[67,2544+10]..[67,2544+11])
+                      Pexp_ident "!" (debugger/frames.ml[67,2544+10]..[67,2544+11])
+                    [
+                      <arg>
+                      Nolabel
+                        expression (debugger/frames.ml[67,2544+11]..[67,2544+24])
+                          Pexp_ident "current_event" (debugger/frames.ml[67,2544+11]..[67,2544+24])
+                    ]
+                  [
+                    <case>
+                      pattern (debugger/frames.ml[68,2574+6]..[68,2574+10])
+                        Ppat_construct "None" (debugger/frames.ml[68,2574+6]..[68,2574+10])
+                        None
+                      expression (debugger/frames.ml[69,2588+8]..[69,2588+23])
+                        Pexp_apply
+                        expression (debugger/frames.ml[69,2588+8]..[69,2588+13])
+                          Pexp_ident "raise" (debugger/frames.ml[69,2588+8]..[69,2588+13])
+                        [
+                          <arg>
+                          Nolabel
+                            expression (debugger/frames.ml[69,2588+14]..[69,2588+23])
+                              Pexp_construct "Not_found" (debugger/frames.ml[69,2588+14]..[69,2588+23])
+                              None
+                        ]
+                    <case>
+                      pattern (debugger/frames.ml[70,2612+6]..[70,2612+21])
+                        Ppat_construct "Some" (debugger/frames.ml[70,2612+6]..[70,2612+10])
+                        Some
+                          []
+                          pattern (debugger/frames.ml[70,2612+11]..[70,2612+21])
+                            Ppat_var "curr_event" (debugger/frames.ml[70,2612+11]..[70,2612+21])
+                      expression (debugger/frames.ml[71,2637+8]..[79,2996+41])
+                        Pexp_match
+                        expression (debugger/frames.ml[71,2637+14]..[71,2637+29])
+                          Pexp_apply
+                          expression (debugger/frames.ml[71,2637+14]..[71,2637+15])
+                            Pexp_ident "!" (debugger/frames.ml[71,2637+14]..[71,2637+15])
+                          [
+                            <arg>
+                            Nolabel
+                              expression (debugger/frames.ml[71,2637+15]..[71,2637+29])
+                                Pexp_ident "selected_event" (debugger/frames.ml[71,2637+15]..[71,2637+29])
+                          ]
+                        [
+                          <case>
+                            pattern (debugger/frames.ml[72,2672+10]..[72,2672+24])
+                              Ppat_construct "Some" (debugger/frames.ml[72,2672+10]..[72,2672+14])
+                              Some
+                                []
+                                pattern (debugger/frames.ml[72,2672+15]..[72,2672+24])
+                                  Ppat_var "sel_event" (debugger/frames.ml[72,2672+15]..[72,2672+24])
+                            <when>
+                              expression (debugger/frames.ml[72,2672+30]..[72,2672+60])
+                                Pexp_apply
+                                expression (debugger/frames.ml[72,2672+43]..[72,2672+45])
+                                  Pexp_ident ">=" (debugger/frames.ml[72,2672+43]..[72,2672+45])
+                                [
+                                  <arg>
+                                  Nolabel
+                                    expression (debugger/frames.ml[72,2672+30]..[72,2672+42])
+                                      Pexp_ident "frame_number" (debugger/frames.ml[72,2672+30]..[72,2672+42])
+                                  <arg>
+                                  Nolabel
+                                    expression (debugger/frames.ml[72,2672+46]..[72,2672+60])
+                                      Pexp_apply
+                                      expression (debugger/frames.ml[72,2672+46]..[72,2672+47])
+                                        Pexp_ident "!" (debugger/frames.ml[72,2672+46]..[72,2672+47])
+                                      [
+                                        <arg>
+                                        Nolabel
+                                          expression (debugger/frames.ml[72,2672+47]..[72,2672+60])
+                                            Pexp_ident "current_frame" (debugger/frames.ml[72,2672+47]..[72,2672+60])
+                                      ]
+                                ]
+                            expression (debugger/frames.ml[73,2736+12]..[75,2837+41])
+                              Pexp_sequence
+                              expression (debugger/frames.ml[73,2736+12]..[74,2766+69])
+                                Pexp_apply
+                                expression (debugger/frames.ml[73,2736+27]..[73,2736+29])
+                                  Pexp_ident ":=" (debugger/frames.ml[73,2736+27]..[73,2736+29])
+                                [
+                                  <arg>
+                                  Nolabel
+                                    expression (debugger/frames.ml[73,2736+12]..[73,2736+26])
+                                      Pexp_ident "selected_event" (debugger/frames.ml[73,2736+12]..[73,2736+26])
+                                  <arg>
+                                  Nolabel
+                                    expression (debugger/frames.ml[74,2766+14]..[74,2766+69])
+                                      Pexp_construct "Some" (debugger/frames.ml[74,2766+14]..[74,2766+18])
+                                      Some
+                                        expression (debugger/frames.ml[74,2766+18]..[74,2766+69])
+                                          Pexp_apply
+                                          expression (debugger/frames.ml[74,2766+19]..[74,2766+26])
+                                            Pexp_ident "move_up" (debugger/frames.ml[74,2766+19]..[74,2766+26])
+                                          [
+                                            <arg>
+                                            Nolabel
+                                              expression (debugger/frames.ml[74,2766+27]..[74,2766+58])
+                                                Pexp_apply
+                                                expression (debugger/frames.ml[74,2766+41]..[74,2766+42])
+                                                  Pexp_ident "-" (debugger/frames.ml[74,2766+41]..[74,2766+42])
+                                                [
+                                                  <arg>
+                                                  Nolabel
+                                                    expression (debugger/frames.ml[74,2766+28]..[74,2766+40])
+                                                      Pexp_ident "frame_number" (debugger/frames.ml[74,2766+28]..[74,2766+40])
+                                                  <arg>
+                                                  Nolabel
+                                                    expression (debugger/frames.ml[74,2766+43]..[74,2766+57])
+                                                      Pexp_apply
+                                                      expression (debugger/frames.ml[74,2766+43]..[74,2766+44])
+                                                        Pexp_ident "!" (debugger/frames.ml[74,2766+43]..[74,2766+44])
+                                                      [
+                                                        <arg>
+                                                        Nolabel
+                                                          expression (debugger/frames.ml[74,2766+44]..[74,2766+57])
+                                                            Pexp_ident "current_frame" (debugger/frames.ml[74,2766+44]..[74,2766+57])
+                                                      ]
+                                                ]
+                                            <arg>
+                                            Nolabel
+                                              expression (debugger/frames.ml[74,2766+59]..[74,2766+68])
+                                                Pexp_ident "sel_event" (debugger/frames.ml[74,2766+59]..[74,2766+68])
+                                          ]
+                                ]
+                              expression (debugger/frames.ml[75,2837+12]..[75,2837+41])
+                                Pexp_apply
+                                expression (debugger/frames.ml[75,2837+26]..[75,2837+28])
+                                  Pexp_ident ":=" (debugger/frames.ml[75,2837+26]..[75,2837+28])
+                                [
+                                  <arg>
+                                  Nolabel
+                                    expression (debugger/frames.ml[75,2837+12]..[75,2837+25])
+                                      Pexp_ident "current_frame" (debugger/frames.ml[75,2837+12]..[75,2837+25])
+                                  <arg>
+                                  Nolabel
+                                    expression (debugger/frames.ml[75,2837+29]..[75,2837+41])
+                                      Pexp_ident "frame_number" (debugger/frames.ml[75,2837+29]..[75,2837+41])
+                                ]
+                          <case>
+                            pattern (debugger/frames.ml[76,2879+10]..[76,2879+11])
+                              Ppat_any
+                            expression (debugger/frames.ml[77,2894+12]..[79,2996+41])
+                              Pexp_sequence
+                              expression (debugger/frames.ml[77,2894+12]..[77,2894+31])
+                                Pexp_apply
+                                expression (debugger/frames.ml[77,2894+12]..[77,2894+29])
+                                  Pexp_ident "set_initial_frame" (debugger/frames.ml[77,2894+12]..[77,2894+29])
+                                [
+                                  <arg>
+                                  Nolabel
+                                    expression (debugger/frames.ml[77,2894+29]..[77,2894+31])
+                                      Pexp_construct "()" (debugger/frames.ml[77,2894+29]..[77,2894+31])
+                                      None
+                                ]
+                              expression (debugger/frames.ml[78,2927+12]..[79,2996+41])
+                                Pexp_sequence
+                                expression (debugger/frames.ml[78,2927+12]..[78,2927+67])
+                                  Pexp_apply
+                                  expression (debugger/frames.ml[78,2927+27]..[78,2927+29])
+                                    Pexp_ident ":=" (debugger/frames.ml[78,2927+27]..[78,2927+29])
+                                  [
+                                    <arg>
+                                    Nolabel
+                                      expression (debugger/frames.ml[78,2927+12]..[78,2927+26])
+                                        Pexp_ident "selected_event" (debugger/frames.ml[78,2927+12]..[78,2927+26])
+                                    <arg>
+                                    Nolabel
+                                      expression (debugger/frames.ml[78,2927+30]..[78,2927+67])
+                                        Pexp_construct "Some" (debugger/frames.ml[78,2927+30]..[78,2927+34])
+                                        Some
+                                          expression (debugger/frames.ml[78,2927+34]..[78,2927+67])
+                                            Pexp_apply
+                                            expression (debugger/frames.ml[78,2927+35]..[78,2927+42])
+                                              Pexp_ident "move_up" (debugger/frames.ml[78,2927+35]..[78,2927+42])
+                                            [
+                                              <arg>
+                                              Nolabel
+                                                expression (debugger/frames.ml[78,2927+43]..[78,2927+55])
+                                                  Pexp_ident "frame_number" (debugger/frames.ml[78,2927+43]..[78,2927+55])
+                                              <arg>
+                                              Nolabel
+                                                expression (debugger/frames.ml[78,2927+56]..[78,2927+66])
+                                                  Pexp_ident "curr_event" (debugger/frames.ml[78,2927+56]..[78,2927+66])
+                                            ]
+                                  ]
+                                expression (debugger/frames.ml[79,2996+12]..[79,2996+41])
+                                  Pexp_apply
+                                  expression (debugger/frames.ml[79,2996+26]..[79,2996+28])
+                                    Pexp_ident ":=" (debugger/frames.ml[79,2996+26]..[79,2996+28])
+                                  [
+                                    <arg>
+                                    Nolabel
+                                      expression (debugger/frames.ml[79,2996+12]..[79,2996+25])
+                                        Pexp_ident "current_frame" (debugger/frames.ml[79,2996+12]..[79,2996+25])
+                                    <arg>
+                                    Nolabel
+                                      expression (debugger/frames.ml[79,2996+29]..[79,2996+41])
+                                        Pexp_ident "frame_number" (debugger/frames.ml[79,2996+29]..[79,2996+41])
+                                  ]
+                        ]
+                  ]
+                [
+                  <case>
+                    pattern (debugger/frames.ml[80,3038+7]..[80,3038+16])
+                      Ppat_construct "Not_found" (debugger/frames.ml[80,3038+7]..[80,3038+16])
+                      None
+                    expression (debugger/frames.ml[81,3058+4]..[82,3084+19])
+                      Pexp_sequence
+                      expression (debugger/frames.ml[81,3058+4]..[81,3058+24])
+                        Pexp_apply
+                        expression (debugger/frames.ml[81,3058+4]..[81,3058+13])
+                          Pexp_ident "set_frame" (debugger/frames.ml[81,3058+4]..[81,3058+13])
+                        [
+                          <arg>
+                          Nolabel
+                            expression (debugger/frames.ml[81,3058+14]..[81,3058+24])
+                              Pexp_ident "initial_sp" (debugger/frames.ml[81,3058+14]..[81,3058+24])
+                        ]
+                      expression (debugger/frames.ml[82,3084+4]..[82,3084+19])
+                        Pexp_apply
+                        expression (debugger/frames.ml[82,3084+4]..[82,3084+9])
+                          Pexp_ident "raise" (debugger/frames.ml[82,3084+4]..[82,3084+9])
+                        [
+                          <arg>
+                          Nolabel
+                            expression (debugger/frames.ml[82,3084+10]..[82,3084+19])
+                              Pexp_construct "Not_found" (debugger/frames.ml[82,3084+10]..[82,3084+19])
+                              None
+                        ]
+                ]
+    ]
+  structure_item (debugger/frames.ml[87,3270+0]..[92,3366+8])
+    Pstr_value Nonrec
+    [
+      <def>
+        pattern (debugger/frames.ml[87,3270+4]..[87,3270+20])
+          Ppat_var "try_select_frame" (debugger/frames.ml[87,3270+4]..[87,3270+20])
+        expression (debugger/frames.ml[87,3270+21]..[92,3366+8]) ghost
+          Pexp_fun
+          Nolabel
+          None
+          pattern (debugger/frames.ml[87,3270+21]..[87,3270+33])
+            Ppat_var "frame_number" (debugger/frames.ml[87,3270+21]..[87,3270+33])
+          expression (debugger/frames.ml[88,3306+2]..[92,3366+8])
+            Pexp_try
+            expression (debugger/frames.ml[89,3312+4]..[89,3312+29])
+              Pexp_apply
+              expression (debugger/frames.ml[89,3312+4]..[89,3312+16])
+                Pexp_ident "select_frame" (debugger/frames.ml[89,3312+4]..[89,3312+16])
+              [
+                <arg>
+                Nolabel
+                  expression (debugger/frames.ml[89,3312+17]..[89,3312+29])
+                    Pexp_ident "frame_number" (debugger/frames.ml[89,3312+17]..[89,3312+29])
+              ]
+            [
+              <case>
+                pattern (debugger/frames.ml[91,3349+4]..[91,3349+13])
+                  Ppat_construct "Not_found" (debugger/frames.ml[91,3349+4]..[91,3349+13])
+                  None
+                expression (debugger/frames.ml[92,3366+6]..[92,3366+8])
+                  Pexp_construct "()" (debugger/frames.ml[92,3366+6]..[92,3366+8])
+                  None
+            ]
+    ]
+  structure_item (debugger/frames.ml[95,3417+0]..[98,3497+20])
+    Pstr_value Nonrec
+    [
+      <def>
+        pattern (debugger/frames.ml[95,3417+4]..[95,3417+15])
+          Ppat_var "reset_frame" (debugger/frames.ml[95,3417+4]..[95,3417+15])
+        expression (debugger/frames.ml[95,3417+16]..[98,3497+20]) ghost
+          Pexp_fun
+          Nolabel
+          None
+          pattern (debugger/frames.ml[95,3417+16]..[95,3417+18])
+            Ppat_construct "()" (debugger/frames.ml[95,3417+16]..[95,3417+18])
+            None
+          expression (debugger/frames.ml[96,3438+2]..[98,3497+20])
+            Pexp_sequence
+            expression (debugger/frames.ml[96,3438+2]..[96,3438+21])
+              Pexp_apply
+              expression (debugger/frames.ml[96,3438+2]..[96,3438+19])
+                Pexp_ident "set_initial_frame" (debugger/frames.ml[96,3438+2]..[96,3438+19])
+              [
+                <arg>
+                Nolabel
+                  expression (debugger/frames.ml[96,3438+19]..[96,3438+21])
+                    Pexp_construct "()" (debugger/frames.ml[96,3438+19]..[96,3438+21])
+                    None
+              ]
+            expression (debugger/frames.ml[97,3461+2]..[98,3497+20])
+              Pexp_sequence
+              expression (debugger/frames.ml[97,3461+2]..[97,3461+34])
+                Pexp_apply
+                expression (debugger/frames.ml[97,3461+17]..[97,3461+19])
+                  Pexp_ident ":=" (debugger/frames.ml[97,3461+17]..[97,3461+19])
+                [
+                  <arg>
+                  Nolabel
+                    expression (debugger/frames.ml[97,3461+2]..[97,3461+16])
+                      Pexp_ident "selected_event" (debugger/frames.ml[97,3461+2]..[97,3461+16])
+                  <arg>
+                  Nolabel
+                    expression (debugger/frames.ml[97,3461+20]..[97,3461+34])
+                      Pexp_apply
+                      expression (debugger/frames.ml[97,3461+20]..[97,3461+21])
+                        Pexp_ident "!" (debugger/frames.ml[97,3461+20]..[97,3461+21])
+                      [
+                        <arg>
+                        Nolabel
+                          expression (debugger/frames.ml[97,3461+21]..[97,3461+34])
+                            Pexp_ident "current_event" (debugger/frames.ml[97,3461+21]..[97,3461+34])
+                      ]
+                ]
+              expression (debugger/frames.ml[98,3497+2]..[98,3497+20])
+                Pexp_apply
+                expression (debugger/frames.ml[98,3497+16]..[98,3497+18])
+                  Pexp_ident ":=" (debugger/frames.ml[98,3497+16]..[98,3497+18])
+                [
+                  <arg>
+                  Nolabel
+                    expression (debugger/frames.ml[98,3497+2]..[98,3497+15])
+                      Pexp_ident "current_frame" (debugger/frames.ml[98,3497+2]..[98,3497+15])
+                  <arg>
+                  Nolabel
+                    expression (debugger/frames.ml[98,3497+19]..[98,3497+20])
+                      Pexp_constant PConst_int (0,None)
+                ]
+    ]
+  structure_item (debugger/frames.ml[106,3807+0]..[122,4308+26])
+    Pstr_value Nonrec
+    [
+      <def>
+        pattern (debugger/frames.ml[106,3807+4]..[106,3807+16])
+          Ppat_var "do_backtrace" (debugger/frames.ml[106,3807+4]..[106,3807+16])
+        expression (debugger/frames.ml[106,3807+17]..[122,4308+26]) ghost
+          Pexp_fun
+          Nolabel
+          None
+          pattern (debugger/frames.ml[106,3807+17]..[106,3807+23])
+            Ppat_var "action" (debugger/frames.ml[106,3807+17]..[106,3807+23])
+          expression (debugger/frames.ml[107,3833+2]..[122,4308+26])
+            Pexp_match
+            expression (debugger/frames.ml[107,3833+8]..[107,3833+22])
+              Pexp_apply
+              expression (debugger/frames.ml[107,3833+8]..[107,3833+9])
+                Pexp_ident "!" (debugger/frames.ml[107,3833+8]..[107,3833+9])
+              [
+                <arg>
+                Nolabel
+                  expression (debugger/frames.ml[107,3833+9]..[107,3833+22])
+                    Pexp_ident "current_event" (debugger/frames.ml[107,3833+9]..[107,3833+22])
+              ]
+            [
+              <case>
+                pattern (debugger/frames.ml[108,3861+4]..[108,3861+8])
+                  Ppat_construct "None" (debugger/frames.ml[108,3861+4]..[108,3861+8])
+                  None
+                expression (debugger/frames.ml[108,3861+12]..[108,3861+50])
+                  Pexp_apply
+                  expression (debugger/frames.ml[108,3861+12]..[108,3861+28])
+                    Pexp_ident "Misc.fatal_error" (debugger/frames.ml[108,3861+12]..[108,3861+28])
+                  [
+                    <arg>
+                    Nolabel
+                      expression (debugger/frames.ml[108,3861+29]..[108,3861+50])
+                        Pexp_constant PConst_string("Frames.do_backtrace",(debugger/frames.ml[108,3861+30]..[108,3861+49]),None)
+                  ]
+              <case>
+                pattern (debugger/frames.ml[109,3912+4]..[109,3912+11])
+                  Ppat_construct "Some" (debugger/frames.ml[109,3912+4]..[109,3912+8])
+                  Some
+                    []
+                    pattern (debugger/frames.ml[109,3912+9]..[109,3912+11])
+                      Ppat_var "ev" (debugger/frames.ml[109,3912+9]..[109,3912+11])
+                expression (debugger/frames.ml[110,3927+6]..[122,4308+26])
+                  Pexp_let Nonrec
+                  [
+                    <def>
+                      pattern (debugger/frames.ml[110,3927+10]..[110,3927+25])
+                        Ppat_tuple
+                        [
+                          pattern (debugger/frames.ml[110,3927+11]..[110,3927+21])
+                            Ppat_var "initial_sp" (debugger/frames.ml[110,3927+11]..[110,3927+21])
+                          pattern (debugger/frames.ml[110,3927+23]..[110,3927+24])
+                            Ppat_any
+                        ]
+                      expression (debugger/frames.ml[110,3927+28]..[110,3927+39])
+                        Pexp_apply
+                        expression (debugger/frames.ml[110,3927+28]..[110,3927+37])
+                          Pexp_ident "get_frame" (debugger/frames.ml[110,3927+28]..[110,3927+37])
+                        [
+                          <arg>
+                          Nolabel
+                            expression (debugger/frames.ml[110,3927+37]..[110,3927+39])
+                              Pexp_construct "()" (debugger/frames.ml[110,3927+37]..[110,3927+39])
+                              None
+                        ]
+                  ]
+                  expression (debugger/frames.ml[111,3970+6]..[122,4308+26])
+                    Pexp_sequence
+                    expression (debugger/frames.ml[111,3970+6]..[111,3970+25])
+                      Pexp_apply
+                      expression (debugger/frames.ml[111,3970+6]..[111,3970+23])
+                        Pexp_ident "set_initial_frame" (debugger/frames.ml[111,3970+6]..[111,3970+23])
+                      [
+                        <arg>
+                        Nolabel
+                          expression (debugger/frames.ml[111,3970+23]..[111,3970+25])
+                            Pexp_construct "()" (debugger/frames.ml[111,3970+23]..[111,3970+25])
+                            None
+                      ]
+                    expression (debugger/frames.ml[112,3997+6]..[122,4308+26])
+                      Pexp_let Nonrec
+                      [
+                        <def>
+                          pattern (debugger/frames.ml[112,3997+10]..[112,3997+15])
+                            Ppat_var "event" (debugger/frames.ml[112,3997+10]..[112,3997+15])
+                          expression (debugger/frames.ml[112,3997+18]..[112,3997+24])
+                            Pexp_apply
+                            expression (debugger/frames.ml[112,3997+18]..[112,3997+21])
+                              Pexp_ident "ref" (debugger/frames.ml[112,3997+18]..[112,3997+21])
+                            [
+                              <arg>
+                              Nolabel
+                                expression (debugger/frames.ml[112,3997+22]..[112,3997+24])
+                                  Pexp_ident "ev" (debugger/frames.ml[112,3997+22]..[112,3997+24])
+                            ]
+                      ]
+                      expression (debugger/frames.ml[113,4025+6]..[122,4308+26])
+                        Pexp_sequence
+                        expression (debugger/frames.ml[113,4025+6]..[121,4297+9])
+                          Pexp_try
+                          expression (debugger/frames.ml[114,4041+8]..[118,4217+12])
+                            Pexp_while
+                            expression (debugger/frames.ml[114,4041+14]..[114,4041+34])
+                              Pexp_apply
+                              expression (debugger/frames.ml[114,4041+14]..[114,4041+20])
+                                Pexp_ident "action" (debugger/frames.ml[114,4041+14]..[114,4041+20])
+                              [
+                                <arg>
+                                Nolabel
+                                  expression (debugger/frames.ml[114,4041+21]..[114,4041+34])
+                                    Pexp_construct "Some" (debugger/frames.ml[114,4041+22]..[114,4041+26])
+                                    Some
+                                      expression (debugger/frames.ml[114,4041+27]..[114,4041+33])
+                                        Pexp_apply
+                                        expression (debugger/frames.ml[114,4041+27]..[114,4041+28])
+                                          Pexp_ident "!" (debugger/frames.ml[114,4041+27]..[114,4041+28])
+                                        [
+                                          <arg>
+                                          Nolabel
+                                            expression (debugger/frames.ml[114,4041+28]..[114,4041+33])
+                                              Pexp_ident "event" (debugger/frames.ml[114,4041+28]..[114,4041+33])
+                                        ]
+                              ]
+                            expression (debugger/frames.ml[115,4079+10]..[117,4179+37])
+                              Pexp_let Nonrec
+                              [
+                                <def>
+                                  pattern (debugger/frames.ml[115,4079+14]..[115,4079+22])
+                                    Ppat_tuple
+                                    [
+                                      pattern (debugger/frames.ml[115,4079+15]..[115,4079+17])
+                                        Ppat_var "sp" (debugger/frames.ml[115,4079+15]..[115,4079+17])
+                                      pattern (debugger/frames.ml[115,4079+19]..[115,4079+21])
+                                        Ppat_var "pc" (debugger/frames.ml[115,4079+19]..[115,4079+21])
+                                    ]
+                                  expression (debugger/frames.ml[115,4079+25]..[115,4079+59])
+                                    Pexp_apply
+                                    expression (debugger/frames.ml[115,4079+25]..[115,4079+33])
+                                      Pexp_ident "up_frame" (debugger/frames.ml[115,4079+25]..[115,4079+33])
+                                    [
+                                      <arg>
+                                      Nolabel
+                                        expression (debugger/frames.ml[115,4079+34]..[115,4079+59])
+                                          Pexp_field
+                                          expression (debugger/frames.ml[115,4079+34]..[115,4079+46])
+                                            Pexp_field
+                                            expression (debugger/frames.ml[115,4079+34]..[115,4079+40])
+                                              Pexp_apply
+                                              expression (debugger/frames.ml[115,4079+34]..[115,4079+35])
+                                                Pexp_ident "!" (debugger/frames.ml[115,4079+34]..[115,4079+35])
+                                              [
+                                                <arg>
+                                                Nolabel
+                                                  expression (debugger/frames.ml[115,4079+35]..[115,4079+40])
+                                                    Pexp_ident "event" (debugger/frames.ml[115,4079+35]..[115,4079+40])
+                                              ]
+                                            "ev_ev" (debugger/frames.ml[115,4079+41]..[115,4079+46])
+                                          "ev_stacksize" (debugger/frames.ml[115,4079+47]..[115,4079+59])
+                                    ]
+                              ]
+                              expression (debugger/frames.ml[116,4142+10]..[117,4179+37])
+                                Pexp_sequence
+                                expression (debugger/frames.ml[116,4142+10]..[116,4142+35])
+                                  Pexp_ifthenelse
+                                  expression (debugger/frames.ml[116,4142+13]..[116,4142+19])
+                                    Pexp_apply
+                                    expression (debugger/frames.ml[116,4142+16]..[116,4142+17])
+                                      Pexp_ident "<" (debugger/frames.ml[116,4142+16]..[116,4142+17])
+                                    [
+                                      <arg>
+                                      Nolabel
+                                        expression (debugger/frames.ml[116,4142+13]..[116,4142+15])
+                                          Pexp_ident "sp" (debugger/frames.ml[116,4142+13]..[116,4142+15])
+                                      <arg>
+                                      Nolabel
+                                        expression (debugger/frames.ml[116,4142+18]..[116,4142+19])
+                                          Pexp_constant PConst_int (0,None)
+                                    ]
+                                  expression (debugger/frames.ml[116,4142+25]..[116,4142+35])
+                                    Pexp_apply
+                                    expression (debugger/frames.ml[116,4142+25]..[116,4142+30])
+                                      Pexp_ident "raise" (debugger/frames.ml[116,4142+25]..[116,4142+30])
+                                    [
+                                      <arg>
+                                      Nolabel
+                                        expression (debugger/frames.ml[116,4142+31]..[116,4142+35])
+                                          Pexp_construct "Exit" (debugger/frames.ml[116,4142+31]..[116,4142+35])
+                                          None
+                                    ]
+                                  None
+                                expression (debugger/frames.ml[117,4179+10]..[117,4179+37])
+                                  Pexp_apply
+                                  expression (debugger/frames.ml[117,4179+16]..[117,4179+18])
+                                    Pexp_ident ":=" (debugger/frames.ml[117,4179+16]..[117,4179+18])
+                                  [
+                                    <arg>
+                                    Nolabel
+                                      expression (debugger/frames.ml[117,4179+10]..[117,4179+15])
+                                        Pexp_ident "event" (debugger/frames.ml[117,4179+10]..[117,4179+15])
+                                    <arg>
+                                    Nolabel
+                                      expression (debugger/frames.ml[117,4179+19]..[117,4179+37])
+                                        Pexp_apply
+                                        expression (debugger/frames.ml[117,4179+19]..[117,4179+34])
+                                          Pexp_ident "any_event_at_pc" (debugger/frames.ml[117,4179+19]..[117,4179+34])
+                                        [
+                                          <arg>
+                                          Nolabel
+                                            expression (debugger/frames.ml[117,4179+35]..[117,4179+37])
+                                              Pexp_ident "pc" (debugger/frames.ml[117,4179+35]..[117,4179+37])
+                                        ]
+                                  ]
+                          [
+                            <case>
+                              pattern (debugger/frames.ml[119,4230+11]..[119,4230+15])
+                                Ppat_construct "Exit" (debugger/frames.ml[119,4230+11]..[119,4230+15])
+                                None
+                              expression (debugger/frames.ml[119,4230+19]..[119,4230+21])
+                                Pexp_construct "()" (debugger/frames.ml[119,4230+19]..[119,4230+21])
+                                None
+                            <case>
+                              pattern (debugger/frames.ml[120,4252+11]..[120,4252+20])
+                                Ppat_construct "Not_found" (debugger/frames.ml[120,4252+11]..[120,4252+20])
+                                None
+                              expression (debugger/frames.ml[120,4252+24]..[120,4252+44])
+                                Pexp_apply
+                                expression (debugger/frames.ml[120,4252+24]..[120,4252+30])
+                                  Pexp_ident "ignore" (debugger/frames.ml[120,4252+24]..[120,4252+30])
+                                [
+                                  <arg>
+                                  Nolabel
+                                    expression (debugger/frames.ml[120,4252+31]..[120,4252+44])
+                                      Pexp_apply
+                                      expression (debugger/frames.ml[120,4252+32]..[120,4252+38])
+                                        Pexp_ident "action" (debugger/frames.ml[120,4252+32]..[120,4252+38])
+                                      [
+                                        <arg>
+                                        Nolabel
+                                          expression (debugger/frames.ml[120,4252+39]..[120,4252+43])
+                                            Pexp_construct "None" (debugger/frames.ml[120,4252+39]..[120,4252+43])
+                                            None
+                                      ]
+                                ]
+                          ]
+                        expression (debugger/frames.ml[122,4308+6]..[122,4308+26])
+                          Pexp_apply
+                          expression (debugger/frames.ml[122,4308+6]..[122,4308+15])
+                            Pexp_ident "set_frame" (debugger/frames.ml[122,4308+6]..[122,4308+15])
+                          [
+                            <arg>
+                            Nolabel
+                              expression (debugger/frames.ml[122,4308+16]..[122,4308+26])
+                                Pexp_ident "initial_sp" (debugger/frames.ml[122,4308+16]..[122,4308+26])
+                          ]
+            ]
+    ]
+  structure_item (debugger/frames.ml[126,4384+0]..[130,4551+13])
+    Pstr_value Nonrec
+    [
+      <def>
+        pattern (debugger/frames.ml[126,4384+4]..[126,4384+15])
+          Ppat_var "stack_depth" (debugger/frames.ml[126,4384+4]..[126,4384+15])
+        expression (debugger/frames.ml[126,4384+16]..[130,4551+13]) ghost
+          Pexp_fun
+          Nolabel
+          None
+          pattern (debugger/frames.ml[126,4384+16]..[126,4384+18])
+            Ppat_construct "()" (debugger/frames.ml[126,4384+16]..[126,4384+18])
+            None
+          expression (debugger/frames.ml[127,4405+2]..[130,4551+13])
+            Pexp_let Nonrec
+            [
+              <def>
+                pattern (debugger/frames.ml[127,4405+6]..[127,4405+16])
+                  Ppat_var "num_frames" (debugger/frames.ml[127,4405+6]..[127,4405+16])
+                expression (debugger/frames.ml[127,4405+19]..[127,4405+24])
+                  Pexp_apply
+                  expression (debugger/frames.ml[127,4405+19]..[127,4405+22])
+                    Pexp_ident "ref" (debugger/frames.ml[127,4405+19]..[127,4405+22])
+                  [
+                    <arg>
+                    Nolabel
+                      expression (debugger/frames.ml[127,4405+23]..[127,4405+24])
+                        Pexp_constant PConst_int (0,None)
+                  ]
+            ]
+            expression (debugger/frames.ml[128,4433+2]..[130,4551+13])
+              Pexp_sequence
+              expression (debugger/frames.ml[128,4433+2]..[129,4492+57])
+                Pexp_apply
+                expression (debugger/frames.ml[128,4433+2]..[128,4433+14])
+                  Pexp_ident "do_backtrace" (debugger/frames.ml[128,4433+2]..[128,4433+14])
+                [
+                  <arg>
+                  Nolabel
+                    expression (debugger/frames.ml[128,4433+15]..[129,4492+57])
+                      Pexp_function
+                      [
+                        <case>
+                          pattern (debugger/frames.ml[128,4433+25]..[128,4433+33])
+                            Ppat_construct "Some" (debugger/frames.ml[128,4433+25]..[128,4433+29])
+                            Some
+                              []
+                              pattern (debugger/frames.ml[128,4433+30]..[128,4433+33])
+                                Ppat_var "_ev" (debugger/frames.ml[128,4433+30]..[128,4433+33])
+                          expression (debugger/frames.ml[128,4433+37]..[128,4433+58])
+                            Pexp_sequence
+                            expression (debugger/frames.ml[128,4433+37]..[128,4433+52])
+                              Pexp_apply
+                              expression (debugger/frames.ml[128,4433+37]..[128,4433+41])
+                                Pexp_ident "incr" (debugger/frames.ml[128,4433+37]..[128,4433+41])
+                              [
+                                <arg>
+                                Nolabel
+                                  expression (debugger/frames.ml[128,4433+42]..[128,4433+52])
+                                    Pexp_ident "num_frames" (debugger/frames.ml[128,4433+42]..[128,4433+52])
+                              ]
+                            expression (debugger/frames.ml[128,4433+54]..[128,4433+58])
+                              Pexp_construct "true" (debugger/frames.ml[128,4433+54]..[128,4433+58])
+                              None
+                        <case>
+                          pattern (debugger/frames.ml[129,4492+25]..[129,4492+29])
+                            Ppat_construct "None" (debugger/frames.ml[129,4492+25]..[129,4492+29])
+                            None
+                          expression (debugger/frames.ml[129,4492+33]..[129,4492+56])
+                            Pexp_sequence
+                            expression (debugger/frames.ml[129,4492+33]..[129,4492+49])
+                              Pexp_apply
+                              expression (debugger/frames.ml[129,4492+44]..[129,4492+46])
+                                Pexp_ident ":=" (debugger/frames.ml[129,4492+44]..[129,4492+46])
+                              [
+                                <arg>
+                                Nolabel
+                                  expression (debugger/frames.ml[129,4492+33]..[129,4492+43])
+                                    Pexp_ident "num_frames" (debugger/frames.ml[129,4492+33]..[129,4492+43])
+                                <arg>
+                                Nolabel
+                                  expression (debugger/frames.ml[129,4492+47]..[129,4492+49])
+                                    Pexp_constant PConst_int (-1,None)
+                              ]
+                            expression (debugger/frames.ml[129,4492+51]..[129,4492+56])
+                              Pexp_construct "false" (debugger/frames.ml[129,4492+51]..[129,4492+56])
+                              None
+                      ]
+                ]
+              expression (debugger/frames.ml[130,4551+2]..[130,4551+13])
+                Pexp_apply
+                expression (debugger/frames.ml[130,4551+2]..[130,4551+3])
+                  Pexp_ident "!" (debugger/frames.ml[130,4551+2]..[130,4551+3])
+                [
+                  <arg>
+                  Nolabel
+                    expression (debugger/frames.ml[130,4551+3]..[130,4551+13])
+                      Pexp_ident "num_frames" (debugger/frames.ml[130,4551+3]..[130,4551+13])
+                ]
+    ]
+]
+

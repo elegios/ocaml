@@ -1,0 +1,1866 @@
+[
+  signature_item (stdlib/arrayLabels.mli[24,1290+0]..[28,1409+2])
+    Psig_attribute "ocaml.text"
+    [
+      structure_item (stdlib/arrayLabels.mli[24,1290+0]..[28,1409+2])
+        Pstr_eval
+        expression (stdlib/arrayLabels.mli[24,1290+0]..[28,1409+2])
+          Pexp_constant PConst_string(" Array operations.\n\n    The labeled version of this module can be used as described in the\n    {!StdLabels} module.\n",(stdlib/arrayLabels.mli[24,1290+0]..[28,1409+2]),None)
+    ]
+  signature_item (stdlib/arrayLabels.mli[30,1413+0]..[30,1413+20])
+    Psig_type Rec
+    [
+      type_declaration "t" (stdlib/arrayLabels.mli[30,1413+8]..[30,1413+9]) (stdlib/arrayLabels.mli[30,1413+0]..[30,1413+20])
+        attribute "ocaml.doc"
+          [
+            structure_item (stdlib/arrayLabels.mli[31,1434+0]..[31,1434+39])
+              Pstr_eval
+              expression (stdlib/arrayLabels.mli[31,1434+0]..[31,1434+39])
+                Pexp_constant PConst_string(" An alias for the type of arrays. ",(stdlib/arrayLabels.mli[31,1434+0]..[31,1434+39]),None)
+          ]
+        ptype_params =
+          [
+            core_type (stdlib/arrayLabels.mli[30,1413+5]..[30,1413+7])
+              Ptyp_var a
+          ]
+        ptype_cstrs =
+          []
+        ptype_kind =
+          Ptype_abstract
+        ptype_private = Public
+        ptype_manifest =
+          Some
+            core_type (stdlib/arrayLabels.mli[30,1413+12]..[30,1413+20])
+              Ptyp_constr "array" (stdlib/arrayLabels.mli[30,1413+15]..[30,1413+20])
+              [
+                core_type (stdlib/arrayLabels.mli[30,1413+12]..[30,1413+14])
+                  Ptyp_var a
+              ]
+    ]
+  signature_item (stdlib/arrayLabels.mli[33,1475+0]..[33,1475+51])
+    Psig_value
+    value_description "length" (stdlib/arrayLabels.mli[33,1475+9]..[33,1475+15]) (stdlib/arrayLabels.mli[33,1475+0]..[33,1475+51])
+      attribute "ocaml.doc"
+        [
+          structure_item (stdlib/arrayLabels.mli[34,1527+0]..[34,1527+65])
+            Pstr_eval
+            expression (stdlib/arrayLabels.mli[34,1527+0]..[34,1527+65])
+              Pexp_constant PConst_string(" Return the length (number of elements) of the given array. ",(stdlib/arrayLabels.mli[34,1527+0]..[34,1527+65]),None)
+        ]
+      core_type (stdlib/arrayLabels.mli[33,1475+18]..[33,1475+33])
+        Ptyp_arrow
+        Nolabel
+        core_type (stdlib/arrayLabels.mli[33,1475+18]..[33,1475+26])
+          Ptyp_constr "array" (stdlib/arrayLabels.mli[33,1475+21]..[33,1475+26])
+          [
+            core_type (stdlib/arrayLabels.mli[33,1475+18]..[33,1475+20])
+              Ptyp_var a
+          ]
+        core_type (stdlib/arrayLabels.mli[33,1475+30]..[33,1475+33])
+          Ptyp_constr "int" (stdlib/arrayLabels.mli[33,1475+30]..[33,1475+33])
+          []
+      [
+        "%array_length"
+      ]
+  signature_item (stdlib/arrayLabels.mli[36,1594+0]..[36,1594+56])
+    Psig_value
+    value_description "get" (stdlib/arrayLabels.mli[36,1594+9]..[36,1594+12]) (stdlib/arrayLabels.mli[36,1594+0]..[36,1594+56])
+      attribute "ocaml.doc"
+        [
+          structure_item (stdlib/arrayLabels.mli[37,1651+0]..[43,1872+56])
+            Pstr_eval
+            expression (stdlib/arrayLabels.mli[37,1651+0]..[43,1872+56])
+              Pexp_constant PConst_string(" [get a n] returns the element number [n] of array [a].\n   The first element has number 0.\n   The last element has number [length a - 1].\n   You can also write [a.(n)] instead of [get a n].\n\n   @raise Invalid_argument\n   if [n] is outside the range 0 to [(length a - 1)]. ",(stdlib/arrayLabels.mli[37,1651+0]..[43,1872+56]),None)
+        ]
+      core_type (stdlib/arrayLabels.mli[36,1594+15]..[36,1594+36])
+        Ptyp_arrow
+        Nolabel
+        core_type (stdlib/arrayLabels.mli[36,1594+15]..[36,1594+23])
+          Ptyp_constr "array" (stdlib/arrayLabels.mli[36,1594+18]..[36,1594+23])
+          [
+            core_type (stdlib/arrayLabels.mli[36,1594+15]..[36,1594+17])
+              Ptyp_var a
+          ]
+        core_type (stdlib/arrayLabels.mli[36,1594+27]..[36,1594+36])
+          Ptyp_arrow
+          Nolabel
+          core_type (stdlib/arrayLabels.mli[36,1594+27]..[36,1594+30])
+            Ptyp_constr "int" (stdlib/arrayLabels.mli[36,1594+27]..[36,1594+30])
+            []
+          core_type (stdlib/arrayLabels.mli[36,1594+34]..[36,1594+36])
+            Ptyp_var a
+      [
+        "%array_safe_get"
+      ]
+  signature_item (stdlib/arrayLabels.mli[45,1930+0]..[45,1930+64])
+    Psig_value
+    value_description "set" (stdlib/arrayLabels.mli[45,1930+9]..[45,1930+12]) (stdlib/arrayLabels.mli[45,1930+0]..[45,1930+64])
+      attribute "ocaml.doc"
+        [
+          structure_item (stdlib/arrayLabels.mli[46,1995+0]..[51,2169+54])
+            Pstr_eval
+            expression (stdlib/arrayLabels.mli[46,1995+0]..[51,2169+54])
+              Pexp_constant PConst_string(" [set a n x] modifies array [a] in place, replacing\n   element number [n] with [x].\n   You can also write [a.(n) <- x] instead of [set a n x].\n\n   @raise Invalid_argument\n   if [n] is outside the range 0 to [length a - 1]. ",(stdlib/arrayLabels.mli[46,1995+0]..[51,2169+54]),None)
+        ]
+      core_type (stdlib/arrayLabels.mli[45,1930+15]..[45,1930+44])
+        Ptyp_arrow
+        Nolabel
+        core_type (stdlib/arrayLabels.mli[45,1930+15]..[45,1930+23])
+          Ptyp_constr "array" (stdlib/arrayLabels.mli[45,1930+18]..[45,1930+23])
+          [
+            core_type (stdlib/arrayLabels.mli[45,1930+15]..[45,1930+17])
+              Ptyp_var a
+          ]
+        core_type (stdlib/arrayLabels.mli[45,1930+27]..[45,1930+44])
+          Ptyp_arrow
+          Nolabel
+          core_type (stdlib/arrayLabels.mli[45,1930+27]..[45,1930+30])
+            Ptyp_constr "int" (stdlib/arrayLabels.mli[45,1930+27]..[45,1930+30])
+            []
+          core_type (stdlib/arrayLabels.mli[45,1930+34]..[45,1930+44])
+            Ptyp_arrow
+            Nolabel
+            core_type (stdlib/arrayLabels.mli[45,1930+34]..[45,1930+36])
+              Ptyp_var a
+            core_type (stdlib/arrayLabels.mli[45,1930+40]..[45,1930+44])
+              Ptyp_constr "unit" (stdlib/arrayLabels.mli[45,1930+40]..[45,1930+44])
+              []
+      [
+        "%array_safe_set"
+      ]
+  signature_item (stdlib/arrayLabels.mli[53,2225+0]..[53,2225+56])
+    Psig_value
+    value_description "make" (stdlib/arrayLabels.mli[53,2225+9]..[53,2225+13]) (stdlib/arrayLabels.mli[53,2225+0]..[53,2225+56])
+      attribute "ocaml.doc"
+        [
+          structure_item (stdlib/arrayLabels.mli[54,2282+0]..[64,2801+45])
+            Pstr_eval
+            expression (stdlib/arrayLabels.mli[54,2282+0]..[64,2801+45])
+              Pexp_constant PConst_string(" [make n x] returns a fresh array of length [n],\n   initialized with [x].\n   All the elements of this new array are initially\n   physically equal to [x] (in the sense of the [==] predicate).\n   Consequently, if [x] is mutable, it is shared among all elements\n   of the array, and modifying [x] through one of the array entries\n   will modify all other entries at the same time.\n\n   @raise Invalid_argument if [n < 0] or [n > Sys.max_array_length].\n   If the value of [x] is a floating-point number, then the maximum\n   size is only [Sys.max_array_length / 2].",(stdlib/arrayLabels.mli[54,2282+0]..[64,2801+45]),None)
+        ]
+      core_type (stdlib/arrayLabels.mli[53,2225+16]..[53,2225+37])
+        Ptyp_arrow
+        Nolabel
+        core_type (stdlib/arrayLabels.mli[53,2225+16]..[53,2225+19])
+          Ptyp_constr "int" (stdlib/arrayLabels.mli[53,2225+16]..[53,2225+19])
+          []
+        core_type (stdlib/arrayLabels.mli[53,2225+23]..[53,2225+37])
+          Ptyp_arrow
+          Nolabel
+          core_type (stdlib/arrayLabels.mli[53,2225+23]..[53,2225+25])
+            Ptyp_var a
+          core_type (stdlib/arrayLabels.mli[53,2225+29]..[53,2225+37])
+            Ptyp_constr "array" (stdlib/arrayLabels.mli[53,2225+32]..[53,2225+37])
+            [
+              core_type (stdlib/arrayLabels.mli[53,2225+29]..[53,2225+31])
+                Ptyp_var a
+            ]
+      [
+        "caml_make_vect"
+      ]
+  signature_item (stdlib/arrayLabels.mli[66,2848+0]..[67,2907+65])
+    Psig_value
+    value_description "create" (stdlib/arrayLabels.mli[66,2848+9]..[66,2848+15]) (stdlib/arrayLabels.mli[66,2848+0]..[67,2907+65])
+      attribute "ocaml.deprecated"
+        [
+          structure_item (stdlib/arrayLabels.mli[67,2907+22]..[67,2907+64])
+            Pstr_eval
+            expression (stdlib/arrayLabels.mli[67,2907+22]..[67,2907+64])
+              Pexp_constant PConst_string("Use Array.make/ArrayLabels.make instead.",(stdlib/arrayLabels.mli[67,2907+23]..[67,2907+63]),None)
+        ]
+      attribute "ocaml.doc"
+        [
+          structure_item (stdlib/arrayLabels.mli[68,2973+0]..[68,2973+52])
+            Pstr_eval
+            expression (stdlib/arrayLabels.mli[68,2973+0]..[68,2973+52])
+              Pexp_constant PConst_string(" @deprecated [create] is an alias for {!make}. ",(stdlib/arrayLabels.mli[68,2973+0]..[68,2973+52]),None)
+        ]
+      core_type (stdlib/arrayLabels.mli[66,2848+18]..[66,2848+39])
+        Ptyp_arrow
+        Nolabel
+        core_type (stdlib/arrayLabels.mli[66,2848+18]..[66,2848+21])
+          Ptyp_constr "int" (stdlib/arrayLabels.mli[66,2848+18]..[66,2848+21])
+          []
+        core_type (stdlib/arrayLabels.mli[66,2848+25]..[66,2848+39])
+          Ptyp_arrow
+          Nolabel
+          core_type (stdlib/arrayLabels.mli[66,2848+25]..[66,2848+27])
+            Ptyp_var a
+          core_type (stdlib/arrayLabels.mli[66,2848+31]..[66,2848+39])
+            Ptyp_constr "array" (stdlib/arrayLabels.mli[66,2848+34]..[66,2848+39])
+            [
+              core_type (stdlib/arrayLabels.mli[66,2848+31]..[66,2848+33])
+                Ptyp_var a
+            ]
+      [
+        "caml_make_vect"
+      ]
+  signature_item (stdlib/arrayLabels.mli[70,3027+0]..[70,3027+66])
+    Psig_value
+    value_description "create_float" (stdlib/arrayLabels.mli[70,3027+9]..[70,3027+21]) (stdlib/arrayLabels.mli[70,3027+0]..[70,3027+66])
+      attribute "ocaml.doc"
+        [
+          structure_item (stdlib/arrayLabels.mli[71,3094+0]..[73,3187+18])
+            Pstr_eval
+            expression (stdlib/arrayLabels.mli[71,3094+0]..[73,3187+18])
+              Pexp_constant PConst_string(" [create_float n] returns a fresh float array of length [n],\n    with uninitialized data.\n    @since 4.03 ",(stdlib/arrayLabels.mli[71,3094+0]..[73,3187+18]),None)
+        ]
+      core_type (stdlib/arrayLabels.mli[70,3027+23]..[70,3027+41])
+        Ptyp_arrow
+        Nolabel
+        core_type (stdlib/arrayLabels.mli[70,3027+23]..[70,3027+26])
+          Ptyp_constr "int" (stdlib/arrayLabels.mli[70,3027+23]..[70,3027+26])
+          []
+        core_type (stdlib/arrayLabels.mli[70,3027+30]..[70,3027+41])
+          Ptyp_constr "array" (stdlib/arrayLabels.mli[70,3027+36]..[70,3027+41])
+          [
+            core_type (stdlib/arrayLabels.mli[70,3027+30]..[70,3027+35])
+              Ptyp_constr "float" (stdlib/arrayLabels.mli[70,3027+30]..[70,3027+35])
+              []
+          ]
+      [
+        "caml_make_float_vect"
+      ]
+  signature_item (stdlib/arrayLabels.mli[75,3207+0]..[77,3264+63])
+    Psig_value
+    value_description "make_float" (stdlib/arrayLabels.mli[75,3207+4]..[75,3207+14]) (stdlib/arrayLabels.mli[75,3207+0]..[77,3264+63])
+      attribute "ocaml.deprecated"
+        [
+          structure_item (stdlib/arrayLabels.mli[77,3264+4]..[77,3264+62])
+            Pstr_eval
+            expression (stdlib/arrayLabels.mli[77,3264+4]..[77,3264+62])
+              Pexp_constant PConst_string("Use Array.create_float/ArrayLabels.create_float instead.",(stdlib/arrayLabels.mli[77,3264+5]..[77,3264+61]),None)
+        ]
+      attribute "ocaml.doc"
+        [
+          structure_item (stdlib/arrayLabels.mli[78,3328+0]..[78,3328+64])
+            Pstr_eval
+            expression (stdlib/arrayLabels.mli[78,3328+0]..[78,3328+64])
+              Pexp_constant PConst_string(" @deprecated [make_float] is an alias for {!create_float}. ",(stdlib/arrayLabels.mli[78,3328+0]..[78,3328+64]),None)
+        ]
+      core_type (stdlib/arrayLabels.mli[75,3207+16]..[75,3207+34])
+        Ptyp_arrow
+        Nolabel
+        core_type (stdlib/arrayLabels.mli[75,3207+16]..[75,3207+19])
+          Ptyp_constr "int" (stdlib/arrayLabels.mli[75,3207+16]..[75,3207+19])
+          []
+        core_type (stdlib/arrayLabels.mli[75,3207+23]..[75,3207+34])
+          Ptyp_constr "array" (stdlib/arrayLabels.mli[75,3207+29]..[75,3207+34])
+          [
+            core_type (stdlib/arrayLabels.mli[75,3207+23]..[75,3207+28])
+              Ptyp_constr "float" (stdlib/arrayLabels.mli[75,3207+23]..[75,3207+28])
+              []
+          ]
+      []
+  signature_item (stdlib/arrayLabels.mli[80,3394+0]..[80,3394+43])
+    Psig_value
+    value_description "init" (stdlib/arrayLabels.mli[80,3394+4]..[80,3394+8]) (stdlib/arrayLabels.mli[80,3394+0]..[80,3394+43])
+      attribute "ocaml.doc"
+        [
+          structure_item (stdlib/arrayLabels.mli[81,3438+0]..[88,3783+45])
+            Pstr_eval
+            expression (stdlib/arrayLabels.mli[81,3438+0]..[88,3783+45])
+              Pexp_constant PConst_string(" [init n ~f] returns a fresh array of length [n],\n   with element number [i] initialized to the result of [f i].\n   In other terms, [init n ~f] tabulates the results of [f]\n   applied to the integers [0] to [n-1].\n\n   @raise Invalid_argument if [n < 0] or [n > Sys.max_array_length].\n   If the return type of [f] is [float], then the maximum\n   size is only [Sys.max_array_length / 2].",(stdlib/arrayLabels.mli[81,3438+0]..[88,3783+45]),None)
+        ]
+      core_type (stdlib/arrayLabels.mli[80,3394+11]..[80,3394+43])
+        Ptyp_arrow
+        Nolabel
+        core_type (stdlib/arrayLabels.mli[80,3394+11]..[80,3394+14])
+          Ptyp_constr "int" (stdlib/arrayLabels.mli[80,3394+11]..[80,3394+14])
+          []
+        core_type (stdlib/arrayLabels.mli[80,3394+18]..[80,3394+43])
+          Ptyp_arrow
+          Labelled "f"
+          core_type (stdlib/arrayLabels.mli[80,3394+21]..[80,3394+30])
+            Ptyp_arrow
+            Nolabel
+            core_type (stdlib/arrayLabels.mli[80,3394+21]..[80,3394+24])
+              Ptyp_constr "int" (stdlib/arrayLabels.mli[80,3394+21]..[80,3394+24])
+              []
+            core_type (stdlib/arrayLabels.mli[80,3394+28]..[80,3394+30])
+              Ptyp_var a
+          core_type (stdlib/arrayLabels.mli[80,3394+35]..[80,3394+43])
+            Ptyp_constr "array" (stdlib/arrayLabels.mli[80,3394+38]..[80,3394+43])
+            [
+              core_type (stdlib/arrayLabels.mli[80,3394+35]..[80,3394+37])
+                Ptyp_var a
+            ]
+      []
+  signature_item (stdlib/arrayLabels.mli[90,3830+0]..[90,3830+62])
+    Psig_value
+    value_description "make_matrix" (stdlib/arrayLabels.mli[90,3830+4]..[90,3830+15]) (stdlib/arrayLabels.mli[90,3830+0]..[90,3830+62])
+      attribute "ocaml.doc"
+        [
+          structure_item (stdlib/arrayLabels.mli[91,3893+0]..[101,4376+46])
+            Pstr_eval
+            expression (stdlib/arrayLabels.mli[91,3893+0]..[101,4376+46])
+              Pexp_constant PConst_string(" [make_matrix ~dimx ~dimy e] returns a two-dimensional array\n   (an array of arrays) with first dimension [dimx] and\n   second dimension [dimy]. All the elements of this new matrix\n   are initially physically equal to [e].\n   The element ([x,y]) of a matrix [m] is accessed\n   with the notation [m.(x).(y)].\n\n   @raise Invalid_argument if [dimx] or [dimy] is negative or\n   greater than {!Sys.max_array_length}.\n   If the value of [e] is a floating-point number, then the maximum\n   size is only [Sys.max_array_length / 2]. ",(stdlib/arrayLabels.mli[91,3893+0]..[101,4376+46]),None)
+        ]
+      core_type (stdlib/arrayLabels.mli[90,3830+18]..[90,3830+62])
+        Ptyp_arrow
+        Labelled "dimx"
+        core_type (stdlib/arrayLabels.mli[90,3830+23]..[90,3830+26])
+          Ptyp_constr "int" (stdlib/arrayLabels.mli[90,3830+23]..[90,3830+26])
+          []
+        core_type (stdlib/arrayLabels.mli[90,3830+30]..[90,3830+62])
+          Ptyp_arrow
+          Labelled "dimy"
+          core_type (stdlib/arrayLabels.mli[90,3830+35]..[90,3830+38])
+            Ptyp_constr "int" (stdlib/arrayLabels.mli[90,3830+35]..[90,3830+38])
+            []
+          core_type (stdlib/arrayLabels.mli[90,3830+42]..[90,3830+62])
+            Ptyp_arrow
+            Nolabel
+            core_type (stdlib/arrayLabels.mli[90,3830+42]..[90,3830+44])
+              Ptyp_var a
+            core_type (stdlib/arrayLabels.mli[90,3830+48]..[90,3830+62])
+              Ptyp_constr "array" (stdlib/arrayLabels.mli[90,3830+57]..[90,3830+62])
+              [
+                core_type (stdlib/arrayLabels.mli[90,3830+48]..[90,3830+56])
+                  Ptyp_constr "array" (stdlib/arrayLabels.mli[90,3830+51]..[90,3830+56])
+                  [
+                    core_type (stdlib/arrayLabels.mli[90,3830+48]..[90,3830+50])
+                      Ptyp_var a
+                  ]
+              ]
+      []
+  signature_item (stdlib/arrayLabels.mli[103,4424+0]..[105,4511+61])
+    Psig_value
+    value_description "create_matrix" (stdlib/arrayLabels.mli[103,4424+4]..[103,4424+17]) (stdlib/arrayLabels.mli[103,4424+0]..[105,4511+61])
+      attribute "ocaml.deprecated"
+        [
+          structure_item (stdlib/arrayLabels.mli[105,4511+4]..[105,4511+60])
+            Pstr_eval
+            expression (stdlib/arrayLabels.mli[105,4511+4]..[105,4511+60])
+              Pexp_constant PConst_string("Use Array.make_matrix/ArrayLabels.make_matrix instead.",(stdlib/arrayLabels.mli[105,4511+5]..[105,4511+59]),None)
+        ]
+      attribute "ocaml.doc"
+        [
+          structure_item (stdlib/arrayLabels.mli[106,4573+0]..[106,4573+66])
+            Pstr_eval
+            expression (stdlib/arrayLabels.mli[106,4573+0]..[106,4573+66])
+              Pexp_constant PConst_string(" @deprecated [create_matrix] is an alias for {!make_matrix}. ",(stdlib/arrayLabels.mli[106,4573+0]..[106,4573+66]),None)
+        ]
+      core_type (stdlib/arrayLabels.mli[103,4424+20]..[103,4424+64])
+        Ptyp_arrow
+        Labelled "dimx"
+        core_type (stdlib/arrayLabels.mli[103,4424+25]..[103,4424+28])
+          Ptyp_constr "int" (stdlib/arrayLabels.mli[103,4424+25]..[103,4424+28])
+          []
+        core_type (stdlib/arrayLabels.mli[103,4424+32]..[103,4424+64])
+          Ptyp_arrow
+          Labelled "dimy"
+          core_type (stdlib/arrayLabels.mli[103,4424+37]..[103,4424+40])
+            Ptyp_constr "int" (stdlib/arrayLabels.mli[103,4424+37]..[103,4424+40])
+            []
+          core_type (stdlib/arrayLabels.mli[103,4424+44]..[103,4424+64])
+            Ptyp_arrow
+            Nolabel
+            core_type (stdlib/arrayLabels.mli[103,4424+44]..[103,4424+46])
+              Ptyp_var a
+            core_type (stdlib/arrayLabels.mli[103,4424+50]..[103,4424+64])
+              Ptyp_constr "array" (stdlib/arrayLabels.mli[103,4424+59]..[103,4424+64])
+              [
+                core_type (stdlib/arrayLabels.mli[103,4424+50]..[103,4424+58])
+                  Ptyp_constr "array" (stdlib/arrayLabels.mli[103,4424+53]..[103,4424+58])
+                  [
+                    core_type (stdlib/arrayLabels.mli[103,4424+50]..[103,4424+52])
+                      Ptyp_var a
+                  ]
+              ]
+      []
+  signature_item (stdlib/arrayLabels.mli[108,4641+0]..[108,4641+45])
+    Psig_value
+    value_description "append" (stdlib/arrayLabels.mli[108,4641+4]..[108,4641+10]) (stdlib/arrayLabels.mli[108,4641+0]..[108,4641+45])
+      attribute "ocaml.doc"
+        [
+          structure_item (stdlib/arrayLabels.mli[109,4687+0]..[112,4819+53])
+            Pstr_eval
+            expression (stdlib/arrayLabels.mli[109,4687+0]..[112,4819+53])
+              Pexp_constant PConst_string(" [append v1 v2] returns a fresh array containing the\n   concatenation of the arrays [v1] and [v2].\n   @raise Invalid_argument if\n   [length v1 + length v2 > Sys.max_array_length]. ",(stdlib/arrayLabels.mli[109,4687+0]..[112,4819+53]),None)
+        ]
+      core_type (stdlib/arrayLabels.mli[108,4641+13]..[108,4641+45])
+        Ptyp_arrow
+        Nolabel
+        core_type (stdlib/arrayLabels.mli[108,4641+13]..[108,4641+21])
+          Ptyp_constr "array" (stdlib/arrayLabels.mli[108,4641+16]..[108,4641+21])
+          [
+            core_type (stdlib/arrayLabels.mli[108,4641+13]..[108,4641+15])
+              Ptyp_var a
+          ]
+        core_type (stdlib/arrayLabels.mli[108,4641+25]..[108,4641+45])
+          Ptyp_arrow
+          Nolabel
+          core_type (stdlib/arrayLabels.mli[108,4641+25]..[108,4641+33])
+            Ptyp_constr "array" (stdlib/arrayLabels.mli[108,4641+28]..[108,4641+33])
+            [
+              core_type (stdlib/arrayLabels.mli[108,4641+25]..[108,4641+27])
+                Ptyp_var a
+            ]
+          core_type (stdlib/arrayLabels.mli[108,4641+37]..[108,4641+45])
+            Ptyp_constr "array" (stdlib/arrayLabels.mli[108,4641+40]..[108,4641+45])
+            [
+              core_type (stdlib/arrayLabels.mli[108,4641+37]..[108,4641+39])
+                Ptyp_var a
+            ]
+      []
+  signature_item (stdlib/arrayLabels.mli[114,4874+0]..[114,4874+38])
+    Psig_value
+    value_description "concat" (stdlib/arrayLabels.mli[114,4874+4]..[114,4874+10]) (stdlib/arrayLabels.mli[114,4874+0]..[114,4874+38])
+      attribute "ocaml.doc"
+        [
+          structure_item (stdlib/arrayLabels.mli[115,4913+0]..[115,4913+60])
+            Pstr_eval
+            expression (stdlib/arrayLabels.mli[115,4913+0]..[115,4913+60])
+              Pexp_constant PConst_string(" Same as {!append}, but concatenates a list of arrays. ",(stdlib/arrayLabels.mli[115,4913+0]..[115,4913+60]),None)
+        ]
+      core_type (stdlib/arrayLabels.mli[114,4874+13]..[114,4874+38])
+        Ptyp_arrow
+        Nolabel
+        core_type (stdlib/arrayLabels.mli[114,4874+13]..[114,4874+26])
+          Ptyp_constr "list" (stdlib/arrayLabels.mli[114,4874+22]..[114,4874+26])
+          [
+            core_type (stdlib/arrayLabels.mli[114,4874+13]..[114,4874+21])
+              Ptyp_constr "array" (stdlib/arrayLabels.mli[114,4874+16]..[114,4874+21])
+              [
+                core_type (stdlib/arrayLabels.mli[114,4874+13]..[114,4874+15])
+                  Ptyp_var a
+              ]
+          ]
+        core_type (stdlib/arrayLabels.mli[114,4874+30]..[114,4874+38])
+          Ptyp_constr "array" (stdlib/arrayLabels.mli[114,4874+33]..[114,4874+38])
+          [
+            core_type (stdlib/arrayLabels.mli[114,4874+30]..[114,4874+32])
+              Ptyp_var a
+          ]
+      []
+  signature_item (stdlib/arrayLabels.mli[117,4975+0]..[117,4975+52])
+    Psig_value
+    value_description "sub" (stdlib/arrayLabels.mli[117,4975+4]..[117,4975+7]) (stdlib/arrayLabels.mli[117,4975+0]..[117,4975+52])
+      attribute "ocaml.doc"
+        [
+          structure_item (stdlib/arrayLabels.mli[118,5028+0]..[124,5269+57])
+            Pstr_eval
+            expression (stdlib/arrayLabels.mli[118,5028+0]..[124,5269+57])
+              Pexp_constant PConst_string(" [sub a ~pos ~len] returns a fresh array of length [len],\n   containing the elements number [pos] to [pos + len - 1]\n   of array [a].\n\n   @raise Invalid_argument if [pos] and [len] do not\n   designate a valid subarray of [a]; that is, if\n   [pos < 0], or [len < 0], or [pos + len > length a]. ",(stdlib/arrayLabels.mli[118,5028+0]..[124,5269+57]),None)
+        ]
+      core_type (stdlib/arrayLabels.mli[117,4975+10]..[117,4975+52])
+        Ptyp_arrow
+        Nolabel
+        core_type (stdlib/arrayLabels.mli[117,4975+10]..[117,4975+18])
+          Ptyp_constr "array" (stdlib/arrayLabels.mli[117,4975+13]..[117,4975+18])
+          [
+            core_type (stdlib/arrayLabels.mli[117,4975+10]..[117,4975+12])
+              Ptyp_var a
+          ]
+        core_type (stdlib/arrayLabels.mli[117,4975+22]..[117,4975+52])
+          Ptyp_arrow
+          Labelled "pos"
+          core_type (stdlib/arrayLabels.mli[117,4975+26]..[117,4975+29])
+            Ptyp_constr "int" (stdlib/arrayLabels.mli[117,4975+26]..[117,4975+29])
+            []
+          core_type (stdlib/arrayLabels.mli[117,4975+33]..[117,4975+52])
+            Ptyp_arrow
+            Labelled "len"
+            core_type (stdlib/arrayLabels.mli[117,4975+37]..[117,4975+40])
+              Ptyp_constr "int" (stdlib/arrayLabels.mli[117,4975+37]..[117,4975+40])
+              []
+            core_type (stdlib/arrayLabels.mli[117,4975+44]..[117,4975+52])
+              Ptyp_constr "array" (stdlib/arrayLabels.mli[117,4975+47]..[117,4975+52])
+              [
+                core_type (stdlib/arrayLabels.mli[117,4975+44]..[117,4975+46])
+                  Ptyp_var a
+              ]
+      []
+  signature_item (stdlib/arrayLabels.mli[126,5328+0]..[126,5328+31])
+    Psig_value
+    value_description "copy" (stdlib/arrayLabels.mli[126,5328+4]..[126,5328+8]) (stdlib/arrayLabels.mli[126,5328+0]..[126,5328+31])
+      attribute "ocaml.doc"
+        [
+          structure_item (stdlib/arrayLabels.mli[127,5360+0]..[128,5419+42])
+            Pstr_eval
+            expression (stdlib/arrayLabels.mli[127,5360+0]..[128,5419+42])
+              Pexp_constant PConst_string(" [copy a] returns a copy of [a], that is, a fresh array\n   containing the same elements as [a]. ",(stdlib/arrayLabels.mli[127,5360+0]..[128,5419+42]),None)
+        ]
+      core_type (stdlib/arrayLabels.mli[126,5328+11]..[126,5328+31])
+        Ptyp_arrow
+        Nolabel
+        core_type (stdlib/arrayLabels.mli[126,5328+11]..[126,5328+19])
+          Ptyp_constr "array" (stdlib/arrayLabels.mli[126,5328+14]..[126,5328+19])
+          [
+            core_type (stdlib/arrayLabels.mli[126,5328+11]..[126,5328+13])
+              Ptyp_var a
+          ]
+        core_type (stdlib/arrayLabels.mli[126,5328+23]..[126,5328+31])
+          Ptyp_constr "array" (stdlib/arrayLabels.mli[126,5328+26]..[126,5328+31])
+          [
+            core_type (stdlib/arrayLabels.mli[126,5328+23]..[126,5328+25])
+              Ptyp_var a
+          ]
+      []
+  signature_item (stdlib/arrayLabels.mli[130,5463+0]..[130,5463+55])
+    Psig_value
+    value_description "fill" (stdlib/arrayLabels.mli[130,5463+4]..[130,5463+8]) (stdlib/arrayLabels.mli[130,5463+0]..[130,5463+55])
+      attribute "ocaml.doc"
+        [
+          structure_item (stdlib/arrayLabels.mli[131,5519+0]..[135,5691+40])
+            Pstr_eval
+            expression (stdlib/arrayLabels.mli[131,5519+0]..[135,5691+40])
+              Pexp_constant PConst_string(" [fill a ~pos ~len x] modifies the array [a] in place,\n   storing [x] in elements number [pos] to [pos + len - 1].\n\n   @raise Invalid_argument if [pos] and [len] do not\n   designate a valid subarray of [a]. ",(stdlib/arrayLabels.mli[131,5519+0]..[135,5691+40]),None)
+        ]
+      core_type (stdlib/arrayLabels.mli[130,5463+11]..[130,5463+55])
+        Ptyp_arrow
+        Nolabel
+        core_type (stdlib/arrayLabels.mli[130,5463+11]..[130,5463+19])
+          Ptyp_constr "array" (stdlib/arrayLabels.mli[130,5463+14]..[130,5463+19])
+          [
+            core_type (stdlib/arrayLabels.mli[130,5463+11]..[130,5463+13])
+              Ptyp_var a
+          ]
+        core_type (stdlib/arrayLabels.mli[130,5463+23]..[130,5463+55])
+          Ptyp_arrow
+          Labelled "pos"
+          core_type (stdlib/arrayLabels.mli[130,5463+27]..[130,5463+30])
+            Ptyp_constr "int" (stdlib/arrayLabels.mli[130,5463+27]..[130,5463+30])
+            []
+          core_type (stdlib/arrayLabels.mli[130,5463+34]..[130,5463+55])
+            Ptyp_arrow
+            Labelled "len"
+            core_type (stdlib/arrayLabels.mli[130,5463+38]..[130,5463+41])
+              Ptyp_constr "int" (stdlib/arrayLabels.mli[130,5463+38]..[130,5463+41])
+              []
+            core_type (stdlib/arrayLabels.mli[130,5463+45]..[130,5463+55])
+              Ptyp_arrow
+              Nolabel
+              core_type (stdlib/arrayLabels.mli[130,5463+45]..[130,5463+47])
+                Ptyp_var a
+              core_type (stdlib/arrayLabels.mli[130,5463+51]..[130,5463+55])
+                Ptyp_constr "unit" (stdlib/arrayLabels.mli[130,5463+51]..[130,5463+55])
+                []
+      []
+  signature_item (stdlib/arrayLabels.mli[137,5733+0]..[139,5819+8])
+    Psig_value
+    value_description "blit" (stdlib/arrayLabels.mli[137,5733+4]..[137,5733+8]) (stdlib/arrayLabels.mli[137,5733+0]..[139,5819+8])
+      attribute "ocaml.doc"
+        [
+          structure_item (stdlib/arrayLabels.mli[140,5828+0]..[148,6257+42])
+            Pstr_eval
+            expression (stdlib/arrayLabels.mli[140,5828+0]..[148,6257+42])
+              Pexp_constant PConst_string(" [blit ~src ~src_pos ~dst ~dst_pos ~len] copies [len] elements\n   from array [src], starting at element number [src_pos], to array [dst],\n   starting at element number [dst_pos]. It works correctly even if\n   [src] and [dst] are the same array, and the source and\n   destination chunks overlap.\n\n   @raise Invalid_argument if [src_pos] and [len] do not\n   designate a valid subarray of [src], or if [dst_pos] and [len] do not\n   designate a valid subarray of [dst]. ",(stdlib/arrayLabels.mli[140,5828+0]..[148,6257+42]),None)
+        ]
+      core_type (stdlib/arrayLabels.mli[138,5744+2]..[139,5819+8])
+        Ptyp_arrow
+        Labelled "src"
+        core_type (stdlib/arrayLabels.mli[138,5744+6]..[138,5744+14])
+          Ptyp_constr "array" (stdlib/arrayLabels.mli[138,5744+9]..[138,5744+14])
+          [
+            core_type (stdlib/arrayLabels.mli[138,5744+6]..[138,5744+8])
+              Ptyp_var a
+          ]
+        core_type (stdlib/arrayLabels.mli[138,5744+18]..[139,5819+8])
+          Ptyp_arrow
+          Labelled "src_pos"
+          core_type (stdlib/arrayLabels.mli[138,5744+26]..[138,5744+29])
+            Ptyp_constr "int" (stdlib/arrayLabels.mli[138,5744+26]..[138,5744+29])
+            []
+          core_type (stdlib/arrayLabels.mli[138,5744+33]..[139,5819+8])
+            Ptyp_arrow
+            Labelled "dst"
+            core_type (stdlib/arrayLabels.mli[138,5744+37]..[138,5744+45])
+              Ptyp_constr "array" (stdlib/arrayLabels.mli[138,5744+40]..[138,5744+45])
+              [
+                core_type (stdlib/arrayLabels.mli[138,5744+37]..[138,5744+39])
+                  Ptyp_var a
+              ]
+            core_type (stdlib/arrayLabels.mli[138,5744+49]..[139,5819+8])
+              Ptyp_arrow
+              Labelled "dst_pos"
+              core_type (stdlib/arrayLabels.mli[138,5744+57]..[138,5744+60])
+                Ptyp_constr "int" (stdlib/arrayLabels.mli[138,5744+57]..[138,5744+60])
+                []
+              core_type (stdlib/arrayLabels.mli[138,5744+64]..[139,5819+8])
+                Ptyp_arrow
+                Labelled "len"
+                core_type (stdlib/arrayLabels.mli[138,5744+68]..[138,5744+71])
+                  Ptyp_constr "int" (stdlib/arrayLabels.mli[138,5744+68]..[138,5744+71])
+                  []
+                core_type (stdlib/arrayLabels.mli[139,5819+4]..[139,5819+8])
+                  Ptyp_constr "unit" (stdlib/arrayLabels.mli[139,5819+4]..[139,5819+8])
+                  []
+      []
+  signature_item (stdlib/arrayLabels.mli[150,6301+0]..[150,6301+33])
+    Psig_value
+    value_description "to_list" (stdlib/arrayLabels.mli[150,6301+4]..[150,6301+11]) (stdlib/arrayLabels.mli[150,6301+0]..[150,6301+33])
+      attribute "ocaml.doc"
+        [
+          structure_item (stdlib/arrayLabels.mli[151,6335+0]..[151,6335+63])
+            Pstr_eval
+            expression (stdlib/arrayLabels.mli[151,6335+0]..[151,6335+63])
+              Pexp_constant PConst_string(" [to_list a] returns the list of all the elements of [a]. ",(stdlib/arrayLabels.mli[151,6335+0]..[151,6335+63]),None)
+        ]
+      core_type (stdlib/arrayLabels.mli[150,6301+14]..[150,6301+33])
+        Ptyp_arrow
+        Nolabel
+        core_type (stdlib/arrayLabels.mli[150,6301+14]..[150,6301+22])
+          Ptyp_constr "array" (stdlib/arrayLabels.mli[150,6301+17]..[150,6301+22])
+          [
+            core_type (stdlib/arrayLabels.mli[150,6301+14]..[150,6301+16])
+              Ptyp_var a
+          ]
+        core_type (stdlib/arrayLabels.mli[150,6301+26]..[150,6301+33])
+          Ptyp_constr "list" (stdlib/arrayLabels.mli[150,6301+29]..[150,6301+33])
+          [
+            core_type (stdlib/arrayLabels.mli[150,6301+26]..[150,6301+28])
+              Ptyp_var a
+          ]
+      []
+  signature_item (stdlib/arrayLabels.mli[153,6400+0]..[153,6400+33])
+    Psig_value
+    value_description "of_list" (stdlib/arrayLabels.mli[153,6400+4]..[153,6400+11]) (stdlib/arrayLabels.mli[153,6400+0]..[153,6400+33])
+      attribute "ocaml.doc"
+        [
+          structure_item (stdlib/arrayLabels.mli[154,6434+0]..[158,6572+29])
+            Pstr_eval
+            expression (stdlib/arrayLabels.mli[154,6434+0]..[158,6572+29])
+              Pexp_constant PConst_string(" [of_list l] returns a fresh array containing the elements\n   of [l].\n\n   @raise Invalid_argument if the length of [l] is greater than\n   [Sys.max_array_length]. ",(stdlib/arrayLabels.mli[154,6434+0]..[158,6572+29]),None)
+        ]
+      core_type (stdlib/arrayLabels.mli[153,6400+14]..[153,6400+33])
+        Ptyp_arrow
+        Nolabel
+        core_type (stdlib/arrayLabels.mli[153,6400+14]..[153,6400+21])
+          Ptyp_constr "list" (stdlib/arrayLabels.mli[153,6400+17]..[153,6400+21])
+          [
+            core_type (stdlib/arrayLabels.mli[153,6400+14]..[153,6400+16])
+              Ptyp_var a
+          ]
+        core_type (stdlib/arrayLabels.mli[153,6400+25]..[153,6400+33])
+          Ptyp_constr "array" (stdlib/arrayLabels.mli[153,6400+28]..[153,6400+33])
+          [
+            core_type (stdlib/arrayLabels.mli[153,6400+25]..[153,6400+27])
+              Ptyp_var a
+          ]
+      []
+  signature_item (stdlib/arrayLabels.mli[160,6603+0]..[160,6603+20])
+    Psig_attribute "ocaml.text"
+    [
+      structure_item (stdlib/arrayLabels.mli[160,6603+0]..[160,6603+20])
+        Pstr_eval
+        expression (stdlib/arrayLabels.mli[160,6603+0]..[160,6603+20])
+          Pexp_constant PConst_string(" {1 Iterators} ",(stdlib/arrayLabels.mli[160,6603+0]..[160,6603+20]),None)
+    ]
+  signature_item (stdlib/arrayLabels.mli[162,6625+0]..[162,6625+45])
+    Psig_value
+    value_description "iter" (stdlib/arrayLabels.mli[162,6625+4]..[162,6625+8]) (stdlib/arrayLabels.mli[162,6625+0]..[162,6625+45])
+      attribute "ocaml.doc"
+        [
+          structure_item (stdlib/arrayLabels.mli[163,6671+0]..[165,6768+54])
+            Pstr_eval
+            expression (stdlib/arrayLabels.mli[163,6671+0]..[165,6768+54])
+              Pexp_constant PConst_string(" [iter ~f a] applies function [f] in turn to all\n   the elements of [a].  It is equivalent to\n   [f a.(0); f a.(1); ...; f a.(length a - 1); ()]. ",(stdlib/arrayLabels.mli[163,6671+0]..[165,6768+54]),None)
+        ]
+      core_type (stdlib/arrayLabels.mli[162,6625+11]..[162,6625+45])
+        Ptyp_arrow
+        Labelled "f"
+        core_type (stdlib/arrayLabels.mli[162,6625+14]..[162,6625+24])
+          Ptyp_arrow
+          Nolabel
+          core_type (stdlib/arrayLabels.mli[162,6625+14]..[162,6625+16])
+            Ptyp_var a
+          core_type (stdlib/arrayLabels.mli[162,6625+20]..[162,6625+24])
+            Ptyp_constr "unit" (stdlib/arrayLabels.mli[162,6625+20]..[162,6625+24])
+            []
+        core_type (stdlib/arrayLabels.mli[162,6625+29]..[162,6625+45])
+          Ptyp_arrow
+          Nolabel
+          core_type (stdlib/arrayLabels.mli[162,6625+29]..[162,6625+37])
+            Ptyp_constr "array" (stdlib/arrayLabels.mli[162,6625+32]..[162,6625+37])
+            [
+              core_type (stdlib/arrayLabels.mli[162,6625+29]..[162,6625+31])
+                Ptyp_var a
+            ]
+          core_type (stdlib/arrayLabels.mli[162,6625+41]..[162,6625+45])
+            Ptyp_constr "unit" (stdlib/arrayLabels.mli[162,6625+41]..[162,6625+45])
+            []
+      []
+  signature_item (stdlib/arrayLabels.mli[167,6824+0]..[167,6824+53])
+    Psig_value
+    value_description "iteri" (stdlib/arrayLabels.mli[167,6824+4]..[167,6824+9]) (stdlib/arrayLabels.mli[167,6824+0]..[167,6824+53])
+      attribute "ocaml.doc"
+        [
+          structure_item (stdlib/arrayLabels.mli[168,6878+0]..[170,6977+48])
+            Pstr_eval
+            expression (stdlib/arrayLabels.mli[168,6878+0]..[170,6977+48])
+              Pexp_constant PConst_string(" Same as {!iter}, but the\n   function is applied to the index of the element as first argument,\n   and the element itself as second argument. ",(stdlib/arrayLabels.mli[168,6878+0]..[170,6977+48]),None)
+        ]
+      core_type (stdlib/arrayLabels.mli[167,6824+12]..[167,6824+53])
+        Ptyp_arrow
+        Labelled "f"
+        core_type (stdlib/arrayLabels.mli[167,6824+15]..[167,6824+32])
+          Ptyp_arrow
+          Nolabel
+          core_type (stdlib/arrayLabels.mli[167,6824+15]..[167,6824+18])
+            Ptyp_constr "int" (stdlib/arrayLabels.mli[167,6824+15]..[167,6824+18])
+            []
+          core_type (stdlib/arrayLabels.mli[167,6824+22]..[167,6824+32])
+            Ptyp_arrow
+            Nolabel
+            core_type (stdlib/arrayLabels.mli[167,6824+22]..[167,6824+24])
+              Ptyp_var a
+            core_type (stdlib/arrayLabels.mli[167,6824+28]..[167,6824+32])
+              Ptyp_constr "unit" (stdlib/arrayLabels.mli[167,6824+28]..[167,6824+32])
+              []
+        core_type (stdlib/arrayLabels.mli[167,6824+37]..[167,6824+53])
+          Ptyp_arrow
+          Nolabel
+          core_type (stdlib/arrayLabels.mli[167,6824+37]..[167,6824+45])
+            Ptyp_constr "array" (stdlib/arrayLabels.mli[167,6824+40]..[167,6824+45])
+            [
+              core_type (stdlib/arrayLabels.mli[167,6824+37]..[167,6824+39])
+                Ptyp_var a
+            ]
+          core_type (stdlib/arrayLabels.mli[167,6824+49]..[167,6824+53])
+            Ptyp_constr "unit" (stdlib/arrayLabels.mli[167,6824+49]..[167,6824+53])
+            []
+      []
+  signature_item (stdlib/arrayLabels.mli[172,7027+0]..[172,7027+46])
+    Psig_value
+    value_description "map" (stdlib/arrayLabels.mli[172,7027+4]..[172,7027+7]) (stdlib/arrayLabels.mli[172,7027+0]..[172,7027+46])
+      attribute "ocaml.doc"
+        [
+          structure_item (stdlib/arrayLabels.mli[173,7074+0]..[175,7195+56])
+            Pstr_eval
+            expression (stdlib/arrayLabels.mli[173,7074+0]..[175,7195+56])
+              Pexp_constant PConst_string(" [map ~f a] applies function [f] to all the elements of [a],\n   and builds an array with the results returned by [f]:\n   [[| f a.(0); f a.(1); ...; f a.(length a - 1) |]]. ",(stdlib/arrayLabels.mli[173,7074+0]..[175,7195+56]),None)
+        ]
+      core_type (stdlib/arrayLabels.mli[172,7027+10]..[172,7027+46])
+        Ptyp_arrow
+        Labelled "f"
+        core_type (stdlib/arrayLabels.mli[172,7027+13]..[172,7027+21])
+          Ptyp_arrow
+          Nolabel
+          core_type (stdlib/arrayLabels.mli[172,7027+13]..[172,7027+15])
+            Ptyp_var a
+          core_type (stdlib/arrayLabels.mli[172,7027+19]..[172,7027+21])
+            Ptyp_var b
+        core_type (stdlib/arrayLabels.mli[172,7027+26]..[172,7027+46])
+          Ptyp_arrow
+          Nolabel
+          core_type (stdlib/arrayLabels.mli[172,7027+26]..[172,7027+34])
+            Ptyp_constr "array" (stdlib/arrayLabels.mli[172,7027+29]..[172,7027+34])
+            [
+              core_type (stdlib/arrayLabels.mli[172,7027+26]..[172,7027+28])
+                Ptyp_var a
+            ]
+          core_type (stdlib/arrayLabels.mli[172,7027+38]..[172,7027+46])
+            Ptyp_constr "array" (stdlib/arrayLabels.mli[172,7027+41]..[172,7027+46])
+            [
+              core_type (stdlib/arrayLabels.mli[172,7027+38]..[172,7027+40])
+                Ptyp_var b
+            ]
+      []
+  signature_item (stdlib/arrayLabels.mli[177,7253+0]..[177,7253+54])
+    Psig_value
+    value_description "mapi" (stdlib/arrayLabels.mli[177,7253+4]..[177,7253+8]) (stdlib/arrayLabels.mli[177,7253+0]..[177,7253+54])
+      attribute "ocaml.doc"
+        [
+          structure_item (stdlib/arrayLabels.mli[178,7308+0]..[180,7406+48])
+            Pstr_eval
+            expression (stdlib/arrayLabels.mli[178,7308+0]..[180,7406+48])
+              Pexp_constant PConst_string(" Same as {!map}, but the\n   function is applied to the index of the element as first argument,\n   and the element itself as second argument. ",(stdlib/arrayLabels.mli[178,7308+0]..[180,7406+48]),None)
+        ]
+      core_type (stdlib/arrayLabels.mli[177,7253+11]..[177,7253+54])
+        Ptyp_arrow
+        Labelled "f"
+        core_type (stdlib/arrayLabels.mli[177,7253+14]..[177,7253+29])
+          Ptyp_arrow
+          Nolabel
+          core_type (stdlib/arrayLabels.mli[177,7253+14]..[177,7253+17])
+            Ptyp_constr "int" (stdlib/arrayLabels.mli[177,7253+14]..[177,7253+17])
+            []
+          core_type (stdlib/arrayLabels.mli[177,7253+21]..[177,7253+29])
+            Ptyp_arrow
+            Nolabel
+            core_type (stdlib/arrayLabels.mli[177,7253+21]..[177,7253+23])
+              Ptyp_var a
+            core_type (stdlib/arrayLabels.mli[177,7253+27]..[177,7253+29])
+              Ptyp_var b
+        core_type (stdlib/arrayLabels.mli[177,7253+34]..[177,7253+54])
+          Ptyp_arrow
+          Nolabel
+          core_type (stdlib/arrayLabels.mli[177,7253+34]..[177,7253+42])
+            Ptyp_constr "array" (stdlib/arrayLabels.mli[177,7253+37]..[177,7253+42])
+            [
+              core_type (stdlib/arrayLabels.mli[177,7253+34]..[177,7253+36])
+                Ptyp_var a
+            ]
+          core_type (stdlib/arrayLabels.mli[177,7253+46]..[177,7253+54])
+            Ptyp_constr "array" (stdlib/arrayLabels.mli[177,7253+49]..[177,7253+54])
+            [
+              core_type (stdlib/arrayLabels.mli[177,7253+46]..[177,7253+48])
+                Ptyp_var b
+            ]
+      []
+  signature_item (stdlib/arrayLabels.mli[182,7456+0]..[182,7456+63])
+    Psig_value
+    value_description "fold_left" (stdlib/arrayLabels.mli[182,7456+4]..[182,7456+13]) (stdlib/arrayLabels.mli[182,7456+0]..[182,7456+63])
+      attribute "ocaml.doc"
+        [
+          structure_item (stdlib/arrayLabels.mli[183,7520+0]..[185,7607+47])
+            Pstr_eval
+            expression (stdlib/arrayLabels.mli[183,7520+0]..[185,7607+47])
+              Pexp_constant PConst_string(" [fold_left ~f ~init a] computes\n   [f (... (f (f init a.(0)) a.(1)) ...) a.(n-1)],\n   where [n] is the length of the array [a]. ",(stdlib/arrayLabels.mli[183,7520+0]..[185,7607+47]),None)
+        ]
+      core_type (stdlib/arrayLabels.mli[182,7456+16]..[182,7456+63])
+        Ptyp_arrow
+        Labelled "f"
+        core_type (stdlib/arrayLabels.mli[182,7456+19]..[182,7456+33])
+          Ptyp_arrow
+          Nolabel
+          core_type (stdlib/arrayLabels.mli[182,7456+19]..[182,7456+21])
+            Ptyp_var a
+          core_type (stdlib/arrayLabels.mli[182,7456+25]..[182,7456+33])
+            Ptyp_arrow
+            Nolabel
+            core_type (stdlib/arrayLabels.mli[182,7456+25]..[182,7456+27])
+              Ptyp_var b
+            core_type (stdlib/arrayLabels.mli[182,7456+31]..[182,7456+33])
+              Ptyp_var a
+        core_type (stdlib/arrayLabels.mli[182,7456+38]..[182,7456+63])
+          Ptyp_arrow
+          Labelled "init"
+          core_type (stdlib/arrayLabels.mli[182,7456+43]..[182,7456+45])
+            Ptyp_var a
+          core_type (stdlib/arrayLabels.mli[182,7456+49]..[182,7456+63])
+            Ptyp_arrow
+            Nolabel
+            core_type (stdlib/arrayLabels.mli[182,7456+49]..[182,7456+57])
+              Ptyp_constr "array" (stdlib/arrayLabels.mli[182,7456+52]..[182,7456+57])
+              [
+                core_type (stdlib/arrayLabels.mli[182,7456+49]..[182,7456+51])
+                  Ptyp_var b
+              ]
+            core_type (stdlib/arrayLabels.mli[182,7456+61]..[182,7456+63])
+              Ptyp_var a
+      []
+  signature_item (stdlib/arrayLabels.mli[187,7656+0]..[188,7676+65])
+    Psig_value
+    value_description "fold_left_map" (stdlib/arrayLabels.mli[187,7656+4]..[187,7656+17]) (stdlib/arrayLabels.mli[187,7656+0]..[188,7676+65])
+      attribute "ocaml.doc"
+        [
+          structure_item (stdlib/arrayLabels.mli[189,7742+0]..[191,7860+20])
+            Pstr_eval
+            expression (stdlib/arrayLabels.mli[189,7742+0]..[191,7860+20])
+              Pexp_constant PConst_string(" [fold_left_map] is a combination of {!fold_left} and {!map} that threads an\n    accumulator through calls to [f].\n    @since 4.13.0 ",(stdlib/arrayLabels.mli[189,7742+0]..[191,7860+20]),None)
+        ]
+      core_type (stdlib/arrayLabels.mli[188,7676+2]..[188,7676+65])
+        Ptyp_arrow
+        Labelled "f"
+        core_type (stdlib/arrayLabels.mli[188,7676+5]..[188,7676+24])
+          Ptyp_arrow
+          Nolabel
+          core_type (stdlib/arrayLabels.mli[188,7676+5]..[188,7676+7])
+            Ptyp_var a
+          core_type (stdlib/arrayLabels.mli[188,7676+11]..[188,7676+24])
+            Ptyp_arrow
+            Nolabel
+            core_type (stdlib/arrayLabels.mli[188,7676+11]..[188,7676+13])
+              Ptyp_var b
+            core_type (stdlib/arrayLabels.mli[188,7676+17]..[188,7676+24])
+              Ptyp_tuple
+              [
+                core_type (stdlib/arrayLabels.mli[188,7676+17]..[188,7676+19])
+                  Ptyp_var a
+                core_type (stdlib/arrayLabels.mli[188,7676+22]..[188,7676+24])
+                  Ptyp_var c
+              ]
+        core_type (stdlib/arrayLabels.mli[188,7676+29]..[188,7676+65])
+          Ptyp_arrow
+          Labelled "init"
+          core_type (stdlib/arrayLabels.mli[188,7676+34]..[188,7676+36])
+            Ptyp_var a
+          core_type (stdlib/arrayLabels.mli[188,7676+40]..[188,7676+65])
+            Ptyp_arrow
+            Nolabel
+            core_type (stdlib/arrayLabels.mli[188,7676+40]..[188,7676+48])
+              Ptyp_constr "array" (stdlib/arrayLabels.mli[188,7676+43]..[188,7676+48])
+              [
+                core_type (stdlib/arrayLabels.mli[188,7676+40]..[188,7676+42])
+                  Ptyp_var b
+              ]
+            core_type (stdlib/arrayLabels.mli[188,7676+52]..[188,7676+65])
+              Ptyp_tuple
+              [
+                core_type (stdlib/arrayLabels.mli[188,7676+52]..[188,7676+54])
+                  Ptyp_var a
+                core_type (stdlib/arrayLabels.mli[188,7676+57]..[188,7676+65])
+                  Ptyp_constr "array" (stdlib/arrayLabels.mli[188,7676+60]..[188,7676+65])
+                  [
+                    core_type (stdlib/arrayLabels.mli[188,7676+57]..[188,7676+59])
+                      Ptyp_var c
+                  ]
+              ]
+      []
+  signature_item (stdlib/arrayLabels.mli[193,7882+0]..[193,7882+64])
+    Psig_value
+    value_description "fold_right" (stdlib/arrayLabels.mli[193,7882+4]..[193,7882+14]) (stdlib/arrayLabels.mli[193,7882+0]..[193,7882+64])
+      attribute "ocaml.doc"
+        [
+          structure_item (stdlib/arrayLabels.mli[194,7947+0]..[196,8036+47])
+            Pstr_eval
+            expression (stdlib/arrayLabels.mli[194,7947+0]..[196,8036+47])
+              Pexp_constant PConst_string(" [fold_right ~f a ~init] computes\n   [f a.(0) (f a.(1) ( ... (f a.(n-1) init) ...))],\n   where [n] is the length of the array [a]. ",(stdlib/arrayLabels.mli[194,7947+0]..[196,8036+47]),None)
+        ]
+      core_type (stdlib/arrayLabels.mli[193,7882+17]..[193,7882+64])
+        Ptyp_arrow
+        Labelled "f"
+        core_type (stdlib/arrayLabels.mli[193,7882+20]..[193,7882+34])
+          Ptyp_arrow
+          Nolabel
+          core_type (stdlib/arrayLabels.mli[193,7882+20]..[193,7882+22])
+            Ptyp_var b
+          core_type (stdlib/arrayLabels.mli[193,7882+26]..[193,7882+34])
+            Ptyp_arrow
+            Nolabel
+            core_type (stdlib/arrayLabels.mli[193,7882+26]..[193,7882+28])
+              Ptyp_var a
+            core_type (stdlib/arrayLabels.mli[193,7882+32]..[193,7882+34])
+              Ptyp_var a
+        core_type (stdlib/arrayLabels.mli[193,7882+39]..[193,7882+64])
+          Ptyp_arrow
+          Nolabel
+          core_type (stdlib/arrayLabels.mli[193,7882+39]..[193,7882+47])
+            Ptyp_constr "array" (stdlib/arrayLabels.mli[193,7882+42]..[193,7882+47])
+            [
+              core_type (stdlib/arrayLabels.mli[193,7882+39]..[193,7882+41])
+                Ptyp_var b
+            ]
+          core_type (stdlib/arrayLabels.mli[193,7882+51]..[193,7882+64])
+            Ptyp_arrow
+            Labelled "init"
+            core_type (stdlib/arrayLabels.mli[193,7882+56]..[193,7882+58])
+              Ptyp_var a
+            core_type (stdlib/arrayLabels.mli[193,7882+62]..[193,7882+64])
+              Ptyp_var a
+      []
+  signature_item (stdlib/arrayLabels.mli[199,8086+0]..[199,8086+34])
+    Psig_attribute "ocaml.text"
+    [
+      structure_item (stdlib/arrayLabels.mli[199,8086+0]..[199,8086+34])
+        Pstr_eval
+        expression (stdlib/arrayLabels.mli[199,8086+0]..[199,8086+34])
+          Pexp_constant PConst_string(" {1 Iterators on two arrays} ",(stdlib/arrayLabels.mli[199,8086+0]..[199,8086+34]),None)
+    ]
+  signature_item (stdlib/arrayLabels.mli[202,8123+0]..[202,8123+64])
+    Psig_value
+    value_description "iter2" (stdlib/arrayLabels.mli[202,8123+4]..[202,8123+9]) (stdlib/arrayLabels.mli[202,8123+0]..[202,8123+64])
+      attribute "ocaml.doc"
+        [
+          structure_item (stdlib/arrayLabels.mli[203,8188+0]..[207,8372+5])
+            Pstr_eval
+            expression (stdlib/arrayLabels.mli[203,8188+0]..[207,8372+5])
+              Pexp_constant PConst_string(" [iter2 ~f a b] applies function [f] to all the elements of [a]\n   and [b].\n   @raise Invalid_argument if the arrays are not the same size.\n   @since 4.03.0 (4.05.0 in ArrayLabels)\n   ",(stdlib/arrayLabels.mli[203,8188+0]..[207,8372+5]),None)
+        ]
+      core_type (stdlib/arrayLabels.mli[202,8123+12]..[202,8123+64])
+        Ptyp_arrow
+        Labelled "f"
+        core_type (stdlib/arrayLabels.mli[202,8123+15]..[202,8123+31])
+          Ptyp_arrow
+          Nolabel
+          core_type (stdlib/arrayLabels.mli[202,8123+15]..[202,8123+17])
+            Ptyp_var a
+          core_type (stdlib/arrayLabels.mli[202,8123+21]..[202,8123+31])
+            Ptyp_arrow
+            Nolabel
+            core_type (stdlib/arrayLabels.mli[202,8123+21]..[202,8123+23])
+              Ptyp_var b
+            core_type (stdlib/arrayLabels.mli[202,8123+27]..[202,8123+31])
+              Ptyp_constr "unit" (stdlib/arrayLabels.mli[202,8123+27]..[202,8123+31])
+              []
+        core_type (stdlib/arrayLabels.mli[202,8123+36]..[202,8123+64])
+          Ptyp_arrow
+          Nolabel
+          core_type (stdlib/arrayLabels.mli[202,8123+36]..[202,8123+44])
+            Ptyp_constr "array" (stdlib/arrayLabels.mli[202,8123+39]..[202,8123+44])
+            [
+              core_type (stdlib/arrayLabels.mli[202,8123+36]..[202,8123+38])
+                Ptyp_var a
+            ]
+          core_type (stdlib/arrayLabels.mli[202,8123+48]..[202,8123+64])
+            Ptyp_arrow
+            Nolabel
+            core_type (stdlib/arrayLabels.mli[202,8123+48]..[202,8123+56])
+              Ptyp_constr "array" (stdlib/arrayLabels.mli[202,8123+51]..[202,8123+56])
+              [
+                core_type (stdlib/arrayLabels.mli[202,8123+48]..[202,8123+50])
+                  Ptyp_var b
+              ]
+            core_type (stdlib/arrayLabels.mli[202,8123+60]..[202,8123+64])
+              Ptyp_constr "unit" (stdlib/arrayLabels.mli[202,8123+60]..[202,8123+64])
+              []
+      []
+  signature_item (stdlib/arrayLabels.mli[209,8379+0]..[209,8379+65])
+    Psig_value
+    value_description "map2" (stdlib/arrayLabels.mli[209,8379+4]..[209,8379+8]) (stdlib/arrayLabels.mli[209,8379+0]..[209,8379+65])
+      attribute "ocaml.doc"
+        [
+          structure_item (stdlib/arrayLabels.mli[210,8445+0]..[214,8708+43])
+            Pstr_eval
+            expression (stdlib/arrayLabels.mli[210,8445+0]..[214,8708+43])
+              Pexp_constant PConst_string(" [map2 ~f a b] applies function [f] to all the elements of [a]\n   and [b], and builds an array with the results returned by [f]:\n   [[| f a.(0) b.(0); ...; f a.(length a - 1) b.(length b - 1)|]].\n   @raise Invalid_argument if the arrays are not the same size.\n   @since 4.03.0 (4.05.0 in ArrayLabels) ",(stdlib/arrayLabels.mli[210,8445+0]..[214,8708+43]),None)
+        ]
+      core_type (stdlib/arrayLabels.mli[209,8379+11]..[209,8379+65])
+        Ptyp_arrow
+        Labelled "f"
+        core_type (stdlib/arrayLabels.mli[209,8379+14]..[209,8379+28])
+          Ptyp_arrow
+          Nolabel
+          core_type (stdlib/arrayLabels.mli[209,8379+14]..[209,8379+16])
+            Ptyp_var a
+          core_type (stdlib/arrayLabels.mli[209,8379+20]..[209,8379+28])
+            Ptyp_arrow
+            Nolabel
+            core_type (stdlib/arrayLabels.mli[209,8379+20]..[209,8379+22])
+              Ptyp_var b
+            core_type (stdlib/arrayLabels.mli[209,8379+26]..[209,8379+28])
+              Ptyp_var c
+        core_type (stdlib/arrayLabels.mli[209,8379+33]..[209,8379+65])
+          Ptyp_arrow
+          Nolabel
+          core_type (stdlib/arrayLabels.mli[209,8379+33]..[209,8379+41])
+            Ptyp_constr "array" (stdlib/arrayLabels.mli[209,8379+36]..[209,8379+41])
+            [
+              core_type (stdlib/arrayLabels.mli[209,8379+33]..[209,8379+35])
+                Ptyp_var a
+            ]
+          core_type (stdlib/arrayLabels.mli[209,8379+45]..[209,8379+65])
+            Ptyp_arrow
+            Nolabel
+            core_type (stdlib/arrayLabels.mli[209,8379+45]..[209,8379+53])
+              Ptyp_constr "array" (stdlib/arrayLabels.mli[209,8379+48]..[209,8379+53])
+              [
+                core_type (stdlib/arrayLabels.mli[209,8379+45]..[209,8379+47])
+                  Ptyp_var b
+              ]
+            core_type (stdlib/arrayLabels.mli[209,8379+57]..[209,8379+65])
+              Ptyp_constr "array" (stdlib/arrayLabels.mli[209,8379+60]..[209,8379+65])
+              [
+                core_type (stdlib/arrayLabels.mli[209,8379+57]..[209,8379+59])
+                  Ptyp_var c
+              ]
+      []
+  signature_item (stdlib/arrayLabels.mli[217,8754+0]..[217,8754+25])
+    Psig_attribute "ocaml.text"
+    [
+      structure_item (stdlib/arrayLabels.mli[217,8754+0]..[217,8754+25])
+        Pstr_eval
+        expression (stdlib/arrayLabels.mli[217,8754+0]..[217,8754+25])
+          Pexp_constant PConst_string(" {1 Array scanning} ",(stdlib/arrayLabels.mli[217,8754+0]..[217,8754+25]),None)
+    ]
+  signature_item (stdlib/arrayLabels.mli[219,8781+0]..[219,8781+48])
+    Psig_value
+    value_description "for_all" (stdlib/arrayLabels.mli[219,8781+4]..[219,8781+11]) (stdlib/arrayLabels.mli[219,8781+0]..[219,8781+48])
+      attribute "ocaml.doc"
+        [
+          structure_item (stdlib/arrayLabels.mli[220,8830+0]..[223,8989+19])
+            Pstr_eval
+            expression (stdlib/arrayLabels.mli[220,8830+0]..[223,8989+19])
+              Pexp_constant PConst_string(" [for_all ~f [|a1; ...; an|]] checks if all elements\n   of the array satisfy the predicate [f]. That is, it returns\n   [(f a1) && (f a2) && ... && (f an)].\n   @since 4.03.0 ",(stdlib/arrayLabels.mli[220,8830+0]..[223,8989+19]),None)
+        ]
+      core_type (stdlib/arrayLabels.mli[219,8781+14]..[219,8781+48])
+        Ptyp_arrow
+        Labelled "f"
+        core_type (stdlib/arrayLabels.mli[219,8781+17]..[219,8781+27])
+          Ptyp_arrow
+          Nolabel
+          core_type (stdlib/arrayLabels.mli[219,8781+17]..[219,8781+19])
+            Ptyp_var a
+          core_type (stdlib/arrayLabels.mli[219,8781+23]..[219,8781+27])
+            Ptyp_constr "bool" (stdlib/arrayLabels.mli[219,8781+23]..[219,8781+27])
+            []
+        core_type (stdlib/arrayLabels.mli[219,8781+32]..[219,8781+48])
+          Ptyp_arrow
+          Nolabel
+          core_type (stdlib/arrayLabels.mli[219,8781+32]..[219,8781+40])
+            Ptyp_constr "array" (stdlib/arrayLabels.mli[219,8781+35]..[219,8781+40])
+            [
+              core_type (stdlib/arrayLabels.mli[219,8781+32]..[219,8781+34])
+                Ptyp_var a
+            ]
+          core_type (stdlib/arrayLabels.mli[219,8781+44]..[219,8781+48])
+            Ptyp_constr "bool" (stdlib/arrayLabels.mli[219,8781+44]..[219,8781+48])
+            []
+      []
+  signature_item (stdlib/arrayLabels.mli[225,9010+0]..[225,9010+47])
+    Psig_value
+    value_description "exists" (stdlib/arrayLabels.mli[225,9010+4]..[225,9010+10]) (stdlib/arrayLabels.mli[225,9010+0]..[225,9010+47])
+      attribute "ocaml.doc"
+        [
+          structure_item (stdlib/arrayLabels.mli[226,9058+0]..[229,9228+20])
+            Pstr_eval
+            expression (stdlib/arrayLabels.mli[226,9058+0]..[229,9228+20])
+              Pexp_constant PConst_string(" [exists ~f [|a1; ...; an|]] checks if at least one element of\n    the array satisfies the predicate [f]. That is, it returns\n    [(f a1) || (f a2) || ... || (f an)].\n    @since 4.03.0 ",(stdlib/arrayLabels.mli[226,9058+0]..[229,9228+20]),None)
+        ]
+      core_type (stdlib/arrayLabels.mli[225,9010+13]..[225,9010+47])
+        Ptyp_arrow
+        Labelled "f"
+        core_type (stdlib/arrayLabels.mli[225,9010+16]..[225,9010+26])
+          Ptyp_arrow
+          Nolabel
+          core_type (stdlib/arrayLabels.mli[225,9010+16]..[225,9010+18])
+            Ptyp_var a
+          core_type (stdlib/arrayLabels.mli[225,9010+22]..[225,9010+26])
+            Ptyp_constr "bool" (stdlib/arrayLabels.mli[225,9010+22]..[225,9010+26])
+            []
+        core_type (stdlib/arrayLabels.mli[225,9010+31]..[225,9010+47])
+          Ptyp_arrow
+          Nolabel
+          core_type (stdlib/arrayLabels.mli[225,9010+31]..[225,9010+39])
+            Ptyp_constr "array" (stdlib/arrayLabels.mli[225,9010+34]..[225,9010+39])
+            [
+              core_type (stdlib/arrayLabels.mli[225,9010+31]..[225,9010+33])
+                Ptyp_var a
+            ]
+          core_type (stdlib/arrayLabels.mli[225,9010+43]..[225,9010+47])
+            Ptyp_constr "bool" (stdlib/arrayLabels.mli[225,9010+43]..[225,9010+47])
+            []
+      []
+  signature_item (stdlib/arrayLabels.mli[231,9250+0]..[231,9250+67])
+    Psig_value
+    value_description "for_all2" (stdlib/arrayLabels.mli[231,9250+4]..[231,9250+12]) (stdlib/arrayLabels.mli[231,9250+0]..[231,9250+67])
+      attribute "ocaml.doc"
+        [
+          structure_item (stdlib/arrayLabels.mli[232,9318+0]..[234,9445+19])
+            Pstr_eval
+            expression (stdlib/arrayLabels.mli[232,9318+0]..[234,9445+19])
+              Pexp_constant PConst_string(" Same as {!for_all}, but for a two-argument predicate.\n   @raise Invalid_argument if the two arrays have different lengths.\n   @since 4.11.0 ",(stdlib/arrayLabels.mli[232,9318+0]..[234,9445+19]),None)
+        ]
+      core_type (stdlib/arrayLabels.mli[231,9250+15]..[231,9250+67])
+        Ptyp_arrow
+        Labelled "f"
+        core_type (stdlib/arrayLabels.mli[231,9250+18]..[231,9250+34])
+          Ptyp_arrow
+          Nolabel
+          core_type (stdlib/arrayLabels.mli[231,9250+18]..[231,9250+20])
+            Ptyp_var a
+          core_type (stdlib/arrayLabels.mli[231,9250+24]..[231,9250+34])
+            Ptyp_arrow
+            Nolabel
+            core_type (stdlib/arrayLabels.mli[231,9250+24]..[231,9250+26])
+              Ptyp_var b
+            core_type (stdlib/arrayLabels.mli[231,9250+30]..[231,9250+34])
+              Ptyp_constr "bool" (stdlib/arrayLabels.mli[231,9250+30]..[231,9250+34])
+              []
+        core_type (stdlib/arrayLabels.mli[231,9250+39]..[231,9250+67])
+          Ptyp_arrow
+          Nolabel
+          core_type (stdlib/arrayLabels.mli[231,9250+39]..[231,9250+47])
+            Ptyp_constr "array" (stdlib/arrayLabels.mli[231,9250+42]..[231,9250+47])
+            [
+              core_type (stdlib/arrayLabels.mli[231,9250+39]..[231,9250+41])
+                Ptyp_var a
+            ]
+          core_type (stdlib/arrayLabels.mli[231,9250+51]..[231,9250+67])
+            Ptyp_arrow
+            Nolabel
+            core_type (stdlib/arrayLabels.mli[231,9250+51]..[231,9250+59])
+              Ptyp_constr "array" (stdlib/arrayLabels.mli[231,9250+54]..[231,9250+59])
+              [
+                core_type (stdlib/arrayLabels.mli[231,9250+51]..[231,9250+53])
+                  Ptyp_var b
+              ]
+            core_type (stdlib/arrayLabels.mli[231,9250+63]..[231,9250+67])
+              Ptyp_constr "bool" (stdlib/arrayLabels.mli[231,9250+63]..[231,9250+67])
+              []
+      []
+  signature_item (stdlib/arrayLabels.mli[236,9466+0]..[236,9466+66])
+    Psig_value
+    value_description "exists2" (stdlib/arrayLabels.mli[236,9466+4]..[236,9466+11]) (stdlib/arrayLabels.mli[236,9466+0]..[236,9466+66])
+      attribute "ocaml.doc"
+        [
+          structure_item (stdlib/arrayLabels.mli[237,9533+0]..[239,9659+19])
+            Pstr_eval
+            expression (stdlib/arrayLabels.mli[237,9533+0]..[239,9659+19])
+              Pexp_constant PConst_string(" Same as {!exists}, but for a two-argument predicate.\n   @raise Invalid_argument if the two arrays have different lengths.\n   @since 4.11.0 ",(stdlib/arrayLabels.mli[237,9533+0]..[239,9659+19]),None)
+        ]
+      core_type (stdlib/arrayLabels.mli[236,9466+14]..[236,9466+66])
+        Ptyp_arrow
+        Labelled "f"
+        core_type (stdlib/arrayLabels.mli[236,9466+17]..[236,9466+33])
+          Ptyp_arrow
+          Nolabel
+          core_type (stdlib/arrayLabels.mli[236,9466+17]..[236,9466+19])
+            Ptyp_var a
+          core_type (stdlib/arrayLabels.mli[236,9466+23]..[236,9466+33])
+            Ptyp_arrow
+            Nolabel
+            core_type (stdlib/arrayLabels.mli[236,9466+23]..[236,9466+25])
+              Ptyp_var b
+            core_type (stdlib/arrayLabels.mli[236,9466+29]..[236,9466+33])
+              Ptyp_constr "bool" (stdlib/arrayLabels.mli[236,9466+29]..[236,9466+33])
+              []
+        core_type (stdlib/arrayLabels.mli[236,9466+38]..[236,9466+66])
+          Ptyp_arrow
+          Nolabel
+          core_type (stdlib/arrayLabels.mli[236,9466+38]..[236,9466+46])
+            Ptyp_constr "array" (stdlib/arrayLabels.mli[236,9466+41]..[236,9466+46])
+            [
+              core_type (stdlib/arrayLabels.mli[236,9466+38]..[236,9466+40])
+                Ptyp_var a
+            ]
+          core_type (stdlib/arrayLabels.mli[236,9466+50]..[236,9466+66])
+            Ptyp_arrow
+            Nolabel
+            core_type (stdlib/arrayLabels.mli[236,9466+50]..[236,9466+58])
+              Ptyp_constr "array" (stdlib/arrayLabels.mli[236,9466+53]..[236,9466+58])
+              [
+                core_type (stdlib/arrayLabels.mli[236,9466+50]..[236,9466+52])
+                  Ptyp_var b
+              ]
+            core_type (stdlib/arrayLabels.mli[236,9466+62]..[236,9466+66])
+              Ptyp_constr "bool" (stdlib/arrayLabels.mli[236,9466+62]..[236,9466+66])
+              []
+      []
+  signature_item (stdlib/arrayLabels.mli[241,9680+0]..[241,9680+36])
+    Psig_value
+    value_description "mem" (stdlib/arrayLabels.mli[241,9680+4]..[241,9680+7]) (stdlib/arrayLabels.mli[241,9680+0]..[241,9680+36])
+      attribute "ocaml.doc"
+        [
+          structure_item (stdlib/arrayLabels.mli[242,9717+0]..[245,9871+20])
+            Pstr_eval
+            expression (stdlib/arrayLabels.mli[242,9717+0]..[245,9871+20])
+              Pexp_constant PConst_string(" [mem a ~set] is true if and only if [a] is structurally equal\n    to an element of [l] (i.e. there is an [x] in [l] such that\n    [compare a x = 0]).\n    @since 4.03.0 ",(stdlib/arrayLabels.mli[242,9717+0]..[245,9871+20]),None)
+        ]
+      core_type (stdlib/arrayLabels.mli[241,9680+10]..[241,9680+36])
+        Ptyp_arrow
+        Nolabel
+        core_type (stdlib/arrayLabels.mli[241,9680+10]..[241,9680+12])
+          Ptyp_var a
+        core_type (stdlib/arrayLabels.mli[241,9680+16]..[241,9680+36])
+          Ptyp_arrow
+          Labelled "set"
+          core_type (stdlib/arrayLabels.mli[241,9680+20]..[241,9680+28])
+            Ptyp_constr "array" (stdlib/arrayLabels.mli[241,9680+23]..[241,9680+28])
+            [
+              core_type (stdlib/arrayLabels.mli[241,9680+20]..[241,9680+22])
+                Ptyp_var a
+            ]
+          core_type (stdlib/arrayLabels.mli[241,9680+32]..[241,9680+36])
+            Ptyp_constr "bool" (stdlib/arrayLabels.mli[241,9680+32]..[241,9680+36])
+            []
+      []
+  signature_item (stdlib/arrayLabels.mli[247,9893+0]..[247,9893+37])
+    Psig_value
+    value_description "memq" (stdlib/arrayLabels.mli[247,9893+4]..[247,9893+8]) (stdlib/arrayLabels.mli[247,9893+0]..[247,9893+37])
+      attribute "ocaml.doc"
+        [
+          structure_item (stdlib/arrayLabels.mli[248,9931+0]..[250,10038+19])
+            Pstr_eval
+            expression (stdlib/arrayLabels.mli[248,9931+0]..[250,10038+19])
+              Pexp_constant PConst_string(" Same as {!mem}, but uses physical equality\n   instead of structural equality to compare list elements.\n   @since 4.03.0 ",(stdlib/arrayLabels.mli[248,9931+0]..[250,10038+19]),None)
+        ]
+      core_type (stdlib/arrayLabels.mli[247,9893+11]..[247,9893+37])
+        Ptyp_arrow
+        Nolabel
+        core_type (stdlib/arrayLabels.mli[247,9893+11]..[247,9893+13])
+          Ptyp_var a
+        core_type (stdlib/arrayLabels.mli[247,9893+17]..[247,9893+37])
+          Ptyp_arrow
+          Labelled "set"
+          core_type (stdlib/arrayLabels.mli[247,9893+21]..[247,9893+29])
+            Ptyp_constr "array" (stdlib/arrayLabels.mli[247,9893+24]..[247,9893+29])
+            [
+              core_type (stdlib/arrayLabels.mli[247,9893+21]..[247,9893+23])
+                Ptyp_var a
+            ]
+          core_type (stdlib/arrayLabels.mli[247,9893+33]..[247,9893+37])
+            Ptyp_constr "bool" (stdlib/arrayLabels.mli[247,9893+33]..[247,9893+37])
+            []
+      []
+  signature_item (stdlib/arrayLabels.mli[252,10059+0]..[252,10059+54])
+    Psig_value
+    value_description "find_opt" (stdlib/arrayLabels.mli[252,10059+4]..[252,10059+12]) (stdlib/arrayLabels.mli[252,10059+0]..[252,10059+54])
+      attribute "ocaml.doc"
+        [
+          structure_item (stdlib/arrayLabels.mli[253,10114+0]..[257,10288+20])
+            Pstr_eval
+            expression (stdlib/arrayLabels.mli[253,10114+0]..[257,10288+20])
+              Pexp_constant PConst_string(" [find_opt ~f a] returns the first element of the array [a] that satisfies\n    the predicate [f], or [None] if there is no value that satisfies [f] in the\n    array [a].\n\n    @since 4.13.0 ",(stdlib/arrayLabels.mli[253,10114+0]..[257,10288+20]),None)
+        ]
+      core_type (stdlib/arrayLabels.mli[252,10059+15]..[252,10059+54])
+        Ptyp_arrow
+        Labelled "f"
+        core_type (stdlib/arrayLabels.mli[252,10059+18]..[252,10059+28])
+          Ptyp_arrow
+          Nolabel
+          core_type (stdlib/arrayLabels.mli[252,10059+18]..[252,10059+20])
+            Ptyp_var a
+          core_type (stdlib/arrayLabels.mli[252,10059+24]..[252,10059+28])
+            Ptyp_constr "bool" (stdlib/arrayLabels.mli[252,10059+24]..[252,10059+28])
+            []
+        core_type (stdlib/arrayLabels.mli[252,10059+33]..[252,10059+54])
+          Ptyp_arrow
+          Nolabel
+          core_type (stdlib/arrayLabels.mli[252,10059+33]..[252,10059+41])
+            Ptyp_constr "array" (stdlib/arrayLabels.mli[252,10059+36]..[252,10059+41])
+            [
+              core_type (stdlib/arrayLabels.mli[252,10059+33]..[252,10059+35])
+                Ptyp_var a
+            ]
+          core_type (stdlib/arrayLabels.mli[252,10059+45]..[252,10059+54])
+            Ptyp_constr "option" (stdlib/arrayLabels.mli[252,10059+48]..[252,10059+54])
+            [
+              core_type (stdlib/arrayLabels.mli[252,10059+45]..[252,10059+47])
+                Ptyp_var a
+            ]
+      []
+  signature_item (stdlib/arrayLabels.mli[259,10310+0]..[259,10310+59])
+    Psig_value
+    value_description "find_map" (stdlib/arrayLabels.mli[259,10310+4]..[259,10310+12]) (stdlib/arrayLabels.mli[259,10310+0]..[259,10310+59])
+      attribute "ocaml.doc"
+        [
+          structure_item (stdlib/arrayLabels.mli[260,10370+0]..[263,10516+20])
+            Pstr_eval
+            expression (stdlib/arrayLabels.mli[260,10370+0]..[263,10516+20])
+              Pexp_constant PConst_string(" [find_map ~f a] applies [f] to the elements of [a] in order, and returns the\n    first result of the form [Some v], or [None] if none exist.\n\n    @since 4.13.0 ",(stdlib/arrayLabels.mli[260,10370+0]..[263,10516+20]),None)
+        ]
+      core_type (stdlib/arrayLabels.mli[259,10310+15]..[259,10310+59])
+        Ptyp_arrow
+        Labelled "f"
+        core_type (stdlib/arrayLabels.mli[259,10310+18]..[259,10310+33])
+          Ptyp_arrow
+          Nolabel
+          core_type (stdlib/arrayLabels.mli[259,10310+18]..[259,10310+20])
+            Ptyp_var a
+          core_type (stdlib/arrayLabels.mli[259,10310+24]..[259,10310+33])
+            Ptyp_constr "option" (stdlib/arrayLabels.mli[259,10310+27]..[259,10310+33])
+            [
+              core_type (stdlib/arrayLabels.mli[259,10310+24]..[259,10310+26])
+                Ptyp_var b
+            ]
+        core_type (stdlib/arrayLabels.mli[259,10310+38]..[259,10310+59])
+          Ptyp_arrow
+          Nolabel
+          core_type (stdlib/arrayLabels.mli[259,10310+38]..[259,10310+46])
+            Ptyp_constr "array" (stdlib/arrayLabels.mli[259,10310+41]..[259,10310+46])
+            [
+              core_type (stdlib/arrayLabels.mli[259,10310+38]..[259,10310+40])
+                Ptyp_var a
+            ]
+          core_type (stdlib/arrayLabels.mli[259,10310+50]..[259,10310+59])
+            Ptyp_constr "option" (stdlib/arrayLabels.mli[259,10310+53]..[259,10310+59])
+            [
+              core_type (stdlib/arrayLabels.mli[259,10310+50]..[259,10310+52])
+                Ptyp_var b
+            ]
+      []
+  signature_item (stdlib/arrayLabels.mli[265,10538+0]..[265,10538+26])
+    Psig_attribute "ocaml.text"
+    [
+      structure_item (stdlib/arrayLabels.mli[265,10538+0]..[265,10538+26])
+        Pstr_eval
+        expression (stdlib/arrayLabels.mli[265,10538+0]..[265,10538+26])
+          Pexp_constant PConst_string(" {1 Arrays of pairs} ",(stdlib/arrayLabels.mli[265,10538+0]..[265,10538+26]),None)
+    ]
+  signature_item (stdlib/arrayLabels.mli[267,10566+0]..[267,10566+50])
+    Psig_value
+    value_description "split" (stdlib/arrayLabels.mli[267,10566+4]..[267,10566+9]) (stdlib/arrayLabels.mli[267,10566+0]..[267,10566+50])
+      attribute "ocaml.doc"
+        [
+          structure_item (stdlib/arrayLabels.mli[268,10617+0]..[270,10697+20])
+            Pstr_eval
+            expression (stdlib/arrayLabels.mli[268,10617+0]..[270,10697+20])
+              Pexp_constant PConst_string(" [split [|(a1,b1); ...; (an,bn)|]] is [([|a1; ...; an|], [|b1; ...; bn|])].\n\n    @since 4.13.0 ",(stdlib/arrayLabels.mli[268,10617+0]..[270,10697+20]),None)
+        ]
+      core_type (stdlib/arrayLabels.mli[267,10566+12]..[267,10566+50])
+        Ptyp_arrow
+        Nolabel
+        core_type (stdlib/arrayLabels.mli[267,10566+12]..[267,10566+27])
+          Ptyp_constr "array" (stdlib/arrayLabels.mli[267,10566+22]..[267,10566+27])
+          [
+            core_type (stdlib/arrayLabels.mli[267,10566+13]..[267,10566+20])
+              Ptyp_tuple
+              [
+                core_type (stdlib/arrayLabels.mli[267,10566+13]..[267,10566+15])
+                  Ptyp_var a
+                core_type (stdlib/arrayLabels.mli[267,10566+18]..[267,10566+20])
+                  Ptyp_var b
+              ]
+          ]
+        core_type (stdlib/arrayLabels.mli[267,10566+31]..[267,10566+50])
+          Ptyp_tuple
+          [
+            core_type (stdlib/arrayLabels.mli[267,10566+31]..[267,10566+39])
+              Ptyp_constr "array" (stdlib/arrayLabels.mli[267,10566+34]..[267,10566+39])
+              [
+                core_type (stdlib/arrayLabels.mli[267,10566+31]..[267,10566+33])
+                  Ptyp_var a
+              ]
+            core_type (stdlib/arrayLabels.mli[267,10566+42]..[267,10566+50])
+              Ptyp_constr "array" (stdlib/arrayLabels.mli[267,10566+45]..[267,10566+50])
+              [
+                core_type (stdlib/arrayLabels.mli[267,10566+42]..[267,10566+44])
+                  Ptyp_var b
+              ]
+          ]
+      []
+  signature_item (stdlib/arrayLabels.mli[272,10719+0]..[272,10719+53])
+    Psig_value
+    value_description "combine" (stdlib/arrayLabels.mli[272,10719+4]..[272,10719+11]) (stdlib/arrayLabels.mli[272,10719+0]..[272,10719+53])
+      attribute "ocaml.doc"
+        [
+          structure_item (stdlib/arrayLabels.mli[273,10773+0]..[276,10923+20])
+            Pstr_eval
+            expression (stdlib/arrayLabels.mli[273,10773+0]..[276,10923+20])
+              Pexp_constant PConst_string(" [combine [|a1; ...; an|] [|b1; ...; bn|]] is [[|(a1,b1); ...; (an,bn)|]].\n    Raise [Invalid_argument] if the two arrays have different lengths.\n\n    @since 4.13.0 ",(stdlib/arrayLabels.mli[273,10773+0]..[276,10923+20]),None)
+        ]
+      core_type (stdlib/arrayLabels.mli[272,10719+14]..[272,10719+53])
+        Ptyp_arrow
+        Nolabel
+        core_type (stdlib/arrayLabels.mli[272,10719+14]..[272,10719+22])
+          Ptyp_constr "array" (stdlib/arrayLabels.mli[272,10719+17]..[272,10719+22])
+          [
+            core_type (stdlib/arrayLabels.mli[272,10719+14]..[272,10719+16])
+              Ptyp_var a
+          ]
+        core_type (stdlib/arrayLabels.mli[272,10719+26]..[272,10719+53])
+          Ptyp_arrow
+          Nolabel
+          core_type (stdlib/arrayLabels.mli[272,10719+26]..[272,10719+34])
+            Ptyp_constr "array" (stdlib/arrayLabels.mli[272,10719+29]..[272,10719+34])
+            [
+              core_type (stdlib/arrayLabels.mli[272,10719+26]..[272,10719+28])
+                Ptyp_var b
+            ]
+          core_type (stdlib/arrayLabels.mli[272,10719+38]..[272,10719+53])
+            Ptyp_constr "array" (stdlib/arrayLabels.mli[272,10719+48]..[272,10719+53])
+            [
+              core_type (stdlib/arrayLabels.mli[272,10719+39]..[272,10719+46])
+                Ptyp_tuple
+                [
+                  core_type (stdlib/arrayLabels.mli[272,10719+39]..[272,10719+41])
+                    Ptyp_var a
+                  core_type (stdlib/arrayLabels.mli[272,10719+44]..[272,10719+46])
+                    Ptyp_var b
+                ]
+            ]
+      []
+  signature_item (stdlib/arrayLabels.mli[278,10945+0]..[278,10945+18])
+    Psig_attribute "ocaml.text"
+    [
+      structure_item (stdlib/arrayLabels.mli[278,10945+0]..[278,10945+18])
+        Pstr_eval
+        expression (stdlib/arrayLabels.mli[278,10945+0]..[278,10945+18])
+          Pexp_constant PConst_string(" {1 Sorting} ",(stdlib/arrayLabels.mli[278,10945+0]..[278,10945+18]),None)
+    ]
+  signature_item (stdlib/arrayLabels.mli[280,10965+0]..[280,10965+52])
+    Psig_value
+    value_description "sort" (stdlib/arrayLabels.mli[280,10965+4]..[280,10965+8]) (stdlib/arrayLabels.mli[280,10965+0]..[280,10965+52])
+      attribute "ocaml.doc"
+        [
+          structure_item (stdlib/arrayLabels.mli[281,11018+0]..[303,12098+2])
+            Pstr_eval
+            expression (stdlib/arrayLabels.mli[281,11018+0]..[303,12098+2])
+              Pexp_constant PConst_string(" Sort an array in increasing order according to a comparison\n   function.  The comparison function must return 0 if its arguments\n   compare as equal, a positive integer if the first is greater,\n   and a negative integer if the first is smaller (see below for a\n   complete specification).  For example, {!Stdlib.compare} is\n   a suitable comparison function. After calling [sort], the\n   array is sorted in place in increasing order.\n   [sort] is guaranteed to run in constant heap space\n   and (at most) logarithmic stack space.\n\n   The current implementation uses Heap Sort.  It runs in constant\n   stack space.\n\n   Specification of the comparison function:\n   Let [a] be the array and [cmp] the comparison function.  The following\n   must be true for all [x], [y], [z] in [a] :\n-   [cmp x y] > 0 if and only if [cmp y x] < 0\n-   if [cmp x y] >= 0 and [cmp y z] >= 0 then [cmp x z] >= 0\n\n   When [sort] returns, [a] contains the same elements as before,\n   reordered in such a way that for all i and j valid indices of [a] :\n-   [cmp a.(i) a.(j)] >= 0 if and only if i >= j\n",(stdlib/arrayLabels.mli[281,11018+0]..[303,12098+2]),None)
+        ]
+      core_type (stdlib/arrayLabels.mli[280,10965+11]..[280,10965+52])
+        Ptyp_arrow
+        Labelled "cmp"
+        core_type (stdlib/arrayLabels.mli[280,10965+16]..[280,10965+31])
+          Ptyp_arrow
+          Nolabel
+          core_type (stdlib/arrayLabels.mli[280,10965+16]..[280,10965+18])
+            Ptyp_var a
+          core_type (stdlib/arrayLabels.mli[280,10965+22]..[280,10965+31])
+            Ptyp_arrow
+            Nolabel
+            core_type (stdlib/arrayLabels.mli[280,10965+22]..[280,10965+24])
+              Ptyp_var a
+            core_type (stdlib/arrayLabels.mli[280,10965+28]..[280,10965+31])
+              Ptyp_constr "int" (stdlib/arrayLabels.mli[280,10965+28]..[280,10965+31])
+              []
+        core_type (stdlib/arrayLabels.mli[280,10965+36]..[280,10965+52])
+          Ptyp_arrow
+          Nolabel
+          core_type (stdlib/arrayLabels.mli[280,10965+36]..[280,10965+44])
+            Ptyp_constr "array" (stdlib/arrayLabels.mli[280,10965+39]..[280,10965+44])
+            [
+              core_type (stdlib/arrayLabels.mli[280,10965+36]..[280,10965+38])
+                Ptyp_var a
+            ]
+          core_type (stdlib/arrayLabels.mli[280,10965+48]..[280,10965+52])
+            Ptyp_constr "unit" (stdlib/arrayLabels.mli[280,10965+48]..[280,10965+52])
+            []
+      []
+  signature_item (stdlib/arrayLabels.mli[305,12102+0]..[305,12102+59])
+    Psig_value
+    value_description "stable_sort" (stdlib/arrayLabels.mli[305,12102+4]..[305,12102+15]) (stdlib/arrayLabels.mli[305,12102+0]..[305,12102+59])
+      attribute "ocaml.doc"
+        [
+          structure_item (stdlib/arrayLabels.mli[306,12162+0]..[313,12544+2])
+            Pstr_eval
+            expression (stdlib/arrayLabels.mli[306,12162+0]..[313,12544+2])
+              Pexp_constant PConst_string(" Same as {!sort}, but the sorting algorithm is stable (i.e.\n   elements that compare equal are kept in their original order) and\n   not guaranteed to run in constant heap space.\n\n   The current implementation uses Merge Sort. It uses a temporary array of\n   length [n/2], where [n] is the length of the array.  It is usually faster\n   than the current implementation of {!sort}.\n",(stdlib/arrayLabels.mli[306,12162+0]..[313,12544+2]),None)
+        ]
+      core_type (stdlib/arrayLabels.mli[305,12102+18]..[305,12102+59])
+        Ptyp_arrow
+        Labelled "cmp"
+        core_type (stdlib/arrayLabels.mli[305,12102+23]..[305,12102+38])
+          Ptyp_arrow
+          Nolabel
+          core_type (stdlib/arrayLabels.mli[305,12102+23]..[305,12102+25])
+            Ptyp_var a
+          core_type (stdlib/arrayLabels.mli[305,12102+29]..[305,12102+38])
+            Ptyp_arrow
+            Nolabel
+            core_type (stdlib/arrayLabels.mli[305,12102+29]..[305,12102+31])
+              Ptyp_var a
+            core_type (stdlib/arrayLabels.mli[305,12102+35]..[305,12102+38])
+              Ptyp_constr "int" (stdlib/arrayLabels.mli[305,12102+35]..[305,12102+38])
+              []
+        core_type (stdlib/arrayLabels.mli[305,12102+43]..[305,12102+59])
+          Ptyp_arrow
+          Nolabel
+          core_type (stdlib/arrayLabels.mli[305,12102+43]..[305,12102+51])
+            Ptyp_constr "array" (stdlib/arrayLabels.mli[305,12102+46]..[305,12102+51])
+            [
+              core_type (stdlib/arrayLabels.mli[305,12102+43]..[305,12102+45])
+                Ptyp_var a
+            ]
+          core_type (stdlib/arrayLabels.mli[305,12102+55]..[305,12102+59])
+            Ptyp_constr "unit" (stdlib/arrayLabels.mli[305,12102+55]..[305,12102+59])
+            []
+      []
+  signature_item (stdlib/arrayLabels.mli[315,12548+0]..[315,12548+57])
+    Psig_value
+    value_description "fast_sort" (stdlib/arrayLabels.mli[315,12548+4]..[315,12548+13]) (stdlib/arrayLabels.mli[315,12548+0]..[315,12548+57])
+      attribute "ocaml.doc"
+        [
+          structure_item (stdlib/arrayLabels.mli[316,12606+0]..[317,12658+31])
+            Pstr_eval
+            expression (stdlib/arrayLabels.mli[316,12606+0]..[317,12658+31])
+              Pexp_constant PConst_string(" Same as {!sort} or {!stable_sort}, whichever is\n    faster on typical input. ",(stdlib/arrayLabels.mli[316,12606+0]..[317,12658+31]),None)
+        ]
+      core_type (stdlib/arrayLabels.mli[315,12548+16]..[315,12548+57])
+        Ptyp_arrow
+        Labelled "cmp"
+        core_type (stdlib/arrayLabels.mli[315,12548+21]..[315,12548+36])
+          Ptyp_arrow
+          Nolabel
+          core_type (stdlib/arrayLabels.mli[315,12548+21]..[315,12548+23])
+            Ptyp_var a
+          core_type (stdlib/arrayLabels.mli[315,12548+27]..[315,12548+36])
+            Ptyp_arrow
+            Nolabel
+            core_type (stdlib/arrayLabels.mli[315,12548+27]..[315,12548+29])
+              Ptyp_var a
+            core_type (stdlib/arrayLabels.mli[315,12548+33]..[315,12548+36])
+              Ptyp_constr "int" (stdlib/arrayLabels.mli[315,12548+33]..[315,12548+36])
+              []
+        core_type (stdlib/arrayLabels.mli[315,12548+41]..[315,12548+57])
+          Ptyp_arrow
+          Nolabel
+          core_type (stdlib/arrayLabels.mli[315,12548+41]..[315,12548+49])
+            Ptyp_constr "array" (stdlib/arrayLabels.mli[315,12548+44]..[315,12548+49])
+            [
+              core_type (stdlib/arrayLabels.mli[315,12548+41]..[315,12548+43])
+                Ptyp_var a
+            ]
+          core_type (stdlib/arrayLabels.mli[315,12548+53]..[315,12548+57])
+            Ptyp_constr "unit" (stdlib/arrayLabels.mli[315,12548+53]..[315,12548+57])
+            []
+      []
+  signature_item (stdlib/arrayLabels.mli[320,12692+0]..[320,12692+31])
+    Psig_attribute "ocaml.text"
+    [
+      structure_item (stdlib/arrayLabels.mli[320,12692+0]..[320,12692+31])
+        Pstr_eval
+        expression (stdlib/arrayLabels.mli[320,12692+0]..[320,12692+31])
+          Pexp_constant PConst_string(" {1 Arrays and Sequences} ",(stdlib/arrayLabels.mli[320,12692+0]..[320,12692+31]),None)
+    ]
+  signature_item (stdlib/arrayLabels.mli[322,12725+0]..[322,12725+33])
+    Psig_value
+    value_description "to_seq" (stdlib/arrayLabels.mli[322,12725+4]..[322,12725+10]) (stdlib/arrayLabels.mli[322,12725+0]..[322,12725+33])
+      attribute "ocaml.doc"
+        [
+          structure_item (stdlib/arrayLabels.mli[323,12759+0]..[325,12889+18])
+            Pstr_eval
+            expression (stdlib/arrayLabels.mli[323,12759+0]..[325,12889+18])
+              Pexp_constant PConst_string(" Iterate on the array, in increasing order. Modifications of the\n    array during iteration will be reflected in the sequence.\n    @since 4.07 ",(stdlib/arrayLabels.mli[323,12759+0]..[325,12889+18]),None)
+        ]
+      core_type (stdlib/arrayLabels.mli[322,12725+13]..[322,12725+33])
+        Ptyp_arrow
+        Nolabel
+        core_type (stdlib/arrayLabels.mli[322,12725+13]..[322,12725+21])
+          Ptyp_constr "array" (stdlib/arrayLabels.mli[322,12725+16]..[322,12725+21])
+          [
+            core_type (stdlib/arrayLabels.mli[322,12725+13]..[322,12725+15])
+              Ptyp_var a
+          ]
+        core_type (stdlib/arrayLabels.mli[322,12725+25]..[322,12725+33])
+          Ptyp_constr "Seq.t" (stdlib/arrayLabels.mli[322,12725+28]..[322,12725+33])
+          [
+            core_type (stdlib/arrayLabels.mli[322,12725+25]..[322,12725+27])
+              Ptyp_var a
+          ]
+      []
+  signature_item (stdlib/arrayLabels.mli[327,12909+0]..[327,12909+42])
+    Psig_value
+    value_description "to_seqi" (stdlib/arrayLabels.mli[327,12909+4]..[327,12909+11]) (stdlib/arrayLabels.mli[327,12909+0]..[327,12909+42])
+      attribute "ocaml.doc"
+        [
+          structure_item (stdlib/arrayLabels.mli[328,12952+0]..[331,13119+18])
+            Pstr_eval
+            expression (stdlib/arrayLabels.mli[328,12952+0]..[331,13119+18])
+              Pexp_constant PConst_string(" Iterate on the array, in increasing order, yielding indices along elements.\n    Modifications of the array during iteration will be reflected in the\n    sequence.\n    @since 4.07 ",(stdlib/arrayLabels.mli[328,12952+0]..[331,13119+18]),None)
+        ]
+      core_type (stdlib/arrayLabels.mli[327,12909+14]..[327,12909+42])
+        Ptyp_arrow
+        Nolabel
+        core_type (stdlib/arrayLabels.mli[327,12909+14]..[327,12909+22])
+          Ptyp_constr "array" (stdlib/arrayLabels.mli[327,12909+17]..[327,12909+22])
+          [
+            core_type (stdlib/arrayLabels.mli[327,12909+14]..[327,12909+16])
+              Ptyp_var a
+          ]
+        core_type (stdlib/arrayLabels.mli[327,12909+26]..[327,12909+42])
+          Ptyp_constr "Seq.t" (stdlib/arrayLabels.mli[327,12909+37]..[327,12909+42])
+          [
+            core_type (stdlib/arrayLabels.mli[327,12909+27]..[327,12909+35])
+              Ptyp_tuple
+              [
+                core_type (stdlib/arrayLabels.mli[327,12909+27]..[327,12909+30])
+                  Ptyp_constr "int" (stdlib/arrayLabels.mli[327,12909+27]..[327,12909+30])
+                  []
+                core_type (stdlib/arrayLabels.mli[327,12909+33]..[327,12909+35])
+                  Ptyp_var a
+              ]
+          ]
+      []
+  signature_item (stdlib/arrayLabels.mli[333,13139+0]..[333,13139+33])
+    Psig_value
+    value_description "of_seq" (stdlib/arrayLabels.mli[333,13139+4]..[333,13139+10]) (stdlib/arrayLabels.mli[333,13139+0]..[333,13139+33])
+      attribute "ocaml.doc"
+        [
+          structure_item (stdlib/arrayLabels.mli[334,13173+0]..[335,13212+18])
+            Pstr_eval
+            expression (stdlib/arrayLabels.mli[334,13173+0]..[335,13212+18])
+              Pexp_constant PConst_string(" Create an array from the generator\n    @since 4.07 ",(stdlib/arrayLabels.mli[334,13173+0]..[335,13212+18]),None)
+        ]
+      core_type (stdlib/arrayLabels.mli[333,13139+13]..[333,13139+33])
+        Ptyp_arrow
+        Nolabel
+        core_type (stdlib/arrayLabels.mli[333,13139+13]..[333,13139+21])
+          Ptyp_constr "Seq.t" (stdlib/arrayLabels.mli[333,13139+16]..[333,13139+21])
+          [
+            core_type (stdlib/arrayLabels.mli[333,13139+13]..[333,13139+15])
+              Ptyp_var a
+          ]
+        core_type (stdlib/arrayLabels.mli[333,13139+25]..[333,13139+33])
+          Ptyp_constr "array" (stdlib/arrayLabels.mli[333,13139+28]..[333,13139+33])
+          [
+            core_type (stdlib/arrayLabels.mli[333,13139+25]..[333,13139+27])
+              Ptyp_var a
+          ]
+      []
+  signature_item (stdlib/arrayLabels.mli[337,13232+0]..[337,13232+7])
+    Psig_attribute "ocaml.text"
+    [
+      structure_item (stdlib/arrayLabels.mli[337,13232+0]..[337,13232+7])
+        Pstr_eval
+        expression (stdlib/arrayLabels.mli[337,13232+0]..[337,13232+7])
+          Pexp_constant PConst_string("/*",(stdlib/arrayLabels.mli[337,13232+0]..[337,13232+7]),None)
+    ]
+  signature_item (stdlib/arrayLabels.mli[339,13241+0]..[339,13241+33])
+    Psig_attribute "ocaml.text"
+    [
+      structure_item (stdlib/arrayLabels.mli[339,13241+0]..[339,13241+33])
+        Pstr_eval
+        expression (stdlib/arrayLabels.mli[339,13241+0]..[339,13241+33])
+          Pexp_constant PConst_string(" {1 Undocumented functions} ",(stdlib/arrayLabels.mli[339,13241+0]..[339,13241+33]),None)
+    ]
+  signature_item (stdlib/arrayLabels.mli[343,13343+0]..[343,13343+65])
+    Psig_value
+    value_description "unsafe_get" (stdlib/arrayLabels.mli[343,13343+9]..[343,13343+19]) (stdlib/arrayLabels.mli[343,13343+0]..[343,13343+65])
+      core_type (stdlib/arrayLabels.mli[343,13343+22]..[343,13343+43])
+        Ptyp_arrow
+        Nolabel
+        core_type (stdlib/arrayLabels.mli[343,13343+22]..[343,13343+30])
+          Ptyp_constr "array" (stdlib/arrayLabels.mli[343,13343+25]..[343,13343+30])
+          [
+            core_type (stdlib/arrayLabels.mli[343,13343+22]..[343,13343+24])
+              Ptyp_var a
+          ]
+        core_type (stdlib/arrayLabels.mli[343,13343+34]..[343,13343+43])
+          Ptyp_arrow
+          Nolabel
+          core_type (stdlib/arrayLabels.mli[343,13343+34]..[343,13343+37])
+            Ptyp_constr "int" (stdlib/arrayLabels.mli[343,13343+34]..[343,13343+37])
+            []
+          core_type (stdlib/arrayLabels.mli[343,13343+41]..[343,13343+43])
+            Ptyp_var a
+      [
+        "%array_unsafe_get"
+      ]
+  signature_item (stdlib/arrayLabels.mli[344,13409+0]..[344,13409+73])
+    Psig_value
+    value_description "unsafe_set" (stdlib/arrayLabels.mli[344,13409+9]..[344,13409+19]) (stdlib/arrayLabels.mli[344,13409+0]..[344,13409+73])
+      core_type (stdlib/arrayLabels.mli[344,13409+22]..[344,13409+51])
+        Ptyp_arrow
+        Nolabel
+        core_type (stdlib/arrayLabels.mli[344,13409+22]..[344,13409+30])
+          Ptyp_constr "array" (stdlib/arrayLabels.mli[344,13409+25]..[344,13409+30])
+          [
+            core_type (stdlib/arrayLabels.mli[344,13409+22]..[344,13409+24])
+              Ptyp_var a
+          ]
+        core_type (stdlib/arrayLabels.mli[344,13409+34]..[344,13409+51])
+          Ptyp_arrow
+          Nolabel
+          core_type (stdlib/arrayLabels.mli[344,13409+34]..[344,13409+37])
+            Ptyp_constr "int" (stdlib/arrayLabels.mli[344,13409+34]..[344,13409+37])
+            []
+          core_type (stdlib/arrayLabels.mli[344,13409+41]..[344,13409+51])
+            Ptyp_arrow
+            Nolabel
+            core_type (stdlib/arrayLabels.mli[344,13409+41]..[344,13409+43])
+              Ptyp_var a
+            core_type (stdlib/arrayLabels.mli[344,13409+47]..[344,13409+51])
+              Ptyp_constr "unit" (stdlib/arrayLabels.mli[344,13409+47]..[344,13409+51])
+              []
+      [
+        "%array_unsafe_set"
+      ]
+  signature_item (stdlib/arrayLabels.mli[346,13484+0]..[354,13950+3])
+    Psig_module "Floatarray" (stdlib/arrayLabels.mli[346,13484+7]..[346,13484+17])
+    module_type (stdlib/arrayLabels.mli[346,13484+20]..[354,13950+3])
+      Pmty_signature
+      [
+        signature_item (stdlib/arrayLabels.mli[347,13508+2]..[347,13508+64])
+          Psig_value
+          value_description "create" (stdlib/arrayLabels.mli[347,13508+11]..[347,13508+17]) (stdlib/arrayLabels.mli[347,13508+2]..[347,13508+64])
+            core_type (stdlib/arrayLabels.mli[347,13508+20]..[347,13508+37])
+              Ptyp_arrow
+              Nolabel
+              core_type (stdlib/arrayLabels.mli[347,13508+20]..[347,13508+23])
+                Ptyp_constr "int" (stdlib/arrayLabels.mli[347,13508+20]..[347,13508+23])
+                []
+              core_type (stdlib/arrayLabels.mli[347,13508+27]..[347,13508+37])
+                Ptyp_constr "floatarray" (stdlib/arrayLabels.mli[347,13508+27]..[347,13508+37])
+                []
+            [
+              "caml_floatarray_create"
+            ]
+        signature_item (stdlib/arrayLabels.mli[348,13573+2]..[348,13573+60])
+          Psig_value
+          value_description "length" (stdlib/arrayLabels.mli[348,13573+11]..[348,13573+17]) (stdlib/arrayLabels.mli[348,13573+2]..[348,13573+60])
+            core_type (stdlib/arrayLabels.mli[348,13573+20]..[348,13573+37])
+              Ptyp_arrow
+              Nolabel
+              core_type (stdlib/arrayLabels.mli[348,13573+20]..[348,13573+30])
+                Ptyp_constr "floatarray" (stdlib/arrayLabels.mli[348,13573+20]..[348,13573+30])
+                []
+              core_type (stdlib/arrayLabels.mli[348,13573+34]..[348,13573+37])
+                Ptyp_constr "int" (stdlib/arrayLabels.mli[348,13573+34]..[348,13573+37])
+                []
+            [
+              "%floatarray_length"
+            ]
+        signature_item (stdlib/arrayLabels.mli[349,13634+2]..[349,13634+68])
+          Psig_value
+          value_description "get" (stdlib/arrayLabels.mli[349,13634+11]..[349,13634+14]) (stdlib/arrayLabels.mli[349,13634+2]..[349,13634+68])
+            core_type (stdlib/arrayLabels.mli[349,13634+17]..[349,13634+43])
+              Ptyp_arrow
+              Nolabel
+              core_type (stdlib/arrayLabels.mli[349,13634+17]..[349,13634+27])
+                Ptyp_constr "floatarray" (stdlib/arrayLabels.mli[349,13634+17]..[349,13634+27])
+                []
+              core_type (stdlib/arrayLabels.mli[349,13634+31]..[349,13634+43])
+                Ptyp_arrow
+                Nolabel
+                core_type (stdlib/arrayLabels.mli[349,13634+31]..[349,13634+34])
+                  Ptyp_constr "int" (stdlib/arrayLabels.mli[349,13634+31]..[349,13634+34])
+                  []
+                core_type (stdlib/arrayLabels.mli[349,13634+38]..[349,13634+43])
+                  Ptyp_constr "float" (stdlib/arrayLabels.mli[349,13634+38]..[349,13634+43])
+                  []
+            [
+              "%floatarray_safe_get"
+            ]
+        signature_item (stdlib/arrayLabels.mli[350,13703+2]..[350,13703+76])
+          Psig_value
+          value_description "set" (stdlib/arrayLabels.mli[350,13703+11]..[350,13703+14]) (stdlib/arrayLabels.mli[350,13703+2]..[350,13703+76])
+            core_type (stdlib/arrayLabels.mli[350,13703+17]..[350,13703+51])
+              Ptyp_arrow
+              Nolabel
+              core_type (stdlib/arrayLabels.mli[350,13703+17]..[350,13703+27])
+                Ptyp_constr "floatarray" (stdlib/arrayLabels.mli[350,13703+17]..[350,13703+27])
+                []
+              core_type (stdlib/arrayLabels.mli[350,13703+31]..[350,13703+51])
+                Ptyp_arrow
+                Nolabel
+                core_type (stdlib/arrayLabels.mli[350,13703+31]..[350,13703+34])
+                  Ptyp_constr "int" (stdlib/arrayLabels.mli[350,13703+31]..[350,13703+34])
+                  []
+                core_type (stdlib/arrayLabels.mli[350,13703+38]..[350,13703+51])
+                  Ptyp_arrow
+                  Nolabel
+                  core_type (stdlib/arrayLabels.mli[350,13703+38]..[350,13703+43])
+                    Ptyp_constr "float" (stdlib/arrayLabels.mli[350,13703+38]..[350,13703+43])
+                    []
+                  core_type (stdlib/arrayLabels.mli[350,13703+47]..[350,13703+51])
+                    Ptyp_constr "unit" (stdlib/arrayLabels.mli[350,13703+47]..[350,13703+51])
+                    []
+            [
+              "%floatarray_safe_set"
+            ]
+        signature_item (stdlib/arrayLabels.mli[351,13780+2]..[351,13780+77])
+          Psig_value
+          value_description "unsafe_get" (stdlib/arrayLabels.mli[351,13780+11]..[351,13780+21]) (stdlib/arrayLabels.mli[351,13780+2]..[351,13780+77])
+            core_type (stdlib/arrayLabels.mli[351,13780+24]..[351,13780+50])
+              Ptyp_arrow
+              Nolabel
+              core_type (stdlib/arrayLabels.mli[351,13780+24]..[351,13780+34])
+                Ptyp_constr "floatarray" (stdlib/arrayLabels.mli[351,13780+24]..[351,13780+34])
+                []
+              core_type (stdlib/arrayLabels.mli[351,13780+38]..[351,13780+50])
+                Ptyp_arrow
+                Nolabel
+                core_type (stdlib/arrayLabels.mli[351,13780+38]..[351,13780+41])
+                  Ptyp_constr "int" (stdlib/arrayLabels.mli[351,13780+38]..[351,13780+41])
+                  []
+                core_type (stdlib/arrayLabels.mli[351,13780+45]..[351,13780+50])
+                  Ptyp_constr "float" (stdlib/arrayLabels.mli[351,13780+45]..[351,13780+50])
+                  []
+            [
+              "%floatarray_unsafe_get"
+            ]
+        signature_item (stdlib/arrayLabels.mli[352,13858+2]..[353,13917+32])
+          Psig_value
+          value_description "unsafe_set" (stdlib/arrayLabels.mli[352,13858+11]..[352,13858+21]) (stdlib/arrayLabels.mli[352,13858+2]..[353,13917+32])
+            core_type (stdlib/arrayLabels.mli[352,13858+24]..[352,13858+58])
+              Ptyp_arrow
+              Nolabel
+              core_type (stdlib/arrayLabels.mli[352,13858+24]..[352,13858+34])
+                Ptyp_constr "floatarray" (stdlib/arrayLabels.mli[352,13858+24]..[352,13858+34])
+                []
+              core_type (stdlib/arrayLabels.mli[352,13858+38]..[352,13858+58])
+                Ptyp_arrow
+                Nolabel
+                core_type (stdlib/arrayLabels.mli[352,13858+38]..[352,13858+41])
+                  Ptyp_constr "int" (stdlib/arrayLabels.mli[352,13858+38]..[352,13858+41])
+                  []
+                core_type (stdlib/arrayLabels.mli[352,13858+45]..[352,13858+58])
+                  Ptyp_arrow
+                  Nolabel
+                  core_type (stdlib/arrayLabels.mli[352,13858+45]..[352,13858+50])
+                    Ptyp_constr "float" (stdlib/arrayLabels.mli[352,13858+45]..[352,13858+50])
+                    []
+                  core_type (stdlib/arrayLabels.mli[352,13858+54]..[352,13858+58])
+                    Ptyp_constr "unit" (stdlib/arrayLabels.mli[352,13858+54]..[352,13858+58])
+                    []
+            [
+              "%floatarray_unsafe_set"
+            ]
+      ]
+]
+

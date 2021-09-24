@@ -1,0 +1,97 @@
+[
+  structure_item (testsuite/tests/lib-threads/pr7638.ml[14,120+0]..[17,209+43])
+    Pstr_value Nonrec
+    [
+      <def>
+        pattern (testsuite/tests/lib-threads/pr7638.ml[14,120+4]..[14,120+11])
+          Ppat_var "crashme" (testsuite/tests/lib-threads/pr7638.ml[14,120+4]..[14,120+11])
+        expression (testsuite/tests/lib-threads/pr7638.ml[14,120+12]..[17,209+43]) ghost
+          Pexp_fun
+          Nolabel
+          None
+          pattern (testsuite/tests/lib-threads/pr7638.ml[14,120+12]..[14,120+13])
+            Ppat_var "v" (testsuite/tests/lib-threads/pr7638.ml[14,120+12]..[14,120+13])
+          expression (testsuite/tests/lib-threads/pr7638.ml[15,136+2]..[17,209+43])
+            Pexp_match
+            expression (testsuite/tests/lib-threads/pr7638.ml[15,136+8]..[15,136+20])
+              Pexp_apply
+              expression (testsuite/tests/lib-threads/pr7638.ml[15,136+8]..[15,136+18])
+                Pexp_ident "Sys.getenv" (testsuite/tests/lib-threads/pr7638.ml[15,136+8]..[15,136+18])
+              [
+                <arg>
+                Nolabel
+                  expression (testsuite/tests/lib-threads/pr7638.ml[15,136+19]..[15,136+20])
+                    Pexp_ident "v" (testsuite/tests/lib-threads/pr7638.ml[15,136+19]..[15,136+20])
+              ]
+            [
+              <case>
+                pattern (testsuite/tests/lib-threads/pr7638.ml[16,162+4]..[16,162+23])
+                  Ppat_exception
+                  pattern (testsuite/tests/lib-threads/pr7638.ml[16,162+14]..[16,162+23])
+                    Ppat_construct "Not_found" (testsuite/tests/lib-threads/pr7638.ml[16,162+14]..[16,162+23])
+                    None
+                expression (testsuite/tests/lib-threads/pr7638.ml[16,162+27]..[16,162+46])
+                  Pexp_apply
+                  expression (testsuite/tests/lib-threads/pr7638.ml[16,162+27]..[16,162+39])
+                    Pexp_ident "print_string" (testsuite/tests/lib-threads/pr7638.ml[16,162+27]..[16,162+39])
+                  [
+                    <arg>
+                    Nolabel
+                      expression (testsuite/tests/lib-threads/pr7638.ml[16,162+40]..[16,162+46])
+                        Pexp_constant PConst_string("OK\n",(testsuite/tests/lib-threads/pr7638.ml[16,162+41]..[16,162+45]),None)
+                  ]
+              <case>
+                pattern (testsuite/tests/lib-threads/pr7638.ml[17,209+4]..[17,209+5])
+                  Ppat_var "s" (testsuite/tests/lib-threads/pr7638.ml[17,209+4]..[17,209+5])
+                expression (testsuite/tests/lib-threads/pr7638.ml[17,209+9]..[17,209+43])
+                  Pexp_apply
+                  expression (testsuite/tests/lib-threads/pr7638.ml[17,209+9]..[17,209+21])
+                    Pexp_ident "print_string" (testsuite/tests/lib-threads/pr7638.ml[17,209+9]..[17,209+21])
+                  [
+                    <arg>
+                    Nolabel
+                      expression (testsuite/tests/lib-threads/pr7638.ml[17,209+22]..[17,209+43])
+                        Pexp_constant PConst_string("Surprising but OK\n",(testsuite/tests/lib-threads/pr7638.ml[17,209+23]..[17,209+42]),None)
+                  ]
+            ]
+    ]
+  structure_item (testsuite/tests/lib-threads/pr7638.ml[19,254+0]..[21,315+16])
+    Pstr_value Nonrec
+    [
+      <def>
+        pattern (testsuite/tests/lib-threads/pr7638.ml[19,254+4]..[19,254+5])
+          Ppat_any
+        expression (testsuite/tests/lib-threads/pr7638.ml[20,262+2]..[21,315+16])
+          Pexp_let Nonrec
+          [
+            <def>
+              pattern (testsuite/tests/lib-threads/pr7638.ml[20,262+6]..[20,262+8])
+                Ppat_var "th" (testsuite/tests/lib-threads/pr7638.ml[20,262+6]..[20,262+8])
+              expression (testsuite/tests/lib-threads/pr7638.ml[20,262+11]..[20,262+49])
+                Pexp_apply
+                expression (testsuite/tests/lib-threads/pr7638.ml[20,262+11]..[20,262+24])
+                  Pexp_ident "Thread.create" (testsuite/tests/lib-threads/pr7638.ml[20,262+11]..[20,262+24])
+                [
+                  <arg>
+                  Nolabel
+                    expression (testsuite/tests/lib-threads/pr7638.ml[20,262+25]..[20,262+32])
+                      Pexp_ident "crashme" (testsuite/tests/lib-threads/pr7638.ml[20,262+25]..[20,262+32])
+                  <arg>
+                  Nolabel
+                    expression (testsuite/tests/lib-threads/pr7638.ml[20,262+33]..[20,262+49])
+                      Pexp_constant PConst_string("DOES_NOT_EXIST",(testsuite/tests/lib-threads/pr7638.ml[20,262+34]..[20,262+48]),None)
+                ]
+          ]
+          expression (testsuite/tests/lib-threads/pr7638.ml[21,315+2]..[21,315+16])
+            Pexp_apply
+            expression (testsuite/tests/lib-threads/pr7638.ml[21,315+2]..[21,315+13])
+              Pexp_ident "Thread.join" (testsuite/tests/lib-threads/pr7638.ml[21,315+2]..[21,315+13])
+            [
+              <arg>
+              Nolabel
+                expression (testsuite/tests/lib-threads/pr7638.ml[21,315+14]..[21,315+16])
+                  Pexp_ident "th" (testsuite/tests/lib-threads/pr7638.ml[21,315+14]..[21,315+16])
+            ]
+    ]
+]
+

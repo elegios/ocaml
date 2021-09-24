@@ -1,0 +1,228 @@
+[
+  structure_item (testsuite/tests/typing-core-bugs/unit_fun_hints.ml[6,54+0]..[6,54+14])
+    Pstr_value Nonrec
+    [
+      <def>
+        pattern (testsuite/tests/typing-core-bugs/unit_fun_hints.ml[6,54+4]..[6,54+5])
+          Ppat_var "g" (testsuite/tests/typing-core-bugs/unit_fun_hints.ml[6,54+4]..[6,54+5])
+        expression (testsuite/tests/typing-core-bugs/unit_fun_hints.ml[6,54+6]..[6,54+14]) ghost
+          Pexp_fun
+          Nolabel
+          None
+          pattern (testsuite/tests/typing-core-bugs/unit_fun_hints.ml[6,54+6]..[6,54+7])
+            Ppat_var "f" (testsuite/tests/typing-core-bugs/unit_fun_hints.ml[6,54+6]..[6,54+7])
+          expression (testsuite/tests/typing-core-bugs/unit_fun_hints.ml[6,54+10]..[6,54+14])
+            Pexp_apply
+            expression (testsuite/tests/typing-core-bugs/unit_fun_hints.ml[6,54+10]..[6,54+11])
+              Pexp_ident "f" (testsuite/tests/typing-core-bugs/unit_fun_hints.ml[6,54+10]..[6,54+11])
+            [
+              <arg>
+              Nolabel
+                expression (testsuite/tests/typing-core-bugs/unit_fun_hints.ml[6,54+12]..[6,54+14])
+                  Pexp_construct "()" (testsuite/tests/typing-core-bugs/unit_fun_hints.ml[6,54+12]..[6,54+14])
+                  None
+            ]
+    ]
+  structure_item (testsuite/tests/typing-core-bugs/unit_fun_hints.ml[7,69+0]..[7,69+11])
+    Pstr_value Nonrec
+    [
+      <def>
+        pattern (testsuite/tests/typing-core-bugs/unit_fun_hints.ml[7,69+4]..[7,69+5])
+          Ppat_any
+        expression (testsuite/tests/typing-core-bugs/unit_fun_hints.ml[7,69+8]..[7,69+11])
+          Pexp_apply
+          expression (testsuite/tests/typing-core-bugs/unit_fun_hints.ml[7,69+8]..[7,69+9])
+            Pexp_ident "g" (testsuite/tests/typing-core-bugs/unit_fun_hints.ml[7,69+8]..[7,69+9])
+          [
+            <arg>
+            Nolabel
+              expression (testsuite/tests/typing-core-bugs/unit_fun_hints.ml[7,69+10]..[7,69+11])
+                Pexp_constant PConst_int (3,None)
+          ]
+    ]
+  structure_item (testsuite/tests/typing-core-bugs/unit_fun_hints.ml[9,116+0]..[17,420+3])
+    Pstr_extension "expect"
+    [
+      structure_item (testsuite/tests/typing-core-bugs/unit_fun_hints.ml[9,116+9]..[17,420+2])
+        Pstr_eval
+        expression (testsuite/tests/typing-core-bugs/unit_fun_hints.ml[9,116+9]..[17,420+2])
+          Pexp_constant PConst_string ("\nval g : (unit -> 'a) -> 'a = <fun>\nLine 2, characters 10-11:\n2 | let _ = g 3;;       (* missing `fun () ->' *)\n              ^\nError: This expression has type int but an expression was expected of type\n         unit -> 'a\n       Hint: Did you forget to wrap the expression using `fun () ->'?\n",(testsuite/tests/typing-core-bugs/unit_fun_hints.ml[9,116+11]..[17,420+0]),Some "")
+    ]
+  structure_item (testsuite/tests/typing-core-bugs/unit_fun_hints.ml[20,428+0]..[23,501+14])
+    Pstr_value Nonrec
+    [
+      <def>
+        pattern (testsuite/tests/typing-core-bugs/unit_fun_hints.ml[20,428+4]..[20,428+5])
+          Ppat_any
+        expression (testsuite/tests/typing-core-bugs/unit_fun_hints.ml[21,436+3]..[23,501+14])
+          Pexp_sequence
+          expression (testsuite/tests/typing-core-bugs/unit_fun_hints.ml[21,436+3]..[21,436+14])
+            Pexp_apply
+            expression (testsuite/tests/typing-core-bugs/unit_fun_hints.ml[21,436+3]..[21,436+12])
+              Pexp_ident "print_int" (testsuite/tests/typing-core-bugs/unit_fun_hints.ml[21,436+3]..[21,436+12])
+            [
+              <arg>
+              Nolabel
+                expression (testsuite/tests/typing-core-bugs/unit_fun_hints.ml[21,436+13]..[21,436+14])
+                  Pexp_constant PConst_int (3,None)
+            ]
+          expression (testsuite/tests/typing-core-bugs/unit_fun_hints.ml[22,452+3]..[23,501+14])
+            Pexp_sequence
+            expression (testsuite/tests/typing-core-bugs/unit_fun_hints.ml[22,452+3]..[22,452+16])
+              Pexp_ident "print_newline" (testsuite/tests/typing-core-bugs/unit_fun_hints.ml[22,452+3]..[22,452+16])
+            expression (testsuite/tests/typing-core-bugs/unit_fun_hints.ml[23,501+3]..[23,501+14])
+              Pexp_apply
+              expression (testsuite/tests/typing-core-bugs/unit_fun_hints.ml[23,501+3]..[23,501+12])
+                Pexp_ident "print_int" (testsuite/tests/typing-core-bugs/unit_fun_hints.ml[23,501+3]..[23,501+12])
+              [
+                <arg>
+                Nolabel
+                  expression (testsuite/tests/typing-core-bugs/unit_fun_hints.ml[23,501+13]..[23,501+14])
+                    Pexp_constant PConst_int (5,None)
+              ]
+    ]
+  structure_item (testsuite/tests/typing-core-bugs/unit_fun_hints.ml[27,647+0]..[35,968+3])
+    Pstr_extension "expect"
+    [
+      structure_item (testsuite/tests/typing-core-bugs/unit_fun_hints.ml[27,647+9]..[35,968+2])
+        Pstr_eval
+        expression (testsuite/tests/typing-core-bugs/unit_fun_hints.ml[27,647+9]..[35,968+2])
+          Pexp_constant PConst_string ("\nLine 3, characters 3-16:\n3 |    print_newline;    (* missing unit argument *)\n       ^^^^^^^^^^^^^\nError: This expression has type unit -> unit\n       but an expression was expected of type unit\n       because it is in the left-hand side of a sequence\n       Hint: Did you forget to provide `()' as argument?\n",(testsuite/tests/typing-core-bugs/unit_fun_hints.ml[27,647+11]..[35,968+0]),Some "")
+    ]
+  structure_item (testsuite/tests/typing-core-bugs/unit_fun_hints.ml[37,975+0]..[38,1025+11])
+    Pstr_eval
+    expression (testsuite/tests/typing-core-bugs/unit_fun_hints.ml[37,975+0]..[38,1025+11])
+      Pexp_let Nonrec
+      [
+        <def>
+          pattern (testsuite/tests/typing-core-bugs/unit_fun_hints.ml[37,975+4]..[37,975+5])
+            Ppat_var "x" (testsuite/tests/typing-core-bugs/unit_fun_hints.ml[37,975+4]..[37,975+5])
+          expression (testsuite/tests/typing-core-bugs/unit_fun_hints.ml[37,975+8]..[37,975+16])
+            Pexp_ident "read_int" (testsuite/tests/typing-core-bugs/unit_fun_hints.ml[37,975+8]..[37,975+16])
+      ]
+      expression (testsuite/tests/typing-core-bugs/unit_fun_hints.ml[38,1025+0]..[38,1025+11])
+        Pexp_apply
+        expression (testsuite/tests/typing-core-bugs/unit_fun_hints.ml[38,1025+0]..[38,1025+9])
+          Pexp_ident "print_int" (testsuite/tests/typing-core-bugs/unit_fun_hints.ml[38,1025+0]..[38,1025+9])
+        [
+          <arg>
+          Nolabel
+            expression (testsuite/tests/typing-core-bugs/unit_fun_hints.ml[38,1025+10]..[38,1025+11])
+              Pexp_ident "x" (testsuite/tests/typing-core-bugs/unit_fun_hints.ml[38,1025+10]..[38,1025+11])
+        ]
+  structure_item (testsuite/tests/typing-core-bugs/unit_fun_hints.ml[40,1040+0]..[47,1263+3])
+    Pstr_extension "expect"
+    [
+      structure_item (testsuite/tests/typing-core-bugs/unit_fun_hints.ml[40,1040+9]..[47,1263+2])
+        Pstr_eval
+        expression (testsuite/tests/typing-core-bugs/unit_fun_hints.ml[40,1040+9]..[47,1263+2])
+          Pexp_constant PConst_string ("\nLine 2, characters 10-11:\n2 | print_int x;;\n              ^\nError: This expression has type unit -> int\n       but an expression was expected of type int\n       Hint: Did you forget to provide `()' as argument?\n",(testsuite/tests/typing-core-bugs/unit_fun_hints.ml[40,1040+11]..[47,1263+0]),Some "")
+    ]
+  structure_item (testsuite/tests/typing-core-bugs/unit_fun_hints.ml[49,1270+0]..[51,1298+7])
+    Pstr_value Nonrec
+    [
+      <def>
+        pattern (testsuite/tests/typing-core-bugs/unit_fun_hints.ml[49,1270+4]..[49,1270+5])
+          Ppat_var "g" (testsuite/tests/typing-core-bugs/unit_fun_hints.ml[49,1270+4]..[49,1270+5])
+        expression (testsuite/tests/typing-core-bugs/unit_fun_hints.ml[49,1270+6]..[51,1298+7]) ghost
+          Pexp_fun
+          Nolabel
+          None
+          pattern (testsuite/tests/typing-core-bugs/unit_fun_hints.ml[49,1270+6]..[49,1270+7])
+            Ppat_var "f" (testsuite/tests/typing-core-bugs/unit_fun_hints.ml[49,1270+6]..[49,1270+7])
+          expression (testsuite/tests/typing-core-bugs/unit_fun_hints.ml[50,1280+2]..[51,1298+7])
+            Pexp_let Nonrec
+            [
+              <def>
+                pattern (testsuite/tests/typing-core-bugs/unit_fun_hints.ml[50,1280+6]..[50,1280+7])
+                  Ppat_any
+                expression (testsuite/tests/typing-core-bugs/unit_fun_hints.ml[50,1280+10]..[50,1280+14])
+                  Pexp_apply
+                  expression (testsuite/tests/typing-core-bugs/unit_fun_hints.ml[50,1280+10]..[50,1280+11])
+                    Pexp_ident "f" (testsuite/tests/typing-core-bugs/unit_fun_hints.ml[50,1280+10]..[50,1280+11])
+                  [
+                    <arg>
+                    Nolabel
+                      expression (testsuite/tests/typing-core-bugs/unit_fun_hints.ml[50,1280+12]..[50,1280+14])
+                        Pexp_construct "()" (testsuite/tests/typing-core-bugs/unit_fun_hints.ml[50,1280+12]..[50,1280+14])
+                        None
+                  ]
+            ]
+            expression (testsuite/tests/typing-core-bugs/unit_fun_hints.ml[51,1298+2]..[51,1298+7])
+              Pexp_apply
+              expression (testsuite/tests/typing-core-bugs/unit_fun_hints.ml[51,1298+4]..[51,1298+5])
+                Pexp_ident "=" (testsuite/tests/typing-core-bugs/unit_fun_hints.ml[51,1298+4]..[51,1298+5])
+              [
+                <arg>
+                Nolabel
+                  expression (testsuite/tests/typing-core-bugs/unit_fun_hints.ml[51,1298+2]..[51,1298+3])
+                    Pexp_ident "f" (testsuite/tests/typing-core-bugs/unit_fun_hints.ml[51,1298+2]..[51,1298+3])
+                <arg>
+                Nolabel
+                  expression (testsuite/tests/typing-core-bugs/unit_fun_hints.ml[51,1298+6]..[51,1298+7])
+                    Pexp_constant PConst_int (3,None)
+              ]
+    ]
+  structure_item (testsuite/tests/typing-core-bugs/unit_fun_hints.ml[53,1309+0]..[60,1536+3])
+    Pstr_extension "expect"
+    [
+      structure_item (testsuite/tests/typing-core-bugs/unit_fun_hints.ml[53,1309+9]..[60,1536+2])
+        Pstr_eval
+        expression (testsuite/tests/typing-core-bugs/unit_fun_hints.ml[53,1309+9]..[60,1536+2])
+          Pexp_constant PConst_string ("\nLine 3, characters 6-7:\n3 |   f = 3;;\n          ^\nError: This expression has type int but an expression was expected of type\n         unit -> 'a\n       Hint: Did you forget to wrap the expression using `fun () ->'?\n",(testsuite/tests/typing-core-bugs/unit_fun_hints.ml[53,1309+11]..[60,1536+0]),Some "")
+    ]
+  structure_item (testsuite/tests/typing-core-bugs/unit_fun_hints.ml[62,1543+0]..[64,1571+7])
+    Pstr_value Nonrec
+    [
+      <def>
+        pattern (testsuite/tests/typing-core-bugs/unit_fun_hints.ml[62,1543+4]..[62,1543+5])
+          Ppat_var "g" (testsuite/tests/typing-core-bugs/unit_fun_hints.ml[62,1543+4]..[62,1543+5])
+        expression (testsuite/tests/typing-core-bugs/unit_fun_hints.ml[62,1543+6]..[64,1571+7]) ghost
+          Pexp_fun
+          Nolabel
+          None
+          pattern (testsuite/tests/typing-core-bugs/unit_fun_hints.ml[62,1543+6]..[62,1543+7])
+            Ppat_var "f" (testsuite/tests/typing-core-bugs/unit_fun_hints.ml[62,1543+6]..[62,1543+7])
+          expression (testsuite/tests/typing-core-bugs/unit_fun_hints.ml[63,1553+2]..[64,1571+7])
+            Pexp_let Nonrec
+            [
+              <def>
+                pattern (testsuite/tests/typing-core-bugs/unit_fun_hints.ml[63,1553+6]..[63,1553+7])
+                  Ppat_any
+                expression (testsuite/tests/typing-core-bugs/unit_fun_hints.ml[63,1553+10]..[63,1553+14])
+                  Pexp_apply
+                  expression (testsuite/tests/typing-core-bugs/unit_fun_hints.ml[63,1553+10]..[63,1553+11])
+                    Pexp_ident "f" (testsuite/tests/typing-core-bugs/unit_fun_hints.ml[63,1553+10]..[63,1553+11])
+                  [
+                    <arg>
+                    Nolabel
+                      expression (testsuite/tests/typing-core-bugs/unit_fun_hints.ml[63,1553+12]..[63,1553+14])
+                        Pexp_construct "()" (testsuite/tests/typing-core-bugs/unit_fun_hints.ml[63,1553+12]..[63,1553+14])
+                        None
+                  ]
+            ]
+            expression (testsuite/tests/typing-core-bugs/unit_fun_hints.ml[64,1571+2]..[64,1571+7])
+              Pexp_apply
+              expression (testsuite/tests/typing-core-bugs/unit_fun_hints.ml[64,1571+4]..[64,1571+5])
+                Pexp_ident "=" (testsuite/tests/typing-core-bugs/unit_fun_hints.ml[64,1571+4]..[64,1571+5])
+              [
+                <arg>
+                Nolabel
+                  expression (testsuite/tests/typing-core-bugs/unit_fun_hints.ml[64,1571+2]..[64,1571+3])
+                    Pexp_constant PConst_int (3,None)
+                <arg>
+                Nolabel
+                  expression (testsuite/tests/typing-core-bugs/unit_fun_hints.ml[64,1571+6]..[64,1571+7])
+                    Pexp_ident "f" (testsuite/tests/typing-core-bugs/unit_fun_hints.ml[64,1571+6]..[64,1571+7])
+              ]
+    ]
+  structure_item (testsuite/tests/typing-core-bugs/unit_fun_hints.ml[66,1582+0]..[73,1794+3])
+    Pstr_extension "expect"
+    [
+      structure_item (testsuite/tests/typing-core-bugs/unit_fun_hints.ml[66,1582+9]..[73,1794+2])
+        Pstr_eval
+        expression (testsuite/tests/typing-core-bugs/unit_fun_hints.ml[66,1582+9]..[73,1794+2])
+          Pexp_constant PConst_string ("\nLine 3, characters 6-7:\n3 |   3 = f;;\n          ^\nError: This expression has type unit -> 'a\n       but an expression was expected of type int\n       Hint: Did you forget to provide `()' as argument?\n",(testsuite/tests/typing-core-bugs/unit_fun_hints.ml[66,1582+11]..[73,1794+0]),Some "")
+    ]
+]
+

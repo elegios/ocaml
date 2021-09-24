@@ -1,0 +1,197 @@
+[
+  structure_item (testsuite/tests/typing-gadts/pr9799.ml[5,24+0]..[7,53+16])
+    Pstr_type Rec
+    [
+      type_declaration "t" (testsuite/tests/typing-gadts/pr9799.ml[5,24+8]..[5,24+9]) (testsuite/tests/typing-gadts/pr9799.ml[5,24+0]..[7,53+16])
+        ptype_params =
+          [
+            core_type (testsuite/tests/typing-gadts/pr9799.ml[5,24+5]..[5,24+7])
+              Ptyp_var a
+          ]
+        ptype_cstrs =
+          []
+        ptype_kind =
+          Ptype_variant
+            [
+              (testsuite/tests/typing-gadts/pr9799.ml[6,36+2]..[6,36+16])
+                "A" (testsuite/tests/typing-gadts/pr9799.ml[6,36+4]..[6,36+5])
+                []
+                Some
+                  core_type (testsuite/tests/typing-gadts/pr9799.ml[6,36+7]..[6,36+16])
+                    Ptyp_constr "t" (testsuite/tests/typing-gadts/pr9799.ml[6,36+15]..[6,36+16])
+                    [
+                      core_type (testsuite/tests/typing-gadts/pr9799.ml[6,36+7]..[6,36+14])
+                        Ptyp_variant closed=Closed
+                        [
+                          Rtag "a" true
+                            []
+                          Rtag "z" true
+                            []
+                        ]
+                        None
+                    ]
+              (testsuite/tests/typing-gadts/pr9799.ml[7,53+2]..[7,53+16])
+                "B" (testsuite/tests/typing-gadts/pr9799.ml[7,53+4]..[7,53+5])
+                []
+                Some
+                  core_type (testsuite/tests/typing-gadts/pr9799.ml[7,53+7]..[7,53+16])
+                    Ptyp_constr "t" (testsuite/tests/typing-gadts/pr9799.ml[7,53+15]..[7,53+16])
+                    [
+                      core_type (testsuite/tests/typing-gadts/pr9799.ml[7,53+7]..[7,53+14])
+                        Ptyp_variant closed=Closed
+                        [
+                          Rtag "b" true
+                            []
+                          Rtag "z" true
+                            []
+                        ]
+                        None
+                    ]
+            ]
+        ptype_private = Public
+        ptype_manifest =
+          None
+    ]
+  structure_item (testsuite/tests/typing-gadts/pr9799.ml[9,73+0]..[11,135+3])
+    Pstr_extension "expect"
+    [
+      structure_item (testsuite/tests/typing-gadts/pr9799.ml[9,73+9]..[11,135+2])
+        Pstr_eval
+        expression (testsuite/tests/typing-gadts/pr9799.ml[9,73+9]..[11,135+2])
+          Pexp_constant PConst_string ("\ntype 'a t = A : [ `a | `z ] t | B : [ `b | `z ] t\n",(testsuite/tests/typing-gadts/pr9799.ml[9,73+11]..[11,135+0]),Some "")
+    ]
+  structure_item (testsuite/tests/typing-gadts/pr9799.ml[13,142+0]..[18,248+16])
+    Pstr_value Nonrec
+    [
+      <def>
+        pattern (testsuite/tests/typing-gadts/pr9799.ml[13,142+4]..[13,142+31]) ghost
+          Ppat_constraint
+          pattern (testsuite/tests/typing-gadts/pr9799.ml[13,142+4]..[13,142+6])
+            Ppat_var "fn" (testsuite/tests/typing-gadts/pr9799.ml[13,142+4]..[13,142+6])
+          core_type (testsuite/tests/typing-gadts/pr9799.ml[13,142+4]..[18,248+16]) ghost
+            Ptyp_poly 'a
+            core_type (testsuite/tests/typing-gadts/pr9799.ml[13,142+16]..[13,142+31])
+              Ptyp_arrow
+              Nolabel
+              core_type (testsuite/tests/typing-gadts/pr9799.ml[13,142+16]..[13,142+19])
+                Ptyp_constr "t" (testsuite/tests/typing-gadts/pr9799.ml[13,142+18]..[13,142+19])
+                [
+                  core_type (testsuite/tests/typing-gadts/pr9799.ml[13,142+16]..[13,142+17])
+                    Ptyp_var a
+                ]
+              core_type (testsuite/tests/typing-gadts/pr9799.ml[13,142+23]..[13,142+31])
+                Ptyp_arrow
+                Nolabel
+                core_type (testsuite/tests/typing-gadts/pr9799.ml[13,142+23]..[13,142+24])
+                  Ptyp_var a
+                core_type (testsuite/tests/typing-gadts/pr9799.ml[13,142+28]..[13,142+31])
+                  Ptyp_constr "int" (testsuite/tests/typing-gadts/pr9799.ml[13,142+28]..[13,142+31])
+                  []
+        expression (testsuite/tests/typing-gadts/pr9799.ml[13,142+4]..[18,248+16])
+          Pexp_newtype "a"
+          expression (testsuite/tests/typing-gadts/pr9799.ml[13,142+4]..[18,248+16])
+            Pexp_constraint
+            expression (testsuite/tests/typing-gadts/pr9799.ml[13,142+34]..[18,248+16])
+              Pexp_fun
+              Nolabel
+              None
+              pattern (testsuite/tests/typing-gadts/pr9799.ml[13,142+38]..[13,142+39])
+                Ppat_var "x" (testsuite/tests/typing-gadts/pr9799.ml[13,142+38]..[13,142+39])
+              expression (testsuite/tests/typing-gadts/pr9799.ml[13,142+40]..[18,248+16]) ghost
+                Pexp_fun
+                Nolabel
+                None
+                pattern (testsuite/tests/typing-gadts/pr9799.ml[13,142+40]..[13,142+41])
+                  Ppat_var "y" (testsuite/tests/typing-gadts/pr9799.ml[13,142+40]..[13,142+41])
+                expression (testsuite/tests/typing-gadts/pr9799.ml[14,187+2]..[18,248+16])
+                  Pexp_match
+                  expression (testsuite/tests/typing-gadts/pr9799.ml[14,187+8]..[14,187+14])
+                    Pexp_tuple
+                    [
+                      expression (testsuite/tests/typing-gadts/pr9799.ml[14,187+9]..[14,187+10])
+                        Pexp_ident "x" (testsuite/tests/typing-gadts/pr9799.ml[14,187+9]..[14,187+10])
+                      expression (testsuite/tests/typing-gadts/pr9799.ml[14,187+12]..[14,187+13])
+                        Pexp_ident "y" (testsuite/tests/typing-gadts/pr9799.ml[14,187+12]..[14,187+13])
+                    ]
+                  [
+                    <case>
+                      pattern (testsuite/tests/typing-gadts/pr9799.ml[15,207+4]..[16,219+11])
+                        Ppat_or
+                        pattern (testsuite/tests/typing-gadts/pr9799.ml[15,207+4]..[15,207+11])
+                          Ppat_tuple
+                          [
+                            pattern (testsuite/tests/typing-gadts/pr9799.ml[15,207+5]..[15,207+6])
+                              Ppat_construct "A" (testsuite/tests/typing-gadts/pr9799.ml[15,207+5]..[15,207+6])
+                              None
+                            pattern (testsuite/tests/typing-gadts/pr9799.ml[15,207+8]..[15,207+10])
+                              Ppat_variant "a"
+                              None
+                          ]
+                        pattern (testsuite/tests/typing-gadts/pr9799.ml[16,219+4]..[16,219+11])
+                          Ppat_tuple
+                          [
+                            pattern (testsuite/tests/typing-gadts/pr9799.ml[16,219+5]..[16,219+6])
+                              Ppat_construct "B" (testsuite/tests/typing-gadts/pr9799.ml[16,219+5]..[16,219+6])
+                              None
+                            pattern (testsuite/tests/typing-gadts/pr9799.ml[16,219+8]..[16,219+10])
+                              Ppat_variant "b"
+                              None
+                          ]
+                      expression (testsuite/tests/typing-gadts/pr9799.ml[16,219+15]..[16,219+16])
+                        Pexp_constant PConst_int (0,None)
+                    <case>
+                      pattern (testsuite/tests/typing-gadts/pr9799.ml[17,236+4]..[18,248+11])
+                        Ppat_or
+                        pattern (testsuite/tests/typing-gadts/pr9799.ml[17,236+4]..[17,236+11])
+                          Ppat_tuple
+                          [
+                            pattern (testsuite/tests/typing-gadts/pr9799.ml[17,236+5]..[17,236+6])
+                              Ppat_construct "A" (testsuite/tests/typing-gadts/pr9799.ml[17,236+5]..[17,236+6])
+                              None
+                            pattern (testsuite/tests/typing-gadts/pr9799.ml[17,236+8]..[17,236+10])
+                              Ppat_variant "z"
+                              None
+                          ]
+                        pattern (testsuite/tests/typing-gadts/pr9799.ml[18,248+4]..[18,248+11])
+                          Ppat_tuple
+                          [
+                            pattern (testsuite/tests/typing-gadts/pr9799.ml[18,248+5]..[18,248+6])
+                              Ppat_construct "B" (testsuite/tests/typing-gadts/pr9799.ml[18,248+5]..[18,248+6])
+                              None
+                            pattern (testsuite/tests/typing-gadts/pr9799.ml[18,248+8]..[18,248+10])
+                              Ppat_variant "z"
+                              None
+                          ]
+                      expression (testsuite/tests/typing-gadts/pr9799.ml[18,248+15]..[18,248+16])
+                        Pexp_constant PConst_int (1,None)
+                  ]
+            core_type (testsuite/tests/typing-gadts/pr9799.ml[13,142+16]..[13,142+31])
+              Ptyp_arrow
+              Nolabel
+              core_type (testsuite/tests/typing-gadts/pr9799.ml[13,142+16]..[13,142+19])
+                Ptyp_constr "t" (testsuite/tests/typing-gadts/pr9799.ml[13,142+18]..[13,142+19])
+                [
+                  core_type (testsuite/tests/typing-gadts/pr9799.ml[13,142+16]..[13,142+17])
+                    Ptyp_constr "a" (testsuite/tests/typing-gadts/pr9799.ml[13,142+16]..[13,142+17])
+                    []
+                ]
+              core_type (testsuite/tests/typing-gadts/pr9799.ml[13,142+23]..[13,142+31])
+                Ptyp_arrow
+                Nolabel
+                core_type (testsuite/tests/typing-gadts/pr9799.ml[13,142+23]..[13,142+24])
+                  Ptyp_constr "a" (testsuite/tests/typing-gadts/pr9799.ml[13,142+23]..[13,142+24])
+                  []
+                core_type (testsuite/tests/typing-gadts/pr9799.ml[13,142+28]..[13,142+31])
+                  Ptyp_constr "int" (testsuite/tests/typing-gadts/pr9799.ml[13,142+28]..[13,142+31])
+                  []
+    ]
+  structure_item (testsuite/tests/typing-gadts/pr9799.ml[20,268+0]..[22,315+3])
+    Pstr_extension "expect"
+    [
+      structure_item (testsuite/tests/typing-gadts/pr9799.ml[20,268+9]..[22,315+2])
+        Pstr_eval
+        expression (testsuite/tests/typing-gadts/pr9799.ml[20,268+9]..[22,315+2])
+          Pexp_constant PConst_string ("\nval fn : 'a t -> 'a -> int = <fun>\n",(testsuite/tests/typing-gadts/pr9799.ml[20,268+11]..[22,315+0]),Some "")
+    ]
+]
+

@@ -1,0 +1,143 @@
+[
+  signature_item (typing/type_immediacy.mli[15,1002+0]..[15,1002+33])
+    Psig_attribute "ocaml.text"
+    [
+      structure_item (typing/type_immediacy.mli[15,1002+0]..[15,1002+33])
+        Pstr_eval
+        expression (typing/type_immediacy.mli[15,1002+0]..[15,1002+33])
+          Pexp_constant PConst_string(" Immediacy status of a type ",(typing/type_immediacy.mli[15,1002+0]..[15,1002+33]),None)
+    ]
+  signature_item (typing/type_immediacy.mli[17,1037+0]..[22,1173+20])
+    Psig_type Rec
+    [
+      type_declaration "t" (typing/type_immediacy.mli[17,1037+5]..[17,1037+6]) (typing/type_immediacy.mli[17,1037+0]..[22,1173+20])
+        ptype_params =
+          []
+        ptype_cstrs =
+          []
+        ptype_kind =
+          Ptype_variant
+            [
+              (typing/type_immediacy.mli[18,1046+2]..[18,1046+11])
+                "Unknown" (typing/type_immediacy.mli[18,1046+4]..[18,1046+11])
+                attribute "ocaml.doc"
+                  [
+                    structure_item (typing/type_immediacy.mli[19,1058+2]..[19,1058+31])
+                      Pstr_eval
+                      expression (typing/type_immediacy.mli[19,1058+2]..[19,1058+31])
+                        Pexp_constant PConst_string(" We don't know anything ",(typing/type_immediacy.mli[19,1058+2]..[19,1058+31]),None)
+                  ]
+                []
+                None
+              (typing/type_immediacy.mli[20,1090+2]..[20,1090+10])
+                "Always" (typing/type_immediacy.mli[20,1090+4]..[20,1090+10])
+                attribute "ocaml.doc"
+                  [
+                    structure_item (typing/type_immediacy.mli[21,1101+2]..[21,1101+71])
+                      Pstr_eval
+                      expression (typing/type_immediacy.mli[21,1101+2]..[21,1101+71])
+                        Pexp_constant PConst_string(" We know for sure that values of this type are always immediate ",(typing/type_immediacy.mli[21,1101+2]..[21,1101+71]),None)
+                  ]
+                []
+                None
+              (typing/type_immediacy.mli[22,1173+2]..[22,1173+20])
+                "Always_on_64bits" (typing/type_immediacy.mli[22,1173+4]..[22,1173+20])
+                attribute "ocaml.doc"
+                  [
+                    structure_item (typing/type_immediacy.mli[23,1194+2]..[24,1263+67])
+                      Pstr_eval
+                      expression (typing/type_immediacy.mli[23,1194+2]..[24,1263+67])
+                        Pexp_constant PConst_string(" We know for sure that values of this type are always immediate\n      on 64 bit platforms. For other platforms, we know nothing. ",(typing/type_immediacy.mli[23,1194+2]..[24,1263+67]),None)
+                  ]
+                []
+                None
+            ]
+        ptype_private = Public
+        ptype_manifest =
+          None
+    ]
+  signature_item (typing/type_immediacy.mli[26,1332+0]..[30,1430+3])
+    Psig_module "Violation" (typing/type_immediacy.mli[26,1332+7]..[26,1332+16])
+    module_type (typing/type_immediacy.mli[26,1332+19]..[30,1430+3])
+      Pmty_signature
+      [
+        signature_item (typing/type_immediacy.mli[27,1355+2]..[29,1393+36])
+          Psig_type Rec
+          [
+            type_declaration "t" (typing/type_immediacy.mli[27,1355+7]..[27,1355+8]) (typing/type_immediacy.mli[27,1355+2]..[29,1393+36])
+              ptype_params =
+                []
+              ptype_cstrs =
+                []
+              ptype_kind =
+                Ptype_variant
+                  [
+                    (typing/type_immediacy.mli[28,1366+4]..[28,1366+26])
+                      "Not_always_immediate" (typing/type_immediacy.mli[28,1366+6]..[28,1366+26])
+                      []
+                      None
+                    (typing/type_immediacy.mli[29,1393+4]..[29,1393+36])
+                      "Not_always_immediate_on_64bits" (typing/type_immediacy.mli[29,1393+6]..[29,1393+36])
+                      []
+                      None
+                  ]
+              ptype_private = Public
+              ptype_manifest =
+                None
+          ]
+      ]
+  signature_item (typing/type_immediacy.mli[36,1668+0]..[36,1668+53])
+    Psig_value
+    value_description "coerce" (typing/type_immediacy.mli[36,1668+4]..[36,1668+10]) (typing/type_immediacy.mli[36,1668+0]..[36,1668+53])
+      attribute "ocaml.doc"
+        [
+          structure_item (typing/type_immediacy.mli[32,1435+0]..[35,1628+39])
+            Pstr_eval
+            expression (typing/type_immediacy.mli[32,1435+0]..[35,1628+39])
+              Pexp_constant PConst_string(" [coerce t ~as_] returns [Ok ()] iff [t] can be seen as type\n    immediacy [as_]. For instance, [Always] can be seen as\n    [Always_on_64bits] but the opposite is not true. Return [Error _]\n    if the coercion is not possible. ",(typing/type_immediacy.mli[32,1435+0]..[35,1628+39]),None)
+        ]
+      core_type (typing/type_immediacy.mli[36,1668+13]..[36,1668+53])
+        Ptyp_arrow
+        Nolabel
+        core_type (typing/type_immediacy.mli[36,1668+13]..[36,1668+14])
+          Ptyp_constr "t" (typing/type_immediacy.mli[36,1668+13]..[36,1668+14])
+          []
+        core_type (typing/type_immediacy.mli[36,1668+18]..[36,1668+53])
+          Ptyp_arrow
+          Labelled "as_"
+          core_type (typing/type_immediacy.mli[36,1668+22]..[36,1668+23])
+            Ptyp_constr "t" (typing/type_immediacy.mli[36,1668+22]..[36,1668+23])
+            []
+          core_type (typing/type_immediacy.mli[36,1668+27]..[36,1668+53])
+            Ptyp_constr "result" (typing/type_immediacy.mli[36,1668+47]..[36,1668+53])
+            [
+              core_type (typing/type_immediacy.mli[36,1668+28]..[36,1668+32])
+                Ptyp_constr "unit" (typing/type_immediacy.mli[36,1668+28]..[36,1668+32])
+                []
+              core_type (typing/type_immediacy.mli[36,1668+34]..[36,1668+45])
+                Ptyp_constr "Violation.t" (typing/type_immediacy.mli[36,1668+34]..[36,1668+45])
+                []
+            ]
+      []
+  signature_item (typing/type_immediacy.mli[40,1809+0]..[40,1809+45])
+    Psig_value
+    value_description "of_attributes" (typing/type_immediacy.mli[40,1809+4]..[40,1809+17]) (typing/type_immediacy.mli[40,1809+0]..[40,1809+45])
+      attribute "ocaml.doc"
+        [
+          structure_item (typing/type_immediacy.mli[38,1723+0]..[39,1791+17])
+            Pstr_eval
+            expression (typing/type_immediacy.mli[38,1723+0]..[39,1791+17])
+              Pexp_constant PConst_string(" Return the immediateness of a type as indicated by the user via\n    attributes ",(typing/type_immediacy.mli[38,1723+0]..[39,1791+17]),None)
+        ]
+      core_type (typing/type_immediacy.mli[40,1809+20]..[40,1809+45])
+        Ptyp_arrow
+        Nolabel
+        core_type (typing/type_immediacy.mli[40,1809+20]..[40,1809+40])
+          Ptyp_constr "Parsetree.attributes" (typing/type_immediacy.mli[40,1809+20]..[40,1809+40])
+          []
+        core_type (typing/type_immediacy.mli[40,1809+44]..[40,1809+45])
+          Ptyp_constr "t" (typing/type_immediacy.mli[40,1809+44]..[40,1809+45])
+          []
+      []
+]
+

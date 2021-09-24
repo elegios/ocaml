@@ -1,0 +1,224 @@
+[
+  structure_item (testsuite/tests/typing-polyvariants-bugs/pr8575.ml[5,24+0]..[5,24+46])
+    Pstr_module
+    "A" (testsuite/tests/typing-polyvariants-bugs/pr8575.ml[5,24+7]..[5,24+8])
+      module_expr (testsuite/tests/typing-polyvariants-bugs/pr8575.ml[5,24+11]..[5,24+46])
+        Pmod_structure
+        [
+          structure_item (testsuite/tests/typing-polyvariants-bugs/pr8575.ml[5,24+18]..[5,24+32])
+            Pstr_type Rec
+            [
+              type_declaration "t" (testsuite/tests/typing-polyvariants-bugs/pr8575.ml[5,24+23]..[5,24+24]) (testsuite/tests/typing-polyvariants-bugs/pr8575.ml[5,24+18]..[5,24+32])
+                ptype_params =
+                  []
+                ptype_cstrs =
+                  []
+                ptype_kind =
+                  Ptype_variant
+                    [
+                      (testsuite/tests/typing-polyvariants-bugs/pr8575.ml[5,24+27]..[5,24+28])
+                        "A" (testsuite/tests/typing-polyvariants-bugs/pr8575.ml[5,24+27]..[5,24+28])
+                        []
+                        None
+                      (testsuite/tests/typing-polyvariants-bugs/pr8575.ml[5,24+29]..[5,24+32])
+                        "B" (testsuite/tests/typing-polyvariants-bugs/pr8575.ml[5,24+31]..[5,24+32])
+                        []
+                        None
+                    ]
+                ptype_private = Public
+                ptype_manifest =
+                  None
+            ]
+          structure_item (testsuite/tests/typing-polyvariants-bugs/pr8575.ml[5,24+33]..[5,24+42])
+            Pstr_value Nonrec
+            [
+              <def>
+                pattern (testsuite/tests/typing-polyvariants-bugs/pr8575.ml[5,24+37]..[5,24+38])
+                  Ppat_var "x" (testsuite/tests/typing-polyvariants-bugs/pr8575.ml[5,24+37]..[5,24+38])
+                expression (testsuite/tests/typing-polyvariants-bugs/pr8575.ml[5,24+41]..[5,24+42])
+                  Pexp_construct "B" (testsuite/tests/typing-polyvariants-bugs/pr8575.ml[5,24+41]..[5,24+42])
+                  None
+            ]
+        ]
+  structure_item (testsuite/tests/typing-polyvariants-bugs/pr8575.ml[6,73+0]..[8,129+3])
+    Pstr_extension "expect"
+    [
+      structure_item (testsuite/tests/typing-polyvariants-bugs/pr8575.ml[6,73+9]..[8,129+2])
+        Pstr_eval
+        expression (testsuite/tests/typing-polyvariants-bugs/pr8575.ml[6,73+9]..[8,129+2])
+          Pexp_constant PConst_string ("\nmodule A : sig type t = A | B val x : t end\n",(testsuite/tests/typing-polyvariants-bugs/pr8575.ml[6,73+11]..[8,129+0]),Some "")
+    ]
+  structure_item (testsuite/tests/typing-polyvariants-bugs/pr8575.ml[10,134+0]..[14,213+50])
+    Pstr_value Nonrec
+    [
+      <def>
+        pattern (testsuite/tests/typing-polyvariants-bugs/pr8575.ml[10,134+4]..[10,134+8])
+          Ppat_var "test" (testsuite/tests/typing-polyvariants-bugs/pr8575.ml[10,134+4]..[10,134+8])
+        expression (testsuite/tests/typing-polyvariants-bugs/pr8575.ml[10,134+9]..[14,213+50]) ghost
+          Pexp_fun
+          Nolabel
+          None
+          pattern (testsuite/tests/typing-polyvariants-bugs/pr8575.ml[10,134+9]..[10,134+11])
+            Ppat_construct "()" (testsuite/tests/typing-polyvariants-bugs/pr8575.ml[10,134+9]..[10,134+11])
+            None
+          expression (testsuite/tests/typing-polyvariants-bugs/pr8575.ml[11,148+2]..[14,213+50])
+            Pexp_match
+            expression (testsuite/tests/typing-polyvariants-bugs/pr8575.ml[11,148+8]..[11,148+11])
+              Pexp_ident "A.x" (testsuite/tests/typing-polyvariants-bugs/pr8575.ml[11,148+8]..[11,148+11])
+            [
+              <case>
+                pattern (testsuite/tests/typing-polyvariants-bugs/pr8575.ml[12,165+4]..[12,165+10])
+                  Ppat_alias "a" (testsuite/tests/typing-polyvariants-bugs/pr8575.ml[12,165+9]..[12,165+10])
+                  pattern (testsuite/tests/typing-polyvariants-bugs/pr8575.ml[12,165+4]..[12,165+5])
+                    Ppat_construct "A" (testsuite/tests/typing-polyvariants-bugs/pr8575.ml[12,165+4]..[12,165+5])
+                    None
+                expression (testsuite/tests/typing-polyvariants-bugs/pr8575.ml[12,165+14]..[12,165+20])
+                  Pexp_variant "A_t"
+                  Some
+                    expression (testsuite/tests/typing-polyvariants-bugs/pr8575.ml[12,165+19]..[12,165+20])
+                      Pexp_ident "a" (testsuite/tests/typing-polyvariants-bugs/pr8575.ml[12,165+19]..[12,165+20])
+              <case>
+                pattern (testsuite/tests/typing-polyvariants-bugs/pr8575.ml[13,186+4]..[13,186+5])
+                  Ppat_construct "B" (testsuite/tests/typing-polyvariants-bugs/pr8575.ml[13,186+4]..[13,186+5])
+                  None
+                <when>
+                  expression (testsuite/tests/typing-polyvariants-bugs/pr8575.ml[13,186+11]..[13,186+16])
+                    Pexp_construct "false" (testsuite/tests/typing-polyvariants-bugs/pr8575.ml[13,186+11]..[13,186+16])
+                    None
+                expression (testsuite/tests/typing-polyvariants-bugs/pr8575.ml[13,186+20]..[13,186+26])
+                  Pexp_variant "Onoes"
+                  None
+              <case>
+                pattern (testsuite/tests/typing-polyvariants-bugs/pr8575.ml[14,213+4]..[14,213+5])
+                  Ppat_construct "B" (testsuite/tests/typing-polyvariants-bugs/pr8575.ml[14,213+4]..[14,213+5])
+                  None
+                expression (testsuite/tests/typing-polyvariants-bugs/pr8575.ml[14,213+9]..[14,213+50])
+                  Pexp_ifthenelse
+                  expression (testsuite/tests/typing-polyvariants-bugs/pr8575.ml[14,213+12]..[14,213+26])
+                    Pexp_apply
+                    expression (testsuite/tests/typing-polyvariants-bugs/pr8575.ml[14,213+12]..[14,213+23])
+                      Pexp_ident "Random.bool" (testsuite/tests/typing-polyvariants-bugs/pr8575.ml[14,213+12]..[14,213+23])
+                    [
+                      <arg>
+                      Nolabel
+                        expression (testsuite/tests/typing-polyvariants-bugs/pr8575.ml[14,213+24]..[14,213+26])
+                          Pexp_construct "()" (testsuite/tests/typing-polyvariants-bugs/pr8575.ml[14,213+24]..[14,213+26])
+                          None
+                    ]
+                  expression (testsuite/tests/typing-polyvariants-bugs/pr8575.ml[14,213+32]..[14,213+38])
+                    Pexp_variant "Onoes"
+                    None
+                  Some
+                    expression (testsuite/tests/typing-polyvariants-bugs/pr8575.ml[14,213+44]..[14,213+50])
+                      Pexp_variant "A_t"
+                      Some
+                        expression (testsuite/tests/typing-polyvariants-bugs/pr8575.ml[14,213+49]..[14,213+50])
+                          Pexp_construct "B" (testsuite/tests/typing-polyvariants-bugs/pr8575.ml[14,213+49]..[14,213+50])
+                          None
+            ]
+    ]
+  structure_item (testsuite/tests/typing-polyvariants-bugs/pr8575.ml[15,266+0]..[22,514+3])
+    Pstr_extension "expect"
+    [
+      structure_item (testsuite/tests/typing-polyvariants-bugs/pr8575.ml[15,266+9]..[22,514+2])
+        Pstr_eval
+        expression (testsuite/tests/typing-polyvariants-bugs/pr8575.ml[15,266+9]..[22,514+2])
+          Pexp_tuple
+          [
+            expression (testsuite/tests/typing-polyvariants-bugs/pr8575.ml[15,266+9]..[17,331+2])
+              Pexp_constant PConst_string ("\nval test : unit -> [> `A_t of A.t | `Onoes ] = <fun>\n",(testsuite/tests/typing-polyvariants-bugs/pr8575.ml[15,266+11]..[17,331+0]),Some "")
+            expression (testsuite/tests/typing-polyvariants-bugs/pr8575.ml[17,331+4]..[22,514+2])
+              Pexp_construct "Principal" (testsuite/tests/typing-polyvariants-bugs/pr8575.ml[17,331+4]..[17,331+13])
+              Some
+                expression (testsuite/tests/typing-polyvariants-bugs/pr8575.ml[17,331+13]..[22,514+2])
+                  Pexp_constant PConst_string ("\nLine 5, characters 49-50:\n5 |   | B -> if Random.bool () then `Onoes else `A_t B;;\n                                                     ^\nError: Unbound constructor B\n",(testsuite/tests/typing-polyvariants-bugs/pr8575.ml[17,331+15]..[22,514+0]),Some "")
+          ]
+    ]
+  structure_item (testsuite/tests/typing-polyvariants-bugs/pr8575.ml[24,519+0]..[28,598+50])
+    Pstr_value Nonrec
+    [
+      <def>
+        pattern (testsuite/tests/typing-polyvariants-bugs/pr8575.ml[24,519+4]..[24,519+8])
+          Ppat_var "test" (testsuite/tests/typing-polyvariants-bugs/pr8575.ml[24,519+4]..[24,519+8])
+        expression (testsuite/tests/typing-polyvariants-bugs/pr8575.ml[24,519+9]..[28,598+50]) ghost
+          Pexp_fun
+          Nolabel
+          None
+          pattern (testsuite/tests/typing-polyvariants-bugs/pr8575.ml[24,519+9]..[24,519+11])
+            Ppat_construct "()" (testsuite/tests/typing-polyvariants-bugs/pr8575.ml[24,519+9]..[24,519+11])
+            None
+          expression (testsuite/tests/typing-polyvariants-bugs/pr8575.ml[25,533+2]..[28,598+50])
+            Pexp_match
+            expression (testsuite/tests/typing-polyvariants-bugs/pr8575.ml[25,533+8]..[25,533+11])
+              Pexp_ident "A.x" (testsuite/tests/typing-polyvariants-bugs/pr8575.ml[25,533+8]..[25,533+11])
+            [
+              <case>
+                pattern (testsuite/tests/typing-polyvariants-bugs/pr8575.ml[26,550+4]..[26,550+5])
+                  Ppat_construct "B" (testsuite/tests/typing-polyvariants-bugs/pr8575.ml[26,550+4]..[26,550+5])
+                  None
+                <when>
+                  expression (testsuite/tests/typing-polyvariants-bugs/pr8575.ml[26,550+11]..[26,550+16])
+                    Pexp_construct "false" (testsuite/tests/typing-polyvariants-bugs/pr8575.ml[26,550+11]..[26,550+16])
+                    None
+                expression (testsuite/tests/typing-polyvariants-bugs/pr8575.ml[26,550+20]..[26,550+26])
+                  Pexp_variant "Onoes"
+                  None
+              <case>
+                pattern (testsuite/tests/typing-polyvariants-bugs/pr8575.ml[27,577+4]..[27,577+10])
+                  Ppat_alias "a" (testsuite/tests/typing-polyvariants-bugs/pr8575.ml[27,577+9]..[27,577+10])
+                  pattern (testsuite/tests/typing-polyvariants-bugs/pr8575.ml[27,577+4]..[27,577+5])
+                    Ppat_construct "A" (testsuite/tests/typing-polyvariants-bugs/pr8575.ml[27,577+4]..[27,577+5])
+                    None
+                expression (testsuite/tests/typing-polyvariants-bugs/pr8575.ml[27,577+14]..[27,577+20])
+                  Pexp_variant "A_t"
+                  Some
+                    expression (testsuite/tests/typing-polyvariants-bugs/pr8575.ml[27,577+19]..[27,577+20])
+                      Pexp_ident "a" (testsuite/tests/typing-polyvariants-bugs/pr8575.ml[27,577+19]..[27,577+20])
+              <case>
+                pattern (testsuite/tests/typing-polyvariants-bugs/pr8575.ml[28,598+4]..[28,598+5])
+                  Ppat_construct "B" (testsuite/tests/typing-polyvariants-bugs/pr8575.ml[28,598+4]..[28,598+5])
+                  None
+                expression (testsuite/tests/typing-polyvariants-bugs/pr8575.ml[28,598+9]..[28,598+50])
+                  Pexp_ifthenelse
+                  expression (testsuite/tests/typing-polyvariants-bugs/pr8575.ml[28,598+12]..[28,598+26])
+                    Pexp_apply
+                    expression (testsuite/tests/typing-polyvariants-bugs/pr8575.ml[28,598+12]..[28,598+23])
+                      Pexp_ident "Random.bool" (testsuite/tests/typing-polyvariants-bugs/pr8575.ml[28,598+12]..[28,598+23])
+                    [
+                      <arg>
+                      Nolabel
+                        expression (testsuite/tests/typing-polyvariants-bugs/pr8575.ml[28,598+24]..[28,598+26])
+                          Pexp_construct "()" (testsuite/tests/typing-polyvariants-bugs/pr8575.ml[28,598+24]..[28,598+26])
+                          None
+                    ]
+                  expression (testsuite/tests/typing-polyvariants-bugs/pr8575.ml[28,598+32]..[28,598+38])
+                    Pexp_variant "Onoes"
+                    None
+                  Some
+                    expression (testsuite/tests/typing-polyvariants-bugs/pr8575.ml[28,598+44]..[28,598+50])
+                      Pexp_variant "A_t"
+                      Some
+                        expression (testsuite/tests/typing-polyvariants-bugs/pr8575.ml[28,598+49]..[28,598+50])
+                          Pexp_construct "B" (testsuite/tests/typing-polyvariants-bugs/pr8575.ml[28,598+49]..[28,598+50])
+                          None
+            ]
+    ]
+  structure_item (testsuite/tests/typing-polyvariants-bugs/pr8575.ml[29,651+0]..[36,899+3])
+    Pstr_extension "expect"
+    [
+      structure_item (testsuite/tests/typing-polyvariants-bugs/pr8575.ml[29,651+9]..[36,899+2])
+        Pstr_eval
+        expression (testsuite/tests/typing-polyvariants-bugs/pr8575.ml[29,651+9]..[36,899+2])
+          Pexp_tuple
+          [
+            expression (testsuite/tests/typing-polyvariants-bugs/pr8575.ml[29,651+9]..[31,716+2])
+              Pexp_constant PConst_string ("\nval test : unit -> [> `A_t of A.t | `Onoes ] = <fun>\n",(testsuite/tests/typing-polyvariants-bugs/pr8575.ml[29,651+11]..[31,716+0]),Some "")
+            expression (testsuite/tests/typing-polyvariants-bugs/pr8575.ml[31,716+4]..[36,899+2])
+              Pexp_construct "Principal" (testsuite/tests/typing-polyvariants-bugs/pr8575.ml[31,716+4]..[31,716+13])
+              Some
+                expression (testsuite/tests/typing-polyvariants-bugs/pr8575.ml[31,716+13]..[36,899+2])
+                  Pexp_constant PConst_string ("\nLine 5, characters 49-50:\n5 |   | B -> if Random.bool () then `Onoes else `A_t B;;\n                                                     ^\nError: Unbound constructor B\n",(testsuite/tests/typing-polyvariants-bugs/pr8575.ml[31,716+15]..[36,899+0]),Some "")
+          ]
+    ]
+]
+

@@ -1,0 +1,1983 @@
+[
+  structure_item (lex/common.ml[17,1156+0]..[17,1156+11])
+    Pstr_open Fresh
+    module_expr (lex/common.ml[17,1156+5]..[17,1156+11])
+      Pmod_ident "Printf" (lex/common.ml[17,1156+5]..[17,1156+11])
+  structure_item (lex/common.ml[18,1168+0]..[18,1168+11])
+    Pstr_open Fresh
+    module_expr (lex/common.ml[18,1168+5]..[18,1168+11])
+      Pmod_ident "Syntax" (lex/common.ml[18,1168+5]..[18,1168+11])
+  structure_item (lex/common.ml[19,1180+0]..[19,1180+11])
+    Pstr_open Fresh
+    module_expr (lex/common.ml[19,1180+5]..[19,1180+11])
+      Pmod_ident "Lexgen" (lex/common.ml[19,1180+5]..[19,1180+11])
+  structure_item (lex/common.ml[24,1231+0]..[29,1335+1])
+    Pstr_type Rec
+    [
+      type_declaration "line_tracker" (lex/common.ml[24,1231+5]..[24,1231+17]) (lex/common.ml[24,1231+0]..[29,1335+1])
+        ptype_params =
+          []
+        ptype_cstrs =
+          []
+        ptype_kind =
+          Ptype_record
+            [
+              (lex/common.ml[25,1253+2]..[25,1253+16])
+                Immutable
+                "file" (lex/common.ml[25,1253+2]..[25,1253+6])                core_type (lex/common.ml[25,1253+9]..[25,1253+15])
+                  Ptyp_constr "string" (lex/common.ml[25,1253+9]..[25,1253+15])
+                  []
+              (lex/common.ml[26,1270+2]..[26,1270+19])
+                Immutable
+                "oc" (lex/common.ml[26,1270+2]..[26,1270+4])                core_type (lex/common.ml[26,1270+7]..[26,1270+18])
+                  Ptyp_constr "out_channel" (lex/common.ml[26,1270+7]..[26,1270+18])
+                  []
+              (lex/common.ml[27,1290+2]..[27,1290+18])
+                Immutable
+                "ic" (lex/common.ml[27,1290+2]..[27,1290+4])                core_type (lex/common.ml[27,1290+7]..[27,1290+17])
+                  Ptyp_constr "in_channel" (lex/common.ml[27,1290+7]..[27,1290+17])
+                  []
+              (lex/common.ml[28,1309+2]..[28,1309+25])
+                Mutable
+                "cur_line" (lex/common.ml[28,1309+10]..[28,1309+18])                core_type (lex/common.ml[28,1309+21]..[28,1309+24])
+                  Ptyp_constr "int" (lex/common.ml[28,1309+21]..[28,1309+24])
+                  []
+            ]
+        ptype_private = Public
+        ptype_manifest =
+          None
+    ]
+  structure_item (lex/common.ml[31,1340+0]..[36,1436+1])
+    Pstr_value Nonrec
+    [
+      <def>
+        pattern (lex/common.ml[31,1340+4]..[31,1340+16])
+          Ppat_var "open_tracker" (lex/common.ml[31,1340+4]..[31,1340+16])
+        expression (lex/common.ml[31,1340+17]..[36,1436+1]) ghost
+          Pexp_fun
+          Nolabel
+          None
+          pattern (lex/common.ml[31,1340+17]..[31,1340+21])
+            Ppat_var "file" (lex/common.ml[31,1340+17]..[31,1340+21])
+          expression (lex/common.ml[31,1340+22]..[36,1436+1]) ghost
+            Pexp_fun
+            Nolabel
+            None
+            pattern (lex/common.ml[31,1340+22]..[31,1340+24])
+              Ppat_var "oc" (lex/common.ml[31,1340+22]..[31,1340+24])
+            expression (lex/common.ml[31,1340+27]..[36,1436+1])
+              Pexp_record
+              [
+                "file" (lex/common.ml[32,1369+2]..[32,1369+6])
+                  expression (lex/common.ml[32,1369+9]..[32,1369+13])
+                    Pexp_ident "file" (lex/common.ml[32,1369+9]..[32,1369+13])
+                "oc" (lex/common.ml[33,1384+2]..[33,1384+4])
+                  expression (lex/common.ml[33,1384+7]..[33,1384+9])
+                    Pexp_ident "oc" (lex/common.ml[33,1384+7]..[33,1384+9])
+                "ic" (lex/common.ml[34,1395+2]..[34,1395+4])
+                  expression (lex/common.ml[34,1395+7]..[34,1395+23])
+                    Pexp_apply
+                    expression (lex/common.ml[34,1395+7]..[34,1395+18])
+                      Pexp_ident "open_in_bin" (lex/common.ml[34,1395+7]..[34,1395+18])
+                    [
+                      <arg>
+                      Nolabel
+                        expression (lex/common.ml[34,1395+19]..[34,1395+23])
+                          Pexp_ident "file" (lex/common.ml[34,1395+19]..[34,1395+23])
+                    ]
+                "cur_line" (lex/common.ml[35,1420+2]..[35,1420+10])
+                  expression (lex/common.ml[35,1420+13]..[35,1420+14])
+                    Pexp_constant PConst_int (1,None)
+              ]
+              None
+    ]
+  structure_item (lex/common.ml[38,1441+0]..[38,1441+43])
+    Pstr_value Nonrec
+    [
+      <def>
+        pattern (lex/common.ml[38,1441+4]..[38,1441+17])
+          Ppat_var "close_tracker" (lex/common.ml[38,1441+4]..[38,1441+17])
+        expression (lex/common.ml[38,1441+18]..[38,1441+43]) ghost
+          Pexp_fun
+          Nolabel
+          None
+          pattern (lex/common.ml[38,1441+18]..[38,1441+20])
+            Ppat_var "tr" (lex/common.ml[38,1441+18]..[38,1441+20])
+          expression (lex/common.ml[38,1441+23]..[38,1441+43])
+            Pexp_apply
+            expression (lex/common.ml[38,1441+23]..[38,1441+37])
+              Pexp_ident "close_in_noerr" (lex/common.ml[38,1441+23]..[38,1441+37])
+            [
+              <arg>
+              Nolabel
+                expression (lex/common.ml[38,1441+38]..[38,1441+43])
+                  Pexp_field
+                  expression (lex/common.ml[38,1441+38]..[38,1441+40])
+                    Pexp_ident "tr" (lex/common.ml[38,1441+38]..[38,1441+40])
+                  "ic" (lex/common.ml[38,1441+41]..[38,1441+43])
+            ]
+    ]
+  structure_item (lex/common.ml[40,1488+0]..[50,1817+56])
+    Pstr_value Nonrec
+    [
+      <def>
+        pattern (lex/common.ml[40,1488+4]..[40,1488+18])
+          Ppat_var "update_tracker" (lex/common.ml[40,1488+4]..[40,1488+18])
+        expression (lex/common.ml[40,1488+19]..[50,1817+56]) ghost
+          Pexp_fun
+          Nolabel
+          None
+          pattern (lex/common.ml[40,1488+19]..[40,1488+21])
+            Ppat_var "tr" (lex/common.ml[40,1488+19]..[40,1488+21])
+          expression (lex/common.ml[41,1512+2]..[50,1817+56])
+            Pexp_sequence
+            expression (lex/common.ml[41,1512+2]..[41,1512+20])
+              Pexp_apply
+              expression (lex/common.ml[41,1512+2]..[41,1512+9])
+                Pexp_ident "fprintf" (lex/common.ml[41,1512+2]..[41,1512+9])
+              [
+                <arg>
+                Nolabel
+                  expression (lex/common.ml[41,1512+10]..[41,1512+15])
+                    Pexp_field
+                    expression (lex/common.ml[41,1512+10]..[41,1512+12])
+                      Pexp_ident "tr" (lex/common.ml[41,1512+10]..[41,1512+12])
+                    "oc" (lex/common.ml[41,1512+13]..[41,1512+15])
+                <arg>
+                Nolabel
+                  expression (lex/common.ml[41,1512+16]..[41,1512+20])
+                    Pexp_constant PConst_string("\n",(lex/common.ml[41,1512+17]..[41,1512+19]),None)
+              ]
+            expression (lex/common.ml[42,1534+2]..[50,1817+56])
+              Pexp_sequence
+              expression (lex/common.ml[42,1534+2]..[42,1534+13])
+                Pexp_apply
+                expression (lex/common.ml[42,1534+2]..[42,1534+7])
+                  Pexp_ident "flush" (lex/common.ml[42,1534+2]..[42,1534+7])
+                [
+                  <arg>
+                  Nolabel
+                    expression (lex/common.ml[42,1534+8]..[42,1534+13])
+                      Pexp_field
+                      expression (lex/common.ml[42,1534+8]..[42,1534+10])
+                        Pexp_ident "tr" (lex/common.ml[42,1534+8]..[42,1534+10])
+                      "oc" (lex/common.ml[42,1534+11]..[42,1534+13])
+                ]
+              expression (lex/common.ml[43,1549+2]..[50,1817+56])
+                Pexp_let Nonrec
+                [
+                  <def>
+                    pattern (lex/common.ml[43,1549+6]..[43,1549+13])
+                      Ppat_var "cr_seen" (lex/common.ml[43,1549+6]..[43,1549+13])
+                    expression (lex/common.ml[43,1549+16]..[43,1549+25])
+                      Pexp_apply
+                      expression (lex/common.ml[43,1549+16]..[43,1549+19])
+                        Pexp_ident "ref" (lex/common.ml[43,1549+16]..[43,1549+19])
+                      [
+                        <arg>
+                        Nolabel
+                          expression (lex/common.ml[43,1549+20]..[43,1549+25])
+                            Pexp_construct "false" (lex/common.ml[43,1549+20]..[43,1549+25])
+                            None
+                      ]
+                ]
+                expression (lex/common.ml[44,1578+2]..[50,1817+56])
+                  Pexp_try
+                  expression (lex/common.ml[44,1578+6]..[49,1790+6])
+                    Pexp_while
+                    expression (lex/common.ml[44,1578+12]..[44,1578+16])
+                      Pexp_construct "true" (lex/common.ml[44,1578+12]..[44,1578+16])
+                      None
+                    expression (lex/common.ml[45,1598+4]..[48,1761+28])
+                      Pexp_match
+                      expression (lex/common.ml[45,1598+10]..[45,1598+26])
+                        Pexp_apply
+                        expression (lex/common.ml[45,1598+10]..[45,1598+20])
+                          Pexp_ident "input_char" (lex/common.ml[45,1598+10]..[45,1598+20])
+                        [
+                          <arg>
+                          Nolabel
+                            expression (lex/common.ml[45,1598+21]..[45,1598+26])
+                              Pexp_field
+                              expression (lex/common.ml[45,1598+21]..[45,1598+23])
+                                Pexp_ident "tr" (lex/common.ml[45,1598+21]..[45,1598+23])
+                              "ic" (lex/common.ml[45,1598+24]..[45,1598+26])
+                        ]
+                      [
+                        <case>
+                          pattern (lex/common.ml[46,1630+6]..[46,1630+12])
+                            Ppat_constant PConst_char 0a
+                          <when>
+                            expression (lex/common.ml[46,1630+18]..[46,1630+30])
+                              Pexp_apply
+                              expression (lex/common.ml[46,1630+18]..[46,1630+21])
+                                Pexp_ident "not" (lex/common.ml[46,1630+18]..[46,1630+21])
+                              [
+                                <arg>
+                                Nolabel
+                                  expression (lex/common.ml[46,1630+22]..[46,1630+30])
+                                    Pexp_apply
+                                    expression (lex/common.ml[46,1630+22]..[46,1630+23])
+                                      Pexp_ident "!" (lex/common.ml[46,1630+22]..[46,1630+23])
+                                    [
+                                      <arg>
+                                      Nolabel
+                                        expression (lex/common.ml[46,1630+23]..[46,1630+30])
+                                          Pexp_ident "cr_seen" (lex/common.ml[46,1630+23]..[46,1630+30])
+                                    ]
+                              ]
+                          expression (lex/common.ml[46,1630+34]..[46,1630+64])
+                            Pexp_setfield
+                            expression (lex/common.ml[46,1630+34]..[46,1630+36])
+                              Pexp_ident "tr" (lex/common.ml[46,1630+34]..[46,1630+36])
+                            "cur_line" (lex/common.ml[46,1630+37]..[46,1630+45])
+                            expression (lex/common.ml[46,1630+49]..[46,1630+64])
+                              Pexp_apply
+                              expression (lex/common.ml[46,1630+61]..[46,1630+62])
+                                Pexp_ident "+" (lex/common.ml[46,1630+61]..[46,1630+62])
+                              [
+                                <arg>
+                                Nolabel
+                                  expression (lex/common.ml[46,1630+49]..[46,1630+60])
+                                    Pexp_field
+                                    expression (lex/common.ml[46,1630+49]..[46,1630+51])
+                                      Pexp_ident "tr" (lex/common.ml[46,1630+49]..[46,1630+51])
+                                    "cur_line" (lex/common.ml[46,1630+52]..[46,1630+60])
+                                <arg>
+                                Nolabel
+                                  expression (lex/common.ml[46,1630+63]..[46,1630+64])
+                                    Pexp_constant PConst_int (1,None)
+                              ]
+                        <case>
+                          pattern (lex/common.ml[47,1696+6]..[47,1696+12])
+                            Ppat_constant PConst_char 0d
+                          expression (lex/common.ml[47,1696+16]..[47,1696+64])
+                            Pexp_sequence
+                            expression (lex/common.ml[47,1696+16]..[47,1696+31])
+                              Pexp_apply
+                              expression (lex/common.ml[47,1696+24]..[47,1696+26])
+                                Pexp_ident ":=" (lex/common.ml[47,1696+24]..[47,1696+26])
+                              [
+                                <arg>
+                                Nolabel
+                                  expression (lex/common.ml[47,1696+16]..[47,1696+23])
+                                    Pexp_ident "cr_seen" (lex/common.ml[47,1696+16]..[47,1696+23])
+                                <arg>
+                                Nolabel
+                                  expression (lex/common.ml[47,1696+27]..[47,1696+31])
+                                    Pexp_construct "true" (lex/common.ml[47,1696+27]..[47,1696+31])
+                                    None
+                              ]
+                            expression (lex/common.ml[47,1696+33]..[47,1696+63])
+                              Pexp_setfield
+                              expression (lex/common.ml[47,1696+33]..[47,1696+35])
+                                Pexp_ident "tr" (lex/common.ml[47,1696+33]..[47,1696+35])
+                              "cur_line" (lex/common.ml[47,1696+36]..[47,1696+44])
+                              expression (lex/common.ml[47,1696+48]..[47,1696+63])
+                                Pexp_apply
+                                expression (lex/common.ml[47,1696+60]..[47,1696+61])
+                                  Pexp_ident "+" (lex/common.ml[47,1696+60]..[47,1696+61])
+                                [
+                                  <arg>
+                                  Nolabel
+                                    expression (lex/common.ml[47,1696+48]..[47,1696+59])
+                                      Pexp_field
+                                      expression (lex/common.ml[47,1696+48]..[47,1696+50])
+                                        Pexp_ident "tr" (lex/common.ml[47,1696+48]..[47,1696+50])
+                                      "cur_line" (lex/common.ml[47,1696+51]..[47,1696+59])
+                                  <arg>
+                                  Nolabel
+                                    expression (lex/common.ml[47,1696+62]..[47,1696+63])
+                                      Pexp_constant PConst_int (1,None)
+                                ]
+                        <case>
+                          pattern (lex/common.ml[48,1761+6]..[48,1761+7])
+                            Ppat_any
+                          expression (lex/common.ml[48,1761+11]..[48,1761+27])
+                            Pexp_apply
+                            expression (lex/common.ml[48,1761+19]..[48,1761+21])
+                              Pexp_ident ":=" (lex/common.ml[48,1761+19]..[48,1761+21])
+                            [
+                              <arg>
+                              Nolabel
+                                expression (lex/common.ml[48,1761+11]..[48,1761+18])
+                                  Pexp_ident "cr_seen" (lex/common.ml[48,1761+11]..[48,1761+18])
+                              <arg>
+                              Nolabel
+                                expression (lex/common.ml[48,1761+22]..[48,1761+27])
+                                  Pexp_construct "false" (lex/common.ml[48,1761+22]..[48,1761+27])
+                                  None
+                            ]
+                      ]
+                  [
+                    <case>
+                      pattern (lex/common.ml[49,1790+12]..[49,1790+23])
+                        Ppat_construct "End_of_file" (lex/common.ml[49,1790+12]..[49,1790+23])
+                        None
+                      expression (lex/common.ml[50,1817+2]..[50,1817+55])
+                        Pexp_apply
+                        expression (lex/common.ml[50,1817+2]..[50,1817+9])
+                          Pexp_ident "fprintf" (lex/common.ml[50,1817+2]..[50,1817+9])
+                        [
+                          <arg>
+                          Nolabel
+                            expression (lex/common.ml[50,1817+10]..[50,1817+15])
+                              Pexp_field
+                              expression (lex/common.ml[50,1817+10]..[50,1817+12])
+                                Pexp_ident "tr" (lex/common.ml[50,1817+10]..[50,1817+12])
+                              "oc" (lex/common.ml[50,1817+13]..[50,1817+15])
+                          <arg>
+                          Nolabel
+                            expression (lex/common.ml[50,1817+16]..[50,1817+31])
+                              Pexp_constant PConst_string("# %d \"%s\"\n",(lex/common.ml[50,1817+17]..[50,1817+30]),None)
+                          <arg>
+                          Nolabel
+                            expression (lex/common.ml[50,1817+32]..[50,1817+47])
+                              Pexp_apply
+                              expression (lex/common.ml[50,1817+44]..[50,1817+45])
+                                Pexp_ident "+" (lex/common.ml[50,1817+44]..[50,1817+45])
+                              [
+                                <arg>
+                                Nolabel
+                                  expression (lex/common.ml[50,1817+33]..[50,1817+44])
+                                    Pexp_field
+                                    expression (lex/common.ml[50,1817+33]..[50,1817+35])
+                                      Pexp_ident "tr" (lex/common.ml[50,1817+33]..[50,1817+35])
+                                    "cur_line" (lex/common.ml[50,1817+36]..[50,1817+44])
+                                <arg>
+                                Nolabel
+                                  expression (lex/common.ml[50,1817+45]..[50,1817+46])
+                                    Pexp_constant PConst_int (1,None)
+                              ]
+                          <arg>
+                          Nolabel
+                            expression (lex/common.ml[50,1817+48]..[50,1817+55])
+                              Pexp_field
+                              expression (lex/common.ml[50,1817+48]..[50,1817+50])
+                                Pexp_ident "tr" (lex/common.ml[50,1817+48]..[50,1817+50])
+                              "file" (lex/common.ml[50,1817+51]..[50,1817+55])
+                        ]
+                  ]
+    ]
+  structure_item (lex/common.ml[53,1878+0]..[53,1878+35])
+    Pstr_value Nonrec
+    [
+      <def>
+        pattern (lex/common.ml[53,1878+4]..[53,1878+15])
+          Ppat_var "copy_buffer" (lex/common.ml[53,1878+4]..[53,1878+15])
+        expression (lex/common.ml[53,1878+18]..[53,1878+35])
+          Pexp_apply
+          expression (lex/common.ml[53,1878+18]..[53,1878+30])
+            Pexp_ident "Bytes.create" (lex/common.ml[53,1878+18]..[53,1878+30])
+          [
+            <arg>
+            Nolabel
+              expression (lex/common.ml[53,1878+31]..[53,1878+35])
+                Pexp_constant PConst_int (1024,None)
+          ]
+    ]
+  structure_item (lex/common.ml[55,1915+0]..[61,2107+6])
+    Pstr_value Nonrec
+    [
+      <def>
+        pattern (lex/common.ml[55,1915+4]..[55,1915+19])
+          Ppat_var "copy_chars_unix" (lex/common.ml[55,1915+4]..[55,1915+19])
+        expression (lex/common.ml[55,1915+20]..[61,2107+6]) ghost
+          Pexp_fun
+          Nolabel
+          None
+          pattern (lex/common.ml[55,1915+20]..[55,1915+22])
+            Ppat_var "ic" (lex/common.ml[55,1915+20]..[55,1915+22])
+          expression (lex/common.ml[55,1915+23]..[61,2107+6]) ghost
+            Pexp_fun
+            Nolabel
+            None
+            pattern (lex/common.ml[55,1915+23]..[55,1915+25])
+              Ppat_var "oc" (lex/common.ml[55,1915+23]..[55,1915+25])
+            expression (lex/common.ml[55,1915+26]..[61,2107+6]) ghost
+              Pexp_fun
+              Nolabel
+              None
+              pattern (lex/common.ml[55,1915+26]..[55,1915+31])
+                Ppat_var "start" (lex/common.ml[55,1915+26]..[55,1915+31])
+              expression (lex/common.ml[55,1915+32]..[61,2107+6]) ghost
+                Pexp_fun
+                Nolabel
+                None
+                pattern (lex/common.ml[55,1915+32]..[55,1915+36])
+                  Ppat_var "stop" (lex/common.ml[55,1915+32]..[55,1915+36])
+                expression (lex/common.ml[56,1954+2]..[61,2107+6])
+                  Pexp_let Nonrec
+                  [
+                    <def>
+                      pattern (lex/common.ml[56,1954+6]..[56,1954+7])
+                        Ppat_var "n" (lex/common.ml[56,1954+6]..[56,1954+7])
+                      expression (lex/common.ml[56,1954+10]..[56,1954+28])
+                        Pexp_apply
+                        expression (lex/common.ml[56,1954+10]..[56,1954+13])
+                          Pexp_ident "ref" (lex/common.ml[56,1954+10]..[56,1954+13])
+                        [
+                          <arg>
+                          Nolabel
+                            expression (lex/common.ml[56,1954+14]..[56,1954+28])
+                              Pexp_apply
+                              expression (lex/common.ml[56,1954+20]..[56,1954+21])
+                                Pexp_ident "-" (lex/common.ml[56,1954+20]..[56,1954+21])
+                              [
+                                <arg>
+                                Nolabel
+                                  expression (lex/common.ml[56,1954+15]..[56,1954+19])
+                                    Pexp_ident "stop" (lex/common.ml[56,1954+15]..[56,1954+19])
+                                <arg>
+                                Nolabel
+                                  expression (lex/common.ml[56,1954+22]..[56,1954+27])
+                                    Pexp_ident "start" (lex/common.ml[56,1954+22]..[56,1954+27])
+                              ]
+                        ]
+                  ]
+                  expression (lex/common.ml[57,1986+2]..[61,2107+6])
+                    Pexp_while
+                    expression (lex/common.ml[57,1986+8]..[57,1986+14])
+                      Pexp_apply
+                      expression (lex/common.ml[57,1986+11]..[57,1986+12])
+                        Pexp_ident ">" (lex/common.ml[57,1986+11]..[57,1986+12])
+                      [
+                        <arg>
+                        Nolabel
+                          expression (lex/common.ml[57,1986+8]..[57,1986+10])
+                            Pexp_apply
+                            expression (lex/common.ml[57,1986+8]..[57,1986+9])
+                              Pexp_ident "!" (lex/common.ml[57,1986+8]..[57,1986+9])
+                            [
+                              <arg>
+                              Nolabel
+                                expression (lex/common.ml[57,1986+9]..[57,1986+10])
+                                  Pexp_ident "n" (lex/common.ml[57,1986+9]..[57,1986+10])
+                            ]
+                        <arg>
+                        Nolabel
+                          expression (lex/common.ml[57,1986+13]..[57,1986+14])
+                            Pexp_constant PConst_int (0,None)
+                      ]
+                    expression (lex/common.ml[58,2004+4]..[60,2091+15])
+                      Pexp_let Nonrec
+                      [
+                        <def>
+                          pattern (lex/common.ml[58,2004+8]..[58,2004+9])
+                            Ppat_var "m" (lex/common.ml[58,2004+8]..[58,2004+9])
+                          expression (lex/common.ml[58,2004+12]..[58,2004+52])
+                            Pexp_apply
+                            expression (lex/common.ml[58,2004+12]..[58,2004+17])
+                              Pexp_ident "input" (lex/common.ml[58,2004+12]..[58,2004+17])
+                            [
+                              <arg>
+                              Nolabel
+                                expression (lex/common.ml[58,2004+18]..[58,2004+20])
+                                  Pexp_ident "ic" (lex/common.ml[58,2004+18]..[58,2004+20])
+                              <arg>
+                              Nolabel
+                                expression (lex/common.ml[58,2004+21]..[58,2004+32])
+                                  Pexp_ident "copy_buffer" (lex/common.ml[58,2004+21]..[58,2004+32])
+                              <arg>
+                              Nolabel
+                                expression (lex/common.ml[58,2004+33]..[58,2004+34])
+                                  Pexp_constant PConst_int (0,None)
+                              <arg>
+                              Nolabel
+                                expression (lex/common.ml[58,2004+35]..[58,2004+52])
+                                  Pexp_apply
+                                  expression (lex/common.ml[58,2004+36]..[58,2004+43])
+                                    Pexp_ident "Int.min" (lex/common.ml[58,2004+36]..[58,2004+43])
+                                  [
+                                    <arg>
+                                    Nolabel
+                                      expression (lex/common.ml[58,2004+44]..[58,2004+46])
+                                        Pexp_apply
+                                        expression (lex/common.ml[58,2004+44]..[58,2004+45])
+                                          Pexp_ident "!" (lex/common.ml[58,2004+44]..[58,2004+45])
+                                        [
+                                          <arg>
+                                          Nolabel
+                                            expression (lex/common.ml[58,2004+45]..[58,2004+46])
+                                              Pexp_ident "n" (lex/common.ml[58,2004+45]..[58,2004+46])
+                                        ]
+                                    <arg>
+                                    Nolabel
+                                      expression (lex/common.ml[58,2004+47]..[58,2004+51])
+                                        Pexp_constant PConst_int (1024,None)
+                                  ]
+                            ]
+                      ]
+                      expression (lex/common.ml[59,2060+4]..[60,2091+15])
+                        Pexp_sequence
+                        expression (lex/common.ml[59,2060+4]..[59,2060+29])
+                          Pexp_apply
+                          expression (lex/common.ml[59,2060+4]..[59,2060+10])
+                            Pexp_ident "output" (lex/common.ml[59,2060+4]..[59,2060+10])
+                          [
+                            <arg>
+                            Nolabel
+                              expression (lex/common.ml[59,2060+11]..[59,2060+13])
+                                Pexp_ident "oc" (lex/common.ml[59,2060+11]..[59,2060+13])
+                            <arg>
+                            Nolabel
+                              expression (lex/common.ml[59,2060+14]..[59,2060+25])
+                                Pexp_ident "copy_buffer" (lex/common.ml[59,2060+14]..[59,2060+25])
+                            <arg>
+                            Nolabel
+                              expression (lex/common.ml[59,2060+26]..[59,2060+27])
+                                Pexp_constant PConst_int (0,None)
+                            <arg>
+                            Nolabel
+                              expression (lex/common.ml[59,2060+28]..[59,2060+29])
+                                Pexp_ident "m" (lex/common.ml[59,2060+28]..[59,2060+29])
+                          ]
+                        expression (lex/common.ml[60,2091+4]..[60,2091+15])
+                          Pexp_apply
+                          expression (lex/common.ml[60,2091+6]..[60,2091+8])
+                            Pexp_ident ":=" (lex/common.ml[60,2091+6]..[60,2091+8])
+                          [
+                            <arg>
+                            Nolabel
+                              expression (lex/common.ml[60,2091+4]..[60,2091+5])
+                                Pexp_ident "n" (lex/common.ml[60,2091+4]..[60,2091+5])
+                            <arg>
+                            Nolabel
+                              expression (lex/common.ml[60,2091+9]..[60,2091+15])
+                                Pexp_apply
+                                expression (lex/common.ml[60,2091+12]..[60,2091+13])
+                                  Pexp_ident "-" (lex/common.ml[60,2091+12]..[60,2091+13])
+                                [
+                                  <arg>
+                                  Nolabel
+                                    expression (lex/common.ml[60,2091+9]..[60,2091+11])
+                                      Pexp_apply
+                                      expression (lex/common.ml[60,2091+9]..[60,2091+10])
+                                        Pexp_ident "!" (lex/common.ml[60,2091+9]..[60,2091+10])
+                                      [
+                                        <arg>
+                                        Nolabel
+                                          expression (lex/common.ml[60,2091+10]..[60,2091+11])
+                                            Pexp_ident "n" (lex/common.ml[60,2091+10]..[60,2091+11])
+                                      ]
+                                  <arg>
+                                  Nolabel
+                                    expression (lex/common.ml[60,2091+14]..[60,2091+15])
+                                      Pexp_ident "m" (lex/common.ml[60,2091+14]..[60,2091+15])
+                                ]
+                          ]
+    ]
+  structure_item (lex/common.ml[63,2115+0]..[67,2255+6])
+    Pstr_value Nonrec
+    [
+      <def>
+        pattern (lex/common.ml[63,2115+4]..[63,2115+20])
+          Ppat_var "copy_chars_win32" (lex/common.ml[63,2115+4]..[63,2115+20])
+        expression (lex/common.ml[63,2115+21]..[67,2255+6]) ghost
+          Pexp_fun
+          Nolabel
+          None
+          pattern (lex/common.ml[63,2115+21]..[63,2115+23])
+            Ppat_var "ic" (lex/common.ml[63,2115+21]..[63,2115+23])
+          expression (lex/common.ml[63,2115+24]..[67,2255+6]) ghost
+            Pexp_fun
+            Nolabel
+            None
+            pattern (lex/common.ml[63,2115+24]..[63,2115+26])
+              Ppat_var "oc" (lex/common.ml[63,2115+24]..[63,2115+26])
+            expression (lex/common.ml[63,2115+27]..[67,2255+6]) ghost
+              Pexp_fun
+              Nolabel
+              None
+              pattern (lex/common.ml[63,2115+27]..[63,2115+32])
+                Ppat_var "start" (lex/common.ml[63,2115+27]..[63,2115+32])
+              expression (lex/common.ml[63,2115+33]..[67,2255+6]) ghost
+                Pexp_fun
+                Nolabel
+                None
+                pattern (lex/common.ml[63,2115+33]..[63,2115+37])
+                  Ppat_var "stop" (lex/common.ml[63,2115+33]..[63,2115+37])
+                expression (lex/common.ml[64,2155+2]..[67,2255+6])
+                  Pexp_for Up
+                  pattern (lex/common.ml[64,2155+6]..[64,2155+8])
+                    Ppat_var "_i" (lex/common.ml[64,2155+6]..[64,2155+8])
+                  expression (lex/common.ml[64,2155+11]..[64,2155+16])
+                    Pexp_ident "start" (lex/common.ml[64,2155+11]..[64,2155+16])
+                  expression (lex/common.ml[64,2155+20]..[64,2155+28])
+                    Pexp_apply
+                    expression (lex/common.ml[64,2155+25]..[64,2155+26])
+                      Pexp_ident "-" (lex/common.ml[64,2155+25]..[64,2155+26])
+                    [
+                      <arg>
+                      Nolabel
+                        expression (lex/common.ml[64,2155+20]..[64,2155+24])
+                          Pexp_ident "stop" (lex/common.ml[64,2155+20]..[64,2155+24])
+                      <arg>
+                      Nolabel
+                        expression (lex/common.ml[64,2155+27]..[64,2155+28])
+                          Pexp_constant PConst_int (1,None)
+                    ]
+                  expression (lex/common.ml[65,2187+4]..[66,2216+38])
+                    Pexp_let Nonrec
+                    [
+                      <def>
+                        pattern (lex/common.ml[65,2187+8]..[65,2187+9])
+                          Ppat_var "c" (lex/common.ml[65,2187+8]..[65,2187+9])
+                        expression (lex/common.ml[65,2187+12]..[65,2187+25])
+                          Pexp_apply
+                          expression (lex/common.ml[65,2187+12]..[65,2187+22])
+                            Pexp_ident "input_char" (lex/common.ml[65,2187+12]..[65,2187+22])
+                          [
+                            <arg>
+                            Nolabel
+                              expression (lex/common.ml[65,2187+23]..[65,2187+25])
+                                Pexp_ident "ic" (lex/common.ml[65,2187+23]..[65,2187+25])
+                          ]
+                    ]
+                    expression (lex/common.ml[66,2216+4]..[66,2216+38])
+                      Pexp_ifthenelse
+                      expression (lex/common.ml[66,2216+7]..[66,2216+16])
+                        Pexp_apply
+                        expression (lex/common.ml[66,2216+9]..[66,2216+11])
+                          Pexp_ident "<>" (lex/common.ml[66,2216+9]..[66,2216+11])
+                        [
+                          <arg>
+                          Nolabel
+                            expression (lex/common.ml[66,2216+7]..[66,2216+8])
+                              Pexp_ident "c" (lex/common.ml[66,2216+7]..[66,2216+8])
+                          <arg>
+                          Nolabel
+                            expression (lex/common.ml[66,2216+12]..[66,2216+16])
+                              Pexp_constant PConst_char 0d
+                        ]
+                      expression (lex/common.ml[66,2216+22]..[66,2216+38])
+                        Pexp_apply
+                        expression (lex/common.ml[66,2216+22]..[66,2216+33])
+                          Pexp_ident "output_char" (lex/common.ml[66,2216+22]..[66,2216+33])
+                        [
+                          <arg>
+                          Nolabel
+                            expression (lex/common.ml[66,2216+34]..[66,2216+36])
+                              Pexp_ident "oc" (lex/common.ml[66,2216+34]..[66,2216+36])
+                          <arg>
+                          Nolabel
+                            expression (lex/common.ml[66,2216+37]..[66,2216+38])
+                              Pexp_ident "c" (lex/common.ml[66,2216+37]..[66,2216+38])
+                        ]
+                      None
+    ]
+  structure_item (lex/common.ml[69,2263+0]..[72,2348+30])
+    Pstr_value Nonrec
+    [
+      <def>
+        pattern (lex/common.ml[69,2263+4]..[69,2263+14])
+          Ppat_var "copy_chars" (lex/common.ml[69,2263+4]..[69,2263+14])
+        expression (lex/common.ml[70,2280+2]..[72,2348+30])
+          Pexp_match
+          expression (lex/common.ml[70,2280+8]..[70,2280+19])
+            Pexp_ident "Sys.os_type" (lex/common.ml[70,2280+8]..[70,2280+19])
+          [
+            <case>
+              pattern (lex/common.ml[71,2305+4]..[71,2305+22])
+                Ppat_or
+                pattern (lex/common.ml[71,2305+4]..[71,2305+11])
+                  Ppat_constant PConst_string("Win32",(lex/common.ml[71,2305+5]..[71,2305+10]),None)
+                pattern (lex/common.ml[71,2305+14]..[71,2305+22])
+                  Ppat_constant PConst_string("Cygwin",(lex/common.ml[71,2305+15]..[71,2305+21]),None)
+              expression (lex/common.ml[71,2305+26]..[71,2305+42])
+                Pexp_ident "copy_chars_win32" (lex/common.ml[71,2305+26]..[71,2305+42])
+            <case>
+              pattern (lex/common.ml[72,2348+4]..[72,2348+5])
+                Ppat_any
+              expression (lex/common.ml[72,2348+15]..[72,2348+30])
+                Pexp_ident "copy_chars_unix" (lex/common.ml[72,2348+15]..[72,2348+30])
+          ]
+    ]
+  structure_item (lex/common.ml[74,2380+0]..[87,2896+5])
+    Pstr_value Nonrec
+    [
+      <def>
+        pattern (lex/common.ml[74,2380+4]..[74,2380+14])
+          Ppat_var "copy_chunk" (lex/common.ml[74,2380+4]..[74,2380+14])
+        expression (lex/common.ml[74,2380+15]..[87,2896+5]) ghost
+          Pexp_fun
+          Nolabel
+          None
+          pattern (lex/common.ml[74,2380+15]..[74,2380+17])
+            Ppat_var "ic" (lex/common.ml[74,2380+15]..[74,2380+17])
+          expression (lex/common.ml[74,2380+18]..[87,2896+5]) ghost
+            Pexp_fun
+            Nolabel
+            None
+            pattern (lex/common.ml[74,2380+18]..[74,2380+20])
+              Ppat_var "oc" (lex/common.ml[74,2380+18]..[74,2380+20])
+            expression (lex/common.ml[74,2380+21]..[87,2896+5]) ghost
+              Pexp_fun
+              Nolabel
+              None
+              pattern (lex/common.ml[74,2380+21]..[74,2380+24])
+                Ppat_var "trl" (lex/common.ml[74,2380+21]..[74,2380+24])
+              expression (lex/common.ml[74,2380+25]..[87,2896+5]) ghost
+                Pexp_fun
+                Nolabel
+                None
+                pattern (lex/common.ml[74,2380+25]..[74,2380+28])
+                  Ppat_var "loc" (lex/common.ml[74,2380+25]..[74,2380+28])
+                expression (lex/common.ml[74,2380+29]..[87,2896+5]) ghost
+                  Pexp_fun
+                  Nolabel
+                  None
+                  pattern (lex/common.ml[74,2380+29]..[74,2380+39])
+                    Ppat_var "add_parens" (lex/common.ml[74,2380+29]..[74,2380+39])
+                  expression (lex/common.ml[75,2422+2]..[87,2896+5])
+                    Pexp_ifthenelse
+                    expression (lex/common.ml[75,2422+5]..[75,2422+46])
+                      Pexp_apply
+                      expression (lex/common.ml[75,2422+33]..[75,2422+35])
+                        Pexp_ident "||" (lex/common.ml[75,2422+33]..[75,2422+35])
+                      [
+                        <arg>
+                        Nolabel
+                          expression (lex/common.ml[75,2422+5]..[75,2422+32])
+                            Pexp_apply
+                            expression (lex/common.ml[75,2422+19]..[75,2422+20])
+                              Pexp_ident "<" (lex/common.ml[75,2422+19]..[75,2422+20])
+                            [
+                              <arg>
+                              Nolabel
+                                expression (lex/common.ml[75,2422+5]..[75,2422+18])
+                                  Pexp_field
+                                  expression (lex/common.ml[75,2422+5]..[75,2422+8])
+                                    Pexp_ident "loc" (lex/common.ml[75,2422+5]..[75,2422+8])
+                                  "start_pos" (lex/common.ml[75,2422+9]..[75,2422+18])
+                              <arg>
+                              Nolabel
+                                expression (lex/common.ml[75,2422+21]..[75,2422+32])
+                                  Pexp_field
+                                  expression (lex/common.ml[75,2422+21]..[75,2422+24])
+                                    Pexp_ident "loc" (lex/common.ml[75,2422+21]..[75,2422+24])
+                                  "end_pos" (lex/common.ml[75,2422+25]..[75,2422+32])
+                            ]
+                        <arg>
+                        Nolabel
+                          expression (lex/common.ml[75,2422+36]..[75,2422+46])
+                            Pexp_ident "add_parens" (lex/common.ml[75,2422+36]..[75,2422+46])
+                      ]
+                    expression (lex/common.ml[75,2422+52]..[87,2896+5])
+                      Pexp_sequence
+                      expression (lex/common.ml[76,2480+4]..[76,2480+58])
+                        Pexp_apply
+                        expression (lex/common.ml[76,2480+4]..[76,2480+11])
+                          Pexp_ident "fprintf" (lex/common.ml[76,2480+4]..[76,2480+11])
+                        [
+                          <arg>
+                          Nolabel
+                            expression (lex/common.ml[76,2480+12]..[76,2480+14])
+                              Pexp_ident "oc" (lex/common.ml[76,2480+12]..[76,2480+14])
+                          <arg>
+                          Nolabel
+                            expression (lex/common.ml[76,2480+15]..[76,2480+30])
+                              Pexp_constant PConst_string("# %d \"%s\"\n",(lex/common.ml[76,2480+16]..[76,2480+29]),None)
+                          <arg>
+                          Nolabel
+                            expression (lex/common.ml[76,2480+31]..[76,2480+45])
+                              Pexp_field
+                              expression (lex/common.ml[76,2480+31]..[76,2480+34])
+                                Pexp_ident "loc" (lex/common.ml[76,2480+31]..[76,2480+34])
+                              "start_line" (lex/common.ml[76,2480+35]..[76,2480+45])
+                          <arg>
+                          Nolabel
+                            expression (lex/common.ml[76,2480+46]..[76,2480+58])
+                              Pexp_field
+                              expression (lex/common.ml[76,2480+46]..[76,2480+49])
+                                Pexp_ident "loc" (lex/common.ml[76,2480+46]..[76,2480+49])
+                              "loc_file" (lex/common.ml[76,2480+50]..[76,2480+58])
+                        ]
+                      expression (lex/common.ml[77,2540+4]..[86,2872+23])
+                        Pexp_sequence
+                        expression (lex/common.ml[77,2540+4]..[82,2742+7])
+                          Pexp_ifthenelse
+                          expression (lex/common.ml[77,2540+7]..[77,2540+17])
+                            Pexp_ident "add_parens" (lex/common.ml[77,2540+7]..[77,2540+17])
+                          expression (lex/common.ml[77,2540+23]..[80,2661+7])
+                            Pexp_sequence
+                            expression (lex/common.ml[78,2569+6]..[78,2569+64])
+                              Pexp_for Up
+                              pattern (lex/common.ml[78,2569+10]..[78,2569+12])
+                                Ppat_var "_i" (lex/common.ml[78,2569+10]..[78,2569+12])
+                              expression (lex/common.ml[78,2569+15]..[78,2569+16])
+                                Pexp_constant PConst_int (1,None)
+                              expression (lex/common.ml[78,2569+20]..[78,2569+37])
+                                Pexp_apply
+                                expression (lex/common.ml[78,2569+34]..[78,2569+35])
+                                  Pexp_ident "-" (lex/common.ml[78,2569+34]..[78,2569+35])
+                                [
+                                  <arg>
+                                  Nolabel
+                                    expression (lex/common.ml[78,2569+20]..[78,2569+33])
+                                      Pexp_field
+                                      expression (lex/common.ml[78,2569+20]..[78,2569+23])
+                                        Pexp_ident "loc" (lex/common.ml[78,2569+20]..[78,2569+23])
+                                      "start_col" (lex/common.ml[78,2569+24]..[78,2569+33])
+                                  <arg>
+                                  Nolabel
+                                    expression (lex/common.ml[78,2569+36]..[78,2569+37])
+                                      Pexp_constant PConst_int (1,None)
+                                ]
+                              expression (lex/common.ml[78,2569+41]..[78,2569+59])
+                                Pexp_apply
+                                expression (lex/common.ml[78,2569+41]..[78,2569+52])
+                                  Pexp_ident "output_char" (lex/common.ml[78,2569+41]..[78,2569+52])
+                                [
+                                  <arg>
+                                  Nolabel
+                                    expression (lex/common.ml[78,2569+53]..[78,2569+55])
+                                      Pexp_ident "oc" (lex/common.ml[78,2569+53]..[78,2569+55])
+                                  <arg>
+                                  Nolabel
+                                    expression (lex/common.ml[78,2569+56]..[78,2569+59])
+                                      Pexp_constant PConst_char 20
+                                ]
+                            expression (lex/common.ml[79,2635+6]..[79,2635+24])
+                              Pexp_apply
+                              expression (lex/common.ml[79,2635+6]..[79,2635+17])
+                                Pexp_ident "output_char" (lex/common.ml[79,2635+6]..[79,2635+17])
+                              [
+                                <arg>
+                                Nolabel
+                                  expression (lex/common.ml[79,2635+18]..[79,2635+20])
+                                    Pexp_ident "oc" (lex/common.ml[79,2635+18]..[79,2635+20])
+                                <arg>
+                                Nolabel
+                                  expression (lex/common.ml[79,2635+21]..[79,2635+24])
+                                    Pexp_constant PConst_char 28
+                              ]
+                          Some
+                            expression (lex/common.ml[80,2661+13]..[82,2742+7])
+                              Pexp_for Up
+                              pattern (lex/common.ml[81,2680+10]..[81,2680+12])
+                                Ppat_var "_i" (lex/common.ml[81,2680+10]..[81,2680+12])
+                              expression (lex/common.ml[81,2680+15]..[81,2680+16])
+                                Pexp_constant PConst_int (1,None)
+                              expression (lex/common.ml[81,2680+20]..[81,2680+33])
+                                Pexp_field
+                                expression (lex/common.ml[81,2680+20]..[81,2680+23])
+                                  Pexp_ident "loc" (lex/common.ml[81,2680+20]..[81,2680+23])
+                                "start_col" (lex/common.ml[81,2680+24]..[81,2680+33])
+                              expression (lex/common.ml[81,2680+37]..[81,2680+55])
+                                Pexp_apply
+                                expression (lex/common.ml[81,2680+37]..[81,2680+48])
+                                  Pexp_ident "output_char" (lex/common.ml[81,2680+37]..[81,2680+48])
+                                [
+                                  <arg>
+                                  Nolabel
+                                    expression (lex/common.ml[81,2680+49]..[81,2680+51])
+                                      Pexp_ident "oc" (lex/common.ml[81,2680+49]..[81,2680+51])
+                                  <arg>
+                                  Nolabel
+                                    expression (lex/common.ml[81,2680+52]..[81,2680+55])
+                                      Pexp_constant PConst_char 20
+                                ]
+                        expression (lex/common.ml[83,2751+4]..[86,2872+23])
+                          Pexp_sequence
+                          expression (lex/common.ml[83,2751+4]..[83,2751+28])
+                            Pexp_apply
+                            expression (lex/common.ml[83,2751+4]..[83,2751+11])
+                              Pexp_ident "seek_in" (lex/common.ml[83,2751+4]..[83,2751+11])
+                            [
+                              <arg>
+                              Nolabel
+                                expression (lex/common.ml[83,2751+12]..[83,2751+14])
+                                  Pexp_ident "ic" (lex/common.ml[83,2751+12]..[83,2751+14])
+                              <arg>
+                              Nolabel
+                                expression (lex/common.ml[83,2751+15]..[83,2751+28])
+                                  Pexp_field
+                                  expression (lex/common.ml[83,2751+15]..[83,2751+18])
+                                    Pexp_ident "loc" (lex/common.ml[83,2751+15]..[83,2751+18])
+                                  "start_pos" (lex/common.ml[83,2751+19]..[83,2751+28])
+                            ]
+                          expression (lex/common.ml[84,2781+4]..[86,2872+23])
+                            Pexp_sequence
+                            expression (lex/common.ml[84,2781+4]..[84,2781+46])
+                              Pexp_apply
+                              expression (lex/common.ml[84,2781+4]..[84,2781+14])
+                                Pexp_ident "copy_chars" (lex/common.ml[84,2781+4]..[84,2781+14])
+                              [
+                                <arg>
+                                Nolabel
+                                  expression (lex/common.ml[84,2781+15]..[84,2781+17])
+                                    Pexp_ident "ic" (lex/common.ml[84,2781+15]..[84,2781+17])
+                                <arg>
+                                Nolabel
+                                  expression (lex/common.ml[84,2781+18]..[84,2781+20])
+                                    Pexp_ident "oc" (lex/common.ml[84,2781+18]..[84,2781+20])
+                                <arg>
+                                Nolabel
+                                  expression (lex/common.ml[84,2781+21]..[84,2781+34])
+                                    Pexp_field
+                                    expression (lex/common.ml[84,2781+21]..[84,2781+24])
+                                      Pexp_ident "loc" (lex/common.ml[84,2781+21]..[84,2781+24])
+                                    "start_pos" (lex/common.ml[84,2781+25]..[84,2781+34])
+                                <arg>
+                                Nolabel
+                                  expression (lex/common.ml[84,2781+35]..[84,2781+46])
+                                    Pexp_field
+                                    expression (lex/common.ml[84,2781+35]..[84,2781+38])
+                                      Pexp_ident "loc" (lex/common.ml[84,2781+35]..[84,2781+38])
+                                    "end_pos" (lex/common.ml[84,2781+39]..[84,2781+46])
+                              ]
+                            expression (lex/common.ml[85,2829+4]..[86,2872+23])
+                              Pexp_sequence
+                              expression (lex/common.ml[85,2829+4]..[85,2829+41])
+                                Pexp_ifthenelse
+                                expression (lex/common.ml[85,2829+7]..[85,2829+17])
+                                  Pexp_ident "add_parens" (lex/common.ml[85,2829+7]..[85,2829+17])
+                                expression (lex/common.ml[85,2829+23]..[85,2829+41])
+                                  Pexp_apply
+                                  expression (lex/common.ml[85,2829+23]..[85,2829+34])
+                                    Pexp_ident "output_char" (lex/common.ml[85,2829+23]..[85,2829+34])
+                                  [
+                                    <arg>
+                                    Nolabel
+                                      expression (lex/common.ml[85,2829+35]..[85,2829+37])
+                                        Pexp_ident "oc" (lex/common.ml[85,2829+35]..[85,2829+37])
+                                    <arg>
+                                    Nolabel
+                                      expression (lex/common.ml[85,2829+38]..[85,2829+41])
+                                        Pexp_constant PConst_char 29
+                                  ]
+                                None
+                              expression (lex/common.ml[86,2872+4]..[86,2872+22])
+                                Pexp_apply
+                                expression (lex/common.ml[86,2872+4]..[86,2872+18])
+                                  Pexp_ident "update_tracker" (lex/common.ml[86,2872+4]..[86,2872+18])
+                                [
+                                  <arg>
+                                  Nolabel
+                                    expression (lex/common.ml[86,2872+19]..[86,2872+22])
+                                      Pexp_ident "trl" (lex/common.ml[86,2872+19]..[86,2872+22])
+                                ]
+                    None
+    ]
+  structure_item (lex/common.ml[91,2933+0]..[91,2933+70])
+    Pstr_value Nonrec
+    [
+      <def>
+        pattern (lex/common.ml[91,2933+4]..[91,2933+21])
+          Ppat_var "output_mem_access" (lex/common.ml[91,2933+4]..[91,2933+21])
+        expression (lex/common.ml[91,2933+22]..[91,2933+70]) ghost
+          Pexp_fun
+          Nolabel
+          None
+          pattern (lex/common.ml[91,2933+22]..[91,2933+24])
+            Ppat_var "oc" (lex/common.ml[91,2933+22]..[91,2933+24])
+          expression (lex/common.ml[91,2933+25]..[91,2933+70]) ghost
+            Pexp_fun
+            Nolabel
+            None
+            pattern (lex/common.ml[91,2933+25]..[91,2933+26])
+              Ppat_var "i" (lex/common.ml[91,2933+25]..[91,2933+26])
+            expression (lex/common.ml[91,2933+29]..[91,2933+70])
+              Pexp_apply
+              expression (lex/common.ml[91,2933+29]..[91,2933+36])
+                Pexp_ident "fprintf" (lex/common.ml[91,2933+29]..[91,2933+36])
+              [
+                <arg>
+                Nolabel
+                  expression (lex/common.ml[91,2933+37]..[91,2933+39])
+                    Pexp_ident "oc" (lex/common.ml[91,2933+37]..[91,2933+39])
+                <arg>
+                Nolabel
+                  expression (lex/common.ml[91,2933+40]..[91,2933+68])
+                    Pexp_constant PConst_string("lexbuf.Lexing.lex_mem.(%d)",(lex/common.ml[91,2933+41]..[91,2933+67]),None)
+                <arg>
+                Nolabel
+                  expression (lex/common.ml[91,2933+69]..[91,2933+70])
+                    Pexp_ident "i" (lex/common.ml[91,2933+69]..[91,2933+70])
+              ]
+    ]
+  structure_item (lex/common.ml[93,3005+0]..[115,3638+7])
+    Pstr_value Nonrec
+    [
+      <def>
+        pattern (lex/common.ml[93,3005+4]..[93,3005+25])
+          Ppat_var "output_memory_actions" (lex/common.ml[93,3005+4]..[93,3005+25])
+        expression (lex/common.ml[93,3005+26]..[115,3638+7]) ghost
+          Pexp_fun
+          Nolabel
+          None
+          pattern (lex/common.ml[93,3005+26]..[93,3005+30])
+            Ppat_var "pref" (lex/common.ml[93,3005+26]..[93,3005+30])
+          expression (lex/common.ml[93,3005+31]..[115,3638+7]) ghost
+            Pexp_fun
+            Nolabel
+            None
+            pattern (lex/common.ml[93,3005+31]..[93,3005+33])
+              Ppat_var "oc" (lex/common.ml[93,3005+31]..[93,3005+33])
+            expression (lex/common.ml[93,3005+36]..[115,3638+7])
+              Pexp_function
+              [
+                <case>
+                  pattern (lex/common.ml[94,3050+4]..[94,3050+6])
+                    Ppat_construct "[]" (lex/common.ml[94,3050+4]..[94,3050+6])
+                    None
+                  expression (lex/common.ml[94,3050+11]..[94,3050+13])
+                    Pexp_construct "()" (lex/common.ml[94,3050+11]..[94,3050+13])
+                    None
+                <case>
+                  pattern (lex/common.ml[95,3064+4]..[95,3064+7])
+                    Ppat_var "mvs" (lex/common.ml[95,3064+4]..[95,3064+7])
+                  expression (lex/common.ml[96,3075+6]..[115,3638+7])
+                    Pexp_sequence
+                    expression (lex/common.ml[96,3075+6]..[96,3075+28])
+                      Pexp_apply
+                      expression (lex/common.ml[96,3075+6]..[96,3075+19])
+                        Pexp_ident "output_string" (lex/common.ml[96,3075+6]..[96,3075+19])
+                      [
+                        <arg>
+                        Nolabel
+                          expression (lex/common.ml[96,3075+20]..[96,3075+22])
+                            Pexp_ident "oc" (lex/common.ml[96,3075+20]..[96,3075+22])
+                        <arg>
+                        Nolabel
+                          expression (lex/common.ml[96,3075+23]..[96,3075+28])
+                            Pexp_constant PConst_string("(* ",(lex/common.ml[96,3075+24]..[96,3075+27]),None)
+                      ]
+                    expression (lex/common.ml[97,3106+2]..[115,3638+7])
+                      Pexp_sequence
+                      expression (lex/common.ml[97,3106+2]..[97,3106+38])
+                        Pexp_apply
+                        expression (lex/common.ml[97,3106+2]..[97,3106+9])
+                          Pexp_ident "fprintf" (lex/common.ml[97,3106+2]..[97,3106+9])
+                        [
+                          <arg>
+                          Nolabel
+                            expression (lex/common.ml[97,3106+10]..[97,3106+12])
+                              Pexp_ident "oc" (lex/common.ml[97,3106+10]..[97,3106+12])
+                          <arg>
+                          Nolabel
+                            expression (lex/common.ml[97,3106+13]..[97,3106+20])
+                              Pexp_constant PConst_string("L=%d ",(lex/common.ml[97,3106+14]..[97,3106+19]),None)
+                          <arg>
+                          Nolabel
+                            expression (lex/common.ml[97,3106+21]..[97,3106+38])
+                              Pexp_apply
+                              expression (lex/common.ml[97,3106+22]..[97,3106+33])
+                                Pexp_ident "List.length" (lex/common.ml[97,3106+22]..[97,3106+33])
+                              [
+                                <arg>
+                                Nolabel
+                                  expression (lex/common.ml[97,3106+34]..[97,3106+37])
+                                    Pexp_ident "mvs" (lex/common.ml[97,3106+34]..[97,3106+37])
+                              ]
+                        ]
+                      expression (lex/common.ml[98,3147+2]..[115,3638+7])
+                        Pexp_sequence
+                        expression (lex/common.ml[98,3147+2]..[104,3313+7])
+                          Pexp_apply
+                          expression (lex/common.ml[98,3147+2]..[98,3147+11])
+                            Pexp_ident "List.iter" (lex/common.ml[98,3147+2]..[98,3147+11])
+                          [
+                            <arg>
+                            Nolabel
+                              expression (lex/common.ml[99,3159+4]..[103,3274+38])
+                                Pexp_fun
+                                Nolabel
+                                None
+                                pattern (lex/common.ml[99,3159+9]..[99,3159+11])
+                                  Ppat_var "mv" (lex/common.ml[99,3159+9]..[99,3159+11])
+                                expression (lex/common.ml[99,3159+15]..[103,3274+37])
+                                  Pexp_match
+                                  expression (lex/common.ml[99,3159+21]..[99,3159+23])
+                                    Pexp_ident "mv" (lex/common.ml[99,3159+21]..[99,3159+23])
+                                  [
+                                    <case>
+                                      pattern (lex/common.ml[100,3188+6]..[100,3188+21])
+                                        Ppat_construct "Copy" (lex/common.ml[100,3188+6]..[100,3188+10])
+                                        Some
+                                          []
+                                          pattern (lex/common.ml[100,3188+11]..[100,3188+21])
+                                            Ppat_tuple
+                                            [
+                                              pattern (lex/common.ml[100,3188+12]..[100,3188+15])
+                                                Ppat_var "tgt" (lex/common.ml[100,3188+12]..[100,3188+15])
+                                              pattern (lex/common.ml[100,3188+17]..[100,3188+20])
+                                                Ppat_var "src" (lex/common.ml[100,3188+17]..[100,3188+20])
+                                            ]
+                                      expression (lex/common.ml[101,3213+8]..[101,3213+43])
+                                        Pexp_apply
+                                        expression (lex/common.ml[101,3213+8]..[101,3213+15])
+                                          Pexp_ident "fprintf" (lex/common.ml[101,3213+8]..[101,3213+15])
+                                        [
+                                          <arg>
+                                          Nolabel
+                                            expression (lex/common.ml[101,3213+16]..[101,3213+18])
+                                              Pexp_ident "oc" (lex/common.ml[101,3213+16]..[101,3213+18])
+                                          <arg>
+                                          Nolabel
+                                            expression (lex/common.ml[101,3213+19]..[101,3213+35])
+                                              Pexp_constant PConst_string("[%d] <- [%d] ;",(lex/common.ml[101,3213+20]..[101,3213+34]),None)
+                                          <arg>
+                                          Nolabel
+                                            expression (lex/common.ml[101,3213+36]..[101,3213+39])
+                                              Pexp_ident "tgt" (lex/common.ml[101,3213+36]..[101,3213+39])
+                                          <arg>
+                                          Nolabel
+                                            expression (lex/common.ml[101,3213+40]..[101,3213+43])
+                                              Pexp_ident "src" (lex/common.ml[101,3213+40]..[101,3213+43])
+                                        ]
+                                    <case>
+                                      pattern (lex/common.ml[102,3257+6]..[102,3257+13])
+                                        Ppat_construct "Set" (lex/common.ml[102,3257+6]..[102,3257+9])
+                                        Some
+                                          []
+                                          pattern (lex/common.ml[102,3257+10]..[102,3257+13])
+                                            Ppat_var "tgt" (lex/common.ml[102,3257+10]..[102,3257+13])
+                                      expression (lex/common.ml[103,3274+8]..[103,3274+37])
+                                        Pexp_apply
+                                        expression (lex/common.ml[103,3274+8]..[103,3274+15])
+                                          Pexp_ident "fprintf" (lex/common.ml[103,3274+8]..[103,3274+15])
+                                        [
+                                          <arg>
+                                          Nolabel
+                                            expression (lex/common.ml[103,3274+16]..[103,3274+18])
+                                              Pexp_ident "oc" (lex/common.ml[103,3274+16]..[103,3274+18])
+                                          <arg>
+                                          Nolabel
+                                            expression (lex/common.ml[103,3274+19]..[103,3274+33])
+                                              Pexp_constant PConst_string("[%d] <- p ; ",(lex/common.ml[103,3274+20]..[103,3274+32]),None)
+                                          <arg>
+                                          Nolabel
+                                            expression (lex/common.ml[103,3274+34]..[103,3274+37])
+                                              Pexp_ident "tgt" (lex/common.ml[103,3274+34]..[103,3274+37])
+                                        ]
+                                  ]
+                            <arg>
+                            Nolabel
+                              expression (lex/common.ml[104,3313+4]..[104,3313+7])
+                                Pexp_ident "mvs" (lex/common.ml[104,3313+4]..[104,3313+7])
+                          ]
+                        expression (lex/common.ml[105,3323+2]..[115,3638+7])
+                          Pexp_sequence
+                          expression (lex/common.ml[105,3323+2]..[105,3323+26])
+                            Pexp_apply
+                            expression (lex/common.ml[105,3323+2]..[105,3323+15])
+                              Pexp_ident "output_string" (lex/common.ml[105,3323+2]..[105,3323+15])
+                            [
+                              <arg>
+                              Nolabel
+                                expression (lex/common.ml[105,3323+16]..[105,3323+18])
+                                  Pexp_ident "oc" (lex/common.ml[105,3323+16]..[105,3323+18])
+                              <arg>
+                              Nolabel
+                                expression (lex/common.ml[105,3323+19]..[105,3323+26])
+                                  Pexp_constant PConst_string(" *)\n",(lex/common.ml[105,3323+20]..[105,3323+25]),None)
+                            ]
+                          expression (lex/common.ml[106,3352+2]..[115,3638+7])
+                            Pexp_apply
+                            expression (lex/common.ml[106,3352+2]..[106,3352+11])
+                              Pexp_ident "List.iter" (lex/common.ml[106,3352+2]..[106,3352+11])
+                            [
+                              <arg>
+                              Nolabel
+                                expression (lex/common.ml[107,3364+4]..[114,3600+37])
+                                  Pexp_fun
+                                  Nolabel
+                                  None
+                                  pattern (lex/common.ml[107,3364+9]..[107,3364+11])
+                                    Ppat_var "mv" (lex/common.ml[107,3364+9]..[107,3364+11])
+                                  expression (lex/common.ml[107,3364+15]..[114,3600+36])
+                                    Pexp_match
+                                    expression (lex/common.ml[107,3364+21]..[107,3364+23])
+                                      Pexp_ident "mv" (lex/common.ml[107,3364+21]..[107,3364+23])
+                                    [
+                                      <case>
+                                        pattern (lex/common.ml[108,3393+6]..[108,3393+21])
+                                          Ppat_construct "Copy" (lex/common.ml[108,3393+6]..[108,3393+10])
+                                          Some
+                                            []
+                                            pattern (lex/common.ml[108,3393+11]..[108,3393+21])
+                                              Ppat_tuple
+                                              [
+                                                pattern (lex/common.ml[108,3393+12]..[108,3393+15])
+                                                  Ppat_var "tgt" (lex/common.ml[108,3393+12]..[108,3393+15])
+                                                pattern (lex/common.ml[108,3393+17]..[108,3393+20])
+                                                  Ppat_var "src" (lex/common.ml[108,3393+17]..[108,3393+20])
+                                              ]
+                                        expression (lex/common.ml[109,3418+8]..[111,3464+58])
+                                          Pexp_apply
+                                          expression (lex/common.ml[109,3418+8]..[109,3418+15])
+                                            Pexp_ident "fprintf" (lex/common.ml[109,3418+8]..[109,3418+15])
+                                          [
+                                            <arg>
+                                            Nolabel
+                                              expression (lex/common.ml[109,3418+16]..[109,3418+18])
+                                                Pexp_ident "oc" (lex/common.ml[109,3418+16]..[109,3418+18])
+                                            <arg>
+                                            Nolabel
+                                              expression (lex/common.ml[110,3437+10]..[110,3437+26])
+                                                Pexp_constant PConst_string("%s%a <- %a ;\n",(lex/common.ml[110,3437+11]..[110,3437+25]),None)
+                                            <arg>
+                                            Nolabel
+                                              expression (lex/common.ml[111,3464+10]..[111,3464+14])
+                                                Pexp_ident "pref" (lex/common.ml[111,3464+10]..[111,3464+14])
+                                            <arg>
+                                            Nolabel
+                                              expression (lex/common.ml[111,3464+15]..[111,3464+32])
+                                                Pexp_ident "output_mem_access" (lex/common.ml[111,3464+15]..[111,3464+32])
+                                            <arg>
+                                            Nolabel
+                                              expression (lex/common.ml[111,3464+33]..[111,3464+36])
+                                                Pexp_ident "tgt" (lex/common.ml[111,3464+33]..[111,3464+36])
+                                            <arg>
+                                            Nolabel
+                                              expression (lex/common.ml[111,3464+37]..[111,3464+54])
+                                                Pexp_ident "output_mem_access" (lex/common.ml[111,3464+37]..[111,3464+54])
+                                            <arg>
+                                            Nolabel
+                                              expression (lex/common.ml[111,3464+55]..[111,3464+58])
+                                                Pexp_ident "src" (lex/common.ml[111,3464+55]..[111,3464+58])
+                                          ]
+                                      <case>
+                                        pattern (lex/common.ml[112,3523+6]..[112,3523+13])
+                                          Ppat_construct "Set" (lex/common.ml[112,3523+6]..[112,3523+9])
+                                          Some
+                                            []
+                                            pattern (lex/common.ml[112,3523+10]..[112,3523+13])
+                                              Ppat_var "tgt" (lex/common.ml[112,3523+10]..[112,3523+13])
+                                        expression (lex/common.ml[113,3540+8]..[114,3600+36])
+                                          Pexp_apply
+                                          expression (lex/common.ml[113,3540+8]..[113,3540+15])
+                                            Pexp_ident "fprintf" (lex/common.ml[113,3540+8]..[113,3540+15])
+                                          [
+                                            <arg>
+                                            Nolabel
+                                              expression (lex/common.ml[113,3540+16]..[113,3540+18])
+                                                Pexp_ident "oc" (lex/common.ml[113,3540+16]..[113,3540+18])
+                                            <arg>
+                                            Nolabel
+                                              expression (lex/common.ml[113,3540+19]..[113,3540+59])
+                                                Pexp_constant PConst_string("%s%a <- lexbuf.Lexing.lex_curr_pos ;\n",(lex/common.ml[113,3540+20]..[113,3540+58]),None)
+                                            <arg>
+                                            Nolabel
+                                              expression (lex/common.ml[114,3600+10]..[114,3600+14])
+                                                Pexp_ident "pref" (lex/common.ml[114,3600+10]..[114,3600+14])
+                                            <arg>
+                                            Nolabel
+                                              expression (lex/common.ml[114,3600+15]..[114,3600+32])
+                                                Pexp_ident "output_mem_access" (lex/common.ml[114,3600+15]..[114,3600+32])
+                                            <arg>
+                                            Nolabel
+                                              expression (lex/common.ml[114,3600+33]..[114,3600+36])
+                                                Pexp_ident "tgt" (lex/common.ml[114,3600+33]..[114,3600+36])
+                                          ]
+                                    ]
+                              <arg>
+                              Nolabel
+                                expression (lex/common.ml[115,3638+4]..[115,3638+7])
+                                  Pexp_ident "mvs" (lex/common.ml[115,3638+4]..[115,3638+7])
+                            ]
+              ]
+    ]
+  structure_item (lex/common.ml[117,3647+0]..[120,3771+53])
+    Pstr_value Nonrec
+    [
+      <def>
+        pattern (lex/common.ml[117,3647+4]..[117,3647+19])
+          Ppat_var "output_base_mem" (lex/common.ml[117,3647+4]..[117,3647+19])
+        expression (lex/common.ml[117,3647+20]..[120,3771+53]) ghost
+          Pexp_fun
+          Nolabel
+          None
+          pattern (lex/common.ml[117,3647+20]..[117,3647+22])
+            Ppat_var "oc" (lex/common.ml[117,3647+20]..[117,3647+22])
+          expression (lex/common.ml[117,3647+25]..[120,3771+53])
+            Pexp_function
+            [
+              <case>
+                pattern (lex/common.ml[118,3681+4]..[118,3681+9])
+                  Ppat_construct "Mem" (lex/common.ml[118,3681+4]..[118,3681+7])
+                  Some
+                    []
+                    pattern (lex/common.ml[118,3681+8]..[118,3681+9])
+                      Ppat_var "i" (lex/common.ml[118,3681+8]..[118,3681+9])
+                expression (lex/common.ml[118,3681+13]..[118,3681+35])
+                  Pexp_apply
+                  expression (lex/common.ml[118,3681+13]..[118,3681+30])
+                    Pexp_ident "output_mem_access" (lex/common.ml[118,3681+13]..[118,3681+30])
+                  [
+                    <arg>
+                    Nolabel
+                      expression (lex/common.ml[118,3681+31]..[118,3681+33])
+                        Pexp_ident "oc" (lex/common.ml[118,3681+31]..[118,3681+33])
+                    <arg>
+                    Nolabel
+                      expression (lex/common.ml[118,3681+34]..[118,3681+35])
+                        Pexp_ident "i" (lex/common.ml[118,3681+34]..[118,3681+35])
+                  ]
+              <case>
+                pattern (lex/common.ml[119,3717+4]..[119,3717+9])
+                  Ppat_construct "Start" (lex/common.ml[119,3717+4]..[119,3717+9])
+                  None
+                expression (lex/common.ml[119,3717+13]..[119,3717+53])
+                  Pexp_apply
+                  expression (lex/common.ml[119,3717+13]..[119,3717+20])
+                    Pexp_ident "fprintf" (lex/common.ml[119,3717+13]..[119,3717+20])
+                  [
+                    <arg>
+                    Nolabel
+                      expression (lex/common.ml[119,3717+21]..[119,3717+23])
+                        Pexp_ident "oc" (lex/common.ml[119,3717+21]..[119,3717+23])
+                    <arg>
+                    Nolabel
+                      expression (lex/common.ml[119,3717+24]..[119,3717+53])
+                        Pexp_constant PConst_string("lexbuf.Lexing.lex_start_pos",(lex/common.ml[119,3717+25]..[119,3717+52]),None)
+                  ]
+              <case>
+                pattern (lex/common.ml[120,3771+4]..[120,3771+7])
+                  Ppat_construct "End" (lex/common.ml[120,3771+4]..[120,3771+7])
+                  None
+                expression (lex/common.ml[120,3771+13]..[120,3771+53])
+                  Pexp_apply
+                  expression (lex/common.ml[120,3771+13]..[120,3771+20])
+                    Pexp_ident "fprintf" (lex/common.ml[120,3771+13]..[120,3771+20])
+                  [
+                    <arg>
+                    Nolabel
+                      expression (lex/common.ml[120,3771+21]..[120,3771+23])
+                        Pexp_ident "oc" (lex/common.ml[120,3771+21]..[120,3771+23])
+                    <arg>
+                    Nolabel
+                      expression (lex/common.ml[120,3771+25]..[120,3771+53])
+                        Pexp_constant PConst_string("lexbuf.Lexing.lex_curr_pos",(lex/common.ml[120,3771+26]..[120,3771+52]),None)
+                  ]
+            ]
+    ]
+  structure_item (lex/common.ml[122,3826+0]..[126,3923+48])
+    Pstr_value Nonrec
+    [
+      <def>
+        pattern (lex/common.ml[122,3826+4]..[122,3826+21])
+          Ppat_var "output_tag_access" (lex/common.ml[122,3826+4]..[122,3826+21])
+        expression (lex/common.ml[122,3826+22]..[126,3923+48]) ghost
+          Pexp_fun
+          Nolabel
+          None
+          pattern (lex/common.ml[122,3826+22]..[122,3826+24])
+            Ppat_var "oc" (lex/common.ml[122,3826+22]..[122,3826+24])
+          expression (lex/common.ml[122,3826+27]..[126,3923+48])
+            Pexp_function
+            [
+              <case>
+                pattern (lex/common.ml[123,3862+4]..[123,3862+13])
+                  Ppat_construct "Sum" (lex/common.ml[123,3862+4]..[123,3862+7])
+                  Some
+                    []
+                    pattern (lex/common.ml[123,3862+8]..[123,3862+13])
+                      Ppat_tuple
+                      [
+                        pattern (lex/common.ml[123,3862+9]..[123,3862+10])
+                          Ppat_var "a" (lex/common.ml[123,3862+9]..[123,3862+10])
+                        pattern (lex/common.ml[123,3862+11]..[123,3862+12])
+                          Ppat_constant PConst_int (0,None)
+                      ]
+                expression (lex/common.ml[124,3879+6]..[124,3879+26])
+                  Pexp_apply
+                  expression (lex/common.ml[124,3879+6]..[124,3879+21])
+                    Pexp_ident "output_base_mem" (lex/common.ml[124,3879+6]..[124,3879+21])
+                  [
+                    <arg>
+                    Nolabel
+                      expression (lex/common.ml[124,3879+22]..[124,3879+24])
+                        Pexp_ident "oc" (lex/common.ml[124,3879+22]..[124,3879+24])
+                    <arg>
+                    Nolabel
+                      expression (lex/common.ml[124,3879+25]..[124,3879+26])
+                        Pexp_ident "a" (lex/common.ml[124,3879+25]..[124,3879+26])
+                  ]
+              <case>
+                pattern (lex/common.ml[125,3906+4]..[125,3906+13])
+                  Ppat_construct "Sum" (lex/common.ml[125,3906+4]..[125,3906+7])
+                  Some
+                    []
+                    pattern (lex/common.ml[125,3906+8]..[125,3906+13])
+                      Ppat_tuple
+                      [
+                        pattern (lex/common.ml[125,3906+9]..[125,3906+10])
+                          Ppat_var "a" (lex/common.ml[125,3906+9]..[125,3906+10])
+                        pattern (lex/common.ml[125,3906+11]..[125,3906+12])
+                          Ppat_var "i" (lex/common.ml[125,3906+11]..[125,3906+12])
+                      ]
+                expression (lex/common.ml[126,3923+6]..[126,3923+48])
+                  Pexp_apply
+                  expression (lex/common.ml[126,3923+6]..[126,3923+13])
+                    Pexp_ident "fprintf" (lex/common.ml[126,3923+6]..[126,3923+13])
+                  [
+                    <arg>
+                    Nolabel
+                      expression (lex/common.ml[126,3923+14]..[126,3923+16])
+                        Pexp_ident "oc" (lex/common.ml[126,3923+14]..[126,3923+16])
+                    <arg>
+                    Nolabel
+                      expression (lex/common.ml[126,3923+17]..[126,3923+28])
+                        Pexp_constant PConst_string("(%a + %d)",(lex/common.ml[126,3923+18]..[126,3923+27]),None)
+                    <arg>
+                    Nolabel
+                      expression (lex/common.ml[126,3923+29]..[126,3923+44])
+                        Pexp_ident "output_base_mem" (lex/common.ml[126,3923+29]..[126,3923+44])
+                    <arg>
+                    Nolabel
+                      expression (lex/common.ml[126,3923+45]..[126,3923+46])
+                        Pexp_ident "a" (lex/common.ml[126,3923+45]..[126,3923+46])
+                    <arg>
+                    Nolabel
+                      expression (lex/common.ml[126,3923+47]..[126,3923+48])
+                        Pexp_ident "i" (lex/common.ml[126,3923+47]..[126,3923+48])
+                  ]
+            ]
+    ]
+  structure_item (lex/common.ml[128,3973+0]..[159,4941+24])
+    Pstr_value Nonrec
+    [
+      <def>
+        pattern (lex/common.ml[128,3973+4]..[128,3973+14])
+          Ppat_var "output_env" (lex/common.ml[128,3973+4]..[128,3973+14])
+        expression (lex/common.ml[128,3973+15]..[159,4941+24]) ghost
+          Pexp_fun
+          Nolabel
+          None
+          pattern (lex/common.ml[128,3973+15]..[128,3973+17])
+            Ppat_var "ic" (lex/common.ml[128,3973+15]..[128,3973+17])
+          expression (lex/common.ml[128,3973+18]..[159,4941+24]) ghost
+            Pexp_fun
+            Nolabel
+            None
+            pattern (lex/common.ml[128,3973+18]..[128,3973+20])
+              Ppat_var "oc" (lex/common.ml[128,3973+18]..[128,3973+20])
+            expression (lex/common.ml[128,3973+21]..[159,4941+24]) ghost
+              Pexp_fun
+              Nolabel
+              None
+              pattern (lex/common.ml[128,3973+21]..[128,3973+23])
+                Ppat_var "tr" (lex/common.ml[128,3973+21]..[128,3973+23])
+              expression (lex/common.ml[128,3973+24]..[159,4941+24]) ghost
+                Pexp_fun
+                Nolabel
+                None
+                pattern (lex/common.ml[128,3973+24]..[128,3973+27])
+                  Ppat_var "env" (lex/common.ml[128,3973+24]..[128,3973+27])
+                expression (lex/common.ml[129,4003+2]..[159,4941+24])
+                  Pexp_let Nonrec
+                  [
+                    <def>
+                      pattern (lex/common.ml[129,4003+6]..[129,4003+10])
+                        Ppat_var "pref" (lex/common.ml[129,4003+6]..[129,4003+10])
+                      expression (lex/common.ml[129,4003+13]..[129,4003+22])
+                        Pexp_apply
+                        expression (lex/common.ml[129,4003+13]..[129,4003+16])
+                          Pexp_ident "ref" (lex/common.ml[129,4003+13]..[129,4003+16])
+                        [
+                          <arg>
+                          Nolabel
+                            expression (lex/common.ml[129,4003+17]..[129,4003+22])
+                              Pexp_constant PConst_string("let",(lex/common.ml[129,4003+18]..[129,4003+21]),None)
+                        ]
+                  ]
+                  expression (lex/common.ml[130,4029+2]..[159,4941+24])
+                    Pexp_match
+                    expression (lex/common.ml[130,4029+8]..[130,4029+11])
+                      Pexp_ident "env" (lex/common.ml[130,4029+8]..[130,4029+11])
+                    [
+                      <case>
+                        pattern (lex/common.ml[131,4046+4]..[131,4046+6])
+                          Ppat_construct "[]" (lex/common.ml[131,4046+4]..[131,4046+6])
+                          None
+                        expression (lex/common.ml[131,4046+10]..[131,4046+12])
+                          Pexp_construct "()" (lex/common.ml[131,4046+10]..[131,4046+12])
+                          None
+                      <case>
+                        pattern (lex/common.ml[132,4059+4]..[132,4059+5])
+                          Ppat_any
+                        expression (lex/common.ml[135,4156+6]..[159,4941+24])
+                          Pexp_let Nonrec
+                          [
+                            <def>
+                              pattern (lex/common.ml[135,4156+10]..[135,4156+13])
+                                Ppat_var "env" (lex/common.ml[135,4156+10]..[135,4156+13])
+                              expression (lex/common.ml[136,4172+8]..[139,4285+13])
+                                Pexp_apply
+                                expression (lex/common.ml[136,4172+8]..[136,4172+17])
+                                  Pexp_ident "List.sort" (lex/common.ml[136,4172+8]..[136,4172+17])
+                                [
+                                  <arg>
+                                  Nolabel
+                                    expression (lex/common.ml[137,4190+10]..[138,4230+54])
+                                      Pexp_fun
+                                      Nolabel
+                                      None
+                                      pattern (lex/common.ml[137,4190+15]..[137,4190+25])
+                                        Ppat_tuple
+                                        [
+                                          pattern (lex/common.ml[137,4190+16]..[137,4190+22])
+                                            Ppat_tuple
+                                            [
+                                              pattern (lex/common.ml[137,4190+17]..[137,4190+18])
+                                                Ppat_any
+                                              pattern (lex/common.ml[137,4190+19]..[137,4190+21])
+                                                Ppat_var "p1" (lex/common.ml[137,4190+19]..[137,4190+21])
+                                            ]
+                                          pattern (lex/common.ml[137,4190+23]..[137,4190+24])
+                                            Ppat_any
+                                        ]
+                                      expression (lex/common.ml[137,4190+26]..[138,4230+53]) ghost
+                                        Pexp_fun
+                                        Nolabel
+                                        None
+                                        pattern (lex/common.ml[137,4190+26]..[137,4190+36])
+                                          Ppat_tuple
+                                          [
+                                            pattern (lex/common.ml[137,4190+27]..[137,4190+33])
+                                              Ppat_tuple
+                                              [
+                                                pattern (lex/common.ml[137,4190+28]..[137,4190+29])
+                                                  Ppat_any
+                                                pattern (lex/common.ml[137,4190+30]..[137,4190+32])
+                                                  Ppat_var "p2" (lex/common.ml[137,4190+30]..[137,4190+32])
+                                              ]
+                                            pattern (lex/common.ml[137,4190+34]..[137,4190+35])
+                                              Ppat_any
+                                          ]
+                                        expression (lex/common.ml[138,4230+12]..[138,4230+53])
+                                          Pexp_apply
+                                          expression (lex/common.ml[138,4230+12]..[138,4230+26])
+                                            Pexp_ident "Stdlib.compare" (lex/common.ml[138,4230+12]..[138,4230+26])
+                                          [
+                                            <arg>
+                                            Nolabel
+                                              expression (lex/common.ml[138,4230+27]..[138,4230+39])
+                                                Pexp_field
+                                                expression (lex/common.ml[138,4230+27]..[138,4230+29])
+                                                  Pexp_ident "p1" (lex/common.ml[138,4230+27]..[138,4230+29])
+                                                "start_pos" (lex/common.ml[138,4230+30]..[138,4230+39])
+                                            <arg>
+                                            Nolabel
+                                              expression (lex/common.ml[138,4230+41]..[138,4230+53])
+                                                Pexp_field
+                                                expression (lex/common.ml[138,4230+41]..[138,4230+43])
+                                                  Pexp_ident "p2" (lex/common.ml[138,4230+41]..[138,4230+43])
+                                                "start_pos" (lex/common.ml[138,4230+44]..[138,4230+53])
+                                          ]
+                                  <arg>
+                                  Nolabel
+                                    expression (lex/common.ml[139,4285+10]..[139,4285+13])
+                                      Pexp_ident "env" (lex/common.ml[139,4285+10]..[139,4285+13])
+                                ]
+                          ]
+                          expression (lex/common.ml[141,4303+6]..[159,4941+24])
+                            Pexp_sequence
+                            expression (lex/common.ml[141,4303+6]..[158,4927+11])
+                              Pexp_apply
+                              expression (lex/common.ml[141,4303+6]..[141,4303+15])
+                                Pexp_ident "List.iter" (lex/common.ml[141,4303+6]..[141,4303+15])
+                              [
+                                <arg>
+                                Nolabel
+                                  expression (lex/common.ml[142,4319+8]..[157,4900+26])
+                                    Pexp_fun
+                                    Nolabel
+                                    None
+                                    pattern (lex/common.ml[142,4319+13]..[142,4319+24])
+                                      Ppat_tuple
+                                      [
+                                        pattern (lex/common.ml[142,4319+14]..[142,4319+21])
+                                          Ppat_tuple
+                                          [
+                                            pattern (lex/common.ml[142,4319+15]..[142,4319+16])
+                                              Ppat_any
+                                            pattern (lex/common.ml[142,4319+17]..[142,4319+20])
+                                              Ppat_var "pos" (lex/common.ml[142,4319+17]..[142,4319+20])
+                                          ]
+                                        pattern (lex/common.ml[142,4319+22]..[142,4319+23])
+                                          Ppat_var "v" (lex/common.ml[142,4319+22]..[142,4319+23])
+                                      ]
+                                    expression (lex/common.ml[143,4347+10]..[157,4900+25])
+                                      Pexp_sequence
+                                      expression (lex/common.ml[143,4347+10]..[143,4347+33])
+                                        Pexp_apply
+                                        expression (lex/common.ml[143,4347+10]..[143,4347+17])
+                                          Pexp_ident "fprintf" (lex/common.ml[143,4347+10]..[143,4347+17])
+                                        [
+                                          <arg>
+                                          Nolabel
+                                            expression (lex/common.ml[143,4347+18]..[143,4347+20])
+                                              Pexp_ident "oc" (lex/common.ml[143,4347+18]..[143,4347+20])
+                                          <arg>
+                                          Nolabel
+                                            expression (lex/common.ml[143,4347+21]..[143,4347+27])
+                                              Pexp_constant PConst_string("%s\n",(lex/common.ml[143,4347+22]..[143,4347+26]),None)
+                                          <arg>
+                                          Nolabel
+                                            expression (lex/common.ml[143,4347+28]..[143,4347+33])
+                                              Pexp_apply
+                                              expression (lex/common.ml[143,4347+28]..[143,4347+29])
+                                                Pexp_ident "!" (lex/common.ml[143,4347+28]..[143,4347+29])
+                                              [
+                                                <arg>
+                                                Nolabel
+                                                  expression (lex/common.ml[143,4347+29]..[143,4347+33])
+                                                    Pexp_ident "pref" (lex/common.ml[143,4347+29]..[143,4347+33])
+                                              ]
+                                        ]
+                                      expression (lex/common.ml[144,4383+10]..[157,4900+25])
+                                        Pexp_sequence
+                                        expression (lex/common.ml[144,4383+10]..[144,4383+39])
+                                          Pexp_apply
+                                          expression (lex/common.ml[144,4383+10]..[144,4383+20])
+                                            Pexp_ident "copy_chunk" (lex/common.ml[144,4383+10]..[144,4383+20])
+                                          [
+                                            <arg>
+                                            Nolabel
+                                              expression (lex/common.ml[144,4383+21]..[144,4383+23])
+                                                Pexp_ident "ic" (lex/common.ml[144,4383+21]..[144,4383+23])
+                                            <arg>
+                                            Nolabel
+                                              expression (lex/common.ml[144,4383+24]..[144,4383+26])
+                                                Pexp_ident "oc" (lex/common.ml[144,4383+24]..[144,4383+26])
+                                            <arg>
+                                            Nolabel
+                                              expression (lex/common.ml[144,4383+27]..[144,4383+29])
+                                                Pexp_ident "tr" (lex/common.ml[144,4383+27]..[144,4383+29])
+                                            <arg>
+                                            Nolabel
+                                              expression (lex/common.ml[144,4383+30]..[144,4383+33])
+                                                Pexp_ident "pos" (lex/common.ml[144,4383+30]..[144,4383+33])
+                                            <arg>
+                                            Nolabel
+                                              expression (lex/common.ml[144,4383+34]..[144,4383+39])
+                                                Pexp_construct "false" (lex/common.ml[144,4383+34]..[144,4383+39])
+                                                None
+                                          ]
+                                        expression (lex/common.ml[145,4425+10]..[157,4900+25])
+                                          Pexp_sequence
+                                          expression (lex/common.ml[145,4425+10]..[156,4884+13])
+                                            Pexp_match
+                                            expression (lex/common.ml[145,4425+22]..[145,4425+23])
+                                              Pexp_ident "v" (lex/common.ml[145,4425+22]..[145,4425+23])
+                                            [
+                                              <case>
+                                                pattern (lex/common.ml[146,4454+12]..[146,4454+40])
+                                                  Ppat_construct "Ident_string" (lex/common.ml[146,4454+12]..[146,4454+24])
+                                                  Some
+                                                    []
+                                                    pattern (lex/common.ml[146,4454+25]..[146,4454+40])
+                                                      Ppat_tuple
+                                                      [
+                                                        pattern (lex/common.ml[146,4454+26]..[146,4454+27])
+                                                          Ppat_var "o" (lex/common.ml[146,4454+26]..[146,4454+27])
+                                                        pattern (lex/common.ml[146,4454+28]..[146,4454+34])
+                                                          Ppat_var "nstart" (lex/common.ml[146,4454+28]..[146,4454+34])
+                                                        pattern (lex/common.ml[146,4454+35]..[146,4454+39])
+                                                          Ppat_var "nend" (lex/common.ml[146,4454+35]..[146,4454+39])
+                                                      ]
+                                                expression (lex/common.ml[147,4498+14]..[150,4619+63])
+                                                  Pexp_apply
+                                                  expression (lex/common.ml[147,4498+14]..[147,4498+21])
+                                                    Pexp_ident "fprintf" (lex/common.ml[147,4498+14]..[147,4498+21])
+                                                  [
+                                                    <arg>
+                                                    Nolabel
+                                                      expression (lex/common.ml[147,4498+22]..[147,4498+24])
+                                                        Pexp_ident "oc" (lex/common.ml[147,4498+22]..[147,4498+24])
+                                                    <arg>
+                                                    Nolabel
+                                                      expression (lex/common.ml[148,4523+16]..[148,4523+52])
+                                                        Pexp_constant PConst_string("= Lexing.sub_lexeme%s lexbuf %a %a",(lex/common.ml[148,4523+17]..[148,4523+51]),None)
+                                                    <arg>
+                                                    Nolabel
+                                                      expression (lex/common.ml[149,4576+16]..[149,4576+42])
+                                                        Pexp_ifthenelse
+                                                        expression (lex/common.ml[149,4576+20]..[149,4576+21])
+                                                          Pexp_ident "o" (lex/common.ml[149,4576+20]..[149,4576+21])
+                                                        expression (lex/common.ml[149,4576+27]..[149,4576+33])
+                                                          Pexp_constant PConst_string("_opt",(lex/common.ml[149,4576+28]..[149,4576+32]),None)
+                                                        Some
+                                                          expression (lex/common.ml[149,4576+39]..[149,4576+41])
+                                                            Pexp_constant PConst_string("",(lex/common.ml[149,4576+40]..[149,4576+40]),None)
+                                                    <arg>
+                                                    Nolabel
+                                                      expression (lex/common.ml[150,4619+16]..[150,4619+33])
+                                                        Pexp_ident "output_tag_access" (lex/common.ml[150,4619+16]..[150,4619+33])
+                                                    <arg>
+                                                    Nolabel
+                                                      expression (lex/common.ml[150,4619+34]..[150,4619+40])
+                                                        Pexp_ident "nstart" (lex/common.ml[150,4619+34]..[150,4619+40])
+                                                    <arg>
+                                                    Nolabel
+                                                      expression (lex/common.ml[150,4619+41]..[150,4619+58])
+                                                        Pexp_ident "output_tag_access" (lex/common.ml[150,4619+41]..[150,4619+58])
+                                                    <arg>
+                                                    Nolabel
+                                                      expression (lex/common.ml[150,4619+59]..[150,4619+63])
+                                                        Pexp_ident "nend" (lex/common.ml[150,4619+59]..[150,4619+63])
+                                                  ]
+                                              <case>
+                                                pattern (lex/common.ml[151,4683+12]..[151,4683+33])
+                                                  Ppat_construct "Ident_char" (lex/common.ml[151,4683+12]..[151,4683+22])
+                                                  Some
+                                                    []
+                                                    pattern (lex/common.ml[151,4683+23]..[151,4683+33])
+                                                      Ppat_tuple
+                                                      [
+                                                        pattern (lex/common.ml[151,4683+24]..[151,4683+25])
+                                                          Ppat_var "o" (lex/common.ml[151,4683+24]..[151,4683+25])
+                                                        pattern (lex/common.ml[151,4683+26]..[151,4683+32])
+                                                          Ppat_var "nstart" (lex/common.ml[151,4683+26]..[151,4683+32])
+                                                      ]
+                                                expression (lex/common.ml[152,4720+14]..[155,4843+40])
+                                                  Pexp_apply
+                                                  expression (lex/common.ml[152,4720+14]..[152,4720+21])
+                                                    Pexp_ident "fprintf" (lex/common.ml[152,4720+14]..[152,4720+21])
+                                                  [
+                                                    <arg>
+                                                    Nolabel
+                                                      expression (lex/common.ml[152,4720+22]..[152,4720+24])
+                                                        Pexp_ident "oc" (lex/common.ml[152,4720+22]..[152,4720+24])
+                                                    <arg>
+                                                    Nolabel
+                                                      expression (lex/common.ml[153,4745+16]..[153,4745+54])
+                                                        Pexp_constant PConst_string("= Lexing.sub_lexeme_char%s lexbuf %a",(lex/common.ml[153,4745+17]..[153,4745+53]),None)
+                                                    <arg>
+                                                    Nolabel
+                                                      expression (lex/common.ml[154,4800+16]..[154,4800+42])
+                                                        Pexp_ifthenelse
+                                                        expression (lex/common.ml[154,4800+20]..[154,4800+21])
+                                                          Pexp_ident "o" (lex/common.ml[154,4800+20]..[154,4800+21])
+                                                        expression (lex/common.ml[154,4800+27]..[154,4800+33])
+                                                          Pexp_constant PConst_string("_opt",(lex/common.ml[154,4800+28]..[154,4800+32]),None)
+                                                        Some
+                                                          expression (lex/common.ml[154,4800+39]..[154,4800+41])
+                                                            Pexp_constant PConst_string("",(lex/common.ml[154,4800+40]..[154,4800+40]),None)
+                                                    <arg>
+                                                    Nolabel
+                                                      expression (lex/common.ml[155,4843+16]..[155,4843+33])
+                                                        Pexp_ident "output_tag_access" (lex/common.ml[155,4843+16]..[155,4843+33])
+                                                    <arg>
+                                                    Nolabel
+                                                      expression (lex/common.ml[155,4843+34]..[155,4843+40])
+                                                        Pexp_ident "nstart" (lex/common.ml[155,4843+34]..[155,4843+40])
+                                                  ]
+                                            ]
+                                          expression (lex/common.ml[157,4900+10]..[157,4900+25])
+                                            Pexp_apply
+                                            expression (lex/common.ml[157,4900+15]..[157,4900+17])
+                                              Pexp_ident ":=" (lex/common.ml[157,4900+15]..[157,4900+17])
+                                            [
+                                              <arg>
+                                              Nolabel
+                                                expression (lex/common.ml[157,4900+10]..[157,4900+14])
+                                                  Pexp_ident "pref" (lex/common.ml[157,4900+10]..[157,4900+14])
+                                              <arg>
+                                              Nolabel
+                                                expression (lex/common.ml[157,4900+18]..[157,4900+25])
+                                                  Pexp_constant PConst_string("\nand",(lex/common.ml[157,4900+19]..[157,4900+24]),None)
+                                            ]
+                                <arg>
+                                Nolabel
+                                  expression (lex/common.ml[158,4927+8]..[158,4927+11])
+                                    Pexp_ident "env" (lex/common.ml[158,4927+8]..[158,4927+11])
+                              ]
+                            expression (lex/common.ml[159,4941+6]..[159,4941+24])
+                              Pexp_apply
+                              expression (lex/common.ml[159,4941+6]..[159,4941+13])
+                                Pexp_ident "fprintf" (lex/common.ml[159,4941+6]..[159,4941+13])
+                              [
+                                <arg>
+                                Nolabel
+                                  expression (lex/common.ml[159,4941+14]..[159,4941+16])
+                                    Pexp_ident "oc" (lex/common.ml[159,4941+14]..[159,4941+16])
+                                <arg>
+                                Nolabel
+                                  expression (lex/common.ml[159,4941+17]..[159,4941+24])
+                                    Pexp_constant PConst_string(" in\n",(lex/common.ml[159,4941+18]..[159,4941+23]),None)
+                              ]
+                    ]
+    ]
+  structure_item (lex/common.ml[162,4999+0]..[163,5025+68])
+    Pstr_value Nonrec
+    [
+      <def>
+        pattern (lex/common.ml[162,4999+4]..[162,4999+15])
+          Ppat_var "output_args" (lex/common.ml[162,4999+4]..[162,4999+15])
+        expression (lex/common.ml[162,4999+16]..[163,5025+68]) ghost
+          Pexp_fun
+          Nolabel
+          None
+          pattern (lex/common.ml[162,4999+16]..[162,4999+18])
+            Ppat_var "oc" (lex/common.ml[162,4999+16]..[162,4999+18])
+          expression (lex/common.ml[162,4999+19]..[163,5025+68]) ghost
+            Pexp_fun
+            Nolabel
+            None
+            pattern (lex/common.ml[162,4999+19]..[162,4999+23])
+              Ppat_var "args" (lex/common.ml[162,4999+19]..[162,4999+23])
+            expression (lex/common.ml[163,5025+2]..[163,5025+68])
+              Pexp_apply
+              expression (lex/common.ml[163,5025+2]..[163,5025+11])
+                Pexp_ident "List.iter" (lex/common.ml[163,5025+2]..[163,5025+11])
+              [
+                <arg>
+                Nolabel
+                  expression (lex/common.ml[163,5025+12]..[163,5025+63])
+                    Pexp_fun
+                    Nolabel
+                    None
+                    pattern (lex/common.ml[163,5025+17]..[163,5025+18])
+                      Ppat_var "x" (lex/common.ml[163,5025+17]..[163,5025+18])
+                    expression (lex/common.ml[163,5025+22]..[163,5025+62])
+                      Pexp_sequence
+                      expression (lex/common.ml[163,5025+23]..[163,5025+41])
+                        Pexp_apply
+                        expression (lex/common.ml[163,5025+23]..[163,5025+36])
+                          Pexp_ident "output_string" (lex/common.ml[163,5025+23]..[163,5025+36])
+                        [
+                          <arg>
+                          Nolabel
+                            expression (lex/common.ml[163,5025+37]..[163,5025+39])
+                              Pexp_ident "oc" (lex/common.ml[163,5025+37]..[163,5025+39])
+                          <arg>
+                          Nolabel
+                            expression (lex/common.ml[163,5025+40]..[163,5025+41])
+                              Pexp_ident "x" (lex/common.ml[163,5025+40]..[163,5025+41])
+                        ]
+                      expression (lex/common.ml[163,5025+43]..[163,5025+61])
+                        Pexp_apply
+                        expression (lex/common.ml[163,5025+43]..[163,5025+54])
+                          Pexp_ident "output_char" (lex/common.ml[163,5025+43]..[163,5025+54])
+                        [
+                          <arg>
+                          Nolabel
+                            expression (lex/common.ml[163,5025+55]..[163,5025+57])
+                              Pexp_ident "oc" (lex/common.ml[163,5025+55]..[163,5025+57])
+                          <arg>
+                          Nolabel
+                            expression (lex/common.ml[163,5025+58]..[163,5025+61])
+                              Pexp_constant PConst_char 20
+                        ]
+                <arg>
+                Nolabel
+                  expression (lex/common.ml[163,5025+64]..[163,5025+68])
+                    Pexp_ident "args" (lex/common.ml[163,5025+64]..[163,5025+68])
+              ]
+    ]
+  structure_item (lex/common.ml[165,5095+0]..[171,5345+8])
+    Pstr_value Nonrec
+    [
+      <def>
+        pattern (lex/common.ml[165,5095+4]..[165,5095+25])
+          Ppat_var "output_refill_handler" (lex/common.ml[165,5095+4]..[165,5095+25])
+        expression (lex/common.ml[165,5095+26]..[171,5345+8]) ghost
+          Pexp_fun
+          Nolabel
+          None
+          pattern (lex/common.ml[165,5095+26]..[165,5095+28])
+            Ppat_var "ic" (lex/common.ml[165,5095+26]..[165,5095+28])
+          expression (lex/common.ml[165,5095+29]..[171,5345+8]) ghost
+            Pexp_fun
+            Nolabel
+            None
+            pattern (lex/common.ml[165,5095+29]..[165,5095+31])
+              Ppat_var "oc" (lex/common.ml[165,5095+29]..[165,5095+31])
+            expression (lex/common.ml[165,5095+32]..[171,5345+8]) ghost
+              Pexp_fun
+              Nolabel
+              None
+              pattern (lex/common.ml[165,5095+32]..[165,5095+35])
+                Ppat_var "oci" (lex/common.ml[165,5095+32]..[165,5095+35])
+              expression (lex/common.ml[165,5095+38]..[171,5345+8])
+                Pexp_function
+                [
+                  <case>
+                    pattern (lex/common.ml[166,5142+4]..[166,5142+8])
+                      Ppat_construct "None" (lex/common.ml[166,5142+4]..[166,5142+8])
+                      None
+                    expression (lex/common.ml[166,5142+12]..[166,5142+17])
+                      Pexp_construct "false" (lex/common.ml[166,5142+12]..[166,5142+17])
+                      None
+                  <case>
+                    pattern (lex/common.ml[167,5160+4]..[167,5160+17])
+                      Ppat_construct "Some" (lex/common.ml[167,5160+4]..[167,5160+8])
+                      Some
+                        []
+                        pattern (lex/common.ml[167,5160+9]..[167,5160+17])
+                          Ppat_var "location" (lex/common.ml[167,5160+9]..[167,5160+17])
+                    expression (lex/common.ml[168,5181+4]..[171,5345+8])
+                      Pexp_sequence
+                      expression (lex/common.ml[168,5181+4]..[169,5230+73])
+                        Pexp_apply
+                        expression (lex/common.ml[168,5181+4]..[168,5181+17])
+                          Pexp_ident "output_string" (lex/common.ml[168,5181+4]..[168,5181+17])
+                        [
+                          <arg>
+                          Nolabel
+                            expression (lex/common.ml[168,5181+18]..[168,5181+20])
+                              Pexp_ident "oc" (lex/common.ml[168,5181+18]..[168,5181+20])
+                          <arg>
+                          Nolabel
+                            expression (lex/common.ml[168,5181+21]..[169,5230+73])
+                              Pexp_constant PConst_string("let __ocaml_lex_refill : (Lexing.lexbuf -> 'a) -> (Lexing.lexbuf -> 'a) =\n",(lex/common.ml[168,5181+22]..[169,5230+72]),None)
+                        ]
+                      expression (lex/common.ml[170,5305+4]..[171,5345+8])
+                        Pexp_sequence
+                        expression (lex/common.ml[170,5305+4]..[170,5305+38])
+                          Pexp_apply
+                          expression (lex/common.ml[170,5305+4]..[170,5305+14])
+                            Pexp_ident "copy_chunk" (lex/common.ml[170,5305+4]..[170,5305+14])
+                          [
+                            <arg>
+                            Nolabel
+                              expression (lex/common.ml[170,5305+15]..[170,5305+17])
+                                Pexp_ident "ic" (lex/common.ml[170,5305+15]..[170,5305+17])
+                            <arg>
+                            Nolabel
+                              expression (lex/common.ml[170,5305+18]..[170,5305+20])
+                                Pexp_ident "oc" (lex/common.ml[170,5305+18]..[170,5305+20])
+                            <arg>
+                            Nolabel
+                              expression (lex/common.ml[170,5305+21]..[170,5305+24])
+                                Pexp_ident "oci" (lex/common.ml[170,5305+21]..[170,5305+24])
+                            <arg>
+                            Nolabel
+                              expression (lex/common.ml[170,5305+25]..[170,5305+33])
+                                Pexp_ident "location" (lex/common.ml[170,5305+25]..[170,5305+33])
+                            <arg>
+                            Nolabel
+                              expression (lex/common.ml[170,5305+34]..[170,5305+38])
+                                Pexp_construct "true" (lex/common.ml[170,5305+34]..[170,5305+38])
+                                None
+                          ]
+                        expression (lex/common.ml[171,5345+4]..[171,5345+8])
+                          Pexp_construct "true" (lex/common.ml[171,5345+4]..[171,5345+8])
+                          None
+                ]
+    ]
+  structure_item (lex/common.ml[174,5372+0]..[174,5372+26])
+    Pstr_value Nonrec
+    [
+      <def>
+        pattern (lex/common.ml[174,5372+4]..[174,5372+14])
+          Ppat_var "quiet_mode" (lex/common.ml[174,5372+4]..[174,5372+14])
+        expression (lex/common.ml[174,5372+17]..[174,5372+26])
+          Pexp_apply
+          expression (lex/common.ml[174,5372+17]..[174,5372+20])
+            Pexp_ident "ref" (lex/common.ml[174,5372+17]..[174,5372+20])
+          [
+            <arg>
+            Nolabel
+              expression (lex/common.ml[174,5372+21]..[174,5372+26])
+                Pexp_construct "false" (lex/common.ml[174,5372+21]..[174,5372+26])
+                None
+          ]
+    ]
+]
+

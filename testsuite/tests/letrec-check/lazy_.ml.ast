@@ -1,0 +1,105 @@
+[
+  structure_item (testsuite/tests/letrec-check/lazy_.ml[5,24+0]..[5,24+28])
+    Pstr_value Rec
+    [
+      <def>
+        pattern (testsuite/tests/letrec-check/lazy_.ml[5,24+8]..[5,24+9])
+          Ppat_var "a" (testsuite/tests/letrec-check/lazy_.ml[5,24+8]..[5,24+9])
+        expression (testsuite/tests/letrec-check/lazy_.ml[5,24+12]..[5,24+18])
+          Pexp_lazy
+          expression (testsuite/tests/letrec-check/lazy_.ml[5,24+17]..[5,24+18])
+            Pexp_ident "b" (testsuite/tests/letrec-check/lazy_.ml[5,24+17]..[5,24+18])
+      <def>
+        pattern (testsuite/tests/letrec-check/lazy_.ml[5,24+23]..[5,24+24])
+          Ppat_var "b" (testsuite/tests/letrec-check/lazy_.ml[5,24+23]..[5,24+24])
+        expression (testsuite/tests/letrec-check/lazy_.ml[5,24+27]..[5,24+28])
+          Pexp_constant PConst_int (3,None)
+    ]
+  structure_item (testsuite/tests/letrec-check/lazy_.ml[6,55+0]..[11,229+3])
+    Pstr_extension "expect"
+    [
+      structure_item (testsuite/tests/letrec-check/lazy_.ml[6,55+9]..[11,229+2])
+        Pstr_eval
+        expression (testsuite/tests/letrec-check/lazy_.ml[6,55+9]..[11,229+2])
+          Pexp_constant PConst_string ("\nLine 1, characters 12-18:\n1 | let rec a = lazy b and b = 3;;\n                ^^^^^^\nError: This kind of expression is not allowed as right-hand side of `let rec'\n",(testsuite/tests/letrec-check/lazy_.ml[6,55+11]..[11,229+0]),Some "")
+    ]
+  structure_item (testsuite/tests/letrec-check/lazy_.ml[13,236+0]..[13,236+40])
+    Pstr_value Rec
+    [
+      <def>
+        pattern (testsuite/tests/letrec-check/lazy_.ml[13,236+8]..[13,236+9])
+          Ppat_var "e" (testsuite/tests/letrec-check/lazy_.ml[13,236+8]..[13,236+9])
+        expression (testsuite/tests/letrec-check/lazy_.ml[13,236+12]..[13,236+29])
+          Pexp_lazy
+          expression (testsuite/tests/letrec-check/lazy_.ml[13,236+17]..[13,236+29])
+            Pexp_fun
+            Nolabel
+            None
+            pattern (testsuite/tests/letrec-check/lazy_.ml[13,236+22]..[13,236+23])
+              Ppat_any
+            expression (testsuite/tests/letrec-check/lazy_.ml[13,236+27]..[13,236+28])
+              Pexp_ident "f" (testsuite/tests/letrec-check/lazy_.ml[13,236+27]..[13,236+28])
+      <def>
+        pattern (testsuite/tests/letrec-check/lazy_.ml[13,236+34]..[13,236+35])
+          Ppat_var "f" (testsuite/tests/letrec-check/lazy_.ml[13,236+34]..[13,236+35])
+        expression (testsuite/tests/letrec-check/lazy_.ml[13,236+38]..[13,236+40])
+          Pexp_construct "()" (testsuite/tests/letrec-check/lazy_.ml[13,236+38]..[13,236+40])
+          None
+    ]
+  structure_item (testsuite/tests/letrec-check/lazy_.ml[14,279+0]..[17,350+3])
+    Pstr_extension "expect"
+    [
+      structure_item (testsuite/tests/letrec-check/lazy_.ml[14,279+9]..[17,350+2])
+        Pstr_eval
+        expression (testsuite/tests/letrec-check/lazy_.ml[14,279+9]..[17,350+2])
+          Pexp_constant PConst_string ("\nval e : ('a -> unit) lazy_t = lazy <fun>\nval f : unit = ()\n",(testsuite/tests/letrec-check/lazy_.ml[14,279+11]..[17,350+0]),Some "")
+    ]
+  structure_item (testsuite/tests/letrec-check/lazy_.ml[19,357+0]..[19,357+46])
+    Pstr_value Rec
+    [
+      <def>
+        pattern (testsuite/tests/letrec-check/lazy_.ml[19,357+8]..[19,357+9])
+          Ppat_var "x" (testsuite/tests/letrec-check/lazy_.ml[19,357+8]..[19,357+9])
+        expression (testsuite/tests/letrec-check/lazy_.ml[19,357+12]..[19,357+46])
+          Pexp_lazy
+          expression (testsuite/tests/letrec-check/lazy_.ml[19,357+17]..[19,357+46])
+            Pexp_apply
+            expression (testsuite/tests/letrec-check/lazy_.ml[19,357+31]..[19,357+32])
+              Pexp_ident "+" (testsuite/tests/letrec-check/lazy_.ml[19,357+31]..[19,357+32])
+            [
+              <arg>
+              Nolabel
+                expression (testsuite/tests/letrec-check/lazy_.ml[19,357+18]..[19,357+30])
+                  Pexp_apply
+                  expression (testsuite/tests/letrec-check/lazy_.ml[19,357+18]..[19,357+28])
+                    Pexp_ident "Lazy.force" (testsuite/tests/letrec-check/lazy_.ml[19,357+18]..[19,357+28])
+                  [
+                    <arg>
+                    Nolabel
+                      expression (testsuite/tests/letrec-check/lazy_.ml[19,357+29]..[19,357+30])
+                        Pexp_ident "x" (testsuite/tests/letrec-check/lazy_.ml[19,357+29]..[19,357+30])
+                  ]
+              <arg>
+              Nolabel
+                expression (testsuite/tests/letrec-check/lazy_.ml[19,357+33]..[19,357+45])
+                  Pexp_apply
+                  expression (testsuite/tests/letrec-check/lazy_.ml[19,357+33]..[19,357+43])
+                    Pexp_ident "Lazy.force" (testsuite/tests/letrec-check/lazy_.ml[19,357+33]..[19,357+43])
+                  [
+                    <arg>
+                    Nolabel
+                      expression (testsuite/tests/letrec-check/lazy_.ml[19,357+44]..[19,357+45])
+                        Pexp_ident "x" (testsuite/tests/letrec-check/lazy_.ml[19,357+44]..[19,357+45])
+                  ]
+            ]
+    ]
+  structure_item (testsuite/tests/letrec-check/lazy_.ml[21,409+0]..[23,449+3])
+    Pstr_extension "expect"
+    [
+      structure_item (testsuite/tests/letrec-check/lazy_.ml[21,409+9]..[23,449+2])
+        Pstr_eval
+        expression (testsuite/tests/letrec-check/lazy_.ml[21,409+9]..[23,449+2])
+          Pexp_constant PConst_string ("\nval x : int Lazy.t = <lazy>\n",(testsuite/tests/letrec-check/lazy_.ml[21,409+11]..[23,449+0]),Some "")
+    ]
+]
+

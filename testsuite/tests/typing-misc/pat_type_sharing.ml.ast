@@ -1,0 +1,166 @@
+[
+  structure_item (testsuite/tests/typing-misc/pat_type_sharing.ml[4,23+0]..[4,23+31])
+    Pstr_type Rec
+    [
+      type_declaration "r" (testsuite/tests/typing-misc/pat_type_sharing.ml[4,23+8]..[4,23+9]) (testsuite/tests/typing-misc/pat_type_sharing.ml[4,23+0]..[4,23+31])
+        ptype_params =
+          [
+            core_type (testsuite/tests/typing-misc/pat_type_sharing.ml[4,23+5]..[4,23+7])
+              Ptyp_var a
+          ]
+        ptype_cstrs =
+          []
+        ptype_kind =
+          Ptype_record
+            [
+              (testsuite/tests/typing-misc/pat_type_sharing.ml[4,23+14]..[4,23+21])
+                Immutable
+                "a" (testsuite/tests/typing-misc/pat_type_sharing.ml[4,23+14]..[4,23+15])                core_type (testsuite/tests/typing-misc/pat_type_sharing.ml[4,23+18]..[4,23+20])
+                  Ptyp_var a
+              (testsuite/tests/typing-misc/pat_type_sharing.ml[4,23+22]..[4,23+29])
+                Immutable
+                "b" (testsuite/tests/typing-misc/pat_type_sharing.ml[4,23+22]..[4,23+23])                core_type (testsuite/tests/typing-misc/pat_type_sharing.ml[4,23+26]..[4,23+28])
+                  Ptyp_var a
+            ]
+        ptype_private = Public
+        ptype_manifest =
+          None
+    ]
+  structure_item (testsuite/tests/typing-misc/pat_type_sharing.ml[5,55+0]..[5,55+44])
+    Pstr_type Rec
+    [
+      type_declaration "ty" (testsuite/tests/typing-misc/pat_type_sharing.ml[5,55+8]..[5,55+10]) (testsuite/tests/typing-misc/pat_type_sharing.ml[5,55+0]..[5,55+44])
+        ptype_params =
+          [
+            core_type (testsuite/tests/typing-misc/pat_type_sharing.ml[5,55+5]..[5,55+7])
+              Ptyp_var a
+          ]
+        ptype_cstrs =
+          []
+        ptype_kind =
+          Ptype_variant
+            [
+              (testsuite/tests/typing-misc/pat_type_sharing.ml[5,55+13]..[5,55+25])
+                "Int" (testsuite/tests/typing-misc/pat_type_sharing.ml[5,55+13]..[5,55+16])
+                []
+                Some
+                  core_type (testsuite/tests/typing-misc/pat_type_sharing.ml[5,55+19]..[5,55+25])
+                    Ptyp_constr "ty" (testsuite/tests/typing-misc/pat_type_sharing.ml[5,55+23]..[5,55+25])
+                    [
+                      core_type (testsuite/tests/typing-misc/pat_type_sharing.ml[5,55+19]..[5,55+22])
+                        Ptyp_constr "int" (testsuite/tests/typing-misc/pat_type_sharing.ml[5,55+19]..[5,55+22])
+                        []
+                    ]
+              (testsuite/tests/typing-misc/pat_type_sharing.ml[5,55+26]..[5,55+44])
+                "Float" (testsuite/tests/typing-misc/pat_type_sharing.ml[5,55+28]..[5,55+33])
+                []
+                Some
+                  core_type (testsuite/tests/typing-misc/pat_type_sharing.ml[5,55+36]..[5,55+44])
+                    Ptyp_constr "ty" (testsuite/tests/typing-misc/pat_type_sharing.ml[5,55+42]..[5,55+44])
+                    [
+                      core_type (testsuite/tests/typing-misc/pat_type_sharing.ml[5,55+36]..[5,55+41])
+                        Ptyp_constr "float" (testsuite/tests/typing-misc/pat_type_sharing.ml[5,55+36]..[5,55+41])
+                        []
+                    ]
+            ]
+        ptype_private = Public
+        ptype_manifest =
+          None
+    ]
+  structure_item (testsuite/tests/typing-misc/pat_type_sharing.ml[6,102+0]..[9,191+3])
+    Pstr_extension "expect"
+    [
+      structure_item (testsuite/tests/typing-misc/pat_type_sharing.ml[6,102+9]..[9,191+2])
+        Pstr_eval
+        expression (testsuite/tests/typing-misc/pat_type_sharing.ml[6,102+9]..[9,191+2])
+          Pexp_constant PConst_string ("\ntype 'a r = { a : 'a; b : 'a; }\ntype 'a ty = Int : int ty | Float : float ty\n",(testsuite/tests/typing-misc/pat_type_sharing.ml[6,102+11]..[9,191+0]),Some "")
+    ]
+  structure_item (testsuite/tests/typing-misc/pat_type_sharing.ml[11,196+0]..[14,283+21])
+    Pstr_value Nonrec
+    [
+      <def>
+        pattern (testsuite/tests/typing-misc/pat_type_sharing.ml[11,196+4]..[11,196+7])
+          Ppat_var "foo" (testsuite/tests/typing-misc/pat_type_sharing.ml[11,196+4]..[11,196+7])
+        expression (testsuite/tests/typing-misc/pat_type_sharing.ml[11,196+8]..[14,283+21])
+          Pexp_newtype "a"
+          expression (testsuite/tests/typing-misc/pat_type_sharing.ml[11,196+17]..[14,283+21]) ghost
+            Pexp_fun
+            Nolabel
+            None
+            pattern (testsuite/tests/typing-misc/pat_type_sharing.ml[11,196+17]..[11,196+28])
+              Ppat_constraint
+              pattern (testsuite/tests/typing-misc/pat_type_sharing.ml[11,196+18]..[11,196+20])
+                Ppat_var "ty" (testsuite/tests/typing-misc/pat_type_sharing.ml[11,196+18]..[11,196+20])
+              core_type (testsuite/tests/typing-misc/pat_type_sharing.ml[11,196+23]..[11,196+27])
+                Ptyp_constr "ty" (testsuite/tests/typing-misc/pat_type_sharing.ml[11,196+25]..[11,196+27])
+                [
+                  core_type (testsuite/tests/typing-misc/pat_type_sharing.ml[11,196+23]..[11,196+24])
+                    Ptyp_constr "a" (testsuite/tests/typing-misc/pat_type_sharing.ml[11,196+23]..[11,196+24])
+                    []
+                ]
+            expression (testsuite/tests/typing-misc/pat_type_sharing.ml[11,196+29]..[14,283+21]) ghost
+              Pexp_fun
+              Nolabel
+              None
+              pattern (testsuite/tests/typing-misc/pat_type_sharing.ml[11,196+29]..[11,196+38])
+                Ppat_constraint
+                pattern (testsuite/tests/typing-misc/pat_type_sharing.ml[11,196+30]..[11,196+31])
+                  Ppat_var "x" (testsuite/tests/typing-misc/pat_type_sharing.ml[11,196+30]..[11,196+31])
+                core_type (testsuite/tests/typing-misc/pat_type_sharing.ml[11,196+34]..[11,196+37])
+                  Ptyp_constr "r" (testsuite/tests/typing-misc/pat_type_sharing.ml[11,196+36]..[11,196+37])
+                  [
+                    core_type (testsuite/tests/typing-misc/pat_type_sharing.ml[11,196+34]..[11,196+35])
+                      Ptyp_constr "a" (testsuite/tests/typing-misc/pat_type_sharing.ml[11,196+34]..[11,196+35])
+                      []
+                  ]
+              expression (testsuite/tests/typing-misc/pat_type_sharing.ml[12,237+2]..[14,283+21])
+                Pexp_match
+                expression (testsuite/tests/typing-misc/pat_type_sharing.ml[12,237+8]..[12,237+13])
+                  Pexp_tuple
+                  [
+                    expression (testsuite/tests/typing-misc/pat_type_sharing.ml[12,237+8]..[12,237+10])
+                      Pexp_ident "ty" (testsuite/tests/typing-misc/pat_type_sharing.ml[12,237+8]..[12,237+10])
+                    expression (testsuite/tests/typing-misc/pat_type_sharing.ml[12,237+12]..[12,237+13])
+                      Pexp_ident "x" (testsuite/tests/typing-misc/pat_type_sharing.ml[12,237+12]..[12,237+13])
+                  ]
+                [
+                  <case>
+                    pattern (testsuite/tests/typing-misc/pat_type_sharing.ml[13,256+4]..[13,256+21])
+                      Ppat_tuple
+                      [
+                        pattern (testsuite/tests/typing-misc/pat_type_sharing.ml[13,256+4]..[13,256+7])
+                          Ppat_construct "Int" (testsuite/tests/typing-misc/pat_type_sharing.ml[13,256+4]..[13,256+7])
+                          None
+                        pattern (testsuite/tests/typing-misc/pat_type_sharing.ml[13,256+9]..[13,256+21])
+                          Ppat_record Closed
+                          [
+                            "a" (testsuite/tests/typing-misc/pat_type_sharing.ml[13,256+11]..[13,256+12])
+                              pattern (testsuite/tests/typing-misc/pat_type_sharing.ml[13,256+15]..[13,256+16])
+                                Ppat_constant PConst_int (3,None)
+                            "b" (testsuite/tests/typing-misc/pat_type_sharing.ml[13,256+18]..[13,256+19]) ghost
+                              pattern (testsuite/tests/typing-misc/pat_type_sharing.ml[13,256+18]..[13,256+19])
+                                Ppat_var "b" (testsuite/tests/typing-misc/pat_type_sharing.ml[13,256+18]..[13,256+19])
+                          ]
+                      ]
+                    expression (testsuite/tests/typing-misc/pat_type_sharing.ml[13,256+25]..[13,256+26])
+                      Pexp_ident "b" (testsuite/tests/typing-misc/pat_type_sharing.ml[13,256+25]..[13,256+26])
+                  <case>
+                    pattern (testsuite/tests/typing-misc/pat_type_sharing.ml[14,283+4]..[14,283+5])
+                      Ppat_any
+                    expression (testsuite/tests/typing-misc/pat_type_sharing.ml[14,283+9]..[14,283+21])
+                      Pexp_assert
+                      expression (testsuite/tests/typing-misc/pat_type_sharing.ml[14,283+16]..[14,283+21])
+                        Pexp_construct "false" (testsuite/tests/typing-misc/pat_type_sharing.ml[14,283+16]..[14,283+21])
+                        None
+                ]
+    ]
+  structure_item (testsuite/tests/typing-misc/pat_type_sharing.ml[15,307+0]..[17,357+3])
+    Pstr_extension "expect"
+    [
+      structure_item (testsuite/tests/typing-misc/pat_type_sharing.ml[15,307+9]..[17,357+2])
+        Pstr_eval
+        expression (testsuite/tests/typing-misc/pat_type_sharing.ml[15,307+9]..[17,357+2])
+          Pexp_constant PConst_string ("\nval foo : 'a ty -> 'a r -> 'a = <fun>\n",(testsuite/tests/typing-misc/pat_type_sharing.ml[15,307+11]..[17,357+0]),Some "")
+    ]
+]
+

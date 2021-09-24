@@ -1,0 +1,1172 @@
+[
+  structure_item (testsuite/tests/typing-misc/records.ml[6,47+0]..[6,47+22])
+    Pstr_type Rec
+    [
+      type_declaration "t" (testsuite/tests/typing-misc/records.ml[6,47+5]..[6,47+6]) (testsuite/tests/typing-misc/records.ml[6,47+0]..[6,47+22])
+        ptype_params =
+          []
+        ptype_cstrs =
+          []
+        ptype_kind =
+          Ptype_record
+            [
+              (testsuite/tests/typing-misc/records.ml[6,47+10]..[6,47+16])
+                Immutable
+                "x" (testsuite/tests/typing-misc/records.ml[6,47+10]..[6,47+11])                core_type (testsuite/tests/typing-misc/records.ml[6,47+12]..[6,47+15])
+                  Ptyp_constr "int" (testsuite/tests/typing-misc/records.ml[6,47+12]..[6,47+15])
+                  []
+              (testsuite/tests/typing-misc/records.ml[6,47+16]..[6,47+21])
+                Immutable
+                "y" (testsuite/tests/typing-misc/records.ml[6,47+16]..[6,47+17])                core_type (testsuite/tests/typing-misc/records.ml[6,47+18]..[6,47+21])
+                  Ptyp_constr "int" (testsuite/tests/typing-misc/records.ml[6,47+18]..[6,47+21])
+                  []
+            ]
+        ptype_private = Public
+        ptype_manifest =
+          None
+    ]
+  structure_item (testsuite/tests/typing-misc/records.ml[7,72+0]..[7,72+9])
+    Pstr_eval
+    expression (testsuite/tests/typing-misc/records.ml[7,72+0]..[7,72+9])
+      Pexp_record
+      [
+        "x" (testsuite/tests/typing-misc/records.ml[7,72+1]..[7,72+2])
+          expression (testsuite/tests/typing-misc/records.ml[7,72+3]..[7,72+4])
+            Pexp_constant PConst_int (3,None)
+        "z" (testsuite/tests/typing-misc/records.ml[7,72+5]..[7,72+6])
+          expression (testsuite/tests/typing-misc/records.ml[7,72+7]..[7,72+8])
+            Pexp_constant PConst_int (2,None)
+      ]
+      None
+  structure_item (testsuite/tests/typing-misc/records.ml[8,84+0]..[14,208+3])
+    Pstr_extension "expect"
+    [
+      structure_item (testsuite/tests/typing-misc/records.ml[8,84+9]..[14,208+2])
+        Pstr_eval
+        expression (testsuite/tests/typing-misc/records.ml[8,84+9]..[14,208+2])
+          Pexp_constant PConst_string ("\ntype t = { x : int; y : int; }\nLine 2, characters 5-6:\n2 | {x=3;z=2};;\n         ^\nError: Unbound record field z\n",(testsuite/tests/typing-misc/records.ml[8,84+11]..[14,208+0]),Some "")
+    ]
+  structure_item (testsuite/tests/typing-misc/records.ml[15,214+0]..[15,214+19])
+    Pstr_eval
+    expression (testsuite/tests/typing-misc/records.ml[15,214+0]..[15,214+19])
+      Pexp_fun
+      Nolabel
+      None
+      pattern (testsuite/tests/typing-misc/records.ml[15,214+4]..[15,214+13])
+        Ppat_record Closed
+        [
+          "x" (testsuite/tests/typing-misc/records.ml[15,214+5]..[15,214+6])
+            pattern (testsuite/tests/typing-misc/records.ml[15,214+7]..[15,214+8])
+              Ppat_constant PConst_int (3,None)
+          "z" (testsuite/tests/typing-misc/records.ml[15,214+9]..[15,214+10])
+            pattern (testsuite/tests/typing-misc/records.ml[15,214+11]..[15,214+12])
+              Ppat_constant PConst_int (2,None)
+        ]
+      expression (testsuite/tests/typing-misc/records.ml[15,214+17]..[15,214+19])
+        Pexp_construct "()" (testsuite/tests/typing-misc/records.ml[15,214+17]..[15,214+19])
+        None
+  structure_item (testsuite/tests/typing-misc/records.ml[16,236+0]..[21,344+3])
+    Pstr_extension "expect"
+    [
+      structure_item (testsuite/tests/typing-misc/records.ml[16,236+9]..[21,344+2])
+        Pstr_eval
+        expression (testsuite/tests/typing-misc/records.ml[16,236+9]..[21,344+2])
+          Pexp_constant PConst_string ("\nLine 1, characters 9-10:\n1 | fun {x=3;z=2} -> ();;\n             ^\nError: Unbound record field z\n",(testsuite/tests/typing-misc/records.ml[16,236+11]..[21,344+0]),Some "")
+    ]
+  structure_item (testsuite/tests/typing-misc/records.ml[24,370+0]..[24,370+17])
+    Pstr_eval
+    expression (testsuite/tests/typing-misc/records.ml[24,370+0]..[24,370+17])
+      Pexp_record
+      [
+        "x" (testsuite/tests/typing-misc/records.ml[24,370+1]..[24,370+2])
+          expression (testsuite/tests/typing-misc/records.ml[24,370+3]..[24,370+4])
+            Pexp_constant PConst_int (3,None)
+        "contents" (testsuite/tests/typing-misc/records.ml[24,370+6]..[24,370+14])
+          expression (testsuite/tests/typing-misc/records.ml[24,370+15]..[24,370+16])
+            Pexp_constant PConst_int (2,None)
+      ]
+      None
+  structure_item (testsuite/tests/typing-misc/records.ml[25,390+0]..[31,577+3])
+    Pstr_extension "expect"
+    [
+      structure_item (testsuite/tests/typing-misc/records.ml[25,390+9]..[31,577+2])
+        Pstr_eval
+        expression (testsuite/tests/typing-misc/records.ml[25,390+9]..[31,577+2])
+          Pexp_constant PConst_string ("\nLine 1, characters 6-14:\n1 | {x=3; contents=2};;\n          ^^^^^^^^\nError: The record field contents belongs to the type 'a ref\n       but is mixed here with fields of type t\n",(testsuite/tests/typing-misc/records.ml[25,390+11]..[31,577+0]),Some "")
+    ]
+  structure_item (testsuite/tests/typing-misc/records.ml[34,604+0]..[34,604+32])
+    Pstr_type Rec
+    [
+      type_declaration "u" (testsuite/tests/typing-misc/records.ml[34,604+5]..[34,604+6]) (testsuite/tests/typing-misc/records.ml[34,604+0]..[34,604+32])
+        ptype_params =
+          []
+        ptype_cstrs =
+          []
+        ptype_kind =
+          Ptype_record
+            [
+              (testsuite/tests/typing-misc/records.ml[34,604+18]..[34,604+31])
+                Mutable
+                "u" (testsuite/tests/typing-misc/records.ml[34,604+26]..[34,604+27])                core_type (testsuite/tests/typing-misc/records.ml[34,604+28]..[34,604+31])
+                  Ptyp_constr "int" (testsuite/tests/typing-misc/records.ml[34,604+28]..[34,604+31])
+                  []
+            ]
+        ptype_private = Private
+        ptype_manifest =
+          None
+    ]
+  structure_item (testsuite/tests/typing-misc/records.ml[35,639+0]..[35,639+5])
+    Pstr_eval
+    expression (testsuite/tests/typing-misc/records.ml[35,639+0]..[35,639+5])
+      Pexp_record
+      [
+        "u" (testsuite/tests/typing-misc/records.ml[35,639+1]..[35,639+2])
+          expression (testsuite/tests/typing-misc/records.ml[35,639+3]..[35,639+4])
+            Pexp_constant PConst_int (3,None)
+      ]
+      None
+  structure_item (testsuite/tests/typing-misc/records.ml[36,647+0]..[42,793+3])
+    Pstr_extension "expect"
+    [
+      structure_item (testsuite/tests/typing-misc/records.ml[36,647+9]..[42,793+2])
+        Pstr_eval
+        expression (testsuite/tests/typing-misc/records.ml[36,647+9]..[42,793+2])
+          Pexp_constant PConst_string ("\ntype u = private { mutable u : int; }\nLine 2, characters 0-5:\n2 | {u=3};;\n    ^^^^^\nError: Cannot create values of the private type u\n",(testsuite/tests/typing-misc/records.ml[36,647+11]..[42,793+0]),Some "")
+    ]
+  structure_item (testsuite/tests/typing-misc/records.ml[43,799+0]..[43,799+17])
+    Pstr_eval
+    expression (testsuite/tests/typing-misc/records.ml[43,799+0]..[43,799+17])
+      Pexp_fun
+      Nolabel
+      None
+      pattern (testsuite/tests/typing-misc/records.ml[43,799+4]..[43,799+5])
+        Ppat_var "x" (testsuite/tests/typing-misc/records.ml[43,799+4]..[43,799+5])
+      expression (testsuite/tests/typing-misc/records.ml[43,799+9]..[43,799+17])
+        Pexp_setfield
+        expression (testsuite/tests/typing-misc/records.ml[43,799+9]..[43,799+10])
+          Pexp_ident "x" (testsuite/tests/typing-misc/records.ml[43,799+9]..[43,799+10])
+        "u" (testsuite/tests/typing-misc/records.ml[43,799+11]..[43,799+12])
+        expression (testsuite/tests/typing-misc/records.ml[43,799+16]..[43,799+17])
+          Pexp_constant PConst_int (3,None)
+  structure_item (testsuite/tests/typing-misc/records.ml[44,819+0]..[49,949+3])
+    Pstr_extension "expect"
+    [
+      structure_item (testsuite/tests/typing-misc/records.ml[44,819+9]..[49,949+2])
+        Pstr_eval
+        expression (testsuite/tests/typing-misc/records.ml[44,819+9]..[49,949+2])
+          Pexp_constant PConst_string ("\nLine 1, characters 11-12:\n1 | fun x -> x.u <- 3;;\n               ^\nError: Cannot assign field u of the private type u\n",(testsuite/tests/typing-misc/records.ml[44,819+11]..[49,949+0]),Some "")
+    ]
+  structure_item (testsuite/tests/typing-misc/records.ml[52,988+0]..[54,1034+3])
+    Pstr_module
+    "M" (testsuite/tests/typing-misc/records.ml[52,988+7]..[52,988+8])
+      module_expr (testsuite/tests/typing-misc/records.ml[52,988+11]..[54,1034+3])
+        Pmod_structure
+        [
+          structure_item (testsuite/tests/typing-misc/records.ml[53,1006+2]..[53,1006+27])
+            Pstr_type Rec
+            [
+              type_declaration "t" (testsuite/tests/typing-misc/records.ml[53,1006+7]..[53,1006+8]) (testsuite/tests/typing-misc/records.ml[53,1006+2]..[53,1006+27])
+                ptype_params =
+                  []
+                ptype_cstrs =
+                  []
+                ptype_kind =
+                  Ptype_record
+                    [
+                      (testsuite/tests/typing-misc/records.ml[53,1006+12]..[53,1006+19])
+                        Immutable
+                        "x" (testsuite/tests/typing-misc/records.ml[53,1006+12]..[53,1006+13])                        core_type (testsuite/tests/typing-misc/records.ml[53,1006+15]..[53,1006+18])
+                          Ptyp_constr "int" (testsuite/tests/typing-misc/records.ml[53,1006+15]..[53,1006+18])
+                          []
+                      (testsuite/tests/typing-misc/records.ml[53,1006+20]..[53,1006+26])
+                        Immutable
+                        "y" (testsuite/tests/typing-misc/records.ml[53,1006+20]..[53,1006+21])                        core_type (testsuite/tests/typing-misc/records.ml[53,1006+23]..[53,1006+26])
+                          Ptyp_constr "int" (testsuite/tests/typing-misc/records.ml[53,1006+23]..[53,1006+26])
+                          []
+                    ]
+                ptype_private = Public
+                ptype_manifest =
+                  None
+            ]
+        ]
+  structure_item (testsuite/tests/typing-misc/records.ml[55,1040+0]..[57,1102+3])
+    Pstr_extension "expect"
+    [
+      structure_item (testsuite/tests/typing-misc/records.ml[55,1040+9]..[57,1102+2])
+        Pstr_eval
+        expression (testsuite/tests/typing-misc/records.ml[55,1040+9]..[57,1102+2])
+          Pexp_constant PConst_string ("\nmodule M : sig type t = { x : int; y : int; } end\n",(testsuite/tests/typing-misc/records.ml[55,1040+11]..[57,1102+0]),Some "")
+    ]
+  structure_item (testsuite/tests/typing-misc/records.ml[59,1109+0]..[59,1109+20])
+    Pstr_value Nonrec
+    [
+      <def>
+        pattern (testsuite/tests/typing-misc/records.ml[59,1109+4]..[59,1109+5])
+          Ppat_var "f" (testsuite/tests/typing-misc/records.ml[59,1109+4]..[59,1109+5])
+        expression (testsuite/tests/typing-misc/records.ml[59,1109+6]..[59,1109+20]) ghost
+          Pexp_fun
+          Nolabel
+          None
+          pattern (testsuite/tests/typing-misc/records.ml[59,1109+6]..[59,1109+14])
+            Ppat_record Closed
+            [
+              "M.x" (testsuite/tests/typing-misc/records.ml[59,1109+7]..[59,1109+10]) ghost
+                pattern (testsuite/tests/typing-misc/records.ml[59,1109+7]..[59,1109+10])
+                  Ppat_var "x" (testsuite/tests/typing-misc/records.ml[59,1109+7]..[59,1109+10])
+              "y" (testsuite/tests/typing-misc/records.ml[59,1109+12]..[59,1109+13]) ghost
+                pattern (testsuite/tests/typing-misc/records.ml[59,1109+12]..[59,1109+13])
+                  Ppat_var "y" (testsuite/tests/typing-misc/records.ml[59,1109+12]..[59,1109+13])
+            ]
+          expression (testsuite/tests/typing-misc/records.ml[59,1109+17]..[59,1109+20])
+            Pexp_apply
+            expression (testsuite/tests/typing-misc/records.ml[59,1109+18]..[59,1109+19])
+              Pexp_ident "+" (testsuite/tests/typing-misc/records.ml[59,1109+18]..[59,1109+19])
+            [
+              <arg>
+              Nolabel
+                expression (testsuite/tests/typing-misc/records.ml[59,1109+17]..[59,1109+18])
+                  Pexp_ident "x" (testsuite/tests/typing-misc/records.ml[59,1109+17]..[59,1109+18])
+              <arg>
+              Nolabel
+                expression (testsuite/tests/typing-misc/records.ml[59,1109+19]..[59,1109+20])
+                  Pexp_ident "y" (testsuite/tests/typing-misc/records.ml[59,1109+19]..[59,1109+20])
+            ]
+    ]
+  structure_item (testsuite/tests/typing-misc/records.ml[60,1132+0]..[60,1132+20])
+    Pstr_value Nonrec
+    [
+      <def>
+        pattern (testsuite/tests/typing-misc/records.ml[60,1132+4]..[60,1132+5])
+          Ppat_var "r" (testsuite/tests/typing-misc/records.ml[60,1132+4]..[60,1132+5])
+        expression (testsuite/tests/typing-misc/records.ml[60,1132+8]..[60,1132+20])
+          Pexp_record
+          [
+            "M.x" (testsuite/tests/typing-misc/records.ml[60,1132+9]..[60,1132+12])
+              expression (testsuite/tests/typing-misc/records.ml[60,1132+13]..[60,1132+14])
+                Pexp_constant PConst_int (1,None)
+            "y" (testsuite/tests/typing-misc/records.ml[60,1132+16]..[60,1132+17])
+              expression (testsuite/tests/typing-misc/records.ml[60,1132+18]..[60,1132+19])
+                Pexp_constant PConst_int (2,None)
+          ]
+          None
+    ]
+  structure_item (testsuite/tests/typing-misc/records.ml[61,1155+0]..[61,1155+11])
+    Pstr_value Nonrec
+    [
+      <def>
+        pattern (testsuite/tests/typing-misc/records.ml[61,1155+4]..[61,1155+5])
+          Ppat_var "z" (testsuite/tests/typing-misc/records.ml[61,1155+4]..[61,1155+5])
+        expression (testsuite/tests/typing-misc/records.ml[61,1155+8]..[61,1155+11])
+          Pexp_apply
+          expression (testsuite/tests/typing-misc/records.ml[61,1155+8]..[61,1155+9])
+            Pexp_ident "f" (testsuite/tests/typing-misc/records.ml[61,1155+8]..[61,1155+9])
+          [
+            <arg>
+            Nolabel
+              expression (testsuite/tests/typing-misc/records.ml[61,1155+10]..[61,1155+11])
+                Pexp_ident "r" (testsuite/tests/typing-misc/records.ml[61,1155+10]..[61,1155+11])
+          ]
+    ]
+  structure_item (testsuite/tests/typing-misc/records.ml[62,1169+0]..[66,1255+3])
+    Pstr_extension "expect"
+    [
+      structure_item (testsuite/tests/typing-misc/records.ml[62,1169+9]..[66,1255+2])
+        Pstr_eval
+        expression (testsuite/tests/typing-misc/records.ml[62,1169+9]..[66,1255+2])
+          Pexp_constant PConst_string ("\nval f : M.t -> int = <fun>\nval r : M.t = {M.x = 1; y = 2}\nval z : int = 3\n",(testsuite/tests/typing-misc/records.ml[62,1169+11]..[66,1255+0]),Some "")
+    ]
+  structure_item (testsuite/tests/typing-misc/records.ml[69,1277+0]..[69,1277+28])
+    Pstr_type Rec
+    [
+      type_declaration "foo" (testsuite/tests/typing-misc/records.ml[69,1277+5]..[69,1277+8]) (testsuite/tests/typing-misc/records.ml[69,1277+0]..[69,1277+28])
+        ptype_params =
+          []
+        ptype_cstrs =
+          []
+        ptype_kind =
+          Ptype_record
+            [
+              (testsuite/tests/typing-misc/records.ml[69,1277+13]..[69,1277+26])
+                Mutable
+                "y" (testsuite/tests/typing-misc/records.ml[69,1277+21]..[69,1277+22])                core_type (testsuite/tests/typing-misc/records.ml[69,1277+23]..[69,1277+26])
+                  Ptyp_constr "int" (testsuite/tests/typing-misc/records.ml[69,1277+23]..[69,1277+26])
+                  []
+            ]
+        ptype_private = Public
+        ptype_manifest =
+          None
+    ]
+  structure_item (testsuite/tests/typing-misc/records.ml[70,1308+0]..[70,1308+25])
+    Pstr_value Nonrec
+    [
+      <def>
+        pattern (testsuite/tests/typing-misc/records.ml[70,1308+4]..[70,1308+5])
+          Ppat_var "f" (testsuite/tests/typing-misc/records.ml[70,1308+4]..[70,1308+5])
+        expression (testsuite/tests/typing-misc/records.ml[70,1308+6]..[70,1308+25]) ghost
+          Pexp_fun
+          Nolabel
+          None
+          pattern (testsuite/tests/typing-misc/records.ml[70,1308+6]..[70,1308+14])
+            Ppat_constraint
+            pattern (testsuite/tests/typing-misc/records.ml[70,1308+7]..[70,1308+8])
+              Ppat_var "r" (testsuite/tests/typing-misc/records.ml[70,1308+7]..[70,1308+8])
+            core_type (testsuite/tests/typing-misc/records.ml[70,1308+10]..[70,1308+13])
+              Ptyp_constr "int" (testsuite/tests/typing-misc/records.ml[70,1308+10]..[70,1308+13])
+              []
+          expression (testsuite/tests/typing-misc/records.ml[70,1308+17]..[70,1308+25])
+            Pexp_setfield
+            expression (testsuite/tests/typing-misc/records.ml[70,1308+17]..[70,1308+18])
+              Pexp_ident "r" (testsuite/tests/typing-misc/records.ml[70,1308+17]..[70,1308+18])
+            "y" (testsuite/tests/typing-misc/records.ml[70,1308+19]..[70,1308+20])
+            expression (testsuite/tests/typing-misc/records.ml[70,1308+24]..[70,1308+25])
+              Pexp_constant PConst_int (3,None)
+    ]
+  structure_item (testsuite/tests/typing-misc/records.ml[71,1336+0]..[78,1549+3])
+    Pstr_extension "expect"
+    [
+      structure_item (testsuite/tests/typing-misc/records.ml[71,1336+9]..[78,1549+2])
+        Pstr_eval
+        expression (testsuite/tests/typing-misc/records.ml[71,1336+9]..[78,1549+2])
+          Pexp_constant PConst_string ("\ntype foo = { mutable y : int; }\nLine 2, characters 17-18:\n2 | let f (r: int) = r.y <- 3;;\n                     ^\nError: This expression has type int but an expression was expected of type\n         foo\n",(testsuite/tests/typing-misc/records.ml[71,1336+11]..[78,1549+0]),Some "")
+    ]
+  structure_item (testsuite/tests/typing-misc/records.ml[80,1556+0]..[82,1588+26])
+    Pstr_value Nonrec
+    [
+      <def>
+        pattern (testsuite/tests/typing-misc/records.ml[80,1556+4]..[80,1556+5])
+          Ppat_var "f" (testsuite/tests/typing-misc/records.ml[80,1556+4]..[80,1556+5])
+        expression (testsuite/tests/typing-misc/records.ml[80,1556+6]..[82,1588+26]) ghost
+          Pexp_fun
+          Nolabel
+          None
+          pattern (testsuite/tests/typing-misc/records.ml[80,1556+6]..[80,1556+14])
+            Ppat_constraint
+            pattern (testsuite/tests/typing-misc/records.ml[80,1556+7]..[80,1556+8])
+              Ppat_var "r" (testsuite/tests/typing-misc/records.ml[80,1556+7]..[80,1556+8])
+            core_type (testsuite/tests/typing-misc/records.ml[80,1556+10]..[80,1556+13])
+              Ptyp_constr "int" (testsuite/tests/typing-misc/records.ml[80,1556+10]..[80,1556+13])
+              []
+          expression (testsuite/tests/typing-misc/records.ml[81,1573+2]..[82,1588+26])
+            Pexp_match
+            expression (testsuite/tests/typing-misc/records.ml[81,1573+8]..[81,1573+9])
+              Pexp_ident "r" (testsuite/tests/typing-misc/records.ml[81,1573+8]..[81,1573+9])
+            [
+              <case>
+                pattern (testsuite/tests/typing-misc/records.ml[82,1588+4]..[82,1588+20])
+                  Ppat_record Closed
+                  [
+                    "contents" (testsuite/tests/typing-misc/records.ml[82,1588+6]..[82,1588+14])
+                      pattern (testsuite/tests/typing-misc/records.ml[82,1588+17]..[82,1588+18])
+                        Ppat_constant PConst_int (3,None)
+                  ]
+                expression (testsuite/tests/typing-misc/records.ml[82,1588+24]..[82,1588+26])
+                  Pexp_construct "()" (testsuite/tests/typing-misc/records.ml[82,1588+24]..[82,1588+26])
+                  None
+            ]
+    ]
+  structure_item (testsuite/tests/typing-misc/records.ml[83,1615+0]..[89,1826+3])
+    Pstr_extension "expect"
+    [
+      structure_item (testsuite/tests/typing-misc/records.ml[83,1615+9]..[89,1826+2])
+        Pstr_eval
+        expression (testsuite/tests/typing-misc/records.ml[83,1615+9]..[89,1826+2])
+          Pexp_constant PConst_string ("\nLine 3, characters 4-20:\n3 |   | { contents = 3 } -> ()\n        ^^^^^^^^^^^^^^^^\nError: This pattern matches values of type int ref\n       but a pattern was expected which matches values of type int\n",(testsuite/tests/typing-misc/records.ml[83,1615+11]..[89,1826+0]),Some "")
+    ]
+  structure_item (testsuite/tests/typing-misc/records.ml[94,1846+0]..[94,1846+29])
+    Pstr_type Rec
+    [
+      type_declaration "foo" (testsuite/tests/typing-misc/records.ml[94,1846+5]..[94,1846+8]) (testsuite/tests/typing-misc/records.ml[94,1846+0]..[94,1846+29])
+        ptype_params =
+          []
+        ptype_cstrs =
+          []
+        ptype_kind =
+          Ptype_record
+            [
+              (testsuite/tests/typing-misc/records.ml[94,1846+13]..[94,1846+20])
+                Immutable
+                "y" (testsuite/tests/typing-misc/records.ml[94,1846+13]..[94,1846+14])                core_type (testsuite/tests/typing-misc/records.ml[94,1846+16]..[94,1846+19])
+                  Ptyp_constr "int" (testsuite/tests/typing-misc/records.ml[94,1846+16]..[94,1846+19])
+                  []
+              (testsuite/tests/typing-misc/records.ml[94,1846+21]..[94,1846+27])
+                Immutable
+                "z" (testsuite/tests/typing-misc/records.ml[94,1846+21]..[94,1846+22])                core_type (testsuite/tests/typing-misc/records.ml[94,1846+24]..[94,1846+27])
+                  Ptyp_constr "int" (testsuite/tests/typing-misc/records.ml[94,1846+24]..[94,1846+27])
+                  []
+            ]
+        ptype_private = Public
+        ptype_manifest =
+          None
+    ]
+  structure_item (testsuite/tests/typing-misc/records.ml[95,1878+0]..[95,1878+21])
+    Pstr_type Rec
+    [
+      type_declaration "bar" (testsuite/tests/typing-misc/records.ml[95,1878+5]..[95,1878+8]) (testsuite/tests/typing-misc/records.ml[95,1878+0]..[95,1878+21])
+        ptype_params =
+          []
+        ptype_cstrs =
+          []
+        ptype_kind =
+          Ptype_record
+            [
+              (testsuite/tests/typing-misc/records.ml[95,1878+13]..[95,1878+19])
+                Immutable
+                "x" (testsuite/tests/typing-misc/records.ml[95,1878+13]..[95,1878+14])                core_type (testsuite/tests/typing-misc/records.ml[95,1878+16]..[95,1878+19])
+                  Ptyp_constr "int" (testsuite/tests/typing-misc/records.ml[95,1878+16]..[95,1878+19])
+                  []
+            ]
+        ptype_private = Public
+        ptype_manifest =
+          None
+    ]
+  structure_item (testsuite/tests/typing-misc/records.ml[96,1902+0]..[96,1902+41])
+    Pstr_value Nonrec
+    [
+      <def>
+        pattern (testsuite/tests/typing-misc/records.ml[96,1902+4]..[96,1902+5])
+          Ppat_var "f" (testsuite/tests/typing-misc/records.ml[96,1902+4]..[96,1902+5])
+        expression (testsuite/tests/typing-misc/records.ml[96,1902+6]..[96,1902+41]) ghost
+          Pexp_fun
+          Nolabel
+          None
+          pattern (testsuite/tests/typing-misc/records.ml[96,1902+6]..[96,1902+14])
+            Ppat_constraint
+            pattern (testsuite/tests/typing-misc/records.ml[96,1902+7]..[96,1902+8])
+              Ppat_var "r" (testsuite/tests/typing-misc/records.ml[96,1902+7]..[96,1902+8])
+            core_type (testsuite/tests/typing-misc/records.ml[96,1902+10]..[96,1902+13])
+              Ptyp_constr "bar" (testsuite/tests/typing-misc/records.ml[96,1902+10]..[96,1902+13])
+              []
+          expression (testsuite/tests/typing-misc/records.ml[96,1902+17]..[96,1902+41])
+            Pexp_constraint
+            expression (testsuite/tests/typing-misc/records.ml[96,1902+18]..[96,1902+34])
+              Pexp_record
+              [
+                "z" (testsuite/tests/typing-misc/records.ml[96,1902+27]..[96,1902+28])
+                  expression (testsuite/tests/typing-misc/records.ml[96,1902+31]..[96,1902+32])
+                    Pexp_constant PConst_int (3,None)
+              ]
+              Some
+                expression (testsuite/tests/typing-misc/records.ml[96,1902+20]..[96,1902+21])
+                  Pexp_ident "r" (testsuite/tests/typing-misc/records.ml[96,1902+20]..[96,1902+21])
+            core_type (testsuite/tests/typing-misc/records.ml[96,1902+37]..[96,1902+40])
+              Ptyp_constr "foo" (testsuite/tests/typing-misc/records.ml[96,1902+37]..[96,1902+40])
+              []
+    ]
+  structure_item (testsuite/tests/typing-misc/records.ml[97,1944+0]..[105,2199+3])
+    Pstr_extension "expect"
+    [
+      structure_item (testsuite/tests/typing-misc/records.ml[97,1944+9]..[105,2199+2])
+        Pstr_eval
+        expression (testsuite/tests/typing-misc/records.ml[97,1944+9]..[105,2199+2])
+          Pexp_constant PConst_string ("\ntype foo = { y : int; z : int; }\ntype bar = { x : int; }\nLine 3, characters 20-21:\n3 | let f (r: bar) = ({ r with z = 3 } : foo)\n                        ^\nError: This expression has type bar but an expression was expected of type\n         foo\n",(testsuite/tests/typing-misc/records.ml[97,1944+11]..[105,2199+0]),Some "")
+    ]
+  structure_item (testsuite/tests/typing-misc/records.ml[107,2206+0]..[107,2206+21])
+    Pstr_type Rec
+    [
+      type_declaration "foo" (testsuite/tests/typing-misc/records.ml[107,2206+5]..[107,2206+8]) (testsuite/tests/typing-misc/records.ml[107,2206+0]..[107,2206+21])
+        ptype_params =
+          []
+        ptype_cstrs =
+          []
+        ptype_kind =
+          Ptype_record
+            [
+              (testsuite/tests/typing-misc/records.ml[107,2206+13]..[107,2206+19])
+                Immutable
+                "x" (testsuite/tests/typing-misc/records.ml[107,2206+13]..[107,2206+14])                core_type (testsuite/tests/typing-misc/records.ml[107,2206+16]..[107,2206+19])
+                  Ptyp_constr "int" (testsuite/tests/typing-misc/records.ml[107,2206+16]..[107,2206+19])
+                  []
+            ]
+        ptype_private = Public
+        ptype_manifest =
+          None
+    ]
+  structure_item (testsuite/tests/typing-misc/records.ml[108,2230+0]..[108,2230+27])
+    Pstr_value Nonrec
+    [
+      <def>
+        pattern (testsuite/tests/typing-misc/records.ml[108,2230+4]..[108,2230+11]) ghost
+          Ppat_constraint
+          pattern (testsuite/tests/typing-misc/records.ml[108,2230+4]..[108,2230+5])
+            Ppat_var "r" (testsuite/tests/typing-misc/records.ml[108,2230+4]..[108,2230+5])
+          core_type (testsuite/tests/typing-misc/records.ml[108,2230+8]..[108,2230+11]) ghost
+            Ptyp_poly
+            core_type (testsuite/tests/typing-misc/records.ml[108,2230+8]..[108,2230+11])
+              Ptyp_constr "foo" (testsuite/tests/typing-misc/records.ml[108,2230+8]..[108,2230+11])
+              []
+        expression (testsuite/tests/typing-misc/records.ml[108,2230+4]..[108,2230+27])
+          Pexp_constraint
+          expression (testsuite/tests/typing-misc/records.ml[108,2230+14]..[108,2230+27])
+            Pexp_record
+            [
+              "ZZZ.x" (testsuite/tests/typing-misc/records.ml[108,2230+16]..[108,2230+21])
+                expression (testsuite/tests/typing-misc/records.ml[108,2230+24]..[108,2230+25])
+                  Pexp_constant PConst_int (2,None)
+            ]
+            None
+          core_type (testsuite/tests/typing-misc/records.ml[108,2230+8]..[108,2230+11])
+            Ptyp_constr "foo" (testsuite/tests/typing-misc/records.ml[108,2230+8]..[108,2230+11])
+            []
+    ]
+  structure_item (testsuite/tests/typing-misc/records.ml[109,2260+0]..[115,2408+3])
+    Pstr_extension "expect"
+    [
+      structure_item (testsuite/tests/typing-misc/records.ml[109,2260+9]..[115,2408+2])
+        Pstr_eval
+        expression (testsuite/tests/typing-misc/records.ml[109,2260+9]..[115,2408+2])
+          Pexp_constant PConst_string ("\ntype foo = { x : int; }\nLine 2, characters 16-21:\n2 | let r : foo = { ZZZ.x = 2 };;\n                    ^^^^^\nError: Unbound module ZZZ\n",(testsuite/tests/typing-misc/records.ml[109,2260+11]..[115,2408+0]),Some "")
+    ]
+  structure_item (testsuite/tests/typing-misc/records.ml[117,2415+0]..[117,2415+20])
+    Pstr_eval
+    expression (testsuite/tests/typing-misc/records.ml[117,2415+0]..[117,2415+20])
+      Pexp_constraint
+      expression (testsuite/tests/typing-misc/records.ml[117,2415+1]..[117,2415+6])
+        Pexp_construct "ZZZ.X" (testsuite/tests/typing-misc/records.ml[117,2415+1]..[117,2415+6])
+        None
+      core_type (testsuite/tests/typing-misc/records.ml[117,2415+9]..[117,2415+19])
+        Ptyp_constr "option" (testsuite/tests/typing-misc/records.ml[117,2415+13]..[117,2415+19])
+        [
+          core_type (testsuite/tests/typing-misc/records.ml[117,2415+9]..[117,2415+12])
+            Ptyp_constr "int" (testsuite/tests/typing-misc/records.ml[117,2415+9]..[117,2415+12])
+            []
+        ]
+  structure_item (testsuite/tests/typing-misc/records.ml[118,2438+0]..[123,2538+3])
+    Pstr_extension "expect"
+    [
+      structure_item (testsuite/tests/typing-misc/records.ml[118,2438+9]..[123,2538+2])
+        Pstr_eval
+        expression (testsuite/tests/typing-misc/records.ml[118,2438+9]..[123,2538+2])
+          Pexp_constant PConst_string ("\nLine 1, characters 1-6:\n1 | (ZZZ.X : int option);;\n     ^^^^^\nError: Unbound module ZZZ\n",(testsuite/tests/typing-misc/records.ml[118,2438+11]..[123,2538+0]),Some "")
+    ]
+  structure_item (testsuite/tests/typing-misc/records.ml[126,2559+0]..[126,2559+35])
+    Pstr_value Nonrec
+    [
+      <def>
+        pattern (testsuite/tests/typing-misc/records.ml[126,2559+4]..[126,2559+5])
+          Ppat_var "f" (testsuite/tests/typing-misc/records.ml[126,2559+4]..[126,2559+5])
+        expression (testsuite/tests/typing-misc/records.ml[126,2559+6]..[126,2559+35]) ghost
+          Pexp_fun
+          Nolabel
+          None
+          pattern (testsuite/tests/typing-misc/records.ml[126,2559+6]..[126,2559+21])
+            Ppat_constraint
+            pattern (testsuite/tests/typing-misc/records.ml[126,2559+7]..[126,2559+8])
+              Ppat_var "x" (testsuite/tests/typing-misc/records.ml[126,2559+7]..[126,2559+8])
+            core_type (testsuite/tests/typing-misc/records.ml[126,2559+11]..[126,2559+20])
+              Ptyp_constr "Complex.t" (testsuite/tests/typing-misc/records.ml[126,2559+11]..[126,2559+20])
+              []
+          expression (testsuite/tests/typing-misc/records.ml[126,2559+24]..[126,2559+35])
+            Pexp_field
+            expression (testsuite/tests/typing-misc/records.ml[126,2559+24]..[126,2559+25])
+              Pexp_ident "x" (testsuite/tests/typing-misc/records.ml[126,2559+24]..[126,2559+25])
+            "Complex.z" (testsuite/tests/typing-misc/records.ml[126,2559+26]..[126,2559+35])
+    ]
+  structure_item (testsuite/tests/typing-misc/records.ml[127,2597+0]..[132,2755+3])
+    Pstr_extension "expect"
+    [
+      structure_item (testsuite/tests/typing-misc/records.ml[127,2597+9]..[132,2755+2])
+        Pstr_eval
+        expression (testsuite/tests/typing-misc/records.ml[127,2597+9]..[132,2755+2])
+          Pexp_constant PConst_string ("\nLine 1, characters 26-35:\n1 | let f (x : Complex.t) = x.Complex.z;;\n                              ^^^^^^^^^\nError: Unbound record field Complex.z\n",(testsuite/tests/typing-misc/records.ml[127,2597+11]..[132,2755+0]),Some "")
+    ]
+  structure_item (testsuite/tests/typing-misc/records.ml[135,2776+0]..[135,2776+26])
+    Pstr_eval
+    expression (testsuite/tests/typing-misc/records.ml[135,2776+0]..[135,2776+26])
+      Pexp_record
+      [
+        "contents" (testsuite/tests/typing-misc/records.ml[135,2776+12]..[135,2776+20])
+          expression (testsuite/tests/typing-misc/records.ml[135,2776+23]..[135,2776+24])
+            Pexp_constant PConst_int (0,None)
+      ]
+      Some
+        expression (testsuite/tests/typing-misc/records.ml[135,2776+2]..[135,2776+6])
+          Pexp_construct "true" (testsuite/tests/typing-misc/records.ml[135,2776+2]..[135,2776+6])
+          None
+  structure_item (testsuite/tests/typing-misc/records.ml[136,2805+0]..[141,2950+3])
+    Pstr_extension "expect"
+    [
+      structure_item (testsuite/tests/typing-misc/records.ml[136,2805+9]..[141,2950+2])
+        Pstr_eval
+        expression (testsuite/tests/typing-misc/records.ml[136,2805+9]..[141,2950+2])
+          Pexp_constant PConst_string ("\nLine 1, characters 2-6:\n1 | { true with contents = 0 };;\n      ^^^^\nError: This expression has type bool which is not a record type.\n",(testsuite/tests/typing-misc/records.ml[136,2805+11]..[141,2950+0]),Some "")
+    ]
+  structure_item (testsuite/tests/typing-misc/records.ml[143,2957+0]..[143,2957+40])
+    Pstr_type Rec
+    [
+      type_declaration "t" (testsuite/tests/typing-misc/records.ml[143,2957+14]..[143,2957+15]) (testsuite/tests/typing-misc/records.ml[143,2957+0]..[143,2957+40])
+        ptype_params =
+          [
+            core_type (testsuite/tests/typing-misc/records.ml[143,2957+6]..[143,2957+8])
+              Ptyp_var a
+            core_type (testsuite/tests/typing-misc/records.ml[143,2957+10]..[143,2957+12])
+              Ptyp_var b
+          ]
+        ptype_cstrs =
+          []
+        ptype_kind =
+          Ptype_record
+            [
+              (testsuite/tests/typing-misc/records.ml[143,2957+20]..[143,2957+29])
+                Immutable
+                "fst" (testsuite/tests/typing-misc/records.ml[143,2957+20]..[143,2957+23])                core_type (testsuite/tests/typing-misc/records.ml[143,2957+26]..[143,2957+28])
+                  Ptyp_var a
+              (testsuite/tests/typing-misc/records.ml[143,2957+30]..[143,2957+38])
+                Immutable
+                "snd" (testsuite/tests/typing-misc/records.ml[143,2957+30]..[143,2957+33])                core_type (testsuite/tests/typing-misc/records.ml[143,2957+36]..[143,2957+38])
+                  Ptyp_var b
+            ]
+        ptype_private = Public
+        ptype_manifest =
+          None
+    ]
+  structure_item (testsuite/tests/typing-misc/records.ml[144,3000+0]..[144,3000+35])
+    Pstr_value Nonrec
+    [
+      <def>
+        pattern (testsuite/tests/typing-misc/records.ml[144,3000+4]..[144,3000+12])
+          Ppat_var "with_fst" (testsuite/tests/typing-misc/records.ml[144,3000+4]..[144,3000+12])
+        expression (testsuite/tests/typing-misc/records.ml[144,3000+13]..[144,3000+35]) ghost
+          Pexp_fun
+          Nolabel
+          None
+          pattern (testsuite/tests/typing-misc/records.ml[144,3000+13]..[144,3000+14])
+            Ppat_var "r" (testsuite/tests/typing-misc/records.ml[144,3000+13]..[144,3000+14])
+          expression (testsuite/tests/typing-misc/records.ml[144,3000+15]..[144,3000+35]) ghost
+            Pexp_fun
+            Nolabel
+            None
+            pattern (testsuite/tests/typing-misc/records.ml[144,3000+15]..[144,3000+18])
+              Ppat_var "fst" (testsuite/tests/typing-misc/records.ml[144,3000+15]..[144,3000+18])
+            expression (testsuite/tests/typing-misc/records.ml[144,3000+21]..[144,3000+35])
+              Pexp_record
+              [
+                "fst" (testsuite/tests/typing-misc/records.ml[144,3000+30]..[144,3000+33]) ghost
+                  expression (testsuite/tests/typing-misc/records.ml[144,3000+30]..[144,3000+33])
+                    Pexp_ident "fst" (testsuite/tests/typing-misc/records.ml[144,3000+30]..[144,3000+33])
+              ]
+              Some
+                expression (testsuite/tests/typing-misc/records.ml[144,3000+23]..[144,3000+24])
+                  Pexp_ident "r" (testsuite/tests/typing-misc/records.ml[144,3000+23]..[144,3000+24])
+    ]
+  structure_item (testsuite/tests/typing-misc/records.ml[145,3038+0]..[145,3038+29])
+    Pstr_eval
+    expression (testsuite/tests/typing-misc/records.ml[145,3038+0]..[145,3038+29])
+      Pexp_apply
+      expression (testsuite/tests/typing-misc/records.ml[145,3038+0]..[145,3038+8])
+        Pexp_ident "with_fst" (testsuite/tests/typing-misc/records.ml[145,3038+0]..[145,3038+8])
+      [
+        <arg>
+        Nolabel
+          expression (testsuite/tests/typing-misc/records.ml[145,3038+9]..[145,3038+27])
+            Pexp_record
+            [
+              "fst" (testsuite/tests/typing-misc/records.ml[145,3038+11]..[145,3038+14])
+                expression (testsuite/tests/typing-misc/records.ml[145,3038+15]..[145,3038+17])
+                  Pexp_constant PConst_string("",(testsuite/tests/typing-misc/records.ml[145,3038+16]..[145,3038+16]),None)
+              "snd" (testsuite/tests/typing-misc/records.ml[145,3038+19]..[145,3038+22])
+                expression (testsuite/tests/typing-misc/records.ml[145,3038+23]..[145,3038+25])
+                  Pexp_constant PConst_string("",(testsuite/tests/typing-misc/records.ml[145,3038+24]..[145,3038+24]),None)
+            ]
+            None
+        <arg>
+        Nolabel
+          expression (testsuite/tests/typing-misc/records.ml[145,3038+28]..[145,3038+29])
+            Pexp_constant PConst_int (2,None)
+      ]
+  structure_item (testsuite/tests/typing-misc/records.ml[146,3070+0]..[150,3220+3])
+    Pstr_extension "expect"
+    [
+      structure_item (testsuite/tests/typing-misc/records.ml[146,3070+9]..[150,3220+2])
+        Pstr_eval
+        expression (testsuite/tests/typing-misc/records.ml[146,3070+9]..[150,3220+2])
+          Pexp_constant PConst_string ("\ntype ('a, 'b) t = { fst : 'a; snd : 'b; }\nval with_fst : ('a, 'b) t -> 'c -> ('c, 'b) t = <fun>\n- : (int, string) t = {fst = 2; snd = \"\"}\n",(testsuite/tests/typing-misc/records.ml[146,3070+11]..[150,3220+0]),Some "")
+    ]
+  structure_item (testsuite/tests/typing-misc/records.ml[153,3241+0]..[153,3241+30])
+    Pstr_type Rec
+    [
+      type_declaration "t" (testsuite/tests/typing-misc/records.ml[153,3241+8]..[153,3241+9]) (testsuite/tests/typing-misc/records.ml[153,3241+0]..[153,3241+30])
+        ptype_params =
+          [
+            core_type (testsuite/tests/typing-misc/records.ml[153,3241+5]..[153,3241+7])
+              Ptyp_var a
+          ]
+        ptype_cstrs =
+          []
+        ptype_kind =
+          Ptype_record
+            [
+              (testsuite/tests/typing-misc/records.ml[153,3241+14]..[153,3241+21])
+                Immutable
+                "f" (testsuite/tests/typing-misc/records.ml[153,3241+14]..[153,3241+15])                core_type (testsuite/tests/typing-misc/records.ml[153,3241+18]..[153,3241+20])
+                  Ptyp_var a
+              (testsuite/tests/typing-misc/records.ml[153,3241+22]..[153,3241+28])
+                Immutable
+                "g" (testsuite/tests/typing-misc/records.ml[153,3241+22]..[153,3241+23])                core_type (testsuite/tests/typing-misc/records.ml[153,3241+26]..[153,3241+28])
+                  Ptyp_var a
+            ]
+        ptype_private = Public
+        ptype_manifest =
+          None
+    ]
+  structure_item (testsuite/tests/typing-misc/records.ml[154,3274+0]..[154,3274+26])
+    Pstr_value Nonrec
+    [
+      <def>
+        pattern (testsuite/tests/typing-misc/records.ml[154,3274+4]..[154,3274+5])
+          Ppat_var "x" (testsuite/tests/typing-misc/records.ml[154,3274+4]..[154,3274+5])
+        expression (testsuite/tests/typing-misc/records.ml[154,3274+8]..[154,3274+26])
+          Pexp_record
+          [
+            "f" (testsuite/tests/typing-misc/records.ml[154,3274+10]..[154,3274+11])
+              expression (testsuite/tests/typing-misc/records.ml[154,3274+14]..[154,3274+16])
+                Pexp_constant PConst_int (12,None)
+            "g" (testsuite/tests/typing-misc/records.ml[154,3274+18]..[154,3274+19])
+              expression (testsuite/tests/typing-misc/records.ml[154,3274+22]..[154,3274+24])
+                Pexp_constant PConst_int (43,None)
+          ]
+          None
+    ]
+  structure_item (testsuite/tests/typing-misc/records.ml[155,3303+0]..[155,3303+19])
+    Pstr_eval
+    expression (testsuite/tests/typing-misc/records.ml[155,3303+0]..[155,3303+19])
+      Pexp_record
+      [
+        "f" (testsuite/tests/typing-misc/records.ml[155,3303+8]..[155,3303+9])
+          expression (testsuite/tests/typing-misc/records.ml[155,3303+12]..[155,3303+18])
+            Pexp_constant PConst_string("hola",(testsuite/tests/typing-misc/records.ml[155,3303+13]..[155,3303+17]),None)
+      ]
+      Some
+        expression (testsuite/tests/typing-misc/records.ml[155,3303+1]..[155,3303+2])
+          Pexp_ident "x" (testsuite/tests/typing-misc/records.ml[155,3303+1]..[155,3303+2])
+  structure_item (testsuite/tests/typing-misc/records.ml[156,3325+0]..[165,3621+3])
+    Pstr_extension "expect"
+    [
+      structure_item (testsuite/tests/typing-misc/records.ml[156,3325+9]..[165,3621+2])
+        Pstr_eval
+        expression (testsuite/tests/typing-misc/records.ml[156,3325+9]..[165,3621+2])
+          Pexp_constant PConst_string ("\ntype 'a t = { f : 'a; g : 'a; }\nval x : int t = {f = 12; g = 43}\nLine 3, characters 0-19:\n3 | {x with f = \"hola\"};;\n    ^^^^^^^^^^^^^^^^^^^\nError: This expression has type string t\n       but an expression was expected of type int t\n       Type string is not compatible with type int\n",(testsuite/tests/typing-misc/records.ml[156,3325+11]..[165,3621+0]),Some "")
+    ]
+  structure_item (testsuite/tests/typing-misc/records.ml[168,3640+0]..[168,3640+44])
+    Pstr_value Nonrec
+    [
+      <def>
+        pattern (testsuite/tests/typing-misc/records.ml[168,3640+4]..[168,3640+5])
+          Ppat_var "r" (testsuite/tests/typing-misc/records.ml[168,3640+4]..[168,3640+5])
+        expression (testsuite/tests/typing-misc/records.ml[168,3640+8]..[168,3640+44])
+          Pexp_record
+          [
+            "contents" (testsuite/tests/typing-misc/records.ml[168,3640+30]..[168,3640+38])
+              expression (testsuite/tests/typing-misc/records.ml[168,3640+41]..[168,3640+42])
+                Pexp_constant PConst_int (1,None)
+          ]
+          Some
+            expression (testsuite/tests/typing-misc/records.ml[168,3640+10]..[168,3640+24])
+              Pexp_assert
+              expression (testsuite/tests/typing-misc/records.ml[168,3640+18]..[168,3640+23])
+                Pexp_construct "false" (testsuite/tests/typing-misc/records.ml[168,3640+18]..[168,3640+23])
+                None
+    ]
+  structure_item (testsuite/tests/typing-misc/records.ml[169,3688+0]..[176,3982+3])
+    Pstr_extension "expect"
+    [
+      structure_item (testsuite/tests/typing-misc/records.ml[169,3688+9]..[176,3982+2])
+        Pstr_eval
+        expression (testsuite/tests/typing-misc/records.ml[169,3688+9]..[176,3982+2])
+          Pexp_constant PConst_string ("\nLine 1, characters 8-44:\n1 | let r = { (assert false) with contents = 1 } ;;\n            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nWarning 23 [useless-record-with]: all the fields are explicitly listed in this record:\nthe 'with' clause is useless.\nException: Assert_failure (\"\", 1, 10).\n",(testsuite/tests/typing-misc/records.ml[169,3688+11]..[176,3982+0]),Some "")
+    ]
+  structure_item (testsuite/tests/typing-misc/records.ml[180,4003+0]..[180,4003+51])
+    Pstr_type Rec
+    [
+      type_declaration "def" (testsuite/tests/typing-misc/records.ml[180,4003+13]..[180,4003+16]) (testsuite/tests/typing-misc/records.ml[180,4003+0]..[180,4003+51])
+        ptype_params =
+          [
+            core_type (testsuite/tests/typing-misc/records.ml[180,4003+6]..[180,4003+8])
+              Ptyp_var a
+            core_type (testsuite/tests/typing-misc/records.ml[180,4003+9]..[180,4003+11])
+              Ptyp_var b
+          ]
+        ptype_cstrs =
+          [
+            <constraint> (testsuite/tests/typing-misc/records.ml[180,4003+40]..[180,4003+51])
+              core_type (testsuite/tests/typing-misc/records.ml[180,4003+40]..[180,4003+42])
+                Ptyp_var b
+              core_type (testsuite/tests/typing-misc/records.ml[180,4003+45]..[180,4003+51])
+                Ptyp_variant closed=Open
+                [
+                  Rtag "A" true
+                    []
+                ]
+                None
+          ]
+        ptype_kind =
+          Ptype_record
+            [
+              (testsuite/tests/typing-misc/records.ml[180,4003+21]..[180,4003+26])
+                Immutable
+                "x" (testsuite/tests/typing-misc/records.ml[180,4003+21]..[180,4003+22])                core_type (testsuite/tests/typing-misc/records.ml[180,4003+23]..[180,4003+26])
+                  Ptyp_constr "int" (testsuite/tests/typing-misc/records.ml[180,4003+23]..[180,4003+26])
+                  []
+            ]
+        ptype_private = Public
+        ptype_manifest =
+          None
+    ]
+  structure_item (testsuite/tests/typing-misc/records.ml[182,4056+0]..[182,4056+38])
+    Pstr_type Rec
+    [
+      type_declaration "arity" (testsuite/tests/typing-misc/records.ml[182,4056+5]..[182,4056+10]) (testsuite/tests/typing-misc/records.ml[182,4056+0]..[182,4056+38])
+        ptype_params =
+          []
+        ptype_cstrs =
+          []
+        ptype_kind =
+          Ptype_record
+            [
+              (testsuite/tests/typing-misc/records.ml[182,4056+32]..[182,4056+37])
+                Immutable
+                "x" (testsuite/tests/typing-misc/records.ml[182,4056+32]..[182,4056+33])                core_type (testsuite/tests/typing-misc/records.ml[182,4056+34]..[182,4056+37])
+                  Ptyp_constr "int" (testsuite/tests/typing-misc/records.ml[182,4056+34]..[182,4056+37])
+                  []
+            ]
+        ptype_private = Public
+        ptype_manifest =
+          Some
+            core_type (testsuite/tests/typing-misc/records.ml[182,4056+13]..[182,4056+28])
+              Ptyp_constr "def" (testsuite/tests/typing-misc/records.ml[182,4056+25]..[182,4056+28])
+              [
+                core_type (testsuite/tests/typing-misc/records.ml[182,4056+14]..[182,4056+17])
+                  Ptyp_constr "int" (testsuite/tests/typing-misc/records.ml[182,4056+14]..[182,4056+17])
+                  []
+                core_type (testsuite/tests/typing-misc/records.ml[182,4056+19]..[182,4056+23])
+                  Ptyp_variant closed=Closed
+                  [
+                    Rtag "A" true
+                      []
+                  ]
+                  None
+              ]
+    ]
+  structure_item (testsuite/tests/typing-misc/records.ml[183,4097+0]..[191,4411+3])
+    Pstr_extension "expect"
+    [
+      structure_item (testsuite/tests/typing-misc/records.ml[183,4097+9]..[191,4411+2])
+        Pstr_eval
+        expression (testsuite/tests/typing-misc/records.ml[183,4097+9]..[191,4411+2])
+          Pexp_constant PConst_string ("\ntype ('a, 'b) def = { x : int; } constraint 'b = [> `A ]\nLine 3, characters 0-38:\n3 | type arity = (int, [`A]) def = {x:int};;\n    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nError: This variant or record definition does not match that of type\n         (int, [ `A ]) def\n       They have different arities.\n",(testsuite/tests/typing-misc/records.ml[183,4097+11]..[191,4411+0]),Some "")
+    ]
+  structure_item (testsuite/tests/typing-misc/records.ml[193,4416+0]..[193,4416+40])
+    Pstr_type Rec
+    [
+      type_declaration "ct" (testsuite/tests/typing-misc/records.ml[193,4416+13]..[193,4416+15]) (testsuite/tests/typing-misc/records.ml[193,4416+0]..[193,4416+40])
+        ptype_params =
+          [
+            core_type (testsuite/tests/typing-misc/records.ml[193,4416+6]..[193,4416+8])
+              Ptyp_var a
+            core_type (testsuite/tests/typing-misc/records.ml[193,4416+9]..[193,4416+11])
+              Ptyp_var b
+          ]
+        ptype_cstrs =
+          []
+        ptype_kind =
+          Ptype_record
+            [
+              (testsuite/tests/typing-misc/records.ml[193,4416+34]..[193,4416+39])
+                Immutable
+                "x" (testsuite/tests/typing-misc/records.ml[193,4416+34]..[193,4416+35])                core_type (testsuite/tests/typing-misc/records.ml[193,4416+36]..[193,4416+39])
+                  Ptyp_constr "int" (testsuite/tests/typing-misc/records.ml[193,4416+36]..[193,4416+39])
+                  []
+            ]
+        ptype_private = Public
+        ptype_manifest =
+          Some
+            core_type (testsuite/tests/typing-misc/records.ml[193,4416+18]..[193,4416+30])
+              Ptyp_constr "def" (testsuite/tests/typing-misc/records.ml[193,4416+27]..[193,4416+30])
+              [
+                core_type (testsuite/tests/typing-misc/records.ml[193,4416+19]..[193,4416+22])
+                  Ptyp_constr "int" (testsuite/tests/typing-misc/records.ml[193,4416+19]..[193,4416+22])
+                  []
+                core_type (testsuite/tests/typing-misc/records.ml[193,4416+23]..[193,4416+25])
+                  Ptyp_var b
+              ]
+    ]
+  structure_item (testsuite/tests/typing-misc/records.ml[194,4459+0]..[202,4764+3])
+    Pstr_extension "expect"
+    [
+      structure_item (testsuite/tests/typing-misc/records.ml[194,4459+9]..[202,4764+2])
+        Pstr_eval
+        expression (testsuite/tests/typing-misc/records.ml[194,4459+9]..[202,4764+2])
+          Pexp_constant PConst_string ("\nLine 1, characters 0-40:\n1 | type ('a,'b) ct = (int,'b) def = {x:int};;\n    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nError: This variant or record definition does not match that of type\n         (int, [> `A ]) def\n       Their parameters differ\n       The type int is not equal to the type 'a\n",(testsuite/tests/typing-misc/records.ml[194,4459+11]..[202,4764+0]),Some "")
+    ]
+  structure_item (testsuite/tests/typing-misc/records.ml[204,4769+0]..[204,4769+59])
+    Pstr_type Rec
+    [
+      type_declaration "kind" (testsuite/tests/typing-misc/records.ml[204,4769+13]..[204,4769+17]) (testsuite/tests/typing-misc/records.ml[204,4769+0]..[204,4769+59])
+        ptype_params =
+          [
+            core_type (testsuite/tests/typing-misc/records.ml[204,4769+6]..[204,4769+8])
+              Ptyp_var a
+            core_type (testsuite/tests/typing-misc/records.ml[204,4769+9]..[204,4769+11])
+              Ptyp_var b
+          ]
+        ptype_cstrs =
+          [
+            <constraint> (testsuite/tests/typing-misc/records.ml[204,4769+48]..[204,4769+59])
+              core_type (testsuite/tests/typing-misc/records.ml[204,4769+48]..[204,4769+50])
+                Ptyp_var b
+              core_type (testsuite/tests/typing-misc/records.ml[204,4769+53]..[204,4769+59])
+                Ptyp_variant closed=Open
+                [
+                  Rtag "A" true
+                    []
+                ]
+                None
+          ]
+        ptype_kind =
+          Ptype_variant
+            [
+              (testsuite/tests/typing-misc/records.ml[204,4769+35]..[204,4769+36])
+                "A" (testsuite/tests/typing-misc/records.ml[204,4769+35]..[204,4769+36])
+                []
+                None
+            ]
+        ptype_private = Public
+        ptype_manifest =
+          Some
+            core_type (testsuite/tests/typing-misc/records.ml[204,4769+20]..[204,4769+32])
+              Ptyp_constr "def" (testsuite/tests/typing-misc/records.ml[204,4769+29]..[204,4769+32])
+              [
+                core_type (testsuite/tests/typing-misc/records.ml[204,4769+21]..[204,4769+23])
+                  Ptyp_var a
+                core_type (testsuite/tests/typing-misc/records.ml[204,4769+25]..[204,4769+27])
+                  Ptyp_var b
+              ]
+    ]
+  structure_item (testsuite/tests/typing-misc/records.ml[205,4831+0]..[212,5121+3])
+    Pstr_extension "expect"
+    [
+      structure_item (testsuite/tests/typing-misc/records.ml[205,4831+9]..[212,5121+2])
+        Pstr_eval
+        expression (testsuite/tests/typing-misc/records.ml[205,4831+9]..[212,5121+2])
+          Pexp_constant PConst_string ("\nLine 1, characters 0-59:\n1 | type ('a,'b) kind = ('a, 'b) def = A constraint 'b = [> `A];;\n    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nError: This variant or record definition does not match that of type\n         ('a, [> `A ]) def\n       Their kinds differ.\n",(testsuite/tests/typing-misc/records.ml[205,4831+11]..[212,5121+0]),Some "")
+    ]
+  structure_item (testsuite/tests/typing-misc/records.ml[214,5126+0]..[214,5126+27])
+    Pstr_type Rec
+    [
+      type_declaration "d" (testsuite/tests/typing-misc/records.ml[214,5126+5]..[214,5126+6]) (testsuite/tests/typing-misc/records.ml[214,5126+0]..[214,5126+27])
+        ptype_params =
+          []
+        ptype_cstrs =
+          []
+        ptype_kind =
+          Ptype_record
+            [
+              (testsuite/tests/typing-misc/records.ml[214,5126+11]..[214,5126+17])
+                Immutable
+                "x" (testsuite/tests/typing-misc/records.ml[214,5126+11]..[214,5126+12])                core_type (testsuite/tests/typing-misc/records.ml[214,5126+13]..[214,5126+16])
+                  Ptyp_constr "int" (testsuite/tests/typing-misc/records.ml[214,5126+13]..[214,5126+16])
+                  []
+              (testsuite/tests/typing-misc/records.ml[214,5126+18]..[214,5126+25])
+                Immutable
+                "y" (testsuite/tests/typing-misc/records.ml[214,5126+18]..[214,5126+19])                core_type (testsuite/tests/typing-misc/records.ml[214,5126+22]..[214,5126+25])
+                  Ptyp_constr "int" (testsuite/tests/typing-misc/records.ml[214,5126+22]..[214,5126+25])
+                  []
+            ]
+        ptype_private = Public
+        ptype_manifest =
+          None
+    ]
+  structure_item (testsuite/tests/typing-misc/records.ml[215,5154+0]..[215,5154+37])
+    Pstr_type Rec
+    [
+      type_declaration "mut" (testsuite/tests/typing-misc/records.ml[215,5154+5]..[215,5154+8]) (testsuite/tests/typing-misc/records.ml[215,5154+0]..[215,5154+37])
+        ptype_params =
+          []
+        ptype_cstrs =
+          []
+        ptype_kind =
+          Ptype_record
+            [
+              (testsuite/tests/typing-misc/records.ml[215,5154+16]..[215,5154+22])
+                Immutable
+                "x" (testsuite/tests/typing-misc/records.ml[215,5154+16]..[215,5154+17])                core_type (testsuite/tests/typing-misc/records.ml[215,5154+18]..[215,5154+21])
+                  Ptyp_constr "int" (testsuite/tests/typing-misc/records.ml[215,5154+18]..[215,5154+21])
+                  []
+              (testsuite/tests/typing-misc/records.ml[215,5154+23]..[215,5154+36])
+                Mutable
+                "y" (testsuite/tests/typing-misc/records.ml[215,5154+31]..[215,5154+32])                core_type (testsuite/tests/typing-misc/records.ml[215,5154+33]..[215,5154+36])
+                  Ptyp_constr "int" (testsuite/tests/typing-misc/records.ml[215,5154+33]..[215,5154+36])
+                  []
+            ]
+        ptype_private = Public
+        ptype_manifest =
+          Some
+            core_type (testsuite/tests/typing-misc/records.ml[215,5154+11]..[215,5154+12])
+              Ptyp_constr "d" (testsuite/tests/typing-misc/records.ml[215,5154+11]..[215,5154+12])
+              []
+    ]
+  structure_item (testsuite/tests/typing-misc/records.ml[216,5192+0]..[227,5562+3])
+    Pstr_extension "expect"
+    [
+      structure_item (testsuite/tests/typing-misc/records.ml[216,5192+9]..[227,5562+2])
+        Pstr_eval
+        expression (testsuite/tests/typing-misc/records.ml[216,5192+9]..[227,5562+2])
+          Pexp_constant PConst_string ("\ntype d = { x : int; y : int; }\nLine 2, characters 0-37:\n2 | type mut = d = {x:int; mutable y:int}\n    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nError: This variant or record definition does not match that of type d\n       Fields do not match:\n         y : int;\n       is not the same as:\n         mutable y : int;\n       This is mutable and the original is not.\n",(testsuite/tests/typing-misc/records.ml[216,5192+11]..[227,5562+0]),Some "")
+    ]
+  structure_item (testsuite/tests/typing-misc/records.ml[229,5567+0]..[229,5567+28])
+    Pstr_type Rec
+    [
+      type_declaration "missing" (testsuite/tests/typing-misc/records.ml[229,5567+5]..[229,5567+12]) (testsuite/tests/typing-misc/records.ml[229,5567+0]..[229,5567+28])
+        ptype_params =
+          []
+        ptype_cstrs =
+          []
+        ptype_kind =
+          Ptype_record
+            [
+              (testsuite/tests/typing-misc/records.ml[229,5567+21]..[229,5567+26])
+                Immutable
+                "x" (testsuite/tests/typing-misc/records.ml[229,5567+21]..[229,5567+22])                core_type (testsuite/tests/typing-misc/records.ml[229,5567+23]..[229,5567+26])
+                  Ptyp_constr "int" (testsuite/tests/typing-misc/records.ml[229,5567+23]..[229,5567+26])
+                  []
+            ]
+        ptype_private = Public
+        ptype_manifest =
+          Some
+            core_type (testsuite/tests/typing-misc/records.ml[229,5567+15]..[229,5567+16])
+              Ptyp_constr "d" (testsuite/tests/typing-misc/records.ml[229,5567+15]..[229,5567+16])
+              []
+    ]
+  structure_item (testsuite/tests/typing-misc/records.ml[230,5596+0]..[236,5836+3])
+    Pstr_extension "expect"
+    [
+      structure_item (testsuite/tests/typing-misc/records.ml[230,5596+9]..[236,5836+2])
+        Pstr_eval
+        expression (testsuite/tests/typing-misc/records.ml[230,5596+9]..[236,5836+2])
+          Pexp_constant PConst_string ("\nLine 1, characters 0-28:\n1 | type missing = d = { x:int }\n    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nError: This variant or record definition does not match that of type d\n       An extra field, y, is provided in the original definition.\n",(testsuite/tests/typing-misc/records.ml[230,5596+11]..[236,5836+0]),Some "")
+    ]
+  structure_item (testsuite/tests/typing-misc/records.ml[238,5841+0]..[238,5841+31])
+    Pstr_type Rec
+    [
+      type_declaration "wrong_type" (testsuite/tests/typing-misc/records.ml[238,5841+5]..[238,5841+15]) (testsuite/tests/typing-misc/records.ml[238,5841+0]..[238,5841+31])
+        ptype_params =
+          []
+        ptype_cstrs =
+          []
+        ptype_kind =
+          Ptype_record
+            [
+              (testsuite/tests/typing-misc/records.ml[238,5841+23]..[238,5841+30])
+                Immutable
+                "x" (testsuite/tests/typing-misc/records.ml[238,5841+23]..[238,5841+24])                core_type (testsuite/tests/typing-misc/records.ml[238,5841+25]..[238,5841+30])
+                  Ptyp_constr "float" (testsuite/tests/typing-misc/records.ml[238,5841+25]..[238,5841+30])
+                  []
+            ]
+        ptype_private = Public
+        ptype_manifest =
+          Some
+            core_type (testsuite/tests/typing-misc/records.ml[238,5841+18]..[238,5841+19])
+              Ptyp_constr "d" (testsuite/tests/typing-misc/records.ml[238,5841+18]..[238,5841+19])
+              []
+    ]
+  structure_item (testsuite/tests/typing-misc/records.ml[239,5873+0]..[250,6269+3])
+    Pstr_extension "expect"
+    [
+      structure_item (testsuite/tests/typing-misc/records.ml[239,5873+9]..[250,6269+2])
+        Pstr_eval
+        expression (testsuite/tests/typing-misc/records.ml[239,5873+9]..[250,6269+2])
+          Pexp_constant PConst_string ("\nLine 1, characters 0-31:\n1 | type wrong_type = d = {x:float}\n    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nError: This variant or record definition does not match that of type d\n       1. Fields do not match:\n         x : int;\n       is not the same as:\n         x : float;\n       The type int is not equal to the type float\n       2. An extra field, y, is provided in the original definition.\n",(testsuite/tests/typing-misc/records.ml[239,5873+11]..[250,6269+0]),Some "")
+    ]
+  structure_item (testsuite/tests/typing-misc/records.ml[252,6274+0]..[252,6274+21])
+    Pstr_type Rec
+    [
+      type_declaration "mono" (testsuite/tests/typing-misc/records.ml[252,6274+5]..[252,6274+9]) (testsuite/tests/typing-misc/records.ml[252,6274+0]..[252,6274+21])
+        ptype_params =
+          []
+        ptype_cstrs =
+          []
+        ptype_kind =
+          Ptype_record
+            [
+              (testsuite/tests/typing-misc/records.ml[252,6274+13]..[252,6274+20])
+                Immutable
+                "foo" (testsuite/tests/typing-misc/records.ml[252,6274+13]..[252,6274+16])                core_type (testsuite/tests/typing-misc/records.ml[252,6274+17]..[252,6274+20])
+                  Ptyp_constr "int" (testsuite/tests/typing-misc/records.ml[252,6274+17]..[252,6274+20])
+                  []
+            ]
+        ptype_private = Public
+        ptype_manifest =
+          None
+    ]
+  structure_item (testsuite/tests/typing-misc/records.ml[253,6296+0]..[253,6296+43])
+    Pstr_type Rec
+    [
+      type_declaration "unboxed" (testsuite/tests/typing-misc/records.ml[253,6296+5]..[253,6296+12]) (testsuite/tests/typing-misc/records.ml[253,6296+0]..[253,6296+43])
+        attribute "unboxed"
+          []
+        ptype_params =
+          []
+        ptype_cstrs =
+          []
+        ptype_kind =
+          Ptype_record
+            [
+              (testsuite/tests/typing-misc/records.ml[253,6296+23]..[253,6296+30])
+                Immutable
+                "foo" (testsuite/tests/typing-misc/records.ml[253,6296+23]..[253,6296+26])                core_type (testsuite/tests/typing-misc/records.ml[253,6296+27]..[253,6296+30])
+                  Ptyp_constr "int" (testsuite/tests/typing-misc/records.ml[253,6296+27]..[253,6296+30])
+                  []
+            ]
+        ptype_private = Public
+        ptype_manifest =
+          Some
+            core_type (testsuite/tests/typing-misc/records.ml[253,6296+15]..[253,6296+19])
+              Ptyp_constr "mono" (testsuite/tests/typing-misc/records.ml[253,6296+15]..[253,6296+19])
+              []
+    ]
+  structure_item (testsuite/tests/typing-misc/records.ml[254,6340+0]..[262,6672+3])
+    Pstr_extension "expect"
+    [
+      structure_item (testsuite/tests/typing-misc/records.ml[254,6340+9]..[262,6672+2])
+        Pstr_eval
+        expression (testsuite/tests/typing-misc/records.ml[254,6340+9]..[262,6672+2])
+          Pexp_constant PConst_string ("\ntype mono = { foo : int; }\nLine 2, characters 0-43:\n2 | type unboxed = mono = {foo:int} [@@unboxed]\n    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nError: This variant or record definition does not match that of type mono\n       Their internal representations differ:\n       this definition uses unboxed representation.\n",(testsuite/tests/typing-misc/records.ml[254,6340+11]..[262,6672+0]),Some "")
+    ]
+  structure_item (testsuite/tests/typing-misc/records.ml[264,6677+0]..[264,6677+30])
+    Pstr_type Rec
+    [
+      type_declaration "perm" (testsuite/tests/typing-misc/records.ml[264,6677+5]..[264,6677+9]) (testsuite/tests/typing-misc/records.ml[264,6677+0]..[264,6677+30])
+        ptype_params =
+          []
+        ptype_cstrs =
+          []
+        ptype_kind =
+          Ptype_record
+            [
+              (testsuite/tests/typing-misc/records.ml[264,6677+17]..[264,6677+23])
+                Immutable
+                "y" (testsuite/tests/typing-misc/records.ml[264,6677+17]..[264,6677+18])                core_type (testsuite/tests/typing-misc/records.ml[264,6677+19]..[264,6677+22])
+                  Ptyp_constr "int" (testsuite/tests/typing-misc/records.ml[264,6677+19]..[264,6677+22])
+                  []
+              (testsuite/tests/typing-misc/records.ml[264,6677+24]..[264,6677+29])
+                Immutable
+                "x" (testsuite/tests/typing-misc/records.ml[264,6677+24]..[264,6677+25])                core_type (testsuite/tests/typing-misc/records.ml[264,6677+26]..[264,6677+29])
+                  Ptyp_constr "int" (testsuite/tests/typing-misc/records.ml[264,6677+26]..[264,6677+29])
+                  []
+            ]
+        ptype_private = Public
+        ptype_manifest =
+          Some
+            core_type (testsuite/tests/typing-misc/records.ml[264,6677+12]..[264,6677+13])
+              Ptyp_constr "d" (testsuite/tests/typing-misc/records.ml[264,6677+12]..[264,6677+13])
+              []
+    ]
+  structure_item (testsuite/tests/typing-misc/records.ml[265,6708+0]..[271,6927+3])
+    Pstr_extension "expect"
+    [
+      structure_item (testsuite/tests/typing-misc/records.ml[265,6708+9]..[271,6927+2])
+        Pstr_eval
+        expression (testsuite/tests/typing-misc/records.ml[265,6708+9]..[271,6927+2])
+          Pexp_constant PConst_string ("\nLine 1, characters 0-30:\n1 | type perm = d = {y:int; x:int}\n    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nError: This variant or record definition does not match that of type d\n       Fields x and y have been swapped.\n",(testsuite/tests/typing-misc/records.ml[265,6708+11]..[271,6927+0]),Some "")
+    ]
+]
+

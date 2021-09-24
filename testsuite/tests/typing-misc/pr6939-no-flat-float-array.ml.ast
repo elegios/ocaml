@@ -1,0 +1,65 @@
+File "testsuite/tests/typing-misc/pr6939-no-flat-float-array.ml", line 1:
+Warning 24 [bad-module-name]: bad source file name: "Pr6939-no-flat-float-array" is not a valid module name.
+[
+  structure_item (testsuite/tests/typing-misc/pr6939-no-flat-float-array.ml[6,50+0]..[6,50+23])
+    Pstr_value Rec
+    [
+      <def>
+        pattern (testsuite/tests/typing-misc/pr6939-no-flat-float-array.ml[6,50+8]..[6,50+9])
+          Ppat_var "x" (testsuite/tests/typing-misc/pr6939-no-flat-float-array.ml[6,50+8]..[6,50+9])
+        expression (testsuite/tests/typing-misc/pr6939-no-flat-float-array.ml[6,50+12]..[6,50+23])
+          Pexp_sequence
+          expression (testsuite/tests/typing-misc/pr6939-no-flat-float-array.ml[6,50+12]..[6,50+19])
+            Pexp_array
+            [
+              expression (testsuite/tests/typing-misc/pr6939-no-flat-float-array.ml[6,50+15]..[6,50+16])
+                Pexp_ident "x" (testsuite/tests/typing-misc/pr6939-no-flat-float-array.ml[6,50+15]..[6,50+16])
+            ]
+          expression (testsuite/tests/typing-misc/pr6939-no-flat-float-array.ml[6,50+21]..[6,50+23])
+            Pexp_constant PConst_float (1.,None)
+    ]
+  structure_item (testsuite/tests/typing-misc/pr6939-no-flat-float-array.ml[7,76+0]..[13,259+3])
+    Pstr_extension "expect"
+    [
+      structure_item (testsuite/tests/typing-misc/pr6939-no-flat-float-array.ml[7,76+9]..[13,259+2])
+        Pstr_eval
+        expression (testsuite/tests/typing-misc/pr6939-no-flat-float-array.ml[7,76+9]..[13,259+2])
+          Pexp_constant PConst_string ("\nLine 1, characters 12-19:\n1 | let rec x = [| x |]; 1.;;\n                ^^^^^^^\nWarning 10 [non-unit-statement]: this expression should have type unit.\nval x : float = 1.\n",(testsuite/tests/typing-misc/pr6939-no-flat-float-array.ml[7,76+11]..[13,259+0]),Some "")
+    ]
+  structure_item (testsuite/tests/typing-misc/pr6939-no-flat-float-array.ml[15,266+0]..[15,266+43])
+    Pstr_value Rec
+    [
+      <def>
+        pattern (testsuite/tests/typing-misc/pr6939-no-flat-float-array.ml[15,266+8]..[15,266+9])
+          Ppat_var "x" (testsuite/tests/typing-misc/pr6939-no-flat-float-array.ml[15,266+8]..[15,266+9])
+        expression (testsuite/tests/typing-misc/pr6939-no-flat-float-array.ml[15,266+12]..[15,266+32])
+          Pexp_let Nonrec
+          [
+            <def>
+              pattern (testsuite/tests/typing-misc/pr6939-no-flat-float-array.ml[15,266+16]..[15,266+17])
+                Ppat_var "u" (testsuite/tests/typing-misc/pr6939-no-flat-float-array.ml[15,266+16]..[15,266+17])
+              expression (testsuite/tests/typing-misc/pr6939-no-flat-float-array.ml[15,266+20]..[15,266+25])
+                Pexp_array
+                [
+                  expression (testsuite/tests/typing-misc/pr6939-no-flat-float-array.ml[15,266+22]..[15,266+23])
+                    Pexp_ident "y" (testsuite/tests/typing-misc/pr6939-no-flat-float-array.ml[15,266+22]..[15,266+23])
+                ]
+          ]
+          expression (testsuite/tests/typing-misc/pr6939-no-flat-float-array.ml[15,266+29]..[15,266+32])
+            Pexp_constant PConst_float (10.,None)
+      <def>
+        pattern (testsuite/tests/typing-misc/pr6939-no-flat-float-array.ml[15,266+37]..[15,266+38])
+          Ppat_var "y" (testsuite/tests/typing-misc/pr6939-no-flat-float-array.ml[15,266+37]..[15,266+38])
+        expression (testsuite/tests/typing-misc/pr6939-no-flat-float-array.ml[15,266+41]..[15,266+43])
+          Pexp_constant PConst_float (1.,None)
+    ]
+  structure_item (testsuite/tests/typing-misc/pr6939-no-flat-float-array.ml[16,312+0]..[23,505+3])
+    Pstr_extension "expect"
+    [
+      structure_item (testsuite/tests/typing-misc/pr6939-no-flat-float-array.ml[16,312+9]..[23,505+2])
+        Pstr_eval
+        expression (testsuite/tests/typing-misc/pr6939-no-flat-float-array.ml[16,312+9]..[23,505+2])
+          Pexp_constant PConst_string ("\nLine 1, characters 16-17:\n1 | let rec x = let u = [|y|] in 10. and y = 1.;;\n                    ^\nWarning 26 [unused-var]: unused variable u.\nval x : float = 10.\nval y : float = 1.\n",(testsuite/tests/typing-misc/pr6939-no-flat-float-array.ml[16,312+11]..[23,505+0]),Some "")
+    ]
+]
+

@@ -1,0 +1,1492 @@
+[
+  structure_item (stdlib/queue.ml[17,1156+0]..[17,1156+15])
+    Pstr_exception
+    type_exception
+      ptyext_constructor =
+        extension_constructor (stdlib/queue.ml[17,1156+0]..[17,1156+15])
+          pext_name = "Empty"
+          pext_kind =
+            Pext_decl
+              []
+              None
+  structure_item (stdlib/queue.ml[19,1173+0]..[21,1196+50])
+    Pstr_type Rec
+    [
+      type_declaration "cell" (stdlib/queue.ml[19,1173+8]..[19,1173+12]) (stdlib/queue.ml[19,1173+0]..[21,1196+50])
+        ptype_params =
+          [
+            core_type (stdlib/queue.ml[19,1173+5]..[19,1173+7])
+              Ptyp_var a
+          ]
+        ptype_cstrs =
+          []
+        ptype_kind =
+          Ptype_variant
+            [
+              (stdlib/queue.ml[20,1188+2]..[20,1188+7])
+                "Nil" (stdlib/queue.ml[20,1188+4]..[20,1188+7])
+                []
+                None
+              (stdlib/queue.ml[21,1196+2]..[21,1196+50])
+                "Cons" (stdlib/queue.ml[21,1196+4]..[21,1196+8])
+                [
+                  (stdlib/queue.ml[21,1196+14]..[21,1196+26])
+                    Immutable
+                    "content" (stdlib/queue.ml[21,1196+14]..[21,1196+21])                    core_type (stdlib/queue.ml[21,1196+23]..[21,1196+25])
+                      Ptyp_var a
+                  (stdlib/queue.ml[21,1196+27]..[21,1196+48])
+                    Mutable
+                    "next" (stdlib/queue.ml[21,1196+35]..[21,1196+39])                    core_type (stdlib/queue.ml[21,1196+41]..[21,1196+48])
+                      Ptyp_constr "cell" (stdlib/queue.ml[21,1196+44]..[21,1196+48])
+                      [
+                        core_type (stdlib/queue.ml[21,1196+41]..[21,1196+43])
+                          Ptyp_var a
+                      ]
+                ]
+                None
+            ]
+        ptype_private = Public
+        ptype_manifest =
+          None
+    ]
+  structure_item (stdlib/queue.ml[23,1248+0]..[27,1335+1])
+    Pstr_type Rec
+    [
+      type_declaration "t" (stdlib/queue.ml[23,1248+8]..[23,1248+9]) (stdlib/queue.ml[23,1248+0]..[27,1335+1])
+        ptype_params =
+          [
+            core_type (stdlib/queue.ml[23,1248+5]..[23,1248+7])
+              Ptyp_var a
+          ]
+        ptype_cstrs =
+          []
+        ptype_kind =
+          Ptype_record
+            [
+              (stdlib/queue.ml[24,1262+2]..[24,1262+22])
+                Mutable
+                "length" (stdlib/queue.ml[24,1262+10]..[24,1262+16])                core_type (stdlib/queue.ml[24,1262+18]..[24,1262+21])
+                  Ptyp_constr "int" (stdlib/queue.ml[24,1262+18]..[24,1262+21])
+                  []
+              (stdlib/queue.ml[25,1285+2]..[25,1285+25])
+                Mutable
+                "first" (stdlib/queue.ml[25,1285+10]..[25,1285+15])                core_type (stdlib/queue.ml[25,1285+17]..[25,1285+24])
+                  Ptyp_constr "cell" (stdlib/queue.ml[25,1285+20]..[25,1285+24])
+                  [
+                    core_type (stdlib/queue.ml[25,1285+17]..[25,1285+19])
+                      Ptyp_var a
+                  ]
+              (stdlib/queue.ml[26,1311+2]..[26,1311+23])
+                Mutable
+                "last" (stdlib/queue.ml[26,1311+10]..[26,1311+14])                core_type (stdlib/queue.ml[26,1311+16]..[26,1311+23])
+                  Ptyp_constr "cell" (stdlib/queue.ml[26,1311+19]..[26,1311+23])
+                  [
+                    core_type (stdlib/queue.ml[26,1311+16]..[26,1311+18])
+                      Ptyp_var a
+                  ]
+            ]
+        ptype_private = Public
+        ptype_manifest =
+          None
+    ]
+  structure_item (stdlib/queue.ml[29,1338+0]..[33,1398+1])
+    Pstr_value Nonrec
+    [
+      <def>
+        pattern (stdlib/queue.ml[29,1338+4]..[29,1338+10])
+          Ppat_var "create" (stdlib/queue.ml[29,1338+4]..[29,1338+10])
+        expression (stdlib/queue.ml[29,1338+11]..[33,1398+1]) ghost
+          Pexp_fun
+          Nolabel
+          None
+          pattern (stdlib/queue.ml[29,1338+11]..[29,1338+13])
+            Ppat_construct "()" (stdlib/queue.ml[29,1338+11]..[29,1338+13])
+            None
+          expression (stdlib/queue.ml[29,1338+16]..[33,1398+1])
+            Pexp_record
+            [
+              "length" (stdlib/queue.ml[30,1356+2]..[30,1356+8])
+                expression (stdlib/queue.ml[30,1356+11]..[30,1356+12])
+                  Pexp_constant PConst_int (0,None)
+              "first" (stdlib/queue.ml[31,1370+2]..[31,1370+7])
+                expression (stdlib/queue.ml[31,1370+10]..[31,1370+13])
+                  Pexp_construct "Nil" (stdlib/queue.ml[31,1370+10]..[31,1370+13])
+                  None
+              "last" (stdlib/queue.ml[32,1385+2]..[32,1385+6])
+                expression (stdlib/queue.ml[32,1385+9]..[32,1385+12])
+                  Pexp_construct "Nil" (stdlib/queue.ml[32,1385+9]..[32,1385+12])
+                  None
+            ]
+            None
+    ]
+  structure_item (stdlib/queue.ml[35,1401+0]..[38,1450+15])
+    Pstr_value Nonrec
+    [
+      <def>
+        pattern (stdlib/queue.ml[35,1401+4]..[35,1401+9])
+          Ppat_var "clear" (stdlib/queue.ml[35,1401+4]..[35,1401+9])
+        expression (stdlib/queue.ml[35,1401+10]..[38,1450+15]) ghost
+          Pexp_fun
+          Nolabel
+          None
+          pattern (stdlib/queue.ml[35,1401+10]..[35,1401+11])
+            Ppat_var "q" (stdlib/queue.ml[35,1401+10]..[35,1401+11])
+          expression (stdlib/queue.ml[36,1415+2]..[38,1450+15])
+            Pexp_sequence
+            expression (stdlib/queue.ml[36,1415+2]..[36,1415+15])
+              Pexp_setfield
+              expression (stdlib/queue.ml[36,1415+2]..[36,1415+3])
+                Pexp_ident "q" (stdlib/queue.ml[36,1415+2]..[36,1415+3])
+              "length" (stdlib/queue.ml[36,1415+4]..[36,1415+10])
+              expression (stdlib/queue.ml[36,1415+14]..[36,1415+15])
+                Pexp_constant PConst_int (0,None)
+            expression (stdlib/queue.ml[37,1432+2]..[38,1450+15])
+              Pexp_sequence
+              expression (stdlib/queue.ml[37,1432+2]..[37,1432+16])
+                Pexp_setfield
+                expression (stdlib/queue.ml[37,1432+2]..[37,1432+3])
+                  Pexp_ident "q" (stdlib/queue.ml[37,1432+2]..[37,1432+3])
+                "first" (stdlib/queue.ml[37,1432+4]..[37,1432+9])
+                expression (stdlib/queue.ml[37,1432+13]..[37,1432+16])
+                  Pexp_construct "Nil" (stdlib/queue.ml[37,1432+13]..[37,1432+16])
+                  None
+              expression (stdlib/queue.ml[38,1450+2]..[38,1450+15])
+                Pexp_setfield
+                expression (stdlib/queue.ml[38,1450+2]..[38,1450+3])
+                  Pexp_ident "q" (stdlib/queue.ml[38,1450+2]..[38,1450+3])
+                "last" (stdlib/queue.ml[38,1450+4]..[38,1450+8])
+                expression (stdlib/queue.ml[38,1450+12]..[38,1450+15])
+                  Pexp_construct "Nil" (stdlib/queue.ml[38,1450+12]..[38,1450+15])
+                  None
+    ]
+  structure_item (stdlib/queue.ml[40,1467+0]..[53,1700+18])
+    Pstr_value Nonrec
+    [
+      <def>
+        pattern (stdlib/queue.ml[40,1467+4]..[40,1467+7])
+          Ppat_var "add" (stdlib/queue.ml[40,1467+4]..[40,1467+7])
+        expression (stdlib/queue.ml[40,1467+8]..[53,1700+18]) ghost
+          Pexp_fun
+          Nolabel
+          None
+          pattern (stdlib/queue.ml[40,1467+8]..[40,1467+9])
+            Ppat_var "x" (stdlib/queue.ml[40,1467+8]..[40,1467+9])
+          expression (stdlib/queue.ml[40,1467+10]..[53,1700+18]) ghost
+            Pexp_fun
+            Nolabel
+            None
+            pattern (stdlib/queue.ml[40,1467+10]..[40,1467+11])
+              Ppat_var "q" (stdlib/queue.ml[40,1467+10]..[40,1467+11])
+            expression (stdlib/queue.ml[41,1481+2]..[53,1700+18])
+              Pexp_let Nonrec
+              [
+                <def>
+                  pattern (stdlib/queue.ml[41,1481+6]..[41,1481+10])
+                    Ppat_var "cell" (stdlib/queue.ml[41,1481+6]..[41,1481+10])
+                  expression (stdlib/queue.ml[41,1481+13]..[44,1533+3])
+                    Pexp_construct "Cons" (stdlib/queue.ml[41,1481+13]..[41,1481+17])
+                    Some
+                      expression (stdlib/queue.ml[41,1481+18]..[44,1533+3])
+                        Pexp_record
+                        [
+                          "content" (stdlib/queue.ml[42,1501+4]..[42,1501+11])
+                            expression (stdlib/queue.ml[42,1501+14]..[42,1501+15])
+                              Pexp_ident "x" (stdlib/queue.ml[42,1501+14]..[42,1501+15])
+                          "next" (stdlib/queue.ml[43,1518+4]..[43,1518+8])
+                            expression (stdlib/queue.ml[43,1518+11]..[43,1518+14])
+                              Pexp_construct "Nil" (stdlib/queue.ml[43,1518+11]..[43,1518+14])
+                              None
+                        ]
+                        None
+              ]
+              expression (stdlib/queue.ml[45,1540+2]..[53,1700+18])
+                Pexp_match
+                expression (stdlib/queue.ml[45,1540+8]..[45,1540+14])
+                  Pexp_field
+                  expression (stdlib/queue.ml[45,1540+8]..[45,1540+9])
+                    Pexp_ident "q" (stdlib/queue.ml[45,1540+8]..[45,1540+9])
+                  "last" (stdlib/queue.ml[45,1540+10]..[45,1540+14])
+                [
+                  <case>
+                    pattern (stdlib/queue.ml[46,1560+4]..[46,1560+7])
+                      Ppat_construct "Nil" (stdlib/queue.ml[46,1560+4]..[46,1560+7])
+                      None
+                    expression (stdlib/queue.ml[47,1571+4]..[49,1611+18])
+                      Pexp_sequence
+                      expression (stdlib/queue.ml[47,1571+4]..[47,1571+17])
+                        Pexp_setfield
+                        expression (stdlib/queue.ml[47,1571+4]..[47,1571+5])
+                          Pexp_ident "q" (stdlib/queue.ml[47,1571+4]..[47,1571+5])
+                        "length" (stdlib/queue.ml[47,1571+6]..[47,1571+12])
+                        expression (stdlib/queue.ml[47,1571+16]..[47,1571+17])
+                          Pexp_constant PConst_int (1,None)
+                      expression (stdlib/queue.ml[48,1590+4]..[49,1611+18])
+                        Pexp_sequence
+                        expression (stdlib/queue.ml[48,1590+4]..[48,1590+19])
+                          Pexp_setfield
+                          expression (stdlib/queue.ml[48,1590+4]..[48,1590+5])
+                            Pexp_ident "q" (stdlib/queue.ml[48,1590+4]..[48,1590+5])
+                          "first" (stdlib/queue.ml[48,1590+6]..[48,1590+11])
+                          expression (stdlib/queue.ml[48,1590+15]..[48,1590+19])
+                            Pexp_ident "cell" (stdlib/queue.ml[48,1590+15]..[48,1590+19])
+                        expression (stdlib/queue.ml[49,1611+4]..[49,1611+18])
+                          Pexp_setfield
+                          expression (stdlib/queue.ml[49,1611+4]..[49,1611+5])
+                            Pexp_ident "q" (stdlib/queue.ml[49,1611+4]..[49,1611+5])
+                          "last" (stdlib/queue.ml[49,1611+6]..[49,1611+10])
+                          expression (stdlib/queue.ml[49,1611+14]..[49,1611+18])
+                            Pexp_ident "cell" (stdlib/queue.ml[49,1611+14]..[49,1611+18])
+                  <case>
+                    pattern (stdlib/queue.ml[50,1630+4]..[50,1630+13])
+                      Ppat_construct "Cons" (stdlib/queue.ml[50,1630+4]..[50,1630+8])
+                      Some
+                        []
+                        pattern (stdlib/queue.ml[50,1630+9]..[50,1630+13])
+                          Ppat_var "last" (stdlib/queue.ml[50,1630+9]..[50,1630+13])
+                    expression (stdlib/queue.ml[51,1647+4]..[53,1700+18])
+                      Pexp_sequence
+                      expression (stdlib/queue.ml[51,1647+4]..[51,1647+28])
+                        Pexp_setfield
+                        expression (stdlib/queue.ml[51,1647+4]..[51,1647+5])
+                          Pexp_ident "q" (stdlib/queue.ml[51,1647+4]..[51,1647+5])
+                        "length" (stdlib/queue.ml[51,1647+6]..[51,1647+12])
+                        expression (stdlib/queue.ml[51,1647+16]..[51,1647+28])
+                          Pexp_apply
+                          expression (stdlib/queue.ml[51,1647+25]..[51,1647+26])
+                            Pexp_ident "+" (stdlib/queue.ml[51,1647+25]..[51,1647+26])
+                          [
+                            <arg>
+                            Nolabel
+                              expression (stdlib/queue.ml[51,1647+16]..[51,1647+24])
+                                Pexp_field
+                                expression (stdlib/queue.ml[51,1647+16]..[51,1647+17])
+                                  Pexp_ident "q" (stdlib/queue.ml[51,1647+16]..[51,1647+17])
+                                "length" (stdlib/queue.ml[51,1647+18]..[51,1647+24])
+                            <arg>
+                            Nolabel
+                              expression (stdlib/queue.ml[51,1647+27]..[51,1647+28])
+                                Pexp_constant PConst_int (1,None)
+                          ]
+                      expression (stdlib/queue.ml[52,1677+4]..[53,1700+18])
+                        Pexp_sequence
+                        expression (stdlib/queue.ml[52,1677+4]..[52,1677+21])
+                          Pexp_setfield
+                          expression (stdlib/queue.ml[52,1677+4]..[52,1677+8])
+                            Pexp_ident "last" (stdlib/queue.ml[52,1677+4]..[52,1677+8])
+                          "next" (stdlib/queue.ml[52,1677+9]..[52,1677+13])
+                          expression (stdlib/queue.ml[52,1677+17]..[52,1677+21])
+                            Pexp_ident "cell" (stdlib/queue.ml[52,1677+17]..[52,1677+21])
+                        expression (stdlib/queue.ml[53,1700+4]..[53,1700+18])
+                          Pexp_setfield
+                          expression (stdlib/queue.ml[53,1700+4]..[53,1700+5])
+                            Pexp_ident "q" (stdlib/queue.ml[53,1700+4]..[53,1700+5])
+                          "last" (stdlib/queue.ml[53,1700+6]..[53,1700+10])
+                          expression (stdlib/queue.ml[53,1700+14]..[53,1700+18])
+                            Pexp_ident "cell" (stdlib/queue.ml[53,1700+14]..[53,1700+18])
+                ]
+    ]
+  structure_item (stdlib/queue.ml[55,1720+0]..[56,1731+5])
+    Pstr_value Nonrec
+    [
+      <def>
+        pattern (stdlib/queue.ml[55,1720+4]..[55,1720+8])
+          Ppat_var "push" (stdlib/queue.ml[55,1720+4]..[55,1720+8])
+        expression (stdlib/queue.ml[56,1731+2]..[56,1731+5])
+          Pexp_ident "add" (stdlib/queue.ml[56,1731+2]..[56,1731+5])
+    ]
+  structure_item (stdlib/queue.ml[58,1738+0]..[61,1795+31])
+    Pstr_value Nonrec
+    [
+      <def>
+        pattern (stdlib/queue.ml[58,1738+4]..[58,1738+8])
+          Ppat_var "peek" (stdlib/queue.ml[58,1738+4]..[58,1738+8])
+        expression (stdlib/queue.ml[58,1738+9]..[61,1795+31]) ghost
+          Pexp_fun
+          Nolabel
+          None
+          pattern (stdlib/queue.ml[58,1738+9]..[58,1738+10])
+            Ppat_var "q" (stdlib/queue.ml[58,1738+9]..[58,1738+10])
+          expression (stdlib/queue.ml[59,1751+2]..[61,1795+31])
+            Pexp_match
+            expression (stdlib/queue.ml[59,1751+8]..[59,1751+15])
+              Pexp_field
+              expression (stdlib/queue.ml[59,1751+8]..[59,1751+9])
+                Pexp_ident "q" (stdlib/queue.ml[59,1751+8]..[59,1751+9])
+              "first" (stdlib/queue.ml[59,1751+10]..[59,1751+15])
+            [
+              <case>
+                pattern (stdlib/queue.ml[60,1772+4]..[60,1772+7])
+                  Ppat_construct "Nil" (stdlib/queue.ml[60,1772+4]..[60,1772+7])
+                  None
+                expression (stdlib/queue.ml[60,1772+11]..[60,1772+22])
+                  Pexp_apply
+                  expression (stdlib/queue.ml[60,1772+11]..[60,1772+16])
+                    Pexp_ident "raise" (stdlib/queue.ml[60,1772+11]..[60,1772+16])
+                  [
+                    <arg>
+                    Nolabel
+                      expression (stdlib/queue.ml[60,1772+17]..[60,1772+22])
+                        Pexp_construct "Empty" (stdlib/queue.ml[60,1772+17]..[60,1772+22])
+                        None
+                  ]
+              <case>
+                pattern (stdlib/queue.ml[61,1795+4]..[61,1795+20])
+                  Ppat_construct "Cons" (stdlib/queue.ml[61,1795+4]..[61,1795+8])
+                  Some
+                    []
+                    pattern (stdlib/queue.ml[61,1795+9]..[61,1795+20])
+                      Ppat_record Closed
+                      [
+                        "content" (stdlib/queue.ml[61,1795+11]..[61,1795+18]) ghost
+                          pattern (stdlib/queue.ml[61,1795+11]..[61,1795+18])
+                            Ppat_var "content" (stdlib/queue.ml[61,1795+11]..[61,1795+18])
+                      ]
+                expression (stdlib/queue.ml[61,1795+24]..[61,1795+31])
+                  Pexp_ident "content" (stdlib/queue.ml[61,1795+24]..[61,1795+31])
+            ]
+    ]
+  structure_item (stdlib/queue.ml[63,1828+0]..[66,1882+36])
+    Pstr_value Nonrec
+    [
+      <def>
+        pattern (stdlib/queue.ml[63,1828+4]..[63,1828+12])
+          Ppat_var "peek_opt" (stdlib/queue.ml[63,1828+4]..[63,1828+12])
+        expression (stdlib/queue.ml[63,1828+13]..[66,1882+36]) ghost
+          Pexp_fun
+          Nolabel
+          None
+          pattern (stdlib/queue.ml[63,1828+13]..[63,1828+14])
+            Ppat_var "q" (stdlib/queue.ml[63,1828+13]..[63,1828+14])
+          expression (stdlib/queue.ml[64,1845+2]..[66,1882+36])
+            Pexp_match
+            expression (stdlib/queue.ml[64,1845+8]..[64,1845+15])
+              Pexp_field
+              expression (stdlib/queue.ml[64,1845+8]..[64,1845+9])
+                Pexp_ident "q" (stdlib/queue.ml[64,1845+8]..[64,1845+9])
+              "first" (stdlib/queue.ml[64,1845+10]..[64,1845+15])
+            [
+              <case>
+                pattern (stdlib/queue.ml[65,1866+4]..[65,1866+7])
+                  Ppat_construct "Nil" (stdlib/queue.ml[65,1866+4]..[65,1866+7])
+                  None
+                expression (stdlib/queue.ml[65,1866+11]..[65,1866+15])
+                  Pexp_construct "None" (stdlib/queue.ml[65,1866+11]..[65,1866+15])
+                  None
+              <case>
+                pattern (stdlib/queue.ml[66,1882+4]..[66,1882+20])
+                  Ppat_construct "Cons" (stdlib/queue.ml[66,1882+4]..[66,1882+8])
+                  Some
+                    []
+                    pattern (stdlib/queue.ml[66,1882+9]..[66,1882+20])
+                      Ppat_record Closed
+                      [
+                        "content" (stdlib/queue.ml[66,1882+11]..[66,1882+18]) ghost
+                          pattern (stdlib/queue.ml[66,1882+11]..[66,1882+18])
+                            Ppat_var "content" (stdlib/queue.ml[66,1882+11]..[66,1882+18])
+                      ]
+                expression (stdlib/queue.ml[66,1882+24]..[66,1882+36])
+                  Pexp_construct "Some" (stdlib/queue.ml[66,1882+24]..[66,1882+28])
+                  Some
+                    expression (stdlib/queue.ml[66,1882+29]..[66,1882+36])
+                      Pexp_ident "content" (stdlib/queue.ml[66,1882+29]..[66,1882+36])
+            ]
+    ]
+  structure_item (stdlib/queue.ml[68,1920+0]..[69,1930+6])
+    Pstr_value Nonrec
+    [
+      <def>
+        pattern (stdlib/queue.ml[68,1920+4]..[68,1920+7])
+          Ppat_var "top" (stdlib/queue.ml[68,1920+4]..[68,1920+7])
+        expression (stdlib/queue.ml[69,1930+2]..[69,1930+6])
+          Pexp_ident "peek" (stdlib/queue.ml[69,1930+2]..[69,1930+6])
+    ]
+  structure_item (stdlib/queue.ml[71,1938+0]..[80,2137+11])
+    Pstr_value Nonrec
+    [
+      <def>
+        pattern (stdlib/queue.ml[71,1938+4]..[71,1938+8])
+          Ppat_var "take" (stdlib/queue.ml[71,1938+4]..[71,1938+8])
+        expression (stdlib/queue.ml[71,1938+9]..[80,2137+11]) ghost
+          Pexp_fun
+          Nolabel
+          None
+          pattern (stdlib/queue.ml[71,1938+9]..[71,1938+10])
+            Ppat_var "q" (stdlib/queue.ml[71,1938+9]..[71,1938+10])
+          expression (stdlib/queue.ml[72,1951+2]..[80,2137+11])
+            Pexp_match
+            expression (stdlib/queue.ml[72,1951+8]..[72,1951+15])
+              Pexp_field
+              expression (stdlib/queue.ml[72,1951+8]..[72,1951+9])
+                Pexp_ident "q" (stdlib/queue.ml[72,1951+8]..[72,1951+9])
+              "first" (stdlib/queue.ml[72,1951+10]..[72,1951+15])
+            [
+              <case>
+                pattern (stdlib/queue.ml[73,1972+4]..[73,1972+7])
+                  Ppat_construct "Nil" (stdlib/queue.ml[73,1972+4]..[73,1972+7])
+                  None
+                expression (stdlib/queue.ml[73,1972+11]..[73,1972+22])
+                  Pexp_apply
+                  expression (stdlib/queue.ml[73,1972+11]..[73,1972+16])
+                    Pexp_ident "raise" (stdlib/queue.ml[73,1972+11]..[73,1972+16])
+                  [
+                    <arg>
+                    Nolabel
+                      expression (stdlib/queue.ml[73,1972+17]..[73,1972+22])
+                        Pexp_construct "Empty" (stdlib/queue.ml[73,1972+17]..[73,1972+22])
+                        None
+                  ]
+              <case>
+                pattern (stdlib/queue.ml[74,1995+4]..[74,1995+32])
+                  Ppat_construct "Cons" (stdlib/queue.ml[74,1995+4]..[74,1995+8])
+                  Some
+                    []
+                    pattern (stdlib/queue.ml[74,1995+9]..[74,1995+32])
+                      Ppat_record Closed
+                      [
+                        "content" (stdlib/queue.ml[74,1995+11]..[74,1995+18]) ghost
+                          pattern (stdlib/queue.ml[74,1995+11]..[74,1995+18])
+                            Ppat_var "content" (stdlib/queue.ml[74,1995+11]..[74,1995+18])
+                        "next" (stdlib/queue.ml[74,1995+20]..[74,1995+24])
+                          pattern (stdlib/queue.ml[74,1995+27]..[74,1995+30])
+                            Ppat_construct "Nil" (stdlib/queue.ml[74,1995+27]..[74,1995+30])
+                            None
+                      ]
+                expression (stdlib/queue.ml[75,2031+4]..[76,2044+11])
+                  Pexp_sequence
+                  expression (stdlib/queue.ml[75,2031+4]..[75,2031+11])
+                    Pexp_apply
+                    expression (stdlib/queue.ml[75,2031+4]..[75,2031+9])
+                      Pexp_ident "clear" (stdlib/queue.ml[75,2031+4]..[75,2031+9])
+                    [
+                      <arg>
+                      Nolabel
+                        expression (stdlib/queue.ml[75,2031+10]..[75,2031+11])
+                          Pexp_ident "q" (stdlib/queue.ml[75,2031+10]..[75,2031+11])
+                    ]
+                  expression (stdlib/queue.ml[76,2044+4]..[76,2044+11])
+                    Pexp_ident "content" (stdlib/queue.ml[76,2044+4]..[76,2044+11])
+              <case>
+                pattern (stdlib/queue.ml[77,2056+4]..[77,2056+26])
+                  Ppat_construct "Cons" (stdlib/queue.ml[77,2056+4]..[77,2056+8])
+                  Some
+                    []
+                    pattern (stdlib/queue.ml[77,2056+9]..[77,2056+26])
+                      Ppat_record Closed
+                      [
+                        "content" (stdlib/queue.ml[77,2056+11]..[77,2056+18]) ghost
+                          pattern (stdlib/queue.ml[77,2056+11]..[77,2056+18])
+                            Ppat_var "content" (stdlib/queue.ml[77,2056+11]..[77,2056+18])
+                        "next" (stdlib/queue.ml[77,2056+20]..[77,2056+24]) ghost
+                          pattern (stdlib/queue.ml[77,2056+20]..[77,2056+24])
+                            Ppat_var "next" (stdlib/queue.ml[77,2056+20]..[77,2056+24])
+                      ]
+                expression (stdlib/queue.ml[78,2086+4]..[80,2137+11])
+                  Pexp_sequence
+                  expression (stdlib/queue.ml[78,2086+4]..[78,2086+28])
+                    Pexp_setfield
+                    expression (stdlib/queue.ml[78,2086+4]..[78,2086+5])
+                      Pexp_ident "q" (stdlib/queue.ml[78,2086+4]..[78,2086+5])
+                    "length" (stdlib/queue.ml[78,2086+6]..[78,2086+12])
+                    expression (stdlib/queue.ml[78,2086+16]..[78,2086+28])
+                      Pexp_apply
+                      expression (stdlib/queue.ml[78,2086+25]..[78,2086+26])
+                        Pexp_ident "-" (stdlib/queue.ml[78,2086+25]..[78,2086+26])
+                      [
+                        <arg>
+                        Nolabel
+                          expression (stdlib/queue.ml[78,2086+16]..[78,2086+24])
+                            Pexp_field
+                            expression (stdlib/queue.ml[78,2086+16]..[78,2086+17])
+                              Pexp_ident "q" (stdlib/queue.ml[78,2086+16]..[78,2086+17])
+                            "length" (stdlib/queue.ml[78,2086+18]..[78,2086+24])
+                        <arg>
+                        Nolabel
+                          expression (stdlib/queue.ml[78,2086+27]..[78,2086+28])
+                            Pexp_constant PConst_int (1,None)
+                      ]
+                  expression (stdlib/queue.ml[79,2116+4]..[80,2137+11])
+                    Pexp_sequence
+                    expression (stdlib/queue.ml[79,2116+4]..[79,2116+19])
+                      Pexp_setfield
+                      expression (stdlib/queue.ml[79,2116+4]..[79,2116+5])
+                        Pexp_ident "q" (stdlib/queue.ml[79,2116+4]..[79,2116+5])
+                      "first" (stdlib/queue.ml[79,2116+6]..[79,2116+11])
+                      expression (stdlib/queue.ml[79,2116+15]..[79,2116+19])
+                        Pexp_ident "next" (stdlib/queue.ml[79,2116+15]..[79,2116+19])
+                    expression (stdlib/queue.ml[80,2137+4]..[80,2137+11])
+                      Pexp_ident "content" (stdlib/queue.ml[80,2137+4]..[80,2137+11])
+            ]
+    ]
+  structure_item (stdlib/queue.ml[82,2150+0]..[91,2351+16])
+    Pstr_value Nonrec
+    [
+      <def>
+        pattern (stdlib/queue.ml[82,2150+4]..[82,2150+12])
+          Ppat_var "take_opt" (stdlib/queue.ml[82,2150+4]..[82,2150+12])
+        expression (stdlib/queue.ml[82,2150+13]..[91,2351+16]) ghost
+          Pexp_fun
+          Nolabel
+          None
+          pattern (stdlib/queue.ml[82,2150+13]..[82,2150+14])
+            Ppat_var "q" (stdlib/queue.ml[82,2150+13]..[82,2150+14])
+          expression (stdlib/queue.ml[83,2167+2]..[91,2351+16])
+            Pexp_match
+            expression (stdlib/queue.ml[83,2167+8]..[83,2167+15])
+              Pexp_field
+              expression (stdlib/queue.ml[83,2167+8]..[83,2167+9])
+                Pexp_ident "q" (stdlib/queue.ml[83,2167+8]..[83,2167+9])
+              "first" (stdlib/queue.ml[83,2167+10]..[83,2167+15])
+            [
+              <case>
+                pattern (stdlib/queue.ml[84,2188+4]..[84,2188+7])
+                  Ppat_construct "Nil" (stdlib/queue.ml[84,2188+4]..[84,2188+7])
+                  None
+                expression (stdlib/queue.ml[84,2188+11]..[84,2188+15])
+                  Pexp_construct "None" (stdlib/queue.ml[84,2188+11]..[84,2188+15])
+                  None
+              <case>
+                pattern (stdlib/queue.ml[85,2204+4]..[85,2204+32])
+                  Ppat_construct "Cons" (stdlib/queue.ml[85,2204+4]..[85,2204+8])
+                  Some
+                    []
+                    pattern (stdlib/queue.ml[85,2204+9]..[85,2204+32])
+                      Ppat_record Closed
+                      [
+                        "content" (stdlib/queue.ml[85,2204+11]..[85,2204+18]) ghost
+                          pattern (stdlib/queue.ml[85,2204+11]..[85,2204+18])
+                            Ppat_var "content" (stdlib/queue.ml[85,2204+11]..[85,2204+18])
+                        "next" (stdlib/queue.ml[85,2204+20]..[85,2204+24])
+                          pattern (stdlib/queue.ml[85,2204+27]..[85,2204+30])
+                            Ppat_construct "Nil" (stdlib/queue.ml[85,2204+27]..[85,2204+30])
+                            None
+                      ]
+                expression (stdlib/queue.ml[86,2240+4]..[87,2253+16])
+                  Pexp_sequence
+                  expression (stdlib/queue.ml[86,2240+4]..[86,2240+11])
+                    Pexp_apply
+                    expression (stdlib/queue.ml[86,2240+4]..[86,2240+9])
+                      Pexp_ident "clear" (stdlib/queue.ml[86,2240+4]..[86,2240+9])
+                    [
+                      <arg>
+                      Nolabel
+                        expression (stdlib/queue.ml[86,2240+10]..[86,2240+11])
+                          Pexp_ident "q" (stdlib/queue.ml[86,2240+10]..[86,2240+11])
+                    ]
+                  expression (stdlib/queue.ml[87,2253+4]..[87,2253+16])
+                    Pexp_construct "Some" (stdlib/queue.ml[87,2253+4]..[87,2253+8])
+                    Some
+                      expression (stdlib/queue.ml[87,2253+9]..[87,2253+16])
+                        Pexp_ident "content" (stdlib/queue.ml[87,2253+9]..[87,2253+16])
+              <case>
+                pattern (stdlib/queue.ml[88,2270+4]..[88,2270+26])
+                  Ppat_construct "Cons" (stdlib/queue.ml[88,2270+4]..[88,2270+8])
+                  Some
+                    []
+                    pattern (stdlib/queue.ml[88,2270+9]..[88,2270+26])
+                      Ppat_record Closed
+                      [
+                        "content" (stdlib/queue.ml[88,2270+11]..[88,2270+18]) ghost
+                          pattern (stdlib/queue.ml[88,2270+11]..[88,2270+18])
+                            Ppat_var "content" (stdlib/queue.ml[88,2270+11]..[88,2270+18])
+                        "next" (stdlib/queue.ml[88,2270+20]..[88,2270+24]) ghost
+                          pattern (stdlib/queue.ml[88,2270+20]..[88,2270+24])
+                            Ppat_var "next" (stdlib/queue.ml[88,2270+20]..[88,2270+24])
+                      ]
+                expression (stdlib/queue.ml[89,2300+4]..[91,2351+16])
+                  Pexp_sequence
+                  expression (stdlib/queue.ml[89,2300+4]..[89,2300+28])
+                    Pexp_setfield
+                    expression (stdlib/queue.ml[89,2300+4]..[89,2300+5])
+                      Pexp_ident "q" (stdlib/queue.ml[89,2300+4]..[89,2300+5])
+                    "length" (stdlib/queue.ml[89,2300+6]..[89,2300+12])
+                    expression (stdlib/queue.ml[89,2300+16]..[89,2300+28])
+                      Pexp_apply
+                      expression (stdlib/queue.ml[89,2300+25]..[89,2300+26])
+                        Pexp_ident "-" (stdlib/queue.ml[89,2300+25]..[89,2300+26])
+                      [
+                        <arg>
+                        Nolabel
+                          expression (stdlib/queue.ml[89,2300+16]..[89,2300+24])
+                            Pexp_field
+                            expression (stdlib/queue.ml[89,2300+16]..[89,2300+17])
+                              Pexp_ident "q" (stdlib/queue.ml[89,2300+16]..[89,2300+17])
+                            "length" (stdlib/queue.ml[89,2300+18]..[89,2300+24])
+                        <arg>
+                        Nolabel
+                          expression (stdlib/queue.ml[89,2300+27]..[89,2300+28])
+                            Pexp_constant PConst_int (1,None)
+                      ]
+                  expression (stdlib/queue.ml[90,2330+4]..[91,2351+16])
+                    Pexp_sequence
+                    expression (stdlib/queue.ml[90,2330+4]..[90,2330+19])
+                      Pexp_setfield
+                      expression (stdlib/queue.ml[90,2330+4]..[90,2330+5])
+                        Pexp_ident "q" (stdlib/queue.ml[90,2330+4]..[90,2330+5])
+                      "first" (stdlib/queue.ml[90,2330+6]..[90,2330+11])
+                      expression (stdlib/queue.ml[90,2330+15]..[90,2330+19])
+                        Pexp_ident "next" (stdlib/queue.ml[90,2330+15]..[90,2330+19])
+                    expression (stdlib/queue.ml[91,2351+4]..[91,2351+16])
+                      Pexp_construct "Some" (stdlib/queue.ml[91,2351+4]..[91,2351+8])
+                      Some
+                        expression (stdlib/queue.ml[91,2351+9]..[91,2351+16])
+                          Pexp_ident "content" (stdlib/queue.ml[91,2351+9]..[91,2351+16])
+            ]
+    ]
+  structure_item (stdlib/queue.ml[93,2369+0]..[94,2379+6])
+    Pstr_value Nonrec
+    [
+      <def>
+        pattern (stdlib/queue.ml[93,2369+4]..[93,2369+7])
+          Ppat_var "pop" (stdlib/queue.ml[93,2369+4]..[93,2369+7])
+        expression (stdlib/queue.ml[94,2379+2]..[94,2379+6])
+          Pexp_ident "take" (stdlib/queue.ml[94,2379+2]..[94,2379+6])
+    ]
+  structure_item (stdlib/queue.ml[96,2387+0]..[108,2706+74])
+    Pstr_value Nonrec
+    [
+      <def>
+        pattern (stdlib/queue.ml[96,2387+4]..[96,2387+8])
+          Ppat_var "copy" (stdlib/queue.ml[96,2387+4]..[96,2387+8])
+        expression (stdlib/queue.ml[97,2398+2]..[108,2706+74])
+          Pexp_let Rec
+          [
+            <def>
+              pattern (stdlib/queue.ml[97,2398+10]..[97,2398+14])
+                Ppat_var "copy" (stdlib/queue.ml[97,2398+10]..[97,2398+14])
+              expression (stdlib/queue.ml[97,2398+15]..[106,2675+25]) ghost
+                Pexp_fun
+                Nolabel
+                None
+                pattern (stdlib/queue.ml[97,2398+15]..[97,2398+20])
+                  Ppat_var "q_res" (stdlib/queue.ml[97,2398+15]..[97,2398+20])
+                expression (stdlib/queue.ml[97,2398+21]..[106,2675+25]) ghost
+                  Pexp_fun
+                  Nolabel
+                  None
+                  pattern (stdlib/queue.ml[97,2398+21]..[97,2398+25])
+                    Ppat_var "prev" (stdlib/queue.ml[97,2398+21]..[97,2398+25])
+                  expression (stdlib/queue.ml[97,2398+26]..[106,2675+25]) ghost
+                    Pexp_fun
+                    Nolabel
+                    None
+                    pattern (stdlib/queue.ml[97,2398+26]..[97,2398+30])
+                      Ppat_var "cell" (stdlib/queue.ml[97,2398+26]..[97,2398+30])
+                    expression (stdlib/queue.ml[98,2431+4]..[106,2675+25])
+                      Pexp_match
+                      expression (stdlib/queue.ml[98,2431+10]..[98,2431+14])
+                        Pexp_ident "cell" (stdlib/queue.ml[98,2431+10]..[98,2431+14])
+                      [
+                        <case>
+                          pattern (stdlib/queue.ml[99,2451+6]..[99,2451+9])
+                            Ppat_construct "Nil" (stdlib/queue.ml[99,2451+6]..[99,2451+9])
+                            None
+                          expression (stdlib/queue.ml[99,2451+13]..[99,2451+38])
+                            Pexp_sequence
+                            expression (stdlib/queue.ml[99,2451+13]..[99,2451+31])
+                              Pexp_setfield
+                              expression (stdlib/queue.ml[99,2451+13]..[99,2451+18])
+                                Pexp_ident "q_res" (stdlib/queue.ml[99,2451+13]..[99,2451+18])
+                              "last" (stdlib/queue.ml[99,2451+19]..[99,2451+23])
+                              expression (stdlib/queue.ml[99,2451+27]..[99,2451+31])
+                                Pexp_ident "prev" (stdlib/queue.ml[99,2451+27]..[99,2451+31])
+                            expression (stdlib/queue.ml[99,2451+33]..[99,2451+38])
+                              Pexp_ident "q_res" (stdlib/queue.ml[99,2451+33]..[99,2451+38])
+                        <case>
+                          pattern (stdlib/queue.ml[100,2490+6]..[100,2490+28])
+                            Ppat_construct "Cons" (stdlib/queue.ml[100,2490+6]..[100,2490+10])
+                            Some
+                              []
+                              pattern (stdlib/queue.ml[100,2490+11]..[100,2490+28])
+                                Ppat_record Closed
+                                [
+                                  "content" (stdlib/queue.ml[100,2490+13]..[100,2490+20]) ghost
+                                    pattern (stdlib/queue.ml[100,2490+13]..[100,2490+20])
+                                      Ppat_var "content" (stdlib/queue.ml[100,2490+13]..[100,2490+20])
+                                  "next" (stdlib/queue.ml[100,2490+22]..[100,2490+26]) ghost
+                                    pattern (stdlib/queue.ml[100,2490+22]..[100,2490+26])
+                                      Ppat_var "next" (stdlib/queue.ml[100,2490+22]..[100,2490+26])
+                                ]
+                          expression (stdlib/queue.ml[101,2522+6]..[106,2675+25])
+                            Pexp_let Nonrec
+                            [
+                              <def>
+                                pattern (stdlib/queue.ml[101,2522+10]..[101,2522+13])
+                                  Ppat_var "res" (stdlib/queue.ml[101,2522+10]..[101,2522+13])
+                                expression (stdlib/queue.ml[101,2522+16]..[101,2522+44])
+                                  Pexp_construct "Cons" (stdlib/queue.ml[101,2522+16]..[101,2522+20])
+                                  Some
+                                    expression (stdlib/queue.ml[101,2522+21]..[101,2522+44])
+                                      Pexp_record
+                                      [
+                                        "content" (stdlib/queue.ml[101,2522+23]..[101,2522+30]) ghost
+                                          expression (stdlib/queue.ml[101,2522+23]..[101,2522+30])
+                                            Pexp_ident "content" (stdlib/queue.ml[101,2522+23]..[101,2522+30])
+                                        "next" (stdlib/queue.ml[101,2522+32]..[101,2522+36])
+                                          expression (stdlib/queue.ml[101,2522+39]..[101,2522+42])
+                                            Pexp_construct "Nil" (stdlib/queue.ml[101,2522+39]..[101,2522+42])
+                                            None
+                                      ]
+                                      None
+                            ]
+                            expression (stdlib/queue.ml[102,2570+6]..[106,2675+25])
+                              Pexp_sequence
+                              expression (stdlib/queue.ml[102,2570+6]..[105,2664+9])
+                                Pexp_match
+                                expression (stdlib/queue.ml[102,2570+18]..[102,2570+22])
+                                  Pexp_ident "prev" (stdlib/queue.ml[102,2570+18]..[102,2570+22])
+                                [
+                                  <case>
+                                    pattern (stdlib/queue.ml[103,2598+8]..[103,2598+11])
+                                      Ppat_construct "Nil" (stdlib/queue.ml[103,2598+8]..[103,2598+11])
+                                      None
+                                    expression (stdlib/queue.ml[103,2598+15]..[103,2598+33])
+                                      Pexp_setfield
+                                      expression (stdlib/queue.ml[103,2598+15]..[103,2598+20])
+                                        Pexp_ident "q_res" (stdlib/queue.ml[103,2598+15]..[103,2598+20])
+                                      "first" (stdlib/queue.ml[103,2598+21]..[103,2598+26])
+                                      expression (stdlib/queue.ml[103,2598+30]..[103,2598+33])
+                                        Pexp_ident "res" (stdlib/queue.ml[103,2598+30]..[103,2598+33])
+                                  <case>
+                                    pattern (stdlib/queue.ml[104,2632+8]..[104,2632+14])
+                                      Ppat_construct "Cons" (stdlib/queue.ml[104,2632+8]..[104,2632+12])
+                                      Some
+                                        []
+                                        pattern (stdlib/queue.ml[104,2632+13]..[104,2632+14])
+                                          Ppat_var "p" (stdlib/queue.ml[104,2632+13]..[104,2632+14])
+                                    expression (stdlib/queue.ml[104,2632+18]..[104,2632+31])
+                                      Pexp_setfield
+                                      expression (stdlib/queue.ml[104,2632+18]..[104,2632+19])
+                                        Pexp_ident "p" (stdlib/queue.ml[104,2632+18]..[104,2632+19])
+                                      "next" (stdlib/queue.ml[104,2632+20]..[104,2632+24])
+                                      expression (stdlib/queue.ml[104,2632+28]..[104,2632+31])
+                                        Pexp_ident "res" (stdlib/queue.ml[104,2632+28]..[104,2632+31])
+                                ]
+                              expression (stdlib/queue.ml[106,2675+6]..[106,2675+25])
+                                Pexp_apply
+                                expression (stdlib/queue.ml[106,2675+6]..[106,2675+10])
+                                  Pexp_ident "copy" (stdlib/queue.ml[106,2675+6]..[106,2675+10])
+                                [
+                                  <arg>
+                                  Nolabel
+                                    expression (stdlib/queue.ml[106,2675+11]..[106,2675+16])
+                                      Pexp_ident "q_res" (stdlib/queue.ml[106,2675+11]..[106,2675+16])
+                                  <arg>
+                                  Nolabel
+                                    expression (stdlib/queue.ml[106,2675+17]..[106,2675+20])
+                                      Pexp_ident "res" (stdlib/queue.ml[106,2675+17]..[106,2675+20])
+                                  <arg>
+                                  Nolabel
+                                    expression (stdlib/queue.ml[106,2675+21]..[106,2675+25])
+                                      Pexp_ident "next" (stdlib/queue.ml[106,2675+21]..[106,2675+25])
+                                ]
+                      ]
+          ]
+          expression (stdlib/queue.ml[108,2706+2]..[108,2706+74])
+            Pexp_fun
+            Nolabel
+            None
+            pattern (stdlib/queue.ml[108,2706+6]..[108,2706+7])
+              Ppat_var "q" (stdlib/queue.ml[108,2706+6]..[108,2706+7])
+            expression (stdlib/queue.ml[108,2706+11]..[108,2706+74])
+              Pexp_apply
+              expression (stdlib/queue.ml[108,2706+11]..[108,2706+15])
+                Pexp_ident "copy" (stdlib/queue.ml[108,2706+11]..[108,2706+15])
+              [
+                <arg>
+                Nolabel
+                  expression (stdlib/queue.ml[108,2706+16]..[108,2706+62])
+                    Pexp_record
+                    [
+                      "length" (stdlib/queue.ml[108,2706+18]..[108,2706+24])
+                        expression (stdlib/queue.ml[108,2706+27]..[108,2706+35])
+                          Pexp_field
+                          expression (stdlib/queue.ml[108,2706+27]..[108,2706+28])
+                            Pexp_ident "q" (stdlib/queue.ml[108,2706+27]..[108,2706+28])
+                          "length" (stdlib/queue.ml[108,2706+29]..[108,2706+35])
+                      "first" (stdlib/queue.ml[108,2706+37]..[108,2706+42])
+                        expression (stdlib/queue.ml[108,2706+45]..[108,2706+48])
+                          Pexp_construct "Nil" (stdlib/queue.ml[108,2706+45]..[108,2706+48])
+                          None
+                      "last" (stdlib/queue.ml[108,2706+50]..[108,2706+54])
+                        expression (stdlib/queue.ml[108,2706+57]..[108,2706+60])
+                          Pexp_construct "Nil" (stdlib/queue.ml[108,2706+57]..[108,2706+60])
+                          None
+                    ]
+                    None
+                <arg>
+                Nolabel
+                  expression (stdlib/queue.ml[108,2706+63]..[108,2706+66])
+                    Pexp_construct "Nil" (stdlib/queue.ml[108,2706+63]..[108,2706+66])
+                    None
+                <arg>
+                Nolabel
+                  expression (stdlib/queue.ml[108,2706+67]..[108,2706+74])
+                    Pexp_field
+                    expression (stdlib/queue.ml[108,2706+67]..[108,2706+68])
+                      Pexp_ident "q" (stdlib/queue.ml[108,2706+67]..[108,2706+68])
+                    "first" (stdlib/queue.ml[108,2706+69]..[108,2706+74])
+              ]
+    ]
+  structure_item (stdlib/queue.ml[110,2782+0]..[111,2799+14])
+    Pstr_value Nonrec
+    [
+      <def>
+        pattern (stdlib/queue.ml[110,2782+4]..[110,2782+12])
+          Ppat_var "is_empty" (stdlib/queue.ml[110,2782+4]..[110,2782+12])
+        expression (stdlib/queue.ml[110,2782+13]..[111,2799+14]) ghost
+          Pexp_fun
+          Nolabel
+          None
+          pattern (stdlib/queue.ml[110,2782+13]..[110,2782+14])
+            Ppat_var "q" (stdlib/queue.ml[110,2782+13]..[110,2782+14])
+          expression (stdlib/queue.ml[111,2799+2]..[111,2799+14])
+            Pexp_apply
+            expression (stdlib/queue.ml[111,2799+11]..[111,2799+12])
+              Pexp_ident "=" (stdlib/queue.ml[111,2799+11]..[111,2799+12])
+            [
+              <arg>
+              Nolabel
+                expression (stdlib/queue.ml[111,2799+2]..[111,2799+10])
+                  Pexp_field
+                  expression (stdlib/queue.ml[111,2799+2]..[111,2799+3])
+                    Pexp_ident "q" (stdlib/queue.ml[111,2799+2]..[111,2799+3])
+                  "length" (stdlib/queue.ml[111,2799+4]..[111,2799+10])
+              <arg>
+              Nolabel
+                expression (stdlib/queue.ml[111,2799+13]..[111,2799+14])
+                  Pexp_constant PConst_int (0,None)
+            ]
+    ]
+  structure_item (stdlib/queue.ml[113,2815+0]..[114,2830+10])
+    Pstr_value Nonrec
+    [
+      <def>
+        pattern (stdlib/queue.ml[113,2815+4]..[113,2815+10])
+          Ppat_var "length" (stdlib/queue.ml[113,2815+4]..[113,2815+10])
+        expression (stdlib/queue.ml[113,2815+11]..[114,2830+10]) ghost
+          Pexp_fun
+          Nolabel
+          None
+          pattern (stdlib/queue.ml[113,2815+11]..[113,2815+12])
+            Ppat_var "q" (stdlib/queue.ml[113,2815+11]..[113,2815+12])
+          expression (stdlib/queue.ml[114,2830+2]..[114,2830+10])
+            Pexp_field
+            expression (stdlib/queue.ml[114,2830+2]..[114,2830+3])
+              Pexp_ident "q" (stdlib/queue.ml[114,2830+2]..[114,2830+3])
+            "length" (stdlib/queue.ml[114,2830+4]..[114,2830+10])
+    ]
+  structure_item (stdlib/queue.ml[116,2842+0]..[124,2985+27])
+    Pstr_value Nonrec
+    [
+      <def>
+        pattern (stdlib/queue.ml[116,2842+4]..[116,2842+8])
+          Ppat_var "iter" (stdlib/queue.ml[116,2842+4]..[116,2842+8])
+        expression (stdlib/queue.ml[117,2853+2]..[124,2985+27])
+          Pexp_let Rec
+          [
+            <def>
+              pattern (stdlib/queue.ml[117,2853+10]..[117,2853+14])
+                Ppat_var "iter" (stdlib/queue.ml[117,2853+10]..[117,2853+14])
+              expression (stdlib/queue.ml[117,2853+15]..[122,2962+17]) ghost
+                Pexp_fun
+                Nolabel
+                None
+                pattern (stdlib/queue.ml[117,2853+15]..[117,2853+16])
+                  Ppat_var "f" (stdlib/queue.ml[117,2853+15]..[117,2853+16])
+                expression (stdlib/queue.ml[117,2853+17]..[122,2962+17]) ghost
+                  Pexp_fun
+                  Nolabel
+                  None
+                  pattern (stdlib/queue.ml[117,2853+17]..[117,2853+21])
+                    Ppat_var "cell" (stdlib/queue.ml[117,2853+17]..[117,2853+21])
+                  expression (stdlib/queue.ml[118,2877+4]..[122,2962+17])
+                    Pexp_match
+                    expression (stdlib/queue.ml[118,2877+10]..[118,2877+14])
+                      Pexp_ident "cell" (stdlib/queue.ml[118,2877+10]..[118,2877+14])
+                    [
+                      <case>
+                        pattern (stdlib/queue.ml[119,2897+6]..[119,2897+9])
+                          Ppat_construct "Nil" (stdlib/queue.ml[119,2897+6]..[119,2897+9])
+                          None
+                        expression (stdlib/queue.ml[119,2897+13]..[119,2897+15])
+                          Pexp_construct "()" (stdlib/queue.ml[119,2897+13]..[119,2897+15])
+                          None
+                      <case>
+                        pattern (stdlib/queue.ml[120,2913+6]..[120,2913+28])
+                          Ppat_construct "Cons" (stdlib/queue.ml[120,2913+6]..[120,2913+10])
+                          Some
+                            []
+                            pattern (stdlib/queue.ml[120,2913+11]..[120,2913+28])
+                              Ppat_record Closed
+                              [
+                                "content" (stdlib/queue.ml[120,2913+13]..[120,2913+20]) ghost
+                                  pattern (stdlib/queue.ml[120,2913+13]..[120,2913+20])
+                                    Ppat_var "content" (stdlib/queue.ml[120,2913+13]..[120,2913+20])
+                                "next" (stdlib/queue.ml[120,2913+22]..[120,2913+26]) ghost
+                                  pattern (stdlib/queue.ml[120,2913+22]..[120,2913+26])
+                                    Ppat_var "next" (stdlib/queue.ml[120,2913+22]..[120,2913+26])
+                              ]
+                        expression (stdlib/queue.ml[121,2945+6]..[122,2962+17])
+                          Pexp_sequence
+                          expression (stdlib/queue.ml[121,2945+6]..[121,2945+15])
+                            Pexp_apply
+                            expression (stdlib/queue.ml[121,2945+6]..[121,2945+7])
+                              Pexp_ident "f" (stdlib/queue.ml[121,2945+6]..[121,2945+7])
+                            [
+                              <arg>
+                              Nolabel
+                                expression (stdlib/queue.ml[121,2945+8]..[121,2945+15])
+                                  Pexp_ident "content" (stdlib/queue.ml[121,2945+8]..[121,2945+15])
+                            ]
+                          expression (stdlib/queue.ml[122,2962+6]..[122,2962+17])
+                            Pexp_apply
+                            expression (stdlib/queue.ml[122,2962+6]..[122,2962+10])
+                              Pexp_ident "iter" (stdlib/queue.ml[122,2962+6]..[122,2962+10])
+                            [
+                              <arg>
+                              Nolabel
+                                expression (stdlib/queue.ml[122,2962+11]..[122,2962+12])
+                                  Pexp_ident "f" (stdlib/queue.ml[122,2962+11]..[122,2962+12])
+                              <arg>
+                              Nolabel
+                                expression (stdlib/queue.ml[122,2962+13]..[122,2962+17])
+                                  Pexp_ident "next" (stdlib/queue.ml[122,2962+13]..[122,2962+17])
+                            ]
+                    ]
+          ]
+          expression (stdlib/queue.ml[124,2985+2]..[124,2985+27])
+            Pexp_fun
+            Nolabel
+            None
+            pattern (stdlib/queue.ml[124,2985+6]..[124,2985+7])
+              Ppat_var "f" (stdlib/queue.ml[124,2985+6]..[124,2985+7])
+            expression (stdlib/queue.ml[124,2985+8]..[124,2985+27]) ghost
+              Pexp_fun
+              Nolabel
+              None
+              pattern (stdlib/queue.ml[124,2985+8]..[124,2985+9])
+                Ppat_var "q" (stdlib/queue.ml[124,2985+8]..[124,2985+9])
+              expression (stdlib/queue.ml[124,2985+13]..[124,2985+27])
+                Pexp_apply
+                expression (stdlib/queue.ml[124,2985+13]..[124,2985+17])
+                  Pexp_ident "iter" (stdlib/queue.ml[124,2985+13]..[124,2985+17])
+                [
+                  <arg>
+                  Nolabel
+                    expression (stdlib/queue.ml[124,2985+18]..[124,2985+19])
+                      Pexp_ident "f" (stdlib/queue.ml[124,2985+18]..[124,2985+19])
+                  <arg>
+                  Nolabel
+                    expression (stdlib/queue.ml[124,2985+20]..[124,2985+27])
+                      Pexp_field
+                      expression (stdlib/queue.ml[124,2985+20]..[124,2985+21])
+                        Pexp_ident "q" (stdlib/queue.ml[124,2985+20]..[124,2985+21])
+                      "first" (stdlib/queue.ml[124,2985+22]..[124,2985+27])
+                ]
+    ]
+  structure_item (stdlib/queue.ml[126,3014+0]..[134,3187+37])
+    Pstr_value Nonrec
+    [
+      <def>
+        pattern (stdlib/queue.ml[126,3014+4]..[126,3014+8])
+          Ppat_var "fold" (stdlib/queue.ml[126,3014+4]..[126,3014+8])
+        expression (stdlib/queue.ml[127,3025+2]..[134,3187+37])
+          Pexp_let Rec
+          [
+            <def>
+              pattern (stdlib/queue.ml[127,3025+10]..[127,3025+14])
+                Ppat_var "fold" (stdlib/queue.ml[127,3025+10]..[127,3025+14])
+              expression (stdlib/queue.ml[127,3025+15]..[132,3159+22]) ghost
+                Pexp_fun
+                Nolabel
+                None
+                pattern (stdlib/queue.ml[127,3025+15]..[127,3025+16])
+                  Ppat_var "f" (stdlib/queue.ml[127,3025+15]..[127,3025+16])
+                expression (stdlib/queue.ml[127,3025+17]..[132,3159+22]) ghost
+                  Pexp_fun
+                  Nolabel
+                  None
+                  pattern (stdlib/queue.ml[127,3025+17]..[127,3025+21])
+                    Ppat_var "accu" (stdlib/queue.ml[127,3025+17]..[127,3025+21])
+                  expression (stdlib/queue.ml[127,3025+22]..[132,3159+22]) ghost
+                    Pexp_fun
+                    Nolabel
+                    None
+                    pattern (stdlib/queue.ml[127,3025+22]..[127,3025+26])
+                      Ppat_var "cell" (stdlib/queue.ml[127,3025+22]..[127,3025+26])
+                    expression (stdlib/queue.ml[128,3054+4]..[132,3159+22])
+                      Pexp_match
+                      expression (stdlib/queue.ml[128,3054+10]..[128,3054+14])
+                        Pexp_ident "cell" (stdlib/queue.ml[128,3054+10]..[128,3054+14])
+                      [
+                        <case>
+                          pattern (stdlib/queue.ml[129,3074+6]..[129,3074+9])
+                            Ppat_construct "Nil" (stdlib/queue.ml[129,3074+6]..[129,3074+9])
+                            None
+                          expression (stdlib/queue.ml[129,3074+13]..[129,3074+17])
+                            Pexp_ident "accu" (stdlib/queue.ml[129,3074+13]..[129,3074+17])
+                        <case>
+                          pattern (stdlib/queue.ml[130,3092+6]..[130,3092+28])
+                            Ppat_construct "Cons" (stdlib/queue.ml[130,3092+6]..[130,3092+10])
+                            Some
+                              []
+                              pattern (stdlib/queue.ml[130,3092+11]..[130,3092+28])
+                                Ppat_record Closed
+                                [
+                                  "content" (stdlib/queue.ml[130,3092+13]..[130,3092+20]) ghost
+                                    pattern (stdlib/queue.ml[130,3092+13]..[130,3092+20])
+                                      Ppat_var "content" (stdlib/queue.ml[130,3092+13]..[130,3092+20])
+                                  "next" (stdlib/queue.ml[130,3092+22]..[130,3092+26]) ghost
+                                    pattern (stdlib/queue.ml[130,3092+22]..[130,3092+26])
+                                      Ppat_var "next" (stdlib/queue.ml[130,3092+22]..[130,3092+26])
+                                ]
+                          expression (stdlib/queue.ml[131,3124+6]..[132,3159+22])
+                            Pexp_let Nonrec
+                            [
+                              <def>
+                                pattern (stdlib/queue.ml[131,3124+10]..[131,3124+14])
+                                  Ppat_var "accu" (stdlib/queue.ml[131,3124+10]..[131,3124+14])
+                                expression (stdlib/queue.ml[131,3124+17]..[131,3124+31])
+                                  Pexp_apply
+                                  expression (stdlib/queue.ml[131,3124+17]..[131,3124+18])
+                                    Pexp_ident "f" (stdlib/queue.ml[131,3124+17]..[131,3124+18])
+                                  [
+                                    <arg>
+                                    Nolabel
+                                      expression (stdlib/queue.ml[131,3124+19]..[131,3124+23])
+                                        Pexp_ident "accu" (stdlib/queue.ml[131,3124+19]..[131,3124+23])
+                                    <arg>
+                                    Nolabel
+                                      expression (stdlib/queue.ml[131,3124+24]..[131,3124+31])
+                                        Pexp_ident "content" (stdlib/queue.ml[131,3124+24]..[131,3124+31])
+                                  ]
+                            ]
+                            expression (stdlib/queue.ml[132,3159+6]..[132,3159+22])
+                              Pexp_apply
+                              expression (stdlib/queue.ml[132,3159+6]..[132,3159+10])
+                                Pexp_ident "fold" (stdlib/queue.ml[132,3159+6]..[132,3159+10])
+                              [
+                                <arg>
+                                Nolabel
+                                  expression (stdlib/queue.ml[132,3159+11]..[132,3159+12])
+                                    Pexp_ident "f" (stdlib/queue.ml[132,3159+11]..[132,3159+12])
+                                <arg>
+                                Nolabel
+                                  expression (stdlib/queue.ml[132,3159+13]..[132,3159+17])
+                                    Pexp_ident "accu" (stdlib/queue.ml[132,3159+13]..[132,3159+17])
+                                <arg>
+                                Nolabel
+                                  expression (stdlib/queue.ml[132,3159+18]..[132,3159+22])
+                                    Pexp_ident "next" (stdlib/queue.ml[132,3159+18]..[132,3159+22])
+                              ]
+                      ]
+          ]
+          expression (stdlib/queue.ml[134,3187+2]..[134,3187+37])
+            Pexp_fun
+            Nolabel
+            None
+            pattern (stdlib/queue.ml[134,3187+6]..[134,3187+7])
+              Ppat_var "f" (stdlib/queue.ml[134,3187+6]..[134,3187+7])
+            expression (stdlib/queue.ml[134,3187+8]..[134,3187+37]) ghost
+              Pexp_fun
+              Nolabel
+              None
+              pattern (stdlib/queue.ml[134,3187+8]..[134,3187+12])
+                Ppat_var "accu" (stdlib/queue.ml[134,3187+8]..[134,3187+12])
+              expression (stdlib/queue.ml[134,3187+13]..[134,3187+37]) ghost
+                Pexp_fun
+                Nolabel
+                None
+                pattern (stdlib/queue.ml[134,3187+13]..[134,3187+14])
+                  Ppat_var "q" (stdlib/queue.ml[134,3187+13]..[134,3187+14])
+                expression (stdlib/queue.ml[134,3187+18]..[134,3187+37])
+                  Pexp_apply
+                  expression (stdlib/queue.ml[134,3187+18]..[134,3187+22])
+                    Pexp_ident "fold" (stdlib/queue.ml[134,3187+18]..[134,3187+22])
+                  [
+                    <arg>
+                    Nolabel
+                      expression (stdlib/queue.ml[134,3187+23]..[134,3187+24])
+                        Pexp_ident "f" (stdlib/queue.ml[134,3187+23]..[134,3187+24])
+                    <arg>
+                    Nolabel
+                      expression (stdlib/queue.ml[134,3187+25]..[134,3187+29])
+                        Pexp_ident "accu" (stdlib/queue.ml[134,3187+25]..[134,3187+29])
+                    <arg>
+                    Nolabel
+                      expression (stdlib/queue.ml[134,3187+30]..[134,3187+37])
+                        Pexp_field
+                        expression (stdlib/queue.ml[134,3187+30]..[134,3187+31])
+                          Pexp_ident "q" (stdlib/queue.ml[134,3187+30]..[134,3187+31])
+                        "first" (stdlib/queue.ml[134,3187+32]..[134,3187+37])
+                  ]
+    ]
+  structure_item (stdlib/queue.ml[136,3226+0]..[148,3522+14])
+    Pstr_value Nonrec
+    [
+      <def>
+        pattern (stdlib/queue.ml[136,3226+4]..[136,3226+12])
+          Ppat_var "transfer" (stdlib/queue.ml[136,3226+4]..[136,3226+12])
+        expression (stdlib/queue.ml[136,3226+13]..[148,3522+14]) ghost
+          Pexp_fun
+          Nolabel
+          None
+          pattern (stdlib/queue.ml[136,3226+13]..[136,3226+15])
+            Ppat_var "q1" (stdlib/queue.ml[136,3226+13]..[136,3226+15])
+          expression (stdlib/queue.ml[136,3226+16]..[148,3522+14]) ghost
+            Pexp_fun
+            Nolabel
+            None
+            pattern (stdlib/queue.ml[136,3226+16]..[136,3226+18])
+              Ppat_var "q2" (stdlib/queue.ml[136,3226+16]..[136,3226+18])
+            expression (stdlib/queue.ml[137,3247+2]..[148,3522+14])
+              Pexp_ifthenelse
+              expression (stdlib/queue.ml[137,3247+5]..[137,3247+18])
+                Pexp_apply
+                expression (stdlib/queue.ml[137,3247+15]..[137,3247+16])
+                  Pexp_ident ">" (stdlib/queue.ml[137,3247+15]..[137,3247+16])
+                [
+                  <arg>
+                  Nolabel
+                    expression (stdlib/queue.ml[137,3247+5]..[137,3247+14])
+                      Pexp_field
+                      expression (stdlib/queue.ml[137,3247+5]..[137,3247+7])
+                        Pexp_ident "q1" (stdlib/queue.ml[137,3247+5]..[137,3247+7])
+                      "length" (stdlib/queue.ml[137,3247+8]..[137,3247+14])
+                  <arg>
+                  Nolabel
+                    expression (stdlib/queue.ml[137,3247+17]..[137,3247+18])
+                      Pexp_constant PConst_int (0,None)
+                ]
+              expression (stdlib/queue.ml[138,3271+4]..[148,3522+14])
+                Pexp_match
+                expression (stdlib/queue.ml[138,3271+10]..[138,3271+17])
+                  Pexp_field
+                  expression (stdlib/queue.ml[138,3271+10]..[138,3271+12])
+                    Pexp_ident "q2" (stdlib/queue.ml[138,3271+10]..[138,3271+12])
+                  "last" (stdlib/queue.ml[138,3271+13]..[138,3271+17])
+                [
+                  <case>
+                    pattern (stdlib/queue.ml[139,3294+6]..[139,3294+9])
+                      Ppat_construct "Nil" (stdlib/queue.ml[139,3294+6]..[139,3294+9])
+                      None
+                    expression (stdlib/queue.ml[140,3307+6]..[143,3391+14])
+                      Pexp_sequence
+                      expression (stdlib/queue.ml[140,3307+6]..[140,3307+28])
+                        Pexp_setfield
+                        expression (stdlib/queue.ml[140,3307+6]..[140,3307+8])
+                          Pexp_ident "q2" (stdlib/queue.ml[140,3307+6]..[140,3307+8])
+                        "length" (stdlib/queue.ml[140,3307+9]..[140,3307+15])
+                        expression (stdlib/queue.ml[140,3307+19]..[140,3307+28])
+                          Pexp_field
+                          expression (stdlib/queue.ml[140,3307+19]..[140,3307+21])
+                            Pexp_ident "q1" (stdlib/queue.ml[140,3307+19]..[140,3307+21])
+                          "length" (stdlib/queue.ml[140,3307+22]..[140,3307+28])
+                      expression (stdlib/queue.ml[141,3337+6]..[143,3391+14])
+                        Pexp_sequence
+                        expression (stdlib/queue.ml[141,3337+6]..[141,3337+26])
+                          Pexp_setfield
+                          expression (stdlib/queue.ml[141,3337+6]..[141,3337+8])
+                            Pexp_ident "q2" (stdlib/queue.ml[141,3337+6]..[141,3337+8])
+                          "first" (stdlib/queue.ml[141,3337+9]..[141,3337+14])
+                          expression (stdlib/queue.ml[141,3337+18]..[141,3337+26])
+                            Pexp_field
+                            expression (stdlib/queue.ml[141,3337+18]..[141,3337+20])
+                              Pexp_ident "q1" (stdlib/queue.ml[141,3337+18]..[141,3337+20])
+                            "first" (stdlib/queue.ml[141,3337+21]..[141,3337+26])
+                        expression (stdlib/queue.ml[142,3365+6]..[143,3391+14])
+                          Pexp_sequence
+                          expression (stdlib/queue.ml[142,3365+6]..[142,3365+24])
+                            Pexp_setfield
+                            expression (stdlib/queue.ml[142,3365+6]..[142,3365+8])
+                              Pexp_ident "q2" (stdlib/queue.ml[142,3365+6]..[142,3365+8])
+                            "last" (stdlib/queue.ml[142,3365+9]..[142,3365+13])
+                            expression (stdlib/queue.ml[142,3365+17]..[142,3365+24])
+                              Pexp_field
+                              expression (stdlib/queue.ml[142,3365+17]..[142,3365+19])
+                                Pexp_ident "q1" (stdlib/queue.ml[142,3365+17]..[142,3365+19])
+                              "last" (stdlib/queue.ml[142,3365+20]..[142,3365+24])
+                          expression (stdlib/queue.ml[143,3391+6]..[143,3391+14])
+                            Pexp_apply
+                            expression (stdlib/queue.ml[143,3391+6]..[143,3391+11])
+                              Pexp_ident "clear" (stdlib/queue.ml[143,3391+6]..[143,3391+11])
+                            [
+                              <arg>
+                              Nolabel
+                                expression (stdlib/queue.ml[143,3391+12]..[143,3391+14])
+                                  Pexp_ident "q1" (stdlib/queue.ml[143,3391+12]..[143,3391+14])
+                            ]
+                  <case>
+                    pattern (stdlib/queue.ml[144,3406+6]..[144,3406+15])
+                      Ppat_construct "Cons" (stdlib/queue.ml[144,3406+6]..[144,3406+10])
+                      Some
+                        []
+                        pattern (stdlib/queue.ml[144,3406+11]..[144,3406+15])
+                          Ppat_var "last" (stdlib/queue.ml[144,3406+11]..[144,3406+15])
+                    expression (stdlib/queue.ml[145,3425+6]..[148,3522+14])
+                      Pexp_sequence
+                      expression (stdlib/queue.ml[145,3425+6]..[145,3425+40])
+                        Pexp_setfield
+                        expression (stdlib/queue.ml[145,3425+6]..[145,3425+8])
+                          Pexp_ident "q2" (stdlib/queue.ml[145,3425+6]..[145,3425+8])
+                        "length" (stdlib/queue.ml[145,3425+9]..[145,3425+15])
+                        expression (stdlib/queue.ml[145,3425+19]..[145,3425+40])
+                          Pexp_apply
+                          expression (stdlib/queue.ml[145,3425+29]..[145,3425+30])
+                            Pexp_ident "+" (stdlib/queue.ml[145,3425+29]..[145,3425+30])
+                          [
+                            <arg>
+                            Nolabel
+                              expression (stdlib/queue.ml[145,3425+19]..[145,3425+28])
+                                Pexp_field
+                                expression (stdlib/queue.ml[145,3425+19]..[145,3425+21])
+                                  Pexp_ident "q2" (stdlib/queue.ml[145,3425+19]..[145,3425+21])
+                                "length" (stdlib/queue.ml[145,3425+22]..[145,3425+28])
+                            <arg>
+                            Nolabel
+                              expression (stdlib/queue.ml[145,3425+31]..[145,3425+40])
+                                Pexp_field
+                                expression (stdlib/queue.ml[145,3425+31]..[145,3425+33])
+                                  Pexp_ident "q1" (stdlib/queue.ml[145,3425+31]..[145,3425+33])
+                                "length" (stdlib/queue.ml[145,3425+34]..[145,3425+40])
+                          ]
+                      expression (stdlib/queue.ml[146,3467+6]..[148,3522+14])
+                        Pexp_sequence
+                        expression (stdlib/queue.ml[146,3467+6]..[146,3467+27])
+                          Pexp_setfield
+                          expression (stdlib/queue.ml[146,3467+6]..[146,3467+10])
+                            Pexp_ident "last" (stdlib/queue.ml[146,3467+6]..[146,3467+10])
+                          "next" (stdlib/queue.ml[146,3467+11]..[146,3467+15])
+                          expression (stdlib/queue.ml[146,3467+19]..[146,3467+27])
+                            Pexp_field
+                            expression (stdlib/queue.ml[146,3467+19]..[146,3467+21])
+                              Pexp_ident "q1" (stdlib/queue.ml[146,3467+19]..[146,3467+21])
+                            "first" (stdlib/queue.ml[146,3467+22]..[146,3467+27])
+                        expression (stdlib/queue.ml[147,3496+6]..[148,3522+14])
+                          Pexp_sequence
+                          expression (stdlib/queue.ml[147,3496+6]..[147,3496+24])
+                            Pexp_setfield
+                            expression (stdlib/queue.ml[147,3496+6]..[147,3496+8])
+                              Pexp_ident "q2" (stdlib/queue.ml[147,3496+6]..[147,3496+8])
+                            "last" (stdlib/queue.ml[147,3496+9]..[147,3496+13])
+                            expression (stdlib/queue.ml[147,3496+17]..[147,3496+24])
+                              Pexp_field
+                              expression (stdlib/queue.ml[147,3496+17]..[147,3496+19])
+                                Pexp_ident "q1" (stdlib/queue.ml[147,3496+17]..[147,3496+19])
+                              "last" (stdlib/queue.ml[147,3496+20]..[147,3496+24])
+                          expression (stdlib/queue.ml[148,3522+6]..[148,3522+14])
+                            Pexp_apply
+                            expression (stdlib/queue.ml[148,3522+6]..[148,3522+11])
+                              Pexp_ident "clear" (stdlib/queue.ml[148,3522+6]..[148,3522+11])
+                            [
+                              <arg>
+                              Nolabel
+                                expression (stdlib/queue.ml[148,3522+12]..[148,3522+14])
+                                  Pexp_ident "q1" (stdlib/queue.ml[148,3522+12]..[148,3522+14])
+                            ]
+                ]
+              None
+    ]
+  structure_item (stdlib/queue.ml[150,3538+0]..[150,3538+20])
+    Pstr_attribute "ocaml.text"
+    [
+      structure_item (stdlib/queue.ml[150,3538+0]..[150,3538+20])
+        Pstr_eval
+        expression (stdlib/queue.ml[150,3538+0]..[150,3538+20])
+          Pexp_constant PConst_string(" {1 Iterators} ",(stdlib/queue.ml[150,3538+0]..[150,3538+20]),None)
+    ]
+  structure_item (stdlib/queue.ml[152,3560+0]..[157,3693+13])
+    Pstr_value Nonrec
+    [
+      <def>
+        pattern (stdlib/queue.ml[152,3560+4]..[152,3560+10])
+          Ppat_var "to_seq" (stdlib/queue.ml[152,3560+4]..[152,3560+10])
+        expression (stdlib/queue.ml[152,3560+11]..[157,3693+13]) ghost
+          Pexp_fun
+          Nolabel
+          None
+          pattern (stdlib/queue.ml[152,3560+11]..[152,3560+12])
+            Ppat_var "q" (stdlib/queue.ml[152,3560+11]..[152,3560+12])
+          expression (stdlib/queue.ml[153,3575+2]..[157,3693+13])
+            Pexp_let Rec
+            [
+              <def>
+                pattern (stdlib/queue.ml[153,3575+10]..[153,3575+13])
+                  Ppat_var "aux" (stdlib/queue.ml[153,3575+10]..[153,3575+13])
+                expression (stdlib/queue.ml[153,3575+14]..[155,3630+57]) ghost
+                  Pexp_fun
+                  Nolabel
+                  None
+                  pattern (stdlib/queue.ml[153,3575+14]..[153,3575+15])
+                    Ppat_var "c" (stdlib/queue.ml[153,3575+14]..[153,3575+15])
+                  expression (stdlib/queue.ml[153,3575+16]..[155,3630+57]) ghost
+                    Pexp_fun
+                    Nolabel
+                    None
+                    pattern (stdlib/queue.ml[153,3575+16]..[153,3575+18])
+                      Ppat_construct "()" (stdlib/queue.ml[153,3575+16]..[153,3575+18])
+                      None
+                    expression (stdlib/queue.ml[153,3575+21]..[155,3630+57])
+                      Pexp_match
+                      expression (stdlib/queue.ml[153,3575+27]..[153,3575+28])
+                        Pexp_ident "c" (stdlib/queue.ml[153,3575+27]..[153,3575+28])
+                      [
+                        <case>
+                          pattern (stdlib/queue.ml[154,3609+6]..[154,3609+9])
+                            Ppat_construct "Nil" (stdlib/queue.ml[154,3609+6]..[154,3609+9])
+                            None
+                          expression (stdlib/queue.ml[154,3609+13]..[154,3609+20])
+                            Pexp_construct "Seq.Nil" (stdlib/queue.ml[154,3609+13]..[154,3609+20])
+                            None
+                        <case>
+                          pattern (stdlib/queue.ml[155,3630+6]..[155,3630+31])
+                            Ppat_construct "Cons" (stdlib/queue.ml[155,3630+6]..[155,3630+10])
+                            Some
+                              []
+                              pattern (stdlib/queue.ml[155,3630+11]..[155,3630+31])
+                                Ppat_record Closed
+                                [
+                                  "content" (stdlib/queue.ml[155,3630+13]..[155,3630+20])
+                                    pattern (stdlib/queue.ml[155,3630+21]..[155,3630+22])
+                                      Ppat_var "x" (stdlib/queue.ml[155,3630+21]..[155,3630+22])
+                                  "next" (stdlib/queue.ml[155,3630+24]..[155,3630+28]) ghost
+                                    pattern (stdlib/queue.ml[155,3630+24]..[155,3630+28])
+                                      Ppat_var "next" (stdlib/queue.ml[155,3630+24]..[155,3630+28])
+                                ]
+                          expression (stdlib/queue.ml[155,3630+35]..[155,3630+57])
+                            Pexp_construct "Seq.Cons" (stdlib/queue.ml[155,3630+35]..[155,3630+43])
+                            Some
+                              expression (stdlib/queue.ml[155,3630+44]..[155,3630+57])
+                                Pexp_tuple
+                                [
+                                  expression (stdlib/queue.ml[155,3630+45]..[155,3630+46])
+                                    Pexp_ident "x" (stdlib/queue.ml[155,3630+45]..[155,3630+46])
+                                  expression (stdlib/queue.ml[155,3630+48]..[155,3630+56])
+                                    Pexp_apply
+                                    expression (stdlib/queue.ml[155,3630+48]..[155,3630+51])
+                                      Pexp_ident "aux" (stdlib/queue.ml[155,3630+48]..[155,3630+51])
+                                    [
+                                      <arg>
+                                      Nolabel
+                                        expression (stdlib/queue.ml[155,3630+52]..[155,3630+56])
+                                          Pexp_ident "next" (stdlib/queue.ml[155,3630+52]..[155,3630+56])
+                                    ]
+                                ]
+                      ]
+            ]
+            expression (stdlib/queue.ml[157,3693+2]..[157,3693+13])
+              Pexp_apply
+              expression (stdlib/queue.ml[157,3693+2]..[157,3693+5])
+                Pexp_ident "aux" (stdlib/queue.ml[157,3693+2]..[157,3693+5])
+              [
+                <arg>
+                Nolabel
+                  expression (stdlib/queue.ml[157,3693+6]..[157,3693+13])
+                    Pexp_field
+                    expression (stdlib/queue.ml[157,3693+6]..[157,3693+7])
+                      Pexp_ident "q" (stdlib/queue.ml[157,3693+6]..[157,3693+7])
+                    "first" (stdlib/queue.ml[157,3693+8]..[157,3693+13])
+              ]
+    ]
+  structure_item (stdlib/queue.ml[159,3708+0]..[159,3708+48])
+    Pstr_value Nonrec
+    [
+      <def>
+        pattern (stdlib/queue.ml[159,3708+4]..[159,3708+11])
+          Ppat_var "add_seq" (stdlib/queue.ml[159,3708+4]..[159,3708+11])
+        expression (stdlib/queue.ml[159,3708+12]..[159,3708+48]) ghost
+          Pexp_fun
+          Nolabel
+          None
+          pattern (stdlib/queue.ml[159,3708+12]..[159,3708+13])
+            Ppat_var "q" (stdlib/queue.ml[159,3708+12]..[159,3708+13])
+          expression (stdlib/queue.ml[159,3708+14]..[159,3708+48]) ghost
+            Pexp_fun
+            Nolabel
+            None
+            pattern (stdlib/queue.ml[159,3708+14]..[159,3708+15])
+              Ppat_var "i" (stdlib/queue.ml[159,3708+14]..[159,3708+15])
+            expression (stdlib/queue.ml[159,3708+18]..[159,3708+48])
+              Pexp_apply
+              expression (stdlib/queue.ml[159,3708+18]..[159,3708+26])
+                Pexp_ident "Seq.iter" (stdlib/queue.ml[159,3708+18]..[159,3708+26])
+              [
+                <arg>
+                Nolabel
+                  expression (stdlib/queue.ml[159,3708+27]..[159,3708+46])
+                    Pexp_fun
+                    Nolabel
+                    None
+                    pattern (stdlib/queue.ml[159,3708+32]..[159,3708+33])
+                      Ppat_var "x" (stdlib/queue.ml[159,3708+32]..[159,3708+33])
+                    expression (stdlib/queue.ml[159,3708+37]..[159,3708+45])
+                      Pexp_apply
+                      expression (stdlib/queue.ml[159,3708+37]..[159,3708+41])
+                        Pexp_ident "push" (stdlib/queue.ml[159,3708+37]..[159,3708+41])
+                      [
+                        <arg>
+                        Nolabel
+                          expression (stdlib/queue.ml[159,3708+42]..[159,3708+43])
+                            Pexp_ident "x" (stdlib/queue.ml[159,3708+42]..[159,3708+43])
+                        <arg>
+                        Nolabel
+                          expression (stdlib/queue.ml[159,3708+44]..[159,3708+45])
+                            Pexp_ident "q" (stdlib/queue.ml[159,3708+44]..[159,3708+45])
+                      ]
+                <arg>
+                Nolabel
+                  expression (stdlib/queue.ml[159,3708+47]..[159,3708+48])
+                    Pexp_ident "i" (stdlib/queue.ml[159,3708+47]..[159,3708+48])
+              ]
+    ]
+  structure_item (stdlib/queue.ml[161,3758+0]..[164,3810+3])
+    Pstr_value Nonrec
+    [
+      <def>
+        pattern (stdlib/queue.ml[161,3758+4]..[161,3758+10])
+          Ppat_var "of_seq" (stdlib/queue.ml[161,3758+4]..[161,3758+10])
+        expression (stdlib/queue.ml[161,3758+11]..[164,3810+3]) ghost
+          Pexp_fun
+          Nolabel
+          None
+          pattern (stdlib/queue.ml[161,3758+11]..[161,3758+12])
+            Ppat_var "g" (stdlib/queue.ml[161,3758+11]..[161,3758+12])
+          expression (stdlib/queue.ml[162,3773+2]..[164,3810+3])
+            Pexp_let Nonrec
+            [
+              <def>
+                pattern (stdlib/queue.ml[162,3773+6]..[162,3773+7])
+                  Ppat_var "q" (stdlib/queue.ml[162,3773+6]..[162,3773+7])
+                expression (stdlib/queue.ml[162,3773+10]..[162,3773+18])
+                  Pexp_apply
+                  expression (stdlib/queue.ml[162,3773+10]..[162,3773+16])
+                    Pexp_ident "create" (stdlib/queue.ml[162,3773+10]..[162,3773+16])
+                  [
+                    <arg>
+                    Nolabel
+                      expression (stdlib/queue.ml[162,3773+16]..[162,3773+18])
+                        Pexp_construct "()" (stdlib/queue.ml[162,3773+16]..[162,3773+18])
+                        None
+                  ]
+            ]
+            expression (stdlib/queue.ml[163,3795+2]..[164,3810+3])
+              Pexp_sequence
+              expression (stdlib/queue.ml[163,3795+2]..[163,3795+13])
+                Pexp_apply
+                expression (stdlib/queue.ml[163,3795+2]..[163,3795+9])
+                  Pexp_ident "add_seq" (stdlib/queue.ml[163,3795+2]..[163,3795+9])
+                [
+                  <arg>
+                  Nolabel
+                    expression (stdlib/queue.ml[163,3795+10]..[163,3795+11])
+                      Pexp_ident "q" (stdlib/queue.ml[163,3795+10]..[163,3795+11])
+                  <arg>
+                  Nolabel
+                    expression (stdlib/queue.ml[163,3795+12]..[163,3795+13])
+                      Pexp_ident "g" (stdlib/queue.ml[163,3795+12]..[163,3795+13])
+                ]
+              expression (stdlib/queue.ml[164,3810+2]..[164,3810+3])
+                Pexp_ident "q" (stdlib/queue.ml[164,3810+2]..[164,3810+3])
+    ]
+]
+

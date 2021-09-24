@@ -1,0 +1,57 @@
+[
+  structure_item (testsuite/tests/typing-modules/pr7207.ml[5,24+0]..[5,24+48])
+    Pstr_module
+    "F" (testsuite/tests/typing-modules/pr7207.ml[5,24+7]..[5,24+8])
+      module_expr (testsuite/tests/typing-modules/pr7207.ml[5,24+9]..[5,24+48])
+        Pmod_functor "X" (testsuite/tests/typing-modules/pr7207.ml[5,24+10]..[5,24+11])
+        module_type (testsuite/tests/typing-modules/pr7207.ml[5,24+14]..[5,24+21])
+          Pmty_signature
+          []
+        module_expr (testsuite/tests/typing-modules/pr7207.ml[5,24+25]..[5,24+48])
+          Pmod_structure
+          [
+            structure_item (testsuite/tests/typing-modules/pr7207.ml[5,24+32]..[5,24+44])
+              Pstr_type Rec
+              [
+                type_declaration "t" (testsuite/tests/typing-modules/pr7207.ml[5,24+37]..[5,24+38]) (testsuite/tests/typing-modules/pr7207.ml[5,24+32]..[5,24+44])
+                  ptype_params =
+                    []
+                  ptype_cstrs =
+                    []
+                  ptype_kind =
+                    Ptype_abstract
+                  ptype_private = Public
+                  ptype_manifest =
+                    Some
+                      core_type (testsuite/tests/typing-modules/pr7207.ml[5,24+41]..[5,24+44])
+                        Ptyp_constr "int" (testsuite/tests/typing-modules/pr7207.ml[5,24+41]..[5,24+44])
+                        []
+              ]
+          ]
+  structure_item (testsuite/tests/typing-modules/pr7207.ml[6,75+0]..[6,75+28])
+    Pstr_type Rec
+    [
+      type_declaration "t" (testsuite/tests/typing-modules/pr7207.ml[6,75+5]..[6,75+6]) (testsuite/tests/typing-modules/pr7207.ml[6,75+0]..[6,75+28])
+        ptype_params =
+          []
+        ptype_cstrs =
+          []
+        ptype_kind =
+          Ptype_abstract
+        ptype_private = Public
+        ptype_manifest =
+          Some
+            core_type (testsuite/tests/typing-modules/pr7207.ml[6,75+9]..[6,75+28])
+              Ptyp_constr "F(Does_not_exist).t" (testsuite/tests/typing-modules/pr7207.ml[6,75+9]..[6,75+28])
+              []
+    ]
+  structure_item (testsuite/tests/typing-modules/pr7207.ml[7,106+0]..[13,305+3])
+    Pstr_extension "expect"
+    [
+      structure_item (testsuite/tests/typing-modules/pr7207.ml[7,106+9]..[13,305+2])
+        Pstr_eval
+        expression (testsuite/tests/typing-modules/pr7207.ml[7,106+9]..[13,305+2])
+          Pexp_constant PConst_string ("\nmodule F : functor (X : sig end) -> sig type t = int end\nLine 2, characters 9-28:\n2 | type t = F(Does_not_exist).t;;\n             ^^^^^^^^^^^^^^^^^^^\nError: Unbound module Does_not_exist\n",(testsuite/tests/typing-modules/pr7207.ml[7,106+11]..[13,305+0]),Some "")
+    ]
+]
+

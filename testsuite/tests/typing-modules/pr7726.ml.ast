@@ -1,0 +1,659 @@
+[
+  structure_item (testsuite/tests/typing-modules/pr7726.ml[5,24+0]..[5,24+30])
+    Pstr_modtype "T" (testsuite/tests/typing-modules/pr7726.ml[5,24+12]..[5,24+13])
+      module_type (testsuite/tests/typing-modules/pr7726.ml[5,24+16]..[5,24+30])
+        Pmty_signature
+        [
+          signature_item (testsuite/tests/typing-modules/pr7726.ml[5,24+20]..[5,24+26])
+            Psig_type Rec
+            [
+              type_declaration "t" (testsuite/tests/typing-modules/pr7726.ml[5,24+25]..[5,24+26]) (testsuite/tests/typing-modules/pr7726.ml[5,24+20]..[5,24+26])
+                ptype_params =
+                  []
+                ptype_cstrs =
+                  []
+                ptype_kind =
+                  Ptype_abstract
+                ptype_private = Public
+                ptype_manifest =
+                  None
+            ]
+        ]
+  structure_item (testsuite/tests/typing-modules/pr7726.ml[6,55+0]..[8,146+3])
+    Pstr_module
+    "Fix" (testsuite/tests/typing-modules/pr7726.ml[6,55+7]..[6,55+10])
+      module_expr (testsuite/tests/typing-modules/pr7726.ml[6,55+10]..[8,146+3])
+        Pmod_functor "F" (testsuite/tests/typing-modules/pr7726.ml[6,55+11]..[6,55+12])
+        module_type (testsuite/tests/typing-modules/pr7726.ml[6,55+14]..[6,55+20])
+          Pmty_functor "_" (_none_[0,0+-1]..[0,0+-1]) ghost
+          module_type (testsuite/tests/typing-modules/pr7726.ml[6,55+14]..[6,55+15])
+            Pmty_ident "T" (testsuite/tests/typing-modules/pr7726.ml[6,55+14]..[6,55+15])
+          module_type (testsuite/tests/typing-modules/pr7726.ml[6,55+19]..[6,55+20])
+            Pmty_ident "T" (testsuite/tests/typing-modules/pr7726.ml[6,55+19]..[6,55+20])
+        module_expr (testsuite/tests/typing-modules/pr7726.ml[6,55+25]..[8,146+3])
+          Pmod_structure
+          [
+            structure_item (testsuite/tests/typing-modules/pr7726.ml[7,87+2]..[7,87+58])
+              Pstr_recmodule
+              [
+                "Fixed" (testsuite/tests/typing-modules/pr7726.ml[7,87+13]..[7,87+18])
+                  module_expr (testsuite/tests/typing-modules/pr7726.ml[7,87+19]..[7,87+58])
+                    Pmod_constraint
+                    module_expr (testsuite/tests/typing-modules/pr7726.ml[7,87+50]..[7,87+58])
+                      Pmod_apply
+                      module_expr (testsuite/tests/typing-modules/pr7726.ml[7,87+50]..[7,87+51])
+                        Pmod_ident "F" (testsuite/tests/typing-modules/pr7726.ml[7,87+50]..[7,87+51])
+                      module_expr (testsuite/tests/typing-modules/pr7726.ml[7,87+52]..[7,87+57])
+                        Pmod_ident "Fixed" (testsuite/tests/typing-modules/pr7726.ml[7,87+52]..[7,87+57])
+                    module_type (testsuite/tests/typing-modules/pr7726.ml[7,87+21]..[7,87+47])
+                      Pmty_with
+                      module_type (testsuite/tests/typing-modules/pr7726.ml[7,87+21]..[7,87+22])
+                        Pmty_ident "T" (testsuite/tests/typing-modules/pr7726.ml[7,87+21]..[7,87+22])
+                      [
+                        Pwith_type "t" (testsuite/tests/typing-modules/pr7726.ml[7,87+33]..[7,87+34])
+                          type_declaration "t" (testsuite/tests/typing-modules/pr7726.ml[7,87+33]..[7,87+34]) (testsuite/tests/typing-modules/pr7726.ml[7,87+28]..[7,87+47])
+                            ptype_params =
+                              []
+                            ptype_cstrs =
+                              []
+                            ptype_kind =
+                              Ptype_abstract
+                            ptype_private = Public
+                            ptype_manifest =
+                              Some
+                                core_type (testsuite/tests/typing-modules/pr7726.ml[7,87+37]..[7,87+47])
+                                  Ptyp_constr "F(Fixed).t" (testsuite/tests/typing-modules/pr7726.ml[7,87+37]..[7,87+47])
+                                  []
+                      ]
+              ]
+          ]
+  structure_item (testsuite/tests/typing-modules/pr7726.ml[9,152+0]..[14,293+3])
+    Pstr_extension "expect"
+    [
+      structure_item (testsuite/tests/typing-modules/pr7726.ml[9,152+9]..[14,293+2])
+        Pstr_eval
+        expression (testsuite/tests/typing-modules/pr7726.ml[9,152+9]..[14,293+2])
+          Pexp_constant PConst_string ("\nmodule type T = sig type t end\nmodule Fix :\n  functor (F : T -> T) ->\n    sig module rec Fixed : sig type t = F(Fixed).t end end\n",(testsuite/tests/typing-modules/pr7726.ml[9,152+11]..[14,293+0]),Some "")
+    ]
+  structure_item (testsuite/tests/typing-modules/pr7726.ml[16,298+0]..[16,298+77])
+    Pstr_module
+    "T1" (testsuite/tests/typing-modules/pr7726.ml[16,298+7]..[16,298+9])
+      module_expr (testsuite/tests/typing-modules/pr7726.ml[16,298+12]..[16,298+77])
+        Pmod_apply
+        module_expr (testsuite/tests/typing-modules/pr7726.ml[16,298+12]..[16,298+15])
+          Pmod_ident "Fix" (testsuite/tests/typing-modules/pr7726.ml[16,298+12]..[16,298+15])
+        module_expr (testsuite/tests/typing-modules/pr7726.ml[16,298+24]..[16,298+76])
+          Pmod_functor "X" (testsuite/tests/typing-modules/pr7726.ml[16,298+25]..[16,298+26])
+          module_type (testsuite/tests/typing-modules/pr7726.ml[16,298+27]..[16,298+41])
+            Pmty_signature
+            [
+              signature_item (testsuite/tests/typing-modules/pr7726.ml[16,298+31]..[16,298+37])
+                Psig_type Rec
+                [
+                  type_declaration "t" (testsuite/tests/typing-modules/pr7726.ml[16,298+36]..[16,298+37]) (testsuite/tests/typing-modules/pr7726.ml[16,298+31]..[16,298+37])
+                    ptype_params =
+                      []
+                    ptype_cstrs =
+                      []
+                    ptype_kind =
+                      Ptype_abstract
+                    ptype_private = Public
+                    ptype_manifest =
+                      None
+                ]
+            ]
+          module_expr (testsuite/tests/typing-modules/pr7726.ml[16,298+46]..[16,298+76])
+            Pmod_structure
+            [
+              structure_item (testsuite/tests/typing-modules/pr7726.ml[16,298+53]..[16,298+72])
+                Pstr_type Rec
+                [
+                  type_declaration "t" (testsuite/tests/typing-modules/pr7726.ml[16,298+58]..[16,298+59]) (testsuite/tests/typing-modules/pr7726.ml[16,298+53]..[16,298+72])
+                    ptype_params =
+                      []
+                    ptype_cstrs =
+                      []
+                    ptype_kind =
+                      Ptype_abstract
+                    ptype_private = Public
+                    ptype_manifest =
+                      Some
+                        core_type (testsuite/tests/typing-modules/pr7726.ml[16,298+62]..[16,298+72])
+                          Ptyp_constr "option" (testsuite/tests/typing-modules/pr7726.ml[16,298+66]..[16,298+72])
+                          [
+                            core_type (testsuite/tests/typing-modules/pr7726.ml[16,298+62]..[16,298+65])
+                              Ptyp_constr "X.t" (testsuite/tests/typing-modules/pr7726.ml[16,298+62]..[16,298+65])
+                              []
+                          ]
+                ]
+            ]
+  structure_item (testsuite/tests/typing-modules/pr7726.ml[17,378+0]..[23,682+3])
+    Pstr_extension "expect"
+    [
+      structure_item (testsuite/tests/typing-modules/pr7726.ml[17,378+9]..[23,682+2])
+        Pstr_eval
+        expression (testsuite/tests/typing-modules/pr7726.ml[17,378+9]..[23,682+2])
+          Pexp_constant PConst_string ("\nLine 1, characters 12-77:\n1 | module T1 = Fix(functor (X:sig type t end) -> struct type t = X.t option end);;\n                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nError: In the signature of this functor application:\n       The type abbreviation Fixed.t is cyclic\n",(testsuite/tests/typing-modules/pr7726.ml[17,378+11]..[23,682+0]),Some "")
+    ]
+  structure_item (testsuite/tests/typing-modules/pr7726.ml[24,686+0]..[24,686+70])
+    Pstr_module
+    "T2" (testsuite/tests/typing-modules/pr7726.ml[24,686+7]..[24,686+9])
+      module_expr (testsuite/tests/typing-modules/pr7726.ml[24,686+12]..[24,686+70])
+        Pmod_apply
+        module_expr (testsuite/tests/typing-modules/pr7726.ml[24,686+12]..[24,686+15])
+          Pmod_ident "Fix" (testsuite/tests/typing-modules/pr7726.ml[24,686+12]..[24,686+15])
+        module_expr (testsuite/tests/typing-modules/pr7726.ml[24,686+24]..[24,686+69])
+          Pmod_functor "X" (testsuite/tests/typing-modules/pr7726.ml[24,686+25]..[24,686+26])
+          module_type (testsuite/tests/typing-modules/pr7726.ml[24,686+27]..[24,686+41])
+            Pmty_signature
+            [
+              signature_item (testsuite/tests/typing-modules/pr7726.ml[24,686+31]..[24,686+37])
+                Psig_type Rec
+                [
+                  type_declaration "t" (testsuite/tests/typing-modules/pr7726.ml[24,686+36]..[24,686+37]) (testsuite/tests/typing-modules/pr7726.ml[24,686+31]..[24,686+37])
+                    ptype_params =
+                      []
+                    ptype_cstrs =
+                      []
+                    ptype_kind =
+                      Ptype_abstract
+                    ptype_private = Public
+                    ptype_manifest =
+                      None
+                ]
+            ]
+          module_expr (testsuite/tests/typing-modules/pr7726.ml[24,686+46]..[24,686+69])
+            Pmod_structure
+            [
+              structure_item (testsuite/tests/typing-modules/pr7726.ml[24,686+53]..[24,686+65])
+                Pstr_type Rec
+                [
+                  type_declaration "t" (testsuite/tests/typing-modules/pr7726.ml[24,686+58]..[24,686+59]) (testsuite/tests/typing-modules/pr7726.ml[24,686+53]..[24,686+65])
+                    ptype_params =
+                      []
+                    ptype_cstrs =
+                      []
+                    ptype_kind =
+                      Ptype_abstract
+                    ptype_private = Public
+                    ptype_manifest =
+                      Some
+                        core_type (testsuite/tests/typing-modules/pr7726.ml[24,686+62]..[24,686+65])
+                          Ptyp_constr "X.t" (testsuite/tests/typing-modules/pr7726.ml[24,686+62]..[24,686+65])
+                          []
+                ]
+            ]
+  structure_item (testsuite/tests/typing-modules/pr7726.ml[25,759+0]..[32,1071+3])
+    Pstr_extension "expect"
+    [
+      structure_item (testsuite/tests/typing-modules/pr7726.ml[25,759+9]..[32,1071+2])
+        Pstr_eval
+        expression (testsuite/tests/typing-modules/pr7726.ml[25,759+9]..[32,1071+2])
+          Pexp_constant PConst_string ("\nLine 1, characters 12-70:\n1 | module T2 = Fix(functor (X:sig type t end) -> struct type t = X.t end);;\n                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nError: In the signature of this functor application:\n       The definition of Fixed.t contains a cycle:\n       F(Fixed).t\n",(testsuite/tests/typing-modules/pr7726.ml[25,759+11]..[32,1071+0]),Some "")
+    ]
+  structure_item (testsuite/tests/typing-modules/pr7726.ml[35,1099+0]..[35,1099+49])
+    Pstr_module
+    "F3" (testsuite/tests/typing-modules/pr7726.ml[35,1099+7]..[35,1099+9])
+      module_expr (testsuite/tests/typing-modules/pr7726.ml[35,1099+9]..[35,1099+49])
+        Pmod_functor "X" (testsuite/tests/typing-modules/pr7726.ml[35,1099+10]..[35,1099+11])
+        module_type (testsuite/tests/typing-modules/pr7726.ml[35,1099+12]..[35,1099+13])
+          Pmty_ident "T" (testsuite/tests/typing-modules/pr7726.ml[35,1099+12]..[35,1099+13])
+        module_expr (testsuite/tests/typing-modules/pr7726.ml[35,1099+17]..[35,1099+49])
+          Pmod_structure
+          [
+            structure_item (testsuite/tests/typing-modules/pr7726.ml[35,1099+24]..[35,1099+45])
+              Pstr_type Rec
+              [
+                type_declaration "t" (testsuite/tests/typing-modules/pr7726.ml[35,1099+29]..[35,1099+30]) (testsuite/tests/typing-modules/pr7726.ml[35,1099+24]..[35,1099+45])
+                  ptype_params =
+                    []
+                  ptype_cstrs =
+                    []
+                  ptype_kind =
+                    Ptype_variant
+                      [
+                        (testsuite/tests/typing-modules/pr7726.ml[35,1099+33]..[35,1099+34])
+                          "Z" (testsuite/tests/typing-modules/pr7726.ml[35,1099+33]..[35,1099+34])
+                          []
+                          None
+                        (testsuite/tests/typing-modules/pr7726.ml[35,1099+35]..[35,1099+45])
+                          "S" (testsuite/tests/typing-modules/pr7726.ml[35,1099+37]..[35,1099+38])
+                          [
+                            core_type (testsuite/tests/typing-modules/pr7726.ml[35,1099+42]..[35,1099+45])
+                              Ptyp_constr "X.t" (testsuite/tests/typing-modules/pr7726.ml[35,1099+42]..[35,1099+45])
+                              []
+                          ]
+                          None
+                      ]
+                  ptype_private = Public
+                  ptype_manifest =
+                    None
+              ]
+          ]
+  structure_item (testsuite/tests/typing-modules/pr7726.ml[36,1151+0]..[36,1151+19])
+    Pstr_module
+    "T3" (testsuite/tests/typing-modules/pr7726.ml[36,1151+7]..[36,1151+9])
+      module_expr (testsuite/tests/typing-modules/pr7726.ml[36,1151+12]..[36,1151+19])
+        Pmod_apply
+        module_expr (testsuite/tests/typing-modules/pr7726.ml[36,1151+12]..[36,1151+15])
+          Pmod_ident "Fix" (testsuite/tests/typing-modules/pr7726.ml[36,1151+12]..[36,1151+15])
+        module_expr (testsuite/tests/typing-modules/pr7726.ml[36,1151+16]..[36,1151+18])
+          Pmod_ident "F3" (testsuite/tests/typing-modules/pr7726.ml[36,1151+16]..[36,1151+18])
+  structure_item (testsuite/tests/typing-modules/pr7726.ml[37,1173+0]..[37,1173+24])
+    Pstr_value Nonrec
+    [
+      <def>
+        pattern (testsuite/tests/typing-modules/pr7726.ml[37,1173+4]..[37,1173+18]) ghost
+          Ppat_constraint
+          pattern (testsuite/tests/typing-modules/pr7726.ml[37,1173+4]..[37,1173+5])
+            Ppat_var "x" (testsuite/tests/typing-modules/pr7726.ml[37,1173+4]..[37,1173+5])
+          core_type (testsuite/tests/typing-modules/pr7726.ml[37,1173+8]..[37,1173+18]) ghost
+            Ptyp_poly
+            core_type (testsuite/tests/typing-modules/pr7726.ml[37,1173+8]..[37,1173+18])
+              Ptyp_constr "T3.Fixed.t" (testsuite/tests/typing-modules/pr7726.ml[37,1173+8]..[37,1173+18])
+              []
+        expression (testsuite/tests/typing-modules/pr7726.ml[37,1173+4]..[37,1173+24])
+          Pexp_constraint
+          expression (testsuite/tests/typing-modules/pr7726.ml[37,1173+21]..[37,1173+24])
+            Pexp_construct "S" (testsuite/tests/typing-modules/pr7726.ml[37,1173+21]..[37,1173+22])
+            Some
+              expression (testsuite/tests/typing-modules/pr7726.ml[37,1173+23]..[37,1173+24])
+                Pexp_construct "Z" (testsuite/tests/typing-modules/pr7726.ml[37,1173+23]..[37,1173+24])
+                None
+          core_type (testsuite/tests/typing-modules/pr7726.ml[37,1173+8]..[37,1173+18])
+            Ptyp_constr "T3.Fixed.t" (testsuite/tests/typing-modules/pr7726.ml[37,1173+8]..[37,1173+18])
+            []
+    ]
+  structure_item (testsuite/tests/typing-modules/pr7726.ml[38,1200+0]..[42,1392+3])
+    Pstr_extension "expect"
+    [
+      structure_item (testsuite/tests/typing-modules/pr7726.ml[38,1200+9]..[42,1392+2])
+        Pstr_eval
+        expression (testsuite/tests/typing-modules/pr7726.ml[38,1200+9]..[42,1392+2])
+          Pexp_constant PConst_string ("\nmodule F3 : functor (X : T) -> sig type t = Z | S of X.t end\nmodule T3 : sig module rec Fixed : sig type t = F3(Fixed).t end end\nval x : T3.Fixed.t = F3(T3.Fixed).S F3(T3.Fixed).Z\n",(testsuite/tests/typing-modules/pr7726.ml[38,1200+11]..[42,1392+0]),Some "")
+    ]
+  structure_item (testsuite/tests/typing-modules/pr7726.ml[45,1433+0]..[48,1535+3])
+    Pstr_module
+    "M" (testsuite/tests/typing-modules/pr7726.ml[45,1433+7]..[45,1433+8])
+      module_expr (testsuite/tests/typing-modules/pr7726.ml[45,1433+11]..[48,1535+3])
+        Pmod_structure
+        [
+          structure_item (testsuite/tests/typing-modules/pr7726.ml[46,1451+2]..[46,1451+26])
+            Pstr_module
+            "F" (testsuite/tests/typing-modules/pr7726.ml[46,1451+9]..[46,1451+10])
+              module_expr (testsuite/tests/typing-modules/pr7726.ml[46,1451+11]..[46,1451+26])
+                Pmod_functor "X" (testsuite/tests/typing-modules/pr7726.ml[46,1451+12]..[46,1451+13])
+                module_type (testsuite/tests/typing-modules/pr7726.ml[46,1451+16]..[46,1451+17])
+                  Pmty_ident "T" (testsuite/tests/typing-modules/pr7726.ml[46,1451+16]..[46,1451+17])
+                module_expr (testsuite/tests/typing-modules/pr7726.ml[46,1451+19]..[46,1451+26])
+                  Pmod_constraint
+                  module_expr (testsuite/tests/typing-modules/pr7726.ml[46,1451+25]..[46,1451+26])
+                    Pmod_ident "X" (testsuite/tests/typing-modules/pr7726.ml[46,1451+25]..[46,1451+26])
+                  module_type (testsuite/tests/typing-modules/pr7726.ml[46,1451+21]..[46,1451+22])
+                    Pmty_ident "T" (testsuite/tests/typing-modules/pr7726.ml[46,1451+21]..[46,1451+22])
+          structure_item (testsuite/tests/typing-modules/pr7726.ml[47,1478+2]..[47,1478+56])
+            Pstr_recmodule
+            [
+              "Fixed" (testsuite/tests/typing-modules/pr7726.ml[47,1478+13]..[47,1478+18])
+                module_expr (testsuite/tests/typing-modules/pr7726.ml[47,1478+19]..[47,1478+56])
+                  Pmod_constraint
+                  module_expr (testsuite/tests/typing-modules/pr7726.ml[47,1478+51]..[47,1478+56])
+                    Pmod_ident "Fixed" (testsuite/tests/typing-modules/pr7726.ml[47,1478+51]..[47,1478+56])
+                  module_type (testsuite/tests/typing-modules/pr7726.ml[47,1478+21]..[47,1478+48])
+                    Pmty_signature
+                    [
+                      signature_item (testsuite/tests/typing-modules/pr7726.ml[47,1478+25]..[47,1478+44])
+                        Psig_type Rec
+                        [
+                          type_declaration "t" (testsuite/tests/typing-modules/pr7726.ml[47,1478+30]..[47,1478+31]) (testsuite/tests/typing-modules/pr7726.ml[47,1478+25]..[47,1478+44])
+                            ptype_params =
+                              []
+                            ptype_cstrs =
+                              []
+                            ptype_kind =
+                              Ptype_abstract
+                            ptype_private = Public
+                            ptype_manifest =
+                              Some
+                                core_type (testsuite/tests/typing-modules/pr7726.ml[47,1478+34]..[47,1478+44])
+                                  Ptyp_constr "F(Fixed).t" (testsuite/tests/typing-modules/pr7726.ml[47,1478+34]..[47,1478+44])
+                                  []
+                        ]
+                    ]
+            ]
+        ]
+  structure_item (testsuite/tests/typing-modules/pr7726.ml[49,1539+0]..[49,1539+32])
+    Pstr_modtype "S" (testsuite/tests/typing-modules/pr7726.ml[49,1539+12]..[49,1539+13])
+      module_type (testsuite/tests/typing-modules/pr7726.ml[49,1539+16]..[49,1539+32])
+        Pmty_typeof
+        module_expr (testsuite/tests/typing-modules/pr7726.ml[49,1539+31]..[49,1539+32])
+          Pmod_ident "M" (testsuite/tests/typing-modules/pr7726.ml[49,1539+31]..[49,1539+32])
+  structure_item (testsuite/tests/typing-modules/pr7726.ml[50,1572+0]..[50,1572+21])
+    Pstr_module
+    "Id" (testsuite/tests/typing-modules/pr7726.ml[50,1572+7]..[50,1572+9])
+      module_expr (testsuite/tests/typing-modules/pr7726.ml[50,1572+10]..[50,1572+21])
+        Pmod_functor "X" (testsuite/tests/typing-modules/pr7726.ml[50,1572+11]..[50,1572+12])
+        module_type (testsuite/tests/typing-modules/pr7726.ml[50,1572+15]..[50,1572+16])
+          Pmty_ident "T" (testsuite/tests/typing-modules/pr7726.ml[50,1572+15]..[50,1572+16])
+        module_expr (testsuite/tests/typing-modules/pr7726.ml[50,1572+20]..[50,1572+21])
+          Pmod_ident "X" (testsuite/tests/typing-modules/pr7726.ml[50,1572+20]..[50,1572+21])
+  structure_item (testsuite/tests/typing-modules/pr7726.ml[51,1596+0]..[63,1885+3])
+    Pstr_extension "expect"
+    [
+      structure_item (testsuite/tests/typing-modules/pr7726.ml[51,1596+9]..[63,1885+2])
+        Pstr_eval
+        expression (testsuite/tests/typing-modules/pr7726.ml[51,1596+9]..[63,1885+2])
+          Pexp_constant PConst_string ("\nmodule M :\n  sig\n    module F : functor (X : T) -> T\n    module rec Fixed : sig type t = F(Fixed).t end\n  end\nmodule type S =\n  sig\n    module F : functor (X : T) -> T\n    module rec Fixed : sig type t = F(Fixed).t end\n  end\nmodule Id : functor (X : T) -> sig type t = X.t end\n",(testsuite/tests/typing-modules/pr7726.ml[51,1596+11]..[63,1885+0]),Some "")
+    ]
+  structure_item (testsuite/tests/typing-modules/pr7726.ml[65,1890+0]..[65,1890+38])
+    Pstr_modtype "Bad" (testsuite/tests/typing-modules/pr7726.ml[65,1890+12]..[65,1890+15])
+      module_type (testsuite/tests/typing-modules/pr7726.ml[65,1890+18]..[65,1890+38])
+        Pmty_with
+        module_type (testsuite/tests/typing-modules/pr7726.ml[65,1890+18]..[65,1890+19])
+          Pmty_ident "S" (testsuite/tests/typing-modules/pr7726.ml[65,1890+18]..[65,1890+19])
+        [
+          Pwith_module "F" (testsuite/tests/typing-modules/pr7726.ml[65,1890+32]..[65,1890+33]) = "Id" (testsuite/tests/typing-modules/pr7726.ml[65,1890+36]..[65,1890+38])
+        ]
+  structure_item (testsuite/tests/typing-modules/pr7726.ml[66,1931+0]..[73,2165+3])
+    Pstr_extension "expect"
+    [
+      structure_item (testsuite/tests/typing-modules/pr7726.ml[66,1931+9]..[73,2165+2])
+        Pstr_eval
+        expression (testsuite/tests/typing-modules/pr7726.ml[66,1931+9]..[73,2165+2])
+          Pexp_constant PConst_string ("\nLine 1, characters 18-38:\n1 | module type Bad = S with module F = Id;;\n                      ^^^^^^^^^^^^^^^^^^^^\nError: In this instantiated signature:\n       The definition of Fixed.t contains a cycle:\n       F(Fixed).t\n",(testsuite/tests/typing-modules/pr7726.ml[66,1931+11]..[73,2165+0]),Some "")
+    ]
+  structure_item (testsuite/tests/typing-modules/pr7726.ml[76,2199+0]..[76,2199+18])
+    Pstr_module
+    "M" (testsuite/tests/typing-modules/pr7726.ml[76,2199+7]..[76,2199+8])
+      module_expr (testsuite/tests/typing-modules/pr7726.ml[76,2199+11]..[76,2199+18])
+        Pmod_apply
+        module_expr (testsuite/tests/typing-modules/pr7726.ml[76,2199+11]..[76,2199+14])
+          Pmod_ident "Fix" (testsuite/tests/typing-modules/pr7726.ml[76,2199+11]..[76,2199+14])
+        module_expr (testsuite/tests/typing-modules/pr7726.ml[76,2199+15]..[76,2199+17])
+          Pmod_ident "Id" (testsuite/tests/typing-modules/pr7726.ml[76,2199+15]..[76,2199+17])
+  structure_item (testsuite/tests/typing-modules/pr7726.ml[77,2220+0]..[84,2429+3])
+    Pstr_extension "expect"
+    [
+      structure_item (testsuite/tests/typing-modules/pr7726.ml[77,2220+9]..[84,2429+2])
+        Pstr_eval
+        expression (testsuite/tests/typing-modules/pr7726.ml[77,2220+9]..[84,2429+2])
+          Pexp_constant PConst_string ("\nLine 1, characters 11-18:\n1 | module M = Fix(Id);;\n               ^^^^^^^\nError: In the signature of this functor application:\n       The definition of Fixed.t contains a cycle:\n       Id(Fixed).t\n",(testsuite/tests/typing-modules/pr7726.ml[77,2220+11]..[84,2429+0]),Some "")
+    ]
+  structure_item (testsuite/tests/typing-modules/pr7726.ml[85,2433+0]..[85,2433+24])
+    Pstr_type Rec
+    [
+      type_declaration "t" (testsuite/tests/typing-modules/pr7726.ml[85,2433+5]..[85,2433+6]) (testsuite/tests/typing-modules/pr7726.ml[85,2433+0]..[85,2433+24])
+        ptype_params =
+          []
+        ptype_cstrs =
+          []
+        ptype_kind =
+          Ptype_abstract
+        ptype_private = Public
+        ptype_manifest =
+          Some
+            core_type (testsuite/tests/typing-modules/pr7726.ml[85,2433+9]..[85,2433+24])
+              Ptyp_constr "Fix(Id).Fixed.t" (testsuite/tests/typing-modules/pr7726.ml[85,2433+9]..[85,2433+24])
+              []
+    ]
+  structure_item (testsuite/tests/typing-modules/pr7726.ml[86,2460+0]..[93,2663+3])
+    Pstr_extension "expect"
+    [
+      structure_item (testsuite/tests/typing-modules/pr7726.ml[86,2460+9]..[93,2663+2])
+        Pstr_eval
+        expression (testsuite/tests/typing-modules/pr7726.ml[86,2460+9]..[93,2663+2])
+          Pexp_constant PConst_string ("\nLine 1, characters 9-24:\n1 | type t = Fix(Id).Fixed.t;;\n             ^^^^^^^^^^^^^^^\nError: In the signature of Fix(Id):\n       The definition of Fixed.t contains a cycle:\n       Id(Fixed).t\n",(testsuite/tests/typing-modules/pr7726.ml[86,2460+11]..[93,2663+0]),Some "")
+    ]
+  structure_item (testsuite/tests/typing-modules/pr7726.ml[94,2667+0]..[94,2667+31])
+    Pstr_value Nonrec
+    [
+      <def>
+        pattern (testsuite/tests/typing-modules/pr7726.ml[94,2667+4]..[94,2667+5])
+          Ppat_var "f" (testsuite/tests/typing-modules/pr7726.ml[94,2667+4]..[94,2667+5])
+        expression (testsuite/tests/typing-modules/pr7726.ml[94,2667+6]..[94,2667+31]) ghost
+          Pexp_fun
+          Nolabel
+          None
+          pattern (testsuite/tests/typing-modules/pr7726.ml[94,2667+6]..[94,2667+27])
+            Ppat_constraint
+            pattern (testsuite/tests/typing-modules/pr7726.ml[94,2667+7]..[94,2667+8])
+              Ppat_var "x" (testsuite/tests/typing-modules/pr7726.ml[94,2667+7]..[94,2667+8])
+            core_type (testsuite/tests/typing-modules/pr7726.ml[94,2667+11]..[94,2667+26])
+              Ptyp_constr "Fix(Id).Fixed.t" (testsuite/tests/typing-modules/pr7726.ml[94,2667+11]..[94,2667+26])
+              []
+          expression (testsuite/tests/typing-modules/pr7726.ml[94,2667+30]..[94,2667+31])
+            Pexp_ident "x" (testsuite/tests/typing-modules/pr7726.ml[94,2667+30]..[94,2667+31])
+    ]
+  structure_item (testsuite/tests/typing-modules/pr7726.ml[95,2701+0]..[102,2914+3])
+    Pstr_extension "expect"
+    [
+      structure_item (testsuite/tests/typing-modules/pr7726.ml[95,2701+9]..[102,2914+2])
+        Pstr_eval
+        expression (testsuite/tests/typing-modules/pr7726.ml[95,2701+9]..[102,2914+2])
+          Pexp_constant PConst_string ("\nLine 1, characters 11-26:\n1 | let f (x : Fix(Id).Fixed.t) = x;;\n               ^^^^^^^^^^^^^^^\nError: In the signature of Fix(Id):\n       The definition of Fixed.t contains a cycle:\n       Id(Fixed).t\n",(testsuite/tests/typing-modules/pr7726.ml[95,2701+11]..[102,2914+0]),Some "")
+    ]
+  structure_item (testsuite/tests/typing-modules/pr7726.ml[104,2919+0]..[106,2987+5])
+    Pstr_module
+    "Foo" (testsuite/tests/typing-modules/pr7726.ml[104,2919+7]..[104,2919+10])
+      module_expr (testsuite/tests/typing-modules/pr7726.ml[104,2919+11]..[106,2987+5])
+        Pmod_functor "F" (testsuite/tests/typing-modules/pr7726.ml[104,2919+12]..[104,2919+13])
+        module_type (testsuite/tests/typing-modules/pr7726.ml[104,2919+16]..[104,2919+22])
+          Pmty_functor "_" (_none_[0,0+-1]..[0,0+-1]) ghost
+          module_type (testsuite/tests/typing-modules/pr7726.ml[104,2919+16]..[104,2919+17])
+            Pmty_ident "T" (testsuite/tests/typing-modules/pr7726.ml[104,2919+16]..[104,2919+17])
+          module_type (testsuite/tests/typing-modules/pr7726.ml[104,2919+21]..[104,2919+22])
+            Pmty_ident "T" (testsuite/tests/typing-modules/pr7726.ml[104,2919+21]..[104,2919+22])
+        module_expr (testsuite/tests/typing-modules/pr7726.ml[104,2919+26]..[106,2987+5])
+          Pmod_structure
+          [
+            structure_item (testsuite/tests/typing-modules/pr7726.ml[105,2952+4]..[105,2952+34])
+              Pstr_value Nonrec
+              [
+                <def>
+                  pattern (testsuite/tests/typing-modules/pr7726.ml[105,2952+8]..[105,2952+9])
+                    Ppat_var "f" (testsuite/tests/typing-modules/pr7726.ml[105,2952+8]..[105,2952+9])
+                  expression (testsuite/tests/typing-modules/pr7726.ml[105,2952+10]..[105,2952+34]) ghost
+                    Pexp_fun
+                    Nolabel
+                    None
+                    pattern (testsuite/tests/typing-modules/pr7726.ml[105,2952+10]..[105,2952+30])
+                      Ppat_constraint
+                      pattern (testsuite/tests/typing-modules/pr7726.ml[105,2952+11]..[105,2952+12])
+                        Ppat_var "x" (testsuite/tests/typing-modules/pr7726.ml[105,2952+11]..[105,2952+12])
+                      core_type (testsuite/tests/typing-modules/pr7726.ml[105,2952+15]..[105,2952+29])
+                        Ptyp_constr "Fix(F).Fixed.t" (testsuite/tests/typing-modules/pr7726.ml[105,2952+15]..[105,2952+29])
+                        []
+                    expression (testsuite/tests/typing-modules/pr7726.ml[105,2952+33]..[105,2952+34])
+                      Pexp_ident "x" (testsuite/tests/typing-modules/pr7726.ml[105,2952+33]..[105,2952+34])
+              ]
+          ]
+  structure_item (testsuite/tests/typing-modules/pr7726.ml[107,2993+0]..[107,2993+18])
+    Pstr_module
+    "M" (testsuite/tests/typing-modules/pr7726.ml[107,2993+7]..[107,2993+8])
+      module_expr (testsuite/tests/typing-modules/pr7726.ml[107,2993+11]..[107,2993+18])
+        Pmod_apply
+        module_expr (testsuite/tests/typing-modules/pr7726.ml[107,2993+11]..[107,2993+14])
+          Pmod_ident "Foo" (testsuite/tests/typing-modules/pr7726.ml[107,2993+11]..[107,2993+14])
+        module_expr (testsuite/tests/typing-modules/pr7726.ml[107,2993+15]..[107,2993+17])
+          Pmod_ident "Id" (testsuite/tests/typing-modules/pr7726.ml[107,2993+15]..[107,2993+17])
+  structure_item (testsuite/tests/typing-modules/pr7726.ml[108,3014+0]..[108,3014+5])
+    Pstr_eval
+    expression (testsuite/tests/typing-modules/pr7726.ml[108,3014+0]..[108,3014+5])
+      Pexp_apply
+      expression (testsuite/tests/typing-modules/pr7726.ml[108,3014+0]..[108,3014+3])
+        Pexp_ident "M.f" (testsuite/tests/typing-modules/pr7726.ml[108,3014+0]..[108,3014+3])
+      [
+        <arg>
+        Nolabel
+          expression (testsuite/tests/typing-modules/pr7726.ml[108,3014+4]..[108,3014+5])
+            Pexp_constant PConst_int (5,None)
+      ]
+  structure_item (testsuite/tests/typing-modules/pr7726.ml[109,3022+0]..[117,3298+3])
+    Pstr_extension "expect"
+    [
+      structure_item (testsuite/tests/typing-modules/pr7726.ml[109,3022+9]..[117,3298+2])
+        Pstr_eval
+        expression (testsuite/tests/typing-modules/pr7726.ml[109,3022+9]..[117,3298+2])
+          Pexp_constant PConst_string ("\nmodule Foo :\n  functor (F : T -> T) -> sig val f : Fix(F).Fixed.t -> Fix(F).Fixed.t end\nmodule M : sig val f : Fix(Id).Fixed.t -> Fix(Id).Fixed.t end\nLine 1:\nError: In the signature of Fix(Id):\n       The definition of Fixed.t contains a cycle:\n       Id(Fixed).t\n",(testsuite/tests/typing-modules/pr7726.ml[109,3022+11]..[117,3298+0]),Some "")
+    ]
+  structure_item (testsuite/tests/typing-modules/pr7726.ml[120,3334+0]..[120,3334+30])
+    Pstr_module
+    "F" (testsuite/tests/typing-modules/pr7726.ml[120,3334+7]..[120,3334+8])
+      module_expr (testsuite/tests/typing-modules/pr7726.ml[120,3334+8]..[120,3334+30])
+        Pmod_functor ()
+        module_expr (testsuite/tests/typing-modules/pr7726.ml[120,3334+13]..[120,3334+30])
+          Pmod_structure
+          [
+            structure_item (testsuite/tests/typing-modules/pr7726.ml[120,3334+20]..[120,3334+26])
+              Pstr_type Rec
+              [
+                type_declaration "t" (testsuite/tests/typing-modules/pr7726.ml[120,3334+25]..[120,3334+26]) (testsuite/tests/typing-modules/pr7726.ml[120,3334+20]..[120,3334+26])
+                  ptype_params =
+                    []
+                  ptype_cstrs =
+                    []
+                  ptype_kind =
+                    Ptype_abstract
+                  ptype_private = Public
+                  ptype_manifest =
+                    None
+              ]
+          ]
+  structure_item (testsuite/tests/typing-modules/pr7726.ml[121,3365+0]..[121,3365+21])
+    Pstr_module
+    "M" (testsuite/tests/typing-modules/pr7726.ml[121,3365+7]..[121,3365+8])
+      module_expr (testsuite/tests/typing-modules/pr7726.ml[121,3365+11]..[121,3365+21])
+        Pmod_structure
+        []
+  structure_item (testsuite/tests/typing-modules/pr7726.ml[122,3389+0]..[122,3389+15])
+    Pstr_type Rec
+    [
+      type_declaration "t" (testsuite/tests/typing-modules/pr7726.ml[122,3389+5]..[122,3389+6]) (testsuite/tests/typing-modules/pr7726.ml[122,3389+0]..[122,3389+15])
+        ptype_params =
+          []
+        ptype_cstrs =
+          []
+        ptype_kind =
+          Ptype_abstract
+        ptype_private = Public
+        ptype_manifest =
+          Some
+            core_type (testsuite/tests/typing-modules/pr7726.ml[122,3389+9]..[122,3389+15])
+              Ptyp_constr "F(M).t" (testsuite/tests/typing-modules/pr7726.ml[122,3389+9]..[122,3389+15])
+              []
+    ]
+  structure_item (testsuite/tests/typing-modules/pr7726.ml[123,3407+0]..[130,3622+3])
+    Pstr_extension "expect"
+    [
+      structure_item (testsuite/tests/typing-modules/pr7726.ml[123,3407+9]..[130,3622+2])
+        Pstr_eval
+        expression (testsuite/tests/typing-modules/pr7726.ml[123,3407+9]..[130,3622+2])
+          Pexp_constant PConst_string ("\nmodule F : functor () -> sig type t end\nmodule M : sig end\nLine 3, characters 9-15:\n3 | type t = F(M).t;;\n             ^^^^^^\nError: The functor F is generative, it cannot be applied in type expressions\n",(testsuite/tests/typing-modules/pr7726.ml[123,3407+11]..[130,3622+0]),Some "")
+    ]
+  structure_item (testsuite/tests/typing-modules/pr7726.ml[132,3627+0]..[135,3771+3])
+    Pstr_module
+    "Fix2" (testsuite/tests/typing-modules/pr7726.ml[132,3627+7]..[132,3627+11])
+      module_expr (testsuite/tests/typing-modules/pr7726.ml[132,3627+11]..[135,3771+3])
+        Pmod_functor "F" (testsuite/tests/typing-modules/pr7726.ml[132,3627+12]..[132,3627+13])
+        module_type (testsuite/tests/typing-modules/pr7726.ml[132,3627+15]..[132,3627+21])
+          Pmty_functor "_" (_none_[0,0+-1]..[0,0+-1]) ghost
+          module_type (testsuite/tests/typing-modules/pr7726.ml[132,3627+15]..[132,3627+16])
+            Pmty_ident "T" (testsuite/tests/typing-modules/pr7726.ml[132,3627+15]..[132,3627+16])
+          module_type (testsuite/tests/typing-modules/pr7726.ml[132,3627+20]..[132,3627+21])
+            Pmty_ident "T" (testsuite/tests/typing-modules/pr7726.ml[132,3627+20]..[132,3627+21])
+        module_expr (testsuite/tests/typing-modules/pr7726.ml[132,3627+26]..[135,3771+3])
+          Pmod_structure
+          [
+            structure_item (testsuite/tests/typing-modules/pr7726.ml[133,3660+2]..[133,3660+58])
+              Pstr_recmodule
+              [
+                "Fixed" (testsuite/tests/typing-modules/pr7726.ml[133,3660+13]..[133,3660+18])
+                  module_expr (testsuite/tests/typing-modules/pr7726.ml[133,3660+19]..[133,3660+58])
+                    Pmod_constraint
+                    module_expr (testsuite/tests/typing-modules/pr7726.ml[133,3660+50]..[133,3660+58])
+                      Pmod_apply
+                      module_expr (testsuite/tests/typing-modules/pr7726.ml[133,3660+50]..[133,3660+51])
+                        Pmod_ident "F" (testsuite/tests/typing-modules/pr7726.ml[133,3660+50]..[133,3660+51])
+                      module_expr (testsuite/tests/typing-modules/pr7726.ml[133,3660+52]..[133,3660+57])
+                        Pmod_ident "Fixed" (testsuite/tests/typing-modules/pr7726.ml[133,3660+52]..[133,3660+57])
+                    module_type (testsuite/tests/typing-modules/pr7726.ml[133,3660+21]..[133,3660+47])
+                      Pmty_with
+                      module_type (testsuite/tests/typing-modules/pr7726.ml[133,3660+21]..[133,3660+22])
+                        Pmty_ident "T" (testsuite/tests/typing-modules/pr7726.ml[133,3660+21]..[133,3660+22])
+                      [
+                        Pwith_type "t" (testsuite/tests/typing-modules/pr7726.ml[133,3660+33]..[133,3660+34])
+                          type_declaration "t" (testsuite/tests/typing-modules/pr7726.ml[133,3660+33]..[133,3660+34]) (testsuite/tests/typing-modules/pr7726.ml[133,3660+28]..[133,3660+47])
+                            ptype_params =
+                              []
+                            ptype_cstrs =
+                              []
+                            ptype_kind =
+                              Ptype_abstract
+                            ptype_private = Public
+                            ptype_manifest =
+                              Some
+                                core_type (testsuite/tests/typing-modules/pr7726.ml[133,3660+37]..[133,3660+47])
+                                  Ptyp_constr "F(Fixed).t" (testsuite/tests/typing-modules/pr7726.ml[133,3660+37]..[133,3660+47])
+                                  []
+                      ]
+              ]
+            structure_item (testsuite/tests/typing-modules/pr7726.ml[134,3719+2]..[134,3719+51])
+              Pstr_module
+              "R" (testsuite/tests/typing-modules/pr7726.ml[134,3719+9]..[134,3719+10])
+                module_expr (testsuite/tests/typing-modules/pr7726.ml[134,3719+10]..[134,3719+51])
+                  Pmod_functor "X" (testsuite/tests/typing-modules/pr7726.ml[134,3719+11]..[134,3719+12])
+                  module_type (testsuite/tests/typing-modules/pr7726.ml[134,3719+13]..[134,3719+20])
+                    Pmty_signature
+                    []
+                  module_expr (testsuite/tests/typing-modules/pr7726.ml[134,3719+24]..[134,3719+51])
+                    Pmod_structure
+                    [
+                      structure_item (testsuite/tests/typing-modules/pr7726.ml[134,3719+31]..[134,3719+47])
+                        Pstr_type Rec
+                        [
+                          type_declaration "t" (testsuite/tests/typing-modules/pr7726.ml[134,3719+36]..[134,3719+37]) (testsuite/tests/typing-modules/pr7726.ml[134,3719+31]..[134,3719+47])
+                            ptype_params =
+                              []
+                            ptype_cstrs =
+                              []
+                            ptype_kind =
+                              Ptype_abstract
+                            ptype_private = Public
+                            ptype_manifest =
+                              Some
+                                core_type (testsuite/tests/typing-modules/pr7726.ml[134,3719+40]..[134,3719+47])
+                                  Ptyp_constr "Fixed.t" (testsuite/tests/typing-modules/pr7726.ml[134,3719+40]..[134,3719+47])
+                                  []
+                        ]
+                    ]
+          ]
+  structure_item (testsuite/tests/typing-modules/pr7726.ml[136,3777+0]..[136,3777+31])
+    Pstr_value Nonrec
+    [
+      <def>
+        pattern (testsuite/tests/typing-modules/pr7726.ml[136,3777+4]..[136,3777+5])
+          Ppat_var "f" (testsuite/tests/typing-modules/pr7726.ml[136,3777+4]..[136,3777+5])
+        expression (testsuite/tests/typing-modules/pr7726.ml[136,3777+6]..[136,3777+31]) ghost
+          Pexp_fun
+          Nolabel
+          None
+          pattern (testsuite/tests/typing-modules/pr7726.ml[136,3777+6]..[136,3777+27])
+            Ppat_constraint
+            pattern (testsuite/tests/typing-modules/pr7726.ml[136,3777+7]..[136,3777+8])
+              Ppat_var "x" (testsuite/tests/typing-modules/pr7726.ml[136,3777+7]..[136,3777+8])
+            core_type (testsuite/tests/typing-modules/pr7726.ml[136,3777+11]..[136,3777+26])
+              Ptyp_constr "Fix2(Id).R(M).t" (testsuite/tests/typing-modules/pr7726.ml[136,3777+11]..[136,3777+26])
+              []
+          expression (testsuite/tests/typing-modules/pr7726.ml[136,3777+30]..[136,3777+31])
+            Pexp_ident "x" (testsuite/tests/typing-modules/pr7726.ml[136,3777+30]..[136,3777+31])
+    ]
+  structure_item (testsuite/tests/typing-modules/pr7726.ml[137,3811+0]..[150,4201+3])
+    Pstr_extension "expect"
+    [
+      structure_item (testsuite/tests/typing-modules/pr7726.ml[137,3811+9]..[150,4201+2])
+        Pstr_eval
+        expression (testsuite/tests/typing-modules/pr7726.ml[137,3811+9]..[150,4201+2])
+          Pexp_constant PConst_string ("\nmodule Fix2 :\n  functor (F : T -> T) ->\n    sig\n      module rec Fixed : sig type t = F(Fixed).t end\n      module R : functor (X : sig end) -> sig type t = Fixed.t end\n    end\nLine 5, characters 11-26:\n5 | let f (x : Fix2(Id).R(M).t) = x;;\n               ^^^^^^^^^^^^^^^\nError: In the signature of Fix2(Id):\n       The definition of Fixed.t contains a cycle:\n       Id(Fixed).t\n",(testsuite/tests/typing-modules/pr7726.ml[137,3811+11]..[150,4201+0]),Some "")
+    ]
+]
+

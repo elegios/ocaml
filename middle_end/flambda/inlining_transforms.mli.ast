@@ -1,0 +1,259 @@
+[
+  signature_item (middle_end/flambda/inlining_transforms.mli[17,1156+0]..[17,1156+39])
+    Psig_attribute "ocaml.warning"
+    [
+      structure_item (middle_end/flambda/inlining_transforms.mli[17,1156+18]..[17,1156+38])
+        Pstr_eval
+        expression (middle_end/flambda/inlining_transforms.mli[17,1156+18]..[17,1156+38])
+          Pexp_constant PConst_string("+a-4-9-30-40-41-42",(middle_end/flambda/inlining_transforms.mli[17,1156+19]..[17,1156+37]),None)
+    ]
+  signature_item (middle_end/flambda/inlining_transforms.mli[19,1197+0]..[19,1197+56])
+    Psig_attribute "ocaml.text"
+    [
+      structure_item (middle_end/flambda/inlining_transforms.mli[19,1197+0]..[19,1197+56])
+        Pstr_eval
+        expression (middle_end/flambda/inlining_transforms.mli[19,1197+0]..[19,1197+56])
+          Pexp_constant PConst_string(" Source code transformations used during inlining. ",(middle_end/flambda/inlining_transforms.mli[19,1197+0]..[19,1197+56]),None)
+    ]
+  signature_item (middle_end/flambda/inlining_transforms.mli[67,2980+0]..[80,3508+49])
+    Psig_value
+    value_description "inline_by_copying_function_body" (middle_end/flambda/inlining_transforms.mli[67,2980+4]..[67,2980+35]) (middle_end/flambda/inlining_transforms.mli[67,2980+0]..[80,3508+49])
+      attribute "ocaml.doc"
+        [
+          structure_item (middle_end/flambda/inlining_transforms.mli[21,1255+0]..[66,2977+2])
+            Pstr_eval
+            expression (middle_end/flambda/inlining_transforms.mli[21,1255+0]..[66,2977+2])
+              Pexp_constant PConst_string(" Inline a function by substituting its body (which may be subject to\n    further transformation) at a call site.  The function's declaration is\n    not copied.\n\n    This transformation is used when:\n    - inlining a call to a non-recursive function;\n    - inlining a call, within a recursive or mutually-recursive function, to\n      the same or another function being defined simultaneously (\"unrolling\").\n      The maximum depth of unrolling is bounded (see [E.unrolling_allowed]).\n\n    In both cases, the body of the function is copied, within a sequence of\n    [let]s that bind the function parameters, the variables \"bound by the\n    closure\" (see flambda.mli), and any function identifiers introduced by the\n    set of closures.  These stages are delimited below by comments.\n\n    As an example, suppose we are inlining the following function:\n\n     let f x = x + y\n     ...\n     let p = f, f in\n     (fst p) 42\n\n    The call site [ (fst p) 42] will be transformed to:\n\n      let clos_id = fst p in  (* must eventually yield a closure *)\n      let y = <access to [y] in [clos_id]> in\n      let x' = 42 in\n      let x = x' in\n      x + y\n\n    When unrolling a recursive function we rename the arguments to the\n    recursive call in order to avoid clashes with existing bindings.  For\n    example, suppose we are inlining the following call to [f], which lies\n    within its own declaration:\n\n      let rec f x y =\n        f (fst x) (y + snd x)\n\n    This will be transformed to:\n\n      let rec f x y =\n        let clos_id = f in (* not used this time, since [f] has no free vars *)\n        let x' = fst x in\n        let y' = y + snd x in\n        f (fst x') (y' + snd x')  (* body of [f] with parameters freshened *)\n",(middle_end/flambda/inlining_transforms.mli[21,1255+0]..[66,2977+2]),None)
+        ]
+      core_type (middle_end/flambda/inlining_transforms.mli[68,3016+5]..[80,3508+49])
+        Ptyp_arrow
+        Labelled "env"
+        core_type (middle_end/flambda/inlining_transforms.mli[68,3016+9]..[68,3016+38])
+          Ptyp_constr "Inline_and_simplify_aux.Env.t" (middle_end/flambda/inlining_transforms.mli[68,3016+9]..[68,3016+38])
+          []
+        core_type (middle_end/flambda/inlining_transforms.mli[69,3055+5]..[80,3508+49])
+          Ptyp_arrow
+          Labelled "r"
+          core_type (middle_end/flambda/inlining_transforms.mli[69,3055+7]..[69,3055+39])
+            Ptyp_constr "Inline_and_simplify_aux.Result.t" (middle_end/flambda/inlining_transforms.mli[69,3055+7]..[69,3055+39])
+            []
+          core_type (middle_end/flambda/inlining_transforms.mli[70,3095+5]..[80,3508+49])
+            Ptyp_arrow
+            Labelled "lhs_of_application"
+            core_type (middle_end/flambda/inlining_transforms.mli[70,3095+24]..[70,3095+34])
+              Ptyp_constr "Variable.t" (middle_end/flambda/inlining_transforms.mli[70,3095+24]..[70,3095+34])
+              []
+            core_type (middle_end/flambda/inlining_transforms.mli[71,3130+5]..[80,3508+49])
+              Ptyp_arrow
+              Labelled "inline_requested"
+              core_type (middle_end/flambda/inlining_transforms.mli[71,3130+22]..[71,3130+45])
+                Ptyp_constr "Lambda.inline_attribute" (middle_end/flambda/inlining_transforms.mli[71,3130+22]..[71,3130+45])
+                []
+              core_type (middle_end/flambda/inlining_transforms.mli[72,3176+5]..[80,3508+49])
+                Ptyp_arrow
+                Labelled "specialise_requested"
+                core_type (middle_end/flambda/inlining_transforms.mli[72,3176+26]..[72,3176+53])
+                  Ptyp_constr "Lambda.specialise_attribute" (middle_end/flambda/inlining_transforms.mli[72,3176+26]..[72,3176+53])
+                  []
+                core_type (middle_end/flambda/inlining_transforms.mli[73,3230+5]..[80,3508+49])
+                  Ptyp_arrow
+                  Labelled "closure_id_being_applied"
+                  core_type (middle_end/flambda/inlining_transforms.mli[73,3230+30]..[73,3230+42])
+                    Ptyp_constr "Closure_id.t" (middle_end/flambda/inlining_transforms.mli[73,3230+30]..[73,3230+42])
+                    []
+                  core_type (middle_end/flambda/inlining_transforms.mli[74,3273+5]..[80,3508+49])
+                    Ptyp_arrow
+                    Labelled "function_decl"
+                    core_type (middle_end/flambda/inlining_transforms.mli[74,3273+19]..[74,3273+59])
+                      Ptyp_constr "Simple_value_approx.function_declaration" (middle_end/flambda/inlining_transforms.mli[74,3273+19]..[74,3273+59])
+                      []
+                    core_type (middle_end/flambda/inlining_transforms.mli[75,3333+5]..[80,3508+49])
+                      Ptyp_arrow
+                      Labelled "function_body"
+                      core_type (middle_end/flambda/inlining_transforms.mli[75,3333+19]..[75,3333+52])
+                        Ptyp_constr "Simple_value_approx.function_body" (middle_end/flambda/inlining_transforms.mli[75,3333+19]..[75,3333+52])
+                        []
+                      core_type (middle_end/flambda/inlining_transforms.mli[76,3386+5]..[80,3508+49])
+                        Ptyp_arrow
+                        Labelled "fun_vars"
+                        core_type (middle_end/flambda/inlining_transforms.mli[76,3386+14]..[76,3386+28])
+                          Ptyp_constr "Variable.Set.t" (middle_end/flambda/inlining_transforms.mli[76,3386+14]..[76,3386+28])
+                          []
+                        core_type (middle_end/flambda/inlining_transforms.mli[77,3415+5]..[80,3508+49])
+                          Ptyp_arrow
+                          Labelled "args"
+                          core_type (middle_end/flambda/inlining_transforms.mli[77,3415+10]..[77,3415+25])
+                            Ptyp_constr "list" (middle_end/flambda/inlining_transforms.mli[77,3415+21]..[77,3415+25])
+                            [
+                              core_type (middle_end/flambda/inlining_transforms.mli[77,3415+10]..[77,3415+20])
+                                Ptyp_constr "Variable.t" (middle_end/flambda/inlining_transforms.mli[77,3415+10]..[77,3415+20])
+                                []
+                            ]
+                          core_type (middle_end/flambda/inlining_transforms.mli[78,3441+5]..[80,3508+49])
+                            Ptyp_arrow
+                            Labelled "dbg"
+                            core_type (middle_end/flambda/inlining_transforms.mli[78,3441+9]..[78,3441+20])
+                              Ptyp_constr "Debuginfo.t" (middle_end/flambda/inlining_transforms.mli[78,3441+9]..[78,3441+20])
+                              []
+                            core_type (middle_end/flambda/inlining_transforms.mli[79,3462+5]..[80,3508+49])
+                              Ptyp_arrow
+                              Labelled "simplify"
+                              core_type (middle_end/flambda/inlining_transforms.mli[79,3462+14]..[79,3462+45])
+                                Ptyp_constr "Inlining_decision_intf.simplify" (middle_end/flambda/inlining_transforms.mli[79,3462+14]..[79,3462+45])
+                                []
+                              core_type (middle_end/flambda/inlining_transforms.mli[80,3508+5]..[80,3508+49])
+                                Ptyp_tuple
+                                [
+                                  core_type (middle_end/flambda/inlining_transforms.mli[80,3508+5]..[80,3508+14])
+                                    Ptyp_constr "Flambda.t" (middle_end/flambda/inlining_transforms.mli[80,3508+5]..[80,3508+14])
+                                    []
+                                  core_type (middle_end/flambda/inlining_transforms.mli[80,3508+17]..[80,3508+49])
+                                    Ptyp_constr "Inline_and_simplify_aux.Result.t" (middle_end/flambda/inlining_transforms.mli[80,3508+17]..[80,3508+49])
+                                    []
+                                ]
+      []
+  signature_item (middle_end/flambda/inlining_transforms.mli[89,3944+0]..[105,4680+58])
+    Psig_value
+    value_description "inline_by_copying_function_declaration" (middle_end/flambda/inlining_transforms.mli[89,3944+4]..[89,3944+42]) (middle_end/flambda/inlining_transforms.mli[89,3944+0]..[105,4680+58])
+      attribute "ocaml.doc"
+        [
+          structure_item (middle_end/flambda/inlining_transforms.mli[82,3559+0]..[88,3941+2])
+            Pstr_eval
+            expression (middle_end/flambda/inlining_transforms.mli[82,3559+0]..[88,3941+2])
+              Pexp_constant PConst_string(" Inlining of recursive function(s) yields a copy of the functions'\n    definitions (not just their bodies, unlike the non-recursive case) and\n    a direct application of the new body.\n    Note: the function really does need to be recursive (but possibly only via\n    some mutual recursion) to end up in here; a simultaneous binding [that is\n    non-recursive] is not sufficient.\n",(middle_end/flambda/inlining_transforms.mli[82,3559+0]..[88,3941+2]),None)
+        ]
+      core_type (middle_end/flambda/inlining_transforms.mli[90,3987+5]..[105,4680+58])
+        Ptyp_arrow
+        Labelled "env"
+        core_type (middle_end/flambda/inlining_transforms.mli[90,3987+9]..[90,3987+38])
+          Ptyp_constr "Inline_and_simplify_aux.Env.t" (middle_end/flambda/inlining_transforms.mli[90,3987+9]..[90,3987+38])
+          []
+        core_type (middle_end/flambda/inlining_transforms.mli[91,4026+5]..[105,4680+58])
+          Ptyp_arrow
+          Labelled "r"
+          core_type (middle_end/flambda/inlining_transforms.mli[91,4026+7]..[91,4026+39])
+            Ptyp_constr "Inline_and_simplify_aux.Result.t" (middle_end/flambda/inlining_transforms.mli[91,4026+7]..[91,4026+39])
+            []
+          core_type (middle_end/flambda/inlining_transforms.mli[92,4066+5]..[105,4680+58])
+            Ptyp_arrow
+            Labelled "function_decls"
+            core_type (middle_end/flambda/inlining_transforms.mli[92,4066+20]..[92,4066+61])
+              Ptyp_constr "Simple_value_approx.function_declarations" (middle_end/flambda/inlining_transforms.mli[92,4066+20]..[92,4066+61])
+              []
+            core_type (middle_end/flambda/inlining_transforms.mli[93,4128+5]..[105,4680+58])
+              Ptyp_arrow
+              Labelled "lhs_of_application"
+              core_type (middle_end/flambda/inlining_transforms.mli[93,4128+24]..[93,4128+34])
+                Ptyp_constr "Variable.t" (middle_end/flambda/inlining_transforms.mli[93,4128+24]..[93,4128+34])
+                []
+              core_type (middle_end/flambda/inlining_transforms.mli[94,4163+5]..[105,4680+58])
+                Ptyp_arrow
+                Labelled "inline_requested"
+                core_type (middle_end/flambda/inlining_transforms.mli[94,4163+22]..[94,4163+45])
+                  Ptyp_constr "Lambda.inline_attribute" (middle_end/flambda/inlining_transforms.mli[94,4163+22]..[94,4163+45])
+                  []
+                core_type (middle_end/flambda/inlining_transforms.mli[95,4209+5]..[105,4680+58])
+                  Ptyp_arrow
+                  Labelled "closure_id_being_applied"
+                  core_type (middle_end/flambda/inlining_transforms.mli[95,4209+30]..[95,4209+42])
+                    Ptyp_constr "Closure_id.t" (middle_end/flambda/inlining_transforms.mli[95,4209+30]..[95,4209+42])
+                    []
+                  core_type (middle_end/flambda/inlining_transforms.mli[96,4252+5]..[105,4680+58])
+                    Ptyp_arrow
+                    Labelled "function_decl"
+                    core_type (middle_end/flambda/inlining_transforms.mli[96,4252+19]..[96,4252+59])
+                      Ptyp_constr "Simple_value_approx.function_declaration" (middle_end/flambda/inlining_transforms.mli[96,4252+19]..[96,4252+59])
+                      []
+                    core_type (middle_end/flambda/inlining_transforms.mli[97,4312+5]..[105,4680+58])
+                      Ptyp_arrow
+                      Labelled "args"
+                      core_type (middle_end/flambda/inlining_transforms.mli[97,4312+10]..[97,4312+25])
+                        Ptyp_constr "list" (middle_end/flambda/inlining_transforms.mli[97,4312+21]..[97,4312+25])
+                        [
+                          core_type (middle_end/flambda/inlining_transforms.mli[97,4312+10]..[97,4312+20])
+                            Ptyp_constr "Variable.t" (middle_end/flambda/inlining_transforms.mli[97,4312+10]..[97,4312+20])
+                            []
+                        ]
+                      core_type (middle_end/flambda/inlining_transforms.mli[98,4338+5]..[105,4680+58])
+                        Ptyp_arrow
+                        Labelled "args_approxs"
+                        core_type (middle_end/flambda/inlining_transforms.mli[98,4338+18]..[98,4338+44])
+                          Ptyp_constr "list" (middle_end/flambda/inlining_transforms.mli[98,4338+40]..[98,4338+44])
+                          [
+                            core_type (middle_end/flambda/inlining_transforms.mli[98,4338+18]..[98,4338+39])
+                              Ptyp_constr "Simple_value_approx.t" (middle_end/flambda/inlining_transforms.mli[98,4338+18]..[98,4338+39])
+                              []
+                          ]
+                        core_type (middle_end/flambda/inlining_transforms.mli[99,4383+5]..[105,4680+58])
+                          Ptyp_arrow
+                          Labelled "invariant_params"
+                          core_type (middle_end/flambda/inlining_transforms.mli[99,4383+22]..[99,4383+58])
+                            Ptyp_constr "lazy_t" (middle_end/flambda/inlining_transforms.mli[99,4383+52]..[99,4383+58])
+                            [
+                              core_type (middle_end/flambda/inlining_transforms.mli[99,4383+22]..[99,4383+51])
+                                Ptyp_constr "Variable.Map.t" (middle_end/flambda/inlining_transforms.mli[99,4383+37]..[99,4383+51])
+                                [
+                                  core_type (middle_end/flambda/inlining_transforms.mli[99,4383+22]..[99,4383+36])
+                                    Ptyp_constr "Variable.Set.t" (middle_end/flambda/inlining_transforms.mli[99,4383+22]..[99,4383+36])
+                                    []
+                                ]
+                            ]
+                          core_type (middle_end/flambda/inlining_transforms.mli[100,4442+5]..[105,4680+58])
+                            Ptyp_arrow
+                            Labelled "specialised_args"
+                            core_type (middle_end/flambda/inlining_transforms.mli[100,4442+22]..[100,4442+59])
+                              Ptyp_constr "Variable.Map.t" (middle_end/flambda/inlining_transforms.mli[100,4442+45]..[100,4442+59])
+                              [
+                                core_type (middle_end/flambda/inlining_transforms.mli[100,4442+22]..[100,4442+44])
+                                  Ptyp_constr "Flambda.specialised_to" (middle_end/flambda/inlining_transforms.mli[100,4442+22]..[100,4442+44])
+                                  []
+                              ]
+                            core_type (middle_end/flambda/inlining_transforms.mli[101,4502+5]..[105,4680+58])
+                              Ptyp_arrow
+                              Labelled "free_vars"
+                              core_type (middle_end/flambda/inlining_transforms.mli[101,4502+15]..[101,4502+52])
+                                Ptyp_constr "Variable.Map.t" (middle_end/flambda/inlining_transforms.mli[101,4502+38]..[101,4502+52])
+                                [
+                                  core_type (middle_end/flambda/inlining_transforms.mli[101,4502+15]..[101,4502+37])
+                                    Ptyp_constr "Flambda.specialised_to" (middle_end/flambda/inlining_transforms.mli[101,4502+15]..[101,4502+37])
+                                    []
+                                ]
+                              core_type (middle_end/flambda/inlining_transforms.mli[102,4555+5]..[105,4680+58])
+                                Ptyp_arrow
+                                Labelled "direct_call_surrogates"
+                                core_type (middle_end/flambda/inlining_transforms.mli[102,4555+28]..[102,4555+57])
+                                  Ptyp_constr "Closure_id.Map.t" (middle_end/flambda/inlining_transforms.mli[102,4555+41]..[102,4555+57])
+                                  [
+                                    core_type (middle_end/flambda/inlining_transforms.mli[102,4555+28]..[102,4555+40])
+                                      Ptyp_constr "Closure_id.t" (middle_end/flambda/inlining_transforms.mli[102,4555+28]..[102,4555+40])
+                                      []
+                                  ]
+                                core_type (middle_end/flambda/inlining_transforms.mli[103,4613+5]..[105,4680+58])
+                                  Ptyp_arrow
+                                  Labelled "dbg"
+                                  core_type (middle_end/flambda/inlining_transforms.mli[103,4613+9]..[103,4613+20])
+                                    Ptyp_constr "Debuginfo.t" (middle_end/flambda/inlining_transforms.mli[103,4613+9]..[103,4613+20])
+                                    []
+                                  core_type (middle_end/flambda/inlining_transforms.mli[104,4634+5]..[105,4680+58])
+                                    Ptyp_arrow
+                                    Labelled "simplify"
+                                    core_type (middle_end/flambda/inlining_transforms.mli[104,4634+14]..[104,4634+45])
+                                      Ptyp_constr "Inlining_decision_intf.simplify" (middle_end/flambda/inlining_transforms.mli[104,4634+14]..[104,4634+45])
+                                      []
+                                    core_type (middle_end/flambda/inlining_transforms.mli[105,4680+5]..[105,4680+58])
+                                      Ptyp_constr "option" (middle_end/flambda/inlining_transforms.mli[105,4680+52]..[105,4680+58])
+                                      [
+                                        core_type (middle_end/flambda/inlining_transforms.mli[105,4680+6]..[105,4680+50])
+                                          Ptyp_tuple
+                                          [
+                                            core_type (middle_end/flambda/inlining_transforms.mli[105,4680+6]..[105,4680+15])
+                                              Ptyp_constr "Flambda.t" (middle_end/flambda/inlining_transforms.mli[105,4680+6]..[105,4680+15])
+                                              []
+                                            core_type (middle_end/flambda/inlining_transforms.mli[105,4680+18]..[105,4680+50])
+                                              Ptyp_constr "Inline_and_simplify_aux.Result.t" (middle_end/flambda/inlining_transforms.mli[105,4680+18]..[105,4680+50])
+                                              []
+                                          ]
+                                      ]
+      []
+]
+

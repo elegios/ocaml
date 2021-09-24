@@ -1,0 +1,242 @@
+[
+  structure_item (debugger/events.ml[19,1231+0]..[19,1231+13])
+    Pstr_open Fresh
+    module_expr (debugger/events.ml[19,1231+5]..[19,1231+13])
+      Pmod_ident "Instruct" (debugger/events.ml[19,1231+5]..[19,1231+13])
+  structure_item (debugger/events.ml[21,1246+0]..[23,1283+34])
+    Pstr_type Rec
+    [
+      type_declaration "code_event" (debugger/events.ml[21,1246+5]..[21,1246+15]) (debugger/events.ml[21,1246+0]..[23,1283+34])
+        ptype_params =
+          []
+        ptype_cstrs =
+          []
+        ptype_kind =
+          Ptype_record
+            [
+              (debugger/events.ml[22,1264+4]..[22,1264+18])
+                Immutable
+                "ev_frag" (debugger/events.ml[22,1264+4]..[22,1264+11])                core_type (debugger/events.ml[22,1264+14]..[22,1264+17])
+                  Ptyp_constr "int" (debugger/events.ml[22,1264+14]..[22,1264+17])
+                  []
+              (debugger/events.ml[23,1283+4]..[23,1283+32])
+                Immutable
+                "ev_ev" (debugger/events.ml[23,1283+4]..[23,1283+9])                core_type (debugger/events.ml[23,1283+12]..[23,1283+32])
+                  Ptyp_constr "Instruct.debug_event" (debugger/events.ml[23,1283+12]..[23,1283+32])
+                  []
+            ]
+        ptype_private = Public
+        ptype_manifest =
+          None
+    ]
+  structure_item (debugger/events.ml[25,1319+0]..[29,1457+37])
+    Pstr_value Nonrec
+    [
+      <def>
+        pattern (debugger/events.ml[25,1319+4]..[25,1319+11])
+          Ppat_var "get_pos" (debugger/events.ml[25,1319+4]..[25,1319+11])
+        expression (debugger/events.ml[25,1319+12]..[29,1457+37]) ghost
+          Pexp_fun
+          Nolabel
+          None
+          pattern (debugger/events.ml[25,1319+12]..[25,1319+14])
+            Ppat_var "ev" (debugger/events.ml[25,1319+12]..[25,1319+14])
+          expression (debugger/events.ml[26,1336+2]..[29,1457+37])
+            Pexp_match
+            expression (debugger/events.ml[26,1336+8]..[26,1336+18])
+              Pexp_field
+              expression (debugger/events.ml[26,1336+8]..[26,1336+10])
+                Pexp_ident "ev" (debugger/events.ml[26,1336+8]..[26,1336+10])
+              "ev_kind" (debugger/events.ml[26,1336+11]..[26,1336+18])
+            [
+              <case>
+                pattern (debugger/events.ml[27,1360+4]..[27,1360+16])
+                  Ppat_construct "Event_before" (debugger/events.ml[27,1360+4]..[27,1360+16])
+                  None
+                expression (debugger/events.ml[27,1360+20]..[27,1360+48])
+                  Pexp_field
+                  expression (debugger/events.ml[27,1360+20]..[27,1360+29])
+                    Pexp_field
+                    expression (debugger/events.ml[27,1360+20]..[27,1360+22])
+                      Pexp_ident "ev" (debugger/events.ml[27,1360+20]..[27,1360+22])
+                    "ev_loc" (debugger/events.ml[27,1360+23]..[27,1360+29])
+                  "Location.loc_start" (debugger/events.ml[27,1360+30]..[27,1360+48])
+              <case>
+                pattern (debugger/events.ml[28,1409+4]..[28,1409+17])
+                  Ppat_construct "Event_after" (debugger/events.ml[28,1409+4]..[28,1409+15])
+                  Some
+                    []
+                    pattern (debugger/events.ml[28,1409+16]..[28,1409+17])
+                      Ppat_any
+                expression (debugger/events.ml[28,1409+21]..[28,1409+47])
+                  Pexp_field
+                  expression (debugger/events.ml[28,1409+21]..[28,1409+30])
+                    Pexp_field
+                    expression (debugger/events.ml[28,1409+21]..[28,1409+23])
+                      Pexp_ident "ev" (debugger/events.ml[28,1409+21]..[28,1409+23])
+                    "ev_loc" (debugger/events.ml[28,1409+24]..[28,1409+30])
+                  "Location.loc_end" (debugger/events.ml[28,1409+31]..[28,1409+47])
+              <case>
+                pattern (debugger/events.ml[29,1457+4]..[29,1457+5])
+                  Ppat_any
+                expression (debugger/events.ml[29,1457+9]..[29,1457+37])
+                  Pexp_field
+                  expression (debugger/events.ml[29,1457+9]..[29,1457+18])
+                    Pexp_field
+                    expression (debugger/events.ml[29,1457+9]..[29,1457+11])
+                      Pexp_ident "ev" (debugger/events.ml[29,1457+9]..[29,1457+11])
+                    "ev_loc" (debugger/events.ml[29,1457+12]..[29,1457+18])
+                  "Location.loc_start" (debugger/events.ml[29,1457+19]..[29,1457+37])
+            ]
+    ]
+  structure_item (debugger/events.ml[36,1559+0]..[37,1579+32])
+    Pstr_value Nonrec
+    [
+      <def>
+        pattern (debugger/events.ml[36,1559+4]..[36,1559+17])
+          Ppat_var "current_event" (debugger/events.ml[36,1559+4]..[36,1559+17])
+        expression (debugger/events.ml[37,1579+2]..[37,1579+32])
+          Pexp_apply
+          expression (debugger/events.ml[37,1579+2]..[37,1579+5])
+            Pexp_ident "ref" (debugger/events.ml[37,1579+2]..[37,1579+5])
+          [
+            <arg>
+            Nolabel
+              expression (debugger/events.ml[37,1579+6]..[37,1579+32])
+                Pexp_constraint
+                expression (debugger/events.ml[37,1579+7]..[37,1579+11])
+                  Pexp_construct "None" (debugger/events.ml[37,1579+7]..[37,1579+11])
+                  None
+                core_type (debugger/events.ml[37,1579+14]..[37,1579+31])
+                  Ptyp_constr "option" (debugger/events.ml[37,1579+25]..[37,1579+31])
+                  [
+                    core_type (debugger/events.ml[37,1579+14]..[37,1579+24])
+                      Ptyp_constr "code_event" (debugger/events.ml[37,1579+14]..[37,1579+24])
+                      []
+                  ]
+          ]
+    ]
+  structure_item (debugger/events.ml[41,1721+0]..[44,1804+17])
+    Pstr_value Nonrec
+    [
+      <def>
+        pattern (debugger/events.ml[41,1721+4]..[41,1721+21])
+          Ppat_var "get_current_event" (debugger/events.ml[41,1721+4]..[41,1721+21])
+        expression (debugger/events.ml[41,1721+22]..[44,1804+17]) ghost
+          Pexp_fun
+          Nolabel
+          None
+          pattern (debugger/events.ml[41,1721+22]..[41,1721+24])
+            Ppat_construct "()" (debugger/events.ml[41,1721+22]..[41,1721+24])
+            None
+          expression (debugger/events.ml[42,1748+2]..[44,1804+17])
+            Pexp_match
+            expression (debugger/events.ml[42,1748+8]..[42,1748+22])
+              Pexp_apply
+              expression (debugger/events.ml[42,1748+8]..[42,1748+9])
+                Pexp_ident "!" (debugger/events.ml[42,1748+8]..[42,1748+9])
+              [
+                <arg>
+                Nolabel
+                  expression (debugger/events.ml[42,1748+9]..[42,1748+22])
+                    Pexp_ident "current_event" (debugger/events.ml[42,1748+9]..[42,1748+22])
+              ]
+            [
+              <case>
+                pattern (debugger/events.ml[43,1776+4]..[43,1776+8])
+                  Ppat_construct "None" (debugger/events.ml[43,1776+4]..[43,1776+8])
+                  None
+                expression (debugger/events.ml[43,1776+12]..[43,1776+27])
+                  Pexp_apply
+                  expression (debugger/events.ml[43,1776+12]..[43,1776+17])
+                    Pexp_ident "raise" (debugger/events.ml[43,1776+12]..[43,1776+17])
+                  [
+                    <arg>
+                    Nolabel
+                      expression (debugger/events.ml[43,1776+18]..[43,1776+27])
+                        Pexp_construct "Not_found" (debugger/events.ml[43,1776+18]..[43,1776+27])
+                        None
+                  ]
+              <case>
+                pattern (debugger/events.ml[44,1804+4]..[44,1804+11])
+                  Ppat_construct "Some" (debugger/events.ml[44,1804+4]..[44,1804+8])
+                  Some
+                    []
+                    pattern (debugger/events.ml[44,1804+9]..[44,1804+11])
+                      Ppat_var "ev" (debugger/events.ml[44,1804+9]..[44,1804+11])
+                expression (debugger/events.ml[44,1804+15]..[44,1804+17])
+                  Pexp_ident "ev" (debugger/events.ml[44,1804+15]..[44,1804+17])
+            ]
+    ]
+  structure_item (debugger/events.ml[46,1823+0]..[53,1985+11])
+    Pstr_value Nonrec
+    [
+      <def>
+        pattern (debugger/events.ml[46,1823+4]..[46,1823+27])
+          Ppat_var "current_event_is_before" (debugger/events.ml[46,1823+4]..[46,1823+27])
+        expression (debugger/events.ml[46,1823+28]..[53,1985+11]) ghost
+          Pexp_fun
+          Nolabel
+          None
+          pattern (debugger/events.ml[46,1823+28]..[46,1823+30])
+            Ppat_construct "()" (debugger/events.ml[46,1823+28]..[46,1823+30])
+            None
+          expression (debugger/events.ml[47,1856+2]..[53,1985+11])
+            Pexp_match
+            expression (debugger/events.ml[47,1856+8]..[47,1856+22])
+              Pexp_apply
+              expression (debugger/events.ml[47,1856+8]..[47,1856+9])
+                Pexp_ident "!" (debugger/events.ml[47,1856+8]..[47,1856+9])
+              [
+                <arg>
+                Nolabel
+                  expression (debugger/events.ml[47,1856+9]..[47,1856+22])
+                    Pexp_ident "current_event" (debugger/events.ml[47,1856+9]..[47,1856+22])
+              ]
+            [
+              <case>
+                pattern (debugger/events.ml[48,1884+4]..[48,1884+8])
+                  Ppat_construct "None" (debugger/events.ml[48,1884+4]..[48,1884+8])
+                  None
+                expression (debugger/events.ml[49,1896+6]..[49,1896+21])
+                  Pexp_apply
+                  expression (debugger/events.ml[49,1896+6]..[49,1896+11])
+                    Pexp_ident "raise" (debugger/events.ml[49,1896+6]..[49,1896+11])
+                  [
+                    <arg>
+                    Nolabel
+                      expression (debugger/events.ml[49,1896+12]..[49,1896+21])
+                        Pexp_construct "Not_found" (debugger/events.ml[49,1896+12]..[49,1896+21])
+                        None
+                  ]
+              <case>
+                pattern (debugger/events.ml[50,1918+4]..[50,1918+43])
+                  Ppat_construct "Some" (debugger/events.ml[50,1918+4]..[50,1918+8])
+                  Some
+                    []
+                    pattern (debugger/events.ml[50,1918+9]..[50,1918+43])
+                      Ppat_record Closed
+                      [
+                        "ev_ev" (debugger/events.ml[50,1918+10]..[50,1918+15])
+                          pattern (debugger/events.ml[50,1918+18]..[50,1918+42])
+                            Ppat_record Closed
+                            [
+                              "ev_kind" (debugger/events.ml[50,1918+19]..[50,1918+26])
+                                pattern (debugger/events.ml[50,1918+29]..[50,1918+41])
+                                  Ppat_construct "Event_before" (debugger/events.ml[50,1918+29]..[50,1918+41])
+                                  None
+                            ]
+                      ]
+                expression (debugger/events.ml[51,1965+6]..[51,1965+10])
+                  Pexp_construct "true" (debugger/events.ml[51,1965+6]..[51,1965+10])
+                  None
+              <case>
+                pattern (debugger/events.ml[52,1976+4]..[52,1976+5])
+                  Ppat_any
+                expression (debugger/events.ml[53,1985+6]..[53,1985+11])
+                  Pexp_construct "false" (debugger/events.ml[53,1985+6]..[53,1985+11])
+                  None
+            ]
+    ]
+]
+

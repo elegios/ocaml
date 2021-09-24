@@ -1,0 +1,50 @@
+[
+  structure_item (testsuite/tests/typing-recmod/gpr1626.ml[5,24+0]..[5,24+55])
+    Pstr_modtype "S" (testsuite/tests/typing-recmod/gpr1626.ml[5,24+12]..[5,24+13])
+      module_type (testsuite/tests/typing-recmod/gpr1626.ml[5,24+16]..[5,24+55])
+        Pmty_signature
+        [
+          signature_item (testsuite/tests/typing-recmod/gpr1626.ml[5,24+20]..[5,24+38])
+            Psig_module "M" (testsuite/tests/typing-recmod/gpr1626.ml[5,24+27]..[5,24+28])
+            module_type (testsuite/tests/typing-recmod/gpr1626.ml[5,24+31]..[5,24+38])
+              Pmty_signature
+              []
+          signature_item (testsuite/tests/typing-recmod/gpr1626.ml[5,24+39]..[5,24+51])
+            Psig_module "N" (testsuite/tests/typing-recmod/gpr1626.ml[5,24+46]..[5,24+47])
+            module_type (testsuite/tests/typing-recmod/gpr1626.ml[5,24+50]..[5,24+51])
+              Pmty_alias "M" (testsuite/tests/typing-recmod/gpr1626.ml[5,24+50]..[5,24+51])
+        ]
+  structure_item (testsuite/tests/typing-recmod/gpr1626.ml[6,82+0]..[8,150+3])
+    Pstr_extension "expect"
+    [
+      structure_item (testsuite/tests/typing-recmod/gpr1626.ml[6,82+9]..[8,150+2])
+        Pstr_eval
+        expression (testsuite/tests/typing-recmod/gpr1626.ml[6,82+9]..[8,150+2])
+          Pexp_constant PConst_string ("\nmodule type S = sig module M : sig end module N = M end\n",(testsuite/tests/typing-recmod/gpr1626.ml[6,82+11]..[8,150+0]),Some "")
+    ]
+  structure_item (testsuite/tests/typing-recmod/gpr1626.ml[10,157+0]..[10,157+39])
+    Pstr_recmodule
+    [
+      "M" (testsuite/tests/typing-recmod/gpr1626.ml[10,157+11]..[10,157+12])
+        module_expr (testsuite/tests/typing-recmod/gpr1626.ml[10,157+13]..[10,157+39])
+          Pmod_constraint
+          module_expr (testsuite/tests/typing-recmod/gpr1626.ml[10,157+38]..[10,157+39])
+            Pmod_ident "M" (testsuite/tests/typing-recmod/gpr1626.ml[10,157+38]..[10,157+39])
+          module_type (testsuite/tests/typing-recmod/gpr1626.ml[10,157+15]..[10,157+35])
+            Pmty_with
+            module_type (testsuite/tests/typing-recmod/gpr1626.ml[10,157+15]..[10,157+16])
+              Pmty_ident "S" (testsuite/tests/typing-recmod/gpr1626.ml[10,157+15]..[10,157+16])
+            [
+              Pwith_modsubst "M" (testsuite/tests/typing-recmod/gpr1626.ml[10,157+29]..[10,157+30]) = "M" (testsuite/tests/typing-recmod/gpr1626.ml[10,157+34]..[10,157+35])
+            ]
+    ]
+  structure_item (testsuite/tests/typing-recmod/gpr1626.ml[11,199+0]..[16,365+3])
+    Pstr_extension "expect"
+    [
+      structure_item (testsuite/tests/typing-recmod/gpr1626.ml[11,199+9]..[16,365+2])
+        Pstr_eval
+        expression (testsuite/tests/typing-recmod/gpr1626.ml[11,199+9]..[16,365+2])
+          Pexp_constant PConst_string ("\nLine 1, characters 34-35:\n1 | module rec M : S with module M := M = M;;\n                                      ^\nError: Illegal recursive module reference\n",(testsuite/tests/typing-recmod/gpr1626.ml[11,199+11]..[16,365+0]),Some "")
+    ]
+]
+

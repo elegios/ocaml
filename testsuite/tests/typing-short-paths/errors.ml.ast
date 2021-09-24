@@ -1,0 +1,147 @@
+[
+  structure_item (testsuite/tests/typing-short-paths/errors.ml[6,52+0]..[6,52+32])
+    Pstr_module
+    "M" (testsuite/tests/typing-short-paths/errors.ml[6,52+7]..[6,52+8])
+      module_expr (testsuite/tests/typing-short-paths/errors.ml[6,52+11]..[6,52+32])
+        Pmod_structure
+        [
+          structure_item (testsuite/tests/typing-short-paths/errors.ml[6,52+18]..[6,52+28])
+            Pstr_type Rec
+            [
+              type_declaration "t" (testsuite/tests/typing-short-paths/errors.ml[6,52+23]..[6,52+24]) (testsuite/tests/typing-short-paths/errors.ml[6,52+18]..[6,52+28])
+                ptype_params =
+                  []
+                ptype_cstrs =
+                  []
+                ptype_kind =
+                  Ptype_variant
+                    [
+                      (testsuite/tests/typing-short-paths/errors.ml[6,52+27]..[6,52+28])
+                        "T" (testsuite/tests/typing-short-paths/errors.ml[6,52+27]..[6,52+28])
+                        []
+                        None
+                    ]
+                ptype_private = Public
+                ptype_manifest =
+                  None
+            ]
+        ]
+  structure_item (testsuite/tests/typing-short-paths/errors.ml[8,86+0]..[8,86+12])
+    Pstr_type Rec
+    [
+      type_declaration "t" (testsuite/tests/typing-short-paths/errors.ml[8,86+5]..[8,86+6]) (testsuite/tests/typing-short-paths/errors.ml[8,86+0]..[8,86+12])
+        ptype_params =
+          []
+        ptype_cstrs =
+          []
+        ptype_kind =
+          Ptype_abstract
+        ptype_private = Public
+        ptype_manifest =
+          Some
+            core_type (testsuite/tests/typing-short-paths/errors.ml[8,86+9]..[8,86+12])
+              Ptyp_constr "M.t" (testsuite/tests/typing-short-paths/errors.ml[8,86+9]..[8,86+12])
+              []
+    ]
+  structure_item (testsuite/tests/typing-short-paths/errors.ml[10,100+0]..[10,100+15])
+    Pstr_value Nonrec
+    [
+      <def>
+        pattern (testsuite/tests/typing-short-paths/errors.ml[10,100+4]..[10,100+11]) ghost
+          Ppat_constraint
+          pattern (testsuite/tests/typing-short-paths/errors.ml[10,100+4]..[10,100+5])
+            Ppat_var "x" (testsuite/tests/typing-short-paths/errors.ml[10,100+4]..[10,100+5])
+          core_type (testsuite/tests/typing-short-paths/errors.ml[10,100+8]..[10,100+11]) ghost
+            Ptyp_poly
+            core_type (testsuite/tests/typing-short-paths/errors.ml[10,100+8]..[10,100+11])
+              Ptyp_constr "M.t" (testsuite/tests/typing-short-paths/errors.ml[10,100+8]..[10,100+11])
+              []
+        expression (testsuite/tests/typing-short-paths/errors.ml[10,100+4]..[10,100+15])
+          Pexp_constraint
+          expression (testsuite/tests/typing-short-paths/errors.ml[10,100+14]..[10,100+15])
+            Pexp_construct "S" (testsuite/tests/typing-short-paths/errors.ml[10,100+14]..[10,100+15])
+            None
+          core_type (testsuite/tests/typing-short-paths/errors.ml[10,100+8]..[10,100+11])
+            Ptyp_constr "M.t" (testsuite/tests/typing-short-paths/errors.ml[10,100+8]..[10,100+11])
+            []
+    ]
+  structure_item (testsuite/tests/typing-short-paths/errors.ml[11,116+0]..[19,343+3])
+    Pstr_extension "expect"
+    [
+      structure_item (testsuite/tests/typing-short-paths/errors.ml[11,116+10]..[19,343+2])
+        Pstr_eval
+        expression (testsuite/tests/typing-short-paths/errors.ml[11,116+10]..[19,343+2])
+          Pexp_constant PConst_string ("\nmodule M : sig type t = T end\ntype t = M.t\nLine 5, characters 14-15:\n5 | let x : M.t = S\n                  ^\nError: This variant expression is expected to have type t\n       There is no constructor S within type t\n",(testsuite/tests/typing-short-paths/errors.ml[11,116+12]..[19,343+0]),Some "")
+    ]
+  structure_item (testsuite/tests/typing-short-paths/errors.ml[21,348+0]..[23,404+3])
+    Pstr_module
+    "M" (testsuite/tests/typing-short-paths/errors.ml[21,348+7]..[21,348+8])
+      module_expr (testsuite/tests/typing-short-paths/errors.ml[21,348+11]..[23,404+3])
+        Pmod_structure
+        [
+          structure_item (testsuite/tests/typing-short-paths/errors.ml[22,366+2]..[22,366+37])
+            Pstr_class
+            [
+              class_declaration (testsuite/tests/typing-short-paths/errors.ml[22,366+2]..[22,366+37])
+                pci_virt = Concrete
+                pci_params =
+                  []
+                pci_name = "c" (testsuite/tests/typing-short-paths/errors.ml[22,366+8]..[22,366+9])
+                pci_expr =
+                  class_expr (testsuite/tests/typing-short-paths/errors.ml[22,366+12]..[22,366+37])
+                    Pcl_structure
+                    class_structure
+                      pattern (testsuite/tests/typing-short-paths/errors.ml[22,366+18]..[22,366+18]) ghost
+                        Ppat_any
+                      [
+                        class_field (testsuite/tests/typing-short-paths/errors.ml[22,366+19]..[22,366+33])
+                          Pcf_method Public
+                            "foo" (testsuite/tests/typing-short-paths/errors.ml[22,366+26]..[22,366+29])
+                            Concrete Fresh
+                            expression (testsuite/tests/typing-short-paths/errors.ml[22,366+32]..[22,366+33]) ghost
+                              Pexp_poly
+                              expression (testsuite/tests/typing-short-paths/errors.ml[22,366+32]..[22,366+33])
+                                Pexp_constant PConst_int (3,None)
+                              None
+                      ]
+            ]
+        ]
+  structure_item (testsuite/tests/typing-short-paths/errors.ml[25,409+0]..[25,409+12])
+    Pstr_type Rec
+    [
+      type_declaration "c" (testsuite/tests/typing-short-paths/errors.ml[25,409+5]..[25,409+6]) (testsuite/tests/typing-short-paths/errors.ml[25,409+0]..[25,409+12])
+        ptype_params =
+          []
+        ptype_cstrs =
+          []
+        ptype_kind =
+          Ptype_abstract
+        ptype_private = Public
+        ptype_manifest =
+          Some
+            core_type (testsuite/tests/typing-short-paths/errors.ml[25,409+9]..[25,409+12])
+              Ptyp_constr "M.c" (testsuite/tests/typing-short-paths/errors.ml[25,409+9]..[25,409+12])
+              []
+    ]
+  structure_item (testsuite/tests/typing-short-paths/errors.ml[27,423+0]..[27,423+22])
+    Pstr_value Nonrec
+    [
+      <def>
+        pattern (testsuite/tests/typing-short-paths/errors.ml[27,423+4]..[27,423+6])
+          Ppat_construct "()" (testsuite/tests/typing-short-paths/errors.ml[27,423+4]..[27,423+6])
+          None
+        expression (testsuite/tests/typing-short-paths/errors.ml[27,423+9]..[27,423+22])
+          Pexp_send "bar"
+          expression (testsuite/tests/typing-short-paths/errors.ml[27,423+9]..[27,423+18])
+            Pexp_new "M.c" (testsuite/tests/typing-short-paths/errors.ml[27,423+14]..[27,423+17])
+    ]
+  structure_item (testsuite/tests/typing-short-paths/errors.ml[28,446+0]..[36,666+3])
+    Pstr_extension "expect"
+    [
+      structure_item (testsuite/tests/typing-short-paths/errors.ml[28,446+10]..[36,666+2])
+        Pstr_eval
+        expression (testsuite/tests/typing-short-paths/errors.ml[28,446+10]..[36,666+2])
+          Pexp_constant PConst_string ("\nmodule M : sig class c : object method foo : int end end\ntype c = M.c\nLine 7, characters 9-18:\n7 | let () = (new M.c)#bar\n             ^^^^^^^^^\nError: This expression has type c\n       It has no method bar\n",(testsuite/tests/typing-short-paths/errors.ml[28,446+12]..[36,666+0]),Some "")
+    ]
+]
+

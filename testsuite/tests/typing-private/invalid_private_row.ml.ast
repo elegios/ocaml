@@ -1,0 +1,186 @@
+[
+  structure_item (testsuite/tests/typing-private/invalid_private_row.ml[5,24+0]..[6,89+37])
+    Pstr_attribute "ocaml.text"
+    [
+      structure_item (testsuite/tests/typing-private/invalid_private_row.ml[5,24+0]..[6,89+37])
+        Pstr_eval
+        expression (testsuite/tests/typing-private/invalid_private_row.ml[5,24+0]..[6,89+37])
+          Pexp_constant PConst_string(" Error message for trying to make private a row type variable\n    that only exists syntactically ",(testsuite/tests/typing-private/invalid_private_row.ml[5,24+0]..[6,89+37]),None)
+    ]
+  structure_item (testsuite/tests/typing-private/invalid_private_row.ml[8,128+0]..[8,128+23])
+    Pstr_type Rec
+    [
+      type_declaration "a" (testsuite/tests/typing-private/invalid_private_row.ml[8,128+5]..[8,128+6]) (testsuite/tests/typing-private/invalid_private_row.ml[8,128+0]..[8,128+23])
+        ptype_params =
+          []
+        ptype_cstrs =
+          []
+        ptype_kind =
+          Ptype_abstract
+        ptype_private = Public
+        ptype_manifest =
+          Some
+            core_type (testsuite/tests/typing-private/invalid_private_row.ml[8,128+9]..[8,128+23])
+              Ptyp_variant closed=Closed
+              [
+                Rtag "A" true
+                  []
+                Rtag "C" true
+                  []
+                Rtag "D" true
+                  []
+              ]
+              None
+    ]
+  structure_item (testsuite/tests/typing-private/invalid_private_row.ml[9,152+0]..[9,152+23])
+    Pstr_type Rec
+    [
+      type_declaration "b" (testsuite/tests/typing-private/invalid_private_row.ml[9,152+5]..[9,152+6]) (testsuite/tests/typing-private/invalid_private_row.ml[9,152+0]..[9,152+23])
+        ptype_params =
+          []
+        ptype_cstrs =
+          []
+        ptype_kind =
+          Ptype_abstract
+        ptype_private = Public
+        ptype_manifest =
+          Some
+            core_type (testsuite/tests/typing-private/invalid_private_row.ml[9,152+9]..[9,152+23])
+              Ptyp_variant closed=Closed
+              [
+                Rtag "B" true
+                  []
+                Rtag "D" true
+                  []
+                Rtag "E" true
+                  []
+              ]
+              None
+    ]
+  structure_item (testsuite/tests/typing-private/invalid_private_row.ml[10,176+0]..[10,176+43])
+    Pstr_type Rec
+    [
+      type_declaration "c" (testsuite/tests/typing-private/invalid_private_row.ml[10,176+5]..[10,176+6]) (testsuite/tests/typing-private/invalid_private_row.ml[10,176+0]..[10,176+43])
+        ptype_params =
+          []
+        ptype_cstrs =
+          []
+        ptype_kind =
+          Ptype_abstract
+        ptype_private = Private
+        ptype_manifest =
+          Some
+            core_type (testsuite/tests/typing-private/invalid_private_row.ml[10,176+17]..[10,176+43])
+              Ptyp_variant closed=Closed
+              [
+                Rinherit
+                  core_type (testsuite/tests/typing-private/invalid_private_row.ml[10,176+20]..[10,176+21])
+                    Ptyp_constr "a" (testsuite/tests/typing-private/invalid_private_row.ml[10,176+20]..[10,176+21])
+                    []
+                Rinherit
+                  core_type (testsuite/tests/typing-private/invalid_private_row.ml[10,176+24]..[10,176+25])
+                    Ptyp_constr "b" (testsuite/tests/typing-private/invalid_private_row.ml[10,176+24]..[10,176+25])
+                    []
+              ]
+              Some
+                [
+                  "A"
+                  "B"
+                  "C"
+                  "D"
+                  "E"
+                ]
+    ]
+  structure_item (testsuite/tests/typing-private/invalid_private_row.ml[11,220+0]..[24,745+3])
+    Pstr_extension "expect"
+    [
+      structure_item (testsuite/tests/typing-private/invalid_private_row.ml[11,220+10]..[24,745+2])
+        Pstr_eval
+        expression (testsuite/tests/typing-private/invalid_private_row.ml[11,220+10]..[24,745+2])
+          Pexp_constant PConst_string ("\ntype a = [ `A | `C | `D ]\ntype b = [ `B | `D | `E ]\nLine 6, characters 0-43:\n6 | type c = private [< a | b > `A `B `C `D `E]\n    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nError: This private row type declaration is invalid.\n       The type expression on the right-hand side reduces to\n         [ `A | `B | `C | `D | `E ]\n       which does not have a free row type variable.\n       Hint: If you intended to define a private type abbreviation,\n       write explicitly\n         private [ `A | `B | `C | `D | `E ]\n",(testsuite/tests/typing-private/invalid_private_row.ml[11,220+12]..[24,745+0]),Some "")
+    ]
+  structure_item (testsuite/tests/typing-private/invalid_private_row.ml[26,750+0]..[26,750+63])
+    Pstr_type Rec
+    [
+      type_declaration "u" (testsuite/tests/typing-private/invalid_private_row.ml[26,750+5]..[26,750+6]) (testsuite/tests/typing-private/invalid_private_row.ml[26,750+0]..[26,750+63])
+        ptype_params =
+          []
+        ptype_cstrs =
+          [
+            <constraint> (testsuite/tests/typing-private/invalid_private_row.ml[26,750+48]..[26,750+63])
+              core_type (testsuite/tests/typing-private/invalid_private_row.ml[26,750+48]..[26,750+50])
+                Ptyp_var a
+              core_type (testsuite/tests/typing-private/invalid_private_row.ml[26,750+53]..[26,750+63])
+                Ptyp_object Closed
+                  method x
+                    core_type (testsuite/tests/typing-private/invalid_private_row.ml[26,750+58]..[26,750+61])
+                      Ptyp_constr "int" (testsuite/tests/typing-private/invalid_private_row.ml[26,750+58]..[26,750+61])
+                      []
+          ]
+        ptype_kind =
+          Ptype_abstract
+        ptype_private = Private
+        ptype_manifest =
+          Some
+            core_type (testsuite/tests/typing-private/invalid_private_row.ml[26,750+17]..[26,750+36])
+              Ptyp_alias "a"
+              core_type (testsuite/tests/typing-private/invalid_private_row.ml[26,750+17]..[26,750+30])
+                Ptyp_object Open
+                  method x
+                    core_type (testsuite/tests/typing-private/invalid_private_row.ml[26,750+21]..[26,750+24])
+                      Ptyp_constr "int" (testsuite/tests/typing-private/invalid_private_row.ml[26,750+21]..[26,750+24])
+                      []
+    ]
+  structure_item (testsuite/tests/typing-private/invalid_private_row.ml[27,817+0]..[38,1303+3])
+    Pstr_extension "expect"
+    [
+      structure_item (testsuite/tests/typing-private/invalid_private_row.ml[27,817+10]..[38,1303+2])
+        Pstr_eval
+        expression (testsuite/tests/typing-private/invalid_private_row.ml[27,817+10]..[38,1303+2])
+          Pexp_constant PConst_string ("\nLine 1, characters 0-63:\n1 | type u = private < x:int; .. > as 'a constraint 'a = < x: int > ;;\n    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nError: This private row type declaration is invalid.\n       The type expression on the right-hand side reduces to\n         < x : int >\n       which does not have a free row type variable.\n       Hint: If you intended to define a private type abbreviation,\n       write explicitly\n         private < x : int >\n",(testsuite/tests/typing-private/invalid_private_row.ml[27,817+12]..[38,1303+0]),Some "")
+    ]
+  structure_item (testsuite/tests/typing-private/invalid_private_row.ml[40,1308+0]..[40,1308+54])
+    Pstr_type Rec
+    [
+      type_declaration "u" (testsuite/tests/typing-private/invalid_private_row.ml[40,1308+5]..[40,1308+6]) (testsuite/tests/typing-private/invalid_private_row.ml[40,1308+0]..[40,1308+54])
+        ptype_params =
+          []
+        ptype_cstrs =
+          [
+            <constraint> (testsuite/tests/typing-private/invalid_private_row.ml[40,1308+42]..[40,1308+54])
+              core_type (testsuite/tests/typing-private/invalid_private_row.ml[40,1308+42]..[40,1308+44])
+                Ptyp_var a
+              core_type (testsuite/tests/typing-private/invalid_private_row.ml[40,1308+47]..[40,1308+54])
+                Ptyp_variant closed=Closed
+                [
+                  Rtag "A" true
+                    []
+                ]
+                Some
+                  []
+          ]
+        ptype_kind =
+          Ptype_abstract
+        ptype_private = Private
+        ptype_manifest =
+          Some
+            core_type (testsuite/tests/typing-private/invalid_private_row.ml[40,1308+17]..[40,1308+30])
+              Ptyp_alias "a"
+              core_type (testsuite/tests/typing-private/invalid_private_row.ml[40,1308+17]..[40,1308+24])
+                Ptyp_variant closed=Open
+                [
+                  Rtag "A" true
+                    []
+                ]
+                None
+    ]
+  structure_item (testsuite/tests/typing-private/invalid_private_row.ml[41,1366+0]..[52,1824+3])
+    Pstr_extension "expect"
+    [
+      structure_item (testsuite/tests/typing-private/invalid_private_row.ml[41,1366+10]..[52,1824+2])
+        Pstr_eval
+        expression (testsuite/tests/typing-private/invalid_private_row.ml[41,1366+10]..[52,1824+2])
+          Pexp_constant PConst_string ("\nLine 1, characters 0-54:\n1 | type u = private [> `A ] as 'a constraint 'a = [< `A ] ;;\n    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nError: This private row type declaration is invalid.\n       The type expression on the right-hand side reduces to\n         [ `A ]\n       which does not have a free row type variable.\n       Hint: If you intended to define a private type abbreviation,\n       write explicitly\n         private [ `A ]\n",(testsuite/tests/typing-private/invalid_private_row.ml[41,1366+12]..[52,1824+0]),Some "")
+    ]
+]
+

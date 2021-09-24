@@ -1,0 +1,240 @@
+[
+  structure_item (testsuite/tests/typing-objects/pr5619_bad.ml[5,24+0]..[8,75+5])
+    Pstr_class_type
+    [
+      class_type_declaration (testsuite/tests/typing-objects/pr5619_bad.ml[5,24+0]..[8,75+5])
+        pci_virt = Concrete
+        pci_params =
+          []
+        pci_name = "foo_t" (testsuite/tests/typing-objects/pr5619_bad.ml[5,24+11]..[5,24+16])
+        pci_expr =
+          class_type (testsuite/tests/typing-objects/pr5619_bad.ml[6,43+2]..[8,75+5])
+            Pcty_signature
+            class_signature
+              core_type (testsuite/tests/typing-objects/pr5619_bad.ml[6,43+8]..[6,43+8])
+                Ptyp_any
+              [
+                class_type_field (testsuite/tests/typing-objects/pr5619_bad.ml[7,52+4]..[7,52+22])
+                  Pctf_method "foo" Public Concrete
+                    core_type (testsuite/tests/typing-objects/pr5619_bad.ml[7,52+16]..[7,52+22])
+                      Ptyp_constr "string" (testsuite/tests/typing-objects/pr5619_bad.ml[7,52+16]..[7,52+22])
+                      []
+              ]
+    ]
+  structure_item (testsuite/tests/typing-objects/pr5619_bad.ml[10,82+0]..[12,117+17])
+    Pstr_type Rec
+    [
+      type_declaration "name" (testsuite/tests/typing-objects/pr5619_bad.ml[10,82+8]..[10,82+12]) (testsuite/tests/typing-objects/pr5619_bad.ml[10,82+0]..[12,117+17])
+        ptype_params =
+          [
+            core_type (testsuite/tests/typing-objects/pr5619_bad.ml[10,82+5]..[10,82+7])
+              Ptyp_var a
+          ]
+        ptype_cstrs =
+          []
+        ptype_kind =
+          Ptype_variant
+            [
+              (testsuite/tests/typing-objects/pr5619_bad.ml[11,97+4]..[11,97+19])
+                "Foo" (testsuite/tests/typing-objects/pr5619_bad.ml[11,97+4]..[11,97+7])
+                []
+                Some
+                  core_type (testsuite/tests/typing-objects/pr5619_bad.ml[11,97+9]..[11,97+19])
+                    Ptyp_constr "name" (testsuite/tests/typing-objects/pr5619_bad.ml[11,97+15]..[11,97+19])
+                    [
+                      core_type (testsuite/tests/typing-objects/pr5619_bad.ml[11,97+9]..[11,97+14])
+                        Ptyp_constr "foo_t" (testsuite/tests/typing-objects/pr5619_bad.ml[11,97+9]..[11,97+14])
+                        []
+                    ]
+              (testsuite/tests/typing-objects/pr5619_bad.ml[12,117+2]..[12,117+17])
+                "Int" (testsuite/tests/typing-objects/pr5619_bad.ml[12,117+4]..[12,117+7])
+                []
+                Some
+                  core_type (testsuite/tests/typing-objects/pr5619_bad.ml[12,117+9]..[12,117+17])
+                    Ptyp_constr "name" (testsuite/tests/typing-objects/pr5619_bad.ml[12,117+13]..[12,117+17])
+                    [
+                      core_type (testsuite/tests/typing-objects/pr5619_bad.ml[12,117+9]..[12,117+12])
+                        Ptyp_constr "int" (testsuite/tests/typing-objects/pr5619_bad.ml[12,117+9]..[12,117+12])
+                        []
+                    ]
+            ]
+        ptype_private = Public
+        ptype_manifest =
+          None
+    ]
+  structure_item (testsuite/tests/typing-objects/pr5619_bad.ml[15,139+0]..[18,250+3])
+    Pstr_extension "expect"
+    [
+      structure_item (testsuite/tests/typing-objects/pr5619_bad.ml[15,139+9]..[18,250+2])
+        Pstr_eval
+        expression (testsuite/tests/typing-objects/pr5619_bad.ml[15,139+9]..[18,250+2])
+          Pexp_constant PConst_string ("\nclass type foo_t = object method foo : string end\ntype 'a name = Foo : foo_t name | Int : int name\n",(testsuite/tests/typing-objects/pr5619_bad.ml[15,139+11]..[18,250+0]),Some "")
+    ]
+  structure_item (testsuite/tests/typing-objects/pr5619_bad.ml[20,255+0]..[26,380+5])
+    Pstr_class
+    [
+      class_declaration (testsuite/tests/typing-objects/pr5619_bad.ml[20,255+0]..[26,380+5])
+        pci_virt = Concrete
+        pci_params =
+          []
+        pci_name = "foo" (testsuite/tests/typing-objects/pr5619_bad.ml[20,255+6]..[20,255+9])
+        pci_expr =
+          class_expr (testsuite/tests/typing-objects/pr5619_bad.ml[21,267+2]..[26,380+5])
+            Pcl_structure
+            class_structure
+              pattern (testsuite/tests/typing-objects/pr5619_bad.ml[21,267+8]..[21,267+14])
+                Ppat_var "self" (testsuite/tests/typing-objects/pr5619_bad.ml[21,267+9]..[21,267+13])
+              [
+                class_field (testsuite/tests/typing-objects/pr5619_bad.ml[22,282+4]..[22,282+22])
+                  Pcf_method Public
+                    "foo" (testsuite/tests/typing-objects/pr5619_bad.ml[22,282+11]..[22,282+14])
+                    Concrete Fresh
+                    expression (testsuite/tests/typing-objects/pr5619_bad.ml[22,282+17]..[22,282+22]) ghost
+                      Pexp_poly
+                      expression (testsuite/tests/typing-objects/pr5619_bad.ml[22,282+17]..[22,282+22])
+                        Pexp_constant PConst_string("foo",(testsuite/tests/typing-objects/pr5619_bad.ml[22,282+18]..[22,282+21]),None)
+                      None
+                class_field (testsuite/tests/typing-objects/pr5619_bad.ml[23,305+4]..[25,338+41])
+                  Pcf_method Public
+                    "cast" (testsuite/tests/typing-objects/pr5619_bad.ml[23,305+11]..[23,305+15])
+                    Concrete Fresh
+                    expression (testsuite/tests/typing-objects/pr5619_bad.ml[24,323+6]..[25,338+41]) ghost
+                      Pexp_poly
+                      expression (testsuite/tests/typing-objects/pr5619_bad.ml[24,323+6]..[25,338+41])
+                        Pexp_function
+                        [
+                          <case>
+                            pattern (testsuite/tests/typing-objects/pr5619_bad.ml[25,338+10]..[25,338+13])
+                              Ppat_construct "Foo" (testsuite/tests/typing-objects/pr5619_bad.ml[25,338+10]..[25,338+13])
+                              None
+                            expression (testsuite/tests/typing-objects/pr5619_bad.ml[25,338+17]..[25,338+41])
+                              Pexp_coerce
+                              expression (testsuite/tests/typing-objects/pr5619_bad.ml[25,338+18]..[25,338+22])
+                                Pexp_ident "self" (testsuite/tests/typing-objects/pr5619_bad.ml[25,338+18]..[25,338+22])
+                              None
+                              core_type (testsuite/tests/typing-objects/pr5619_bad.ml[25,338+26]..[25,338+40])
+                                Ptyp_object Closed
+                                  method foo
+                                    core_type (testsuite/tests/typing-objects/pr5619_bad.ml[25,338+33]..[25,338+39])
+                                      Ptyp_constr "string" (testsuite/tests/typing-objects/pr5619_bad.ml[25,338+33]..[25,338+39])
+                                      []
+                        ]
+                      None
+              ]
+    ]
+  structure_item (testsuite/tests/typing-objects/pr5619_bad.ml[28,389+0]..[31,491+3])
+    Pstr_extension "expect"
+    [
+      structure_item (testsuite/tests/typing-objects/pr5619_bad.ml[28,389+9]..[31,491+2])
+        Pstr_eval
+        expression (testsuite/tests/typing-objects/pr5619_bad.ml[28,389+9]..[31,491+2])
+          Pexp_constant PConst_string ("\nclass foo :\n  object method cast : foo_t name -> < foo : string > method foo : string end\n",(testsuite/tests/typing-objects/pr5619_bad.ml[28,389+11]..[31,491+0]),Some "")
+    ]
+  structure_item (testsuite/tests/typing-objects/pr5619_bad.ml[33,496+0]..[40,666+5])
+    Pstr_class
+    [
+      class_declaration (testsuite/tests/typing-objects/pr5619_bad.ml[33,496+0]..[40,666+5])
+        pci_virt = Concrete
+        pci_params =
+          []
+        pci_name = "foo" (testsuite/tests/typing-objects/pr5619_bad.ml[33,496+6]..[33,496+9])
+        pci_expr =
+          class_expr (testsuite/tests/typing-objects/pr5619_bad.ml[33,496+9]..[40,666+5])
+            Pcl_constraint
+            class_expr (testsuite/tests/typing-objects/pr5619_bad.ml[34,515+2]..[40,666+5])
+              Pcl_structure
+              class_structure
+                pattern (testsuite/tests/typing-objects/pr5619_bad.ml[34,515+8]..[34,515+14])
+                  Ppat_var "self" (testsuite/tests/typing-objects/pr5619_bad.ml[34,515+9]..[34,515+13])
+                [
+                  class_field (testsuite/tests/typing-objects/pr5619_bad.ml[35,530+4]..[35,530+22])
+                    Pcf_method Public
+                      "foo" (testsuite/tests/typing-objects/pr5619_bad.ml[35,530+11]..[35,530+14])
+                      Concrete Fresh
+                      expression (testsuite/tests/typing-objects/pr5619_bad.ml[35,530+17]..[35,530+22]) ghost
+                        Pexp_poly
+                        expression (testsuite/tests/typing-objects/pr5619_bad.ml[35,530+17]..[35,530+22])
+                          Pexp_constant PConst_string("foo",(testsuite/tests/typing-objects/pr5619_bad.ml[35,530+18]..[35,530+21]),None)
+                        None
+                  class_field (testsuite/tests/typing-objects/pr5619_bad.ml[36,553+4]..[39,640+25])
+                    Pcf_method Public
+                      "cast" (testsuite/tests/typing-objects/pr5619_bad.ml[36,553+11]..[36,553+15])
+                      Concrete Fresh
+                      expression (testsuite/tests/typing-objects/pr5619_bad.ml[36,553+22]..[39,640+25]) ghost
+                        Pexp_poly
+                        expression (testsuite/tests/typing-objects/pr5619_bad.ml[36,553+11]..[39,640+25])
+                          Pexp_newtype "a"
+                          expression (testsuite/tests/typing-objects/pr5619_bad.ml[36,553+11]..[39,640+25])
+                            Pexp_constraint
+                            expression (testsuite/tests/typing-objects/pr5619_bad.ml[37,592+6]..[39,640+25])
+                              Pexp_function
+                              [
+                                <case>
+                                  pattern (testsuite/tests/typing-objects/pr5619_bad.ml[38,607+10]..[38,607+13])
+                                    Ppat_construct "Foo" (testsuite/tests/typing-objects/pr5619_bad.ml[38,607+10]..[38,607+13])
+                                    None
+                                  expression (testsuite/tests/typing-objects/pr5619_bad.ml[38,607+17]..[38,607+32])
+                                    Pexp_coerce
+                                    expression (testsuite/tests/typing-objects/pr5619_bad.ml[38,607+18]..[38,607+22])
+                                      Pexp_ident "self" (testsuite/tests/typing-objects/pr5619_bad.ml[38,607+18]..[38,607+22])
+                                    None
+                                    core_type (testsuite/tests/typing-objects/pr5619_bad.ml[38,607+26]..[38,607+31])
+                                      Ptyp_constr "foo_t" (testsuite/tests/typing-objects/pr5619_bad.ml[38,607+26]..[38,607+31])
+                                      []
+                                <case>
+                                  pattern (testsuite/tests/typing-objects/pr5619_bad.ml[39,640+10]..[39,640+11])
+                                    Ppat_any
+                                  expression (testsuite/tests/typing-objects/pr5619_bad.ml[39,640+15]..[39,640+25])
+                                    Pexp_apply
+                                    expression (testsuite/tests/typing-objects/pr5619_bad.ml[39,640+15]..[39,640+20])
+                                      Pexp_ident "raise" (testsuite/tests/typing-objects/pr5619_bad.ml[39,640+15]..[39,640+20])
+                                    [
+                                      <arg>
+                                      Nolabel
+                                        expression (testsuite/tests/typing-objects/pr5619_bad.ml[39,640+21]..[39,640+25])
+                                          Pexp_construct "Exit" (testsuite/tests/typing-objects/pr5619_bad.ml[39,640+21]..[39,640+25])
+                                          None
+                                    ]
+                              ]
+                            core_type (testsuite/tests/typing-objects/pr5619_bad.ml[36,553+25]..[36,553+36])
+                              Ptyp_arrow
+                              Nolabel
+                              core_type (testsuite/tests/typing-objects/pr5619_bad.ml[36,553+25]..[36,553+31])
+                                Ptyp_constr "name" (testsuite/tests/typing-objects/pr5619_bad.ml[36,553+27]..[36,553+31])
+                                [
+                                  core_type (testsuite/tests/typing-objects/pr5619_bad.ml[36,553+25]..[36,553+26])
+                                    Ptyp_constr "a" (testsuite/tests/typing-objects/pr5619_bad.ml[36,553+25]..[36,553+26])
+                                    []
+                                ]
+                              core_type (testsuite/tests/typing-objects/pr5619_bad.ml[36,553+35]..[36,553+36])
+                                Ptyp_constr "a" (testsuite/tests/typing-objects/pr5619_bad.ml[36,553+35]..[36,553+36])
+                                []
+                        Some
+                          core_type (testsuite/tests/typing-objects/pr5619_bad.ml[36,553+11]..[39,640+25]) ghost
+                            Ptyp_poly 'a
+                            core_type (testsuite/tests/typing-objects/pr5619_bad.ml[36,553+25]..[36,553+36])
+                              Ptyp_arrow
+                              Nolabel
+                              core_type (testsuite/tests/typing-objects/pr5619_bad.ml[36,553+25]..[36,553+31])
+                                Ptyp_constr "name" (testsuite/tests/typing-objects/pr5619_bad.ml[36,553+27]..[36,553+31])
+                                [
+                                  core_type (testsuite/tests/typing-objects/pr5619_bad.ml[36,553+25]..[36,553+26])
+                                    Ptyp_var a
+                                ]
+                              core_type (testsuite/tests/typing-objects/pr5619_bad.ml[36,553+35]..[36,553+36])
+                                Ptyp_var a
+                ]
+            class_type (testsuite/tests/typing-objects/pr5619_bad.ml[33,496+11]..[33,496+16])
+              Pcty_constr "foo_t" (testsuite/tests/typing-objects/pr5619_bad.ml[33,496+11]..[33,496+16])
+              []
+    ]
+  structure_item (testsuite/tests/typing-objects/pr5619_bad.ml[42,675+0]..[55,1082+3])
+    Pstr_extension "expect"
+    [
+      structure_item (testsuite/tests/typing-objects/pr5619_bad.ml[42,675+9]..[55,1082+2])
+        Pstr_eval
+        expression (testsuite/tests/typing-objects/pr5619_bad.ml[42,675+9]..[55,1082+2])
+          Pexp_constant PConst_string ("\nLines 2-8, characters 2-5:\n2 | ..object(self)\n3 |     method foo = \"foo\"\n4 |     method cast: type a. a name -> a =\n5 |       function\n6 |           Foo -> (self :> foo_t)\n7 |         | _ -> raise Exit\n8 |   end\nError: The class type\n         object method cast : 'a name -> 'a method foo : string end\n       is not matched by the class type foo_t\n       The public method cast cannot be hidden\n",(testsuite/tests/typing-objects/pr5619_bad.ml[42,675+11]..[55,1082+0]),Some "")
+    ]
+]
+

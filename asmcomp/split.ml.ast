@@ -1,0 +1,2925 @@
+[
+  structure_item (asmcomp/split.ml[18,1147+0]..[18,1147+8])
+    Pstr_open Fresh
+    module_expr (asmcomp/split.ml[18,1147+5]..[18,1147+8])
+      Pmod_ident "Reg" (asmcomp/split.ml[18,1147+5]..[18,1147+8])
+  structure_item (asmcomp/split.ml[19,1156+0]..[19,1156+9])
+    Pstr_open Fresh
+    module_expr (asmcomp/split.ml[19,1156+5]..[19,1156+9])
+      Pmod_ident "Mach" (asmcomp/split.ml[19,1156+5]..[19,1156+9])
+  structure_item (asmcomp/split.ml[23,1221+0]..[23,1221+28])
+    Pstr_type Rec
+    [
+      type_declaration "subst" (asmcomp/split.ml[23,1221+5]..[23,1221+10]) (asmcomp/split.ml[23,1221+0]..[23,1221+28])
+        ptype_params =
+          []
+        ptype_cstrs =
+          []
+        ptype_kind =
+          Ptype_abstract
+        ptype_private = Public
+        ptype_manifest =
+          Some
+            core_type (asmcomp/split.ml[23,1221+13]..[23,1221+28])
+              Ptyp_constr "Reg.Map.t" (asmcomp/split.ml[23,1221+19]..[23,1221+28])
+              [
+                core_type (asmcomp/split.ml[23,1221+13]..[23,1221+18])
+                  Ptyp_constr "Reg.t" (asmcomp/split.ml[23,1221+13]..[23,1221+18])
+                  []
+              ]
+    ]
+  structure_item (asmcomp/split.ml[25,1251+0]..[29,1332+5])
+    Pstr_value Nonrec
+    [
+      <def>
+        pattern (asmcomp/split.ml[25,1251+4]..[25,1251+13])
+          Ppat_var "subst_reg" (asmcomp/split.ml[25,1251+4]..[25,1251+13])
+        expression (asmcomp/split.ml[25,1251+14]..[29,1332+5]) ghost
+          Pexp_fun
+          Nolabel
+          None
+          pattern (asmcomp/split.ml[25,1251+14]..[25,1251+15])
+            Ppat_var "r" (asmcomp/split.ml[25,1251+14]..[25,1251+15])
+          expression (asmcomp/split.ml[25,1251+16]..[29,1332+5]) ghost
+            Pexp_fun
+            Nolabel
+            None
+            pattern (asmcomp/split.ml[25,1251+16]..[25,1251+29])
+              Ppat_constraint
+              pattern (asmcomp/split.ml[25,1251+17]..[25,1251+20])
+                Ppat_var "sub" (asmcomp/split.ml[25,1251+17]..[25,1251+20])
+              core_type (asmcomp/split.ml[25,1251+23]..[25,1251+28])
+                Ptyp_constr "subst" (asmcomp/split.ml[25,1251+23]..[25,1251+28])
+                []
+            expression (asmcomp/split.ml[26,1283+2]..[29,1332+5])
+              Pexp_try
+              expression (asmcomp/split.ml[27,1289+4]..[27,1289+22])
+                Pexp_apply
+                expression (asmcomp/split.ml[27,1289+4]..[27,1289+16])
+                  Pexp_ident "Reg.Map.find" (asmcomp/split.ml[27,1289+4]..[27,1289+16])
+                [
+                  <arg>
+                  Nolabel
+                    expression (asmcomp/split.ml[27,1289+17]..[27,1289+18])
+                      Pexp_ident "r" (asmcomp/split.ml[27,1289+17]..[27,1289+18])
+                  <arg>
+                  Nolabel
+                    expression (asmcomp/split.ml[27,1289+19]..[27,1289+22])
+                      Pexp_ident "sub" (asmcomp/split.ml[27,1289+19]..[27,1289+22])
+                ]
+              [
+                <case>
+                  pattern (asmcomp/split.ml[28,1312+7]..[28,1312+16])
+                    Ppat_construct "Not_found" (asmcomp/split.ml[28,1312+7]..[28,1312+16])
+                    None
+                  expression (asmcomp/split.ml[29,1332+4]..[29,1332+5])
+                    Pexp_ident "r" (asmcomp/split.ml[29,1332+4]..[29,1332+5])
+              ]
+    ]
+  structure_item (asmcomp/split.ml[31,1339+0]..[38,1544+8])
+    Pstr_value Nonrec
+    [
+      <def>
+        pattern (asmcomp/split.ml[31,1339+4]..[31,1339+14])
+          Ppat_var "subst_regs" (asmcomp/split.ml[31,1339+4]..[31,1339+14])
+        expression (asmcomp/split.ml[31,1339+15]..[38,1544+8]) ghost
+          Pexp_fun
+          Nolabel
+          None
+          pattern (asmcomp/split.ml[31,1339+15]..[31,1339+17])
+            Ppat_var "rv" (asmcomp/split.ml[31,1339+15]..[31,1339+17])
+          expression (asmcomp/split.ml[31,1339+18]..[38,1544+8]) ghost
+            Pexp_fun
+            Nolabel
+            None
+            pattern (asmcomp/split.ml[31,1339+18]..[31,1339+21])
+              Ppat_var "sub" (asmcomp/split.ml[31,1339+18]..[31,1339+21])
+            expression (asmcomp/split.ml[32,1363+2]..[38,1544+8])
+              Pexp_match
+              expression (asmcomp/split.ml[32,1363+8]..[32,1363+11])
+                Pexp_ident "sub" (asmcomp/split.ml[32,1363+8]..[32,1363+11])
+              [
+                <case>
+                  pattern (asmcomp/split.ml[33,1380+4]..[33,1380+8])
+                    Ppat_construct "None" (asmcomp/split.ml[33,1380+4]..[33,1380+8])
+                    None
+                  expression (asmcomp/split.ml[33,1380+12]..[33,1380+14])
+                    Pexp_ident "rv" (asmcomp/split.ml[33,1380+12]..[33,1380+14])
+                <case>
+                  pattern (asmcomp/split.ml[34,1395+4]..[34,1395+10])
+                    Ppat_construct "Some" (asmcomp/split.ml[34,1395+4]..[34,1395+8])
+                    Some
+                      []
+                      pattern (asmcomp/split.ml[34,1395+9]..[34,1395+10])
+                        Ppat_var "s" (asmcomp/split.ml[34,1395+9]..[34,1395+10])
+                  expression (asmcomp/split.ml[35,1409+6]..[38,1544+8])
+                    Pexp_let Nonrec
+                    [
+                      <def>
+                        pattern (asmcomp/split.ml[35,1409+10]..[35,1409+11])
+                          Ppat_var "n" (asmcomp/split.ml[35,1409+10]..[35,1409+11])
+                        expression (asmcomp/split.ml[35,1409+14]..[35,1409+29])
+                          Pexp_apply
+                          expression (asmcomp/split.ml[35,1409+14]..[35,1409+26])
+                            Pexp_ident "Array.length" (asmcomp/split.ml[35,1409+14]..[35,1409+26])
+                          [
+                            <arg>
+                            Nolabel
+                              expression (asmcomp/split.ml[35,1409+27]..[35,1409+29])
+                                Pexp_ident "rv" (asmcomp/split.ml[35,1409+27]..[35,1409+29])
+                          ]
+                    ]
+                    expression (asmcomp/split.ml[36,1442+6]..[38,1544+8])
+                      Pexp_let Nonrec
+                      [
+                        <def>
+                          pattern (asmcomp/split.ml[36,1442+10]..[36,1442+12])
+                            Ppat_var "nv" (asmcomp/split.ml[36,1442+10]..[36,1442+12])
+                          expression (asmcomp/split.ml[36,1442+15]..[36,1442+37])
+                            Pexp_apply
+                            expression (asmcomp/split.ml[36,1442+15]..[36,1442+25])
+                              Pexp_ident "Array.make" (asmcomp/split.ml[36,1442+15]..[36,1442+25])
+                            [
+                              <arg>
+                              Nolabel
+                                expression (asmcomp/split.ml[36,1442+26]..[36,1442+27])
+                                  Pexp_ident "n" (asmcomp/split.ml[36,1442+26]..[36,1442+27])
+                              <arg>
+                              Nolabel
+                                expression (asmcomp/split.ml[36,1442+28]..[36,1442+37])
+                                  Pexp_ident "Reg.dummy" (asmcomp/split.ml[36,1442+28]..[36,1442+37])
+                            ]
+                      ]
+                      expression (asmcomp/split.ml[37,1483+6]..[38,1544+8])
+                        Pexp_sequence
+                        expression (asmcomp/split.ml[37,1483+6]..[37,1483+59])
+                          Pexp_for Up
+                          pattern (asmcomp/split.ml[37,1483+10]..[37,1483+11])
+                            Ppat_var "i" (asmcomp/split.ml[37,1483+10]..[37,1483+11])
+                          expression (asmcomp/split.ml[37,1483+14]..[37,1483+15])
+                            Pexp_constant PConst_int (0,None)
+                          expression (asmcomp/split.ml[37,1483+19]..[37,1483+22])
+                            Pexp_apply
+                            expression (asmcomp/split.ml[37,1483+20]..[37,1483+21])
+                              Pexp_ident "-" (asmcomp/split.ml[37,1483+20]..[37,1483+21])
+                            [
+                              <arg>
+                              Nolabel
+                                expression (asmcomp/split.ml[37,1483+19]..[37,1483+20])
+                                  Pexp_ident "n" (asmcomp/split.ml[37,1483+19]..[37,1483+20])
+                              <arg>
+                              Nolabel
+                                expression (asmcomp/split.ml[37,1483+21]..[37,1483+22])
+                                  Pexp_constant PConst_int (1,None)
+                            ]
+                          expression (asmcomp/split.ml[37,1483+26]..[37,1483+54])
+                            Pexp_apply
+                            expression (asmcomp/split.ml[37,1483+26]..[37,1483+54]) ghost
+                              Pexp_ident "Array.set" (asmcomp/split.ml[37,1483+26]..[37,1483+54]) ghost
+                            [
+                              <arg>
+                              Nolabel
+                                expression (asmcomp/split.ml[37,1483+26]..[37,1483+28])
+                                  Pexp_ident "nv" (asmcomp/split.ml[37,1483+26]..[37,1483+28])
+                              <arg>
+                              Nolabel
+                                expression (asmcomp/split.ml[37,1483+30]..[37,1483+31])
+                                  Pexp_ident "i" (asmcomp/split.ml[37,1483+30]..[37,1483+31])
+                              <arg>
+                              Nolabel
+                                expression (asmcomp/split.ml[37,1483+36]..[37,1483+54])
+                                  Pexp_apply
+                                  expression (asmcomp/split.ml[37,1483+36]..[37,1483+45])
+                                    Pexp_ident "subst_reg" (asmcomp/split.ml[37,1483+36]..[37,1483+45])
+                                  [
+                                    <arg>
+                                    Nolabel
+                                      expression (asmcomp/split.ml[37,1483+46]..[37,1483+52])
+                                        Pexp_apply
+                                        expression (asmcomp/split.ml[37,1483+46]..[37,1483+52]) ghost
+                                          Pexp_ident "Array.get" (asmcomp/split.ml[37,1483+46]..[37,1483+52]) ghost
+                                        [
+                                          <arg>
+                                          Nolabel
+                                            expression (asmcomp/split.ml[37,1483+46]..[37,1483+48])
+                                              Pexp_ident "rv" (asmcomp/split.ml[37,1483+46]..[37,1483+48])
+                                          <arg>
+                                          Nolabel
+                                            expression (asmcomp/split.ml[37,1483+50]..[37,1483+51])
+                                              Pexp_ident "i" (asmcomp/split.ml[37,1483+50]..[37,1483+51])
+                                        ]
+                                    <arg>
+                                    Nolabel
+                                      expression (asmcomp/split.ml[37,1483+53]..[37,1483+54])
+                                        Pexp_ident "s" (asmcomp/split.ml[37,1483+53]..[37,1483+54])
+                                  ]
+                            ]
+                        expression (asmcomp/split.ml[38,1544+6]..[38,1544+8])
+                          Pexp_ident "nv" (asmcomp/split.ml[38,1544+6]..[38,1544+8])
+              ]
+    ]
+  structure_item (asmcomp/split.ml[43,1647+0]..[43,1647+57])
+    Pstr_value Nonrec
+    [
+      <def>
+        pattern (asmcomp/split.ml[43,1647+4]..[43,1647+17])
+          Ppat_var "equiv_classes" (asmcomp/split.ml[43,1647+4]..[43,1647+17])
+        expression (asmcomp/split.ml[43,1647+20]..[43,1647+57])
+          Pexp_apply
+          expression (asmcomp/split.ml[43,1647+20]..[43,1647+23])
+            Pexp_ident "ref" (asmcomp/split.ml[43,1647+20]..[43,1647+23])
+          [
+            <arg>
+            Nolabel
+              expression (asmcomp/split.ml[43,1647+24]..[43,1647+57])
+                Pexp_constraint
+                expression (asmcomp/split.ml[43,1647+25]..[43,1647+38])
+                  Pexp_ident "Reg.Map.empty" (asmcomp/split.ml[43,1647+25]..[43,1647+38])
+                core_type (asmcomp/split.ml[43,1647+41]..[43,1647+56])
+                  Ptyp_constr "Reg.Map.t" (asmcomp/split.ml[43,1647+47]..[43,1647+56])
+                  [
+                    core_type (asmcomp/split.ml[43,1647+41]..[43,1647+46])
+                      Ptyp_constr "Reg.t" (asmcomp/split.ml[43,1647+41]..[43,1647+46])
+                      []
+                  ]
+          ]
+    ]
+  structure_item (asmcomp/split.ml[45,1706+0]..[49,1801+5])
+    Pstr_value Rec
+    [
+      <def>
+        pattern (asmcomp/split.ml[45,1706+8]..[45,1706+18])
+          Ppat_var "repres_reg" (asmcomp/split.ml[45,1706+8]..[45,1706+18])
+        expression (asmcomp/split.ml[45,1706+19]..[49,1801+5]) ghost
+          Pexp_fun
+          Nolabel
+          None
+          pattern (asmcomp/split.ml[45,1706+19]..[45,1706+20])
+            Ppat_var "r" (asmcomp/split.ml[45,1706+19]..[45,1706+20])
+          expression (asmcomp/split.ml[46,1729+2]..[49,1801+5])
+            Pexp_try
+            expression (asmcomp/split.ml[47,1735+4]..[47,1735+45])
+              Pexp_apply
+              expression (asmcomp/split.ml[47,1735+4]..[47,1735+14])
+                Pexp_ident "repres_reg" (asmcomp/split.ml[47,1735+4]..[47,1735+14])
+              [
+                <arg>
+                Nolabel
+                  expression (asmcomp/split.ml[47,1735+14]..[47,1735+45])
+                    Pexp_apply
+                    expression (asmcomp/split.ml[47,1735+15]..[47,1735+27])
+                      Pexp_ident "Reg.Map.find" (asmcomp/split.ml[47,1735+15]..[47,1735+27])
+                    [
+                      <arg>
+                      Nolabel
+                        expression (asmcomp/split.ml[47,1735+28]..[47,1735+29])
+                          Pexp_ident "r" (asmcomp/split.ml[47,1735+28]..[47,1735+29])
+                      <arg>
+                      Nolabel
+                        expression (asmcomp/split.ml[47,1735+30]..[47,1735+44])
+                          Pexp_apply
+                          expression (asmcomp/split.ml[47,1735+30]..[47,1735+31])
+                            Pexp_ident "!" (asmcomp/split.ml[47,1735+30]..[47,1735+31])
+                          [
+                            <arg>
+                            Nolabel
+                              expression (asmcomp/split.ml[47,1735+31]..[47,1735+44])
+                                Pexp_ident "equiv_classes" (asmcomp/split.ml[47,1735+31]..[47,1735+44])
+                          ]
+                    ]
+              ]
+            [
+              <case>
+                pattern (asmcomp/split.ml[48,1781+7]..[48,1781+16])
+                  Ppat_construct "Not_found" (asmcomp/split.ml[48,1781+7]..[48,1781+16])
+                  None
+                expression (asmcomp/split.ml[49,1801+4]..[49,1801+5])
+                  Pexp_ident "r" (asmcomp/split.ml[49,1801+4]..[49,1801+5])
+            ]
+    ]
+  structure_item (asmcomp/split.ml[51,1808+0]..[53,1858+54])
+    Pstr_value Nonrec
+    [
+      <def>
+        pattern (asmcomp/split.ml[51,1808+4]..[51,1808+15])
+          Ppat_var "repres_regs" (asmcomp/split.ml[51,1808+4]..[51,1808+15])
+        expression (asmcomp/split.ml[51,1808+16]..[53,1858+54]) ghost
+          Pexp_fun
+          Nolabel
+          None
+          pattern (asmcomp/split.ml[51,1808+16]..[51,1808+18])
+            Ppat_var "rv" (asmcomp/split.ml[51,1808+16]..[51,1808+18])
+          expression (asmcomp/split.ml[52,1829+2]..[53,1858+54])
+            Pexp_let Nonrec
+            [
+              <def>
+                pattern (asmcomp/split.ml[52,1829+6]..[52,1829+7])
+                  Ppat_var "n" (asmcomp/split.ml[52,1829+6]..[52,1829+7])
+                expression (asmcomp/split.ml[52,1829+10]..[52,1829+25])
+                  Pexp_apply
+                  expression (asmcomp/split.ml[52,1829+10]..[52,1829+22])
+                    Pexp_ident "Array.length" (asmcomp/split.ml[52,1829+10]..[52,1829+22])
+                  [
+                    <arg>
+                    Nolabel
+                      expression (asmcomp/split.ml[52,1829+23]..[52,1829+25])
+                        Pexp_ident "rv" (asmcomp/split.ml[52,1829+23]..[52,1829+25])
+                  ]
+            ]
+            expression (asmcomp/split.ml[53,1858+2]..[53,1858+54])
+              Pexp_for Up
+              pattern (asmcomp/split.ml[53,1858+6]..[53,1858+7])
+                Ppat_var "i" (asmcomp/split.ml[53,1858+6]..[53,1858+7])
+              expression (asmcomp/split.ml[53,1858+10]..[53,1858+11])
+                Pexp_constant PConst_int (0,None)
+              expression (asmcomp/split.ml[53,1858+15]..[53,1858+18])
+                Pexp_apply
+                expression (asmcomp/split.ml[53,1858+16]..[53,1858+17])
+                  Pexp_ident "-" (asmcomp/split.ml[53,1858+16]..[53,1858+17])
+                [
+                  <arg>
+                  Nolabel
+                    expression (asmcomp/split.ml[53,1858+15]..[53,1858+16])
+                      Pexp_ident "n" (asmcomp/split.ml[53,1858+15]..[53,1858+16])
+                  <arg>
+                  Nolabel
+                    expression (asmcomp/split.ml[53,1858+17]..[53,1858+18])
+                      Pexp_constant PConst_int (1,None)
+                ]
+              expression (asmcomp/split.ml[53,1858+22]..[53,1858+49])
+                Pexp_apply
+                expression (asmcomp/split.ml[53,1858+22]..[53,1858+49]) ghost
+                  Pexp_ident "Array.set" (asmcomp/split.ml[53,1858+22]..[53,1858+49]) ghost
+                [
+                  <arg>
+                  Nolabel
+                    expression (asmcomp/split.ml[53,1858+22]..[53,1858+24])
+                      Pexp_ident "rv" (asmcomp/split.ml[53,1858+22]..[53,1858+24])
+                  <arg>
+                  Nolabel
+                    expression (asmcomp/split.ml[53,1858+26]..[53,1858+27])
+                      Pexp_ident "i" (asmcomp/split.ml[53,1858+26]..[53,1858+27])
+                  <arg>
+                  Nolabel
+                    expression (asmcomp/split.ml[53,1858+32]..[53,1858+49])
+                      Pexp_apply
+                      expression (asmcomp/split.ml[53,1858+32]..[53,1858+42])
+                        Pexp_ident "repres_reg" (asmcomp/split.ml[53,1858+32]..[53,1858+42])
+                      [
+                        <arg>
+                        Nolabel
+                          expression (asmcomp/split.ml[53,1858+43]..[53,1858+49])
+                            Pexp_apply
+                            expression (asmcomp/split.ml[53,1858+43]..[53,1858+49]) ghost
+                              Pexp_ident "Array.get" (asmcomp/split.ml[53,1858+43]..[53,1858+49]) ghost
+                            [
+                              <arg>
+                              Nolabel
+                                expression (asmcomp/split.ml[53,1858+43]..[53,1858+45])
+                                  Pexp_ident "rv" (asmcomp/split.ml[53,1858+43]..[53,1858+45])
+                              <arg>
+                              Nolabel
+                                expression (asmcomp/split.ml[53,1858+47]..[53,1858+48])
+                                  Pexp_ident "i" (asmcomp/split.ml[53,1858+47]..[53,1858+48])
+                            ]
+                      ]
+                ]
+    ]
+  structure_item (asmcomp/split.ml[58,2007+0]..[63,2212+5])
+    Pstr_value Nonrec
+    [
+      <def>
+        pattern (asmcomp/split.ml[58,2007+4]..[58,2007+12])
+          Ppat_var "identify" (asmcomp/split.ml[58,2007+4]..[58,2007+12])
+        expression (asmcomp/split.ml[58,2007+13]..[63,2212+5]) ghost
+          Pexp_fun
+          Nolabel
+          None
+          pattern (asmcomp/split.ml[58,2007+13]..[58,2007+15])
+            Ppat_var "r1" (asmcomp/split.ml[58,2007+13]..[58,2007+15])
+          expression (asmcomp/split.ml[58,2007+16]..[63,2212+5]) ghost
+            Pexp_fun
+            Nolabel
+            None
+            pattern (asmcomp/split.ml[58,2007+16]..[58,2007+18])
+              Ppat_var "r2" (asmcomp/split.ml[58,2007+16]..[58,2007+18])
+            expression (asmcomp/split.ml[59,2028+2]..[63,2212+5])
+              Pexp_let Nonrec
+              [
+                <def>
+                  pattern (asmcomp/split.ml[59,2028+6]..[59,2028+13])
+                    Ppat_var "repres1" (asmcomp/split.ml[59,2028+6]..[59,2028+13])
+                  expression (asmcomp/split.ml[59,2028+16]..[59,2028+29])
+                    Pexp_apply
+                    expression (asmcomp/split.ml[59,2028+16]..[59,2028+26])
+                      Pexp_ident "repres_reg" (asmcomp/split.ml[59,2028+16]..[59,2028+26])
+                    [
+                      <arg>
+                      Nolabel
+                        expression (asmcomp/split.ml[59,2028+27]..[59,2028+29])
+                          Pexp_ident "r1" (asmcomp/split.ml[59,2028+27]..[59,2028+29])
+                    ]
+              ]
+              expression (asmcomp/split.ml[60,2061+2]..[63,2212+5])
+                Pexp_let Nonrec
+                [
+                  <def>
+                    pattern (asmcomp/split.ml[60,2061+6]..[60,2061+13])
+                      Ppat_var "repres2" (asmcomp/split.ml[60,2061+6]..[60,2061+13])
+                    expression (asmcomp/split.ml[60,2061+16]..[60,2061+29])
+                      Pexp_apply
+                      expression (asmcomp/split.ml[60,2061+16]..[60,2061+26])
+                        Pexp_ident "repres_reg" (asmcomp/split.ml[60,2061+16]..[60,2061+26])
+                      [
+                        <arg>
+                        Nolabel
+                          expression (asmcomp/split.ml[60,2061+27]..[60,2061+29])
+                            Pexp_ident "r2" (asmcomp/split.ml[60,2061+27]..[60,2061+29])
+                      ]
+                ]
+                expression (asmcomp/split.ml[61,2094+2]..[63,2212+5])
+                  Pexp_ifthenelse
+                  expression (asmcomp/split.ml[61,2094+5]..[61,2094+34])
+                    Pexp_apply
+                    expression (asmcomp/split.ml[61,2094+19]..[61,2094+20])
+                      Pexp_ident "=" (asmcomp/split.ml[61,2094+19]..[61,2094+20])
+                    [
+                      <arg>
+                      Nolabel
+                        expression (asmcomp/split.ml[61,2094+5]..[61,2094+18])
+                          Pexp_field
+                          expression (asmcomp/split.ml[61,2094+5]..[61,2094+12])
+                            Pexp_ident "repres1" (asmcomp/split.ml[61,2094+5]..[61,2094+12])
+                          "stamp" (asmcomp/split.ml[61,2094+13]..[61,2094+18])
+                      <arg>
+                      Nolabel
+                        expression (asmcomp/split.ml[61,2094+21]..[61,2094+34])
+                          Pexp_field
+                          expression (asmcomp/split.ml[61,2094+21]..[61,2094+28])
+                            Pexp_ident "repres2" (asmcomp/split.ml[61,2094+21]..[61,2094+28])
+                          "stamp" (asmcomp/split.ml[61,2094+29]..[61,2094+34])
+                    ]
+                  expression (asmcomp/split.ml[61,2094+40]..[61,2094+42])
+                    Pexp_construct "()" (asmcomp/split.ml[61,2094+40]..[61,2094+42])
+                    None
+                  Some
+                    expression (asmcomp/split.ml[61,2094+48]..[63,2212+5])
+                      Pexp_apply
+                      expression (asmcomp/split.ml[62,2148+18]..[62,2148+20])
+                        Pexp_ident ":=" (asmcomp/split.ml[62,2148+18]..[62,2148+20])
+                      [
+                        <arg>
+                        Nolabel
+                          expression (asmcomp/split.ml[62,2148+4]..[62,2148+17])
+                            Pexp_ident "equiv_classes" (asmcomp/split.ml[62,2148+4]..[62,2148+17])
+                        <arg>
+                        Nolabel
+                          expression (asmcomp/split.ml[62,2148+21]..[62,2148+63])
+                            Pexp_apply
+                            expression (asmcomp/split.ml[62,2148+21]..[62,2148+32])
+                              Pexp_ident "Reg.Map.add" (asmcomp/split.ml[62,2148+21]..[62,2148+32])
+                            [
+                              <arg>
+                              Nolabel
+                                expression (asmcomp/split.ml[62,2148+33]..[62,2148+40])
+                                  Pexp_ident "repres1" (asmcomp/split.ml[62,2148+33]..[62,2148+40])
+                              <arg>
+                              Nolabel
+                                expression (asmcomp/split.ml[62,2148+41]..[62,2148+48])
+                                  Pexp_ident "repres2" (asmcomp/split.ml[62,2148+41]..[62,2148+48])
+                              <arg>
+                              Nolabel
+                                expression (asmcomp/split.ml[62,2148+49]..[62,2148+63])
+                                  Pexp_apply
+                                  expression (asmcomp/split.ml[62,2148+49]..[62,2148+50])
+                                    Pexp_ident "!" (asmcomp/split.ml[62,2148+49]..[62,2148+50])
+                                  [
+                                    <arg>
+                                    Nolabel
+                                      expression (asmcomp/split.ml[62,2148+50]..[62,2148+63])
+                                        Pexp_ident "equiv_classes" (asmcomp/split.ml[62,2148+50]..[62,2148+63])
+                                  ]
+                            ]
+                      ]
+    ]
+  structure_item (asmcomp/split.ml[69,2425+0]..[82,2727+8])
+    Pstr_value Nonrec
+    [
+      <def>
+        pattern (asmcomp/split.ml[69,2425+4]..[69,2425+16])
+          Ppat_var "identify_sub" (asmcomp/split.ml[69,2425+4]..[69,2425+16])
+        expression (asmcomp/split.ml[69,2425+17]..[82,2727+8]) ghost
+          Pexp_fun
+          Nolabel
+          None
+          pattern (asmcomp/split.ml[69,2425+17]..[69,2425+21])
+            Ppat_var "sub1" (asmcomp/split.ml[69,2425+17]..[69,2425+21])
+          expression (asmcomp/split.ml[69,2425+22]..[82,2727+8]) ghost
+            Pexp_fun
+            Nolabel
+            None
+            pattern (asmcomp/split.ml[69,2425+22]..[69,2425+26])
+              Ppat_var "sub2" (asmcomp/split.ml[69,2425+22]..[69,2425+26])
+            expression (asmcomp/split.ml[69,2425+27]..[82,2727+8]) ghost
+              Pexp_fun
+              Nolabel
+              None
+              pattern (asmcomp/split.ml[69,2425+27]..[69,2425+30])
+                Ppat_var "reg" (asmcomp/split.ml[69,2425+27]..[69,2425+30])
+              expression (asmcomp/split.ml[70,2458+2]..[82,2727+8])
+                Pexp_try
+                expression (asmcomp/split.ml[71,2464+4]..[76,2593+21])
+                  Pexp_let Nonrec
+                  [
+                    <def>
+                      pattern (asmcomp/split.ml[71,2464+8]..[71,2464+10])
+                        Ppat_var "r1" (asmcomp/split.ml[71,2464+8]..[71,2464+10])
+                      expression (asmcomp/split.ml[71,2464+13]..[71,2464+34])
+                        Pexp_apply
+                        expression (asmcomp/split.ml[71,2464+13]..[71,2464+25])
+                          Pexp_ident "Reg.Map.find" (asmcomp/split.ml[71,2464+13]..[71,2464+25])
+                        [
+                          <arg>
+                          Nolabel
+                            expression (asmcomp/split.ml[71,2464+26]..[71,2464+29])
+                              Pexp_ident "reg" (asmcomp/split.ml[71,2464+26]..[71,2464+29])
+                          <arg>
+                          Nolabel
+                            expression (asmcomp/split.ml[71,2464+30]..[71,2464+34])
+                              Pexp_ident "sub1" (asmcomp/split.ml[71,2464+30]..[71,2464+34])
+                        ]
+                  ]
+                  expression (asmcomp/split.ml[72,2502+4]..[76,2593+21])
+                    Pexp_try
+                    expression (asmcomp/split.ml[73,2510+6]..[74,2550+20])
+                      Pexp_let Nonrec
+                      [
+                        <def>
+                          pattern (asmcomp/split.ml[73,2510+10]..[73,2510+12])
+                            Ppat_var "r2" (asmcomp/split.ml[73,2510+10]..[73,2510+12])
+                          expression (asmcomp/split.ml[73,2510+15]..[73,2510+36])
+                            Pexp_apply
+                            expression (asmcomp/split.ml[73,2510+15]..[73,2510+27])
+                              Pexp_ident "Reg.Map.find" (asmcomp/split.ml[73,2510+15]..[73,2510+27])
+                            [
+                              <arg>
+                              Nolabel
+                                expression (asmcomp/split.ml[73,2510+28]..[73,2510+31])
+                                  Pexp_ident "reg" (asmcomp/split.ml[73,2510+28]..[73,2510+31])
+                              <arg>
+                              Nolabel
+                                expression (asmcomp/split.ml[73,2510+32]..[73,2510+36])
+                                  Pexp_ident "sub2" (asmcomp/split.ml[73,2510+32]..[73,2510+36])
+                            ]
+                      ]
+                      expression (asmcomp/split.ml[74,2550+6]..[74,2550+20])
+                        Pexp_apply
+                        expression (asmcomp/split.ml[74,2550+6]..[74,2550+14])
+                          Pexp_ident "identify" (asmcomp/split.ml[74,2550+6]..[74,2550+14])
+                        [
+                          <arg>
+                          Nolabel
+                            expression (asmcomp/split.ml[74,2550+15]..[74,2550+17])
+                              Pexp_ident "r1" (asmcomp/split.ml[74,2550+15]..[74,2550+17])
+                          <arg>
+                          Nolabel
+                            expression (asmcomp/split.ml[74,2550+18]..[74,2550+20])
+                              Pexp_ident "r2" (asmcomp/split.ml[74,2550+18]..[74,2550+20])
+                        ]
+                    [
+                      <case>
+                        pattern (asmcomp/split.ml[75,2571+9]..[75,2571+18])
+                          Ppat_construct "Not_found" (asmcomp/split.ml[75,2571+9]..[75,2571+18])
+                          None
+                        expression (asmcomp/split.ml[76,2593+6]..[76,2593+21])
+                          Pexp_apply
+                          expression (asmcomp/split.ml[76,2593+6]..[76,2593+14])
+                            Pexp_ident "identify" (asmcomp/split.ml[76,2593+6]..[76,2593+14])
+                          [
+                            <arg>
+                            Nolabel
+                              expression (asmcomp/split.ml[76,2593+15]..[76,2593+17])
+                                Pexp_ident "r1" (asmcomp/split.ml[76,2593+15]..[76,2593+17])
+                            <arg>
+                            Nolabel
+                              expression (asmcomp/split.ml[76,2593+18]..[76,2593+21])
+                                Pexp_ident "reg" (asmcomp/split.ml[76,2593+18]..[76,2593+21])
+                          ]
+                    ]
+                [
+                  <case>
+                    pattern (asmcomp/split.ml[77,2615+7]..[77,2615+16])
+                      Ppat_construct "Not_found" (asmcomp/split.ml[77,2615+7]..[77,2615+16])
+                      None
+                    expression (asmcomp/split.ml[78,2635+4]..[82,2727+8])
+                      Pexp_try
+                      expression (asmcomp/split.ml[79,2643+6]..[80,2683+21])
+                        Pexp_let Nonrec
+                        [
+                          <def>
+                            pattern (asmcomp/split.ml[79,2643+10]..[79,2643+12])
+                              Ppat_var "r2" (asmcomp/split.ml[79,2643+10]..[79,2643+12])
+                            expression (asmcomp/split.ml[79,2643+15]..[79,2643+36])
+                              Pexp_apply
+                              expression (asmcomp/split.ml[79,2643+15]..[79,2643+27])
+                                Pexp_ident "Reg.Map.find" (asmcomp/split.ml[79,2643+15]..[79,2643+27])
+                              [
+                                <arg>
+                                Nolabel
+                                  expression (asmcomp/split.ml[79,2643+28]..[79,2643+31])
+                                    Pexp_ident "reg" (asmcomp/split.ml[79,2643+28]..[79,2643+31])
+                                <arg>
+                                Nolabel
+                                  expression (asmcomp/split.ml[79,2643+32]..[79,2643+36])
+                                    Pexp_ident "sub2" (asmcomp/split.ml[79,2643+32]..[79,2643+36])
+                              ]
+                        ]
+                        expression (asmcomp/split.ml[80,2683+6]..[80,2683+21])
+                          Pexp_apply
+                          expression (asmcomp/split.ml[80,2683+6]..[80,2683+14])
+                            Pexp_ident "identify" (asmcomp/split.ml[80,2683+6]..[80,2683+14])
+                          [
+                            <arg>
+                            Nolabel
+                              expression (asmcomp/split.ml[80,2683+15]..[80,2683+17])
+                                Pexp_ident "r2" (asmcomp/split.ml[80,2683+15]..[80,2683+17])
+                            <arg>
+                            Nolabel
+                              expression (asmcomp/split.ml[80,2683+18]..[80,2683+21])
+                                Pexp_ident "reg" (asmcomp/split.ml[80,2683+18]..[80,2683+21])
+                          ]
+                      [
+                        <case>
+                          pattern (asmcomp/split.ml[81,2705+9]..[81,2705+18])
+                            Ppat_construct "Not_found" (asmcomp/split.ml[81,2705+9]..[81,2705+18])
+                            None
+                          expression (asmcomp/split.ml[82,2727+6]..[82,2727+8])
+                            Pexp_construct "()" (asmcomp/split.ml[82,2727+6]..[82,2727+8])
+                            None
+                      ]
+                ]
+    ]
+  structure_item (asmcomp/split.ml[87,2854+0]..[94,3090+10])
+    Pstr_value Nonrec
+    [
+      <def>
+        pattern (asmcomp/split.ml[87,2854+4]..[87,2854+16])
+          Ppat_var "merge_substs" (asmcomp/split.ml[87,2854+4]..[87,2854+16])
+        expression (asmcomp/split.ml[87,2854+17]..[94,3090+10]) ghost
+          Pexp_fun
+          Nolabel
+          None
+          pattern (asmcomp/split.ml[87,2854+17]..[87,2854+21])
+            Ppat_var "sub1" (asmcomp/split.ml[87,2854+17]..[87,2854+21])
+          expression (asmcomp/split.ml[87,2854+22]..[94,3090+10]) ghost
+            Pexp_fun
+            Nolabel
+            None
+            pattern (asmcomp/split.ml[87,2854+22]..[87,2854+26])
+              Ppat_var "sub2" (asmcomp/split.ml[87,2854+22]..[87,2854+26])
+            expression (asmcomp/split.ml[87,2854+27]..[94,3090+10]) ghost
+              Pexp_fun
+              Nolabel
+              None
+              pattern (asmcomp/split.ml[87,2854+27]..[87,2854+28])
+                Ppat_var "i" (asmcomp/split.ml[87,2854+27]..[87,2854+28])
+              expression (asmcomp/split.ml[88,2885+2]..[94,3090+10])
+                Pexp_match
+                expression (asmcomp/split.ml[88,2885+8]..[88,2885+20])
+                  Pexp_tuple
+                  [
+                    expression (asmcomp/split.ml[88,2885+9]..[88,2885+13])
+                      Pexp_ident "sub1" (asmcomp/split.ml[88,2885+9]..[88,2885+13])
+                    expression (asmcomp/split.ml[88,2885+15]..[88,2885+19])
+                      Pexp_ident "sub2" (asmcomp/split.ml[88,2885+15]..[88,2885+19])
+                  ]
+                [
+                  <case>
+                    pattern (asmcomp/split.ml[89,2911+4]..[89,2911+16])
+                      Ppat_tuple
+                      [
+                        pattern (asmcomp/split.ml[89,2911+5]..[89,2911+9])
+                          Ppat_construct "None" (asmcomp/split.ml[89,2911+5]..[89,2911+9])
+                          None
+                        pattern (asmcomp/split.ml[89,2911+11]..[89,2911+15])
+                          Ppat_construct "None" (asmcomp/split.ml[89,2911+11]..[89,2911+15])
+                          None
+                      ]
+                    expression (asmcomp/split.ml[89,2911+20]..[89,2911+24])
+                      Pexp_construct "None" (asmcomp/split.ml[89,2911+20]..[89,2911+24])
+                      None
+                  <case>
+                    pattern (asmcomp/split.ml[90,2936+4]..[90,2936+18])
+                      Ppat_tuple
+                      [
+                        pattern (asmcomp/split.ml[90,2936+5]..[90,2936+11])
+                          Ppat_construct "Some" (asmcomp/split.ml[90,2936+5]..[90,2936+9])
+                          Some
+                            []
+                            pattern (asmcomp/split.ml[90,2936+10]..[90,2936+11])
+                              Ppat_any
+                        pattern (asmcomp/split.ml[90,2936+13]..[90,2936+17])
+                          Ppat_construct "None" (asmcomp/split.ml[90,2936+13]..[90,2936+17])
+                          None
+                      ]
+                    expression (asmcomp/split.ml[90,2936+22]..[90,2936+26])
+                      Pexp_ident "sub1" (asmcomp/split.ml[90,2936+22]..[90,2936+26])
+                  <case>
+                    pattern (asmcomp/split.ml[91,2963+4]..[91,2963+18])
+                      Ppat_tuple
+                      [
+                        pattern (asmcomp/split.ml[91,2963+5]..[91,2963+9])
+                          Ppat_construct "None" (asmcomp/split.ml[91,2963+5]..[91,2963+9])
+                          None
+                        pattern (asmcomp/split.ml[91,2963+11]..[91,2963+17])
+                          Ppat_construct "Some" (asmcomp/split.ml[91,2963+11]..[91,2963+15])
+                          Some
+                            []
+                            pattern (asmcomp/split.ml[91,2963+16]..[91,2963+17])
+                              Ppat_any
+                      ]
+                    expression (asmcomp/split.ml[91,2963+22]..[91,2963+26])
+                      Pexp_ident "sub2" (asmcomp/split.ml[91,2963+22]..[91,2963+26])
+                  <case>
+                    pattern (asmcomp/split.ml[92,2990+4]..[92,2990+22])
+                      Ppat_tuple
+                      [
+                        pattern (asmcomp/split.ml[92,2990+5]..[92,2990+12])
+                          Ppat_construct "Some" (asmcomp/split.ml[92,2990+5]..[92,2990+9])
+                          Some
+                            []
+                            pattern (asmcomp/split.ml[92,2990+10]..[92,2990+12])
+                              Ppat_var "s1" (asmcomp/split.ml[92,2990+10]..[92,2990+12])
+                        pattern (asmcomp/split.ml[92,2990+14]..[92,2990+21])
+                          Ppat_construct "Some" (asmcomp/split.ml[92,2990+14]..[92,2990+18])
+                          Some
+                            []
+                            pattern (asmcomp/split.ml[92,2990+19]..[92,2990+21])
+                              Ppat_var "s2" (asmcomp/split.ml[92,2990+19]..[92,2990+21])
+                      ]
+                    expression (asmcomp/split.ml[93,3016+6]..[94,3090+10])
+                      Pexp_sequence
+                      expression (asmcomp/split.ml[93,3016+6]..[93,3016+72])
+                        Pexp_apply
+                        expression (asmcomp/split.ml[93,3016+6]..[93,3016+18])
+                          Pexp_ident "Reg.Set.iter" (asmcomp/split.ml[93,3016+6]..[93,3016+18])
+                        [
+                          <arg>
+                          Nolabel
+                            expression (asmcomp/split.ml[93,3016+19]..[93,3016+39])
+                              Pexp_apply
+                              expression (asmcomp/split.ml[93,3016+20]..[93,3016+32])
+                                Pexp_ident "identify_sub" (asmcomp/split.ml[93,3016+20]..[93,3016+32])
+                              [
+                                <arg>
+                                Nolabel
+                                  expression (asmcomp/split.ml[93,3016+33]..[93,3016+35])
+                                    Pexp_ident "s1" (asmcomp/split.ml[93,3016+33]..[93,3016+35])
+                                <arg>
+                                Nolabel
+                                  expression (asmcomp/split.ml[93,3016+36]..[93,3016+38])
+                                    Pexp_ident "s2" (asmcomp/split.ml[93,3016+36]..[93,3016+38])
+                              ]
+                          <arg>
+                          Nolabel
+                            expression (asmcomp/split.ml[93,3016+40]..[93,3016+72])
+                              Pexp_apply
+                              expression (asmcomp/split.ml[93,3016+41]..[93,3016+58])
+                                Pexp_ident "Reg.add_set_array" (asmcomp/split.ml[93,3016+41]..[93,3016+58])
+                              [
+                                <arg>
+                                Nolabel
+                                  expression (asmcomp/split.ml[93,3016+59]..[93,3016+65])
+                                    Pexp_field
+                                    expression (asmcomp/split.ml[93,3016+59]..[93,3016+60])
+                                      Pexp_ident "i" (asmcomp/split.ml[93,3016+59]..[93,3016+60])
+                                    "live" (asmcomp/split.ml[93,3016+61]..[93,3016+65])
+                                <arg>
+                                Nolabel
+                                  expression (asmcomp/split.ml[93,3016+66]..[93,3016+71])
+                                    Pexp_field
+                                    expression (asmcomp/split.ml[93,3016+66]..[93,3016+67])
+                                      Pexp_ident "i" (asmcomp/split.ml[93,3016+66]..[93,3016+67])
+                                    "arg" (asmcomp/split.ml[93,3016+68]..[93,3016+71])
+                              ]
+                        ]
+                      expression (asmcomp/split.ml[94,3090+6]..[94,3090+10])
+                        Pexp_ident "sub1" (asmcomp/split.ml[94,3090+6]..[94,3090+10])
+                ]
+    ]
+  structure_item (asmcomp/split.ml[98,3135+0]..[113,3632+18])
+    Pstr_value Nonrec
+    [
+      <def>
+        pattern (asmcomp/split.ml[98,3135+4]..[98,3135+21])
+          Ppat_var "merge_subst_array" (asmcomp/split.ml[98,3135+4]..[98,3135+21])
+        expression (asmcomp/split.ml[98,3135+22]..[113,3632+18]) ghost
+          Pexp_fun
+          Nolabel
+          None
+          pattern (asmcomp/split.ml[98,3135+22]..[98,3135+26])
+            Ppat_var "subv" (asmcomp/split.ml[98,3135+22]..[98,3135+26])
+          expression (asmcomp/split.ml[98,3135+27]..[113,3632+18]) ghost
+            Pexp_fun
+            Nolabel
+            None
+            pattern (asmcomp/split.ml[98,3135+27]..[98,3135+32])
+              Ppat_var "instr" (asmcomp/split.ml[98,3135+27]..[98,3135+32])
+            expression (asmcomp/split.ml[99,3170+2]..[113,3632+18])
+              Pexp_let Rec
+              [
+                <def>
+                  pattern (asmcomp/split.ml[99,3170+10]..[99,3170+24])
+                    Ppat_var "find_one_subst" (asmcomp/split.ml[99,3170+10]..[99,3170+24])
+                  expression (asmcomp/split.ml[99,3170+25]..[112,3621+7]) ghost
+                    Pexp_fun
+                    Nolabel
+                    None
+                    pattern (asmcomp/split.ml[99,3170+25]..[99,3170+26])
+                      Ppat_var "i" (asmcomp/split.ml[99,3170+25]..[99,3170+26])
+                    expression (asmcomp/split.ml[100,3199+4]..[112,3621+7])
+                      Pexp_ifthenelse
+                      expression (asmcomp/split.ml[100,3199+7]..[100,3199+29])
+                        Pexp_apply
+                        expression (asmcomp/split.ml[100,3199+9]..[100,3199+11])
+                          Pexp_ident ">=" (asmcomp/split.ml[100,3199+9]..[100,3199+11])
+                        [
+                          <arg>
+                          Nolabel
+                            expression (asmcomp/split.ml[100,3199+7]..[100,3199+8])
+                              Pexp_ident "i" (asmcomp/split.ml[100,3199+7]..[100,3199+8])
+                          <arg>
+                          Nolabel
+                            expression (asmcomp/split.ml[100,3199+12]..[100,3199+29])
+                              Pexp_apply
+                              expression (asmcomp/split.ml[100,3199+12]..[100,3199+24])
+                                Pexp_ident "Array.length" (asmcomp/split.ml[100,3199+12]..[100,3199+24])
+                              [
+                                <arg>
+                                Nolabel
+                                  expression (asmcomp/split.ml[100,3199+25]..[100,3199+29])
+                                    Pexp_ident "subv" (asmcomp/split.ml[100,3199+25]..[100,3199+29])
+                              ]
+                        ]
+                      expression (asmcomp/split.ml[100,3199+35]..[100,3199+39])
+                        Pexp_construct "None" (asmcomp/split.ml[100,3199+35]..[100,3199+39])
+                        None
+                      Some
+                        expression (asmcomp/split.ml[100,3199+45]..[112,3621+7])
+                          Pexp_match
+                          expression (asmcomp/split.ml[101,3250+12]..[101,3250+20])
+                            Pexp_apply
+                            expression (asmcomp/split.ml[101,3250+12]..[101,3250+20]) ghost
+                              Pexp_ident "Array.get" (asmcomp/split.ml[101,3250+12]..[101,3250+20]) ghost
+                            [
+                              <arg>
+                              Nolabel
+                                expression (asmcomp/split.ml[101,3250+12]..[101,3250+16])
+                                  Pexp_ident "subv" (asmcomp/split.ml[101,3250+12]..[101,3250+16])
+                              <arg>
+                              Nolabel
+                                expression (asmcomp/split.ml[101,3250+18]..[101,3250+19])
+                                  Pexp_ident "i" (asmcomp/split.ml[101,3250+18]..[101,3250+19])
+                            ]
+                          [
+                            <case>
+                              pattern (asmcomp/split.ml[102,3276+8]..[102,3276+12])
+                                Ppat_construct "None" (asmcomp/split.ml[102,3276+8]..[102,3276+12])
+                                None
+                              expression (asmcomp/split.ml[102,3276+16]..[102,3276+36])
+                                Pexp_apply
+                                expression (asmcomp/split.ml[102,3276+16]..[102,3276+30])
+                                  Pexp_ident "find_one_subst" (asmcomp/split.ml[102,3276+16]..[102,3276+30])
+                                [
+                                  <arg>
+                                  Nolabel
+                                    expression (asmcomp/split.ml[102,3276+31]..[102,3276+36])
+                                      Pexp_apply
+                                      expression (asmcomp/split.ml[102,3276+33]..[102,3276+34])
+                                        Pexp_ident "+" (asmcomp/split.ml[102,3276+33]..[102,3276+34])
+                                      [
+                                        <arg>
+                                        Nolabel
+                                          expression (asmcomp/split.ml[102,3276+32]..[102,3276+33])
+                                            Pexp_ident "i" (asmcomp/split.ml[102,3276+32]..[102,3276+33])
+                                        <arg>
+                                        Nolabel
+                                          expression (asmcomp/split.ml[102,3276+34]..[102,3276+35])
+                                            Pexp_constant PConst_int (1,None)
+                                      ]
+                                ]
+                            <case>
+                              pattern (asmcomp/split.ml[103,3313+8]..[103,3313+22])
+                                Ppat_alias "sub" (asmcomp/split.ml[103,3313+19]..[103,3313+22])
+                                pattern (asmcomp/split.ml[103,3313+8]..[103,3313+15])
+                                  Ppat_construct "Some" (asmcomp/split.ml[103,3313+8]..[103,3313+12])
+                                  Some
+                                    []
+                                    pattern (asmcomp/split.ml[103,3313+13]..[103,3313+15])
+                                      Ppat_var "si" (asmcomp/split.ml[103,3313+13]..[103,3313+15])
+                              expression (asmcomp/split.ml[104,3339+10]..[111,3607+13])
+                                Pexp_sequence
+                                expression (asmcomp/split.ml[104,3339+10]..[110,3591+14])
+                                  Pexp_for Up
+                                  pattern (asmcomp/split.ml[104,3339+14]..[104,3339+15])
+                                    Ppat_var "j" (asmcomp/split.ml[104,3339+14]..[104,3339+15])
+                                  expression (asmcomp/split.ml[104,3339+18]..[104,3339+21])
+                                    Pexp_apply
+                                    expression (asmcomp/split.ml[104,3339+19]..[104,3339+20])
+                                      Pexp_ident "+" (asmcomp/split.ml[104,3339+19]..[104,3339+20])
+                                    [
+                                      <arg>
+                                      Nolabel
+                                        expression (asmcomp/split.ml[104,3339+18]..[104,3339+19])
+                                          Pexp_ident "i" (asmcomp/split.ml[104,3339+18]..[104,3339+19])
+                                      <arg>
+                                      Nolabel
+                                        expression (asmcomp/split.ml[104,3339+20]..[104,3339+21])
+                                          Pexp_constant PConst_int (1,None)
+                                    ]
+                                  expression (asmcomp/split.ml[104,3339+25]..[104,3339+46])
+                                    Pexp_apply
+                                    expression (asmcomp/split.ml[104,3339+43]..[104,3339+44])
+                                      Pexp_ident "-" (asmcomp/split.ml[104,3339+43]..[104,3339+44])
+                                    [
+                                      <arg>
+                                      Nolabel
+                                        expression (asmcomp/split.ml[104,3339+25]..[104,3339+42])
+                                          Pexp_apply
+                                          expression (asmcomp/split.ml[104,3339+25]..[104,3339+37])
+                                            Pexp_ident "Array.length" (asmcomp/split.ml[104,3339+25]..[104,3339+37])
+                                          [
+                                            <arg>
+                                            Nolabel
+                                              expression (asmcomp/split.ml[104,3339+38]..[104,3339+42])
+                                                Pexp_ident "subv" (asmcomp/split.ml[104,3339+38]..[104,3339+42])
+                                          ]
+                                      <arg>
+                                      Nolabel
+                                        expression (asmcomp/split.ml[104,3339+45]..[104,3339+46])
+                                          Pexp_constant PConst_int (1,None)
+                                    ]
+                                  expression (asmcomp/split.ml[105,3389+12]..[109,3521+69])
+                                    Pexp_match
+                                    expression (asmcomp/split.ml[105,3389+18]..[105,3389+26])
+                                      Pexp_apply
+                                      expression (asmcomp/split.ml[105,3389+18]..[105,3389+26]) ghost
+                                        Pexp_ident "Array.get" (asmcomp/split.ml[105,3389+18]..[105,3389+26]) ghost
+                                      [
+                                        <arg>
+                                        Nolabel
+                                          expression (asmcomp/split.ml[105,3389+18]..[105,3389+22])
+                                            Pexp_ident "subv" (asmcomp/split.ml[105,3389+18]..[105,3389+22])
+                                        <arg>
+                                        Nolabel
+                                          expression (asmcomp/split.ml[105,3389+24]..[105,3389+25])
+                                            Pexp_ident "j" (asmcomp/split.ml[105,3389+24]..[105,3389+25])
+                                      ]
+                                    [
+                                      <case>
+                                        pattern (asmcomp/split.ml[106,3421+14]..[106,3421+18])
+                                          Ppat_construct "None" (asmcomp/split.ml[106,3421+14]..[106,3421+18])
+                                          None
+                                        expression (asmcomp/split.ml[106,3421+22]..[106,3421+24])
+                                          Pexp_construct "()" (asmcomp/split.ml[106,3421+22]..[106,3421+24])
+                                          None
+                                      <case>
+                                        pattern (asmcomp/split.ml[107,3446+14]..[107,3446+21])
+                                          Ppat_construct "Some" (asmcomp/split.ml[107,3446+14]..[107,3446+18])
+                                          Some
+                                            []
+                                            pattern (asmcomp/split.ml[107,3446+19]..[107,3446+21])
+                                              Ppat_var "sj" (asmcomp/split.ml[107,3446+19]..[107,3446+21])
+                                        expression (asmcomp/split.ml[108,3471+16]..[109,3521+69])
+                                          Pexp_apply
+                                          expression (asmcomp/split.ml[108,3471+16]..[108,3471+28])
+                                            Pexp_ident "Reg.Set.iter" (asmcomp/split.ml[108,3471+16]..[108,3471+28])
+                                          [
+                                            <arg>
+                                            Nolabel
+                                              expression (asmcomp/split.ml[108,3471+29]..[108,3471+49])
+                                                Pexp_apply
+                                                expression (asmcomp/split.ml[108,3471+30]..[108,3471+42])
+                                                  Pexp_ident "identify_sub" (asmcomp/split.ml[108,3471+30]..[108,3471+42])
+                                                [
+                                                  <arg>
+                                                  Nolabel
+                                                    expression (asmcomp/split.ml[108,3471+43]..[108,3471+45])
+                                                      Pexp_ident "si" (asmcomp/split.ml[108,3471+43]..[108,3471+45])
+                                                  <arg>
+                                                  Nolabel
+                                                    expression (asmcomp/split.ml[108,3471+46]..[108,3471+48])
+                                                      Pexp_ident "sj" (asmcomp/split.ml[108,3471+46]..[108,3471+48])
+                                                ]
+                                            <arg>
+                                            Nolabel
+                                              expression (asmcomp/split.ml[109,3521+29]..[109,3521+69])
+                                                Pexp_apply
+                                                expression (asmcomp/split.ml[109,3521+30]..[109,3521+47])
+                                                  Pexp_ident "Reg.add_set_array" (asmcomp/split.ml[109,3521+30]..[109,3521+47])
+                                                [
+                                                  <arg>
+                                                  Nolabel
+                                                    expression (asmcomp/split.ml[109,3521+48]..[109,3521+58])
+                                                      Pexp_field
+                                                      expression (asmcomp/split.ml[109,3521+48]..[109,3521+53])
+                                                        Pexp_ident "instr" (asmcomp/split.ml[109,3521+48]..[109,3521+53])
+                                                      "live" (asmcomp/split.ml[109,3521+54]..[109,3521+58])
+                                                  <arg>
+                                                  Nolabel
+                                                    expression (asmcomp/split.ml[109,3521+59]..[109,3521+68])
+                                                      Pexp_field
+                                                      expression (asmcomp/split.ml[109,3521+59]..[109,3521+64])
+                                                        Pexp_ident "instr" (asmcomp/split.ml[109,3521+59]..[109,3521+64])
+                                                      "arg" (asmcomp/split.ml[109,3521+65]..[109,3521+68])
+                                                ]
+                                          ]
+                                    ]
+                                expression (asmcomp/split.ml[111,3607+10]..[111,3607+13])
+                                  Pexp_ident "sub" (asmcomp/split.ml[111,3607+10]..[111,3607+13])
+                          ]
+              ]
+              expression (asmcomp/split.ml[113,3632+2]..[113,3632+18])
+                Pexp_apply
+                expression (asmcomp/split.ml[113,3632+2]..[113,3632+16])
+                  Pexp_ident "find_one_subst" (asmcomp/split.ml[113,3632+2]..[113,3632+16])
+                [
+                  <arg>
+                  Nolabel
+                    expression (asmcomp/split.ml[113,3632+17]..[113,3632+18])
+                      Pexp_constant PConst_int (0,None)
+                ]
+    ]
+  structure_item (asmcomp/split.ml[117,3705+0]..[117,3705+23])
+    Pstr_value Nonrec
+    [
+      <def>
+        pattern (asmcomp/split.ml[117,3705+4]..[117,3705+14])
+          Ppat_var "exit_subst" (asmcomp/split.ml[117,3705+4]..[117,3705+14])
+        expression (asmcomp/split.ml[117,3705+17]..[117,3705+23])
+          Pexp_apply
+          expression (asmcomp/split.ml[117,3705+17]..[117,3705+20])
+            Pexp_ident "ref" (asmcomp/split.ml[117,3705+17]..[117,3705+20])
+          [
+            <arg>
+            Nolabel
+              expression (asmcomp/split.ml[117,3705+21]..[117,3705+23])
+                Pexp_construct "[]" (asmcomp/split.ml[117,3705+21]..[117,3705+23])
+                None
+          ]
+    ]
+  structure_item (asmcomp/split.ml[119,3730+0]..[122,3794+57])
+    Pstr_value Nonrec
+    [
+      <def>
+        pattern (asmcomp/split.ml[119,3730+4]..[119,3730+19])
+          Ppat_var "find_exit_subst" (asmcomp/split.ml[119,3730+4]..[119,3730+19])
+        expression (asmcomp/split.ml[119,3730+20]..[122,3794+57]) ghost
+          Pexp_fun
+          Nolabel
+          None
+          pattern (asmcomp/split.ml[119,3730+20]..[119,3730+21])
+            Ppat_var "k" (asmcomp/split.ml[119,3730+20]..[119,3730+21])
+          expression (asmcomp/split.ml[120,3754+2]..[122,3794+57])
+            Pexp_try
+            expression (asmcomp/split.ml[121,3760+4]..[121,3760+28])
+              Pexp_apply
+              expression (asmcomp/split.ml[121,3760+4]..[121,3760+14])
+                Pexp_ident "List.assoc" (asmcomp/split.ml[121,3760+4]..[121,3760+14])
+              [
+                <arg>
+                Nolabel
+                  expression (asmcomp/split.ml[121,3760+15]..[121,3760+16])
+                    Pexp_ident "k" (asmcomp/split.ml[121,3760+15]..[121,3760+16])
+                <arg>
+                Nolabel
+                  expression (asmcomp/split.ml[121,3760+17]..[121,3760+28])
+                    Pexp_apply
+                    expression (asmcomp/split.ml[121,3760+17]..[121,3760+18])
+                      Pexp_ident "!" (asmcomp/split.ml[121,3760+17]..[121,3760+18])
+                    [
+                      <arg>
+                      Nolabel
+                        expression (asmcomp/split.ml[121,3760+18]..[121,3760+28])
+                          Pexp_ident "exit_subst" (asmcomp/split.ml[121,3760+18]..[121,3760+28])
+                    ]
+              ]
+            [
+              <case>
+                pattern (asmcomp/split.ml[122,3794+4]..[122,3794+13])
+                  Ppat_construct "Not_found" (asmcomp/split.ml[122,3794+4]..[122,3794+13])
+                  None
+                expression (asmcomp/split.ml[122,3794+17]..[122,3794+57])
+                  Pexp_apply
+                  expression (asmcomp/split.ml[122,3794+17]..[122,3794+33])
+                    Pexp_ident "Misc.fatal_error" (asmcomp/split.ml[122,3794+17]..[122,3794+33])
+                  [
+                    <arg>
+                    Nolabel
+                      expression (asmcomp/split.ml[122,3794+34]..[122,3794+57])
+                        Pexp_constant PConst_string("Split.find_exit_subst",(asmcomp/split.ml[122,3794+35]..[122,3794+56]),None)
+                  ]
+            ]
+    ]
+  structure_item (asmcomp/split.ml[124,3853+0]..[196,6855+12])
+    Pstr_value Rec
+    [
+      <def>
+        pattern (asmcomp/split.ml[124,3853+8]..[124,3853+14])
+          Ppat_var "rename" (asmcomp/split.ml[124,3853+8]..[124,3853+14])
+        expression (asmcomp/split.ml[124,3853+15]..[196,6855+12]) ghost
+          Pexp_fun
+          Nolabel
+          None
+          pattern (asmcomp/split.ml[124,3853+15]..[124,3853+16])
+            Ppat_var "i" (asmcomp/split.ml[124,3853+15]..[124,3853+16])
+          expression (asmcomp/split.ml[124,3853+17]..[196,6855+12]) ghost
+            Pexp_fun
+            Nolabel
+            None
+            pattern (asmcomp/split.ml[124,3853+17]..[124,3853+20])
+              Ppat_var "sub" (asmcomp/split.ml[124,3853+17]..[124,3853+20])
+            expression (asmcomp/split.ml[125,3876+2]..[196,6855+12])
+              Pexp_match
+              expression (asmcomp/split.ml[125,3876+8]..[125,3876+14])
+                Pexp_field
+                expression (asmcomp/split.ml[125,3876+8]..[125,3876+9])
+                  Pexp_ident "i" (asmcomp/split.ml[125,3876+8]..[125,3876+9])
+                "desc" (asmcomp/split.ml[125,3876+10]..[125,3876+14])
+              [
+                <case>
+                  pattern (asmcomp/split.ml[126,3896+4]..[126,3896+8])
+                    Ppat_construct "Iend" (asmcomp/split.ml[126,3896+4]..[126,3896+8])
+                    None
+                  expression (asmcomp/split.ml[127,3908+6]..[127,3908+14])
+                    Pexp_tuple
+                    [
+                      expression (asmcomp/split.ml[127,3908+7]..[127,3908+8])
+                        Pexp_ident "i" (asmcomp/split.ml[127,3908+7]..[127,3908+8])
+                      expression (asmcomp/split.ml[127,3908+10]..[127,3908+13])
+                        Pexp_ident "sub" (asmcomp/split.ml[127,3908+10]..[127,3908+13])
+                    ]
+                <case>
+                  pattern (asmcomp/split.ml[128,3923+4]..[128,3923+55])
+                    Ppat_or
+                    pattern (asmcomp/split.ml[128,3923+4]..[128,3923+32])
+                      Ppat_or
+                      pattern (asmcomp/split.ml[128,3923+4]..[128,3923+11])
+                        Ppat_construct "Ireturn" (asmcomp/split.ml[128,3923+4]..[128,3923+11])
+                        None
+                      pattern (asmcomp/split.ml[128,3923+14]..[128,3923+32])
+                        Ppat_construct "Iop" (asmcomp/split.ml[128,3923+14]..[128,3923+17])
+                        Some
+                          []
+                          pattern (asmcomp/split.ml[128,3923+17]..[128,3923+32])
+                            Ppat_construct "Itailcall_ind" (asmcomp/split.ml[128,3923+18]..[128,3923+31])
+                            None
+                    pattern (asmcomp/split.ml[128,3923+35]..[128,3923+55])
+                      Ppat_construct "Iop" (asmcomp/split.ml[128,3923+35]..[128,3923+38])
+                      Some
+                        []
+                        pattern (asmcomp/split.ml[128,3923+38]..[128,3923+55])
+                          Ppat_construct "Itailcall_imm" (asmcomp/split.ml[128,3923+39]..[128,3923+52])
+                          Some
+                            []
+                            pattern (asmcomp/split.ml[128,3923+53]..[128,3923+54])
+                              Ppat_any
+                  expression (asmcomp/split.ml[129,3982+6]..[130,4055+12])
+                    Pexp_tuple
+                    [
+                      expression (asmcomp/split.ml[129,3982+7]..[129,3982+71])
+                        Pexp_apply
+                        expression (asmcomp/split.ml[129,3982+7]..[129,3982+23])
+                          Pexp_ident "instr_cons_debug" (asmcomp/split.ml[129,3982+7]..[129,3982+23])
+                        [
+                          <arg>
+                          Nolabel
+                            expression (asmcomp/split.ml[129,3982+24]..[129,3982+30])
+                              Pexp_field
+                              expression (asmcomp/split.ml[129,3982+24]..[129,3982+25])
+                                Pexp_ident "i" (asmcomp/split.ml[129,3982+24]..[129,3982+25])
+                              "desc" (asmcomp/split.ml[129,3982+26]..[129,3982+30])
+                          <arg>
+                          Nolabel
+                            expression (asmcomp/split.ml[129,3982+31]..[129,3982+53])
+                              Pexp_apply
+                              expression (asmcomp/split.ml[129,3982+32]..[129,3982+42])
+                                Pexp_ident "subst_regs" (asmcomp/split.ml[129,3982+32]..[129,3982+42])
+                              [
+                                <arg>
+                                Nolabel
+                                  expression (asmcomp/split.ml[129,3982+43]..[129,3982+48])
+                                    Pexp_field
+                                    expression (asmcomp/split.ml[129,3982+43]..[129,3982+44])
+                                      Pexp_ident "i" (asmcomp/split.ml[129,3982+43]..[129,3982+44])
+                                    "arg" (asmcomp/split.ml[129,3982+45]..[129,3982+48])
+                                <arg>
+                                Nolabel
+                                  expression (asmcomp/split.ml[129,3982+49]..[129,3982+52])
+                                    Pexp_ident "sub" (asmcomp/split.ml[129,3982+49]..[129,3982+52])
+                              ]
+                          <arg>
+                          Nolabel
+                            expression (asmcomp/split.ml[129,3982+54]..[129,3982+58])
+                              Pexp_array
+                              []
+                          <arg>
+                          Nolabel
+                            expression (asmcomp/split.ml[129,3982+59]..[129,3982+64])
+                              Pexp_field
+                              expression (asmcomp/split.ml[129,3982+59]..[129,3982+60])
+                                Pexp_ident "i" (asmcomp/split.ml[129,3982+59]..[129,3982+60])
+                              "dbg" (asmcomp/split.ml[129,3982+61]..[129,3982+64])
+                          <arg>
+                          Nolabel
+                            expression (asmcomp/split.ml[129,3982+65]..[129,3982+71])
+                              Pexp_field
+                              expression (asmcomp/split.ml[129,3982+65]..[129,3982+66])
+                                Pexp_ident "i" (asmcomp/split.ml[129,3982+65]..[129,3982+66])
+                              "next" (asmcomp/split.ml[129,3982+67]..[129,3982+71])
+                        ]
+                      expression (asmcomp/split.ml[130,4055+7]..[130,4055+11])
+                        Pexp_construct "None" (asmcomp/split.ml[130,4055+7]..[130,4055+11])
+                        None
+                    ]
+                <case>
+                  pattern (asmcomp/split.ml[131,4068+4]..[131,4068+15])
+                    Ppat_construct "Iop" (asmcomp/split.ml[131,4068+4]..[131,4068+7])
+                    Some
+                      []
+                      pattern (asmcomp/split.ml[131,4068+8]..[131,4068+15])
+                        Ppat_construct "Ireload" (asmcomp/split.ml[131,4068+8]..[131,4068+15])
+                        None
+                  <when>
+                    expression (asmcomp/split.ml[131,4068+21]..[131,4068+44])
+                      Pexp_apply
+                      expression (asmcomp/split.ml[131,4068+35]..[131,4068+36])
+                        Pexp_ident "=" (asmcomp/split.ml[131,4068+35]..[131,4068+36])
+                      [
+                        <arg>
+                        Nolabel
+                          expression (asmcomp/split.ml[131,4068+21]..[131,4068+34])
+                            Pexp_field
+                            expression (asmcomp/split.ml[131,4068+21]..[131,4068+30])
+                              Pexp_apply
+                              expression (asmcomp/split.ml[131,4068+21]..[131,4068+30]) ghost
+                                Pexp_ident "Array.get" (asmcomp/split.ml[131,4068+21]..[131,4068+30]) ghost
+                              [
+                                <arg>
+                                Nolabel
+                                  expression (asmcomp/split.ml[131,4068+21]..[131,4068+26])
+                                    Pexp_field
+                                    expression (asmcomp/split.ml[131,4068+21]..[131,4068+22])
+                                      Pexp_ident "i" (asmcomp/split.ml[131,4068+21]..[131,4068+22])
+                                    "res" (asmcomp/split.ml[131,4068+23]..[131,4068+26])
+                                <arg>
+                                Nolabel
+                                  expression (asmcomp/split.ml[131,4068+28]..[131,4068+29])
+                                    Pexp_constant PConst_int (0,None)
+                              ]
+                            "loc" (asmcomp/split.ml[131,4068+31]..[131,4068+34])
+                        <arg>
+                        Nolabel
+                          expression (asmcomp/split.ml[131,4068+37]..[131,4068+44])
+                            Pexp_construct "Unknown" (asmcomp/split.ml[131,4068+37]..[131,4068+44])
+                            None
+                      ]
+                  expression (asmcomp/split.ml[132,4116+6]..[141,4446+9])
+                    Pexp_match
+                    expression (asmcomp/split.ml[132,4116+18]..[132,4116+21])
+                      Pexp_ident "sub" (asmcomp/split.ml[132,4116+18]..[132,4116+21])
+                    [
+                      <case>
+                        pattern (asmcomp/split.ml[133,4143+8]..[133,4143+12])
+                          Ppat_construct "None" (asmcomp/split.ml[133,4143+8]..[133,4143+12])
+                          None
+                        expression (asmcomp/split.ml[133,4143+16]..[133,4143+33])
+                          Pexp_apply
+                          expression (asmcomp/split.ml[133,4143+16]..[133,4143+22])
+                            Pexp_ident "rename" (asmcomp/split.ml[133,4143+16]..[133,4143+22])
+                          [
+                            <arg>
+                            Nolabel
+                              expression (asmcomp/split.ml[133,4143+23]..[133,4143+29])
+                                Pexp_field
+                                expression (asmcomp/split.ml[133,4143+23]..[133,4143+24])
+                                  Pexp_ident "i" (asmcomp/split.ml[133,4143+23]..[133,4143+24])
+                                "next" (asmcomp/split.ml[133,4143+25]..[133,4143+29])
+                            <arg>
+                            Nolabel
+                              expression (asmcomp/split.ml[133,4143+30]..[133,4143+33])
+                                Pexp_ident "sub" (asmcomp/split.ml[133,4143+30]..[133,4143+33])
+                          ]
+                      <case>
+                        pattern (asmcomp/split.ml[134,4177+8]..[134,4177+14])
+                          Ppat_construct "Some" (asmcomp/split.ml[134,4177+8]..[134,4177+12])
+                          Some
+                            []
+                            pattern (asmcomp/split.ml[134,4177+13]..[134,4177+14])
+                              Ppat_var "s" (asmcomp/split.ml[134,4177+13]..[134,4177+14])
+                        expression (asmcomp/split.ml[135,4195+10]..[140,4425+20])
+                          Pexp_let Nonrec
+                          [
+                            <def>
+                              pattern (asmcomp/split.ml[135,4195+14]..[135,4195+18])
+                                Ppat_var "oldr" (asmcomp/split.ml[135,4195+14]..[135,4195+18])
+                              expression (asmcomp/split.ml[135,4195+21]..[135,4195+30])
+                                Pexp_apply
+                                expression (asmcomp/split.ml[135,4195+21]..[135,4195+30]) ghost
+                                  Pexp_ident "Array.get" (asmcomp/split.ml[135,4195+21]..[135,4195+30]) ghost
+                                [
+                                  <arg>
+                                  Nolabel
+                                    expression (asmcomp/split.ml[135,4195+21]..[135,4195+26])
+                                      Pexp_field
+                                      expression (asmcomp/split.ml[135,4195+21]..[135,4195+22])
+                                        Pexp_ident "i" (asmcomp/split.ml[135,4195+21]..[135,4195+22])
+                                      "res" (asmcomp/split.ml[135,4195+23]..[135,4195+26])
+                                  <arg>
+                                  Nolabel
+                                    expression (asmcomp/split.ml[135,4195+28]..[135,4195+29])
+                                      Pexp_constant PConst_int (0,None)
+                                ]
+                          ]
+                          expression (asmcomp/split.ml[136,4229+10]..[140,4425+20])
+                            Pexp_let Nonrec
+                            [
+                              <def>
+                                pattern (asmcomp/split.ml[136,4229+14]..[136,4229+18])
+                                  Ppat_var "newr" (asmcomp/split.ml[136,4229+14]..[136,4229+18])
+                                expression (asmcomp/split.ml[136,4229+21]..[136,4229+40])
+                                  Pexp_apply
+                                  expression (asmcomp/split.ml[136,4229+21]..[136,4229+30])
+                                    Pexp_ident "Reg.clone" (asmcomp/split.ml[136,4229+21]..[136,4229+30])
+                                  [
+                                    <arg>
+                                    Nolabel
+                                      expression (asmcomp/split.ml[136,4229+31]..[136,4229+40])
+                                        Pexp_apply
+                                        expression (asmcomp/split.ml[136,4229+31]..[136,4229+40]) ghost
+                                          Pexp_ident "Array.get" (asmcomp/split.ml[136,4229+31]..[136,4229+40]) ghost
+                                        [
+                                          <arg>
+                                          Nolabel
+                                            expression (asmcomp/split.ml[136,4229+31]..[136,4229+36])
+                                              Pexp_field
+                                              expression (asmcomp/split.ml[136,4229+31]..[136,4229+32])
+                                                Pexp_ident "i" (asmcomp/split.ml[136,4229+31]..[136,4229+32])
+                                              "res" (asmcomp/split.ml[136,4229+33]..[136,4229+36])
+                                          <arg>
+                                          Nolabel
+                                            expression (asmcomp/split.ml[136,4229+38]..[136,4229+39])
+                                              Pexp_constant PConst_int (0,None)
+                                        ]
+                                  ]
+                            ]
+                            expression (asmcomp/split.ml[137,4273+10]..[140,4425+20])
+                              Pexp_let Nonrec
+                              [
+                                <def>
+                                  pattern (asmcomp/split.ml[137,4273+14]..[137,4273+34])
+                                    Ppat_tuple
+                                    [
+                                      pattern (asmcomp/split.ml[137,4273+15]..[137,4273+23])
+                                        Ppat_var "new_next" (asmcomp/split.ml[137,4273+15]..[137,4273+23])
+                                      pattern (asmcomp/split.ml[137,4273+25]..[137,4273+33])
+                                        Ppat_var "sub_next" (asmcomp/split.ml[137,4273+25]..[137,4273+33])
+                                    ]
+                                  expression (asmcomp/split.ml[138,4310+12]..[138,4310+57])
+                                    Pexp_apply
+                                    expression (asmcomp/split.ml[138,4310+12]..[138,4310+18])
+                                      Pexp_ident "rename" (asmcomp/split.ml[138,4310+12]..[138,4310+18])
+                                    [
+                                      <arg>
+                                      Nolabel
+                                        expression (asmcomp/split.ml[138,4310+19]..[138,4310+25])
+                                          Pexp_field
+                                          expression (asmcomp/split.ml[138,4310+19]..[138,4310+20])
+                                            Pexp_ident "i" (asmcomp/split.ml[138,4310+19]..[138,4310+20])
+                                          "next" (asmcomp/split.ml[138,4310+21]..[138,4310+25])
+                                      <arg>
+                                      Nolabel
+                                        expression (asmcomp/split.ml[138,4310+26]..[138,4310+57])
+                                          Pexp_construct "Some" (asmcomp/split.ml[138,4310+27]..[138,4310+31])
+                                          Some
+                                            expression (asmcomp/split.ml[138,4310+31]..[138,4310+56])
+                                              Pexp_apply
+                                              expression (asmcomp/split.ml[138,4310+32]..[138,4310+43])
+                                                Pexp_ident "Reg.Map.add" (asmcomp/split.ml[138,4310+32]..[138,4310+43])
+                                              [
+                                                <arg>
+                                                Nolabel
+                                                  expression (asmcomp/split.ml[138,4310+44]..[138,4310+48])
+                                                    Pexp_ident "oldr" (asmcomp/split.ml[138,4310+44]..[138,4310+48])
+                                                <arg>
+                                                Nolabel
+                                                  expression (asmcomp/split.ml[138,4310+49]..[138,4310+53])
+                                                    Pexp_ident "newr" (asmcomp/split.ml[138,4310+49]..[138,4310+53])
+                                                <arg>
+                                                Nolabel
+                                                  expression (asmcomp/split.ml[138,4310+54]..[138,4310+55])
+                                                    Pexp_ident "s" (asmcomp/split.ml[138,4310+54]..[138,4310+55])
+                                              ]
+                                    ]
+                              ]
+                              expression (asmcomp/split.ml[139,4371+10]..[140,4425+20])
+                                Pexp_tuple
+                                [
+                                  expression (asmcomp/split.ml[139,4371+11]..[139,4371+52])
+                                    Pexp_apply
+                                    expression (asmcomp/split.ml[139,4371+11]..[139,4371+21])
+                                      Pexp_ident "instr_cons" (asmcomp/split.ml[139,4371+11]..[139,4371+21])
+                                    [
+                                      <arg>
+                                      Nolabel
+                                        expression (asmcomp/split.ml[139,4371+22]..[139,4371+28])
+                                          Pexp_field
+                                          expression (asmcomp/split.ml[139,4371+22]..[139,4371+23])
+                                            Pexp_ident "i" (asmcomp/split.ml[139,4371+22]..[139,4371+23])
+                                          "desc" (asmcomp/split.ml[139,4371+24]..[139,4371+28])
+                                      <arg>
+                                      Nolabel
+                                        expression (asmcomp/split.ml[139,4371+29]..[139,4371+34])
+                                          Pexp_field
+                                          expression (asmcomp/split.ml[139,4371+29]..[139,4371+30])
+                                            Pexp_ident "i" (asmcomp/split.ml[139,4371+29]..[139,4371+30])
+                                          "arg" (asmcomp/split.ml[139,4371+31]..[139,4371+34])
+                                      <arg>
+                                      Nolabel
+                                        expression (asmcomp/split.ml[139,4371+35]..[139,4371+43])
+                                          Pexp_array
+                                          [
+                                            expression (asmcomp/split.ml[139,4371+37]..[139,4371+41])
+                                              Pexp_ident "newr" (asmcomp/split.ml[139,4371+37]..[139,4371+41])
+                                          ]
+                                      <arg>
+                                      Nolabel
+                                        expression (asmcomp/split.ml[139,4371+44]..[139,4371+52])
+                                          Pexp_ident "new_next" (asmcomp/split.ml[139,4371+44]..[139,4371+52])
+                                    ]
+                                  expression (asmcomp/split.ml[140,4425+11]..[140,4425+19])
+                                    Pexp_ident "sub_next" (asmcomp/split.ml[140,4425+11]..[140,4425+19])
+                                ]
+                    ]
+                <case>
+                  pattern (asmcomp/split.ml[142,4456+4]..[142,4456+9])
+                    Ppat_construct "Iop" (asmcomp/split.ml[142,4456+4]..[142,4456+7])
+                    Some
+                      []
+                      pattern (asmcomp/split.ml[142,4456+8]..[142,4456+9])
+                        Ppat_any
+                  expression (asmcomp/split.ml[143,4469+6]..[146,4640+16])
+                    Pexp_let Nonrec
+                    [
+                      <def>
+                        pattern (asmcomp/split.ml[143,4469+10]..[143,4469+30])
+                          Ppat_tuple
+                          [
+                            pattern (asmcomp/split.ml[143,4469+11]..[143,4469+19])
+                              Ppat_var "new_next" (asmcomp/split.ml[143,4469+11]..[143,4469+19])
+                            pattern (asmcomp/split.ml[143,4469+21]..[143,4469+29])
+                              Ppat_var "sub_next" (asmcomp/split.ml[143,4469+21]..[143,4469+29])
+                          ]
+                        expression (asmcomp/split.ml[143,4469+33]..[143,4469+50])
+                          Pexp_apply
+                          expression (asmcomp/split.ml[143,4469+33]..[143,4469+39])
+                            Pexp_ident "rename" (asmcomp/split.ml[143,4469+33]..[143,4469+39])
+                          [
+                            <arg>
+                            Nolabel
+                              expression (asmcomp/split.ml[143,4469+40]..[143,4469+46])
+                                Pexp_field
+                                expression (asmcomp/split.ml[143,4469+40]..[143,4469+41])
+                                  Pexp_ident "i" (asmcomp/split.ml[143,4469+40]..[143,4469+41])
+                                "next" (asmcomp/split.ml[143,4469+42]..[143,4469+46])
+                            <arg>
+                            Nolabel
+                              expression (asmcomp/split.ml[143,4469+47]..[143,4469+50])
+                                Pexp_ident "sub" (asmcomp/split.ml[143,4469+47]..[143,4469+50])
+                          ]
+                    ]
+                    expression (asmcomp/split.ml[144,4523+6]..[146,4640+16])
+                      Pexp_tuple
+                      [
+                        expression (asmcomp/split.ml[144,4523+7]..[145,4600+38])
+                          Pexp_apply
+                          expression (asmcomp/split.ml[144,4523+7]..[144,4523+23])
+                            Pexp_ident "instr_cons_debug" (asmcomp/split.ml[144,4523+7]..[144,4523+23])
+                          [
+                            <arg>
+                            Nolabel
+                              expression (asmcomp/split.ml[144,4523+24]..[144,4523+30])
+                                Pexp_field
+                                expression (asmcomp/split.ml[144,4523+24]..[144,4523+25])
+                                  Pexp_ident "i" (asmcomp/split.ml[144,4523+24]..[144,4523+25])
+                                "desc" (asmcomp/split.ml[144,4523+26]..[144,4523+30])
+                            <arg>
+                            Nolabel
+                              expression (asmcomp/split.ml[144,4523+31]..[144,4523+53])
+                                Pexp_apply
+                                expression (asmcomp/split.ml[144,4523+32]..[144,4523+42])
+                                  Pexp_ident "subst_regs" (asmcomp/split.ml[144,4523+32]..[144,4523+42])
+                                [
+                                  <arg>
+                                  Nolabel
+                                    expression (asmcomp/split.ml[144,4523+43]..[144,4523+48])
+                                      Pexp_field
+                                      expression (asmcomp/split.ml[144,4523+43]..[144,4523+44])
+                                        Pexp_ident "i" (asmcomp/split.ml[144,4523+43]..[144,4523+44])
+                                      "arg" (asmcomp/split.ml[144,4523+45]..[144,4523+48])
+                                  <arg>
+                                  Nolabel
+                                    expression (asmcomp/split.ml[144,4523+49]..[144,4523+52])
+                                      Pexp_ident "sub" (asmcomp/split.ml[144,4523+49]..[144,4523+52])
+                                ]
+                            <arg>
+                            Nolabel
+                              expression (asmcomp/split.ml[144,4523+54]..[144,4523+76])
+                                Pexp_apply
+                                expression (asmcomp/split.ml[144,4523+55]..[144,4523+65])
+                                  Pexp_ident "subst_regs" (asmcomp/split.ml[144,4523+55]..[144,4523+65])
+                                [
+                                  <arg>
+                                  Nolabel
+                                    expression (asmcomp/split.ml[144,4523+66]..[144,4523+71])
+                                      Pexp_field
+                                      expression (asmcomp/split.ml[144,4523+66]..[144,4523+67])
+                                        Pexp_ident "i" (asmcomp/split.ml[144,4523+66]..[144,4523+67])
+                                      "res" (asmcomp/split.ml[144,4523+68]..[144,4523+71])
+                                  <arg>
+                                  Nolabel
+                                    expression (asmcomp/split.ml[144,4523+72]..[144,4523+75])
+                                      Pexp_ident "sub" (asmcomp/split.ml[144,4523+72]..[144,4523+75])
+                                ]
+                            <arg>
+                            Nolabel
+                              expression (asmcomp/split.ml[145,4600+24]..[145,4600+29])
+                                Pexp_field
+                                expression (asmcomp/split.ml[145,4600+24]..[145,4600+25])
+                                  Pexp_ident "i" (asmcomp/split.ml[145,4600+24]..[145,4600+25])
+                                "dbg" (asmcomp/split.ml[145,4600+26]..[145,4600+29])
+                            <arg>
+                            Nolabel
+                              expression (asmcomp/split.ml[145,4600+30]..[145,4600+38])
+                                Pexp_ident "new_next" (asmcomp/split.ml[145,4600+30]..[145,4600+38])
+                          ]
+                        expression (asmcomp/split.ml[146,4640+7]..[146,4640+15])
+                          Pexp_ident "sub_next" (asmcomp/split.ml[146,4640+7]..[146,4640+15])
+                      ]
+                <case>
+                  pattern (asmcomp/split.ml[147,4657+4]..[147,4657+33])
+                    Ppat_construct "Iifthenelse" (asmcomp/split.ml[147,4657+4]..[147,4657+15])
+                    Some
+                      []
+                      pattern (asmcomp/split.ml[147,4657+15]..[147,4657+33])
+                        Ppat_tuple
+                        [
+                          pattern (asmcomp/split.ml[147,4657+16]..[147,4657+19])
+                            Ppat_var "tst" (asmcomp/split.ml[147,4657+16]..[147,4657+19])
+                          pattern (asmcomp/split.ml[147,4657+21]..[147,4657+25])
+                            Ppat_var "ifso" (asmcomp/split.ml[147,4657+21]..[147,4657+25])
+                          pattern (asmcomp/split.ml[147,4657+27]..[147,4657+32])
+                            Ppat_var "ifnot" (asmcomp/split.ml[147,4657+27]..[147,4657+32])
+                        ]
+                  expression (asmcomp/split.ml[148,4694+6]..[154,5014+16])
+                    Pexp_let Nonrec
+                    [
+                      <def>
+                        pattern (asmcomp/split.ml[148,4694+10]..[148,4694+30])
+                          Ppat_tuple
+                          [
+                            pattern (asmcomp/split.ml[148,4694+11]..[148,4694+19])
+                              Ppat_var "new_ifso" (asmcomp/split.ml[148,4694+11]..[148,4694+19])
+                            pattern (asmcomp/split.ml[148,4694+21]..[148,4694+29])
+                              Ppat_var "sub_ifso" (asmcomp/split.ml[148,4694+21]..[148,4694+29])
+                          ]
+                        expression (asmcomp/split.ml[148,4694+33]..[148,4694+48])
+                          Pexp_apply
+                          expression (asmcomp/split.ml[148,4694+33]..[148,4694+39])
+                            Pexp_ident "rename" (asmcomp/split.ml[148,4694+33]..[148,4694+39])
+                          [
+                            <arg>
+                            Nolabel
+                              expression (asmcomp/split.ml[148,4694+40]..[148,4694+44])
+                                Pexp_ident "ifso" (asmcomp/split.ml[148,4694+40]..[148,4694+44])
+                            <arg>
+                            Nolabel
+                              expression (asmcomp/split.ml[148,4694+45]..[148,4694+48])
+                                Pexp_ident "sub" (asmcomp/split.ml[148,4694+45]..[148,4694+48])
+                          ]
+                    ]
+                    expression (asmcomp/split.ml[149,4746+6]..[154,5014+16])
+                      Pexp_let Nonrec
+                      [
+                        <def>
+                          pattern (asmcomp/split.ml[149,4746+10]..[149,4746+32])
+                            Ppat_tuple
+                            [
+                              pattern (asmcomp/split.ml[149,4746+11]..[149,4746+20])
+                                Ppat_var "new_ifnot" (asmcomp/split.ml[149,4746+11]..[149,4746+20])
+                              pattern (asmcomp/split.ml[149,4746+22]..[149,4746+31])
+                                Ppat_var "sub_ifnot" (asmcomp/split.ml[149,4746+22]..[149,4746+31])
+                            ]
+                          expression (asmcomp/split.ml[149,4746+35]..[149,4746+51])
+                            Pexp_apply
+                            expression (asmcomp/split.ml[149,4746+35]..[149,4746+41])
+                              Pexp_ident "rename" (asmcomp/split.ml[149,4746+35]..[149,4746+41])
+                            [
+                              <arg>
+                              Nolabel
+                                expression (asmcomp/split.ml[149,4746+42]..[149,4746+47])
+                                  Pexp_ident "ifnot" (asmcomp/split.ml[149,4746+42]..[149,4746+47])
+                              <arg>
+                              Nolabel
+                                expression (asmcomp/split.ml[149,4746+48]..[149,4746+51])
+                                  Pexp_ident "sub" (asmcomp/split.ml[149,4746+48]..[149,4746+51])
+                            ]
+                      ]
+                      expression (asmcomp/split.ml[150,4801+6]..[154,5014+16])
+                        Pexp_let Nonrec
+                        [
+                          <def>
+                            pattern (asmcomp/split.ml[150,4801+10]..[150,4801+30])
+                              Ppat_tuple
+                              [
+                                pattern (asmcomp/split.ml[150,4801+11]..[150,4801+19])
+                                  Ppat_var "new_next" (asmcomp/split.ml[150,4801+11]..[150,4801+19])
+                                pattern (asmcomp/split.ml[150,4801+21]..[150,4801+29])
+                                  Ppat_var "sub_next" (asmcomp/split.ml[150,4801+21]..[150,4801+29])
+                              ]
+                            expression (asmcomp/split.ml[151,4834+8]..[151,4834+62])
+                              Pexp_apply
+                              expression (asmcomp/split.ml[151,4834+8]..[151,4834+14])
+                                Pexp_ident "rename" (asmcomp/split.ml[151,4834+8]..[151,4834+14])
+                              [
+                                <arg>
+                                Nolabel
+                                  expression (asmcomp/split.ml[151,4834+15]..[151,4834+21])
+                                    Pexp_field
+                                    expression (asmcomp/split.ml[151,4834+15]..[151,4834+16])
+                                      Pexp_ident "i" (asmcomp/split.ml[151,4834+15]..[151,4834+16])
+                                    "next" (asmcomp/split.ml[151,4834+17]..[151,4834+21])
+                                <arg>
+                                Nolabel
+                                  expression (asmcomp/split.ml[151,4834+22]..[151,4834+62])
+                                    Pexp_apply
+                                    expression (asmcomp/split.ml[151,4834+23]..[151,4834+35])
+                                      Pexp_ident "merge_substs" (asmcomp/split.ml[151,4834+23]..[151,4834+35])
+                                    [
+                                      <arg>
+                                      Nolabel
+                                        expression (asmcomp/split.ml[151,4834+36]..[151,4834+44])
+                                          Pexp_ident "sub_ifso" (asmcomp/split.ml[151,4834+36]..[151,4834+44])
+                                      <arg>
+                                      Nolabel
+                                        expression (asmcomp/split.ml[151,4834+45]..[151,4834+54])
+                                          Pexp_ident "sub_ifnot" (asmcomp/split.ml[151,4834+45]..[151,4834+54])
+                                      <arg>
+                                      Nolabel
+                                        expression (asmcomp/split.ml[151,4834+55]..[151,4834+61])
+                                          Pexp_field
+                                          expression (asmcomp/split.ml[151,4834+55]..[151,4834+56])
+                                            Pexp_ident "i" (asmcomp/split.ml[151,4834+55]..[151,4834+56])
+                                          "next" (asmcomp/split.ml[151,4834+57]..[151,4834+61])
+                                    ]
+                              ]
+                        ]
+                        expression (asmcomp/split.ml[152,4900+6]..[154,5014+16])
+                          Pexp_tuple
+                          [
+                            expression (asmcomp/split.ml[152,4900+7]..[153,4958+54])
+                              Pexp_apply
+                              expression (asmcomp/split.ml[152,4900+7]..[152,4900+17])
+                                Pexp_ident "instr_cons" (asmcomp/split.ml[152,4900+7]..[152,4900+17])
+                              [
+                                <arg>
+                                Nolabel
+                                  expression (asmcomp/split.ml[152,4900+18]..[152,4900+57])
+                                    Pexp_construct "Iifthenelse" (asmcomp/split.ml[152,4900+19]..[152,4900+30])
+                                    Some
+                                      expression (asmcomp/split.ml[152,4900+30]..[152,4900+56])
+                                        Pexp_tuple
+                                        [
+                                          expression (asmcomp/split.ml[152,4900+31]..[152,4900+34])
+                                            Pexp_ident "tst" (asmcomp/split.ml[152,4900+31]..[152,4900+34])
+                                          expression (asmcomp/split.ml[152,4900+36]..[152,4900+44])
+                                            Pexp_ident "new_ifso" (asmcomp/split.ml[152,4900+36]..[152,4900+44])
+                                          expression (asmcomp/split.ml[152,4900+46]..[152,4900+55])
+                                            Pexp_ident "new_ifnot" (asmcomp/split.ml[152,4900+46]..[152,4900+55])
+                                        ]
+                                <arg>
+                                Nolabel
+                                  expression (asmcomp/split.ml[153,4958+18]..[153,4958+40])
+                                    Pexp_apply
+                                    expression (asmcomp/split.ml[153,4958+19]..[153,4958+29])
+                                      Pexp_ident "subst_regs" (asmcomp/split.ml[153,4958+19]..[153,4958+29])
+                                    [
+                                      <arg>
+                                      Nolabel
+                                        expression (asmcomp/split.ml[153,4958+30]..[153,4958+35])
+                                          Pexp_field
+                                          expression (asmcomp/split.ml[153,4958+30]..[153,4958+31])
+                                            Pexp_ident "i" (asmcomp/split.ml[153,4958+30]..[153,4958+31])
+                                          "arg" (asmcomp/split.ml[153,4958+32]..[153,4958+35])
+                                      <arg>
+                                      Nolabel
+                                        expression (asmcomp/split.ml[153,4958+36]..[153,4958+39])
+                                          Pexp_ident "sub" (asmcomp/split.ml[153,4958+36]..[153,4958+39])
+                                    ]
+                                <arg>
+                                Nolabel
+                                  expression (asmcomp/split.ml[153,4958+41]..[153,4958+45])
+                                    Pexp_array
+                                    []
+                                <arg>
+                                Nolabel
+                                  expression (asmcomp/split.ml[153,4958+46]..[153,4958+54])
+                                    Pexp_ident "new_next" (asmcomp/split.ml[153,4958+46]..[153,4958+54])
+                              ]
+                            expression (asmcomp/split.ml[154,5014+7]..[154,5014+15])
+                              Pexp_ident "sub_next" (asmcomp/split.ml[154,5014+7]..[154,5014+15])
+                          ]
+                <case>
+                  pattern (asmcomp/split.ml[155,5031+4]..[155,5031+25])
+                    Ppat_construct "Iswitch" (asmcomp/split.ml[155,5031+4]..[155,5031+11])
+                    Some
+                      []
+                      pattern (asmcomp/split.ml[155,5031+11]..[155,5031+25])
+                        Ppat_tuple
+                        [
+                          pattern (asmcomp/split.ml[155,5031+12]..[155,5031+17])
+                            Ppat_var "index" (asmcomp/split.ml[155,5031+12]..[155,5031+17])
+                          pattern (asmcomp/split.ml[155,5031+19]..[155,5031+24])
+                            Ppat_var "cases" (asmcomp/split.ml[155,5031+19]..[155,5031+24])
+                        ]
+                  expression (asmcomp/split.ml[156,5060+6]..[162,5427+16])
+                    Pexp_let Nonrec
+                    [
+                      <def>
+                        pattern (asmcomp/split.ml[156,5060+10]..[156,5060+23])
+                          Ppat_var "new_sub_cases" (asmcomp/split.ml[156,5060+10]..[156,5060+23])
+                        expression (asmcomp/split.ml[156,5060+26]..[156,5060+65])
+                          Pexp_apply
+                          expression (asmcomp/split.ml[156,5060+26]..[156,5060+35])
+                            Pexp_ident "Array.map" (asmcomp/split.ml[156,5060+26]..[156,5060+35])
+                          [
+                            <arg>
+                            Nolabel
+                              expression (asmcomp/split.ml[156,5060+36]..[156,5060+59])
+                                Pexp_fun
+                                Nolabel
+                                None
+                                pattern (asmcomp/split.ml[156,5060+41]..[156,5060+42])
+                                  Ppat_var "c" (asmcomp/split.ml[156,5060+41]..[156,5060+42])
+                                expression (asmcomp/split.ml[156,5060+46]..[156,5060+58])
+                                  Pexp_apply
+                                  expression (asmcomp/split.ml[156,5060+46]..[156,5060+52])
+                                    Pexp_ident "rename" (asmcomp/split.ml[156,5060+46]..[156,5060+52])
+                                  [
+                                    <arg>
+                                    Nolabel
+                                      expression (asmcomp/split.ml[156,5060+53]..[156,5060+54])
+                                        Pexp_ident "c" (asmcomp/split.ml[156,5060+53]..[156,5060+54])
+                                    <arg>
+                                    Nolabel
+                                      expression (asmcomp/split.ml[156,5060+55]..[156,5060+58])
+                                        Pexp_ident "sub" (asmcomp/split.ml[156,5060+55]..[156,5060+58])
+                                  ]
+                            <arg>
+                            Nolabel
+                              expression (asmcomp/split.ml[156,5060+60]..[156,5060+65])
+                                Pexp_ident "cases" (asmcomp/split.ml[156,5060+60]..[156,5060+65])
+                          ]
+                    ]
+                    expression (asmcomp/split.ml[157,5129+6]..[162,5427+16])
+                      Pexp_let Nonrec
+                      [
+                        <def>
+                          pattern (asmcomp/split.ml[157,5129+10]..[157,5129+19])
+                            Ppat_var "sub_merge" (asmcomp/split.ml[157,5129+10]..[157,5129+19])
+                          expression (asmcomp/split.ml[158,5151+8]..[158,5151+77])
+                            Pexp_apply
+                            expression (asmcomp/split.ml[158,5151+8]..[158,5151+25])
+                              Pexp_ident "merge_subst_array" (asmcomp/split.ml[158,5151+8]..[158,5151+25])
+                            [
+                              <arg>
+                              Nolabel
+                                expression (asmcomp/split.ml[158,5151+26]..[158,5151+70])
+                                  Pexp_apply
+                                  expression (asmcomp/split.ml[158,5151+27]..[158,5151+36])
+                                    Pexp_ident "Array.map" (asmcomp/split.ml[158,5151+27]..[158,5151+36])
+                                  [
+                                    <arg>
+                                    Nolabel
+                                      expression (asmcomp/split.ml[158,5151+37]..[158,5151+55])
+                                        Pexp_fun
+                                        Nolabel
+                                        None
+                                        pattern (asmcomp/split.ml[158,5151+42]..[158,5151+49])
+                                          Ppat_tuple
+                                          [
+                                            pattern (asmcomp/split.ml[158,5151+43]..[158,5151+45])
+                                              Ppat_var "_n" (asmcomp/split.ml[158,5151+43]..[158,5151+45])
+                                            pattern (asmcomp/split.ml[158,5151+47]..[158,5151+48])
+                                              Ppat_var "s" (asmcomp/split.ml[158,5151+47]..[158,5151+48])
+                                          ]
+                                        expression (asmcomp/split.ml[158,5151+53]..[158,5151+54])
+                                          Pexp_ident "s" (asmcomp/split.ml[158,5151+53]..[158,5151+54])
+                                    <arg>
+                                    Nolabel
+                                      expression (asmcomp/split.ml[158,5151+56]..[158,5151+69])
+                                        Pexp_ident "new_sub_cases" (asmcomp/split.ml[158,5151+56]..[158,5151+69])
+                                  ]
+                              <arg>
+                              Nolabel
+                                expression (asmcomp/split.ml[158,5151+71]..[158,5151+77])
+                                  Pexp_field
+                                  expression (asmcomp/split.ml[158,5151+71]..[158,5151+72])
+                                    Pexp_ident "i" (asmcomp/split.ml[158,5151+71]..[158,5151+72])
+                                  "next" (asmcomp/split.ml[158,5151+73]..[158,5151+77])
+                            ]
+                      ]
+                      expression (asmcomp/split.ml[159,5232+6]..[162,5427+16])
+                        Pexp_let Nonrec
+                        [
+                          <def>
+                            pattern (asmcomp/split.ml[159,5232+10]..[159,5232+30])
+                              Ppat_tuple
+                              [
+                                pattern (asmcomp/split.ml[159,5232+11]..[159,5232+19])
+                                  Ppat_var "new_next" (asmcomp/split.ml[159,5232+11]..[159,5232+19])
+                                pattern (asmcomp/split.ml[159,5232+21]..[159,5232+29])
+                                  Ppat_var "sub_next" (asmcomp/split.ml[159,5232+21]..[159,5232+29])
+                              ]
+                            expression (asmcomp/split.ml[159,5232+33]..[159,5232+56])
+                              Pexp_apply
+                              expression (asmcomp/split.ml[159,5232+33]..[159,5232+39])
+                                Pexp_ident "rename" (asmcomp/split.ml[159,5232+33]..[159,5232+39])
+                              [
+                                <arg>
+                                Nolabel
+                                  expression (asmcomp/split.ml[159,5232+40]..[159,5232+46])
+                                    Pexp_field
+                                    expression (asmcomp/split.ml[159,5232+40]..[159,5232+41])
+                                      Pexp_ident "i" (asmcomp/split.ml[159,5232+40]..[159,5232+41])
+                                    "next" (asmcomp/split.ml[159,5232+42]..[159,5232+46])
+                                <arg>
+                                Nolabel
+                                  expression (asmcomp/split.ml[159,5232+47]..[159,5232+56])
+                                    Pexp_ident "sub_merge" (asmcomp/split.ml[159,5232+47]..[159,5232+56])
+                              ]
+                        ]
+                        expression (asmcomp/split.ml[160,5292+6]..[162,5427+16])
+                          Pexp_tuple
+                          [
+                            expression (asmcomp/split.ml[160,5292+7]..[161,5371+54])
+                              Pexp_apply
+                              expression (asmcomp/split.ml[160,5292+7]..[160,5292+17])
+                                Pexp_ident "instr_cons" (asmcomp/split.ml[160,5292+7]..[160,5292+17])
+                              [
+                                <arg>
+                                Nolabel
+                                  expression (asmcomp/split.ml[160,5292+18]..[160,5292+78])
+                                    Pexp_construct "Iswitch" (asmcomp/split.ml[160,5292+19]..[160,5292+26])
+                                    Some
+                                      expression (asmcomp/split.ml[160,5292+26]..[160,5292+77])
+                                        Pexp_tuple
+                                        [
+                                          expression (asmcomp/split.ml[160,5292+27]..[160,5292+32])
+                                            Pexp_ident "index" (asmcomp/split.ml[160,5292+27]..[160,5292+32])
+                                          expression (asmcomp/split.ml[160,5292+34]..[160,5292+76])
+                                            Pexp_apply
+                                            expression (asmcomp/split.ml[160,5292+34]..[160,5292+43])
+                                              Pexp_ident "Array.map" (asmcomp/split.ml[160,5292+34]..[160,5292+43])
+                                            [
+                                              <arg>
+                                              Nolabel
+                                                expression (asmcomp/split.ml[160,5292+44]..[160,5292+62])
+                                                  Pexp_fun
+                                                  Nolabel
+                                                  None
+                                                  pattern (asmcomp/split.ml[160,5292+49]..[160,5292+56])
+                                                    Ppat_tuple
+                                                    [
+                                                      pattern (asmcomp/split.ml[160,5292+50]..[160,5292+51])
+                                                        Ppat_var "n" (asmcomp/split.ml[160,5292+50]..[160,5292+51])
+                                                      pattern (asmcomp/split.ml[160,5292+53]..[160,5292+55])
+                                                        Ppat_var "_s" (asmcomp/split.ml[160,5292+53]..[160,5292+55])
+                                                    ]
+                                                  expression (asmcomp/split.ml[160,5292+60]..[160,5292+61])
+                                                    Pexp_ident "n" (asmcomp/split.ml[160,5292+60]..[160,5292+61])
+                                              <arg>
+                                              Nolabel
+                                                expression (asmcomp/split.ml[160,5292+63]..[160,5292+76])
+                                                  Pexp_ident "new_sub_cases" (asmcomp/split.ml[160,5292+63]..[160,5292+76])
+                                            ]
+                                        ]
+                                <arg>
+                                Nolabel
+                                  expression (asmcomp/split.ml[161,5371+18]..[161,5371+40])
+                                    Pexp_apply
+                                    expression (asmcomp/split.ml[161,5371+19]..[161,5371+29])
+                                      Pexp_ident "subst_regs" (asmcomp/split.ml[161,5371+19]..[161,5371+29])
+                                    [
+                                      <arg>
+                                      Nolabel
+                                        expression (asmcomp/split.ml[161,5371+30]..[161,5371+35])
+                                          Pexp_field
+                                          expression (asmcomp/split.ml[161,5371+30]..[161,5371+31])
+                                            Pexp_ident "i" (asmcomp/split.ml[161,5371+30]..[161,5371+31])
+                                          "arg" (asmcomp/split.ml[161,5371+32]..[161,5371+35])
+                                      <arg>
+                                      Nolabel
+                                        expression (asmcomp/split.ml[161,5371+36]..[161,5371+39])
+                                          Pexp_ident "sub" (asmcomp/split.ml[161,5371+36]..[161,5371+39])
+                                    ]
+                                <arg>
+                                Nolabel
+                                  expression (asmcomp/split.ml[161,5371+41]..[161,5371+45])
+                                    Pexp_array
+                                    []
+                                <arg>
+                                Nolabel
+                                  expression (asmcomp/split.ml[161,5371+46]..[161,5371+54])
+                                    Pexp_ident "new_next" (asmcomp/split.ml[161,5371+46]..[161,5371+54])
+                              ]
+                            expression (asmcomp/split.ml[162,5427+7]..[162,5427+15])
+                              Pexp_ident "sub_next" (asmcomp/split.ml[162,5427+7]..[162,5427+15])
+                          ]
+                <case>
+                  pattern (asmcomp/split.ml[163,5444+4]..[163,5444+36])
+                    Ppat_construct "Icatch" (asmcomp/split.ml[163,5444+4]..[163,5444+10])
+                    Some
+                      []
+                      pattern (asmcomp/split.ml[163,5444+10]..[163,5444+36])
+                        Ppat_tuple
+                        [
+                          pattern (asmcomp/split.ml[163,5444+11]..[163,5444+19])
+                            Ppat_var "rec_flag" (asmcomp/split.ml[163,5444+11]..[163,5444+19])
+                          pattern (asmcomp/split.ml[163,5444+21]..[163,5444+29])
+                            Ppat_var "handlers" (asmcomp/split.ml[163,5444+21]..[163,5444+29])
+                          pattern (asmcomp/split.ml[163,5444+31]..[163,5444+35])
+                            Ppat_var "body" (asmcomp/split.ml[163,5444+31]..[163,5444+35])
+                        ]
+                  expression (asmcomp/split.ml[164,5484+6]..[182,6303+16])
+                    Pexp_let Nonrec
+                    [
+                      <def>
+                        pattern (asmcomp/split.ml[164,5484+10]..[164,5484+19])
+                          Ppat_var "new_subst" (asmcomp/split.ml[164,5484+10]..[164,5484+19])
+                        expression (asmcomp/split.ml[164,5484+22]..[165,5551+18])
+                          Pexp_apply
+                          expression (asmcomp/split.ml[164,5484+22]..[164,5484+30])
+                            Pexp_ident "List.map" (asmcomp/split.ml[164,5484+22]..[164,5484+30])
+                          [
+                            <arg>
+                            Nolabel
+                              expression (asmcomp/split.ml[164,5484+31]..[164,5484+66])
+                                Pexp_fun
+                                Nolabel
+                                None
+                                pattern (asmcomp/split.ml[164,5484+36]..[164,5484+46])
+                                  Ppat_tuple
+                                  [
+                                    pattern (asmcomp/split.ml[164,5484+37]..[164,5484+42])
+                                      Ppat_var "nfail" (asmcomp/split.ml[164,5484+37]..[164,5484+42])
+                                    pattern (asmcomp/split.ml[164,5484+44]..[164,5484+45])
+                                      Ppat_any
+                                  ]
+                                expression (asmcomp/split.ml[164,5484+50]..[164,5484+65])
+                                  Pexp_tuple
+                                  [
+                                    expression (asmcomp/split.ml[164,5484+50]..[164,5484+55])
+                                      Pexp_ident "nfail" (asmcomp/split.ml[164,5484+50]..[164,5484+55])
+                                    expression (asmcomp/split.ml[164,5484+57]..[164,5484+65])
+                                      Pexp_apply
+                                      expression (asmcomp/split.ml[164,5484+57]..[164,5484+60])
+                                        Pexp_ident "ref" (asmcomp/split.ml[164,5484+57]..[164,5484+60])
+                                      [
+                                        <arg>
+                                        Nolabel
+                                          expression (asmcomp/split.ml[164,5484+61]..[164,5484+65])
+                                            Pexp_construct "None" (asmcomp/split.ml[164,5484+61]..[164,5484+65])
+                                            None
+                                      ]
+                                  ]
+                            <arg>
+                            Nolabel
+                              expression (asmcomp/split.ml[165,5551+10]..[165,5551+18])
+                                Pexp_ident "handlers" (asmcomp/split.ml[165,5551+10]..[165,5551+18])
+                          ]
+                    ]
+                    expression (asmcomp/split.ml[166,5573+6]..[182,6303+16])
+                      Pexp_let Nonrec
+                      [
+                        <def>
+                          pattern (asmcomp/split.ml[166,5573+10]..[166,5573+29])
+                            Ppat_var "previous_exit_subst" (asmcomp/split.ml[166,5573+10]..[166,5573+29])
+                          expression (asmcomp/split.ml[166,5573+32]..[166,5573+43])
+                            Pexp_apply
+                            expression (asmcomp/split.ml[166,5573+32]..[166,5573+33])
+                              Pexp_ident "!" (asmcomp/split.ml[166,5573+32]..[166,5573+33])
+                            [
+                              <arg>
+                              Nolabel
+                                expression (asmcomp/split.ml[166,5573+33]..[166,5573+43])
+                                  Pexp_ident "exit_subst" (asmcomp/split.ml[166,5573+33]..[166,5573+43])
+                            ]
+                      ]
+                      expression (asmcomp/split.ml[167,5620+6]..[182,6303+16])
+                        Pexp_sequence
+                        expression (asmcomp/split.ml[167,5620+6]..[167,5620+43])
+                          Pexp_apply
+                          expression (asmcomp/split.ml[167,5620+17]..[167,5620+19])
+                            Pexp_ident ":=" (asmcomp/split.ml[167,5620+17]..[167,5620+19])
+                          [
+                            <arg>
+                            Nolabel
+                              expression (asmcomp/split.ml[167,5620+6]..[167,5620+16])
+                                Pexp_ident "exit_subst" (asmcomp/split.ml[167,5620+6]..[167,5620+16])
+                            <arg>
+                            Nolabel
+                              expression (asmcomp/split.ml[167,5620+20]..[167,5620+43])
+                                Pexp_apply
+                                expression (asmcomp/split.ml[167,5620+30]..[167,5620+31])
+                                  Pexp_ident "@" (asmcomp/split.ml[167,5620+30]..[167,5620+31])
+                                [
+                                  <arg>
+                                  Nolabel
+                                    expression (asmcomp/split.ml[167,5620+20]..[167,5620+29])
+                                      Pexp_ident "new_subst" (asmcomp/split.ml[167,5620+20]..[167,5620+29])
+                                  <arg>
+                                  Nolabel
+                                    expression (asmcomp/split.ml[167,5620+32]..[167,5620+43])
+                                      Pexp_apply
+                                      expression (asmcomp/split.ml[167,5620+32]..[167,5620+33])
+                                        Pexp_ident "!" (asmcomp/split.ml[167,5620+32]..[167,5620+33])
+                                      [
+                                        <arg>
+                                        Nolabel
+                                          expression (asmcomp/split.ml[167,5620+33]..[167,5620+43])
+                                            Pexp_ident "exit_subst" (asmcomp/split.ml[167,5620+33]..[167,5620+43])
+                                      ]
+                                ]
+                          ]
+                        expression (asmcomp/split.ml[168,5665+6]..[182,6303+16])
+                          Pexp_let Nonrec
+                          [
+                            <def>
+                              pattern (asmcomp/split.ml[168,5665+10]..[168,5665+30])
+                                Ppat_tuple
+                                [
+                                  pattern (asmcomp/split.ml[168,5665+11]..[168,5665+19])
+                                    Ppat_var "new_body" (asmcomp/split.ml[168,5665+11]..[168,5665+19])
+                                  pattern (asmcomp/split.ml[168,5665+21]..[168,5665+29])
+                                    Ppat_var "sub_body" (asmcomp/split.ml[168,5665+21]..[168,5665+29])
+                                ]
+                              expression (asmcomp/split.ml[168,5665+33]..[168,5665+48])
+                                Pexp_apply
+                                expression (asmcomp/split.ml[168,5665+33]..[168,5665+39])
+                                  Pexp_ident "rename" (asmcomp/split.ml[168,5665+33]..[168,5665+39])
+                                [
+                                  <arg>
+                                  Nolabel
+                                    expression (asmcomp/split.ml[168,5665+40]..[168,5665+44])
+                                      Pexp_ident "body" (asmcomp/split.ml[168,5665+40]..[168,5665+44])
+                                  <arg>
+                                  Nolabel
+                                    expression (asmcomp/split.ml[168,5665+45]..[168,5665+48])
+                                      Pexp_ident "sub" (asmcomp/split.ml[168,5665+45]..[168,5665+48])
+                                ]
+                          ]
+                          expression (asmcomp/split.ml[169,5717+6]..[182,6303+16])
+                            Pexp_let Nonrec
+                            [
+                              <def>
+                                pattern (asmcomp/split.ml[169,5717+10]..[169,5717+13])
+                                  Ppat_var "res" (asmcomp/split.ml[169,5717+10]..[169,5717+13])
+                                expression (asmcomp/split.ml[170,5733+8]..[171,5814+28])
+                                  Pexp_apply
+                                  expression (asmcomp/split.ml[170,5733+8]..[170,5733+17])
+                                    Pexp_ident "List.map2" (asmcomp/split.ml[170,5733+8]..[170,5733+17])
+                                  [
+                                    <arg>
+                                    Nolabel
+                                      expression (asmcomp/split.ml[170,5733+18]..[170,5733+80])
+                                        Pexp_fun
+                                        Nolabel
+                                        None
+                                        pattern (asmcomp/split.ml[170,5733+23]..[170,5733+35])
+                                          Ppat_tuple
+                                          [
+                                            pattern (asmcomp/split.ml[170,5733+24]..[170,5733+25])
+                                              Ppat_any
+                                            pattern (asmcomp/split.ml[170,5733+27]..[170,5733+34])
+                                              Ppat_var "handler" (asmcomp/split.ml[170,5733+27]..[170,5733+34])
+                                          ]
+                                        expression (asmcomp/split.ml[170,5733+36]..[170,5733+79]) ghost
+                                          Pexp_fun
+                                          Nolabel
+                                          None
+                                          pattern (asmcomp/split.ml[170,5733+36]..[170,5733+50])
+                                            Ppat_tuple
+                                            [
+                                              pattern (asmcomp/split.ml[170,5733+37]..[170,5733+38])
+                                                Ppat_any
+                                              pattern (asmcomp/split.ml[170,5733+40]..[170,5733+49])
+                                                Ppat_var "new_subst" (asmcomp/split.ml[170,5733+40]..[170,5733+49])
+                                            ]
+                                          expression (asmcomp/split.ml[170,5733+54]..[170,5733+79])
+                                            Pexp_apply
+                                            expression (asmcomp/split.ml[170,5733+54]..[170,5733+60])
+                                              Pexp_ident "rename" (asmcomp/split.ml[170,5733+54]..[170,5733+60])
+                                            [
+                                              <arg>
+                                              Nolabel
+                                                expression (asmcomp/split.ml[170,5733+61]..[170,5733+68])
+                                                  Pexp_ident "handler" (asmcomp/split.ml[170,5733+61]..[170,5733+68])
+                                              <arg>
+                                              Nolabel
+                                                expression (asmcomp/split.ml[170,5733+69]..[170,5733+79])
+                                                  Pexp_apply
+                                                  expression (asmcomp/split.ml[170,5733+69]..[170,5733+70])
+                                                    Pexp_ident "!" (asmcomp/split.ml[170,5733+69]..[170,5733+70])
+                                                  [
+                                                    <arg>
+                                                    Nolabel
+                                                      expression (asmcomp/split.ml[170,5733+70]..[170,5733+79])
+                                                        Pexp_ident "new_subst" (asmcomp/split.ml[170,5733+70]..[170,5733+79])
+                                                  ]
+                                            ]
+                                    <arg>
+                                    Nolabel
+                                      expression (asmcomp/split.ml[171,5814+10]..[171,5814+18])
+                                        Pexp_ident "handlers" (asmcomp/split.ml[171,5814+10]..[171,5814+18])
+                                    <arg>
+                                    Nolabel
+                                      expression (asmcomp/split.ml[171,5814+19]..[171,5814+28])
+                                        Pexp_ident "new_subst" (asmcomp/split.ml[171,5814+19]..[171,5814+28])
+                                  ]
+                            ]
+                            expression (asmcomp/split.ml[172,5846+6]..[182,6303+16])
+                              Pexp_sequence
+                              expression (asmcomp/split.ml[172,5846+6]..[172,5846+39])
+                                Pexp_apply
+                                expression (asmcomp/split.ml[172,5846+17]..[172,5846+19])
+                                  Pexp_ident ":=" (asmcomp/split.ml[172,5846+17]..[172,5846+19])
+                                [
+                                  <arg>
+                                  Nolabel
+                                    expression (asmcomp/split.ml[172,5846+6]..[172,5846+16])
+                                      Pexp_ident "exit_subst" (asmcomp/split.ml[172,5846+6]..[172,5846+16])
+                                  <arg>
+                                  Nolabel
+                                    expression (asmcomp/split.ml[172,5846+20]..[172,5846+39])
+                                      Pexp_ident "previous_exit_subst" (asmcomp/split.ml[172,5846+20]..[172,5846+39])
+                                ]
+                              expression (asmcomp/split.ml[173,5887+6]..[182,6303+16])
+                                Pexp_let Nonrec
+                                [
+                                  <def>
+                                    pattern (asmcomp/split.ml[173,5887+10]..[173,5887+22])
+                                      Ppat_var "merged_subst" (asmcomp/split.ml[173,5887+10]..[173,5887+22])
+                                    expression (asmcomp/split.ml[174,5912+8]..[176,6013+22])
+                                      Pexp_apply
+                                      expression (asmcomp/split.ml[174,5912+8]..[174,5912+22])
+                                        Pexp_ident "List.fold_left" (asmcomp/split.ml[174,5912+8]..[174,5912+22])
+                                      [
+                                        <arg>
+                                        Nolabel
+                                          expression (asmcomp/split.ml[174,5912+23]..[175,5964+48])
+                                            Pexp_fun
+                                            Nolabel
+                                            None
+                                            pattern (asmcomp/split.ml[174,5912+28]..[174,5912+31])
+                                              Ppat_var "acc" (asmcomp/split.ml[174,5912+28]..[174,5912+31])
+                                            expression (asmcomp/split.ml[174,5912+32]..[175,5964+47]) ghost
+                                              Pexp_fun
+                                              Nolabel
+                                              None
+                                              pattern (asmcomp/split.ml[174,5912+32]..[174,5912+48])
+                                                Ppat_tuple
+                                                [
+                                                  pattern (asmcomp/split.ml[174,5912+33]..[174,5912+34])
+                                                    Ppat_any
+                                                  pattern (asmcomp/split.ml[174,5912+36]..[174,5912+47])
+                                                    Ppat_var "sub_handler" (asmcomp/split.ml[174,5912+36]..[174,5912+47])
+                                                ]
+                                              expression (asmcomp/split.ml[175,5964+12]..[175,5964+47])
+                                                Pexp_apply
+                                                expression (asmcomp/split.ml[175,5964+12]..[175,5964+24])
+                                                  Pexp_ident "merge_substs" (asmcomp/split.ml[175,5964+12]..[175,5964+24])
+                                                [
+                                                  <arg>
+                                                  Nolabel
+                                                    expression (asmcomp/split.ml[175,5964+25]..[175,5964+28])
+                                                      Pexp_ident "acc" (asmcomp/split.ml[175,5964+25]..[175,5964+28])
+                                                  <arg>
+                                                  Nolabel
+                                                    expression (asmcomp/split.ml[175,5964+29]..[175,5964+40])
+                                                      Pexp_ident "sub_handler" (asmcomp/split.ml[175,5964+29]..[175,5964+40])
+                                                  <arg>
+                                                  Nolabel
+                                                    expression (asmcomp/split.ml[175,5964+41]..[175,5964+47])
+                                                      Pexp_field
+                                                      expression (asmcomp/split.ml[175,5964+41]..[175,5964+42])
+                                                        Pexp_ident "i" (asmcomp/split.ml[175,5964+41]..[175,5964+42])
+                                                      "next" (asmcomp/split.ml[175,5964+43]..[175,5964+47])
+                                                ]
+                                        <arg>
+                                        Nolabel
+                                          expression (asmcomp/split.ml[176,6013+10]..[176,6013+18])
+                                            Pexp_ident "sub_body" (asmcomp/split.ml[176,6013+10]..[176,6013+18])
+                                        <arg>
+                                        Nolabel
+                                          expression (asmcomp/split.ml[176,6013+19]..[176,6013+22])
+                                            Pexp_ident "res" (asmcomp/split.ml[176,6013+19]..[176,6013+22])
+                                      ]
+                                ]
+                                expression (asmcomp/split.ml[177,6039+6]..[182,6303+16])
+                                  Pexp_let Nonrec
+                                  [
+                                    <def>
+                                      pattern (asmcomp/split.ml[177,6039+10]..[177,6039+30])
+                                        Ppat_tuple
+                                        [
+                                          pattern (asmcomp/split.ml[177,6039+11]..[177,6039+19])
+                                            Ppat_var "new_next" (asmcomp/split.ml[177,6039+11]..[177,6039+19])
+                                          pattern (asmcomp/split.ml[177,6039+21]..[177,6039+29])
+                                            Ppat_var "sub_next" (asmcomp/split.ml[177,6039+21]..[177,6039+29])
+                                        ]
+                                      expression (asmcomp/split.ml[177,6039+33]..[177,6039+59])
+                                        Pexp_apply
+                                        expression (asmcomp/split.ml[177,6039+33]..[177,6039+39])
+                                          Pexp_ident "rename" (asmcomp/split.ml[177,6039+33]..[177,6039+39])
+                                        [
+                                          <arg>
+                                          Nolabel
+                                            expression (asmcomp/split.ml[177,6039+40]..[177,6039+46])
+                                              Pexp_field
+                                              expression (asmcomp/split.ml[177,6039+40]..[177,6039+41])
+                                                Pexp_ident "i" (asmcomp/split.ml[177,6039+40]..[177,6039+41])
+                                              "next" (asmcomp/split.ml[177,6039+42]..[177,6039+46])
+                                          <arg>
+                                          Nolabel
+                                            expression (asmcomp/split.ml[177,6039+47]..[177,6039+59])
+                                              Pexp_ident "merged_subst" (asmcomp/split.ml[177,6039+47]..[177,6039+59])
+                                        ]
+                                  ]
+                                  expression (asmcomp/split.ml[178,6102+6]..[182,6303+16])
+                                    Pexp_let Nonrec
+                                    [
+                                      <def>
+                                        pattern (asmcomp/split.ml[178,6102+10]..[178,6102+22])
+                                          Ppat_var "new_handlers" (asmcomp/split.ml[178,6102+10]..[178,6102+22])
+                                        expression (asmcomp/split.ml[178,6102+25]..[179,6169+40])
+                                          Pexp_apply
+                                          expression (asmcomp/split.ml[178,6102+25]..[178,6102+34])
+                                            Pexp_ident "List.map2" (asmcomp/split.ml[178,6102+25]..[178,6102+34])
+                                          [
+                                            <arg>
+                                            Nolabel
+                                              expression (asmcomp/split.ml[178,6102+35]..[179,6169+27])
+                                                Pexp_fun
+                                                Nolabel
+                                                None
+                                                pattern (asmcomp/split.ml[178,6102+40]..[178,6102+50])
+                                                  Ppat_tuple
+                                                  [
+                                                    pattern (asmcomp/split.ml[178,6102+41]..[178,6102+46])
+                                                      Ppat_var "nfail" (asmcomp/split.ml[178,6102+41]..[178,6102+46])
+                                                    pattern (asmcomp/split.ml[178,6102+48]..[178,6102+49])
+                                                      Ppat_any
+                                                  ]
+                                                expression (asmcomp/split.ml[178,6102+51]..[179,6169+26]) ghost
+                                                  Pexp_fun
+                                                  Nolabel
+                                                  None
+                                                  pattern (asmcomp/split.ml[178,6102+51]..[178,6102+63])
+                                                    Ppat_tuple
+                                                    [
+                                                      pattern (asmcomp/split.ml[178,6102+52]..[178,6102+59])
+                                                        Ppat_var "handler" (asmcomp/split.ml[178,6102+52]..[178,6102+59])
+                                                      pattern (asmcomp/split.ml[178,6102+61]..[178,6102+62])
+                                                        Ppat_any
+                                                    ]
+                                                  expression (asmcomp/split.ml[179,6169+10]..[179,6169+26])
+                                                    Pexp_tuple
+                                                    [
+                                                      expression (asmcomp/split.ml[179,6169+11]..[179,6169+16])
+                                                        Pexp_ident "nfail" (asmcomp/split.ml[179,6169+11]..[179,6169+16])
+                                                      expression (asmcomp/split.ml[179,6169+18]..[179,6169+25])
+                                                        Pexp_ident "handler" (asmcomp/split.ml[179,6169+18]..[179,6169+25])
+                                                    ]
+                                            <arg>
+                                            Nolabel
+                                              expression (asmcomp/split.ml[179,6169+28]..[179,6169+36])
+                                                Pexp_ident "handlers" (asmcomp/split.ml[179,6169+28]..[179,6169+36])
+                                            <arg>
+                                            Nolabel
+                                              expression (asmcomp/split.ml[179,6169+37]..[179,6169+40])
+                                                Pexp_ident "res" (asmcomp/split.ml[179,6169+37]..[179,6169+40])
+                                          ]
+                                    ]
+                                    expression (asmcomp/split.ml[180,6213+6]..[182,6303+16])
+                                      Pexp_tuple
+                                      [
+                                        expression (asmcomp/split.ml[180,6213+7]..[181,6231+70])
+                                          Pexp_apply
+                                          expression (asmcomp/split.ml[180,6213+7]..[180,6213+17])
+                                            Pexp_ident "instr_cons" (asmcomp/split.ml[180,6213+7]..[180,6213+17])
+                                          [
+                                            <arg>
+                                            Nolabel
+                                              expression (asmcomp/split.ml[181,6231+9]..[181,6231+51])
+                                                Pexp_construct "Icatch" (asmcomp/split.ml[181,6231+10]..[181,6231+16])
+                                                Some
+                                                  expression (asmcomp/split.ml[181,6231+16]..[181,6231+50])
+                                                    Pexp_tuple
+                                                    [
+                                                      expression (asmcomp/split.ml[181,6231+17]..[181,6231+25])
+                                                        Pexp_ident "rec_flag" (asmcomp/split.ml[181,6231+17]..[181,6231+25])
+                                                      expression (asmcomp/split.ml[181,6231+27]..[181,6231+39])
+                                                        Pexp_ident "new_handlers" (asmcomp/split.ml[181,6231+27]..[181,6231+39])
+                                                      expression (asmcomp/split.ml[181,6231+41]..[181,6231+49])
+                                                        Pexp_ident "new_body" (asmcomp/split.ml[181,6231+41]..[181,6231+49])
+                                                    ]
+                                            <arg>
+                                            Nolabel
+                                              expression (asmcomp/split.ml[181,6231+52]..[181,6231+56])
+                                                Pexp_array
+                                                []
+                                            <arg>
+                                            Nolabel
+                                              expression (asmcomp/split.ml[181,6231+57]..[181,6231+61])
+                                                Pexp_array
+                                                []
+                                            <arg>
+                                            Nolabel
+                                              expression (asmcomp/split.ml[181,6231+62]..[181,6231+70])
+                                                Pexp_ident "new_next" (asmcomp/split.ml[181,6231+62]..[181,6231+70])
+                                          ]
+                                        expression (asmcomp/split.ml[182,6303+7]..[182,6303+15])
+                                          Pexp_ident "sub_next" (asmcomp/split.ml[182,6303+7]..[182,6303+15])
+                                      ]
+                <case>
+                  pattern (asmcomp/split.ml[183,6320+4]..[183,6320+15])
+                    Ppat_construct "Iexit" (asmcomp/split.ml[183,6320+4]..[183,6320+9])
+                    Some
+                      []
+                      pattern (asmcomp/split.ml[183,6320+10]..[183,6320+15])
+                        Ppat_var "nfail" (asmcomp/split.ml[183,6320+10]..[183,6320+15])
+                  expression (asmcomp/split.ml[184,6339+6]..[186,6412+15])
+                    Pexp_let Nonrec
+                    [
+                      <def>
+                        pattern (asmcomp/split.ml[184,6339+10]..[184,6339+11])
+                          Ppat_var "r" (asmcomp/split.ml[184,6339+10]..[184,6339+11])
+                        expression (asmcomp/split.ml[184,6339+14]..[184,6339+35])
+                          Pexp_apply
+                          expression (asmcomp/split.ml[184,6339+14]..[184,6339+29])
+                            Pexp_ident "find_exit_subst" (asmcomp/split.ml[184,6339+14]..[184,6339+29])
+                          [
+                            <arg>
+                            Nolabel
+                              expression (asmcomp/split.ml[184,6339+30]..[184,6339+35])
+                                Pexp_ident "nfail" (asmcomp/split.ml[184,6339+30]..[184,6339+35])
+                          ]
+                    ]
+                    expression (asmcomp/split.ml[185,6378+6]..[186,6412+15])
+                      Pexp_sequence
+                      expression (asmcomp/split.ml[185,6378+6]..[185,6378+32])
+                        Pexp_apply
+                        expression (asmcomp/split.ml[185,6378+8]..[185,6378+10])
+                          Pexp_ident ":=" (asmcomp/split.ml[185,6378+8]..[185,6378+10])
+                        [
+                          <arg>
+                          Nolabel
+                            expression (asmcomp/split.ml[185,6378+6]..[185,6378+7])
+                              Pexp_ident "r" (asmcomp/split.ml[185,6378+6]..[185,6378+7])
+                          <arg>
+                          Nolabel
+                            expression (asmcomp/split.ml[185,6378+11]..[185,6378+32])
+                              Pexp_apply
+                              expression (asmcomp/split.ml[185,6378+11]..[185,6378+23])
+                                Pexp_ident "merge_substs" (asmcomp/split.ml[185,6378+11]..[185,6378+23])
+                              [
+                                <arg>
+                                Nolabel
+                                  expression (asmcomp/split.ml[185,6378+24]..[185,6378+26])
+                                    Pexp_apply
+                                    expression (asmcomp/split.ml[185,6378+24]..[185,6378+25])
+                                      Pexp_ident "!" (asmcomp/split.ml[185,6378+24]..[185,6378+25])
+                                    [
+                                      <arg>
+                                      Nolabel
+                                        expression (asmcomp/split.ml[185,6378+25]..[185,6378+26])
+                                          Pexp_ident "r" (asmcomp/split.ml[185,6378+25]..[185,6378+26])
+                                    ]
+                                <arg>
+                                Nolabel
+                                  expression (asmcomp/split.ml[185,6378+27]..[185,6378+30])
+                                    Pexp_ident "sub" (asmcomp/split.ml[185,6378+27]..[185,6378+30])
+                                <arg>
+                                Nolabel
+                                  expression (asmcomp/split.ml[185,6378+31]..[185,6378+32])
+                                    Pexp_ident "i" (asmcomp/split.ml[185,6378+31]..[185,6378+32])
+                              ]
+                        ]
+                      expression (asmcomp/split.ml[186,6412+6]..[186,6412+15])
+                        Pexp_tuple
+                        [
+                          expression (asmcomp/split.ml[186,6412+7]..[186,6412+8])
+                            Pexp_ident "i" (asmcomp/split.ml[186,6412+7]..[186,6412+8])
+                          expression (asmcomp/split.ml[186,6412+10]..[186,6412+14])
+                            Pexp_construct "None" (asmcomp/split.ml[186,6412+10]..[186,6412+14])
+                            None
+                        ]
+                <case>
+                  pattern (asmcomp/split.ml[187,6428+4]..[187,6428+27])
+                    Ppat_construct "Itrywith" (asmcomp/split.ml[187,6428+4]..[187,6428+12])
+                    Some
+                      []
+                      pattern (asmcomp/split.ml[187,6428+12]..[187,6428+27])
+                        Ppat_tuple
+                        [
+                          pattern (asmcomp/split.ml[187,6428+13]..[187,6428+17])
+                            Ppat_var "body" (asmcomp/split.ml[187,6428+13]..[187,6428+17])
+                          pattern (asmcomp/split.ml[187,6428+19]..[187,6428+26])
+                            Ppat_var "handler" (asmcomp/split.ml[187,6428+19]..[187,6428+26])
+                        ]
+                  expression (asmcomp/split.ml[188,6459+6]..[193,6745+16])
+                    Pexp_let Nonrec
+                    [
+                      <def>
+                        pattern (asmcomp/split.ml[188,6459+10]..[188,6459+30])
+                          Ppat_tuple
+                          [
+                            pattern (asmcomp/split.ml[188,6459+11]..[188,6459+19])
+                              Ppat_var "new_body" (asmcomp/split.ml[188,6459+11]..[188,6459+19])
+                            pattern (asmcomp/split.ml[188,6459+21]..[188,6459+29])
+                              Ppat_var "sub_body" (asmcomp/split.ml[188,6459+21]..[188,6459+29])
+                          ]
+                        expression (asmcomp/split.ml[188,6459+33]..[188,6459+48])
+                          Pexp_apply
+                          expression (asmcomp/split.ml[188,6459+33]..[188,6459+39])
+                            Pexp_ident "rename" (asmcomp/split.ml[188,6459+33]..[188,6459+39])
+                          [
+                            <arg>
+                            Nolabel
+                              expression (asmcomp/split.ml[188,6459+40]..[188,6459+44])
+                                Pexp_ident "body" (asmcomp/split.ml[188,6459+40]..[188,6459+44])
+                            <arg>
+                            Nolabel
+                              expression (asmcomp/split.ml[188,6459+45]..[188,6459+48])
+                                Pexp_ident "sub" (asmcomp/split.ml[188,6459+45]..[188,6459+48])
+                          ]
+                    ]
+                    expression (asmcomp/split.ml[189,6511+6]..[193,6745+16])
+                      Pexp_let Nonrec
+                      [
+                        <def>
+                          pattern (asmcomp/split.ml[189,6511+10]..[189,6511+36])
+                            Ppat_tuple
+                            [
+                              pattern (asmcomp/split.ml[189,6511+11]..[189,6511+22])
+                                Ppat_var "new_handler" (asmcomp/split.ml[189,6511+11]..[189,6511+22])
+                              pattern (asmcomp/split.ml[189,6511+24]..[189,6511+35])
+                                Ppat_var "sub_handler" (asmcomp/split.ml[189,6511+24]..[189,6511+35])
+                            ]
+                          expression (asmcomp/split.ml[189,6511+39]..[189,6511+57])
+                            Pexp_apply
+                            expression (asmcomp/split.ml[189,6511+39]..[189,6511+45])
+                              Pexp_ident "rename" (asmcomp/split.ml[189,6511+39]..[189,6511+45])
+                            [
+                              <arg>
+                              Nolabel
+                                expression (asmcomp/split.ml[189,6511+46]..[189,6511+53])
+                                  Pexp_ident "handler" (asmcomp/split.ml[189,6511+46]..[189,6511+53])
+                              <arg>
+                              Nolabel
+                                expression (asmcomp/split.ml[189,6511+54]..[189,6511+57])
+                                  Pexp_ident "sub" (asmcomp/split.ml[189,6511+54]..[189,6511+57])
+                            ]
+                      ]
+                      expression (asmcomp/split.ml[190,6572+6]..[193,6745+16])
+                        Pexp_let Nonrec
+                        [
+                          <def>
+                            pattern (asmcomp/split.ml[190,6572+10]..[190,6572+30])
+                              Ppat_tuple
+                              [
+                                pattern (asmcomp/split.ml[190,6572+11]..[190,6572+19])
+                                  Ppat_var "new_next" (asmcomp/split.ml[190,6572+11]..[190,6572+19])
+                                pattern (asmcomp/split.ml[190,6572+21]..[190,6572+29])
+                                  Ppat_var "sub_next" (asmcomp/split.ml[190,6572+21]..[190,6572+29])
+                              ]
+                            expression (asmcomp/split.ml[191,6605+8]..[191,6605+64])
+                              Pexp_apply
+                              expression (asmcomp/split.ml[191,6605+8]..[191,6605+14])
+                                Pexp_ident "rename" (asmcomp/split.ml[191,6605+8]..[191,6605+14])
+                              [
+                                <arg>
+                                Nolabel
+                                  expression (asmcomp/split.ml[191,6605+15]..[191,6605+21])
+                                    Pexp_field
+                                    expression (asmcomp/split.ml[191,6605+15]..[191,6605+16])
+                                      Pexp_ident "i" (asmcomp/split.ml[191,6605+15]..[191,6605+16])
+                                    "next" (asmcomp/split.ml[191,6605+17]..[191,6605+21])
+                                <arg>
+                                Nolabel
+                                  expression (asmcomp/split.ml[191,6605+22]..[191,6605+64])
+                                    Pexp_apply
+                                    expression (asmcomp/split.ml[191,6605+23]..[191,6605+35])
+                                      Pexp_ident "merge_substs" (asmcomp/split.ml[191,6605+23]..[191,6605+35])
+                                    [
+                                      <arg>
+                                      Nolabel
+                                        expression (asmcomp/split.ml[191,6605+36]..[191,6605+44])
+                                          Pexp_ident "sub_body" (asmcomp/split.ml[191,6605+36]..[191,6605+44])
+                                      <arg>
+                                      Nolabel
+                                        expression (asmcomp/split.ml[191,6605+45]..[191,6605+56])
+                                          Pexp_ident "sub_handler" (asmcomp/split.ml[191,6605+45]..[191,6605+56])
+                                      <arg>
+                                      Nolabel
+                                        expression (asmcomp/split.ml[191,6605+57]..[191,6605+63])
+                                          Pexp_field
+                                          expression (asmcomp/split.ml[191,6605+57]..[191,6605+58])
+                                            Pexp_ident "i" (asmcomp/split.ml[191,6605+57]..[191,6605+58])
+                                          "next" (asmcomp/split.ml[191,6605+59]..[191,6605+63])
+                                    ]
+                              ]
+                        ]
+                        expression (asmcomp/split.ml[192,6673+6]..[193,6745+16])
+                          Pexp_tuple
+                          [
+                            expression (asmcomp/split.ml[192,6673+7]..[192,6673+70])
+                              Pexp_apply
+                              expression (asmcomp/split.ml[192,6673+7]..[192,6673+17])
+                                Pexp_ident "instr_cons" (asmcomp/split.ml[192,6673+7]..[192,6673+17])
+                              [
+                                <arg>
+                                Nolabel
+                                  expression (asmcomp/split.ml[192,6673+18]..[192,6673+51])
+                                    Pexp_construct "Itrywith" (asmcomp/split.ml[192,6673+19]..[192,6673+27])
+                                    Some
+                                      expression (asmcomp/split.ml[192,6673+27]..[192,6673+50])
+                                        Pexp_tuple
+                                        [
+                                          expression (asmcomp/split.ml[192,6673+28]..[192,6673+36])
+                                            Pexp_ident "new_body" (asmcomp/split.ml[192,6673+28]..[192,6673+36])
+                                          expression (asmcomp/split.ml[192,6673+38]..[192,6673+49])
+                                            Pexp_ident "new_handler" (asmcomp/split.ml[192,6673+38]..[192,6673+49])
+                                        ]
+                                <arg>
+                                Nolabel
+                                  expression (asmcomp/split.ml[192,6673+52]..[192,6673+56])
+                                    Pexp_array
+                                    []
+                                <arg>
+                                Nolabel
+                                  expression (asmcomp/split.ml[192,6673+57]..[192,6673+61])
+                                    Pexp_array
+                                    []
+                                <arg>
+                                Nolabel
+                                  expression (asmcomp/split.ml[192,6673+62]..[192,6673+70])
+                                    Pexp_ident "new_next" (asmcomp/split.ml[192,6673+62]..[192,6673+70])
+                              ]
+                            expression (asmcomp/split.ml[193,6745+7]..[193,6745+15])
+                              Pexp_ident "sub_next" (asmcomp/split.ml[193,6745+7]..[193,6745+15])
+                          ]
+                <case>
+                  pattern (asmcomp/split.ml[194,6762+4]..[194,6762+12])
+                    Ppat_construct "Iraise" (asmcomp/split.ml[194,6762+4]..[194,6762+10])
+                    Some
+                      []
+                      pattern (asmcomp/split.ml[194,6762+11]..[194,6762+12])
+                        Ppat_var "k" (asmcomp/split.ml[194,6762+11]..[194,6762+12])
+                  expression (asmcomp/split.ml[195,6778+6]..[196,6855+12])
+                    Pexp_tuple
+                    [
+                      expression (asmcomp/split.ml[195,6778+7]..[195,6778+75])
+                        Pexp_apply
+                        expression (asmcomp/split.ml[195,6778+7]..[195,6778+23])
+                          Pexp_ident "instr_cons_debug" (asmcomp/split.ml[195,6778+7]..[195,6778+23])
+                        [
+                          <arg>
+                          Nolabel
+                            expression (asmcomp/split.ml[195,6778+24]..[195,6778+34])
+                              Pexp_construct "Iraise" (asmcomp/split.ml[195,6778+25]..[195,6778+31])
+                              Some
+                                expression (asmcomp/split.ml[195,6778+32]..[195,6778+33])
+                                  Pexp_ident "k" (asmcomp/split.ml[195,6778+32]..[195,6778+33])
+                          <arg>
+                          Nolabel
+                            expression (asmcomp/split.ml[195,6778+35]..[195,6778+57])
+                              Pexp_apply
+                              expression (asmcomp/split.ml[195,6778+36]..[195,6778+46])
+                                Pexp_ident "subst_regs" (asmcomp/split.ml[195,6778+36]..[195,6778+46])
+                              [
+                                <arg>
+                                Nolabel
+                                  expression (asmcomp/split.ml[195,6778+47]..[195,6778+52])
+                                    Pexp_field
+                                    expression (asmcomp/split.ml[195,6778+47]..[195,6778+48])
+                                      Pexp_ident "i" (asmcomp/split.ml[195,6778+47]..[195,6778+48])
+                                    "arg" (asmcomp/split.ml[195,6778+49]..[195,6778+52])
+                                <arg>
+                                Nolabel
+                                  expression (asmcomp/split.ml[195,6778+53]..[195,6778+56])
+                                    Pexp_ident "sub" (asmcomp/split.ml[195,6778+53]..[195,6778+56])
+                              ]
+                          <arg>
+                          Nolabel
+                            expression (asmcomp/split.ml[195,6778+58]..[195,6778+62])
+                              Pexp_array
+                              []
+                          <arg>
+                          Nolabel
+                            expression (asmcomp/split.ml[195,6778+63]..[195,6778+68])
+                              Pexp_field
+                              expression (asmcomp/split.ml[195,6778+63]..[195,6778+64])
+                                Pexp_ident "i" (asmcomp/split.ml[195,6778+63]..[195,6778+64])
+                              "dbg" (asmcomp/split.ml[195,6778+65]..[195,6778+68])
+                          <arg>
+                          Nolabel
+                            expression (asmcomp/split.ml[195,6778+69]..[195,6778+75])
+                              Pexp_field
+                              expression (asmcomp/split.ml[195,6778+69]..[195,6778+70])
+                                Pexp_ident "i" (asmcomp/split.ml[195,6778+69]..[195,6778+70])
+                              "next" (asmcomp/split.ml[195,6778+71]..[195,6778+75])
+                        ]
+                      expression (asmcomp/split.ml[196,6855+7]..[196,6855+11])
+                        Pexp_construct "None" (asmcomp/split.ml[196,6855+7]..[196,6855+11])
+                        None
+                    ]
+              ]
+    ]
+  structure_item (asmcomp/split.ml[200,6938+0]..[201,6957+62])
+    Pstr_value Nonrec
+    [
+      <def>
+        pattern (asmcomp/split.ml[200,6938+4]..[200,6938+14])
+          Ppat_var "set_repres" (asmcomp/split.ml[200,6938+4]..[200,6938+14])
+        expression (asmcomp/split.ml[200,6938+15]..[201,6957+62]) ghost
+          Pexp_fun
+          Nolabel
+          None
+          pattern (asmcomp/split.ml[200,6938+15]..[200,6938+16])
+            Ppat_var "i" (asmcomp/split.ml[200,6938+15]..[200,6938+16])
+          expression (asmcomp/split.ml[201,6957+2]..[201,6957+62])
+            Pexp_apply
+            expression (asmcomp/split.ml[201,6957+2]..[201,6957+12])
+              Pexp_ident "instr_iter" (asmcomp/split.ml[201,6957+2]..[201,6957+12])
+            [
+              <arg>
+              Nolabel
+                expression (asmcomp/split.ml[201,6957+13]..[201,6957+60])
+                  Pexp_fun
+                  Nolabel
+                  None
+                  pattern (asmcomp/split.ml[201,6957+18]..[201,6957+19])
+                    Ppat_var "i" (asmcomp/split.ml[201,6957+18]..[201,6957+19])
+                  expression (asmcomp/split.ml[201,6957+23]..[201,6957+59])
+                    Pexp_sequence
+                    expression (asmcomp/split.ml[201,6957+23]..[201,6957+40])
+                      Pexp_apply
+                      expression (asmcomp/split.ml[201,6957+23]..[201,6957+34])
+                        Pexp_ident "repres_regs" (asmcomp/split.ml[201,6957+23]..[201,6957+34])
+                      [
+                        <arg>
+                        Nolabel
+                          expression (asmcomp/split.ml[201,6957+35]..[201,6957+40])
+                            Pexp_field
+                            expression (asmcomp/split.ml[201,6957+35]..[201,6957+36])
+                              Pexp_ident "i" (asmcomp/split.ml[201,6957+35]..[201,6957+36])
+                            "arg" (asmcomp/split.ml[201,6957+37]..[201,6957+40])
+                      ]
+                    expression (asmcomp/split.ml[201,6957+42]..[201,6957+59])
+                      Pexp_apply
+                      expression (asmcomp/split.ml[201,6957+42]..[201,6957+53])
+                        Pexp_ident "repres_regs" (asmcomp/split.ml[201,6957+42]..[201,6957+53])
+                      [
+                        <arg>
+                        Nolabel
+                          expression (asmcomp/split.ml[201,6957+54]..[201,6957+59])
+                            Pexp_field
+                            expression (asmcomp/split.ml[201,6957+54]..[201,6957+55])
+                              Pexp_ident "i" (asmcomp/split.ml[201,6957+54]..[201,6957+55])
+                            "res" (asmcomp/split.ml[201,6957+56]..[201,6957+59])
+                      ]
+              <arg>
+              Nolabel
+                expression (asmcomp/split.ml[201,6957+61]..[201,6957+62])
+                  Pexp_ident "i" (asmcomp/split.ml[201,6957+61]..[201,6957+62])
+            ]
+    ]
+  structure_item (asmcomp/split.ml[205,7040+0]..[207,7089+18])
+    Pstr_value Nonrec
+    [
+      <def>
+        pattern (asmcomp/split.ml[205,7040+4]..[205,7040+9])
+          Ppat_var "reset" (asmcomp/split.ml[205,7040+4]..[205,7040+9])
+        expression (asmcomp/split.ml[205,7040+10]..[207,7089+18]) ghost
+          Pexp_fun
+          Nolabel
+          None
+          pattern (asmcomp/split.ml[205,7040+10]..[205,7040+12])
+            Ppat_construct "()" (asmcomp/split.ml[205,7040+10]..[205,7040+12])
+            None
+          expression (asmcomp/split.ml[206,7055+2]..[207,7089+18])
+            Pexp_sequence
+            expression (asmcomp/split.ml[206,7055+2]..[206,7055+32])
+              Pexp_apply
+              expression (asmcomp/split.ml[206,7055+16]..[206,7055+18])
+                Pexp_ident ":=" (asmcomp/split.ml[206,7055+16]..[206,7055+18])
+              [
+                <arg>
+                Nolabel
+                  expression (asmcomp/split.ml[206,7055+2]..[206,7055+15])
+                    Pexp_ident "equiv_classes" (asmcomp/split.ml[206,7055+2]..[206,7055+15])
+                <arg>
+                Nolabel
+                  expression (asmcomp/split.ml[206,7055+19]..[206,7055+32])
+                    Pexp_ident "Reg.Map.empty" (asmcomp/split.ml[206,7055+19]..[206,7055+32])
+              ]
+            expression (asmcomp/split.ml[207,7089+2]..[207,7089+18])
+              Pexp_apply
+              expression (asmcomp/split.ml[207,7089+13]..[207,7089+15])
+                Pexp_ident ":=" (asmcomp/split.ml[207,7089+13]..[207,7089+15])
+              [
+                <arg>
+                Nolabel
+                  expression (asmcomp/split.ml[207,7089+2]..[207,7089+12])
+                    Pexp_ident "exit_subst" (asmcomp/split.ml[207,7089+2]..[207,7089+12])
+                <arg>
+                Nolabel
+                  expression (asmcomp/split.ml[207,7089+16]..[207,7089+18])
+                    Pexp_construct "[]" (asmcomp/split.ml[207,7089+16]..[207,7089+18])
+                    None
+              ]
+    ]
+  structure_item (asmcomp/split.ml[209,7109+0]..[224,7581+3])
+    Pstr_value Nonrec
+    [
+      <def>
+        pattern (asmcomp/split.ml[209,7109+4]..[209,7109+11])
+          Ppat_var "fundecl" (asmcomp/split.ml[209,7109+4]..[209,7109+11])
+        expression (asmcomp/split.ml[209,7109+12]..[224,7581+3]) ghost
+          Pexp_fun
+          Nolabel
+          None
+          pattern (asmcomp/split.ml[209,7109+12]..[209,7109+13])
+            Ppat_var "f" (asmcomp/split.ml[209,7109+12]..[209,7109+13])
+          expression (asmcomp/split.ml[210,7125+2]..[224,7581+3])
+            Pexp_sequence
+            expression (asmcomp/split.ml[210,7125+2]..[210,7125+10])
+              Pexp_apply
+              expression (asmcomp/split.ml[210,7125+2]..[210,7125+7])
+                Pexp_ident "reset" (asmcomp/split.ml[210,7125+2]..[210,7125+7])
+              [
+                <arg>
+                Nolabel
+                  expression (asmcomp/split.ml[210,7125+8]..[210,7125+10])
+                    Pexp_construct "()" (asmcomp/split.ml[210,7125+8]..[210,7125+10])
+                    None
+              ]
+            expression (asmcomp/split.ml[212,7138+2]..[224,7581+3])
+              Pexp_let Nonrec
+              [
+                <def>
+                  pattern (asmcomp/split.ml[212,7138+6]..[212,7138+14])
+                    Ppat_var "new_args" (asmcomp/split.ml[212,7138+6]..[212,7138+14])
+                  expression (asmcomp/split.ml[212,7138+17]..[212,7138+38])
+                    Pexp_apply
+                    expression (asmcomp/split.ml[212,7138+17]..[212,7138+27])
+                      Pexp_ident "Array.copy" (asmcomp/split.ml[212,7138+17]..[212,7138+27])
+                    [
+                      <arg>
+                      Nolabel
+                        expression (asmcomp/split.ml[212,7138+28]..[212,7138+38])
+                          Pexp_field
+                          expression (asmcomp/split.ml[212,7138+28]..[212,7138+29])
+                            Pexp_ident "f" (asmcomp/split.ml[212,7138+28]..[212,7138+29])
+                          "fun_args" (asmcomp/split.ml[212,7138+30]..[212,7138+38])
+                    ]
+              ]
+              expression (asmcomp/split.ml[213,7180+2]..[224,7581+3])
+                Pexp_let Nonrec
+                [
+                  <def>
+                    pattern (asmcomp/split.ml[213,7180+6]..[213,7180+27])
+                      Ppat_tuple
+                      [
+                        pattern (asmcomp/split.ml[213,7180+7]..[213,7180+15])
+                          Ppat_var "new_body" (asmcomp/split.ml[213,7180+7]..[213,7180+15])
+                        pattern (asmcomp/split.ml[213,7180+17]..[213,7180+26])
+                          Ppat_var "_sub_body" (asmcomp/split.ml[213,7180+17]..[213,7180+26])
+                      ]
+                    expression (asmcomp/split.ml[213,7180+30]..[213,7180+68])
+                      Pexp_apply
+                      expression (asmcomp/split.ml[213,7180+30]..[213,7180+36])
+                        Pexp_ident "rename" (asmcomp/split.ml[213,7180+30]..[213,7180+36])
+                      [
+                        <arg>
+                        Nolabel
+                          expression (asmcomp/split.ml[213,7180+37]..[213,7180+47])
+                            Pexp_field
+                            expression (asmcomp/split.ml[213,7180+37]..[213,7180+38])
+                              Pexp_ident "f" (asmcomp/split.ml[213,7180+37]..[213,7180+38])
+                            "fun_body" (asmcomp/split.ml[213,7180+39]..[213,7180+47])
+                        <arg>
+                        Nolabel
+                          expression (asmcomp/split.ml[213,7180+48]..[213,7180+68])
+                            Pexp_construct "Some" (asmcomp/split.ml[213,7180+49]..[213,7180+53])
+                            Some
+                              expression (asmcomp/split.ml[213,7180+54]..[213,7180+67])
+                                Pexp_ident "Reg.Map.empty" (asmcomp/split.ml[213,7180+54]..[213,7180+67])
+                      ]
+                ]
+                expression (asmcomp/split.ml[214,7252+2]..[224,7581+3])
+                  Pexp_sequence
+                  expression (asmcomp/split.ml[214,7252+2]..[214,7252+22])
+                    Pexp_apply
+                    expression (asmcomp/split.ml[214,7252+2]..[214,7252+13])
+                      Pexp_ident "repres_regs" (asmcomp/split.ml[214,7252+2]..[214,7252+13])
+                    [
+                      <arg>
+                      Nolabel
+                        expression (asmcomp/split.ml[214,7252+14]..[214,7252+22])
+                          Pexp_ident "new_args" (asmcomp/split.ml[214,7252+14]..[214,7252+22])
+                    ]
+                  expression (asmcomp/split.ml[215,7276+2]..[224,7581+3])
+                    Pexp_sequence
+                    expression (asmcomp/split.ml[215,7276+2]..[215,7276+21])
+                      Pexp_apply
+                      expression (asmcomp/split.ml[215,7276+2]..[215,7276+12])
+                        Pexp_ident "set_repres" (asmcomp/split.ml[215,7276+2]..[215,7276+12])
+                      [
+                        <arg>
+                        Nolabel
+                          expression (asmcomp/split.ml[215,7276+13]..[215,7276+21])
+                            Pexp_ident "new_body" (asmcomp/split.ml[215,7276+13]..[215,7276+21])
+                      ]
+                    expression (asmcomp/split.ml[216,7299+2]..[224,7581+3])
+                      Pexp_sequence
+                      expression (asmcomp/split.ml[216,7299+2]..[216,7299+32])
+                        Pexp_apply
+                        expression (asmcomp/split.ml[216,7299+16]..[216,7299+18])
+                          Pexp_ident ":=" (asmcomp/split.ml[216,7299+16]..[216,7299+18])
+                        [
+                          <arg>
+                          Nolabel
+                            expression (asmcomp/split.ml[216,7299+2]..[216,7299+15])
+                              Pexp_ident "equiv_classes" (asmcomp/split.ml[216,7299+2]..[216,7299+15])
+                          <arg>
+                          Nolabel
+                            expression (asmcomp/split.ml[216,7299+19]..[216,7299+32])
+                              Pexp_ident "Reg.Map.empty" (asmcomp/split.ml[216,7299+19]..[216,7299+32])
+                        ]
+                      expression (asmcomp/split.ml[217,7333+2]..[224,7581+3])
+                        Pexp_record
+                        [
+                          "fun_name" (asmcomp/split.ml[217,7333+4]..[217,7333+12])
+                            expression (asmcomp/split.ml[217,7333+15]..[217,7333+25])
+                              Pexp_field
+                              expression (asmcomp/split.ml[217,7333+15]..[217,7333+16])
+                                Pexp_ident "f" (asmcomp/split.ml[217,7333+15]..[217,7333+16])
+                              "fun_name" (asmcomp/split.ml[217,7333+17]..[217,7333+25])
+                          "fun_args" (asmcomp/split.ml[218,7360+4]..[218,7360+12])
+                            expression (asmcomp/split.ml[218,7360+15]..[218,7360+23])
+                              Pexp_ident "new_args" (asmcomp/split.ml[218,7360+15]..[218,7360+23])
+                          "fun_body" (asmcomp/split.ml[219,7385+4]..[219,7385+12])
+                            expression (asmcomp/split.ml[219,7385+15]..[219,7385+23])
+                              Pexp_ident "new_body" (asmcomp/split.ml[219,7385+15]..[219,7385+23])
+                          "fun_codegen_options" (asmcomp/split.ml[220,7410+4]..[220,7410+23])
+                            expression (asmcomp/split.ml[220,7410+26]..[220,7410+47])
+                              Pexp_field
+                              expression (asmcomp/split.ml[220,7410+26]..[220,7410+27])
+                                Pexp_ident "f" (asmcomp/split.ml[220,7410+26]..[220,7410+27])
+                              "fun_codegen_options" (asmcomp/split.ml[220,7410+28]..[220,7410+47])
+                          "fun_dbg" (asmcomp/split.ml[221,7459+4]..[221,7459+11])
+                            expression (asmcomp/split.ml[221,7459+15]..[221,7459+24])
+                              Pexp_field
+                              expression (asmcomp/split.ml[221,7459+15]..[221,7459+16])
+                                Pexp_ident "f" (asmcomp/split.ml[221,7459+15]..[221,7459+16])
+                              "fun_dbg" (asmcomp/split.ml[221,7459+17]..[221,7459+24])
+                          "fun_num_stack_slots" (asmcomp/split.ml[222,7485+4]..[222,7485+23])
+                            expression (asmcomp/split.ml[222,7485+26]..[222,7485+47])
+                              Pexp_field
+                              expression (asmcomp/split.ml[222,7485+26]..[222,7485+27])
+                                Pexp_ident "f" (asmcomp/split.ml[222,7485+26]..[222,7485+27])
+                              "fun_num_stack_slots" (asmcomp/split.ml[222,7485+28]..[222,7485+47])
+                          "fun_contains_calls" (asmcomp/split.ml[223,7534+4]..[223,7534+22])
+                            expression (asmcomp/split.ml[223,7534+25]..[223,7534+45])
+                              Pexp_field
+                              expression (asmcomp/split.ml[223,7534+25]..[223,7534+26])
+                                Pexp_ident "f" (asmcomp/split.ml[223,7534+25]..[223,7534+26])
+                              "fun_contains_calls" (asmcomp/split.ml[223,7534+27]..[223,7534+45])
+                        ]
+                        None
+    ]
+]
+

@@ -1,0 +1,2731 @@
+[
+  structure_item (driver/pparse.ml[16,1079+0]..[16,1079+11])
+    Pstr_open Fresh
+    module_expr (driver/pparse.ml[16,1079+5]..[16,1079+11])
+      Pmod_ident "Format" (driver/pparse.ml[16,1079+5]..[16,1079+11])
+  structure_item (driver/pparse.ml[18,1092+0]..[20,1129+24])
+    Pstr_type Rec
+    [
+      type_declaration "error" (driver/pparse.ml[18,1092+5]..[18,1092+10]) (driver/pparse.ml[18,1092+0]..[20,1129+24])
+        ptype_params =
+          []
+        ptype_cstrs =
+          []
+        ptype_kind =
+          Ptype_variant
+            [
+              (driver/pparse.ml[19,1105+2]..[19,1105+23])
+                "CannotRun" (driver/pparse.ml[19,1105+4]..[19,1105+13])
+                [
+                  core_type (driver/pparse.ml[19,1105+17]..[19,1105+23])
+                    Ptyp_constr "string" (driver/pparse.ml[19,1105+17]..[19,1105+23])
+                    []
+                ]
+                None
+              (driver/pparse.ml[20,1129+2]..[20,1129+24])
+                "WrongMagic" (driver/pparse.ml[20,1129+4]..[20,1129+14])
+                [
+                  core_type (driver/pparse.ml[20,1129+18]..[20,1129+24])
+                    Ptyp_constr "string" (driver/pparse.ml[20,1129+18]..[20,1129+24])
+                    []
+                ]
+                None
+            ]
+        ptype_private = Public
+        ptype_manifest =
+          None
+    ]
+  structure_item (driver/pparse.ml[22,1155+0]..[22,1155+24])
+    Pstr_exception
+    type_exception
+      ptyext_constructor =
+        extension_constructor (driver/pparse.ml[22,1155+0]..[22,1155+24])
+          pext_name = "Error"
+          pext_kind =
+            Pext_decl
+              [
+                core_type (driver/pparse.ml[22,1155+19]..[22,1155+24])
+                  Ptyp_constr "error" (driver/pparse.ml[22,1155+19]..[22,1155+24])
+                  []
+              ]
+              None
+  structure_item (driver/pparse.ml[26,1224+0]..[35,1580+13])
+    Pstr_value Nonrec
+    [
+      <def>
+        pattern (driver/pparse.ml[26,1224+4]..[26,1224+30])
+          Ppat_var "call_external_preprocessor" (driver/pparse.ml[26,1224+4]..[26,1224+30])
+        expression (driver/pparse.ml[26,1224+31]..[35,1580+13]) ghost
+          Pexp_fun
+          Nolabel
+          None
+          pattern (driver/pparse.ml[26,1224+31]..[26,1224+41])
+            Ppat_var "sourcefile" (driver/pparse.ml[26,1224+31]..[26,1224+41])
+          expression (driver/pparse.ml[26,1224+42]..[35,1580+13]) ghost
+            Pexp_fun
+            Nolabel
+            None
+            pattern (driver/pparse.ml[26,1224+42]..[26,1224+44])
+              Ppat_var "pp" (driver/pparse.ml[26,1224+42]..[26,1224+44])
+            expression (driver/pparse.ml[27,1271+6]..[35,1580+13])
+              Pexp_let Nonrec
+              [
+                <def>
+                  pattern (driver/pparse.ml[27,1271+10]..[27,1271+17])
+                    Ppat_var "tmpfile" (driver/pparse.ml[27,1271+10]..[27,1271+17])
+                  expression (driver/pparse.ml[27,1271+20]..[27,1271+51])
+                    Pexp_apply
+                    expression (driver/pparse.ml[27,1271+20]..[27,1271+38])
+                      Pexp_ident "Filename.temp_file" (driver/pparse.ml[27,1271+20]..[27,1271+38])
+                    [
+                      <arg>
+                      Nolabel
+                        expression (driver/pparse.ml[27,1271+39]..[27,1271+48])
+                          Pexp_constant PConst_string("ocamlpp",(driver/pparse.ml[27,1271+40]..[27,1271+47]),None)
+                      <arg>
+                      Nolabel
+                        expression (driver/pparse.ml[27,1271+49]..[27,1271+51])
+                          Pexp_constant PConst_string("",(driver/pparse.ml[27,1271+50]..[27,1271+50]),None)
+                    ]
+              ]
+              expression (driver/pparse.ml[28,1326+6]..[35,1580+13])
+                Pexp_let Nonrec
+                [
+                  <def>
+                    pattern (driver/pparse.ml[28,1326+10]..[28,1326+14])
+                      Ppat_var "comm" (driver/pparse.ml[28,1326+10]..[28,1326+14])
+                    expression (driver/pparse.ml[28,1326+17]..[29,1371+70])
+                      Pexp_apply
+                      expression (driver/pparse.ml[28,1326+17]..[28,1326+31])
+                        Pexp_ident "Printf.sprintf" (driver/pparse.ml[28,1326+17]..[28,1326+31])
+                      [
+                        <arg>
+                        Nolabel
+                          expression (driver/pparse.ml[28,1326+32]..[28,1326+44])
+                            Pexp_constant PConst_string("%s %s > %s",(driver/pparse.ml[28,1326+33]..[28,1326+43]),None)
+                        <arg>
+                        Nolabel
+                          expression (driver/pparse.ml[29,1371+32]..[29,1371+34])
+                            Pexp_ident "pp" (driver/pparse.ml[29,1371+32]..[29,1371+34])
+                        <arg>
+                        Nolabel
+                          expression (driver/pparse.ml[29,1371+35]..[29,1371+62])
+                            Pexp_apply
+                            expression (driver/pparse.ml[29,1371+36]..[29,1371+50])
+                              Pexp_ident "Filename.quote" (driver/pparse.ml[29,1371+36]..[29,1371+50])
+                            [
+                              <arg>
+                              Nolabel
+                                expression (driver/pparse.ml[29,1371+51]..[29,1371+61])
+                                  Pexp_ident "sourcefile" (driver/pparse.ml[29,1371+51]..[29,1371+61])
+                            ]
+                        <arg>
+                        Nolabel
+                          expression (driver/pparse.ml[29,1371+63]..[29,1371+70])
+                            Pexp_ident "tmpfile" (driver/pparse.ml[29,1371+63]..[29,1371+70])
+                      ]
+                ]
+                expression (driver/pparse.ml[31,1451+6]..[35,1580+13])
+                  Pexp_sequence
+                  expression (driver/pparse.ml[31,1451+6]..[34,1569+9])
+                    Pexp_ifthenelse
+                    expression (driver/pparse.ml[31,1451+9]..[31,1451+32])
+                      Pexp_apply
+                      expression (driver/pparse.ml[31,1451+28]..[31,1451+30])
+                        Pexp_ident "<>" (driver/pparse.ml[31,1451+28]..[31,1451+30])
+                      [
+                        <arg>
+                        Nolabel
+                          expression (driver/pparse.ml[31,1451+9]..[31,1451+27])
+                            Pexp_apply
+                            expression (driver/pparse.ml[31,1451+9]..[31,1451+22])
+                              Pexp_ident "Ccomp.command" (driver/pparse.ml[31,1451+9]..[31,1451+22])
+                            [
+                              <arg>
+                              Nolabel
+                                expression (driver/pparse.ml[31,1451+23]..[31,1451+27])
+                                  Pexp_ident "comm" (driver/pparse.ml[31,1451+23]..[31,1451+27])
+                            ]
+                        <arg>
+                        Nolabel
+                          expression (driver/pparse.ml[31,1451+31]..[31,1451+32])
+                            Pexp_constant PConst_int (0,None)
+                      ]
+                    expression (driver/pparse.ml[31,1451+38]..[34,1569+9])
+                      Pexp_sequence
+                      expression (driver/pparse.ml[32,1495+8]..[32,1495+32])
+                        Pexp_apply
+                        expression (driver/pparse.ml[32,1495+8]..[32,1495+24])
+                          Pexp_ident "Misc.remove_file" (driver/pparse.ml[32,1495+8]..[32,1495+24])
+                        [
+                          <arg>
+                          Nolabel
+                            expression (driver/pparse.ml[32,1495+25]..[32,1495+32])
+                              Pexp_ident "tmpfile" (driver/pparse.ml[32,1495+25]..[32,1495+32])
+                        ]
+                      expression (driver/pparse.ml[33,1529+8]..[33,1529+38])
+                        Pexp_apply
+                        expression (driver/pparse.ml[33,1529+8]..[33,1529+13])
+                          Pexp_ident "raise" (driver/pparse.ml[33,1529+8]..[33,1529+13])
+                        [
+                          <arg>
+                          Nolabel
+                            expression (driver/pparse.ml[33,1529+14]..[33,1529+38])
+                              Pexp_construct "Error" (driver/pparse.ml[33,1529+15]..[33,1529+20])
+                              Some
+                                expression (driver/pparse.ml[33,1529+21]..[33,1529+37])
+                                  Pexp_construct "CannotRun" (driver/pparse.ml[33,1529+22]..[33,1529+31])
+                                  Some
+                                    expression (driver/pparse.ml[33,1529+32]..[33,1529+36])
+                                      Pexp_ident "comm" (driver/pparse.ml[33,1529+32]..[33,1529+36])
+                        ]
+                    None
+                  expression (driver/pparse.ml[35,1580+6]..[35,1580+13])
+                    Pexp_ident "tmpfile" (driver/pparse.ml[35,1580+6]..[35,1580+13])
+    ]
+  structure_item (driver/pparse.ml[37,1595+0]..[42,1723+50])
+    Pstr_value Nonrec
+    [
+      <def>
+        pattern (driver/pparse.ml[37,1595+4]..[37,1595+14])
+          Ppat_var "preprocess" (driver/pparse.ml[37,1595+4]..[37,1595+14])
+        expression (driver/pparse.ml[37,1595+15]..[42,1723+50]) ghost
+          Pexp_fun
+          Nolabel
+          None
+          pattern (driver/pparse.ml[37,1595+15]..[37,1595+25])
+            Ppat_var "sourcefile" (driver/pparse.ml[37,1595+15]..[37,1595+25])
+          expression (driver/pparse.ml[38,1623+2]..[42,1723+50])
+            Pexp_match
+            expression (driver/pparse.ml[38,1623+8]..[38,1623+29])
+              Pexp_apply
+              expression (driver/pparse.ml[38,1623+8]..[38,1623+9])
+                Pexp_ident "!" (driver/pparse.ml[38,1623+8]..[38,1623+9])
+              [
+                <arg>
+                Nolabel
+                  expression (driver/pparse.ml[38,1623+9]..[38,1623+29])
+                    Pexp_ident "Clflags.preprocessor" (driver/pparse.ml[38,1623+9]..[38,1623+29])
+              ]
+            [
+              <case>
+                pattern (driver/pparse.ml[39,1658+4]..[39,1658+8])
+                  Ppat_construct "None" (driver/pparse.ml[39,1658+4]..[39,1658+8])
+                  None
+                expression (driver/pparse.ml[39,1658+12]..[39,1658+22])
+                  Pexp_ident "sourcefile" (driver/pparse.ml[39,1658+12]..[39,1658+22])
+              <case>
+                pattern (driver/pparse.ml[40,1681+4]..[40,1681+11])
+                  Ppat_construct "Some" (driver/pparse.ml[40,1681+4]..[40,1681+8])
+                  Some
+                    []
+                    pattern (driver/pparse.ml[40,1681+9]..[40,1681+11])
+                      Ppat_var "pp" (driver/pparse.ml[40,1681+9]..[40,1681+11])
+                expression (driver/pparse.ml[41,1696+6]..[42,1723+50])
+                  Pexp_apply
+                  expression (driver/pparse.ml[41,1696+6]..[41,1696+20])
+                    Pexp_ident "Profile.record" (driver/pparse.ml[41,1696+6]..[41,1696+20])
+                  [
+                    <arg>
+                    Nolabel
+                      expression (driver/pparse.ml[41,1696+21]..[41,1696+26])
+                        Pexp_constant PConst_string("-pp",(driver/pparse.ml[41,1696+22]..[41,1696+25]),None)
+                    <arg>
+                    Nolabel
+                      expression (driver/pparse.ml[42,1723+8]..[42,1723+47])
+                        Pexp_apply
+                        expression (driver/pparse.ml[42,1723+9]..[42,1723+35])
+                          Pexp_ident "call_external_preprocessor" (driver/pparse.ml[42,1723+9]..[42,1723+35])
+                        [
+                          <arg>
+                          Nolabel
+                            expression (driver/pparse.ml[42,1723+36]..[42,1723+46])
+                              Pexp_ident "sourcefile" (driver/pparse.ml[42,1723+36]..[42,1723+46])
+                        ]
+                    <arg>
+                    Nolabel
+                      expression (driver/pparse.ml[42,1723+48]..[42,1723+50])
+                        Pexp_ident "pp" (driver/pparse.ml[42,1723+48]..[42,1723+50])
+                  ]
+            ]
+    ]
+  structure_item (driver/pparse.ml[45,1776+0]..[48,1862+40])
+    Pstr_value Nonrec
+    [
+      <def>
+        pattern (driver/pparse.ml[45,1776+4]..[45,1776+23])
+          Ppat_var "remove_preprocessed" (driver/pparse.ml[45,1776+4]..[45,1776+23])
+        expression (driver/pparse.ml[45,1776+24]..[48,1862+40]) ghost
+          Pexp_fun
+          Nolabel
+          None
+          pattern (driver/pparse.ml[45,1776+24]..[45,1776+33])
+            Ppat_var "inputfile" (driver/pparse.ml[45,1776+24]..[45,1776+33])
+          expression (driver/pparse.ml[46,1812+2]..[48,1862+40])
+            Pexp_match
+            expression (driver/pparse.ml[46,1812+8]..[46,1812+29])
+              Pexp_apply
+              expression (driver/pparse.ml[46,1812+8]..[46,1812+9])
+                Pexp_ident "!" (driver/pparse.ml[46,1812+8]..[46,1812+9])
+              [
+                <arg>
+                Nolabel
+                  expression (driver/pparse.ml[46,1812+9]..[46,1812+29])
+                    Pexp_ident "Clflags.preprocessor" (driver/pparse.ml[46,1812+9]..[46,1812+29])
+              ]
+            [
+              <case>
+                pattern (driver/pparse.ml[47,1847+4]..[47,1847+8])
+                  Ppat_construct "None" (driver/pparse.ml[47,1847+4]..[47,1847+8])
+                  None
+                expression (driver/pparse.ml[47,1847+12]..[47,1847+14])
+                  Pexp_construct "()" (driver/pparse.ml[47,1847+12]..[47,1847+14])
+                  None
+              <case>
+                pattern (driver/pparse.ml[48,1862+4]..[48,1862+10])
+                  Ppat_construct "Some" (driver/pparse.ml[48,1862+4]..[48,1862+8])
+                  Some
+                    []
+                    pattern (driver/pparse.ml[48,1862+9]..[48,1862+10])
+                      Ppat_any
+                expression (driver/pparse.ml[48,1862+14]..[48,1862+40])
+                  Pexp_apply
+                  expression (driver/pparse.ml[48,1862+14]..[48,1862+30])
+                    Pexp_ident "Misc.remove_file" (driver/pparse.ml[48,1862+14]..[48,1862+30])
+                  [
+                    <arg>
+                    Nolabel
+                      expression (driver/pparse.ml[48,1862+31]..[48,1862+40])
+                        Pexp_ident "inputfile" (driver/pparse.ml[48,1862+31]..[48,1862+40])
+                  ]
+            ]
+    ]
+  structure_item (driver/pparse.ml[50,1904+0]..[52,1966+42])
+    Pstr_type Rec
+    [
+      type_declaration "ast_kind" (driver/pparse.ml[50,1904+8]..[50,1904+16]) (driver/pparse.ml[50,1904+0]..[52,1966+42])
+        ptype_params =
+          [
+            core_type (driver/pparse.ml[50,1904+5]..[50,1904+7])
+              Ptyp_var a
+          ]
+        ptype_cstrs =
+          []
+        ptype_kind =
+          Ptype_variant
+            [
+              (driver/pparse.ml[51,1923+0]..[51,1923+42])
+                "Structure" (driver/pparse.ml[51,1923+2]..[51,1923+11])
+                []
+                Some
+                  core_type (driver/pparse.ml[51,1923+14]..[51,1923+42])
+                    Ptyp_constr "ast_kind" (driver/pparse.ml[51,1923+34]..[51,1923+42])
+                    [
+                      core_type (driver/pparse.ml[51,1923+14]..[51,1923+33])
+                        Ptyp_constr "Parsetree.structure" (driver/pparse.ml[51,1923+14]..[51,1923+33])
+                        []
+                    ]
+              (driver/pparse.ml[52,1966+0]..[52,1966+42])
+                "Signature" (driver/pparse.ml[52,1966+2]..[52,1966+11])
+                []
+                Some
+                  core_type (driver/pparse.ml[52,1966+14]..[52,1966+42])
+                    Ptyp_constr "ast_kind" (driver/pparse.ml[52,1966+34]..[52,1966+42])
+                    [
+                      core_type (driver/pparse.ml[52,1966+14]..[52,1966+33])
+                        Ptyp_constr "Parsetree.signature" (driver/pparse.ml[52,1966+14]..[52,1966+33])
+                        []
+                    ]
+            ]
+        ptype_private = Public
+        ptype_manifest =
+          None
+    ]
+  structure_item (driver/pparse.ml[54,2010+0]..[56,2117+45])
+    Pstr_value Nonrec
+    [
+      <def>
+        pattern (driver/pparse.ml[54,2010+4]..[54,2010+49]) ghost
+          Ppat_constraint
+          pattern (driver/pparse.ml[54,2010+4]..[54,2010+17])
+            Ppat_var "magic_of_kind" (driver/pparse.ml[54,2010+4]..[54,2010+17])
+          core_type (driver/pparse.ml[54,2010+4]..[56,2117+45]) ghost
+            Ptyp_poly 'a
+            core_type (driver/pparse.ml[54,2010+29]..[54,2010+49])
+              Ptyp_arrow
+              Nolabel
+              core_type (driver/pparse.ml[54,2010+29]..[54,2010+39])
+                Ptyp_constr "ast_kind" (driver/pparse.ml[54,2010+31]..[54,2010+39])
+                [
+                  core_type (driver/pparse.ml[54,2010+29]..[54,2010+30])
+                    Ptyp_var a
+                ]
+              core_type (driver/pparse.ml[54,2010+43]..[54,2010+49])
+                Ptyp_constr "string" (driver/pparse.ml[54,2010+43]..[54,2010+49])
+                []
+        expression (driver/pparse.ml[54,2010+4]..[56,2117+45])
+          Pexp_newtype "a"
+          expression (driver/pparse.ml[54,2010+4]..[56,2117+45])
+            Pexp_constraint
+            expression (driver/pparse.ml[54,2010+52]..[56,2117+45])
+              Pexp_function
+              [
+                <case>
+                  pattern (driver/pparse.ml[55,2071+4]..[55,2071+13])
+                    Ppat_construct "Structure" (driver/pparse.ml[55,2071+4]..[55,2071+13])
+                    None
+                  expression (driver/pparse.ml[55,2071+17]..[55,2071+45])
+                    Pexp_ident "Config.ast_impl_magic_number" (driver/pparse.ml[55,2071+17]..[55,2071+45])
+                <case>
+                  pattern (driver/pparse.ml[56,2117+4]..[56,2117+13])
+                    Ppat_construct "Signature" (driver/pparse.ml[56,2117+4]..[56,2117+13])
+                    None
+                  expression (driver/pparse.ml[56,2117+17]..[56,2117+45])
+                    Pexp_ident "Config.ast_intf_magic_number" (driver/pparse.ml[56,2117+17]..[56,2117+45])
+              ]
+            core_type (driver/pparse.ml[54,2010+29]..[54,2010+49])
+              Ptyp_arrow
+              Nolabel
+              core_type (driver/pparse.ml[54,2010+29]..[54,2010+39])
+                Ptyp_constr "ast_kind" (driver/pparse.ml[54,2010+31]..[54,2010+39])
+                [
+                  core_type (driver/pparse.ml[54,2010+29]..[54,2010+30])
+                    Ptyp_constr "a" (driver/pparse.ml[54,2010+29]..[54,2010+30])
+                    []
+                ]
+              core_type (driver/pparse.ml[54,2010+43]..[54,2010+49])
+                Ptyp_constr "string" (driver/pparse.ml[54,2010+43]..[54,2010+49])
+                []
+    ]
+  structure_item (driver/pparse.ml[61,2291+0]..[66,2500+14])
+    Pstr_value Nonrec
+    [
+      <def>
+        pattern (driver/pparse.ml[61,2291+4]..[61,2291+13])
+          Ppat_var "write_ast" (driver/pparse.ml[61,2291+4]..[61,2291+13])
+        expression (driver/pparse.ml[61,2291+14]..[66,2500+14])
+          Pexp_newtype "a"
+          expression (driver/pparse.ml[61,2291+23]..[66,2500+14]) ghost
+            Pexp_fun
+            Nolabel
+            None
+            pattern (driver/pparse.ml[61,2291+23]..[61,2291+42])
+              Ppat_constraint
+              pattern (driver/pparse.ml[61,2291+24]..[61,2291+28])
+                Ppat_var "kind" (driver/pparse.ml[61,2291+24]..[61,2291+28])
+              core_type (driver/pparse.ml[61,2291+31]..[61,2291+41])
+                Ptyp_constr "ast_kind" (driver/pparse.ml[61,2291+33]..[61,2291+41])
+                [
+                  core_type (driver/pparse.ml[61,2291+31]..[61,2291+32])
+                    Ptyp_constr "a" (driver/pparse.ml[61,2291+31]..[61,2291+32])
+                    []
+                ]
+            expression (driver/pparse.ml[61,2291+43]..[66,2500+14]) ghost
+              Pexp_fun
+              Nolabel
+              None
+              pattern (driver/pparse.ml[61,2291+43]..[61,2291+45])
+                Ppat_var "fn" (driver/pparse.ml[61,2291+43]..[61,2291+45])
+              expression (driver/pparse.ml[61,2291+46]..[66,2500+14]) ghost
+                Pexp_fun
+                Nolabel
+                None
+                pattern (driver/pparse.ml[61,2291+46]..[61,2291+55])
+                  Ppat_constraint
+                  pattern (driver/pparse.ml[61,2291+47]..[61,2291+50])
+                    Ppat_var "ast" (driver/pparse.ml[61,2291+47]..[61,2291+50])
+                  core_type (driver/pparse.ml[61,2291+53]..[61,2291+54])
+                    Ptyp_constr "a" (driver/pparse.ml[61,2291+53]..[61,2291+54])
+                    []
+                expression (driver/pparse.ml[62,2349+2]..[66,2500+14])
+                  Pexp_let Nonrec
+                  [
+                    <def>
+                      pattern (driver/pparse.ml[62,2349+6]..[62,2349+8])
+                        Ppat_var "oc" (driver/pparse.ml[62,2349+6]..[62,2349+8])
+                      expression (driver/pparse.ml[62,2349+11]..[62,2349+26])
+                        Pexp_apply
+                        expression (driver/pparse.ml[62,2349+11]..[62,2349+23])
+                          Pexp_ident "open_out_bin" (driver/pparse.ml[62,2349+11]..[62,2349+23])
+                        [
+                          <arg>
+                          Nolabel
+                            expression (driver/pparse.ml[62,2349+24]..[62,2349+26])
+                              Pexp_ident "fn" (driver/pparse.ml[62,2349+24]..[62,2349+26])
+                        ]
+                  ]
+                  expression (driver/pparse.ml[63,2379+2]..[66,2500+14])
+                    Pexp_sequence
+                    expression (driver/pparse.ml[63,2379+2]..[63,2379+39])
+                      Pexp_apply
+                      expression (driver/pparse.ml[63,2379+2]..[63,2379+15])
+                        Pexp_ident "output_string" (driver/pparse.ml[63,2379+2]..[63,2379+15])
+                      [
+                        <arg>
+                        Nolabel
+                          expression (driver/pparse.ml[63,2379+16]..[63,2379+18])
+                            Pexp_ident "oc" (driver/pparse.ml[63,2379+16]..[63,2379+18])
+                        <arg>
+                        Nolabel
+                          expression (driver/pparse.ml[63,2379+19]..[63,2379+39])
+                            Pexp_apply
+                            expression (driver/pparse.ml[63,2379+20]..[63,2379+33])
+                              Pexp_ident "magic_of_kind" (driver/pparse.ml[63,2379+20]..[63,2379+33])
+                            [
+                              <arg>
+                              Nolabel
+                                expression (driver/pparse.ml[63,2379+34]..[63,2379+38])
+                                  Pexp_ident "kind" (driver/pparse.ml[63,2379+34]..[63,2379+38])
+                            ]
+                      ]
+                    expression (driver/pparse.ml[64,2420+2]..[66,2500+14])
+                      Pexp_sequence
+                      expression (driver/pparse.ml[64,2420+2]..[64,2420+49])
+                        Pexp_apply
+                        expression (driver/pparse.ml[64,2420+2]..[64,2420+14])
+                          Pexp_ident "output_value" (driver/pparse.ml[64,2420+2]..[64,2420+14])
+                        [
+                          <arg>
+                          Nolabel
+                            expression (driver/pparse.ml[64,2420+15]..[64,2420+17])
+                              Pexp_ident "oc" (driver/pparse.ml[64,2420+15]..[64,2420+17])
+                          <arg>
+                          Nolabel
+                            expression (driver/pparse.ml[64,2420+18]..[64,2420+49])
+                              Pexp_constraint
+                              expression (driver/pparse.ml[64,2420+19]..[64,2420+39])
+                                Pexp_apply
+                                expression (driver/pparse.ml[64,2420+19]..[64,2420+20])
+                                  Pexp_ident "!" (driver/pparse.ml[64,2420+19]..[64,2420+20])
+                                [
+                                  <arg>
+                                  Nolabel
+                                    expression (driver/pparse.ml[64,2420+20]..[64,2420+39])
+                                      Pexp_ident "Location.input_name" (driver/pparse.ml[64,2420+20]..[64,2420+39])
+                                ]
+                              core_type (driver/pparse.ml[64,2420+42]..[64,2420+48])
+                                Ptyp_constr "string" (driver/pparse.ml[64,2420+42]..[64,2420+48])
+                                []
+                        ]
+                      expression (driver/pparse.ml[65,2471+2]..[66,2500+14])
+                        Pexp_sequence
+                        expression (driver/pparse.ml[65,2471+2]..[65,2471+27])
+                          Pexp_apply
+                          expression (driver/pparse.ml[65,2471+2]..[65,2471+14])
+                            Pexp_ident "output_value" (driver/pparse.ml[65,2471+2]..[65,2471+14])
+                          [
+                            <arg>
+                            Nolabel
+                              expression (driver/pparse.ml[65,2471+15]..[65,2471+17])
+                                Pexp_ident "oc" (driver/pparse.ml[65,2471+15]..[65,2471+17])
+                            <arg>
+                            Nolabel
+                              expression (driver/pparse.ml[65,2471+18]..[65,2471+27])
+                                Pexp_constraint
+                                expression (driver/pparse.ml[65,2471+19]..[65,2471+22])
+                                  Pexp_ident "ast" (driver/pparse.ml[65,2471+19]..[65,2471+22])
+                                core_type (driver/pparse.ml[65,2471+25]..[65,2471+26])
+                                  Ptyp_constr "a" (driver/pparse.ml[65,2471+25]..[65,2471+26])
+                                  []
+                          ]
+                        expression (driver/pparse.ml[66,2500+2]..[66,2500+14])
+                          Pexp_apply
+                          expression (driver/pparse.ml[66,2500+2]..[66,2500+11])
+                            Pexp_ident "close_out" (driver/pparse.ml[66,2500+2]..[66,2500+11])
+                          [
+                            <arg>
+                            Nolabel
+                              expression (driver/pparse.ml[66,2500+12]..[66,2500+14])
+                                Pexp_ident "oc" (driver/pparse.ml[66,2500+12]..[66,2500+14])
+                          ]
+    ]
+  structure_item (driver/pparse.ml[68,2516+0]..[91,3269+8])
+    Pstr_value Nonrec
+    [
+      <def>
+        pattern (driver/pparse.ml[68,2516+4]..[68,2516+18])
+          Ppat_var "apply_rewriter" (driver/pparse.ml[68,2516+4]..[68,2516+18])
+        expression (driver/pparse.ml[68,2516+19]..[91,3269+8]) ghost
+          Pexp_fun
+          Nolabel
+          None
+          pattern (driver/pparse.ml[68,2516+19]..[68,2516+23])
+            Ppat_var "kind" (driver/pparse.ml[68,2516+19]..[68,2516+23])
+          expression (driver/pparse.ml[68,2516+24]..[91,3269+8]) ghost
+            Pexp_fun
+            Nolabel
+            None
+            pattern (driver/pparse.ml[68,2516+24]..[68,2516+29])
+              Ppat_var "fn_in" (driver/pparse.ml[68,2516+24]..[68,2516+29])
+            expression (driver/pparse.ml[68,2516+30]..[91,3269+8]) ghost
+              Pexp_fun
+              Nolabel
+              None
+              pattern (driver/pparse.ml[68,2516+30]..[68,2516+33])
+                Ppat_var "ppx" (driver/pparse.ml[68,2516+30]..[68,2516+33])
+              expression (driver/pparse.ml[69,2552+2]..[91,3269+8])
+                Pexp_let Nonrec
+                [
+                  <def>
+                    pattern (driver/pparse.ml[69,2552+6]..[69,2552+11])
+                      Ppat_var "magic" (driver/pparse.ml[69,2552+6]..[69,2552+11])
+                    expression (driver/pparse.ml[69,2552+14]..[69,2552+32])
+                      Pexp_apply
+                      expression (driver/pparse.ml[69,2552+14]..[69,2552+27])
+                        Pexp_ident "magic_of_kind" (driver/pparse.ml[69,2552+14]..[69,2552+27])
+                      [
+                        <arg>
+                        Nolabel
+                          expression (driver/pparse.ml[69,2552+28]..[69,2552+32])
+                            Pexp_ident "kind" (driver/pparse.ml[69,2552+28]..[69,2552+32])
+                      ]
+                ]
+                expression (driver/pparse.ml[70,2588+2]..[91,3269+8])
+                  Pexp_let Nonrec
+                  [
+                    <def>
+                      pattern (driver/pparse.ml[70,2588+6]..[70,2588+12])
+                        Ppat_var "fn_out" (driver/pparse.ml[70,2588+6]..[70,2588+12])
+                      expression (driver/pparse.ml[70,2588+15]..[70,2588+46])
+                        Pexp_apply
+                        expression (driver/pparse.ml[70,2588+15]..[70,2588+33])
+                          Pexp_ident "Filename.temp_file" (driver/pparse.ml[70,2588+15]..[70,2588+33])
+                        [
+                          <arg>
+                          Nolabel
+                            expression (driver/pparse.ml[70,2588+34]..[70,2588+43])
+                              Pexp_constant PConst_string("camlppx",(driver/pparse.ml[70,2588+35]..[70,2588+42]),None)
+                          <arg>
+                          Nolabel
+                            expression (driver/pparse.ml[70,2588+44]..[70,2588+46])
+                              Pexp_constant PConst_string("",(driver/pparse.ml[70,2588+45]..[70,2588+45]),None)
+                        ]
+                  ]
+                  expression (driver/pparse.ml[71,2638+2]..[91,3269+8])
+                    Pexp_let Nonrec
+                    [
+                      <def>
+                        pattern (driver/pparse.ml[71,2638+6]..[71,2638+10])
+                          Ppat_var "comm" (driver/pparse.ml[71,2638+6]..[71,2638+10])
+                        expression (driver/pparse.ml[72,2651+4]..[72,2651+80])
+                          Pexp_apply
+                          expression (driver/pparse.ml[72,2651+4]..[72,2651+18])
+                            Pexp_ident "Printf.sprintf" (driver/pparse.ml[72,2651+4]..[72,2651+18])
+                          [
+                            <arg>
+                            Nolabel
+                              expression (driver/pparse.ml[72,2651+19]..[72,2651+29])
+                                Pexp_constant PConst_string("%s %s %s",(driver/pparse.ml[72,2651+20]..[72,2651+28]),None)
+                            <arg>
+                            Nolabel
+                              expression (driver/pparse.ml[72,2651+30]..[72,2651+33])
+                                Pexp_ident "ppx" (driver/pparse.ml[72,2651+30]..[72,2651+33])
+                            <arg>
+                            Nolabel
+                              expression (driver/pparse.ml[72,2651+34]..[72,2651+56])
+                                Pexp_apply
+                                expression (driver/pparse.ml[72,2651+35]..[72,2651+49])
+                                  Pexp_ident "Filename.quote" (driver/pparse.ml[72,2651+35]..[72,2651+49])
+                                [
+                                  <arg>
+                                  Nolabel
+                                    expression (driver/pparse.ml[72,2651+50]..[72,2651+55])
+                                      Pexp_ident "fn_in" (driver/pparse.ml[72,2651+50]..[72,2651+55])
+                                ]
+                            <arg>
+                            Nolabel
+                              expression (driver/pparse.ml[72,2651+57]..[72,2651+80])
+                                Pexp_apply
+                                expression (driver/pparse.ml[72,2651+58]..[72,2651+72])
+                                  Pexp_ident "Filename.quote" (driver/pparse.ml[72,2651+58]..[72,2651+72])
+                                [
+                                  <arg>
+                                  Nolabel
+                                    expression (driver/pparse.ml[72,2651+73]..[72,2651+79])
+                                      Pexp_ident "fn_out" (driver/pparse.ml[72,2651+73]..[72,2651+79])
+                                ]
+                          ]
+                    ]
+                    expression (driver/pparse.ml[74,2737+2]..[91,3269+8])
+                      Pexp_let Nonrec
+                      [
+                        <def>
+                          pattern (driver/pparse.ml[74,2737+6]..[74,2737+8])
+                            Ppat_var "ok" (driver/pparse.ml[74,2737+6]..[74,2737+8])
+                          expression (driver/pparse.ml[74,2737+11]..[74,2737+33])
+                            Pexp_apply
+                            expression (driver/pparse.ml[74,2737+30]..[74,2737+31])
+                              Pexp_ident "=" (driver/pparse.ml[74,2737+30]..[74,2737+31])
+                            [
+                              <arg>
+                              Nolabel
+                                expression (driver/pparse.ml[74,2737+11]..[74,2737+29])
+                                  Pexp_apply
+                                  expression (driver/pparse.ml[74,2737+11]..[74,2737+24])
+                                    Pexp_ident "Ccomp.command" (driver/pparse.ml[74,2737+11]..[74,2737+24])
+                                  [
+                                    <arg>
+                                    Nolabel
+                                      expression (driver/pparse.ml[74,2737+25]..[74,2737+29])
+                                        Pexp_ident "comm" (driver/pparse.ml[74,2737+25]..[74,2737+29])
+                                  ]
+                              <arg>
+                              Nolabel
+                                expression (driver/pparse.ml[74,2737+32]..[74,2737+33])
+                                  Pexp_constant PConst_int (0,None)
+                            ]
+                      ]
+                      expression (driver/pparse.ml[75,2774+2]..[91,3269+8])
+                        Pexp_sequence
+                        expression (driver/pparse.ml[75,2774+2]..[75,2774+24])
+                          Pexp_apply
+                          expression (driver/pparse.ml[75,2774+2]..[75,2774+18])
+                            Pexp_ident "Misc.remove_file" (driver/pparse.ml[75,2774+2]..[75,2774+18])
+                          [
+                            <arg>
+                            Nolabel
+                              expression (driver/pparse.ml[75,2774+19]..[75,2774+24])
+                                Pexp_ident "fn_in" (driver/pparse.ml[75,2774+19]..[75,2774+24])
+                          ]
+                        expression (driver/pparse.ml[76,2800+2]..[91,3269+8])
+                          Pexp_sequence
+                          expression (driver/pparse.ml[76,2800+2]..[79,2888+5])
+                            Pexp_ifthenelse
+                            expression (driver/pparse.ml[76,2800+5]..[76,2800+11])
+                              Pexp_apply
+                              expression (driver/pparse.ml[76,2800+5]..[76,2800+8])
+                                Pexp_ident "not" (driver/pparse.ml[76,2800+5]..[76,2800+8])
+                              [
+                                <arg>
+                                Nolabel
+                                  expression (driver/pparse.ml[76,2800+9]..[76,2800+11])
+                                    Pexp_ident "ok" (driver/pparse.ml[76,2800+9]..[76,2800+11])
+                              ]
+                            expression (driver/pparse.ml[76,2800+17]..[79,2888+5])
+                              Pexp_sequence
+                              expression (driver/pparse.ml[77,2823+4]..[77,2823+27])
+                                Pexp_apply
+                                expression (driver/pparse.ml[77,2823+4]..[77,2823+20])
+                                  Pexp_ident "Misc.remove_file" (driver/pparse.ml[77,2823+4]..[77,2823+20])
+                                [
+                                  <arg>
+                                  Nolabel
+                                    expression (driver/pparse.ml[77,2823+21]..[77,2823+27])
+                                      Pexp_ident "fn_out" (driver/pparse.ml[77,2823+21]..[77,2823+27])
+                                ]
+                              expression (driver/pparse.ml[78,2852+4]..[78,2852+34])
+                                Pexp_apply
+                                expression (driver/pparse.ml[78,2852+4]..[78,2852+9])
+                                  Pexp_ident "raise" (driver/pparse.ml[78,2852+4]..[78,2852+9])
+                                [
+                                  <arg>
+                                  Nolabel
+                                    expression (driver/pparse.ml[78,2852+10]..[78,2852+34])
+                                      Pexp_construct "Error" (driver/pparse.ml[78,2852+11]..[78,2852+16])
+                                      Some
+                                        expression (driver/pparse.ml[78,2852+17]..[78,2852+33])
+                                          Pexp_construct "CannotRun" (driver/pparse.ml[78,2852+18]..[78,2852+27])
+                                          Some
+                                            expression (driver/pparse.ml[78,2852+28]..[78,2852+32])
+                                              Pexp_ident "comm" (driver/pparse.ml[78,2852+28]..[78,2852+32])
+                                ]
+                            None
+                          expression (driver/pparse.ml[80,2895+2]..[91,3269+8])
+                            Pexp_sequence
+                            expression (driver/pparse.ml[80,2895+2]..[81,2934+35])
+                              Pexp_ifthenelse
+                              expression (driver/pparse.ml[80,2895+5]..[80,2895+33])
+                                Pexp_apply
+                                expression (driver/pparse.ml[80,2895+5]..[80,2895+8])
+                                  Pexp_ident "not" (driver/pparse.ml[80,2895+5]..[80,2895+8])
+                                [
+                                  <arg>
+                                  Nolabel
+                                    expression (driver/pparse.ml[80,2895+9]..[80,2895+33])
+                                      Pexp_apply
+                                      expression (driver/pparse.ml[80,2895+10]..[80,2895+25])
+                                        Pexp_ident "Sys.file_exists" (driver/pparse.ml[80,2895+10]..[80,2895+25])
+                                      [
+                                        <arg>
+                                        Nolabel
+                                          expression (driver/pparse.ml[80,2895+26]..[80,2895+32])
+                                            Pexp_ident "fn_out" (driver/pparse.ml[80,2895+26]..[80,2895+32])
+                                      ]
+                                ]
+                              expression (driver/pparse.ml[81,2934+4]..[81,2934+35])
+                                Pexp_apply
+                                expression (driver/pparse.ml[81,2934+4]..[81,2934+9])
+                                  Pexp_ident "raise" (driver/pparse.ml[81,2934+4]..[81,2934+9])
+                                [
+                                  <arg>
+                                  Nolabel
+                                    expression (driver/pparse.ml[81,2934+10]..[81,2934+35])
+                                      Pexp_construct "Error" (driver/pparse.ml[81,2934+11]..[81,2934+16])
+                                      Some
+                                        expression (driver/pparse.ml[81,2934+17]..[81,2934+34])
+                                          Pexp_construct "WrongMagic" (driver/pparse.ml[81,2934+18]..[81,2934+28])
+                                          Some
+                                            expression (driver/pparse.ml[81,2934+29]..[81,2934+33])
+                                              Pexp_ident "comm" (driver/pparse.ml[81,2934+29]..[81,2934+33])
+                                ]
+                              None
+                            expression (driver/pparse.ml[83,3022+2]..[91,3269+8])
+                              Pexp_let Nonrec
+                              [
+                                <def>
+                                  pattern (driver/pparse.ml[83,3022+6]..[83,3022+8])
+                                    Ppat_var "ic" (driver/pparse.ml[83,3022+6]..[83,3022+8])
+                                  expression (driver/pparse.ml[83,3022+11]..[83,3022+29])
+                                    Pexp_apply
+                                    expression (driver/pparse.ml[83,3022+11]..[83,3022+22])
+                                      Pexp_ident "open_in_bin" (driver/pparse.ml[83,3022+11]..[83,3022+22])
+                                    [
+                                      <arg>
+                                      Nolabel
+                                        expression (driver/pparse.ml[83,3022+23]..[83,3022+29])
+                                          Pexp_ident "fn_out" (driver/pparse.ml[83,3022+23]..[83,3022+29])
+                                    ]
+                              ]
+                              expression (driver/pparse.ml[84,3055+2]..[91,3269+8])
+                                Pexp_let Nonrec
+                                [
+                                  <def>
+                                    pattern (driver/pparse.ml[84,3055+6]..[84,3055+12])
+                                      Ppat_var "buffer" (driver/pparse.ml[84,3055+6]..[84,3055+12])
+                                    expression (driver/pparse.ml[85,3070+4]..[85,3070+75])
+                                      Pexp_try
+                                      expression (driver/pparse.ml[85,3070+8]..[85,3070+52])
+                                        Pexp_apply
+                                        expression (driver/pparse.ml[85,3070+8]..[85,3070+27])
+                                          Pexp_ident "really_input_string" (driver/pparse.ml[85,3070+8]..[85,3070+27])
+                                        [
+                                          <arg>
+                                          Nolabel
+                                            expression (driver/pparse.ml[85,3070+28]..[85,3070+30])
+                                              Pexp_ident "ic" (driver/pparse.ml[85,3070+28]..[85,3070+30])
+                                          <arg>
+                                          Nolabel
+                                            expression (driver/pparse.ml[85,3070+31]..[85,3070+52])
+                                              Pexp_apply
+                                              expression (driver/pparse.ml[85,3070+32]..[85,3070+45])
+                                                Pexp_ident "String.length" (driver/pparse.ml[85,3070+32]..[85,3070+45])
+                                              [
+                                                <arg>
+                                                Nolabel
+                                                  expression (driver/pparse.ml[85,3070+46]..[85,3070+51])
+                                                    Pexp_ident "magic" (driver/pparse.ml[85,3070+46]..[85,3070+51])
+                                              ]
+                                        ]
+                                      [
+                                        <case>
+                                          pattern (driver/pparse.ml[85,3070+58]..[85,3070+69])
+                                            Ppat_construct "End_of_file" (driver/pparse.ml[85,3070+58]..[85,3070+69])
+                                            None
+                                          expression (driver/pparse.ml[85,3070+73]..[85,3070+75])
+                                            Pexp_constant PConst_string("",(driver/pparse.ml[85,3070+74]..[85,3070+74]),None)
+                                      ]
+                                ]
+                                expression (driver/pparse.ml[86,3149+2]..[91,3269+8])
+                                  Pexp_sequence
+                                  expression (driver/pparse.ml[86,3149+2]..[86,3149+13])
+                                    Pexp_apply
+                                    expression (driver/pparse.ml[86,3149+2]..[86,3149+10])
+                                      Pexp_ident "close_in" (driver/pparse.ml[86,3149+2]..[86,3149+10])
+                                    [
+                                      <arg>
+                                      Nolabel
+                                        expression (driver/pparse.ml[86,3149+11]..[86,3149+13])
+                                          Pexp_ident "ic" (driver/pparse.ml[86,3149+11]..[86,3149+13])
+                                    ]
+                                  expression (driver/pparse.ml[87,3164+2]..[91,3269+8])
+                                    Pexp_sequence
+                                    expression (driver/pparse.ml[87,3164+2]..[90,3262+5])
+                                      Pexp_ifthenelse
+                                      expression (driver/pparse.ml[87,3164+5]..[87,3164+20])
+                                        Pexp_apply
+                                        expression (driver/pparse.ml[87,3164+12]..[87,3164+14])
+                                          Pexp_ident "<>" (driver/pparse.ml[87,3164+12]..[87,3164+14])
+                                        [
+                                          <arg>
+                                          Nolabel
+                                            expression (driver/pparse.ml[87,3164+5]..[87,3164+11])
+                                              Pexp_ident "buffer" (driver/pparse.ml[87,3164+5]..[87,3164+11])
+                                          <arg>
+                                          Nolabel
+                                            expression (driver/pparse.ml[87,3164+15]..[87,3164+20])
+                                              Pexp_ident "magic" (driver/pparse.ml[87,3164+15]..[87,3164+20])
+                                        ]
+                                      expression (driver/pparse.ml[87,3164+26]..[90,3262+5])
+                                        Pexp_sequence
+                                        expression (driver/pparse.ml[88,3196+4]..[88,3196+27])
+                                          Pexp_apply
+                                          expression (driver/pparse.ml[88,3196+4]..[88,3196+20])
+                                            Pexp_ident "Misc.remove_file" (driver/pparse.ml[88,3196+4]..[88,3196+20])
+                                          [
+                                            <arg>
+                                            Nolabel
+                                              expression (driver/pparse.ml[88,3196+21]..[88,3196+27])
+                                                Pexp_ident "fn_out" (driver/pparse.ml[88,3196+21]..[88,3196+27])
+                                          ]
+                                        expression (driver/pparse.ml[89,3225+4]..[89,3225+35])
+                                          Pexp_apply
+                                          expression (driver/pparse.ml[89,3225+4]..[89,3225+9])
+                                            Pexp_ident "raise" (driver/pparse.ml[89,3225+4]..[89,3225+9])
+                                          [
+                                            <arg>
+                                            Nolabel
+                                              expression (driver/pparse.ml[89,3225+10]..[89,3225+35])
+                                                Pexp_construct "Error" (driver/pparse.ml[89,3225+11]..[89,3225+16])
+                                                Some
+                                                  expression (driver/pparse.ml[89,3225+17]..[89,3225+34])
+                                                    Pexp_construct "WrongMagic" (driver/pparse.ml[89,3225+18]..[89,3225+28])
+                                                    Some
+                                                      expression (driver/pparse.ml[89,3225+29]..[89,3225+33])
+                                                        Pexp_ident "comm" (driver/pparse.ml[89,3225+29]..[89,3225+33])
+                                          ]
+                                      None
+                                    expression (driver/pparse.ml[91,3269+2]..[91,3269+8])
+                                      Pexp_ident "fn_out" (driver/pparse.ml[91,3269+2]..[91,3269+8])
+    ]
+  structure_item (driver/pparse.ml[93,3279+0]..[103,3715+5])
+    Pstr_value Nonrec
+    [
+      <def>
+        pattern (driver/pparse.ml[93,3279+4]..[93,3279+12])
+          Ppat_var "read_ast" (driver/pparse.ml[93,3279+4]..[93,3279+12])
+        expression (driver/pparse.ml[93,3279+13]..[103,3715+5])
+          Pexp_newtype "a"
+          expression (driver/pparse.ml[93,3279+22]..[103,3715+5]) ghost
+            Pexp_fun
+            Nolabel
+            None
+            pattern (driver/pparse.ml[93,3279+22]..[93,3279+41])
+              Ppat_constraint
+              pattern (driver/pparse.ml[93,3279+23]..[93,3279+27])
+                Ppat_var "kind" (driver/pparse.ml[93,3279+23]..[93,3279+27])
+              core_type (driver/pparse.ml[93,3279+30]..[93,3279+40])
+                Ptyp_constr "ast_kind" (driver/pparse.ml[93,3279+32]..[93,3279+40])
+                [
+                  core_type (driver/pparse.ml[93,3279+30]..[93,3279+31])
+                    Ptyp_constr "a" (driver/pparse.ml[93,3279+30]..[93,3279+31])
+                    []
+                ]
+            expression (driver/pparse.ml[93,3279+42]..[103,3715+5]) ghost
+              Pexp_fun
+              Nolabel
+              None
+              pattern (driver/pparse.ml[93,3279+42]..[93,3279+44])
+                Ppat_var "fn" (driver/pparse.ml[93,3279+42]..[93,3279+44])
+              expression (driver/pparse.ml[93,3279+45]..[103,3715+5])
+                Pexp_constraint
+                expression (driver/pparse.ml[94,3330+2]..[103,3715+5])
+                  Pexp_let Nonrec
+                  [
+                    <def>
+                      pattern (driver/pparse.ml[94,3330+6]..[94,3330+8])
+                        Ppat_var "ic" (driver/pparse.ml[94,3330+6]..[94,3330+8])
+                      expression (driver/pparse.ml[94,3330+11]..[94,3330+25])
+                        Pexp_apply
+                        expression (driver/pparse.ml[94,3330+11]..[94,3330+22])
+                          Pexp_ident "open_in_bin" (driver/pparse.ml[94,3330+11]..[94,3330+22])
+                        [
+                          <arg>
+                          Nolabel
+                            expression (driver/pparse.ml[94,3330+23]..[94,3330+25])
+                              Pexp_ident "fn" (driver/pparse.ml[94,3330+23]..[94,3330+25])
+                        ]
+                  ]
+                  expression (driver/pparse.ml[95,3359+2]..[103,3715+5])
+                    Pexp_apply
+                    expression (driver/pparse.ml[95,3359+2]..[95,3359+18])
+                      Pexp_ident "Misc.try_finally" (driver/pparse.ml[95,3359+2]..[95,3359+18])
+                    [
+                      <arg>
+                      Labelled "always"
+                        expression (driver/pparse.ml[96,3378+12]..[96,3378+56])
+                          Pexp_fun
+                          Nolabel
+                          None
+                          pattern (driver/pparse.ml[96,3378+17]..[96,3378+19])
+                            Ppat_construct "()" (driver/pparse.ml[96,3378+17]..[96,3378+19])
+                            None
+                          expression (driver/pparse.ml[96,3378+23]..[96,3378+55])
+                            Pexp_sequence
+                            expression (driver/pparse.ml[96,3378+23]..[96,3378+34])
+                              Pexp_apply
+                              expression (driver/pparse.ml[96,3378+23]..[96,3378+31])
+                                Pexp_ident "close_in" (driver/pparse.ml[96,3378+23]..[96,3378+31])
+                              [
+                                <arg>
+                                Nolabel
+                                  expression (driver/pparse.ml[96,3378+32]..[96,3378+34])
+                                    Pexp_ident "ic" (driver/pparse.ml[96,3378+32]..[96,3378+34])
+                              ]
+                            expression (driver/pparse.ml[96,3378+36]..[96,3378+55])
+                              Pexp_apply
+                              expression (driver/pparse.ml[96,3378+36]..[96,3378+52])
+                                Pexp_ident "Misc.remove_file" (driver/pparse.ml[96,3378+36]..[96,3378+52])
+                              [
+                                <arg>
+                                Nolabel
+                                  expression (driver/pparse.ml[96,3378+53]..[96,3378+55])
+                                    Pexp_ident "fn" (driver/pparse.ml[96,3378+53]..[96,3378+55])
+                              ]
+                      <arg>
+                      Nolabel
+                        expression (driver/pparse.ml[97,3435+4]..[103,3715+5])
+                          Pexp_fun
+                          Nolabel
+                          None
+                          pattern (driver/pparse.ml[97,3435+9]..[97,3435+11])
+                            Ppat_construct "()" (driver/pparse.ml[97,3435+9]..[97,3435+11])
+                            None
+                          expression (driver/pparse.ml[98,3450+7]..[102,3687+27])
+                            Pexp_let Nonrec
+                            [
+                              <def>
+                                pattern (driver/pparse.ml[98,3450+11]..[98,3450+16])
+                                  Ppat_var "magic" (driver/pparse.ml[98,3450+11]..[98,3450+16])
+                                expression (driver/pparse.ml[98,3450+19]..[98,3450+37])
+                                  Pexp_apply
+                                  expression (driver/pparse.ml[98,3450+19]..[98,3450+32])
+                                    Pexp_ident "magic_of_kind" (driver/pparse.ml[98,3450+19]..[98,3450+32])
+                                  [
+                                    <arg>
+                                    Nolabel
+                                      expression (driver/pparse.ml[98,3450+33]..[98,3450+37])
+                                        Pexp_ident "kind" (driver/pparse.ml[98,3450+33]..[98,3450+37])
+                                  ]
+                            ]
+                            expression (driver/pparse.ml[99,3491+7]..[102,3687+27])
+                              Pexp_let Nonrec
+                              [
+                                <def>
+                                  pattern (driver/pparse.ml[99,3491+11]..[99,3491+17])
+                                    Ppat_var "buffer" (driver/pparse.ml[99,3491+11]..[99,3491+17])
+                                  expression (driver/pparse.ml[99,3491+20]..[99,3491+64])
+                                    Pexp_apply
+                                    expression (driver/pparse.ml[99,3491+20]..[99,3491+39])
+                                      Pexp_ident "really_input_string" (driver/pparse.ml[99,3491+20]..[99,3491+39])
+                                    [
+                                      <arg>
+                                      Nolabel
+                                        expression (driver/pparse.ml[99,3491+40]..[99,3491+42])
+                                          Pexp_ident "ic" (driver/pparse.ml[99,3491+40]..[99,3491+42])
+                                      <arg>
+                                      Nolabel
+                                        expression (driver/pparse.ml[99,3491+43]..[99,3491+64])
+                                          Pexp_apply
+                                          expression (driver/pparse.ml[99,3491+44]..[99,3491+57])
+                                            Pexp_ident "String.length" (driver/pparse.ml[99,3491+44]..[99,3491+57])
+                                          [
+                                            <arg>
+                                            Nolabel
+                                              expression (driver/pparse.ml[99,3491+58]..[99,3491+63])
+                                                Pexp_ident "magic" (driver/pparse.ml[99,3491+58]..[99,3491+63])
+                                          ]
+                                    ]
+                              ]
+                              expression (driver/pparse.ml[100,3559+7]..[102,3687+27])
+                                Pexp_sequence
+                                expression (driver/pparse.ml[100,3559+7]..[100,3559+29])
+                                  Pexp_assert
+                                  expression (driver/pparse.ml[100,3559+13]..[100,3559+29])
+                                    Pexp_apply
+                                    expression (driver/pparse.ml[100,3559+21]..[100,3559+22])
+                                      Pexp_ident "=" (driver/pparse.ml[100,3559+21]..[100,3559+22])
+                                    [
+                                      <arg>
+                                      Nolabel
+                                        expression (driver/pparse.ml[100,3559+14]..[100,3559+20])
+                                          Pexp_ident "buffer" (driver/pparse.ml[100,3559+14]..[100,3559+20])
+                                      <arg>
+                                      Nolabel
+                                        expression (driver/pparse.ml[100,3559+23]..[100,3559+28])
+                                          Pexp_ident "magic" (driver/pparse.ml[100,3559+23]..[100,3559+28])
+                                    ]
+                                expression (driver/pparse.ml[101,3630+7]..[102,3687+27])
+                                  Pexp_sequence
+                                  expression (driver/pparse.ml[101,3630+7]..[101,3630+55])
+                                    Pexp_apply
+                                    expression (driver/pparse.ml[101,3630+27]..[101,3630+29])
+                                      Pexp_ident ":=" (driver/pparse.ml[101,3630+27]..[101,3630+29])
+                                    [
+                                      <arg>
+                                      Nolabel
+                                        expression (driver/pparse.ml[101,3630+7]..[101,3630+26])
+                                          Pexp_ident "Location.input_name" (driver/pparse.ml[101,3630+7]..[101,3630+26])
+                                      <arg>
+                                      Nolabel
+                                        expression (driver/pparse.ml[101,3630+30]..[101,3630+55])
+                                          Pexp_constraint
+                                          expression (driver/pparse.ml[101,3630+31]..[101,3630+45])
+                                            Pexp_apply
+                                            expression (driver/pparse.ml[101,3630+31]..[101,3630+42])
+                                              Pexp_ident "input_value" (driver/pparse.ml[101,3630+31]..[101,3630+42])
+                                            [
+                                              <arg>
+                                              Nolabel
+                                                expression (driver/pparse.ml[101,3630+43]..[101,3630+45])
+                                                  Pexp_ident "ic" (driver/pparse.ml[101,3630+43]..[101,3630+45])
+                                            ]
+                                          core_type (driver/pparse.ml[101,3630+48]..[101,3630+54])
+                                            Ptyp_constr "string" (driver/pparse.ml[101,3630+48]..[101,3630+54])
+                                            []
+                                    ]
+                                  expression (driver/pparse.ml[102,3687+7]..[102,3687+27])
+                                    Pexp_constraint
+                                    expression (driver/pparse.ml[102,3687+8]..[102,3687+22])
+                                      Pexp_apply
+                                      expression (driver/pparse.ml[102,3687+8]..[102,3687+19])
+                                        Pexp_ident "input_value" (driver/pparse.ml[102,3687+8]..[102,3687+19])
+                                      [
+                                        <arg>
+                                        Nolabel
+                                          expression (driver/pparse.ml[102,3687+20]..[102,3687+22])
+                                            Pexp_ident "ic" (driver/pparse.ml[102,3687+20]..[102,3687+22])
+                                      ]
+                                    core_type (driver/pparse.ml[102,3687+25]..[102,3687+26])
+                                      Ptyp_constr "a" (driver/pparse.ml[102,3687+25]..[102,3687+26])
+                                      []
+                    ]
+                core_type (driver/pparse.ml[93,3279+47]..[93,3279+48])
+                  Ptyp_constr "a" (driver/pparse.ml[93,3279+47]..[93,3279+48])
+                  []
+    ]
+  structure_item (driver/pparse.ml[105,3722+0]..[109,3891+18])
+    Pstr_value Nonrec
+    [
+      <def>
+        pattern (driver/pparse.ml[105,3722+4]..[105,3722+11])
+          Ppat_var "rewrite" (driver/pparse.ml[105,3722+4]..[105,3722+11])
+        expression (driver/pparse.ml[105,3722+12]..[109,3891+18]) ghost
+          Pexp_fun
+          Nolabel
+          None
+          pattern (driver/pparse.ml[105,3722+12]..[105,3722+16])
+            Ppat_var "kind" (driver/pparse.ml[105,3722+12]..[105,3722+16])
+          expression (driver/pparse.ml[105,3722+17]..[109,3891+18]) ghost
+            Pexp_fun
+            Nolabel
+            None
+            pattern (driver/pparse.ml[105,3722+17]..[105,3722+21])
+              Ppat_var "ppxs" (driver/pparse.ml[105,3722+17]..[105,3722+21])
+            expression (driver/pparse.ml[105,3722+22]..[109,3891+18]) ghost
+              Pexp_fun
+              Nolabel
+              None
+              pattern (driver/pparse.ml[105,3722+22]..[105,3722+25])
+                Ppat_var "ast" (driver/pparse.ml[105,3722+22]..[105,3722+25])
+              expression (driver/pparse.ml[106,3750+2]..[109,3891+18])
+                Pexp_let Nonrec
+                [
+                  <def>
+                    pattern (driver/pparse.ml[106,3750+6]..[106,3750+8])
+                      Ppat_var "fn" (driver/pparse.ml[106,3750+6]..[106,3750+8])
+                    expression (driver/pparse.ml[106,3750+11]..[106,3750+42])
+                      Pexp_apply
+                      expression (driver/pparse.ml[106,3750+11]..[106,3750+29])
+                        Pexp_ident "Filename.temp_file" (driver/pparse.ml[106,3750+11]..[106,3750+29])
+                      [
+                        <arg>
+                        Nolabel
+                          expression (driver/pparse.ml[106,3750+30]..[106,3750+39])
+                            Pexp_constant PConst_string("camlppx",(driver/pparse.ml[106,3750+31]..[106,3750+38]),None)
+                        <arg>
+                        Nolabel
+                          expression (driver/pparse.ml[106,3750+40]..[106,3750+42])
+                            Pexp_constant PConst_string("",(driver/pparse.ml[106,3750+41]..[106,3750+41]),None)
+                      ]
+                ]
+                expression (driver/pparse.ml[107,3796+2]..[109,3891+18])
+                  Pexp_sequence
+                  expression (driver/pparse.ml[107,3796+2]..[107,3796+23])
+                    Pexp_apply
+                    expression (driver/pparse.ml[107,3796+2]..[107,3796+11])
+                      Pexp_ident "write_ast" (driver/pparse.ml[107,3796+2]..[107,3796+11])
+                    [
+                      <arg>
+                      Nolabel
+                        expression (driver/pparse.ml[107,3796+12]..[107,3796+16])
+                          Pexp_ident "kind" (driver/pparse.ml[107,3796+12]..[107,3796+16])
+                      <arg>
+                      Nolabel
+                        expression (driver/pparse.ml[107,3796+17]..[107,3796+19])
+                          Pexp_ident "fn" (driver/pparse.ml[107,3796+17]..[107,3796+19])
+                      <arg>
+                      Nolabel
+                        expression (driver/pparse.ml[107,3796+20]..[107,3796+23])
+                          Pexp_ident "ast" (driver/pparse.ml[107,3796+20]..[107,3796+23])
+                    ]
+                  expression (driver/pparse.ml[108,3821+2]..[109,3891+18])
+                    Pexp_let Nonrec
+                    [
+                      <def>
+                        pattern (driver/pparse.ml[108,3821+6]..[108,3821+8])
+                          Ppat_var "fn" (driver/pparse.ml[108,3821+6]..[108,3821+8])
+                        expression (driver/pparse.ml[108,3821+11]..[108,3821+66])
+                          Pexp_apply
+                          expression (driver/pparse.ml[108,3821+11]..[108,3821+25])
+                            Pexp_ident "List.fold_left" (driver/pparse.ml[108,3821+11]..[108,3821+25])
+                          [
+                            <arg>
+                            Nolabel
+                              expression (driver/pparse.ml[108,3821+26]..[108,3821+47])
+                                Pexp_apply
+                                expression (driver/pparse.ml[108,3821+27]..[108,3821+41])
+                                  Pexp_ident "apply_rewriter" (driver/pparse.ml[108,3821+27]..[108,3821+41])
+                                [
+                                  <arg>
+                                  Nolabel
+                                    expression (driver/pparse.ml[108,3821+42]..[108,3821+46])
+                                      Pexp_ident "kind" (driver/pparse.ml[108,3821+42]..[108,3821+46])
+                                ]
+                            <arg>
+                            Nolabel
+                              expression (driver/pparse.ml[108,3821+48]..[108,3821+50])
+                                Pexp_ident "fn" (driver/pparse.ml[108,3821+48]..[108,3821+50])
+                            <arg>
+                            Nolabel
+                              expression (driver/pparse.ml[108,3821+51]..[108,3821+66])
+                                Pexp_apply
+                                expression (driver/pparse.ml[108,3821+52]..[108,3821+60])
+                                  Pexp_ident "List.rev" (driver/pparse.ml[108,3821+52]..[108,3821+60])
+                                [
+                                  <arg>
+                                  Nolabel
+                                    expression (driver/pparse.ml[108,3821+61]..[108,3821+65])
+                                      Pexp_ident "ppxs" (driver/pparse.ml[108,3821+61]..[108,3821+65])
+                                ]
+                          ]
+                    ]
+                    expression (driver/pparse.ml[109,3891+2]..[109,3891+18])
+                      Pexp_apply
+                      expression (driver/pparse.ml[109,3891+2]..[109,3891+10])
+                        Pexp_ident "read_ast" (driver/pparse.ml[109,3891+2]..[109,3891+10])
+                      [
+                        <arg>
+                        Nolabel
+                          expression (driver/pparse.ml[109,3891+11]..[109,3891+15])
+                            Pexp_ident "kind" (driver/pparse.ml[109,3891+11]..[109,3891+15])
+                        <arg>
+                        Nolabel
+                          expression (driver/pparse.ml[109,3891+16]..[109,3891+18])
+                            Pexp_ident "fn" (driver/pparse.ml[109,3891+16]..[109,3891+18])
+                      ]
+    ]
+  structure_item (driver/pparse.ml[111,3911+0]..[121,4202+39])
+    Pstr_value Nonrec
+    [
+      <def>
+        pattern (driver/pparse.ml[111,3911+4]..[111,3911+23])
+          Ppat_var "apply_rewriters_str" (driver/pparse.ml[111,3911+4]..[111,3911+23])
+        expression (driver/pparse.ml[111,3911+24]..[121,4202+39]) ghost
+          Pexp_fun
+          Optional "restore"
+          Some
+            expression (driver/pparse.ml[111,3911+36]..[111,3911+40])
+              Pexp_construct "true" (driver/pparse.ml[111,3911+36]..[111,3911+40])
+              None
+          pattern (driver/pparse.ml[111,3911+26]..[111,3911+33])
+            Ppat_var "restore" (driver/pparse.ml[111,3911+26]..[111,3911+33])
+          expression (driver/pparse.ml[111,3911+42]..[121,4202+39]) ghost
+            Pexp_fun
+            Labelled "tool_name"
+            None
+            pattern (driver/pparse.ml[111,3911+43]..[111,3911+52])
+              Ppat_var "tool_name" (driver/pparse.ml[111,3911+43]..[111,3911+52])
+            expression (driver/pparse.ml[111,3911+53]..[121,4202+39]) ghost
+              Pexp_fun
+              Nolabel
+              None
+              pattern (driver/pparse.ml[111,3911+53]..[111,3911+56])
+                Ppat_var "ast" (driver/pparse.ml[111,3911+53]..[111,3911+56])
+              expression (driver/pparse.ml[112,3970+2]..[121,4202+39])
+                Pexp_match
+                expression (driver/pparse.ml[112,3970+8]..[112,3970+24])
+                  Pexp_apply
+                  expression (driver/pparse.ml[112,3970+8]..[112,3970+9])
+                    Pexp_ident "!" (driver/pparse.ml[112,3970+8]..[112,3970+9])
+                  [
+                    <arg>
+                    Nolabel
+                      expression (driver/pparse.ml[112,3970+9]..[112,3970+24])
+                        Pexp_ident "Clflags.all_ppx" (driver/pparse.ml[112,3970+9]..[112,3970+24])
+                  ]
+                [
+                  <case>
+                    pattern (driver/pparse.ml[113,4000+4]..[113,4000+6])
+                      Ppat_construct "[]" (driver/pparse.ml[113,4000+4]..[113,4000+6])
+                      None
+                    expression (driver/pparse.ml[113,4000+10]..[113,4000+13])
+                      Pexp_ident "ast" (driver/pparse.ml[113,4000+10]..[113,4000+13])
+                  <case>
+                    pattern (driver/pparse.ml[114,4014+4]..[114,4014+8])
+                      Ppat_var "ppxs" (driver/pparse.ml[114,4014+4]..[114,4014+8])
+                    expression (driver/pparse.ml[115,4026+6]..[121,4202+39])
+                      Pexp_let Nonrec
+                      [
+                        <def>
+                          pattern (driver/pparse.ml[115,4026+10]..[115,4026+13])
+                            Ppat_var "ast" (driver/pparse.ml[115,4026+10]..[115,4026+13])
+                          expression (driver/pparse.ml[116,4042+8]..[119,4141+51])
+                            Pexp_apply
+                            expression (driver/pparse.ml[119,4141+8]..[119,4141+10])
+                              Pexp_ident "|>" (driver/pparse.ml[119,4141+8]..[119,4141+10])
+                            [
+                              <arg>
+                              Nolabel
+                                expression (driver/pparse.ml[116,4042+8]..[118,4107+33])
+                                  Pexp_apply
+                                  expression (driver/pparse.ml[118,4107+8]..[118,4107+10])
+                                    Pexp_ident "|>" (driver/pparse.ml[118,4107+8]..[118,4107+10])
+                                  [
+                                    <arg>
+                                    Nolabel
+                                      expression (driver/pparse.ml[116,4042+8]..[117,4054+52])
+                                        Pexp_apply
+                                        expression (driver/pparse.ml[117,4054+8]..[117,4054+10])
+                                          Pexp_ident "|>" (driver/pparse.ml[117,4054+8]..[117,4054+10])
+                                        [
+                                          <arg>
+                                          Nolabel
+                                            expression (driver/pparse.ml[116,4042+8]..[116,4042+11])
+                                              Pexp_ident "ast" (driver/pparse.ml[116,4042+8]..[116,4042+11])
+                                          <arg>
+                                          Nolabel
+                                            expression (driver/pparse.ml[117,4054+11]..[117,4054+52])
+                                              Pexp_apply
+                                              expression (driver/pparse.ml[117,4054+11]..[117,4054+41])
+                                                Pexp_ident "Ast_mapper.add_ppx_context_str" (driver/pparse.ml[117,4054+11]..[117,4054+41])
+                                              [
+                                                <arg>
+                                                Labelled "tool_name"
+                                                  expression (driver/pparse.ml[117,4054+43]..[117,4054+52])
+                                                    Pexp_ident "tool_name" (driver/pparse.ml[117,4054+43]..[117,4054+52])
+                                              ]
+                                        ]
+                                    <arg>
+                                    Nolabel
+                                      expression (driver/pparse.ml[118,4107+11]..[118,4107+33])
+                                        Pexp_apply
+                                        expression (driver/pparse.ml[118,4107+11]..[118,4107+18])
+                                          Pexp_ident "rewrite" (driver/pparse.ml[118,4107+11]..[118,4107+18])
+                                        [
+                                          <arg>
+                                          Nolabel
+                                            expression (driver/pparse.ml[118,4107+19]..[118,4107+28])
+                                              Pexp_construct "Structure" (driver/pparse.ml[118,4107+19]..[118,4107+28])
+                                              None
+                                          <arg>
+                                          Nolabel
+                                            expression (driver/pparse.ml[118,4107+29]..[118,4107+33])
+                                              Pexp_ident "ppxs" (driver/pparse.ml[118,4107+29]..[118,4107+33])
+                                        ]
+                                  ]
+                              <arg>
+                              Nolabel
+                                expression (driver/pparse.ml[119,4141+11]..[119,4141+51])
+                                  Pexp_apply
+                                  expression (driver/pparse.ml[119,4141+11]..[119,4141+42])
+                                    Pexp_ident "Ast_mapper.drop_ppx_context_str" (driver/pparse.ml[119,4141+11]..[119,4141+42])
+                                  [
+                                    <arg>
+                                    Labelled "restore"
+                                      expression (driver/pparse.ml[119,4141+44]..[119,4141+51])
+                                        Pexp_ident "restore" (driver/pparse.ml[119,4141+44]..[119,4141+51])
+                                  ]
+                            ]
+                      ]
+                      expression (driver/pparse.ml[121,4202+6]..[121,4202+39])
+                        Pexp_sequence
+                        expression (driver/pparse.ml[121,4202+6]..[121,4202+34])
+                          Pexp_apply
+                          expression (driver/pparse.ml[121,4202+6]..[121,4202+30])
+                            Pexp_ident "Ast_invariants.structure" (driver/pparse.ml[121,4202+6]..[121,4202+30])
+                          [
+                            <arg>
+                            Nolabel
+                              expression (driver/pparse.ml[121,4202+31]..[121,4202+34])
+                                Pexp_ident "ast" (driver/pparse.ml[121,4202+31]..[121,4202+34])
+                          ]
+                        expression (driver/pparse.ml[121,4202+36]..[121,4202+39])
+                          Pexp_ident "ast" (driver/pparse.ml[121,4202+36]..[121,4202+39])
+                ]
+    ]
+  structure_item (driver/pparse.ml[123,4243+0]..[133,4534+39])
+    Pstr_value Nonrec
+    [
+      <def>
+        pattern (driver/pparse.ml[123,4243+4]..[123,4243+23])
+          Ppat_var "apply_rewriters_sig" (driver/pparse.ml[123,4243+4]..[123,4243+23])
+        expression (driver/pparse.ml[123,4243+24]..[133,4534+39]) ghost
+          Pexp_fun
+          Optional "restore"
+          Some
+            expression (driver/pparse.ml[123,4243+36]..[123,4243+40])
+              Pexp_construct "true" (driver/pparse.ml[123,4243+36]..[123,4243+40])
+              None
+          pattern (driver/pparse.ml[123,4243+26]..[123,4243+33])
+            Ppat_var "restore" (driver/pparse.ml[123,4243+26]..[123,4243+33])
+          expression (driver/pparse.ml[123,4243+42]..[133,4534+39]) ghost
+            Pexp_fun
+            Labelled "tool_name"
+            None
+            pattern (driver/pparse.ml[123,4243+43]..[123,4243+52])
+              Ppat_var "tool_name" (driver/pparse.ml[123,4243+43]..[123,4243+52])
+            expression (driver/pparse.ml[123,4243+53]..[133,4534+39]) ghost
+              Pexp_fun
+              Nolabel
+              None
+              pattern (driver/pparse.ml[123,4243+53]..[123,4243+56])
+                Ppat_var "ast" (driver/pparse.ml[123,4243+53]..[123,4243+56])
+              expression (driver/pparse.ml[124,4302+2]..[133,4534+39])
+                Pexp_match
+                expression (driver/pparse.ml[124,4302+8]..[124,4302+24])
+                  Pexp_apply
+                  expression (driver/pparse.ml[124,4302+8]..[124,4302+9])
+                    Pexp_ident "!" (driver/pparse.ml[124,4302+8]..[124,4302+9])
+                  [
+                    <arg>
+                    Nolabel
+                      expression (driver/pparse.ml[124,4302+9]..[124,4302+24])
+                        Pexp_ident "Clflags.all_ppx" (driver/pparse.ml[124,4302+9]..[124,4302+24])
+                  ]
+                [
+                  <case>
+                    pattern (driver/pparse.ml[125,4332+4]..[125,4332+6])
+                      Ppat_construct "[]" (driver/pparse.ml[125,4332+4]..[125,4332+6])
+                      None
+                    expression (driver/pparse.ml[125,4332+10]..[125,4332+13])
+                      Pexp_ident "ast" (driver/pparse.ml[125,4332+10]..[125,4332+13])
+                  <case>
+                    pattern (driver/pparse.ml[126,4346+4]..[126,4346+8])
+                      Ppat_var "ppxs" (driver/pparse.ml[126,4346+4]..[126,4346+8])
+                    expression (driver/pparse.ml[127,4358+6]..[133,4534+39])
+                      Pexp_let Nonrec
+                      [
+                        <def>
+                          pattern (driver/pparse.ml[127,4358+10]..[127,4358+13])
+                            Ppat_var "ast" (driver/pparse.ml[127,4358+10]..[127,4358+13])
+                          expression (driver/pparse.ml[128,4374+8]..[131,4473+51])
+                            Pexp_apply
+                            expression (driver/pparse.ml[131,4473+8]..[131,4473+10])
+                              Pexp_ident "|>" (driver/pparse.ml[131,4473+8]..[131,4473+10])
+                            [
+                              <arg>
+                              Nolabel
+                                expression (driver/pparse.ml[128,4374+8]..[130,4439+33])
+                                  Pexp_apply
+                                  expression (driver/pparse.ml[130,4439+8]..[130,4439+10])
+                                    Pexp_ident "|>" (driver/pparse.ml[130,4439+8]..[130,4439+10])
+                                  [
+                                    <arg>
+                                    Nolabel
+                                      expression (driver/pparse.ml[128,4374+8]..[129,4386+52])
+                                        Pexp_apply
+                                        expression (driver/pparse.ml[129,4386+8]..[129,4386+10])
+                                          Pexp_ident "|>" (driver/pparse.ml[129,4386+8]..[129,4386+10])
+                                        [
+                                          <arg>
+                                          Nolabel
+                                            expression (driver/pparse.ml[128,4374+8]..[128,4374+11])
+                                              Pexp_ident "ast" (driver/pparse.ml[128,4374+8]..[128,4374+11])
+                                          <arg>
+                                          Nolabel
+                                            expression (driver/pparse.ml[129,4386+11]..[129,4386+52])
+                                              Pexp_apply
+                                              expression (driver/pparse.ml[129,4386+11]..[129,4386+41])
+                                                Pexp_ident "Ast_mapper.add_ppx_context_sig" (driver/pparse.ml[129,4386+11]..[129,4386+41])
+                                              [
+                                                <arg>
+                                                Labelled "tool_name"
+                                                  expression (driver/pparse.ml[129,4386+43]..[129,4386+52])
+                                                    Pexp_ident "tool_name" (driver/pparse.ml[129,4386+43]..[129,4386+52])
+                                              ]
+                                        ]
+                                    <arg>
+                                    Nolabel
+                                      expression (driver/pparse.ml[130,4439+11]..[130,4439+33])
+                                        Pexp_apply
+                                        expression (driver/pparse.ml[130,4439+11]..[130,4439+18])
+                                          Pexp_ident "rewrite" (driver/pparse.ml[130,4439+11]..[130,4439+18])
+                                        [
+                                          <arg>
+                                          Nolabel
+                                            expression (driver/pparse.ml[130,4439+19]..[130,4439+28])
+                                              Pexp_construct "Signature" (driver/pparse.ml[130,4439+19]..[130,4439+28])
+                                              None
+                                          <arg>
+                                          Nolabel
+                                            expression (driver/pparse.ml[130,4439+29]..[130,4439+33])
+                                              Pexp_ident "ppxs" (driver/pparse.ml[130,4439+29]..[130,4439+33])
+                                        ]
+                                  ]
+                              <arg>
+                              Nolabel
+                                expression (driver/pparse.ml[131,4473+11]..[131,4473+51])
+                                  Pexp_apply
+                                  expression (driver/pparse.ml[131,4473+11]..[131,4473+42])
+                                    Pexp_ident "Ast_mapper.drop_ppx_context_sig" (driver/pparse.ml[131,4473+11]..[131,4473+42])
+                                  [
+                                    <arg>
+                                    Labelled "restore"
+                                      expression (driver/pparse.ml[131,4473+44]..[131,4473+51])
+                                        Pexp_ident "restore" (driver/pparse.ml[131,4473+44]..[131,4473+51])
+                                  ]
+                            ]
+                      ]
+                      expression (driver/pparse.ml[133,4534+6]..[133,4534+39])
+                        Pexp_sequence
+                        expression (driver/pparse.ml[133,4534+6]..[133,4534+34])
+                          Pexp_apply
+                          expression (driver/pparse.ml[133,4534+6]..[133,4534+30])
+                            Pexp_ident "Ast_invariants.signature" (driver/pparse.ml[133,4534+6]..[133,4534+30])
+                          [
+                            <arg>
+                            Nolabel
+                              expression (driver/pparse.ml[133,4534+31]..[133,4534+34])
+                                Pexp_ident "ast" (driver/pparse.ml[133,4534+31]..[133,4534+34])
+                          ]
+                        expression (driver/pparse.ml[133,4534+36]..[133,4534+39])
+                          Pexp_ident "ast" (driver/pparse.ml[133,4534+36]..[133,4534+39])
+                ]
+    ]
+  structure_item (driver/pparse.ml[135,4575+0]..[141,4766+49])
+    Pstr_value Nonrec
+    [
+      <def>
+        pattern (driver/pparse.ml[135,4575+4]..[135,4575+19])
+          Ppat_var "apply_rewriters" (driver/pparse.ml[135,4575+4]..[135,4575+19])
+        expression (driver/pparse.ml[135,4575+20]..[141,4766+49]) ghost
+          Pexp_fun
+          Optional "restore"
+          None
+          pattern (driver/pparse.ml[135,4575+21]..[135,4575+28])
+            Ppat_var "restore" (driver/pparse.ml[135,4575+21]..[135,4575+28])
+          expression (driver/pparse.ml[135,4575+29]..[141,4766+49]) ghost
+            Pexp_fun
+            Labelled "tool_name"
+            None
+            pattern (driver/pparse.ml[135,4575+30]..[135,4575+39])
+              Ppat_var "tool_name" (driver/pparse.ml[135,4575+30]..[135,4575+39])
+            expression (driver/pparse.ml[136,4615+4]..[141,4766+49])
+              Pexp_newtype "a"
+              expression (driver/pparse.ml[136,4615+13]..[141,4766+49]) ghost
+                Pexp_fun
+                Nolabel
+                None
+                pattern (driver/pparse.ml[136,4615+13]..[136,4615+32])
+                  Ppat_constraint
+                  pattern (driver/pparse.ml[136,4615+14]..[136,4615+18])
+                    Ppat_var "kind" (driver/pparse.ml[136,4615+14]..[136,4615+18])
+                  core_type (driver/pparse.ml[136,4615+21]..[136,4615+31])
+                    Ptyp_constr "ast_kind" (driver/pparse.ml[136,4615+23]..[136,4615+31])
+                    [
+                      core_type (driver/pparse.ml[136,4615+21]..[136,4615+22])
+                        Ptyp_constr "a" (driver/pparse.ml[136,4615+21]..[136,4615+22])
+                        []
+                    ]
+                expression (driver/pparse.ml[136,4615+33]..[141,4766+49]) ghost
+                  Pexp_fun
+                  Nolabel
+                  None
+                  pattern (driver/pparse.ml[136,4615+33]..[136,4615+42])
+                    Ppat_constraint
+                    pattern (driver/pparse.ml[136,4615+34]..[136,4615+37])
+                      Ppat_var "ast" (driver/pparse.ml[136,4615+34]..[136,4615+37])
+                    core_type (driver/pparse.ml[136,4615+40]..[136,4615+41])
+                      Ptyp_constr "a" (driver/pparse.ml[136,4615+40]..[136,4615+41])
+                      []
+                  expression (driver/pparse.ml[136,4615+43]..[141,4766+49])
+                    Pexp_constraint
+                    expression (driver/pparse.ml[137,4664+2]..[141,4766+49])
+                      Pexp_match
+                      expression (driver/pparse.ml[137,4664+8]..[137,4664+12])
+                        Pexp_ident "kind" (driver/pparse.ml[137,4664+8]..[137,4664+12])
+                      [
+                        <case>
+                          pattern (driver/pparse.ml[138,4682+4]..[138,4682+13])
+                            Ppat_construct "Structure" (driver/pparse.ml[138,4682+4]..[138,4682+13])
+                            None
+                          expression (driver/pparse.ml[139,4699+6]..[139,4699+49])
+                            Pexp_apply
+                            expression (driver/pparse.ml[139,4699+6]..[139,4699+25])
+                              Pexp_ident "apply_rewriters_str" (driver/pparse.ml[139,4699+6]..[139,4699+25])
+                            [
+                              <arg>
+                              Optional "restore"
+                                expression (driver/pparse.ml[139,4699+27]..[139,4699+34])
+                                  Pexp_ident "restore" (driver/pparse.ml[139,4699+27]..[139,4699+34])
+                              <arg>
+                              Labelled "tool_name"
+                                expression (driver/pparse.ml[139,4699+36]..[139,4699+45])
+                                  Pexp_ident "tool_name" (driver/pparse.ml[139,4699+36]..[139,4699+45])
+                              <arg>
+                              Nolabel
+                                expression (driver/pparse.ml[139,4699+46]..[139,4699+49])
+                                  Pexp_ident "ast" (driver/pparse.ml[139,4699+46]..[139,4699+49])
+                            ]
+                        <case>
+                          pattern (driver/pparse.ml[140,4749+4]..[140,4749+13])
+                            Ppat_construct "Signature" (driver/pparse.ml[140,4749+4]..[140,4749+13])
+                            None
+                          expression (driver/pparse.ml[141,4766+6]..[141,4766+49])
+                            Pexp_apply
+                            expression (driver/pparse.ml[141,4766+6]..[141,4766+25])
+                              Pexp_ident "apply_rewriters_sig" (driver/pparse.ml[141,4766+6]..[141,4766+25])
+                            [
+                              <arg>
+                              Optional "restore"
+                                expression (driver/pparse.ml[141,4766+27]..[141,4766+34])
+                                  Pexp_ident "restore" (driver/pparse.ml[141,4766+27]..[141,4766+34])
+                              <arg>
+                              Labelled "tool_name"
+                                expression (driver/pparse.ml[141,4766+36]..[141,4766+45])
+                                  Pexp_ident "tool_name" (driver/pparse.ml[141,4766+36]..[141,4766+45])
+                              <arg>
+                              Nolabel
+                                expression (driver/pparse.ml[141,4766+46]..[141,4766+49])
+                                  Pexp_ident "ast" (driver/pparse.ml[141,4766+46]..[141,4766+49])
+                            ]
+                      ]
+                    core_type (driver/pparse.ml[136,4615+45]..[136,4615+46])
+                      Ptyp_constr "a" (driver/pparse.ml[136,4615+45]..[136,4615+46])
+                      []
+    ]
+  structure_item (driver/pparse.ml[145,4873+0]..[145,4873+26])
+    Pstr_exception
+    type_exception
+      ptyext_constructor =
+        extension_constructor (driver/pparse.ml[145,4873+0]..[145,4873+26])
+          pext_name = "Outdated_version"
+          pext_kind =
+            Pext_decl
+              []
+              None
+  structure_item (driver/pparse.ml[147,4901+0]..[161,5371+19])
+    Pstr_value Nonrec
+    [
+      <def>
+        pattern (driver/pparse.ml[147,4901+4]..[147,4901+24])
+          Ppat_var "open_and_check_magic" (driver/pparse.ml[147,4901+4]..[147,4901+24])
+        expression (driver/pparse.ml[147,4901+25]..[161,5371+19]) ghost
+          Pexp_fun
+          Nolabel
+          None
+          pattern (driver/pparse.ml[147,4901+25]..[147,4901+34])
+            Ppat_var "inputfile" (driver/pparse.ml[147,4901+25]..[147,4901+34])
+          expression (driver/pparse.ml[147,4901+35]..[161,5371+19]) ghost
+            Pexp_fun
+            Nolabel
+            None
+            pattern (driver/pparse.ml[147,4901+35]..[147,4901+44])
+              Ppat_var "ast_magic" (driver/pparse.ml[147,4901+35]..[147,4901+44])
+            expression (driver/pparse.ml[148,4948+2]..[161,5371+19])
+              Pexp_let Nonrec
+              [
+                <def>
+                  pattern (driver/pparse.ml[148,4948+6]..[148,4948+8])
+                    Ppat_var "ic" (driver/pparse.ml[148,4948+6]..[148,4948+8])
+                  expression (driver/pparse.ml[148,4948+11]..[148,4948+32])
+                    Pexp_apply
+                    expression (driver/pparse.ml[148,4948+11]..[148,4948+22])
+                      Pexp_ident "open_in_bin" (driver/pparse.ml[148,4948+11]..[148,4948+22])
+                    [
+                      <arg>
+                      Nolabel
+                        expression (driver/pparse.ml[148,4948+23]..[148,4948+32])
+                          Pexp_ident "inputfile" (driver/pparse.ml[148,4948+23]..[148,4948+32])
+                    ]
+              ]
+              expression (driver/pparse.ml[149,4984+2]..[161,5371+19])
+                Pexp_let Nonrec
+                [
+                  <def>
+                    pattern (driver/pparse.ml[149,4984+6]..[149,4984+17])
+                      Ppat_var "is_ast_file" (driver/pparse.ml[149,4984+6]..[149,4984+17])
+                    expression (driver/pparse.ml[150,5004+4]..[159,5349+16])
+                      Pexp_try
+                      expression (driver/pparse.ml[151,5012+6]..[155,5220+16])
+                        Pexp_let Nonrec
+                        [
+                          <def>
+                            pattern (driver/pparse.ml[151,5012+10]..[151,5012+16])
+                              Ppat_var "buffer" (driver/pparse.ml[151,5012+10]..[151,5012+16])
+                            expression (driver/pparse.ml[151,5012+19]..[151,5012+67])
+                              Pexp_apply
+                              expression (driver/pparse.ml[151,5012+19]..[151,5012+38])
+                                Pexp_ident "really_input_string" (driver/pparse.ml[151,5012+19]..[151,5012+38])
+                              [
+                                <arg>
+                                Nolabel
+                                  expression (driver/pparse.ml[151,5012+39]..[151,5012+41])
+                                    Pexp_ident "ic" (driver/pparse.ml[151,5012+39]..[151,5012+41])
+                                <arg>
+                                Nolabel
+                                  expression (driver/pparse.ml[151,5012+42]..[151,5012+67])
+                                    Pexp_apply
+                                    expression (driver/pparse.ml[151,5012+43]..[151,5012+56])
+                                      Pexp_ident "String.length" (driver/pparse.ml[151,5012+43]..[151,5012+56])
+                                    [
+                                      <arg>
+                                      Nolabel
+                                        expression (driver/pparse.ml[151,5012+57]..[151,5012+66])
+                                          Pexp_ident "ast_magic" (driver/pparse.ml[151,5012+57]..[151,5012+66])
+                                    ]
+                              ]
+                        ]
+                        expression (driver/pparse.ml[152,5083+6]..[155,5220+16])
+                          Pexp_ifthenelse
+                          expression (driver/pparse.ml[152,5083+9]..[152,5083+27])
+                            Pexp_apply
+                            expression (driver/pparse.ml[152,5083+16]..[152,5083+17])
+                              Pexp_ident "=" (driver/pparse.ml[152,5083+16]..[152,5083+17])
+                            [
+                              <arg>
+                              Nolabel
+                                expression (driver/pparse.ml[152,5083+9]..[152,5083+15])
+                                  Pexp_ident "buffer" (driver/pparse.ml[152,5083+9]..[152,5083+15])
+                              <arg>
+                              Nolabel
+                                expression (driver/pparse.ml[152,5083+18]..[152,5083+27])
+                                  Pexp_ident "ast_magic" (driver/pparse.ml[152,5083+18]..[152,5083+27])
+                            ]
+                          expression (driver/pparse.ml[152,5083+33]..[152,5083+37])
+                            Pexp_construct "true" (driver/pparse.ml[152,5083+33]..[152,5083+37])
+                            None
+                          Some
+                            expression (driver/pparse.ml[153,5121+11]..[155,5220+16])
+                              Pexp_ifthenelse
+                              expression (driver/pparse.ml[153,5121+14]..[153,5121+62])
+                                Pexp_apply
+                                expression (driver/pparse.ml[153,5121+36]..[153,5121+37])
+                                  Pexp_ident "=" (driver/pparse.ml[153,5121+36]..[153,5121+37])
+                                [
+                                  <arg>
+                                  Nolabel
+                                    expression (driver/pparse.ml[153,5121+14]..[153,5121+35])
+                                      Pexp_apply
+                                      expression (driver/pparse.ml[153,5121+14]..[153,5121+24])
+                                        Pexp_ident "String.sub" (driver/pparse.ml[153,5121+14]..[153,5121+24])
+                                      [
+                                        <arg>
+                                        Nolabel
+                                          expression (driver/pparse.ml[153,5121+25]..[153,5121+31])
+                                            Pexp_ident "buffer" (driver/pparse.ml[153,5121+25]..[153,5121+31])
+                                        <arg>
+                                        Nolabel
+                                          expression (driver/pparse.ml[153,5121+32]..[153,5121+33])
+                                            Pexp_constant PConst_int (0,None)
+                                        <arg>
+                                        Nolabel
+                                          expression (driver/pparse.ml[153,5121+34]..[153,5121+35])
+                                            Pexp_constant PConst_int (9,None)
+                                      ]
+                                  <arg>
+                                  Nolabel
+                                    expression (driver/pparse.ml[153,5121+38]..[153,5121+62])
+                                      Pexp_apply
+                                      expression (driver/pparse.ml[153,5121+38]..[153,5121+48])
+                                        Pexp_ident "String.sub" (driver/pparse.ml[153,5121+38]..[153,5121+48])
+                                      [
+                                        <arg>
+                                        Nolabel
+                                          expression (driver/pparse.ml[153,5121+49]..[153,5121+58])
+                                            Pexp_ident "ast_magic" (driver/pparse.ml[153,5121+49]..[153,5121+58])
+                                        <arg>
+                                        Nolabel
+                                          expression (driver/pparse.ml[153,5121+59]..[153,5121+60])
+                                            Pexp_constant PConst_int (0,None)
+                                        <arg>
+                                        Nolabel
+                                          expression (driver/pparse.ml[153,5121+61]..[153,5121+62])
+                                            Pexp_constant PConst_int (9,None)
+                                      ]
+                                ]
+                              expression (driver/pparse.ml[154,5189+8]..[154,5189+30])
+                                Pexp_apply
+                                expression (driver/pparse.ml[154,5189+8]..[154,5189+13])
+                                  Pexp_ident "raise" (driver/pparse.ml[154,5189+8]..[154,5189+13])
+                                [
+                                  <arg>
+                                  Nolabel
+                                    expression (driver/pparse.ml[154,5189+14]..[154,5189+30])
+                                      Pexp_construct "Outdated_version" (driver/pparse.ml[154,5189+14]..[154,5189+30])
+                                      None
+                                ]
+                              Some
+                                expression (driver/pparse.ml[155,5220+11]..[155,5220+16])
+                                  Pexp_construct "false" (driver/pparse.ml[155,5220+11]..[155,5220+16])
+                                  None
+                      [
+                        <case>
+                          pattern (driver/pparse.ml[157,5246+6]..[157,5246+22])
+                            Ppat_construct "Outdated_version" (driver/pparse.ml[157,5246+6]..[157,5246+22])
+                            None
+                          expression (driver/pparse.ml[158,5272+8]..[158,5272+76])
+                            Pexp_apply
+                            expression (driver/pparse.ml[158,5272+8]..[158,5272+24])
+                              Pexp_ident "Misc.fatal_error" (driver/pparse.ml[158,5272+8]..[158,5272+24])
+                            [
+                              <arg>
+                              Nolabel
+                                expression (driver/pparse.ml[158,5272+25]..[158,5272+76])
+                                  Pexp_constant PConst_string("OCaml and preprocessor have incompatible versions",(driver/pparse.ml[158,5272+26]..[158,5272+75]),None)
+                            ]
+                        <case>
+                          pattern (driver/pparse.ml[159,5349+6]..[159,5349+7])
+                            Ppat_any
+                          expression (driver/pparse.ml[159,5349+11]..[159,5349+16])
+                            Pexp_construct "false" (driver/pparse.ml[159,5349+11]..[159,5349+16])
+                            None
+                      ]
+                ]
+                expression (driver/pparse.ml[161,5371+2]..[161,5371+19])
+                  Pexp_tuple
+                  [
+                    expression (driver/pparse.ml[161,5371+3]..[161,5371+5])
+                      Pexp_ident "ic" (driver/pparse.ml[161,5371+3]..[161,5371+5])
+                    expression (driver/pparse.ml[161,5371+7]..[161,5371+18])
+                      Pexp_ident "is_ast_file" (driver/pparse.ml[161,5371+7]..[161,5371+18])
+                  ]
+    ]
+  structure_item (driver/pparse.ml[163,5392+0]..[166,5507+39])
+    Pstr_value Nonrec
+    [
+      <def>
+        pattern (driver/pparse.ml[163,5392+4]..[163,5392+9])
+          Ppat_var "parse" (driver/pparse.ml[163,5392+4]..[163,5392+9])
+        expression (driver/pparse.ml[163,5392+10]..[166,5507+39])
+          Pexp_newtype "a"
+          expression (driver/pparse.ml[163,5392+19]..[166,5507+39]) ghost
+            Pexp_fun
+            Nolabel
+            None
+            pattern (driver/pparse.ml[163,5392+19]..[163,5392+38])
+              Ppat_constraint
+              pattern (driver/pparse.ml[163,5392+20]..[163,5392+24])
+                Ppat_var "kind" (driver/pparse.ml[163,5392+20]..[163,5392+24])
+              core_type (driver/pparse.ml[163,5392+27]..[163,5392+37])
+                Ptyp_constr "ast_kind" (driver/pparse.ml[163,5392+29]..[163,5392+37])
+                [
+                  core_type (driver/pparse.ml[163,5392+27]..[163,5392+28])
+                    Ptyp_constr "a" (driver/pparse.ml[163,5392+27]..[163,5392+28])
+                    []
+                ]
+            expression (driver/pparse.ml[163,5392+39]..[166,5507+39]) ghost
+              Pexp_fun
+              Nolabel
+              None
+              pattern (driver/pparse.ml[163,5392+39]..[163,5392+45])
+                Ppat_var "lexbuf" (driver/pparse.ml[163,5392+39]..[163,5392+45])
+              expression (driver/pparse.ml[163,5392+46]..[166,5507+39])
+                Pexp_constraint
+                expression (driver/pparse.ml[164,5444+2]..[166,5507+39])
+                  Pexp_match
+                  expression (driver/pparse.ml[164,5444+8]..[164,5444+12])
+                    Pexp_ident "kind" (driver/pparse.ml[164,5444+8]..[164,5444+12])
+                  [
+                    <case>
+                      pattern (driver/pparse.ml[165,5462+4]..[165,5462+13])
+                        Ppat_construct "Structure" (driver/pparse.ml[165,5462+4]..[165,5462+13])
+                        None
+                      expression (driver/pparse.ml[165,5462+17]..[165,5462+44])
+                        Pexp_apply
+                        expression (driver/pparse.ml[165,5462+17]..[165,5462+37])
+                          Pexp_ident "Parse.implementation" (driver/pparse.ml[165,5462+17]..[165,5462+37])
+                        [
+                          <arg>
+                          Nolabel
+                            expression (driver/pparse.ml[165,5462+38]..[165,5462+44])
+                              Pexp_ident "lexbuf" (driver/pparse.ml[165,5462+38]..[165,5462+44])
+                        ]
+                    <case>
+                      pattern (driver/pparse.ml[166,5507+4]..[166,5507+13])
+                        Ppat_construct "Signature" (driver/pparse.ml[166,5507+4]..[166,5507+13])
+                        None
+                      expression (driver/pparse.ml[166,5507+17]..[166,5507+39])
+                        Pexp_apply
+                        expression (driver/pparse.ml[166,5507+17]..[166,5507+32])
+                          Pexp_ident "Parse.interface" (driver/pparse.ml[166,5507+17]..[166,5507+32])
+                        [
+                          <arg>
+                          Nolabel
+                            expression (driver/pparse.ml[166,5507+33]..[166,5507+39])
+                              Pexp_ident "lexbuf" (driver/pparse.ml[166,5507+33]..[166,5507+39])
+                        ]
+                  ]
+                core_type (driver/pparse.ml[163,5392+48]..[163,5392+49])
+                  Ptyp_constr "a" (driver/pparse.ml[163,5392+48]..[163,5392+49])
+                  []
+    ]
+  structure_item (driver/pparse.ml[168,5548+0]..[195,6632+5])
+    Pstr_value Nonrec
+    [
+      <def>
+        pattern (driver/pparse.ml[168,5548+4]..[168,5548+12])
+          Ppat_var "file_aux" (driver/pparse.ml[168,5548+4]..[168,5548+12])
+        expression (driver/pparse.ml[168,5548+13]..[195,6632+5]) ghost
+          Pexp_fun
+          Labelled "tool_name"
+          None
+          pattern (driver/pparse.ml[168,5548+14]..[168,5548+23])
+            Ppat_var "tool_name" (driver/pparse.ml[168,5548+14]..[168,5548+23])
+          expression (driver/pparse.ml[168,5548+24]..[195,6632+5]) ghost
+            Pexp_fun
+            Nolabel
+            None
+            pattern (driver/pparse.ml[168,5548+24]..[168,5548+33])
+              Ppat_var "inputfile" (driver/pparse.ml[168,5548+24]..[168,5548+33])
+            expression (driver/pparse.ml[168,5548+34]..[195,6632+5])
+              Pexp_newtype "a"
+              expression (driver/pparse.ml[168,5548+43]..[195,6632+5]) ghost
+                Pexp_fun
+                Nolabel
+                None
+                pattern (driver/pparse.ml[168,5548+43]..[168,5548+52])
+                  Ppat_var "parse_fun" (driver/pparse.ml[168,5548+43]..[168,5548+52])
+                expression (driver/pparse.ml[168,5548+53]..[195,6632+5]) ghost
+                  Pexp_fun
+                  Nolabel
+                  None
+                  pattern (driver/pparse.ml[168,5548+53]..[168,5548+66])
+                    Ppat_var "invariant_fun" (driver/pparse.ml[168,5548+53]..[168,5548+66])
+                  expression (driver/pparse.ml[169,5615+13]..[195,6632+5]) ghost
+                    Pexp_fun
+                    Nolabel
+                    None
+                    pattern (driver/pparse.ml[169,5615+13]..[169,5615+32])
+                      Ppat_constraint
+                      pattern (driver/pparse.ml[169,5615+14]..[169,5615+18])
+                        Ppat_var "kind" (driver/pparse.ml[169,5615+14]..[169,5615+18])
+                      core_type (driver/pparse.ml[169,5615+21]..[169,5615+31])
+                        Ptyp_constr "ast_kind" (driver/pparse.ml[169,5615+23]..[169,5615+31])
+                        [
+                          core_type (driver/pparse.ml[169,5615+21]..[169,5615+22])
+                            Ptyp_constr "a" (driver/pparse.ml[169,5615+21]..[169,5615+22])
+                            []
+                        ]
+                    expression (driver/pparse.ml[169,5615+33]..[195,6632+5])
+                      Pexp_constraint
+                      expression (driver/pparse.ml[170,5654+2]..[195,6632+5])
+                        Pexp_let Nonrec
+                        [
+                          <def>
+                            pattern (driver/pparse.ml[170,5654+6]..[170,5654+15])
+                              Ppat_var "ast_magic" (driver/pparse.ml[170,5654+6]..[170,5654+15])
+                            expression (driver/pparse.ml[170,5654+18]..[170,5654+36])
+                              Pexp_apply
+                              expression (driver/pparse.ml[170,5654+18]..[170,5654+31])
+                                Pexp_ident "magic_of_kind" (driver/pparse.ml[170,5654+18]..[170,5654+31])
+                              [
+                                <arg>
+                                Nolabel
+                                  expression (driver/pparse.ml[170,5654+32]..[170,5654+36])
+                                    Pexp_ident "kind" (driver/pparse.ml[170,5654+32]..[170,5654+36])
+                              ]
+                        ]
+                        expression (driver/pparse.ml[171,5694+2]..[195,6632+5])
+                          Pexp_let Nonrec
+                          [
+                            <def>
+                              pattern (driver/pparse.ml[171,5694+6]..[171,5694+23])
+                                Ppat_tuple
+                                [
+                                  pattern (driver/pparse.ml[171,5694+7]..[171,5694+9])
+                                    Ppat_var "ic" (driver/pparse.ml[171,5694+7]..[171,5694+9])
+                                  pattern (driver/pparse.ml[171,5694+11]..[171,5694+22])
+                                    Ppat_var "is_ast_file" (driver/pparse.ml[171,5694+11]..[171,5694+22])
+                                ]
+                              expression (driver/pparse.ml[171,5694+26]..[171,5694+66])
+                                Pexp_apply
+                                expression (driver/pparse.ml[171,5694+26]..[171,5694+46])
+                                  Pexp_ident "open_and_check_magic" (driver/pparse.ml[171,5694+26]..[171,5694+46])
+                                [
+                                  <arg>
+                                  Nolabel
+                                    expression (driver/pparse.ml[171,5694+47]..[171,5694+56])
+                                      Pexp_ident "inputfile" (driver/pparse.ml[171,5694+47]..[171,5694+56])
+                                  <arg>
+                                  Nolabel
+                                    expression (driver/pparse.ml[171,5694+57]..[171,5694+66])
+                                      Pexp_ident "ast_magic" (driver/pparse.ml[171,5694+57]..[171,5694+66])
+                                ]
+                          ]
+                          expression (driver/pparse.ml[172,5764+2]..[195,6632+5])
+                            Pexp_let Nonrec
+                            [
+                              <def>
+                                pattern (driver/pparse.ml[172,5764+6]..[172,5764+9])
+                                  Ppat_var "ast" (driver/pparse.ml[172,5764+6]..[172,5764+9])
+                                expression (driver/pparse.ml[173,5776+4]..[190,6480+34])
+                                  Pexp_try
+                                  expression (driver/pparse.ml[174,5784+6]..[189,6470+9])
+                                    Pexp_ifthenelse
+                                    expression (driver/pparse.ml[174,5784+9]..[174,5784+20])
+                                      Pexp_ident "is_ast_file" (driver/pparse.ml[174,5784+9]..[174,5784+20])
+                                    expression (driver/pparse.ml[174,5784+26]..[183,6228+9])
+                                      Pexp_sequence
+                                      expression (driver/pparse.ml[175,5816+8]..[175,5816+56])
+                                        Pexp_apply
+                                        expression (driver/pparse.ml[175,5816+28]..[175,5816+30])
+                                          Pexp_ident ":=" (driver/pparse.ml[175,5816+28]..[175,5816+30])
+                                        [
+                                          <arg>
+                                          Nolabel
+                                            expression (driver/pparse.ml[175,5816+8]..[175,5816+27])
+                                              Pexp_ident "Location.input_name" (driver/pparse.ml[175,5816+8]..[175,5816+27])
+                                          <arg>
+                                          Nolabel
+                                            expression (driver/pparse.ml[175,5816+31]..[175,5816+56])
+                                              Pexp_constraint
+                                              expression (driver/pparse.ml[175,5816+32]..[175,5816+46])
+                                                Pexp_apply
+                                                expression (driver/pparse.ml[175,5816+32]..[175,5816+43])
+                                                  Pexp_ident "input_value" (driver/pparse.ml[175,5816+32]..[175,5816+43])
+                                                [
+                                                  <arg>
+                                                  Nolabel
+                                                    expression (driver/pparse.ml[175,5816+44]..[175,5816+46])
+                                                      Pexp_ident "ic" (driver/pparse.ml[175,5816+44]..[175,5816+46])
+                                                ]
+                                              core_type (driver/pparse.ml[175,5816+49]..[175,5816+55])
+                                                Ptyp_constr "string" (driver/pparse.ml[175,5816+49]..[175,5816+55])
+                                                []
+                                        ]
+                                      expression (driver/pparse.ml[176,5874+8]..[182,6216+11])
+                                        Pexp_sequence
+                                        expression (driver/pparse.ml[176,5874+8]..[178,5979+56])
+                                          Pexp_ifthenelse
+                                          expression (driver/pparse.ml[176,5874+11]..[176,5874+26])
+                                            Pexp_apply
+                                            expression (driver/pparse.ml[176,5874+11]..[176,5874+12])
+                                              Pexp_ident "!" (driver/pparse.ml[176,5874+11]..[176,5874+12])
+                                            [
+                                              <arg>
+                                              Nolabel
+                                                expression (driver/pparse.ml[176,5874+12]..[176,5874+26])
+                                                  Pexp_ident "Clflags.unsafe" (driver/pparse.ml[176,5874+12]..[176,5874+26])
+                                            ]
+                                          expression (driver/pparse.ml[177,5906+10]..[178,5979+56])
+                                            Pexp_apply
+                                            expression (driver/pparse.ml[177,5906+10]..[177,5906+32])
+                                              Pexp_ident "Location.prerr_warning" (driver/pparse.ml[177,5906+10]..[177,5906+32])
+                                            [
+                                              <arg>
+                                              Nolabel
+                                                expression (driver/pparse.ml[177,5906+33]..[177,5906+72])
+                                                  Pexp_apply
+                                                  expression (driver/pparse.ml[177,5906+34]..[177,5906+50])
+                                                    Pexp_ident "Location.in_file" (driver/pparse.ml[177,5906+34]..[177,5906+50])
+                                                  [
+                                                    <arg>
+                                                    Nolabel
+                                                      expression (driver/pparse.ml[177,5906+51]..[177,5906+71])
+                                                        Pexp_apply
+                                                        expression (driver/pparse.ml[177,5906+51]..[177,5906+52])
+                                                          Pexp_ident "!" (driver/pparse.ml[177,5906+51]..[177,5906+52])
+                                                        [
+                                                          <arg>
+                                                          Nolabel
+                                                            expression (driver/pparse.ml[177,5906+52]..[177,5906+71])
+                                                              Pexp_ident "Location.input_name" (driver/pparse.ml[177,5906+52]..[177,5906+71])
+                                                        ]
+                                                  ]
+                                              <arg>
+                                              Nolabel
+                                                expression (driver/pparse.ml[178,5979+12]..[178,5979+56])
+                                                  Pexp_construct "Warnings.Unsafe_array_syntax_without_parsing" (driver/pparse.ml[178,5979+12]..[178,5979+56])
+                                                  None
+                                            ]
+                                          None
+                                        expression (driver/pparse.ml[179,6037+8]..[182,6216+11])
+                                          Pexp_let Nonrec
+                                          [
+                                            <def>
+                                              pattern (driver/pparse.ml[179,6037+12]..[179,6037+15])
+                                                Ppat_var "ast" (driver/pparse.ml[179,6037+12]..[179,6037+15])
+                                              expression (driver/pparse.ml[179,6037+18]..[179,6037+38])
+                                                Pexp_constraint
+                                                expression (driver/pparse.ml[179,6037+19]..[179,6037+33])
+                                                  Pexp_apply
+                                                  expression (driver/pparse.ml[179,6037+19]..[179,6037+30])
+                                                    Pexp_ident "input_value" (driver/pparse.ml[179,6037+19]..[179,6037+30])
+                                                  [
+                                                    <arg>
+                                                    Nolabel
+                                                      expression (driver/pparse.ml[179,6037+31]..[179,6037+33])
+                                                        Pexp_ident "ic" (driver/pparse.ml[179,6037+31]..[179,6037+33])
+                                                  ]
+                                                core_type (driver/pparse.ml[179,6037+36]..[179,6037+37])
+                                                  Ptyp_constr "a" (driver/pparse.ml[179,6037+36]..[179,6037+37])
+                                                  []
+                                          ]
+                                          expression (driver/pparse.ml[180,6079+8]..[182,6216+11])
+                                            Pexp_sequence
+                                            expression (driver/pparse.ml[180,6079+8]..[180,6079+55])
+                                              Pexp_ifthenelse
+                                              expression (driver/pparse.ml[180,6079+11]..[180,6079+32])
+                                                Pexp_apply
+                                                expression (driver/pparse.ml[180,6079+28]..[180,6079+29])
+                                                  Pexp_ident "=" (driver/pparse.ml[180,6079+28]..[180,6079+29])
+                                                [
+                                                  <arg>
+                                                  Nolabel
+                                                    expression (driver/pparse.ml[180,6079+11]..[180,6079+27])
+                                                      Pexp_apply
+                                                      expression (driver/pparse.ml[180,6079+11]..[180,6079+12])
+                                                        Pexp_ident "!" (driver/pparse.ml[180,6079+11]..[180,6079+12])
+                                                      [
+                                                        <arg>
+                                                        Nolabel
+                                                          expression (driver/pparse.ml[180,6079+12]..[180,6079+27])
+                                                            Pexp_ident "Clflags.all_ppx" (driver/pparse.ml[180,6079+12]..[180,6079+27])
+                                                      ]
+                                                  <arg>
+                                                  Nolabel
+                                                    expression (driver/pparse.ml[180,6079+30]..[180,6079+32])
+                                                      Pexp_construct "[]" (driver/pparse.ml[180,6079+30]..[180,6079+32])
+                                                      None
+                                                ]
+                                              expression (driver/pparse.ml[180,6079+38]..[180,6079+55])
+                                                Pexp_apply
+                                                expression (driver/pparse.ml[180,6079+38]..[180,6079+51])
+                                                  Pexp_ident "invariant_fun" (driver/pparse.ml[180,6079+38]..[180,6079+51])
+                                                [
+                                                  <arg>
+                                                  Nolabel
+                                                    expression (driver/pparse.ml[180,6079+52]..[180,6079+55])
+                                                      Pexp_ident "ast" (driver/pparse.ml[180,6079+52]..[180,6079+55])
+                                                ]
+                                              None
+                                            expression (driver/pparse.ml[182,6216+8]..[182,6216+11])
+                                              Pexp_ident "ast" (driver/pparse.ml[182,6216+8]..[182,6216+11])
+                                    Some
+                                      expression (driver/pparse.ml[183,6228+15]..[189,6470+9])
+                                        Pexp_sequence
+                                        expression (driver/pparse.ml[184,6249+8]..[184,6249+20])
+                                          Pexp_apply
+                                          expression (driver/pparse.ml[184,6249+8]..[184,6249+15])
+                                            Pexp_ident "seek_in" (driver/pparse.ml[184,6249+8]..[184,6249+15])
+                                          [
+                                            <arg>
+                                            Nolabel
+                                              expression (driver/pparse.ml[184,6249+16]..[184,6249+18])
+                                                Pexp_ident "ic" (driver/pparse.ml[184,6249+16]..[184,6249+18])
+                                            <arg>
+                                            Nolabel
+                                              expression (driver/pparse.ml[184,6249+19]..[184,6249+20])
+                                                Pexp_constant PConst_int (0,None)
+                                          ]
+                                        expression (driver/pparse.ml[185,6271+8]..[188,6404+65])
+                                          Pexp_let Nonrec
+                                          [
+                                            <def>
+                                              pattern (driver/pparse.ml[185,6271+12]..[185,6271+18])
+                                                Ppat_var "lexbuf" (driver/pparse.ml[185,6271+12]..[185,6271+18])
+                                              expression (driver/pparse.ml[185,6271+21]..[185,6271+43])
+                                                Pexp_apply
+                                                expression (driver/pparse.ml[185,6271+21]..[185,6271+40])
+                                                  Pexp_ident "Lexing.from_channel" (driver/pparse.ml[185,6271+21]..[185,6271+40])
+                                                [
+                                                  <arg>
+                                                  Nolabel
+                                                    expression (driver/pparse.ml[185,6271+41]..[185,6271+43])
+                                                      Pexp_ident "ic" (driver/pparse.ml[185,6271+41]..[185,6271+43])
+                                                ]
+                                          ]
+                                          expression (driver/pparse.ml[186,6318+8]..[188,6404+65])
+                                            Pexp_sequence
+                                            expression (driver/pparse.ml[186,6318+8]..[186,6318+38])
+                                              Pexp_apply
+                                              expression (driver/pparse.ml[186,6318+8]..[186,6318+21])
+                                                Pexp_ident "Location.init" (driver/pparse.ml[186,6318+8]..[186,6318+21])
+                                              [
+                                                <arg>
+                                                Nolabel
+                                                  expression (driver/pparse.ml[186,6318+22]..[186,6318+28])
+                                                    Pexp_ident "lexbuf" (driver/pparse.ml[186,6318+22]..[186,6318+28])
+                                                <arg>
+                                                Nolabel
+                                                  expression (driver/pparse.ml[186,6318+29]..[186,6318+38])
+                                                    Pexp_ident "inputfile" (driver/pparse.ml[186,6318+29]..[186,6318+38])
+                                              ]
+                                            expression (driver/pparse.ml[187,6358+8]..[188,6404+65])
+                                              Pexp_sequence
+                                              expression (driver/pparse.ml[187,6358+8]..[187,6358+44])
+                                                Pexp_apply
+                                                expression (driver/pparse.ml[187,6358+30]..[187,6358+32])
+                                                  Pexp_ident ":=" (driver/pparse.ml[187,6358+30]..[187,6358+32])
+                                                [
+                                                  <arg>
+                                                  Nolabel
+                                                    expression (driver/pparse.ml[187,6358+8]..[187,6358+29])
+                                                      Pexp_ident "Location.input_lexbuf" (driver/pparse.ml[187,6358+8]..[187,6358+29])
+                                                  <arg>
+                                                  Nolabel
+                                                    expression (driver/pparse.ml[187,6358+33]..[187,6358+44])
+                                                      Pexp_construct "Some" (driver/pparse.ml[187,6358+33]..[187,6358+37])
+                                                      Some
+                                                        expression (driver/pparse.ml[187,6358+38]..[187,6358+44])
+                                                          Pexp_ident "lexbuf" (driver/pparse.ml[187,6358+38]..[187,6358+44])
+                                                ]
+                                              expression (driver/pparse.ml[188,6404+8]..[188,6404+65])
+                                                Pexp_apply
+                                                expression (driver/pparse.ml[188,6404+8]..[188,6404+27])
+                                                  Pexp_ident "Profile.record_call" (driver/pparse.ml[188,6404+8]..[188,6404+27])
+                                                [
+                                                  <arg>
+                                                  Nolabel
+                                                    expression (driver/pparse.ml[188,6404+28]..[188,6404+36])
+                                                      Pexp_constant PConst_string("parser",(driver/pparse.ml[188,6404+29]..[188,6404+35]),None)
+                                                  <arg>
+                                                  Nolabel
+                                                    expression (driver/pparse.ml[188,6404+37]..[188,6404+65])
+                                                      Pexp_fun
+                                                      Nolabel
+                                                      None
+                                                      pattern (driver/pparse.ml[188,6404+42]..[188,6404+44])
+                                                        Ppat_construct "()" (driver/pparse.ml[188,6404+42]..[188,6404+44])
+                                                        None
+                                                      expression (driver/pparse.ml[188,6404+48]..[188,6404+64])
+                                                        Pexp_apply
+                                                        expression (driver/pparse.ml[188,6404+48]..[188,6404+57])
+                                                          Pexp_ident "parse_fun" (driver/pparse.ml[188,6404+48]..[188,6404+57])
+                                                        [
+                                                          <arg>
+                                                          Nolabel
+                                                            expression (driver/pparse.ml[188,6404+58]..[188,6404+64])
+                                                              Pexp_ident "lexbuf" (driver/pparse.ml[188,6404+58]..[188,6404+64])
+                                                        ]
+                                                ]
+                                  [
+                                    <case>
+                                      pattern (driver/pparse.ml[190,6480+9]..[190,6480+10])
+                                        Ppat_var "x" (driver/pparse.ml[190,6480+9]..[190,6480+10])
+                                      expression (driver/pparse.ml[190,6480+14]..[190,6480+34])
+                                        Pexp_sequence
+                                        expression (driver/pparse.ml[190,6480+14]..[190,6480+25])
+                                          Pexp_apply
+                                          expression (driver/pparse.ml[190,6480+14]..[190,6480+22])
+                                            Pexp_ident "close_in" (driver/pparse.ml[190,6480+14]..[190,6480+22])
+                                          [
+                                            <arg>
+                                            Nolabel
+                                              expression (driver/pparse.ml[190,6480+23]..[190,6480+25])
+                                                Pexp_ident "ic" (driver/pparse.ml[190,6480+23]..[190,6480+25])
+                                          ]
+                                        expression (driver/pparse.ml[190,6480+27]..[190,6480+34])
+                                          Pexp_apply
+                                          expression (driver/pparse.ml[190,6480+27]..[190,6480+32])
+                                            Pexp_ident "raise" (driver/pparse.ml[190,6480+27]..[190,6480+32])
+                                          [
+                                            <arg>
+                                            Nolabel
+                                              expression (driver/pparse.ml[190,6480+33]..[190,6480+34])
+                                                Pexp_ident "x" (driver/pparse.ml[190,6480+33]..[190,6480+34])
+                                          ]
+                                  ]
+                            ]
+                            expression (driver/pparse.ml[192,6520+2]..[195,6632+5])
+                              Pexp_sequence
+                              expression (driver/pparse.ml[192,6520+2]..[192,6520+13])
+                                Pexp_apply
+                                expression (driver/pparse.ml[192,6520+2]..[192,6520+10])
+                                  Pexp_ident "close_in" (driver/pparse.ml[192,6520+2]..[192,6520+10])
+                                [
+                                  <arg>
+                                  Nolabel
+                                    expression (driver/pparse.ml[192,6520+11]..[192,6520+13])
+                                      Pexp_ident "ic" (driver/pparse.ml[192,6520+11]..[192,6520+13])
+                                ]
+                              expression (driver/pparse.ml[193,6535+2]..[195,6632+5])
+                                Pexp_apply
+                                expression (driver/pparse.ml[193,6535+2]..[193,6535+21])
+                                  Pexp_ident "Profile.record_call" (driver/pparse.ml[193,6535+2]..[193,6535+21])
+                                [
+                                  <arg>
+                                  Nolabel
+                                    expression (driver/pparse.ml[193,6535+22]..[193,6535+28])
+                                      Pexp_constant PConst_string("-ppx",(driver/pparse.ml[193,6535+23]..[193,6535+27]),None)
+                                  <arg>
+                                  Nolabel
+                                    expression (driver/pparse.ml[193,6535+29]..[195,6632+5])
+                                      Pexp_fun
+                                      Nolabel
+                                      None
+                                      pattern (driver/pparse.ml[193,6535+34]..[193,6535+36])
+                                        Ppat_construct "()" (driver/pparse.ml[193,6535+34]..[193,6535+36])
+                                        None
+                                      expression (driver/pparse.ml[194,6575+6]..[194,6575+56])
+                                        Pexp_apply
+                                        expression (driver/pparse.ml[194,6575+6]..[194,6575+21])
+                                          Pexp_ident "apply_rewriters" (driver/pparse.ml[194,6575+6]..[194,6575+21])
+                                        [
+                                          <arg>
+                                          Labelled "restore"
+                                            expression (driver/pparse.ml[194,6575+31]..[194,6575+36])
+                                              Pexp_construct "false" (driver/pparse.ml[194,6575+31]..[194,6575+36])
+                                              None
+                                          <arg>
+                                          Labelled "tool_name"
+                                            expression (driver/pparse.ml[194,6575+38]..[194,6575+47])
+                                              Pexp_ident "tool_name" (driver/pparse.ml[194,6575+38]..[194,6575+47])
+                                          <arg>
+                                          Nolabel
+                                            expression (driver/pparse.ml[194,6575+48]..[194,6575+52])
+                                              Pexp_ident "kind" (driver/pparse.ml[194,6575+48]..[194,6575+52])
+                                          <arg>
+                                          Nolabel
+                                            expression (driver/pparse.ml[194,6575+53]..[194,6575+56])
+                                              Pexp_ident "ast" (driver/pparse.ml[194,6575+53]..[194,6575+56])
+                                        ]
+                                ]
+                      core_type (driver/pparse.ml[169,5615+35]..[169,5615+36])
+                        Ptyp_constr "a" (driver/pparse.ml[169,5615+35]..[169,5615+36])
+                        []
+    ]
+  structure_item (driver/pparse.ml[197,6639+0]..[198,6690+57])
+    Pstr_value Nonrec
+    [
+      <def>
+        pattern (driver/pparse.ml[197,6639+4]..[197,6639+8])
+          Ppat_var "file" (driver/pparse.ml[197,6639+4]..[197,6639+8])
+        expression (driver/pparse.ml[197,6639+9]..[198,6690+57]) ghost
+          Pexp_fun
+          Labelled "tool_name"
+          None
+          pattern (driver/pparse.ml[197,6639+10]..[197,6639+19])
+            Ppat_var "tool_name" (driver/pparse.ml[197,6639+10]..[197,6639+19])
+          expression (driver/pparse.ml[197,6639+20]..[198,6690+57]) ghost
+            Pexp_fun
+            Nolabel
+            None
+            pattern (driver/pparse.ml[197,6639+20]..[197,6639+29])
+              Ppat_var "inputfile" (driver/pparse.ml[197,6639+20]..[197,6639+29])
+            expression (driver/pparse.ml[197,6639+30]..[198,6690+57]) ghost
+              Pexp_fun
+              Nolabel
+              None
+              pattern (driver/pparse.ml[197,6639+30]..[197,6639+39])
+                Ppat_var "parse_fun" (driver/pparse.ml[197,6639+30]..[197,6639+39])
+              expression (driver/pparse.ml[197,6639+40]..[198,6690+57]) ghost
+                Pexp_fun
+                Nolabel
+                None
+                pattern (driver/pparse.ml[197,6639+40]..[197,6639+48])
+                  Ppat_var "ast_kind" (driver/pparse.ml[197,6639+40]..[197,6639+48])
+                expression (driver/pparse.ml[198,6690+2]..[198,6690+57])
+                  Pexp_apply
+                  expression (driver/pparse.ml[198,6690+2]..[198,6690+10])
+                    Pexp_ident "file_aux" (driver/pparse.ml[198,6690+2]..[198,6690+10])
+                  [
+                    <arg>
+                    Labelled "tool_name"
+                      expression (driver/pparse.ml[198,6690+12]..[198,6690+21])
+                        Pexp_ident "tool_name" (driver/pparse.ml[198,6690+12]..[198,6690+21])
+                    <arg>
+                    Nolabel
+                      expression (driver/pparse.ml[198,6690+22]..[198,6690+31])
+                        Pexp_ident "inputfile" (driver/pparse.ml[198,6690+22]..[198,6690+31])
+                    <arg>
+                    Nolabel
+                      expression (driver/pparse.ml[198,6690+32]..[198,6690+41])
+                        Pexp_ident "parse_fun" (driver/pparse.ml[198,6690+32]..[198,6690+41])
+                    <arg>
+                    Nolabel
+                      expression (driver/pparse.ml[198,6690+42]..[198,6690+48])
+                        Pexp_ident "ignore" (driver/pparse.ml[198,6690+42]..[198,6690+48])
+                    <arg>
+                    Nolabel
+                      expression (driver/pparse.ml[198,6690+49]..[198,6690+57])
+                        Pexp_ident "ast_kind" (driver/pparse.ml[198,6690+49]..[198,6690+57])
+                  ]
+    ]
+  structure_item (driver/pparse.ml[200,6749+0]..[206,7005+42])
+    Pstr_value Nonrec
+    [
+      <def>
+        pattern (driver/pparse.ml[200,6749+4]..[200,6749+16])
+          Ppat_var "report_error" (driver/pparse.ml[200,6749+4]..[200,6749+16])
+        expression (driver/pparse.ml[200,6749+17]..[206,7005+42]) ghost
+          Pexp_fun
+          Nolabel
+          None
+          pattern (driver/pparse.ml[200,6749+17]..[200,6749+20])
+            Ppat_var "ppf" (driver/pparse.ml[200,6749+17]..[200,6749+20])
+          expression (driver/pparse.ml[200,6749+23]..[206,7005+42])
+            Pexp_function
+            [
+              <case>
+                pattern (driver/pparse.ml[201,6781+4]..[201,6781+17])
+                  Ppat_construct "CannotRun" (driver/pparse.ml[201,6781+4]..[201,6781+13])
+                  Some
+                    []
+                    pattern (driver/pparse.ml[201,6781+14]..[201,6781+17])
+                      Ppat_var "cmd" (driver/pparse.ml[201,6781+14]..[201,6781+17])
+                expression (driver/pparse.ml[202,6802+6]..[203,6866+42])
+                  Pexp_apply
+                  expression (driver/pparse.ml[202,6802+6]..[202,6802+13])
+                    Pexp_ident "fprintf" (driver/pparse.ml[202,6802+6]..[202,6802+13])
+                  [
+                    <arg>
+                    Nolabel
+                      expression (driver/pparse.ml[202,6802+14]..[202,6802+17])
+                        Pexp_ident "ppf" (driver/pparse.ml[202,6802+14]..[202,6802+17])
+                    <arg>
+                    Nolabel
+                      expression (driver/pparse.ml[202,6802+18]..[203,6866+38])
+                        Pexp_constant PConst_string("Error while running external preprocessor@.Command line: %s@.",(driver/pparse.ml[202,6802+19]..[203,6866+37]),None)
+                    <arg>
+                    Nolabel
+                      expression (driver/pparse.ml[203,6866+39]..[203,6866+42])
+                        Pexp_ident "cmd" (driver/pparse.ml[203,6866+39]..[203,6866+42])
+                  ]
+              <case>
+                pattern (driver/pparse.ml[204,6909+4]..[204,6909+18])
+                  Ppat_construct "WrongMagic" (driver/pparse.ml[204,6909+4]..[204,6909+14])
+                  Some
+                    []
+                    pattern (driver/pparse.ml[204,6909+15]..[204,6909+18])
+                      Ppat_var "cmd" (driver/pparse.ml[204,6909+15]..[204,6909+18])
+                expression (driver/pparse.ml[205,6931+6]..[206,7005+42])
+                  Pexp_apply
+                  expression (driver/pparse.ml[205,6931+6]..[205,6931+13])
+                    Pexp_ident "fprintf" (driver/pparse.ml[205,6931+6]..[205,6931+13])
+                  [
+                    <arg>
+                    Nolabel
+                      expression (driver/pparse.ml[205,6931+14]..[205,6931+17])
+                        Pexp_ident "ppf" (driver/pparse.ml[205,6931+14]..[205,6931+17])
+                    <arg>
+                    Nolabel
+                      expression (driver/pparse.ml[205,6931+18]..[206,7005+38])
+                        Pexp_constant PConst_string("External preprocessor does not produce a valid file@.Command line: %s@.",(driver/pparse.ml[205,6931+19]..[206,7005+37]),None)
+                    <arg>
+                    Nolabel
+                      expression (driver/pparse.ml[206,7005+39]..[206,7005+42])
+                        Pexp_ident "cmd" (driver/pparse.ml[206,7005+39]..[206,7005+42])
+                  ]
+            ]
+    ]
+  structure_item (driver/pparse.ml[208,7049+0]..[213,7199+5])
+    Pstr_value Nonrec
+    [
+      <def>
+        pattern (driver/pparse.ml[208,7049+4]..[208,7049+6])
+          Ppat_construct "()" (driver/pparse.ml[208,7049+4]..[208,7049+6])
+          None
+        expression (driver/pparse.ml[209,7058+2]..[213,7199+5])
+          Pexp_apply
+          expression (driver/pparse.ml[209,7058+2]..[209,7058+32])
+            Pexp_ident "Location.register_error_of_exn" (driver/pparse.ml[209,7058+2]..[209,7058+32])
+          [
+            <arg>
+            Nolabel
+              expression (driver/pparse.ml[210,7091+4]..[213,7199+5])
+                Pexp_function
+                [
+                  <case>
+                    pattern (driver/pparse.ml[211,7105+8]..[211,7105+17])
+                      Ppat_construct "Error" (driver/pparse.ml[211,7105+8]..[211,7105+13])
+                      Some
+                        []
+                        pattern (driver/pparse.ml[211,7105+14]..[211,7105+17])
+                          Ppat_var "err" (driver/pparse.ml[211,7105+14]..[211,7105+17])
+                    expression (driver/pparse.ml[211,7105+21]..[211,7105+75])
+                      Pexp_construct "Some" (driver/pparse.ml[211,7105+21]..[211,7105+25])
+                      Some
+                        expression (driver/pparse.ml[211,7105+26]..[211,7105+75])
+                          Pexp_apply
+                          expression (driver/pparse.ml[211,7105+27]..[211,7105+57])
+                            Pexp_ident "Location.error_of_printer_file" (driver/pparse.ml[211,7105+27]..[211,7105+57])
+                          [
+                            <arg>
+                            Nolabel
+                              expression (driver/pparse.ml[211,7105+58]..[211,7105+70])
+                                Pexp_ident "report_error" (driver/pparse.ml[211,7105+58]..[211,7105+70])
+                            <arg>
+                            Nolabel
+                              expression (driver/pparse.ml[211,7105+71]..[211,7105+74])
+                                Pexp_ident "err" (driver/pparse.ml[211,7105+71]..[211,7105+74])
+                          ]
+                  <case>
+                    pattern (driver/pparse.ml[212,7181+8]..[212,7181+9])
+                      Ppat_any
+                    expression (driver/pparse.ml[212,7181+13]..[212,7181+17])
+                      Pexp_construct "None" (driver/pparse.ml[212,7181+13]..[212,7181+17])
+                      None
+                ]
+          ]
+    ]
+  structure_item (driver/pparse.ml[215,7206+0]..[222,7497+53])
+    Pstr_value Nonrec
+    [
+      <def>
+        pattern (driver/pparse.ml[215,7206+4]..[215,7206+14])
+          Ppat_var "parse_file" (driver/pparse.ml[215,7206+4]..[215,7206+14])
+        expression (driver/pparse.ml[215,7206+15]..[222,7497+53]) ghost
+          Pexp_fun
+          Labelled "tool_name"
+          None
+          pattern (driver/pparse.ml[215,7206+16]..[215,7206+25])
+            Ppat_var "tool_name" (driver/pparse.ml[215,7206+16]..[215,7206+25])
+          expression (driver/pparse.ml[215,7206+26]..[222,7497+53]) ghost
+            Pexp_fun
+            Nolabel
+            None
+            pattern (driver/pparse.ml[215,7206+26]..[215,7206+39])
+              Ppat_var "invariant_fun" (driver/pparse.ml[215,7206+26]..[215,7206+39])
+            expression (driver/pparse.ml[215,7206+40]..[222,7497+53]) ghost
+              Pexp_fun
+              Nolabel
+              None
+              pattern (driver/pparse.ml[215,7206+40]..[215,7206+45])
+                Ppat_var "parse" (driver/pparse.ml[215,7206+40]..[215,7206+45])
+              expression (driver/pparse.ml[215,7206+46]..[222,7497+53]) ghost
+                Pexp_fun
+                Nolabel
+                None
+                pattern (driver/pparse.ml[215,7206+46]..[215,7206+50])
+                  Ppat_var "kind" (driver/pparse.ml[215,7206+46]..[215,7206+50])
+                expression (driver/pparse.ml[215,7206+51]..[222,7497+53]) ghost
+                  Pexp_fun
+                  Nolabel
+                  None
+                  pattern (driver/pparse.ml[215,7206+51]..[215,7206+61])
+                    Ppat_var "sourcefile" (driver/pparse.ml[215,7206+51]..[215,7206+61])
+                  expression (driver/pparse.ml[216,7270+2]..[222,7497+53])
+                    Pexp_sequence
+                    expression (driver/pparse.ml[216,7270+2]..[216,7270+35])
+                      Pexp_apply
+                      expression (driver/pparse.ml[216,7270+22]..[216,7270+24])
+                        Pexp_ident ":=" (driver/pparse.ml[216,7270+22]..[216,7270+24])
+                      [
+                        <arg>
+                        Nolabel
+                          expression (driver/pparse.ml[216,7270+2]..[216,7270+21])
+                            Pexp_ident "Location.input_name" (driver/pparse.ml[216,7270+2]..[216,7270+21])
+                        <arg>
+                        Nolabel
+                          expression (driver/pparse.ml[216,7270+25]..[216,7270+35])
+                            Pexp_ident "sourcefile" (driver/pparse.ml[216,7270+25]..[216,7270+35])
+                      ]
+                    expression (driver/pparse.ml[217,7307+2]..[222,7497+53])
+                      Pexp_let Nonrec
+                      [
+                        <def>
+                          pattern (driver/pparse.ml[217,7307+6]..[217,7307+15])
+                            Ppat_var "inputfile" (driver/pparse.ml[217,7307+6]..[217,7307+15])
+                          expression (driver/pparse.ml[217,7307+18]..[217,7307+39])
+                            Pexp_apply
+                            expression (driver/pparse.ml[217,7307+18]..[217,7307+28])
+                              Pexp_ident "preprocess" (driver/pparse.ml[217,7307+18]..[217,7307+28])
+                            [
+                              <arg>
+                              Nolabel
+                                expression (driver/pparse.ml[217,7307+29]..[217,7307+39])
+                                  Pexp_ident "sourcefile" (driver/pparse.ml[217,7307+29]..[217,7307+39])
+                            ]
+                      ]
+                      expression (driver/pparse.ml[218,7350+2]..[222,7497+53])
+                        Pexp_apply
+                        expression (driver/pparse.ml[218,7350+2]..[218,7350+18])
+                          Pexp_ident "Misc.try_finally" (driver/pparse.ml[218,7350+2]..[218,7350+18])
+                        [
+                          <arg>
+                          Nolabel
+                            expression (driver/pparse.ml[219,7369+4]..[221,7434+62])
+                              Pexp_fun
+                              Nolabel
+                              None
+                              pattern (driver/pparse.ml[219,7369+9]..[219,7369+11])
+                                Ppat_construct "()" (driver/pparse.ml[219,7369+9]..[219,7369+11])
+                                None
+                              expression (driver/pparse.ml[220,7384+7]..[221,7434+61])
+                                Pexp_apply
+                                expression (driver/pparse.ml[220,7384+37]..[220,7384+39])
+                                  Pexp_ident "@@" (driver/pparse.ml[220,7384+37]..[220,7384+39])
+                                [
+                                  <arg>
+                                  Nolabel
+                                    expression (driver/pparse.ml[220,7384+7]..[220,7384+36])
+                                      Pexp_apply
+                                      expression (driver/pparse.ml[220,7384+7]..[220,7384+26])
+                                        Pexp_ident "Profile.record_call" (driver/pparse.ml[220,7384+7]..[220,7384+26])
+                                      [
+                                        <arg>
+                                        Nolabel
+                                          expression (driver/pparse.ml[220,7384+27]..[220,7384+36])
+                                            Pexp_constant PConst_string("parsing",(driver/pparse.ml[220,7384+28]..[220,7384+35]),None)
+                                      ]
+                                  <arg>
+                                  Nolabel
+                                    expression (driver/pparse.ml[220,7384+40]..[221,7434+61])
+                                      Pexp_fun
+                                      Nolabel
+                                      None
+                                      pattern (driver/pparse.ml[220,7384+44]..[220,7384+46])
+                                        Ppat_construct "()" (driver/pparse.ml[220,7384+44]..[220,7384+46])
+                                        None
+                                      expression (driver/pparse.ml[221,7434+7]..[221,7434+61])
+                                        Pexp_apply
+                                        expression (driver/pparse.ml[221,7434+7]..[221,7434+15])
+                                          Pexp_ident "file_aux" (driver/pparse.ml[221,7434+7]..[221,7434+15])
+                                        [
+                                          <arg>
+                                          Labelled "tool_name"
+                                            expression (driver/pparse.ml[221,7434+17]..[221,7434+26])
+                                              Pexp_ident "tool_name" (driver/pparse.ml[221,7434+17]..[221,7434+26])
+                                          <arg>
+                                          Nolabel
+                                            expression (driver/pparse.ml[221,7434+27]..[221,7434+36])
+                                              Pexp_ident "inputfile" (driver/pparse.ml[221,7434+27]..[221,7434+36])
+                                          <arg>
+                                          Nolabel
+                                            expression (driver/pparse.ml[221,7434+37]..[221,7434+42])
+                                              Pexp_ident "parse" (driver/pparse.ml[221,7434+37]..[221,7434+42])
+                                          <arg>
+                                          Nolabel
+                                            expression (driver/pparse.ml[221,7434+43]..[221,7434+56])
+                                              Pexp_ident "invariant_fun" (driver/pparse.ml[221,7434+43]..[221,7434+56])
+                                          <arg>
+                                          Nolabel
+                                            expression (driver/pparse.ml[221,7434+57]..[221,7434+61])
+                                              Pexp_ident "kind" (driver/pparse.ml[221,7434+57]..[221,7434+61])
+                                        ]
+                                ]
+                          <arg>
+                          Labelled "always"
+                            expression (driver/pparse.ml[222,7497+12]..[222,7497+53])
+                              Pexp_fun
+                              Nolabel
+                              None
+                              pattern (driver/pparse.ml[222,7497+17]..[222,7497+19])
+                                Ppat_construct "()" (driver/pparse.ml[222,7497+17]..[222,7497+19])
+                                None
+                              expression (driver/pparse.ml[222,7497+23]..[222,7497+52])
+                                Pexp_apply
+                                expression (driver/pparse.ml[222,7497+23]..[222,7497+42])
+                                  Pexp_ident "remove_preprocessed" (driver/pparse.ml[222,7497+23]..[222,7497+42])
+                                [
+                                  <arg>
+                                  Nolabel
+                                    expression (driver/pparse.ml[222,7497+43]..[222,7497+52])
+                                      Pexp_ident "inputfile" (driver/pparse.ml[222,7497+43]..[222,7497+52])
+                                ]
+                        ]
+    ]
+  structure_item (driver/pparse.ml[224,7552+0]..[226,7650+44])
+    Pstr_value Nonrec
+    [
+      <def>
+        pattern (driver/pparse.ml[224,7552+4]..[224,7552+24])
+          Ppat_var "parse_implementation" (driver/pparse.ml[224,7552+4]..[224,7552+24])
+        expression (driver/pparse.ml[224,7552+25]..[226,7650+44]) ghost
+          Pexp_fun
+          Labelled "tool_name"
+          None
+          pattern (driver/pparse.ml[224,7552+26]..[224,7552+35])
+            Ppat_var "tool_name" (driver/pparse.ml[224,7552+26]..[224,7552+35])
+          expression (driver/pparse.ml[224,7552+36]..[226,7650+44]) ghost
+            Pexp_fun
+            Nolabel
+            None
+            pattern (driver/pparse.ml[224,7552+36]..[224,7552+46])
+              Ppat_var "sourcefile" (driver/pparse.ml[224,7552+36]..[224,7552+46])
+            expression (driver/pparse.ml[225,7601+2]..[226,7650+44])
+              Pexp_apply
+              expression (driver/pparse.ml[225,7601+2]..[225,7601+12])
+                Pexp_ident "parse_file" (driver/pparse.ml[225,7601+2]..[225,7601+12])
+              [
+                <arg>
+                Labelled "tool_name"
+                  expression (driver/pparse.ml[225,7601+14]..[225,7601+23])
+                    Pexp_ident "tool_name" (driver/pparse.ml[225,7601+14]..[225,7601+23])
+                <arg>
+                Nolabel
+                  expression (driver/pparse.ml[225,7601+24]..[225,7601+48])
+                    Pexp_ident "Ast_invariants.structure" (driver/pparse.ml[225,7601+24]..[225,7601+48])
+                <arg>
+                Nolabel
+                  expression (driver/pparse.ml[226,7650+6]..[226,7650+23])
+                    Pexp_apply
+                    expression (driver/pparse.ml[226,7650+7]..[226,7650+12])
+                      Pexp_ident "parse" (driver/pparse.ml[226,7650+7]..[226,7650+12])
+                    [
+                      <arg>
+                      Nolabel
+                        expression (driver/pparse.ml[226,7650+13]..[226,7650+22])
+                          Pexp_construct "Structure" (driver/pparse.ml[226,7650+13]..[226,7650+22])
+                          None
+                    ]
+                <arg>
+                Nolabel
+                  expression (driver/pparse.ml[226,7650+24]..[226,7650+33])
+                    Pexp_construct "Structure" (driver/pparse.ml[226,7650+24]..[226,7650+33])
+                    None
+                <arg>
+                Nolabel
+                  expression (driver/pparse.ml[226,7650+34]..[226,7650+44])
+                    Pexp_ident "sourcefile" (driver/pparse.ml[226,7650+34]..[226,7650+44])
+              ]
+    ]
+  structure_item (driver/pparse.ml[228,7696+0]..[230,7789+42])
+    Pstr_value Nonrec
+    [
+      <def>
+        pattern (driver/pparse.ml[228,7696+4]..[228,7696+19])
+          Ppat_var "parse_interface" (driver/pparse.ml[228,7696+4]..[228,7696+19])
+        expression (driver/pparse.ml[228,7696+20]..[230,7789+42]) ghost
+          Pexp_fun
+          Labelled "tool_name"
+          None
+          pattern (driver/pparse.ml[228,7696+21]..[228,7696+30])
+            Ppat_var "tool_name" (driver/pparse.ml[228,7696+21]..[228,7696+30])
+          expression (driver/pparse.ml[228,7696+31]..[230,7789+42]) ghost
+            Pexp_fun
+            Nolabel
+            None
+            pattern (driver/pparse.ml[228,7696+31]..[228,7696+41])
+              Ppat_var "sourcefile" (driver/pparse.ml[228,7696+31]..[228,7696+41])
+            expression (driver/pparse.ml[229,7740+2]..[230,7789+42])
+              Pexp_apply
+              expression (driver/pparse.ml[229,7740+2]..[229,7740+12])
+                Pexp_ident "parse_file" (driver/pparse.ml[229,7740+2]..[229,7740+12])
+              [
+                <arg>
+                Labelled "tool_name"
+                  expression (driver/pparse.ml[229,7740+14]..[229,7740+23])
+                    Pexp_ident "tool_name" (driver/pparse.ml[229,7740+14]..[229,7740+23])
+                <arg>
+                Nolabel
+                  expression (driver/pparse.ml[229,7740+24]..[229,7740+48])
+                    Pexp_ident "Ast_invariants.signature" (driver/pparse.ml[229,7740+24]..[229,7740+48])
+                <arg>
+                Nolabel
+                  expression (driver/pparse.ml[230,7789+4]..[230,7789+21])
+                    Pexp_apply
+                    expression (driver/pparse.ml[230,7789+5]..[230,7789+10])
+                      Pexp_ident "parse" (driver/pparse.ml[230,7789+5]..[230,7789+10])
+                    [
+                      <arg>
+                      Nolabel
+                        expression (driver/pparse.ml[230,7789+11]..[230,7789+20])
+                          Pexp_construct "Signature" (driver/pparse.ml[230,7789+11]..[230,7789+20])
+                          None
+                    ]
+                <arg>
+                Nolabel
+                  expression (driver/pparse.ml[230,7789+22]..[230,7789+31])
+                    Pexp_construct "Signature" (driver/pparse.ml[230,7789+22]..[230,7789+31])
+                    None
+                <arg>
+                Nolabel
+                  expression (driver/pparse.ml[230,7789+32]..[230,7789+42])
+                    Pexp_ident "sourcefile" (driver/pparse.ml[230,7789+32]..[230,7789+42])
+              ]
+    ]
+]
+

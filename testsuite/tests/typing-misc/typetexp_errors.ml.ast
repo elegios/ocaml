@@ -1,0 +1,120 @@
+[
+  structure_item (testsuite/tests/typing-misc/typetexp_errors.ml[5,24+0]..[5,24+35])
+    Pstr_type Rec
+    [
+      type_declaration "t" (testsuite/tests/typing-misc/typetexp_errors.ml[5,24+23]..[5,24+24]) (testsuite/tests/typing-misc/typetexp_errors.ml[5,24+0]..[5,24+35])
+        ptype_params =
+          [
+            core_type (testsuite/tests/typing-misc/typetexp_errors.ml[5,24+6]..[5,24+8])
+              Ptyp_var a
+            core_type (testsuite/tests/typing-misc/typetexp_errors.ml[5,24+9]..[5,24+12])
+              Ptyp_var at
+            core_type (testsuite/tests/typing-misc/typetexp_errors.ml[5,24+13]..[5,24+17])
+              Ptyp_var any
+            core_type (testsuite/tests/typing-misc/typetexp_errors.ml[5,24+18]..[5,24+21])
+              Ptyp_var en
+          ]
+        ptype_cstrs =
+          []
+        ptype_kind =
+          Ptype_variant
+            [
+              (testsuite/tests/typing-misc/typetexp_errors.ml[5,24+27]..[5,24+35])
+                "A" (testsuite/tests/typing-misc/typetexp_errors.ml[5,24+27]..[5,24+28])
+                [
+                  core_type (testsuite/tests/typing-misc/typetexp_errors.ml[5,24+32]..[5,24+35])
+                    Ptyp_var an
+                ]
+                None
+            ]
+        ptype_private = Public
+        ptype_manifest =
+          None
+    ]
+  structure_item (testsuite/tests/typing-misc/typetexp_errors.ml[6,60+0]..[13,289+1])
+    Pstr_extension "expect"
+    [
+      structure_item (testsuite/tests/typing-misc/typetexp_errors.ml[6,60+10]..[12,286+2])
+        Pstr_eval
+        expression (testsuite/tests/typing-misc/typetexp_errors.ml[6,60+10]..[12,286+2])
+          Pexp_constant PConst_string ("\nLine 1, characters 32-35:\n1 | type ('a,'at,'any,'en) t = A of 'an\n                                    ^^^\nError: The type variable 'an is unbound in this type declaration.\nHint: Did you mean 'a, 'any, 'at or 'en?\n",(testsuite/tests/typing-misc/typetexp_errors.ml[6,60+12]..[12,286+0]),Some "")
+    ]
+  structure_item (testsuite/tests/typing-misc/typetexp_errors.ml[15,292+0]..[15,292+53])
+    Pstr_type Rec
+    [
+      type_declaration "mismatched" (testsuite/tests/typing-misc/typetexp_errors.ml[15,292+5]..[15,292+15]) (testsuite/tests/typing-misc/typetexp_errors.ml[15,292+0]..[15,292+53])
+        ptype_params =
+          []
+        ptype_cstrs =
+          []
+        ptype_kind =
+          Ptype_abstract
+        ptype_private = Public
+        ptype_manifest =
+          Some
+            core_type (testsuite/tests/typing-misc/typetexp_errors.ml[15,292+18]..[15,292+53])
+              Ptyp_variant closed=Closed
+              [
+                Rtag "A" false
+                  [
+                    core_type (testsuite/tests/typing-misc/typetexp_errors.ml[15,292+27]..[15,292+30])
+                      Ptyp_constr "int" (testsuite/tests/typing-misc/typetexp_errors.ml[15,292+27]..[15,292+30])
+                      []
+                  ]
+                Rtag "B" false
+                  [
+                    core_type (testsuite/tests/typing-misc/typetexp_errors.ml[15,292+39]..[15,292+44])
+                      Ptyp_constr "float" (testsuite/tests/typing-misc/typetexp_errors.ml[15,292+39]..[15,292+44])
+                      []
+                  ]
+              ]
+              Some
+                [
+                  "B"
+                  "C"
+                ]
+    ]
+  structure_item (testsuite/tests/typing-misc/typetexp_errors.ml[16,346+0]..[25,758+3])
+    Pstr_extension "expect"
+    [
+      structure_item (testsuite/tests/typing-misc/typetexp_errors.ml[16,346+10]..[25,758+2])
+        Pstr_eval
+        expression (testsuite/tests/typing-misc/typetexp_errors.ml[16,346+10]..[25,758+2])
+          Pexp_constant PConst_string ("\nLine 1, characters 18-53:\n1 | type mismatched = [< `A of int | `B of float > `B `C]\n                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nError: The constructor C is missing from the upper bound (between '<'\n       and '>') of this polymorphic variant but is present in\n       its lower bound (after '>').\n       Hint: Either add `C in the upper bound, or remove it\n       from the lower bound.\n",(testsuite/tests/typing-misc/typetexp_errors.ml[16,346+12]..[25,758+0]),Some "")
+    ]
+  structure_item (testsuite/tests/typing-misc/typetexp_errors.ml[27,763+0]..[27,763+33])
+    Pstr_type Rec
+    [
+      type_declaration "underscored" (testsuite/tests/typing-misc/typetexp_errors.ml[27,763+11]..[27,763+22]) (testsuite/tests/typing-misc/typetexp_errors.ml[27,763+0]..[27,763+33])
+        ptype_params =
+          [
+            core_type (testsuite/tests/typing-misc/typetexp_errors.ml[27,763+6]..[27,763+9])
+              Ptyp_var _a
+          ]
+        ptype_cstrs =
+          []
+        ptype_kind =
+          Ptype_variant
+            [
+              (testsuite/tests/typing-misc/typetexp_errors.ml[27,763+25]..[27,763+33])
+                "A" (testsuite/tests/typing-misc/typetexp_errors.ml[27,763+25]..[27,763+26])
+                [
+                  core_type (testsuite/tests/typing-misc/typetexp_errors.ml[27,763+30]..[27,763+33])
+                    Ptyp_var _a
+                ]
+                None
+            ]
+        ptype_private = Public
+        ptype_manifest =
+          None
+    ]
+  structure_item (testsuite/tests/typing-misc/typetexp_errors.ml[28,797+0]..[33,947+3])
+    Pstr_extension "expect"
+    [
+      structure_item (testsuite/tests/typing-misc/typetexp_errors.ml[28,797+10]..[33,947+2])
+        Pstr_eval
+        expression (testsuite/tests/typing-misc/typetexp_errors.ml[28,797+10]..[33,947+2])
+          Pexp_constant PConst_string ("\nLine 1, characters 6-9:\n1 | type ('_a) underscored = A of '_a\n          ^^^\nError: The type variable name '_a is not allowed in programs\n",(testsuite/tests/typing-misc/typetexp_errors.ml[28,797+12]..[33,947+0]),Some "")
+    ]
+]
+

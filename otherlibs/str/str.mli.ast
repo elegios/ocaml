@@ -1,0 +1,926 @@
+[
+  signature_item (otherlibs/str/str.mli[16,1079+0]..[16,1079+59])
+    Psig_attribute "ocaml.text"
+    [
+      structure_item (otherlibs/str/str.mli[16,1079+0]..[16,1079+59])
+        Pstr_eval
+        expression (otherlibs/str/str.mli[16,1079+0]..[16,1079+59])
+          Pexp_constant PConst_string(" Regular expressions and high-level string processing ",(otherlibs/str/str.mli[16,1079+0]..[16,1079+59]),None)
+    ]
+  signature_item (otherlibs/str/str.mli[19,1141+0]..[19,1141+30])
+    Psig_attribute "ocaml.text"
+    [
+      structure_item (otherlibs/str/str.mli[19,1141+0]..[19,1141+30])
+        Pstr_eval
+        expression (otherlibs/str/str.mli[19,1141+0]..[19,1141+30])
+          Pexp_constant PConst_string(" {1 Regular expressions} ",(otherlibs/str/str.mli[19,1141+0]..[19,1141+30]),None)
+    ]
+  signature_item (otherlibs/str/str.mli[22,1174+0]..[22,1174+11])
+    Psig_type Rec
+    [
+      type_declaration "regexp" (otherlibs/str/str.mli[22,1174+5]..[22,1174+11]) (otherlibs/str/str.mli[22,1174+0]..[22,1174+11])
+        attribute "ocaml.doc"
+          [
+            structure_item (otherlibs/str/str.mli[23,1186+0]..[23,1186+48])
+              Pstr_eval
+              expression (otherlibs/str/str.mli[23,1186+0]..[23,1186+48])
+                Pexp_constant PConst_string(" The type of compiled regular expressions. ",(otherlibs/str/str.mli[23,1186+0]..[23,1186+48]),None)
+          ]
+        ptype_params =
+          []
+        ptype_cstrs =
+          []
+        ptype_kind =
+          Ptype_abstract
+        ptype_private = Public
+        ptype_manifest =
+          None
+    ]
+  signature_item (otherlibs/str/str.mli[26,1237+0]..[26,1237+29])
+    Psig_value
+    value_description "regexp" (otherlibs/str/str.mli[26,1237+4]..[26,1237+10]) (otherlibs/str/str.mli[26,1237+0]..[26,1237+29])
+      attribute "ocaml.doc"
+        [
+          structure_item (otherlibs/str/str.mli[27,1267+0]..[67,3463+2])
+            Pstr_eval
+            expression (otherlibs/str/str.mli[27,1267+0]..[67,3463+2])
+              Pexp_constant PConst_string(" Compile a regular expression. The following constructs are\n    recognized:\n   - [.     ] Matches any character except newline.\n   - [*     ] (postfix) Matches the preceding expression zero, one or\n              several times\n   - [+     ] (postfix) Matches the preceding expression one or\n              several times\n   - [?     ] (postfix) Matches the preceding expression once or\n              not at all\n   - [[..]  ] Character set. Ranges are denoted with [-], as in [[a-z]].\n              An initial [^], as in [[^0-9]], complements the set.\n              To include a [\\]] character in a set, make it the first\n              character of the set. To include a [-] character in a set,\n              make it the first or the last character of the set.\n   - [^     ] Matches at beginning of line: either at the beginning of\n              the matched string, or just after a '\\n' character.\n   - [$     ] Matches at end of line: either at the end of the matched\n              string, or just before a '\\n' character.\n   - [\\|    ] (infix) Alternative between two expressions.\n   - [\\(..\\)] Grouping and naming of the enclosed expression.\n   - [\\1    ] The text matched by the first [\\(...\\)] expression\n     ([\\2] for the second expression, and so on up to [\\9]).\n   - [\\b    ] Matches word boundaries.\n   - [\\     ] Quotes special characters.  The special characters\n              are [$^\\.*+?[]].\n\n   Note: the argument to [regexp] is usually a string literal. In this\n   case, any backslash character in the regular expression must be\n   doubled to make it past the OCaml string parser. For example, the\n   following expression:\n   {[ let r = Str.regexp \"hello \\\\([A-Za-z]+\\\\)\" in\n      Str.replace_first r \"\\\\1\" \"hello world\" ]}\n   returns the string [\"world\"].\n\n   In particular, if you want a regular expression that matches a single\n   backslash character, you need to quote it in the argument to [regexp]\n   (according to the last item of the list above) by adding a second\n   backslash. Then you need to quote both backslashes (according to the\n   syntax of string constants in OCaml) by doubling them again, so you\n   need to write four backslash characters: [Str.regexp \"\\\\\\\\\"].\n",(otherlibs/str/str.mli[27,1267+0]..[67,3463+2]),None)
+        ]
+      core_type (otherlibs/str/str.mli[26,1237+13]..[26,1237+29])
+        Ptyp_arrow
+        Nolabel
+        core_type (otherlibs/str/str.mli[26,1237+13]..[26,1237+19])
+          Ptyp_constr "string" (otherlibs/str/str.mli[26,1237+13]..[26,1237+19])
+          []
+        core_type (otherlibs/str/str.mli[26,1237+23]..[26,1237+29])
+          Ptyp_constr "regexp" (otherlibs/str/str.mli[26,1237+23]..[26,1237+29])
+          []
+      []
+  signature_item (otherlibs/str/str.mli[69,3467+0]..[69,3467+39])
+    Psig_value
+    value_description "regexp_case_fold" (otherlibs/str/str.mli[69,3467+4]..[69,3467+20]) (otherlibs/str/str.mli[69,3467+0]..[69,3467+39])
+      attribute "ocaml.doc"
+        [
+          structure_item (otherlibs/str/str.mli[70,3507+0]..[72,3641+32])
+            Pstr_eval
+            expression (otherlibs/str/str.mli[70,3507+0]..[72,3641+32])
+              Pexp_constant PConst_string(" Same as [regexp], but the compiled expression will match text\n    in a case-insensitive way: uppercase and lowercase letters will\n    be considered equivalent. ",(otherlibs/str/str.mli[70,3507+0]..[72,3641+32]),None)
+        ]
+      core_type (otherlibs/str/str.mli[69,3467+23]..[69,3467+39])
+        Ptyp_arrow
+        Nolabel
+        core_type (otherlibs/str/str.mli[69,3467+23]..[69,3467+29])
+          Ptyp_constr "string" (otherlibs/str/str.mli[69,3467+23]..[69,3467+29])
+          []
+        core_type (otherlibs/str/str.mli[69,3467+33]..[69,3467+39])
+          Ptyp_constr "regexp" (otherlibs/str/str.mli[69,3467+33]..[69,3467+39])
+          []
+      []
+  signature_item (otherlibs/str/str.mli[74,3675+0]..[74,3675+28])
+    Psig_value
+    value_description "quote" (otherlibs/str/str.mli[74,3675+4]..[74,3675+9]) (otherlibs/str/str.mli[74,3675+0]..[74,3675+28])
+      attribute "ocaml.doc"
+        [
+          structure_item (otherlibs/str/str.mli[75,3704+0]..[76,3767+27])
+            Pstr_eval
+            expression (otherlibs/str/str.mli[75,3704+0]..[76,3767+27])
+              Pexp_constant PConst_string(" [Str.quote s] returns a regexp string that matches exactly\n   [s] and nothing else. ",(otherlibs/str/str.mli[75,3704+0]..[76,3767+27]),None)
+        ]
+      core_type (otherlibs/str/str.mli[74,3675+12]..[74,3675+28])
+        Ptyp_arrow
+        Nolabel
+        core_type (otherlibs/str/str.mli[74,3675+12]..[74,3675+18])
+          Ptyp_constr "string" (otherlibs/str/str.mli[74,3675+12]..[74,3675+18])
+          []
+        core_type (otherlibs/str/str.mli[74,3675+22]..[74,3675+28])
+          Ptyp_constr "string" (otherlibs/str/str.mli[74,3675+22]..[74,3675+28])
+          []
+      []
+  signature_item (otherlibs/str/str.mli[78,3796+0]..[78,3796+36])
+    Psig_value
+    value_description "regexp_string" (otherlibs/str/str.mli[78,3796+4]..[78,3796+17]) (otherlibs/str/str.mli[78,3796+0]..[78,3796+36])
+      attribute "ocaml.doc"
+        [
+          structure_item (otherlibs/str/str.mli[79,3833+0]..[80,3888+47])
+            Pstr_eval
+            expression (otherlibs/str/str.mli[79,3833+0]..[80,3888+47])
+              Pexp_constant PConst_string(" [Str.regexp_string s] returns a regular expression\n   that matches exactly [s] and nothing else.",(otherlibs/str/str.mli[79,3833+0]..[80,3888+47]),None)
+        ]
+      core_type (otherlibs/str/str.mli[78,3796+20]..[78,3796+36])
+        Ptyp_arrow
+        Nolabel
+        core_type (otherlibs/str/str.mli[78,3796+20]..[78,3796+26])
+          Ptyp_constr "string" (otherlibs/str/str.mli[78,3796+20]..[78,3796+26])
+          []
+        core_type (otherlibs/str/str.mli[78,3796+30]..[78,3796+36])
+          Ptyp_constr "regexp" (otherlibs/str/str.mli[78,3796+30]..[78,3796+36])
+          []
+      []
+  signature_item (otherlibs/str/str.mli[82,3937+0]..[82,3937+46])
+    Psig_value
+    value_description "regexp_string_case_fold" (otherlibs/str/str.mli[82,3937+4]..[82,3937+27]) (otherlibs/str/str.mli[82,3937+0]..[82,3937+46])
+      attribute "ocaml.doc"
+        [
+          structure_item (otherlibs/str/str.mli[83,3984+0]..[84,4054+55])
+            Pstr_eval
+            expression (otherlibs/str/str.mli[83,3984+0]..[84,4054+55])
+              Pexp_constant PConst_string(" [Str.regexp_string_case_fold] is similar to {!Str.regexp_string},\n   but the regexp matches in a case-insensitive way. ",(otherlibs/str/str.mli[83,3984+0]..[84,4054+55]),None)
+        ]
+      core_type (otherlibs/str/str.mli[82,3937+30]..[82,3937+46])
+        Ptyp_arrow
+        Nolabel
+        core_type (otherlibs/str/str.mli[82,3937+30]..[82,3937+36])
+          Ptyp_constr "string" (otherlibs/str/str.mli[82,3937+30]..[82,3937+36])
+          []
+        core_type (otherlibs/str/str.mli[82,3937+40]..[82,3937+46])
+          Ptyp_constr "regexp" (otherlibs/str/str.mli[82,3937+40]..[82,3937+46])
+          []
+      []
+  signature_item (otherlibs/str/str.mli[87,4112+0]..[87,4112+40])
+    Psig_attribute "ocaml.text"
+    [
+      structure_item (otherlibs/str/str.mli[87,4112+0]..[87,4112+40])
+        Pstr_eval
+        expression (otherlibs/str/str.mli[87,4112+0]..[87,4112+40])
+          Pexp_constant PConst_string(" {1 String matching and searching} ",(otherlibs/str/str.mli[87,4112+0]..[87,4112+40]),None)
+    ]
+  signature_item (otherlibs/str/str.mli[90,4155+0]..[90,4155+50])
+    Psig_value
+    value_description "string_match" (otherlibs/str/str.mli[90,4155+4]..[90,4155+16]) (otherlibs/str/str.mli[90,4155+0]..[90,4155+50])
+      attribute "ocaml.doc"
+        [
+          structure_item (otherlibs/str/str.mli[91,4206+0]..[93,4339+65])
+            Pstr_eval
+            expression (otherlibs/str/str.mli[91,4206+0]..[93,4339+65])
+              Pexp_constant PConst_string(" [string_match r s start] tests whether a substring of [s] that\n   starts at position [start] matches the regular expression [r].\n   The first character of a string has position [0], as usual. ",(otherlibs/str/str.mli[91,4206+0]..[93,4339+65]),None)
+        ]
+      core_type (otherlibs/str/str.mli[90,4155+19]..[90,4155+50])
+        Ptyp_arrow
+        Nolabel
+        core_type (otherlibs/str/str.mli[90,4155+19]..[90,4155+25])
+          Ptyp_constr "regexp" (otherlibs/str/str.mli[90,4155+19]..[90,4155+25])
+          []
+        core_type (otherlibs/str/str.mli[90,4155+29]..[90,4155+50])
+          Ptyp_arrow
+          Nolabel
+          core_type (otherlibs/str/str.mli[90,4155+29]..[90,4155+35])
+            Ptyp_constr "string" (otherlibs/str/str.mli[90,4155+29]..[90,4155+35])
+            []
+          core_type (otherlibs/str/str.mli[90,4155+39]..[90,4155+50])
+            Ptyp_arrow
+            Nolabel
+            core_type (otherlibs/str/str.mli[90,4155+39]..[90,4155+42])
+              Ptyp_constr "int" (otherlibs/str/str.mli[90,4155+39]..[90,4155+42])
+              []
+            core_type (otherlibs/str/str.mli[90,4155+46]..[90,4155+50])
+              Ptyp_constr "bool" (otherlibs/str/str.mli[90,4155+46]..[90,4155+50])
+              []
+      []
+  signature_item (otherlibs/str/str.mli[95,4406+0]..[95,4406+51])
+    Psig_value
+    value_description "search_forward" (otherlibs/str/str.mli[95,4406+4]..[95,4406+18]) (otherlibs/str/str.mli[95,4406+0]..[95,4406+51])
+      attribute "ocaml.doc"
+        [
+          structure_item (otherlibs/str/str.mli[96,4458+0]..[101,4729+47])
+            Pstr_eval
+            expression (otherlibs/str/str.mli[96,4458+0]..[101,4729+47])
+              Pexp_constant PConst_string(" [search_forward r s start] searches the string [s] for a substring\n   matching the regular expression [r]. The search starts at position\n   [start] and proceeds towards the end of the string.\n   Return the position of the first character of the matched\n   substring.\n   @raise Not_found if no substring matches. ",(otherlibs/str/str.mli[96,4458+0]..[101,4729+47]),None)
+        ]
+      core_type (otherlibs/str/str.mli[95,4406+21]..[95,4406+51])
+        Ptyp_arrow
+        Nolabel
+        core_type (otherlibs/str/str.mli[95,4406+21]..[95,4406+27])
+          Ptyp_constr "regexp" (otherlibs/str/str.mli[95,4406+21]..[95,4406+27])
+          []
+        core_type (otherlibs/str/str.mli[95,4406+31]..[95,4406+51])
+          Ptyp_arrow
+          Nolabel
+          core_type (otherlibs/str/str.mli[95,4406+31]..[95,4406+37])
+            Ptyp_constr "string" (otherlibs/str/str.mli[95,4406+31]..[95,4406+37])
+            []
+          core_type (otherlibs/str/str.mli[95,4406+41]..[95,4406+51])
+            Ptyp_arrow
+            Nolabel
+            core_type (otherlibs/str/str.mli[95,4406+41]..[95,4406+44])
+              Ptyp_constr "int" (otherlibs/str/str.mli[95,4406+41]..[95,4406+44])
+              []
+            core_type (otherlibs/str/str.mli[95,4406+48]..[95,4406+51])
+              Ptyp_constr "int" (otherlibs/str/str.mli[95,4406+48]..[95,4406+51])
+              []
+      []
+  signature_item (otherlibs/str/str.mli[103,4778+0]..[103,4778+52])
+    Psig_value
+    value_description "search_backward" (otherlibs/str/str.mli[103,4778+4]..[103,4778+19]) (otherlibs/str/str.mli[103,4778+0]..[103,4778+52])
+      attribute "ocaml.doc"
+        [
+          structure_item (otherlibs/str/str.mli[104,4831+0]..[109,5130+46])
+            Pstr_eval
+            expression (otherlibs/str/str.mli[104,4831+0]..[109,5130+46])
+              Pexp_constant PConst_string(" [search_backward r s last] searches the string [s] for a\n  substring matching the regular expression [r]. The search first\n  considers substrings that start at position [last] and proceeds\n  towards the beginning of string. Return the position of the first\n  character of the matched substring.\n  @raise Not_found if no substring matches. ",(otherlibs/str/str.mli[104,4831+0]..[109,5130+46]),None)
+        ]
+      core_type (otherlibs/str/str.mli[103,4778+22]..[103,4778+52])
+        Ptyp_arrow
+        Nolabel
+        core_type (otherlibs/str/str.mli[103,4778+22]..[103,4778+28])
+          Ptyp_constr "regexp" (otherlibs/str/str.mli[103,4778+22]..[103,4778+28])
+          []
+        core_type (otherlibs/str/str.mli[103,4778+32]..[103,4778+52])
+          Ptyp_arrow
+          Nolabel
+          core_type (otherlibs/str/str.mli[103,4778+32]..[103,4778+38])
+            Ptyp_constr "string" (otherlibs/str/str.mli[103,4778+32]..[103,4778+38])
+            []
+          core_type (otherlibs/str/str.mli[103,4778+42]..[103,4778+52])
+            Ptyp_arrow
+            Nolabel
+            core_type (otherlibs/str/str.mli[103,4778+42]..[103,4778+45])
+              Ptyp_constr "int" (otherlibs/str/str.mli[103,4778+42]..[103,4778+45])
+              []
+            core_type (otherlibs/str/str.mli[103,4778+49]..[103,4778+52])
+              Ptyp_constr "int" (otherlibs/str/str.mli[103,4778+49]..[103,4778+52])
+              []
+      []
+  signature_item (otherlibs/str/str.mli[111,5178+0]..[111,5178+58])
+    Psig_value
+    value_description "string_partial_match" (otherlibs/str/str.mli[111,5178+4]..[111,5178+24]) (otherlibs/str/str.mli[111,5178+0]..[111,5178+58])
+      attribute "ocaml.doc"
+        [
+          structure_item (otherlibs/str/str.mli[112,5237+0]..[114,5359+54])
+            Pstr_eval
+            expression (otherlibs/str/str.mli[112,5237+0]..[114,5359+54])
+              Pexp_constant PConst_string(" Similar to {!Str.string_match}, but also returns true if\n   the argument string is a prefix of a string that matches.\n   This includes the case of a true complete match. ",(otherlibs/str/str.mli[112,5237+0]..[114,5359+54]),None)
+        ]
+      core_type (otherlibs/str/str.mli[111,5178+27]..[111,5178+58])
+        Ptyp_arrow
+        Nolabel
+        core_type (otherlibs/str/str.mli[111,5178+27]..[111,5178+33])
+          Ptyp_constr "regexp" (otherlibs/str/str.mli[111,5178+27]..[111,5178+33])
+          []
+        core_type (otherlibs/str/str.mli[111,5178+37]..[111,5178+58])
+          Ptyp_arrow
+          Nolabel
+          core_type (otherlibs/str/str.mli[111,5178+37]..[111,5178+43])
+            Ptyp_constr "string" (otherlibs/str/str.mli[111,5178+37]..[111,5178+43])
+            []
+          core_type (otherlibs/str/str.mli[111,5178+47]..[111,5178+58])
+            Ptyp_arrow
+            Nolabel
+            core_type (otherlibs/str/str.mli[111,5178+47]..[111,5178+50])
+              Ptyp_constr "int" (otherlibs/str/str.mli[111,5178+47]..[111,5178+50])
+              []
+            core_type (otherlibs/str/str.mli[111,5178+54]..[111,5178+58])
+              Ptyp_constr "bool" (otherlibs/str/str.mli[111,5178+54]..[111,5178+58])
+              []
+      []
+  signature_item (otherlibs/str/str.mli[116,5415+0]..[116,5415+37])
+    Psig_value
+    value_description "matched_string" (otherlibs/str/str.mli[116,5415+4]..[116,5415+18]) (otherlibs/str/str.mli[116,5415+0]..[116,5415+37])
+      attribute "ocaml.doc"
+        [
+          structure_item (otherlibs/str/str.mli[117,5453+0]..[142,6330+60])
+            Pstr_eval
+            expression (otherlibs/str/str.mli[117,5453+0]..[142,6330+60])
+              Pexp_constant PConst_string(" [matched_string s] returns the substring of [s] that was matched\n   by the last call to one of the following matching or searching\n   functions:\n   - {!Str.string_match}\n   - {!Str.search_forward}\n   - {!Str.search_backward}\n   - {!Str.string_partial_match}\n   - {!Str.global_substitute}\n   - {!Str.substitute_first}\n\n   provided that none of the following functions was called in between:\n   - {!Str.global_replace}\n   - {!Str.replace_first}\n   - {!Str.split}\n   - {!Str.bounded_split}\n   - {!Str.split_delim}\n   - {!Str.bounded_split_delim}\n   - {!Str.full_split}\n   - {!Str.bounded_full_split}\n\n   Note: in the case of [global_substitute] and [substitute_first],\n   a call to [matched_string] is only valid within the [subst] argument,\n   not after [global_substitute] or [substitute_first] returns.\n\n   The user must make sure that the parameter [s] is the same string\n   that was passed to the matching or searching function. ",(otherlibs/str/str.mli[117,5453+0]..[142,6330+60]),None)
+        ]
+      core_type (otherlibs/str/str.mli[116,5415+21]..[116,5415+37])
+        Ptyp_arrow
+        Nolabel
+        core_type (otherlibs/str/str.mli[116,5415+21]..[116,5415+27])
+          Ptyp_constr "string" (otherlibs/str/str.mli[116,5415+21]..[116,5415+27])
+          []
+        core_type (otherlibs/str/str.mli[116,5415+31]..[116,5415+37])
+          Ptyp_constr "string" (otherlibs/str/str.mli[116,5415+31]..[116,5415+37])
+          []
+      []
+  signature_item (otherlibs/str/str.mli[144,6392+0]..[144,6392+33])
+    Psig_value
+    value_description "match_beginning" (otherlibs/str/str.mli[144,6392+4]..[144,6392+19]) (otherlibs/str/str.mli[144,6392+0]..[144,6392+33])
+      attribute "ocaml.doc"
+        [
+          structure_item (otherlibs/str/str.mli[145,6426+0]..[147,6562+68])
+            Pstr_eval
+            expression (otherlibs/str/str.mli[145,6426+0]..[147,6562+68])
+              Pexp_constant PConst_string(" [match_beginning()] returns the position of the first character\n   of the substring that was matched by the last call to a matching\n   or searching function (see {!Str.matched_string} for details). ",(otherlibs/str/str.mli[145,6426+0]..[147,6562+68]),None)
+        ]
+      core_type (otherlibs/str/str.mli[144,6392+22]..[144,6392+33])
+        Ptyp_arrow
+        Nolabel
+        core_type (otherlibs/str/str.mli[144,6392+22]..[144,6392+26])
+          Ptyp_constr "unit" (otherlibs/str/str.mli[144,6392+22]..[144,6392+26])
+          []
+        core_type (otherlibs/str/str.mli[144,6392+30]..[144,6392+33])
+          Ptyp_constr "int" (otherlibs/str/str.mli[144,6392+30]..[144,6392+33])
+          []
+      []
+  signature_item (otherlibs/str/str.mli[149,6632+0]..[149,6632+27])
+    Psig_value
+    value_description "match_end" (otherlibs/str/str.mli[149,6632+4]..[149,6632+13]) (otherlibs/str/str.mli[149,6632+0]..[149,6632+27])
+      attribute "ocaml.doc"
+        [
+          structure_item (otherlibs/str/str.mli[150,6660+0]..[153,6869+15])
+            Pstr_eval
+            expression (otherlibs/str/str.mli[150,6660+0]..[153,6869+15])
+              Pexp_constant PConst_string(" [match_end()] returns the position of the character following the\n   last character of the substring that was matched by the last call\n   to a matching or searching function (see {!Str.matched_string} for\n   details). ",(otherlibs/str/str.mli[150,6660+0]..[153,6869+15]),None)
+        ]
+      core_type (otherlibs/str/str.mli[149,6632+16]..[149,6632+27])
+        Ptyp_arrow
+        Nolabel
+        core_type (otherlibs/str/str.mli[149,6632+16]..[149,6632+20])
+          Ptyp_constr "unit" (otherlibs/str/str.mli[149,6632+16]..[149,6632+20])
+          []
+        core_type (otherlibs/str/str.mli[149,6632+24]..[149,6632+27])
+          Ptyp_constr "int" (otherlibs/str/str.mli[149,6632+24]..[149,6632+27])
+          []
+      []
+  signature_item (otherlibs/str/str.mli[155,6886+0]..[155,6886+43])
+    Psig_value
+    value_description "matched_group" (otherlibs/str/str.mli[155,6886+4]..[155,6886+17]) (otherlibs/str/str.mli[155,6886+0]..[155,6886+43])
+      attribute "ocaml.doc"
+        [
+          structure_item (otherlibs/str/str.mli[156,6930+0]..[168,7670+53])
+            Pstr_eval
+            expression (otherlibs/str/str.mli[156,6930+0]..[168,7670+53])
+              Pexp_constant PConst_string(" [matched_group n s] returns the substring of [s] that was matched\n   by the [n]th group [\\(...\\)] of the regular expression that was\n   matched by the last call to a matching or searching function (see\n   {!Str.matched_string} for details). When [n] is [0], it returns the\n   substring matched by the whole regular expression.\n   The user must make sure that the parameter [s] is the same string\n   that was passed to the matching or searching function.\n   @raise Not_found if the [n]th group\n   of the regular expression was not matched.  This can happen\n   with groups inside alternatives [\\|], options [?]\n   or repetitions [*].  For instance, the empty string will match\n   [\\(a\\)*], but [matched_group 1 \"\"] will raise [Not_found]\n   because the first group itself was not matched. ",(otherlibs/str/str.mli[156,6930+0]..[168,7670+53]),None)
+        ]
+      core_type (otherlibs/str/str.mli[155,6886+20]..[155,6886+43])
+        Ptyp_arrow
+        Nolabel
+        core_type (otherlibs/str/str.mli[155,6886+20]..[155,6886+23])
+          Ptyp_constr "int" (otherlibs/str/str.mli[155,6886+20]..[155,6886+23])
+          []
+        core_type (otherlibs/str/str.mli[155,6886+27]..[155,6886+43])
+          Ptyp_arrow
+          Nolabel
+          core_type (otherlibs/str/str.mli[155,6886+27]..[155,6886+33])
+            Ptyp_constr "string" (otherlibs/str/str.mli[155,6886+27]..[155,6886+33])
+            []
+          core_type (otherlibs/str/str.mli[155,6886+37]..[155,6886+43])
+            Ptyp_constr "string" (otherlibs/str/str.mli[155,6886+37]..[155,6886+43])
+            []
+      []
+  signature_item (otherlibs/str/str.mli[170,7725+0]..[170,7725+32])
+    Psig_value
+    value_description "group_beginning" (otherlibs/str/str.mli[170,7725+4]..[170,7725+19]) (otherlibs/str/str.mli[170,7725+0]..[170,7725+32])
+      attribute "ocaml.doc"
+        [
+          structure_item (otherlibs/str/str.mli[171,7758+0]..[178,8175+29])
+            Pstr_eval
+            expression (otherlibs/str/str.mli[171,7758+0]..[178,8175+29])
+              Pexp_constant PConst_string(" [group_beginning n] returns the position of the first character\n   of the substring that was matched by the [n]th group of\n   the regular expression that was matched by the last call to a\n   matching or searching function (see {!Str.matched_string} for details).\n   @raise Not_found if the [n]th group of the regular expression\n   was not matched.\n   @raise Invalid_argument if there are fewer than [n] groups in\n   the regular expression. ",(otherlibs/str/str.mli[171,7758+0]..[178,8175+29]),None)
+        ]
+      core_type (otherlibs/str/str.mli[170,7725+22]..[170,7725+32])
+        Ptyp_arrow
+        Nolabel
+        core_type (otherlibs/str/str.mli[170,7725+22]..[170,7725+25])
+          Ptyp_constr "int" (otherlibs/str/str.mli[170,7725+22]..[170,7725+25])
+          []
+        core_type (otherlibs/str/str.mli[170,7725+29]..[170,7725+32])
+          Ptyp_constr "int" (otherlibs/str/str.mli[170,7725+29]..[170,7725+32])
+          []
+      []
+  signature_item (otherlibs/str/str.mli[180,8206+0]..[180,8206+26])
+    Psig_value
+    value_description "group_end" (otherlibs/str/str.mli[180,8206+4]..[180,8206+13]) (otherlibs/str/str.mli[180,8206+0]..[180,8206+26])
+      attribute "ocaml.doc"
+        [
+          structure_item (otherlibs/str/str.mli[181,8233+0]..[189,8666+29])
+            Pstr_eval
+            expression (otherlibs/str/str.mli[181,8233+0]..[189,8666+29])
+              Pexp_constant PConst_string(" [group_end n] returns\n   the position of the character following the last character of\n   substring that was matched by the [n]th group of the regular\n   expression that was matched by the last call to a matching or\n   searching function (see {!Str.matched_string} for details).\n   @raise Not_found if the [n]th group of the regular expression\n   was not matched.\n   @raise Invalid_argument if there are fewer than [n] groups in\n   the regular expression. ",(otherlibs/str/str.mli[181,8233+0]..[189,8666+29]),None)
+        ]
+      core_type (otherlibs/str/str.mli[180,8206+16]..[180,8206+26])
+        Ptyp_arrow
+        Nolabel
+        core_type (otherlibs/str/str.mli[180,8206+16]..[180,8206+19])
+          Ptyp_constr "int" (otherlibs/str/str.mli[180,8206+16]..[180,8206+19])
+          []
+        core_type (otherlibs/str/str.mli[180,8206+23]..[180,8206+26])
+          Ptyp_constr "int" (otherlibs/str/str.mli[180,8206+23]..[180,8206+26])
+          []
+      []
+  signature_item (otherlibs/str/str.mli[192,8698+0]..[192,8698+22])
+    Psig_attribute "ocaml.text"
+    [
+      structure_item (otherlibs/str/str.mli[192,8698+0]..[192,8698+22])
+        Pstr_eval
+        expression (otherlibs/str/str.mli[192,8698+0]..[192,8698+22])
+          Pexp_constant PConst_string(" {1 Replacement} ",(otherlibs/str/str.mli[192,8698+0]..[192,8698+22]),None)
+    ]
+  signature_item (otherlibs/str/str.mli[195,8723+0]..[195,8723+57])
+    Psig_value
+    value_description "global_replace" (otherlibs/str/str.mli[195,8723+4]..[195,8723+18]) (otherlibs/str/str.mli[195,8723+0]..[195,8723+57])
+      attribute "ocaml.doc"
+        [
+          structure_item (otherlibs/str/str.mli[196,8781+0]..[201,9118+71])
+            Pstr_eval
+            expression (otherlibs/str/str.mli[196,8781+0]..[201,9118+71])
+              Pexp_constant PConst_string(" [global_replace regexp templ s] returns a string identical to [s],\n   except that all substrings of [s] that match [regexp] have been\n   replaced by [templ]. The replacement template [templ] can contain\n   [\\1], [\\2], etc; these sequences will be replaced by the text\n   matched by the corresponding group in the regular expression.\n   [\\0] stands for the text matched by the whole regular expression. ",(otherlibs/str/str.mli[196,8781+0]..[201,9118+71]),None)
+        ]
+      core_type (otherlibs/str/str.mli[195,8723+21]..[195,8723+57])
+        Ptyp_arrow
+        Nolabel
+        core_type (otherlibs/str/str.mli[195,8723+21]..[195,8723+27])
+          Ptyp_constr "regexp" (otherlibs/str/str.mli[195,8723+21]..[195,8723+27])
+          []
+        core_type (otherlibs/str/str.mli[195,8723+31]..[195,8723+57])
+          Ptyp_arrow
+          Nolabel
+          core_type (otherlibs/str/str.mli[195,8723+31]..[195,8723+37])
+            Ptyp_constr "string" (otherlibs/str/str.mli[195,8723+31]..[195,8723+37])
+            []
+          core_type (otherlibs/str/str.mli[195,8723+41]..[195,8723+57])
+            Ptyp_arrow
+            Nolabel
+            core_type (otherlibs/str/str.mli[195,8723+41]..[195,8723+47])
+              Ptyp_constr "string" (otherlibs/str/str.mli[195,8723+41]..[195,8723+47])
+              []
+            core_type (otherlibs/str/str.mli[195,8723+51]..[195,8723+57])
+              Ptyp_constr "string" (otherlibs/str/str.mli[195,8723+51]..[195,8723+57])
+              []
+      []
+  signature_item (otherlibs/str/str.mli[203,9191+0]..[203,9191+56])
+    Psig_value
+    value_description "replace_first" (otherlibs/str/str.mli[203,9191+4]..[203,9191+17]) (otherlibs/str/str.mli[203,9191+0]..[203,9191+56])
+      attribute "ocaml.doc"
+        [
+          structure_item (otherlibs/str/str.mli[204,9248+0]..[205,9320+50])
+            Pstr_eval
+            expression (otherlibs/str/str.mli[204,9248+0]..[205,9320+50])
+              Pexp_constant PConst_string(" Same as {!Str.global_replace}, except that only the first substring\n   matching the regular expression is replaced. ",(otherlibs/str/str.mli[204,9248+0]..[205,9320+50]),None)
+        ]
+      core_type (otherlibs/str/str.mli[203,9191+20]..[203,9191+56])
+        Ptyp_arrow
+        Nolabel
+        core_type (otherlibs/str/str.mli[203,9191+20]..[203,9191+26])
+          Ptyp_constr "regexp" (otherlibs/str/str.mli[203,9191+20]..[203,9191+26])
+          []
+        core_type (otherlibs/str/str.mli[203,9191+30]..[203,9191+56])
+          Ptyp_arrow
+          Nolabel
+          core_type (otherlibs/str/str.mli[203,9191+30]..[203,9191+36])
+            Ptyp_constr "string" (otherlibs/str/str.mli[203,9191+30]..[203,9191+36])
+            []
+          core_type (otherlibs/str/str.mli[203,9191+40]..[203,9191+56])
+            Ptyp_arrow
+            Nolabel
+            core_type (otherlibs/str/str.mli[203,9191+40]..[203,9191+46])
+              Ptyp_constr "string" (otherlibs/str/str.mli[203,9191+40]..[203,9191+46])
+              []
+            core_type (otherlibs/str/str.mli[203,9191+50]..[203,9191+56])
+              Ptyp_constr "string" (otherlibs/str/str.mli[203,9191+50]..[203,9191+56])
+              []
+      []
+  signature_item (otherlibs/str/str.mli[207,9372+0]..[207,9372+72])
+    Psig_value
+    value_description "global_substitute" (otherlibs/str/str.mli[207,9372+4]..[207,9372+21]) (otherlibs/str/str.mli[207,9372+0]..[207,9372+72])
+      attribute "ocaml.doc"
+        [
+          structure_item (otherlibs/str/str.mli[208,9445+0]..[212,9701+52])
+            Pstr_eval
+            expression (otherlibs/str/str.mli[208,9445+0]..[212,9701+52])
+              Pexp_constant PConst_string(" [global_substitute regexp subst s] returns a string identical\n   to [s], except that all substrings of [s] that match [regexp]\n   have been replaced by the result of function [subst]. The\n   function [subst] is called once for each matching substring,\n   and receives [s] (the whole text) as argument. ",(otherlibs/str/str.mli[208,9445+0]..[212,9701+52]),None)
+        ]
+      core_type (otherlibs/str/str.mli[207,9372+24]..[207,9372+72])
+        Ptyp_arrow
+        Nolabel
+        core_type (otherlibs/str/str.mli[207,9372+24]..[207,9372+30])
+          Ptyp_constr "regexp" (otherlibs/str/str.mli[207,9372+24]..[207,9372+30])
+          []
+        core_type (otherlibs/str/str.mli[207,9372+34]..[207,9372+72])
+          Ptyp_arrow
+          Nolabel
+          core_type (otherlibs/str/str.mli[207,9372+35]..[207,9372+51])
+            Ptyp_arrow
+            Nolabel
+            core_type (otherlibs/str/str.mli[207,9372+35]..[207,9372+41])
+              Ptyp_constr "string" (otherlibs/str/str.mli[207,9372+35]..[207,9372+41])
+              []
+            core_type (otherlibs/str/str.mli[207,9372+45]..[207,9372+51])
+              Ptyp_constr "string" (otherlibs/str/str.mli[207,9372+45]..[207,9372+51])
+              []
+          core_type (otherlibs/str/str.mli[207,9372+56]..[207,9372+72])
+            Ptyp_arrow
+            Nolabel
+            core_type (otherlibs/str/str.mli[207,9372+56]..[207,9372+62])
+              Ptyp_constr "string" (otherlibs/str/str.mli[207,9372+56]..[207,9372+62])
+              []
+            core_type (otherlibs/str/str.mli[207,9372+66]..[207,9372+72])
+              Ptyp_constr "string" (otherlibs/str/str.mli[207,9372+66]..[207,9372+72])
+              []
+      []
+  signature_item (otherlibs/str/str.mli[214,9755+0]..[214,9755+71])
+    Psig_value
+    value_description "substitute_first" (otherlibs/str/str.mli[214,9755+4]..[214,9755+20]) (otherlibs/str/str.mli[214,9755+0]..[214,9755+71])
+      attribute "ocaml.doc"
+        [
+          structure_item (otherlibs/str/str.mli[215,9827+0]..[216,9902+50])
+            Pstr_eval
+            expression (otherlibs/str/str.mli[215,9827+0]..[216,9902+50])
+              Pexp_constant PConst_string(" Same as {!Str.global_substitute}, except that only the first substring\n   matching the regular expression is replaced. ",(otherlibs/str/str.mli[215,9827+0]..[216,9902+50]),None)
+        ]
+      core_type (otherlibs/str/str.mli[214,9755+23]..[214,9755+71])
+        Ptyp_arrow
+        Nolabel
+        core_type (otherlibs/str/str.mli[214,9755+23]..[214,9755+29])
+          Ptyp_constr "regexp" (otherlibs/str/str.mli[214,9755+23]..[214,9755+29])
+          []
+        core_type (otherlibs/str/str.mli[214,9755+33]..[214,9755+71])
+          Ptyp_arrow
+          Nolabel
+          core_type (otherlibs/str/str.mli[214,9755+34]..[214,9755+50])
+            Ptyp_arrow
+            Nolabel
+            core_type (otherlibs/str/str.mli[214,9755+34]..[214,9755+40])
+              Ptyp_constr "string" (otherlibs/str/str.mli[214,9755+34]..[214,9755+40])
+              []
+            core_type (otherlibs/str/str.mli[214,9755+44]..[214,9755+50])
+              Ptyp_constr "string" (otherlibs/str/str.mli[214,9755+44]..[214,9755+50])
+              []
+          core_type (otherlibs/str/str.mli[214,9755+55]..[214,9755+71])
+            Ptyp_arrow
+            Nolabel
+            core_type (otherlibs/str/str.mli[214,9755+55]..[214,9755+61])
+              Ptyp_constr "string" (otherlibs/str/str.mli[214,9755+55]..[214,9755+61])
+              []
+            core_type (otherlibs/str/str.mli[214,9755+65]..[214,9755+71])
+              Ptyp_constr "string" (otherlibs/str/str.mli[214,9755+65]..[214,9755+71])
+              []
+      []
+  signature_item (otherlibs/str/str.mli[218,9954+0]..[218,9954+48])
+    Psig_value
+    value_description "replace_matched" (otherlibs/str/str.mli[218,9954+4]..[218,9954+19]) (otherlibs/str/str.mli[218,9954+0]..[218,9954+48])
+      attribute "ocaml.doc"
+        [
+          structure_item (otherlibs/str/str.mli[219,10003+0]..[225,10376+25])
+            Pstr_eval
+            expression (otherlibs/str/str.mli[219,10003+0]..[225,10376+25])
+              Pexp_constant PConst_string(" [replace_matched repl s] returns the replacement text [repl]\n   in which [\\1], [\\2], etc. have been replaced by the text\n   matched by the corresponding groups in the regular expression\n   that was matched by the last call to a matching or searching\n   function (see {!Str.matched_string} for details).\n   [s] must be the same string that was passed to the matching or\n   searching function. ",(otherlibs/str/str.mli[219,10003+0]..[225,10376+25]),None)
+        ]
+      core_type (otherlibs/str/str.mli[218,9954+22]..[218,9954+48])
+        Ptyp_arrow
+        Nolabel
+        core_type (otherlibs/str/str.mli[218,9954+22]..[218,9954+28])
+          Ptyp_constr "string" (otherlibs/str/str.mli[218,9954+22]..[218,9954+28])
+          []
+        core_type (otherlibs/str/str.mli[218,9954+32]..[218,9954+48])
+          Ptyp_arrow
+          Nolabel
+          core_type (otherlibs/str/str.mli[218,9954+32]..[218,9954+38])
+            Ptyp_constr "string" (otherlibs/str/str.mli[218,9954+32]..[218,9954+38])
+            []
+          core_type (otherlibs/str/str.mli[218,9954+42]..[218,9954+48])
+            Ptyp_constr "string" (otherlibs/str/str.mli[218,9954+42]..[218,9954+48])
+            []
+      []
+  signature_item (otherlibs/str/str.mli[228,10404+0]..[228,10404+20])
+    Psig_attribute "ocaml.text"
+    [
+      structure_item (otherlibs/str/str.mli[228,10404+0]..[228,10404+20])
+        Pstr_eval
+        expression (otherlibs/str/str.mli[228,10404+0]..[228,10404+20])
+          Pexp_constant PConst_string(" {1 Splitting} ",(otherlibs/str/str.mli[228,10404+0]..[228,10404+20]),None)
+    ]
+  signature_item (otherlibs/str/str.mli[231,10427+0]..[231,10427+43])
+    Psig_value
+    value_description "split" (otherlibs/str/str.mli[231,10427+4]..[231,10427+9]) (otherlibs/str/str.mli[231,10427+0]..[231,10427+43])
+      attribute "ocaml.doc"
+        [
+          structure_item (otherlibs/str/str.mli[232,10471+0]..[236,10732+55])
+            Pstr_eval
+            expression (otherlibs/str/str.mli[232,10471+0]..[236,10732+55])
+              Pexp_constant PConst_string(" [split r s] splits [s] into substrings, taking as delimiters\n   the substrings that match [r], and returns the list of substrings.\n   For instance, [split (regexp \"[ \\t]+\") s] splits [s] into\n   blank-separated words.  An occurrence of the delimiter at the\n   beginning or at the end of the string is ignored. ",(otherlibs/str/str.mli[232,10471+0]..[236,10732+55]),None)
+        ]
+      core_type (otherlibs/str/str.mli[231,10427+12]..[231,10427+43])
+        Ptyp_arrow
+        Nolabel
+        core_type (otherlibs/str/str.mli[231,10427+12]..[231,10427+18])
+          Ptyp_constr "regexp" (otherlibs/str/str.mli[231,10427+12]..[231,10427+18])
+          []
+        core_type (otherlibs/str/str.mli[231,10427+22]..[231,10427+43])
+          Ptyp_arrow
+          Nolabel
+          core_type (otherlibs/str/str.mli[231,10427+22]..[231,10427+28])
+            Ptyp_constr "string" (otherlibs/str/str.mli[231,10427+22]..[231,10427+28])
+            []
+          core_type (otherlibs/str/str.mli[231,10427+32]..[231,10427+43])
+            Ptyp_constr "list" (otherlibs/str/str.mli[231,10427+39]..[231,10427+43])
+            [
+              core_type (otherlibs/str/str.mli[231,10427+32]..[231,10427+38])
+                Ptyp_constr "string" (otherlibs/str/str.mli[231,10427+32]..[231,10427+38])
+                []
+            ]
+      []
+  signature_item (otherlibs/str/str.mli[238,10789+0]..[238,10789+58])
+    Psig_value
+    value_description "bounded_split" (otherlibs/str/str.mli[238,10789+4]..[238,10789+17]) (otherlibs/str/str.mli[238,10789+0]..[238,10789+58])
+      attribute "ocaml.doc"
+        [
+          structure_item (otherlibs/str/str.mli[239,10848+0]..[240,10914+47])
+            Pstr_eval
+            expression (otherlibs/str/str.mli[239,10848+0]..[240,10914+47])
+              Pexp_constant PConst_string(" Same as {!Str.split}, but splits into at most [n] substrings,\n   where [n] is the extra integer parameter. ",(otherlibs/str/str.mli[239,10848+0]..[240,10914+47]),None)
+        ]
+      core_type (otherlibs/str/str.mli[238,10789+20]..[238,10789+58])
+        Ptyp_arrow
+        Nolabel
+        core_type (otherlibs/str/str.mli[238,10789+20]..[238,10789+26])
+          Ptyp_constr "regexp" (otherlibs/str/str.mli[238,10789+20]..[238,10789+26])
+          []
+        core_type (otherlibs/str/str.mli[238,10789+30]..[238,10789+58])
+          Ptyp_arrow
+          Nolabel
+          core_type (otherlibs/str/str.mli[238,10789+30]..[238,10789+36])
+            Ptyp_constr "string" (otherlibs/str/str.mli[238,10789+30]..[238,10789+36])
+            []
+          core_type (otherlibs/str/str.mli[238,10789+40]..[238,10789+58])
+            Ptyp_arrow
+            Nolabel
+            core_type (otherlibs/str/str.mli[238,10789+40]..[238,10789+43])
+              Ptyp_constr "int" (otherlibs/str/str.mli[238,10789+40]..[238,10789+43])
+              []
+            core_type (otherlibs/str/str.mli[238,10789+47]..[238,10789+58])
+              Ptyp_constr "list" (otherlibs/str/str.mli[238,10789+54]..[238,10789+58])
+              [
+                core_type (otherlibs/str/str.mli[238,10789+47]..[238,10789+53])
+                  Ptyp_constr "string" (otherlibs/str/str.mli[238,10789+47]..[238,10789+53])
+                  []
+              ]
+      []
+  signature_item (otherlibs/str/str.mli[242,10963+0]..[242,10963+49])
+    Psig_value
+    value_description "split_delim" (otherlibs/str/str.mli[242,10963+4]..[242,10963+15]) (otherlibs/str/str.mli[242,10963+0]..[242,10963+49])
+      attribute "ocaml.doc"
+        [
+          structure_item (otherlibs/str/str.mli[243,11013+0]..[248,11293+34])
+            Pstr_eval
+            expression (otherlibs/str/str.mli[243,11013+0]..[248,11293+34])
+              Pexp_constant PConst_string(" Same as {!Str.split} but occurrences of the\n   delimiter at the beginning and at the end of the string are\n   recognized and returned as empty strings in the result.\n   For instance, [split_delim (regexp \" \") \" abc \"]\n   returns [[\"\"; \"abc\"; \"\"]], while [split] with the same\n   arguments returns [[\"abc\"]]. ",(otherlibs/str/str.mli[243,11013+0]..[248,11293+34]),None)
+        ]
+      core_type (otherlibs/str/str.mli[242,10963+18]..[242,10963+49])
+        Ptyp_arrow
+        Nolabel
+        core_type (otherlibs/str/str.mli[242,10963+18]..[242,10963+24])
+          Ptyp_constr "regexp" (otherlibs/str/str.mli[242,10963+18]..[242,10963+24])
+          []
+        core_type (otherlibs/str/str.mli[242,10963+28]..[242,10963+49])
+          Ptyp_arrow
+          Nolabel
+          core_type (otherlibs/str/str.mli[242,10963+28]..[242,10963+34])
+            Ptyp_constr "string" (otherlibs/str/str.mli[242,10963+28]..[242,10963+34])
+            []
+          core_type (otherlibs/str/str.mli[242,10963+38]..[242,10963+49])
+            Ptyp_constr "list" (otherlibs/str/str.mli[242,10963+45]..[242,10963+49])
+            [
+              core_type (otherlibs/str/str.mli[242,10963+38]..[242,10963+44])
+                Ptyp_constr "string" (otherlibs/str/str.mli[242,10963+38]..[242,10963+44])
+                []
+            ]
+      []
+  signature_item (otherlibs/str/str.mli[250,11329+0]..[250,11329+64])
+    Psig_value
+    value_description "bounded_split_delim" (otherlibs/str/str.mli[250,11329+4]..[250,11329+23]) (otherlibs/str/str.mli[250,11329+0]..[250,11329+64])
+      attribute "ocaml.doc"
+        [
+          structure_item (otherlibs/str/str.mli[251,11394+0]..[253,11514+61])
+            Pstr_eval
+            expression (otherlibs/str/str.mli[251,11394+0]..[253,11514+61])
+              Pexp_constant PConst_string(" Same as {!Str.bounded_split}, but occurrences of the\n   delimiter at the beginning and at the end of the string are\n   recognized and returned as empty strings in the result. ",(otherlibs/str/str.mli[251,11394+0]..[253,11514+61]),None)
+        ]
+      core_type (otherlibs/str/str.mli[250,11329+26]..[250,11329+64])
+        Ptyp_arrow
+        Nolabel
+        core_type (otherlibs/str/str.mli[250,11329+26]..[250,11329+32])
+          Ptyp_constr "regexp" (otherlibs/str/str.mli[250,11329+26]..[250,11329+32])
+          []
+        core_type (otherlibs/str/str.mli[250,11329+36]..[250,11329+64])
+          Ptyp_arrow
+          Nolabel
+          core_type (otherlibs/str/str.mli[250,11329+36]..[250,11329+42])
+            Ptyp_constr "string" (otherlibs/str/str.mli[250,11329+36]..[250,11329+42])
+            []
+          core_type (otherlibs/str/str.mli[250,11329+46]..[250,11329+64])
+            Ptyp_arrow
+            Nolabel
+            core_type (otherlibs/str/str.mli[250,11329+46]..[250,11329+49])
+              Ptyp_constr "int" (otherlibs/str/str.mli[250,11329+46]..[250,11329+49])
+              []
+            core_type (otherlibs/str/str.mli[250,11329+53]..[250,11329+64])
+              Ptyp_constr "list" (otherlibs/str/str.mli[250,11329+60]..[250,11329+64])
+              [
+                core_type (otherlibs/str/str.mli[250,11329+53]..[250,11329+59])
+                  Ptyp_constr "string" (otherlibs/str/str.mli[250,11329+53]..[250,11329+59])
+                  []
+              ]
+      []
+  signature_item (otherlibs/str/str.mli[255,11577+0]..[257,11616+19])
+    Psig_type Rec
+    [
+      type_declaration "split_result" (otherlibs/str/str.mli[255,11577+5]..[255,11577+17]) (otherlibs/str/str.mli[255,11577+0]..[257,11616+19])
+        ptype_params =
+          []
+        ptype_cstrs =
+          []
+        ptype_kind =
+          Ptype_variant
+            [
+              (otherlibs/str/str.mli[256,11597+4]..[256,11597+18])
+                "Text" (otherlibs/str/str.mli[256,11597+4]..[256,11597+8])
+                [
+                  core_type (otherlibs/str/str.mli[256,11597+12]..[256,11597+18])
+                    Ptyp_constr "string" (otherlibs/str/str.mli[256,11597+12]..[256,11597+18])
+                    []
+                ]
+                None
+              (otherlibs/str/str.mli[257,11616+2]..[257,11616+19])
+                "Delim" (otherlibs/str/str.mli[257,11616+4]..[257,11616+9])
+                [
+                  core_type (otherlibs/str/str.mli[257,11616+13]..[257,11616+19])
+                    Ptyp_constr "string" (otherlibs/str/str.mli[257,11616+13]..[257,11616+19])
+                    []
+                ]
+                None
+            ]
+        ptype_private = Public
+        ptype_manifest =
+          None
+    ]
+  signature_item (otherlibs/str/str.mli[259,11637+0]..[259,11637+54])
+    Psig_value
+    value_description "full_split" (otherlibs/str/str.mli[259,11637+4]..[259,11637+14]) (otherlibs/str/str.mli[259,11637+0]..[259,11637+54])
+      attribute "ocaml.doc"
+        [
+          structure_item (otherlibs/str/str.mli[260,11692+0]..[265,11959+42])
+            Pstr_eval
+            expression (otherlibs/str/str.mli[260,11692+0]..[265,11959+42])
+              Pexp_constant PConst_string(" Same as {!Str.split_delim}, but returns\n   the delimiters as well as the substrings contained between\n   delimiters.  The former are tagged [Delim] in the result list;\n   the latter are tagged [Text].  For instance,\n   [full_split (regexp \"[{}]\") \"{ab}\"] returns\n   [[Delim \"{\"; Text \"ab\"; Delim \"}\"]]. ",(otherlibs/str/str.mli[260,11692+0]..[265,11959+42]),None)
+        ]
+      core_type (otherlibs/str/str.mli[259,11637+17]..[259,11637+54])
+        Ptyp_arrow
+        Nolabel
+        core_type (otherlibs/str/str.mli[259,11637+17]..[259,11637+23])
+          Ptyp_constr "regexp" (otherlibs/str/str.mli[259,11637+17]..[259,11637+23])
+          []
+        core_type (otherlibs/str/str.mli[259,11637+27]..[259,11637+54])
+          Ptyp_arrow
+          Nolabel
+          core_type (otherlibs/str/str.mli[259,11637+27]..[259,11637+33])
+            Ptyp_constr "string" (otherlibs/str/str.mli[259,11637+27]..[259,11637+33])
+            []
+          core_type (otherlibs/str/str.mli[259,11637+37]..[259,11637+54])
+            Ptyp_constr "list" (otherlibs/str/str.mli[259,11637+50]..[259,11637+54])
+            [
+              core_type (otherlibs/str/str.mli[259,11637+37]..[259,11637+49])
+                Ptyp_constr "split_result" (otherlibs/str/str.mli[259,11637+37]..[259,11637+49])
+                []
+            ]
+      []
+  signature_item (otherlibs/str/str.mli[267,12003+0]..[267,12003+69])
+    Psig_value
+    value_description "bounded_full_split" (otherlibs/str/str.mli[267,12003+4]..[267,12003+22]) (otherlibs/str/str.mli[267,12003+0]..[267,12003+69])
+      attribute "ocaml.doc"
+        [
+          structure_item (otherlibs/str/str.mli[268,12073+0]..[271,12253+35])
+            Pstr_eval
+            expression (otherlibs/str/str.mli[268,12073+0]..[271,12253+35])
+              Pexp_constant PConst_string(" Same as {!Str.bounded_split_delim}, but returns\n   the delimiters as well as the substrings contained between\n   delimiters.  The former are tagged [Delim] in the result list;\n   the latter are tagged [Text]. ",(otherlibs/str/str.mli[268,12073+0]..[271,12253+35]),None)
+        ]
+      core_type (otherlibs/str/str.mli[267,12003+25]..[267,12003+69])
+        Ptyp_arrow
+        Nolabel
+        core_type (otherlibs/str/str.mli[267,12003+25]..[267,12003+31])
+          Ptyp_constr "regexp" (otherlibs/str/str.mli[267,12003+25]..[267,12003+31])
+          []
+        core_type (otherlibs/str/str.mli[267,12003+35]..[267,12003+69])
+          Ptyp_arrow
+          Nolabel
+          core_type (otherlibs/str/str.mli[267,12003+35]..[267,12003+41])
+            Ptyp_constr "string" (otherlibs/str/str.mli[267,12003+35]..[267,12003+41])
+            []
+          core_type (otherlibs/str/str.mli[267,12003+45]..[267,12003+69])
+            Ptyp_arrow
+            Nolabel
+            core_type (otherlibs/str/str.mli[267,12003+45]..[267,12003+48])
+              Ptyp_constr "int" (otherlibs/str/str.mli[267,12003+45]..[267,12003+48])
+              []
+            core_type (otherlibs/str/str.mli[267,12003+52]..[267,12003+69])
+              Ptyp_constr "list" (otherlibs/str/str.mli[267,12003+65]..[267,12003+69])
+              [
+                core_type (otherlibs/str/str.mli[267,12003+52]..[267,12003+64])
+                  Ptyp_constr "split_result" (otherlibs/str/str.mli[267,12003+52]..[267,12003+64])
+                  []
+              ]
+      []
+  signature_item (otherlibs/str/str.mli[274,12291+0]..[274,12291+32])
+    Psig_attribute "ocaml.text"
+    [
+      structure_item (otherlibs/str/str.mli[274,12291+0]..[274,12291+32])
+        Pstr_eval
+        expression (otherlibs/str/str.mli[274,12291+0]..[274,12291+32])
+          Pexp_constant PConst_string(" {1 Extracting substrings} ",(otherlibs/str/str.mli[274,12291+0]..[274,12291+32]),None)
+    ]
+  signature_item (otherlibs/str/str.mli[277,12326+0]..[277,12326+43])
+    Psig_value
+    value_description "string_before" (otherlibs/str/str.mli[277,12326+4]..[277,12326+17]) (otherlibs/str/str.mli[277,12326+0]..[277,12326+43])
+      attribute "ocaml.doc"
+        [
+          structure_item (otherlibs/str/str.mli[278,12370+0]..[280,12498+20])
+            Pstr_eval
+            expression (otherlibs/str/str.mli[278,12370+0]..[280,12498+20])
+              Pexp_constant PConst_string(" [string_before s n] returns the substring of all characters of [s]\n   that precede position [n] (excluding the character at\n   position [n]). ",(otherlibs/str/str.mli[278,12370+0]..[280,12498+20]),None)
+        ]
+      core_type (otherlibs/str/str.mli[277,12326+20]..[277,12326+43])
+        Ptyp_arrow
+        Nolabel
+        core_type (otherlibs/str/str.mli[277,12326+20]..[277,12326+26])
+          Ptyp_constr "string" (otherlibs/str/str.mli[277,12326+20]..[277,12326+26])
+          []
+        core_type (otherlibs/str/str.mli[277,12326+30]..[277,12326+43])
+          Ptyp_arrow
+          Nolabel
+          core_type (otherlibs/str/str.mli[277,12326+30]..[277,12326+33])
+            Ptyp_constr "int" (otherlibs/str/str.mli[277,12326+30]..[277,12326+33])
+            []
+          core_type (otherlibs/str/str.mli[277,12326+37]..[277,12326+43])
+            Ptyp_constr "string" (otherlibs/str/str.mli[277,12326+37]..[277,12326+43])
+            []
+      []
+  signature_item (otherlibs/str/str.mli[282,12520+0]..[282,12520+42])
+    Psig_value
+    value_description "string_after" (otherlibs/str/str.mli[282,12520+4]..[282,12520+16]) (otherlibs/str/str.mli[282,12520+0]..[282,12520+42])
+      attribute "ocaml.doc"
+        [
+          structure_item (otherlibs/str/str.mli[283,12563+0]..[285,12689+20])
+            Pstr_eval
+            expression (otherlibs/str/str.mli[283,12563+0]..[285,12689+20])
+              Pexp_constant PConst_string(" [string_after s n] returns the substring of all characters of [s]\n   that follow position [n] (including the character at\n   position [n]). ",(otherlibs/str/str.mli[283,12563+0]..[285,12689+20]),None)
+        ]
+      core_type (otherlibs/str/str.mli[282,12520+19]..[282,12520+42])
+        Ptyp_arrow
+        Nolabel
+        core_type (otherlibs/str/str.mli[282,12520+19]..[282,12520+25])
+          Ptyp_constr "string" (otherlibs/str/str.mli[282,12520+19]..[282,12520+25])
+          []
+        core_type (otherlibs/str/str.mli[282,12520+29]..[282,12520+42])
+          Ptyp_arrow
+          Nolabel
+          core_type (otherlibs/str/str.mli[282,12520+29]..[282,12520+32])
+            Ptyp_constr "int" (otherlibs/str/str.mli[282,12520+29]..[282,12520+32])
+            []
+          core_type (otherlibs/str/str.mli[282,12520+36]..[282,12520+42])
+            Ptyp_constr "string" (otherlibs/str/str.mli[282,12520+36]..[282,12520+42])
+            []
+      []
+  signature_item (otherlibs/str/str.mli[287,12711+0]..[287,12711+41])
+    Psig_value
+    value_description "first_chars" (otherlibs/str/str.mli[287,12711+4]..[287,12711+15]) (otherlibs/str/str.mli[287,12711+0]..[287,12711+41])
+      attribute "ocaml.doc"
+        [
+          structure_item (otherlibs/str/str.mli[288,12753+0]..[289,12816+56])
+            Pstr_eval
+            expression (otherlibs/str/str.mli[288,12753+0]..[289,12816+56])
+              Pexp_constant PConst_string(" [first_chars s n] returns the first [n] characters of [s].\n   This is the same function as {!Str.string_before}. ",(otherlibs/str/str.mli[288,12753+0]..[289,12816+56]),None)
+        ]
+      core_type (otherlibs/str/str.mli[287,12711+18]..[287,12711+41])
+        Ptyp_arrow
+        Nolabel
+        core_type (otherlibs/str/str.mli[287,12711+18]..[287,12711+24])
+          Ptyp_constr "string" (otherlibs/str/str.mli[287,12711+18]..[287,12711+24])
+          []
+        core_type (otherlibs/str/str.mli[287,12711+28]..[287,12711+41])
+          Ptyp_arrow
+          Nolabel
+          core_type (otherlibs/str/str.mli[287,12711+28]..[287,12711+31])
+            Ptyp_constr "int" (otherlibs/str/str.mli[287,12711+28]..[287,12711+31])
+            []
+          core_type (otherlibs/str/str.mli[287,12711+35]..[287,12711+41])
+            Ptyp_constr "string" (otherlibs/str/str.mli[287,12711+35]..[287,12711+41])
+            []
+      []
+  signature_item (otherlibs/str/str.mli[291,12874+0]..[291,12874+40])
+    Psig_value
+    value_description "last_chars" (otherlibs/str/str.mli[291,12874+4]..[291,12874+14]) (otherlibs/str/str.mli[291,12874+0]..[291,12874+40])
+      attribute "ocaml.doc"
+        [
+          structure_item (otherlibs/str/str.mli[292,12915+0]..[292,12915+63])
+            Pstr_eval
+            expression (otherlibs/str/str.mli[292,12915+0]..[292,12915+63])
+              Pexp_constant PConst_string(" [last_chars s n] returns the last [n] characters of [s]. ",(otherlibs/str/str.mli[292,12915+0]..[292,12915+63]),None)
+        ]
+      core_type (otherlibs/str/str.mli[291,12874+17]..[291,12874+40])
+        Ptyp_arrow
+        Nolabel
+        core_type (otherlibs/str/str.mli[291,12874+17]..[291,12874+23])
+          Ptyp_constr "string" (otherlibs/str/str.mli[291,12874+17]..[291,12874+23])
+          []
+        core_type (otherlibs/str/str.mli[291,12874+27]..[291,12874+40])
+          Ptyp_arrow
+          Nolabel
+          core_type (otherlibs/str/str.mli[291,12874+27]..[291,12874+30])
+            Ptyp_constr "int" (otherlibs/str/str.mli[291,12874+27]..[291,12874+30])
+            []
+          core_type (otherlibs/str/str.mli[291,12874+34]..[291,12874+40])
+            Ptyp_constr "string" (otherlibs/str/str.mli[291,12874+34]..[291,12874+40])
+            []
+      []
+]
+

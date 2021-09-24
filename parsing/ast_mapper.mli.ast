@@ -1,0 +1,1253 @@
+[
+  signature_item (parsing/ast_mapper.mli[16,1079+0]..[52,2311+4])
+    Psig_attribute "ocaml.text"
+    [
+      structure_item (parsing/ast_mapper.mli[16,1079+0]..[52,2311+4])
+        Pstr_eval
+        expression (parsing/ast_mapper.mli[16,1079+0]..[52,2311+4])
+          Pexp_constant PConst_string(" The interface of a -ppx rewriter\n\n  A -ppx rewriter is a program that accepts a serialized abstract syntax\n  tree and outputs another, possibly modified, abstract syntax tree.\n  This module encapsulates the interface between the compiler and\n  the -ppx rewriters, handling such details as the serialization format,\n  forwarding of command-line flags, and storing state.\n\n  {!mapper} enables AST rewriting using open recursion.\n  A typical mapper would be based on {!default_mapper}, a deep\n  identity mapper, and will fall back on it for handling the syntax it\n  does not modify. For example:\n\n  {[\nopen Asttypes\nopen Parsetree\nopen Ast_mapper\n\nlet test_mapper argv =\n  { default_mapper with\n    expr = fun mapper expr ->\n      match expr with\n      | { pexp_desc = Pexp_extension ({ txt = \"test\" }, PStr [])} ->\n        Ast_helper.Exp.constant (Const_int 42)\n      | other -> default_mapper.expr mapper other; }\n\nlet () =\n  register \"ppx_test\" test_mapper]}\n\n  This -ppx rewriter, which replaces [[%test]] in expressions with\n  the constant [42], can be compiled using\n  [ocamlc -o ppx_test -I +compiler-libs ocamlcommon.cma ppx_test.ml].\n\n  {b Warning:} this module is unstable and part of\n  {{!Compiler_libs}compiler-libs}.\n\n  ",(parsing/ast_mapper.mli[16,1079+0]..[52,2311+4]),None)
+    ]
+  signature_item (parsing/ast_mapper.mli[54,2317+0]..[54,2317+14])
+    Psig_open Fresh "Parsetree" (parsing/ast_mapper.mli[54,2317+5]..[54,2317+14])
+  signature_item (parsing/ast_mapper.mli[56,2333+0]..[56,2333+37])
+    Psig_attribute "ocaml.text"
+    [
+      structure_item (parsing/ast_mapper.mli[56,2333+0]..[56,2333+37])
+        Pstr_eval
+        expression (parsing/ast_mapper.mli[56,2333+0]..[56,2333+37])
+          Pexp_constant PConst_string(" {1 A generic Parsetree mapper} ",(parsing/ast_mapper.mli[56,2333+0]..[56,2333+37]),None)
+    ]
+  signature_item (parsing/ast_mapper.mli[58,2372+0]..[108,5197+1])
+    Psig_type Rec
+    [
+      type_declaration "mapper" (parsing/ast_mapper.mli[58,2372+5]..[58,2372+11]) (parsing/ast_mapper.mli[58,2372+0]..[108,5197+1])
+        attribute "ocaml.doc"
+          [
+            structure_item (parsing/ast_mapper.mli[109,5199+0]..[112,5397+12])
+              Pstr_eval
+              expression (parsing/ast_mapper.mli[109,5199+0]..[112,5397+12])
+                Pexp_constant PConst_string(" A mapper record implements one \"method\" per syntactic category,\n    using an open recursion style: each method takes as its first\n    argument the mapper to be applied to children in the syntax\n    tree. ",(parsing/ast_mapper.mli[109,5199+0]..[112,5397+12]),None)
+          ]
+        ptype_params =
+          []
+        ptype_cstrs =
+          []
+        ptype_kind =
+          Ptype_record
+            [
+              (parsing/ast_mapper.mli[59,2388+2]..[59,2388+46])
+                Immutable
+                "attribute" (parsing/ast_mapper.mli[59,2388+2]..[59,2388+11])                core_type (parsing/ast_mapper.mli[59,2388+13]..[59,2388+45])
+                  Ptyp_arrow
+                  Nolabel
+                  core_type (parsing/ast_mapper.mli[59,2388+13]..[59,2388+19])
+                    Ptyp_constr "mapper" (parsing/ast_mapper.mli[59,2388+13]..[59,2388+19])
+                    []
+                  core_type (parsing/ast_mapper.mli[59,2388+23]..[59,2388+45])
+                    Ptyp_arrow
+                    Nolabel
+                    core_type (parsing/ast_mapper.mli[59,2388+23]..[59,2388+32])
+                      Ptyp_constr "attribute" (parsing/ast_mapper.mli[59,2388+23]..[59,2388+32])
+                      []
+                    core_type (parsing/ast_mapper.mli[59,2388+36]..[59,2388+45])
+                      Ptyp_constr "attribute" (parsing/ast_mapper.mli[59,2388+36]..[59,2388+45])
+                      []
+              (parsing/ast_mapper.mli[60,2435+2]..[60,2435+57])
+                Immutable
+                "attributes" (parsing/ast_mapper.mli[60,2435+2]..[60,2435+12])                core_type (parsing/ast_mapper.mli[60,2435+14]..[60,2435+56])
+                  Ptyp_arrow
+                  Nolabel
+                  core_type (parsing/ast_mapper.mli[60,2435+14]..[60,2435+20])
+                    Ptyp_constr "mapper" (parsing/ast_mapper.mli[60,2435+14]..[60,2435+20])
+                    []
+                  core_type (parsing/ast_mapper.mli[60,2435+24]..[60,2435+56])
+                    Ptyp_arrow
+                    Nolabel
+                    core_type (parsing/ast_mapper.mli[60,2435+24]..[60,2435+38])
+                      Ptyp_constr "list" (parsing/ast_mapper.mli[60,2435+34]..[60,2435+38])
+                      [
+                        core_type (parsing/ast_mapper.mli[60,2435+24]..[60,2435+33])
+                          Ptyp_constr "attribute" (parsing/ast_mapper.mli[60,2435+24]..[60,2435+33])
+                          []
+                      ]
+                    core_type (parsing/ast_mapper.mli[60,2435+42]..[60,2435+56])
+                      Ptyp_constr "list" (parsing/ast_mapper.mli[60,2435+52]..[60,2435+56])
+                      [
+                        core_type (parsing/ast_mapper.mli[60,2435+42]..[60,2435+51])
+                          Ptyp_constr "attribute" (parsing/ast_mapper.mli[60,2435+42]..[60,2435+51])
+                          []
+                      ]
+              (parsing/ast_mapper.mli[61,2493+2]..[61,2493+49])
+                Immutable
+                "binding_op" (parsing/ast_mapper.mli[61,2493+2]..[61,2493+12])                core_type (parsing/ast_mapper.mli[61,2493+14]..[61,2493+48])
+                  Ptyp_arrow
+                  Nolabel
+                  core_type (parsing/ast_mapper.mli[61,2493+14]..[61,2493+20])
+                    Ptyp_constr "mapper" (parsing/ast_mapper.mli[61,2493+14]..[61,2493+20])
+                    []
+                  core_type (parsing/ast_mapper.mli[61,2493+24]..[61,2493+48])
+                    Ptyp_arrow
+                    Nolabel
+                    core_type (parsing/ast_mapper.mli[61,2493+24]..[61,2493+34])
+                      Ptyp_constr "binding_op" (parsing/ast_mapper.mli[61,2493+24]..[61,2493+34])
+                      []
+                    core_type (parsing/ast_mapper.mli[61,2493+38]..[61,2493+48])
+                      Ptyp_constr "binding_op" (parsing/ast_mapper.mli[61,2493+38]..[61,2493+48])
+                      []
+              (parsing/ast_mapper.mli[62,2543+2]..[62,2543+31])
+                Immutable
+                "case" (parsing/ast_mapper.mli[62,2543+2]..[62,2543+6])                core_type (parsing/ast_mapper.mli[62,2543+8]..[62,2543+30])
+                  Ptyp_arrow
+                  Nolabel
+                  core_type (parsing/ast_mapper.mli[62,2543+8]..[62,2543+14])
+                    Ptyp_constr "mapper" (parsing/ast_mapper.mli[62,2543+8]..[62,2543+14])
+                    []
+                  core_type (parsing/ast_mapper.mli[62,2543+18]..[62,2543+30])
+                    Ptyp_arrow
+                    Nolabel
+                    core_type (parsing/ast_mapper.mli[62,2543+18]..[62,2543+22])
+                      Ptyp_constr "case" (parsing/ast_mapper.mli[62,2543+18]..[62,2543+22])
+                      []
+                    core_type (parsing/ast_mapper.mli[62,2543+26]..[62,2543+30])
+                      Ptyp_constr "case" (parsing/ast_mapper.mli[62,2543+26]..[62,2543+30])
+                      []
+              (parsing/ast_mapper.mli[63,2575+2]..[63,2575+42])
+                Immutable
+                "cases" (parsing/ast_mapper.mli[63,2575+2]..[63,2575+7])                core_type (parsing/ast_mapper.mli[63,2575+9]..[63,2575+41])
+                  Ptyp_arrow
+                  Nolabel
+                  core_type (parsing/ast_mapper.mli[63,2575+9]..[63,2575+15])
+                    Ptyp_constr "mapper" (parsing/ast_mapper.mli[63,2575+9]..[63,2575+15])
+                    []
+                  core_type (parsing/ast_mapper.mli[63,2575+19]..[63,2575+41])
+                    Ptyp_arrow
+                    Nolabel
+                    core_type (parsing/ast_mapper.mli[63,2575+19]..[63,2575+28])
+                      Ptyp_constr "list" (parsing/ast_mapper.mli[63,2575+24]..[63,2575+28])
+                      [
+                        core_type (parsing/ast_mapper.mli[63,2575+19]..[63,2575+23])
+                          Ptyp_constr "case" (parsing/ast_mapper.mli[63,2575+19]..[63,2575+23])
+                          []
+                      ]
+                    core_type (parsing/ast_mapper.mli[63,2575+32]..[63,2575+41])
+                      Ptyp_constr "list" (parsing/ast_mapper.mli[63,2575+37]..[63,2575+41])
+                      [
+                        core_type (parsing/ast_mapper.mli[63,2575+32]..[63,2575+36])
+                          Ptyp_constr "case" (parsing/ast_mapper.mli[63,2575+32]..[63,2575+36])
+                          []
+                      ]
+              (parsing/ast_mapper.mli[64,2618+2]..[64,2618+70])
+                Immutable
+                "class_declaration" (parsing/ast_mapper.mli[64,2618+2]..[64,2618+19])                core_type (parsing/ast_mapper.mli[64,2618+21]..[64,2618+69])
+                  Ptyp_arrow
+                  Nolabel
+                  core_type (parsing/ast_mapper.mli[64,2618+21]..[64,2618+27])
+                    Ptyp_constr "mapper" (parsing/ast_mapper.mli[64,2618+21]..[64,2618+27])
+                    []
+                  core_type (parsing/ast_mapper.mli[64,2618+31]..[64,2618+69])
+                    Ptyp_arrow
+                    Nolabel
+                    core_type (parsing/ast_mapper.mli[64,2618+31]..[64,2618+48])
+                      Ptyp_constr "class_declaration" (parsing/ast_mapper.mli[64,2618+31]..[64,2618+48])
+                      []
+                    core_type (parsing/ast_mapper.mli[64,2618+52]..[64,2618+69])
+                      Ptyp_constr "class_declaration" (parsing/ast_mapper.mli[64,2618+52]..[64,2618+69])
+                      []
+              (parsing/ast_mapper.mli[65,2689+2]..[65,2689+70])
+                Immutable
+                "class_description" (parsing/ast_mapper.mli[65,2689+2]..[65,2689+19])                core_type (parsing/ast_mapper.mli[65,2689+21]..[65,2689+69])
+                  Ptyp_arrow
+                  Nolabel
+                  core_type (parsing/ast_mapper.mli[65,2689+21]..[65,2689+27])
+                    Ptyp_constr "mapper" (parsing/ast_mapper.mli[65,2689+21]..[65,2689+27])
+                    []
+                  core_type (parsing/ast_mapper.mli[65,2689+31]..[65,2689+69])
+                    Ptyp_arrow
+                    Nolabel
+                    core_type (parsing/ast_mapper.mli[65,2689+31]..[65,2689+48])
+                      Ptyp_constr "class_description" (parsing/ast_mapper.mli[65,2689+31]..[65,2689+48])
+                      []
+                    core_type (parsing/ast_mapper.mli[65,2689+52]..[65,2689+69])
+                      Ptyp_constr "class_description" (parsing/ast_mapper.mli[65,2689+52]..[65,2689+69])
+                      []
+              (parsing/ast_mapper.mli[66,2760+2]..[66,2760+49])
+                Immutable
+                "class_expr" (parsing/ast_mapper.mli[66,2760+2]..[66,2760+12])                core_type (parsing/ast_mapper.mli[66,2760+14]..[66,2760+48])
+                  Ptyp_arrow
+                  Nolabel
+                  core_type (parsing/ast_mapper.mli[66,2760+14]..[66,2760+20])
+                    Ptyp_constr "mapper" (parsing/ast_mapper.mli[66,2760+14]..[66,2760+20])
+                    []
+                  core_type (parsing/ast_mapper.mli[66,2760+24]..[66,2760+48])
+                    Ptyp_arrow
+                    Nolabel
+                    core_type (parsing/ast_mapper.mli[66,2760+24]..[66,2760+34])
+                      Ptyp_constr "class_expr" (parsing/ast_mapper.mli[66,2760+24]..[66,2760+34])
+                      []
+                    core_type (parsing/ast_mapper.mli[66,2760+38]..[66,2760+48])
+                      Ptyp_constr "class_expr" (parsing/ast_mapper.mli[66,2760+38]..[66,2760+48])
+                      []
+              (parsing/ast_mapper.mli[67,2810+2]..[67,2810+52])
+                Immutable
+                "class_field" (parsing/ast_mapper.mli[67,2810+2]..[67,2810+13])                core_type (parsing/ast_mapper.mli[67,2810+15]..[67,2810+51])
+                  Ptyp_arrow
+                  Nolabel
+                  core_type (parsing/ast_mapper.mli[67,2810+15]..[67,2810+21])
+                    Ptyp_constr "mapper" (parsing/ast_mapper.mli[67,2810+15]..[67,2810+21])
+                    []
+                  core_type (parsing/ast_mapper.mli[67,2810+25]..[67,2810+51])
+                    Ptyp_arrow
+                    Nolabel
+                    core_type (parsing/ast_mapper.mli[67,2810+25]..[67,2810+36])
+                      Ptyp_constr "class_field" (parsing/ast_mapper.mli[67,2810+25]..[67,2810+36])
+                      []
+                    core_type (parsing/ast_mapper.mli[67,2810+40]..[67,2810+51])
+                      Ptyp_constr "class_field" (parsing/ast_mapper.mli[67,2810+40]..[67,2810+51])
+                      []
+              (parsing/ast_mapper.mli[68,2863+2]..[68,2863+64])
+                Immutable
+                "class_signature" (parsing/ast_mapper.mli[68,2863+2]..[68,2863+17])                core_type (parsing/ast_mapper.mli[68,2863+19]..[68,2863+63])
+                  Ptyp_arrow
+                  Nolabel
+                  core_type (parsing/ast_mapper.mli[68,2863+19]..[68,2863+25])
+                    Ptyp_constr "mapper" (parsing/ast_mapper.mli[68,2863+19]..[68,2863+25])
+                    []
+                  core_type (parsing/ast_mapper.mli[68,2863+29]..[68,2863+63])
+                    Ptyp_arrow
+                    Nolabel
+                    core_type (parsing/ast_mapper.mli[68,2863+29]..[68,2863+44])
+                      Ptyp_constr "class_signature" (parsing/ast_mapper.mli[68,2863+29]..[68,2863+44])
+                      []
+                    core_type (parsing/ast_mapper.mli[68,2863+48]..[68,2863+63])
+                      Ptyp_constr "class_signature" (parsing/ast_mapper.mli[68,2863+48]..[68,2863+63])
+                      []
+              (parsing/ast_mapper.mli[69,2928+2]..[69,2928+64])
+                Immutable
+                "class_structure" (parsing/ast_mapper.mli[69,2928+2]..[69,2928+17])                core_type (parsing/ast_mapper.mli[69,2928+19]..[69,2928+63])
+                  Ptyp_arrow
+                  Nolabel
+                  core_type (parsing/ast_mapper.mli[69,2928+19]..[69,2928+25])
+                    Ptyp_constr "mapper" (parsing/ast_mapper.mli[69,2928+19]..[69,2928+25])
+                    []
+                  core_type (parsing/ast_mapper.mli[69,2928+29]..[69,2928+63])
+                    Ptyp_arrow
+                    Nolabel
+                    core_type (parsing/ast_mapper.mli[69,2928+29]..[69,2928+44])
+                      Ptyp_constr "class_structure" (parsing/ast_mapper.mli[69,2928+29]..[69,2928+44])
+                      []
+                    core_type (parsing/ast_mapper.mli[69,2928+48]..[69,2928+63])
+                      Ptyp_constr "class_structure" (parsing/ast_mapper.mli[69,2928+48]..[69,2928+63])
+                      []
+              (parsing/ast_mapper.mli[70,2993+2]..[70,2993+49])
+                Immutable
+                "class_type" (parsing/ast_mapper.mli[70,2993+2]..[70,2993+12])                core_type (parsing/ast_mapper.mli[70,2993+14]..[70,2993+48])
+                  Ptyp_arrow
+                  Nolabel
+                  core_type (parsing/ast_mapper.mli[70,2993+14]..[70,2993+20])
+                    Ptyp_constr "mapper" (parsing/ast_mapper.mli[70,2993+14]..[70,2993+20])
+                    []
+                  core_type (parsing/ast_mapper.mli[70,2993+24]..[70,2993+48])
+                    Ptyp_arrow
+                    Nolabel
+                    core_type (parsing/ast_mapper.mli[70,2993+24]..[70,2993+34])
+                      Ptyp_constr "class_type" (parsing/ast_mapper.mli[70,2993+24]..[70,2993+34])
+                      []
+                    core_type (parsing/ast_mapper.mli[70,2993+38]..[70,2993+48])
+                      Ptyp_constr "class_type" (parsing/ast_mapper.mli[70,2993+38]..[70,2993+48])
+                      []
+              (parsing/ast_mapper.mli[71,3043+2]..[72,3102+52])
+                Immutable
+                "class_type_declaration" (parsing/ast_mapper.mli[71,3043+2]..[71,3043+24])                core_type (parsing/ast_mapper.mli[71,3043+26]..[72,3102+51])
+                  Ptyp_arrow
+                  Nolabel
+                  core_type (parsing/ast_mapper.mli[71,3043+26]..[71,3043+32])
+                    Ptyp_constr "mapper" (parsing/ast_mapper.mli[71,3043+26]..[71,3043+32])
+                    []
+                  core_type (parsing/ast_mapper.mli[71,3043+36]..[72,3102+51])
+                    Ptyp_arrow
+                    Nolabel
+                    core_type (parsing/ast_mapper.mli[71,3043+36]..[71,3043+58])
+                      Ptyp_constr "class_type_declaration" (parsing/ast_mapper.mli[71,3043+36]..[71,3043+58])
+                      []
+                    core_type (parsing/ast_mapper.mli[72,3102+29]..[72,3102+51])
+                      Ptyp_constr "class_type_declaration" (parsing/ast_mapper.mli[72,3102+29]..[72,3102+51])
+                      []
+              (parsing/ast_mapper.mli[73,3155+2]..[73,3155+67])
+                Immutable
+                "class_type_field" (parsing/ast_mapper.mli[73,3155+2]..[73,3155+18])                core_type (parsing/ast_mapper.mli[73,3155+20]..[73,3155+66])
+                  Ptyp_arrow
+                  Nolabel
+                  core_type (parsing/ast_mapper.mli[73,3155+20]..[73,3155+26])
+                    Ptyp_constr "mapper" (parsing/ast_mapper.mli[73,3155+20]..[73,3155+26])
+                    []
+                  core_type (parsing/ast_mapper.mli[73,3155+30]..[73,3155+66])
+                    Ptyp_arrow
+                    Nolabel
+                    core_type (parsing/ast_mapper.mli[73,3155+30]..[73,3155+46])
+                      Ptyp_constr "class_type_field" (parsing/ast_mapper.mli[73,3155+30]..[73,3155+46])
+                      []
+                    core_type (parsing/ast_mapper.mli[73,3155+50]..[73,3155+66])
+                      Ptyp_constr "class_type_field" (parsing/ast_mapper.mli[73,3155+50]..[73,3155+66])
+                      []
+              (parsing/ast_mapper.mli[74,3223+2]..[74,3223+43])
+                Immutable
+                "constant" (parsing/ast_mapper.mli[74,3223+2]..[74,3223+10])                core_type (parsing/ast_mapper.mli[74,3223+12]..[74,3223+42])
+                  Ptyp_arrow
+                  Nolabel
+                  core_type (parsing/ast_mapper.mli[74,3223+12]..[74,3223+18])
+                    Ptyp_constr "mapper" (parsing/ast_mapper.mli[74,3223+12]..[74,3223+18])
+                    []
+                  core_type (parsing/ast_mapper.mli[74,3223+22]..[74,3223+42])
+                    Ptyp_arrow
+                    Nolabel
+                    core_type (parsing/ast_mapper.mli[74,3223+22]..[74,3223+30])
+                      Ptyp_constr "constant" (parsing/ast_mapper.mli[74,3223+22]..[74,3223+30])
+                      []
+                    core_type (parsing/ast_mapper.mli[74,3223+34]..[74,3223+42])
+                      Ptyp_constr "constant" (parsing/ast_mapper.mli[74,3223+34]..[74,3223+42])
+                      []
+              (parsing/ast_mapper.mli[75,3267+2]..[76,3328+54])
+                Immutable
+                "constructor_declaration" (parsing/ast_mapper.mli[75,3267+2]..[75,3267+25])                core_type (parsing/ast_mapper.mli[75,3267+27]..[76,3328+53])
+                  Ptyp_arrow
+                  Nolabel
+                  core_type (parsing/ast_mapper.mli[75,3267+27]..[75,3267+33])
+                    Ptyp_constr "mapper" (parsing/ast_mapper.mli[75,3267+27]..[75,3267+33])
+                    []
+                  core_type (parsing/ast_mapper.mli[75,3267+37]..[76,3328+53])
+                    Ptyp_arrow
+                    Nolabel
+                    core_type (parsing/ast_mapper.mli[75,3267+37]..[75,3267+60])
+                      Ptyp_constr "constructor_declaration" (parsing/ast_mapper.mli[75,3267+37]..[75,3267+60])
+                      []
+                    core_type (parsing/ast_mapper.mli[76,3328+30]..[76,3328+53])
+                      Ptyp_constr "constructor_declaration" (parsing/ast_mapper.mli[76,3328+30]..[76,3328+53])
+                      []
+              (parsing/ast_mapper.mli[77,3383+2]..[77,3383+43])
+                Immutable
+                "expr" (parsing/ast_mapper.mli[77,3383+2]..[77,3383+6])                core_type (parsing/ast_mapper.mli[77,3383+8]..[77,3383+42])
+                  Ptyp_arrow
+                  Nolabel
+                  core_type (parsing/ast_mapper.mli[77,3383+8]..[77,3383+14])
+                    Ptyp_constr "mapper" (parsing/ast_mapper.mli[77,3383+8]..[77,3383+14])
+                    []
+                  core_type (parsing/ast_mapper.mli[77,3383+18]..[77,3383+42])
+                    Ptyp_arrow
+                    Nolabel
+                    core_type (parsing/ast_mapper.mli[77,3383+18]..[77,3383+28])
+                      Ptyp_constr "expression" (parsing/ast_mapper.mli[77,3383+18]..[77,3383+28])
+                      []
+                    core_type (parsing/ast_mapper.mli[77,3383+32]..[77,3383+42])
+                      Ptyp_constr "expression" (parsing/ast_mapper.mli[77,3383+32]..[77,3383+42])
+                      []
+              (parsing/ast_mapper.mli[78,3427+2]..[78,3427+46])
+                Immutable
+                "extension" (parsing/ast_mapper.mli[78,3427+2]..[78,3427+11])                core_type (parsing/ast_mapper.mli[78,3427+13]..[78,3427+45])
+                  Ptyp_arrow
+                  Nolabel
+                  core_type (parsing/ast_mapper.mli[78,3427+13]..[78,3427+19])
+                    Ptyp_constr "mapper" (parsing/ast_mapper.mli[78,3427+13]..[78,3427+19])
+                    []
+                  core_type (parsing/ast_mapper.mli[78,3427+23]..[78,3427+45])
+                    Ptyp_arrow
+                    Nolabel
+                    core_type (parsing/ast_mapper.mli[78,3427+23]..[78,3427+32])
+                      Ptyp_constr "extension" (parsing/ast_mapper.mli[78,3427+23]..[78,3427+32])
+                      []
+                    core_type (parsing/ast_mapper.mli[78,3427+36]..[78,3427+45])
+                      Ptyp_constr "extension" (parsing/ast_mapper.mli[78,3427+36]..[78,3427+45])
+                      []
+              (parsing/ast_mapper.mli[79,3474+2]..[80,3531+50])
+                Immutable
+                "extension_constructor" (parsing/ast_mapper.mli[79,3474+2]..[79,3474+23])                core_type (parsing/ast_mapper.mli[79,3474+25]..[80,3531+49])
+                  Ptyp_arrow
+                  Nolabel
+                  core_type (parsing/ast_mapper.mli[79,3474+25]..[79,3474+31])
+                    Ptyp_constr "mapper" (parsing/ast_mapper.mli[79,3474+25]..[79,3474+31])
+                    []
+                  core_type (parsing/ast_mapper.mli[79,3474+35]..[80,3531+49])
+                    Ptyp_arrow
+                    Nolabel
+                    core_type (parsing/ast_mapper.mli[79,3474+35]..[79,3474+56])
+                      Ptyp_constr "extension_constructor" (parsing/ast_mapper.mli[79,3474+35]..[79,3474+56])
+                      []
+                    core_type (parsing/ast_mapper.mli[80,3531+28]..[80,3531+49])
+                      Ptyp_constr "extension_constructor" (parsing/ast_mapper.mli[80,3531+28]..[80,3531+49])
+                      []
+              (parsing/ast_mapper.mli[81,3582+2]..[81,3582+76])
+                Immutable
+                "include_declaration" (parsing/ast_mapper.mli[81,3582+2]..[81,3582+21])                core_type (parsing/ast_mapper.mli[81,3582+23]..[81,3582+75])
+                  Ptyp_arrow
+                  Nolabel
+                  core_type (parsing/ast_mapper.mli[81,3582+23]..[81,3582+29])
+                    Ptyp_constr "mapper" (parsing/ast_mapper.mli[81,3582+23]..[81,3582+29])
+                    []
+                  core_type (parsing/ast_mapper.mli[81,3582+33]..[81,3582+75])
+                    Ptyp_arrow
+                    Nolabel
+                    core_type (parsing/ast_mapper.mli[81,3582+33]..[81,3582+52])
+                      Ptyp_constr "include_declaration" (parsing/ast_mapper.mli[81,3582+33]..[81,3582+52])
+                      []
+                    core_type (parsing/ast_mapper.mli[81,3582+56]..[81,3582+75])
+                      Ptyp_constr "include_declaration" (parsing/ast_mapper.mli[81,3582+56]..[81,3582+75])
+                      []
+              (parsing/ast_mapper.mli[82,3659+2]..[82,3659+76])
+                Immutable
+                "include_description" (parsing/ast_mapper.mli[82,3659+2]..[82,3659+21])                core_type (parsing/ast_mapper.mli[82,3659+23]..[82,3659+75])
+                  Ptyp_arrow
+                  Nolabel
+                  core_type (parsing/ast_mapper.mli[82,3659+23]..[82,3659+29])
+                    Ptyp_constr "mapper" (parsing/ast_mapper.mli[82,3659+23]..[82,3659+29])
+                    []
+                  core_type (parsing/ast_mapper.mli[82,3659+33]..[82,3659+75])
+                    Ptyp_arrow
+                    Nolabel
+                    core_type (parsing/ast_mapper.mli[82,3659+33]..[82,3659+52])
+                      Ptyp_constr "include_description" (parsing/ast_mapper.mli[82,3659+33]..[82,3659+52])
+                      []
+                    core_type (parsing/ast_mapper.mli[82,3659+56]..[82,3659+75])
+                      Ptyp_constr "include_description" (parsing/ast_mapper.mli[82,3659+56]..[82,3659+75])
+                      []
+              (parsing/ast_mapper.mli[83,3736+2]..[83,3736+70])
+                Immutable
+                "label_declaration" (parsing/ast_mapper.mli[83,3736+2]..[83,3736+19])                core_type (parsing/ast_mapper.mli[83,3736+21]..[83,3736+69])
+                  Ptyp_arrow
+                  Nolabel
+                  core_type (parsing/ast_mapper.mli[83,3736+21]..[83,3736+27])
+                    Ptyp_constr "mapper" (parsing/ast_mapper.mli[83,3736+21]..[83,3736+27])
+                    []
+                  core_type (parsing/ast_mapper.mli[83,3736+31]..[83,3736+69])
+                    Ptyp_arrow
+                    Nolabel
+                    core_type (parsing/ast_mapper.mli[83,3736+31]..[83,3736+48])
+                      Ptyp_constr "label_declaration" (parsing/ast_mapper.mli[83,3736+31]..[83,3736+48])
+                      []
+                    core_type (parsing/ast_mapper.mli[83,3736+52]..[83,3736+69])
+                      Ptyp_constr "label_declaration" (parsing/ast_mapper.mli[83,3736+52]..[83,3736+69])
+                      []
+              (parsing/ast_mapper.mli[84,3807+2]..[84,3807+47])
+                Immutable
+                "location" (parsing/ast_mapper.mli[84,3807+2]..[84,3807+10])                core_type (parsing/ast_mapper.mli[84,3807+12]..[84,3807+46])
+                  Ptyp_arrow
+                  Nolabel
+                  core_type (parsing/ast_mapper.mli[84,3807+12]..[84,3807+18])
+                    Ptyp_constr "mapper" (parsing/ast_mapper.mli[84,3807+12]..[84,3807+18])
+                    []
+                  core_type (parsing/ast_mapper.mli[84,3807+22]..[84,3807+46])
+                    Ptyp_arrow
+                    Nolabel
+                    core_type (parsing/ast_mapper.mli[84,3807+22]..[84,3807+32])
+                      Ptyp_constr "Location.t" (parsing/ast_mapper.mli[84,3807+22]..[84,3807+32])
+                      []
+                    core_type (parsing/ast_mapper.mli[84,3807+36]..[84,3807+46])
+                      Ptyp_constr "Location.t" (parsing/ast_mapper.mli[84,3807+36]..[84,3807+46])
+                      []
+              (parsing/ast_mapper.mli[85,3855+2]..[85,3855+61])
+                Immutable
+                "module_binding" (parsing/ast_mapper.mli[85,3855+2]..[85,3855+16])                core_type (parsing/ast_mapper.mli[85,3855+18]..[85,3855+60])
+                  Ptyp_arrow
+                  Nolabel
+                  core_type (parsing/ast_mapper.mli[85,3855+18]..[85,3855+24])
+                    Ptyp_constr "mapper" (parsing/ast_mapper.mli[85,3855+18]..[85,3855+24])
+                    []
+                  core_type (parsing/ast_mapper.mli[85,3855+28]..[85,3855+60])
+                    Ptyp_arrow
+                    Nolabel
+                    core_type (parsing/ast_mapper.mli[85,3855+28]..[85,3855+42])
+                      Ptyp_constr "module_binding" (parsing/ast_mapper.mli[85,3855+28]..[85,3855+42])
+                      []
+                    core_type (parsing/ast_mapper.mli[85,3855+46]..[85,3855+60])
+                      Ptyp_constr "module_binding" (parsing/ast_mapper.mli[85,3855+46]..[85,3855+60])
+                      []
+              (parsing/ast_mapper.mli[86,3917+2]..[86,3917+73])
+                Immutable
+                "module_declaration" (parsing/ast_mapper.mli[86,3917+2]..[86,3917+20])                core_type (parsing/ast_mapper.mli[86,3917+22]..[86,3917+72])
+                  Ptyp_arrow
+                  Nolabel
+                  core_type (parsing/ast_mapper.mli[86,3917+22]..[86,3917+28])
+                    Ptyp_constr "mapper" (parsing/ast_mapper.mli[86,3917+22]..[86,3917+28])
+                    []
+                  core_type (parsing/ast_mapper.mli[86,3917+32]..[86,3917+72])
+                    Ptyp_arrow
+                    Nolabel
+                    core_type (parsing/ast_mapper.mli[86,3917+32]..[86,3917+50])
+                      Ptyp_constr "module_declaration" (parsing/ast_mapper.mli[86,3917+32]..[86,3917+50])
+                      []
+                    core_type (parsing/ast_mapper.mli[86,3917+54]..[86,3917+72])
+                      Ptyp_constr "module_declaration" (parsing/ast_mapper.mli[86,3917+54]..[86,3917+72])
+                      []
+              (parsing/ast_mapper.mli[87,3991+2]..[87,3991+76])
+                Immutable
+                "module_substitution" (parsing/ast_mapper.mli[87,3991+2]..[87,3991+21])                core_type (parsing/ast_mapper.mli[87,3991+23]..[87,3991+75])
+                  Ptyp_arrow
+                  Nolabel
+                  core_type (parsing/ast_mapper.mli[87,3991+23]..[87,3991+29])
+                    Ptyp_constr "mapper" (parsing/ast_mapper.mli[87,3991+23]..[87,3991+29])
+                    []
+                  core_type (parsing/ast_mapper.mli[87,3991+33]..[87,3991+75])
+                    Ptyp_arrow
+                    Nolabel
+                    core_type (parsing/ast_mapper.mli[87,3991+33]..[87,3991+52])
+                      Ptyp_constr "module_substitution" (parsing/ast_mapper.mli[87,3991+33]..[87,3991+52])
+                      []
+                    core_type (parsing/ast_mapper.mli[87,3991+56]..[87,3991+75])
+                      Ptyp_constr "module_substitution" (parsing/ast_mapper.mli[87,3991+56]..[87,3991+75])
+                      []
+              (parsing/ast_mapper.mli[88,4068+2]..[88,4068+52])
+                Immutable
+                "module_expr" (parsing/ast_mapper.mli[88,4068+2]..[88,4068+13])                core_type (parsing/ast_mapper.mli[88,4068+15]..[88,4068+51])
+                  Ptyp_arrow
+                  Nolabel
+                  core_type (parsing/ast_mapper.mli[88,4068+15]..[88,4068+21])
+                    Ptyp_constr "mapper" (parsing/ast_mapper.mli[88,4068+15]..[88,4068+21])
+                    []
+                  core_type (parsing/ast_mapper.mli[88,4068+25]..[88,4068+51])
+                    Ptyp_arrow
+                    Nolabel
+                    core_type (parsing/ast_mapper.mli[88,4068+25]..[88,4068+36])
+                      Ptyp_constr "module_expr" (parsing/ast_mapper.mli[88,4068+25]..[88,4068+36])
+                      []
+                    core_type (parsing/ast_mapper.mli[88,4068+40]..[88,4068+51])
+                      Ptyp_constr "module_expr" (parsing/ast_mapper.mli[88,4068+40]..[88,4068+51])
+                      []
+              (parsing/ast_mapper.mli[89,4121+2]..[89,4121+52])
+                Immutable
+                "module_type" (parsing/ast_mapper.mli[89,4121+2]..[89,4121+13])                core_type (parsing/ast_mapper.mli[89,4121+15]..[89,4121+51])
+                  Ptyp_arrow
+                  Nolabel
+                  core_type (parsing/ast_mapper.mli[89,4121+15]..[89,4121+21])
+                    Ptyp_constr "mapper" (parsing/ast_mapper.mli[89,4121+15]..[89,4121+21])
+                    []
+                  core_type (parsing/ast_mapper.mli[89,4121+25]..[89,4121+51])
+                    Ptyp_arrow
+                    Nolabel
+                    core_type (parsing/ast_mapper.mli[89,4121+25]..[89,4121+36])
+                      Ptyp_constr "module_type" (parsing/ast_mapper.mli[89,4121+25]..[89,4121+36])
+                      []
+                    core_type (parsing/ast_mapper.mli[89,4121+40]..[89,4121+51])
+                      Ptyp_constr "module_type" (parsing/ast_mapper.mli[89,4121+40]..[89,4121+51])
+                      []
+              (parsing/ast_mapper.mli[90,4174+2]..[91,4235+54])
+                Immutable
+                "module_type_declaration" (parsing/ast_mapper.mli[90,4174+2]..[90,4174+25])                core_type (parsing/ast_mapper.mli[90,4174+27]..[91,4235+53])
+                  Ptyp_arrow
+                  Nolabel
+                  core_type (parsing/ast_mapper.mli[90,4174+27]..[90,4174+33])
+                    Ptyp_constr "mapper" (parsing/ast_mapper.mli[90,4174+27]..[90,4174+33])
+                    []
+                  core_type (parsing/ast_mapper.mli[90,4174+37]..[91,4235+53])
+                    Ptyp_arrow
+                    Nolabel
+                    core_type (parsing/ast_mapper.mli[90,4174+37]..[90,4174+60])
+                      Ptyp_constr "module_type_declaration" (parsing/ast_mapper.mli[90,4174+37]..[90,4174+60])
+                      []
+                    core_type (parsing/ast_mapper.mli[91,4235+30]..[91,4235+53])
+                      Ptyp_constr "module_type_declaration" (parsing/ast_mapper.mli[91,4235+30]..[91,4235+53])
+                      []
+              (parsing/ast_mapper.mli[92,4290+2]..[92,4290+67])
+                Immutable
+                "open_declaration" (parsing/ast_mapper.mli[92,4290+2]..[92,4290+18])                core_type (parsing/ast_mapper.mli[92,4290+20]..[92,4290+66])
+                  Ptyp_arrow
+                  Nolabel
+                  core_type (parsing/ast_mapper.mli[92,4290+20]..[92,4290+26])
+                    Ptyp_constr "mapper" (parsing/ast_mapper.mli[92,4290+20]..[92,4290+26])
+                    []
+                  core_type (parsing/ast_mapper.mli[92,4290+30]..[92,4290+66])
+                    Ptyp_arrow
+                    Nolabel
+                    core_type (parsing/ast_mapper.mli[92,4290+30]..[92,4290+46])
+                      Ptyp_constr "open_declaration" (parsing/ast_mapper.mli[92,4290+30]..[92,4290+46])
+                      []
+                    core_type (parsing/ast_mapper.mli[92,4290+50]..[92,4290+66])
+                      Ptyp_constr "open_declaration" (parsing/ast_mapper.mli[92,4290+50]..[92,4290+66])
+                      []
+              (parsing/ast_mapper.mli[93,4358+2]..[93,4358+67])
+                Immutable
+                "open_description" (parsing/ast_mapper.mli[93,4358+2]..[93,4358+18])                core_type (parsing/ast_mapper.mli[93,4358+20]..[93,4358+66])
+                  Ptyp_arrow
+                  Nolabel
+                  core_type (parsing/ast_mapper.mli[93,4358+20]..[93,4358+26])
+                    Ptyp_constr "mapper" (parsing/ast_mapper.mli[93,4358+20]..[93,4358+26])
+                    []
+                  core_type (parsing/ast_mapper.mli[93,4358+30]..[93,4358+66])
+                    Ptyp_arrow
+                    Nolabel
+                    core_type (parsing/ast_mapper.mli[93,4358+30]..[93,4358+46])
+                      Ptyp_constr "open_description" (parsing/ast_mapper.mli[93,4358+30]..[93,4358+46])
+                      []
+                    core_type (parsing/ast_mapper.mli[93,4358+50]..[93,4358+66])
+                      Ptyp_constr "open_description" (parsing/ast_mapper.mli[93,4358+50]..[93,4358+66])
+                      []
+              (parsing/ast_mapper.mli[94,4426+2]..[94,4426+36])
+                Immutable
+                "pat" (parsing/ast_mapper.mli[94,4426+2]..[94,4426+5])                core_type (parsing/ast_mapper.mli[94,4426+7]..[94,4426+35])
+                  Ptyp_arrow
+                  Nolabel
+                  core_type (parsing/ast_mapper.mli[94,4426+7]..[94,4426+13])
+                    Ptyp_constr "mapper" (parsing/ast_mapper.mli[94,4426+7]..[94,4426+13])
+                    []
+                  core_type (parsing/ast_mapper.mli[94,4426+17]..[94,4426+35])
+                    Ptyp_arrow
+                    Nolabel
+                    core_type (parsing/ast_mapper.mli[94,4426+17]..[94,4426+24])
+                      Ptyp_constr "pattern" (parsing/ast_mapper.mli[94,4426+17]..[94,4426+24])
+                      []
+                    core_type (parsing/ast_mapper.mli[94,4426+28]..[94,4426+35])
+                      Ptyp_constr "pattern" (parsing/ast_mapper.mli[94,4426+28]..[94,4426+35])
+                      []
+              (parsing/ast_mapper.mli[95,4463+2]..[95,4463+40])
+                Immutable
+                "payload" (parsing/ast_mapper.mli[95,4463+2]..[95,4463+9])                core_type (parsing/ast_mapper.mli[95,4463+11]..[95,4463+39])
+                  Ptyp_arrow
+                  Nolabel
+                  core_type (parsing/ast_mapper.mli[95,4463+11]..[95,4463+17])
+                    Ptyp_constr "mapper" (parsing/ast_mapper.mli[95,4463+11]..[95,4463+17])
+                    []
+                  core_type (parsing/ast_mapper.mli[95,4463+21]..[95,4463+39])
+                    Ptyp_arrow
+                    Nolabel
+                    core_type (parsing/ast_mapper.mli[95,4463+21]..[95,4463+28])
+                      Ptyp_constr "payload" (parsing/ast_mapper.mli[95,4463+21]..[95,4463+28])
+                      []
+                    core_type (parsing/ast_mapper.mli[95,4463+32]..[95,4463+39])
+                      Ptyp_constr "payload" (parsing/ast_mapper.mli[95,4463+32]..[95,4463+39])
+                      []
+              (parsing/ast_mapper.mli[96,4504+2]..[96,4504+46])
+                Immutable
+                "signature" (parsing/ast_mapper.mli[96,4504+2]..[96,4504+11])                core_type (parsing/ast_mapper.mli[96,4504+13]..[96,4504+45])
+                  Ptyp_arrow
+                  Nolabel
+                  core_type (parsing/ast_mapper.mli[96,4504+13]..[96,4504+19])
+                    Ptyp_constr "mapper" (parsing/ast_mapper.mli[96,4504+13]..[96,4504+19])
+                    []
+                  core_type (parsing/ast_mapper.mli[96,4504+23]..[96,4504+45])
+                    Ptyp_arrow
+                    Nolabel
+                    core_type (parsing/ast_mapper.mli[96,4504+23]..[96,4504+32])
+                      Ptyp_constr "signature" (parsing/ast_mapper.mli[96,4504+23]..[96,4504+32])
+                      []
+                    core_type (parsing/ast_mapper.mli[96,4504+36]..[96,4504+45])
+                      Ptyp_constr "signature" (parsing/ast_mapper.mli[96,4504+36]..[96,4504+45])
+                      []
+              (parsing/ast_mapper.mli[97,4551+2]..[97,4551+61])
+                Immutable
+                "signature_item" (parsing/ast_mapper.mli[97,4551+2]..[97,4551+16])                core_type (parsing/ast_mapper.mli[97,4551+18]..[97,4551+60])
+                  Ptyp_arrow
+                  Nolabel
+                  core_type (parsing/ast_mapper.mli[97,4551+18]..[97,4551+24])
+                    Ptyp_constr "mapper" (parsing/ast_mapper.mli[97,4551+18]..[97,4551+24])
+                    []
+                  core_type (parsing/ast_mapper.mli[97,4551+28]..[97,4551+60])
+                    Ptyp_arrow
+                    Nolabel
+                    core_type (parsing/ast_mapper.mli[97,4551+28]..[97,4551+42])
+                      Ptyp_constr "signature_item" (parsing/ast_mapper.mli[97,4551+28]..[97,4551+42])
+                      []
+                    core_type (parsing/ast_mapper.mli[97,4551+46]..[97,4551+60])
+                      Ptyp_constr "signature_item" (parsing/ast_mapper.mli[97,4551+46]..[97,4551+60])
+                      []
+              (parsing/ast_mapper.mli[98,4613+2]..[98,4613+46])
+                Immutable
+                "structure" (parsing/ast_mapper.mli[98,4613+2]..[98,4613+11])                core_type (parsing/ast_mapper.mli[98,4613+13]..[98,4613+45])
+                  Ptyp_arrow
+                  Nolabel
+                  core_type (parsing/ast_mapper.mli[98,4613+13]..[98,4613+19])
+                    Ptyp_constr "mapper" (parsing/ast_mapper.mli[98,4613+13]..[98,4613+19])
+                    []
+                  core_type (parsing/ast_mapper.mli[98,4613+23]..[98,4613+45])
+                    Ptyp_arrow
+                    Nolabel
+                    core_type (parsing/ast_mapper.mli[98,4613+23]..[98,4613+32])
+                      Ptyp_constr "structure" (parsing/ast_mapper.mli[98,4613+23]..[98,4613+32])
+                      []
+                    core_type (parsing/ast_mapper.mli[98,4613+36]..[98,4613+45])
+                      Ptyp_constr "structure" (parsing/ast_mapper.mli[98,4613+36]..[98,4613+45])
+                      []
+              (parsing/ast_mapper.mli[99,4660+2]..[99,4660+61])
+                Immutable
+                "structure_item" (parsing/ast_mapper.mli[99,4660+2]..[99,4660+16])                core_type (parsing/ast_mapper.mli[99,4660+18]..[99,4660+60])
+                  Ptyp_arrow
+                  Nolabel
+                  core_type (parsing/ast_mapper.mli[99,4660+18]..[99,4660+24])
+                    Ptyp_constr "mapper" (parsing/ast_mapper.mli[99,4660+18]..[99,4660+24])
+                    []
+                  core_type (parsing/ast_mapper.mli[99,4660+28]..[99,4660+60])
+                    Ptyp_arrow
+                    Nolabel
+                    core_type (parsing/ast_mapper.mli[99,4660+28]..[99,4660+42])
+                      Ptyp_constr "structure_item" (parsing/ast_mapper.mli[99,4660+28]..[99,4660+42])
+                      []
+                    core_type (parsing/ast_mapper.mli[99,4660+46]..[99,4660+60])
+                      Ptyp_constr "structure_item" (parsing/ast_mapper.mli[99,4660+46]..[99,4660+60])
+                      []
+              (parsing/ast_mapper.mli[100,4722+2]..[100,4722+40])
+                Immutable
+                "typ" (parsing/ast_mapper.mli[100,4722+2]..[100,4722+5])                core_type (parsing/ast_mapper.mli[100,4722+7]..[100,4722+39])
+                  Ptyp_arrow
+                  Nolabel
+                  core_type (parsing/ast_mapper.mli[100,4722+7]..[100,4722+13])
+                    Ptyp_constr "mapper" (parsing/ast_mapper.mli[100,4722+7]..[100,4722+13])
+                    []
+                  core_type (parsing/ast_mapper.mli[100,4722+17]..[100,4722+39])
+                    Ptyp_arrow
+                    Nolabel
+                    core_type (parsing/ast_mapper.mli[100,4722+17]..[100,4722+26])
+                      Ptyp_constr "core_type" (parsing/ast_mapper.mli[100,4722+17]..[100,4722+26])
+                      []
+                    core_type (parsing/ast_mapper.mli[100,4722+30]..[100,4722+39])
+                      Ptyp_constr "core_type" (parsing/ast_mapper.mli[100,4722+30]..[100,4722+39])
+                      []
+              (parsing/ast_mapper.mli[101,4763+2]..[101,4763+67])
+                Immutable
+                "type_declaration" (parsing/ast_mapper.mli[101,4763+2]..[101,4763+18])                core_type (parsing/ast_mapper.mli[101,4763+20]..[101,4763+66])
+                  Ptyp_arrow
+                  Nolabel
+                  core_type (parsing/ast_mapper.mli[101,4763+20]..[101,4763+26])
+                    Ptyp_constr "mapper" (parsing/ast_mapper.mli[101,4763+20]..[101,4763+26])
+                    []
+                  core_type (parsing/ast_mapper.mli[101,4763+30]..[101,4763+66])
+                    Ptyp_arrow
+                    Nolabel
+                    core_type (parsing/ast_mapper.mli[101,4763+30]..[101,4763+46])
+                      Ptyp_constr "type_declaration" (parsing/ast_mapper.mli[101,4763+30]..[101,4763+46])
+                      []
+                    core_type (parsing/ast_mapper.mli[101,4763+50]..[101,4763+66])
+                      Ptyp_constr "type_declaration" (parsing/ast_mapper.mli[101,4763+50]..[101,4763+66])
+                      []
+              (parsing/ast_mapper.mli[102,4831+2]..[102,4831+61])
+                Immutable
+                "type_extension" (parsing/ast_mapper.mli[102,4831+2]..[102,4831+16])                core_type (parsing/ast_mapper.mli[102,4831+18]..[102,4831+60])
+                  Ptyp_arrow
+                  Nolabel
+                  core_type (parsing/ast_mapper.mli[102,4831+18]..[102,4831+24])
+                    Ptyp_constr "mapper" (parsing/ast_mapper.mli[102,4831+18]..[102,4831+24])
+                    []
+                  core_type (parsing/ast_mapper.mli[102,4831+28]..[102,4831+60])
+                    Ptyp_arrow
+                    Nolabel
+                    core_type (parsing/ast_mapper.mli[102,4831+28]..[102,4831+42])
+                      Ptyp_constr "type_extension" (parsing/ast_mapper.mli[102,4831+28]..[102,4831+42])
+                      []
+                    core_type (parsing/ast_mapper.mli[102,4831+46]..[102,4831+60])
+                      Ptyp_constr "type_extension" (parsing/ast_mapper.mli[102,4831+46]..[102,4831+60])
+                      []
+              (parsing/ast_mapper.mli[103,4893+2]..[103,4893+61])
+                Immutable
+                "type_exception" (parsing/ast_mapper.mli[103,4893+2]..[103,4893+16])                core_type (parsing/ast_mapper.mli[103,4893+18]..[103,4893+60])
+                  Ptyp_arrow
+                  Nolabel
+                  core_type (parsing/ast_mapper.mli[103,4893+18]..[103,4893+24])
+                    Ptyp_constr "mapper" (parsing/ast_mapper.mli[103,4893+18]..[103,4893+24])
+                    []
+                  core_type (parsing/ast_mapper.mli[103,4893+28]..[103,4893+60])
+                    Ptyp_arrow
+                    Nolabel
+                    core_type (parsing/ast_mapper.mli[103,4893+28]..[103,4893+42])
+                      Ptyp_constr "type_exception" (parsing/ast_mapper.mli[103,4893+28]..[103,4893+42])
+                      []
+                    core_type (parsing/ast_mapper.mli[103,4893+46]..[103,4893+60])
+                      Ptyp_constr "type_exception" (parsing/ast_mapper.mli[103,4893+46]..[103,4893+60])
+                      []
+              (parsing/ast_mapper.mli[104,4955+2]..[104,4955+46])
+                Immutable
+                "type_kind" (parsing/ast_mapper.mli[104,4955+2]..[104,4955+11])                core_type (parsing/ast_mapper.mli[104,4955+13]..[104,4955+45])
+                  Ptyp_arrow
+                  Nolabel
+                  core_type (parsing/ast_mapper.mli[104,4955+13]..[104,4955+19])
+                    Ptyp_constr "mapper" (parsing/ast_mapper.mli[104,4955+13]..[104,4955+19])
+                    []
+                  core_type (parsing/ast_mapper.mli[104,4955+23]..[104,4955+45])
+                    Ptyp_arrow
+                    Nolabel
+                    core_type (parsing/ast_mapper.mli[104,4955+23]..[104,4955+32])
+                      Ptyp_constr "type_kind" (parsing/ast_mapper.mli[104,4955+23]..[104,4955+32])
+                      []
+                    core_type (parsing/ast_mapper.mli[104,4955+36]..[104,4955+45])
+                      Ptyp_constr "type_kind" (parsing/ast_mapper.mli[104,4955+36]..[104,4955+45])
+                      []
+              (parsing/ast_mapper.mli[105,5002+2]..[105,5002+58])
+                Immutable
+                "value_binding" (parsing/ast_mapper.mli[105,5002+2]..[105,5002+15])                core_type (parsing/ast_mapper.mli[105,5002+17]..[105,5002+57])
+                  Ptyp_arrow
+                  Nolabel
+                  core_type (parsing/ast_mapper.mli[105,5002+17]..[105,5002+23])
+                    Ptyp_constr "mapper" (parsing/ast_mapper.mli[105,5002+17]..[105,5002+23])
+                    []
+                  core_type (parsing/ast_mapper.mli[105,5002+27]..[105,5002+57])
+                    Ptyp_arrow
+                    Nolabel
+                    core_type (parsing/ast_mapper.mli[105,5002+27]..[105,5002+40])
+                      Ptyp_constr "value_binding" (parsing/ast_mapper.mli[105,5002+27]..[105,5002+40])
+                      []
+                    core_type (parsing/ast_mapper.mli[105,5002+44]..[105,5002+57])
+                      Ptyp_constr "value_binding" (parsing/ast_mapper.mli[105,5002+44]..[105,5002+57])
+                      []
+              (parsing/ast_mapper.mli[106,5061+2]..[106,5061+70])
+                Immutable
+                "value_description" (parsing/ast_mapper.mli[106,5061+2]..[106,5061+19])                core_type (parsing/ast_mapper.mli[106,5061+21]..[106,5061+69])
+                  Ptyp_arrow
+                  Nolabel
+                  core_type (parsing/ast_mapper.mli[106,5061+21]..[106,5061+27])
+                    Ptyp_constr "mapper" (parsing/ast_mapper.mli[106,5061+21]..[106,5061+27])
+                    []
+                  core_type (parsing/ast_mapper.mli[106,5061+31]..[106,5061+69])
+                    Ptyp_arrow
+                    Nolabel
+                    core_type (parsing/ast_mapper.mli[106,5061+31]..[106,5061+48])
+                      Ptyp_constr "value_description" (parsing/ast_mapper.mli[106,5061+31]..[106,5061+48])
+                      []
+                    core_type (parsing/ast_mapper.mli[106,5061+52]..[106,5061+69])
+                      Ptyp_constr "value_description" (parsing/ast_mapper.mli[106,5061+52]..[106,5061+69])
+                      []
+              (parsing/ast_mapper.mli[107,5132+2]..[107,5132+64])
+                Immutable
+                "with_constraint" (parsing/ast_mapper.mli[107,5132+2]..[107,5132+17])                core_type (parsing/ast_mapper.mli[107,5132+19]..[107,5132+63])
+                  Ptyp_arrow
+                  Nolabel
+                  core_type (parsing/ast_mapper.mli[107,5132+19]..[107,5132+25])
+                    Ptyp_constr "mapper" (parsing/ast_mapper.mli[107,5132+19]..[107,5132+25])
+                    []
+                  core_type (parsing/ast_mapper.mli[107,5132+29]..[107,5132+63])
+                    Ptyp_arrow
+                    Nolabel
+                    core_type (parsing/ast_mapper.mli[107,5132+29]..[107,5132+44])
+                      Ptyp_constr "with_constraint" (parsing/ast_mapper.mli[107,5132+29]..[107,5132+44])
+                      []
+                    core_type (parsing/ast_mapper.mli[107,5132+48]..[107,5132+63])
+                      Ptyp_constr "with_constraint" (parsing/ast_mapper.mli[107,5132+48]..[107,5132+63])
+                      []
+            ]
+        ptype_private = Public
+        ptype_manifest =
+          None
+    ]
+  signature_item (parsing/ast_mapper.mli[114,5411+0]..[114,5411+26])
+    Psig_value
+    value_description "default_mapper" (parsing/ast_mapper.mli[114,5411+4]..[114,5411+18]) (parsing/ast_mapper.mli[114,5411+0]..[114,5411+26])
+      attribute "ocaml.doc"
+        [
+          structure_item (parsing/ast_mapper.mli[115,5438+0]..[115,5438+68])
+            Pstr_eval
+            expression (parsing/ast_mapper.mli[115,5438+0]..[115,5438+68])
+              Pexp_constant PConst_string(" A default mapper, which implements a \"deep identity\" mapping. ",(parsing/ast_mapper.mli[115,5438+0]..[115,5438+68]),None)
+        ]
+      core_type (parsing/ast_mapper.mli[114,5411+20]..[114,5411+26])
+        Ptyp_constr "mapper" (parsing/ast_mapper.mli[114,5411+20]..[114,5411+26])
+        []
+      []
+  signature_item (parsing/ast_mapper.mli[117,5508+0]..[117,5508+45])
+    Psig_attribute "ocaml.text"
+    [
+      structure_item (parsing/ast_mapper.mli[117,5508+0]..[117,5508+45])
+        Pstr_eval
+        expression (parsing/ast_mapper.mli[117,5508+0]..[117,5508+45])
+          Pexp_constant PConst_string(" {1 Apply mappers to compilation units} ",(parsing/ast_mapper.mli[117,5508+0]..[117,5508+45]),None)
+    ]
+  signature_item (parsing/ast_mapper.mli[119,5555+0]..[119,5555+29])
+    Psig_value
+    value_description "tool_name" (parsing/ast_mapper.mli[119,5555+4]..[119,5555+13]) (parsing/ast_mapper.mli[119,5555+0]..[119,5555+29])
+      attribute "ocaml.doc"
+        [
+          structure_item (parsing/ast_mapper.mli[120,5585+0]..[126,5976+24])
+            Pstr_eval
+            expression (parsing/ast_mapper.mli[120,5585+0]..[126,5976+24])
+              Pexp_constant PConst_string(" Can be used within a ppx preprocessor to know which tool is\n    calling it [\"ocamlc\"], [\"ocamlopt\"], [\"ocamldoc\"], [\"ocamldep\"],\n    [\"ocaml\"], ...  Some global variables that reflect command-line\n    options are automatically synchronized between the calling tool\n    and the ppx preprocessor: {!Clflags.include_dirs},\n    {!Load_path}, {!Clflags.open_modules}, {!Clflags.for_package},\n    {!Clflags.debug}. ",(parsing/ast_mapper.mli[120,5585+0]..[126,5976+24]),None)
+        ]
+      core_type (parsing/ast_mapper.mli[119,5555+15]..[119,5555+29])
+        Ptyp_arrow
+        Nolabel
+        core_type (parsing/ast_mapper.mli[119,5555+15]..[119,5555+19])
+          Ptyp_constr "unit" (parsing/ast_mapper.mli[119,5555+15]..[119,5555+19])
+          []
+        core_type (parsing/ast_mapper.mli[119,5555+23]..[119,5555+29])
+          Ptyp_constr "string" (parsing/ast_mapper.mli[119,5555+23]..[119,5555+29])
+          []
+      []
+  signature_item (parsing/ast_mapper.mli[129,6003+0]..[129,6003+59])
+    Psig_value
+    value_description "apply" (parsing/ast_mapper.mli[129,6003+4]..[129,6003+9]) (parsing/ast_mapper.mli[129,6003+0]..[129,6003+59])
+      attribute "ocaml.doc"
+        [
+          structure_item (parsing/ast_mapper.mli[130,6063+0]..[133,6263+54])
+            Pstr_eval
+            expression (parsing/ast_mapper.mli[130,6063+0]..[133,6263+54])
+              Pexp_constant PConst_string(" Apply a mapper (parametrized by the unit name) to a dumped\n    parsetree found in the [source] file and put the result in the\n    [target] file. The [structure] or [signature] field of the mapper\n    is applied to the implementation or interface.  ",(parsing/ast_mapper.mli[130,6063+0]..[133,6263+54]),None)
+        ]
+      core_type (parsing/ast_mapper.mli[129,6003+11]..[129,6003+59])
+        Ptyp_arrow
+        Labelled "source"
+        core_type (parsing/ast_mapper.mli[129,6003+18]..[129,6003+24])
+          Ptyp_constr "string" (parsing/ast_mapper.mli[129,6003+18]..[129,6003+24])
+          []
+        core_type (parsing/ast_mapper.mli[129,6003+28]..[129,6003+59])
+          Ptyp_arrow
+          Labelled "target"
+          core_type (parsing/ast_mapper.mli[129,6003+35]..[129,6003+41])
+            Ptyp_constr "string" (parsing/ast_mapper.mli[129,6003+35]..[129,6003+41])
+            []
+          core_type (parsing/ast_mapper.mli[129,6003+45]..[129,6003+59])
+            Ptyp_arrow
+            Nolabel
+            core_type (parsing/ast_mapper.mli[129,6003+45]..[129,6003+51])
+              Ptyp_constr "mapper" (parsing/ast_mapper.mli[129,6003+45]..[129,6003+51])
+              []
+            core_type (parsing/ast_mapper.mli[129,6003+55]..[129,6003+59])
+              Ptyp_constr "unit" (parsing/ast_mapper.mli[129,6003+55]..[129,6003+59])
+              []
+      []
+  signature_item (parsing/ast_mapper.mli[135,6319+0]..[135,6319+45])
+    Psig_value
+    value_description "run_main" (parsing/ast_mapper.mli[135,6319+4]..[135,6319+12]) (parsing/ast_mapper.mli[135,6319+0]..[135,6319+45])
+      attribute "ocaml.doc"
+        [
+          structure_item (parsing/ast_mapper.mli[136,6365+0]..[140,6630+18])
+            Pstr_eval
+            expression (parsing/ast_mapper.mli[136,6365+0]..[140,6630+18])
+              Pexp_constant PConst_string(" Entry point to call to implement a standalone -ppx rewriter from a\n    mapper, parametrized by the command line arguments.  The current\n    unit name can be obtained from {!Location.input_name}.  This\n    function implements proper error reporting for uncaught\n    exceptions. ",(parsing/ast_mapper.mli[136,6365+0]..[140,6630+18]),None)
+        ]
+      core_type (parsing/ast_mapper.mli[135,6319+14]..[135,6319+45])
+        Ptyp_arrow
+        Nolabel
+        core_type (parsing/ast_mapper.mli[135,6319+15]..[135,6319+36])
+          Ptyp_arrow
+          Nolabel
+          core_type (parsing/ast_mapper.mli[135,6319+15]..[135,6319+26])
+            Ptyp_constr "list" (parsing/ast_mapper.mli[135,6319+22]..[135,6319+26])
+            [
+              core_type (parsing/ast_mapper.mli[135,6319+15]..[135,6319+21])
+                Ptyp_constr "string" (parsing/ast_mapper.mli[135,6319+15]..[135,6319+21])
+                []
+            ]
+          core_type (parsing/ast_mapper.mli[135,6319+30]..[135,6319+36])
+            Ptyp_constr "mapper" (parsing/ast_mapper.mli[135,6319+30]..[135,6319+36])
+            []
+        core_type (parsing/ast_mapper.mli[135,6319+41]..[135,6319+45])
+          Ptyp_constr "unit" (parsing/ast_mapper.mli[135,6319+41]..[135,6319+45])
+          []
+      []
+  signature_item (parsing/ast_mapper.mli[142,6650+0]..[142,6650+27])
+    Psig_attribute "ocaml.text"
+    [
+      structure_item (parsing/ast_mapper.mli[142,6650+0]..[142,6650+27])
+        Pstr_eval
+        expression (parsing/ast_mapper.mli[142,6650+0]..[142,6650+27])
+          Pexp_constant PConst_string(" {1 Registration API} ",(parsing/ast_mapper.mli[142,6650+0]..[142,6650+27]),None)
+    ]
+  signature_item (parsing/ast_mapper.mli[144,6679+0]..[144,6679+70])
+    Psig_value
+    value_description "register_function" (parsing/ast_mapper.mli[144,6679+4]..[144,6679+21]) (parsing/ast_mapper.mli[144,6679+0]..[144,6679+70])
+      core_type (parsing/ast_mapper.mli[144,6679+23]..[144,6679+70])
+        Ptyp_constr "ref" (parsing/ast_mapper.mli[144,6679+67]..[144,6679+70])
+        [
+          core_type (parsing/ast_mapper.mli[144,6679+24]..[144,6679+65])
+            Ptyp_arrow
+            Nolabel
+            core_type (parsing/ast_mapper.mli[144,6679+24]..[144,6679+30])
+              Ptyp_constr "string" (parsing/ast_mapper.mli[144,6679+24]..[144,6679+30])
+              []
+            core_type (parsing/ast_mapper.mli[144,6679+34]..[144,6679+65])
+              Ptyp_arrow
+              Nolabel
+              core_type (parsing/ast_mapper.mli[144,6679+35]..[144,6679+56])
+                Ptyp_arrow
+                Nolabel
+                core_type (parsing/ast_mapper.mli[144,6679+35]..[144,6679+46])
+                  Ptyp_constr "list" (parsing/ast_mapper.mli[144,6679+42]..[144,6679+46])
+                  [
+                    core_type (parsing/ast_mapper.mli[144,6679+35]..[144,6679+41])
+                      Ptyp_constr "string" (parsing/ast_mapper.mli[144,6679+35]..[144,6679+41])
+                      []
+                  ]
+                core_type (parsing/ast_mapper.mli[144,6679+50]..[144,6679+56])
+                  Ptyp_constr "mapper" (parsing/ast_mapper.mli[144,6679+50]..[144,6679+56])
+                  []
+              core_type (parsing/ast_mapper.mli[144,6679+61]..[144,6679+65])
+                Ptyp_constr "unit" (parsing/ast_mapper.mli[144,6679+61]..[144,6679+65])
+                []
+        ]
+      []
+  signature_item (parsing/ast_mapper.mli[146,6751+0]..[146,6751+55])
+    Psig_value
+    value_description "register" (parsing/ast_mapper.mli[146,6751+4]..[146,6751+12]) (parsing/ast_mapper.mli[146,6751+0]..[146,6751+55])
+      attribute "ocaml.doc"
+        [
+          structure_item (parsing/ast_mapper.mli[147,6807+0]..[161,7565+23])
+            Pstr_eval
+            expression (parsing/ast_mapper.mli[147,6807+0]..[161,7565+23])
+              Pexp_constant PConst_string(" Apply the [register_function].  The default behavior is to run the\n    mapper immediately, taking arguments from the process command\n    line.  This is to support a scenario where a mapper is linked as a\n    stand-alone executable.\n\n    It is possible to overwrite the [register_function] to define\n    \"-ppx drivers\", which combine several mappers in a single process.\n    Typically, a driver starts by defining [register_function] to a\n    custom implementation, then lets ppx rewriters (linked statically\n    or dynamically) register themselves, and then run all or some of\n    them.  It is also possible to have -ppx drivers apply rewriters to\n    only specific parts of an AST.\n\n    The first argument to [register] is a symbolic name to be used by\n    the ppx driver.  ",(parsing/ast_mapper.mli[147,6807+0]..[161,7565+23]),None)
+        ]
+      core_type (parsing/ast_mapper.mli[146,6751+14]..[146,6751+55])
+        Ptyp_arrow
+        Nolabel
+        core_type (parsing/ast_mapper.mli[146,6751+14]..[146,6751+20])
+          Ptyp_constr "string" (parsing/ast_mapper.mli[146,6751+14]..[146,6751+20])
+          []
+        core_type (parsing/ast_mapper.mli[146,6751+24]..[146,6751+55])
+          Ptyp_arrow
+          Nolabel
+          core_type (parsing/ast_mapper.mli[146,6751+25]..[146,6751+46])
+            Ptyp_arrow
+            Nolabel
+            core_type (parsing/ast_mapper.mli[146,6751+25]..[146,6751+36])
+              Ptyp_constr "list" (parsing/ast_mapper.mli[146,6751+32]..[146,6751+36])
+              [
+                core_type (parsing/ast_mapper.mli[146,6751+25]..[146,6751+31])
+                  Ptyp_constr "string" (parsing/ast_mapper.mli[146,6751+25]..[146,6751+31])
+                  []
+              ]
+            core_type (parsing/ast_mapper.mli[146,6751+40]..[146,6751+46])
+              Ptyp_constr "mapper" (parsing/ast_mapper.mli[146,6751+40]..[146,6751+46])
+              []
+          core_type (parsing/ast_mapper.mli[146,6751+51]..[146,6751+55])
+            Ptyp_constr "unit" (parsing/ast_mapper.mli[146,6751+51]..[146,6751+55])
+            []
+      []
+  signature_item (parsing/ast_mapper.mli[164,7591+0]..[164,7591+49])
+    Psig_attribute "ocaml.text"
+    [
+      structure_item (parsing/ast_mapper.mli[164,7591+0]..[164,7591+49])
+        Pstr_eval
+        expression (parsing/ast_mapper.mli[164,7591+0]..[164,7591+49])
+          Pexp_constant PConst_string(" {1 Convenience functions to write mappers} ",(parsing/ast_mapper.mli[164,7591+0]..[164,7591+49]),None)
+    ]
+  signature_item (parsing/ast_mapper.mli[166,7642+0]..[166,7642+49])
+    Psig_value
+    value_description "map_opt" (parsing/ast_mapper.mli[166,7642+4]..[166,7642+11]) (parsing/ast_mapper.mli[166,7642+0]..[166,7642+49])
+      core_type (parsing/ast_mapper.mli[166,7642+13]..[166,7642+49])
+        Ptyp_arrow
+        Nolabel
+        core_type (parsing/ast_mapper.mli[166,7642+14]..[166,7642+22])
+          Ptyp_arrow
+          Nolabel
+          core_type (parsing/ast_mapper.mli[166,7642+14]..[166,7642+16])
+            Ptyp_var a
+          core_type (parsing/ast_mapper.mli[166,7642+20]..[166,7642+22])
+            Ptyp_var b
+        core_type (parsing/ast_mapper.mli[166,7642+27]..[166,7642+49])
+          Ptyp_arrow
+          Nolabel
+          core_type (parsing/ast_mapper.mli[166,7642+27]..[166,7642+36])
+            Ptyp_constr "option" (parsing/ast_mapper.mli[166,7642+30]..[166,7642+36])
+            [
+              core_type (parsing/ast_mapper.mli[166,7642+27]..[166,7642+29])
+                Ptyp_var a
+            ]
+          core_type (parsing/ast_mapper.mli[166,7642+40]..[166,7642+49])
+            Ptyp_constr "option" (parsing/ast_mapper.mli[166,7642+43]..[166,7642+49])
+            [
+              core_type (parsing/ast_mapper.mli[166,7642+40]..[166,7642+42])
+                Ptyp_var b
+            ]
+      []
+  signature_item (parsing/ast_mapper.mli[168,7693+0]..[168,7693+51])
+    Psig_value
+    value_description "extension_of_error" (parsing/ast_mapper.mli[168,7693+4]..[168,7693+22]) (parsing/ast_mapper.mli[168,7693+0]..[168,7693+51])
+      attribute "ocaml.doc"
+        [
+          structure_item (parsing/ast_mapper.mli[169,7745+0]..[171,7876+43])
+            Pstr_eval
+            expression (parsing/ast_mapper.mli[169,7745+0]..[171,7876+43])
+              Pexp_constant PConst_string(" Encode an error into an 'ocaml.error' extension node which can be\n    inserted in a generated Parsetree.  The compiler will be\n    responsible for reporting the error. ",(parsing/ast_mapper.mli[169,7745+0]..[171,7876+43]),None)
+        ]
+      core_type (parsing/ast_mapper.mli[168,7693+24]..[168,7693+51])
+        Ptyp_arrow
+        Nolabel
+        core_type (parsing/ast_mapper.mli[168,7693+24]..[168,7693+38])
+          Ptyp_constr "Location.error" (parsing/ast_mapper.mli[168,7693+24]..[168,7693+38])
+          []
+        core_type (parsing/ast_mapper.mli[168,7693+42]..[168,7693+51])
+          Ptyp_constr "extension" (parsing/ast_mapper.mli[168,7693+42]..[168,7693+51])
+          []
+      []
+  signature_item (parsing/ast_mapper.mli[173,7921+0]..[173,7921+59])
+    Psig_value
+    value_description "attribute_of_warning" (parsing/ast_mapper.mli[173,7921+4]..[173,7921+24]) (parsing/ast_mapper.mli[173,7921+0]..[173,7921+59])
+      attribute "ocaml.doc"
+        [
+          structure_item (parsing/ast_mapper.mli[174,7981+0]..[176,8120+45])
+            Pstr_eval
+            expression (parsing/ast_mapper.mli[174,7981+0]..[176,8120+45])
+              Pexp_constant PConst_string(" Encode a warning message into an 'ocaml.ppwarning' attribute which can be\n    inserted in a generated Parsetree.  The compiler will be\n    responsible for reporting the warning. ",(parsing/ast_mapper.mli[174,7981+0]..[176,8120+45]),None)
+        ]
+      core_type (parsing/ast_mapper.mli[173,7921+26]..[173,7921+59])
+        Ptyp_arrow
+        Nolabel
+        core_type (parsing/ast_mapper.mli[173,7921+26]..[173,7921+36])
+          Ptyp_constr "Location.t" (parsing/ast_mapper.mli[173,7921+26]..[173,7921+36])
+          []
+        core_type (parsing/ast_mapper.mli[173,7921+40]..[173,7921+59])
+          Ptyp_arrow
+          Nolabel
+          core_type (parsing/ast_mapper.mli[173,7921+40]..[173,7921+46])
+            Ptyp_constr "string" (parsing/ast_mapper.mli[173,7921+40]..[173,7921+46])
+            []
+          core_type (parsing/ast_mapper.mli[173,7921+50]..[173,7921+59])
+            Ptyp_constr "attribute" (parsing/ast_mapper.mli[173,7921+50]..[173,7921+59])
+            []
+      []
+  signature_item (parsing/ast_mapper.mli[178,8167+0]..[178,8167+52])
+    Psig_attribute "ocaml.text"
+    [
+      structure_item (parsing/ast_mapper.mli[178,8167+0]..[178,8167+52])
+        Pstr_eval
+        expression (parsing/ast_mapper.mli[178,8167+0]..[178,8167+52])
+          Pexp_constant PConst_string(" {1 Helper functions to call external mappers} ",(parsing/ast_mapper.mli[178,8167+0]..[178,8167+52]),None)
+    ]
+  signature_item (parsing/ast_mapper.mli[180,8221+0]..[181,8246+66])
+    Psig_value
+    value_description "add_ppx_context_str" (parsing/ast_mapper.mli[180,8221+4]..[180,8221+23]) (parsing/ast_mapper.mli[180,8221+0]..[181,8246+66])
+      attribute "ocaml.doc"
+        [
+          structure_item (parsing/ast_mapper.mli[182,8313+0]..[185,8504+17])
+            Pstr_eval
+            expression (parsing/ast_mapper.mli[182,8313+0]..[185,8504+17])
+              Pexp_constant PConst_string(" Extract information from the current environment and encode it\n    into an attribute which is prepended to the list of structure\n    items in order to pass the information to an external\n    processor. ",(parsing/ast_mapper.mli[182,8313+0]..[185,8504+17]),None)
+        ]
+      core_type (parsing/ast_mapper.mli[181,8246+4]..[181,8246+66])
+        Ptyp_arrow
+        Labelled "tool_name"
+        core_type (parsing/ast_mapper.mli[181,8246+14]..[181,8246+20])
+          Ptyp_constr "string" (parsing/ast_mapper.mli[181,8246+14]..[181,8246+20])
+          []
+        core_type (parsing/ast_mapper.mli[181,8246+24]..[181,8246+66])
+          Ptyp_arrow
+          Nolabel
+          core_type (parsing/ast_mapper.mli[181,8246+24]..[181,8246+43])
+            Ptyp_constr "Parsetree.structure" (parsing/ast_mapper.mli[181,8246+24]..[181,8246+43])
+            []
+          core_type (parsing/ast_mapper.mli[181,8246+47]..[181,8246+66])
+            Ptyp_constr "Parsetree.structure" (parsing/ast_mapper.mli[181,8246+47]..[181,8246+66])
+            []
+      []
+  signature_item (parsing/ast_mapper.mli[187,8523+0]..[188,8548+66])
+    Psig_value
+    value_description "add_ppx_context_sig" (parsing/ast_mapper.mli[187,8523+4]..[187,8523+23]) (parsing/ast_mapper.mli[187,8523+0]..[188,8548+66])
+      attribute "ocaml.doc"
+        [
+          structure_item (parsing/ast_mapper.mli[189,8615+0]..[189,8615+57])
+            Pstr_eval
+            expression (parsing/ast_mapper.mli[189,8615+0]..[189,8615+57])
+              Pexp_constant PConst_string(" Same as [add_ppx_context_str], but for signatures. ",(parsing/ast_mapper.mli[189,8615+0]..[189,8615+57]),None)
+        ]
+      core_type (parsing/ast_mapper.mli[188,8548+4]..[188,8548+66])
+        Ptyp_arrow
+        Labelled "tool_name"
+        core_type (parsing/ast_mapper.mli[188,8548+14]..[188,8548+20])
+          Ptyp_constr "string" (parsing/ast_mapper.mli[188,8548+14]..[188,8548+20])
+          []
+        core_type (parsing/ast_mapper.mli[188,8548+24]..[188,8548+66])
+          Ptyp_arrow
+          Nolabel
+          core_type (parsing/ast_mapper.mli[188,8548+24]..[188,8548+43])
+            Ptyp_constr "Parsetree.signature" (parsing/ast_mapper.mli[188,8548+24]..[188,8548+43])
+            []
+          core_type (parsing/ast_mapper.mli[188,8548+47]..[188,8548+66])
+            Ptyp_constr "Parsetree.signature" (parsing/ast_mapper.mli[188,8548+47]..[188,8548+66])
+            []
+      []
+  signature_item (parsing/ast_mapper.mli[191,8674+0]..[192,8700+62])
+    Psig_value
+    value_description "drop_ppx_context_str" (parsing/ast_mapper.mli[191,8674+4]..[191,8674+24]) (parsing/ast_mapper.mli[191,8674+0]..[192,8700+62])
+      attribute "ocaml.doc"
+        [
+          structure_item (parsing/ast_mapper.mli[193,8763+0]..[195,8897+15])
+            Pstr_eval
+            expression (parsing/ast_mapper.mli[193,8763+0]..[195,8897+15])
+              Pexp_constant PConst_string(" Drop the ocaml.ppx.context attribute from a structure.  If\n    [restore] is true, also restore the associated data in the current\n    process. ",(parsing/ast_mapper.mli[193,8763+0]..[195,8897+15]),None)
+        ]
+      core_type (parsing/ast_mapper.mli[192,8700+4]..[192,8700+62])
+        Ptyp_arrow
+        Labelled "restore"
+        core_type (parsing/ast_mapper.mli[192,8700+12]..[192,8700+16])
+          Ptyp_constr "bool" (parsing/ast_mapper.mli[192,8700+12]..[192,8700+16])
+          []
+        core_type (parsing/ast_mapper.mli[192,8700+20]..[192,8700+62])
+          Ptyp_arrow
+          Nolabel
+          core_type (parsing/ast_mapper.mli[192,8700+20]..[192,8700+39])
+            Ptyp_constr "Parsetree.structure" (parsing/ast_mapper.mli[192,8700+20]..[192,8700+39])
+            []
+          core_type (parsing/ast_mapper.mli[192,8700+43]..[192,8700+62])
+            Ptyp_constr "Parsetree.structure" (parsing/ast_mapper.mli[192,8700+43]..[192,8700+62])
+            []
+      []
+  signature_item (parsing/ast_mapper.mli[197,8914+0]..[198,8940+62])
+    Psig_value
+    value_description "drop_ppx_context_sig" (parsing/ast_mapper.mli[197,8914+4]..[197,8914+24]) (parsing/ast_mapper.mli[197,8914+0]..[198,8940+62])
+      attribute "ocaml.doc"
+        [
+          structure_item (parsing/ast_mapper.mli[199,9003+0]..[199,9003+58])
+            Pstr_eval
+            expression (parsing/ast_mapper.mli[199,9003+0]..[199,9003+58])
+              Pexp_constant PConst_string(" Same as [drop_ppx_context_str], but for signatures. ",(parsing/ast_mapper.mli[199,9003+0]..[199,9003+58]),None)
+        ]
+      core_type (parsing/ast_mapper.mli[198,8940+4]..[198,8940+62])
+        Ptyp_arrow
+        Labelled "restore"
+        core_type (parsing/ast_mapper.mli[198,8940+12]..[198,8940+16])
+          Ptyp_constr "bool" (parsing/ast_mapper.mli[198,8940+12]..[198,8940+16])
+          []
+        core_type (parsing/ast_mapper.mli[198,8940+20]..[198,8940+62])
+          Ptyp_arrow
+          Nolabel
+          core_type (parsing/ast_mapper.mli[198,8940+20]..[198,8940+39])
+            Ptyp_constr "Parsetree.signature" (parsing/ast_mapper.mli[198,8940+20]..[198,8940+39])
+            []
+          core_type (parsing/ast_mapper.mli[198,8940+43]..[198,8940+62])
+            Ptyp_constr "Parsetree.signature" (parsing/ast_mapper.mli[198,8940+43]..[198,8940+62])
+            []
+      []
+  signature_item (parsing/ast_mapper.mli[201,9063+0]..[201,9063+18])
+    Psig_attribute "ocaml.text"
+    [
+      structure_item (parsing/ast_mapper.mli[201,9063+0]..[201,9063+18])
+        Pstr_eval
+        expression (parsing/ast_mapper.mli[201,9063+0]..[201,9063+18])
+          Pexp_constant PConst_string(" {1 Cookies} ",(parsing/ast_mapper.mli[201,9063+0]..[201,9063+18]),None)
+    ]
+  signature_item (parsing/ast_mapper.mli[203,9083+0]..[205,9211+54])
+    Psig_attribute "ocaml.text"
+    [
+      structure_item (parsing/ast_mapper.mli[203,9083+0]..[205,9211+54])
+        Pstr_eval
+        expression (parsing/ast_mapper.mli[203,9083+0]..[205,9211+54])
+          Pexp_constant PConst_string(" Cookies are used to pass information from a ppx processor to\n    a further invocation of itself, when called from the OCaml\n    toplevel (or other tools that support cookies). ",(parsing/ast_mapper.mli[203,9083+0]..[205,9211+54]),None)
+    ]
+  signature_item (parsing/ast_mapper.mli[207,9267+0]..[207,9267+54])
+    Psig_value
+    value_description "set_cookie" (parsing/ast_mapper.mli[207,9267+4]..[207,9267+14]) (parsing/ast_mapper.mli[207,9267+0]..[207,9267+54])
+      core_type (parsing/ast_mapper.mli[207,9267+16]..[207,9267+54])
+        Ptyp_arrow
+        Nolabel
+        core_type (parsing/ast_mapper.mli[207,9267+16]..[207,9267+22])
+          Ptyp_constr "string" (parsing/ast_mapper.mli[207,9267+16]..[207,9267+22])
+          []
+        core_type (parsing/ast_mapper.mli[207,9267+26]..[207,9267+54])
+          Ptyp_arrow
+          Nolabel
+          core_type (parsing/ast_mapper.mli[207,9267+26]..[207,9267+46])
+            Ptyp_constr "Parsetree.expression" (parsing/ast_mapper.mli[207,9267+26]..[207,9267+46])
+            []
+          core_type (parsing/ast_mapper.mli[207,9267+50]..[207,9267+54])
+            Ptyp_constr "unit" (parsing/ast_mapper.mli[207,9267+50]..[207,9267+54])
+            []
+      []
+  signature_item (parsing/ast_mapper.mli[208,9322+0]..[208,9322+53])
+    Psig_value
+    value_description "get_cookie" (parsing/ast_mapper.mli[208,9322+4]..[208,9322+14]) (parsing/ast_mapper.mli[208,9322+0]..[208,9322+53])
+      core_type (parsing/ast_mapper.mli[208,9322+16]..[208,9322+53])
+        Ptyp_arrow
+        Nolabel
+        core_type (parsing/ast_mapper.mli[208,9322+16]..[208,9322+22])
+          Ptyp_constr "string" (parsing/ast_mapper.mli[208,9322+16]..[208,9322+22])
+          []
+        core_type (parsing/ast_mapper.mli[208,9322+26]..[208,9322+53])
+          Ptyp_constr "option" (parsing/ast_mapper.mli[208,9322+47]..[208,9322+53])
+          [
+            core_type (parsing/ast_mapper.mli[208,9322+26]..[208,9322+46])
+              Ptyp_constr "Parsetree.expression" (parsing/ast_mapper.mli[208,9322+26]..[208,9322+46])
+              []
+          ]
+      []
+]
+

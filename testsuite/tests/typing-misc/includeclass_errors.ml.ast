@@ -1,0 +1,694 @@
+[
+  structure_item (testsuite/tests/typing-misc/includeclass_errors.ml[5,24+0]..[8,75+5])
+    Pstr_class_type
+    [
+      class_type_declaration (testsuite/tests/typing-misc/includeclass_errors.ml[5,24+0]..[8,75+5])
+        pci_virt = Concrete
+        pci_params =
+          []
+        pci_name = "foo_t" (testsuite/tests/typing-misc/includeclass_errors.ml[5,24+11]..[5,24+16])
+        pci_expr =
+          class_type (testsuite/tests/typing-misc/includeclass_errors.ml[6,43+2]..[8,75+5])
+            Pcty_signature
+            class_signature
+              core_type (testsuite/tests/typing-misc/includeclass_errors.ml[6,43+8]..[6,43+8])
+                Ptyp_any
+              [
+                class_type_field (testsuite/tests/typing-misc/includeclass_errors.ml[7,52+4]..[7,52+22])
+                  Pctf_method "foo" Public Concrete
+                    core_type (testsuite/tests/typing-misc/includeclass_errors.ml[7,52+16]..[7,52+22])
+                      Ptyp_constr "string" (testsuite/tests/typing-misc/includeclass_errors.ml[7,52+16]..[7,52+22])
+                      []
+              ]
+    ]
+  structure_item (testsuite/tests/typing-misc/includeclass_errors.ml[10,82+0]..[14,181+3])
+    Pstr_module
+    "M" (testsuite/tests/typing-misc/includeclass_errors.ml[10,82+7]..[10,82+8])
+      module_expr (testsuite/tests/typing-misc/includeclass_errors.ml[10,82+8]..[14,181+3])
+        Pmod_constraint
+        module_expr (testsuite/tests/typing-misc/includeclass_errors.ml[12,139+6]..[14,181+3])
+          Pmod_structure
+          [
+            structure_item (testsuite/tests/typing-misc/includeclass_errors.ml[13,152+2]..[13,152+28])
+              Pstr_class_type
+              [
+                class_type_declaration (testsuite/tests/typing-misc/includeclass_errors.ml[13,152+2]..[13,152+28])
+                  pci_virt = Concrete
+                  pci_params =
+                    []
+                  pci_name = "ct" (testsuite/tests/typing-misc/includeclass_errors.ml[13,152+13]..[13,152+15])
+                  pci_expr =
+                    class_type (testsuite/tests/typing-misc/includeclass_errors.ml[13,152+18]..[13,152+28])
+                      Pcty_signature
+                      class_signature
+                        core_type (testsuite/tests/typing-misc/includeclass_errors.ml[13,152+24]..[13,152+24])
+                          Ptyp_any
+                        []
+              ]
+          ]
+        module_type (testsuite/tests/typing-misc/includeclass_errors.ml[10,82+10]..[12,139+3])
+          Pmty_signature
+          [
+            signature_item (testsuite/tests/typing-misc/includeclass_errors.ml[11,96+2]..[11,96+42])
+              Psig_class_type
+              [
+                class_type_declaration (testsuite/tests/typing-misc/includeclass_errors.ml[11,96+2]..[11,96+42])
+                  pci_virt = Concrete
+                  pci_params =
+                    []
+                  pci_name = "ct" (testsuite/tests/typing-misc/includeclass_errors.ml[11,96+13]..[11,96+15])
+                  pci_expr =
+                    class_type (testsuite/tests/typing-misc/includeclass_errors.ml[11,96+18]..[11,96+42])
+                      Pcty_signature
+                      class_signature
+                        core_type (testsuite/tests/typing-misc/includeclass_errors.ml[11,96+24]..[11,96+24])
+                          Ptyp_any
+                        [
+                          class_type_field (testsuite/tests/typing-misc/includeclass_errors.ml[11,96+25]..[11,96+38])
+                            Pctf_val "m" Immutable Concrete
+                              core_type (testsuite/tests/typing-misc/includeclass_errors.ml[11,96+32]..[11,96+38])
+                                Ptyp_constr "string" (testsuite/tests/typing-misc/includeclass_errors.ml[11,96+32]..[11,96+38])
+                                []
+                        ]
+              ]
+          ]
+  structure_item (testsuite/tests/typing-misc/includeclass_errors.ml[16,186+0]..[32,733+3])
+    Pstr_extension "expect"
+    [
+      structure_item (testsuite/tests/typing-misc/includeclass_errors.ml[16,186+9]..[32,733+2])
+        Pstr_eval
+        expression (testsuite/tests/typing-misc/includeclass_errors.ml[16,186+9]..[32,733+2])
+          Pexp_constant PConst_string ("\nclass type foo_t = object method foo : string end\nLines 8-10, characters 6-3:\n 8 | ......struct\n 9 |   class type ct = object end\n10 | end\nError: Signature mismatch:\n       Modules do not match:\n         sig class type ct = object  end end\n       is not included in\n         sig class type ct = object val m : string end end\n       Class type declarations do not match:\n         class type ct = object  end\n       does not match\n         class type ct = object val m : string end\n       The first class type has no instance variable m\n",(testsuite/tests/typing-misc/includeclass_errors.ml[16,186+11]..[32,733+0]),Some "")
+    ]
+  structure_item (testsuite/tests/typing-misc/includeclass_errors.ml[34,738+0]..[42,873+3])
+    Pstr_module
+    "M" (testsuite/tests/typing-misc/includeclass_errors.ml[34,738+7]..[34,738+8])
+      module_expr (testsuite/tests/typing-misc/includeclass_errors.ml[34,738+8]..[42,873+3])
+        Pmod_constraint
+        module_expr (testsuite/tests/typing-misc/includeclass_errors.ml[38,798+6]..[42,873+3])
+          Pmod_structure
+          [
+            structure_item (testsuite/tests/typing-misc/includeclass_errors.ml[39,811+2]..[41,867+5])
+              Pstr_class
+              [
+                class_declaration (testsuite/tests/typing-misc/includeclass_errors.ml[39,811+2]..[41,867+5])
+                  pci_virt = Virtual
+                  pci_params =
+                    []
+                  pci_name = "c" (testsuite/tests/typing-misc/includeclass_errors.ml[39,811+16]..[39,811+17])
+                  pci_expr =
+                    class_expr (testsuite/tests/typing-misc/includeclass_errors.ml[39,811+20]..[41,867+5])
+                      Pcl_structure
+                      class_structure
+                        pattern (testsuite/tests/typing-misc/includeclass_errors.ml[39,811+26]..[39,811+26]) ghost
+                          Ppat_any
+                        [
+                          class_field (testsuite/tests/typing-misc/includeclass_errors.ml[40,838+4]..[40,838+28])
+                            Pcf_method Public
+                              "a" (testsuite/tests/typing-misc/includeclass_errors.ml[40,838+19]..[40,838+20])
+                              Virtual
+                              core_type (testsuite/tests/typing-misc/includeclass_errors.ml[40,838+22]..[40,838+28])
+                                Ptyp_constr "string" (testsuite/tests/typing-misc/includeclass_errors.ml[40,838+22]..[40,838+28])
+                                []
+                        ]
+              ]
+          ]
+        module_type (testsuite/tests/typing-misc/includeclass_errors.ml[34,738+10]..[38,798+3])
+          Pmty_signature
+          [
+            signature_item (testsuite/tests/typing-misc/includeclass_errors.ml[35,752+2]..[37,792+5])
+              Psig_class
+              [
+                class_description (testsuite/tests/typing-misc/includeclass_errors.ml[35,752+2]..[37,792+5])
+                  pci_virt = Concrete
+                  pci_params =
+                    []
+                  pci_name = "c" (testsuite/tests/typing-misc/includeclass_errors.ml[35,752+8]..[35,752+9])
+                  pci_expr =
+                    class_type (testsuite/tests/typing-misc/includeclass_errors.ml[35,752+12]..[37,792+5])
+                      Pcty_signature
+                      class_signature
+                        core_type (testsuite/tests/typing-misc/includeclass_errors.ml[35,752+18]..[35,752+18])
+                          Ptyp_any
+                        [
+                          class_type_field (testsuite/tests/typing-misc/includeclass_errors.ml[36,771+4]..[36,771+20])
+                            Pctf_method "a" Public Concrete
+                              core_type (testsuite/tests/typing-misc/includeclass_errors.ml[36,771+14]..[36,771+20])
+                                Ptyp_constr "string" (testsuite/tests/typing-misc/includeclass_errors.ml[36,771+14]..[36,771+20])
+                                []
+                        ]
+              ]
+          ]
+  structure_item (testsuite/tests/typing-misc/includeclass_errors.ml[44,880+0]..[61,1460+3])
+    Pstr_extension "expect"
+    [
+      structure_item (testsuite/tests/typing-misc/includeclass_errors.ml[44,880+9]..[61,1460+2])
+        Pstr_eval
+        expression (testsuite/tests/typing-misc/includeclass_errors.ml[44,880+9]..[61,1460+2])
+          Pexp_constant PConst_string ("\nLines 5-9, characters 6-3:\n5 | ......struct\n6 |   class virtual c = object\n7 |     method virtual a: string\n8 |   end\n9 | end\nError: Signature mismatch:\n       Modules do not match:\n         sig class virtual c : object method virtual a : string end end\n       is not included in\n         sig class c : object method a : string end end\n       Class declarations do not match:\n         class virtual c : object method virtual a : string end\n       does not match\n         class c : object method a : string end\n       A class cannot be changed from virtual to concrete\n",(testsuite/tests/typing-misc/includeclass_errors.ml[44,880+11]..[61,1460+0]),Some "")
+    ]
+  structure_item (testsuite/tests/typing-misc/includeclass_errors.ml[63,1465+0]..[63,1465+41])
+    Pstr_class_type
+    [
+      class_type_declaration (testsuite/tests/typing-misc/includeclass_errors.ml[63,1465+0]..[63,1465+41])
+        pci_virt = Concrete
+        pci_params =
+          [
+            core_type (testsuite/tests/typing-misc/includeclass_errors.ml[63,1465+12]..[63,1465+14])
+              Ptyp_var a
+          ]
+        pci_name = "ct" (testsuite/tests/typing-misc/includeclass_errors.ml[63,1465+16]..[63,1465+18])
+        pci_expr =
+          class_type (testsuite/tests/typing-misc/includeclass_errors.ml[63,1465+21]..[63,1465+41])
+            Pcty_signature
+            class_signature
+              core_type (testsuite/tests/typing-misc/includeclass_errors.ml[63,1465+27]..[63,1465+27])
+                Ptyp_any
+              [
+                class_type_field (testsuite/tests/typing-misc/includeclass_errors.ml[63,1465+28]..[63,1465+37])
+                  Pctf_val "x" Immutable Concrete
+                    core_type (testsuite/tests/typing-misc/includeclass_errors.ml[63,1465+35]..[63,1465+37])
+                      Ptyp_var a
+              ]
+    ]
+  structure_item (testsuite/tests/typing-misc/includeclass_errors.ml[65,1508+0]..[69,1596+3])
+    Pstr_module
+    "M" (testsuite/tests/typing-misc/includeclass_errors.ml[65,1508+7]..[65,1508+8])
+      module_expr (testsuite/tests/typing-misc/includeclass_errors.ml[65,1508+8]..[69,1596+3])
+        Pmod_constraint
+        module_expr (testsuite/tests/typing-misc/includeclass_errors.ml[67,1555+6]..[69,1596+3])
+          Pmod_structure
+          [
+            structure_item (testsuite/tests/typing-misc/includeclass_errors.ml[68,1568+2]..[68,1568+27])
+              Pstr_class_type
+              [
+                class_type_declaration (testsuite/tests/typing-misc/includeclass_errors.ml[68,1568+2]..[68,1568+27])
+                  pci_virt = Concrete
+                  pci_params =
+                    []
+                  pci_name = "c" (testsuite/tests/typing-misc/includeclass_errors.ml[68,1568+13]..[68,1568+14])
+                  pci_expr =
+                    class_type (testsuite/tests/typing-misc/includeclass_errors.ml[68,1568+17]..[68,1568+27])
+                      Pcty_signature
+                      class_signature
+                        core_type (testsuite/tests/typing-misc/includeclass_errors.ml[68,1568+23]..[68,1568+23])
+                          Ptyp_any
+                        []
+              ]
+          ]
+        module_type (testsuite/tests/typing-misc/includeclass_errors.ml[65,1508+10]..[67,1555+3])
+          Pmty_signature
+          [
+            signature_item (testsuite/tests/typing-misc/includeclass_errors.ml[66,1522+2]..[66,1522+32])
+              Psig_class_type
+              [
+                class_type_declaration (testsuite/tests/typing-misc/includeclass_errors.ml[66,1522+2]..[66,1522+32])
+                  pci_virt = Concrete
+                  pci_params =
+                    [
+                      core_type (testsuite/tests/typing-misc/includeclass_errors.ml[66,1522+14]..[66,1522+16])
+                        Ptyp_var a
+                    ]
+                  pci_name = "c" (testsuite/tests/typing-misc/includeclass_errors.ml[66,1522+18]..[66,1522+19])
+                  pci_expr =
+                    class_type (testsuite/tests/typing-misc/includeclass_errors.ml[66,1522+22]..[66,1522+32])
+                      Pcty_signature
+                      class_signature
+                        core_type (testsuite/tests/typing-misc/includeclass_errors.ml[66,1522+28]..[66,1522+28])
+                          Ptyp_any
+                        []
+              ]
+          ]
+  structure_item (testsuite/tests/typing-misc/includeclass_errors.ml[72,1604+0]..[88,2128+3])
+    Pstr_extension "expect"
+    [
+      structure_item (testsuite/tests/typing-misc/includeclass_errors.ml[72,1604+9]..[88,2128+2])
+        Pstr_eval
+        expression (testsuite/tests/typing-misc/includeclass_errors.ml[72,1604+9]..[88,2128+2])
+          Pexp_constant PConst_string ("\nclass type ['a] ct = object val x : 'a end\nLines 5-7, characters 6-3:\n5 | ......struct\n6 |   class type c = object end\n7 | end\nError: Signature mismatch:\n       Modules do not match:\n         sig class type c = object  end end\n       is not included in\n         sig class type ['a] c = object  end end\n       Class type declarations do not match:\n         class type c = object  end\n       does not match\n         class type ['a] c = object  end\n       The classes do not have the same number of type parameters\n",(testsuite/tests/typing-misc/includeclass_errors.ml[72,1604+11]..[88,2128+0]),Some "")
+    ]
+  structure_item (testsuite/tests/typing-misc/includeclass_errors.ml[90,2133+0]..[94,2235+3])
+    Pstr_module
+    "M" (testsuite/tests/typing-misc/includeclass_errors.ml[90,2133+7]..[90,2133+8])
+      module_expr (testsuite/tests/typing-misc/includeclass_errors.ml[90,2133+8]..[94,2235+3])
+        Pmod_constraint
+        module_expr (testsuite/tests/typing-misc/includeclass_errors.ml[92,2194+6]..[94,2235+3])
+          Pmod_structure
+          [
+            structure_item (testsuite/tests/typing-misc/includeclass_errors.ml[93,2207+2]..[93,2207+27])
+              Pstr_class
+              [
+                class_declaration (testsuite/tests/typing-misc/includeclass_errors.ml[93,2207+2]..[93,2207+27])
+                  pci_virt = Concrete
+                  pci_params =
+                    [
+                      core_type (testsuite/tests/typing-misc/includeclass_errors.ml[93,2207+9]..[93,2207+11])
+                        Ptyp_var a
+                    ]
+                  pci_name = "c" (testsuite/tests/typing-misc/includeclass_errors.ml[93,2207+13]..[93,2207+14])
+                  pci_expr =
+                    class_expr (testsuite/tests/typing-misc/includeclass_errors.ml[93,2207+17]..[93,2207+27])
+                      Pcl_structure
+                      class_structure
+                        pattern (testsuite/tests/typing-misc/includeclass_errors.ml[93,2207+23]..[93,2207+23]) ghost
+                          Ppat_any
+                        []
+              ]
+          ]
+        module_type (testsuite/tests/typing-misc/includeclass_errors.ml[90,2133+10]..[92,2194+3])
+          Pmty_signature
+          [
+            signature_item (testsuite/tests/typing-misc/includeclass_errors.ml[91,2147+2]..[91,2147+46])
+              Psig_class
+              [
+                class_description (testsuite/tests/typing-misc/includeclass_errors.ml[91,2147+2]..[91,2147+46])
+                  pci_virt = Concrete
+                  pci_params =
+                    [
+                      core_type (testsuite/tests/typing-misc/includeclass_errors.ml[91,2147+9]..[91,2147+11])
+                        Ptyp_var a
+                    ]
+                  pci_name = "c" (testsuite/tests/typing-misc/includeclass_errors.ml[91,2147+13]..[91,2147+14])
+                  pci_expr =
+                    class_type (testsuite/tests/typing-misc/includeclass_errors.ml[91,2147+16]..[91,2147+46])
+                      Pcty_signature
+                      class_signature
+                        core_type (testsuite/tests/typing-misc/includeclass_errors.ml[91,2147+22]..[91,2147+22])
+                          Ptyp_any
+                        [
+                          class_type_field (testsuite/tests/typing-misc/includeclass_errors.ml[91,2147+23]..[91,2147+42])
+                            Pctf_constraint
+                              core_type (testsuite/tests/typing-misc/includeclass_errors.ml[91,2147+34]..[91,2147+36])
+                                Ptyp_var a
+                              core_type (testsuite/tests/typing-misc/includeclass_errors.ml[91,2147+39]..[91,2147+42])
+                                Ptyp_constr "int" (testsuite/tests/typing-misc/includeclass_errors.ml[91,2147+39]..[91,2147+42])
+                                []
+                        ]
+              ]
+          ]
+  structure_item (testsuite/tests/typing-misc/includeclass_errors.ml[96,2242+0]..[111,2749+3])
+    Pstr_extension "expect"
+    [
+      structure_item (testsuite/tests/typing-misc/includeclass_errors.ml[96,2242+9]..[111,2749+2])
+        Pstr_eval
+        expression (testsuite/tests/typing-misc/includeclass_errors.ml[96,2242+9]..[111,2749+2])
+          Pexp_constant PConst_string ("\nLines 3-5, characters 6-3:\n3 | ......struct\n4 |   class ['a] c = object end\n5 | end\nError: Signature mismatch:\n       Modules do not match:\n         sig class ['a] c : object  end end\n       is not included in\n         sig class ['a] c : object constraint 'a = int end end\n       Class declarations do not match:\n         class ['a] c : object  end\n       does not match\n         class ['a] c : object constraint 'a = int end\n       A type parameter has type 'a but is expected to have type int\n",(testsuite/tests/typing-misc/includeclass_errors.ml[96,2242+11]..[111,2749+0]),Some "")
+    ]
+  structure_item (testsuite/tests/typing-misc/includeclass_errors.ml[113,2754+0]..[117,2846+3])
+    Pstr_module
+    "M" (testsuite/tests/typing-misc/includeclass_errors.ml[113,2754+7]..[113,2754+8])
+      module_expr (testsuite/tests/typing-misc/includeclass_errors.ml[113,2754+8]..[117,2846+3])
+        Pmod_constraint
+        module_expr (testsuite/tests/typing-misc/includeclass_errors.ml[115,2798+6]..[117,2846+3])
+          Pmod_structure
+          [
+            structure_item (testsuite/tests/typing-misc/includeclass_errors.ml[116,2811+2]..[116,2811+34])
+              Pstr_class
+              [
+                class_declaration (testsuite/tests/typing-misc/includeclass_errors.ml[116,2811+2]..[116,2811+34])
+                  pci_virt = Concrete
+                  pci_params =
+                    []
+                  pci_name = "c" (testsuite/tests/typing-misc/includeclass_errors.ml[116,2811+8]..[116,2811+9])
+                  pci_expr =
+                    class_expr (testsuite/tests/typing-misc/includeclass_errors.ml[116,2811+10]..[116,2811+34])
+                      Pcl_fun
+                      Nolabel
+                      None
+                      pattern (testsuite/tests/typing-misc/includeclass_errors.ml[116,2811+10]..[116,2811+21])
+                        Ppat_constraint
+                        pattern (testsuite/tests/typing-misc/includeclass_errors.ml[116,2811+11]..[116,2811+12])
+                          Ppat_var "x" (testsuite/tests/typing-misc/includeclass_errors.ml[116,2811+11]..[116,2811+12])
+                        core_type (testsuite/tests/typing-misc/includeclass_errors.ml[116,2811+15]..[116,2811+20])
+                          Ptyp_constr "float" (testsuite/tests/typing-misc/includeclass_errors.ml[116,2811+15]..[116,2811+20])
+                          []
+                      class_expr (testsuite/tests/typing-misc/includeclass_errors.ml[116,2811+24]..[116,2811+34])
+                        Pcl_structure
+                        class_structure
+                          pattern (testsuite/tests/typing-misc/includeclass_errors.ml[116,2811+30]..[116,2811+30]) ghost
+                            Ppat_any
+                          []
+              ]
+          ]
+        module_type (testsuite/tests/typing-misc/includeclass_errors.ml[113,2754+10]..[115,2798+3])
+          Pmty_signature
+          [
+            signature_item (testsuite/tests/typing-misc/includeclass_errors.ml[114,2768+2]..[114,2768+29])
+              Psig_class
+              [
+                class_description (testsuite/tests/typing-misc/includeclass_errors.ml[114,2768+2]..[114,2768+29])
+                  pci_virt = Concrete
+                  pci_params =
+                    []
+                  pci_name = "c" (testsuite/tests/typing-misc/includeclass_errors.ml[114,2768+8]..[114,2768+9])
+                  pci_expr =
+                    class_type (testsuite/tests/typing-misc/includeclass_errors.ml[114,2768+12]..[114,2768+29])
+                      Pcty_arrow
+                      Nolabel
+                      core_type (testsuite/tests/typing-misc/includeclass_errors.ml[114,2768+12]..[114,2768+15])
+                        Ptyp_constr "int" (testsuite/tests/typing-misc/includeclass_errors.ml[114,2768+12]..[114,2768+15])
+                        []
+                      class_type (testsuite/tests/typing-misc/includeclass_errors.ml[114,2768+19]..[114,2768+29])
+                        Pcty_signature
+                        class_signature
+                          core_type (testsuite/tests/typing-misc/includeclass_errors.ml[114,2768+25]..[114,2768+25])
+                            Ptyp_any
+                          []
+              ]
+          ]
+  structure_item (testsuite/tests/typing-misc/includeclass_errors.ml[119,2853+0]..[134,3339+3])
+    Pstr_extension "expect"
+    [
+      structure_item (testsuite/tests/typing-misc/includeclass_errors.ml[119,2853+9]..[134,3339+2])
+        Pstr_eval
+        expression (testsuite/tests/typing-misc/includeclass_errors.ml[119,2853+9]..[134,3339+2])
+          Pexp_constant PConst_string ("\nLines 3-5, characters 6-3:\n3 | ......struct\n4 |   class c (x : float) = object end\n5 | end\nError: Signature mismatch:\n       Modules do not match:\n         sig class c : float -> object  end end\n       is not included in\n         sig class c : int -> object  end end\n       Class declarations do not match:\n         class c : float -> object  end\n       does not match\n         class c : int -> object  end\n       A parameter has type float but is expected to have type int\n",(testsuite/tests/typing-misc/includeclass_errors.ml[119,2853+11]..[134,3339+0]),Some "")
+    ]
+  structure_item (testsuite/tests/typing-misc/includeclass_errors.ml[136,3344+0]..[140,3450+7])
+    Pstr_class
+    [
+      class_declaration (testsuite/tests/typing-misc/includeclass_errors.ml[136,3344+0]..[140,3450+7])
+        pci_virt = Virtual
+        pci_params =
+          []
+        pci_name = "foo" (testsuite/tests/typing-misc/includeclass_errors.ml[136,3344+14]..[136,3344+17])
+        pci_expr =
+          class_expr (testsuite/tests/typing-misc/includeclass_errors.ml[136,3344+17]..[140,3450+7])
+            Pcl_constraint
+            class_expr (testsuite/tests/typing-misc/includeclass_errors.ml[137,3371+4]..[140,3450+7])
+              Pcl_structure
+              class_structure
+                pattern (testsuite/tests/typing-misc/includeclass_errors.ml[137,3371+10]..[137,3371+10]) ghost
+                  Ppat_any
+                [
+                  class_field (testsuite/tests/typing-misc/includeclass_errors.ml[138,3382+8]..[138,3382+26])
+                    Pcf_method Public
+                      "foo" (testsuite/tests/typing-misc/includeclass_errors.ml[138,3382+15]..[138,3382+18])
+                      Concrete Fresh
+                      expression (testsuite/tests/typing-misc/includeclass_errors.ml[138,3382+21]..[138,3382+26]) ghost
+                        Pexp_poly
+                        expression (testsuite/tests/typing-misc/includeclass_errors.ml[138,3382+21]..[138,3382+26])
+                          Pexp_constant PConst_string("foo",(testsuite/tests/typing-misc/includeclass_errors.ml[138,3382+22]..[138,3382+25]),None)
+                        None
+                  class_field (testsuite/tests/typing-misc/includeclass_errors.ml[139,3409+8]..[139,3409+40])
+                    Pcf_method Private
+                      "cast" (testsuite/tests/typing-misc/includeclass_errors.ml[139,3409+31]..[139,3409+35])
+                      Virtual
+                      core_type (testsuite/tests/typing-misc/includeclass_errors.ml[139,3409+37]..[139,3409+40])
+                        Ptyp_constr "int" (testsuite/tests/typing-misc/includeclass_errors.ml[139,3409+37]..[139,3409+40])
+                        []
+                ]
+            class_type (testsuite/tests/typing-misc/includeclass_errors.ml[136,3344+19]..[136,3344+24])
+              Pcty_constr "foo_t" (testsuite/tests/typing-misc/includeclass_errors.ml[136,3344+19]..[136,3344+24])
+              []
+    ]
+  structure_item (testsuite/tests/typing-misc/includeclass_errors.ml[143,3462+0]..[153,3794+3])
+    Pstr_extension "expect"
+    [
+      structure_item (testsuite/tests/typing-misc/includeclass_errors.ml[143,3462+9]..[153,3794+2])
+        Pstr_eval
+        expression (testsuite/tests/typing-misc/includeclass_errors.ml[143,3462+9]..[153,3794+2])
+          Pexp_constant PConst_string ("\nLines 2-5, characters 4-7:\n2 | ....object\n3 |         method foo = \"foo\"\n4 |         method private virtual cast: int\n5 |     end\nError: The class type\n         object method private virtual cast : int method foo : string end\n       is not matched by the class type foo_t\n       The virtual method cast cannot be hidden\n",(testsuite/tests/typing-misc/includeclass_errors.ml[143,3462+11]..[153,3794+0]),Some "")
+    ]
+  structure_item (testsuite/tests/typing-misc/includeclass_errors.ml[155,3799+0]..[158,3865+7])
+    Pstr_class_type
+    [
+      class_type_declaration (testsuite/tests/typing-misc/includeclass_errors.ml[155,3799+0]..[158,3865+7])
+        pci_virt = Concrete
+        pci_params =
+          []
+        pci_name = "foo_t2" (testsuite/tests/typing-misc/includeclass_errors.ml[155,3799+11]..[155,3799+17])
+        pci_expr =
+          class_type (testsuite/tests/typing-misc/includeclass_errors.ml[156,3819+4]..[158,3865+7])
+            Pcty_signature
+            class_signature
+              core_type (testsuite/tests/typing-misc/includeclass_errors.ml[156,3819+10]..[156,3819+10])
+                Ptyp_any
+              [
+                class_type_field (testsuite/tests/typing-misc/includeclass_errors.ml[157,3830+8]..[157,3830+34])
+                  Pctf_method "foo" Private Concrete
+                    core_type (testsuite/tests/typing-misc/includeclass_errors.ml[157,3830+28]..[157,3830+34])
+                      Ptyp_constr "string" (testsuite/tests/typing-misc/includeclass_errors.ml[157,3830+28]..[157,3830+34])
+                      []
+              ]
+    ]
+  structure_item (testsuite/tests/typing-misc/includeclass_errors.ml[160,3874+0]..[163,3932+7])
+    Pstr_class
+    [
+      class_declaration (testsuite/tests/typing-misc/includeclass_errors.ml[160,3874+0]..[163,3932+7])
+        pci_virt = Concrete
+        pci_params =
+          []
+        pci_name = "foo" (testsuite/tests/typing-misc/includeclass_errors.ml[160,3874+6]..[160,3874+9])
+        pci_expr =
+          class_expr (testsuite/tests/typing-misc/includeclass_errors.ml[160,3874+9]..[163,3932+7])
+            Pcl_constraint
+            class_expr (testsuite/tests/typing-misc/includeclass_errors.ml[161,3894+4]..[163,3932+7])
+              Pcl_structure
+              class_structure
+                pattern (testsuite/tests/typing-misc/includeclass_errors.ml[161,3894+10]..[161,3894+10]) ghost
+                  Ppat_any
+                [
+                  class_field (testsuite/tests/typing-misc/includeclass_errors.ml[162,3905+8]..[162,3905+26])
+                    Pcf_method Public
+                      "foo" (testsuite/tests/typing-misc/includeclass_errors.ml[162,3905+15]..[162,3905+18])
+                      Concrete Fresh
+                      expression (testsuite/tests/typing-misc/includeclass_errors.ml[162,3905+21]..[162,3905+26]) ghost
+                        Pexp_poly
+                        expression (testsuite/tests/typing-misc/includeclass_errors.ml[162,3905+21]..[162,3905+26])
+                          Pexp_constant PConst_string("foo",(testsuite/tests/typing-misc/includeclass_errors.ml[162,3905+22]..[162,3905+25]),None)
+                        None
+                ]
+            class_type (testsuite/tests/typing-misc/includeclass_errors.ml[160,3874+11]..[160,3874+17])
+              Pcty_constr "foo_t2" (testsuite/tests/typing-misc/includeclass_errors.ml[160,3874+11]..[160,3874+17])
+              []
+    ]
+  structure_item (testsuite/tests/typing-misc/includeclass_errors.ml[165,3943+0]..[174,4250+3])
+    Pstr_extension "expect"
+    [
+      structure_item (testsuite/tests/typing-misc/includeclass_errors.ml[165,3943+9]..[174,4250+2])
+        Pstr_eval
+        expression (testsuite/tests/typing-misc/includeclass_errors.ml[165,3943+9]..[174,4250+2])
+          Pexp_constant PConst_string ("\nclass type foo_t2 = object method private foo : string end\nLines 7-9, characters 4-7:\n7 | ....object\n8 |         method foo = \"foo\"\n9 |     end\nError: The class type object method foo : string end\n       is not matched by the class type foo_t2\n       The public method foo cannot become private\n",(testsuite/tests/typing-misc/includeclass_errors.ml[165,3943+11]..[174,4250+0]),Some "")
+    ]
+  structure_item (testsuite/tests/typing-misc/includeclass_errors.ml[176,4255+0]..[179,4328+7])
+    Pstr_class
+    [
+      class_declaration (testsuite/tests/typing-misc/includeclass_errors.ml[176,4255+0]..[179,4328+7])
+        pci_virt = Virtual
+        pci_params =
+          []
+        pci_name = "foo" (testsuite/tests/typing-misc/includeclass_errors.ml[176,4255+14]..[176,4255+17])
+        pci_expr =
+          class_expr (testsuite/tests/typing-misc/includeclass_errors.ml[176,4255+17]..[179,4328+7])
+            Pcl_constraint
+            class_expr (testsuite/tests/typing-misc/includeclass_errors.ml[177,4282+4]..[179,4328+7])
+              Pcl_structure
+              class_structure
+                pattern (testsuite/tests/typing-misc/includeclass_errors.ml[177,4282+10]..[177,4282+10]) ghost
+                  Ppat_any
+                [
+                  class_field (testsuite/tests/typing-misc/includeclass_errors.ml[178,4293+8]..[178,4293+34])
+                    Pcf_method Public
+                      "foo" (testsuite/tests/typing-misc/includeclass_errors.ml[178,4293+23]..[178,4293+26])
+                      Virtual
+                      core_type (testsuite/tests/typing-misc/includeclass_errors.ml[178,4293+28]..[178,4293+34])
+                        Ptyp_constr "string" (testsuite/tests/typing-misc/includeclass_errors.ml[178,4293+28]..[178,4293+34])
+                        []
+                ]
+            class_type (testsuite/tests/typing-misc/includeclass_errors.ml[176,4255+19]..[176,4255+24])
+              Pcty_constr "foo_t" (testsuite/tests/typing-misc/includeclass_errors.ml[176,4255+19]..[176,4255+24])
+              []
+    ]
+  structure_item (testsuite/tests/typing-misc/includeclass_errors.ml[181,4339+0]..[189,4604+3])
+    Pstr_extension "expect"
+    [
+      structure_item (testsuite/tests/typing-misc/includeclass_errors.ml[181,4339+9]..[189,4604+2])
+        Pstr_eval
+        expression (testsuite/tests/typing-misc/includeclass_errors.ml[181,4339+9]..[189,4604+2])
+          Pexp_constant PConst_string ("\nLines 2-4, characters 4-7:\n2 | ....object\n3 |         method virtual foo: string\n4 |     end\nError: The class type object method virtual foo : string end\n       is not matched by the class type foo_t\n       The virtual method foo cannot become concrete\n",(testsuite/tests/typing-misc/includeclass_errors.ml[181,4339+11]..[189,4604+0]),Some "")
+    ]
+  structure_item (testsuite/tests/typing-misc/includeclass_errors.ml[191,4609+0]..[194,4668+7])
+    Pstr_class_type
+    [
+      class_type_declaration (testsuite/tests/typing-misc/includeclass_errors.ml[191,4609+0]..[194,4668+7])
+        pci_virt = Concrete
+        pci_params =
+          []
+        pci_name = "foo_t3" (testsuite/tests/typing-misc/includeclass_errors.ml[191,4609+11]..[191,4609+17])
+        pci_expr =
+          class_type (testsuite/tests/typing-misc/includeclass_errors.ml[192,4629+4]..[194,4668+7])
+            Pcty_signature
+            class_signature
+              core_type (testsuite/tests/typing-misc/includeclass_errors.ml[192,4629+10]..[192,4629+10])
+                Ptyp_any
+              [
+                class_type_field (testsuite/tests/typing-misc/includeclass_errors.ml[193,4640+8]..[193,4640+27])
+                  Pctf_val "x" Mutable Concrete
+                    core_type (testsuite/tests/typing-misc/includeclass_errors.ml[193,4640+24]..[193,4640+27])
+                      Ptyp_constr "int" (testsuite/tests/typing-misc/includeclass_errors.ml[193,4640+24]..[193,4640+27])
+                      []
+              ]
+    ]
+  structure_item (testsuite/tests/typing-misc/includeclass_errors.ml[196,4677+0]..[199,4726+7])
+    Pstr_class
+    [
+      class_declaration (testsuite/tests/typing-misc/includeclass_errors.ml[196,4677+0]..[199,4726+7])
+        pci_virt = Concrete
+        pci_params =
+          []
+        pci_name = "foo" (testsuite/tests/typing-misc/includeclass_errors.ml[196,4677+6]..[196,4677+9])
+        pci_expr =
+          class_expr (testsuite/tests/typing-misc/includeclass_errors.ml[196,4677+9]..[199,4726+7])
+            Pcl_constraint
+            class_expr (testsuite/tests/typing-misc/includeclass_errors.ml[197,4697+4]..[199,4726+7])
+              Pcl_structure
+              class_structure
+                pattern (testsuite/tests/typing-misc/includeclass_errors.ml[197,4697+10]..[197,4697+10]) ghost
+                  Ppat_any
+                [
+                  class_field (testsuite/tests/typing-misc/includeclass_errors.ml[198,4708+8]..[198,4708+17])
+                    Pcf_val Immutable
+                      "x" (testsuite/tests/typing-misc/includeclass_errors.ml[198,4708+12]..[198,4708+13])
+                      Concrete Fresh
+                      expression (testsuite/tests/typing-misc/includeclass_errors.ml[198,4708+16]..[198,4708+17])
+                        Pexp_constant PConst_int (1,None)
+                ]
+            class_type (testsuite/tests/typing-misc/includeclass_errors.ml[196,4677+11]..[196,4677+17])
+              Pcty_constr "foo_t3" (testsuite/tests/typing-misc/includeclass_errors.ml[196,4677+11]..[196,4677+17])
+              []
+    ]
+  structure_item (testsuite/tests/typing-misc/includeclass_errors.ml[201,4737+0]..[210,5035+3])
+    Pstr_extension "expect"
+    [
+      structure_item (testsuite/tests/typing-misc/includeclass_errors.ml[201,4737+9]..[210,5035+2])
+        Pstr_eval
+        expression (testsuite/tests/typing-misc/includeclass_errors.ml[201,4737+9]..[210,5035+2])
+          Pexp_constant PConst_string ("\nclass type foo_t3 = object val mutable x : int end\nLines 7-9, characters 4-7:\n7 | ....object\n8 |         val x = 1\n9 |     end\nError: The class type object val x : int end is not matched by the class type\n         foo_t3\n       The non-mutable instance variable x cannot become mutable\n",(testsuite/tests/typing-misc/includeclass_errors.ml[201,4737+11]..[210,5035+0]),Some "")
+    ]
+  structure_item (testsuite/tests/typing-misc/includeclass_errors.ml[212,5040+0]..[215,5091+7])
+    Pstr_class_type
+    [
+      class_type_declaration (testsuite/tests/typing-misc/includeclass_errors.ml[212,5040+0]..[215,5091+7])
+        pci_virt = Concrete
+        pci_params =
+          []
+        pci_name = "foo_t4" (testsuite/tests/typing-misc/includeclass_errors.ml[212,5040+11]..[212,5040+17])
+        pci_expr =
+          class_type (testsuite/tests/typing-misc/includeclass_errors.ml[213,5060+4]..[215,5091+7])
+            Pcty_signature
+            class_signature
+              core_type (testsuite/tests/typing-misc/includeclass_errors.ml[213,5060+10]..[213,5060+10])
+                Ptyp_any
+              [
+                class_type_field (testsuite/tests/typing-misc/includeclass_errors.ml[214,5071+8]..[214,5071+19])
+                  Pctf_val "x" Immutable Concrete
+                    core_type (testsuite/tests/typing-misc/includeclass_errors.ml[214,5071+16]..[214,5071+19])
+                      Ptyp_constr "int" (testsuite/tests/typing-misc/includeclass_errors.ml[214,5071+16]..[214,5071+19])
+                      []
+              ]
+    ]
+  structure_item (testsuite/tests/typing-misc/includeclass_errors.ml[217,5100+0]..[220,5167+7])
+    Pstr_class
+    [
+      class_declaration (testsuite/tests/typing-misc/includeclass_errors.ml[217,5100+0]..[220,5167+7])
+        pci_virt = Virtual
+        pci_params =
+          []
+        pci_name = "foo" (testsuite/tests/typing-misc/includeclass_errors.ml[217,5100+14]..[217,5100+17])
+        pci_expr =
+          class_expr (testsuite/tests/typing-misc/includeclass_errors.ml[217,5100+17]..[220,5167+7])
+            Pcl_constraint
+            class_expr (testsuite/tests/typing-misc/includeclass_errors.ml[218,5128+4]..[220,5167+7])
+              Pcl_structure
+              class_structure
+                pattern (testsuite/tests/typing-misc/includeclass_errors.ml[218,5128+10]..[218,5128+10]) ghost
+                  Ppat_any
+                [
+                  class_field (testsuite/tests/typing-misc/includeclass_errors.ml[219,5139+8]..[219,5139+27])
+                    Pcf_val Immutable
+                      "x" (testsuite/tests/typing-misc/includeclass_errors.ml[219,5139+20]..[219,5139+21])
+                      Virtual
+                      core_type (testsuite/tests/typing-misc/includeclass_errors.ml[219,5139+24]..[219,5139+27])
+                        Ptyp_constr "int" (testsuite/tests/typing-misc/includeclass_errors.ml[219,5139+24]..[219,5139+27])
+                        []
+                ]
+            class_type (testsuite/tests/typing-misc/includeclass_errors.ml[217,5100+19]..[217,5100+25])
+              Pcty_constr "foo_t4" (testsuite/tests/typing-misc/includeclass_errors.ml[217,5100+19]..[217,5100+25])
+              []
+    ]
+  structure_item (testsuite/tests/typing-misc/includeclass_errors.ml[222,5178+0]..[231,5481+3])
+    Pstr_extension "expect"
+    [
+      structure_item (testsuite/tests/typing-misc/includeclass_errors.ml[222,5178+9]..[231,5481+2])
+        Pstr_eval
+        expression (testsuite/tests/typing-misc/includeclass_errors.ml[222,5178+9]..[231,5481+2])
+          Pexp_constant PConst_string ("\nclass type foo_t4 = object val x : int end\nLines 7-9, characters 4-7:\n7 | ....object\n8 |         val virtual x : int\n9 |     end\nError: The class type object val virtual x : int end\n       is not matched by the class type foo_t4\n       The virtual instance variable x cannot become concrete\n",(testsuite/tests/typing-misc/includeclass_errors.ml[222,5178+11]..[231,5481+0]),Some "")
+    ]
+  structure_item (testsuite/tests/typing-misc/includeclass_errors.ml[233,5486+0]..[237,5611+3])
+    Pstr_module
+    "M" (testsuite/tests/typing-misc/includeclass_errors.ml[233,5486+7]..[233,5486+8])
+      module_expr (testsuite/tests/typing-misc/includeclass_errors.ml[233,5486+8]..[237,5611+3])
+        Pmod_constraint
+        module_expr (testsuite/tests/typing-misc/includeclass_errors.ml[235,5545+6]..[237,5611+3])
+          Pmod_structure
+          [
+            structure_item (testsuite/tests/typing-misc/includeclass_errors.ml[236,5558+2]..[236,5558+52])
+              Pstr_class_type
+              [
+                class_type_declaration (testsuite/tests/typing-misc/includeclass_errors.ml[236,5558+2]..[236,5558+52])
+                  pci_virt = Concrete
+                  pci_params =
+                    []
+                  pci_name = "c" (testsuite/tests/typing-misc/includeclass_errors.ml[236,5558+13]..[236,5558+14])
+                  pci_expr =
+                    class_type (testsuite/tests/typing-misc/includeclass_errors.ml[236,5558+17]..[236,5558+52])
+                      Pcty_signature
+                      class_signature
+                        core_type (testsuite/tests/typing-misc/includeclass_errors.ml[236,5558+23]..[236,5558+23])
+                          Ptyp_any
+                        [
+                          class_type_field (testsuite/tests/typing-misc/includeclass_errors.ml[236,5558+24]..[236,5558+48])
+                            Pctf_method "m" Private Concrete
+                              core_type (testsuite/tests/typing-misc/includeclass_errors.ml[236,5558+42]..[236,5558+48])
+                                Ptyp_constr "string" (testsuite/tests/typing-misc/includeclass_errors.ml[236,5558+42]..[236,5558+48])
+                                []
+                        ]
+              ]
+          ]
+        module_type (testsuite/tests/typing-misc/includeclass_errors.ml[233,5486+10]..[235,5545+3])
+          Pmty_signature
+          [
+            signature_item (testsuite/tests/typing-misc/includeclass_errors.ml[234,5500+2]..[234,5500+44])
+              Psig_class_type
+              [
+                class_type_declaration (testsuite/tests/typing-misc/includeclass_errors.ml[234,5500+2]..[234,5500+44])
+                  pci_virt = Concrete
+                  pci_params =
+                    []
+                  pci_name = "c" (testsuite/tests/typing-misc/includeclass_errors.ml[234,5500+13]..[234,5500+14])
+                  pci_expr =
+                    class_type (testsuite/tests/typing-misc/includeclass_errors.ml[234,5500+17]..[234,5500+44])
+                      Pcty_signature
+                      class_signature
+                        core_type (testsuite/tests/typing-misc/includeclass_errors.ml[234,5500+23]..[234,5500+23])
+                          Ptyp_any
+                        [
+                          class_type_field (testsuite/tests/typing-misc/includeclass_errors.ml[234,5500+24]..[234,5500+40])
+                            Pctf_method "m" Public Concrete
+                              core_type (testsuite/tests/typing-misc/includeclass_errors.ml[234,5500+34]..[234,5500+40])
+                                Ptyp_constr "string" (testsuite/tests/typing-misc/includeclass_errors.ml[234,5500+34]..[234,5500+40])
+                                []
+                        ]
+              ]
+          ]
+  structure_item (testsuite/tests/typing-misc/includeclass_errors.ml[239,5618+0]..[254,6181+3])
+    Pstr_extension "expect"
+    [
+      structure_item (testsuite/tests/typing-misc/includeclass_errors.ml[239,5618+9]..[254,6181+2])
+        Pstr_eval
+        expression (testsuite/tests/typing-misc/includeclass_errors.ml[239,5618+9]..[254,6181+2])
+          Pexp_constant PConst_string ("\nLines 3-5, characters 6-3:\n3 | ......struct\n4 |   class type c = object method private m: string end\n5 | end\nError: Signature mismatch:\n       Modules do not match:\n         sig class type c = object method private m : string end end\n       is not included in\n         sig class type c = object method m : string end end\n       Class type declarations do not match:\n         class type c = object method private m : string end\n       does not match\n         class type c = object method m : string end\n       The private method m cannot become public\n",(testsuite/tests/typing-misc/includeclass_errors.ml[239,5618+11]..[254,6181+0]),Some "")
+    ]
+]
+

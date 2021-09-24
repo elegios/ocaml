@@ -1,0 +1,115 @@
+[
+  structure_item (testsuite/tests/typing-objects/open_in_classes.ml[5,24+0]..[8,70+3])
+    Pstr_module
+    "M" (testsuite/tests/typing-objects/open_in_classes.ml[5,24+7]..[5,24+8])
+      module_expr (testsuite/tests/typing-objects/open_in_classes.ml[5,24+11]..[8,70+3])
+        Pmod_structure
+        [
+          structure_item (testsuite/tests/typing-objects/open_in_classes.ml[6,42+2]..[6,42+14])
+            Pstr_type Rec
+            [
+              type_declaration "t" (testsuite/tests/typing-objects/open_in_classes.ml[6,42+7]..[6,42+8]) (testsuite/tests/typing-objects/open_in_classes.ml[6,42+2]..[6,42+14])
+                ptype_params =
+                  []
+                ptype_cstrs =
+                  []
+                ptype_kind =
+                  Ptype_abstract
+                ptype_private = Public
+                ptype_manifest =
+                  Some
+                    core_type (testsuite/tests/typing-objects/open_in_classes.ml[6,42+11]..[6,42+14])
+                      Ptyp_constr "int" (testsuite/tests/typing-objects/open_in_classes.ml[6,42+11]..[6,42+14])
+                      []
+            ]
+          structure_item (testsuite/tests/typing-objects/open_in_classes.ml[7,57+2]..[7,57+12])
+            Pstr_value Nonrec
+            [
+              <def>
+                pattern (testsuite/tests/typing-objects/open_in_classes.ml[7,57+6]..[7,57+7])
+                  Ppat_var "x" (testsuite/tests/typing-objects/open_in_classes.ml[7,57+6]..[7,57+7])
+                expression (testsuite/tests/typing-objects/open_in_classes.ml[7,57+10]..[7,57+12])
+                  Pexp_constant PConst_int (42,None)
+            ]
+        ]
+  structure_item (testsuite/tests/typing-objects/open_in_classes.ml[10,77+0]..[12,133+3])
+    Pstr_extension "expect"
+    [
+      structure_item (testsuite/tests/typing-objects/open_in_classes.ml[10,77+9]..[12,133+2])
+        Pstr_eval
+        expression (testsuite/tests/typing-objects/open_in_classes.ml[10,77+9]..[12,133+2])
+          Pexp_constant PConst_string ("\nmodule M : sig type t = int val x : int end\n",(testsuite/tests/typing-objects/open_in_classes.ml[10,77+11]..[12,133+0]),Some "")
+    ]
+  structure_item (testsuite/tests/typing-objects/open_in_classes.ml[13,137+0]..[17,193+5])
+    Pstr_class
+    [
+      class_declaration (testsuite/tests/typing-objects/open_in_classes.ml[13,137+0]..[17,193+5])
+        pci_virt = Concrete
+        pci_params =
+          []
+        pci_name = "c" (testsuite/tests/typing-objects/open_in_classes.ml[13,137+6]..[13,137+7])
+        pci_expr =
+          class_expr (testsuite/tests/typing-objects/open_in_classes.ml[14,147+2]..[17,193+5])
+            Pcl_open Fresh "M" (testsuite/tests/typing-objects/open_in_classes.ml[14,147+11]..[14,147+12])
+            class_expr (testsuite/tests/typing-objects/open_in_classes.ml[15,163+2]..[17,193+5])
+              Pcl_structure
+              class_structure
+                pattern (testsuite/tests/typing-objects/open_in_classes.ml[15,163+8]..[15,163+8]) ghost
+                  Ppat_any
+                [
+                  class_field (testsuite/tests/typing-objects/open_in_classes.ml[16,172+4]..[16,172+20])
+                    Pcf_method Public
+                      "f" (testsuite/tests/typing-objects/open_in_classes.ml[16,172+11]..[16,172+12])
+                      Concrete Fresh
+                      expression (testsuite/tests/typing-objects/open_in_classes.ml[16,172+15]..[16,172+20]) ghost
+                        Pexp_poly
+                        expression (testsuite/tests/typing-objects/open_in_classes.ml[16,172+19]..[16,172+20])
+                          Pexp_ident "x" (testsuite/tests/typing-objects/open_in_classes.ml[16,172+19]..[16,172+20])
+                        Some
+                          core_type (testsuite/tests/typing-objects/open_in_classes.ml[16,172+15]..[16,172+16])
+                            Ptyp_constr "t" (testsuite/tests/typing-objects/open_in_classes.ml[16,172+15]..[16,172+16])
+                            []
+                ]
+    ]
+  structure_item (testsuite/tests/typing-objects/open_in_classes.ml[19,202+0]..[21,250+3])
+    Pstr_extension "expect"
+    [
+      structure_item (testsuite/tests/typing-objects/open_in_classes.ml[19,202+9]..[21,250+2])
+        Pstr_eval
+        expression (testsuite/tests/typing-objects/open_in_classes.ml[19,202+9]..[21,250+2])
+          Pexp_constant PConst_string ("\nclass c : object method f : M.t end\n",(testsuite/tests/typing-objects/open_in_classes.ml[19,202+11]..[21,250+0]),Some "")
+    ]
+  structure_item (testsuite/tests/typing-objects/open_in_classes.ml[22,254+0]..[26,312+5])
+    Pstr_class_type
+    [
+      class_type_declaration (testsuite/tests/typing-objects/open_in_classes.ml[22,254+0]..[26,312+5])
+        pci_virt = Concrete
+        pci_params =
+          []
+        pci_name = "ct" (testsuite/tests/typing-objects/open_in_classes.ml[22,254+11]..[22,254+13])
+        pci_expr =
+          class_type (testsuite/tests/typing-objects/open_in_classes.ml[23,270+2]..[26,312+5])
+            Pcty_open Fresh "M" (testsuite/tests/typing-objects/open_in_classes.ml[23,270+11]..[23,270+12])
+            class_type (testsuite/tests/typing-objects/open_in_classes.ml[24,286+2]..[26,312+5])
+              Pcty_signature
+              class_signature
+                core_type (testsuite/tests/typing-objects/open_in_classes.ml[24,286+8]..[24,286+8])
+                  Ptyp_any
+                [
+                  class_type_field (testsuite/tests/typing-objects/open_in_classes.ml[25,295+4]..[25,295+16])
+                    Pctf_method "f" Public Concrete
+                      core_type (testsuite/tests/typing-objects/open_in_classes.ml[25,295+15]..[25,295+16])
+                        Ptyp_constr "t" (testsuite/tests/typing-objects/open_in_classes.ml[25,295+15]..[25,295+16])
+                        []
+                ]
+    ]
+  structure_item (testsuite/tests/typing-objects/open_in_classes.ml[28,321+0]..[30,375+3])
+    Pstr_extension "expect"
+    [
+      structure_item (testsuite/tests/typing-objects/open_in_classes.ml[28,321+9]..[30,375+2])
+        Pstr_eval
+        expression (testsuite/tests/typing-objects/open_in_classes.ml[28,321+9]..[30,375+2])
+          Pexp_constant PConst_string ("\nclass type ct = object method f : M.t end\n",(testsuite/tests/typing-objects/open_in_classes.ml[28,321+11]..[30,375+0]),Some "")
+    ]
+]
+

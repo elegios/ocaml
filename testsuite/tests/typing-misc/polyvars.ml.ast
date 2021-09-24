@@ -1,0 +1,1452 @@
+[
+  structure_item (testsuite/tests/typing-misc/polyvars.ml[5,24+0]..[5,24+21])
+    Pstr_type Rec
+    [
+      type_declaration "ab" (testsuite/tests/typing-misc/polyvars.ml[5,24+5]..[5,24+7]) (testsuite/tests/typing-misc/polyvars.ml[5,24+0]..[5,24+21])
+        ptype_params =
+          []
+        ptype_cstrs =
+          []
+        ptype_kind =
+          Ptype_abstract
+        ptype_private = Public
+        ptype_manifest =
+          Some
+            core_type (testsuite/tests/typing-misc/polyvars.ml[5,24+10]..[5,24+21])
+              Ptyp_variant closed=Closed
+              [
+                Rtag "A" true
+                  []
+                Rtag "B" true
+                  []
+              ]
+              None
+    ]
+  structure_item (testsuite/tests/typing-misc/polyvars.ml[6,48+0]..[6,48+40])
+    Pstr_value Nonrec
+    [
+      <def>
+        pattern (testsuite/tests/typing-misc/polyvars.ml[6,48+4]..[6,48+5])
+          Ppat_var "f" (testsuite/tests/typing-misc/polyvars.ml[6,48+4]..[6,48+5])
+        expression (testsuite/tests/typing-misc/polyvars.ml[6,48+6]..[6,48+40]) ghost
+          Pexp_fun
+          Nolabel
+          None
+          pattern (testsuite/tests/typing-misc/polyvars.ml[6,48+6]..[6,48+16])
+            Ppat_constraint
+            pattern (testsuite/tests/typing-misc/polyvars.ml[6,48+7]..[6,48+8])
+              Ppat_var "x" (testsuite/tests/typing-misc/polyvars.ml[6,48+7]..[6,48+8])
+            core_type (testsuite/tests/typing-misc/polyvars.ml[6,48+11]..[6,48+15])
+              Ptyp_variant closed=Closed
+              [
+                Rtag "A" true
+                  []
+              ]
+              None
+          expression (testsuite/tests/typing-misc/polyvars.ml[6,48+19]..[6,48+40])
+            Pexp_match
+            expression (testsuite/tests/typing-misc/polyvars.ml[6,48+25]..[6,48+26])
+              Pexp_ident "x" (testsuite/tests/typing-misc/polyvars.ml[6,48+25]..[6,48+26])
+            [
+              <case>
+                pattern (testsuite/tests/typing-misc/polyvars.ml[6,48+32]..[6,48+35])
+                  Ppat_type
+                  "ab" (testsuite/tests/typing-misc/polyvars.ml[6,48+33]..[6,48+35])
+                expression (testsuite/tests/typing-misc/polyvars.ml[6,48+39]..[6,48+40])
+                  Pexp_constant PConst_int (1,None)
+            ]
+    ]
+  structure_item (testsuite/tests/typing-misc/polyvars.ml[7,91+0]..[15,420+3])
+    Pstr_extension "expect"
+    [
+      structure_item (testsuite/tests/typing-misc/polyvars.ml[7,91+9]..[15,420+2])
+        Pstr_eval
+        expression (testsuite/tests/typing-misc/polyvars.ml[7,91+9]..[15,420+2])
+          Pexp_constant PConst_string ("\ntype ab = [ `A | `B ]\nLine 2, characters 32-35:\n2 | let f (x : [`A]) = match x with #ab -> 1;;\n                                    ^^^\nError: This pattern matches values of type [? `A | `B ]\n       but a pattern was expected which matches values of type [ `A ]\n       The second variant type does not allow tag(s) `B\n",(testsuite/tests/typing-misc/polyvars.ml[7,91+11]..[15,420+0]),Some "")
+    ]
+  structure_item (testsuite/tests/typing-misc/polyvars.ml[16,426+0]..[16,426+59])
+    Pstr_value Nonrec
+    [
+      <def>
+        pattern (testsuite/tests/typing-misc/polyvars.ml[16,426+4]..[16,426+5])
+          Ppat_var "f" (testsuite/tests/typing-misc/polyvars.ml[16,426+4]..[16,426+5])
+        expression (testsuite/tests/typing-misc/polyvars.ml[16,426+6]..[16,426+59]) ghost
+          Pexp_fun
+          Nolabel
+          None
+          pattern (testsuite/tests/typing-misc/polyvars.ml[16,426+6]..[16,426+7])
+            Ppat_var "x" (testsuite/tests/typing-misc/polyvars.ml[16,426+6]..[16,426+7])
+          expression (testsuite/tests/typing-misc/polyvars.ml[16,426+10]..[16,426+59])
+            Pexp_sequence
+            expression (testsuite/tests/typing-misc/polyvars.ml[16,426+10]..[16,426+40])
+              Pexp_apply
+              expression (testsuite/tests/typing-misc/polyvars.ml[16,426+10]..[16,426+16])
+                Pexp_ident "ignore" (testsuite/tests/typing-misc/polyvars.ml[16,426+10]..[16,426+16])
+              [
+                <arg>
+                Nolabel
+                  expression (testsuite/tests/typing-misc/polyvars.ml[16,426+17]..[16,426+40])
+                    Pexp_match
+                    expression (testsuite/tests/typing-misc/polyvars.ml[16,426+24]..[16,426+25])
+                      Pexp_ident "x" (testsuite/tests/typing-misc/polyvars.ml[16,426+24]..[16,426+25])
+                    [
+                      <case>
+                        pattern (testsuite/tests/typing-misc/polyvars.ml[16,426+31]..[16,426+34])
+                          Ppat_type
+                          "ab" (testsuite/tests/typing-misc/polyvars.ml[16,426+32]..[16,426+34])
+                        expression (testsuite/tests/typing-misc/polyvars.ml[16,426+38]..[16,426+39])
+                          Pexp_constant PConst_int (1,None)
+                    ]
+              ]
+            expression (testsuite/tests/typing-misc/polyvars.ml[16,426+42]..[16,426+59])
+              Pexp_apply
+              expression (testsuite/tests/typing-misc/polyvars.ml[16,426+42]..[16,426+48])
+                Pexp_ident "ignore" (testsuite/tests/typing-misc/polyvars.ml[16,426+42]..[16,426+48])
+              [
+                <arg>
+                Nolabel
+                  expression (testsuite/tests/typing-misc/polyvars.ml[16,426+49]..[16,426+59])
+                    Pexp_constraint
+                    expression (testsuite/tests/typing-misc/polyvars.ml[16,426+50]..[16,426+51])
+                      Pexp_ident "x" (testsuite/tests/typing-misc/polyvars.ml[16,426+50]..[16,426+51])
+                    core_type (testsuite/tests/typing-misc/polyvars.ml[16,426+54]..[16,426+58])
+                      Ptyp_variant closed=Closed
+                      [
+                        Rtag "A" true
+                          []
+                      ]
+                      None
+              ]
+    ]
+  structure_item (testsuite/tests/typing-misc/polyvars.ml[17,488+0]..[24,808+3])
+    Pstr_extension "expect"
+    [
+      structure_item (testsuite/tests/typing-misc/polyvars.ml[17,488+9]..[24,808+2])
+        Pstr_eval
+        expression (testsuite/tests/typing-misc/polyvars.ml[17,488+9]..[24,808+2])
+          Pexp_constant PConst_string ("\nLine 1, characters 31-34:\n1 | let f x = ignore (match x with #ab -> 1); ignore (x : [`A]);;\n                                   ^^^\nError: This pattern matches values of type [? `B ]\n       but a pattern was expected which matches values of type [ `A ]\n       The second variant type does not allow tag(s) `B\n",(testsuite/tests/typing-misc/polyvars.ml[17,488+11]..[24,808+0]),Some "")
+    ]
+  structure_item (testsuite/tests/typing-misc/polyvars.ml[25,814+0]..[25,814+61])
+    Pstr_value Nonrec
+    [
+      <def>
+        pattern (testsuite/tests/typing-misc/polyvars.ml[25,814+4]..[25,814+5])
+          Ppat_var "f" (testsuite/tests/typing-misc/polyvars.ml[25,814+4]..[25,814+5])
+        expression (testsuite/tests/typing-misc/polyvars.ml[25,814+6]..[25,814+61]) ghost
+          Pexp_fun
+          Nolabel
+          None
+          pattern (testsuite/tests/typing-misc/polyvars.ml[25,814+6]..[25,814+7])
+            Ppat_var "x" (testsuite/tests/typing-misc/polyvars.ml[25,814+6]..[25,814+7])
+          expression (testsuite/tests/typing-misc/polyvars.ml[25,814+10]..[25,814+61])
+            Pexp_sequence
+            expression (testsuite/tests/typing-misc/polyvars.ml[25,814+10]..[25,814+42])
+              Pexp_apply
+              expression (testsuite/tests/typing-misc/polyvars.ml[25,814+10]..[25,814+16])
+                Pexp_ident "ignore" (testsuite/tests/typing-misc/polyvars.ml[25,814+10]..[25,814+16])
+              [
+                <arg>
+                Nolabel
+                  expression (testsuite/tests/typing-misc/polyvars.ml[25,814+17]..[25,814+42])
+                    Pexp_match
+                    expression (testsuite/tests/typing-misc/polyvars.ml[25,814+24]..[25,814+25])
+                      Pexp_ident "x" (testsuite/tests/typing-misc/polyvars.ml[25,814+24]..[25,814+25])
+                    [
+                      <case>
+                        pattern (testsuite/tests/typing-misc/polyvars.ml[25,814+31]..[25,814+36])
+                          Ppat_or
+                          pattern (testsuite/tests/typing-misc/polyvars.ml[25,814+31]..[25,814+33])
+                            Ppat_variant "A"
+                            None
+                          pattern (testsuite/tests/typing-misc/polyvars.ml[25,814+34]..[25,814+36])
+                            Ppat_variant "B"
+                            None
+                        expression (testsuite/tests/typing-misc/polyvars.ml[25,814+40]..[25,814+41])
+                          Pexp_constant PConst_int (1,None)
+                    ]
+              ]
+            expression (testsuite/tests/typing-misc/polyvars.ml[25,814+44]..[25,814+61])
+              Pexp_apply
+              expression (testsuite/tests/typing-misc/polyvars.ml[25,814+44]..[25,814+50])
+                Pexp_ident "ignore" (testsuite/tests/typing-misc/polyvars.ml[25,814+44]..[25,814+50])
+              [
+                <arg>
+                Nolabel
+                  expression (testsuite/tests/typing-misc/polyvars.ml[25,814+51]..[25,814+61])
+                    Pexp_constraint
+                    expression (testsuite/tests/typing-misc/polyvars.ml[25,814+52]..[25,814+53])
+                      Pexp_ident "x" (testsuite/tests/typing-misc/polyvars.ml[25,814+52]..[25,814+53])
+                    core_type (testsuite/tests/typing-misc/polyvars.ml[25,814+56]..[25,814+60])
+                      Ptyp_variant closed=Closed
+                      [
+                        Rtag "A" true
+                          []
+                      ]
+                      None
+              ]
+    ]
+  structure_item (testsuite/tests/typing-misc/polyvars.ml[26,878+0]..[33,1202+3])
+    Pstr_extension "expect"
+    [
+      structure_item (testsuite/tests/typing-misc/polyvars.ml[26,878+9]..[33,1202+2])
+        Pstr_eval
+        expression (testsuite/tests/typing-misc/polyvars.ml[26,878+9]..[33,1202+2])
+          Pexp_constant PConst_string ("\nLine 1, characters 34-36:\n1 | let f x = ignore (match x with `A|`B -> 1); ignore (x : [`A]);;\n                                      ^^\nError: This pattern matches values of type [? `B ]\n       but a pattern was expected which matches values of type [ `A ]\n       The second variant type does not allow tag(s) `B\n",(testsuite/tests/typing-misc/polyvars.ml[26,878+11]..[33,1202+0]),Some "")
+    ]
+  structure_item (testsuite/tests/typing-misc/polyvars.ml[35,1209+0]..[35,1209+56])
+    Pstr_value Nonrec
+    [
+      <def>
+        pattern (testsuite/tests/typing-misc/polyvars.ml[35,1209+4]..[35,1209+5])
+          Ppat_var "f" (testsuite/tests/typing-misc/polyvars.ml[35,1209+4]..[35,1209+5])
+        expression (testsuite/tests/typing-misc/polyvars.ml[35,1209+6]..[35,1209+56]) ghost
+          Pexp_fun
+          Nolabel
+          None
+          pattern (testsuite/tests/typing-misc/polyvars.ml[35,1209+6]..[35,1209+23])
+            Ppat_constraint
+            pattern (testsuite/tests/typing-misc/polyvars.ml[35,1209+7]..[35,1209+8])
+              Ppat_var "x" (testsuite/tests/typing-misc/polyvars.ml[35,1209+7]..[35,1209+8])
+            core_type (testsuite/tests/typing-misc/polyvars.ml[35,1209+11]..[35,1209+22])
+              Ptyp_variant closed=Closed
+              [
+                Rtag "A" true
+                  []
+                Rtag "B" true
+                  []
+              ]
+              Some
+                []
+          expression (testsuite/tests/typing-misc/polyvars.ml[35,1209+26]..[35,1209+56])
+            Pexp_match
+            expression (testsuite/tests/typing-misc/polyvars.ml[35,1209+32]..[35,1209+33])
+              Pexp_ident "x" (testsuite/tests/typing-misc/polyvars.ml[35,1209+32]..[35,1209+33])
+            [
+              <case>
+                pattern (testsuite/tests/typing-misc/polyvars.ml[35,1209+39]..[35,1209+51])
+                  Ppat_or
+                  pattern (testsuite/tests/typing-misc/polyvars.ml[35,1209+39]..[35,1209+46])
+                    Ppat_or
+                    pattern (testsuite/tests/typing-misc/polyvars.ml[35,1209+39]..[35,1209+41])
+                      Ppat_variant "A"
+                      None
+                    pattern (testsuite/tests/typing-misc/polyvars.ml[35,1209+44]..[35,1209+46])
+                      Ppat_variant "B"
+                      None
+                  pattern (testsuite/tests/typing-misc/polyvars.ml[35,1209+49]..[35,1209+51])
+                    Ppat_variant "C"
+                    None
+                expression (testsuite/tests/typing-misc/polyvars.ml[35,1209+55]..[35,1209+56])
+                  Pexp_constant PConst_int (0,None)
+            ]
+    ]
+  structure_item (testsuite/tests/typing-misc/polyvars.ml[36,1279+0]..[42,1542+3])
+    Pstr_extension "expect"
+    [
+      structure_item (testsuite/tests/typing-misc/polyvars.ml[36,1279+9]..[42,1542+2])
+        Pstr_eval
+        expression (testsuite/tests/typing-misc/polyvars.ml[36,1279+9]..[42,1542+2])
+          Pexp_constant PConst_string ("\nLine 1, characters 49-51:\n1 | let f (x : [< `A | `B]) = match x with `A | `B | `C -> 0;; (* warn *)\n                                                     ^^\nWarning 12 [redundant-subpat]: this sub-pattern is unused.\nval f : [< `A | `B ] -> int = <fun>\n",(testsuite/tests/typing-misc/polyvars.ml[36,1279+11]..[42,1542+0]),Some "")
+    ]
+  structure_item (testsuite/tests/typing-misc/polyvars.ml[43,1548+0]..[43,1548+54])
+    Pstr_value Nonrec
+    [
+      <def>
+        pattern (testsuite/tests/typing-misc/polyvars.ml[43,1548+4]..[43,1548+5])
+          Ppat_var "f" (testsuite/tests/typing-misc/polyvars.ml[43,1548+4]..[43,1548+5])
+        expression (testsuite/tests/typing-misc/polyvars.ml[43,1548+6]..[43,1548+54]) ghost
+          Pexp_fun
+          Nolabel
+          None
+          pattern (testsuite/tests/typing-misc/polyvars.ml[43,1548+6]..[43,1548+21])
+            Ppat_constraint
+            pattern (testsuite/tests/typing-misc/polyvars.ml[43,1548+7]..[43,1548+8])
+              Ppat_var "x" (testsuite/tests/typing-misc/polyvars.ml[43,1548+7]..[43,1548+8])
+            core_type (testsuite/tests/typing-misc/polyvars.ml[43,1548+11]..[43,1548+20])
+              Ptyp_variant closed=Closed
+              [
+                Rtag "A" true
+                  []
+                Rtag "B" true
+                  []
+              ]
+              None
+          expression (testsuite/tests/typing-misc/polyvars.ml[43,1548+24]..[43,1548+54])
+            Pexp_match
+            expression (testsuite/tests/typing-misc/polyvars.ml[43,1548+30]..[43,1548+31])
+              Pexp_ident "x" (testsuite/tests/typing-misc/polyvars.ml[43,1548+30]..[43,1548+31])
+            [
+              <case>
+                pattern (testsuite/tests/typing-misc/polyvars.ml[43,1548+37]..[43,1548+49])
+                  Ppat_or
+                  pattern (testsuite/tests/typing-misc/polyvars.ml[43,1548+37]..[43,1548+44])
+                    Ppat_or
+                    pattern (testsuite/tests/typing-misc/polyvars.ml[43,1548+37]..[43,1548+39])
+                      Ppat_variant "A"
+                      None
+                    pattern (testsuite/tests/typing-misc/polyvars.ml[43,1548+42]..[43,1548+44])
+                      Ppat_variant "B"
+                      None
+                  pattern (testsuite/tests/typing-misc/polyvars.ml[43,1548+47]..[43,1548+49])
+                    Ppat_variant "C"
+                    None
+                expression (testsuite/tests/typing-misc/polyvars.ml[43,1548+53]..[43,1548+54])
+                  Pexp_constant PConst_int (0,None)
+            ]
+    ]
+  structure_item (testsuite/tests/typing-misc/polyvars.ml[44,1616+0]..[51,1962+3])
+    Pstr_extension "expect"
+    [
+      structure_item (testsuite/tests/typing-misc/polyvars.ml[44,1616+9]..[51,1962+2])
+        Pstr_eval
+        expression (testsuite/tests/typing-misc/polyvars.ml[44,1616+9]..[51,1962+2])
+          Pexp_constant PConst_string ("\nLine 1, characters 47-49:\n1 | let f (x : [`A | `B]) = match x with `A | `B | `C -> 0;; (* fail *)\n                                                   ^^\nError: This pattern matches values of type [? `C ]\n       but a pattern was expected which matches values of type [ `A | `B ]\n       The second variant type does not allow tag(s) `C\n",(testsuite/tests/typing-misc/polyvars.ml[44,1616+11]..[51,1962+0]),Some "")
+    ]
+  structure_item (testsuite/tests/typing-misc/polyvars.ml[54,2000+0]..[54,2000+14])
+    Pstr_type Rec
+    [
+      type_declaration "t" (testsuite/tests/typing-misc/polyvars.ml[54,2000+5]..[54,2000+6]) (testsuite/tests/typing-misc/polyvars.ml[54,2000+0]..[54,2000+14])
+        ptype_params =
+          []
+        ptype_cstrs =
+          []
+        ptype_kind =
+          Ptype_variant
+            [
+              (testsuite/tests/typing-misc/polyvars.ml[54,2000+9]..[54,2000+10])
+                "A" (testsuite/tests/typing-misc/polyvars.ml[54,2000+9]..[54,2000+10])
+                []
+                None
+              (testsuite/tests/typing-misc/polyvars.ml[54,2000+11]..[54,2000+14])
+                "B" (testsuite/tests/typing-misc/polyvars.ml[54,2000+13]..[54,2000+14])
+                []
+                None
+            ]
+        ptype_private = Public
+        ptype_manifest =
+          None
+    ]
+  structure_item (testsuite/tests/typing-misc/polyvars.ml[55,2017+0]..[55,2017+40])
+    Pstr_eval
+    expression (testsuite/tests/typing-misc/polyvars.ml[55,2017+0]..[55,2017+40])
+      Pexp_function
+      [
+        <case>
+          pattern (testsuite/tests/typing-misc/polyvars.ml[55,2017+9]..[55,2017+13])
+            Ppat_tuple
+            [
+              pattern (testsuite/tests/typing-misc/polyvars.ml[55,2017+9]..[55,2017+11])
+                Ppat_variant "A"
+                None
+              pattern (testsuite/tests/typing-misc/polyvars.ml[55,2017+12]..[55,2017+13])
+                Ppat_any
+            ]
+          expression (testsuite/tests/typing-misc/polyvars.ml[55,2017+17]..[55,2017+18])
+            Pexp_constant PConst_int (1,None)
+        <case>
+          pattern (testsuite/tests/typing-misc/polyvars.ml[55,2017+21]..[55,2017+24])
+            Ppat_tuple
+            [
+              pattern (testsuite/tests/typing-misc/polyvars.ml[55,2017+21]..[55,2017+22])
+                Ppat_any
+              pattern (testsuite/tests/typing-misc/polyvars.ml[55,2017+23]..[55,2017+24])
+                Ppat_construct "A" (testsuite/tests/typing-misc/polyvars.ml[55,2017+23]..[55,2017+24])
+                None
+            ]
+          expression (testsuite/tests/typing-misc/polyvars.ml[55,2017+28]..[55,2017+29])
+            Pexp_constant PConst_int (2,None)
+        <case>
+          pattern (testsuite/tests/typing-misc/polyvars.ml[55,2017+32]..[55,2017+35])
+            Ppat_tuple
+            [
+              pattern (testsuite/tests/typing-misc/polyvars.ml[55,2017+32]..[55,2017+33])
+                Ppat_any
+              pattern (testsuite/tests/typing-misc/polyvars.ml[55,2017+34]..[55,2017+35])
+                Ppat_construct "B" (testsuite/tests/typing-misc/polyvars.ml[55,2017+34]..[55,2017+35])
+                None
+            ]
+          expression (testsuite/tests/typing-misc/polyvars.ml[55,2017+39]..[55,2017+40])
+            Pexp_constant PConst_int (3,None)
+      ]
+  structure_item (testsuite/tests/typing-misc/polyvars.ml[56,2060+0]..[56,2060+33])
+    Pstr_eval
+    expression (testsuite/tests/typing-misc/polyvars.ml[56,2060+0]..[56,2060+33])
+      Pexp_function
+      [
+        <case>
+          pattern (testsuite/tests/typing-misc/polyvars.ml[56,2060+9]..[56,2060+13])
+            Ppat_tuple
+            [
+              pattern (testsuite/tests/typing-misc/polyvars.ml[56,2060+9]..[56,2060+11])
+                Ppat_variant "A"
+                None
+              pattern (testsuite/tests/typing-misc/polyvars.ml[56,2060+12]..[56,2060+13])
+                Ppat_any
+            ]
+          expression (testsuite/tests/typing-misc/polyvars.ml[56,2060+17]..[56,2060+18])
+            Pexp_constant PConst_int (1,None)
+        <case>
+          pattern (testsuite/tests/typing-misc/polyvars.ml[56,2060+21]..[56,2060+28])
+            Ppat_tuple
+            [
+              pattern (testsuite/tests/typing-misc/polyvars.ml[56,2060+21]..[56,2060+22])
+                Ppat_any
+              pattern (testsuite/tests/typing-misc/polyvars.ml[56,2060+23]..[56,2060+28])
+                Ppat_or
+                pattern (testsuite/tests/typing-misc/polyvars.ml[56,2060+24]..[56,2060+25])
+                  Ppat_construct "A" (testsuite/tests/typing-misc/polyvars.ml[56,2060+24]..[56,2060+25])
+                  None
+                pattern (testsuite/tests/typing-misc/polyvars.ml[56,2060+26]..[56,2060+27])
+                  Ppat_construct "B" (testsuite/tests/typing-misc/polyvars.ml[56,2060+26]..[56,2060+27])
+                  None
+            ]
+          expression (testsuite/tests/typing-misc/polyvars.ml[56,2060+32]..[56,2060+33])
+            Pexp_constant PConst_int (2,None)
+      ]
+  structure_item (testsuite/tests/typing-misc/polyvars.ml[57,2096+0]..[57,2096+68])
+    Pstr_eval
+    expression (testsuite/tests/typing-misc/polyvars.ml[57,2096+0]..[57,2096+68])
+      Pexp_function
+      [
+        <case>
+          pattern (testsuite/tests/typing-misc/polyvars.ml[57,2096+9]..[57,2096+19])
+            Ppat_tuple
+            [
+              pattern (testsuite/tests/typing-misc/polyvars.ml[57,2096+9]..[57,2096+16])
+                Ppat_construct "Some" (testsuite/tests/typing-misc/polyvars.ml[57,2096+9]..[57,2096+13])
+                Some
+                  []
+                  pattern (testsuite/tests/typing-misc/polyvars.ml[57,2096+14]..[57,2096+16])
+                    Ppat_variant "A"
+                    None
+              pattern (testsuite/tests/typing-misc/polyvars.ml[57,2096+18]..[57,2096+19])
+                Ppat_any
+            ]
+          expression (testsuite/tests/typing-misc/polyvars.ml[57,2096+23]..[57,2096+24])
+            Pexp_constant PConst_int (1,None)
+        <case>
+          pattern (testsuite/tests/typing-misc/polyvars.ml[57,2096+27]..[57,2096+36])
+            Ppat_tuple
+            [
+              pattern (testsuite/tests/typing-misc/polyvars.ml[57,2096+27]..[57,2096+33])
+                Ppat_construct "Some" (testsuite/tests/typing-misc/polyvars.ml[57,2096+27]..[57,2096+31])
+                Some
+                  []
+                  pattern (testsuite/tests/typing-misc/polyvars.ml[57,2096+32]..[57,2096+33])
+                    Ppat_any
+              pattern (testsuite/tests/typing-misc/polyvars.ml[57,2096+35]..[57,2096+36])
+                Ppat_construct "A" (testsuite/tests/typing-misc/polyvars.ml[57,2096+35]..[57,2096+36])
+                None
+            ]
+          expression (testsuite/tests/typing-misc/polyvars.ml[57,2096+40]..[57,2096+41])
+            Pexp_constant PConst_int (2,None)
+        <case>
+          pattern (testsuite/tests/typing-misc/polyvars.ml[57,2096+44]..[57,2096+51])
+            Ppat_tuple
+            [
+              pattern (testsuite/tests/typing-misc/polyvars.ml[57,2096+44]..[57,2096+48])
+                Ppat_construct "None" (testsuite/tests/typing-misc/polyvars.ml[57,2096+44]..[57,2096+48])
+                None
+              pattern (testsuite/tests/typing-misc/polyvars.ml[57,2096+50]..[57,2096+51])
+                Ppat_construct "A" (testsuite/tests/typing-misc/polyvars.ml[57,2096+50]..[57,2096+51])
+                None
+            ]
+          expression (testsuite/tests/typing-misc/polyvars.ml[57,2096+55]..[57,2096+56])
+            Pexp_constant PConst_int (3,None)
+        <case>
+          pattern (testsuite/tests/typing-misc/polyvars.ml[57,2096+59]..[57,2096+63])
+            Ppat_tuple
+            [
+              pattern (testsuite/tests/typing-misc/polyvars.ml[57,2096+59]..[57,2096+60])
+                Ppat_any
+              pattern (testsuite/tests/typing-misc/polyvars.ml[57,2096+62]..[57,2096+63])
+                Ppat_construct "B" (testsuite/tests/typing-misc/polyvars.ml[57,2096+62]..[57,2096+63])
+                None
+            ]
+          expression (testsuite/tests/typing-misc/polyvars.ml[57,2096+67]..[57,2096+68])
+            Pexp_constant PConst_int (4,None)
+      ]
+  structure_item (testsuite/tests/typing-misc/polyvars.ml[58,2167+0]..[59,2210+51])
+    Pstr_eval
+    expression (testsuite/tests/typing-misc/polyvars.ml[58,2167+0]..[59,2210+51])
+      Pexp_function
+      [
+        <case>
+          pattern (testsuite/tests/typing-misc/polyvars.ml[58,2167+9]..[58,2167+19])
+            Ppat_tuple
+            [
+              pattern (testsuite/tests/typing-misc/polyvars.ml[58,2167+9]..[58,2167+16])
+                Ppat_construct "Some" (testsuite/tests/typing-misc/polyvars.ml[58,2167+9]..[58,2167+13])
+                Some
+                  []
+                  pattern (testsuite/tests/typing-misc/polyvars.ml[58,2167+14]..[58,2167+16])
+                    Ppat_variant "A"
+                    None
+              pattern (testsuite/tests/typing-misc/polyvars.ml[58,2167+18]..[58,2167+19])
+                Ppat_construct "A" (testsuite/tests/typing-misc/polyvars.ml[58,2167+18]..[58,2167+19])
+                None
+            ]
+          expression (testsuite/tests/typing-misc/polyvars.ml[58,2167+23]..[58,2167+24])
+            Pexp_constant PConst_int (1,None)
+        <case>
+          pattern (testsuite/tests/typing-misc/polyvars.ml[58,2167+27]..[58,2167+37])
+            Ppat_tuple
+            [
+              pattern (testsuite/tests/typing-misc/polyvars.ml[58,2167+27]..[58,2167+34])
+                Ppat_construct "Some" (testsuite/tests/typing-misc/polyvars.ml[58,2167+27]..[58,2167+31])
+                Some
+                  []
+                  pattern (testsuite/tests/typing-misc/polyvars.ml[58,2167+32]..[58,2167+34])
+                    Ppat_variant "A"
+                    None
+              pattern (testsuite/tests/typing-misc/polyvars.ml[58,2167+36]..[58,2167+37])
+                Ppat_construct "B" (testsuite/tests/typing-misc/polyvars.ml[58,2167+36]..[58,2167+37])
+                None
+            ]
+          expression (testsuite/tests/typing-misc/polyvars.ml[58,2167+41]..[58,2167+42])
+            Pexp_constant PConst_int (1,None)
+        <case>
+          pattern (testsuite/tests/typing-misc/polyvars.ml[59,2210+9]..[59,2210+18])
+            Ppat_tuple
+            [
+              pattern (testsuite/tests/typing-misc/polyvars.ml[59,2210+9]..[59,2210+15])
+                Ppat_construct "Some" (testsuite/tests/typing-misc/polyvars.ml[59,2210+9]..[59,2210+13])
+                Some
+                  []
+                  pattern (testsuite/tests/typing-misc/polyvars.ml[59,2210+14]..[59,2210+15])
+                    Ppat_any
+              pattern (testsuite/tests/typing-misc/polyvars.ml[59,2210+17]..[59,2210+18])
+                Ppat_construct "A" (testsuite/tests/typing-misc/polyvars.ml[59,2210+17]..[59,2210+18])
+                None
+            ]
+          expression (testsuite/tests/typing-misc/polyvars.ml[59,2210+22]..[59,2210+23])
+            Pexp_constant PConst_int (2,None)
+        <case>
+          pattern (testsuite/tests/typing-misc/polyvars.ml[59,2210+27]..[59,2210+34])
+            Ppat_tuple
+            [
+              pattern (testsuite/tests/typing-misc/polyvars.ml[59,2210+27]..[59,2210+31])
+                Ppat_construct "None" (testsuite/tests/typing-misc/polyvars.ml[59,2210+27]..[59,2210+31])
+                None
+              pattern (testsuite/tests/typing-misc/polyvars.ml[59,2210+33]..[59,2210+34])
+                Ppat_construct "A" (testsuite/tests/typing-misc/polyvars.ml[59,2210+33]..[59,2210+34])
+                None
+            ]
+          expression (testsuite/tests/typing-misc/polyvars.ml[59,2210+38]..[59,2210+39])
+            Pexp_constant PConst_int (3,None)
+        <case>
+          pattern (testsuite/tests/typing-misc/polyvars.ml[59,2210+42]..[59,2210+46])
+            Ppat_tuple
+            [
+              pattern (testsuite/tests/typing-misc/polyvars.ml[59,2210+42]..[59,2210+43])
+                Ppat_any
+              pattern (testsuite/tests/typing-misc/polyvars.ml[59,2210+45]..[59,2210+46])
+                Ppat_construct "B" (testsuite/tests/typing-misc/polyvars.ml[59,2210+45]..[59,2210+46])
+                None
+            ]
+          expression (testsuite/tests/typing-misc/polyvars.ml[59,2210+50]..[59,2210+51])
+            Pexp_constant PConst_int (4,None)
+      ]
+  structure_item (testsuite/tests/typing-misc/polyvars.ml[60,2264+0]..[60,2264+44])
+    Pstr_eval
+    expression (testsuite/tests/typing-misc/polyvars.ml[60,2264+0]..[60,2264+44])
+      Pexp_function
+      [
+        <case>
+          pattern (testsuite/tests/typing-misc/polyvars.ml[60,2264+9]..[60,2264+14])
+            Ppat_tuple
+            [
+              pattern (testsuite/tests/typing-misc/polyvars.ml[60,2264+9]..[60,2264+10])
+                Ppat_construct "A" (testsuite/tests/typing-misc/polyvars.ml[60,2264+9]..[60,2264+10])
+                None
+              pattern (testsuite/tests/typing-misc/polyvars.ml[60,2264+12]..[60,2264+14])
+                Ppat_variant "A"
+                None
+            ]
+          expression (testsuite/tests/typing-misc/polyvars.ml[60,2264+18]..[60,2264+19])
+            Pexp_constant PConst_int (1,None)
+        <case>
+          pattern (testsuite/tests/typing-misc/polyvars.ml[60,2264+22]..[60,2264+27])
+            Ppat_tuple
+            [
+              pattern (testsuite/tests/typing-misc/polyvars.ml[60,2264+22]..[60,2264+23])
+                Ppat_construct "A" (testsuite/tests/typing-misc/polyvars.ml[60,2264+22]..[60,2264+23])
+                None
+              pattern (testsuite/tests/typing-misc/polyvars.ml[60,2264+25]..[60,2264+27])
+                Ppat_variant "B"
+                None
+            ]
+          expression (testsuite/tests/typing-misc/polyvars.ml[60,2264+31]..[60,2264+32])
+            Pexp_constant PConst_int (2,None)
+        <case>
+          pattern (testsuite/tests/typing-misc/polyvars.ml[60,2264+35]..[60,2264+39])
+            Ppat_tuple
+            [
+              pattern (testsuite/tests/typing-misc/polyvars.ml[60,2264+35]..[60,2264+36])
+                Ppat_construct "B" (testsuite/tests/typing-misc/polyvars.ml[60,2264+35]..[60,2264+36])
+                None
+              pattern (testsuite/tests/typing-misc/polyvars.ml[60,2264+38]..[60,2264+39])
+                Ppat_any
+            ]
+          expression (testsuite/tests/typing-misc/polyvars.ml[60,2264+43]..[60,2264+44])
+            Pexp_constant PConst_int (3,None)
+      ]
+  structure_item (testsuite/tests/typing-misc/polyvars.ml[61,2311+0]..[61,2311+44])
+    Pstr_eval
+    expression (testsuite/tests/typing-misc/polyvars.ml[61,2311+0]..[61,2311+44])
+      Pexp_function
+      [
+        <case>
+          pattern (testsuite/tests/typing-misc/polyvars.ml[61,2311+9]..[61,2311+14])
+            Ppat_tuple
+            [
+              pattern (testsuite/tests/typing-misc/polyvars.ml[61,2311+9]..[61,2311+11])
+                Ppat_variant "A"
+                None
+              pattern (testsuite/tests/typing-misc/polyvars.ml[61,2311+13]..[61,2311+14])
+                Ppat_construct "A" (testsuite/tests/typing-misc/polyvars.ml[61,2311+13]..[61,2311+14])
+                None
+            ]
+          expression (testsuite/tests/typing-misc/polyvars.ml[61,2311+18]..[61,2311+19])
+            Pexp_constant PConst_int (1,None)
+        <case>
+          pattern (testsuite/tests/typing-misc/polyvars.ml[61,2311+22]..[61,2311+27])
+            Ppat_tuple
+            [
+              pattern (testsuite/tests/typing-misc/polyvars.ml[61,2311+22]..[61,2311+24])
+                Ppat_variant "B"
+                None
+              pattern (testsuite/tests/typing-misc/polyvars.ml[61,2311+26]..[61,2311+27])
+                Ppat_construct "A" (testsuite/tests/typing-misc/polyvars.ml[61,2311+26]..[61,2311+27])
+                None
+            ]
+          expression (testsuite/tests/typing-misc/polyvars.ml[61,2311+31]..[61,2311+32])
+            Pexp_constant PConst_int (2,None)
+        <case>
+          pattern (testsuite/tests/typing-misc/polyvars.ml[61,2311+35]..[61,2311+39])
+            Ppat_tuple
+            [
+              pattern (testsuite/tests/typing-misc/polyvars.ml[61,2311+35]..[61,2311+36])
+                Ppat_any
+              pattern (testsuite/tests/typing-misc/polyvars.ml[61,2311+38]..[61,2311+39])
+                Ppat_construct "B" (testsuite/tests/typing-misc/polyvars.ml[61,2311+38]..[61,2311+39])
+                None
+            ]
+          expression (testsuite/tests/typing-misc/polyvars.ml[61,2311+43]..[61,2311+44])
+            Pexp_constant PConst_int (3,None)
+      ]
+  structure_item (testsuite/tests/typing-misc/polyvars.ml[62,2358+0]..[62,2358+41])
+    Pstr_eval
+    expression (testsuite/tests/typing-misc/polyvars.ml[62,2358+0]..[62,2358+41])
+      Pexp_function
+      [
+        <case>
+          pattern (testsuite/tests/typing-misc/polyvars.ml[62,2358+9]..[62,2358+19])
+            Ppat_tuple
+            [
+              pattern (testsuite/tests/typing-misc/polyvars.ml[62,2358+9]..[62,2358+16])
+                Ppat_or
+                pattern (testsuite/tests/typing-misc/polyvars.ml[62,2358+10]..[62,2358+12])
+                  Ppat_variant "A"
+                  None
+                pattern (testsuite/tests/typing-misc/polyvars.ml[62,2358+13]..[62,2358+15])
+                  Ppat_variant "B"
+                  None
+              pattern (testsuite/tests/typing-misc/polyvars.ml[62,2358+18]..[62,2358+19])
+                Ppat_any
+            ]
+          expression (testsuite/tests/typing-misc/polyvars.ml[62,2358+23]..[62,2358+24])
+            Pexp_constant PConst_int (0,None)
+        <case>
+          pattern (testsuite/tests/typing-misc/polyvars.ml[62,2358+27]..[62,2358+36])
+            Ppat_tuple
+            [
+              pattern (testsuite/tests/typing-misc/polyvars.ml[62,2358+27]..[62,2358+28])
+                Ppat_any
+              pattern (testsuite/tests/typing-misc/polyvars.ml[62,2358+29]..[62,2358+36])
+                Ppat_or
+                pattern (testsuite/tests/typing-misc/polyvars.ml[62,2358+30]..[62,2358+32])
+                  Ppat_variant "A"
+                  None
+                pattern (testsuite/tests/typing-misc/polyvars.ml[62,2358+33]..[62,2358+35])
+                  Ppat_variant "B"
+                  None
+            ]
+          expression (testsuite/tests/typing-misc/polyvars.ml[62,2358+40]..[62,2358+41])
+            Pexp_constant PConst_int (1,None)
+      ]
+  structure_item (testsuite/tests/typing-misc/polyvars.ml[63,2402+0]..[63,2402+29])
+    Pstr_eval
+    expression (testsuite/tests/typing-misc/polyvars.ml[63,2402+0]..[63,2402+29])
+      Pexp_function
+      [
+        <case>
+          pattern (testsuite/tests/typing-misc/polyvars.ml[63,2402+9]..[63,2402+13])
+            Ppat_tuple
+            [
+              pattern (testsuite/tests/typing-misc/polyvars.ml[63,2402+9]..[63,2402+11])
+                Ppat_variant "B"
+                None
+              pattern (testsuite/tests/typing-misc/polyvars.ml[63,2402+12]..[63,2402+13])
+                Ppat_constant PConst_int (1,None)
+            ]
+          expression (testsuite/tests/typing-misc/polyvars.ml[63,2402+17]..[63,2402+18])
+            Pexp_constant PConst_int (1,None)
+        <case>
+          pattern (testsuite/tests/typing-misc/polyvars.ml[63,2402+21]..[63,2402+24])
+            Ppat_tuple
+            [
+              pattern (testsuite/tests/typing-misc/polyvars.ml[63,2402+21]..[63,2402+22])
+                Ppat_any
+              pattern (testsuite/tests/typing-misc/polyvars.ml[63,2402+23]..[63,2402+24])
+                Ppat_constant PConst_int (1,None)
+            ]
+          expression (testsuite/tests/typing-misc/polyvars.ml[63,2402+28]..[63,2402+29])
+            Pexp_constant PConst_int (2,None)
+      ]
+  structure_item (testsuite/tests/typing-misc/polyvars.ml[64,2434+0]..[64,2434+29])
+    Pstr_eval
+    expression (testsuite/tests/typing-misc/polyvars.ml[64,2434+0]..[64,2434+29])
+      Pexp_function
+      [
+        <case>
+          pattern (testsuite/tests/typing-misc/polyvars.ml[64,2434+9]..[64,2434+13])
+            Ppat_tuple
+            [
+              pattern (testsuite/tests/typing-misc/polyvars.ml[64,2434+9]..[64,2434+10])
+                Ppat_constant PConst_int (1,None)
+              pattern (testsuite/tests/typing-misc/polyvars.ml[64,2434+11]..[64,2434+13])
+                Ppat_variant "B"
+                None
+            ]
+          expression (testsuite/tests/typing-misc/polyvars.ml[64,2434+17]..[64,2434+18])
+            Pexp_constant PConst_int (1,None)
+        <case>
+          pattern (testsuite/tests/typing-misc/polyvars.ml[64,2434+21]..[64,2434+24])
+            Ppat_tuple
+            [
+              pattern (testsuite/tests/typing-misc/polyvars.ml[64,2434+21]..[64,2434+22])
+                Ppat_constant PConst_int (1,None)
+              pattern (testsuite/tests/typing-misc/polyvars.ml[64,2434+23]..[64,2434+24])
+                Ppat_any
+            ]
+          expression (testsuite/tests/typing-misc/polyvars.ml[64,2434+28]..[64,2434+29])
+            Pexp_constant PConst_int (2,None)
+      ]
+  structure_item (testsuite/tests/typing-misc/polyvars.ml[65,2466+0]..[102,3829+3])
+    Pstr_extension "expect"
+    [
+      structure_item (testsuite/tests/typing-misc/polyvars.ml[65,2466+10]..[102,3829+2])
+        Pstr_eval
+        expression (testsuite/tests/typing-misc/polyvars.ml[65,2466+10]..[102,3829+2])
+          Pexp_constant PConst_string ("\ntype t = A | B\n- : [> `A ] * t -> int = <fun>\n- : [> `A ] * t -> int = <fun>\n- : [> `A ] option * t -> int = <fun>\n- : [> `A ] option * t -> int = <fun>\n- : t * [< `A | `B ] -> int = <fun>\n- : [< `A | `B ] * t -> int = <fun>\nLine 9, characters 0-41:\n9 | function (`A|`B), _ -> 0 | _,(`A|`B) -> 1;;\n    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nWarning 8 [partial-match]: this pattern-matching is not exhaustive.\nHere is an example of a case that is not matched:\n(`AnyOtherTag, `AnyOtherTag)\n- : [> `A | `B ] * [> `A | `B ] -> int = <fun>\nLine 10, characters 0-29:\n10 | function `B,1 -> 1 | _,1 -> 2;;\n     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nWarning 8 [partial-match]: this pattern-matching is not exhaustive.\nHere is an example of a case that is not matched:\n(_, 0)\nLine 10, characters 21-24:\n10 | function `B,1 -> 1 | _,1 -> 2;;\n                          ^^^\nWarning 11 [redundant-case]: this match case is unused.\n- : [< `B ] * int -> int = <fun>\nLine 11, characters 0-29:\n11 | function 1,`B -> 1 | 1,_ -> 2;;\n     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nWarning 8 [partial-match]: this pattern-matching is not exhaustive.\nHere is an example of a case that is not matched:\n(0, _)\nLine 11, characters 21-24:\n11 | function 1,`B -> 1 | 1,_ -> 2;;\n                          ^^^\nWarning 11 [redundant-case]: this match case is unused.\n- : int * [< `B ] -> int = <fun>\n",(testsuite/tests/typing-misc/polyvars.ml[65,2466+12]..[102,3829+0]),Some "")
+    ]
+  structure_item (testsuite/tests/typing-misc/polyvars.ml[105,3850+0]..[105,3850+22])
+    Pstr_value Nonrec
+    [
+      <def>
+        pattern (testsuite/tests/typing-misc/polyvars.ml[105,3850+4]..[105,3850+12])
+          Ppat_var "revapply" (testsuite/tests/typing-misc/polyvars.ml[105,3850+4]..[105,3850+12])
+        expression (testsuite/tests/typing-misc/polyvars.ml[105,3850+13]..[105,3850+22]) ghost
+          Pexp_fun
+          Nolabel
+          None
+          pattern (testsuite/tests/typing-misc/polyvars.ml[105,3850+13]..[105,3850+14])
+            Ppat_var "x" (testsuite/tests/typing-misc/polyvars.ml[105,3850+13]..[105,3850+14])
+          expression (testsuite/tests/typing-misc/polyvars.ml[105,3850+15]..[105,3850+22]) ghost
+            Pexp_fun
+            Nolabel
+            None
+            pattern (testsuite/tests/typing-misc/polyvars.ml[105,3850+15]..[105,3850+16])
+              Ppat_var "f" (testsuite/tests/typing-misc/polyvars.ml[105,3850+15]..[105,3850+16])
+            expression (testsuite/tests/typing-misc/polyvars.ml[105,3850+19]..[105,3850+22])
+              Pexp_apply
+              expression (testsuite/tests/typing-misc/polyvars.ml[105,3850+19]..[105,3850+20])
+                Pexp_ident "f" (testsuite/tests/typing-misc/polyvars.ml[105,3850+19]..[105,3850+20])
+              [
+                <arg>
+                Nolabel
+                  expression (testsuite/tests/typing-misc/polyvars.ml[105,3850+21]..[105,3850+22])
+                    Pexp_ident "x" (testsuite/tests/typing-misc/polyvars.ml[105,3850+21]..[105,3850+22])
+              ]
+    ]
+  structure_item (testsuite/tests/typing-misc/polyvars.ml[107,3876+0]..[109,3924+37])
+    Pstr_value Nonrec
+    [
+      <def>
+        pattern (testsuite/tests/typing-misc/polyvars.ml[107,3876+4]..[107,3876+5])
+          Ppat_var "f" (testsuite/tests/typing-misc/polyvars.ml[107,3876+4]..[107,3876+5])
+        expression (testsuite/tests/typing-misc/polyvars.ml[107,3876+6]..[109,3924+37]) ghost
+          Pexp_fun
+          Nolabel
+          None
+          pattern (testsuite/tests/typing-misc/polyvars.ml[107,3876+6]..[107,3876+7])
+            Ppat_var "x" (testsuite/tests/typing-misc/polyvars.ml[107,3876+6]..[107,3876+7])
+          expression (testsuite/tests/typing-misc/polyvars.ml[107,3876+8]..[109,3924+37]) ghost
+            Pexp_fun
+            Nolabel
+            None
+            pattern (testsuite/tests/typing-misc/polyvars.ml[107,3876+8]..[107,3876+22])
+              Ppat_constraint
+              pattern (testsuite/tests/typing-misc/polyvars.ml[107,3876+9]..[107,3876+10])
+                Ppat_var "g" (testsuite/tests/typing-misc/polyvars.ml[107,3876+9]..[107,3876+10])
+              core_type (testsuite/tests/typing-misc/polyvars.ml[107,3876+13]..[107,3876+21])
+                Ptyp_variant closed=Closed
+                [
+                  Rtag "Foo" true
+                    []
+                ]
+                Some
+                  []
+            expression (testsuite/tests/typing-misc/polyvars.ml[108,3901+2]..[109,3924+37])
+              Pexp_let Nonrec
+              [
+                <def>
+                  pattern (testsuite/tests/typing-misc/polyvars.ml[108,3901+6]..[108,3901+7])
+                    Ppat_var "y" (testsuite/tests/typing-misc/polyvars.ml[108,3901+6]..[108,3901+7])
+                  expression (testsuite/tests/typing-misc/polyvars.ml[108,3901+10]..[108,3901+19])
+                    Pexp_tuple
+                    [
+                      expression (testsuite/tests/typing-misc/polyvars.ml[108,3901+10]..[108,3901+16])
+                        Pexp_variant "Bar"
+                        Some
+                          expression (testsuite/tests/typing-misc/polyvars.ml[108,3901+15]..[108,3901+16])
+                            Pexp_ident "x" (testsuite/tests/typing-misc/polyvars.ml[108,3901+15]..[108,3901+16])
+                      expression (testsuite/tests/typing-misc/polyvars.ml[108,3901+18]..[108,3901+19])
+                        Pexp_ident "g" (testsuite/tests/typing-misc/polyvars.ml[108,3901+18]..[108,3901+19])
+                    ]
+              ]
+              expression (testsuite/tests/typing-misc/polyvars.ml[109,3924+2]..[109,3924+37])
+                Pexp_apply
+                expression (testsuite/tests/typing-misc/polyvars.ml[109,3924+2]..[109,3924+10])
+                  Pexp_ident "revapply" (testsuite/tests/typing-misc/polyvars.ml[109,3924+2]..[109,3924+10])
+                [
+                  <arg>
+                  Nolabel
+                    expression (testsuite/tests/typing-misc/polyvars.ml[109,3924+11]..[109,3924+12])
+                      Pexp_ident "y" (testsuite/tests/typing-misc/polyvars.ml[109,3924+11]..[109,3924+12])
+                  <arg>
+                  Nolabel
+                    expression (testsuite/tests/typing-misc/polyvars.ml[109,3924+13]..[109,3924+37])
+                      Pexp_fun
+                      Nolabel
+                      None
+                      pattern (testsuite/tests/typing-misc/polyvars.ml[109,3924+18]..[109,3924+31])
+                        Ppat_tuple
+                        [
+                          pattern (testsuite/tests/typing-misc/polyvars.ml[109,3924+19]..[109,3924+27])
+                            Ppat_variant "Bar"
+                            Some
+                              pattern (testsuite/tests/typing-misc/polyvars.ml[109,3924+25]..[109,3924+26])
+                                Ppat_var "i" (testsuite/tests/typing-misc/polyvars.ml[109,3924+25]..[109,3924+26])
+                          pattern (testsuite/tests/typing-misc/polyvars.ml[109,3924+29]..[109,3924+30])
+                            Ppat_any
+                        ]
+                      expression (testsuite/tests/typing-misc/polyvars.ml[109,3924+35]..[109,3924+36])
+                        Pexp_ident "i" (testsuite/tests/typing-misc/polyvars.ml[109,3924+35]..[109,3924+36])
+                ]
+    ]
+  structure_item (testsuite/tests/typing-misc/polyvars.ml[111,3996+0]..[114,4092+3])
+    Pstr_extension "expect"
+    [
+      structure_item (testsuite/tests/typing-misc/polyvars.ml[111,3996+9]..[114,4092+2])
+        Pstr_eval
+        expression (testsuite/tests/typing-misc/polyvars.ml[111,3996+9]..[114,4092+2])
+          Pexp_constant PConst_string ("\nval revapply : 'a -> ('a -> 'b) -> 'b = <fun>\nval f : 'a -> [< `Foo ] -> 'a = <fun>\n",(testsuite/tests/typing-misc/polyvars.ml[111,3996+11]..[114,4092+0]),Some "")
+    ]
+  structure_item (testsuite/tests/typing-misc/polyvars.ml[117,4113+0]..[117,4113+71])
+    Pstr_value Nonrec
+    [
+      <def>
+        pattern (testsuite/tests/typing-misc/polyvars.ml[117,4113+4]..[117,4113+44]) ghost
+          Ppat_constraint
+          pattern (testsuite/tests/typing-misc/polyvars.ml[117,4113+4]..[117,4113+5])
+            Ppat_var "f" (testsuite/tests/typing-misc/polyvars.ml[117,4113+4]..[117,4113+5])
+          core_type (testsuite/tests/typing-misc/polyvars.ml[117,4113+8]..[117,4113+44]) ghost
+            Ptyp_poly
+            core_type (testsuite/tests/typing-misc/polyvars.ml[117,4113+8]..[117,4113+44])
+              Ptyp_arrow
+              Nolabel
+              core_type (testsuite/tests/typing-misc/polyvars.ml[117,4113+9]..[117,4113+25])
+                Ptyp_alias "a"
+                core_type (testsuite/tests/typing-misc/polyvars.ml[117,4113+9]..[117,4113+19])
+                  Ptyp_variant closed=Closed
+                  [
+                    Rtag "A" true
+                      []
+                    Rtag "B" true
+                      []
+                  ]
+                  None
+              core_type (testsuite/tests/typing-misc/polyvars.ml[117,4113+30]..[117,4113+44])
+                Ptyp_arrow
+                Nolabel
+                core_type (testsuite/tests/typing-misc/polyvars.ml[117,4113+30]..[117,4113+36])
+                  Ptyp_variant closed=Open
+                  [
+                    Rinherit
+                      core_type (testsuite/tests/typing-misc/polyvars.ml[117,4113+33]..[117,4113+35])
+                        Ptyp_var a
+                  ]
+                  None
+                core_type (testsuite/tests/typing-misc/polyvars.ml[117,4113+40]..[117,4113+44])
+                  Ptyp_constr "unit" (testsuite/tests/typing-misc/polyvars.ml[117,4113+40]..[117,4113+44])
+                  []
+        expression (testsuite/tests/typing-misc/polyvars.ml[117,4113+4]..[117,4113+71])
+          Pexp_constraint
+          expression (testsuite/tests/typing-misc/polyvars.ml[117,4113+47]..[117,4113+71])
+            Pexp_fun
+            Nolabel
+            None
+            pattern (testsuite/tests/typing-misc/polyvars.ml[117,4113+51]..[117,4113+52])
+              Ppat_var "x" (testsuite/tests/typing-misc/polyvars.ml[117,4113+51]..[117,4113+52])
+            expression (testsuite/tests/typing-misc/polyvars.ml[117,4113+53]..[117,4113+71]) ghost
+              Pexp_fun
+              Nolabel
+              None
+              pattern (testsuite/tests/typing-misc/polyvars.ml[117,4113+53]..[117,4113+65])
+                Ppat_constraint
+                pattern (testsuite/tests/typing-misc/polyvars.ml[117,4113+54]..[117,4113+55])
+                  Ppat_var "y" (testsuite/tests/typing-misc/polyvars.ml[117,4113+54]..[117,4113+55])
+                core_type (testsuite/tests/typing-misc/polyvars.ml[117,4113+58]..[117,4113+64])
+                  Ptyp_variant closed=Open
+                  [
+                    Rinherit
+                      core_type (testsuite/tests/typing-misc/polyvars.ml[117,4113+61]..[117,4113+63])
+                        Ptyp_var a
+                  ]
+                  None
+              expression (testsuite/tests/typing-misc/polyvars.ml[117,4113+69]..[117,4113+71])
+                Pexp_construct "()" (testsuite/tests/typing-misc/polyvars.ml[117,4113+69]..[117,4113+71])
+                None
+          core_type (testsuite/tests/typing-misc/polyvars.ml[117,4113+8]..[117,4113+44])
+            Ptyp_arrow
+            Nolabel
+            core_type (testsuite/tests/typing-misc/polyvars.ml[117,4113+9]..[117,4113+25])
+              Ptyp_alias "a"
+              core_type (testsuite/tests/typing-misc/polyvars.ml[117,4113+9]..[117,4113+19])
+                Ptyp_variant closed=Closed
+                [
+                  Rtag "A" true
+                    []
+                  Rtag "B" true
+                    []
+                ]
+                None
+            core_type (testsuite/tests/typing-misc/polyvars.ml[117,4113+30]..[117,4113+44])
+              Ptyp_arrow
+              Nolabel
+              core_type (testsuite/tests/typing-misc/polyvars.ml[117,4113+30]..[117,4113+36])
+                Ptyp_variant closed=Open
+                [
+                  Rinherit
+                    core_type (testsuite/tests/typing-misc/polyvars.ml[117,4113+33]..[117,4113+35])
+                      Ptyp_var a
+                ]
+                None
+              core_type (testsuite/tests/typing-misc/polyvars.ml[117,4113+40]..[117,4113+44])
+                Ptyp_constr "unit" (testsuite/tests/typing-misc/polyvars.ml[117,4113+40]..[117,4113+44])
+                []
+    ]
+  structure_item (testsuite/tests/typing-misc/polyvars.ml[118,4187+0]..[118,4187+45])
+    Pstr_value Nonrec
+    [
+      <def>
+        pattern (testsuite/tests/typing-misc/polyvars.ml[118,4187+4]..[118,4187+5])
+          Ppat_var "f" (testsuite/tests/typing-misc/polyvars.ml[118,4187+4]..[118,4187+5])
+        expression (testsuite/tests/typing-misc/polyvars.ml[118,4187+6]..[118,4187+45]) ghost
+          Pexp_fun
+          Nolabel
+          None
+          pattern (testsuite/tests/typing-misc/polyvars.ml[118,4187+6]..[118,4187+27])
+            Ppat_constraint
+            pattern (testsuite/tests/typing-misc/polyvars.ml[118,4187+7]..[118,4187+8])
+              Ppat_var "x" (testsuite/tests/typing-misc/polyvars.ml[118,4187+7]..[118,4187+8])
+            core_type (testsuite/tests/typing-misc/polyvars.ml[118,4187+11]..[118,4187+26])
+              Ptyp_alias "a"
+              core_type (testsuite/tests/typing-misc/polyvars.ml[118,4187+11]..[118,4187+20])
+                Ptyp_variant closed=Closed
+                [
+                  Rtag "A" true
+                    []
+                  Rtag "B" true
+                    []
+                ]
+                None
+          expression (testsuite/tests/typing-misc/polyvars.ml[118,4187+28]..[118,4187+45]) ghost
+            Pexp_fun
+            Nolabel
+            None
+            pattern (testsuite/tests/typing-misc/polyvars.ml[118,4187+28]..[118,4187+40])
+              Ppat_constraint
+              pattern (testsuite/tests/typing-misc/polyvars.ml[118,4187+29]..[118,4187+30])
+                Ppat_var "y" (testsuite/tests/typing-misc/polyvars.ml[118,4187+29]..[118,4187+30])
+              core_type (testsuite/tests/typing-misc/polyvars.ml[118,4187+33]..[118,4187+39])
+                Ptyp_variant closed=Open
+                [
+                  Rinherit
+                    core_type (testsuite/tests/typing-misc/polyvars.ml[118,4187+36]..[118,4187+38])
+                      Ptyp_var a
+                ]
+                None
+            expression (testsuite/tests/typing-misc/polyvars.ml[118,4187+43]..[118,4187+45])
+              Pexp_construct "()" (testsuite/tests/typing-misc/polyvars.ml[118,4187+43]..[118,4187+45])
+              None
+    ]
+  structure_item (testsuite/tests/typing-misc/polyvars.ml[119,4235+0]..[125,4507+3])
+    Pstr_extension "expect"
+    [
+      structure_item (testsuite/tests/typing-misc/polyvars.ml[119,4235+9]..[125,4507+2])
+        Pstr_eval
+        expression (testsuite/tests/typing-misc/polyvars.ml[119,4235+9]..[125,4507+2])
+          Pexp_constant PConst_string ("\nLine 1, characters 61-63:\n1 | let f : ([`A | `B ] as 'a) -> [> 'a] -> unit = fun x (y : [> 'a]) -> ();;\n                                                                 ^^\nError: The type 'a does not expand to a polymorphic variant type\nHint: Did you mean `a?\n",(testsuite/tests/typing-misc/polyvars.ml[119,4235+11]..[125,4507+0]),Some "")
+    ]
+  structure_item (testsuite/tests/typing-misc/polyvars.ml[128,4526+0]..[128,4526+50])
+    Pstr_type Rec
+    [
+      type_declaration "foo" (testsuite/tests/typing-misc/polyvars.ml[128,4526+8]..[128,4526+11]) (testsuite/tests/typing-misc/polyvars.ml[128,4526+0]..[128,4526+50])
+        ptype_params =
+          [
+            core_type (testsuite/tests/typing-misc/polyvars.ml[128,4526+5]..[128,4526+7])
+              Ptyp_var a
+          ]
+        ptype_cstrs =
+          [
+            <constraint> (testsuite/tests/typing-misc/polyvars.ml[128,4526+28]..[128,4526+50])
+              core_type (testsuite/tests/typing-misc/polyvars.ml[128,4526+28]..[128,4526+30])
+                Ptyp_var a
+              core_type (testsuite/tests/typing-misc/polyvars.ml[128,4526+33]..[128,4526+50])
+                Ptyp_variant closed=Closed
+                [
+                  Rtag "Tag" true
+                    [
+                      core_type (testsuite/tests/typing-misc/polyvars.ml[128,4526+46]..[128,4526+49])
+                        Ptyp_constr "int" (testsuite/tests/typing-misc/polyvars.ml[128,4526+46]..[128,4526+49])
+                        []
+                    ]
+                ]
+                Some
+                  []
+          ]
+        ptype_kind =
+          Ptype_abstract
+        ptype_private = Public
+        ptype_manifest =
+          Some
+            core_type (testsuite/tests/typing-misc/polyvars.ml[128,4526+14]..[128,4526+16])
+              Ptyp_var a
+    ]
+  structure_item (testsuite/tests/typing-misc/polyvars.ml[129,4579+0]..[131,4643+3])
+    Pstr_extension "expect"
+    [
+      structure_item (testsuite/tests/typing-misc/polyvars.ml[129,4579+9]..[131,4643+2])
+        Pstr_eval
+        expression (testsuite/tests/typing-misc/polyvars.ml[129,4579+9]..[131,4643+2])
+          Pexp_constant PConst_string ("\ntype 'a foo = 'a constraint 'a = [< `Tag of & int ]\n",(testsuite/tests/typing-misc/polyvars.ml[129,4579+11]..[131,4643+0]),Some "")
+    ]
+  structure_item (testsuite/tests/typing-misc/polyvars.ml[134,4662+0]..[134,4662+34])
+    Pstr_type Rec
+    [
+      type_declaration "t" (testsuite/tests/typing-misc/polyvars.ml[134,4662+5]..[134,4662+6]) (testsuite/tests/typing-misc/polyvars.ml[134,4662+0]..[134,4662+34])
+        ptype_params =
+          []
+        ptype_cstrs =
+          []
+        ptype_kind =
+          Ptype_abstract
+        ptype_private = Private
+        ptype_manifest =
+          Some
+            core_type (testsuite/tests/typing-misc/polyvars.ml[134,4662+17]..[134,4662+34])
+              Ptyp_variant closed=Open
+              [
+                Rtag "A" false
+                  [
+                    core_type (testsuite/tests/typing-misc/polyvars.ml[134,4662+26]..[134,4662+32])
+                      Ptyp_constr "string" (testsuite/tests/typing-misc/polyvars.ml[134,4662+26]..[134,4662+32])
+                      []
+                  ]
+              ]
+              None
+    ]
+  structure_item (testsuite/tests/typing-misc/polyvars.ml[135,4699+0]..[135,4699+24])
+    Pstr_eval
+    expression (testsuite/tests/typing-misc/polyvars.ml[135,4699+0]..[135,4699+24])
+      Pexp_function
+      [
+        <case>
+          pattern (testsuite/tests/typing-misc/polyvars.ml[135,4699+9]..[135,4699+19])
+            Ppat_constraint
+            pattern (testsuite/tests/typing-misc/polyvars.ml[135,4699+10]..[135,4699+14])
+              Ppat_variant "A"
+              Some
+                pattern (testsuite/tests/typing-misc/polyvars.ml[135,4699+13]..[135,4699+14])
+                  Ppat_var "x" (testsuite/tests/typing-misc/polyvars.ml[135,4699+13]..[135,4699+14])
+            core_type (testsuite/tests/typing-misc/polyvars.ml[135,4699+17]..[135,4699+18])
+              Ptyp_constr "t" (testsuite/tests/typing-misc/polyvars.ml[135,4699+17]..[135,4699+18])
+              []
+          expression (testsuite/tests/typing-misc/polyvars.ml[135,4699+23]..[135,4699+24])
+            Pexp_ident "x" (testsuite/tests/typing-misc/polyvars.ml[135,4699+23]..[135,4699+24])
+      ]
+  structure_item (testsuite/tests/typing-misc/polyvars.ml[136,4726+0]..[145,5020+3])
+    Pstr_extension "expect"
+    [
+      structure_item (testsuite/tests/typing-misc/polyvars.ml[136,4726+9]..[145,5020+2])
+        Pstr_eval
+        expression (testsuite/tests/typing-misc/polyvars.ml[136,4726+9]..[145,5020+2])
+          Pexp_constant PConst_string ("\ntype t = private [> `A of string ]\nLine 2, characters 0-24:\n2 | function (`A x : t) -> x;;\n    ^^^^^^^^^^^^^^^^^^^^^^^^\nWarning 8 [partial-match]: this pattern-matching is not exhaustive.\nHere is an example of a case that is not matched:\n`<some private tag>\n- : t -> string = <fun>\n",(testsuite/tests/typing-misc/polyvars.ml[136,4726+11]..[145,5020+0]),Some "")
+    ]
+  structure_item (testsuite/tests/typing-misc/polyvars.ml[147,5025+0]..[147,5025+76])
+    Pstr_value Nonrec
+    [
+      <def>
+        pattern (testsuite/tests/typing-misc/polyvars.ml[147,5025+4]..[147,5025+5])
+          Ppat_var "f" (testsuite/tests/typing-misc/polyvars.ml[147,5025+4]..[147,5025+5])
+        expression (testsuite/tests/typing-misc/polyvars.ml[147,5025+8]..[147,5025+76])
+          Pexp_function
+          [
+            <case>
+              pattern (testsuite/tests/typing-misc/polyvars.ml[147,5025+17]..[147,5025+32])
+                Ppat_tuple
+                [
+                  pattern (testsuite/tests/typing-misc/polyvars.ml[147,5025+17]..[147,5025+29])
+                    Ppat_variant "AnyOtherTag"
+                    None
+                  pattern (testsuite/tests/typing-misc/polyvars.ml[147,5025+31]..[147,5025+32])
+                    Ppat_any
+                ]
+              expression (testsuite/tests/typing-misc/polyvars.ml[147,5025+36]..[147,5025+37])
+                Pexp_constant PConst_int (1,None)
+            <case>
+              pattern (testsuite/tests/typing-misc/polyvars.ml[147,5025+40]..[147,5025+71])
+                Ppat_tuple
+                [
+                  pattern (testsuite/tests/typing-misc/polyvars.ml[147,5025+40]..[147,5025+41])
+                    Ppat_any
+                  pattern (testsuite/tests/typing-misc/polyvars.ml[147,5025+43]..[147,5025+71])
+                    Ppat_or
+                    pattern (testsuite/tests/typing-misc/polyvars.ml[147,5025+44]..[147,5025+56])
+                      Ppat_variant "AnyOtherTag"
+                      None
+                    pattern (testsuite/tests/typing-misc/polyvars.ml[147,5025+57]..[147,5025+70])
+                      Ppat_variant "AnyOtherTag'"
+                      None
+                ]
+              expression (testsuite/tests/typing-misc/polyvars.ml[147,5025+75]..[147,5025+76])
+                Pexp_constant PConst_int (2,None)
+          ]
+    ]
+  structure_item (testsuite/tests/typing-misc/polyvars.ml[148,5104+0]..[156,5532+3])
+    Pstr_extension "expect"
+    [
+      structure_item (testsuite/tests/typing-misc/polyvars.ml[148,5104+9]..[156,5532+2])
+        Pstr_eval
+        expression (testsuite/tests/typing-misc/polyvars.ml[148,5104+9]..[156,5532+2])
+          Pexp_constant PConst_string ("\nLine 1, characters 8-76:\n1 | let f = function `AnyOtherTag, _ -> 1 | _, (`AnyOtherTag|`AnyOtherTag') -> 2;;\n            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nWarning 8 [partial-match]: this pattern-matching is not exhaustive.\nHere is an example of a case that is not matched:\n(`AnyOtherTag', `AnyOtherTag'')\nval f : [> `AnyOtherTag ] * [> `AnyOtherTag | `AnyOtherTag' ] -> int = <fun>\n",(testsuite/tests/typing-misc/polyvars.ml[148,5104+11]..[156,5532+0]),Some "")
+    ]
+  structure_item (testsuite/tests/typing-misc/polyvars.ml[158,5537+0]..[158,5537+41])
+    Pstr_value Nonrec
+    [
+      <def>
+        pattern (testsuite/tests/typing-misc/polyvars.ml[158,5537+4]..[158,5537+34]) ghost
+          Ppat_constraint
+          pattern (testsuite/tests/typing-misc/polyvars.ml[158,5537+4]..[158,5537+5])
+            Ppat_var "x" (testsuite/tests/typing-misc/polyvars.ml[158,5537+4]..[158,5537+5])
+          core_type (testsuite/tests/typing-misc/polyvars.ml[158,5537+7]..[158,5537+33]) ghost
+            Ptyp_poly
+            core_type (testsuite/tests/typing-misc/polyvars.ml[158,5537+7]..[158,5537+33])
+              Ptyp_tuple
+              [
+                core_type (testsuite/tests/typing-misc/polyvars.ml[158,5537+8]..[158,5537+18])
+                  Ptyp_alias "a"
+                  core_type (testsuite/tests/typing-misc/polyvars.ml[158,5537+8]..[158,5537+12])
+                    Ptyp_variant closed=Closed
+                    [
+                      Rtag "A" true
+                        []
+                    ]
+                    None
+                core_type (testsuite/tests/typing-misc/polyvars.ml[158,5537+22]..[158,5537+32])
+                  Ptyp_alias "a"
+                  core_type (testsuite/tests/typing-misc/polyvars.ml[158,5537+22]..[158,5537+26])
+                    Ptyp_variant closed=Closed
+                    [
+                      Rtag "B" true
+                        []
+                    ]
+                    None
+              ]
+        expression (testsuite/tests/typing-misc/polyvars.ml[158,5537+4]..[158,5537+41])
+          Pexp_constraint
+          expression (testsuite/tests/typing-misc/polyvars.ml[158,5537+37]..[158,5537+41])
+            Pexp_construct "::" (testsuite/tests/typing-misc/polyvars.ml[158,5537+38]..[158,5537+41]) ghost
+            Some
+              expression (testsuite/tests/typing-misc/polyvars.ml[158,5537+38]..[158,5537+41]) ghost
+                Pexp_tuple
+                [
+                  expression (testsuite/tests/typing-misc/polyvars.ml[158,5537+38]..[158,5537+40])
+                    Pexp_variant "A"
+                    None
+                  expression (testsuite/tests/typing-misc/polyvars.ml[158,5537+40]..[158,5537+41]) ghost
+                    Pexp_construct "[]" (testsuite/tests/typing-misc/polyvars.ml[158,5537+40]..[158,5537+41]) ghost
+                    None
+                ]
+          core_type (testsuite/tests/typing-misc/polyvars.ml[158,5537+7]..[158,5537+33])
+            Ptyp_tuple
+            [
+              core_type (testsuite/tests/typing-misc/polyvars.ml[158,5537+8]..[158,5537+18])
+                Ptyp_alias "a"
+                core_type (testsuite/tests/typing-misc/polyvars.ml[158,5537+8]..[158,5537+12])
+                  Ptyp_variant closed=Closed
+                  [
+                    Rtag "A" true
+                      []
+                  ]
+                  None
+              core_type (testsuite/tests/typing-misc/polyvars.ml[158,5537+22]..[158,5537+32])
+                Ptyp_alias "a"
+                core_type (testsuite/tests/typing-misc/polyvars.ml[158,5537+22]..[158,5537+26])
+                  Ptyp_variant closed=Closed
+                  [
+                    Rtag "B" true
+                      []
+                  ]
+                  None
+            ]
+    ]
+  structure_item (testsuite/tests/typing-misc/polyvars.ml[159,5579+0]..[166,5846+3])
+    Pstr_extension "expect"
+    [
+      structure_item (testsuite/tests/typing-misc/polyvars.ml[159,5579+10]..[166,5846+2])
+        Pstr_eval
+        expression (testsuite/tests/typing-misc/polyvars.ml[159,5579+10]..[166,5846+2])
+          Pexp_constant PConst_string ("\nLine 1, characters 22-32:\n1 | let x:(([`A] as 'a)* ([`B] as 'a)) = [`A]\n                          ^^^^^^^^^^\nError: This alias is bound to type [ `B ] but is used as an instance of type\n         [ `A ]\n       These two variant types have no intersection\n",(testsuite/tests/typing-misc/polyvars.ml[159,5579+12]..[166,5846+0]),Some "")
+    ]
+  structure_item (testsuite/tests/typing-misc/polyvars.ml[168,5851+0]..[168,5851+23])
+    Pstr_type Rec
+    [
+      type_declaration "t" (testsuite/tests/typing-misc/polyvars.ml[168,5851+5]..[168,5851+6]) (testsuite/tests/typing-misc/polyvars.ml[168,5851+0]..[168,5851+23])
+        ptype_params =
+          []
+        ptype_cstrs =
+          []
+        ptype_kind =
+          Ptype_abstract
+        ptype_private = Private
+        ptype_manifest =
+          Some
+            core_type (testsuite/tests/typing-misc/polyvars.ml[168,5851+17]..[168,5851+23])
+              Ptyp_variant closed=Closed
+              [
+                Rtag "A" true
+                  []
+              ]
+              Some
+                []
+    ]
+  structure_item (testsuite/tests/typing-misc/polyvars.ml[169,5875+0]..[169,5875+31])
+    Pstr_value Nonrec
+    [
+      <def>
+        pattern (testsuite/tests/typing-misc/polyvars.ml[169,5875+4]..[169,5875+18]) ghost
+          Ppat_constraint
+          pattern (testsuite/tests/typing-misc/polyvars.ml[169,5875+4]..[169,5875+5])
+            Ppat_var "f" (testsuite/tests/typing-misc/polyvars.ml[169,5875+4]..[169,5875+5])
+          core_type (testsuite/tests/typing-misc/polyvars.ml[169,5875+7]..[169,5875+18]) ghost
+            Ptyp_poly
+            core_type (testsuite/tests/typing-misc/polyvars.ml[169,5875+7]..[169,5875+18])
+              Ptyp_arrow
+              Nolabel
+              core_type (testsuite/tests/typing-misc/polyvars.ml[169,5875+7]..[169,5875+8])
+                Ptyp_constr "t" (testsuite/tests/typing-misc/polyvars.ml[169,5875+7]..[169,5875+8])
+                []
+              core_type (testsuite/tests/typing-misc/polyvars.ml[169,5875+12]..[169,5875+18])
+                Ptyp_variant closed=Closed
+                [
+                  Rtag "A" true
+                    []
+                ]
+                None
+        expression (testsuite/tests/typing-misc/polyvars.ml[169,5875+4]..[169,5875+31])
+          Pexp_constraint
+          expression (testsuite/tests/typing-misc/polyvars.ml[169,5875+21]..[169,5875+31])
+            Pexp_fun
+            Nolabel
+            None
+            pattern (testsuite/tests/typing-misc/polyvars.ml[169,5875+25]..[169,5875+26])
+              Ppat_var "x" (testsuite/tests/typing-misc/polyvars.ml[169,5875+25]..[169,5875+26])
+            expression (testsuite/tests/typing-misc/polyvars.ml[169,5875+30]..[169,5875+31])
+              Pexp_ident "x" (testsuite/tests/typing-misc/polyvars.ml[169,5875+30]..[169,5875+31])
+          core_type (testsuite/tests/typing-misc/polyvars.ml[169,5875+7]..[169,5875+18])
+            Ptyp_arrow
+            Nolabel
+            core_type (testsuite/tests/typing-misc/polyvars.ml[169,5875+7]..[169,5875+8])
+              Ptyp_constr "t" (testsuite/tests/typing-misc/polyvars.ml[169,5875+7]..[169,5875+8])
+              []
+            core_type (testsuite/tests/typing-misc/polyvars.ml[169,5875+12]..[169,5875+18])
+              Ptyp_variant closed=Closed
+              [
+                Rtag "A" true
+                  []
+              ]
+              None
+    ]
+  structure_item (testsuite/tests/typing-misc/polyvars.ml[170,5907+0]..[178,6205+3])
+    Pstr_extension "expect"
+    [
+      structure_item (testsuite/tests/typing-misc/polyvars.ml[170,5907+10]..[178,6205+2])
+        Pstr_eval
+        expression (testsuite/tests/typing-misc/polyvars.ml[170,5907+10]..[178,6205+2])
+          Pexp_constant PConst_string ("\ntype t = private [< `A ]\nLine 2, characters 30-31:\n2 | let f: t -> [ `A ] = fun x -> x\n                                  ^\nError: This expression has type t but an expression was expected of type\n         [ `A ]\n       The first variant type is private, it may not allow the tag(s) `A\n",(testsuite/tests/typing-misc/polyvars.ml[170,5907+12]..[178,6205+0]),Some "")
+    ]
+  structure_item (testsuite/tests/typing-misc/polyvars.ml[181,6211+0]..[181,6211+75])
+    Pstr_attribute "ocaml.text"
+    [
+      structure_item (testsuite/tests/typing-misc/polyvars.ml[181,6211+0]..[181,6211+75])
+        Pstr_eval
+        expression (testsuite/tests/typing-misc/polyvars.ml[181,6211+0]..[181,6211+75])
+          Pexp_constant PConst_string(" Check that the non-regularity error message is robust to permutation ",(testsuite/tests/typing-misc/polyvars.ml[181,6211+0]..[181,6211+75]),None)
+    ]
+  structure_item (testsuite/tests/typing-misc/polyvars.ml[183,6288+0]..[185,6398+54])
+    Pstr_type Rec
+    [
+      type_declaration "a" (testsuite/tests/typing-misc/polyvars.ml[183,6288+22]..[183,6288+23]) (testsuite/tests/typing-misc/polyvars.ml[183,6288+0]..[183,6288+54])
+        ptype_params =
+          [
+            core_type (testsuite/tests/typing-misc/polyvars.ml[183,6288+6]..[183,6288+8])
+              Ptyp_var a
+            core_type (testsuite/tests/typing-misc/polyvars.ml[183,6288+9]..[183,6288+11])
+              Ptyp_var b
+            core_type (testsuite/tests/typing-misc/polyvars.ml[183,6288+12]..[183,6288+14])
+              Ptyp_var c
+            core_type (testsuite/tests/typing-misc/polyvars.ml[183,6288+15]..[183,6288+17])
+              Ptyp_var d
+            core_type (testsuite/tests/typing-misc/polyvars.ml[183,6288+18]..[183,6288+20])
+              Ptyp_var e
+          ]
+        ptype_cstrs =
+          []
+        ptype_kind =
+          Ptype_abstract
+        ptype_private = Public
+        ptype_manifest =
+          Some
+            core_type (testsuite/tests/typing-misc/polyvars.ml[183,6288+26]..[183,6288+54])
+              Ptyp_variant closed=Closed
+              [
+                Rtag "A" false
+                  [
+                    core_type (testsuite/tests/typing-misc/polyvars.ml[183,6288+34]..[183,6288+52])
+                      Ptyp_constr "b" (testsuite/tests/typing-misc/polyvars.ml[183,6288+51]..[183,6288+52])
+                      [
+                        core_type (testsuite/tests/typing-misc/polyvars.ml[183,6288+35]..[183,6288+37])
+                          Ptyp_var d
+                        core_type (testsuite/tests/typing-misc/polyvars.ml[183,6288+38]..[183,6288+40])
+                          Ptyp_var a
+                        core_type (testsuite/tests/typing-misc/polyvars.ml[183,6288+41]..[183,6288+43])
+                          Ptyp_var e
+                        core_type (testsuite/tests/typing-misc/polyvars.ml[183,6288+44]..[183,6288+46])
+                          Ptyp_var c
+                        core_type (testsuite/tests/typing-misc/polyvars.ml[183,6288+47]..[183,6288+49])
+                          Ptyp_var b
+                      ]
+                  ]
+              ]
+              None
+      type_declaration "b" (testsuite/tests/typing-misc/polyvars.ml[184,6343+22]..[184,6343+23]) (testsuite/tests/typing-misc/polyvars.ml[184,6343+0]..[184,6343+54])
+        ptype_params =
+          [
+            core_type (testsuite/tests/typing-misc/polyvars.ml[184,6343+6]..[184,6343+8])
+              Ptyp_var a
+            core_type (testsuite/tests/typing-misc/polyvars.ml[184,6343+9]..[184,6343+11])
+              Ptyp_var b
+            core_type (testsuite/tests/typing-misc/polyvars.ml[184,6343+12]..[184,6343+14])
+              Ptyp_var c
+            core_type (testsuite/tests/typing-misc/polyvars.ml[184,6343+15]..[184,6343+17])
+              Ptyp_var d
+            core_type (testsuite/tests/typing-misc/polyvars.ml[184,6343+18]..[184,6343+20])
+              Ptyp_var e
+          ]
+        ptype_cstrs =
+          []
+        ptype_kind =
+          Ptype_abstract
+        ptype_private = Public
+        ptype_manifest =
+          Some
+            core_type (testsuite/tests/typing-misc/polyvars.ml[184,6343+26]..[184,6343+54])
+              Ptyp_variant closed=Closed
+              [
+                Rtag "B" false
+                  [
+                    core_type (testsuite/tests/typing-misc/polyvars.ml[184,6343+34]..[184,6343+52])
+                      Ptyp_constr "c" (testsuite/tests/typing-misc/polyvars.ml[184,6343+51]..[184,6343+52])
+                      [
+                        core_type (testsuite/tests/typing-misc/polyvars.ml[184,6343+35]..[184,6343+37])
+                          Ptyp_var c
+                        core_type (testsuite/tests/typing-misc/polyvars.ml[184,6343+38]..[184,6343+40])
+                          Ptyp_var d
+                        core_type (testsuite/tests/typing-misc/polyvars.ml[184,6343+41]..[184,6343+43])
+                          Ptyp_var e
+                        core_type (testsuite/tests/typing-misc/polyvars.ml[184,6343+44]..[184,6343+46])
+                          Ptyp_var a
+                        core_type (testsuite/tests/typing-misc/polyvars.ml[184,6343+47]..[184,6343+49])
+                          Ptyp_var b
+                      ]
+                  ]
+              ]
+              None
+      type_declaration "c" (testsuite/tests/typing-misc/polyvars.ml[185,6398+22]..[185,6398+23]) (testsuite/tests/typing-misc/polyvars.ml[185,6398+0]..[185,6398+54])
+        ptype_params =
+          [
+            core_type (testsuite/tests/typing-misc/polyvars.ml[185,6398+6]..[185,6398+8])
+              Ptyp_var a
+            core_type (testsuite/tests/typing-misc/polyvars.ml[185,6398+9]..[185,6398+11])
+              Ptyp_var b
+            core_type (testsuite/tests/typing-misc/polyvars.ml[185,6398+12]..[185,6398+14])
+              Ptyp_var c
+            core_type (testsuite/tests/typing-misc/polyvars.ml[185,6398+15]..[185,6398+17])
+              Ptyp_var d
+            core_type (testsuite/tests/typing-misc/polyvars.ml[185,6398+18]..[185,6398+20])
+              Ptyp_var e
+          ]
+        ptype_cstrs =
+          []
+        ptype_kind =
+          Ptype_abstract
+        ptype_private = Public
+        ptype_manifest =
+          Some
+            core_type (testsuite/tests/typing-misc/polyvars.ml[185,6398+26]..[185,6398+54])
+              Ptyp_variant closed=Closed
+              [
+                Rtag "C" false
+                  [
+                    core_type (testsuite/tests/typing-misc/polyvars.ml[185,6398+34]..[185,6398+52])
+                      Ptyp_constr "a" (testsuite/tests/typing-misc/polyvars.ml[185,6398+51]..[185,6398+52])
+                      [
+                        core_type (testsuite/tests/typing-misc/polyvars.ml[185,6398+35]..[185,6398+37])
+                          Ptyp_var a
+                        core_type (testsuite/tests/typing-misc/polyvars.ml[185,6398+38]..[185,6398+40])
+                          Ptyp_var b
+                        core_type (testsuite/tests/typing-misc/polyvars.ml[185,6398+41]..[185,6398+43])
+                          Ptyp_var c
+                        core_type (testsuite/tests/typing-misc/polyvars.ml[185,6398+44]..[185,6398+46])
+                          Ptyp_var d
+                        core_type (testsuite/tests/typing-misc/polyvars.ml[185,6398+47]..[185,6398+49])
+                          Ptyp_var e
+                      ]
+                  ]
+              ]
+              None
+    ]
+  structure_item (testsuite/tests/typing-misc/polyvars.ml[186,6453+0]..[199,7049+3])
+    Pstr_extension "expect"
+    [
+      structure_item (testsuite/tests/typing-misc/polyvars.ml[186,6453+10]..[199,7049+2])
+        Pstr_eval
+        expression (testsuite/tests/typing-misc/polyvars.ml[186,6453+10]..[199,7049+2])
+          Pexp_constant PConst_string ("\nLine 3, characters 0-54:\n3 | type ('a,'b,'c,'d,'e) a = [ `A of ('d,'a,'e,'c,'b) b ]\n    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nError: This recursive type is not regular.\n       The type constructor a is defined as\n         type ('a, 'b, 'c, 'd, 'e) a\n       but it is used as\n         ('e, 'c, 'b, 'd, 'a) a\n       after the following expansion(s):\n         ('d, 'a, 'e, 'c, 'b) b = [ `B of ('e, 'c, 'b, 'd, 'a) c ],\n         ('e, 'c, 'b, 'd, 'a) c = [ `C of ('e, 'c, 'b, 'd, 'a) a ]\n       All uses need to match the definition for the recursive type to be regular.\n",(testsuite/tests/typing-misc/polyvars.ml[186,6453+12]..[199,7049+0]),Some "")
+    ]
+]
+

@@ -1,0 +1,73 @@
+[
+  structure_item (testsuite/tests/typing-objects/self_cannot_be_closed.ml[4,24+0]..[4,24+27])
+    Pstr_value Nonrec
+    [
+      <def>
+        pattern (testsuite/tests/typing-objects/self_cannot_be_closed.ml[4,24+4]..[4,24+12])
+          Ppat_var "is_empty" (testsuite/tests/typing-objects/self_cannot_be_closed.ml[4,24+4]..[4,24+12])
+        expression (testsuite/tests/typing-objects/self_cannot_be_closed.ml[4,24+13]..[4,24+27]) ghost
+          Pexp_fun
+          Nolabel
+          None
+          pattern (testsuite/tests/typing-objects/self_cannot_be_closed.ml[4,24+13]..[4,24+22])
+            Ppat_constraint
+            pattern (testsuite/tests/typing-objects/self_cannot_be_closed.ml[4,24+14]..[4,24+15])
+              Ppat_var "x" (testsuite/tests/typing-objects/self_cannot_be_closed.ml[4,24+14]..[4,24+15])
+            core_type (testsuite/tests/typing-objects/self_cannot_be_closed.ml[4,24+18]..[4,24+21])
+              Ptyp_object Closed
+          expression (testsuite/tests/typing-objects/self_cannot_be_closed.ml[4,24+25]..[4,24+27])
+            Pexp_construct "()" (testsuite/tests/typing-objects/self_cannot_be_closed.ml[4,24+25]..[4,24+27])
+            None
+    ]
+  structure_item (testsuite/tests/typing-objects/self_cannot_be_closed.ml[5,54+0]..[7,103+3])
+    Pstr_extension "expect"
+    [
+      structure_item (testsuite/tests/typing-objects/self_cannot_be_closed.ml[5,54+10]..[7,103+2])
+        Pstr_eval
+        expression (testsuite/tests/typing-objects/self_cannot_be_closed.ml[5,54+10]..[7,103+2])
+          Pexp_constant PConst_string ("\nval is_empty : <  > -> unit = <fun>\n",(testsuite/tests/typing-objects/self_cannot_be_closed.ml[5,54+12]..[7,103+0]),Some "")
+    ]
+  structure_item (testsuite/tests/typing-objects/self_cannot_be_closed.ml[9,108+0]..[9,108+62])
+    Pstr_class
+    [
+      class_declaration (testsuite/tests/typing-objects/self_cannot_be_closed.ml[9,108+0]..[9,108+62])
+        pci_virt = Concrete
+        pci_params =
+          []
+        pci_name = "c" (testsuite/tests/typing-objects/self_cannot_be_closed.ml[9,108+6]..[9,108+7])
+        pci_expr =
+          class_expr (testsuite/tests/typing-objects/self_cannot_be_closed.ml[9,108+10]..[9,108+62])
+            Pcl_structure
+            class_structure
+              pattern (testsuite/tests/typing-objects/self_cannot_be_closed.ml[9,108+17]..[9,108+23])
+                Ppat_var "self" (testsuite/tests/typing-objects/self_cannot_be_closed.ml[9,108+18]..[9,108+22])
+              [
+                class_field (testsuite/tests/typing-objects/self_cannot_be_closed.ml[9,108+24]..[9,108+58])
+                  Pcf_method Private
+                    "foo" (testsuite/tests/typing-objects/self_cannot_be_closed.ml[9,108+39]..[9,108+42])
+                    Concrete Fresh
+                    expression (testsuite/tests/typing-objects/self_cannot_be_closed.ml[9,108+45]..[9,108+58]) ghost
+                      Pexp_poly
+                      expression (testsuite/tests/typing-objects/self_cannot_be_closed.ml[9,108+45]..[9,108+58])
+                        Pexp_apply
+                        expression (testsuite/tests/typing-objects/self_cannot_be_closed.ml[9,108+45]..[9,108+53])
+                          Pexp_ident "is_empty" (testsuite/tests/typing-objects/self_cannot_be_closed.ml[9,108+45]..[9,108+53])
+                        [
+                          <arg>
+                          Nolabel
+                            expression (testsuite/tests/typing-objects/self_cannot_be_closed.ml[9,108+54]..[9,108+58])
+                              Pexp_ident "self" (testsuite/tests/typing-objects/self_cannot_be_closed.ml[9,108+54]..[9,108+58])
+                        ]
+                      None
+              ]
+    ]
+  structure_item (testsuite/tests/typing-objects/self_cannot_be_closed.ml[10,173+0]..[17,497+3])
+    Pstr_extension "expect"
+    [
+      structure_item (testsuite/tests/typing-objects/self_cannot_be_closed.ml[10,173+10]..[17,497+2])
+        Pstr_eval
+        expression (testsuite/tests/typing-objects/self_cannot_be_closed.ml[10,173+10]..[17,497+2])
+          Pexp_constant PConst_string ("\nLine 1, characters 54-58:\n1 | class c = object (self) method private foo = is_empty self end;;\n                                                          ^^^^\nError: This expression has type < .. > but an expression was expected of type\n         <  >\n       Self type cannot be unified with a closed object type\n",(testsuite/tests/typing-objects/self_cannot_be_closed.ml[10,173+12]..[17,497+0]),Some "")
+    ]
+]
+

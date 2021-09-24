@@ -1,0 +1,2232 @@
+[
+  signature_item (stdlib/ephemeron.mli[16,1079+0]..[66,3506+2])
+    Psig_attribute "ocaml.text"
+    [
+      structure_item (stdlib/ephemeron.mli[16,1079+0]..[66,3506+2])
+        Pstr_eval
+        expression (stdlib/ephemeron.mli[16,1079+0]..[66,3506+2])
+          Pexp_constant PConst_string(" Ephemerons and weak hash tables.\n\n    Ephemerons and weak hash tables are useful when one wants to cache\n    or memorize the computation of a function, as long as the\n    arguments and the function are used, without creating memory leaks\n    by continuously keeping old computation results that are not\n    useful anymore because one argument or the function is freed. An\n    implementation using {!Hashtbl.t} is not suitable because all\n    associations would keep the arguments and the result in memory.\n\n    Ephemerons can also be used for \"adding\" a field to an arbitrary\n    boxed OCaml value: you can attach some information to a value\n    created by an external library without memory leaks.\n\n    Ephemerons hold some keys and one or no data. They are all boxed\n    OCaml values. The keys of an ephemeron have the same behavior\n    as weak pointers according to the garbage collector. In fact\n    OCaml weak pointers are implemented as ephemerons without data.\n\n    The keys and data of an ephemeron are said to be full if they\n    point to a value, or empty if the value has never been set, has\n    been unset, or was erased by the GC. In the function that accesses\n    the keys or data these two states are represented by the [option]\n    type.\n\n    The data is considered by the garbage collector alive if all the\n    full keys are alive and if the ephemeron is alive. When one of the\n    keys is not considered alive anymore by the GC, the data is\n    emptied from the ephemeron. The data could be alive for another\n    reason and in that case the GC will not free it, but the ephemeron\n    will not hold the data anymore.\n\n    The ephemerons complicate the notion of liveness of values, because\n    it is not anymore an equivalence with the reachability from root\n    value by usual pointers (not weak and not ephemerons). With ephemerons\n    the notion of liveness is constructed by the least fixpoint of:\n       A value is alive if:\n        - it is a root value\n        - it is reachable from alive value by usual pointers\n        - it is the data of an alive ephemeron with all its full keys alive\n\n    Notes:\n    - All the types defined in this module cannot be marshaled\n    using {!Stdlib.output_value} or the functions of the\n    {!Marshal} module.\n\n    Ephemerons are defined in a language agnostic way in this paper:\n    B. Hayes, Ephemerons: A New Finalization Mechanism, OOPSLA'97\n\n    @since 4.03.0\n",(stdlib/ephemeron.mli[16,1079+0]..[66,3506+2]),None)
+    ]
+  signature_item (stdlib/ephemeron.mli[68,3510+0]..[85,4143+3])
+    Psig_modtype "S" (stdlib/ephemeron.mli[68,3510+12]..[68,3510+13])
+      attribute "ocaml.doc"
+        [
+          structure_item (stdlib/ephemeron.mli[86,4147+0]..[90,4401+2])
+            Pstr_eval
+            expression (stdlib/ephemeron.mli[86,4147+0]..[90,4401+2])
+              Pexp_constant PConst_string(" The output signature of the functor {!K1.Make} and {!K2.Make}.\n    These hash tables are weak in the keys. If all the keys of a binding are\n    alive the binding is kept, but if one of the keys of the binding\n    is dead then the binding is removed.\n",(stdlib/ephemeron.mli[86,4147+0]..[90,4401+2]),None)
+        ]
+      module_type (stdlib/ephemeron.mli[68,3510+16]..[85,4143+3])
+        Pmty_signature
+        [
+          signature_item (stdlib/ephemeron.mli[69,3530+2]..[76,3886+4])
+            Psig_attribute "ocaml.text"
+            [
+              structure_item (stdlib/ephemeron.mli[69,3530+2]..[76,3886+4])
+                Pstr_eval
+                expression (stdlib/ephemeron.mli[69,3530+2]..[76,3886+4])
+                  Pexp_constant PConst_string(" Propose the same interface as usual hash table. However since\n      the bindings are weak, even if [mem h k] is true, a subsequent\n      [find h k] may raise [Not_found] because the garbage collector\n      can run between the two.\n\n      Moreover, the table shouldn't be modified during a call to [iter].\n      Use [filter_map_inplace] in this case.\n  ",(stdlib/ephemeron.mli[69,3530+2]..[76,3886+4]),None)
+            ]
+          signature_item (stdlib/ephemeron.mli[78,3892+2]..[78,3892+19])
+            Psig_include
+            module_type (stdlib/ephemeron.mli[78,3892+10]..[78,3892+19])
+              Pmty_ident "Hashtbl.S" (stdlib/ephemeron.mli[78,3892+10]..[78,3892+19])
+          signature_item (stdlib/ephemeron.mli[80,3913+2]..[80,3913+25])
+            Psig_value
+            value_description "clean" (stdlib/ephemeron.mli[80,3913+6]..[80,3913+11]) (stdlib/ephemeron.mli[80,3913+2]..[80,3913+25])
+              attribute "ocaml.doc"
+                [
+                  structure_item (stdlib/ephemeron.mli[81,3939+2]..[81,3939+80])
+                    Pstr_eval
+                    expression (stdlib/ephemeron.mli[81,3939+2]..[81,3939+80])
+                      Pexp_constant PConst_string(" remove all dead bindings. Done automatically during automatic resizing. ",(stdlib/ephemeron.mli[81,3939+2]..[81,3939+80]),None)
+                ]
+              core_type (stdlib/ephemeron.mli[80,3913+13]..[80,3913+25])
+                Ptyp_arrow
+                Nolabel
+                core_type (stdlib/ephemeron.mli[80,3913+13]..[80,3913+17])
+                  Ptyp_constr "t" (stdlib/ephemeron.mli[80,3913+16]..[80,3913+17])
+                  [
+                    core_type (stdlib/ephemeron.mli[80,3913+13]..[80,3913+15])
+                      Ptyp_var a
+                  ]
+                core_type (stdlib/ephemeron.mli[80,3913+21]..[80,3913+25])
+                  Ptyp_constr "unit" (stdlib/ephemeron.mli[80,3913+21]..[80,3913+25])
+                  []
+              []
+          signature_item (stdlib/ephemeron.mli[83,4021+2]..[83,4021+45])
+            Psig_value
+            value_description "stats_alive" (stdlib/ephemeron.mli[83,4021+6]..[83,4021+17]) (stdlib/ephemeron.mli[83,4021+2]..[83,4021+45])
+              attribute "ocaml.doc"
+                [
+                  structure_item (stdlib/ephemeron.mli[84,4067+2]..[84,4067+75])
+                    Pstr_eval
+                    expression (stdlib/ephemeron.mli[84,4067+2]..[84,4067+75])
+                      Pexp_constant PConst_string(" same as {!Hashtbl.SeededS.stats} but only count the alive bindings ",(stdlib/ephemeron.mli[84,4067+2]..[84,4067+75]),None)
+                ]
+              core_type (stdlib/ephemeron.mli[83,4021+19]..[83,4021+45])
+                Ptyp_arrow
+                Nolabel
+                core_type (stdlib/ephemeron.mli[83,4021+19]..[83,4021+23])
+                  Ptyp_constr "t" (stdlib/ephemeron.mli[83,4021+22]..[83,4021+23])
+                  [
+                    core_type (stdlib/ephemeron.mli[83,4021+19]..[83,4021+21])
+                      Ptyp_var a
+                  ]
+                core_type (stdlib/ephemeron.mli[83,4021+27]..[83,4021+45])
+                  Ptyp_constr "Hashtbl.statistics" (stdlib/ephemeron.mli[83,4021+27]..[83,4021+45])
+                  []
+              []
+        ]
+  signature_item (stdlib/ephemeron.mli[92,4405+0]..[99,4687+3])
+    Psig_modtype "SeededS" (stdlib/ephemeron.mli[92,4405+12]..[92,4405+19])
+      attribute "ocaml.doc"
+        [
+          structure_item (stdlib/ephemeron.mli[100,4691+0]..[101,4770+2])
+            Pstr_eval
+            expression (stdlib/ephemeron.mli[100,4691+0]..[101,4770+2])
+              Pexp_constant PConst_string(" The output signature of the functor {!K1.MakeSeeded} and {!K2.MakeSeeded}.\n",(stdlib/ephemeron.mli[100,4691+0]..[101,4770+2]),None)
+        ]
+      module_type (stdlib/ephemeron.mli[92,4405+22]..[99,4687+3])
+        Pmty_signature
+        [
+          signature_item (stdlib/ephemeron.mli[93,4431+2]..[93,4431+25])
+            Psig_include
+            module_type (stdlib/ephemeron.mli[93,4431+10]..[93,4431+25])
+              Pmty_ident "Hashtbl.SeededS" (stdlib/ephemeron.mli[93,4431+10]..[93,4431+25])
+          signature_item (stdlib/ephemeron.mli[94,4457+2]..[94,4457+25])
+            Psig_value
+            value_description "clean" (stdlib/ephemeron.mli[94,4457+6]..[94,4457+11]) (stdlib/ephemeron.mli[94,4457+2]..[94,4457+25])
+              attribute "ocaml.doc"
+                [
+                  structure_item (stdlib/ephemeron.mli[95,4483+2]..[95,4483+80])
+                    Pstr_eval
+                    expression (stdlib/ephemeron.mli[95,4483+2]..[95,4483+80])
+                      Pexp_constant PConst_string(" remove all dead bindings. Done automatically during automatic resizing. ",(stdlib/ephemeron.mli[95,4483+2]..[95,4483+80]),None)
+                ]
+              core_type (stdlib/ephemeron.mli[94,4457+13]..[94,4457+25])
+                Ptyp_arrow
+                Nolabel
+                core_type (stdlib/ephemeron.mli[94,4457+13]..[94,4457+17])
+                  Ptyp_constr "t" (stdlib/ephemeron.mli[94,4457+16]..[94,4457+17])
+                  [
+                    core_type (stdlib/ephemeron.mli[94,4457+13]..[94,4457+15])
+                      Ptyp_var a
+                  ]
+                core_type (stdlib/ephemeron.mli[94,4457+21]..[94,4457+25])
+                  Ptyp_constr "unit" (stdlib/ephemeron.mli[94,4457+21]..[94,4457+25])
+                  []
+              []
+          signature_item (stdlib/ephemeron.mli[97,4565+2]..[97,4565+45])
+            Psig_value
+            value_description "stats_alive" (stdlib/ephemeron.mli[97,4565+6]..[97,4565+17]) (stdlib/ephemeron.mli[97,4565+2]..[97,4565+45])
+              attribute "ocaml.doc"
+                [
+                  structure_item (stdlib/ephemeron.mli[98,4611+2]..[98,4611+75])
+                    Pstr_eval
+                    expression (stdlib/ephemeron.mli[98,4611+2]..[98,4611+75])
+                      Pexp_constant PConst_string(" same as {!Hashtbl.SeededS.stats} but only count the alive bindings ",(stdlib/ephemeron.mli[98,4611+2]..[98,4611+75]),None)
+                ]
+              core_type (stdlib/ephemeron.mli[97,4565+19]..[97,4565+45])
+                Ptyp_arrow
+                Nolabel
+                core_type (stdlib/ephemeron.mli[97,4565+19]..[97,4565+23])
+                  Ptyp_constr "t" (stdlib/ephemeron.mli[97,4565+22]..[97,4565+23])
+                  [
+                    core_type (stdlib/ephemeron.mli[97,4565+19]..[97,4565+21])
+                      Ptyp_var a
+                  ]
+                core_type (stdlib/ephemeron.mli[97,4565+27]..[97,4565+45])
+                  Ptyp_constr "Hashtbl.statistics" (stdlib/ephemeron.mli[97,4565+27]..[97,4565+45])
+                  []
+              []
+        ]
+  signature_item (stdlib/ephemeron.mli[103,4774+0]..[190,8329+3])
+    Psig_module "K1" (stdlib/ephemeron.mli[103,4774+7]..[103,4774+9])
+      attribute "ocaml.doc"
+        [
+          structure_item (stdlib/ephemeron.mli[191,8333+0]..[191,8333+31])
+            Pstr_eval
+            expression (stdlib/ephemeron.mli[191,8333+0]..[191,8333+31])
+              Pexp_constant PConst_string(" Ephemerons with one key. ",(stdlib/ephemeron.mli[191,8333+0]..[191,8333+31]),None)
+        ]
+    module_type (stdlib/ephemeron.mli[103,4774+12]..[190,8329+3])
+      Pmty_signature
+      [
+        signature_item (stdlib/ephemeron.mli[104,4790+2]..[104,4790+16])
+          Psig_type Rec
+          [
+            type_declaration "t" (stdlib/ephemeron.mli[104,4790+15]..[104,4790+16]) (stdlib/ephemeron.mli[104,4790+2]..[104,4790+16])
+              attribute "ocaml.doc"
+                [
+                  structure_item (stdlib/ephemeron.mli[104,4790+17]..[104,4790+49])
+                    Pstr_eval
+                    expression (stdlib/ephemeron.mli[104,4790+17]..[104,4790+49])
+                      Pexp_constant PConst_string(" an ephemeron with one key ",(stdlib/ephemeron.mli[104,4790+17]..[104,4790+49]),None)
+                ]
+              ptype_params =
+                [
+                  core_type (stdlib/ephemeron.mli[104,4790+8]..[104,4790+10])
+                    Ptyp_var k
+                  core_type (stdlib/ephemeron.mli[104,4790+11]..[104,4790+13])
+                    Ptyp_var d
+                ]
+              ptype_cstrs =
+                []
+              ptype_kind =
+                Ptype_abstract
+              ptype_private = Public
+              ptype_manifest =
+                None
+          ]
+        signature_item (stdlib/ephemeron.mli[106,4841+2]..[106,4841+31])
+          Psig_value
+          value_description "create" (stdlib/ephemeron.mli[106,4841+6]..[106,4841+12]) (stdlib/ephemeron.mli[106,4841+2]..[106,4841+31])
+            attribute "ocaml.doc"
+              [
+                structure_item (stdlib/ephemeron.mli[107,4873+2]..[108,4943+35])
+                  Pstr_eval
+                  expression (stdlib/ephemeron.mli[107,4873+2]..[108,4943+35])
+                    Pexp_constant PConst_string(" [Ephemeron.K1.create ()] creates an ephemeron with one key. The\n      data and the key are empty ",(stdlib/ephemeron.mli[107,4873+2]..[108,4943+35]),None)
+              ]
+            core_type (stdlib/ephemeron.mli[106,4841+14]..[106,4841+31])
+              Ptyp_arrow
+              Nolabel
+              core_type (stdlib/ephemeron.mli[106,4841+14]..[106,4841+18])
+                Ptyp_constr "unit" (stdlib/ephemeron.mli[106,4841+14]..[106,4841+18])
+                []
+              core_type (stdlib/ephemeron.mli[106,4841+22]..[106,4841+31])
+                Ptyp_constr "t" (stdlib/ephemeron.mli[106,4841+30]..[106,4841+31])
+                [
+                  core_type (stdlib/ephemeron.mli[106,4841+23]..[106,4841+25])
+                    Ptyp_var k
+                  core_type (stdlib/ephemeron.mli[106,4841+26]..[106,4841+28])
+                    Ptyp_var d
+                ]
+            []
+        signature_item (stdlib/ephemeron.mli[110,4980+2]..[110,4980+37])
+          Psig_value
+          value_description "get_key" (stdlib/ephemeron.mli[110,4980+6]..[110,4980+13]) (stdlib/ephemeron.mli[110,4980+2]..[110,4980+37])
+            attribute "ocaml.doc"
+              [
+                structure_item (stdlib/ephemeron.mli[111,5018+2]..[112,5089+62])
+                  Pstr_eval
+                  expression (stdlib/ephemeron.mli[111,5018+2]..[112,5089+62])
+                    Pexp_constant PConst_string(" [Ephemeron.K1.get_key eph] returns [None] if the key of [eph] is\n      empty, [Some x] (where [x] is the key) if it is full. ",(stdlib/ephemeron.mli[111,5018+2]..[112,5089+62]),None)
+              ]
+            core_type (stdlib/ephemeron.mli[110,4980+15]..[110,4980+37])
+              Ptyp_arrow
+              Nolabel
+              core_type (stdlib/ephemeron.mli[110,4980+15]..[110,4980+24])
+                Ptyp_constr "t" (stdlib/ephemeron.mli[110,4980+23]..[110,4980+24])
+                [
+                  core_type (stdlib/ephemeron.mli[110,4980+16]..[110,4980+18])
+                    Ptyp_var k
+                  core_type (stdlib/ephemeron.mli[110,4980+19]..[110,4980+21])
+                    Ptyp_var d
+                ]
+              core_type (stdlib/ephemeron.mli[110,4980+28]..[110,4980+37])
+                Ptyp_constr "option" (stdlib/ephemeron.mli[110,4980+31]..[110,4980+37])
+                [
+                  core_type (stdlib/ephemeron.mli[110,4980+28]..[110,4980+30])
+                    Ptyp_var k
+                ]
+            []
+        signature_item (stdlib/ephemeron.mli[114,5153+2]..[114,5153+42])
+          Psig_value
+          value_description "get_key_copy" (stdlib/ephemeron.mli[114,5153+6]..[114,5153+18]) (stdlib/ephemeron.mli[114,5153+2]..[114,5153+42])
+            attribute "ocaml.doc"
+              [
+                structure_item (stdlib/ephemeron.mli[115,5196+2]..[120,5479+4])
+                  Pstr_eval
+                  expression (stdlib/ephemeron.mli[115,5196+2]..[120,5479+4])
+                    Pexp_constant PConst_string(" [Ephemeron.K1.get_key_copy eph] returns [None] if the key of [eph] is\n      empty, [Some x] (where [x] is a (shallow) copy of the key) if\n      it is full. This function has the same GC friendliness as {!Weak.get_copy}\n\n      If the element is a custom block it is not copied.\n  ",(stdlib/ephemeron.mli[115,5196+2]..[120,5479+4]),None)
+              ]
+            core_type (stdlib/ephemeron.mli[114,5153+20]..[114,5153+42])
+              Ptyp_arrow
+              Nolabel
+              core_type (stdlib/ephemeron.mli[114,5153+20]..[114,5153+29])
+                Ptyp_constr "t" (stdlib/ephemeron.mli[114,5153+28]..[114,5153+29])
+                [
+                  core_type (stdlib/ephemeron.mli[114,5153+21]..[114,5153+23])
+                    Ptyp_var k
+                  core_type (stdlib/ephemeron.mli[114,5153+24]..[114,5153+26])
+                    Ptyp_var d
+                ]
+              core_type (stdlib/ephemeron.mli[114,5153+33]..[114,5153+42])
+                Ptyp_constr "option" (stdlib/ephemeron.mli[114,5153+36]..[114,5153+42])
+                [
+                  core_type (stdlib/ephemeron.mli[114,5153+33]..[114,5153+35])
+                    Ptyp_var k
+                ]
+            []
+        signature_item (stdlib/ephemeron.mli[122,5485+2]..[122,5485+38])
+          Psig_value
+          value_description "set_key" (stdlib/ephemeron.mli[122,5485+6]..[122,5485+13]) (stdlib/ephemeron.mli[122,5485+2]..[122,5485+38])
+            attribute "ocaml.doc"
+              [
+                structure_item (stdlib/ephemeron.mli[123,5524+2]..[125,5615+4])
+                  Pstr_eval
+                  expression (stdlib/ephemeron.mli[123,5524+2]..[125,5615+4])
+                    Pexp_constant PConst_string(" [Ephemeron.K1.set_key eph el] sets the key of [eph] to be a\n      (full) key to [el]\n  ",(stdlib/ephemeron.mli[123,5524+2]..[125,5615+4]),None)
+              ]
+            core_type (stdlib/ephemeron.mli[122,5485+15]..[122,5485+38])
+              Ptyp_arrow
+              Nolabel
+              core_type (stdlib/ephemeron.mli[122,5485+15]..[122,5485+24])
+                Ptyp_constr "t" (stdlib/ephemeron.mli[122,5485+23]..[122,5485+24])
+                [
+                  core_type (stdlib/ephemeron.mli[122,5485+16]..[122,5485+18])
+                    Ptyp_var k
+                  core_type (stdlib/ephemeron.mli[122,5485+19]..[122,5485+21])
+                    Ptyp_var d
+                ]
+              core_type (stdlib/ephemeron.mli[122,5485+28]..[122,5485+38])
+                Ptyp_arrow
+                Nolabel
+                core_type (stdlib/ephemeron.mli[122,5485+28]..[122,5485+30])
+                  Ptyp_var k
+                core_type (stdlib/ephemeron.mli[122,5485+34]..[122,5485+38])
+                  Ptyp_constr "unit" (stdlib/ephemeron.mli[122,5485+34]..[122,5485+38])
+                  []
+            []
+        signature_item (stdlib/ephemeron.mli[127,5621+2]..[127,5621+34])
+          Psig_value
+          value_description "unset_key" (stdlib/ephemeron.mli[127,5621+6]..[127,5621+15]) (stdlib/ephemeron.mli[127,5621+2]..[127,5621+34])
+            attribute "ocaml.doc"
+              [
+                structure_item (stdlib/ephemeron.mli[128,5656+2]..[130,5792+47])
+                  Pstr_eval
+                  expression (stdlib/ephemeron.mli[128,5656+2]..[130,5792+47])
+                    Pexp_constant PConst_string(" [Ephemeron.K1.unset_key eph el] sets the key of [eph] to be an\n      empty key. Since there is only one key, the ephemeron starts\n      behaving like a reference on the data. ",(stdlib/ephemeron.mli[128,5656+2]..[130,5792+47]),None)
+              ]
+            core_type (stdlib/ephemeron.mli[127,5621+17]..[127,5621+34])
+              Ptyp_arrow
+              Nolabel
+              core_type (stdlib/ephemeron.mli[127,5621+17]..[127,5621+26])
+                Ptyp_constr "t" (stdlib/ephemeron.mli[127,5621+25]..[127,5621+26])
+                [
+                  core_type (stdlib/ephemeron.mli[127,5621+18]..[127,5621+20])
+                    Ptyp_var k
+                  core_type (stdlib/ephemeron.mli[127,5621+21]..[127,5621+23])
+                    Ptyp_var d
+                ]
+              core_type (stdlib/ephemeron.mli[127,5621+30]..[127,5621+34])
+                Ptyp_constr "unit" (stdlib/ephemeron.mli[127,5621+30]..[127,5621+34])
+                []
+            []
+        signature_item (stdlib/ephemeron.mli[132,5841+2]..[132,5841+34])
+          Psig_value
+          value_description "check_key" (stdlib/ephemeron.mli[132,5841+6]..[132,5841+15]) (stdlib/ephemeron.mli[132,5841+2]..[132,5841+34])
+            attribute "ocaml.doc"
+              [
+                structure_item (stdlib/ephemeron.mli[133,5876+2]..[137,6125+4])
+                  Pstr_eval
+                  expression (stdlib/ephemeron.mli[133,5876+2]..[137,6125+4])
+                    Pexp_constant PConst_string(" [Ephemeron.K1.check_key eph] returns [true] if the key of the [eph]\n      is full, [false] if it is empty. Note that even if\n      [Ephemeron.K1.check_key eph] returns [true], a subsequent\n      {!Ephemeron.K1.get_key}[eph] can return [None].\n  ",(stdlib/ephemeron.mli[133,5876+2]..[137,6125+4]),None)
+              ]
+            core_type (stdlib/ephemeron.mli[132,5841+17]..[132,5841+34])
+              Ptyp_arrow
+              Nolabel
+              core_type (stdlib/ephemeron.mli[132,5841+17]..[132,5841+26])
+                Ptyp_constr "t" (stdlib/ephemeron.mli[132,5841+25]..[132,5841+26])
+                [
+                  core_type (stdlib/ephemeron.mli[132,5841+18]..[132,5841+20])
+                    Ptyp_var k
+                  core_type (stdlib/ephemeron.mli[132,5841+21]..[132,5841+23])
+                    Ptyp_var d
+                ]
+              core_type (stdlib/ephemeron.mli[132,5841+30]..[132,5841+34])
+                Ptyp_constr "bool" (stdlib/ephemeron.mli[132,5841+30]..[132,5841+34])
+                []
+            []
+        signature_item (stdlib/ephemeron.mli[140,6132+2]..[140,6132+45])
+          Psig_value
+          value_description "blit_key" (stdlib/ephemeron.mli[140,6132+6]..[140,6132+14]) (stdlib/ephemeron.mli[140,6132+2]..[140,6132+45])
+            attribute "ocaml.doc"
+              [
+                structure_item (stdlib/ephemeron.mli[141,6178+2]..[145,6453+40])
+                  Pstr_eval
+                  expression (stdlib/ephemeron.mli[141,6178+2]..[145,6453+40])
+                    Pexp_constant PConst_string(" [Ephemeron.K1.blit_key eph1 eph2] sets the key of [eph2] with\n      the key of [eph1]. Contrary to using {!Ephemeron.K1.get_key}\n      followed by {!Ephemeron.K1.set_key} or {!Ephemeron.K1.unset_key}\n      this function does not prevent the incremental GC from erasing\n      the value in its current cycle. ",(stdlib/ephemeron.mli[141,6178+2]..[145,6453+40]),None)
+              ]
+            core_type (stdlib/ephemeron.mli[140,6132+17]..[140,6132+45])
+              Ptyp_arrow
+              Nolabel
+              core_type (stdlib/ephemeron.mli[140,6132+17]..[140,6132+25])
+                Ptyp_constr "t" (stdlib/ephemeron.mli[140,6132+24]..[140,6132+25])
+                [
+                  core_type (stdlib/ephemeron.mli[140,6132+18]..[140,6132+20])
+                    Ptyp_var k
+                  core_type (stdlib/ephemeron.mli[140,6132+21]..[140,6132+22])
+                    Ptyp_any
+                ]
+              core_type (stdlib/ephemeron.mli[140,6132+29]..[140,6132+45])
+                Ptyp_arrow
+                Nolabel
+                core_type (stdlib/ephemeron.mli[140,6132+29]..[140,6132+37])
+                  Ptyp_constr "t" (stdlib/ephemeron.mli[140,6132+36]..[140,6132+37])
+                  [
+                    core_type (stdlib/ephemeron.mli[140,6132+30]..[140,6132+32])
+                      Ptyp_var k
+                    core_type (stdlib/ephemeron.mli[140,6132+33]..[140,6132+34])
+                      Ptyp_any
+                  ]
+                core_type (stdlib/ephemeron.mli[140,6132+41]..[140,6132+45])
+                  Ptyp_constr "unit" (stdlib/ephemeron.mli[140,6132+41]..[140,6132+45])
+                  []
+            []
+        signature_item (stdlib/ephemeron.mli[147,6495+2]..[147,6495+38])
+          Psig_value
+          value_description "get_data" (stdlib/ephemeron.mli[147,6495+6]..[147,6495+14]) (stdlib/ephemeron.mli[147,6495+2]..[147,6495+38])
+            attribute "ocaml.doc"
+              [
+                structure_item (stdlib/ephemeron.mli[148,6534+2]..[149,6607+63])
+                  Pstr_eval
+                  expression (stdlib/ephemeron.mli[148,6534+2]..[149,6607+63])
+                    Pexp_constant PConst_string(" [Ephemeron.K1.get_data eph] returns [None] if the data of [eph] is\n      empty, [Some x] (where [x] is the data) if it is full. ",(stdlib/ephemeron.mli[148,6534+2]..[149,6607+63]),None)
+              ]
+            core_type (stdlib/ephemeron.mli[147,6495+16]..[147,6495+38])
+              Ptyp_arrow
+              Nolabel
+              core_type (stdlib/ephemeron.mli[147,6495+16]..[147,6495+25])
+                Ptyp_constr "t" (stdlib/ephemeron.mli[147,6495+24]..[147,6495+25])
+                [
+                  core_type (stdlib/ephemeron.mli[147,6495+17]..[147,6495+19])
+                    Ptyp_var k
+                  core_type (stdlib/ephemeron.mli[147,6495+20]..[147,6495+22])
+                    Ptyp_var d
+                ]
+              core_type (stdlib/ephemeron.mli[147,6495+29]..[147,6495+38])
+                Ptyp_constr "option" (stdlib/ephemeron.mli[147,6495+32]..[147,6495+38])
+                [
+                  core_type (stdlib/ephemeron.mli[147,6495+29]..[147,6495+31])
+                    Ptyp_var d
+                ]
+            []
+        signature_item (stdlib/ephemeron.mli[151,6672+2]..[151,6672+43])
+          Psig_value
+          value_description "get_data_copy" (stdlib/ephemeron.mli[151,6672+6]..[151,6672+19]) (stdlib/ephemeron.mli[151,6672+2]..[151,6672+43])
+            attribute "ocaml.doc"
+              [
+                structure_item (stdlib/ephemeron.mli[152,6716+2]..[157,7002+4])
+                  Pstr_eval
+                  expression (stdlib/ephemeron.mli[152,6716+2]..[157,7002+4])
+                    Pexp_constant PConst_string(" [Ephemeron.K1.get_data_copy eph] returns [None] if the data of [eph] is\n      empty, [Some x] (where [x] is a (shallow) copy of the data) if\n      it is full. This function has the same GC friendliness as {!Weak.get_copy}\n\n      If the element is a custom block it is not copied.\n  ",(stdlib/ephemeron.mli[152,6716+2]..[157,7002+4]),None)
+              ]
+            core_type (stdlib/ephemeron.mli[151,6672+21]..[151,6672+43])
+              Ptyp_arrow
+              Nolabel
+              core_type (stdlib/ephemeron.mli[151,6672+21]..[151,6672+30])
+                Ptyp_constr "t" (stdlib/ephemeron.mli[151,6672+29]..[151,6672+30])
+                [
+                  core_type (stdlib/ephemeron.mli[151,6672+22]..[151,6672+24])
+                    Ptyp_var k
+                  core_type (stdlib/ephemeron.mli[151,6672+25]..[151,6672+27])
+                    Ptyp_var d
+                ]
+              core_type (stdlib/ephemeron.mli[151,6672+34]..[151,6672+43])
+                Ptyp_constr "option" (stdlib/ephemeron.mli[151,6672+37]..[151,6672+43])
+                [
+                  core_type (stdlib/ephemeron.mli[151,6672+34]..[151,6672+36])
+                    Ptyp_var d
+                ]
+            []
+        signature_item (stdlib/ephemeron.mli[159,7008+2]..[159,7008+39])
+          Psig_value
+          value_description "set_data" (stdlib/ephemeron.mli[159,7008+6]..[159,7008+14]) (stdlib/ephemeron.mli[159,7008+2]..[159,7008+39])
+            attribute "ocaml.doc"
+              [
+                structure_item (stdlib/ephemeron.mli[160,7048+2]..[162,7142+4])
+                  Pstr_eval
+                  expression (stdlib/ephemeron.mli[160,7048+2]..[162,7142+4])
+                    Pexp_constant PConst_string(" [Ephemeron.K1.set_data eph el] sets the data of [eph] to be a\n      (full) data to [el]\n  ",(stdlib/ephemeron.mli[160,7048+2]..[162,7142+4]),None)
+              ]
+            core_type (stdlib/ephemeron.mli[159,7008+16]..[159,7008+39])
+              Ptyp_arrow
+              Nolabel
+              core_type (stdlib/ephemeron.mli[159,7008+16]..[159,7008+25])
+                Ptyp_constr "t" (stdlib/ephemeron.mli[159,7008+24]..[159,7008+25])
+                [
+                  core_type (stdlib/ephemeron.mli[159,7008+17]..[159,7008+19])
+                    Ptyp_var k
+                  core_type (stdlib/ephemeron.mli[159,7008+20]..[159,7008+22])
+                    Ptyp_var d
+                ]
+              core_type (stdlib/ephemeron.mli[159,7008+29]..[159,7008+39])
+                Ptyp_arrow
+                Nolabel
+                core_type (stdlib/ephemeron.mli[159,7008+29]..[159,7008+31])
+                  Ptyp_var d
+                core_type (stdlib/ephemeron.mli[159,7008+35]..[159,7008+39])
+                  Ptyp_constr "unit" (stdlib/ephemeron.mli[159,7008+35]..[159,7008+39])
+                  []
+            []
+        signature_item (stdlib/ephemeron.mli[164,7148+2]..[164,7148+35])
+          Psig_value
+          value_description "unset_data" (stdlib/ephemeron.mli[164,7148+6]..[164,7148+16]) (stdlib/ephemeron.mli[164,7148+2]..[164,7148+35])
+            attribute "ocaml.doc"
+              [
+                structure_item (stdlib/ephemeron.mli[165,7184+2]..[167,7322+4])
+                  Pstr_eval
+                  expression (stdlib/ephemeron.mli[165,7184+2]..[167,7322+4])
+                    Pexp_constant PConst_string(" [Ephemeron.K1.unset_data eph el] sets the key of [eph] to be an\n      empty key. The ephemeron starts behaving like a weak pointer.\n  ",(stdlib/ephemeron.mli[165,7184+2]..[167,7322+4]),None)
+              ]
+            core_type (stdlib/ephemeron.mli[164,7148+18]..[164,7148+35])
+              Ptyp_arrow
+              Nolabel
+              core_type (stdlib/ephemeron.mli[164,7148+18]..[164,7148+27])
+                Ptyp_constr "t" (stdlib/ephemeron.mli[164,7148+26]..[164,7148+27])
+                [
+                  core_type (stdlib/ephemeron.mli[164,7148+19]..[164,7148+21])
+                    Ptyp_var k
+                  core_type (stdlib/ephemeron.mli[164,7148+22]..[164,7148+24])
+                    Ptyp_var d
+                ]
+              core_type (stdlib/ephemeron.mli[164,7148+31]..[164,7148+35])
+                Ptyp_constr "unit" (stdlib/ephemeron.mli[164,7148+31]..[164,7148+35])
+                []
+            []
+        signature_item (stdlib/ephemeron.mli[169,7328+2]..[169,7328+35])
+          Psig_value
+          value_description "check_data" (stdlib/ephemeron.mli[169,7328+6]..[169,7328+16]) (stdlib/ephemeron.mli[169,7328+2]..[169,7328+35])
+            attribute "ocaml.doc"
+              [
+                structure_item (stdlib/ephemeron.mli[170,7364+2]..[174,7617+4])
+                  Pstr_eval
+                  expression (stdlib/ephemeron.mli[170,7364+2]..[174,7617+4])
+                    Pexp_constant PConst_string(" [Ephemeron.K1.check_data eph] returns [true] if the data of the [eph]\n      is full, [false] if it is empty. Note that even if\n      [Ephemeron.K1.check_data eph] returns [true], a subsequent\n      {!Ephemeron.K1.get_data}[eph] can return [None].\n  ",(stdlib/ephemeron.mli[170,7364+2]..[174,7617+4]),None)
+              ]
+            core_type (stdlib/ephemeron.mli[169,7328+18]..[169,7328+35])
+              Ptyp_arrow
+              Nolabel
+              core_type (stdlib/ephemeron.mli[169,7328+18]..[169,7328+27])
+                Ptyp_constr "t" (stdlib/ephemeron.mli[169,7328+26]..[169,7328+27])
+                [
+                  core_type (stdlib/ephemeron.mli[169,7328+19]..[169,7328+21])
+                    Ptyp_var k
+                  core_type (stdlib/ephemeron.mli[169,7328+22]..[169,7328+24])
+                    Ptyp_var d
+                ]
+              core_type (stdlib/ephemeron.mli[169,7328+31]..[169,7328+35])
+                Ptyp_constr "bool" (stdlib/ephemeron.mli[169,7328+31]..[169,7328+35])
+                []
+            []
+        signature_item (stdlib/ephemeron.mli[176,7623+2]..[176,7623+46])
+          Psig_value
+          value_description "blit_data" (stdlib/ephemeron.mli[176,7623+6]..[176,7623+15]) (stdlib/ephemeron.mli[176,7623+2]..[176,7623+46])
+            attribute "ocaml.doc"
+              [
+                structure_item (stdlib/ephemeron.mli[177,7670+2]..[181,7951+40])
+                  Pstr_eval
+                  expression (stdlib/ephemeron.mli[177,7670+2]..[181,7951+40])
+                    Pexp_constant PConst_string(" [Ephemeron.K1.blit_data eph1 eph2] sets the data of [eph2] with\n      the data of [eph1]. Contrary to using {!Ephemeron.K1.get_data}\n      followed by {!Ephemeron.K1.set_data} or {!Ephemeron.K1.unset_data}\n      this function does not prevent the incremental GC from erasing\n      the value in its current cycle. ",(stdlib/ephemeron.mli[177,7670+2]..[181,7951+40]),None)
+              ]
+            core_type (stdlib/ephemeron.mli[176,7623+18]..[176,7623+46])
+              Ptyp_arrow
+              Nolabel
+              core_type (stdlib/ephemeron.mli[176,7623+18]..[176,7623+26])
+                Ptyp_constr "t" (stdlib/ephemeron.mli[176,7623+25]..[176,7623+26])
+                [
+                  core_type (stdlib/ephemeron.mli[176,7623+19]..[176,7623+20])
+                    Ptyp_any
+                  core_type (stdlib/ephemeron.mli[176,7623+21]..[176,7623+23])
+                    Ptyp_var d
+                ]
+              core_type (stdlib/ephemeron.mli[176,7623+30]..[176,7623+46])
+                Ptyp_arrow
+                Nolabel
+                core_type (stdlib/ephemeron.mli[176,7623+30]..[176,7623+38])
+                  Ptyp_constr "t" (stdlib/ephemeron.mli[176,7623+37]..[176,7623+38])
+                  [
+                    core_type (stdlib/ephemeron.mli[176,7623+31]..[176,7623+32])
+                      Ptyp_any
+                    core_type (stdlib/ephemeron.mli[176,7623+33]..[176,7623+35])
+                      Ptyp_var d
+                  ]
+                core_type (stdlib/ephemeron.mli[176,7623+42]..[176,7623+46])
+                  Ptyp_constr "unit" (stdlib/ephemeron.mli[176,7623+42]..[176,7623+46])
+                  []
+            []
+        signature_item (stdlib/ephemeron.mli[183,7993+2]..[183,7993+60])
+          Psig_module "Make" (stdlib/ephemeron.mli[183,7993+9]..[183,7993+13])
+            attribute "ocaml.doc"
+              [
+                structure_item (stdlib/ephemeron.mli[184,8054+2]..[184,8054+64])
+                  Pstr_eval
+                  expression (stdlib/ephemeron.mli[184,8054+2]..[184,8054+64])
+                    Pexp_constant PConst_string(" Functor building an implementation of a weak hash table ",(stdlib/ephemeron.mli[184,8054+2]..[184,8054+64]),None)
+              ]
+          module_type (stdlib/ephemeron.mli[183,7993+14]..[183,7993+60])
+            Pmty_functor "H" (stdlib/ephemeron.mli[183,7993+15]..[183,7993+16])
+            module_type (stdlib/ephemeron.mli[183,7993+17]..[183,7993+35])
+              Pmty_ident "Hashtbl.HashedType" (stdlib/ephemeron.mli[183,7993+17]..[183,7993+35])
+            module_type (stdlib/ephemeron.mli[183,7993+39]..[183,7993+60])
+              Pmty_with
+              module_type (stdlib/ephemeron.mli[183,7993+39]..[183,7993+40])
+                Pmty_ident "S" (stdlib/ephemeron.mli[183,7993+39]..[183,7993+40])
+              [
+                Pwith_type "key" (stdlib/ephemeron.mli[183,7993+51]..[183,7993+54])
+                  type_declaration "key" (stdlib/ephemeron.mli[183,7993+51]..[183,7993+54]) (stdlib/ephemeron.mli[183,7993+46]..[183,7993+60])
+                    ptype_params =
+                      []
+                    ptype_cstrs =
+                      []
+                    ptype_kind =
+                      Ptype_abstract
+                    ptype_private = Public
+                    ptype_manifest =
+                      Some
+                        core_type (stdlib/ephemeron.mli[183,7993+57]..[183,7993+60])
+                          Ptyp_constr "H.t" (stdlib/ephemeron.mli[183,7993+57]..[183,7993+60])
+                          []
+              ]
+        signature_item (stdlib/ephemeron.mli[186,8120+2]..[186,8120+78])
+          Psig_module "MakeSeeded" (stdlib/ephemeron.mli[186,8120+9]..[186,8120+19])
+            attribute "ocaml.doc"
+              [
+                structure_item (stdlib/ephemeron.mli[187,8199+2]..[188,8262+65])
+                  Pstr_eval
+                  expression (stdlib/ephemeron.mli[187,8199+2]..[188,8262+65])
+                    Pexp_constant PConst_string(" Functor building an implementation of a weak hash table.\n      The seed is similar to the one of {!Hashtbl.MakeSeeded}. ",(stdlib/ephemeron.mli[187,8199+2]..[188,8262+65]),None)
+              ]
+          module_type (stdlib/ephemeron.mli[186,8120+20]..[186,8120+78])
+            Pmty_functor "H" (stdlib/ephemeron.mli[186,8120+21]..[186,8120+22])
+            module_type (stdlib/ephemeron.mli[186,8120+23]..[186,8120+47])
+              Pmty_ident "Hashtbl.SeededHashedType" (stdlib/ephemeron.mli[186,8120+23]..[186,8120+47])
+            module_type (stdlib/ephemeron.mli[186,8120+51]..[186,8120+78])
+              Pmty_with
+              module_type (stdlib/ephemeron.mli[186,8120+51]..[186,8120+58])
+                Pmty_ident "SeededS" (stdlib/ephemeron.mli[186,8120+51]..[186,8120+58])
+              [
+                Pwith_type "key" (stdlib/ephemeron.mli[186,8120+69]..[186,8120+72])
+                  type_declaration "key" (stdlib/ephemeron.mli[186,8120+69]..[186,8120+72]) (stdlib/ephemeron.mli[186,8120+64]..[186,8120+78])
+                    ptype_params =
+                      []
+                    ptype_cstrs =
+                      []
+                    ptype_kind =
+                      Ptype_abstract
+                    ptype_private = Public
+                    ptype_manifest =
+                      Some
+                        core_type (stdlib/ephemeron.mli[186,8120+75]..[186,8120+78])
+                          Ptyp_constr "H.t" (stdlib/ephemeron.mli[186,8120+75]..[186,8120+78])
+                          []
+              ]
+      ]
+  signature_item (stdlib/ephemeron.mli[193,8366+0]..[269,10678+3])
+    Psig_module "K2" (stdlib/ephemeron.mli[193,8366+7]..[193,8366+9])
+      attribute "ocaml.doc"
+        [
+          structure_item (stdlib/ephemeron.mli[270,10682+0]..[270,10682+33])
+            Pstr_eval
+            expression (stdlib/ephemeron.mli[270,10682+0]..[270,10682+33])
+              Pexp_constant PConst_string(" Emphemerons with two keys. ",(stdlib/ephemeron.mli[270,10682+0]..[270,10682+33]),None)
+        ]
+    module_type (stdlib/ephemeron.mli[193,8366+12]..[269,10678+3])
+      Pmty_signature
+      [
+        signature_item (stdlib/ephemeron.mli[194,8382+2]..[194,8382+21])
+          Psig_type Rec
+          [
+            type_declaration "t" (stdlib/ephemeron.mli[194,8382+20]..[194,8382+21]) (stdlib/ephemeron.mli[194,8382+2]..[194,8382+21])
+              attribute "ocaml.doc"
+                [
+                  structure_item (stdlib/ephemeron.mli[194,8382+22]..[194,8382+55])
+                    Pstr_eval
+                    expression (stdlib/ephemeron.mli[194,8382+22]..[194,8382+55])
+                      Pexp_constant PConst_string(" an ephemeron with two keys ",(stdlib/ephemeron.mli[194,8382+22]..[194,8382+55]),None)
+                ]
+              ptype_params =
+                [
+                  core_type (stdlib/ephemeron.mli[194,8382+8]..[194,8382+11])
+                    Ptyp_var k1
+                  core_type (stdlib/ephemeron.mli[194,8382+12]..[194,8382+15])
+                    Ptyp_var k2
+                  core_type (stdlib/ephemeron.mli[194,8382+16]..[194,8382+18])
+                    Ptyp_var d
+                ]
+              ptype_cstrs =
+                []
+              ptype_kind =
+                Ptype_abstract
+              ptype_private = Public
+              ptype_manifest =
+                None
+          ]
+        signature_item (stdlib/ephemeron.mli[196,8439+2]..[196,8439+36])
+          Psig_value
+          value_description "create" (stdlib/ephemeron.mli[196,8439+6]..[196,8439+12]) (stdlib/ephemeron.mli[196,8439+2]..[196,8439+36])
+            attribute "ocaml.doc"
+              [
+                structure_item (stdlib/ephemeron.mli[197,8476+2]..[197,8476+39])
+                  Pstr_eval
+                  expression (stdlib/ephemeron.mli[197,8476+2]..[197,8476+39])
+                    Pexp_constant PConst_string(" Same as {!Ephemeron.K1.create} ",(stdlib/ephemeron.mli[197,8476+2]..[197,8476+39]),None)
+              ]
+            core_type (stdlib/ephemeron.mli[196,8439+14]..[196,8439+36])
+              Ptyp_arrow
+              Nolabel
+              core_type (stdlib/ephemeron.mli[196,8439+14]..[196,8439+18])
+                Ptyp_constr "unit" (stdlib/ephemeron.mli[196,8439+14]..[196,8439+18])
+                []
+              core_type (stdlib/ephemeron.mli[196,8439+22]..[196,8439+36])
+                Ptyp_constr "t" (stdlib/ephemeron.mli[196,8439+35]..[196,8439+36])
+                [
+                  core_type (stdlib/ephemeron.mli[196,8439+23]..[196,8439+26])
+                    Ptyp_var k1
+                  core_type (stdlib/ephemeron.mli[196,8439+27]..[196,8439+30])
+                    Ptyp_var k2
+                  core_type (stdlib/ephemeron.mli[196,8439+31]..[196,8439+33])
+                    Ptyp_var d
+                ]
+            []
+        signature_item (stdlib/ephemeron.mli[199,8517+2]..[199,8517+44])
+          Psig_value
+          value_description "get_key1" (stdlib/ephemeron.mli[199,8517+6]..[199,8517+14]) (stdlib/ephemeron.mli[199,8517+2]..[199,8517+44])
+            attribute "ocaml.doc"
+              [
+                structure_item (stdlib/ephemeron.mli[200,8562+2]..[200,8562+40])
+                  Pstr_eval
+                  expression (stdlib/ephemeron.mli[200,8562+2]..[200,8562+40])
+                    Pexp_constant PConst_string(" Same as {!Ephemeron.K1.get_key} ",(stdlib/ephemeron.mli[200,8562+2]..[200,8562+40]),None)
+              ]
+            core_type (stdlib/ephemeron.mli[199,8517+16]..[199,8517+44])
+              Ptyp_arrow
+              Nolabel
+              core_type (stdlib/ephemeron.mli[199,8517+16]..[199,8517+30])
+                Ptyp_constr "t" (stdlib/ephemeron.mli[199,8517+29]..[199,8517+30])
+                [
+                  core_type (stdlib/ephemeron.mli[199,8517+17]..[199,8517+20])
+                    Ptyp_var k1
+                  core_type (stdlib/ephemeron.mli[199,8517+21]..[199,8517+24])
+                    Ptyp_var k2
+                  core_type (stdlib/ephemeron.mli[199,8517+25]..[199,8517+27])
+                    Ptyp_var d
+                ]
+              core_type (stdlib/ephemeron.mli[199,8517+34]..[199,8517+44])
+                Ptyp_constr "option" (stdlib/ephemeron.mli[199,8517+38]..[199,8517+44])
+                [
+                  core_type (stdlib/ephemeron.mli[199,8517+34]..[199,8517+37])
+                    Ptyp_var k1
+                ]
+            []
+        signature_item (stdlib/ephemeron.mli[202,8604+2]..[202,8604+49])
+          Psig_value
+          value_description "get_key1_copy" (stdlib/ephemeron.mli[202,8604+6]..[202,8604+19]) (stdlib/ephemeron.mli[202,8604+2]..[202,8604+49])
+            attribute "ocaml.doc"
+              [
+                structure_item (stdlib/ephemeron.mli[203,8654+2]..[203,8654+45])
+                  Pstr_eval
+                  expression (stdlib/ephemeron.mli[203,8654+2]..[203,8654+45])
+                    Pexp_constant PConst_string(" Same as {!Ephemeron.K1.get_key_copy} ",(stdlib/ephemeron.mli[203,8654+2]..[203,8654+45]),None)
+              ]
+            core_type (stdlib/ephemeron.mli[202,8604+21]..[202,8604+49])
+              Ptyp_arrow
+              Nolabel
+              core_type (stdlib/ephemeron.mli[202,8604+21]..[202,8604+35])
+                Ptyp_constr "t" (stdlib/ephemeron.mli[202,8604+34]..[202,8604+35])
+                [
+                  core_type (stdlib/ephemeron.mli[202,8604+22]..[202,8604+25])
+                    Ptyp_var k1
+                  core_type (stdlib/ephemeron.mli[202,8604+26]..[202,8604+29])
+                    Ptyp_var k2
+                  core_type (stdlib/ephemeron.mli[202,8604+30]..[202,8604+32])
+                    Ptyp_var d
+                ]
+              core_type (stdlib/ephemeron.mli[202,8604+39]..[202,8604+49])
+                Ptyp_constr "option" (stdlib/ephemeron.mli[202,8604+43]..[202,8604+49])
+                [
+                  core_type (stdlib/ephemeron.mli[202,8604+39]..[202,8604+42])
+                    Ptyp_var k1
+                ]
+            []
+        signature_item (stdlib/ephemeron.mli[205,8701+2]..[205,8701+45])
+          Psig_value
+          value_description "set_key1" (stdlib/ephemeron.mli[205,8701+6]..[205,8701+14]) (stdlib/ephemeron.mli[205,8701+2]..[205,8701+45])
+            attribute "ocaml.doc"
+              [
+                structure_item (stdlib/ephemeron.mli[206,8747+2]..[206,8747+40])
+                  Pstr_eval
+                  expression (stdlib/ephemeron.mli[206,8747+2]..[206,8747+40])
+                    Pexp_constant PConst_string(" Same as {!Ephemeron.K1.set_key} ",(stdlib/ephemeron.mli[206,8747+2]..[206,8747+40]),None)
+              ]
+            core_type (stdlib/ephemeron.mli[205,8701+16]..[205,8701+45])
+              Ptyp_arrow
+              Nolabel
+              core_type (stdlib/ephemeron.mli[205,8701+16]..[205,8701+30])
+                Ptyp_constr "t" (stdlib/ephemeron.mli[205,8701+29]..[205,8701+30])
+                [
+                  core_type (stdlib/ephemeron.mli[205,8701+17]..[205,8701+20])
+                    Ptyp_var k1
+                  core_type (stdlib/ephemeron.mli[205,8701+21]..[205,8701+24])
+                    Ptyp_var k2
+                  core_type (stdlib/ephemeron.mli[205,8701+25]..[205,8701+27])
+                    Ptyp_var d
+                ]
+              core_type (stdlib/ephemeron.mli[205,8701+34]..[205,8701+45])
+                Ptyp_arrow
+                Nolabel
+                core_type (stdlib/ephemeron.mli[205,8701+34]..[205,8701+37])
+                  Ptyp_var k1
+                core_type (stdlib/ephemeron.mli[205,8701+41]..[205,8701+45])
+                  Ptyp_constr "unit" (stdlib/ephemeron.mli[205,8701+41]..[205,8701+45])
+                  []
+            []
+        signature_item (stdlib/ephemeron.mli[208,8789+2]..[208,8789+40])
+          Psig_value
+          value_description "unset_key1" (stdlib/ephemeron.mli[208,8789+6]..[208,8789+16]) (stdlib/ephemeron.mli[208,8789+2]..[208,8789+40])
+            attribute "ocaml.doc"
+              [
+                structure_item (stdlib/ephemeron.mli[209,8830+2]..[209,8830+42])
+                  Pstr_eval
+                  expression (stdlib/ephemeron.mli[209,8830+2]..[209,8830+42])
+                    Pexp_constant PConst_string(" Same as {!Ephemeron.K1.unset_key} ",(stdlib/ephemeron.mli[209,8830+2]..[209,8830+42]),None)
+              ]
+            core_type (stdlib/ephemeron.mli[208,8789+18]..[208,8789+40])
+              Ptyp_arrow
+              Nolabel
+              core_type (stdlib/ephemeron.mli[208,8789+18]..[208,8789+32])
+                Ptyp_constr "t" (stdlib/ephemeron.mli[208,8789+31]..[208,8789+32])
+                [
+                  core_type (stdlib/ephemeron.mli[208,8789+19]..[208,8789+22])
+                    Ptyp_var k1
+                  core_type (stdlib/ephemeron.mli[208,8789+23]..[208,8789+26])
+                    Ptyp_var k2
+                  core_type (stdlib/ephemeron.mli[208,8789+27]..[208,8789+29])
+                    Ptyp_var d
+                ]
+              core_type (stdlib/ephemeron.mli[208,8789+36]..[208,8789+40])
+                Ptyp_constr "unit" (stdlib/ephemeron.mli[208,8789+36]..[208,8789+40])
+                []
+            []
+        signature_item (stdlib/ephemeron.mli[211,8874+2]..[211,8874+41])
+          Psig_value
+          value_description "check_key1" (stdlib/ephemeron.mli[211,8874+6]..[211,8874+16]) (stdlib/ephemeron.mli[211,8874+2]..[211,8874+41])
+            attribute "ocaml.doc"
+              [
+                structure_item (stdlib/ephemeron.mli[212,8916+2]..[212,8916+42])
+                  Pstr_eval
+                  expression (stdlib/ephemeron.mli[212,8916+2]..[212,8916+42])
+                    Pexp_constant PConst_string(" Same as {!Ephemeron.K1.check_key} ",(stdlib/ephemeron.mli[212,8916+2]..[212,8916+42]),None)
+              ]
+            core_type (stdlib/ephemeron.mli[211,8874+18]..[211,8874+41])
+              Ptyp_arrow
+              Nolabel
+              core_type (stdlib/ephemeron.mli[211,8874+18]..[211,8874+32])
+                Ptyp_constr "t" (stdlib/ephemeron.mli[211,8874+31]..[211,8874+32])
+                [
+                  core_type (stdlib/ephemeron.mli[211,8874+19]..[211,8874+22])
+                    Ptyp_var k1
+                  core_type (stdlib/ephemeron.mli[211,8874+23]..[211,8874+26])
+                    Ptyp_var k2
+                  core_type (stdlib/ephemeron.mli[211,8874+27]..[211,8874+29])
+                    Ptyp_var d
+                ]
+              core_type (stdlib/ephemeron.mli[211,8874+37]..[211,8874+41])
+                Ptyp_constr "bool" (stdlib/ephemeron.mli[211,8874+37]..[211,8874+41])
+                []
+            []
+        signature_item (stdlib/ephemeron.mli[214,8960+2]..[214,8960+44])
+          Psig_value
+          value_description "get_key2" (stdlib/ephemeron.mli[214,8960+6]..[214,8960+14]) (stdlib/ephemeron.mli[214,8960+2]..[214,8960+44])
+            attribute "ocaml.doc"
+              [
+                structure_item (stdlib/ephemeron.mli[215,9005+2]..[215,9005+40])
+                  Pstr_eval
+                  expression (stdlib/ephemeron.mli[215,9005+2]..[215,9005+40])
+                    Pexp_constant PConst_string(" Same as {!Ephemeron.K1.get_key} ",(stdlib/ephemeron.mli[215,9005+2]..[215,9005+40]),None)
+              ]
+            core_type (stdlib/ephemeron.mli[214,8960+16]..[214,8960+44])
+              Ptyp_arrow
+              Nolabel
+              core_type (stdlib/ephemeron.mli[214,8960+16]..[214,8960+30])
+                Ptyp_constr "t" (stdlib/ephemeron.mli[214,8960+29]..[214,8960+30])
+                [
+                  core_type (stdlib/ephemeron.mli[214,8960+17]..[214,8960+20])
+                    Ptyp_var k1
+                  core_type (stdlib/ephemeron.mli[214,8960+21]..[214,8960+24])
+                    Ptyp_var k2
+                  core_type (stdlib/ephemeron.mli[214,8960+25]..[214,8960+27])
+                    Ptyp_var d
+                ]
+              core_type (stdlib/ephemeron.mli[214,8960+34]..[214,8960+44])
+                Ptyp_constr "option" (stdlib/ephemeron.mli[214,8960+38]..[214,8960+44])
+                [
+                  core_type (stdlib/ephemeron.mli[214,8960+34]..[214,8960+37])
+                    Ptyp_var k2
+                ]
+            []
+        signature_item (stdlib/ephemeron.mli[217,9047+2]..[217,9047+49])
+          Psig_value
+          value_description "get_key2_copy" (stdlib/ephemeron.mli[217,9047+6]..[217,9047+19]) (stdlib/ephemeron.mli[217,9047+2]..[217,9047+49])
+            attribute "ocaml.doc"
+              [
+                structure_item (stdlib/ephemeron.mli[218,9097+2]..[218,9097+45])
+                  Pstr_eval
+                  expression (stdlib/ephemeron.mli[218,9097+2]..[218,9097+45])
+                    Pexp_constant PConst_string(" Same as {!Ephemeron.K1.get_key_copy} ",(stdlib/ephemeron.mli[218,9097+2]..[218,9097+45]),None)
+              ]
+            core_type (stdlib/ephemeron.mli[217,9047+21]..[217,9047+49])
+              Ptyp_arrow
+              Nolabel
+              core_type (stdlib/ephemeron.mli[217,9047+21]..[217,9047+35])
+                Ptyp_constr "t" (stdlib/ephemeron.mli[217,9047+34]..[217,9047+35])
+                [
+                  core_type (stdlib/ephemeron.mli[217,9047+22]..[217,9047+25])
+                    Ptyp_var k1
+                  core_type (stdlib/ephemeron.mli[217,9047+26]..[217,9047+29])
+                    Ptyp_var k2
+                  core_type (stdlib/ephemeron.mli[217,9047+30]..[217,9047+32])
+                    Ptyp_var d
+                ]
+              core_type (stdlib/ephemeron.mli[217,9047+39]..[217,9047+49])
+                Ptyp_constr "option" (stdlib/ephemeron.mli[217,9047+43]..[217,9047+49])
+                [
+                  core_type (stdlib/ephemeron.mli[217,9047+39]..[217,9047+42])
+                    Ptyp_var k2
+                ]
+            []
+        signature_item (stdlib/ephemeron.mli[220,9144+2]..[220,9144+45])
+          Psig_value
+          value_description "set_key2" (stdlib/ephemeron.mli[220,9144+6]..[220,9144+14]) (stdlib/ephemeron.mli[220,9144+2]..[220,9144+45])
+            attribute "ocaml.doc"
+              [
+                structure_item (stdlib/ephemeron.mli[221,9190+2]..[221,9190+40])
+                  Pstr_eval
+                  expression (stdlib/ephemeron.mli[221,9190+2]..[221,9190+40])
+                    Pexp_constant PConst_string(" Same as {!Ephemeron.K1.set_key} ",(stdlib/ephemeron.mli[221,9190+2]..[221,9190+40]),None)
+              ]
+            core_type (stdlib/ephemeron.mli[220,9144+16]..[220,9144+45])
+              Ptyp_arrow
+              Nolabel
+              core_type (stdlib/ephemeron.mli[220,9144+16]..[220,9144+30])
+                Ptyp_constr "t" (stdlib/ephemeron.mli[220,9144+29]..[220,9144+30])
+                [
+                  core_type (stdlib/ephemeron.mli[220,9144+17]..[220,9144+20])
+                    Ptyp_var k1
+                  core_type (stdlib/ephemeron.mli[220,9144+21]..[220,9144+24])
+                    Ptyp_var k2
+                  core_type (stdlib/ephemeron.mli[220,9144+25]..[220,9144+27])
+                    Ptyp_var d
+                ]
+              core_type (stdlib/ephemeron.mli[220,9144+34]..[220,9144+45])
+                Ptyp_arrow
+                Nolabel
+                core_type (stdlib/ephemeron.mli[220,9144+34]..[220,9144+37])
+                  Ptyp_var k2
+                core_type (stdlib/ephemeron.mli[220,9144+41]..[220,9144+45])
+                  Ptyp_constr "unit" (stdlib/ephemeron.mli[220,9144+41]..[220,9144+45])
+                  []
+            []
+        signature_item (stdlib/ephemeron.mli[223,9232+2]..[223,9232+40])
+          Psig_value
+          value_description "unset_key2" (stdlib/ephemeron.mli[223,9232+6]..[223,9232+16]) (stdlib/ephemeron.mli[223,9232+2]..[223,9232+40])
+            attribute "ocaml.doc"
+              [
+                structure_item (stdlib/ephemeron.mli[224,9273+2]..[224,9273+42])
+                  Pstr_eval
+                  expression (stdlib/ephemeron.mli[224,9273+2]..[224,9273+42])
+                    Pexp_constant PConst_string(" Same as {!Ephemeron.K1.unset_key} ",(stdlib/ephemeron.mli[224,9273+2]..[224,9273+42]),None)
+              ]
+            core_type (stdlib/ephemeron.mli[223,9232+18]..[223,9232+40])
+              Ptyp_arrow
+              Nolabel
+              core_type (stdlib/ephemeron.mli[223,9232+18]..[223,9232+32])
+                Ptyp_constr "t" (stdlib/ephemeron.mli[223,9232+31]..[223,9232+32])
+                [
+                  core_type (stdlib/ephemeron.mli[223,9232+19]..[223,9232+22])
+                    Ptyp_var k1
+                  core_type (stdlib/ephemeron.mli[223,9232+23]..[223,9232+26])
+                    Ptyp_var k2
+                  core_type (stdlib/ephemeron.mli[223,9232+27]..[223,9232+29])
+                    Ptyp_var d
+                ]
+              core_type (stdlib/ephemeron.mli[223,9232+36]..[223,9232+40])
+                Ptyp_constr "unit" (stdlib/ephemeron.mli[223,9232+36]..[223,9232+40])
+                []
+            []
+        signature_item (stdlib/ephemeron.mli[226,9317+2]..[226,9317+40])
+          Psig_value
+          value_description "check_key2" (stdlib/ephemeron.mli[226,9317+6]..[226,9317+16]) (stdlib/ephemeron.mli[226,9317+2]..[226,9317+40])
+            attribute "ocaml.doc"
+              [
+                structure_item (stdlib/ephemeron.mli[227,9358+2]..[227,9358+42])
+                  Pstr_eval
+                  expression (stdlib/ephemeron.mli[227,9358+2]..[227,9358+42])
+                    Pexp_constant PConst_string(" Same as {!Ephemeron.K1.check_key} ",(stdlib/ephemeron.mli[227,9358+2]..[227,9358+42]),None)
+              ]
+            core_type (stdlib/ephemeron.mli[226,9317+18]..[226,9317+40])
+              Ptyp_arrow
+              Nolabel
+              core_type (stdlib/ephemeron.mli[226,9317+18]..[226,9317+32])
+                Ptyp_constr "t" (stdlib/ephemeron.mli[226,9317+31]..[226,9317+32])
+                [
+                  core_type (stdlib/ephemeron.mli[226,9317+19]..[226,9317+22])
+                    Ptyp_var k1
+                  core_type (stdlib/ephemeron.mli[226,9317+23]..[226,9317+26])
+                    Ptyp_var k2
+                  core_type (stdlib/ephemeron.mli[226,9317+27]..[226,9317+29])
+                    Ptyp_var d
+                ]
+              core_type (stdlib/ephemeron.mli[226,9317+36]..[226,9317+40])
+                Ptyp_constr "bool" (stdlib/ephemeron.mli[226,9317+36]..[226,9317+40])
+                []
+            []
+        signature_item (stdlib/ephemeron.mli[229,9402+2]..[229,9402+51])
+          Psig_value
+          value_description "blit_key1" (stdlib/ephemeron.mli[229,9402+6]..[229,9402+15]) (stdlib/ephemeron.mli[229,9402+2]..[229,9402+51])
+            attribute "ocaml.doc"
+              [
+                structure_item (stdlib/ephemeron.mli[230,9454+2]..[230,9454+41])
+                  Pstr_eval
+                  expression (stdlib/ephemeron.mli[230,9454+2]..[230,9454+41])
+                    Pexp_constant PConst_string(" Same as {!Ephemeron.K1.blit_key} ",(stdlib/ephemeron.mli[230,9454+2]..[230,9454+41]),None)
+              ]
+            core_type (stdlib/ephemeron.mli[229,9402+17]..[229,9402+51])
+              Ptyp_arrow
+              Nolabel
+              core_type (stdlib/ephemeron.mli[229,9402+17]..[229,9402+28])
+                Ptyp_constr "t" (stdlib/ephemeron.mli[229,9402+27]..[229,9402+28])
+                [
+                  core_type (stdlib/ephemeron.mli[229,9402+18]..[229,9402+21])
+                    Ptyp_var k1
+                  core_type (stdlib/ephemeron.mli[229,9402+22]..[229,9402+23])
+                    Ptyp_any
+                  core_type (stdlib/ephemeron.mli[229,9402+24]..[229,9402+25])
+                    Ptyp_any
+                ]
+              core_type (stdlib/ephemeron.mli[229,9402+32]..[229,9402+51])
+                Ptyp_arrow
+                Nolabel
+                core_type (stdlib/ephemeron.mli[229,9402+32]..[229,9402+43])
+                  Ptyp_constr "t" (stdlib/ephemeron.mli[229,9402+42]..[229,9402+43])
+                  [
+                    core_type (stdlib/ephemeron.mli[229,9402+33]..[229,9402+36])
+                      Ptyp_var k1
+                    core_type (stdlib/ephemeron.mli[229,9402+37]..[229,9402+38])
+                      Ptyp_any
+                    core_type (stdlib/ephemeron.mli[229,9402+39]..[229,9402+40])
+                      Ptyp_any
+                  ]
+                core_type (stdlib/ephemeron.mli[229,9402+47]..[229,9402+51])
+                  Ptyp_constr "unit" (stdlib/ephemeron.mli[229,9402+47]..[229,9402+51])
+                  []
+            []
+        signature_item (stdlib/ephemeron.mli[232,9497+2]..[232,9497+51])
+          Psig_value
+          value_description "blit_key2" (stdlib/ephemeron.mli[232,9497+6]..[232,9497+15]) (stdlib/ephemeron.mli[232,9497+2]..[232,9497+51])
+            attribute "ocaml.doc"
+              [
+                structure_item (stdlib/ephemeron.mli[233,9549+2]..[233,9549+41])
+                  Pstr_eval
+                  expression (stdlib/ephemeron.mli[233,9549+2]..[233,9549+41])
+                    Pexp_constant PConst_string(" Same as {!Ephemeron.K1.blit_key} ",(stdlib/ephemeron.mli[233,9549+2]..[233,9549+41]),None)
+              ]
+            core_type (stdlib/ephemeron.mli[232,9497+17]..[232,9497+51])
+              Ptyp_arrow
+              Nolabel
+              core_type (stdlib/ephemeron.mli[232,9497+17]..[232,9497+28])
+                Ptyp_constr "t" (stdlib/ephemeron.mli[232,9497+27]..[232,9497+28])
+                [
+                  core_type (stdlib/ephemeron.mli[232,9497+18]..[232,9497+19])
+                    Ptyp_any
+                  core_type (stdlib/ephemeron.mli[232,9497+20]..[232,9497+23])
+                    Ptyp_var k2
+                  core_type (stdlib/ephemeron.mli[232,9497+24]..[232,9497+25])
+                    Ptyp_any
+                ]
+              core_type (stdlib/ephemeron.mli[232,9497+32]..[232,9497+51])
+                Ptyp_arrow
+                Nolabel
+                core_type (stdlib/ephemeron.mli[232,9497+32]..[232,9497+43])
+                  Ptyp_constr "t" (stdlib/ephemeron.mli[232,9497+42]..[232,9497+43])
+                  [
+                    core_type (stdlib/ephemeron.mli[232,9497+33]..[232,9497+34])
+                      Ptyp_any
+                    core_type (stdlib/ephemeron.mli[232,9497+35]..[232,9497+38])
+                      Ptyp_var k2
+                    core_type (stdlib/ephemeron.mli[232,9497+39]..[232,9497+40])
+                      Ptyp_any
+                  ]
+                core_type (stdlib/ephemeron.mli[232,9497+47]..[232,9497+51])
+                  Ptyp_constr "unit" (stdlib/ephemeron.mli[232,9497+47]..[232,9497+51])
+                  []
+            []
+        signature_item (stdlib/ephemeron.mli[235,9592+2]..[235,9592+56])
+          Psig_value
+          value_description "blit_key12" (stdlib/ephemeron.mli[235,9592+6]..[235,9592+16]) (stdlib/ephemeron.mli[235,9592+2]..[235,9592+56])
+            attribute "ocaml.doc"
+              [
+                structure_item (stdlib/ephemeron.mli[236,9649+2]..[236,9649+41])
+                  Pstr_eval
+                  expression (stdlib/ephemeron.mli[236,9649+2]..[236,9649+41])
+                    Pexp_constant PConst_string(" Same as {!Ephemeron.K1.blit_key} ",(stdlib/ephemeron.mli[236,9649+2]..[236,9649+41]),None)
+              ]
+            core_type (stdlib/ephemeron.mli[235,9592+18]..[235,9592+56])
+              Ptyp_arrow
+              Nolabel
+              core_type (stdlib/ephemeron.mli[235,9592+18]..[235,9592+31])
+                Ptyp_constr "t" (stdlib/ephemeron.mli[235,9592+30]..[235,9592+31])
+                [
+                  core_type (stdlib/ephemeron.mli[235,9592+19]..[235,9592+22])
+                    Ptyp_var k1
+                  core_type (stdlib/ephemeron.mli[235,9592+23]..[235,9592+26])
+                    Ptyp_var k2
+                  core_type (stdlib/ephemeron.mli[235,9592+27]..[235,9592+28])
+                    Ptyp_any
+                ]
+              core_type (stdlib/ephemeron.mli[235,9592+35]..[235,9592+56])
+                Ptyp_arrow
+                Nolabel
+                core_type (stdlib/ephemeron.mli[235,9592+35]..[235,9592+48])
+                  Ptyp_constr "t" (stdlib/ephemeron.mli[235,9592+47]..[235,9592+48])
+                  [
+                    core_type (stdlib/ephemeron.mli[235,9592+36]..[235,9592+39])
+                      Ptyp_var k1
+                    core_type (stdlib/ephemeron.mli[235,9592+40]..[235,9592+43])
+                      Ptyp_var k2
+                    core_type (stdlib/ephemeron.mli[235,9592+44]..[235,9592+45])
+                      Ptyp_any
+                  ]
+                core_type (stdlib/ephemeron.mli[235,9592+52]..[235,9592+56])
+                  Ptyp_constr "unit" (stdlib/ephemeron.mli[235,9592+52]..[235,9592+56])
+                  []
+            []
+        signature_item (stdlib/ephemeron.mli[238,9692+2]..[238,9692+43])
+          Psig_value
+          value_description "get_data" (stdlib/ephemeron.mli[238,9692+6]..[238,9692+14]) (stdlib/ephemeron.mli[238,9692+2]..[238,9692+43])
+            attribute "ocaml.doc"
+              [
+                structure_item (stdlib/ephemeron.mli[239,9736+2]..[239,9736+41])
+                  Pstr_eval
+                  expression (stdlib/ephemeron.mli[239,9736+2]..[239,9736+41])
+                    Pexp_constant PConst_string(" Same as {!Ephemeron.K1.get_data} ",(stdlib/ephemeron.mli[239,9736+2]..[239,9736+41]),None)
+              ]
+            core_type (stdlib/ephemeron.mli[238,9692+16]..[238,9692+43])
+              Ptyp_arrow
+              Nolabel
+              core_type (stdlib/ephemeron.mli[238,9692+16]..[238,9692+30])
+                Ptyp_constr "t" (stdlib/ephemeron.mli[238,9692+29]..[238,9692+30])
+                [
+                  core_type (stdlib/ephemeron.mli[238,9692+17]..[238,9692+20])
+                    Ptyp_var k1
+                  core_type (stdlib/ephemeron.mli[238,9692+21]..[238,9692+24])
+                    Ptyp_var k2
+                  core_type (stdlib/ephemeron.mli[238,9692+25]..[238,9692+27])
+                    Ptyp_var d
+                ]
+              core_type (stdlib/ephemeron.mli[238,9692+34]..[238,9692+43])
+                Ptyp_constr "option" (stdlib/ephemeron.mli[238,9692+37]..[238,9692+43])
+                [
+                  core_type (stdlib/ephemeron.mli[238,9692+34]..[238,9692+36])
+                    Ptyp_var d
+                ]
+            []
+        signature_item (stdlib/ephemeron.mli[241,9779+2]..[241,9779+48])
+          Psig_value
+          value_description "get_data_copy" (stdlib/ephemeron.mli[241,9779+6]..[241,9779+19]) (stdlib/ephemeron.mli[241,9779+2]..[241,9779+48])
+            attribute "ocaml.doc"
+              [
+                structure_item (stdlib/ephemeron.mli[242,9828+2]..[242,9828+46])
+                  Pstr_eval
+                  expression (stdlib/ephemeron.mli[242,9828+2]..[242,9828+46])
+                    Pexp_constant PConst_string(" Same as {!Ephemeron.K1.get_data_copy} ",(stdlib/ephemeron.mli[242,9828+2]..[242,9828+46]),None)
+              ]
+            core_type (stdlib/ephemeron.mli[241,9779+21]..[241,9779+48])
+              Ptyp_arrow
+              Nolabel
+              core_type (stdlib/ephemeron.mli[241,9779+21]..[241,9779+35])
+                Ptyp_constr "t" (stdlib/ephemeron.mli[241,9779+34]..[241,9779+35])
+                [
+                  core_type (stdlib/ephemeron.mli[241,9779+22]..[241,9779+25])
+                    Ptyp_var k1
+                  core_type (stdlib/ephemeron.mli[241,9779+26]..[241,9779+29])
+                    Ptyp_var k2
+                  core_type (stdlib/ephemeron.mli[241,9779+30]..[241,9779+32])
+                    Ptyp_var d
+                ]
+              core_type (stdlib/ephemeron.mli[241,9779+39]..[241,9779+48])
+                Ptyp_constr "option" (stdlib/ephemeron.mli[241,9779+42]..[241,9779+48])
+                [
+                  core_type (stdlib/ephemeron.mli[241,9779+39]..[241,9779+41])
+                    Ptyp_var d
+                ]
+            []
+        signature_item (stdlib/ephemeron.mli[244,9876+2]..[244,9876+44])
+          Psig_value
+          value_description "set_data" (stdlib/ephemeron.mli[244,9876+6]..[244,9876+14]) (stdlib/ephemeron.mli[244,9876+2]..[244,9876+44])
+            attribute "ocaml.doc"
+              [
+                structure_item (stdlib/ephemeron.mli[245,9921+2]..[245,9921+41])
+                  Pstr_eval
+                  expression (stdlib/ephemeron.mli[245,9921+2]..[245,9921+41])
+                    Pexp_constant PConst_string(" Same as {!Ephemeron.K1.set_data} ",(stdlib/ephemeron.mli[245,9921+2]..[245,9921+41]),None)
+              ]
+            core_type (stdlib/ephemeron.mli[244,9876+16]..[244,9876+44])
+              Ptyp_arrow
+              Nolabel
+              core_type (stdlib/ephemeron.mli[244,9876+16]..[244,9876+30])
+                Ptyp_constr "t" (stdlib/ephemeron.mli[244,9876+29]..[244,9876+30])
+                [
+                  core_type (stdlib/ephemeron.mli[244,9876+17]..[244,9876+20])
+                    Ptyp_var k1
+                  core_type (stdlib/ephemeron.mli[244,9876+21]..[244,9876+24])
+                    Ptyp_var k2
+                  core_type (stdlib/ephemeron.mli[244,9876+25]..[244,9876+27])
+                    Ptyp_var d
+                ]
+              core_type (stdlib/ephemeron.mli[244,9876+34]..[244,9876+44])
+                Ptyp_arrow
+                Nolabel
+                core_type (stdlib/ephemeron.mli[244,9876+34]..[244,9876+36])
+                  Ptyp_var d
+                core_type (stdlib/ephemeron.mli[244,9876+40]..[244,9876+44])
+                  Ptyp_constr "unit" (stdlib/ephemeron.mli[244,9876+40]..[244,9876+44])
+                  []
+            []
+        signature_item (stdlib/ephemeron.mli[247,9964+2]..[247,9964+40])
+          Psig_value
+          value_description "unset_data" (stdlib/ephemeron.mli[247,9964+6]..[247,9964+16]) (stdlib/ephemeron.mli[247,9964+2]..[247,9964+40])
+            attribute "ocaml.doc"
+              [
+                structure_item (stdlib/ephemeron.mli[248,10005+2]..[248,10005+43])
+                  Pstr_eval
+                  expression (stdlib/ephemeron.mli[248,10005+2]..[248,10005+43])
+                    Pexp_constant PConst_string(" Same as {!Ephemeron.K1.unset_data} ",(stdlib/ephemeron.mli[248,10005+2]..[248,10005+43]),None)
+              ]
+            core_type (stdlib/ephemeron.mli[247,9964+18]..[247,9964+40])
+              Ptyp_arrow
+              Nolabel
+              core_type (stdlib/ephemeron.mli[247,9964+18]..[247,9964+32])
+                Ptyp_constr "t" (stdlib/ephemeron.mli[247,9964+31]..[247,9964+32])
+                [
+                  core_type (stdlib/ephemeron.mli[247,9964+19]..[247,9964+22])
+                    Ptyp_var k1
+                  core_type (stdlib/ephemeron.mli[247,9964+23]..[247,9964+26])
+                    Ptyp_var k2
+                  core_type (stdlib/ephemeron.mli[247,9964+27]..[247,9964+29])
+                    Ptyp_var d
+                ]
+              core_type (stdlib/ephemeron.mli[247,9964+36]..[247,9964+40])
+                Ptyp_constr "unit" (stdlib/ephemeron.mli[247,9964+36]..[247,9964+40])
+                []
+            []
+        signature_item (stdlib/ephemeron.mli[250,10050+2]..[250,10050+40])
+          Psig_value
+          value_description "check_data" (stdlib/ephemeron.mli[250,10050+6]..[250,10050+16]) (stdlib/ephemeron.mli[250,10050+2]..[250,10050+40])
+            attribute "ocaml.doc"
+              [
+                structure_item (stdlib/ephemeron.mli[251,10091+2]..[251,10091+43])
+                  Pstr_eval
+                  expression (stdlib/ephemeron.mli[251,10091+2]..[251,10091+43])
+                    Pexp_constant PConst_string(" Same as {!Ephemeron.K1.check_data} ",(stdlib/ephemeron.mli[251,10091+2]..[251,10091+43]),None)
+              ]
+            core_type (stdlib/ephemeron.mli[250,10050+18]..[250,10050+40])
+              Ptyp_arrow
+              Nolabel
+              core_type (stdlib/ephemeron.mli[250,10050+18]..[250,10050+32])
+                Ptyp_constr "t" (stdlib/ephemeron.mli[250,10050+31]..[250,10050+32])
+                [
+                  core_type (stdlib/ephemeron.mli[250,10050+19]..[250,10050+22])
+                    Ptyp_var k1
+                  core_type (stdlib/ephemeron.mli[250,10050+23]..[250,10050+26])
+                    Ptyp_var k2
+                  core_type (stdlib/ephemeron.mli[250,10050+27]..[250,10050+29])
+                    Ptyp_var d
+                ]
+              core_type (stdlib/ephemeron.mli[250,10050+36]..[250,10050+40])
+                Ptyp_constr "bool" (stdlib/ephemeron.mli[250,10050+36]..[250,10050+40])
+                []
+            []
+        signature_item (stdlib/ephemeron.mli[253,10136+2]..[253,10136+57])
+          Psig_value
+          value_description "blit_data" (stdlib/ephemeron.mli[253,10136+6]..[253,10136+15]) (stdlib/ephemeron.mli[253,10136+2]..[253,10136+57])
+            attribute "ocaml.doc"
+              [
+                structure_item (stdlib/ephemeron.mli[254,10194+2]..[254,10194+42])
+                  Pstr_eval
+                  expression (stdlib/ephemeron.mli[254,10194+2]..[254,10194+42])
+                    Pexp_constant PConst_string(" Same as {!Ephemeron.K1.blit_data} ",(stdlib/ephemeron.mli[254,10194+2]..[254,10194+42]),None)
+              ]
+            core_type (stdlib/ephemeron.mli[253,10136+17]..[253,10136+57])
+              Ptyp_arrow
+              Nolabel
+              core_type (stdlib/ephemeron.mli[253,10136+17]..[253,10136+31])
+                Ptyp_constr "t" (stdlib/ephemeron.mli[253,10136+30]..[253,10136+31])
+                [
+                  core_type (stdlib/ephemeron.mli[253,10136+18]..[253,10136+21])
+                    Ptyp_var k1
+                  core_type (stdlib/ephemeron.mli[253,10136+22]..[253,10136+25])
+                    Ptyp_var k2
+                  core_type (stdlib/ephemeron.mli[253,10136+26]..[253,10136+28])
+                    Ptyp_var d
+                ]
+              core_type (stdlib/ephemeron.mli[253,10136+35]..[253,10136+57])
+                Ptyp_arrow
+                Nolabel
+                core_type (stdlib/ephemeron.mli[253,10136+35]..[253,10136+49])
+                  Ptyp_constr "t" (stdlib/ephemeron.mli[253,10136+48]..[253,10136+49])
+                  [
+                    core_type (stdlib/ephemeron.mli[253,10136+36]..[253,10136+39])
+                      Ptyp_var k1
+                    core_type (stdlib/ephemeron.mli[253,10136+40]..[253,10136+43])
+                      Ptyp_var k2
+                    core_type (stdlib/ephemeron.mli[253,10136+44]..[253,10136+46])
+                      Ptyp_var d
+                  ]
+                core_type (stdlib/ephemeron.mli[253,10136+53]..[253,10136+57])
+                  Ptyp_constr "unit" (stdlib/ephemeron.mli[253,10136+53]..[253,10136+57])
+                  []
+            []
+        signature_item (stdlib/ephemeron.mli[256,10238+2]..[259,10314+33])
+          Psig_module "Make" (stdlib/ephemeron.mli[256,10238+9]..[256,10238+13])
+            attribute "ocaml.doc"
+              [
+                structure_item (stdlib/ephemeron.mli[260,10348+2]..[260,10348+64])
+                  Pstr_eval
+                  expression (stdlib/ephemeron.mli[260,10348+2]..[260,10348+64])
+                    Pexp_constant PConst_string(" Functor building an implementation of a weak hash table ",(stdlib/ephemeron.mli[260,10348+2]..[260,10348+64]),None)
+              ]
+          module_type (stdlib/ephemeron.mli[257,10252+6]..[259,10314+33])
+            Pmty_functor "H1" (stdlib/ephemeron.mli[257,10252+7]..[257,10252+9])
+            module_type (stdlib/ephemeron.mli[257,10252+10]..[257,10252+28])
+              Pmty_ident "Hashtbl.HashedType" (stdlib/ephemeron.mli[257,10252+10]..[257,10252+28])
+            module_type (stdlib/ephemeron.mli[258,10282+6]..[259,10314+33])
+              Pmty_functor "H2" (stdlib/ephemeron.mli[258,10282+7]..[258,10282+9])
+              module_type (stdlib/ephemeron.mli[258,10282+10]..[258,10282+28])
+                Pmty_ident "Hashtbl.HashedType" (stdlib/ephemeron.mli[258,10282+10]..[258,10282+28])
+              module_type (stdlib/ephemeron.mli[259,10314+4]..[259,10314+33])
+                Pmty_with
+                module_type (stdlib/ephemeron.mli[259,10314+4]..[259,10314+5])
+                  Pmty_ident "S" (stdlib/ephemeron.mli[259,10314+4]..[259,10314+5])
+                [
+                  Pwith_type "key" (stdlib/ephemeron.mli[259,10314+16]..[259,10314+19])
+                    type_declaration "key" (stdlib/ephemeron.mli[259,10314+16]..[259,10314+19]) (stdlib/ephemeron.mli[259,10314+11]..[259,10314+33])
+                      ptype_params =
+                        []
+                      ptype_cstrs =
+                        []
+                      ptype_kind =
+                        Ptype_abstract
+                      ptype_private = Public
+                      ptype_manifest =
+                        Some
+                          core_type (stdlib/ephemeron.mli[259,10314+22]..[259,10314+33])
+                            Ptyp_tuple
+                            [
+                              core_type (stdlib/ephemeron.mli[259,10314+22]..[259,10314+26])
+                                Ptyp_constr "H1.t" (stdlib/ephemeron.mli[259,10314+22]..[259,10314+26])
+                                []
+                              core_type (stdlib/ephemeron.mli[259,10314+29]..[259,10314+33])
+                                Ptyp_constr "H2.t" (stdlib/ephemeron.mli[259,10314+29]..[259,10314+33])
+                                []
+                            ]
+                ]
+        signature_item (stdlib/ephemeron.mli[262,10414+2]..[265,10508+39])
+          Psig_module "MakeSeeded" (stdlib/ephemeron.mli[262,10414+9]..[262,10414+19])
+            attribute "ocaml.doc"
+              [
+                structure_item (stdlib/ephemeron.mli[266,10548+2]..[267,10611+65])
+                  Pstr_eval
+                  expression (stdlib/ephemeron.mli[266,10548+2]..[267,10611+65])
+                    Pexp_constant PConst_string(" Functor building an implementation of a weak hash table.\n      The seed is similar to the one of {!Hashtbl.MakeSeeded}. ",(stdlib/ephemeron.mli[266,10548+2]..[267,10611+65]),None)
+              ]
+          module_type (stdlib/ephemeron.mli[263,10434+6]..[265,10508+39])
+            Pmty_functor "H1" (stdlib/ephemeron.mli[263,10434+7]..[263,10434+9])
+            module_type (stdlib/ephemeron.mli[263,10434+10]..[263,10434+34])
+              Pmty_ident "Hashtbl.SeededHashedType" (stdlib/ephemeron.mli[263,10434+10]..[263,10434+34])
+            module_type (stdlib/ephemeron.mli[264,10470+6]..[265,10508+39])
+              Pmty_functor "H2" (stdlib/ephemeron.mli[264,10470+7]..[264,10470+9])
+              module_type (stdlib/ephemeron.mli[264,10470+10]..[264,10470+34])
+                Pmty_ident "Hashtbl.SeededHashedType" (stdlib/ephemeron.mli[264,10470+10]..[264,10470+34])
+              module_type (stdlib/ephemeron.mli[265,10508+4]..[265,10508+39])
+                Pmty_with
+                module_type (stdlib/ephemeron.mli[265,10508+4]..[265,10508+11])
+                  Pmty_ident "SeededS" (stdlib/ephemeron.mli[265,10508+4]..[265,10508+11])
+                [
+                  Pwith_type "key" (stdlib/ephemeron.mli[265,10508+22]..[265,10508+25])
+                    type_declaration "key" (stdlib/ephemeron.mli[265,10508+22]..[265,10508+25]) (stdlib/ephemeron.mli[265,10508+17]..[265,10508+39])
+                      ptype_params =
+                        []
+                      ptype_cstrs =
+                        []
+                      ptype_kind =
+                        Ptype_abstract
+                      ptype_private = Public
+                      ptype_manifest =
+                        Some
+                          core_type (stdlib/ephemeron.mli[265,10508+28]..[265,10508+39])
+                            Ptyp_tuple
+                            [
+                              core_type (stdlib/ephemeron.mli[265,10508+28]..[265,10508+32])
+                                Ptyp_constr "H1.t" (stdlib/ephemeron.mli[265,10508+28]..[265,10508+32])
+                                []
+                              core_type (stdlib/ephemeron.mli[265,10508+35]..[265,10508+39])
+                                Ptyp_constr "H2.t" (stdlib/ephemeron.mli[265,10508+35]..[265,10508+39])
+                                []
+                            ]
+                ]
+      ]
+  signature_item (stdlib/ephemeron.mli[272,10717+0]..[326,12348+3])
+    Psig_module "Kn" (stdlib/ephemeron.mli[272,10717+7]..[272,10717+9])
+      attribute "ocaml.doc"
+        [
+          structure_item (stdlib/ephemeron.mli[327,12352+0]..[327,12352+66])
+            Pstr_eval
+            expression (stdlib/ephemeron.mli[327,12352+0]..[327,12352+66])
+              Pexp_constant PConst_string(" Emphemerons with arbitrary number of keys of the same type. ",(stdlib/ephemeron.mli[327,12352+0]..[327,12352+66]),None)
+        ]
+    module_type (stdlib/ephemeron.mli[272,10717+12]..[326,12348+3])
+      Pmty_signature
+      [
+        signature_item (stdlib/ephemeron.mli[273,10733+2]..[273,10733+16])
+          Psig_type Rec
+          [
+            type_declaration "t" (stdlib/ephemeron.mli[273,10733+15]..[273,10733+16]) (stdlib/ephemeron.mli[273,10733+2]..[273,10733+16])
+              attribute "ocaml.doc"
+                [
+                  structure_item (stdlib/ephemeron.mli[273,10733+17]..[274,10800+41])
+                    Pstr_eval
+                    expression (stdlib/ephemeron.mli[273,10733+17]..[274,10800+41])
+                      Pexp_constant PConst_string(" an ephemeron with an arbitrary number of keys\n                      of the same type ",(stdlib/ephemeron.mli[273,10733+17]..[274,10800+41]),None)
+                ]
+              ptype_params =
+                [
+                  core_type (stdlib/ephemeron.mli[273,10733+8]..[273,10733+10])
+                    Ptyp_var k
+                  core_type (stdlib/ephemeron.mli[273,10733+11]..[273,10733+13])
+                    Ptyp_var d
+                ]
+              ptype_cstrs =
+                []
+              ptype_kind =
+                Ptype_abstract
+              ptype_private = Public
+              ptype_manifest =
+                None
+          ]
+        signature_item (stdlib/ephemeron.mli[276,10843+2]..[276,10843+30])
+          Psig_value
+          value_description "create" (stdlib/ephemeron.mli[276,10843+6]..[276,10843+12]) (stdlib/ephemeron.mli[276,10843+2]..[276,10843+30])
+            attribute "ocaml.doc"
+              [
+                structure_item (stdlib/ephemeron.mli[277,10874+2]..[277,10874+39])
+                  Pstr_eval
+                  expression (stdlib/ephemeron.mli[277,10874+2]..[277,10874+39])
+                    Pexp_constant PConst_string(" Same as {!Ephemeron.K1.create} ",(stdlib/ephemeron.mli[277,10874+2]..[277,10874+39]),None)
+              ]
+            core_type (stdlib/ephemeron.mli[276,10843+14]..[276,10843+30])
+              Ptyp_arrow
+              Nolabel
+              core_type (stdlib/ephemeron.mli[276,10843+14]..[276,10843+17])
+                Ptyp_constr "int" (stdlib/ephemeron.mli[276,10843+14]..[276,10843+17])
+                []
+              core_type (stdlib/ephemeron.mli[276,10843+21]..[276,10843+30])
+                Ptyp_constr "t" (stdlib/ephemeron.mli[276,10843+29]..[276,10843+30])
+                [
+                  core_type (stdlib/ephemeron.mli[276,10843+22]..[276,10843+24])
+                    Ptyp_var k
+                  core_type (stdlib/ephemeron.mli[276,10843+25]..[276,10843+27])
+                    Ptyp_var d
+                ]
+            []
+        signature_item (stdlib/ephemeron.mli[279,10915+2]..[279,10915+44])
+          Psig_value
+          value_description "get_key" (stdlib/ephemeron.mli[279,10915+6]..[279,10915+13]) (stdlib/ephemeron.mli[279,10915+2]..[279,10915+44])
+            attribute "ocaml.doc"
+              [
+                structure_item (stdlib/ephemeron.mli[280,10960+2]..[280,10960+40])
+                  Pstr_eval
+                  expression (stdlib/ephemeron.mli[280,10960+2]..[280,10960+40])
+                    Pexp_constant PConst_string(" Same as {!Ephemeron.K1.get_key} ",(stdlib/ephemeron.mli[280,10960+2]..[280,10960+40]),None)
+              ]
+            core_type (stdlib/ephemeron.mli[279,10915+15]..[279,10915+44])
+              Ptyp_arrow
+              Nolabel
+              core_type (stdlib/ephemeron.mli[279,10915+15]..[279,10915+24])
+                Ptyp_constr "t" (stdlib/ephemeron.mli[279,10915+23]..[279,10915+24])
+                [
+                  core_type (stdlib/ephemeron.mli[279,10915+16]..[279,10915+18])
+                    Ptyp_var k
+                  core_type (stdlib/ephemeron.mli[279,10915+19]..[279,10915+21])
+                    Ptyp_var d
+                ]
+              core_type (stdlib/ephemeron.mli[279,10915+28]..[279,10915+44])
+                Ptyp_arrow
+                Nolabel
+                core_type (stdlib/ephemeron.mli[279,10915+28]..[279,10915+31])
+                  Ptyp_constr "int" (stdlib/ephemeron.mli[279,10915+28]..[279,10915+31])
+                  []
+                core_type (stdlib/ephemeron.mli[279,10915+35]..[279,10915+44])
+                  Ptyp_constr "option" (stdlib/ephemeron.mli[279,10915+38]..[279,10915+44])
+                  [
+                    core_type (stdlib/ephemeron.mli[279,10915+35]..[279,10915+37])
+                      Ptyp_var k
+                  ]
+            []
+        signature_item (stdlib/ephemeron.mli[282,11002+2]..[282,11002+49])
+          Psig_value
+          value_description "get_key_copy" (stdlib/ephemeron.mli[282,11002+6]..[282,11002+18]) (stdlib/ephemeron.mli[282,11002+2]..[282,11002+49])
+            attribute "ocaml.doc"
+              [
+                structure_item (stdlib/ephemeron.mli[283,11052+2]..[283,11052+45])
+                  Pstr_eval
+                  expression (stdlib/ephemeron.mli[283,11052+2]..[283,11052+45])
+                    Pexp_constant PConst_string(" Same as {!Ephemeron.K1.get_key_copy} ",(stdlib/ephemeron.mli[283,11052+2]..[283,11052+45]),None)
+              ]
+            core_type (stdlib/ephemeron.mli[282,11002+20]..[282,11002+49])
+              Ptyp_arrow
+              Nolabel
+              core_type (stdlib/ephemeron.mli[282,11002+20]..[282,11002+29])
+                Ptyp_constr "t" (stdlib/ephemeron.mli[282,11002+28]..[282,11002+29])
+                [
+                  core_type (stdlib/ephemeron.mli[282,11002+21]..[282,11002+23])
+                    Ptyp_var k
+                  core_type (stdlib/ephemeron.mli[282,11002+24]..[282,11002+26])
+                    Ptyp_var d
+                ]
+              core_type (stdlib/ephemeron.mli[282,11002+33]..[282,11002+49])
+                Ptyp_arrow
+                Nolabel
+                core_type (stdlib/ephemeron.mli[282,11002+33]..[282,11002+36])
+                  Ptyp_constr "int" (stdlib/ephemeron.mli[282,11002+33]..[282,11002+36])
+                  []
+                core_type (stdlib/ephemeron.mli[282,11002+40]..[282,11002+49])
+                  Ptyp_constr "option" (stdlib/ephemeron.mli[282,11002+43]..[282,11002+49])
+                  [
+                    core_type (stdlib/ephemeron.mli[282,11002+40]..[282,11002+42])
+                      Ptyp_var k
+                  ]
+            []
+        signature_item (stdlib/ephemeron.mli[285,11099+2]..[285,11099+45])
+          Psig_value
+          value_description "set_key" (stdlib/ephemeron.mli[285,11099+6]..[285,11099+13]) (stdlib/ephemeron.mli[285,11099+2]..[285,11099+45])
+            attribute "ocaml.doc"
+              [
+                structure_item (stdlib/ephemeron.mli[286,11145+2]..[286,11145+40])
+                  Pstr_eval
+                  expression (stdlib/ephemeron.mli[286,11145+2]..[286,11145+40])
+                    Pexp_constant PConst_string(" Same as {!Ephemeron.K1.set_key} ",(stdlib/ephemeron.mli[286,11145+2]..[286,11145+40]),None)
+              ]
+            core_type (stdlib/ephemeron.mli[285,11099+15]..[285,11099+45])
+              Ptyp_arrow
+              Nolabel
+              core_type (stdlib/ephemeron.mli[285,11099+15]..[285,11099+24])
+                Ptyp_constr "t" (stdlib/ephemeron.mli[285,11099+23]..[285,11099+24])
+                [
+                  core_type (stdlib/ephemeron.mli[285,11099+16]..[285,11099+18])
+                    Ptyp_var k
+                  core_type (stdlib/ephemeron.mli[285,11099+19]..[285,11099+21])
+                    Ptyp_var d
+                ]
+              core_type (stdlib/ephemeron.mli[285,11099+28]..[285,11099+45])
+                Ptyp_arrow
+                Nolabel
+                core_type (stdlib/ephemeron.mli[285,11099+28]..[285,11099+31])
+                  Ptyp_constr "int" (stdlib/ephemeron.mli[285,11099+28]..[285,11099+31])
+                  []
+                core_type (stdlib/ephemeron.mli[285,11099+35]..[285,11099+45])
+                  Ptyp_arrow
+                  Nolabel
+                  core_type (stdlib/ephemeron.mli[285,11099+35]..[285,11099+37])
+                    Ptyp_var k
+                  core_type (stdlib/ephemeron.mli[285,11099+41]..[285,11099+45])
+                    Ptyp_constr "unit" (stdlib/ephemeron.mli[285,11099+41]..[285,11099+45])
+                    []
+            []
+        signature_item (stdlib/ephemeron.mli[288,11187+2]..[288,11187+41])
+          Psig_value
+          value_description "unset_key" (stdlib/ephemeron.mli[288,11187+6]..[288,11187+15]) (stdlib/ephemeron.mli[288,11187+2]..[288,11187+41])
+            attribute "ocaml.doc"
+              [
+                structure_item (stdlib/ephemeron.mli[289,11229+2]..[289,11229+42])
+                  Pstr_eval
+                  expression (stdlib/ephemeron.mli[289,11229+2]..[289,11229+42])
+                    Pexp_constant PConst_string(" Same as {!Ephemeron.K1.unset_key} ",(stdlib/ephemeron.mli[289,11229+2]..[289,11229+42]),None)
+              ]
+            core_type (stdlib/ephemeron.mli[288,11187+17]..[288,11187+41])
+              Ptyp_arrow
+              Nolabel
+              core_type (stdlib/ephemeron.mli[288,11187+17]..[288,11187+26])
+                Ptyp_constr "t" (stdlib/ephemeron.mli[288,11187+25]..[288,11187+26])
+                [
+                  core_type (stdlib/ephemeron.mli[288,11187+18]..[288,11187+20])
+                    Ptyp_var k
+                  core_type (stdlib/ephemeron.mli[288,11187+21]..[288,11187+23])
+                    Ptyp_var d
+                ]
+              core_type (stdlib/ephemeron.mli[288,11187+30]..[288,11187+41])
+                Ptyp_arrow
+                Nolabel
+                core_type (stdlib/ephemeron.mli[288,11187+30]..[288,11187+33])
+                  Ptyp_constr "int" (stdlib/ephemeron.mli[288,11187+30]..[288,11187+33])
+                  []
+                core_type (stdlib/ephemeron.mli[288,11187+37]..[288,11187+41])
+                  Ptyp_constr "unit" (stdlib/ephemeron.mli[288,11187+37]..[288,11187+41])
+                  []
+            []
+        signature_item (stdlib/ephemeron.mli[291,11273+2]..[291,11273+42])
+          Psig_value
+          value_description "check_key" (stdlib/ephemeron.mli[291,11273+6]..[291,11273+15]) (stdlib/ephemeron.mli[291,11273+2]..[291,11273+42])
+            attribute "ocaml.doc"
+              [
+                structure_item (stdlib/ephemeron.mli[292,11316+2]..[292,11316+42])
+                  Pstr_eval
+                  expression (stdlib/ephemeron.mli[292,11316+2]..[292,11316+42])
+                    Pexp_constant PConst_string(" Same as {!Ephemeron.K1.check_key} ",(stdlib/ephemeron.mli[292,11316+2]..[292,11316+42]),None)
+              ]
+            core_type (stdlib/ephemeron.mli[291,11273+17]..[291,11273+42])
+              Ptyp_arrow
+              Nolabel
+              core_type (stdlib/ephemeron.mli[291,11273+17]..[291,11273+26])
+                Ptyp_constr "t" (stdlib/ephemeron.mli[291,11273+25]..[291,11273+26])
+                [
+                  core_type (stdlib/ephemeron.mli[291,11273+18]..[291,11273+20])
+                    Ptyp_var k
+                  core_type (stdlib/ephemeron.mli[291,11273+21]..[291,11273+23])
+                    Ptyp_var d
+                ]
+              core_type (stdlib/ephemeron.mli[291,11273+30]..[291,11273+42])
+                Ptyp_arrow
+                Nolabel
+                core_type (stdlib/ephemeron.mli[291,11273+30]..[291,11273+33])
+                  Ptyp_constr "int" (stdlib/ephemeron.mli[291,11273+30]..[291,11273+33])
+                  []
+                core_type (stdlib/ephemeron.mli[291,11273+38]..[291,11273+42])
+                  Ptyp_constr "bool" (stdlib/ephemeron.mli[291,11273+38]..[291,11273+42])
+                  []
+            []
+        signature_item (stdlib/ephemeron.mli[294,11360+2]..[294,11360+65])
+          Psig_value
+          value_description "blit_key" (stdlib/ephemeron.mli[294,11360+6]..[294,11360+14]) (stdlib/ephemeron.mli[294,11360+2]..[294,11360+65])
+            attribute "ocaml.doc"
+              [
+                structure_item (stdlib/ephemeron.mli[295,11426+2]..[295,11426+41])
+                  Pstr_eval
+                  expression (stdlib/ephemeron.mli[295,11426+2]..[295,11426+41])
+                    Pexp_constant PConst_string(" Same as {!Ephemeron.K1.blit_key} ",(stdlib/ephemeron.mli[295,11426+2]..[295,11426+41]),None)
+              ]
+            core_type (stdlib/ephemeron.mli[294,11360+16]..[294,11360+65])
+              Ptyp_arrow
+              Nolabel
+              core_type (stdlib/ephemeron.mli[294,11360+16]..[294,11360+24])
+                Ptyp_constr "t" (stdlib/ephemeron.mli[294,11360+23]..[294,11360+24])
+                [
+                  core_type (stdlib/ephemeron.mli[294,11360+17]..[294,11360+19])
+                    Ptyp_var k
+                  core_type (stdlib/ephemeron.mli[294,11360+20]..[294,11360+21])
+                    Ptyp_any
+                ]
+              core_type (stdlib/ephemeron.mli[294,11360+28]..[294,11360+65])
+                Ptyp_arrow
+                Nolabel
+                core_type (stdlib/ephemeron.mli[294,11360+28]..[294,11360+31])
+                  Ptyp_constr "int" (stdlib/ephemeron.mli[294,11360+28]..[294,11360+31])
+                  []
+                core_type (stdlib/ephemeron.mli[294,11360+35]..[294,11360+65])
+                  Ptyp_arrow
+                  Nolabel
+                  core_type (stdlib/ephemeron.mli[294,11360+35]..[294,11360+43])
+                    Ptyp_constr "t" (stdlib/ephemeron.mli[294,11360+42]..[294,11360+43])
+                    [
+                      core_type (stdlib/ephemeron.mli[294,11360+36]..[294,11360+38])
+                        Ptyp_var k
+                      core_type (stdlib/ephemeron.mli[294,11360+39]..[294,11360+40])
+                        Ptyp_any
+                    ]
+                  core_type (stdlib/ephemeron.mli[294,11360+47]..[294,11360+65])
+                    Ptyp_arrow
+                    Nolabel
+                    core_type (stdlib/ephemeron.mli[294,11360+47]..[294,11360+50])
+                      Ptyp_constr "int" (stdlib/ephemeron.mli[294,11360+47]..[294,11360+50])
+                      []
+                    core_type (stdlib/ephemeron.mli[294,11360+54]..[294,11360+65])
+                      Ptyp_arrow
+                      Nolabel
+                      core_type (stdlib/ephemeron.mli[294,11360+54]..[294,11360+57])
+                        Ptyp_constr "int" (stdlib/ephemeron.mli[294,11360+54]..[294,11360+57])
+                        []
+                      core_type (stdlib/ephemeron.mli[294,11360+61]..[294,11360+65])
+                        Ptyp_constr "unit" (stdlib/ephemeron.mli[294,11360+61]..[294,11360+65])
+                        []
+            []
+        signature_item (stdlib/ephemeron.mli[297,11469+2]..[297,11469+38])
+          Psig_value
+          value_description "get_data" (stdlib/ephemeron.mli[297,11469+6]..[297,11469+14]) (stdlib/ephemeron.mli[297,11469+2]..[297,11469+38])
+            attribute "ocaml.doc"
+              [
+                structure_item (stdlib/ephemeron.mli[298,11508+2]..[298,11508+41])
+                  Pstr_eval
+                  expression (stdlib/ephemeron.mli[298,11508+2]..[298,11508+41])
+                    Pexp_constant PConst_string(" Same as {!Ephemeron.K1.get_data} ",(stdlib/ephemeron.mli[298,11508+2]..[298,11508+41]),None)
+              ]
+            core_type (stdlib/ephemeron.mli[297,11469+16]..[297,11469+38])
+              Ptyp_arrow
+              Nolabel
+              core_type (stdlib/ephemeron.mli[297,11469+16]..[297,11469+25])
+                Ptyp_constr "t" (stdlib/ephemeron.mli[297,11469+24]..[297,11469+25])
+                [
+                  core_type (stdlib/ephemeron.mli[297,11469+17]..[297,11469+19])
+                    Ptyp_var k
+                  core_type (stdlib/ephemeron.mli[297,11469+20]..[297,11469+22])
+                    Ptyp_var d
+                ]
+              core_type (stdlib/ephemeron.mli[297,11469+29]..[297,11469+38])
+                Ptyp_constr "option" (stdlib/ephemeron.mli[297,11469+32]..[297,11469+38])
+                [
+                  core_type (stdlib/ephemeron.mli[297,11469+29]..[297,11469+31])
+                    Ptyp_var d
+                ]
+            []
+        signature_item (stdlib/ephemeron.mli[300,11551+2]..[300,11551+43])
+          Psig_value
+          value_description "get_data_copy" (stdlib/ephemeron.mli[300,11551+6]..[300,11551+19]) (stdlib/ephemeron.mli[300,11551+2]..[300,11551+43])
+            attribute "ocaml.doc"
+              [
+                structure_item (stdlib/ephemeron.mli[301,11595+2]..[301,11595+46])
+                  Pstr_eval
+                  expression (stdlib/ephemeron.mli[301,11595+2]..[301,11595+46])
+                    Pexp_constant PConst_string(" Same as {!Ephemeron.K1.get_data_copy} ",(stdlib/ephemeron.mli[301,11595+2]..[301,11595+46]),None)
+              ]
+            core_type (stdlib/ephemeron.mli[300,11551+21]..[300,11551+43])
+              Ptyp_arrow
+              Nolabel
+              core_type (stdlib/ephemeron.mli[300,11551+21]..[300,11551+30])
+                Ptyp_constr "t" (stdlib/ephemeron.mli[300,11551+29]..[300,11551+30])
+                [
+                  core_type (stdlib/ephemeron.mli[300,11551+22]..[300,11551+24])
+                    Ptyp_var k
+                  core_type (stdlib/ephemeron.mli[300,11551+25]..[300,11551+27])
+                    Ptyp_var d
+                ]
+              core_type (stdlib/ephemeron.mli[300,11551+34]..[300,11551+43])
+                Ptyp_constr "option" (stdlib/ephemeron.mli[300,11551+37]..[300,11551+43])
+                [
+                  core_type (stdlib/ephemeron.mli[300,11551+34]..[300,11551+36])
+                    Ptyp_var d
+                ]
+            []
+        signature_item (stdlib/ephemeron.mli[303,11643+2]..[303,11643+39])
+          Psig_value
+          value_description "set_data" (stdlib/ephemeron.mli[303,11643+6]..[303,11643+14]) (stdlib/ephemeron.mli[303,11643+2]..[303,11643+39])
+            attribute "ocaml.doc"
+              [
+                structure_item (stdlib/ephemeron.mli[304,11683+2]..[304,11683+41])
+                  Pstr_eval
+                  expression (stdlib/ephemeron.mli[304,11683+2]..[304,11683+41])
+                    Pexp_constant PConst_string(" Same as {!Ephemeron.K1.set_data} ",(stdlib/ephemeron.mli[304,11683+2]..[304,11683+41]),None)
+              ]
+            core_type (stdlib/ephemeron.mli[303,11643+16]..[303,11643+39])
+              Ptyp_arrow
+              Nolabel
+              core_type (stdlib/ephemeron.mli[303,11643+16]..[303,11643+25])
+                Ptyp_constr "t" (stdlib/ephemeron.mli[303,11643+24]..[303,11643+25])
+                [
+                  core_type (stdlib/ephemeron.mli[303,11643+17]..[303,11643+19])
+                    Ptyp_var k
+                  core_type (stdlib/ephemeron.mli[303,11643+20]..[303,11643+22])
+                    Ptyp_var d
+                ]
+              core_type (stdlib/ephemeron.mli[303,11643+29]..[303,11643+39])
+                Ptyp_arrow
+                Nolabel
+                core_type (stdlib/ephemeron.mli[303,11643+29]..[303,11643+31])
+                  Ptyp_var d
+                core_type (stdlib/ephemeron.mli[303,11643+35]..[303,11643+39])
+                  Ptyp_constr "unit" (stdlib/ephemeron.mli[303,11643+35]..[303,11643+39])
+                  []
+            []
+        signature_item (stdlib/ephemeron.mli[306,11726+2]..[306,11726+35])
+          Psig_value
+          value_description "unset_data" (stdlib/ephemeron.mli[306,11726+6]..[306,11726+16]) (stdlib/ephemeron.mli[306,11726+2]..[306,11726+35])
+            attribute "ocaml.doc"
+              [
+                structure_item (stdlib/ephemeron.mli[307,11762+2]..[307,11762+43])
+                  Pstr_eval
+                  expression (stdlib/ephemeron.mli[307,11762+2]..[307,11762+43])
+                    Pexp_constant PConst_string(" Same as {!Ephemeron.K1.unset_data} ",(stdlib/ephemeron.mli[307,11762+2]..[307,11762+43]),None)
+              ]
+            core_type (stdlib/ephemeron.mli[306,11726+18]..[306,11726+35])
+              Ptyp_arrow
+              Nolabel
+              core_type (stdlib/ephemeron.mli[306,11726+18]..[306,11726+27])
+                Ptyp_constr "t" (stdlib/ephemeron.mli[306,11726+26]..[306,11726+27])
+                [
+                  core_type (stdlib/ephemeron.mli[306,11726+19]..[306,11726+21])
+                    Ptyp_var k
+                  core_type (stdlib/ephemeron.mli[306,11726+22]..[306,11726+24])
+                    Ptyp_var d
+                ]
+              core_type (stdlib/ephemeron.mli[306,11726+31]..[306,11726+35])
+                Ptyp_constr "unit" (stdlib/ephemeron.mli[306,11726+31]..[306,11726+35])
+                []
+            []
+        signature_item (stdlib/ephemeron.mli[309,11807+2]..[309,11807+35])
+          Psig_value
+          value_description "check_data" (stdlib/ephemeron.mli[309,11807+6]..[309,11807+16]) (stdlib/ephemeron.mli[309,11807+2]..[309,11807+35])
+            attribute "ocaml.doc"
+              [
+                structure_item (stdlib/ephemeron.mli[310,11843+2]..[310,11843+43])
+                  Pstr_eval
+                  expression (stdlib/ephemeron.mli[310,11843+2]..[310,11843+43])
+                    Pexp_constant PConst_string(" Same as {!Ephemeron.K1.check_data} ",(stdlib/ephemeron.mli[310,11843+2]..[310,11843+43]),None)
+              ]
+            core_type (stdlib/ephemeron.mli[309,11807+18]..[309,11807+35])
+              Ptyp_arrow
+              Nolabel
+              core_type (stdlib/ephemeron.mli[309,11807+18]..[309,11807+27])
+                Ptyp_constr "t" (stdlib/ephemeron.mli[309,11807+26]..[309,11807+27])
+                [
+                  core_type (stdlib/ephemeron.mli[309,11807+19]..[309,11807+21])
+                    Ptyp_var k
+                  core_type (stdlib/ephemeron.mli[309,11807+22]..[309,11807+24])
+                    Ptyp_var d
+                ]
+              core_type (stdlib/ephemeron.mli[309,11807+31]..[309,11807+35])
+                Ptyp_constr "bool" (stdlib/ephemeron.mli[309,11807+31]..[309,11807+35])
+                []
+            []
+        signature_item (stdlib/ephemeron.mli[312,11888+2]..[312,11888+47])
+          Psig_value
+          value_description "blit_data" (stdlib/ephemeron.mli[312,11888+6]..[312,11888+15]) (stdlib/ephemeron.mli[312,11888+2]..[312,11888+47])
+            attribute "ocaml.doc"
+              [
+                structure_item (stdlib/ephemeron.mli[313,11936+2]..[313,11936+42])
+                  Pstr_eval
+                  expression (stdlib/ephemeron.mli[313,11936+2]..[313,11936+42])
+                    Pexp_constant PConst_string(" Same as {!Ephemeron.K1.blit_data} ",(stdlib/ephemeron.mli[313,11936+2]..[313,11936+42]),None)
+              ]
+            core_type (stdlib/ephemeron.mli[312,11888+17]..[312,11888+47])
+              Ptyp_arrow
+              Nolabel
+              core_type (stdlib/ephemeron.mli[312,11888+17]..[312,11888+26])
+                Ptyp_constr "t" (stdlib/ephemeron.mli[312,11888+25]..[312,11888+26])
+                [
+                  core_type (stdlib/ephemeron.mli[312,11888+18]..[312,11888+20])
+                    Ptyp_var k
+                  core_type (stdlib/ephemeron.mli[312,11888+21]..[312,11888+23])
+                    Ptyp_var d
+                ]
+              core_type (stdlib/ephemeron.mli[312,11888+30]..[312,11888+47])
+                Ptyp_arrow
+                Nolabel
+                core_type (stdlib/ephemeron.mli[312,11888+30]..[312,11888+39])
+                  Ptyp_constr "t" (stdlib/ephemeron.mli[312,11888+38]..[312,11888+39])
+                  [
+                    core_type (stdlib/ephemeron.mli[312,11888+31]..[312,11888+33])
+                      Ptyp_var k
+                    core_type (stdlib/ephemeron.mli[312,11888+34]..[312,11888+36])
+                      Ptyp_var d
+                  ]
+                core_type (stdlib/ephemeron.mli[312,11888+43]..[312,11888+47])
+                  Ptyp_constr "unit" (stdlib/ephemeron.mli[312,11888+43]..[312,11888+47])
+                  []
+            []
+        signature_item (stdlib/ephemeron.mli[315,11980+2]..[317,12025+31])
+          Psig_module "Make" (stdlib/ephemeron.mli[315,11980+9]..[315,11980+13])
+            attribute "ocaml.doc"
+              [
+                structure_item (stdlib/ephemeron.mli[318,12057+2]..[318,12057+64])
+                  Pstr_eval
+                  expression (stdlib/ephemeron.mli[318,12057+2]..[318,12057+64])
+                    Pexp_constant PConst_string(" Functor building an implementation of a weak hash table ",(stdlib/ephemeron.mli[318,12057+2]..[318,12057+64]),None)
+              ]
+          module_type (stdlib/ephemeron.mli[316,11994+6]..[317,12025+31])
+            Pmty_functor "H" (stdlib/ephemeron.mli[316,11994+7]..[316,11994+8])
+            module_type (stdlib/ephemeron.mli[316,11994+9]..[316,11994+27])
+              Pmty_ident "Hashtbl.HashedType" (stdlib/ephemeron.mli[316,11994+9]..[316,11994+27])
+            module_type (stdlib/ephemeron.mli[317,12025+4]..[317,12025+31])
+              Pmty_with
+              module_type (stdlib/ephemeron.mli[317,12025+4]..[317,12025+5])
+                Pmty_ident "S" (stdlib/ephemeron.mli[317,12025+4]..[317,12025+5])
+              [
+                Pwith_type "key" (stdlib/ephemeron.mli[317,12025+16]..[317,12025+19])
+                  type_declaration "key" (stdlib/ephemeron.mli[317,12025+16]..[317,12025+19]) (stdlib/ephemeron.mli[317,12025+11]..[317,12025+31])
+                    ptype_params =
+                      []
+                    ptype_cstrs =
+                      []
+                    ptype_kind =
+                      Ptype_abstract
+                    ptype_private = Public
+                    ptype_manifest =
+                      Some
+                        core_type (stdlib/ephemeron.mli[317,12025+22]..[317,12025+31])
+                          Ptyp_constr "array" (stdlib/ephemeron.mli[317,12025+26]..[317,12025+31])
+                          [
+                            core_type (stdlib/ephemeron.mli[317,12025+22]..[317,12025+25])
+                              Ptyp_constr "H.t" (stdlib/ephemeron.mli[317,12025+22]..[317,12025+25])
+                              []
+                          ]
+              ]
+        signature_item (stdlib/ephemeron.mli[320,12123+2]..[322,12180+37])
+          Psig_module "MakeSeeded" (stdlib/ephemeron.mli[320,12123+9]..[320,12123+19])
+            attribute "ocaml.doc"
+              [
+                structure_item (stdlib/ephemeron.mli[323,12218+2]..[324,12281+65])
+                  Pstr_eval
+                  expression (stdlib/ephemeron.mli[323,12218+2]..[324,12281+65])
+                    Pexp_constant PConst_string(" Functor building an implementation of a weak hash table.\n      The seed is similar to the one of {!Hashtbl.MakeSeeded}. ",(stdlib/ephemeron.mli[323,12218+2]..[324,12281+65]),None)
+              ]
+          module_type (stdlib/ephemeron.mli[321,12143+6]..[322,12180+37])
+            Pmty_functor "H" (stdlib/ephemeron.mli[321,12143+7]..[321,12143+8])
+            module_type (stdlib/ephemeron.mli[321,12143+9]..[321,12143+33])
+              Pmty_ident "Hashtbl.SeededHashedType" (stdlib/ephemeron.mli[321,12143+9]..[321,12143+33])
+            module_type (stdlib/ephemeron.mli[322,12180+4]..[322,12180+37])
+              Pmty_with
+              module_type (stdlib/ephemeron.mli[322,12180+4]..[322,12180+11])
+                Pmty_ident "SeededS" (stdlib/ephemeron.mli[322,12180+4]..[322,12180+11])
+              [
+                Pwith_type "key" (stdlib/ephemeron.mli[322,12180+22]..[322,12180+25])
+                  type_declaration "key" (stdlib/ephemeron.mli[322,12180+22]..[322,12180+25]) (stdlib/ephemeron.mli[322,12180+17]..[322,12180+37])
+                    ptype_params =
+                      []
+                    ptype_cstrs =
+                      []
+                    ptype_kind =
+                      Ptype_abstract
+                    ptype_private = Public
+                    ptype_manifest =
+                      Some
+                        core_type (stdlib/ephemeron.mli[322,12180+28]..[322,12180+37])
+                          Ptyp_constr "array" (stdlib/ephemeron.mli[322,12180+32]..[322,12180+37])
+                          [
+                            core_type (stdlib/ephemeron.mli[322,12180+28]..[322,12180+31])
+                              Ptyp_constr "H.t" (stdlib/ephemeron.mli[322,12180+28]..[322,12180+31])
+                              []
+                          ]
+              ]
+      ]
+  signature_item (stdlib/ephemeron.mli[329,12420+0]..[375,13852+3])
+    Psig_module "GenHashTable" (stdlib/ephemeron.mli[329,12420+7]..[329,12420+19])
+      attribute "ocaml.doc"
+        [
+          structure_item (stdlib/ephemeron.mli[376,13856+0]..[376,13856+76])
+            Pstr_eval
+            expression (stdlib/ephemeron.mli[376,13856+0]..[376,13856+76])
+              Pexp_constant PConst_string(" Hash tables on generic containers with notion of death and aliveness. ",(stdlib/ephemeron.mli[376,13856+0]..[376,13856+76]),None)
+        ]
+    module_type (stdlib/ephemeron.mli[329,12420+21]..[375,13852+3])
+      Pmty_signature
+      [
+        signature_item (stdlib/ephemeron.mli[330,12445+2]..[332,12585+33])
+          Psig_attribute "ocaml.text"
+          [
+            structure_item (stdlib/ephemeron.mli[330,12445+2]..[332,12585+33])
+              Pstr_eval
+              expression (stdlib/ephemeron.mli[330,12445+2]..[332,12585+33])
+                Pexp_constant PConst_string(" Define a hash table on generic containers which have a notion of\n      \"death\" and aliveness. If a binding is dead the hash table can\n      automatically remove it. ",(stdlib/ephemeron.mli[330,12445+2]..[332,12585+33]),None)
+          ]
+        signature_item (stdlib/ephemeron.mli[334,12620+2]..[337,12656+9])
+          Psig_type Rec
+          [
+            type_declaration "equal" (stdlib/ephemeron.mli[334,12620+7]..[334,12620+12]) (stdlib/ephemeron.mli[334,12620+2]..[337,12656+9])
+              ptype_params =
+                []
+              ptype_cstrs =
+                []
+              ptype_kind =
+                Ptype_variant
+                  [
+                    (stdlib/ephemeron.mli[335,12635+2]..[335,12635+9])
+                      "ETrue" (stdlib/ephemeron.mli[335,12635+4]..[335,12635+9])
+                      []
+                      None
+                    (stdlib/ephemeron.mli[336,12645+2]..[336,12645+10])
+                      "EFalse" (stdlib/ephemeron.mli[336,12645+4]..[336,12645+10])
+                      []
+                      None
+                    (stdlib/ephemeron.mli[337,12656+2]..[337,12656+9])
+                      "EDead" (stdlib/ephemeron.mli[337,12656+4]..[337,12656+9])
+                      attribute "ocaml.doc"
+                        [
+                          structure_item (stdlib/ephemeron.mli[337,12656+10]..[337,12656+38])
+                            Pstr_eval
+                            expression (stdlib/ephemeron.mli[337,12656+10]..[337,12656+38])
+                              Pexp_constant PConst_string(" the container is dead ",(stdlib/ephemeron.mli[337,12656+10]..[337,12656+38]),None)
+                        ]
+                      []
+                      None
+                  ]
+              ptype_private = Public
+              ptype_manifest =
+                None
+          ]
+        signature_item (stdlib/ephemeron.mli[339,12696+2]..[371,13690+36])
+          Psig_module "MakeSeeded" (stdlib/ephemeron.mli[339,12696+9]..[339,12696+19])
+            attribute "ocaml.doc"
+              [
+                structure_item (stdlib/ephemeron.mli[372,13727+2]..[373,13808+42])
+                  Pstr_eval
+                  expression (stdlib/ephemeron.mli[372,13727+2]..[373,13808+42])
+                    Pexp_constant PConst_string(" Functor building an implementation of an hash table that use the container\n      for keeping the information given ",(stdlib/ephemeron.mli[372,13727+2]..[373,13808+42]),None)
+              ]
+          module_type (stdlib/ephemeron.mli[339,12696+19]..[371,13690+36])
+            Pmty_functor "H" (stdlib/ephemeron.mli[339,12696+20]..[339,12696+21])
+            module_type (stdlib/ephemeron.mli[340,12719+2]..[371,13690+5])
+              Pmty_signature
+              [
+                signature_item (stdlib/ephemeron.mli[341,12725+4]..[341,12725+10])
+                  Psig_type Rec
+                  [
+                    type_declaration "t" (stdlib/ephemeron.mli[341,12725+9]..[341,12725+10]) (stdlib/ephemeron.mli[341,12725+4]..[341,12725+10])
+                      attribute "ocaml.doc"
+                        [
+                          structure_item (stdlib/ephemeron.mli[342,12736+4]..[342,12736+15])
+                            Pstr_eval
+                            expression (stdlib/ephemeron.mli[342,12736+4]..[342,12736+15])
+                              Pexp_constant PConst_string(" keys ",(stdlib/ephemeron.mli[342,12736+4]..[342,12736+15]),None)
+                        ]
+                      ptype_params =
+                        []
+                      ptype_cstrs =
+                        []
+                      ptype_kind =
+                        Ptype_abstract
+                      ptype_private = Public
+                      ptype_manifest =
+                        None
+                  ]
+                signature_item (stdlib/ephemeron.mli[344,12753+4]..[344,12753+21])
+                  Psig_type Rec
+                  [
+                    type_declaration "container" (stdlib/ephemeron.mli[344,12753+12]..[344,12753+21]) (stdlib/ephemeron.mli[344,12753+4]..[344,12753+21])
+                      attribute "ocaml.doc"
+                        [
+                          structure_item (stdlib/ephemeron.mli[345,12775+4]..[345,12775+48])
+                            Pstr_eval
+                            expression (stdlib/ephemeron.mli[345,12775+4]..[345,12775+48])
+                              Pexp_constant PConst_string(" contains keys and the associated data ",(stdlib/ephemeron.mli[345,12775+4]..[345,12775+48]),None)
+                        ]
+                      ptype_params =
+                        [
+                          core_type (stdlib/ephemeron.mli[344,12753+9]..[344,12753+11])
+                            Ptyp_var a
+                        ]
+                      ptype_cstrs =
+                        []
+                      ptype_kind =
+                        Ptype_abstract
+                      ptype_private = Public
+                      ptype_manifest =
+                        None
+                  ]
+                signature_item (stdlib/ephemeron.mli[347,12825+4]..[347,12825+29])
+                  Psig_value
+                  value_description "hash" (stdlib/ephemeron.mli[347,12825+8]..[347,12825+12]) (stdlib/ephemeron.mli[347,12825+4]..[347,12825+29])
+                    attribute "ocaml.doc"
+                      [
+                        structure_item (stdlib/ephemeron.mli[348,12855+4]..[348,12855+46])
+                          Pstr_eval
+                          expression (stdlib/ephemeron.mli[348,12855+4]..[348,12855+46])
+                            Pexp_constant PConst_string(" same as {!Hashtbl.SeededHashedType} ",(stdlib/ephemeron.mli[348,12855+4]..[348,12855+46]),None)
+                      ]
+                    core_type (stdlib/ephemeron.mli[347,12825+14]..[347,12825+29])
+                      Ptyp_arrow
+                      Nolabel
+                      core_type (stdlib/ephemeron.mli[347,12825+14]..[347,12825+17])
+                        Ptyp_constr "int" (stdlib/ephemeron.mli[347,12825+14]..[347,12825+17])
+                        []
+                      core_type (stdlib/ephemeron.mli[347,12825+21]..[347,12825+29])
+                        Ptyp_arrow
+                        Nolabel
+                        core_type (stdlib/ephemeron.mli[347,12825+21]..[347,12825+22])
+                          Ptyp_constr "t" (stdlib/ephemeron.mli[347,12825+21]..[347,12825+22])
+                          []
+                        core_type (stdlib/ephemeron.mli[347,12825+26]..[347,12825+29])
+                          Ptyp_constr "int" (stdlib/ephemeron.mli[347,12825+26]..[347,12825+29])
+                          []
+                    []
+                signature_item (stdlib/ephemeron.mli[350,12903+4]..[350,12903+41])
+                  Psig_value
+                  value_description "equal" (stdlib/ephemeron.mli[350,12903+8]..[350,12903+13]) (stdlib/ephemeron.mli[350,12903+4]..[350,12903+41])
+                    attribute "ocaml.doc"
+                      [
+                        structure_item (stdlib/ephemeron.mli[351,12945+4]..[353,13083+15])
+                          Pstr_eval
+                          expression (stdlib/ephemeron.mli[351,12945+4]..[353,13083+15])
+                            Pexp_constant PConst_string(" equality predicate used to compare a key with the one in a\n        container. Can return [EDead] if the keys in the container are\n        dead ",(stdlib/ephemeron.mli[351,12945+4]..[353,13083+15]),None)
+                      ]
+                    core_type (stdlib/ephemeron.mli[350,12903+15]..[350,12903+41])
+                      Ptyp_arrow
+                      Nolabel
+                      core_type (stdlib/ephemeron.mli[350,12903+15]..[350,12903+27])
+                        Ptyp_constr "container" (stdlib/ephemeron.mli[350,12903+18]..[350,12903+27])
+                        [
+                          core_type (stdlib/ephemeron.mli[350,12903+15]..[350,12903+17])
+                            Ptyp_var a
+                        ]
+                      core_type (stdlib/ephemeron.mli[350,12903+31]..[350,12903+41])
+                        Ptyp_arrow
+                        Nolabel
+                        core_type (stdlib/ephemeron.mli[350,12903+31]..[350,12903+32])
+                          Ptyp_constr "t" (stdlib/ephemeron.mli[350,12903+31]..[350,12903+32])
+                          []
+                        core_type (stdlib/ephemeron.mli[350,12903+36]..[350,12903+41])
+                          Ptyp_constr "equal" (stdlib/ephemeron.mli[350,12903+36]..[350,12903+41])
+                          []
+                    []
+                signature_item (stdlib/ephemeron.mli[355,13100+4]..[355,13100+39])
+                  Psig_value
+                  value_description "create" (stdlib/ephemeron.mli[355,13100+8]..[355,13100+14]) (stdlib/ephemeron.mli[355,13100+4]..[355,13100+39])
+                    attribute "ocaml.doc"
+                      [
+                        structure_item (stdlib/ephemeron.mli[356,13140+4]..[357,13191+42])
+                          Pstr_eval
+                          expression (stdlib/ephemeron.mli[356,13140+4]..[357,13191+42])
+                            Pexp_constant PConst_string(" [create key data] creates a container from\n        some initials keys and one data ",(stdlib/ephemeron.mli[356,13140+4]..[357,13191+42]),None)
+                      ]
+                    core_type (stdlib/ephemeron.mli[355,13100+16]..[355,13100+39])
+                      Ptyp_arrow
+                      Nolabel
+                      core_type (stdlib/ephemeron.mli[355,13100+16]..[355,13100+17])
+                        Ptyp_constr "t" (stdlib/ephemeron.mli[355,13100+16]..[355,13100+17])
+                        []
+                      core_type (stdlib/ephemeron.mli[355,13100+21]..[355,13100+39])
+                        Ptyp_arrow
+                        Nolabel
+                        core_type (stdlib/ephemeron.mli[355,13100+21]..[355,13100+23])
+                          Ptyp_var a
+                        core_type (stdlib/ephemeron.mli[355,13100+27]..[355,13100+39])
+                          Ptyp_constr "container" (stdlib/ephemeron.mli[355,13100+30]..[355,13100+39])
+                          [
+                            core_type (stdlib/ephemeron.mli[355,13100+27]..[355,13100+29])
+                              Ptyp_var a
+                          ]
+                    []
+                signature_item (stdlib/ephemeron.mli[359,13235+4]..[359,13235+41])
+                  Psig_value
+                  value_description "get_key" (stdlib/ephemeron.mli[359,13235+8]..[359,13235+15]) (stdlib/ephemeron.mli[359,13235+4]..[359,13235+41])
+                    attribute "ocaml.doc"
+                      [
+                        structure_item (stdlib/ephemeron.mli[360,13277+4]..[360,13277+64])
+                          Pstr_eval
+                          expression (stdlib/ephemeron.mli[360,13277+4]..[360,13277+64])
+                            Pexp_constant PConst_string(" [get_key cont] returns the keys if they are all alive ",(stdlib/ephemeron.mli[360,13277+4]..[360,13277+64]),None)
+                      ]
+                    core_type (stdlib/ephemeron.mli[359,13235+17]..[359,13235+41])
+                      Ptyp_arrow
+                      Nolabel
+                      core_type (stdlib/ephemeron.mli[359,13235+17]..[359,13235+29])
+                        Ptyp_constr "container" (stdlib/ephemeron.mli[359,13235+20]..[359,13235+29])
+                        [
+                          core_type (stdlib/ephemeron.mli[359,13235+17]..[359,13235+19])
+                            Ptyp_var a
+                        ]
+                      core_type (stdlib/ephemeron.mli[359,13235+33]..[359,13235+41])
+                        Ptyp_constr "option" (stdlib/ephemeron.mli[359,13235+35]..[359,13235+41])
+                        [
+                          core_type (stdlib/ephemeron.mli[359,13235+33]..[359,13235+34])
+                            Ptyp_constr "t" (stdlib/ephemeron.mli[359,13235+33]..[359,13235+34])
+                            []
+                        ]
+                    []
+                signature_item (stdlib/ephemeron.mli[362,13343+4]..[362,13343+43])
+                  Psig_value
+                  value_description "get_data" (stdlib/ephemeron.mli[362,13343+8]..[362,13343+16]) (stdlib/ephemeron.mli[362,13343+4]..[362,13343+43])
+                    attribute "ocaml.doc"
+                      [
+                        structure_item (stdlib/ephemeron.mli[363,13387+4]..[363,13387+58])
+                          Pstr_eval
+                          expression (stdlib/ephemeron.mli[363,13387+4]..[363,13387+58])
+                            Pexp_constant PConst_string(" [get_data cont] returns the data if it is alive ",(stdlib/ephemeron.mli[363,13387+4]..[363,13387+58]),None)
+                      ]
+                    core_type (stdlib/ephemeron.mli[362,13343+18]..[362,13343+43])
+                      Ptyp_arrow
+                      Nolabel
+                      core_type (stdlib/ephemeron.mli[362,13343+18]..[362,13343+30])
+                        Ptyp_constr "container" (stdlib/ephemeron.mli[362,13343+21]..[362,13343+30])
+                        [
+                          core_type (stdlib/ephemeron.mli[362,13343+18]..[362,13343+20])
+                            Ptyp_var a
+                        ]
+                      core_type (stdlib/ephemeron.mli[362,13343+34]..[362,13343+43])
+                        Ptyp_constr "option" (stdlib/ephemeron.mli[362,13343+37]..[362,13343+43])
+                        [
+                          core_type (stdlib/ephemeron.mli[362,13343+34]..[362,13343+36])
+                            Ptyp_var a
+                        ]
+                    []
+                signature_item (stdlib/ephemeron.mli[365,13447+4]..[365,13447+53])
+                  Psig_value
+                  value_description "set_key_data" (stdlib/ephemeron.mli[365,13447+8]..[365,13447+20]) (stdlib/ephemeron.mli[365,13447+4]..[365,13447+53])
+                    attribute "ocaml.doc"
+                      [
+                        structure_item (stdlib/ephemeron.mli[366,13501+4]..[366,13501+56])
+                          Pstr_eval
+                          expression (stdlib/ephemeron.mli[366,13501+4]..[366,13501+56])
+                            Pexp_constant PConst_string(" [set_key_data cont] modifies the key and data ",(stdlib/ephemeron.mli[366,13501+4]..[366,13501+56]),None)
+                      ]
+                    core_type (stdlib/ephemeron.mli[365,13447+22]..[365,13447+53])
+                      Ptyp_arrow
+                      Nolabel
+                      core_type (stdlib/ephemeron.mli[365,13447+22]..[365,13447+34])
+                        Ptyp_constr "container" (stdlib/ephemeron.mli[365,13447+25]..[365,13447+34])
+                        [
+                          core_type (stdlib/ephemeron.mli[365,13447+22]..[365,13447+24])
+                            Ptyp_var a
+                        ]
+                      core_type (stdlib/ephemeron.mli[365,13447+38]..[365,13447+53])
+                        Ptyp_arrow
+                        Nolabel
+                        core_type (stdlib/ephemeron.mli[365,13447+38]..[365,13447+39])
+                          Ptyp_constr "t" (stdlib/ephemeron.mli[365,13447+38]..[365,13447+39])
+                          []
+                        core_type (stdlib/ephemeron.mli[365,13447+43]..[365,13447+53])
+                          Ptyp_arrow
+                          Nolabel
+                          core_type (stdlib/ephemeron.mli[365,13447+43]..[365,13447+45])
+                            Ptyp_var a
+                          core_type (stdlib/ephemeron.mli[365,13447+49]..[365,13447+53])
+                            Ptyp_constr "unit" (stdlib/ephemeron.mli[365,13447+49]..[365,13447+53])
+                            []
+                    []
+                signature_item (stdlib/ephemeron.mli[368,13559+4]..[368,13559+39])
+                  Psig_value
+                  value_description "check_key" (stdlib/ephemeron.mli[368,13559+8]..[368,13559+17]) (stdlib/ephemeron.mli[368,13559+4]..[368,13559+39])
+                    attribute "ocaml.doc"
+                      [
+                        structure_item (stdlib/ephemeron.mli[369,13599+4]..[370,13669+20])
+                          Pstr_eval
+                          expression (stdlib/ephemeron.mli[369,13599+4]..[370,13669+20])
+                            Pexp_constant PConst_string(" [check_key cont] checks if all the keys contained in the data\n        are alive ",(stdlib/ephemeron.mli[369,13599+4]..[370,13669+20]),None)
+                      ]
+                    core_type (stdlib/ephemeron.mli[368,13559+19]..[368,13559+39])
+                      Ptyp_arrow
+                      Nolabel
+                      core_type (stdlib/ephemeron.mli[368,13559+19]..[368,13559+31])
+                        Ptyp_constr "container" (stdlib/ephemeron.mli[368,13559+22]..[368,13559+31])
+                        [
+                          core_type (stdlib/ephemeron.mli[368,13559+19]..[368,13559+21])
+                            Ptyp_var a
+                        ]
+                      core_type (stdlib/ephemeron.mli[368,13559+35]..[368,13559+39])
+                        Ptyp_constr "bool" (stdlib/ephemeron.mli[368,13559+35]..[368,13559+39])
+                        []
+                    []
+              ]
+            module_type (stdlib/ephemeron.mli[371,13690+9]..[371,13690+36])
+              Pmty_with
+              module_type (stdlib/ephemeron.mli[371,13690+9]..[371,13690+16])
+                Pmty_ident "SeededS" (stdlib/ephemeron.mli[371,13690+9]..[371,13690+16])
+              [
+                Pwith_type "key" (stdlib/ephemeron.mli[371,13690+27]..[371,13690+30])
+                  type_declaration "key" (stdlib/ephemeron.mli[371,13690+27]..[371,13690+30]) (stdlib/ephemeron.mli[371,13690+22]..[371,13690+36])
+                    ptype_params =
+                      []
+                    ptype_cstrs =
+                      []
+                    ptype_kind =
+                      Ptype_abstract
+                    ptype_private = Public
+                    ptype_manifest =
+                      Some
+                        core_type (stdlib/ephemeron.mli[371,13690+33]..[371,13690+36])
+                          Ptyp_constr "H.t" (stdlib/ephemeron.mli[371,13690+33]..[371,13690+36])
+                          []
+              ]
+      ]
+]
+

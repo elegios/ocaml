@@ -1,0 +1,421 @@
+[
+  structure_item (testsuite/tests/misc/gcwords.ml[4,12+0]..[4,12+38])
+    Pstr_type Rec
+    [
+      type_declaration "t" (testsuite/tests/misc/gcwords.ml[4,12+5]..[4,12+6]) (testsuite/tests/misc/gcwords.ml[4,12+0]..[4,12+38])
+        ptype_params =
+          []
+        ptype_cstrs =
+          []
+        ptype_kind =
+          Ptype_variant
+            [
+              (testsuite/tests/misc/gcwords.ml[4,12+9]..[4,12+20])
+                "Leaf" (testsuite/tests/misc/gcwords.ml[4,12+9]..[4,12+13])
+                [
+                  core_type (testsuite/tests/misc/gcwords.ml[4,12+17]..[4,12+20])
+                    Ptyp_constr "int" (testsuite/tests/misc/gcwords.ml[4,12+17]..[4,12+20])
+                    []
+                ]
+                None
+              (testsuite/tests/misc/gcwords.ml[4,12+21]..[4,12+38])
+                "Branch" (testsuite/tests/misc/gcwords.ml[4,12+23]..[4,12+29])
+                [
+                  core_type (testsuite/tests/misc/gcwords.ml[4,12+33]..[4,12+34])
+                    Ptyp_constr "t" (testsuite/tests/misc/gcwords.ml[4,12+33]..[4,12+34])
+                    []
+                  core_type (testsuite/tests/misc/gcwords.ml[4,12+37]..[4,12+38])
+                    Ptyp_constr "t" (testsuite/tests/misc/gcwords.ml[4,12+37]..[4,12+38])
+                    []
+                ]
+                None
+            ]
+        ptype_private = Public
+        ptype_manifest =
+          None
+    ]
+  structure_item (testsuite/tests/misc/gcwords.ml[6,52+0]..[6,52+37])
+    Pstr_type Rec
+    [
+      type_declaration "floatref" (testsuite/tests/misc/gcwords.ml[6,52+5]..[6,52+13]) (testsuite/tests/misc/gcwords.ml[6,52+0]..[6,52+37])
+        ptype_params =
+          []
+        ptype_cstrs =
+          []
+        ptype_kind =
+          Ptype_record
+            [
+              (testsuite/tests/misc/gcwords.ml[6,52+18]..[6,52+35])
+                Mutable
+                "f" (testsuite/tests/misc/gcwords.ml[6,52+26]..[6,52+27])                core_type (testsuite/tests/misc/gcwords.ml[6,52+30]..[6,52+35])
+                  Ptyp_constr "float" (testsuite/tests/misc/gcwords.ml[6,52+30]..[6,52+35])
+                  []
+            ]
+        ptype_private = Public
+        ptype_manifest =
+          None
+    ]
+  structure_item (testsuite/tests/misc/gcwords.ml[8,91+0]..[8,91+19])
+    Pstr_value Nonrec
+    [
+      <def>
+        pattern (testsuite/tests/misc/gcwords.ml[8,91+4]..[8,91+5])
+          Ppat_var "a" (testsuite/tests/misc/gcwords.ml[8,91+4]..[8,91+5])
+        expression (testsuite/tests/misc/gcwords.ml[8,91+8]..[8,91+19])
+          Pexp_record
+          [
+            "f" (testsuite/tests/misc/gcwords.ml[8,91+10]..[8,91+11])
+              expression (testsuite/tests/misc/gcwords.ml[8,91+14]..[8,91+17])
+                Pexp_constant PConst_float (0.0,None)
+          ]
+          None
+    ]
+  structure_item (testsuite/tests/misc/gcwords.ml[10,112+0]..[12,163+66])
+    Pstr_value Rec
+    [
+      <def>
+        pattern (testsuite/tests/misc/gcwords.ml[10,112+8]..[10,112+21])
+          Ppat_var "allocate_lots" (testsuite/tests/misc/gcwords.ml[10,112+8]..[10,112+21])
+        expression (testsuite/tests/misc/gcwords.ml[10,112+22]..[12,163+66]) ghost
+          Pexp_fun
+          Nolabel
+          None
+          pattern (testsuite/tests/misc/gcwords.ml[10,112+22]..[10,112+23])
+            Ppat_var "m" (testsuite/tests/misc/gcwords.ml[10,112+22]..[10,112+23])
+          expression (testsuite/tests/misc/gcwords.ml[10,112+26]..[12,163+66])
+            Pexp_function
+            [
+              <case>
+                pattern (testsuite/tests/misc/gcwords.ml[11,147+4]..[11,147+5])
+                  Ppat_constant PConst_int (0,None)
+                expression (testsuite/tests/misc/gcwords.ml[11,147+9]..[11,147+15])
+                  Pexp_construct "Leaf" (testsuite/tests/misc/gcwords.ml[11,147+9]..[11,147+13])
+                  Some
+                    expression (testsuite/tests/misc/gcwords.ml[11,147+14]..[11,147+15])
+                      Pexp_ident "m" (testsuite/tests/misc/gcwords.ml[11,147+14]..[11,147+15])
+              <case>
+                pattern (testsuite/tests/misc/gcwords.ml[12,163+4]..[12,163+5])
+                  Ppat_var "n" (testsuite/tests/misc/gcwords.ml[12,163+4]..[12,163+5])
+                expression (testsuite/tests/misc/gcwords.ml[12,163+9]..[12,163+66])
+                  Pexp_construct "Branch" (testsuite/tests/misc/gcwords.ml[12,163+9]..[12,163+15])
+                  Some
+                    expression (testsuite/tests/misc/gcwords.ml[12,163+16]..[12,163+66])
+                      Pexp_tuple
+                      [
+                        expression (testsuite/tests/misc/gcwords.ml[12,163+17]..[12,163+38])
+                          Pexp_apply
+                          expression (testsuite/tests/misc/gcwords.ml[12,163+17]..[12,163+30])
+                            Pexp_ident "allocate_lots" (testsuite/tests/misc/gcwords.ml[12,163+17]..[12,163+30])
+                          [
+                            <arg>
+                            Nolabel
+                              expression (testsuite/tests/misc/gcwords.ml[12,163+31]..[12,163+32])
+                                Pexp_ident "m" (testsuite/tests/misc/gcwords.ml[12,163+31]..[12,163+32])
+                            <arg>
+                            Nolabel
+                              expression (testsuite/tests/misc/gcwords.ml[12,163+33]..[12,163+38])
+                                Pexp_apply
+                                expression (testsuite/tests/misc/gcwords.ml[12,163+35]..[12,163+36])
+                                  Pexp_ident "-" (testsuite/tests/misc/gcwords.ml[12,163+35]..[12,163+36])
+                                [
+                                  <arg>
+                                  Nolabel
+                                    expression (testsuite/tests/misc/gcwords.ml[12,163+34]..[12,163+35])
+                                      Pexp_ident "n" (testsuite/tests/misc/gcwords.ml[12,163+34]..[12,163+35])
+                                  <arg>
+                                  Nolabel
+                                    expression (testsuite/tests/misc/gcwords.ml[12,163+36]..[12,163+37])
+                                      Pexp_constant PConst_int (1,None)
+                                ]
+                          ]
+                        expression (testsuite/tests/misc/gcwords.ml[12,163+40]..[12,163+65])
+                          Pexp_apply
+                          expression (testsuite/tests/misc/gcwords.ml[12,163+40]..[12,163+53])
+                            Pexp_ident "allocate_lots" (testsuite/tests/misc/gcwords.ml[12,163+40]..[12,163+53])
+                          [
+                            <arg>
+                            Nolabel
+                              expression (testsuite/tests/misc/gcwords.ml[12,163+54]..[12,163+59])
+                                Pexp_apply
+                                expression (testsuite/tests/misc/gcwords.ml[12,163+56]..[12,163+57])
+                                  Pexp_ident "+" (testsuite/tests/misc/gcwords.ml[12,163+56]..[12,163+57])
+                                [
+                                  <arg>
+                                  Nolabel
+                                    expression (testsuite/tests/misc/gcwords.ml[12,163+55]..[12,163+56])
+                                      Pexp_ident "m" (testsuite/tests/misc/gcwords.ml[12,163+55]..[12,163+56])
+                                  <arg>
+                                  Nolabel
+                                    expression (testsuite/tests/misc/gcwords.ml[12,163+57]..[12,163+58])
+                                      Pexp_constant PConst_int (1,None)
+                                ]
+                            <arg>
+                            Nolabel
+                              expression (testsuite/tests/misc/gcwords.ml[12,163+60]..[12,163+65])
+                                Pexp_apply
+                                expression (testsuite/tests/misc/gcwords.ml[12,163+62]..[12,163+63])
+                                  Pexp_ident "-" (testsuite/tests/misc/gcwords.ml[12,163+62]..[12,163+63])
+                                [
+                                  <arg>
+                                  Nolabel
+                                    expression (testsuite/tests/misc/gcwords.ml[12,163+61]..[12,163+62])
+                                      Pexp_ident "n" (testsuite/tests/misc/gcwords.ml[12,163+61]..[12,163+62])
+                                  <arg>
+                                  Nolabel
+                                    expression (testsuite/tests/misc/gcwords.ml[12,163+63]..[12,163+64])
+                                      Pexp_constant PConst_int (1,None)
+                                ]
+                          ]
+                      ]
+            ]
+    ]
+  structure_item (testsuite/tests/misc/gcwords.ml[14,231+0]..[18,317+8])
+    Pstr_value Nonrec
+    [
+      <def>
+        pattern (testsuite/tests/misc/gcwords.ml[14,231+4]..[14,231+11])
+          Ppat_var "measure" (testsuite/tests/misc/gcwords.ml[14,231+4]..[14,231+11])
+        expression (testsuite/tests/misc/gcwords.ml[14,231+12]..[18,317+8]) ghost
+          Pexp_fun
+          Nolabel
+          None
+          pattern (testsuite/tests/misc/gcwords.ml[14,231+12]..[14,231+13])
+            Ppat_var "f" (testsuite/tests/misc/gcwords.ml[14,231+12]..[14,231+13])
+          expression (testsuite/tests/misc/gcwords.ml[15,247+2]..[18,317+8])
+            Pexp_let Nonrec
+            [
+              <def>
+                pattern (testsuite/tests/misc/gcwords.ml[15,247+6]..[15,247+7])
+                  Ppat_var "a" (testsuite/tests/misc/gcwords.ml[15,247+6]..[15,247+7])
+                expression (testsuite/tests/misc/gcwords.ml[15,247+10]..[15,247+27])
+                  Pexp_apply
+                  expression (testsuite/tests/misc/gcwords.ml[15,247+10]..[15,247+24])
+                    Pexp_ident "Gc.minor_words" (testsuite/tests/misc/gcwords.ml[15,247+10]..[15,247+24])
+                  [
+                    <arg>
+                    Nolabel
+                      expression (testsuite/tests/misc/gcwords.ml[15,247+25]..[15,247+27])
+                        Pexp_construct "()" (testsuite/tests/misc/gcwords.ml[15,247+25]..[15,247+27])
+                        None
+                  ]
+            ]
+            expression (testsuite/tests/misc/gcwords.ml[16,278+2]..[18,317+8])
+              Pexp_sequence
+              expression (testsuite/tests/misc/gcwords.ml[16,278+2]..[16,278+6])
+                Pexp_apply
+                expression (testsuite/tests/misc/gcwords.ml[16,278+2]..[16,278+3])
+                  Pexp_ident "f" (testsuite/tests/misc/gcwords.ml[16,278+2]..[16,278+3])
+                [
+                  <arg>
+                  Nolabel
+                    expression (testsuite/tests/misc/gcwords.ml[16,278+4]..[16,278+6])
+                      Pexp_construct "()" (testsuite/tests/misc/gcwords.ml[16,278+4]..[16,278+6])
+                      None
+                ]
+              expression (testsuite/tests/misc/gcwords.ml[17,286+2]..[18,317+8])
+                Pexp_let Nonrec
+                [
+                  <def>
+                    pattern (testsuite/tests/misc/gcwords.ml[17,286+6]..[17,286+7])
+                      Ppat_var "c" (testsuite/tests/misc/gcwords.ml[17,286+6]..[17,286+7])
+                    expression (testsuite/tests/misc/gcwords.ml[17,286+10]..[17,286+27])
+                      Pexp_apply
+                      expression (testsuite/tests/misc/gcwords.ml[17,286+10]..[17,286+24])
+                        Pexp_ident "Gc.minor_words" (testsuite/tests/misc/gcwords.ml[17,286+10]..[17,286+24])
+                      [
+                        <arg>
+                        Nolabel
+                          expression (testsuite/tests/misc/gcwords.ml[17,286+25]..[17,286+27])
+                            Pexp_construct "()" (testsuite/tests/misc/gcwords.ml[17,286+25]..[17,286+27])
+                            None
+                      ]
+                ]
+                expression (testsuite/tests/misc/gcwords.ml[18,317+2]..[18,317+8])
+                  Pexp_apply
+                  expression (testsuite/tests/misc/gcwords.ml[18,317+4]..[18,317+6])
+                    Pexp_ident "-." (testsuite/tests/misc/gcwords.ml[18,317+4]..[18,317+6])
+                  [
+                    <arg>
+                    Nolabel
+                      expression (testsuite/tests/misc/gcwords.ml[18,317+2]..[18,317+3])
+                        Pexp_ident "c" (testsuite/tests/misc/gcwords.ml[18,317+2]..[18,317+3])
+                    <arg>
+                    Nolabel
+                      expression (testsuite/tests/misc/gcwords.ml[18,317+7]..[18,317+8])
+                        Pexp_ident "a" (testsuite/tests/misc/gcwords.ml[18,317+7]..[18,317+8])
+                  ]
+    ]
+  structure_item (testsuite/tests/misc/gcwords.ml[20,327+0]..[29,733+20])
+    Pstr_value Nonrec
+    [
+      <def>
+        pattern (testsuite/tests/misc/gcwords.ml[20,327+4]..[20,327+6])
+          Ppat_construct "()" (testsuite/tests/misc/gcwords.ml[20,327+4]..[20,327+6])
+          None
+        expression (testsuite/tests/misc/gcwords.ml[21,336+2]..[29,733+20])
+          Pexp_let Nonrec
+          [
+            <def>
+              pattern (testsuite/tests/misc/gcwords.ml[21,336+6]..[21,336+7])
+                Ppat_var "n" (testsuite/tests/misc/gcwords.ml[21,336+6]..[21,336+7])
+              expression (testsuite/tests/misc/gcwords.ml[21,336+10]..[21,336+54])
+                Pexp_apply
+                expression (testsuite/tests/misc/gcwords.ml[21,336+10]..[21,336+17])
+                  Pexp_ident "measure" (testsuite/tests/misc/gcwords.ml[21,336+10]..[21,336+17])
+                [
+                  <arg>
+                  Nolabel
+                    expression (testsuite/tests/misc/gcwords.ml[21,336+18]..[21,336+54])
+                      Pexp_fun
+                      Nolabel
+                      None
+                      pattern (testsuite/tests/misc/gcwords.ml[21,336+23]..[21,336+25])
+                        Ppat_construct "()" (testsuite/tests/misc/gcwords.ml[21,336+23]..[21,336+25])
+                        None
+                      expression (testsuite/tests/misc/gcwords.ml[21,336+29]..[21,336+53])
+                        Pexp_setfield
+                        expression (testsuite/tests/misc/gcwords.ml[21,336+29]..[21,336+30])
+                          Pexp_ident "a" (testsuite/tests/misc/gcwords.ml[21,336+29]..[21,336+30])
+                        "f" (testsuite/tests/misc/gcwords.ml[21,336+31]..[21,336+32])
+                        expression (testsuite/tests/misc/gcwords.ml[21,336+36]..[21,336+53])
+                          Pexp_apply
+                          expression (testsuite/tests/misc/gcwords.ml[21,336+36]..[21,336+50])
+                            Pexp_ident "Gc.minor_words" (testsuite/tests/misc/gcwords.ml[21,336+36]..[21,336+50])
+                          [
+                            <arg>
+                            Nolabel
+                              expression (testsuite/tests/misc/gcwords.ml[21,336+51]..[21,336+53])
+                                Pexp_construct "()" (testsuite/tests/misc/gcwords.ml[21,336+51]..[21,336+53])
+                                None
+                          ]
+                ]
+          ]
+          expression (testsuite/tests/misc/gcwords.ml[24,488+2]..[29,733+20])
+            Pexp_sequence
+            expression (testsuite/tests/misc/gcwords.ml[24,488+2]..[24,488+18])
+              Pexp_assert
+              expression (testsuite/tests/misc/gcwords.ml[24,488+9]..[24,488+18])
+                Pexp_apply
+                expression (testsuite/tests/misc/gcwords.ml[24,488+12]..[24,488+13])
+                  Pexp_ident "<" (testsuite/tests/misc/gcwords.ml[24,488+12]..[24,488+13])
+                [
+                  <arg>
+                  Nolabel
+                    expression (testsuite/tests/misc/gcwords.ml[24,488+10]..[24,488+11])
+                      Pexp_ident "n" (testsuite/tests/misc/gcwords.ml[24,488+10]..[24,488+11])
+                  <arg>
+                  Nolabel
+                    expression (testsuite/tests/misc/gcwords.ml[24,488+14]..[24,488+17])
+                      Pexp_constant PConst_float (10.,None)
+                ]
+            expression (testsuite/tests/misc/gcwords.ml[25,508+2]..[29,733+20])
+              Pexp_sequence
+              expression (testsuite/tests/misc/gcwords.ml[25,508+2]..[25,508+55])
+                Pexp_ifthenelse
+                expression (testsuite/tests/misc/gcwords.ml[25,508+5]..[25,508+34])
+                  Pexp_apply
+                  expression (testsuite/tests/misc/gcwords.ml[25,508+22]..[25,508+23])
+                    Pexp_ident "=" (testsuite/tests/misc/gcwords.ml[25,508+22]..[25,508+23])
+                  [
+                    <arg>
+                    Nolabel
+                      expression (testsuite/tests/misc/gcwords.ml[25,508+5]..[25,508+21])
+                        Pexp_ident "Sys.backend_type" (testsuite/tests/misc/gcwords.ml[25,508+5]..[25,508+21])
+                    <arg>
+                    Nolabel
+                      expression (testsuite/tests/misc/gcwords.ml[25,508+24]..[25,508+34])
+                        Pexp_construct "Sys.Native" (testsuite/tests/misc/gcwords.ml[25,508+24]..[25,508+34])
+                        None
+                  ]
+                expression (testsuite/tests/misc/gcwords.ml[25,508+40]..[25,508+55])
+                  Pexp_assert
+                  expression (testsuite/tests/misc/gcwords.ml[25,508+47]..[25,508+55])
+                    Pexp_apply
+                    expression (testsuite/tests/misc/gcwords.ml[25,508+50]..[25,508+51])
+                      Pexp_ident "=" (testsuite/tests/misc/gcwords.ml[25,508+50]..[25,508+51])
+                    [
+                      <arg>
+                      Nolabel
+                        expression (testsuite/tests/misc/gcwords.ml[25,508+48]..[25,508+49])
+                          Pexp_ident "n" (testsuite/tests/misc/gcwords.ml[25,508+48]..[25,508+49])
+                      <arg>
+                      Nolabel
+                        expression (testsuite/tests/misc/gcwords.ml[25,508+52]..[25,508+54])
+                          Pexp_constant PConst_float (0.,None)
+                    ]
+                None
+              expression (testsuite/tests/misc/gcwords.ml[26,565+2]..[29,733+20])
+                Pexp_let Nonrec
+                [
+                  <def>
+                    pattern (testsuite/tests/misc/gcwords.ml[26,565+6]..[26,565+7])
+                      Ppat_var "n" (testsuite/tests/misc/gcwords.ml[26,565+6]..[26,565+7])
+                    expression (testsuite/tests/misc/gcwords.ml[26,565+10]..[26,565+71])
+                      Pexp_apply
+                      expression (testsuite/tests/misc/gcwords.ml[26,565+10]..[26,565+17])
+                        Pexp_ident "measure" (testsuite/tests/misc/gcwords.ml[26,565+10]..[26,565+17])
+                      [
+                        <arg>
+                        Nolabel
+                          expression (testsuite/tests/misc/gcwords.ml[26,565+18]..[26,565+71])
+                            Pexp_fun
+                            Nolabel
+                            None
+                            pattern (testsuite/tests/misc/gcwords.ml[26,565+23]..[26,565+25])
+                              Ppat_construct "()" (testsuite/tests/misc/gcwords.ml[26,565+23]..[26,565+25])
+                              None
+                            expression (testsuite/tests/misc/gcwords.ml[26,565+29]..[26,565+70])
+                              Pexp_apply
+                              expression (testsuite/tests/misc/gcwords.ml[26,565+29]..[26,565+48])
+                                Pexp_ident "Sys.opaque_identity" (testsuite/tests/misc/gcwords.ml[26,565+29]..[26,565+48])
+                              [
+                                <arg>
+                                Nolabel
+                                  expression (testsuite/tests/misc/gcwords.ml[26,565+49]..[26,565+70])
+                                    Pexp_apply
+                                    expression (testsuite/tests/misc/gcwords.ml[26,565+50]..[26,565+63])
+                                      Pexp_ident "allocate_lots" (testsuite/tests/misc/gcwords.ml[26,565+50]..[26,565+63])
+                                    [
+                                      <arg>
+                                      Nolabel
+                                        expression (testsuite/tests/misc/gcwords.ml[26,565+64]..[26,565+66])
+                                          Pexp_constant PConst_int (42,None)
+                                      <arg>
+                                      Nolabel
+                                        expression (testsuite/tests/misc/gcwords.ml[26,565+67]..[26,565+69])
+                                          Pexp_constant PConst_int (10,None)
+                                    ]
+                              ]
+                      ]
+                ]
+                expression (testsuite/tests/misc/gcwords.ml[28,711+2]..[29,733+20])
+                  Pexp_sequence
+                  expression (testsuite/tests/misc/gcwords.ml[28,711+2]..[28,711+20])
+                    Pexp_assert
+                    expression (testsuite/tests/misc/gcwords.ml[28,711+9]..[28,711+20])
+                      Pexp_apply
+                      expression (testsuite/tests/misc/gcwords.ml[28,711+12]..[28,711+13])
+                        Pexp_ident ">" (testsuite/tests/misc/gcwords.ml[28,711+12]..[28,711+13])
+                      [
+                        <arg>
+                        Nolabel
+                          expression (testsuite/tests/misc/gcwords.ml[28,711+10]..[28,711+11])
+                            Pexp_ident "n" (testsuite/tests/misc/gcwords.ml[28,711+10]..[28,711+11])
+                        <arg>
+                        Nolabel
+                          expression (testsuite/tests/misc/gcwords.ml[28,711+14]..[28,711+19])
+                            Pexp_constant PConst_float (3000.,None)
+                      ]
+                  expression (testsuite/tests/misc/gcwords.ml[29,733+2]..[29,733+20])
+                    Pexp_apply
+                    expression (testsuite/tests/misc/gcwords.ml[29,733+2]..[29,733+15])
+                      Pexp_ident "print_endline" (testsuite/tests/misc/gcwords.ml[29,733+2]..[29,733+15])
+                    [
+                      <arg>
+                      Nolabel
+                        expression (testsuite/tests/misc/gcwords.ml[29,733+16]..[29,733+20])
+                          Pexp_constant PConst_string("ok",(testsuite/tests/misc/gcwords.ml[29,733+17]..[29,733+19]),None)
+                    ]
+    ]
+]
+

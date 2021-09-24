@@ -1,0 +1,283 @@
+[
+  structure_item (testsuite/tests/typing-modules/pr7348.ml[5,24+0]..[7,130+3])
+    Pstr_module
+    "F" (testsuite/tests/typing-modules/pr7348.ml[5,24+7]..[5,24+8])
+      module_expr (testsuite/tests/typing-modules/pr7348.ml[5,24+9]..[7,130+3])
+        Pmod_functor "X" (testsuite/tests/typing-modules/pr7348.ml[5,24+10]..[5,24+11])
+        module_type (testsuite/tests/typing-modules/pr7348.ml[5,24+14]..[5,24+63])
+          Pmty_signature
+          [
+            signature_item (testsuite/tests/typing-modules/pr7348.ml[5,24+18]..[5,24+49])
+              Psig_type Rec
+              [
+                type_declaration "t" (testsuite/tests/typing-modules/pr7348.ml[5,24+23]..[5,24+24]) (testsuite/tests/typing-modules/pr7348.ml[5,24+18]..[5,24+49])
+                  ptype_params =
+                    []
+                  ptype_cstrs =
+                    []
+                  ptype_kind =
+                    Ptype_abstract
+                  ptype_private = Private
+                  ptype_manifest =
+                    Some
+                      core_type (testsuite/tests/typing-modules/pr7348.ml[5,24+35]..[5,24+49])
+                        Ptyp_object Open
+                          method foo
+                            core_type (testsuite/tests/typing-modules/pr7348.ml[5,24+41]..[5,24+44])
+                              Ptyp_constr "int" (testsuite/tests/typing-modules/pr7348.ml[5,24+41]..[5,24+44])
+                              []
+              ]
+            signature_item (testsuite/tests/typing-modules/pr7348.ml[5,24+50]..[5,24+59])
+              Psig_value
+              value_description "x" (testsuite/tests/typing-modules/pr7348.ml[5,24+54]..[5,24+55]) (testsuite/tests/typing-modules/pr7348.ml[5,24+50]..[5,24+59])
+                core_type (testsuite/tests/typing-modules/pr7348.ml[5,24+58]..[5,24+59])
+                  Ptyp_constr "t" (testsuite/tests/typing-modules/pr7348.ml[5,24+58]..[5,24+59])
+                  []
+                []
+          ]
+        module_expr (testsuite/tests/typing-modules/pr7348.ml[5,24+67]..[7,130+3])
+          Pmod_structure
+          [
+            structure_item (testsuite/tests/typing-modules/pr7348.ml[6,98+2]..[6,98+31])
+              Pstr_value Nonrec
+              [
+                <def>
+                  pattern (testsuite/tests/typing-modules/pr7348.ml[6,98+6]..[6,98+25]) ghost
+                    Ppat_constraint
+                    pattern (testsuite/tests/typing-modules/pr7348.ml[6,98+6]..[6,98+7])
+                      Ppat_var "x" (testsuite/tests/typing-modules/pr7348.ml[6,98+6]..[6,98+7])
+                    core_type (testsuite/tests/typing-modules/pr7348.ml[6,98+10]..[6,98+25]) ghost
+                      Ptyp_poly
+                      core_type (testsuite/tests/typing-modules/pr7348.ml[6,98+10]..[6,98+25])
+                        Ptyp_object Open
+                          method foo
+                            core_type (testsuite/tests/typing-modules/pr7348.ml[6,98+17]..[6,98+20])
+                              Ptyp_constr "int" (testsuite/tests/typing-modules/pr7348.ml[6,98+17]..[6,98+20])
+                              []
+                  expression (testsuite/tests/typing-modules/pr7348.ml[6,98+6]..[6,98+31])
+                    Pexp_constraint
+                    expression (testsuite/tests/typing-modules/pr7348.ml[6,98+28]..[6,98+31])
+                      Pexp_ident "X.x" (testsuite/tests/typing-modules/pr7348.ml[6,98+28]..[6,98+31])
+                    core_type (testsuite/tests/typing-modules/pr7348.ml[6,98+10]..[6,98+25])
+                      Ptyp_object Open
+                        method foo
+                          core_type (testsuite/tests/typing-modules/pr7348.ml[6,98+17]..[6,98+20])
+                            Ptyp_constr "int" (testsuite/tests/typing-modules/pr7348.ml[6,98+17]..[6,98+20])
+                            []
+              ]
+          ]
+  structure_item (testsuite/tests/typing-modules/pr7348.ml[8,136+0]..[12,255+3])
+    Pstr_extension "expect"
+    [
+      structure_item (testsuite/tests/typing-modules/pr7348.ml[8,136+9]..[12,255+2])
+        Pstr_eval
+        expression (testsuite/tests/typing-modules/pr7348.ml[8,136+9]..[12,255+2])
+          Pexp_constant PConst_string ("\nmodule F :\n  functor (X : sig type t = private < foo : int; .. > val x : t end) ->\n    sig val x : X.t end\n",(testsuite/tests/typing-modules/pr7348.ml[8,136+11]..[12,255+0]),Some "")
+    ]
+  structure_item (testsuite/tests/typing-modules/pr7348.ml[14,260+0]..[20,372+3])
+    Pstr_module
+    "M" (testsuite/tests/typing-modules/pr7348.ml[14,260+7]..[14,260+8])
+      module_expr (testsuite/tests/typing-modules/pr7348.ml[14,260+11]..[20,372+3])
+        Pmod_structure
+        [
+          structure_item (testsuite/tests/typing-modules/pr7348.ml[15,278+2]..[15,278+32])
+            Pstr_type Rec
+            [
+              type_declaration "t" (testsuite/tests/typing-modules/pr7348.ml[15,278+7]..[15,278+8]) (testsuite/tests/typing-modules/pr7348.ml[15,278+2]..[15,278+32])
+                ptype_params =
+                  []
+                ptype_cstrs =
+                  []
+                ptype_kind =
+                  Ptype_abstract
+                ptype_private = Public
+                ptype_manifest =
+                  Some
+                    core_type (testsuite/tests/typing-modules/pr7348.ml[15,278+11]..[15,278+32])
+                      Ptyp_object Closed
+                        method foo
+                          core_type (testsuite/tests/typing-modules/pr7348.ml[15,278+18]..[15,278+21])
+                            Ptyp_constr "int" (testsuite/tests/typing-modules/pr7348.ml[15,278+18]..[15,278+21])
+                            []
+                        method bar
+                          core_type (testsuite/tests/typing-modules/pr7348.ml[15,278+28]..[15,278+31])
+                            Ptyp_constr "int" (testsuite/tests/typing-modules/pr7348.ml[15,278+28]..[15,278+31])
+                            []
+            ]
+          structure_item (testsuite/tests/typing-modules/pr7348.ml[16,311+2]..[19,366+5])
+            Pstr_value Nonrec
+            [
+              <def>
+                pattern (testsuite/tests/typing-modules/pr7348.ml[16,311+6]..[16,311+7])
+                  Ppat_var "x" (testsuite/tests/typing-modules/pr7348.ml[16,311+6]..[16,311+7])
+                expression (testsuite/tests/typing-modules/pr7348.ml[16,311+10]..[19,366+5])
+                  Pexp_object
+                  class_structure
+                    pattern (testsuite/tests/typing-modules/pr7348.ml[16,311+16]..[16,311+16]) ghost
+                      Ppat_any
+                    [
+                      class_field (testsuite/tests/typing-modules/pr7348.ml[17,328+4]..[17,328+18])
+                        Pcf_method Public
+                          "foo" (testsuite/tests/typing-modules/pr7348.ml[17,328+11]..[17,328+14])
+                          Concrete Fresh
+                          expression (testsuite/tests/typing-modules/pr7348.ml[17,328+17]..[17,328+18]) ghost
+                            Pexp_poly
+                            expression (testsuite/tests/typing-modules/pr7348.ml[17,328+17]..[17,328+18])
+                              Pexp_constant PConst_int (0,None)
+                            None
+                      class_field (testsuite/tests/typing-modules/pr7348.ml[18,347+4]..[18,347+18])
+                        Pcf_method Public
+                          "bar" (testsuite/tests/typing-modules/pr7348.ml[18,347+11]..[18,347+14])
+                          Concrete Fresh
+                          expression (testsuite/tests/typing-modules/pr7348.ml[18,347+17]..[18,347+18]) ghost
+                            Pexp_poly
+                            expression (testsuite/tests/typing-modules/pr7348.ml[18,347+17]..[18,347+18])
+                              Pexp_constant PConst_int (0,None)
+                            None
+                    ]
+            ]
+        ]
+  structure_item (testsuite/tests/typing-modules/pr7348.ml[21,378+0]..[24,478+3])
+    Pstr_extension "expect"
+    [
+      structure_item (testsuite/tests/typing-modules/pr7348.ml[21,378+9]..[24,478+2])
+        Pstr_eval
+        expression (testsuite/tests/typing-modules/pr7348.ml[21,378+9]..[24,478+2])
+          Pexp_constant PConst_string ("\nmodule M :\n  sig type t = < bar : int; foo : int > val x : < bar : int; foo : int > end\n",(testsuite/tests/typing-modules/pr7348.ml[21,378+11]..[24,478+0]),Some "")
+    ]
+  structure_item (testsuite/tests/typing-modules/pr7348.ml[26,483+0]..[26,483+15])
+    Pstr_module
+    "N" (testsuite/tests/typing-modules/pr7348.ml[26,483+7]..[26,483+8])
+      module_expr (testsuite/tests/typing-modules/pr7348.ml[26,483+11]..[26,483+15])
+        Pmod_apply
+        module_expr (testsuite/tests/typing-modules/pr7348.ml[26,483+11]..[26,483+12])
+          Pmod_ident "F" (testsuite/tests/typing-modules/pr7348.ml[26,483+11]..[26,483+12])
+        module_expr (testsuite/tests/typing-modules/pr7348.ml[26,483+13]..[26,483+14])
+          Pmod_ident "M" (testsuite/tests/typing-modules/pr7348.ml[26,483+13]..[26,483+14])
+  structure_item (testsuite/tests/typing-modules/pr7348.ml[27,501+0]..[29,544+3])
+    Pstr_extension "expect"
+    [
+      structure_item (testsuite/tests/typing-modules/pr7348.ml[27,501+9]..[29,544+2])
+        Pstr_eval
+        expression (testsuite/tests/typing-modules/pr7348.ml[27,501+9]..[29,544+2])
+          Pexp_constant PConst_string ("\nmodule N : sig val x : M.t end\n",(testsuite/tests/typing-modules/pr7348.ml[27,501+11]..[29,544+0]),Some "")
+    ]
+  structure_item (testsuite/tests/typing-modules/pr7348.ml[31,549+0]..[38,734+3])
+    Pstr_module
+    "A" (testsuite/tests/typing-modules/pr7348.ml[31,549+7]..[31,549+8])
+      module_expr (testsuite/tests/typing-modules/pr7348.ml[31,549+9]..[38,734+3])
+        Pmod_constraint
+        module_expr (testsuite/tests/typing-modules/pr7348.ml[31,549+21]..[38,734+3])
+          Pmod_structure
+          [
+            structure_item (testsuite/tests/typing-modules/pr7348.ml[32,577+2]..[34,687+5])
+              Pstr_module
+              "F" (testsuite/tests/typing-modules/pr7348.ml[32,577+9]..[32,577+10])
+                module_expr (testsuite/tests/typing-modules/pr7348.ml[32,577+11]..[34,687+5])
+                  Pmod_functor "X" (testsuite/tests/typing-modules/pr7348.ml[32,577+12]..[32,577+13])
+                  module_type (testsuite/tests/typing-modules/pr7348.ml[32,577+16]..[32,577+65])
+                    Pmty_signature
+                    [
+                      signature_item (testsuite/tests/typing-modules/pr7348.ml[32,577+20]..[32,577+51])
+                        Psig_type Rec
+                        [
+                          type_declaration "t" (testsuite/tests/typing-modules/pr7348.ml[32,577+25]..[32,577+26]) (testsuite/tests/typing-modules/pr7348.ml[32,577+20]..[32,577+51])
+                            ptype_params =
+                              []
+                            ptype_cstrs =
+                              []
+                            ptype_kind =
+                              Ptype_abstract
+                            ptype_private = Private
+                            ptype_manifest =
+                              Some
+                                core_type (testsuite/tests/typing-modules/pr7348.ml[32,577+37]..[32,577+51])
+                                  Ptyp_object Open
+                                    method foo
+                                      core_type (testsuite/tests/typing-modules/pr7348.ml[32,577+43]..[32,577+46])
+                                        Ptyp_constr "int" (testsuite/tests/typing-modules/pr7348.ml[32,577+43]..[32,577+46])
+                                        []
+                        ]
+                      signature_item (testsuite/tests/typing-modules/pr7348.ml[32,577+52]..[32,577+61])
+                        Psig_value
+                        value_description "x" (testsuite/tests/typing-modules/pr7348.ml[32,577+56]..[32,577+57]) (testsuite/tests/typing-modules/pr7348.ml[32,577+52]..[32,577+61])
+                          core_type (testsuite/tests/typing-modules/pr7348.ml[32,577+60]..[32,577+61])
+                            Ptyp_constr "t" (testsuite/tests/typing-modules/pr7348.ml[32,577+60]..[32,577+61])
+                            []
+                          []
+                    ]
+                  module_expr (testsuite/tests/typing-modules/pr7348.ml[32,577+69]..[34,687+5])
+                    Pmod_structure
+                    [
+                      structure_item (testsuite/tests/typing-modules/pr7348.ml[33,653+4]..[33,653+33])
+                        Pstr_value Nonrec
+                        [
+                          <def>
+                            pattern (testsuite/tests/typing-modules/pr7348.ml[33,653+8]..[33,653+27]) ghost
+                              Ppat_constraint
+                              pattern (testsuite/tests/typing-modules/pr7348.ml[33,653+8]..[33,653+9])
+                                Ppat_var "x" (testsuite/tests/typing-modules/pr7348.ml[33,653+8]..[33,653+9])
+                              core_type (testsuite/tests/typing-modules/pr7348.ml[33,653+12]..[33,653+27]) ghost
+                                Ptyp_poly
+                                core_type (testsuite/tests/typing-modules/pr7348.ml[33,653+12]..[33,653+27])
+                                  Ptyp_object Open
+                                    method foo
+                                      core_type (testsuite/tests/typing-modules/pr7348.ml[33,653+19]..[33,653+22])
+                                        Ptyp_constr "int" (testsuite/tests/typing-modules/pr7348.ml[33,653+19]..[33,653+22])
+                                        []
+                            expression (testsuite/tests/typing-modules/pr7348.ml[33,653+8]..[33,653+33])
+                              Pexp_constraint
+                              expression (testsuite/tests/typing-modules/pr7348.ml[33,653+30]..[33,653+33])
+                                Pexp_ident "X.x" (testsuite/tests/typing-modules/pr7348.ml[33,653+30]..[33,653+33])
+                              core_type (testsuite/tests/typing-modules/pr7348.ml[33,653+12]..[33,653+27])
+                                Ptyp_object Open
+                                  method foo
+                                    core_type (testsuite/tests/typing-modules/pr7348.ml[33,653+19]..[33,653+22])
+                                      Ptyp_constr "int" (testsuite/tests/typing-modules/pr7348.ml[33,653+19]..[33,653+22])
+                                      []
+                        ]
+                    ]
+            structure_item (testsuite/tests/typing-modules/pr7348.ml[36,694+2]..[36,694+17])
+              Pstr_module
+              "N" (testsuite/tests/typing-modules/pr7348.ml[36,694+9]..[36,694+10])
+                module_expr (testsuite/tests/typing-modules/pr7348.ml[36,694+13]..[36,694+17])
+                  Pmod_apply
+                  module_expr (testsuite/tests/typing-modules/pr7348.ml[36,694+13]..[36,694+14])
+                    Pmod_ident "F" (testsuite/tests/typing-modules/pr7348.ml[36,694+13]..[36,694+14])
+                  module_expr (testsuite/tests/typing-modules/pr7348.ml[36,694+15]..[36,694+16])
+                    Pmod_ident "M" (testsuite/tests/typing-modules/pr7348.ml[36,694+15]..[36,694+16])
+            structure_item (testsuite/tests/typing-modules/pr7348.ml[37,712+2]..[37,712+21])
+              Pstr_value Nonrec
+              [
+                <def>
+                  pattern (testsuite/tests/typing-modules/pr7348.ml[37,712+6]..[37,712+7])
+                    Ppat_any
+                  expression (testsuite/tests/typing-modules/pr7348.ml[37,712+10]..[37,712+21])
+                    Pexp_apply
+                    expression (testsuite/tests/typing-modules/pr7348.ml[37,712+15]..[37,712+16])
+                      Pexp_ident "=" (testsuite/tests/typing-modules/pr7348.ml[37,712+15]..[37,712+16])
+                    [
+                      <arg>
+                      Nolabel
+                        expression (testsuite/tests/typing-modules/pr7348.ml[37,712+11]..[37,712+14])
+                          Pexp_ident "N.x" (testsuite/tests/typing-modules/pr7348.ml[37,712+11]..[37,712+14])
+                      <arg>
+                      Nolabel
+                        expression (testsuite/tests/typing-modules/pr7348.ml[37,712+17]..[37,712+20])
+                          Pexp_ident "M.x" (testsuite/tests/typing-modules/pr7348.ml[37,712+17]..[37,712+20])
+                    ]
+              ]
+          ]
+        module_type (testsuite/tests/typing-modules/pr7348.ml[31,549+11]..[31,549+18])
+          Pmty_signature
+          []
+  structure_item (testsuite/tests/typing-modules/pr7348.ml[39,740+0]..[41,771+3])
+    Pstr_extension "expect"
+    [
+      structure_item (testsuite/tests/typing-modules/pr7348.ml[39,740+9]..[41,771+2])
+        Pstr_eval
+        expression (testsuite/tests/typing-modules/pr7348.ml[39,740+9]..[41,771+2])
+          Pexp_constant PConst_string ("\nmodule A : sig end\n",(testsuite/tests/typing-modules/pr7348.ml[39,740+11]..[41,771+0]),Some "")
+    ]
+]
+

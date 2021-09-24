@@ -1,0 +1,1895 @@
+[
+  signature_item (parsing/location.mli[16,1079+0]..[21,1235+2])
+    Psig_attribute "ocaml.text"
+    [
+      structure_item (parsing/location.mli[16,1079+0]..[21,1235+2])
+        Pstr_eval
+        expression (parsing/location.mli[16,1079+0]..[21,1235+2])
+          Pexp_constant PConst_string(" Source code locations (ranges of positions), used in parsetree.\n\n  {b Warning:} this module is unstable and part of\n  {{!Compiler_libs}compiler-libs}.\n\n",(parsing/location.mli[16,1079+0]..[21,1235+2]),None)
+    ]
+  signature_item (parsing/location.mli[23,1239+0]..[23,1239+11])
+    Psig_open Fresh "Format" (parsing/location.mli[23,1239+5]..[23,1239+11])
+  signature_item (parsing/location.mli[25,1252+0]..[29,1355+1])
+    Psig_type Rec
+    [
+      type_declaration "t" (parsing/location.mli[25,1252+5]..[25,1252+6]) (parsing/location.mli[25,1252+0]..[29,1355+1])
+        ptype_params =
+          []
+        ptype_cstrs =
+          []
+        ptype_kind =
+          Ptype_record
+            [
+              (parsing/location.mli[26,1278+2]..[26,1278+29])
+                Immutable
+                "loc_start" (parsing/location.mli[26,1278+2]..[26,1278+11])                core_type (parsing/location.mli[26,1278+13]..[26,1278+28])
+                  Ptyp_constr "Lexing.position" (parsing/location.mli[26,1278+13]..[26,1278+28])
+                  []
+              (parsing/location.mli[27,1308+2]..[27,1308+27])
+                Immutable
+                "loc_end" (parsing/location.mli[27,1308+2]..[27,1308+9])                core_type (parsing/location.mli[27,1308+11]..[27,1308+26])
+                  Ptyp_constr "Lexing.position" (parsing/location.mli[27,1308+11]..[27,1308+26])
+                  []
+              (parsing/location.mli[28,1336+2]..[28,1336+18])
+                Immutable
+                "loc_ghost" (parsing/location.mli[28,1336+2]..[28,1336+11])                core_type (parsing/location.mli[28,1336+13]..[28,1336+17])
+                  Ptyp_constr "bool" (parsing/location.mli[28,1336+13]..[28,1336+17])
+                  []
+            ]
+        ptype_private = Public
+        ptype_manifest =
+          Some
+            core_type (parsing/location.mli[25,1252+9]..[25,1252+21])
+              Ptyp_constr "Warnings.loc" (parsing/location.mli[25,1252+9]..[25,1252+21])
+              []
+    ]
+  signature_item (parsing/location.mli[31,1358+0]..[36,1625+2])
+    Psig_attribute "ocaml.text"
+    [
+      structure_item (parsing/location.mli[31,1358+0]..[36,1625+2])
+        Pstr_eval
+        expression (parsing/location.mli[31,1358+0]..[36,1625+2])
+          Pexp_constant PConst_string(" Note on the use of Lexing.position in this module.\n   If [pos_fname = \"\"], then use [!input_name] instead.\n   If [pos_lnum = -1], then [pos_bol = 0]. Use [pos_cnum] and\n     re-parse the file to get the line and character numbers.\n   Else all fields are correct.\n",(parsing/location.mli[31,1358+0]..[36,1625+2]),None)
+    ]
+  signature_item (parsing/location.mli[38,1629+0]..[38,1629+12])
+    Psig_value
+    value_description "none" (parsing/location.mli[38,1629+4]..[38,1629+8]) (parsing/location.mli[38,1629+0]..[38,1629+12])
+      attribute "ocaml.doc"
+        [
+          structure_item (parsing/location.mli[39,1642+0]..[39,1642+70])
+            Pstr_eval
+            expression (parsing/location.mli[39,1642+0]..[39,1642+70])
+              Pexp_constant PConst_string(" An arbitrary value of type [t]; describes an empty ghost range. ",(parsing/location.mli[39,1642+0]..[39,1642+70]),None)
+        ]
+      core_type (parsing/location.mli[38,1629+11]..[38,1629+12])
+        Ptyp_constr "t" (parsing/location.mli[38,1629+11]..[38,1629+12])
+        []
+      []
+  signature_item (parsing/location.mli[41,1714+0]..[41,1714+23])
+    Psig_value
+    value_description "is_none" (parsing/location.mli[41,1714+4]..[41,1714+11]) (parsing/location.mli[41,1714+0]..[41,1714+23])
+      attribute "ocaml.doc"
+        [
+          structure_item (parsing/location.mli[42,1738+0]..[42,1738+57])
+            Pstr_eval
+            expression (parsing/location.mli[42,1738+0]..[42,1738+57])
+              Pexp_constant PConst_string(" True for [Location.none], false any other location ",(parsing/location.mli[42,1738+0]..[42,1738+57]),None)
+        ]
+      core_type (parsing/location.mli[41,1714+14]..[41,1714+23])
+        Ptyp_arrow
+        Nolabel
+        core_type (parsing/location.mli[41,1714+14]..[41,1714+15])
+          Ptyp_constr "t" (parsing/location.mli[41,1714+14]..[41,1714+15])
+          []
+        core_type (parsing/location.mli[41,1714+19]..[41,1714+23])
+          Ptyp_constr "bool" (parsing/location.mli[41,1714+19]..[41,1714+23])
+          []
+      []
+  signature_item (parsing/location.mli[44,1797+0]..[44,1797+25])
+    Psig_value
+    value_description "in_file" (parsing/location.mli[44,1797+4]..[44,1797+11]) (parsing/location.mli[44,1797+0]..[44,1797+25])
+      attribute "ocaml.doc"
+        [
+          structure_item (parsing/location.mli[45,1823+0]..[45,1823+59])
+            Pstr_eval
+            expression (parsing/location.mli[45,1823+0]..[45,1823+59])
+              Pexp_constant PConst_string(" Return an empty ghost range located in a given file. ",(parsing/location.mli[45,1823+0]..[45,1823+59]),None)
+        ]
+      core_type (parsing/location.mli[44,1797+14]..[44,1797+25])
+        Ptyp_arrow
+        Nolabel
+        core_type (parsing/location.mli[44,1797+14]..[44,1797+20])
+          Ptyp_constr "string" (parsing/location.mli[44,1797+14]..[44,1797+20])
+          []
+        core_type (parsing/location.mli[44,1797+24]..[44,1797+25])
+          Ptyp_constr "t" (parsing/location.mli[44,1797+24]..[44,1797+25])
+          []
+      []
+  signature_item (parsing/location.mli[47,1884+0]..[47,1884+42])
+    Psig_value
+    value_description "init" (parsing/location.mli[47,1884+4]..[47,1884+8]) (parsing/location.mli[47,1884+0]..[47,1884+42])
+      attribute "ocaml.doc"
+        [
+          structure_item (parsing/location.mli[48,1927+0]..[49,1997+25])
+            Pstr_eval
+            expression (parsing/location.mli[48,1927+0]..[49,1997+25])
+              Pexp_constant PConst_string(" Set the file name and line number of the [lexbuf] to be the start\n    of the named file. ",(parsing/location.mli[48,1927+0]..[49,1997+25]),None)
+        ]
+      core_type (parsing/location.mli[47,1884+11]..[47,1884+42])
+        Ptyp_arrow
+        Nolabel
+        core_type (parsing/location.mli[47,1884+11]..[47,1884+24])
+          Ptyp_constr "Lexing.lexbuf" (parsing/location.mli[47,1884+11]..[47,1884+24])
+          []
+        core_type (parsing/location.mli[47,1884+28]..[47,1884+42])
+          Ptyp_arrow
+          Nolabel
+          core_type (parsing/location.mli[47,1884+28]..[47,1884+34])
+            Ptyp_constr "string" (parsing/location.mli[47,1884+28]..[47,1884+34])
+            []
+          core_type (parsing/location.mli[47,1884+38]..[47,1884+42])
+            Ptyp_constr "unit" (parsing/location.mli[47,1884+38]..[47,1884+42])
+            []
+      []
+  signature_item (parsing/location.mli[51,2024+0]..[51,2024+29])
+    Psig_value
+    value_description "curr" (parsing/location.mli[51,2024+4]..[51,2024+8]) (parsing/location.mli[51,2024+0]..[51,2024+29])
+      attribute "ocaml.doc"
+        [
+          structure_item (parsing/location.mli[52,2054+0]..[52,2054+63])
+            Pstr_eval
+            expression (parsing/location.mli[52,2054+0]..[52,2054+63])
+              Pexp_constant PConst_string(" Get the location of the current token from the [lexbuf]. ",(parsing/location.mli[52,2054+0]..[52,2054+63]),None)
+        ]
+      core_type (parsing/location.mli[51,2024+11]..[51,2024+29])
+        Ptyp_arrow
+        Nolabel
+        core_type (parsing/location.mli[51,2024+11]..[51,2024+24])
+          Ptyp_constr "Lexing.lexbuf" (parsing/location.mli[51,2024+11]..[51,2024+24])
+          []
+        core_type (parsing/location.mli[51,2024+28]..[51,2024+29])
+          Ptyp_constr "t" (parsing/location.mli[51,2024+28]..[51,2024+29])
+          []
+      []
+  signature_item (parsing/location.mli[54,2119+0]..[54,2119+26])
+    Psig_value
+    value_description "symbol_rloc" (parsing/location.mli[54,2119+4]..[54,2119+15]) (parsing/location.mli[54,2119+0]..[54,2119+26])
+      core_type (parsing/location.mli[54,2119+17]..[54,2119+26])
+        Ptyp_arrow
+        Nolabel
+        core_type (parsing/location.mli[54,2119+17]..[54,2119+21])
+          Ptyp_constr "unit" (parsing/location.mli[54,2119+17]..[54,2119+21])
+          []
+        core_type (parsing/location.mli[54,2119+25]..[54,2119+26])
+          Ptyp_constr "t" (parsing/location.mli[54,2119+25]..[54,2119+26])
+          []
+      []
+  signature_item (parsing/location.mli[55,2146+0]..[55,2146+26])
+    Psig_value
+    value_description "symbol_gloc" (parsing/location.mli[55,2146+4]..[55,2146+15]) (parsing/location.mli[55,2146+0]..[55,2146+26])
+      core_type (parsing/location.mli[55,2146+17]..[55,2146+26])
+        Ptyp_arrow
+        Nolabel
+        core_type (parsing/location.mli[55,2146+17]..[55,2146+21])
+          Ptyp_constr "unit" (parsing/location.mli[55,2146+17]..[55,2146+21])
+          []
+        core_type (parsing/location.mli[55,2146+25]..[55,2146+26])
+          Ptyp_constr "t" (parsing/location.mli[55,2146+25]..[55,2146+26])
+          []
+      []
+  signature_item (parsing/location.mli[59,2290+0]..[59,2290+21])
+    Psig_value
+    value_description "rhs_loc" (parsing/location.mli[59,2290+4]..[59,2290+11]) (parsing/location.mli[59,2290+0]..[59,2290+21])
+      attribute "ocaml.doc"
+        [
+          structure_item (parsing/location.mli[57,2174+0]..[58,2251+38])
+            Pstr_eval
+            expression (parsing/location.mli[57,2174+0]..[58,2251+38])
+              Pexp_constant PConst_string(" [rhs_loc n] returns the location of the symbol at position [n], starting\n  at 1, in the current parser rule. ",(parsing/location.mli[57,2174+0]..[58,2251+38]),None)
+        ]
+      core_type (parsing/location.mli[59,2290+13]..[59,2290+21])
+        Ptyp_arrow
+        Nolabel
+        core_type (parsing/location.mli[59,2290+13]..[59,2290+16])
+          Ptyp_constr "int" (parsing/location.mli[59,2290+13]..[59,2290+16])
+          []
+        core_type (parsing/location.mli[59,2290+20]..[59,2290+21])
+          Ptyp_constr "t" (parsing/location.mli[59,2290+20]..[59,2290+21])
+          []
+      []
+  signature_item (parsing/location.mli[61,2313+0]..[61,2313+33])
+    Psig_value
+    value_description "rhs_interval" (parsing/location.mli[61,2313+4]..[61,2313+16]) (parsing/location.mli[61,2313+0]..[61,2313+33])
+      core_type (parsing/location.mli[61,2313+18]..[61,2313+33])
+        Ptyp_arrow
+        Nolabel
+        core_type (parsing/location.mli[61,2313+18]..[61,2313+21])
+          Ptyp_constr "int" (parsing/location.mli[61,2313+18]..[61,2313+21])
+          []
+        core_type (parsing/location.mli[61,2313+25]..[61,2313+33])
+          Ptyp_arrow
+          Nolabel
+          core_type (parsing/location.mli[61,2313+25]..[61,2313+28])
+            Ptyp_constr "int" (parsing/location.mli[61,2313+25]..[61,2313+28])
+            []
+          core_type (parsing/location.mli[61,2313+32]..[61,2313+33])
+            Ptyp_constr "t" (parsing/location.mli[61,2313+32]..[61,2313+33])
+            []
+      []
+  signature_item (parsing/location.mli[63,2348+0]..[63,2348+55])
+    Psig_value
+    value_description "get_pos_info" (parsing/location.mli[63,2348+4]..[63,2348+16]) (parsing/location.mli[63,2348+0]..[63,2348+55])
+      attribute "ocaml.doc"
+        [
+          structure_item (parsing/location.mli[64,2404+0]..[64,2404+23])
+            Pstr_eval
+            expression (parsing/location.mli[64,2404+0]..[64,2404+23])
+              Pexp_constant PConst_string(" file, line, char ",(parsing/location.mli[64,2404+0]..[64,2404+23]),None)
+        ]
+      core_type (parsing/location.mli[63,2348+18]..[63,2348+55])
+        Ptyp_arrow
+        Nolabel
+        core_type (parsing/location.mli[63,2348+18]..[63,2348+33])
+          Ptyp_constr "Lexing.position" (parsing/location.mli[63,2348+18]..[63,2348+33])
+          []
+        core_type (parsing/location.mli[63,2348+37]..[63,2348+55])
+          Ptyp_tuple
+          [
+            core_type (parsing/location.mli[63,2348+37]..[63,2348+43])
+              Ptyp_constr "string" (parsing/location.mli[63,2348+37]..[63,2348+43])
+              []
+            core_type (parsing/location.mli[63,2348+46]..[63,2348+49])
+              Ptyp_constr "int" (parsing/location.mli[63,2348+46]..[63,2348+49])
+              []
+            core_type (parsing/location.mli[63,2348+52]..[63,2348+55])
+              Ptyp_constr "int" (parsing/location.mli[63,2348+52]..[63,2348+55])
+              []
+          ]
+      []
+  signature_item (parsing/location.mli[66,2429+0]..[69,2468+1])
+    Psig_type Rec
+    [
+      type_declaration "loc" (parsing/location.mli[66,2429+8]..[66,2429+11]) (parsing/location.mli[66,2429+0]..[69,2468+1])
+        ptype_params =
+          [
+            core_type (parsing/location.mli[66,2429+5]..[66,2429+7])
+              Ptyp_var a
+          ]
+        ptype_cstrs =
+          []
+        ptype_kind =
+          Ptype_record
+            [
+              (parsing/location.mli[67,2445+2]..[67,2445+11])
+                Immutable
+                "txt" (parsing/location.mli[67,2445+2]..[67,2445+5])                core_type (parsing/location.mli[67,2445+8]..[67,2445+10])
+                  Ptyp_var a
+              (parsing/location.mli[68,2457+2]..[68,2457+10])
+                Immutable
+                "loc" (parsing/location.mli[68,2457+2]..[68,2457+5])                core_type (parsing/location.mli[68,2457+8]..[68,2457+9])
+                  Ptyp_constr "t" (parsing/location.mli[68,2457+8]..[68,2457+9])
+                  []
+            ]
+        ptype_private = Public
+        ptype_manifest =
+          None
+    ]
+  signature_item (parsing/location.mli[71,2471+0]..[71,2471+26])
+    Psig_value
+    value_description "mknoloc" (parsing/location.mli[71,2471+4]..[71,2471+11]) (parsing/location.mli[71,2471+0]..[71,2471+26])
+      core_type (parsing/location.mli[71,2471+14]..[71,2471+26])
+        Ptyp_arrow
+        Nolabel
+        core_type (parsing/location.mli[71,2471+14]..[71,2471+16])
+          Ptyp_var a
+        core_type (parsing/location.mli[71,2471+20]..[71,2471+26])
+          Ptyp_constr "loc" (parsing/location.mli[71,2471+23]..[71,2471+26])
+          [
+            core_type (parsing/location.mli[71,2471+20]..[71,2471+22])
+              Ptyp_var a
+          ]
+      []
+  signature_item (parsing/location.mli[72,2498+0]..[72,2498+29])
+    Psig_value
+    value_description "mkloc" (parsing/location.mli[72,2498+4]..[72,2498+9]) (parsing/location.mli[72,2498+0]..[72,2498+29])
+      core_type (parsing/location.mli[72,2498+12]..[72,2498+29])
+        Ptyp_arrow
+        Nolabel
+        core_type (parsing/location.mli[72,2498+12]..[72,2498+14])
+          Ptyp_var a
+        core_type (parsing/location.mli[72,2498+18]..[72,2498+29])
+          Ptyp_arrow
+          Nolabel
+          core_type (parsing/location.mli[72,2498+18]..[72,2498+19])
+            Ptyp_constr "t" (parsing/location.mli[72,2498+18]..[72,2498+19])
+            []
+          core_type (parsing/location.mli[72,2498+23]..[72,2498+29])
+            Ptyp_constr "loc" (parsing/location.mli[72,2498+26]..[72,2498+29])
+            [
+              core_type (parsing/location.mli[72,2498+23]..[72,2498+25])
+                Ptyp_var a
+            ]
+      []
+  signature_item (parsing/location.mli[75,2530+0]..[75,2530+21])
+    Psig_attribute "ocaml.text"
+    [
+      structure_item (parsing/location.mli[75,2530+0]..[75,2530+21])
+        Pstr_eval
+        expression (parsing/location.mli[75,2530+0]..[75,2530+21])
+          Pexp_constant PConst_string(" {1 Input info} ",(parsing/location.mli[75,2530+0]..[75,2530+21]),None)
+    ]
+  signature_item (parsing/location.mli[77,2553+0]..[77,2553+26])
+    Psig_value
+    value_description "input_name" (parsing/location.mli[77,2553+4]..[77,2553+14]) (parsing/location.mli[77,2553+0]..[77,2553+26])
+      core_type (parsing/location.mli[77,2553+16]..[77,2553+26])
+        Ptyp_constr "ref" (parsing/location.mli[77,2553+23]..[77,2553+26])
+        [
+          core_type (parsing/location.mli[77,2553+16]..[77,2553+22])
+            Ptyp_constr "string" (parsing/location.mli[77,2553+16]..[77,2553+22])
+            []
+        ]
+      []
+  signature_item (parsing/location.mli[78,2580+0]..[78,2580+42])
+    Psig_value
+    value_description "input_lexbuf" (parsing/location.mli[78,2580+4]..[78,2580+16]) (parsing/location.mli[78,2580+0]..[78,2580+42])
+      core_type (parsing/location.mli[78,2580+18]..[78,2580+42])
+        Ptyp_constr "ref" (parsing/location.mli[78,2580+39]..[78,2580+42])
+        [
+          core_type (parsing/location.mli[78,2580+18]..[78,2580+38])
+            Ptyp_constr "option" (parsing/location.mli[78,2580+32]..[78,2580+38])
+            [
+              core_type (parsing/location.mli[78,2580+18]..[78,2580+31])
+                Ptyp_constr "Lexing.lexbuf" (parsing/location.mli[78,2580+18]..[78,2580+31])
+                []
+            ]
+        ]
+      []
+  signature_item (parsing/location.mli[85,2868+0]..[85,2868+44])
+    Psig_value
+    value_description "input_phrase_buffer" (parsing/location.mli[85,2868+4]..[85,2868+23]) (parsing/location.mli[85,2868+0]..[85,2868+44])
+      core_type (parsing/location.mli[85,2868+25]..[85,2868+44])
+        Ptyp_constr "ref" (parsing/location.mli[85,2868+41]..[85,2868+44])
+        [
+          core_type (parsing/location.mli[85,2868+25]..[85,2868+40])
+            Ptyp_constr "option" (parsing/location.mli[85,2868+34]..[85,2868+40])
+            [
+              core_type (parsing/location.mli[85,2868+25]..[85,2868+33])
+                Ptyp_constr "Buffer.t" (parsing/location.mli[85,2868+25]..[85,2868+33])
+                []
+            ]
+        ]
+      []
+  signature_item (parsing/location.mli[88,2915+0]..[88,2915+38])
+    Psig_attribute "ocaml.text"
+    [
+      structure_item (parsing/location.mli[88,2915+0]..[88,2915+38])
+        Pstr_eval
+        expression (parsing/location.mli[88,2915+0]..[88,2915+38])
+          Pexp_constant PConst_string(" {1 Toplevel-specific functions} ",(parsing/location.mli[88,2915+0]..[88,2915+38]),None)
+    ]
+  signature_item (parsing/location.mli[90,2955+0]..[90,2955+26])
+    Psig_value
+    value_description "echo_eof" (parsing/location.mli[90,2955+4]..[90,2955+12]) (parsing/location.mli[90,2955+0]..[90,2955+26])
+      core_type (parsing/location.mli[90,2955+14]..[90,2955+26])
+        Ptyp_arrow
+        Nolabel
+        core_type (parsing/location.mli[90,2955+14]..[90,2955+18])
+          Ptyp_constr "unit" (parsing/location.mli[90,2955+14]..[90,2955+18])
+          []
+        core_type (parsing/location.mli[90,2955+22]..[90,2955+26])
+          Ptyp_constr "unit" (parsing/location.mli[90,2955+22]..[90,2955+26])
+          []
+      []
+  signature_item (parsing/location.mli[91,2982+0]..[91,2982+23])
+    Psig_value
+    value_description "reset" (parsing/location.mli[91,2982+4]..[91,2982+9]) (parsing/location.mli[91,2982+0]..[91,2982+23])
+      core_type (parsing/location.mli[91,2982+11]..[91,2982+23])
+        Ptyp_arrow
+        Nolabel
+        core_type (parsing/location.mli[91,2982+11]..[91,2982+15])
+          Ptyp_constr "unit" (parsing/location.mli[91,2982+11]..[91,2982+15])
+          []
+        core_type (parsing/location.mli[91,2982+19]..[91,2982+23])
+          Ptyp_constr "unit" (parsing/location.mli[91,2982+19]..[91,2982+23])
+          []
+      []
+  signature_item (parsing/location.mli[94,3008+0]..[94,3008+29])
+    Psig_attribute "ocaml.text"
+    [
+      structure_item (parsing/location.mli[94,3008+0]..[94,3008+29])
+        Pstr_eval
+        expression (parsing/location.mli[94,3008+0]..[94,3008+29])
+          Pexp_constant PConst_string(" {1 Printing locations} ",(parsing/location.mli[94,3008+0]..[94,3008+29]),None)
+    ]
+  signature_item (parsing/location.mli[96,3039+0]..[96,3039+43])
+    Psig_value
+    value_description "rewrite_absolute_path" (parsing/location.mli[96,3039+4]..[96,3039+25]) (parsing/location.mli[96,3039+0]..[96,3039+43])
+      attribute "ocaml.doc"
+        [
+          structure_item (parsing/location.mli[97,3083+4]..[99,3228+24])
+            Pstr_eval
+            expression (parsing/location.mli[97,3083+4]..[99,3228+24])
+              Pexp_constant PConst_string(" rewrite absolute path to honor the BUILD_PATH_PREFIX_MAP\n        variable (https://reproducible-builds.org/specs/build-path-prefix-map/)\n        if it is set. ",(parsing/location.mli[97,3083+4]..[99,3228+24]),None)
+        ]
+      core_type (parsing/location.mli[96,3039+27]..[96,3039+43])
+        Ptyp_arrow
+        Nolabel
+        core_type (parsing/location.mli[96,3039+27]..[96,3039+33])
+          Ptyp_constr "string" (parsing/location.mli[96,3039+27]..[96,3039+33])
+          []
+        core_type (parsing/location.mli[96,3039+37]..[96,3039+43])
+          Ptyp_constr "string" (parsing/location.mli[96,3039+37]..[96,3039+43])
+          []
+      []
+  signature_item (parsing/location.mli[101,3254+0]..[101,3254+35])
+    Psig_value
+    value_description "absolute_path" (parsing/location.mli[101,3254+4]..[101,3254+17]) (parsing/location.mli[101,3254+0]..[101,3254+35])
+      core_type (parsing/location.mli[101,3254+19]..[101,3254+35])
+        Ptyp_arrow
+        Nolabel
+        core_type (parsing/location.mli[101,3254+19]..[101,3254+25])
+          Ptyp_constr "string" (parsing/location.mli[101,3254+19]..[101,3254+25])
+          []
+        core_type (parsing/location.mli[101,3254+29]..[101,3254+35])
+          Ptyp_constr "string" (parsing/location.mli[101,3254+29]..[101,3254+35])
+          []
+      []
+  signature_item (parsing/location.mli[103,3291+0]..[103,3291+35])
+    Psig_value
+    value_description "show_filename" (parsing/location.mli[103,3291+4]..[103,3291+17]) (parsing/location.mli[103,3291+0]..[103,3291+35])
+      attribute "ocaml.doc"
+        [
+          structure_item (parsing/location.mli[104,3327+4]..[105,3397+53])
+            Pstr_eval
+            expression (parsing/location.mli[104,3327+4]..[105,3397+53])
+              Pexp_constant PConst_string(" In -absname mode, return the absolute path for this filename.\n        Otherwise, returns the filename unchanged. ",(parsing/location.mli[104,3327+4]..[105,3397+53]),None)
+        ]
+      core_type (parsing/location.mli[103,3291+19]..[103,3291+35])
+        Ptyp_arrow
+        Nolabel
+        core_type (parsing/location.mli[103,3291+19]..[103,3291+25])
+          Ptyp_constr "string" (parsing/location.mli[103,3291+19]..[103,3291+25])
+          []
+        core_type (parsing/location.mli[103,3291+29]..[103,3291+35])
+          Ptyp_constr "string" (parsing/location.mli[103,3291+29]..[103,3291+35])
+          []
+      []
+  signature_item (parsing/location.mli[107,3452+0]..[107,3452+47])
+    Psig_value
+    value_description "print_filename" (parsing/location.mli[107,3452+4]..[107,3452+18]) (parsing/location.mli[107,3452+0]..[107,3452+47])
+      core_type (parsing/location.mli[107,3452+20]..[107,3452+47])
+        Ptyp_arrow
+        Nolabel
+        core_type (parsing/location.mli[107,3452+20]..[107,3452+29])
+          Ptyp_constr "formatter" (parsing/location.mli[107,3452+20]..[107,3452+29])
+          []
+        core_type (parsing/location.mli[107,3452+33]..[107,3452+47])
+          Ptyp_arrow
+          Nolabel
+          core_type (parsing/location.mli[107,3452+33]..[107,3452+39])
+            Ptyp_constr "string" (parsing/location.mli[107,3452+33]..[107,3452+39])
+            []
+          core_type (parsing/location.mli[107,3452+43]..[107,3452+47])
+            Ptyp_constr "unit" (parsing/location.mli[107,3452+43]..[107,3452+47])
+            []
+      []
+  signature_item (parsing/location.mli[109,3501+0]..[109,3501+37])
+    Psig_value
+    value_description "print_loc" (parsing/location.mli[109,3501+4]..[109,3501+13]) (parsing/location.mli[109,3501+0]..[109,3501+37])
+      core_type (parsing/location.mli[109,3501+15]..[109,3501+37])
+        Ptyp_arrow
+        Nolabel
+        core_type (parsing/location.mli[109,3501+15]..[109,3501+24])
+          Ptyp_constr "formatter" (parsing/location.mli[109,3501+15]..[109,3501+24])
+          []
+        core_type (parsing/location.mli[109,3501+28]..[109,3501+37])
+          Ptyp_arrow
+          Nolabel
+          core_type (parsing/location.mli[109,3501+28]..[109,3501+29])
+            Ptyp_constr "t" (parsing/location.mli[109,3501+28]..[109,3501+29])
+            []
+          core_type (parsing/location.mli[109,3501+33]..[109,3501+37])
+            Ptyp_constr "unit" (parsing/location.mli[109,3501+33]..[109,3501+37])
+            []
+      []
+  signature_item (parsing/location.mli[110,3539+0]..[110,3539+43])
+    Psig_value
+    value_description "print_locs" (parsing/location.mli[110,3539+4]..[110,3539+14]) (parsing/location.mli[110,3539+0]..[110,3539+43])
+      core_type (parsing/location.mli[110,3539+16]..[110,3539+43])
+        Ptyp_arrow
+        Nolabel
+        core_type (parsing/location.mli[110,3539+16]..[110,3539+25])
+          Ptyp_constr "formatter" (parsing/location.mli[110,3539+16]..[110,3539+25])
+          []
+        core_type (parsing/location.mli[110,3539+29]..[110,3539+43])
+          Ptyp_arrow
+          Nolabel
+          core_type (parsing/location.mli[110,3539+29]..[110,3539+35])
+            Ptyp_constr "list" (parsing/location.mli[110,3539+31]..[110,3539+35])
+            [
+              core_type (parsing/location.mli[110,3539+29]..[110,3539+30])
+                Ptyp_constr "t" (parsing/location.mli[110,3539+29]..[110,3539+30])
+                []
+            ]
+          core_type (parsing/location.mli[110,3539+39]..[110,3539+43])
+            Ptyp_constr "unit" (parsing/location.mli[110,3539+39]..[110,3539+43])
+            []
+      []
+  signature_item (parsing/location.mli[113,3585+0]..[113,3585+50])
+    Psig_attribute "ocaml.text"
+    [
+      structure_item (parsing/location.mli[113,3585+0]..[113,3585+50])
+        Pstr_eval
+        expression (parsing/location.mli[113,3585+0]..[113,3585+50])
+          Pexp_constant PConst_string(" {1 Toplevel-specific location highlighting} ",(parsing/location.mli[113,3585+0]..[113,3585+50]),None)
+    ]
+  signature_item (parsing/location.mli[115,3637+0]..[116,3661+46])
+    Psig_value
+    value_description "highlight_terminfo" (parsing/location.mli[115,3637+4]..[115,3637+22]) (parsing/location.mli[115,3637+0]..[116,3661+46])
+      core_type (parsing/location.mli[116,3661+2]..[116,3661+46])
+        Ptyp_arrow
+        Nolabel
+        core_type (parsing/location.mli[116,3661+2]..[116,3661+15])
+          Ptyp_constr "Lexing.lexbuf" (parsing/location.mli[116,3661+2]..[116,3661+15])
+          []
+        core_type (parsing/location.mli[116,3661+19]..[116,3661+46])
+          Ptyp_arrow
+          Nolabel
+          core_type (parsing/location.mli[116,3661+19]..[116,3661+28])
+            Ptyp_constr "formatter" (parsing/location.mli[116,3661+19]..[116,3661+28])
+            []
+          core_type (parsing/location.mli[116,3661+32]..[116,3661+46])
+            Ptyp_arrow
+            Nolabel
+            core_type (parsing/location.mli[116,3661+32]..[116,3661+38])
+              Ptyp_constr "list" (parsing/location.mli[116,3661+34]..[116,3661+38])
+              [
+                core_type (parsing/location.mli[116,3661+32]..[116,3661+33])
+                  Ptyp_constr "t" (parsing/location.mli[116,3661+32]..[116,3661+33])
+                  []
+              ]
+            core_type (parsing/location.mli[116,3661+42]..[116,3661+46])
+              Ptyp_constr "unit" (parsing/location.mli[116,3661+42]..[116,3661+46])
+              []
+      []
+  signature_item (parsing/location.mli[119,3710+0]..[119,3710+40])
+    Psig_attribute "ocaml.text"
+    [
+      structure_item (parsing/location.mli[119,3710+0]..[119,3710+40])
+        Pstr_eval
+        expression (parsing/location.mli[119,3710+0]..[119,3710+40])
+          Pexp_constant PConst_string(" {1 Reporting errors and warnings} ",(parsing/location.mli[119,3710+0]..[119,3710+40]),None)
+    ]
+  signature_item (parsing/location.mli[121,3752+0]..[121,3752+50])
+    Psig_attribute "ocaml.text"
+    [
+      structure_item (parsing/location.mli[121,3752+0]..[121,3752+50])
+        Pstr_eval
+        expression (parsing/location.mli[121,3752+0]..[121,3752+50])
+          Pexp_constant PConst_string(" {2 The type of reports and report printers} ",(parsing/location.mli[121,3752+0]..[121,3752+50]),None)
+    ]
+  signature_item (parsing/location.mli[123,3804+0]..[123,3804+41])
+    Psig_type Rec
+    [
+      type_declaration "msg" (parsing/location.mli[123,3804+5]..[123,3804+8]) (parsing/location.mli[123,3804+0]..[123,3804+41])
+        ptype_params =
+          []
+        ptype_cstrs =
+          []
+        ptype_kind =
+          Ptype_abstract
+        ptype_private = Public
+        ptype_manifest =
+          Some
+            core_type (parsing/location.mli[123,3804+11]..[123,3804+41])
+              Ptyp_constr "loc" (parsing/location.mli[123,3804+38]..[123,3804+41])
+              [
+                core_type (parsing/location.mli[123,3804+12]..[123,3804+36])
+                  Ptyp_arrow
+                  Nolabel
+                  core_type (parsing/location.mli[123,3804+12]..[123,3804+28])
+                    Ptyp_constr "Format.formatter" (parsing/location.mli[123,3804+12]..[123,3804+28])
+                    []
+                  core_type (parsing/location.mli[123,3804+32]..[123,3804+36])
+                    Ptyp_constr "unit" (parsing/location.mli[123,3804+32]..[123,3804+36])
+                    []
+              ]
+    ]
+  signature_item (parsing/location.mli[125,3847+0]..[125,3847+66])
+    Psig_value
+    value_description "msg" (parsing/location.mli[125,3847+4]..[125,3847+7]) (parsing/location.mli[125,3847+0]..[125,3847+66])
+      core_type (parsing/location.mli[125,3847+9]..[125,3847+66])
+        Ptyp_arrow
+        Optional "loc"
+        core_type (parsing/location.mli[125,3847+14]..[125,3847+15])
+          Ptyp_constr "t" (parsing/location.mli[125,3847+14]..[125,3847+15])
+          []
+        core_type (parsing/location.mli[125,3847+19]..[125,3847+66])
+          Ptyp_arrow
+          Nolabel
+          core_type (parsing/location.mli[125,3847+19]..[125,3847+60])
+            Ptyp_constr "format4" (parsing/location.mli[125,3847+53]..[125,3847+60])
+            [
+              core_type (parsing/location.mli[125,3847+20]..[125,3847+22])
+                Ptyp_var a
+              core_type (parsing/location.mli[125,3847+24]..[125,3847+40])
+                Ptyp_constr "Format.formatter" (parsing/location.mli[125,3847+24]..[125,3847+40])
+                []
+              core_type (parsing/location.mli[125,3847+42]..[125,3847+46])
+                Ptyp_constr "unit" (parsing/location.mli[125,3847+42]..[125,3847+46])
+                []
+              core_type (parsing/location.mli[125,3847+48]..[125,3847+51])
+                Ptyp_constr "msg" (parsing/location.mli[125,3847+48]..[125,3847+51])
+                []
+            ]
+          core_type (parsing/location.mli[125,3847+64]..[125,3847+66])
+            Ptyp_var a
+      []
+  signature_item (parsing/location.mli[127,3915+0]..[132,4045+35])
+    Psig_type Rec
+    [
+      type_declaration "report_kind" (parsing/location.mli[127,3915+5]..[127,3915+16]) (parsing/location.mli[127,3915+0]..[132,4045+35])
+        ptype_params =
+          []
+        ptype_cstrs =
+          []
+        ptype_kind =
+          Ptype_variant
+            [
+              (parsing/location.mli[128,3934+2]..[128,3934+16])
+                "Report_error" (parsing/location.mli[128,3934+4]..[128,3934+16])
+                []
+                None
+              (parsing/location.mli[129,3951+2]..[129,3951+28])
+                "Report_warning" (parsing/location.mli[129,3951+4]..[129,3951+18])
+                [
+                  core_type (parsing/location.mli[129,3951+22]..[129,3951+28])
+                    Ptyp_constr "string" (parsing/location.mli[129,3951+22]..[129,3951+28])
+                    []
+                ]
+                None
+              (parsing/location.mli[130,3980+2]..[130,3980+37])
+                "Report_warning_as_error" (parsing/location.mli[130,3980+4]..[130,3980+27])
+                [
+                  core_type (parsing/location.mli[130,3980+31]..[130,3980+37])
+                    Ptyp_constr "string" (parsing/location.mli[130,3980+31]..[130,3980+37])
+                    []
+                ]
+                None
+              (parsing/location.mli[131,4018+2]..[131,4018+26])
+                "Report_alert" (parsing/location.mli[131,4018+4]..[131,4018+16])
+                [
+                  core_type (parsing/location.mli[131,4018+20]..[131,4018+26])
+                    Ptyp_constr "string" (parsing/location.mli[131,4018+20]..[131,4018+26])
+                    []
+                ]
+                None
+              (parsing/location.mli[132,4045+2]..[132,4045+35])
+                "Report_alert_as_error" (parsing/location.mli[132,4045+4]..[132,4045+25])
+                [
+                  core_type (parsing/location.mli[132,4045+29]..[132,4045+35])
+                    Ptyp_constr "string" (parsing/location.mli[132,4045+29]..[132,4045+35])
+                    []
+                ]
+                None
+            ]
+        ptype_private = Public
+        ptype_manifest =
+          None
+    ]
+  signature_item (parsing/location.mli[134,4082+0]..[138,4152+1])
+    Psig_type Rec
+    [
+      type_declaration "report" (parsing/location.mli[134,4082+5]..[134,4082+11]) (parsing/location.mli[134,4082+0]..[138,4152+1])
+        ptype_params =
+          []
+        ptype_cstrs =
+          []
+        ptype_kind =
+          Ptype_record
+            [
+              (parsing/location.mli[135,4098+2]..[135,4098+21])
+                Immutable
+                "kind" (parsing/location.mli[135,4098+2]..[135,4098+6])                core_type (parsing/location.mli[135,4098+9]..[135,4098+20])
+                  Ptyp_constr "report_kind" (parsing/location.mli[135,4098+9]..[135,4098+20])
+                  []
+              (parsing/location.mli[136,4120+2]..[136,4120+13])
+                Immutable
+                "main" (parsing/location.mli[136,4120+2]..[136,4120+6])                core_type (parsing/location.mli[136,4120+9]..[136,4120+12])
+                  Ptyp_constr "msg" (parsing/location.mli[136,4120+9]..[136,4120+12])
+                  []
+              (parsing/location.mli[137,4134+2]..[137,4134+17])
+                Immutable
+                "sub" (parsing/location.mli[137,4134+2]..[137,4134+5])                core_type (parsing/location.mli[137,4134+8]..[137,4134+16])
+                  Ptyp_constr "list" (parsing/location.mli[137,4134+12]..[137,4134+16])
+                  [
+                    core_type (parsing/location.mli[137,4134+8]..[137,4134+11])
+                      Ptyp_constr "msg" (parsing/location.mli[137,4134+8]..[137,4134+11])
+                      []
+                  ]
+            ]
+        ptype_private = Public
+        ptype_manifest =
+          None
+    ]
+  signature_item (parsing/location.mli[140,4155+0]..[159,4895+1])
+    Psig_type Rec
+    [
+      type_declaration "report_printer" (parsing/location.mli[140,4155+5]..[140,4155+19]) (parsing/location.mli[140,4155+0]..[159,4895+1])
+        attribute "ocaml.doc"
+          [
+            structure_item (parsing/location.mli[160,4897+0]..[163,5052+2])
+              Pstr_eval
+              expression (parsing/location.mli[160,4897+0]..[163,5052+2])
+                Pexp_constant PConst_string(" A printer for [report]s, defined using open-recursion.\n    The goal is to make it easy to define new printers by re-using code from\n    existing ones.\n",(parsing/location.mli[160,4897+0]..[163,5052+2]),None)
+          ]
+        ptype_params =
+          []
+        ptype_cstrs =
+          []
+        ptype_kind =
+          Ptype_record
+            [
+              (parsing/location.mli[142,4203+2]..[143,4228+39])
+                Immutable
+                "pp" (parsing/location.mli[142,4203+2]..[142,4203+4])                core_type (parsing/location.mli[142,4203+7]..[143,4228+38])
+                  Ptyp_arrow
+                  Nolabel
+                  core_type (parsing/location.mli[142,4203+7]..[142,4203+21])
+                    Ptyp_constr "report_printer" (parsing/location.mli[142,4203+7]..[142,4203+21])
+                    []
+                  core_type (parsing/location.mli[143,4228+4]..[143,4228+38])
+                    Ptyp_arrow
+                    Nolabel
+                    core_type (parsing/location.mli[143,4228+4]..[143,4228+20])
+                      Ptyp_constr "Format.formatter" (parsing/location.mli[143,4228+4]..[143,4228+20])
+                      []
+                    core_type (parsing/location.mli[143,4228+24]..[143,4228+38])
+                      Ptyp_arrow
+                      Nolabel
+                      core_type (parsing/location.mli[143,4228+24]..[143,4228+30])
+                        Ptyp_constr "report" (parsing/location.mli[143,4228+24]..[143,4228+30])
+                        []
+                      core_type (parsing/location.mli[143,4228+34]..[143,4228+38])
+                        Ptyp_constr "unit" (parsing/location.mli[143,4228+34]..[143,4228+38])
+                        []
+              (parsing/location.mli[145,4269+2]..[146,4316+44])
+                Immutable
+                "pp_report_kind" (parsing/location.mli[145,4269+2]..[145,4269+16])                core_type (parsing/location.mli[145,4269+19]..[146,4316+43])
+                  Ptyp_arrow
+                  Nolabel
+                  core_type (parsing/location.mli[145,4269+19]..[145,4269+33])
+                    Ptyp_constr "report_printer" (parsing/location.mli[145,4269+19]..[145,4269+33])
+                    []
+                  core_type (parsing/location.mli[145,4269+37]..[146,4316+43])
+                    Ptyp_arrow
+                    Nolabel
+                    core_type (parsing/location.mli[145,4269+37]..[145,4269+43])
+                      Ptyp_constr "report" (parsing/location.mli[145,4269+37]..[145,4269+43])
+                      []
+                    core_type (parsing/location.mli[146,4316+4]..[146,4316+43])
+                      Ptyp_arrow
+                      Nolabel
+                      core_type (parsing/location.mli[146,4316+4]..[146,4316+20])
+                        Ptyp_constr "Format.formatter" (parsing/location.mli[146,4316+4]..[146,4316+20])
+                        []
+                      core_type (parsing/location.mli[146,4316+24]..[146,4316+43])
+                        Ptyp_arrow
+                        Nolabel
+                        core_type (parsing/location.mli[146,4316+24]..[146,4316+35])
+                          Ptyp_constr "report_kind" (parsing/location.mli[146,4316+24]..[146,4316+35])
+                          []
+                        core_type (parsing/location.mli[146,4316+39]..[146,4316+43])
+                          Ptyp_constr "unit" (parsing/location.mli[146,4316+39]..[146,4316+43])
+                          []
+              (parsing/location.mli[147,4361+2]..[148,4405+34])
+                Immutable
+                "pp_main_loc" (parsing/location.mli[147,4361+2]..[147,4361+13])                core_type (parsing/location.mli[147,4361+16]..[148,4405+33])
+                  Ptyp_arrow
+                  Nolabel
+                  core_type (parsing/location.mli[147,4361+16]..[147,4361+30])
+                    Ptyp_constr "report_printer" (parsing/location.mli[147,4361+16]..[147,4361+30])
+                    []
+                  core_type (parsing/location.mli[147,4361+34]..[148,4405+33])
+                    Ptyp_arrow
+                    Nolabel
+                    core_type (parsing/location.mli[147,4361+34]..[147,4361+40])
+                      Ptyp_constr "report" (parsing/location.mli[147,4361+34]..[147,4361+40])
+                      []
+                    core_type (parsing/location.mli[148,4405+4]..[148,4405+33])
+                      Ptyp_arrow
+                      Nolabel
+                      core_type (parsing/location.mli[148,4405+4]..[148,4405+20])
+                        Ptyp_constr "Format.formatter" (parsing/location.mli[148,4405+4]..[148,4405+20])
+                        []
+                      core_type (parsing/location.mli[148,4405+24]..[148,4405+33])
+                        Ptyp_arrow
+                        Nolabel
+                        core_type (parsing/location.mli[148,4405+24]..[148,4405+25])
+                          Ptyp_constr "t" (parsing/location.mli[148,4405+24]..[148,4405+25])
+                          []
+                        core_type (parsing/location.mli[148,4405+29]..[148,4405+33])
+                          Ptyp_constr "unit" (parsing/location.mli[148,4405+29]..[148,4405+33])
+                          []
+              (parsing/location.mli[149,4440+2]..[150,4484+59])
+                Immutable
+                "pp_main_txt" (parsing/location.mli[149,4440+2]..[149,4440+13])                core_type (parsing/location.mli[149,4440+16]..[150,4484+58])
+                  Ptyp_arrow
+                  Nolabel
+                  core_type (parsing/location.mli[149,4440+16]..[149,4440+30])
+                    Ptyp_constr "report_printer" (parsing/location.mli[149,4440+16]..[149,4440+30])
+                    []
+                  core_type (parsing/location.mli[149,4440+34]..[150,4484+58])
+                    Ptyp_arrow
+                    Nolabel
+                    core_type (parsing/location.mli[149,4440+34]..[149,4440+40])
+                      Ptyp_constr "report" (parsing/location.mli[149,4440+34]..[149,4440+40])
+                      []
+                    core_type (parsing/location.mli[150,4484+4]..[150,4484+58])
+                      Ptyp_arrow
+                      Nolabel
+                      core_type (parsing/location.mli[150,4484+4]..[150,4484+20])
+                        Ptyp_constr "Format.formatter" (parsing/location.mli[150,4484+4]..[150,4484+20])
+                        []
+                      core_type (parsing/location.mli[150,4484+24]..[150,4484+58])
+                        Ptyp_arrow
+                        Nolabel
+                        core_type (parsing/location.mli[150,4484+25]..[150,4484+49])
+                          Ptyp_arrow
+                          Nolabel
+                          core_type (parsing/location.mli[150,4484+25]..[150,4484+41])
+                            Ptyp_constr "Format.formatter" (parsing/location.mli[150,4484+25]..[150,4484+41])
+                            []
+                          core_type (parsing/location.mli[150,4484+45]..[150,4484+49])
+                            Ptyp_constr "unit" (parsing/location.mli[150,4484+45]..[150,4484+49])
+                            []
+                        core_type (parsing/location.mli[150,4484+54]..[150,4484+58])
+                          Ptyp_constr "unit" (parsing/location.mli[150,4484+54]..[150,4484+58])
+                          []
+              (parsing/location.mli[151,4544+2]..[152,4587+41])
+                Immutable
+                "pp_submsgs" (parsing/location.mli[151,4544+2]..[151,4544+12])                core_type (parsing/location.mli[151,4544+15]..[152,4587+40])
+                  Ptyp_arrow
+                  Nolabel
+                  core_type (parsing/location.mli[151,4544+15]..[151,4544+29])
+                    Ptyp_constr "report_printer" (parsing/location.mli[151,4544+15]..[151,4544+29])
+                    []
+                  core_type (parsing/location.mli[151,4544+33]..[152,4587+40])
+                    Ptyp_arrow
+                    Nolabel
+                    core_type (parsing/location.mli[151,4544+33]..[151,4544+39])
+                      Ptyp_constr "report" (parsing/location.mli[151,4544+33]..[151,4544+39])
+                      []
+                    core_type (parsing/location.mli[152,4587+4]..[152,4587+40])
+                      Ptyp_arrow
+                      Nolabel
+                      core_type (parsing/location.mli[152,4587+4]..[152,4587+20])
+                        Ptyp_constr "Format.formatter" (parsing/location.mli[152,4587+4]..[152,4587+20])
+                        []
+                      core_type (parsing/location.mli[152,4587+24]..[152,4587+40])
+                        Ptyp_arrow
+                        Nolabel
+                        core_type (parsing/location.mli[152,4587+24]..[152,4587+32])
+                          Ptyp_constr "list" (parsing/location.mli[152,4587+28]..[152,4587+32])
+                          [
+                            core_type (parsing/location.mli[152,4587+24]..[152,4587+27])
+                              Ptyp_constr "msg" (parsing/location.mli[152,4587+24]..[152,4587+27])
+                              []
+                          ]
+                        core_type (parsing/location.mli[152,4587+36]..[152,4587+40])
+                          Ptyp_constr "unit" (parsing/location.mli[152,4587+36]..[152,4587+40])
+                          []
+              (parsing/location.mli[153,4629+2]..[154,4671+36])
+                Immutable
+                "pp_submsg" (parsing/location.mli[153,4629+2]..[153,4629+11])                core_type (parsing/location.mli[153,4629+14]..[154,4671+35])
+                  Ptyp_arrow
+                  Nolabel
+                  core_type (parsing/location.mli[153,4629+14]..[153,4629+28])
+                    Ptyp_constr "report_printer" (parsing/location.mli[153,4629+14]..[153,4629+28])
+                    []
+                  core_type (parsing/location.mli[153,4629+32]..[154,4671+35])
+                    Ptyp_arrow
+                    Nolabel
+                    core_type (parsing/location.mli[153,4629+32]..[153,4629+38])
+                      Ptyp_constr "report" (parsing/location.mli[153,4629+32]..[153,4629+38])
+                      []
+                    core_type (parsing/location.mli[154,4671+4]..[154,4671+35])
+                      Ptyp_arrow
+                      Nolabel
+                      core_type (parsing/location.mli[154,4671+4]..[154,4671+20])
+                        Ptyp_constr "Format.formatter" (parsing/location.mli[154,4671+4]..[154,4671+20])
+                        []
+                      core_type (parsing/location.mli[154,4671+24]..[154,4671+35])
+                        Ptyp_arrow
+                        Nolabel
+                        core_type (parsing/location.mli[154,4671+24]..[154,4671+27])
+                          Ptyp_constr "msg" (parsing/location.mli[154,4671+24]..[154,4671+27])
+                          []
+                        core_type (parsing/location.mli[154,4671+31]..[154,4671+35])
+                          Ptyp_constr "unit" (parsing/location.mli[154,4671+31]..[154,4671+35])
+                          []
+              (parsing/location.mli[155,4708+2]..[156,4754+34])
+                Immutable
+                "pp_submsg_loc" (parsing/location.mli[155,4708+2]..[155,4708+15])                core_type (parsing/location.mli[155,4708+18]..[156,4754+33])
+                  Ptyp_arrow
+                  Nolabel
+                  core_type (parsing/location.mli[155,4708+18]..[155,4708+32])
+                    Ptyp_constr "report_printer" (parsing/location.mli[155,4708+18]..[155,4708+32])
+                    []
+                  core_type (parsing/location.mli[155,4708+36]..[156,4754+33])
+                    Ptyp_arrow
+                    Nolabel
+                    core_type (parsing/location.mli[155,4708+36]..[155,4708+42])
+                      Ptyp_constr "report" (parsing/location.mli[155,4708+36]..[155,4708+42])
+                      []
+                    core_type (parsing/location.mli[156,4754+4]..[156,4754+33])
+                      Ptyp_arrow
+                      Nolabel
+                      core_type (parsing/location.mli[156,4754+4]..[156,4754+20])
+                        Ptyp_constr "Format.formatter" (parsing/location.mli[156,4754+4]..[156,4754+20])
+                        []
+                      core_type (parsing/location.mli[156,4754+24]..[156,4754+33])
+                        Ptyp_arrow
+                        Nolabel
+                        core_type (parsing/location.mli[156,4754+24]..[156,4754+25])
+                          Ptyp_constr "t" (parsing/location.mli[156,4754+24]..[156,4754+25])
+                          []
+                        core_type (parsing/location.mli[156,4754+29]..[156,4754+33])
+                          Ptyp_constr "unit" (parsing/location.mli[156,4754+29]..[156,4754+33])
+                          []
+              (parsing/location.mli[157,4789+2]..[158,4835+59])
+                Immutable
+                "pp_submsg_txt" (parsing/location.mli[157,4789+2]..[157,4789+15])                core_type (parsing/location.mli[157,4789+18]..[158,4835+58])
+                  Ptyp_arrow
+                  Nolabel
+                  core_type (parsing/location.mli[157,4789+18]..[157,4789+32])
+                    Ptyp_constr "report_printer" (parsing/location.mli[157,4789+18]..[157,4789+32])
+                    []
+                  core_type (parsing/location.mli[157,4789+36]..[158,4835+58])
+                    Ptyp_arrow
+                    Nolabel
+                    core_type (parsing/location.mli[157,4789+36]..[157,4789+42])
+                      Ptyp_constr "report" (parsing/location.mli[157,4789+36]..[157,4789+42])
+                      []
+                    core_type (parsing/location.mli[158,4835+4]..[158,4835+58])
+                      Ptyp_arrow
+                      Nolabel
+                      core_type (parsing/location.mli[158,4835+4]..[158,4835+20])
+                        Ptyp_constr "Format.formatter" (parsing/location.mli[158,4835+4]..[158,4835+20])
+                        []
+                      core_type (parsing/location.mli[158,4835+24]..[158,4835+58])
+                        Ptyp_arrow
+                        Nolabel
+                        core_type (parsing/location.mli[158,4835+25]..[158,4835+49])
+                          Ptyp_arrow
+                          Nolabel
+                          core_type (parsing/location.mli[158,4835+25]..[158,4835+41])
+                            Ptyp_constr "Format.formatter" (parsing/location.mli[158,4835+25]..[158,4835+41])
+                            []
+                          core_type (parsing/location.mli[158,4835+45]..[158,4835+49])
+                            Ptyp_constr "unit" (parsing/location.mli[158,4835+45]..[158,4835+49])
+                            []
+                        core_type (parsing/location.mli[158,4835+54]..[158,4835+58])
+                          Ptyp_constr "unit" (parsing/location.mli[158,4835+54]..[158,4835+58])
+                          []
+            ]
+        ptype_private = Public
+        ptype_manifest =
+          None
+    ]
+  signature_item (parsing/location.mli[165,5056+0]..[165,5056+47])
+    Psig_attribute "ocaml.text"
+    [
+      structure_item (parsing/location.mli[165,5056+0]..[165,5056+47])
+        Pstr_eval
+        expression (parsing/location.mli[165,5056+0]..[165,5056+47])
+          Pexp_constant PConst_string(" {2 Report printers used in the compiler} ",(parsing/location.mli[165,5056+0]..[165,5056+47]),None)
+    ]
+  signature_item (parsing/location.mli[167,5105+0]..[167,5105+38])
+    Psig_value
+    value_description "batch_mode_printer" (parsing/location.mli[167,5105+4]..[167,5105+22]) (parsing/location.mli[167,5105+0]..[167,5105+38])
+      core_type (parsing/location.mli[167,5105+24]..[167,5105+38])
+        Ptyp_constr "report_printer" (parsing/location.mli[167,5105+24]..[167,5105+38])
+        []
+      []
+  signature_item (parsing/location.mli[169,5145+0]..[169,5145+62])
+    Psig_value
+    value_description "terminfo_toplevel_printer" (parsing/location.mli[169,5145+4]..[169,5145+29]) (parsing/location.mli[169,5145+0]..[169,5145+62])
+      core_type (parsing/location.mli[169,5145+31]..[169,5145+62])
+        Ptyp_arrow
+        Nolabel
+        core_type (parsing/location.mli[169,5145+31]..[169,5145+44])
+          Ptyp_constr "Lexing.lexbuf" (parsing/location.mli[169,5145+31]..[169,5145+44])
+          []
+        core_type (parsing/location.mli[169,5145+48]..[169,5145+62])
+          Ptyp_constr "report_printer" (parsing/location.mli[169,5145+48]..[169,5145+62])
+          []
+      []
+  signature_item (parsing/location.mli[171,5209+0]..[171,5209+49])
+    Psig_value
+    value_description "best_toplevel_printer" (parsing/location.mli[171,5209+4]..[171,5209+25]) (parsing/location.mli[171,5209+0]..[171,5209+49])
+      attribute "ocaml.doc"
+        [
+          structure_item (parsing/location.mli[172,5259+0]..[172,5259+72])
+            Pstr_eval
+            expression (parsing/location.mli[172,5259+0]..[172,5259+72])
+              Pexp_constant PConst_string(" Detects the terminal capabilities and selects an adequate printer ",(parsing/location.mli[172,5259+0]..[172,5259+72]),None)
+        ]
+      core_type (parsing/location.mli[171,5209+27]..[171,5209+49])
+        Ptyp_arrow
+        Nolabel
+        core_type (parsing/location.mli[171,5209+27]..[171,5209+31])
+          Ptyp_constr "unit" (parsing/location.mli[171,5209+27]..[171,5209+31])
+          []
+        core_type (parsing/location.mli[171,5209+35]..[171,5209+49])
+          Ptyp_constr "report_printer" (parsing/location.mli[171,5209+35]..[171,5209+49])
+          []
+      []
+  signature_item (parsing/location.mli[174,5333+0]..[174,5333+30])
+    Psig_attribute "ocaml.text"
+    [
+      structure_item (parsing/location.mli[174,5333+0]..[174,5333+30])
+        Pstr_eval
+        expression (parsing/location.mli[174,5333+0]..[174,5333+30])
+          Pexp_constant PConst_string(" {2 Printing a [report]} ",(parsing/location.mli[174,5333+0]..[174,5333+30]),None)
+    ]
+  signature_item (parsing/location.mli[176,5365+0]..[176,5365+45])
+    Psig_value
+    value_description "print_report" (parsing/location.mli[176,5365+4]..[176,5365+16]) (parsing/location.mli[176,5365+0]..[176,5365+45])
+      attribute "ocaml.doc"
+        [
+          structure_item (parsing/location.mli[177,5411+0]..[177,5411+42])
+            Pstr_eval
+            expression (parsing/location.mli[177,5411+0]..[177,5411+42])
+              Pexp_constant PConst_string(" Display an error or warning report. ",(parsing/location.mli[177,5411+0]..[177,5411+42]),None)
+        ]
+      core_type (parsing/location.mli[176,5365+18]..[176,5365+45])
+        Ptyp_arrow
+        Nolabel
+        core_type (parsing/location.mli[176,5365+18]..[176,5365+27])
+          Ptyp_constr "formatter" (parsing/location.mli[176,5365+18]..[176,5365+27])
+          []
+        core_type (parsing/location.mli[176,5365+31]..[176,5365+45])
+          Ptyp_arrow
+          Nolabel
+          core_type (parsing/location.mli[176,5365+31]..[176,5365+37])
+            Ptyp_constr "report" (parsing/location.mli[176,5365+31]..[176,5365+37])
+            []
+          core_type (parsing/location.mli[176,5365+41]..[176,5365+45])
+            Ptyp_constr "unit" (parsing/location.mli[176,5365+41]..[176,5365+45])
+            []
+      []
+  signature_item (parsing/location.mli[179,5455+0]..[179,5455+48])
+    Psig_value
+    value_description "report_printer" (parsing/location.mli[179,5455+4]..[179,5455+18]) (parsing/location.mli[179,5455+0]..[179,5455+48])
+      attribute "ocaml.doc"
+        [
+          structure_item (parsing/location.mli[180,5504+0]..[184,5706+55])
+            Pstr_eval
+            expression (parsing/location.mli[180,5504+0]..[184,5706+55])
+              Pexp_constant PConst_string(" Hook for redefining the printer of reports.\n\n    The hook is a [unit -> report_printer] and not simply a [report_printer]:\n    this is useful so that it can detect the type of the output (a file, a\n    terminal, ...) and select a printer accordingly. ",(parsing/location.mli[180,5504+0]..[184,5706+55]),None)
+        ]
+      core_type (parsing/location.mli[179,5455+20]..[179,5455+48])
+        Ptyp_constr "ref" (parsing/location.mli[179,5455+45]..[179,5455+48])
+        [
+          core_type (parsing/location.mli[179,5455+21]..[179,5455+43])
+            Ptyp_arrow
+            Nolabel
+            core_type (parsing/location.mli[179,5455+21]..[179,5455+25])
+              Ptyp_constr "unit" (parsing/location.mli[179,5455+21]..[179,5455+25])
+              []
+            core_type (parsing/location.mli[179,5455+29]..[179,5455+43])
+              Ptyp_constr "report_printer" (parsing/location.mli[179,5455+29]..[179,5455+43])
+              []
+        ]
+      []
+  signature_item (parsing/location.mli[186,5763+0]..[186,5763+50])
+    Psig_value
+    value_description "default_report_printer" (parsing/location.mli[186,5763+4]..[186,5763+26]) (parsing/location.mli[186,5763+0]..[186,5763+50])
+      attribute "ocaml.doc"
+        [
+          structure_item (parsing/location.mli[187,5814+0]..[187,5814+48])
+            Pstr_eval
+            expression (parsing/location.mli[187,5814+0]..[187,5814+48])
+              Pexp_constant PConst_string(" Original report printer for use in hooks. ",(parsing/location.mli[187,5814+0]..[187,5814+48]),None)
+        ]
+      core_type (parsing/location.mli[186,5763+28]..[186,5763+50])
+        Ptyp_arrow
+        Nolabel
+        core_type (parsing/location.mli[186,5763+28]..[186,5763+32])
+          Ptyp_constr "unit" (parsing/location.mli[186,5763+28]..[186,5763+32])
+          []
+        core_type (parsing/location.mli[186,5763+36]..[186,5763+50])
+          Ptyp_constr "report_printer" (parsing/location.mli[186,5763+36]..[186,5763+50])
+          []
+      []
+  signature_item (parsing/location.mli[190,5865+0]..[190,5865+29])
+    Psig_attribute "ocaml.text"
+    [
+      structure_item (parsing/location.mli[190,5865+0]..[190,5865+29])
+        Pstr_eval
+        expression (parsing/location.mli[190,5865+0]..[190,5865+29])
+          Pexp_constant PConst_string(" {1 Reporting warnings} ",(parsing/location.mli[190,5865+0]..[190,5865+29]),None)
+    ]
+  signature_item (parsing/location.mli[192,5896+0]..[192,5896+52])
+    Psig_attribute "ocaml.text"
+    [
+      structure_item (parsing/location.mli[192,5896+0]..[192,5896+52])
+        Pstr_eval
+        expression (parsing/location.mli[192,5896+0]..[192,5896+52])
+          Pexp_constant PConst_string(" {2 Converting a [Warnings.t] into a [report]} ",(parsing/location.mli[192,5896+0]..[192,5896+52]),None)
+    ]
+  signature_item (parsing/location.mli[194,5950+0]..[194,5950+52])
+    Psig_value
+    value_description "report_warning" (parsing/location.mli[194,5950+4]..[194,5950+18]) (parsing/location.mli[194,5950+0]..[194,5950+52])
+      attribute "ocaml.doc"
+        [
+          structure_item (parsing/location.mli[195,6003+0]..[196,6078+49])
+            Pstr_eval
+            expression (parsing/location.mli[195,6003+0]..[196,6078+49])
+              Pexp_constant PConst_string(" [report_warning loc w] produces a report for the given warning [w], or\n   [None] if the warning is not to be printed. ",(parsing/location.mli[195,6003+0]..[196,6078+49]),None)
+        ]
+      core_type (parsing/location.mli[194,5950+20]..[194,5950+52])
+        Ptyp_arrow
+        Nolabel
+        core_type (parsing/location.mli[194,5950+20]..[194,5950+21])
+          Ptyp_constr "t" (parsing/location.mli[194,5950+20]..[194,5950+21])
+          []
+        core_type (parsing/location.mli[194,5950+25]..[194,5950+52])
+          Ptyp_arrow
+          Nolabel
+          core_type (parsing/location.mli[194,5950+25]..[194,5950+35])
+            Ptyp_constr "Warnings.t" (parsing/location.mli[194,5950+25]..[194,5950+35])
+            []
+          core_type (parsing/location.mli[194,5950+39]..[194,5950+52])
+            Ptyp_constr "option" (parsing/location.mli[194,5950+46]..[194,5950+52])
+            [
+              core_type (parsing/location.mli[194,5950+39]..[194,5950+45])
+                Ptyp_constr "report" (parsing/location.mli[194,5950+39]..[194,5950+45])
+                []
+            ]
+      []
+  signature_item (parsing/location.mli[198,6129+0]..[198,6129+60])
+    Psig_value
+    value_description "warning_reporter" (parsing/location.mli[198,6129+4]..[198,6129+20]) (parsing/location.mli[198,6129+0]..[198,6129+60])
+      attribute "ocaml.doc"
+        [
+          structure_item (parsing/location.mli[199,6190+0]..[199,6190+38])
+            Pstr_eval
+            expression (parsing/location.mli[199,6190+0]..[199,6190+38])
+              Pexp_constant PConst_string(" Hook for intercepting warnings. ",(parsing/location.mli[199,6190+0]..[199,6190+38]),None)
+        ]
+      core_type (parsing/location.mli[198,6129+22]..[198,6129+60])
+        Ptyp_constr "ref" (parsing/location.mli[198,6129+57]..[198,6129+60])
+        [
+          core_type (parsing/location.mli[198,6129+23]..[198,6129+55])
+            Ptyp_arrow
+            Nolabel
+            core_type (parsing/location.mli[198,6129+23]..[198,6129+24])
+              Ptyp_constr "t" (parsing/location.mli[198,6129+23]..[198,6129+24])
+              []
+            core_type (parsing/location.mli[198,6129+28]..[198,6129+55])
+              Ptyp_arrow
+              Nolabel
+              core_type (parsing/location.mli[198,6129+28]..[198,6129+38])
+                Ptyp_constr "Warnings.t" (parsing/location.mli[198,6129+28]..[198,6129+38])
+                []
+              core_type (parsing/location.mli[198,6129+42]..[198,6129+55])
+                Ptyp_constr "option" (parsing/location.mli[198,6129+49]..[198,6129+55])
+                [
+                  core_type (parsing/location.mli[198,6129+42]..[198,6129+48])
+                    Ptyp_constr "report" (parsing/location.mli[198,6129+42]..[198,6129+48])
+                    []
+                ]
+        ]
+      []
+  signature_item (parsing/location.mli[201,6230+0]..[201,6230+62])
+    Psig_value
+    value_description "default_warning_reporter" (parsing/location.mli[201,6230+4]..[201,6230+28]) (parsing/location.mli[201,6230+0]..[201,6230+62])
+      attribute "ocaml.doc"
+        [
+          structure_item (parsing/location.mli[202,6293+0]..[202,6293+50])
+            Pstr_eval
+            expression (parsing/location.mli[202,6293+0]..[202,6293+50])
+              Pexp_constant PConst_string(" Original warning reporter for use in hooks. ",(parsing/location.mli[202,6293+0]..[202,6293+50]),None)
+        ]
+      core_type (parsing/location.mli[201,6230+30]..[201,6230+62])
+        Ptyp_arrow
+        Nolabel
+        core_type (parsing/location.mli[201,6230+30]..[201,6230+31])
+          Ptyp_constr "t" (parsing/location.mli[201,6230+30]..[201,6230+31])
+          []
+        core_type (parsing/location.mli[201,6230+35]..[201,6230+62])
+          Ptyp_arrow
+          Nolabel
+          core_type (parsing/location.mli[201,6230+35]..[201,6230+45])
+            Ptyp_constr "Warnings.t" (parsing/location.mli[201,6230+35]..[201,6230+45])
+            []
+          core_type (parsing/location.mli[201,6230+49]..[201,6230+62])
+            Ptyp_constr "option" (parsing/location.mli[201,6230+56]..[201,6230+62])
+            [
+              core_type (parsing/location.mli[201,6230+49]..[201,6230+55])
+                Ptyp_constr "report" (parsing/location.mli[201,6230+49]..[201,6230+55])
+                []
+            ]
+      []
+  signature_item (parsing/location.mli[204,6345+0]..[204,6345+28])
+    Psig_attribute "ocaml.text"
+    [
+      structure_item (parsing/location.mli[204,6345+0]..[204,6345+28])
+        Pstr_eval
+        expression (parsing/location.mli[204,6345+0]..[204,6345+28])
+          Pexp_constant PConst_string(" {2 Printing warnings} ",(parsing/location.mli[204,6345+0]..[204,6345+28]),None)
+    ]
+  signature_item (parsing/location.mli[206,6375+0]..[206,6375+42])
+    Psig_value
+    value_description "formatter_for_warnings" (parsing/location.mli[206,6375+4]..[206,6375+26]) (parsing/location.mli[206,6375+0]..[206,6375+42])
+      core_type (parsing/location.mli[206,6375+29]..[206,6375+42])
+        Ptyp_constr "ref" (parsing/location.mli[206,6375+39]..[206,6375+42])
+        [
+          core_type (parsing/location.mli[206,6375+29]..[206,6375+38])
+            Ptyp_constr "formatter" (parsing/location.mli[206,6375+29]..[206,6375+38])
+            []
+        ]
+      []
+  signature_item (parsing/location.mli[208,6419+0]..[208,6419+55])
+    Psig_value
+    value_description "print_warning" (parsing/location.mli[208,6419+4]..[208,6419+17]) (parsing/location.mli[208,6419+0]..[208,6419+55])
+      attribute "ocaml.doc"
+        [
+          structure_item (parsing/location.mli[209,6475+0]..[210,6552+21])
+            Pstr_eval
+            expression (parsing/location.mli[209,6475+0]..[210,6552+21])
+              Pexp_constant PConst_string(" Prints a warning. This is simply the composition of [report_warning] and\n   [print_report]. ",(parsing/location.mli[209,6475+0]..[210,6552+21]),None)
+        ]
+      core_type (parsing/location.mli[208,6419+19]..[208,6419+55])
+        Ptyp_arrow
+        Nolabel
+        core_type (parsing/location.mli[208,6419+19]..[208,6419+20])
+          Ptyp_constr "t" (parsing/location.mli[208,6419+19]..[208,6419+20])
+          []
+        core_type (parsing/location.mli[208,6419+24]..[208,6419+55])
+          Ptyp_arrow
+          Nolabel
+          core_type (parsing/location.mli[208,6419+24]..[208,6419+33])
+            Ptyp_constr "formatter" (parsing/location.mli[208,6419+24]..[208,6419+33])
+            []
+          core_type (parsing/location.mli[208,6419+37]..[208,6419+55])
+            Ptyp_arrow
+            Nolabel
+            core_type (parsing/location.mli[208,6419+37]..[208,6419+47])
+              Ptyp_constr "Warnings.t" (parsing/location.mli[208,6419+37]..[208,6419+47])
+              []
+            core_type (parsing/location.mli[208,6419+51]..[208,6419+55])
+              Ptyp_constr "unit" (parsing/location.mli[208,6419+51]..[208,6419+55])
+              []
+      []
+  signature_item (parsing/location.mli[212,6575+0]..[212,6575+42])
+    Psig_value
+    value_description "prerr_warning" (parsing/location.mli[212,6575+4]..[212,6575+17]) (parsing/location.mli[212,6575+0]..[212,6575+42])
+      attribute "ocaml.doc"
+        [
+          structure_item (parsing/location.mli[213,6618+0]..[214,6692+16])
+            Pstr_eval
+            expression (parsing/location.mli[213,6618+0]..[214,6692+16])
+              Pexp_constant PConst_string(" Same as [print_warning], but uses [!formatter_for_warnings] as output\n   formatter. ",(parsing/location.mli[213,6618+0]..[214,6692+16]),None)
+        ]
+      core_type (parsing/location.mli[212,6575+19]..[212,6575+42])
+        Ptyp_arrow
+        Nolabel
+        core_type (parsing/location.mli[212,6575+19]..[212,6575+20])
+          Ptyp_constr "t" (parsing/location.mli[212,6575+19]..[212,6575+20])
+          []
+        core_type (parsing/location.mli[212,6575+24]..[212,6575+42])
+          Ptyp_arrow
+          Nolabel
+          core_type (parsing/location.mli[212,6575+24]..[212,6575+34])
+            Ptyp_constr "Warnings.t" (parsing/location.mli[212,6575+24]..[212,6575+34])
+            []
+          core_type (parsing/location.mli[212,6575+38]..[212,6575+42])
+            Ptyp_constr "unit" (parsing/location.mli[212,6575+38]..[212,6575+42])
+            []
+      []
+  signature_item (parsing/location.mli[216,6710+0]..[216,6710+27])
+    Psig_attribute "ocaml.text"
+    [
+      structure_item (parsing/location.mli[216,6710+0]..[216,6710+27])
+        Pstr_eval
+        expression (parsing/location.mli[216,6710+0]..[216,6710+27])
+          Pexp_constant PConst_string(" {1 Reporting alerts} ",(parsing/location.mli[216,6710+0]..[216,6710+27]),None)
+    ]
+  signature_item (parsing/location.mli[218,6739+0]..[218,6739+50])
+    Psig_attribute "ocaml.text"
+    [
+      structure_item (parsing/location.mli[218,6739+0]..[218,6739+50])
+        Pstr_eval
+        expression (parsing/location.mli[218,6739+0]..[218,6739+50])
+          Pexp_constant PConst_string(" {2 Converting an [Alert.t] into a [report]} ",(parsing/location.mli[218,6739+0]..[218,6739+50]),None)
+    ]
+  signature_item (parsing/location.mli[220,6791+0]..[220,6791+54])
+    Psig_value
+    value_description "report_alert" (parsing/location.mli[220,6791+4]..[220,6791+16]) (parsing/location.mli[220,6791+0]..[220,6791+54])
+      attribute "ocaml.doc"
+        [
+          structure_item (parsing/location.mli[221,6846+0]..[222,6917+47])
+            Pstr_eval
+            expression (parsing/location.mli[221,6846+0]..[222,6917+47])
+              Pexp_constant PConst_string(" [report_alert loc w] produces a report for the given alert [w], or\n   [None] if the alert is not to be printed. ",(parsing/location.mli[221,6846+0]..[222,6917+47]),None)
+        ]
+      core_type (parsing/location.mli[220,6791+18]..[220,6791+54])
+        Ptyp_arrow
+        Nolabel
+        core_type (parsing/location.mli[220,6791+18]..[220,6791+19])
+          Ptyp_constr "t" (parsing/location.mli[220,6791+18]..[220,6791+19])
+          []
+        core_type (parsing/location.mli[220,6791+23]..[220,6791+54])
+          Ptyp_arrow
+          Nolabel
+          core_type (parsing/location.mli[220,6791+23]..[220,6791+37])
+            Ptyp_constr "Warnings.alert" (parsing/location.mli[220,6791+23]..[220,6791+37])
+            []
+          core_type (parsing/location.mli[220,6791+41]..[220,6791+54])
+            Ptyp_constr "option" (parsing/location.mli[220,6791+48]..[220,6791+54])
+            [
+              core_type (parsing/location.mli[220,6791+41]..[220,6791+47])
+                Ptyp_constr "report" (parsing/location.mli[220,6791+41]..[220,6791+47])
+                []
+            ]
+      []
+  signature_item (parsing/location.mli[224,6966+0]..[224,6966+62])
+    Psig_value
+    value_description "alert_reporter" (parsing/location.mli[224,6966+4]..[224,6966+18]) (parsing/location.mli[224,6966+0]..[224,6966+62])
+      attribute "ocaml.doc"
+        [
+          structure_item (parsing/location.mli[225,7029+0]..[225,7029+36])
+            Pstr_eval
+            expression (parsing/location.mli[225,7029+0]..[225,7029+36])
+              Pexp_constant PConst_string(" Hook for intercepting alerts. ",(parsing/location.mli[225,7029+0]..[225,7029+36]),None)
+        ]
+      core_type (parsing/location.mli[224,6966+20]..[224,6966+62])
+        Ptyp_constr "ref" (parsing/location.mli[224,6966+59]..[224,6966+62])
+        [
+          core_type (parsing/location.mli[224,6966+21]..[224,6966+57])
+            Ptyp_arrow
+            Nolabel
+            core_type (parsing/location.mli[224,6966+21]..[224,6966+22])
+              Ptyp_constr "t" (parsing/location.mli[224,6966+21]..[224,6966+22])
+              []
+            core_type (parsing/location.mli[224,6966+26]..[224,6966+57])
+              Ptyp_arrow
+              Nolabel
+              core_type (parsing/location.mli[224,6966+26]..[224,6966+40])
+                Ptyp_constr "Warnings.alert" (parsing/location.mli[224,6966+26]..[224,6966+40])
+                []
+              core_type (parsing/location.mli[224,6966+44]..[224,6966+57])
+                Ptyp_constr "option" (parsing/location.mli[224,6966+51]..[224,6966+57])
+                [
+                  core_type (parsing/location.mli[224,6966+44]..[224,6966+50])
+                    Ptyp_constr "report" (parsing/location.mli[224,6966+44]..[224,6966+50])
+                    []
+                ]
+        ]
+      []
+  signature_item (parsing/location.mli[227,7067+0]..[227,7067+64])
+    Psig_value
+    value_description "default_alert_reporter" (parsing/location.mli[227,7067+4]..[227,7067+26]) (parsing/location.mli[227,7067+0]..[227,7067+64])
+      attribute "ocaml.doc"
+        [
+          structure_item (parsing/location.mli[228,7132+0]..[228,7132+48])
+            Pstr_eval
+            expression (parsing/location.mli[228,7132+0]..[228,7132+48])
+              Pexp_constant PConst_string(" Original alert reporter for use in hooks. ",(parsing/location.mli[228,7132+0]..[228,7132+48]),None)
+        ]
+      core_type (parsing/location.mli[227,7067+28]..[227,7067+64])
+        Ptyp_arrow
+        Nolabel
+        core_type (parsing/location.mli[227,7067+28]..[227,7067+29])
+          Ptyp_constr "t" (parsing/location.mli[227,7067+28]..[227,7067+29])
+          []
+        core_type (parsing/location.mli[227,7067+33]..[227,7067+64])
+          Ptyp_arrow
+          Nolabel
+          core_type (parsing/location.mli[227,7067+33]..[227,7067+47])
+            Ptyp_constr "Warnings.alert" (parsing/location.mli[227,7067+33]..[227,7067+47])
+            []
+          core_type (parsing/location.mli[227,7067+51]..[227,7067+64])
+            Ptyp_constr "option" (parsing/location.mli[227,7067+58]..[227,7067+64])
+            [
+              core_type (parsing/location.mli[227,7067+51]..[227,7067+57])
+                Ptyp_constr "report" (parsing/location.mli[227,7067+51]..[227,7067+57])
+                []
+            ]
+      []
+  signature_item (parsing/location.mli[230,7182+0]..[230,7182+26])
+    Psig_attribute "ocaml.text"
+    [
+      structure_item (parsing/location.mli[230,7182+0]..[230,7182+26])
+        Pstr_eval
+        expression (parsing/location.mli[230,7182+0]..[230,7182+26])
+          Pexp_constant PConst_string(" {2 Printing alerts} ",(parsing/location.mli[230,7182+0]..[230,7182+26]),None)
+    ]
+  signature_item (parsing/location.mli[232,7210+0]..[232,7210+57])
+    Psig_value
+    value_description "print_alert" (parsing/location.mli[232,7210+4]..[232,7210+15]) (parsing/location.mli[232,7210+0]..[232,7210+57])
+      attribute "ocaml.doc"
+        [
+          structure_item (parsing/location.mli[233,7268+0]..[234,7342+21])
+            Pstr_eval
+            expression (parsing/location.mli[233,7268+0]..[234,7342+21])
+              Pexp_constant PConst_string(" Prints an alert. This is simply the composition of [report_alert] and\n   [print_report]. ",(parsing/location.mli[233,7268+0]..[234,7342+21]),None)
+        ]
+      core_type (parsing/location.mli[232,7210+17]..[232,7210+57])
+        Ptyp_arrow
+        Nolabel
+        core_type (parsing/location.mli[232,7210+17]..[232,7210+18])
+          Ptyp_constr "t" (parsing/location.mli[232,7210+17]..[232,7210+18])
+          []
+        core_type (parsing/location.mli[232,7210+22]..[232,7210+57])
+          Ptyp_arrow
+          Nolabel
+          core_type (parsing/location.mli[232,7210+22]..[232,7210+31])
+            Ptyp_constr "formatter" (parsing/location.mli[232,7210+22]..[232,7210+31])
+            []
+          core_type (parsing/location.mli[232,7210+35]..[232,7210+57])
+            Ptyp_arrow
+            Nolabel
+            core_type (parsing/location.mli[232,7210+35]..[232,7210+49])
+              Ptyp_constr "Warnings.alert" (parsing/location.mli[232,7210+35]..[232,7210+49])
+              []
+            core_type (parsing/location.mli[232,7210+53]..[232,7210+57])
+              Ptyp_constr "unit" (parsing/location.mli[232,7210+53]..[232,7210+57])
+              []
+      []
+  signature_item (parsing/location.mli[236,7365+0]..[236,7365+44])
+    Psig_value
+    value_description "prerr_alert" (parsing/location.mli[236,7365+4]..[236,7365+15]) (parsing/location.mli[236,7365+0]..[236,7365+44])
+      attribute "ocaml.doc"
+        [
+          structure_item (parsing/location.mli[237,7410+0]..[238,7482+16])
+            Pstr_eval
+            expression (parsing/location.mli[237,7410+0]..[238,7482+16])
+              Pexp_constant PConst_string(" Same as [print_alert], but uses [!formatter_for_warnings] as output\n   formatter. ",(parsing/location.mli[237,7410+0]..[238,7482+16]),None)
+        ]
+      core_type (parsing/location.mli[236,7365+17]..[236,7365+44])
+        Ptyp_arrow
+        Nolabel
+        core_type (parsing/location.mli[236,7365+17]..[236,7365+18])
+          Ptyp_constr "t" (parsing/location.mli[236,7365+17]..[236,7365+18])
+          []
+        core_type (parsing/location.mli[236,7365+22]..[236,7365+44])
+          Ptyp_arrow
+          Nolabel
+          core_type (parsing/location.mli[236,7365+22]..[236,7365+36])
+            Ptyp_constr "Warnings.alert" (parsing/location.mli[236,7365+22]..[236,7365+36])
+            []
+          core_type (parsing/location.mli[236,7365+40]..[236,7365+44])
+            Ptyp_constr "unit" (parsing/location.mli[236,7365+40]..[236,7365+44])
+            []
+      []
+  signature_item (parsing/location.mli[240,7500+0]..[240,7500+55])
+    Psig_value
+    value_description "deprecated" (parsing/location.mli[240,7500+4]..[240,7500+14]) (parsing/location.mli[240,7500+0]..[240,7500+55])
+      attribute "ocaml.doc"
+        [
+          structure_item (parsing/location.mli[241,7556+0]..[241,7556+34])
+            Pstr_eval
+            expression (parsing/location.mli[241,7556+0]..[241,7556+34])
+              Pexp_constant PConst_string(" Prints a deprecation alert. ",(parsing/location.mli[241,7556+0]..[241,7556+34]),None)
+        ]
+      core_type (parsing/location.mli[240,7500+16]..[240,7500+55])
+        Ptyp_arrow
+        Optional "def"
+        core_type (parsing/location.mli[240,7500+21]..[240,7500+22])
+          Ptyp_constr "t" (parsing/location.mli[240,7500+21]..[240,7500+22])
+          []
+        core_type (parsing/location.mli[240,7500+26]..[240,7500+55])
+          Ptyp_arrow
+          Optional "use"
+          core_type (parsing/location.mli[240,7500+31]..[240,7500+32])
+            Ptyp_constr "t" (parsing/location.mli[240,7500+31]..[240,7500+32])
+            []
+          core_type (parsing/location.mli[240,7500+36]..[240,7500+55])
+            Ptyp_arrow
+            Nolabel
+            core_type (parsing/location.mli[240,7500+36]..[240,7500+37])
+              Ptyp_constr "t" (parsing/location.mli[240,7500+36]..[240,7500+37])
+              []
+            core_type (parsing/location.mli[240,7500+41]..[240,7500+55])
+              Ptyp_arrow
+              Nolabel
+              core_type (parsing/location.mli[240,7500+41]..[240,7500+47])
+                Ptyp_constr "string" (parsing/location.mli[240,7500+41]..[240,7500+47])
+                []
+              core_type (parsing/location.mli[240,7500+51]..[240,7500+55])
+                Ptyp_constr "unit" (parsing/location.mli[240,7500+51]..[240,7500+55])
+                []
+      []
+  signature_item (parsing/location.mli[243,7592+0]..[243,7592+65])
+    Psig_value
+    value_description "alert" (parsing/location.mli[243,7592+4]..[243,7592+9]) (parsing/location.mli[243,7592+0]..[243,7592+65])
+      attribute "ocaml.doc"
+        [
+          structure_item (parsing/location.mli[244,7658+0]..[244,7658+33])
+            Pstr_eval
+            expression (parsing/location.mli[244,7658+0]..[244,7658+33])
+              Pexp_constant PConst_string(" Prints an arbitrary alert. ",(parsing/location.mli[244,7658+0]..[244,7658+33]),None)
+        ]
+      core_type (parsing/location.mli[243,7592+11]..[243,7592+65])
+        Ptyp_arrow
+        Optional "def"
+        core_type (parsing/location.mli[243,7592+16]..[243,7592+17])
+          Ptyp_constr "t" (parsing/location.mli[243,7592+16]..[243,7592+17])
+          []
+        core_type (parsing/location.mli[243,7592+21]..[243,7592+65])
+          Ptyp_arrow
+          Optional "use"
+          core_type (parsing/location.mli[243,7592+26]..[243,7592+27])
+            Ptyp_constr "t" (parsing/location.mli[243,7592+26]..[243,7592+27])
+            []
+          core_type (parsing/location.mli[243,7592+31]..[243,7592+65])
+            Ptyp_arrow
+            Labelled "kind"
+            core_type (parsing/location.mli[243,7592+36]..[243,7592+42])
+              Ptyp_constr "string" (parsing/location.mli[243,7592+36]..[243,7592+42])
+              []
+            core_type (parsing/location.mli[243,7592+46]..[243,7592+65])
+              Ptyp_arrow
+              Nolabel
+              core_type (parsing/location.mli[243,7592+46]..[243,7592+47])
+                Ptyp_constr "t" (parsing/location.mli[243,7592+46]..[243,7592+47])
+                []
+              core_type (parsing/location.mli[243,7592+51]..[243,7592+65])
+                Ptyp_arrow
+                Nolabel
+                core_type (parsing/location.mli[243,7592+51]..[243,7592+57])
+                  Ptyp_constr "string" (parsing/location.mli[243,7592+51]..[243,7592+57])
+                  []
+                core_type (parsing/location.mli[243,7592+61]..[243,7592+65])
+                  Ptyp_constr "unit" (parsing/location.mli[243,7592+61]..[243,7592+65])
+                  []
+      []
+  signature_item (parsing/location.mli[247,7694+0]..[247,7694+27])
+    Psig_attribute "ocaml.text"
+    [
+      structure_item (parsing/location.mli[247,7694+0]..[247,7694+27])
+        Pstr_eval
+        expression (parsing/location.mli[247,7694+0]..[247,7694+27])
+          Pexp_constant PConst_string(" {1 Reporting errors} ",(parsing/location.mli[247,7694+0]..[247,7694+27]),None)
+    ]
+  signature_item (parsing/location.mli[249,7723+0]..[249,7723+19])
+    Psig_type Rec
+    [
+      type_declaration "error" (parsing/location.mli[249,7723+5]..[249,7723+10]) (parsing/location.mli[249,7723+0]..[249,7723+19])
+        attribute "ocaml.doc"
+          [
+            structure_item (parsing/location.mli[250,7743+0]..[250,7743+75])
+              Pstr_eval
+              expression (parsing/location.mli[250,7743+0]..[250,7743+75])
+                Pexp_constant PConst_string(" An [error] is a [report] which [report_kind] must be [Report_error]. ",(parsing/location.mli[250,7743+0]..[250,7743+75]),None)
+          ]
+        ptype_params =
+          []
+        ptype_cstrs =
+          []
+        ptype_kind =
+          Ptype_abstract
+        ptype_private = Public
+        ptype_manifest =
+          Some
+            core_type (parsing/location.mli[249,7723+13]..[249,7723+19])
+              Ptyp_constr "report" (parsing/location.mli[249,7723+13]..[249,7723+19])
+              []
+    ]
+  signature_item (parsing/location.mli[252,7820+0]..[252,7820+53])
+    Psig_value
+    value_description "error" (parsing/location.mli[252,7820+4]..[252,7820+9]) (parsing/location.mli[252,7820+0]..[252,7820+53])
+      core_type (parsing/location.mli[252,7820+11]..[252,7820+53])
+        Ptyp_arrow
+        Optional "loc"
+        core_type (parsing/location.mli[252,7820+16]..[252,7820+17])
+          Ptyp_constr "t" (parsing/location.mli[252,7820+16]..[252,7820+17])
+          []
+        core_type (parsing/location.mli[252,7820+21]..[252,7820+53])
+          Ptyp_arrow
+          Optional "sub"
+          core_type (parsing/location.mli[252,7820+26]..[252,7820+34])
+            Ptyp_constr "list" (parsing/location.mli[252,7820+30]..[252,7820+34])
+            [
+              core_type (parsing/location.mli[252,7820+26]..[252,7820+29])
+                Ptyp_constr "msg" (parsing/location.mli[252,7820+26]..[252,7820+29])
+                []
+            ]
+          core_type (parsing/location.mli[252,7820+38]..[252,7820+53])
+            Ptyp_arrow
+            Nolabel
+            core_type (parsing/location.mli[252,7820+38]..[252,7820+44])
+              Ptyp_constr "string" (parsing/location.mli[252,7820+38]..[252,7820+44])
+              []
+            core_type (parsing/location.mli[252,7820+48]..[252,7820+53])
+              Ptyp_constr "error" (parsing/location.mli[252,7820+48]..[252,7820+53])
+              []
+      []
+  signature_item (parsing/location.mli[254,7875+0]..[255,7914+51])
+    Psig_value
+    value_description "errorf" (parsing/location.mli[254,7875+4]..[254,7875+10]) (parsing/location.mli[254,7875+0]..[255,7914+51])
+      core_type (parsing/location.mli[254,7875+12]..[255,7914+51])
+        Ptyp_arrow
+        Optional "loc"
+        core_type (parsing/location.mli[254,7875+17]..[254,7875+18])
+          Ptyp_constr "t" (parsing/location.mli[254,7875+17]..[254,7875+18])
+          []
+        core_type (parsing/location.mli[254,7875+22]..[255,7914+51])
+          Ptyp_arrow
+          Optional "sub"
+          core_type (parsing/location.mli[254,7875+27]..[254,7875+35])
+            Ptyp_constr "list" (parsing/location.mli[254,7875+31]..[254,7875+35])
+            [
+              core_type (parsing/location.mli[254,7875+27]..[254,7875+30])
+                Ptyp_constr "msg" (parsing/location.mli[254,7875+27]..[254,7875+30])
+                []
+            ]
+          core_type (parsing/location.mli[255,7914+2]..[255,7914+51])
+            Ptyp_arrow
+            Nolabel
+            core_type (parsing/location.mli[255,7914+2]..[255,7914+45])
+              Ptyp_constr "format4" (parsing/location.mli[255,7914+38]..[255,7914+45])
+              [
+                core_type (parsing/location.mli[255,7914+3]..[255,7914+5])
+                  Ptyp_var a
+                core_type (parsing/location.mli[255,7914+7]..[255,7914+23])
+                  Ptyp_constr "Format.formatter" (parsing/location.mli[255,7914+7]..[255,7914+23])
+                  []
+                core_type (parsing/location.mli[255,7914+25]..[255,7914+29])
+                  Ptyp_constr "unit" (parsing/location.mli[255,7914+25]..[255,7914+29])
+                  []
+                core_type (parsing/location.mli[255,7914+31]..[255,7914+36])
+                  Ptyp_constr "error" (parsing/location.mli[255,7914+31]..[255,7914+36])
+                  []
+              ]
+            core_type (parsing/location.mli[255,7914+49]..[255,7914+51])
+              Ptyp_var a
+      []
+  signature_item (parsing/location.mli[257,7967+0]..[258,8016+42])
+    Psig_value
+    value_description "error_of_printer" (parsing/location.mli[257,7967+4]..[257,7967+20]) (parsing/location.mli[257,7967+0]..[258,8016+42])
+      core_type (parsing/location.mli[257,7967+22]..[258,8016+42])
+        Ptyp_arrow
+        Optional "loc"
+        core_type (parsing/location.mli[257,7967+27]..[257,7967+28])
+          Ptyp_constr "t" (parsing/location.mli[257,7967+27]..[257,7967+28])
+          []
+        core_type (parsing/location.mli[257,7967+32]..[258,8016+42])
+          Ptyp_arrow
+          Optional "sub"
+          core_type (parsing/location.mli[257,7967+37]..[257,7967+45])
+            Ptyp_constr "list" (parsing/location.mli[257,7967+41]..[257,7967+45])
+            [
+              core_type (parsing/location.mli[257,7967+37]..[257,7967+40])
+                Ptyp_constr "msg" (parsing/location.mli[257,7967+37]..[257,7967+40])
+                []
+            ]
+          core_type (parsing/location.mli[258,8016+2]..[258,8016+42])
+            Ptyp_arrow
+            Nolabel
+            core_type (parsing/location.mli[258,8016+3]..[258,8016+26])
+              Ptyp_arrow
+              Nolabel
+              core_type (parsing/location.mli[258,8016+3]..[258,8016+12])
+                Ptyp_constr "formatter" (parsing/location.mli[258,8016+3]..[258,8016+12])
+                []
+              core_type (parsing/location.mli[258,8016+16]..[258,8016+26])
+                Ptyp_arrow
+                Nolabel
+                core_type (parsing/location.mli[258,8016+16]..[258,8016+18])
+                  Ptyp_var a
+                core_type (parsing/location.mli[258,8016+22]..[258,8016+26])
+                  Ptyp_constr "unit" (parsing/location.mli[258,8016+22]..[258,8016+26])
+                  []
+            core_type (parsing/location.mli[258,8016+31]..[258,8016+42])
+              Ptyp_arrow
+              Nolabel
+              core_type (parsing/location.mli[258,8016+31]..[258,8016+33])
+                Ptyp_var a
+              core_type (parsing/location.mli[258,8016+37]..[258,8016+42])
+                Ptyp_constr "error" (parsing/location.mli[258,8016+37]..[258,8016+42])
+                []
+      []
+  signature_item (parsing/location.mli[260,8060+0]..[260,8060+67])
+    Psig_value
+    value_description "error_of_printer_file" (parsing/location.mli[260,8060+4]..[260,8060+25]) (parsing/location.mli[260,8060+0]..[260,8060+67])
+      core_type (parsing/location.mli[260,8060+27]..[260,8060+67])
+        Ptyp_arrow
+        Nolabel
+        core_type (parsing/location.mli[260,8060+28]..[260,8060+51])
+          Ptyp_arrow
+          Nolabel
+          core_type (parsing/location.mli[260,8060+28]..[260,8060+37])
+            Ptyp_constr "formatter" (parsing/location.mli[260,8060+28]..[260,8060+37])
+            []
+          core_type (parsing/location.mli[260,8060+41]..[260,8060+51])
+            Ptyp_arrow
+            Nolabel
+            core_type (parsing/location.mli[260,8060+41]..[260,8060+43])
+              Ptyp_var a
+            core_type (parsing/location.mli[260,8060+47]..[260,8060+51])
+              Ptyp_constr "unit" (parsing/location.mli[260,8060+47]..[260,8060+51])
+              []
+        core_type (parsing/location.mli[260,8060+56]..[260,8060+67])
+          Ptyp_arrow
+          Nolabel
+          core_type (parsing/location.mli[260,8060+56]..[260,8060+58])
+            Ptyp_var a
+          core_type (parsing/location.mli[260,8060+62]..[260,8060+67])
+            Ptyp_constr "error" (parsing/location.mli[260,8060+62]..[260,8060+67])
+            []
+      []
+  signature_item (parsing/location.mli[263,8130+0]..[263,8130+63])
+    Psig_attribute "ocaml.text"
+    [
+      structure_item (parsing/location.mli[263,8130+0]..[263,8130+63])
+        Pstr_eval
+        expression (parsing/location.mli[263,8130+0]..[263,8130+63])
+          Pexp_constant PConst_string(" {1 Automatically reporting errors for raised exceptions} ",(parsing/location.mli[263,8130+0]..[263,8130+63]),None)
+    ]
+  signature_item (parsing/location.mli[265,8195+0]..[265,8195+56])
+    Psig_value
+    value_description "register_error_of_exn" (parsing/location.mli[265,8195+4]..[265,8195+25]) (parsing/location.mli[265,8195+0]..[265,8195+56])
+      attribute "ocaml.doc"
+        [
+          structure_item (parsing/location.mli[266,8252+0]..[271,8576+30])
+            Pstr_eval
+            expression (parsing/location.mli[266,8252+0]..[271,8576+30])
+              Pexp_constant PConst_string(" Each compiler module which defines a custom type of exception\n    which can surface as a user-visible error should register\n    a \"printer\" for this exception using [register_error_of_exn].\n    The result of the printer is an [error] value containing\n    a location, a message, and optionally sub-messages (each of them\n    being located as well). ",(parsing/location.mli[266,8252+0]..[271,8576+30]),None)
+        ]
+      core_type (parsing/location.mli[265,8195+27]..[265,8195+56])
+        Ptyp_arrow
+        Nolabel
+        core_type (parsing/location.mli[265,8195+28]..[265,8195+47])
+          Ptyp_arrow
+          Nolabel
+          core_type (parsing/location.mli[265,8195+28]..[265,8195+31])
+            Ptyp_constr "exn" (parsing/location.mli[265,8195+28]..[265,8195+31])
+            []
+          core_type (parsing/location.mli[265,8195+35]..[265,8195+47])
+            Ptyp_constr "option" (parsing/location.mli[265,8195+41]..[265,8195+47])
+            [
+              core_type (parsing/location.mli[265,8195+35]..[265,8195+40])
+                Ptyp_constr "error" (parsing/location.mli[265,8195+35]..[265,8195+40])
+                []
+            ]
+        core_type (parsing/location.mli[265,8195+52]..[265,8195+56])
+          Ptyp_constr "unit" (parsing/location.mli[265,8195+52]..[265,8195+56])
+          []
+      []
+  signature_item (parsing/location.mli[273,8608+0]..[273,8608+69])
+    Psig_value
+    value_description "error_of_exn" (parsing/location.mli[273,8608+4]..[273,8608+16]) (parsing/location.mli[273,8608+0]..[273,8608+69])
+      core_type (parsing/location.mli[273,8608+18]..[273,8608+69])
+        Ptyp_arrow
+        Nolabel
+        core_type (parsing/location.mli[273,8608+18]..[273,8608+21])
+          Ptyp_constr "exn" (parsing/location.mli[273,8608+18]..[273,8608+21])
+          []
+        core_type (parsing/location.mli[273,8608+25]..[273,8608+69])
+          Ptyp_constr "option" (parsing/location.mli[273,8608+63]..[273,8608+69])
+          [
+            core_type (parsing/location.mli[273,8608+25]..[273,8608+62])
+              Ptyp_variant closed=Closed
+              [
+                Rtag "Ok" false
+                  [
+                    core_type (parsing/location.mli[273,8608+34]..[273,8608+39])
+                      Ptyp_constr "error" (parsing/location.mli[273,8608+34]..[273,8608+39])
+                      []
+                  ]
+                Rtag "Already_displayed" true
+                  []
+              ]
+              None
+          ]
+      []
+  signature_item (parsing/location.mli[275,8679+0]..[275,8679+24])
+    Psig_exception
+    type_exception
+      ptyext_constructor =
+        extension_constructor (parsing/location.mli[275,8679+0]..[275,8679+24])
+          attribute "ocaml.doc"
+            [
+              structure_item (parsing/location.mli[276,8704+0]..[277,8785+28])
+                Pstr_eval
+                expression (parsing/location.mli[276,8704+0]..[277,8785+28])
+                  Pexp_constant PConst_string(" Raising [Error e] signals an error [e]; the exception will be caught and the\n   error will be printed. ",(parsing/location.mli[276,8704+0]..[277,8785+28]),None)
+            ]
+          pext_name = "Error"
+          pext_kind =
+            Pext_decl
+              [
+                core_type (parsing/location.mli[275,8679+19]..[275,8679+24])
+                  Ptyp_constr "error" (parsing/location.mli[275,8679+19]..[275,8679+24])
+                  []
+              ]
+              None
+  signature_item (parsing/location.mli[279,8815+0]..[279,8815+33])
+    Psig_exception
+    type_exception
+      ptyext_constructor =
+        extension_constructor (parsing/location.mli[279,8815+0]..[279,8815+33])
+          attribute "ocaml.doc"
+            [
+              structure_item (parsing/location.mli[280,8849+0]..[281,8927+72])
+                Pstr_eval
+                expression (parsing/location.mli[280,8849+0]..[281,8927+72])
+                  Pexp_constant PConst_string(" Raising [Already_displayed_error] signals an error which has already been\n   printed. The exception will be caught, but nothing will be printed ",(parsing/location.mli[280,8849+0]..[281,8927+72]),None)
+            ]
+          pext_name = "Already_displayed_error"
+          pext_kind =
+            Pext_decl
+              []
+              None
+  signature_item (parsing/location.mli[283,9001+0]..[284,9046+48])
+    Psig_value
+    value_description "raise_errorf" (parsing/location.mli[283,9001+4]..[283,9001+16]) (parsing/location.mli[283,9001+0]..[284,9046+48])
+      core_type (parsing/location.mli[283,9001+18]..[284,9046+48])
+        Ptyp_arrow
+        Optional "loc"
+        core_type (parsing/location.mli[283,9001+23]..[283,9001+24])
+          Ptyp_constr "t" (parsing/location.mli[283,9001+23]..[283,9001+24])
+          []
+        core_type (parsing/location.mli[283,9001+28]..[284,9046+48])
+          Ptyp_arrow
+          Optional "sub"
+          core_type (parsing/location.mli[283,9001+33]..[283,9001+41])
+            Ptyp_constr "list" (parsing/location.mli[283,9001+37]..[283,9001+41])
+            [
+              core_type (parsing/location.mli[283,9001+33]..[283,9001+36])
+                Ptyp_constr "msg" (parsing/location.mli[283,9001+33]..[283,9001+36])
+                []
+            ]
+          core_type (parsing/location.mli[284,9046+2]..[284,9046+48])
+            Ptyp_arrow
+            Nolabel
+            core_type (parsing/location.mli[284,9046+2]..[284,9046+42])
+              Ptyp_constr "format4" (parsing/location.mli[284,9046+35]..[284,9046+42])
+              [
+                core_type (parsing/location.mli[284,9046+3]..[284,9046+5])
+                  Ptyp_var a
+                core_type (parsing/location.mli[284,9046+7]..[284,9046+23])
+                  Ptyp_constr "Format.formatter" (parsing/location.mli[284,9046+7]..[284,9046+23])
+                  []
+                core_type (parsing/location.mli[284,9046+25]..[284,9046+29])
+                  Ptyp_constr "unit" (parsing/location.mli[284,9046+25]..[284,9046+29])
+                  []
+                core_type (parsing/location.mli[284,9046+31]..[284,9046+33])
+                  Ptyp_var b
+              ]
+            core_type (parsing/location.mli[284,9046+46]..[284,9046+48])
+              Ptyp_var a
+      []
+  signature_item (parsing/location.mli[286,9096+0]..[286,9096+46])
+    Psig_value
+    value_description "report_exception" (parsing/location.mli[286,9096+4]..[286,9096+20]) (parsing/location.mli[286,9096+0]..[286,9096+46])
+      attribute "ocaml.doc"
+        [
+          structure_item (parsing/location.mli[287,9143+0]..[287,9143+46])
+            Pstr_eval
+            expression (parsing/location.mli[287,9143+0]..[287,9143+46])
+              Pexp_constant PConst_string(" Reraise the exception if it is unknown. ",(parsing/location.mli[287,9143+0]..[287,9143+46]),None)
+        ]
+      core_type (parsing/location.mli[286,9096+22]..[286,9096+46])
+        Ptyp_arrow
+        Nolabel
+        core_type (parsing/location.mli[286,9096+22]..[286,9096+31])
+          Ptyp_constr "formatter" (parsing/location.mli[286,9096+22]..[286,9096+31])
+          []
+        core_type (parsing/location.mli[286,9096+35]..[286,9096+46])
+          Ptyp_arrow
+          Nolabel
+          core_type (parsing/location.mli[286,9096+35]..[286,9096+38])
+            Ptyp_constr "exn" (parsing/location.mli[286,9096+35]..[286,9096+38])
+            []
+          core_type (parsing/location.mli[286,9096+42]..[286,9096+46])
+            Ptyp_constr "unit" (parsing/location.mli[286,9096+42]..[286,9096+46])
+            []
+      []
+]
+

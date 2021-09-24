@@ -1,0 +1,2082 @@
+[
+  signature_item (middle_end/flambda/inline_and_simplify_aux.mli[17,1156+0]..[17,1156+39])
+    Psig_attribute "ocaml.warning"
+    [
+      structure_item (middle_end/flambda/inline_and_simplify_aux.mli[17,1156+18]..[17,1156+38])
+        Pstr_eval
+        expression (middle_end/flambda/inline_and_simplify_aux.mli[17,1156+18]..[17,1156+38])
+          Pexp_constant PConst_string("+a-4-9-30-40-41-42",(middle_end/flambda/inline_and_simplify_aux.mli[17,1156+19]..[17,1156+37]),None)
+    ]
+  signature_item (middle_end/flambda/inline_and_simplify_aux.mli[19,1197+0]..[20,1261+53])
+    Psig_attribute "ocaml.text"
+    [
+      structure_item (middle_end/flambda/inline_and_simplify_aux.mli[19,1197+0]..[20,1261+53])
+        Pstr_eval
+        expression (middle_end/flambda/inline_and_simplify_aux.mli[19,1197+0]..[20,1261+53])
+          Pexp_constant PConst_string(" Environments and result structures used during inlining and\n    simplification.  (See inline_and_simplify.ml.) ",(middle_end/flambda/inline_and_simplify_aux.mli[19,1197+0]..[20,1261+53]),None)
+    ]
+  signature_item (middle_end/flambda/inline_and_simplify_aux.mli[22,1316+0]..[267,11116+3])
+    Psig_module "Env" (middle_end/flambda/inline_and_simplify_aux.mli[22,1316+7]..[22,1316+10])
+    module_type (middle_end/flambda/inline_and_simplify_aux.mli[22,1316+13]..[267,11116+3])
+      Pmty_signature
+      [
+        signature_item (middle_end/flambda/inline_and_simplify_aux.mli[24,1397+2]..[24,1397+8])
+          Psig_type Rec
+          [
+            type_declaration "t" (middle_end/flambda/inline_and_simplify_aux.mli[24,1397+7]..[24,1397+8]) (middle_end/flambda/inline_and_simplify_aux.mli[24,1397+2]..[24,1397+8])
+              attribute "ocaml.doc"
+                [
+                  structure_item (middle_end/flambda/inline_and_simplify_aux.mli[23,1333+2]..[23,1333+63])
+                    Pstr_eval
+                    expression (middle_end/flambda/inline_and_simplify_aux.mli[23,1333+2]..[23,1333+63])
+                      Pexp_constant PConst_string(" Environments follow the lexical scopes of the program. ",(middle_end/flambda/inline_and_simplify_aux.mli[23,1333+2]..[23,1333+63]),None)
+                ]
+              ptype_params =
+                []
+              ptype_cstrs =
+                []
+              ptype_kind =
+                Ptype_abstract
+              ptype_private = Public
+              ptype_manifest =
+                None
+          ]
+        signature_item (middle_end/flambda/inline_and_simplify_aux.mli[32,1799+2]..[37,1926+8])
+          Psig_value
+          value_description "create" (middle_end/flambda/inline_and_simplify_aux.mli[32,1799+6]..[32,1799+12]) (middle_end/flambda/inline_and_simplify_aux.mli[32,1799+2]..[37,1926+8])
+            attribute "ocaml.doc"
+              [
+                structure_item (middle_end/flambda/inline_and_simplify_aux.mli[26,1407+2]..[31,1740+58])
+                  Pstr_eval
+                  expression (middle_end/flambda/inline_and_simplify_aux.mli[26,1407+2]..[31,1740+58])
+                    Pexp_constant PConst_string(" Create a new environment.  If [never_inline] is true then the returned\n      environment will prevent [Inline_and_simplify] from inlining.  The\n      [backend] parameter is used for passing information about the compiler\n      backend being used.\n      Newly-created environments have inactive [Freshening]s (see below) and do\n      not initially hold any approximation information. ",(middle_end/flambda/inline_and_simplify_aux.mli[26,1407+2]..[31,1740+58]),None)
+              ]
+            core_type (middle_end/flambda/inline_and_simplify_aux.mli[33,1812+7]..[37,1926+8])
+              Ptyp_arrow
+              Labelled "never_inline"
+              core_type (middle_end/flambda/inline_and_simplify_aux.mli[33,1812+20]..[33,1812+24])
+                Ptyp_constr "bool" (middle_end/flambda/inline_and_simplify_aux.mli[33,1812+20]..[33,1812+24])
+                []
+              core_type (middle_end/flambda/inline_and_simplify_aux.mli[34,1837+7]..[37,1926+8])
+                Ptyp_arrow
+                Labelled "backend"
+                core_type (middle_end/flambda/inline_and_simplify_aux.mli[34,1837+15]..[34,1837+38])
+                  Ptyp_package "Backend_intf.S" (middle_end/flambda/inline_and_simplify_aux.mli[34,1837+23]..[34,1837+37])
+                  []
+                core_type (middle_end/flambda/inline_and_simplify_aux.mli[35,1876+7]..[37,1926+8])
+                  Ptyp_arrow
+                  Labelled "round"
+                  core_type (middle_end/flambda/inline_and_simplify_aux.mli[35,1876+13]..[35,1876+16])
+                    Ptyp_constr "int" (middle_end/flambda/inline_and_simplify_aux.mli[35,1876+13]..[35,1876+16])
+                    []
+                  core_type (middle_end/flambda/inline_and_simplify_aux.mli[36,1893+7]..[37,1926+8])
+                    Ptyp_arrow
+                    Labelled "ppf_dump"
+                    core_type (middle_end/flambda/inline_and_simplify_aux.mli[36,1893+16]..[36,1893+32])
+                      Ptyp_constr "Format.formatter" (middle_end/flambda/inline_and_simplify_aux.mli[36,1893+16]..[36,1893+32])
+                      []
+                    core_type (middle_end/flambda/inline_and_simplify_aux.mli[37,1926+7]..[37,1926+8])
+                      Ptyp_constr "t" (middle_end/flambda/inline_and_simplify_aux.mli[37,1926+7]..[37,1926+8])
+                      []
+            []
+        signature_item (middle_end/flambda/inline_and_simplify_aux.mli[41,2059+2]..[41,2059+44])
+          Psig_value
+          value_description "backend" (middle_end/flambda/inline_and_simplify_aux.mli[41,2059+6]..[41,2059+13]) (middle_end/flambda/inline_and_simplify_aux.mli[41,2059+2]..[41,2059+44])
+            attribute "ocaml.doc"
+              [
+                structure_item (middle_end/flambda/inline_and_simplify_aux.mli[39,1936+2]..[40,2005+53])
+                  Pstr_eval
+                  expression (middle_end/flambda/inline_and_simplify_aux.mli[39,1936+2]..[40,2005+53])
+                    Pexp_constant PConst_string(" Obtain the first-class module that gives information about the\n      compiler backend being used for compilation. ",(middle_end/flambda/inline_and_simplify_aux.mli[39,1936+2]..[40,2005+53]),None)
+              ]
+            core_type (middle_end/flambda/inline_and_simplify_aux.mli[41,2059+16]..[41,2059+44])
+              Ptyp_arrow
+              Nolabel
+              core_type (middle_end/flambda/inline_and_simplify_aux.mli[41,2059+16]..[41,2059+17])
+                Ptyp_constr "t" (middle_end/flambda/inline_and_simplify_aux.mli[41,2059+16]..[41,2059+17])
+                []
+              core_type (middle_end/flambda/inline_and_simplify_aux.mli[41,2059+21]..[41,2059+44])
+                Ptyp_package "Backend_intf.S" (middle_end/flambda/inline_and_simplify_aux.mli[41,2059+29]..[41,2059+43])
+                []
+            []
+        signature_item (middle_end/flambda/inline_and_simplify_aux.mli[44,2180+2]..[46,2216+55])
+          Psig_value
+          value_description "really_import_approx" (middle_end/flambda/inline_and_simplify_aux.mli[44,2180+6]..[44,2180+26]) (middle_end/flambda/inline_and_simplify_aux.mli[44,2180+2]..[46,2216+55])
+            attribute "ocaml.doc"
+              [
+                structure_item (middle_end/flambda/inline_and_simplify_aux.mli[43,2105+2]..[43,2105+74])
+                  Pstr_eval
+                  expression (middle_end/flambda/inline_and_simplify_aux.mli[43,2105+2]..[43,2105+74])
+                    Pexp_constant PConst_string(" Obtain the really_import_approx function from the backend module. ",(middle_end/flambda/inline_and_simplify_aux.mli[43,2105+2]..[43,2105+74]),None)
+              ]
+            core_type (middle_end/flambda/inline_and_simplify_aux.mli[45,2207+7]..[46,2216+55])
+              Ptyp_arrow
+              Nolabel
+              core_type (middle_end/flambda/inline_and_simplify_aux.mli[45,2207+7]..[45,2207+8])
+                Ptyp_constr "t" (middle_end/flambda/inline_and_simplify_aux.mli[45,2207+7]..[45,2207+8])
+                []
+              core_type (middle_end/flambda/inline_and_simplify_aux.mli[46,2216+8]..[46,2216+54])
+                Ptyp_arrow
+                Nolabel
+                core_type (middle_end/flambda/inline_and_simplify_aux.mli[46,2216+8]..[46,2216+29])
+                  Ptyp_constr "Simple_value_approx.t" (middle_end/flambda/inline_and_simplify_aux.mli[46,2216+8]..[46,2216+29])
+                  []
+                core_type (middle_end/flambda/inline_and_simplify_aux.mli[46,2216+33]..[46,2216+54])
+                  Ptyp_constr "Simple_value_approx.t" (middle_end/flambda/inline_and_simplify_aux.mli[46,2216+33]..[46,2216+54])
+                  []
+            []
+        signature_item (middle_end/flambda/inline_and_simplify_aux.mli[49,2330+2]..[49,2330+22])
+          Psig_value
+          value_description "round" (middle_end/flambda/inline_and_simplify_aux.mli[49,2330+6]..[49,2330+11]) (middle_end/flambda/inline_and_simplify_aux.mli[49,2330+2]..[49,2330+22])
+            attribute "ocaml.doc"
+              [
+                structure_item (middle_end/flambda/inline_and_simplify_aux.mli[48,2273+2]..[48,2273+56])
+                  Pstr_eval
+                  expression (middle_end/flambda/inline_and_simplify_aux.mli[48,2273+2]..[48,2273+56])
+                    Pexp_constant PConst_string(" Which simplification round we are currently in. ",(middle_end/flambda/inline_and_simplify_aux.mli[48,2273+2]..[48,2273+56]),None)
+              ]
+            core_type (middle_end/flambda/inline_and_simplify_aux.mli[49,2330+14]..[49,2330+22])
+              Ptyp_arrow
+              Nolabel
+              core_type (middle_end/flambda/inline_and_simplify_aux.mli[49,2330+14]..[49,2330+15])
+                Ptyp_constr "t" (middle_end/flambda/inline_and_simplify_aux.mli[49,2330+14]..[49,2330+15])
+                []
+              core_type (middle_end/flambda/inline_and_simplify_aux.mli[49,2330+19]..[49,2330+22])
+                Ptyp_constr "int" (middle_end/flambda/inline_and_simplify_aux.mli[49,2330+19]..[49,2330+22])
+                []
+            []
+        signature_item (middle_end/flambda/inline_and_simplify_aux.mli[52,2426+2]..[52,2426+38])
+          Psig_value
+          value_description "ppf_dump" (middle_end/flambda/inline_and_simplify_aux.mli[52,2426+6]..[52,2426+14]) (middle_end/flambda/inline_and_simplify_aux.mli[52,2426+2]..[52,2426+38])
+            attribute "ocaml.doc"
+              [
+                structure_item (middle_end/flambda/inline_and_simplify_aux.mli[51,2354+2]..[51,2354+71])
+                  Pstr_eval
+                  expression (middle_end/flambda/inline_and_simplify_aux.mli[51,2354+2]..[51,2354+71])
+                    Pexp_constant PConst_string(" Where to print intermediate asts and similar debug information ",(middle_end/flambda/inline_and_simplify_aux.mli[51,2354+2]..[51,2354+71]),None)
+              ]
+            core_type (middle_end/flambda/inline_and_simplify_aux.mli[52,2426+17]..[52,2426+38])
+              Ptyp_arrow
+              Nolabel
+              core_type (middle_end/flambda/inline_and_simplify_aux.mli[52,2426+17]..[52,2426+18])
+                Ptyp_constr "t" (middle_end/flambda/inline_and_simplify_aux.mli[52,2426+17]..[52,2426+18])
+                []
+              core_type (middle_end/flambda/inline_and_simplify_aux.mli[52,2426+22]..[52,2426+38])
+                Ptyp_constr "Format.formatter" (middle_end/flambda/inline_and_simplify_aux.mli[52,2426+22]..[52,2426+38])
+                []
+            []
+        signature_item (middle_end/flambda/inline_and_simplify_aux.mli[57,2633+2]..[57,2633+57])
+          Psig_value
+          value_description "add" (middle_end/flambda/inline_and_simplify_aux.mli[57,2633+6]..[57,2633+9]) (middle_end/flambda/inline_and_simplify_aux.mli[57,2633+2]..[57,2633+57])
+            attribute "ocaml.doc"
+              [
+                structure_item (middle_end/flambda/inline_and_simplify_aux.mli[54,2466+2]..[56,2611+21])
+                  Pstr_eval
+                  expression (middle_end/flambda/inline_and_simplify_aux.mli[54,2466+2]..[56,2611+21])
+                    Pexp_constant PConst_string(" Add the approximation of a variable---that is to say, some knowledge\n      about the value(s) the variable may take on at runtime---to the\n      environment. ",(middle_end/flambda/inline_and_simplify_aux.mli[54,2466+2]..[56,2611+21]),None)
+              ]
+            core_type (middle_end/flambda/inline_and_simplify_aux.mli[57,2633+12]..[57,2633+57])
+              Ptyp_arrow
+              Nolabel
+              core_type (middle_end/flambda/inline_and_simplify_aux.mli[57,2633+12]..[57,2633+13])
+                Ptyp_constr "t" (middle_end/flambda/inline_and_simplify_aux.mli[57,2633+12]..[57,2633+13])
+                []
+              core_type (middle_end/flambda/inline_and_simplify_aux.mli[57,2633+17]..[57,2633+57])
+                Ptyp_arrow
+                Nolabel
+                core_type (middle_end/flambda/inline_and_simplify_aux.mli[57,2633+17]..[57,2633+27])
+                  Ptyp_constr "Variable.t" (middle_end/flambda/inline_and_simplify_aux.mli[57,2633+17]..[57,2633+27])
+                  []
+                core_type (middle_end/flambda/inline_and_simplify_aux.mli[57,2633+31]..[57,2633+57])
+                  Ptyp_arrow
+                  Nolabel
+                  core_type (middle_end/flambda/inline_and_simplify_aux.mli[57,2633+31]..[57,2633+52])
+                    Ptyp_constr "Simple_value_approx.t" (middle_end/flambda/inline_and_simplify_aux.mli[57,2633+31]..[57,2633+52])
+                    []
+                  core_type (middle_end/flambda/inline_and_simplify_aux.mli[57,2633+56]..[57,2633+57])
+                    Ptyp_constr "t" (middle_end/flambda/inline_and_simplify_aux.mli[57,2633+56]..[57,2633+57])
+                    []
+            []
+        signature_item (middle_end/flambda/inline_and_simplify_aux.mli[59,2692+2]..[59,2692+69])
+          Psig_value
+          value_description "add_outer_scope" (middle_end/flambda/inline_and_simplify_aux.mli[59,2692+6]..[59,2692+21]) (middle_end/flambda/inline_and_simplify_aux.mli[59,2692+2]..[59,2692+69])
+            core_type (middle_end/flambda/inline_and_simplify_aux.mli[59,2692+24]..[59,2692+69])
+              Ptyp_arrow
+              Nolabel
+              core_type (middle_end/flambda/inline_and_simplify_aux.mli[59,2692+24]..[59,2692+25])
+                Ptyp_constr "t" (middle_end/flambda/inline_and_simplify_aux.mli[59,2692+24]..[59,2692+25])
+                []
+              core_type (middle_end/flambda/inline_and_simplify_aux.mli[59,2692+29]..[59,2692+69])
+                Ptyp_arrow
+                Nolabel
+                core_type (middle_end/flambda/inline_and_simplify_aux.mli[59,2692+29]..[59,2692+39])
+                  Ptyp_constr "Variable.t" (middle_end/flambda/inline_and_simplify_aux.mli[59,2692+29]..[59,2692+39])
+                  []
+                core_type (middle_end/flambda/inline_and_simplify_aux.mli[59,2692+43]..[59,2692+69])
+                  Ptyp_arrow
+                  Nolabel
+                  core_type (middle_end/flambda/inline_and_simplify_aux.mli[59,2692+43]..[59,2692+64])
+                    Ptyp_constr "Simple_value_approx.t" (middle_end/flambda/inline_and_simplify_aux.mli[59,2692+43]..[59,2692+64])
+                    []
+                  core_type (middle_end/flambda/inline_and_simplify_aux.mli[59,2692+68]..[59,2692+69])
+                    Ptyp_constr "t" (middle_end/flambda/inline_and_simplify_aux.mli[59,2692+68]..[59,2692+69])
+                    []
+            []
+        signature_item (middle_end/flambda/inline_and_simplify_aux.mli[62,2811+2]..[62,2811+73])
+          Psig_value
+          value_description "add_mutable" (middle_end/flambda/inline_and_simplify_aux.mli[62,2811+6]..[62,2811+17]) (middle_end/flambda/inline_and_simplify_aux.mli[62,2811+2]..[62,2811+73])
+            attribute "ocaml.doc"
+              [
+                structure_item (middle_end/flambda/inline_and_simplify_aux.mli[61,2763+2]..[61,2763+47])
+                  Pstr_eval
+                  expression (middle_end/flambda/inline_and_simplify_aux.mli[61,2763+2]..[61,2763+47])
+                    Pexp_constant PConst_string(" Like [add], but for mutable variables. ",(middle_end/flambda/inline_and_simplify_aux.mli[61,2763+2]..[61,2763+47]),None)
+              ]
+            core_type (middle_end/flambda/inline_and_simplify_aux.mli[62,2811+20]..[62,2811+73])
+              Ptyp_arrow
+              Nolabel
+              core_type (middle_end/flambda/inline_and_simplify_aux.mli[62,2811+20]..[62,2811+21])
+                Ptyp_constr "t" (middle_end/flambda/inline_and_simplify_aux.mli[62,2811+20]..[62,2811+21])
+                []
+              core_type (middle_end/flambda/inline_and_simplify_aux.mli[62,2811+25]..[62,2811+73])
+                Ptyp_arrow
+                Nolabel
+                core_type (middle_end/flambda/inline_and_simplify_aux.mli[62,2811+25]..[62,2811+43])
+                  Ptyp_constr "Mutable_variable.t" (middle_end/flambda/inline_and_simplify_aux.mli[62,2811+25]..[62,2811+43])
+                  []
+                core_type (middle_end/flambda/inline_and_simplify_aux.mli[62,2811+47]..[62,2811+73])
+                  Ptyp_arrow
+                  Nolabel
+                  core_type (middle_end/flambda/inline_and_simplify_aux.mli[62,2811+47]..[62,2811+68])
+                    Ptyp_constr "Simple_value_approx.t" (middle_end/flambda/inline_and_simplify_aux.mli[62,2811+47]..[62,2811+68])
+                    []
+                  core_type (middle_end/flambda/inline_and_simplify_aux.mli[62,2811+72]..[62,2811+73])
+                    Ptyp_constr "t" (middle_end/flambda/inline_and_simplify_aux.mli[62,2811+72]..[62,2811+73])
+                    []
+            []
+        signature_item (middle_end/flambda/inline_and_simplify_aux.mli[67,3089+2]..[67,3089+57])
+          Psig_value
+          value_description "find_exn" (middle_end/flambda/inline_and_simplify_aux.mli[67,3089+6]..[67,3089+14]) (middle_end/flambda/inline_and_simplify_aux.mli[67,3089+2]..[67,3089+57])
+            attribute "ocaml.doc"
+              [
+                structure_item (middle_end/flambda/inline_and_simplify_aux.mli[64,2886+2]..[66,3033+55])
+                  Pstr_eval
+                  expression (middle_end/flambda/inline_and_simplify_aux.mli[64,2886+2]..[66,3033+55])
+                    Pexp_constant PConst_string(" Find the approximation of a given variable, raising a fatal error if\n      the environment does not know about the variable.  Use [find_opt]\n      instead if you need to catch the failure case. ",(middle_end/flambda/inline_and_simplify_aux.mli[64,2886+2]..[66,3033+55]),None)
+              ]
+            core_type (middle_end/flambda/inline_and_simplify_aux.mli[67,3089+17]..[67,3089+57])
+              Ptyp_arrow
+              Nolabel
+              core_type (middle_end/flambda/inline_and_simplify_aux.mli[67,3089+17]..[67,3089+18])
+                Ptyp_constr "t" (middle_end/flambda/inline_and_simplify_aux.mli[67,3089+17]..[67,3089+18])
+                []
+              core_type (middle_end/flambda/inline_and_simplify_aux.mli[67,3089+22]..[67,3089+57])
+                Ptyp_arrow
+                Nolabel
+                core_type (middle_end/flambda/inline_and_simplify_aux.mli[67,3089+22]..[67,3089+32])
+                  Ptyp_constr "Variable.t" (middle_end/flambda/inline_and_simplify_aux.mli[67,3089+22]..[67,3089+32])
+                  []
+                core_type (middle_end/flambda/inline_and_simplify_aux.mli[67,3089+36]..[67,3089+57])
+                  Ptyp_constr "Simple_value_approx.t" (middle_end/flambda/inline_and_simplify_aux.mli[67,3089+36]..[67,3089+57])
+                  []
+            []
+        signature_item (middle_end/flambda/inline_and_simplify_aux.mli[70,3201+2]..[70,3201+73])
+          Psig_value
+          value_description "find_mutable_exn" (middle_end/flambda/inline_and_simplify_aux.mli[70,3201+6]..[70,3201+22]) (middle_end/flambda/inline_and_simplify_aux.mli[70,3201+2]..[70,3201+73])
+            attribute "ocaml.doc"
+              [
+                structure_item (middle_end/flambda/inline_and_simplify_aux.mli[69,3148+2]..[69,3148+52])
+                  Pstr_eval
+                  expression (middle_end/flambda/inline_and_simplify_aux.mli[69,3148+2]..[69,3148+52])
+                    Pexp_constant PConst_string(" Like [find_exn], but for mutable variables. ",(middle_end/flambda/inline_and_simplify_aux.mli[69,3148+2]..[69,3148+52]),None)
+              ]
+            core_type (middle_end/flambda/inline_and_simplify_aux.mli[70,3201+25]..[70,3201+73])
+              Ptyp_arrow
+              Nolabel
+              core_type (middle_end/flambda/inline_and_simplify_aux.mli[70,3201+25]..[70,3201+26])
+                Ptyp_constr "t" (middle_end/flambda/inline_and_simplify_aux.mli[70,3201+25]..[70,3201+26])
+                []
+              core_type (middle_end/flambda/inline_and_simplify_aux.mli[70,3201+30]..[70,3201+73])
+                Ptyp_arrow
+                Nolabel
+                core_type (middle_end/flambda/inline_and_simplify_aux.mli[70,3201+30]..[70,3201+48])
+                  Ptyp_constr "Mutable_variable.t" (middle_end/flambda/inline_and_simplify_aux.mli[70,3201+30]..[70,3201+48])
+                  []
+                core_type (middle_end/flambda/inline_and_simplify_aux.mli[70,3201+52]..[70,3201+73])
+                  Ptyp_constr "Simple_value_approx.t" (middle_end/flambda/inline_and_simplify_aux.mli[70,3201+52]..[70,3201+73])
+                  []
+            []
+        signature_item (middle_end/flambda/inline_and_simplify_aux.mli[72,3276+2]..[72,3276+30])
+          Psig_type Rec
+          [
+            type_declaration "scope" (middle_end/flambda/inline_and_simplify_aux.mli[72,3276+7]..[72,3276+12]) (middle_end/flambda/inline_and_simplify_aux.mli[72,3276+2]..[72,3276+30])
+              ptype_params =
+                []
+              ptype_cstrs =
+                []
+              ptype_kind =
+                Ptype_variant
+                  [
+                    (middle_end/flambda/inline_and_simplify_aux.mli[72,3276+15]..[72,3276+22])
+                      "Current" (middle_end/flambda/inline_and_simplify_aux.mli[72,3276+15]..[72,3276+22])
+                      []
+                      None
+                    (middle_end/flambda/inline_and_simplify_aux.mli[72,3276+23]..[72,3276+30])
+                      "Outer" (middle_end/flambda/inline_and_simplify_aux.mli[72,3276+25]..[72,3276+30])
+                      []
+                      None
+                  ]
+              ptype_private = Public
+              ptype_manifest =
+                None
+          ]
+        signature_item (middle_end/flambda/inline_and_simplify_aux.mli[74,3308+2]..[74,3308+76])
+          Psig_value
+          value_description "find_with_scope_exn" (middle_end/flambda/inline_and_simplify_aux.mli[74,3308+6]..[74,3308+25]) (middle_end/flambda/inline_and_simplify_aux.mli[74,3308+2]..[74,3308+76])
+            core_type (middle_end/flambda/inline_and_simplify_aux.mli[74,3308+28]..[74,3308+76])
+              Ptyp_arrow
+              Nolabel
+              core_type (middle_end/flambda/inline_and_simplify_aux.mli[74,3308+28]..[74,3308+29])
+                Ptyp_constr "t" (middle_end/flambda/inline_and_simplify_aux.mli[74,3308+28]..[74,3308+29])
+                []
+              core_type (middle_end/flambda/inline_and_simplify_aux.mli[74,3308+33]..[74,3308+76])
+                Ptyp_arrow
+                Nolabel
+                core_type (middle_end/flambda/inline_and_simplify_aux.mli[74,3308+33]..[74,3308+43])
+                  Ptyp_constr "Variable.t" (middle_end/flambda/inline_and_simplify_aux.mli[74,3308+33]..[74,3308+43])
+                  []
+                core_type (middle_end/flambda/inline_and_simplify_aux.mli[74,3308+47]..[74,3308+76])
+                  Ptyp_tuple
+                  [
+                    core_type (middle_end/flambda/inline_and_simplify_aux.mli[74,3308+47]..[74,3308+52])
+                      Ptyp_constr "scope" (middle_end/flambda/inline_and_simplify_aux.mli[74,3308+47]..[74,3308+52])
+                      []
+                    core_type (middle_end/flambda/inline_and_simplify_aux.mli[74,3308+55]..[74,3308+76])
+                      Ptyp_constr "Simple_value_approx.t" (middle_end/flambda/inline_and_simplify_aux.mli[74,3308+55]..[74,3308+76])
+                      []
+                  ]
+            []
+        signature_item (middle_end/flambda/inline_and_simplify_aux.mli[78,3515+2]..[78,3515+64])
+          Psig_value
+          value_description "find_opt" (middle_end/flambda/inline_and_simplify_aux.mli[78,3515+6]..[78,3515+14]) (middle_end/flambda/inline_and_simplify_aux.mli[78,3515+2]..[78,3515+64])
+            attribute "ocaml.doc"
+              [
+                structure_item (middle_end/flambda/inline_and_simplify_aux.mli[76,3386+2]..[77,3456+58])
+                  Pstr_eval
+                  expression (middle_end/flambda/inline_and_simplify_aux.mli[76,3386+2]..[77,3456+58])
+                    Pexp_constant PConst_string(" Like [find_exn], but intended for use where the \"not present in\n      environment\" case is to be handled by the caller. ",(middle_end/flambda/inline_and_simplify_aux.mli[76,3386+2]..[77,3456+58]),None)
+              ]
+            core_type (middle_end/flambda/inline_and_simplify_aux.mli[78,3515+17]..[78,3515+64])
+              Ptyp_arrow
+              Nolabel
+              core_type (middle_end/flambda/inline_and_simplify_aux.mli[78,3515+17]..[78,3515+18])
+                Ptyp_constr "t" (middle_end/flambda/inline_and_simplify_aux.mli[78,3515+17]..[78,3515+18])
+                []
+              core_type (middle_end/flambda/inline_and_simplify_aux.mli[78,3515+22]..[78,3515+64])
+                Ptyp_arrow
+                Nolabel
+                core_type (middle_end/flambda/inline_and_simplify_aux.mli[78,3515+22]..[78,3515+32])
+                  Ptyp_constr "Variable.t" (middle_end/flambda/inline_and_simplify_aux.mli[78,3515+22]..[78,3515+32])
+                  []
+                core_type (middle_end/flambda/inline_and_simplify_aux.mli[78,3515+36]..[78,3515+64])
+                  Ptyp_constr "option" (middle_end/flambda/inline_and_simplify_aux.mli[78,3515+58]..[78,3515+64])
+                  [
+                    core_type (middle_end/flambda/inline_and_simplify_aux.mli[78,3515+36]..[78,3515+57])
+                      Ptyp_constr "Simple_value_approx.t" (middle_end/flambda/inline_and_simplify_aux.mli[78,3515+36]..[78,3515+57])
+                      []
+                  ]
+            []
+        signature_item (middle_end/flambda/inline_and_simplify_aux.mli[81,3636+2]..[81,3636+72])
+          Psig_value
+          value_description "find_list_exn" (middle_end/flambda/inline_and_simplify_aux.mli[81,3636+6]..[81,3636+19]) (middle_end/flambda/inline_and_simplify_aux.mli[81,3636+2]..[81,3636+72])
+            attribute "ocaml.doc"
+              [
+                structure_item (middle_end/flambda/inline_and_simplify_aux.mli[80,3581+2]..[80,3581+54])
+                  Pstr_eval
+                  expression (middle_end/flambda/inline_and_simplify_aux.mli[80,3581+2]..[80,3581+54])
+                    Pexp_constant PConst_string(" Like [find_exn], but for a list of variables. ",(middle_end/flambda/inline_and_simplify_aux.mli[80,3581+2]..[80,3581+54]),None)
+              ]
+            core_type (middle_end/flambda/inline_and_simplify_aux.mli[81,3636+22]..[81,3636+72])
+              Ptyp_arrow
+              Nolabel
+              core_type (middle_end/flambda/inline_and_simplify_aux.mli[81,3636+22]..[81,3636+23])
+                Ptyp_constr "t" (middle_end/flambda/inline_and_simplify_aux.mli[81,3636+22]..[81,3636+23])
+                []
+              core_type (middle_end/flambda/inline_and_simplify_aux.mli[81,3636+27]..[81,3636+72])
+                Ptyp_arrow
+                Nolabel
+                core_type (middle_end/flambda/inline_and_simplify_aux.mli[81,3636+27]..[81,3636+42])
+                  Ptyp_constr "list" (middle_end/flambda/inline_and_simplify_aux.mli[81,3636+38]..[81,3636+42])
+                  [
+                    core_type (middle_end/flambda/inline_and_simplify_aux.mli[81,3636+27]..[81,3636+37])
+                      Ptyp_constr "Variable.t" (middle_end/flambda/inline_and_simplify_aux.mli[81,3636+27]..[81,3636+37])
+                      []
+                  ]
+                core_type (middle_end/flambda/inline_and_simplify_aux.mli[81,3636+46]..[81,3636+72])
+                  Ptyp_constr "list" (middle_end/flambda/inline_and_simplify_aux.mli[81,3636+68]..[81,3636+72])
+                  [
+                    core_type (middle_end/flambda/inline_and_simplify_aux.mli[81,3636+46]..[81,3636+67])
+                      Ptyp_constr "Simple_value_approx.t" (middle_end/flambda/inline_and_simplify_aux.mli[81,3636+46]..[81,3636+67])
+                      []
+                  ]
+            []
+        signature_item (middle_end/flambda/inline_and_simplify_aux.mli[83,3710+2]..[83,3710+50])
+          Psig_value
+          value_description "does_not_bind" (middle_end/flambda/inline_and_simplify_aux.mli[83,3710+6]..[83,3710+19]) (middle_end/flambda/inline_and_simplify_aux.mli[83,3710+2]..[83,3710+50])
+            core_type (middle_end/flambda/inline_and_simplify_aux.mli[83,3710+22]..[83,3710+50])
+              Ptyp_arrow
+              Nolabel
+              core_type (middle_end/flambda/inline_and_simplify_aux.mli[83,3710+22]..[83,3710+23])
+                Ptyp_constr "t" (middle_end/flambda/inline_and_simplify_aux.mli[83,3710+22]..[83,3710+23])
+                []
+              core_type (middle_end/flambda/inline_and_simplify_aux.mli[83,3710+27]..[83,3710+50])
+                Ptyp_arrow
+                Nolabel
+                core_type (middle_end/flambda/inline_and_simplify_aux.mli[83,3710+27]..[83,3710+42])
+                  Ptyp_constr "list" (middle_end/flambda/inline_and_simplify_aux.mli[83,3710+38]..[83,3710+42])
+                  [
+                    core_type (middle_end/flambda/inline_and_simplify_aux.mli[83,3710+27]..[83,3710+37])
+                      Ptyp_constr "Variable.t" (middle_end/flambda/inline_and_simplify_aux.mli[83,3710+27]..[83,3710+37])
+                      []
+                  ]
+                core_type (middle_end/flambda/inline_and_simplify_aux.mli[83,3710+46]..[83,3710+50])
+                  Ptyp_constr "bool" (middle_end/flambda/inline_and_simplify_aux.mli[83,3710+46]..[83,3710+50])
+                  []
+            []
+        signature_item (middle_end/flambda/inline_and_simplify_aux.mli[85,3762+2]..[85,3762+53])
+          Psig_value
+          value_description "does_not_freshen" (middle_end/flambda/inline_and_simplify_aux.mli[85,3762+6]..[85,3762+22]) (middle_end/flambda/inline_and_simplify_aux.mli[85,3762+2]..[85,3762+53])
+            core_type (middle_end/flambda/inline_and_simplify_aux.mli[85,3762+25]..[85,3762+53])
+              Ptyp_arrow
+              Nolabel
+              core_type (middle_end/flambda/inline_and_simplify_aux.mli[85,3762+25]..[85,3762+26])
+                Ptyp_constr "t" (middle_end/flambda/inline_and_simplify_aux.mli[85,3762+25]..[85,3762+26])
+                []
+              core_type (middle_end/flambda/inline_and_simplify_aux.mli[85,3762+30]..[85,3762+53])
+                Ptyp_arrow
+                Nolabel
+                core_type (middle_end/flambda/inline_and_simplify_aux.mli[85,3762+30]..[85,3762+45])
+                  Ptyp_constr "list" (middle_end/flambda/inline_and_simplify_aux.mli[85,3762+41]..[85,3762+45])
+                  [
+                    core_type (middle_end/flambda/inline_and_simplify_aux.mli[85,3762+30]..[85,3762+40])
+                      Ptyp_constr "Variable.t" (middle_end/flambda/inline_and_simplify_aux.mli[85,3762+30]..[85,3762+40])
+                      []
+                  ]
+                core_type (middle_end/flambda/inline_and_simplify_aux.mli[85,3762+49]..[85,3762+53])
+                  Ptyp_constr "bool" (middle_end/flambda/inline_and_simplify_aux.mli[85,3762+49]..[85,3762+53])
+                  []
+            []
+        signature_item (middle_end/flambda/inline_and_simplify_aux.mli[87,3817+2]..[87,3817+62])
+          Psig_value
+          value_description "add_symbol" (middle_end/flambda/inline_and_simplify_aux.mli[87,3817+6]..[87,3817+16]) (middle_end/flambda/inline_and_simplify_aux.mli[87,3817+2]..[87,3817+62])
+            core_type (middle_end/flambda/inline_and_simplify_aux.mli[87,3817+19]..[87,3817+62])
+              Ptyp_arrow
+              Nolabel
+              core_type (middle_end/flambda/inline_and_simplify_aux.mli[87,3817+19]..[87,3817+20])
+                Ptyp_constr "t" (middle_end/flambda/inline_and_simplify_aux.mli[87,3817+19]..[87,3817+20])
+                []
+              core_type (middle_end/flambda/inline_and_simplify_aux.mli[87,3817+24]..[87,3817+62])
+                Ptyp_arrow
+                Nolabel
+                core_type (middle_end/flambda/inline_and_simplify_aux.mli[87,3817+24]..[87,3817+32])
+                  Ptyp_constr "Symbol.t" (middle_end/flambda/inline_and_simplify_aux.mli[87,3817+24]..[87,3817+32])
+                  []
+                core_type (middle_end/flambda/inline_and_simplify_aux.mli[87,3817+36]..[87,3817+62])
+                  Ptyp_arrow
+                  Nolabel
+                  core_type (middle_end/flambda/inline_and_simplify_aux.mli[87,3817+36]..[87,3817+57])
+                    Ptyp_constr "Simple_value_approx.t" (middle_end/flambda/inline_and_simplify_aux.mli[87,3817+36]..[87,3817+57])
+                    []
+                  core_type (middle_end/flambda/inline_and_simplify_aux.mli[87,3817+61]..[87,3817+62])
+                    Ptyp_constr "t" (middle_end/flambda/inline_and_simplify_aux.mli[87,3817+61]..[87,3817+62])
+                    []
+            []
+        signature_item (middle_end/flambda/inline_and_simplify_aux.mli[88,3880+2]..[88,3880+67])
+          Psig_value
+          value_description "redefine_symbol" (middle_end/flambda/inline_and_simplify_aux.mli[88,3880+6]..[88,3880+21]) (middle_end/flambda/inline_and_simplify_aux.mli[88,3880+2]..[88,3880+67])
+            core_type (middle_end/flambda/inline_and_simplify_aux.mli[88,3880+24]..[88,3880+67])
+              Ptyp_arrow
+              Nolabel
+              core_type (middle_end/flambda/inline_and_simplify_aux.mli[88,3880+24]..[88,3880+25])
+                Ptyp_constr "t" (middle_end/flambda/inline_and_simplify_aux.mli[88,3880+24]..[88,3880+25])
+                []
+              core_type (middle_end/flambda/inline_and_simplify_aux.mli[88,3880+29]..[88,3880+67])
+                Ptyp_arrow
+                Nolabel
+                core_type (middle_end/flambda/inline_and_simplify_aux.mli[88,3880+29]..[88,3880+37])
+                  Ptyp_constr "Symbol.t" (middle_end/flambda/inline_and_simplify_aux.mli[88,3880+29]..[88,3880+37])
+                  []
+                core_type (middle_end/flambda/inline_and_simplify_aux.mli[88,3880+41]..[88,3880+67])
+                  Ptyp_arrow
+                  Nolabel
+                  core_type (middle_end/flambda/inline_and_simplify_aux.mli[88,3880+41]..[88,3880+62])
+                    Ptyp_constr "Simple_value_approx.t" (middle_end/flambda/inline_and_simplify_aux.mli[88,3880+41]..[88,3880+62])
+                    []
+                  core_type (middle_end/flambda/inline_and_simplify_aux.mli[88,3880+66]..[88,3880+67])
+                    Ptyp_constr "t" (middle_end/flambda/inline_and_simplify_aux.mli[88,3880+66]..[88,3880+67])
+                    []
+            []
+        signature_item (middle_end/flambda/inline_and_simplify_aux.mli[89,3948+2]..[89,3948+62])
+          Psig_value
+          value_description "find_symbol_exn" (middle_end/flambda/inline_and_simplify_aux.mli[89,3948+6]..[89,3948+21]) (middle_end/flambda/inline_and_simplify_aux.mli[89,3948+2]..[89,3948+62])
+            core_type (middle_end/flambda/inline_and_simplify_aux.mli[89,3948+24]..[89,3948+62])
+              Ptyp_arrow
+              Nolabel
+              core_type (middle_end/flambda/inline_and_simplify_aux.mli[89,3948+24]..[89,3948+25])
+                Ptyp_constr "t" (middle_end/flambda/inline_and_simplify_aux.mli[89,3948+24]..[89,3948+25])
+                []
+              core_type (middle_end/flambda/inline_and_simplify_aux.mli[89,3948+29]..[89,3948+62])
+                Ptyp_arrow
+                Nolabel
+                core_type (middle_end/flambda/inline_and_simplify_aux.mli[89,3948+29]..[89,3948+37])
+                  Ptyp_constr "Symbol.t" (middle_end/flambda/inline_and_simplify_aux.mli[89,3948+29]..[89,3948+37])
+                  []
+                core_type (middle_end/flambda/inline_and_simplify_aux.mli[89,3948+41]..[89,3948+62])
+                  Ptyp_constr "Simple_value_approx.t" (middle_end/flambda/inline_and_simplify_aux.mli[89,3948+41]..[89,3948+62])
+                  []
+            []
+        signature_item (middle_end/flambda/inline_and_simplify_aux.mli[90,4011+2]..[90,4011+69])
+          Psig_value
+          value_description "find_symbol_opt" (middle_end/flambda/inline_and_simplify_aux.mli[90,4011+6]..[90,4011+21]) (middle_end/flambda/inline_and_simplify_aux.mli[90,4011+2]..[90,4011+69])
+            core_type (middle_end/flambda/inline_and_simplify_aux.mli[90,4011+24]..[90,4011+69])
+              Ptyp_arrow
+              Nolabel
+              core_type (middle_end/flambda/inline_and_simplify_aux.mli[90,4011+24]..[90,4011+25])
+                Ptyp_constr "t" (middle_end/flambda/inline_and_simplify_aux.mli[90,4011+24]..[90,4011+25])
+                []
+              core_type (middle_end/flambda/inline_and_simplify_aux.mli[90,4011+29]..[90,4011+69])
+                Ptyp_arrow
+                Nolabel
+                core_type (middle_end/flambda/inline_and_simplify_aux.mli[90,4011+29]..[90,4011+37])
+                  Ptyp_constr "Symbol.t" (middle_end/flambda/inline_and_simplify_aux.mli[90,4011+29]..[90,4011+37])
+                  []
+                core_type (middle_end/flambda/inline_and_simplify_aux.mli[90,4011+41]..[90,4011+69])
+                  Ptyp_constr "option" (middle_end/flambda/inline_and_simplify_aux.mli[90,4011+63]..[90,4011+69])
+                  [
+                    core_type (middle_end/flambda/inline_and_simplify_aux.mli[90,4011+41]..[90,4011+62])
+                      Ptyp_constr "Simple_value_approx.t" (middle_end/flambda/inline_and_simplify_aux.mli[90,4011+41]..[90,4011+62])
+                      []
+                  ]
+            []
+        signature_item (middle_end/flambda/inline_and_simplify_aux.mli[91,4081+2]..[91,4081+64])
+          Psig_value
+          value_description "find_symbol_fatal" (middle_end/flambda/inline_and_simplify_aux.mli[91,4081+6]..[91,4081+23]) (middle_end/flambda/inline_and_simplify_aux.mli[91,4081+2]..[91,4081+64])
+            core_type (middle_end/flambda/inline_and_simplify_aux.mli[91,4081+26]..[91,4081+64])
+              Ptyp_arrow
+              Nolabel
+              core_type (middle_end/flambda/inline_and_simplify_aux.mli[91,4081+26]..[91,4081+27])
+                Ptyp_constr "t" (middle_end/flambda/inline_and_simplify_aux.mli[91,4081+26]..[91,4081+27])
+                []
+              core_type (middle_end/flambda/inline_and_simplify_aux.mli[91,4081+31]..[91,4081+64])
+                Ptyp_arrow
+                Nolabel
+                core_type (middle_end/flambda/inline_and_simplify_aux.mli[91,4081+31]..[91,4081+39])
+                  Ptyp_constr "Symbol.t" (middle_end/flambda/inline_and_simplify_aux.mli[91,4081+31]..[91,4081+39])
+                  []
+                core_type (middle_end/flambda/inline_and_simplify_aux.mli[91,4081+43]..[91,4081+64])
+                  Ptyp_constr "Simple_value_approx.t" (middle_end/flambda/inline_and_simplify_aux.mli[91,4081+43]..[91,4081+64])
+                  []
+            []
+        signature_item (middle_end/flambda/inline_and_simplify_aux.mli[95,4273+2]..[95,4273+66])
+          Psig_value
+          value_description "find_or_load_symbol" (middle_end/flambda/inline_and_simplify_aux.mli[95,4273+6]..[95,4273+25]) (middle_end/flambda/inline_and_simplify_aux.mli[95,4273+2]..[95,4273+66])
+            core_type (middle_end/flambda/inline_and_simplify_aux.mli[95,4273+28]..[95,4273+66])
+              Ptyp_arrow
+              Nolabel
+              core_type (middle_end/flambda/inline_and_simplify_aux.mli[95,4273+28]..[95,4273+29])
+                Ptyp_constr "t" (middle_end/flambda/inline_and_simplify_aux.mli[95,4273+28]..[95,4273+29])
+                []
+              core_type (middle_end/flambda/inline_and_simplify_aux.mli[95,4273+33]..[95,4273+66])
+                Ptyp_arrow
+                Nolabel
+                core_type (middle_end/flambda/inline_and_simplify_aux.mli[95,4273+33]..[95,4273+41])
+                  Ptyp_constr "Symbol.t" (middle_end/flambda/inline_and_simplify_aux.mli[95,4273+33]..[95,4273+41])
+                  []
+                core_type (middle_end/flambda/inline_and_simplify_aux.mli[95,4273+45]..[95,4273+66])
+                  Ptyp_constr "Simple_value_approx.t" (middle_end/flambda/inline_and_simplify_aux.mli[95,4273+45]..[95,4273+66])
+                  []
+            []
+        signature_item (middle_end/flambda/inline_and_simplify_aux.mli[98,4411+2]..[102,4499+8])
+          Psig_value
+          value_description "add_projection" (middle_end/flambda/inline_and_simplify_aux.mli[98,4411+6]..[98,4411+20]) (middle_end/flambda/inline_and_simplify_aux.mli[98,4411+2]..[102,4499+8])
+            attribute "ocaml.doc"
+              [
+                structure_item (middle_end/flambda/inline_and_simplify_aux.mli[97,4341+2]..[97,4341+69])
+                  Pstr_eval
+                  expression (middle_end/flambda/inline_and_simplify_aux.mli[97,4341+2]..[97,4341+69])
+                    Pexp_constant PConst_string(" Note that the given [bound_to] holds the given [projection]. ",(middle_end/flambda/inline_and_simplify_aux.mli[97,4341+2]..[97,4341+69]),None)
+              ]
+            core_type (middle_end/flambda/inline_and_simplify_aux.mli[99,4432+7]..[102,4499+8])
+              Ptyp_arrow
+              Nolabel
+              core_type (middle_end/flambda/inline_and_simplify_aux.mli[99,4432+7]..[99,4432+8])
+                Ptyp_constr "t" (middle_end/flambda/inline_and_simplify_aux.mli[99,4432+7]..[99,4432+8])
+                []
+              core_type (middle_end/flambda/inline_and_simplify_aux.mli[100,4441+7]..[102,4499+8])
+                Ptyp_arrow
+                Labelled "projection"
+                core_type (middle_end/flambda/inline_and_simplify_aux.mli[100,4441+18]..[100,4441+30])
+                  Ptyp_constr "Projection.t" (middle_end/flambda/inline_and_simplify_aux.mli[100,4441+18]..[100,4441+30])
+                  []
+                core_type (middle_end/flambda/inline_and_simplify_aux.mli[101,4472+7]..[102,4499+8])
+                  Ptyp_arrow
+                  Labelled "bound_to"
+                  core_type (middle_end/flambda/inline_and_simplify_aux.mli[101,4472+16]..[101,4472+26])
+                    Ptyp_constr "Variable.t" (middle_end/flambda/inline_and_simplify_aux.mli[101,4472+16]..[101,4472+26])
+                    []
+                  core_type (middle_end/flambda/inline_and_simplify_aux.mli[102,4499+7]..[102,4499+8])
+                    Ptyp_constr "t" (middle_end/flambda/inline_and_simplify_aux.mli[102,4499+7]..[102,4499+8])
+                    []
+            []
+        signature_item (middle_end/flambda/inline_and_simplify_aux.mli[106,4617+2]..[109,4679+24])
+          Psig_value
+          value_description "find_projection" (middle_end/flambda/inline_and_simplify_aux.mli[106,4617+6]..[106,4617+21]) (middle_end/flambda/inline_and_simplify_aux.mli[106,4617+2]..[109,4679+24])
+            attribute "ocaml.doc"
+              [
+                structure_item (middle_end/flambda/inline_and_simplify_aux.mli[104,4509+2]..[105,4581+35])
+                  Pstr_eval
+                  expression (middle_end/flambda/inline_and_simplify_aux.mli[104,4509+2]..[105,4581+35])
+                    Pexp_constant PConst_string(" Determine if the environment knows about a variable that is bound\n      to the given [projection]. ",(middle_end/flambda/inline_and_simplify_aux.mli[104,4509+2]..[105,4581+35]),None)
+              ]
+            core_type (middle_end/flambda/inline_and_simplify_aux.mli[107,4639+7]..[109,4679+24])
+              Ptyp_arrow
+              Nolabel
+              core_type (middle_end/flambda/inline_and_simplify_aux.mli[107,4639+7]..[107,4639+8])
+                Ptyp_constr "t" (middle_end/flambda/inline_and_simplify_aux.mli[107,4639+7]..[107,4639+8])
+                []
+              core_type (middle_end/flambda/inline_and_simplify_aux.mli[108,4648+7]..[109,4679+24])
+                Ptyp_arrow
+                Labelled "projection"
+                core_type (middle_end/flambda/inline_and_simplify_aux.mli[108,4648+18]..[108,4648+30])
+                  Ptyp_constr "Projection.t" (middle_end/flambda/inline_and_simplify_aux.mli[108,4648+18]..[108,4648+30])
+                  []
+                core_type (middle_end/flambda/inline_and_simplify_aux.mli[109,4679+7]..[109,4679+24])
+                  Ptyp_constr "option" (middle_end/flambda/inline_and_simplify_aux.mli[109,4679+18]..[109,4679+24])
+                  [
+                    core_type (middle_end/flambda/inline_and_simplify_aux.mli[109,4679+7]..[109,4679+17])
+                      Ptyp_constr "Variable.t" (middle_end/flambda/inline_and_simplify_aux.mli[109,4679+7]..[109,4679+17])
+                      []
+                  ]
+            []
+        signature_item (middle_end/flambda/inline_and_simplify_aux.mli[112,4783+2]..[112,4783+35])
+          Psig_value
+          value_description "mem" (middle_end/flambda/inline_and_simplify_aux.mli[112,4783+6]..[112,4783+9]) (middle_end/flambda/inline_and_simplify_aux.mli[112,4783+2]..[112,4783+35])
+            attribute "ocaml.doc"
+              [
+                structure_item (middle_end/flambda/inline_and_simplify_aux.mli[111,4705+2]..[111,4705+77])
+                  Pstr_eval
+                  expression (middle_end/flambda/inline_and_simplify_aux.mli[111,4705+2]..[111,4705+77])
+                    Pexp_constant PConst_string(" Whether the environment has an approximation for the given variable. ",(middle_end/flambda/inline_and_simplify_aux.mli[111,4705+2]..[111,4705+77]),None)
+              ]
+            core_type (middle_end/flambda/inline_and_simplify_aux.mli[112,4783+12]..[112,4783+35])
+              Ptyp_arrow
+              Nolabel
+              core_type (middle_end/flambda/inline_and_simplify_aux.mli[112,4783+12]..[112,4783+13])
+                Ptyp_constr "t" (middle_end/flambda/inline_and_simplify_aux.mli[112,4783+12]..[112,4783+13])
+                []
+              core_type (middle_end/flambda/inline_and_simplify_aux.mli[112,4783+17]..[112,4783+35])
+                Ptyp_arrow
+                Nolabel
+                core_type (middle_end/flambda/inline_and_simplify_aux.mli[112,4783+17]..[112,4783+27])
+                  Ptyp_constr "Variable.t" (middle_end/flambda/inline_and_simplify_aux.mli[112,4783+17]..[112,4783+27])
+                  []
+                core_type (middle_end/flambda/inline_and_simplify_aux.mli[112,4783+31]..[112,4783+35])
+                  Ptyp_constr "bool" (middle_end/flambda/inline_and_simplify_aux.mli[112,4783+31]..[112,4783+35])
+                  []
+            []
+        signature_item (middle_end/flambda/inline_and_simplify_aux.mli[117,4981+2]..[117,4981+36])
+          Psig_value
+          value_description "freshening" (middle_end/flambda/inline_and_simplify_aux.mli[117,4981+6]..[117,4981+16]) (middle_end/flambda/inline_and_simplify_aux.mli[117,4981+2]..[117,4981+36])
+            attribute "ocaml.doc"
+              [
+                structure_item (middle_end/flambda/inline_and_simplify_aux.mli[114,4820+2]..[116,4959+21])
+                  Pstr_eval
+                  expression (middle_end/flambda/inline_and_simplify_aux.mli[114,4820+2]..[116,4959+21])
+                    Pexp_constant PConst_string(" Return the freshening that should be applied to variables when\n      rewriting code (in [Inline_and_simplify], etc.) using the given\n      environment. ",(middle_end/flambda/inline_and_simplify_aux.mli[114,4820+2]..[116,4959+21]),None)
+              ]
+            core_type (middle_end/flambda/inline_and_simplify_aux.mli[117,4981+19]..[117,4981+36])
+              Ptyp_arrow
+              Nolabel
+              core_type (middle_end/flambda/inline_and_simplify_aux.mli[117,4981+19]..[117,4981+20])
+                Ptyp_constr "t" (middle_end/flambda/inline_and_simplify_aux.mli[117,4981+19]..[117,4981+20])
+                []
+              core_type (middle_end/flambda/inline_and_simplify_aux.mli[117,4981+24]..[117,4981+36])
+                Ptyp_constr "Freshening.t" (middle_end/flambda/inline_and_simplify_aux.mli[117,4981+24]..[117,4981+36])
+                []
+            []
+        signature_item (middle_end/flambda/inline_and_simplify_aux.mli[120,5095+2]..[120,5095+45])
+          Psig_value
+          value_description "set_freshening" (middle_end/flambda/inline_and_simplify_aux.mli[120,5095+6]..[120,5095+20]) (middle_end/flambda/inline_and_simplify_aux.mli[120,5095+2]..[120,5095+45])
+            attribute "ocaml.doc"
+              [
+                structure_item (middle_end/flambda/inline_and_simplify_aux.mli[119,5019+2]..[119,5019+75])
+                  Pstr_eval
+                  expression (middle_end/flambda/inline_and_simplify_aux.mli[119,5019+2]..[119,5019+75])
+                    Pexp_constant PConst_string(" Set the freshening that should be used as per [freshening], above. ",(middle_end/flambda/inline_and_simplify_aux.mli[119,5019+2]..[119,5019+75]),None)
+              ]
+            core_type (middle_end/flambda/inline_and_simplify_aux.mli[120,5095+23]..[120,5095+45])
+              Ptyp_arrow
+              Nolabel
+              core_type (middle_end/flambda/inline_and_simplify_aux.mli[120,5095+23]..[120,5095+24])
+                Ptyp_constr "t" (middle_end/flambda/inline_and_simplify_aux.mli[120,5095+23]..[120,5095+24])
+                []
+              core_type (middle_end/flambda/inline_and_simplify_aux.mli[120,5095+28]..[120,5095+45])
+                Ptyp_arrow
+                Nolabel
+                core_type (middle_end/flambda/inline_and_simplify_aux.mli[120,5095+28]..[120,5095+40])
+                  Ptyp_constr "Freshening.t" (middle_end/flambda/inline_and_simplify_aux.mli[120,5095+28]..[120,5095+40])
+                  []
+                core_type (middle_end/flambda/inline_and_simplify_aux.mli[120,5095+44]..[120,5095+45])
+                  Ptyp_constr "t" (middle_end/flambda/inline_and_simplify_aux.mli[120,5095+44]..[120,5095+45])
+                  []
+            []
+        signature_item (middle_end/flambda/inline_and_simplify_aux.mli[126,5386+2]..[126,5386+34])
+          Psig_value
+          value_description "activate_freshening" (middle_end/flambda/inline_and_simplify_aux.mli[126,5386+6]..[126,5386+25]) (middle_end/flambda/inline_and_simplify_aux.mli[126,5386+2]..[126,5386+34])
+            attribute "ocaml.doc"
+              [
+                structure_item (middle_end/flambda/inline_and_simplify_aux.mli[122,5142+2]..[125,5364+21])
+                  Pstr_eval
+                  expression (middle_end/flambda/inline_and_simplify_aux.mli[122,5142+2]..[125,5364+21])
+                    Pexp_constant PConst_string(" Causes every bound variable in code rewritten during inlining and\n      simplification, using the given environment, to be freshened.  This is\n      used when descending into subexpressions substituted into existing\n      expressions. ",(middle_end/flambda/inline_and_simplify_aux.mli[122,5142+2]..[125,5364+21]),None)
+              ]
+            core_type (middle_end/flambda/inline_and_simplify_aux.mli[126,5386+28]..[126,5386+34])
+              Ptyp_arrow
+              Nolabel
+              core_type (middle_end/flambda/inline_and_simplify_aux.mli[126,5386+28]..[126,5386+29])
+                Ptyp_constr "t" (middle_end/flambda/inline_and_simplify_aux.mli[126,5386+28]..[126,5386+29])
+                []
+              core_type (middle_end/flambda/inline_and_simplify_aux.mli[126,5386+33]..[126,5386+34])
+                Ptyp_constr "t" (middle_end/flambda/inline_and_simplify_aux.mli[126,5386+33]..[126,5386+34])
+                []
+            []
+        signature_item (middle_end/flambda/inline_and_simplify_aux.mli[133,5784+2]..[133,5784+20])
+          Psig_value
+          value_description "local" (middle_end/flambda/inline_and_simplify_aux.mli[133,5784+6]..[133,5784+11]) (middle_end/flambda/inline_and_simplify_aux.mli[133,5784+2]..[133,5784+20])
+            attribute "ocaml.doc"
+              [
+                structure_item (middle_end/flambda/inline_and_simplify_aux.mli[128,5422+2]..[132,5722+61])
+                  Pstr_eval
+                  expression (middle_end/flambda/inline_and_simplify_aux.mli[128,5422+2]..[132,5722+61])
+                    Pexp_constant PConst_string(" Erase all variable approximation information and freshening information\n      from the given environment.  However, the freshening activation state\n      is preserved.  This function is used when rewriting inside a function\n      declaration, to avoid (due to a compiler bug) accidental use of\n      variables from outer scopes that are not accessible. ",(middle_end/flambda/inline_and_simplify_aux.mli[128,5422+2]..[132,5722+61]),None)
+              ]
+            core_type (middle_end/flambda/inline_and_simplify_aux.mli[133,5784+14]..[133,5784+20])
+              Ptyp_arrow
+              Nolabel
+              core_type (middle_end/flambda/inline_and_simplify_aux.mli[133,5784+14]..[133,5784+15])
+                Ptyp_constr "t" (middle_end/flambda/inline_and_simplify_aux.mli[133,5784+14]..[133,5784+15])
+                []
+              core_type (middle_end/flambda/inline_and_simplify_aux.mli[133,5784+19]..[133,5784+20])
+                Ptyp_constr "t" (middle_end/flambda/inline_and_simplify_aux.mli[133,5784+19]..[133,5784+20])
+                []
+            []
+        signature_item (middle_end/flambda/inline_and_simplify_aux.mli[139,6060+2]..[139,6060+80])
+          Psig_value
+          value_description "inside_set_of_closures_declaration" (middle_end/flambda/inline_and_simplify_aux.mli[139,6060+6]..[139,6060+40]) (middle_end/flambda/inline_and_simplify_aux.mli[139,6060+2]..[139,6060+80])
+            attribute "ocaml.doc"
+              [
+                structure_item (middle_end/flambda/inline_and_simplify_aux.mli[135,5806+2]..[138,6035+24])
+                  Pstr_eval
+                  expression (middle_end/flambda/inline_and_simplify_aux.mli[135,5806+2]..[138,6035+24])
+                    Pexp_constant PConst_string(" Determine whether the inliner is currently inside a function body from\n      the given set of closures.  This is used to detect whether a given\n      function call refers to a function which exists somewhere on the current\n      inlining stack. ",(middle_end/flambda/inline_and_simplify_aux.mli[135,5806+2]..[138,6035+24]),None)
+              ]
+            core_type (middle_end/flambda/inline_and_simplify_aux.mli[139,6060+43]..[139,6060+80])
+              Ptyp_arrow
+              Nolabel
+              core_type (middle_end/flambda/inline_and_simplify_aux.mli[139,6060+43]..[139,6060+67])
+                Ptyp_constr "Set_of_closures_origin.t" (middle_end/flambda/inline_and_simplify_aux.mli[139,6060+43]..[139,6060+67])
+                []
+              core_type (middle_end/flambda/inline_and_simplify_aux.mli[139,6060+71]..[139,6060+80])
+                Ptyp_arrow
+                Nolabel
+                core_type (middle_end/flambda/inline_and_simplify_aux.mli[139,6060+71]..[139,6060+72])
+                  Ptyp_constr "t" (middle_end/flambda/inline_and_simplify_aux.mli[139,6060+71]..[139,6060+72])
+                  []
+                core_type (middle_end/flambda/inline_and_simplify_aux.mli[139,6060+76]..[139,6060+80])
+                  Ptyp_constr "bool" (middle_end/flambda/inline_and_simplify_aux.mli[139,6060+76]..[139,6060+80])
+                  []
+            []
+        signature_item (middle_end/flambda/inline_and_simplify_aux.mli[144,6268+2]..[144,6268+29])
+          Psig_value
+          value_description "at_toplevel" (middle_end/flambda/inline_and_simplify_aux.mli[144,6268+6]..[144,6268+17]) (middle_end/flambda/inline_and_simplify_aux.mli[144,6268+2]..[144,6268+29])
+            attribute "ocaml.doc"
+              [
+                structure_item (middle_end/flambda/inline_and_simplify_aux.mli[141,6142+2]..[143,6252+15])
+                  Pstr_eval
+                  expression (middle_end/flambda/inline_and_simplify_aux.mli[141,6142+2]..[143,6252+15])
+                    Pexp_constant PConst_string(" Not inside a closure declaration.\n      Toplevel code is the one evaluated when the compilation unit is\n      loaded ",(middle_end/flambda/inline_and_simplify_aux.mli[141,6142+2]..[143,6252+15]),None)
+              ]
+            core_type (middle_end/flambda/inline_and_simplify_aux.mli[144,6268+20]..[144,6268+29])
+              Ptyp_arrow
+              Nolabel
+              core_type (middle_end/flambda/inline_and_simplify_aux.mli[144,6268+20]..[144,6268+21])
+                Ptyp_constr "t" (middle_end/flambda/inline_and_simplify_aux.mli[144,6268+20]..[144,6268+21])
+                []
+              core_type (middle_end/flambda/inline_and_simplify_aux.mli[144,6268+25]..[144,6268+29])
+                Ptyp_constr "bool" (middle_end/flambda/inline_and_simplify_aux.mli[144,6268+25]..[144,6268+29])
+                []
+            []
+        signature_item (middle_end/flambda/inline_and_simplify_aux.mli[146,6299+2]..[146,6299+34])
+          Psig_value
+          value_description "is_inside_branch" (middle_end/flambda/inline_and_simplify_aux.mli[146,6299+6]..[146,6299+22]) (middle_end/flambda/inline_and_simplify_aux.mli[146,6299+2]..[146,6299+34])
+            core_type (middle_end/flambda/inline_and_simplify_aux.mli[146,6299+25]..[146,6299+34])
+              Ptyp_arrow
+              Nolabel
+              core_type (middle_end/flambda/inline_and_simplify_aux.mli[146,6299+25]..[146,6299+26])
+                Ptyp_constr "t" (middle_end/flambda/inline_and_simplify_aux.mli[146,6299+25]..[146,6299+26])
+                []
+              core_type (middle_end/flambda/inline_and_simplify_aux.mli[146,6299+30]..[146,6299+34])
+                Ptyp_constr "bool" (middle_end/flambda/inline_and_simplify_aux.mli[146,6299+30]..[146,6299+34])
+                []
+            []
+        signature_item (middle_end/flambda/inline_and_simplify_aux.mli[147,6334+2]..[147,6334+29])
+          Psig_value
+          value_description "branch_depth" (middle_end/flambda/inline_and_simplify_aux.mli[147,6334+6]..[147,6334+18]) (middle_end/flambda/inline_and_simplify_aux.mli[147,6334+2]..[147,6334+29])
+            core_type (middle_end/flambda/inline_and_simplify_aux.mli[147,6334+21]..[147,6334+29])
+              Ptyp_arrow
+              Nolabel
+              core_type (middle_end/flambda/inline_and_simplify_aux.mli[147,6334+21]..[147,6334+22])
+                Ptyp_constr "t" (middle_end/flambda/inline_and_simplify_aux.mli[147,6334+21]..[147,6334+22])
+                []
+              core_type (middle_end/flambda/inline_and_simplify_aux.mli[147,6334+26]..[147,6334+29])
+                Ptyp_constr "int" (middle_end/flambda/inline_and_simplify_aux.mli[147,6334+26]..[147,6334+29])
+                []
+            []
+        signature_item (middle_end/flambda/inline_and_simplify_aux.mli[148,6364+2]..[148,6364+28])
+          Psig_value
+          value_description "inside_branch" (middle_end/flambda/inline_and_simplify_aux.mli[148,6364+6]..[148,6364+19]) (middle_end/flambda/inline_and_simplify_aux.mli[148,6364+2]..[148,6364+28])
+            core_type (middle_end/flambda/inline_and_simplify_aux.mli[148,6364+22]..[148,6364+28])
+              Ptyp_arrow
+              Nolabel
+              core_type (middle_end/flambda/inline_and_simplify_aux.mli[148,6364+22]..[148,6364+23])
+                Ptyp_constr "t" (middle_end/flambda/inline_and_simplify_aux.mli[148,6364+22]..[148,6364+23])
+                []
+              core_type (middle_end/flambda/inline_and_simplify_aux.mli[148,6364+27]..[148,6364+28])
+                Ptyp_constr "t" (middle_end/flambda/inline_and_simplify_aux.mli[148,6364+27]..[148,6364+28])
+                []
+            []
+        signature_item (middle_end/flambda/inline_and_simplify_aux.mli[150,6394+2]..[150,6394+37])
+          Psig_value
+          value_description "increase_closure_depth" (middle_end/flambda/inline_and_simplify_aux.mli[150,6394+6]..[150,6394+28]) (middle_end/flambda/inline_and_simplify_aux.mli[150,6394+2]..[150,6394+37])
+            core_type (middle_end/flambda/inline_and_simplify_aux.mli[150,6394+31]..[150,6394+37])
+              Ptyp_arrow
+              Nolabel
+              core_type (middle_end/flambda/inline_and_simplify_aux.mli[150,6394+31]..[150,6394+32])
+                Ptyp_constr "t" (middle_end/flambda/inline_and_simplify_aux.mli[150,6394+31]..[150,6394+32])
+                []
+              core_type (middle_end/flambda/inline_and_simplify_aux.mli[150,6394+36]..[150,6394+37])
+                Ptyp_constr "t" (middle_end/flambda/inline_and_simplify_aux.mli[150,6394+36]..[150,6394+37])
+                []
+            []
+        signature_item (middle_end/flambda/inline_and_simplify_aux.mli[155,6612+2]..[155,6612+31])
+          Psig_value
+          value_description "set_never_inline" (middle_end/flambda/inline_and_simplify_aux.mli[155,6612+6]..[155,6612+22]) (middle_end/flambda/inline_and_simplify_aux.mli[155,6612+2]..[155,6612+31])
+            attribute "ocaml.doc"
+              [
+                structure_item (middle_end/flambda/inline_and_simplify_aux.mli[152,6433+2]..[154,6585+26])
+                  Pstr_eval
+                  expression (middle_end/flambda/inline_and_simplify_aux.mli[152,6433+2]..[154,6585+26])
+                    Pexp_constant PConst_string(" Mark that call sites contained within code rewritten using the given\n      environment should never be replaced by inlined (or unrolled) versions\n      of the callee(s). ",(middle_end/flambda/inline_and_simplify_aux.mli[152,6433+2]..[154,6585+26]),None)
+              ]
+            core_type (middle_end/flambda/inline_and_simplify_aux.mli[155,6612+25]..[155,6612+31])
+              Ptyp_arrow
+              Nolabel
+              core_type (middle_end/flambda/inline_and_simplify_aux.mli[155,6612+25]..[155,6612+26])
+                Ptyp_constr "t" (middle_end/flambda/inline_and_simplify_aux.mli[155,6612+25]..[155,6612+26])
+                []
+              core_type (middle_end/flambda/inline_and_simplify_aux.mli[155,6612+30]..[155,6612+31])
+                Ptyp_constr "t" (middle_end/flambda/inline_and_simplify_aux.mli[155,6612+30]..[155,6612+31])
+                []
+            []
+        signature_item (middle_end/flambda/inline_and_simplify_aux.mli[159,6744+2]..[159,6744+47])
+          Psig_value
+          value_description "set_never_inline_inside_closures" (middle_end/flambda/inline_and_simplify_aux.mli[159,6744+6]..[159,6744+38]) (middle_end/flambda/inline_and_simplify_aux.mli[159,6744+2]..[159,6744+47])
+            attribute "ocaml.doc"
+              [
+                structure_item (middle_end/flambda/inline_and_simplify_aux.mli[157,6645+2]..[158,6716+27])
+                  Pstr_eval
+                  expression (middle_end/flambda/inline_and_simplify_aux.mli[157,6645+2]..[158,6716+27])
+                    Pexp_constant PConst_string(" Equivalent to [set_never_inline] but only applies to code inside\n      a set of closures. ",(middle_end/flambda/inline_and_simplify_aux.mli[157,6645+2]..[158,6716+27]),None)
+              ]
+            core_type (middle_end/flambda/inline_and_simplify_aux.mli[159,6744+41]..[159,6744+47])
+              Ptyp_arrow
+              Nolabel
+              core_type (middle_end/flambda/inline_and_simplify_aux.mli[159,6744+41]..[159,6744+42])
+                Ptyp_constr "t" (middle_end/flambda/inline_and_simplify_aux.mli[159,6744+41]..[159,6744+42])
+                []
+              core_type (middle_end/flambda/inline_and_simplify_aux.mli[159,6744+46]..[159,6744+47])
+                Ptyp_constr "t" (middle_end/flambda/inline_and_simplify_aux.mli[159,6744+46]..[159,6744+47])
+                []
+            []
+        signature_item (middle_end/flambda/inline_and_simplify_aux.mli[162,6864+2]..[162,6864+49])
+          Psig_value
+          value_description "unset_never_inline_inside_closures" (middle_end/flambda/inline_and_simplify_aux.mli[162,6864+6]..[162,6864+40]) (middle_end/flambda/inline_and_simplify_aux.mli[162,6864+2]..[162,6864+49])
+            attribute "ocaml.doc"
+              [
+                structure_item (middle_end/flambda/inline_and_simplify_aux.mli[161,6793+2]..[161,6793+70])
+                  Pstr_eval
+                  expression (middle_end/flambda/inline_and_simplify_aux.mli[161,6793+2]..[161,6793+70])
+                    Pexp_constant PConst_string(" Unset the restriction from [set_never_inline_inside_closures] ",(middle_end/flambda/inline_and_simplify_aux.mli[161,6793+2]..[161,6793+70]),None)
+              ]
+            core_type (middle_end/flambda/inline_and_simplify_aux.mli[162,6864+43]..[162,6864+49])
+              Ptyp_arrow
+              Nolabel
+              core_type (middle_end/flambda/inline_and_simplify_aux.mli[162,6864+43]..[162,6864+44])
+                Ptyp_constr "t" (middle_end/flambda/inline_and_simplify_aux.mli[162,6864+43]..[162,6864+44])
+                []
+              core_type (middle_end/flambda/inline_and_simplify_aux.mli[162,6864+48]..[162,6864+49])
+                Ptyp_constr "t" (middle_end/flambda/inline_and_simplify_aux.mli[162,6864+48]..[162,6864+49])
+                []
+            []
+        signature_item (middle_end/flambda/inline_and_simplify_aux.mli[166,7016+2]..[166,7016+48])
+          Psig_value
+          value_description "set_never_inline_outside_closures" (middle_end/flambda/inline_and_simplify_aux.mli[166,7016+6]..[166,7016+39]) (middle_end/flambda/inline_and_simplify_aux.mli[166,7016+2]..[166,7016+48])
+            attribute "ocaml.doc"
+              [
+                structure_item (middle_end/flambda/inline_and_simplify_aux.mli[164,6915+2]..[165,6988+27])
+                  Pstr_eval
+                  expression (middle_end/flambda/inline_and_simplify_aux.mli[164,6915+2]..[165,6988+27])
+                    Pexp_constant PConst_string(" Equivalent to [set_never_inline] but does not apply to code inside\n      a set of closures. ",(middle_end/flambda/inline_and_simplify_aux.mli[164,6915+2]..[165,6988+27]),None)
+              ]
+            core_type (middle_end/flambda/inline_and_simplify_aux.mli[166,7016+42]..[166,7016+48])
+              Ptyp_arrow
+              Nolabel
+              core_type (middle_end/flambda/inline_and_simplify_aux.mli[166,7016+42]..[166,7016+43])
+                Ptyp_constr "t" (middle_end/flambda/inline_and_simplify_aux.mli[166,7016+42]..[166,7016+43])
+                []
+              core_type (middle_end/flambda/inline_and_simplify_aux.mli[166,7016+47]..[166,7016+48])
+                Ptyp_constr "t" (middle_end/flambda/inline_and_simplify_aux.mli[166,7016+47]..[166,7016+48])
+                []
+            []
+        signature_item (middle_end/flambda/inline_and_simplify_aux.mli[169,7138+2]..[169,7138+50])
+          Psig_value
+          value_description "unset_never_inline_outside_closures" (middle_end/flambda/inline_and_simplify_aux.mli[169,7138+6]..[169,7138+41]) (middle_end/flambda/inline_and_simplify_aux.mli[169,7138+2]..[169,7138+50])
+            attribute "ocaml.doc"
+              [
+                structure_item (middle_end/flambda/inline_and_simplify_aux.mli[168,7066+2]..[168,7066+71])
+                  Pstr_eval
+                  expression (middle_end/flambda/inline_and_simplify_aux.mli[168,7066+2]..[168,7066+71])
+                    Pexp_constant PConst_string(" Unset the restriction from [set_never_inline_outside_closures] ",(middle_end/flambda/inline_and_simplify_aux.mli[168,7066+2]..[168,7066+71]),None)
+              ]
+            core_type (middle_end/flambda/inline_and_simplify_aux.mli[169,7138+44]..[169,7138+50])
+              Ptyp_arrow
+              Nolabel
+              core_type (middle_end/flambda/inline_and_simplify_aux.mli[169,7138+44]..[169,7138+45])
+                Ptyp_constr "t" (middle_end/flambda/inline_and_simplify_aux.mli[169,7138+44]..[169,7138+45])
+                []
+              core_type (middle_end/flambda/inline_and_simplify_aux.mli[169,7138+49]..[169,7138+50])
+                Ptyp_constr "t" (middle_end/flambda/inline_and_simplify_aux.mli[169,7138+49]..[169,7138+50])
+                []
+            []
+        signature_item (middle_end/flambda/inline_and_simplify_aux.mli[173,7288+2]..[173,7288+30])
+          Psig_value
+          value_description "never_inline" (middle_end/flambda/inline_and_simplify_aux.mli[173,7288+6]..[173,7288+18]) (middle_end/flambda/inline_and_simplify_aux.mli[173,7288+2]..[173,7288+30])
+            attribute "ocaml.doc"
+              [
+                structure_item (middle_end/flambda/inline_and_simplify_aux.mli[171,7190+2]..[172,7266+21])
+                  Pstr_eval
+                  expression (middle_end/flambda/inline_and_simplify_aux.mli[171,7190+2]..[172,7266+21])
+                    Pexp_constant PConst_string(" Return whether [set_never_inline] is currently in effect on the given\n      environment. ",(middle_end/flambda/inline_and_simplify_aux.mli[171,7190+2]..[172,7266+21]),None)
+              ]
+            core_type (middle_end/flambda/inline_and_simplify_aux.mli[173,7288+21]..[173,7288+30])
+              Ptyp_arrow
+              Nolabel
+              core_type (middle_end/flambda/inline_and_simplify_aux.mli[173,7288+21]..[173,7288+22])
+                Ptyp_constr "t" (middle_end/flambda/inline_and_simplify_aux.mli[173,7288+21]..[173,7288+22])
+                []
+              core_type (middle_end/flambda/inline_and_simplify_aux.mli[173,7288+26]..[173,7288+30])
+                Ptyp_constr "bool" (middle_end/flambda/inline_and_simplify_aux.mli[173,7288+26]..[173,7288+30])
+                []
+            []
+        signature_item (middle_end/flambda/inline_and_simplify_aux.mli[175,7320+2]..[175,7320+31])
+          Psig_value
+          value_description "inlining_level" (middle_end/flambda/inline_and_simplify_aux.mli[175,7320+6]..[175,7320+20]) (middle_end/flambda/inline_and_simplify_aux.mli[175,7320+2]..[175,7320+31])
+            core_type (middle_end/flambda/inline_and_simplify_aux.mli[175,7320+23]..[175,7320+31])
+              Ptyp_arrow
+              Nolabel
+              core_type (middle_end/flambda/inline_and_simplify_aux.mli[175,7320+23]..[175,7320+24])
+                Ptyp_constr "t" (middle_end/flambda/inline_and_simplify_aux.mli[175,7320+23]..[175,7320+24])
+                []
+              core_type (middle_end/flambda/inline_and_simplify_aux.mli[175,7320+28]..[175,7320+31])
+                Ptyp_constr "int" (middle_end/flambda/inline_and_simplify_aux.mli[175,7320+28]..[175,7320+31])
+                []
+            []
+        signature_item (middle_end/flambda/inline_and_simplify_aux.mli[180,7567+2]..[180,7567+32])
+          Psig_value
+          value_description "inlining_level_up" (middle_end/flambda/inline_and_simplify_aux.mli[180,7567+6]..[180,7567+23]) (middle_end/flambda/inline_and_simplify_aux.mli[180,7567+2]..[180,7567+32])
+            attribute "ocaml.doc"
+              [
+                structure_item (middle_end/flambda/inline_and_simplify_aux.mli[177,7353+2]..[179,7501+65])
+                  Pstr_eval
+                  expression (middle_end/flambda/inline_and_simplify_aux.mli[177,7353+2]..[179,7501+65])
+                    Pexp_constant PConst_string(" Mark that this environment is used to rewrite code for inlining. This is\n      used by the inlining heuristics to decide whether to continue.\n      Unconditionally inlined does not take this into account. ",(middle_end/flambda/inline_and_simplify_aux.mli[177,7353+2]..[179,7501+65]),None)
+              ]
+            core_type (middle_end/flambda/inline_and_simplify_aux.mli[180,7567+26]..[180,7567+32])
+              Ptyp_arrow
+              Nolabel
+              core_type (middle_end/flambda/inline_and_simplify_aux.mli[180,7567+26]..[180,7567+27])
+                Ptyp_constr "t" (middle_end/flambda/inline_and_simplify_aux.mli[180,7567+26]..[180,7567+27])
+                []
+              core_type (middle_end/flambda/inline_and_simplify_aux.mli[180,7567+31]..[180,7567+32])
+                Ptyp_constr "t" (middle_end/flambda/inline_and_simplify_aux.mli[180,7567+31]..[180,7567+32])
+                []
+            []
+        signature_item (middle_end/flambda/inline_and_simplify_aux.mli[183,7662+2]..[183,7662+70])
+          Psig_value
+          value_description "actively_unrolling" (middle_end/flambda/inline_and_simplify_aux.mli[183,7662+6]..[183,7662+24]) (middle_end/flambda/inline_and_simplify_aux.mli[183,7662+2]..[183,7662+70])
+            attribute "ocaml.doc"
+              [
+                structure_item (middle_end/flambda/inline_and_simplify_aux.mli[182,7601+2]..[182,7601+60])
+                  Pstr_eval
+                  expression (middle_end/flambda/inline_and_simplify_aux.mli[182,7601+2]..[182,7601+60])
+                    Pexp_constant PConst_string(" Whether we are actively unrolling a given function. ",(middle_end/flambda/inline_and_simplify_aux.mli[182,7601+2]..[182,7601+60]),None)
+              ]
+            core_type (middle_end/flambda/inline_and_simplify_aux.mli[183,7662+27]..[183,7662+70])
+              Ptyp_arrow
+              Nolabel
+              core_type (middle_end/flambda/inline_and_simplify_aux.mli[183,7662+27]..[183,7662+28])
+                Ptyp_constr "t" (middle_end/flambda/inline_and_simplify_aux.mli[183,7662+27]..[183,7662+28])
+                []
+              core_type (middle_end/flambda/inline_and_simplify_aux.mli[183,7662+32]..[183,7662+70])
+                Ptyp_arrow
+                Nolabel
+                core_type (middle_end/flambda/inline_and_simplify_aux.mli[183,7662+32]..[183,7662+56])
+                  Ptyp_constr "Set_of_closures_origin.t" (middle_end/flambda/inline_and_simplify_aux.mli[183,7662+32]..[183,7662+56])
+                  []
+                core_type (middle_end/flambda/inline_and_simplify_aux.mli[183,7662+60]..[183,7662+70])
+                  Ptyp_constr "option" (middle_end/flambda/inline_and_simplify_aux.mli[183,7662+64]..[183,7662+70])
+                  [
+                    core_type (middle_end/flambda/inline_and_simplify_aux.mli[183,7662+60]..[183,7662+63])
+                      Ptyp_constr "int" (middle_end/flambda/inline_and_simplify_aux.mli[183,7662+60]..[183,7662+63])
+                      []
+                  ]
+            []
+        signature_item (middle_end/flambda/inline_and_simplify_aux.mli[186,7796+2]..[186,7796+74])
+          Psig_value
+          value_description "start_actively_unrolling" (middle_end/flambda/inline_and_simplify_aux.mli[186,7796+6]..[186,7796+30]) (middle_end/flambda/inline_and_simplify_aux.mli[186,7796+2]..[186,7796+74])
+            attribute "ocaml.doc"
+              [
+                structure_item (middle_end/flambda/inline_and_simplify_aux.mli[185,7734+2]..[185,7734+61])
+                  Pstr_eval
+                  expression (middle_end/flambda/inline_and_simplify_aux.mli[185,7734+2]..[185,7734+61])
+                    Pexp_constant PConst_string(" Start actively unrolling a given function [n] times. ",(middle_end/flambda/inline_and_simplify_aux.mli[185,7734+2]..[185,7734+61]),None)
+              ]
+            core_type (middle_end/flambda/inline_and_simplify_aux.mli[186,7796+33]..[186,7796+74])
+              Ptyp_arrow
+              Nolabel
+              core_type (middle_end/flambda/inline_and_simplify_aux.mli[186,7796+33]..[186,7796+34])
+                Ptyp_constr "t" (middle_end/flambda/inline_and_simplify_aux.mli[186,7796+33]..[186,7796+34])
+                []
+              core_type (middle_end/flambda/inline_and_simplify_aux.mli[186,7796+38]..[186,7796+74])
+                Ptyp_arrow
+                Nolabel
+                core_type (middle_end/flambda/inline_and_simplify_aux.mli[186,7796+38]..[186,7796+62])
+                  Ptyp_constr "Set_of_closures_origin.t" (middle_end/flambda/inline_and_simplify_aux.mli[186,7796+38]..[186,7796+62])
+                  []
+                core_type (middle_end/flambda/inline_and_simplify_aux.mli[186,7796+66]..[186,7796+74])
+                  Ptyp_arrow
+                  Nolabel
+                  core_type (middle_end/flambda/inline_and_simplify_aux.mli[186,7796+66]..[186,7796+69])
+                    Ptyp_constr "int" (middle_end/flambda/inline_and_simplify_aux.mli[186,7796+66]..[186,7796+69])
+                    []
+                  core_type (middle_end/flambda/inline_and_simplify_aux.mli[186,7796+73]..[186,7796+74])
+                    Ptyp_constr "t" (middle_end/flambda/inline_and_simplify_aux.mli[186,7796+73]..[186,7796+74])
+                    []
+            []
+        signature_item (middle_end/flambda/inline_and_simplify_aux.mli[189,7934+2]..[189,7934+70])
+          Psig_value
+          value_description "continue_actively_unrolling" (middle_end/flambda/inline_and_simplify_aux.mli[189,7934+6]..[189,7934+33]) (middle_end/flambda/inline_and_simplify_aux.mli[189,7934+2]..[189,7934+70])
+            attribute "ocaml.doc"
+              [
+                structure_item (middle_end/flambda/inline_and_simplify_aux.mli[188,7872+2]..[188,7872+61])
+                  Pstr_eval
+                  expression (middle_end/flambda/inline_and_simplify_aux.mli[188,7872+2]..[188,7872+61])
+                    Pexp_constant PConst_string(" Unroll a function currently actively being unrolled. ",(middle_end/flambda/inline_and_simplify_aux.mli[188,7872+2]..[188,7872+61]),None)
+              ]
+            core_type (middle_end/flambda/inline_and_simplify_aux.mli[189,7934+36]..[189,7934+70])
+              Ptyp_arrow
+              Nolabel
+              core_type (middle_end/flambda/inline_and_simplify_aux.mli[189,7934+36]..[189,7934+37])
+                Ptyp_constr "t" (middle_end/flambda/inline_and_simplify_aux.mli[189,7934+36]..[189,7934+37])
+                []
+              core_type (middle_end/flambda/inline_and_simplify_aux.mli[189,7934+41]..[189,7934+70])
+                Ptyp_arrow
+                Nolabel
+                core_type (middle_end/flambda/inline_and_simplify_aux.mli[189,7934+41]..[189,7934+65])
+                  Ptyp_constr "Set_of_closures_origin.t" (middle_end/flambda/inline_and_simplify_aux.mli[189,7934+41]..[189,7934+65])
+                  []
+                core_type (middle_end/flambda/inline_and_simplify_aux.mli[189,7934+69]..[189,7934+70])
+                  Ptyp_constr "t" (middle_end/flambda/inline_and_simplify_aux.mli[189,7934+69]..[189,7934+70])
+                  []
+            []
+        signature_item (middle_end/flambda/inline_and_simplify_aux.mli[193,8114+2]..[193,8114+63])
+          Psig_value
+          value_description "unrolling_allowed" (middle_end/flambda/inline_and_simplify_aux.mli[193,8114+6]..[193,8114+23]) (middle_end/flambda/inline_and_simplify_aux.mli[193,8114+2]..[193,8114+63])
+            attribute "ocaml.doc"
+              [
+                structure_item (middle_end/flambda/inline_and_simplify_aux.mli[191,8006+2]..[192,8079+34])
+                  Pstr_eval
+                  expression (middle_end/flambda/inline_and_simplify_aux.mli[191,8006+2]..[192,8079+34])
+                    Pexp_constant PConst_string(" Whether it is permissible to unroll a call to a recursive function\n      in the given environment. ",(middle_end/flambda/inline_and_simplify_aux.mli[191,8006+2]..[192,8079+34]),None)
+              ]
+            core_type (middle_end/flambda/inline_and_simplify_aux.mli[193,8114+26]..[193,8114+63])
+              Ptyp_arrow
+              Nolabel
+              core_type (middle_end/flambda/inline_and_simplify_aux.mli[193,8114+26]..[193,8114+27])
+                Ptyp_constr "t" (middle_end/flambda/inline_and_simplify_aux.mli[193,8114+26]..[193,8114+27])
+                []
+              core_type (middle_end/flambda/inline_and_simplify_aux.mli[193,8114+31]..[193,8114+63])
+                Ptyp_arrow
+                Nolabel
+                core_type (middle_end/flambda/inline_and_simplify_aux.mli[193,8114+31]..[193,8114+55])
+                  Ptyp_constr "Set_of_closures_origin.t" (middle_end/flambda/inline_and_simplify_aux.mli[193,8114+31]..[193,8114+55])
+                  []
+                core_type (middle_end/flambda/inline_and_simplify_aux.mli[193,8114+59]..[193,8114+63])
+                  Ptyp_constr "bool" (middle_end/flambda/inline_and_simplify_aux.mli[193,8114+59]..[193,8114+63])
+                  []
+            []
+        signature_item (middle_end/flambda/inline_and_simplify_aux.mli[197,8303+2]..[197,8303+67])
+          Psig_value
+          value_description "inside_unrolled_function" (middle_end/flambda/inline_and_simplify_aux.mli[197,8303+6]..[197,8303+30]) (middle_end/flambda/inline_and_simplify_aux.mli[197,8303+2]..[197,8303+67])
+            attribute "ocaml.doc"
+              [
+                structure_item (middle_end/flambda/inline_and_simplify_aux.mli[195,8179+2]..[196,8254+48])
+                  Pstr_eval
+                  expression (middle_end/flambda/inline_and_simplify_aux.mli[195,8179+2]..[196,8254+48])
+                    Pexp_constant PConst_string(" Whether the given environment is currently being used to rewrite the\n      body of an unrolled recursive function. ",(middle_end/flambda/inline_and_simplify_aux.mli[195,8179+2]..[196,8254+48]),None)
+              ]
+            core_type (middle_end/flambda/inline_and_simplify_aux.mli[197,8303+33]..[197,8303+67])
+              Ptyp_arrow
+              Nolabel
+              core_type (middle_end/flambda/inline_and_simplify_aux.mli[197,8303+33]..[197,8303+34])
+                Ptyp_constr "t" (middle_end/flambda/inline_and_simplify_aux.mli[197,8303+33]..[197,8303+34])
+                []
+              core_type (middle_end/flambda/inline_and_simplify_aux.mli[197,8303+38]..[197,8303+67])
+                Ptyp_arrow
+                Nolabel
+                core_type (middle_end/flambda/inline_and_simplify_aux.mli[197,8303+38]..[197,8303+62])
+                  Ptyp_constr "Set_of_closures_origin.t" (middle_end/flambda/inline_and_simplify_aux.mli[197,8303+38]..[197,8303+62])
+                  []
+                core_type (middle_end/flambda/inline_and_simplify_aux.mli[197,8303+66]..[197,8303+67])
+                  Ptyp_constr "t" (middle_end/flambda/inline_and_simplify_aux.mli[197,8303+66]..[197,8303+67])
+                  []
+            []
+        signature_item (middle_end/flambda/inline_and_simplify_aux.mli[201,8470+2]..[201,8470+54])
+          Psig_value
+          value_description "inlining_allowed" (middle_end/flambda/inline_and_simplify_aux.mli[201,8470+6]..[201,8470+22]) (middle_end/flambda/inline_and_simplify_aux.mli[201,8470+2]..[201,8470+54])
+            attribute "ocaml.doc"
+              [
+                structure_item (middle_end/flambda/inline_and_simplify_aux.mli[199,8372+2]..[200,8448+21])
+                  Pstr_eval
+                  expression (middle_end/flambda/inline_and_simplify_aux.mli[199,8372+2]..[200,8448+21])
+                    Pexp_constant PConst_string(" Whether it is permissible to inline a call to a function in the given\n      environment. ",(middle_end/flambda/inline_and_simplify_aux.mli[199,8372+2]..[200,8448+21]),None)
+              ]
+            core_type (middle_end/flambda/inline_and_simplify_aux.mli[201,8470+25]..[201,8470+54])
+              Ptyp_arrow
+              Nolabel
+              core_type (middle_end/flambda/inline_and_simplify_aux.mli[201,8470+25]..[201,8470+26])
+                Ptyp_constr "t" (middle_end/flambda/inline_and_simplify_aux.mli[201,8470+25]..[201,8470+26])
+                []
+              core_type (middle_end/flambda/inline_and_simplify_aux.mli[201,8470+30]..[201,8470+54])
+                Ptyp_arrow
+                Nolabel
+                core_type (middle_end/flambda/inline_and_simplify_aux.mli[201,8470+30]..[201,8470+46])
+                  Ptyp_constr "Closure_origin.t" (middle_end/flambda/inline_and_simplify_aux.mli[201,8470+30]..[201,8470+46])
+                  []
+                core_type (middle_end/flambda/inline_and_simplify_aux.mli[201,8470+50]..[201,8470+54])
+                  Ptyp_constr "bool" (middle_end/flambda/inline_and_simplify_aux.mli[201,8470+50]..[201,8470+54])
+                  []
+            []
+        signature_item (middle_end/flambda/inline_and_simplify_aux.mli[205,8639+2]..[205,8639+58])
+          Psig_value
+          value_description "inside_inlined_function" (middle_end/flambda/inline_and_simplify_aux.mli[205,8639+6]..[205,8639+29]) (middle_end/flambda/inline_and_simplify_aux.mli[205,8639+2]..[205,8639+58])
+            attribute "ocaml.doc"
+              [
+                structure_item (middle_end/flambda/inline_and_simplify_aux.mli[203,8526+2]..[204,8601+37])
+                  Pstr_eval
+                  expression (middle_end/flambda/inline_and_simplify_aux.mli[203,8526+2]..[204,8601+37])
+                    Pexp_constant PConst_string(" Whether the given environment is currently being used to rewrite the\n      body of an inlined function. ",(middle_end/flambda/inline_and_simplify_aux.mli[203,8526+2]..[204,8601+37]),None)
+              ]
+            core_type (middle_end/flambda/inline_and_simplify_aux.mli[205,8639+32]..[205,8639+58])
+              Ptyp_arrow
+              Nolabel
+              core_type (middle_end/flambda/inline_and_simplify_aux.mli[205,8639+32]..[205,8639+33])
+                Ptyp_constr "t" (middle_end/flambda/inline_and_simplify_aux.mli[205,8639+32]..[205,8639+33])
+                []
+              core_type (middle_end/flambda/inline_and_simplify_aux.mli[205,8639+37]..[205,8639+58])
+                Ptyp_arrow
+                Nolabel
+                core_type (middle_end/flambda/inline_and_simplify_aux.mli[205,8639+37]..[205,8639+53])
+                  Ptyp_constr "Closure_origin.t" (middle_end/flambda/inline_and_simplify_aux.mli[205,8639+37]..[205,8639+53])
+                  []
+                core_type (middle_end/flambda/inline_and_simplify_aux.mli[205,8639+57]..[205,8639+58])
+                  Ptyp_constr "t" (middle_end/flambda/inline_and_simplify_aux.mli[205,8639+57]..[205,8639+58])
+                  []
+            []
+        signature_item (middle_end/flambda/inline_and_simplify_aux.mli[211,8947+2]..[215,9038+8])
+          Psig_value
+          value_description "note_entering_closure" (middle_end/flambda/inline_and_simplify_aux.mli[211,8947+6]..[211,8947+27]) (middle_end/flambda/inline_and_simplify_aux.mli[211,8947+2]..[215,9038+8])
+            attribute "ocaml.doc"
+              [
+                structure_item (middle_end/flambda/inline_and_simplify_aux.mli[207,8699+2]..[210,8922+24])
+                  Pstr_eval
+                  expression (middle_end/flambda/inline_and_simplify_aux.mli[207,8699+2]..[210,8922+24])
+                    Pexp_constant PConst_string(" If collecting inlining statistics, record that the inliner is about to\n      descend into [closure_id].  This information enables us to produce a\n      stack of closures that form a kind of context around an inlining\n      decision point. ",(middle_end/flambda/inline_and_simplify_aux.mli[207,8699+2]..[210,8922+24]),None)
+              ]
+            core_type (middle_end/flambda/inline_and_simplify_aux.mli[212,8975+7]..[215,9038+8])
+              Ptyp_arrow
+              Nolabel
+              core_type (middle_end/flambda/inline_and_simplify_aux.mli[212,8975+7]..[212,8975+8])
+                Ptyp_constr "t" (middle_end/flambda/inline_and_simplify_aux.mli[212,8975+7]..[212,8975+8])
+                []
+              core_type (middle_end/flambda/inline_and_simplify_aux.mli[213,8984+7]..[215,9038+8])
+                Ptyp_arrow
+                Labelled "closure_id"
+                core_type (middle_end/flambda/inline_and_simplify_aux.mli[213,8984+18]..[213,8984+30])
+                  Ptyp_constr "Closure_id.t" (middle_end/flambda/inline_and_simplify_aux.mli[213,8984+18]..[213,8984+30])
+                  []
+                core_type (middle_end/flambda/inline_and_simplify_aux.mli[214,9015+7]..[215,9038+8])
+                  Ptyp_arrow
+                  Labelled "dbg"
+                  core_type (middle_end/flambda/inline_and_simplify_aux.mli[214,9015+11]..[214,9015+22])
+                    Ptyp_constr "Debuginfo.t" (middle_end/flambda/inline_and_simplify_aux.mli[214,9015+11]..[214,9015+22])
+                    []
+                  core_type (middle_end/flambda/inline_and_simplify_aux.mli[215,9038+7]..[215,9038+8])
+                    Ptyp_constr "t" (middle_end/flambda/inline_and_simplify_aux.mli[215,9038+7]..[215,9038+8])
+                    []
+            []
+        signature_item (middle_end/flambda/inline_and_simplify_aux.mli[221,9310+2]..[225,9398+8])
+          Psig_value
+          value_description "note_entering_call" (middle_end/flambda/inline_and_simplify_aux.mli[221,9310+6]..[221,9310+24]) (middle_end/flambda/inline_and_simplify_aux.mli[221,9310+2]..[225,9398+8])
+            attribute "ocaml.doc"
+              [
+                structure_item (middle_end/flambda/inline_and_simplify_aux.mli[217,9048+3]..[220,9275+34])
+                  Pstr_eval
+                  expression (middle_end/flambda/inline_and_simplify_aux.mli[217,9048+3]..[220,9275+34])
+                    Pexp_constant PConst_string(" If collecting inlining statistics, record that the inliner is about to\n       descend into a call to [closure_id].  This information enables us to\n       produce a stack of closures that form a kind of context around an\n       inlining decision point. ",(middle_end/flambda/inline_and_simplify_aux.mli[217,9048+3]..[220,9275+34]),None)
+              ]
+            core_type (middle_end/flambda/inline_and_simplify_aux.mli[222,9335+7]..[225,9398+8])
+              Ptyp_arrow
+              Nolabel
+              core_type (middle_end/flambda/inline_and_simplify_aux.mli[222,9335+7]..[222,9335+8])
+                Ptyp_constr "t" (middle_end/flambda/inline_and_simplify_aux.mli[222,9335+7]..[222,9335+8])
+                []
+              core_type (middle_end/flambda/inline_and_simplify_aux.mli[223,9344+7]..[225,9398+8])
+                Ptyp_arrow
+                Labelled "closure_id"
+                core_type (middle_end/flambda/inline_and_simplify_aux.mli[223,9344+18]..[223,9344+30])
+                  Ptyp_constr "Closure_id.t" (middle_end/flambda/inline_and_simplify_aux.mli[223,9344+18]..[223,9344+30])
+                  []
+                core_type (middle_end/flambda/inline_and_simplify_aux.mli[224,9375+7]..[225,9398+8])
+                  Ptyp_arrow
+                  Labelled "dbg"
+                  core_type (middle_end/flambda/inline_and_simplify_aux.mli[224,9375+11]..[224,9375+22])
+                    Ptyp_constr "Debuginfo.t" (middle_end/flambda/inline_and_simplify_aux.mli[224,9375+11]..[224,9375+22])
+                    []
+                  core_type (middle_end/flambda/inline_and_simplify_aux.mli[225,9398+7]..[225,9398+8])
+                    Ptyp_constr "t" (middle_end/flambda/inline_and_simplify_aux.mli[225,9398+7]..[225,9398+8])
+                    []
+            []
+        signature_item (middle_end/flambda/inline_and_simplify_aux.mli[230,9630+2]..[230,9630+36])
+          Psig_value
+          value_description "note_entering_inlined" (middle_end/flambda/inline_and_simplify_aux.mli[230,9630+6]..[230,9630+27]) (middle_end/flambda/inline_and_simplify_aux.mli[230,9630+2]..[230,9630+36])
+            attribute "ocaml.doc"
+              [
+                structure_item (middle_end/flambda/inline_and_simplify_aux.mli[227,9408+3]..[229,9564+65])
+                  Pstr_eval
+                  expression (middle_end/flambda/inline_and_simplify_aux.mli[227,9408+3]..[229,9564+65])
+                    Pexp_constant PConst_string(" If collecting inlining statistics, record that the inliner is about to\n       descend into an inlined function call.  This requires that the inliner\n       has already entered the call with [note_entering_call]. ",(middle_end/flambda/inline_and_simplify_aux.mli[227,9408+3]..[229,9564+65]),None)
+              ]
+            core_type (middle_end/flambda/inline_and_simplify_aux.mli[230,9630+30]..[230,9630+36])
+              Ptyp_arrow
+              Nolabel
+              core_type (middle_end/flambda/inline_and_simplify_aux.mli[230,9630+30]..[230,9630+31])
+                Ptyp_constr "t" (middle_end/flambda/inline_and_simplify_aux.mli[230,9630+30]..[230,9630+31])
+                []
+              core_type (middle_end/flambda/inline_and_simplify_aux.mli[230,9630+35]..[230,9630+36])
+                Ptyp_constr "t" (middle_end/flambda/inline_and_simplify_aux.mli[230,9630+35]..[230,9630+36])
+                []
+            []
+        signature_item (middle_end/flambda/inline_and_simplify_aux.mli[235,9899+2]..[235,9899+72])
+          Psig_value
+          value_description "note_entering_specialised" (middle_end/flambda/inline_and_simplify_aux.mli[235,9899+6]..[235,9899+31]) (middle_end/flambda/inline_and_simplify_aux.mli[235,9899+2]..[235,9899+72])
+            attribute "ocaml.doc"
+              [
+                structure_item (middle_end/flambda/inline_and_simplify_aux.mli[232,9668+3]..[234,9825+73])
+                  Pstr_eval
+                  expression (middle_end/flambda/inline_and_simplify_aux.mli[232,9668+3]..[234,9825+73])
+                    Pexp_constant PConst_string(" If collecting inlining statistics, record that the inliner is about to\n       descend into a specialised function definition.  This requires that the\n       inliner has already entered the call with [note_entering_call]. ",(middle_end/flambda/inline_and_simplify_aux.mli[232,9668+3]..[234,9825+73]),None)
+              ]
+            core_type (middle_end/flambda/inline_and_simplify_aux.mli[235,9899+34]..[235,9899+72])
+              Ptyp_arrow
+              Nolabel
+              core_type (middle_end/flambda/inline_and_simplify_aux.mli[235,9899+34]..[235,9899+35])
+                Ptyp_constr "t" (middle_end/flambda/inline_and_simplify_aux.mli[235,9899+34]..[235,9899+35])
+                []
+              core_type (middle_end/flambda/inline_and_simplify_aux.mli[235,9899+39]..[235,9899+72])
+                Ptyp_arrow
+                Labelled "closure_ids"
+                core_type (middle_end/flambda/inline_and_simplify_aux.mli[235,9899+51]..[235,9899+67])
+                  Ptyp_constr "Closure_id.Set.t" (middle_end/flambda/inline_and_simplify_aux.mli[235,9899+51]..[235,9899+67])
+                  []
+                core_type (middle_end/flambda/inline_and_simplify_aux.mli[235,9899+71]..[235,9899+72])
+                  Ptyp_constr "t" (middle_end/flambda/inline_and_simplify_aux.mli[235,9899+71]..[235,9899+72])
+                  []
+            []
+        signature_item (middle_end/flambda/inline_and_simplify_aux.mli[241,10246+2]..[247,10374+9])
+          Psig_value
+          value_description "enter_closure" (middle_end/flambda/inline_and_simplify_aux.mli[241,10246+6]..[241,10246+19]) (middle_end/flambda/inline_and_simplify_aux.mli[241,10246+2]..[247,10374+9])
+            attribute "ocaml.doc"
+              [
+                structure_item (middle_end/flambda/inline_and_simplify_aux.mli[237,9973+2]..[240,10199+46])
+                  Pstr_eval
+                  expression (middle_end/flambda/inline_and_simplify_aux.mli[237,9973+2]..[240,10199+46])
+                    Pexp_constant PConst_string(" Update a given environment to record that the inliner is about to\n      descend into [closure_id] and pass the resulting environment to [f].\n      If [inline_inside] is [false] then the environment passed to [f] will be\n      marked as [never_inline] (see above). ",(middle_end/flambda/inline_and_simplify_aux.mli[237,9973+2]..[240,10199+46]),None)
+              ]
+            core_type (middle_end/flambda/inline_and_simplify_aux.mli[242,10266+7]..[247,10374+9])
+              Ptyp_arrow
+              Nolabel
+              core_type (middle_end/flambda/inline_and_simplify_aux.mli[242,10266+7]..[242,10266+8])
+                Ptyp_constr "t" (middle_end/flambda/inline_and_simplify_aux.mli[242,10266+7]..[242,10266+8])
+                []
+              core_type (middle_end/flambda/inline_and_simplify_aux.mli[243,10275+7]..[247,10374+9])
+                Ptyp_arrow
+                Labelled "closure_id"
+                core_type (middle_end/flambda/inline_and_simplify_aux.mli[243,10275+18]..[243,10275+30])
+                  Ptyp_constr "Closure_id.t" (middle_end/flambda/inline_and_simplify_aux.mli[243,10275+18]..[243,10275+30])
+                  []
+                core_type (middle_end/flambda/inline_and_simplify_aux.mli[244,10306+7]..[247,10374+9])
+                  Ptyp_arrow
+                  Labelled "inline_inside"
+                  core_type (middle_end/flambda/inline_and_simplify_aux.mli[244,10306+21]..[244,10306+25])
+                    Ptyp_constr "bool" (middle_end/flambda/inline_and_simplify_aux.mli[244,10306+21]..[244,10306+25])
+                    []
+                  core_type (middle_end/flambda/inline_and_simplify_aux.mli[245,10332+7]..[247,10374+9])
+                    Ptyp_arrow
+                    Labelled "dbg"
+                    core_type (middle_end/flambda/inline_and_simplify_aux.mli[245,10332+11]..[245,10332+22])
+                      Ptyp_constr "Debuginfo.t" (middle_end/flambda/inline_and_simplify_aux.mli[245,10332+11]..[245,10332+22])
+                      []
+                    core_type (middle_end/flambda/inline_and_simplify_aux.mli[246,10355+7]..[247,10374+9])
+                      Ptyp_arrow
+                      Labelled "f"
+                      core_type (middle_end/flambda/inline_and_simplify_aux.mli[246,10355+10]..[246,10355+17])
+                        Ptyp_arrow
+                        Nolabel
+                        core_type (middle_end/flambda/inline_and_simplify_aux.mli[246,10355+10]..[246,10355+11])
+                          Ptyp_constr "t" (middle_end/flambda/inline_and_simplify_aux.mli[246,10355+10]..[246,10355+11])
+                          []
+                        core_type (middle_end/flambda/inline_and_simplify_aux.mli[246,10355+15]..[246,10355+17])
+                          Ptyp_var a
+                      core_type (middle_end/flambda/inline_and_simplify_aux.mli[247,10374+7]..[247,10374+9])
+                        Ptyp_var a
+            []
+        signature_item (middle_end/flambda/inline_and_simplify_aux.mli[252,10554+2]..[255,10624+11])
+          Psig_value
+          value_description "record_decision" (middle_end/flambda/inline_and_simplify_aux.mli[252,10554+6]..[252,10554+21]) (middle_end/flambda/inline_and_simplify_aux.mli[252,10554+2]..[255,10624+11])
+            attribute "ocaml.doc"
+              [
+                structure_item (middle_end/flambda/inline_and_simplify_aux.mli[249,10385+3]..[251,10531+22])
+                  Pstr_eval
+                  expression (middle_end/flambda/inline_and_simplify_aux.mli[249,10385+3]..[251,10531+22])
+                    Pexp_constant PConst_string(" If collecting inlining statistics, record an inlining decision for the\n       call at the top of the closure stack stored inside the given\n       environment. ",(middle_end/flambda/inline_and_simplify_aux.mli[249,10385+3]..[251,10531+22]),None)
+              ]
+            core_type (middle_end/flambda/inline_and_simplify_aux.mli[253,10576+7]..[255,10624+11])
+              Ptyp_arrow
+              Nolabel
+              core_type (middle_end/flambda/inline_and_simplify_aux.mli[253,10576+7]..[253,10576+8])
+                Ptyp_constr "t" (middle_end/flambda/inline_and_simplify_aux.mli[253,10576+7]..[253,10576+8])
+                []
+              core_type (middle_end/flambda/inline_and_simplify_aux.mli[254,10585+7]..[255,10624+11])
+                Ptyp_arrow
+                Nolabel
+                core_type (middle_end/flambda/inline_and_simplify_aux.mli[254,10585+7]..[254,10585+38])
+                  Ptyp_constr "Inlining_stats_types.Decision.t" (middle_end/flambda/inline_and_simplify_aux.mli[254,10585+7]..[254,10585+38])
+                  []
+                core_type (middle_end/flambda/inline_and_simplify_aux.mli[255,10624+7]..[255,10624+11])
+                  Ptyp_constr "unit" (middle_end/flambda/inline_and_simplify_aux.mli[255,10624+7]..[255,10624+11])
+                  []
+            []
+        signature_item (middle_end/flambda/inline_and_simplify_aux.mli[258,10703+2]..[258,10703+43])
+          Psig_value
+          value_description "print" (middle_end/flambda/inline_and_simplify_aux.mli[258,10703+6]..[258,10703+11]) (middle_end/flambda/inline_and_simplify_aux.mli[258,10703+2]..[258,10703+43])
+            attribute "ocaml.doc"
+              [
+                structure_item (middle_end/flambda/inline_and_simplify_aux.mli[257,10637+2]..[257,10637+65])
+                  Pstr_eval
+                  expression (middle_end/flambda/inline_and_simplify_aux.mli[257,10637+2]..[257,10637+65])
+                    Pexp_constant PConst_string(" Print a human-readable version of the given environment. ",(middle_end/flambda/inline_and_simplify_aux.mli[257,10637+2]..[257,10637+65]),None)
+              ]
+            core_type (middle_end/flambda/inline_and_simplify_aux.mli[258,10703+14]..[258,10703+43])
+              Ptyp_arrow
+              Nolabel
+              core_type (middle_end/flambda/inline_and_simplify_aux.mli[258,10703+14]..[258,10703+30])
+                Ptyp_constr "Format.formatter" (middle_end/flambda/inline_and_simplify_aux.mli[258,10703+14]..[258,10703+30])
+                []
+              core_type (middle_end/flambda/inline_and_simplify_aux.mli[258,10703+34]..[258,10703+43])
+                Ptyp_arrow
+                Nolabel
+                core_type (middle_end/flambda/inline_and_simplify_aux.mli[258,10703+34]..[258,10703+35])
+                  Ptyp_constr "t" (middle_end/flambda/inline_and_simplify_aux.mli[258,10703+34]..[258,10703+35])
+                  []
+                core_type (middle_end/flambda/inline_and_simplify_aux.mli[258,10703+39]..[258,10703+43])
+                  Ptyp_constr "unit" (middle_end/flambda/inline_and_simplify_aux.mli[258,10703+39]..[258,10703+43])
+                  []
+            []
+        signature_item (middle_end/flambda/inline_and_simplify_aux.mli[263,10918+2]..[263,10918+54])
+          Psig_value
+          value_description "set_inline_debuginfo" (middle_end/flambda/inline_and_simplify_aux.mli[263,10918+6]..[263,10918+26]) (middle_end/flambda/inline_and_simplify_aux.mli[263,10918+2]..[263,10918+54])
+            attribute "ocaml.doc"
+              [
+                structure_item (middle_end/flambda/inline_and_simplify_aux.mli[260,10748+2]..[262,10883+34])
+                  Pstr_eval
+                  expression (middle_end/flambda/inline_and_simplify_aux.mli[260,10748+2]..[262,10883+34])
+                    Pexp_constant PConst_string(" The environment stores the call-site being inlined to produce\n      precise location information. This function sets the current\n      call-site being inlined.  ",(middle_end/flambda/inline_and_simplify_aux.mli[260,10748+2]..[262,10883+34]),None)
+              ]
+            core_type (middle_end/flambda/inline_and_simplify_aux.mli[263,10918+29]..[263,10918+54])
+              Ptyp_arrow
+              Nolabel
+              core_type (middle_end/flambda/inline_and_simplify_aux.mli[263,10918+29]..[263,10918+30])
+                Ptyp_constr "t" (middle_end/flambda/inline_and_simplify_aux.mli[263,10918+29]..[263,10918+30])
+                []
+              core_type (middle_end/flambda/inline_and_simplify_aux.mli[263,10918+34]..[263,10918+54])
+                Ptyp_arrow
+                Labelled "dbg"
+                core_type (middle_end/flambda/inline_and_simplify_aux.mli[263,10918+38]..[263,10918+49])
+                  Ptyp_constr "Debuginfo.t" (middle_end/flambda/inline_and_simplify_aux.mli[263,10918+38]..[263,10918+49])
+                  []
+                core_type (middle_end/flambda/inline_and_simplify_aux.mli[263,10918+53]..[263,10918+54])
+                  Ptyp_constr "t" (middle_end/flambda/inline_and_simplify_aux.mli[263,10918+53]..[263,10918+54])
+                  []
+            []
+        signature_item (middle_end/flambda/inline_and_simplify_aux.mli[266,11050+2]..[266,11050+65])
+          Psig_value
+          value_description "add_inlined_debuginfo" (middle_end/flambda/inline_and_simplify_aux.mli[266,11050+6]..[266,11050+27]) (middle_end/flambda/inline_and_simplify_aux.mli[266,11050+2]..[266,11050+65])
+            attribute "ocaml.doc"
+              [
+                structure_item (middle_end/flambda/inline_and_simplify_aux.mli[265,10974+2]..[265,10974+75])
+                  Pstr_eval
+                  expression (middle_end/flambda/inline_and_simplify_aux.mli[265,10974+2]..[265,10974+75])
+                    Pexp_constant PConst_string(" Appends the locations of inlined call-sites to the [~dbg] argument ",(middle_end/flambda/inline_and_simplify_aux.mli[265,10974+2]..[265,10974+75]),None)
+              ]
+            core_type (middle_end/flambda/inline_and_simplify_aux.mli[266,11050+30]..[266,11050+65])
+              Ptyp_arrow
+              Nolabel
+              core_type (middle_end/flambda/inline_and_simplify_aux.mli[266,11050+30]..[266,11050+31])
+                Ptyp_constr "t" (middle_end/flambda/inline_and_simplify_aux.mli[266,11050+30]..[266,11050+31])
+                []
+              core_type (middle_end/flambda/inline_and_simplify_aux.mli[266,11050+35]..[266,11050+65])
+                Ptyp_arrow
+                Labelled "dbg"
+                core_type (middle_end/flambda/inline_and_simplify_aux.mli[266,11050+39]..[266,11050+50])
+                  Ptyp_constr "Debuginfo.t" (middle_end/flambda/inline_and_simplify_aux.mli[266,11050+39]..[266,11050+50])
+                  []
+                core_type (middle_end/flambda/inline_and_simplify_aux.mli[266,11050+54]..[266,11050+65])
+                  Ptyp_constr "Debuginfo.t" (middle_end/flambda/inline_and_simplify_aux.mli[266,11050+54]..[266,11050+65])
+                  []
+            []
+      ]
+  signature_item (middle_end/flambda/inline_and_simplify_aux.mli[269,11121+0]..[333,13613+3])
+    Psig_module "Result" (middle_end/flambda/inline_and_simplify_aux.mli[269,11121+7]..[269,11121+13])
+    module_type (middle_end/flambda/inline_and_simplify_aux.mli[269,11121+16]..[333,13613+3])
+      Pmty_signature
+      [
+        signature_item (middle_end/flambda/inline_and_simplify_aux.mli[273,11325+2]..[273,11325+8])
+          Psig_type Rec
+          [
+            type_declaration "t" (middle_end/flambda/inline_and_simplify_aux.mli[273,11325+7]..[273,11325+8]) (middle_end/flambda/inline_and_simplify_aux.mli[273,11325+2]..[273,11325+8])
+              attribute "ocaml.doc"
+                [
+                  structure_item (middle_end/flambda/inline_and_simplify_aux.mli[270,11141+2]..[272,11290+34])
+                    Pstr_eval
+                    expression (middle_end/flambda/inline_and_simplify_aux.mli[270,11141+2]..[272,11290+34])
+                      Pexp_constant PConst_string(" Result structures approximately follow the evaluation order of the\n      program.  They are returned by the simplification algorithm acting on\n      an Flambda subexpression. ",(middle_end/flambda/inline_and_simplify_aux.mli[270,11141+2]..[272,11290+34]),None)
+                ]
+              ptype_params =
+                []
+              ptype_cstrs =
+                []
+              ptype_kind =
+                Ptype_abstract
+              ptype_private = Public
+              ptype_manifest =
+                None
+          ]
+        signature_item (middle_end/flambda/inline_and_simplify_aux.mli[275,11335+2]..[275,11335+24])
+          Psig_value
+          value_description "create" (middle_end/flambda/inline_and_simplify_aux.mli[275,11335+6]..[275,11335+12]) (middle_end/flambda/inline_and_simplify_aux.mli[275,11335+2]..[275,11335+24])
+            core_type (middle_end/flambda/inline_and_simplify_aux.mli[275,11335+15]..[275,11335+24])
+              Ptyp_arrow
+              Nolabel
+              core_type (middle_end/flambda/inline_and_simplify_aux.mli[275,11335+15]..[275,11335+19])
+                Ptyp_constr "unit" (middle_end/flambda/inline_and_simplify_aux.mli[275,11335+15]..[275,11335+19])
+                []
+              core_type (middle_end/flambda/inline_and_simplify_aux.mli[275,11335+23]..[275,11335+24])
+                Ptyp_constr "t" (middle_end/flambda/inline_and_simplify_aux.mli[275,11335+23]..[275,11335+24])
+                []
+            []
+        signature_item (middle_end/flambda/inline_and_simplify_aux.mli[279,11446+2]..[279,11446+41])
+          Psig_value
+          value_description "approx" (middle_end/flambda/inline_and_simplify_aux.mli[279,11446+6]..[279,11446+12]) (middle_end/flambda/inline_and_simplify_aux.mli[279,11446+2]..[279,11446+41])
+            attribute "ocaml.doc"
+              [
+                structure_item (middle_end/flambda/inline_and_simplify_aux.mli[277,11361+2]..[278,11425+20])
+                  Pstr_eval
+                  expression (middle_end/flambda/inline_and_simplify_aux.mli[277,11361+2]..[278,11425+20])
+                    Pexp_constant PConst_string(" The approximation of the subexpression that has just been\n      simplified. ",(middle_end/flambda/inline_and_simplify_aux.mli[277,11361+2]..[278,11425+20]),None)
+              ]
+            core_type (middle_end/flambda/inline_and_simplify_aux.mli[279,11446+15]..[279,11446+41])
+              Ptyp_arrow
+              Nolabel
+              core_type (middle_end/flambda/inline_and_simplify_aux.mli[279,11446+15]..[279,11446+16])
+                Ptyp_constr "t" (middle_end/flambda/inline_and_simplify_aux.mli[279,11446+15]..[279,11446+16])
+                []
+              core_type (middle_end/flambda/inline_and_simplify_aux.mli[279,11446+20]..[279,11446+41])
+                Ptyp_constr "Simple_value_approx.t" (middle_end/flambda/inline_and_simplify_aux.mli[279,11446+20]..[279,11446+41])
+                []
+            []
+        signature_item (middle_end/flambda/inline_and_simplify_aux.mli[284,11667+2]..[284,11667+50])
+          Psig_value
+          value_description "set_approx" (middle_end/flambda/inline_and_simplify_aux.mli[284,11667+6]..[284,11667+16]) (middle_end/flambda/inline_and_simplify_aux.mli[284,11667+2]..[284,11667+50])
+            attribute "ocaml.doc"
+              [
+                structure_item (middle_end/flambda/inline_and_simplify_aux.mli[281,11489+2]..[283,11632+34])
+                  Pstr_eval
+                  expression (middle_end/flambda/inline_and_simplify_aux.mli[281,11489+2]..[283,11632+34])
+                    Pexp_constant PConst_string(" Set the approximation of the subexpression that has just been\n      simplified.  Typically used just before returning from a case of the\n      simplification algorithm. ",(middle_end/flambda/inline_and_simplify_aux.mli[281,11489+2]..[283,11632+34]),None)
+              ]
+            core_type (middle_end/flambda/inline_and_simplify_aux.mli[284,11667+19]..[284,11667+50])
+              Ptyp_arrow
+              Nolabel
+              core_type (middle_end/flambda/inline_and_simplify_aux.mli[284,11667+19]..[284,11667+20])
+                Ptyp_constr "t" (middle_end/flambda/inline_and_simplify_aux.mli[284,11667+19]..[284,11667+20])
+                []
+              core_type (middle_end/flambda/inline_and_simplify_aux.mli[284,11667+24]..[284,11667+50])
+                Ptyp_arrow
+                Nolabel
+                core_type (middle_end/flambda/inline_and_simplify_aux.mli[284,11667+24]..[284,11667+45])
+                  Ptyp_constr "Simple_value_approx.t" (middle_end/flambda/inline_and_simplify_aux.mli[284,11667+24]..[284,11667+45])
+                  []
+                core_type (middle_end/flambda/inline_and_simplify_aux.mli[284,11667+49]..[284,11667+50])
+                  Ptyp_constr "t" (middle_end/flambda/inline_and_simplify_aux.mli[284,11667+49]..[284,11667+50])
+                  []
+            []
+        signature_item (middle_end/flambda/inline_and_simplify_aux.mli[290,11948+2]..[290,11948+60])
+          Psig_value
+          value_description "meet_approx" (middle_end/flambda/inline_and_simplify_aux.mli[290,11948+6]..[290,11948+17]) (middle_end/flambda/inline_and_simplify_aux.mli[290,11948+2]..[290,11948+60])
+            attribute "ocaml.doc"
+              [
+                structure_item (middle_end/flambda/inline_and_simplify_aux.mli[286,11719+2]..[289,11913+34])
+                  Pstr_eval
+                  expression (middle_end/flambda/inline_and_simplify_aux.mli[286,11719+2]..[289,11913+34])
+                    Pexp_constant PConst_string(" Set the approximation of the subexpression to the meet of the\n      current return approximation and the provided one. Typically\n      used just before returning from a branch case of the\n      simplification algorithm. ",(middle_end/flambda/inline_and_simplify_aux.mli[286,11719+2]..[289,11913+34]),None)
+              ]
+            core_type (middle_end/flambda/inline_and_simplify_aux.mli[290,11948+20]..[290,11948+60])
+              Ptyp_arrow
+              Nolabel
+              core_type (middle_end/flambda/inline_and_simplify_aux.mli[290,11948+20]..[290,11948+21])
+                Ptyp_constr "t" (middle_end/flambda/inline_and_simplify_aux.mli[290,11948+20]..[290,11948+21])
+                []
+              core_type (middle_end/flambda/inline_and_simplify_aux.mli[290,11948+25]..[290,11948+60])
+                Ptyp_arrow
+                Nolabel
+                core_type (middle_end/flambda/inline_and_simplify_aux.mli[290,11948+25]..[290,11948+30])
+                  Ptyp_constr "Env.t" (middle_end/flambda/inline_and_simplify_aux.mli[290,11948+25]..[290,11948+30])
+                  []
+                core_type (middle_end/flambda/inline_and_simplify_aux.mli[290,11948+34]..[290,11948+60])
+                  Ptyp_arrow
+                  Nolabel
+                  core_type (middle_end/flambda/inline_and_simplify_aux.mli[290,11948+34]..[290,11948+55])
+                    Ptyp_constr "Simple_value_approx.t" (middle_end/flambda/inline_and_simplify_aux.mli[290,11948+34]..[290,11948+55])
+                    []
+                  core_type (middle_end/flambda/inline_and_simplify_aux.mli[290,11948+59]..[290,11948+60])
+                    Ptyp_constr "t" (middle_end/flambda/inline_and_simplify_aux.mli[290,11948+59]..[290,11948+60])
+                    []
+            []
+        signature_item (middle_end/flambda/inline_and_simplify_aux.mli[294,12121+2]..[294,12121+58])
+          Psig_value
+          value_description "used_static_exceptions" (middle_end/flambda/inline_and_simplify_aux.mli[294,12121+6]..[294,12121+28]) (middle_end/flambda/inline_and_simplify_aux.mli[294,12121+2]..[294,12121+58])
+            attribute "ocaml.doc"
+              [
+                structure_item (middle_end/flambda/inline_and_simplify_aux.mli[292,12010+2]..[293,12084+36])
+                  Pstr_eval
+                  expression (middle_end/flambda/inline_and_simplify_aux.mli[292,12010+2]..[293,12084+36])
+                    Pexp_constant PConst_string(" All static exceptions for which [use_staticfail] has been called on\n      the given result structure. ",(middle_end/flambda/inline_and_simplify_aux.mli[292,12010+2]..[293,12084+36]),None)
+              ]
+            core_type (middle_end/flambda/inline_and_simplify_aux.mli[294,12121+31]..[294,12121+58])
+              Ptyp_arrow
+              Nolabel
+              core_type (middle_end/flambda/inline_and_simplify_aux.mli[294,12121+31]..[294,12121+32])
+                Ptyp_constr "t" (middle_end/flambda/inline_and_simplify_aux.mli[294,12121+31]..[294,12121+32])
+                []
+              core_type (middle_end/flambda/inline_and_simplify_aux.mli[294,12121+36]..[294,12121+58])
+                Ptyp_constr "Static_exception.Set.t" (middle_end/flambda/inline_and_simplify_aux.mli[294,12121+36]..[294,12121+58])
+                []
+            []
+        signature_item (middle_end/flambda/inline_and_simplify_aux.mli[297,12242+2]..[297,12242+57])
+          Psig_value
+          value_description "use_static_exception" (middle_end/flambda/inline_and_simplify_aux.mli[297,12242+6]..[297,12242+26]) (middle_end/flambda/inline_and_simplify_aux.mli[297,12242+2]..[297,12242+57])
+            attribute "ocaml.doc"
+              [
+                structure_item (middle_end/flambda/inline_and_simplify_aux.mli[296,12181+2]..[296,12181+60])
+                  Pstr_eval
+                  expression (middle_end/flambda/inline_and_simplify_aux.mli[296,12181+2]..[296,12181+60])
+                    Pexp_constant PConst_string(" Mark that the given static exception has been used. ",(middle_end/flambda/inline_and_simplify_aux.mli[296,12181+2]..[296,12181+60]),None)
+              ]
+            core_type (middle_end/flambda/inline_and_simplify_aux.mli[297,12242+29]..[297,12242+57])
+              Ptyp_arrow
+              Nolabel
+              core_type (middle_end/flambda/inline_and_simplify_aux.mli[297,12242+29]..[297,12242+30])
+                Ptyp_constr "t" (middle_end/flambda/inline_and_simplify_aux.mli[297,12242+29]..[297,12242+30])
+                []
+              core_type (middle_end/flambda/inline_and_simplify_aux.mli[297,12242+34]..[297,12242+57])
+                Ptyp_arrow
+                Nolabel
+                core_type (middle_end/flambda/inline_and_simplify_aux.mli[297,12242+34]..[297,12242+52])
+                  Ptyp_constr "Static_exception.t" (middle_end/flambda/inline_and_simplify_aux.mli[297,12242+34]..[297,12242+52])
+                  []
+                core_type (middle_end/flambda/inline_and_simplify_aux.mli[297,12242+56]..[297,12242+57])
+                  Ptyp_constr "t" (middle_end/flambda/inline_and_simplify_aux.mli[297,12242+56]..[297,12242+57])
+                  []
+            []
+        signature_item (middle_end/flambda/inline_and_simplify_aux.mli[302,12522+2]..[302,12522+53])
+          Psig_value
+          value_description "exit_scope_catch" (middle_end/flambda/inline_and_simplify_aux.mli[302,12522+6]..[302,12522+22]) (middle_end/flambda/inline_and_simplify_aux.mli[302,12522+2]..[302,12522+53])
+            attribute "ocaml.doc"
+              [
+                structure_item (middle_end/flambda/inline_and_simplify_aux.mli[299,12301+2]..[301,12454+67])
+                  Pstr_eval
+                  expression (middle_end/flambda/inline_and_simplify_aux.mli[299,12301+2]..[301,12454+67])
+                    Pexp_constant PConst_string(" Mark that we are moving up out of the scope of a static-catch block\n      that catches the given static exception identifier.  This has the effect\n      of removing the identifier from the [used_staticfail] set. ",(middle_end/flambda/inline_and_simplify_aux.mli[299,12301+2]..[301,12454+67]),None)
+              ]
+            core_type (middle_end/flambda/inline_and_simplify_aux.mli[302,12522+25]..[302,12522+53])
+              Ptyp_arrow
+              Nolabel
+              core_type (middle_end/flambda/inline_and_simplify_aux.mli[302,12522+25]..[302,12522+26])
+                Ptyp_constr "t" (middle_end/flambda/inline_and_simplify_aux.mli[302,12522+25]..[302,12522+26])
+                []
+              core_type (middle_end/flambda/inline_and_simplify_aux.mli[302,12522+30]..[302,12522+53])
+                Ptyp_arrow
+                Nolabel
+                core_type (middle_end/flambda/inline_and_simplify_aux.mli[302,12522+30]..[302,12522+48])
+                  Ptyp_constr "Static_exception.t" (middle_end/flambda/inline_and_simplify_aux.mli[302,12522+30]..[302,12522+48])
+                  []
+                core_type (middle_end/flambda/inline_and_simplify_aux.mli[302,12522+52]..[302,12522+53])
+                  Ptyp_constr "t" (middle_end/flambda/inline_and_simplify_aux.mli[302,12522+52]..[302,12522+53])
+                  []
+            []
+        signature_item (middle_end/flambda/inline_and_simplify_aux.mli[306,12704+2]..[306,12704+44])
+          Psig_value
+          value_description "benefit" (middle_end/flambda/inline_and_simplify_aux.mli[306,12704+6]..[306,12704+13]) (middle_end/flambda/inline_and_simplify_aux.mli[306,12704+2]..[306,12704+44])
+            attribute "ocaml.doc"
+              [
+                structure_item (middle_end/flambda/inline_and_simplify_aux.mli[304,12577+2]..[305,12644+59])
+                  Pstr_eval
+                  expression (middle_end/flambda/inline_and_simplify_aux.mli[304,12577+2]..[305,12644+59])
+                    Pexp_constant PConst_string(" The benefit to be gained by inlining the subexpression whose\n      simplification yielded the given result structure. ",(middle_end/flambda/inline_and_simplify_aux.mli[304,12577+2]..[305,12644+59]),None)
+              ]
+            core_type (middle_end/flambda/inline_and_simplify_aux.mli[306,12704+16]..[306,12704+44])
+              Ptyp_arrow
+              Nolabel
+              core_type (middle_end/flambda/inline_and_simplify_aux.mli[306,12704+16]..[306,12704+17])
+                Ptyp_constr "t" (middle_end/flambda/inline_and_simplify_aux.mli[306,12704+16]..[306,12704+17])
+                []
+              core_type (middle_end/flambda/inline_and_simplify_aux.mli[306,12704+21]..[306,12704+44])
+                Ptyp_constr "Inlining_cost.Benefit.t" (middle_end/flambda/inline_and_simplify_aux.mli[306,12704+21]..[306,12704+44])
+                []
+            []
+        signature_item (middle_end/flambda/inline_and_simplify_aux.mli[310,12854+2]..[313,12940+8])
+          Psig_value
+          value_description "map_benefit" (middle_end/flambda/inline_and_simplify_aux.mli[310,12854+6]..[310,12854+17]) (middle_end/flambda/inline_and_simplify_aux.mli[310,12854+2]..[313,12940+8])
+            attribute "ocaml.doc"
+              [
+                structure_item (middle_end/flambda/inline_and_simplify_aux.mli[308,12750+2]..[309,12821+32])
+                  Pstr_eval
+                  expression (middle_end/flambda/inline_and_simplify_aux.mli[308,12750+2]..[309,12821+32])
+                    Pexp_constant PConst_string(" Apply a transformation to the inlining benefit stored within the\n      given result structure. ",(middle_end/flambda/inline_and_simplify_aux.mli[308,12750+2]..[309,12821+32]),None)
+              ]
+            core_type (middle_end/flambda/inline_and_simplify_aux.mli[311,12872+6]..[313,12940+8])
+              Ptyp_arrow
+              Nolabel
+              core_type (middle_end/flambda/inline_and_simplify_aux.mli[311,12872+6]..[311,12872+7])
+                Ptyp_constr "t" (middle_end/flambda/inline_and_simplify_aux.mli[311,12872+6]..[311,12872+7])
+                []
+              core_type (middle_end/flambda/inline_and_simplify_aux.mli[312,12880+7]..[313,12940+8])
+                Ptyp_arrow
+                Nolabel
+                core_type (middle_end/flambda/inline_and_simplify_aux.mli[312,12880+8]..[312,12880+58])
+                  Ptyp_arrow
+                  Nolabel
+                  core_type (middle_end/flambda/inline_and_simplify_aux.mli[312,12880+8]..[312,12880+31])
+                    Ptyp_constr "Inlining_cost.Benefit.t" (middle_end/flambda/inline_and_simplify_aux.mli[312,12880+8]..[312,12880+31])
+                    []
+                  core_type (middle_end/flambda/inline_and_simplify_aux.mli[312,12880+35]..[312,12880+58])
+                    Ptyp_constr "Inlining_cost.Benefit.t" (middle_end/flambda/inline_and_simplify_aux.mli[312,12880+35]..[312,12880+58])
+                    []
+                core_type (middle_end/flambda/inline_and_simplify_aux.mli[313,12940+7]..[313,12940+8])
+                  Ptyp_constr "t" (middle_end/flambda/inline_and_simplify_aux.mli[313,12940+7]..[313,12940+8])
+                  []
+            []
+        signature_item (middle_end/flambda/inline_and_simplify_aux.mli[317,13048+2]..[317,13048+53])
+          Psig_value
+          value_description "add_benefit" (middle_end/flambda/inline_and_simplify_aux.mli[317,13048+6]..[317,13048+17]) (middle_end/flambda/inline_and_simplify_aux.mli[317,13048+2]..[317,13048+53])
+            attribute "ocaml.doc"
+              [
+                structure_item (middle_end/flambda/inline_and_simplify_aux.mli[315,12950+2]..[316,13015+32])
+                  Pstr_eval
+                  expression (middle_end/flambda/inline_and_simplify_aux.mli[315,12950+2]..[316,13015+32])
+                    Pexp_constant PConst_string(" Add some benefit to the inlining benefit stored within the\n      given result structure. ",(middle_end/flambda/inline_and_simplify_aux.mli[315,12950+2]..[316,13015+32]),None)
+              ]
+            core_type (middle_end/flambda/inline_and_simplify_aux.mli[317,13048+20]..[317,13048+53])
+              Ptyp_arrow
+              Nolabel
+              core_type (middle_end/flambda/inline_and_simplify_aux.mli[317,13048+20]..[317,13048+21])
+                Ptyp_constr "t" (middle_end/flambda/inline_and_simplify_aux.mli[317,13048+20]..[317,13048+21])
+                []
+              core_type (middle_end/flambda/inline_and_simplify_aux.mli[317,13048+25]..[317,13048+53])
+                Ptyp_arrow
+                Nolabel
+                core_type (middle_end/flambda/inline_and_simplify_aux.mli[317,13048+25]..[317,13048+48])
+                  Ptyp_constr "Inlining_cost.Benefit.t" (middle_end/flambda/inline_and_simplify_aux.mli[317,13048+25]..[317,13048+48])
+                  []
+                core_type (middle_end/flambda/inline_and_simplify_aux.mli[317,13048+52]..[317,13048+53])
+                  Ptyp_constr "t" (middle_end/flambda/inline_and_simplify_aux.mli[317,13048+52]..[317,13048+53])
+                  []
+            []
+        signature_item (middle_end/flambda/inline_and_simplify_aux.mli[321,13217+2]..[321,13217+28])
+          Psig_value
+          value_description "reset_benefit" (middle_end/flambda/inline_and_simplify_aux.mli[321,13217+6]..[321,13217+19]) (middle_end/flambda/inline_and_simplify_aux.mli[321,13217+2]..[321,13217+28])
+            attribute "ocaml.doc"
+              [
+                structure_item (middle_end/flambda/inline_and_simplify_aux.mli[319,13103+2]..[320,13176+40])
+                  Pstr_eval
+                  expression (middle_end/flambda/inline_and_simplify_aux.mli[319,13103+2]..[320,13176+40])
+                    Pexp_constant PConst_string(" Set the benefit of inlining the subexpression corresponding to the\n      given result structure to zero. ",(middle_end/flambda/inline_and_simplify_aux.mli[319,13103+2]..[320,13176+40]),None)
+              ]
+            core_type (middle_end/flambda/inline_and_simplify_aux.mli[321,13217+22]..[321,13217+28])
+              Ptyp_arrow
+              Nolabel
+              core_type (middle_end/flambda/inline_and_simplify_aux.mli[321,13217+22]..[321,13217+23])
+                Ptyp_constr "t" (middle_end/flambda/inline_and_simplify_aux.mli[321,13217+22]..[321,13217+23])
+                []
+              core_type (middle_end/flambda/inline_and_simplify_aux.mli[321,13217+27]..[321,13217+28])
+                Ptyp_constr "t" (middle_end/flambda/inline_and_simplify_aux.mli[321,13217+27]..[321,13217+28])
+                []
+            []
+        signature_item (middle_end/flambda/inline_and_simplify_aux.mli[323,13247+2]..[324,13278+46])
+          Psig_value
+          value_description "set_inlining_threshold" (middle_end/flambda/inline_and_simplify_aux.mli[323,13247+6]..[323,13247+28]) (middle_end/flambda/inline_and_simplify_aux.mli[323,13247+2]..[324,13278+46])
+            core_type (middle_end/flambda/inline_and_simplify_aux.mli[324,13278+4]..[324,13278+46])
+              Ptyp_arrow
+              Nolabel
+              core_type (middle_end/flambda/inline_and_simplify_aux.mli[324,13278+4]..[324,13278+5])
+                Ptyp_constr "t" (middle_end/flambda/inline_and_simplify_aux.mli[324,13278+4]..[324,13278+5])
+                []
+              core_type (middle_end/flambda/inline_and_simplify_aux.mli[324,13278+9]..[324,13278+46])
+                Ptyp_arrow
+                Nolabel
+                core_type (middle_end/flambda/inline_and_simplify_aux.mli[324,13278+9]..[324,13278+41])
+                  Ptyp_constr "option" (middle_end/flambda/inline_and_simplify_aux.mli[324,13278+35]..[324,13278+41])
+                  [
+                    core_type (middle_end/flambda/inline_and_simplify_aux.mli[324,13278+9]..[324,13278+34])
+                      Ptyp_constr "Inlining_cost.Threshold.t" (middle_end/flambda/inline_and_simplify_aux.mli[324,13278+9]..[324,13278+34])
+                      []
+                  ]
+                core_type (middle_end/flambda/inline_and_simplify_aux.mli[324,13278+45]..[324,13278+46])
+                  Ptyp_constr "t" (middle_end/flambda/inline_and_simplify_aux.mli[324,13278+45]..[324,13278+46])
+                  []
+            []
+        signature_item (middle_end/flambda/inline_and_simplify_aux.mli[325,13325+2]..[326,13356+39])
+          Psig_value
+          value_description "add_inlining_threshold" (middle_end/flambda/inline_and_simplify_aux.mli[325,13325+6]..[325,13325+28]) (middle_end/flambda/inline_and_simplify_aux.mli[325,13325+2]..[326,13356+39])
+            core_type (middle_end/flambda/inline_and_simplify_aux.mli[326,13356+4]..[326,13356+39])
+              Ptyp_arrow
+              Nolabel
+              core_type (middle_end/flambda/inline_and_simplify_aux.mli[326,13356+4]..[326,13356+5])
+                Ptyp_constr "t" (middle_end/flambda/inline_and_simplify_aux.mli[326,13356+4]..[326,13356+5])
+                []
+              core_type (middle_end/flambda/inline_and_simplify_aux.mli[326,13356+9]..[326,13356+39])
+                Ptyp_arrow
+                Nolabel
+                core_type (middle_end/flambda/inline_and_simplify_aux.mli[326,13356+9]..[326,13356+34])
+                  Ptyp_constr "Inlining_cost.Threshold.t" (middle_end/flambda/inline_and_simplify_aux.mli[326,13356+9]..[326,13356+34])
+                  []
+                core_type (middle_end/flambda/inline_and_simplify_aux.mli[326,13356+38]..[326,13356+39])
+                  Ptyp_constr "t" (middle_end/flambda/inline_and_simplify_aux.mli[326,13356+38]..[326,13356+39])
+                  []
+            []
+        signature_item (middle_end/flambda/inline_and_simplify_aux.mli[327,13396+2]..[328,13427+39])
+          Psig_value
+          value_description "sub_inlining_threshold" (middle_end/flambda/inline_and_simplify_aux.mli[327,13396+6]..[327,13396+28]) (middle_end/flambda/inline_and_simplify_aux.mli[327,13396+2]..[328,13427+39])
+            core_type (middle_end/flambda/inline_and_simplify_aux.mli[328,13427+4]..[328,13427+39])
+              Ptyp_arrow
+              Nolabel
+              core_type (middle_end/flambda/inline_and_simplify_aux.mli[328,13427+4]..[328,13427+5])
+                Ptyp_constr "t" (middle_end/flambda/inline_and_simplify_aux.mli[328,13427+4]..[328,13427+5])
+                []
+              core_type (middle_end/flambda/inline_and_simplify_aux.mli[328,13427+9]..[328,13427+39])
+                Ptyp_arrow
+                Nolabel
+                core_type (middle_end/flambda/inline_and_simplify_aux.mli[328,13427+9]..[328,13427+34])
+                  Ptyp_constr "Inlining_cost.Threshold.t" (middle_end/flambda/inline_and_simplify_aux.mli[328,13427+9]..[328,13427+34])
+                  []
+                core_type (middle_end/flambda/inline_and_simplify_aux.mli[328,13427+38]..[328,13427+39])
+                  Ptyp_constr "t" (middle_end/flambda/inline_and_simplify_aux.mli[328,13427+38]..[328,13427+39])
+                  []
+            []
+        signature_item (middle_end/flambda/inline_and_simplify_aux.mli[329,13467+2]..[329,13467+64])
+          Psig_value
+          value_description "inlining_threshold" (middle_end/flambda/inline_and_simplify_aux.mli[329,13467+6]..[329,13467+24]) (middle_end/flambda/inline_and_simplify_aux.mli[329,13467+2]..[329,13467+64])
+            core_type (middle_end/flambda/inline_and_simplify_aux.mli[329,13467+27]..[329,13467+64])
+              Ptyp_arrow
+              Nolabel
+              core_type (middle_end/flambda/inline_and_simplify_aux.mli[329,13467+27]..[329,13467+28])
+                Ptyp_constr "t" (middle_end/flambda/inline_and_simplify_aux.mli[329,13467+27]..[329,13467+28])
+                []
+              core_type (middle_end/flambda/inline_and_simplify_aux.mli[329,13467+32]..[329,13467+64])
+                Ptyp_constr "option" (middle_end/flambda/inline_and_simplify_aux.mli[329,13467+58]..[329,13467+64])
+                [
+                  core_type (middle_end/flambda/inline_and_simplify_aux.mli[329,13467+32]..[329,13467+57])
+                    Ptyp_constr "Inlining_cost.Threshold.t" (middle_end/flambda/inline_and_simplify_aux.mli[329,13467+32]..[329,13467+57])
+                    []
+                ]
+            []
+        signature_item (middle_end/flambda/inline_and_simplify_aux.mli[331,13533+2]..[331,13533+38])
+          Psig_value
+          value_description "seen_direct_application" (middle_end/flambda/inline_and_simplify_aux.mli[331,13533+6]..[331,13533+29]) (middle_end/flambda/inline_and_simplify_aux.mli[331,13533+2]..[331,13533+38])
+            core_type (middle_end/flambda/inline_and_simplify_aux.mli[331,13533+32]..[331,13533+38])
+              Ptyp_arrow
+              Nolabel
+              core_type (middle_end/flambda/inline_and_simplify_aux.mli[331,13533+32]..[331,13533+33])
+                Ptyp_constr "t" (middle_end/flambda/inline_and_simplify_aux.mli[331,13533+32]..[331,13533+33])
+                []
+              core_type (middle_end/flambda/inline_and_simplify_aux.mli[331,13533+37]..[331,13533+38])
+                Ptyp_constr "t" (middle_end/flambda/inline_and_simplify_aux.mli[331,13533+37]..[331,13533+38])
+                []
+            []
+        signature_item (middle_end/flambda/inline_and_simplify_aux.mli[332,13572+2]..[332,13572+40])
+          Psig_value
+          value_description "num_direct_applications" (middle_end/flambda/inline_and_simplify_aux.mli[332,13572+6]..[332,13572+29]) (middle_end/flambda/inline_and_simplify_aux.mli[332,13572+2]..[332,13572+40])
+            core_type (middle_end/flambda/inline_and_simplify_aux.mli[332,13572+32]..[332,13572+40])
+              Ptyp_arrow
+              Nolabel
+              core_type (middle_end/flambda/inline_and_simplify_aux.mli[332,13572+32]..[332,13572+33])
+                Ptyp_constr "t" (middle_end/flambda/inline_and_simplify_aux.mli[332,13572+32]..[332,13572+33])
+                []
+              core_type (middle_end/flambda/inline_and_simplify_aux.mli[332,13572+37]..[332,13572+40])
+                Ptyp_constr "int" (middle_end/flambda/inline_and_simplify_aux.mli[332,13572+37]..[332,13572+40])
+                []
+            []
+      ]
+  signature_item (middle_end/flambda/inline_and_simplify_aux.mli[336,13655+0]..[336,13655+71])
+    Psig_value
+    value_description "initial_inlining_threshold" (middle_end/flambda/inline_and_simplify_aux.mli[336,13655+4]..[336,13655+30]) (middle_end/flambda/inline_and_simplify_aux.mli[336,13655+0]..[336,13655+71])
+      attribute "ocaml.doc"
+        [
+          structure_item (middle_end/flambda/inline_and_simplify_aux.mli[335,13618+0]..[335,13618+36])
+            Pstr_eval
+            expression (middle_end/flambda/inline_and_simplify_aux.mli[335,13618+0]..[335,13618+36])
+              Pexp_constant PConst_string(" Command line argument -inline ",(middle_end/flambda/inline_and_simplify_aux.mli[335,13618+0]..[335,13618+36]),None)
+        ]
+      core_type (middle_end/flambda/inline_and_simplify_aux.mli[336,13655+33]..[336,13655+71])
+        Ptyp_arrow
+        Labelled "round"
+        core_type (middle_end/flambda/inline_and_simplify_aux.mli[336,13655+39]..[336,13655+42])
+          Ptyp_constr "int" (middle_end/flambda/inline_and_simplify_aux.mli[336,13655+39]..[336,13655+42])
+          []
+        core_type (middle_end/flambda/inline_and_simplify_aux.mli[336,13655+46]..[336,13655+71])
+          Ptyp_constr "Inlining_cost.Threshold.t" (middle_end/flambda/inline_and_simplify_aux.mli[336,13655+46]..[336,13655+71])
+          []
+      []
+  signature_item (middle_end/flambda/inline_and_simplify_aux.mli[339,13774+0]..[340,13814+42])
+    Psig_value
+    value_description "initial_inlining_toplevel_threshold" (middle_end/flambda/inline_and_simplify_aux.mli[339,13774+4]..[339,13774+39]) (middle_end/flambda/inline_and_simplify_aux.mli[339,13774+0]..[340,13814+42])
+      attribute "ocaml.doc"
+        [
+          structure_item (middle_end/flambda/inline_and_simplify_aux.mli[338,13728+0]..[338,13728+45])
+            Pstr_eval
+            expression (middle_end/flambda/inline_and_simplify_aux.mli[338,13728+0]..[338,13728+45])
+              Pexp_constant PConst_string(" Command line argument -inline-toplevel ",(middle_end/flambda/inline_and_simplify_aux.mli[338,13728+0]..[338,13728+45]),None)
+        ]
+      core_type (middle_end/flambda/inline_and_simplify_aux.mli[340,13814+4]..[340,13814+42])
+        Ptyp_arrow
+        Labelled "round"
+        core_type (middle_end/flambda/inline_and_simplify_aux.mli[340,13814+10]..[340,13814+13])
+          Ptyp_constr "int" (middle_end/flambda/inline_and_simplify_aux.mli[340,13814+10]..[340,13814+13])
+          []
+        core_type (middle_end/flambda/inline_and_simplify_aux.mli[340,13814+17]..[340,13814+42])
+          Ptyp_constr "Inlining_cost.Threshold.t" (middle_end/flambda/inline_and_simplify_aux.mli[340,13814+17]..[340,13814+42])
+          []
+      []
+  signature_item (middle_end/flambda/inline_and_simplify_aux.mli[342,13858+0]..[353,14414+11])
+    Psig_value
+    value_description "prepare_to_simplify_set_of_closures" (middle_end/flambda/inline_and_simplify_aux.mli[342,13858+4]..[342,13858+39]) (middle_end/flambda/inline_and_simplify_aux.mli[342,13858+0]..[353,14414+11])
+      core_type (middle_end/flambda/inline_and_simplify_aux.mli[343,13898+5]..[353,14414+11])
+        Ptyp_arrow
+        Labelled "env"
+        core_type (middle_end/flambda/inline_and_simplify_aux.mli[343,13898+9]..[343,13898+14])
+          Ptyp_constr "Env.t" (middle_end/flambda/inline_and_simplify_aux.mli[343,13898+9]..[343,13898+14])
+          []
+        core_type (middle_end/flambda/inline_and_simplify_aux.mli[344,13913+5]..[353,14414+11])
+          Ptyp_arrow
+          Labelled "set_of_closures"
+          core_type (middle_end/flambda/inline_and_simplify_aux.mli[344,13913+21]..[344,13913+44])
+            Ptyp_constr "Flambda.set_of_closures" (middle_end/flambda/inline_and_simplify_aux.mli[344,13913+21]..[344,13913+44])
+            []
+          core_type (middle_end/flambda/inline_and_simplify_aux.mli[345,13958+5]..[353,14414+11])
+            Ptyp_arrow
+            Labelled "function_decls"
+            core_type (middle_end/flambda/inline_and_simplify_aux.mli[345,13958+20]..[345,13958+49])
+              Ptyp_constr "Flambda.function_declarations" (middle_end/flambda/inline_and_simplify_aux.mli[345,13958+20]..[345,13958+49])
+              []
+            core_type (middle_end/flambda/inline_and_simplify_aux.mli[346,14008+5]..[353,14414+11])
+              Ptyp_arrow
+              Labelled "freshen"
+              core_type (middle_end/flambda/inline_and_simplify_aux.mli[346,14008+13]..[346,14008+17])
+                Ptyp_constr "bool" (middle_end/flambda/inline_and_simplify_aux.mli[346,14008+13]..[346,14008+17])
+                []
+              core_type (middle_end/flambda/inline_and_simplify_aux.mli[347,14026+5]..[353,14414+11])
+                Ptyp_arrow
+                Labelled "only_for_function_decl"
+                core_type (middle_end/flambda/inline_and_simplify_aux.mli[347,14026+28]..[347,14026+63])
+                  Ptyp_constr "option" (middle_end/flambda/inline_and_simplify_aux.mli[347,14026+57]..[347,14026+63])
+                  [
+                    core_type (middle_end/flambda/inline_and_simplify_aux.mli[347,14026+28]..[347,14026+56])
+                      Ptyp_constr "Flambda.function_declaration" (middle_end/flambda/inline_and_simplify_aux.mli[347,14026+28]..[347,14026+56])
+                      []
+                  ]
+                core_type (middle_end/flambda/inline_and_simplify_aux.mli[348,14090+5]..[353,14414+11])
+                  Ptyp_tuple
+                  [
+                    core_type (middle_end/flambda/inline_and_simplify_aux.mli[348,14090+5]..[348,14090+68])
+                      Ptyp_constr "Variable.Map.t" (middle_end/flambda/inline_and_simplify_aux.mli[348,14090+54]..[348,14090+68])
+                      [
+                        core_type (middle_end/flambda/inline_and_simplify_aux.mli[348,14090+6]..[348,14090+52])
+                          Ptyp_tuple
+                          [
+                            core_type (middle_end/flambda/inline_and_simplify_aux.mli[348,14090+6]..[348,14090+28])
+                              Ptyp_constr "Flambda.specialised_to" (middle_end/flambda/inline_and_simplify_aux.mli[348,14090+6]..[348,14090+28])
+                              []
+                            core_type (middle_end/flambda/inline_and_simplify_aux.mli[348,14090+31]..[348,14090+52])
+                              Ptyp_constr "Simple_value_approx.t" (middle_end/flambda/inline_and_simplify_aux.mli[348,14090+31]..[348,14090+52])
+                              []
+                          ]
+                      ]
+                    core_type (middle_end/flambda/inline_and_simplify_aux.mli[349,14170+6]..[349,14170+43])
+                      Ptyp_constr "Variable.Map.t" (middle_end/flambda/inline_and_simplify_aux.mli[349,14170+29]..[349,14170+43])
+                      [
+                        core_type (middle_end/flambda/inline_and_simplify_aux.mli[349,14170+6]..[349,14170+28])
+                          Ptyp_constr "Flambda.specialised_to" (middle_end/flambda/inline_and_simplify_aux.mli[349,14170+6]..[349,14170+28])
+                          []
+                      ]
+                    core_type (middle_end/flambda/inline_and_simplify_aux.mli[350,14250+6]..[350,14250+35])
+                      Ptyp_constr "Flambda.function_declarations" (middle_end/flambda/inline_and_simplify_aux.mli[350,14250+6]..[350,14250+35])
+                      []
+                    core_type (middle_end/flambda/inline_and_simplify_aux.mli[351,14286+6]..[351,14286+42])
+                      Ptyp_constr "Variable.Map.t" (middle_end/flambda/inline_and_simplify_aux.mli[351,14286+28]..[351,14286+42])
+                      [
+                        core_type (middle_end/flambda/inline_and_simplify_aux.mli[351,14286+6]..[351,14286+27])
+                          Ptyp_constr "Simple_value_approx.t" (middle_end/flambda/inline_and_simplify_aux.mli[351,14286+6]..[351,14286+27])
+                          []
+                      ]
+                    core_type (middle_end/flambda/inline_and_simplify_aux.mli[352,14366+6]..[352,14366+47])
+                      Ptyp_constr "Simple_value_approx.value_set_of_closures" (middle_end/flambda/inline_and_simplify_aux.mli[352,14366+6]..[352,14366+47])
+                      []
+                    core_type (middle_end/flambda/inline_and_simplify_aux.mli[353,14414+6]..[353,14414+11])
+                      Ptyp_constr "Env.t" (middle_end/flambda/inline_and_simplify_aux.mli[353,14414+6]..[353,14414+11])
+                      []
+                  ]
+      []
+  signature_item (middle_end/flambda/inline_and_simplify_aux.mli[355,14427+0]..[361,14744+10])
+    Psig_value
+    value_description "prepare_to_simplify_closure" (middle_end/flambda/inline_and_simplify_aux.mli[355,14427+4]..[355,14427+31]) (middle_end/flambda/inline_and_simplify_aux.mli[355,14427+0]..[361,14744+10])
+      core_type (middle_end/flambda/inline_and_simplify_aux.mli[356,14459+5]..[361,14744+10])
+        Ptyp_arrow
+        Labelled "function_decl"
+        core_type (middle_end/flambda/inline_and_simplify_aux.mli[356,14459+19]..[356,14459+47])
+          Ptyp_constr "Flambda.function_declaration" (middle_end/flambda/inline_and_simplify_aux.mli[356,14459+19]..[356,14459+47])
+          []
+        core_type (middle_end/flambda/inline_and_simplify_aux.mli[357,14507+5]..[361,14744+10])
+          Ptyp_arrow
+          Labelled "free_vars"
+          core_type (middle_end/flambda/inline_and_simplify_aux.mli[357,14507+15]..[357,14507+78])
+            Ptyp_constr "Variable.Map.t" (middle_end/flambda/inline_and_simplify_aux.mli[357,14507+64]..[357,14507+78])
+            [
+              core_type (middle_end/flambda/inline_and_simplify_aux.mli[357,14507+16]..[357,14507+62])
+                Ptyp_tuple
+                [
+                  core_type (middle_end/flambda/inline_and_simplify_aux.mli[357,14507+16]..[357,14507+38])
+                    Ptyp_constr "Flambda.specialised_to" (middle_end/flambda/inline_and_simplify_aux.mli[357,14507+16]..[357,14507+38])
+                    []
+                  core_type (middle_end/flambda/inline_and_simplify_aux.mli[357,14507+41]..[357,14507+62])
+                    Ptyp_constr "Simple_value_approx.t" (middle_end/flambda/inline_and_simplify_aux.mli[357,14507+41]..[357,14507+62])
+                    []
+                ]
+            ]
+          core_type (middle_end/flambda/inline_and_simplify_aux.mli[358,14586+5]..[361,14744+10])
+            Ptyp_arrow
+            Labelled "specialised_args"
+            core_type (middle_end/flambda/inline_and_simplify_aux.mli[358,14586+22]..[358,14586+59])
+              Ptyp_constr "Variable.Map.t" (middle_end/flambda/inline_and_simplify_aux.mli[358,14586+45]..[358,14586+59])
+              [
+                core_type (middle_end/flambda/inline_and_simplify_aux.mli[358,14586+22]..[358,14586+44])
+                  Ptyp_constr "Flambda.specialised_to" (middle_end/flambda/inline_and_simplify_aux.mli[358,14586+22]..[358,14586+44])
+                  []
+              ]
+            core_type (middle_end/flambda/inline_and_simplify_aux.mli[359,14646+5]..[361,14744+10])
+              Ptyp_arrow
+              Labelled "parameter_approximations"
+              core_type (middle_end/flambda/inline_and_simplify_aux.mli[359,14646+30]..[359,14646+66])
+                Ptyp_constr "Variable.Map.t" (middle_end/flambda/inline_and_simplify_aux.mli[359,14646+52]..[359,14646+66])
+                [
+                  core_type (middle_end/flambda/inline_and_simplify_aux.mli[359,14646+30]..[359,14646+51])
+                    Ptyp_constr "Simple_value_approx.t" (middle_end/flambda/inline_and_simplify_aux.mli[359,14646+30]..[359,14646+51])
+                    []
+                ]
+              core_type (middle_end/flambda/inline_and_simplify_aux.mli[360,14713+5]..[361,14744+10])
+                Ptyp_arrow
+                Labelled "set_of_closures_env"
+                core_type (middle_end/flambda/inline_and_simplify_aux.mli[360,14713+25]..[360,14713+30])
+                  Ptyp_constr "Env.t" (middle_end/flambda/inline_and_simplify_aux.mli[360,14713+25]..[360,14713+30])
+                  []
+                core_type (middle_end/flambda/inline_and_simplify_aux.mli[361,14744+5]..[361,14744+10])
+                  Ptyp_constr "Env.t" (middle_end/flambda/inline_and_simplify_aux.mli[361,14744+5]..[361,14744+10])
+                  []
+      []
+  signature_item (middle_end/flambda/inline_and_simplify_aux.mli[363,14756+0]..[368,14889+9])
+    Psig_value
+    value_description "keep_body_check" (middle_end/flambda/inline_and_simplify_aux.mli[363,14756+4]..[363,14756+19]) (middle_end/flambda/inline_and_simplify_aux.mli[363,14756+0]..[368,14889+9])
+      core_type (middle_end/flambda/inline_and_simplify_aux.mli[364,14776+5]..[368,14889+9])
+        Ptyp_arrow
+        Labelled "is_classic_mode"
+        core_type (middle_end/flambda/inline_and_simplify_aux.mli[364,14776+21]..[364,14776+25])
+          Ptyp_constr "bool" (middle_end/flambda/inline_and_simplify_aux.mli[364,14776+21]..[364,14776+25])
+          []
+        core_type (middle_end/flambda/inline_and_simplify_aux.mli[365,14802+5]..[368,14889+9])
+          Ptyp_arrow
+          Labelled "recursive"
+          core_type (middle_end/flambda/inline_and_simplify_aux.mli[365,14802+15]..[365,14802+36])
+            Ptyp_constr "Lazy.t" (middle_end/flambda/inline_and_simplify_aux.mli[365,14802+30]..[365,14802+36])
+            [
+              core_type (middle_end/flambda/inline_and_simplify_aux.mli[365,14802+15]..[365,14802+29])
+                Ptyp_constr "Variable.Set.t" (middle_end/flambda/inline_and_simplify_aux.mli[365,14802+15]..[365,14802+29])
+                []
+            ]
+          core_type (middle_end/flambda/inline_and_simplify_aux.mli[366,14839+5]..[368,14889+9])
+            Ptyp_arrow
+            Nolabel
+            core_type (middle_end/flambda/inline_and_simplify_aux.mli[366,14839+5]..[366,14839+15])
+              Ptyp_constr "Variable.t" (middle_end/flambda/inline_and_simplify_aux.mli[366,14839+5]..[366,14839+15])
+              []
+            core_type (middle_end/flambda/inline_and_simplify_aux.mli[367,14855+5]..[368,14889+9])
+              Ptyp_arrow
+              Nolabel
+              core_type (middle_end/flambda/inline_and_simplify_aux.mli[367,14855+5]..[367,14855+33])
+                Ptyp_constr "Flambda.function_declaration" (middle_end/flambda/inline_and_simplify_aux.mli[367,14855+5]..[367,14855+33])
+                []
+              core_type (middle_end/flambda/inline_and_simplify_aux.mli[368,14889+5]..[368,14889+9])
+                Ptyp_constr "bool" (middle_end/flambda/inline_and_simplify_aux.mli[368,14889+5]..[368,14889+9])
+                []
+      []
+]
+

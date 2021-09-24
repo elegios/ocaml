@@ -1,0 +1,191 @@
+[
+  structure_item (testsuite/tests/typing-gadts/pr7902.ml[5,24+0]..[7,78+55])
+    Pstr_type Rec
+    [
+      type_declaration "segment" (testsuite/tests/typing-gadts/pr7902.ml[5,24+14]..[5,24+21]) (testsuite/tests/typing-gadts/pr7902.ml[5,24+0]..[7,78+55])
+        ptype_params =
+          [
+            core_type (testsuite/tests/typing-gadts/pr7902.ml[5,24+6]..[5,24+8])
+              Ptyp_var a
+            core_type (testsuite/tests/typing-gadts/pr7902.ml[5,24+10]..[5,24+12])
+              Ptyp_var b
+          ]
+        ptype_cstrs =
+          []
+        ptype_kind =
+          Ptype_variant
+            [
+              (testsuite/tests/typing-gadts/pr7902.ml[6,48+2]..[6,48+29])
+                "SegNil" (testsuite/tests/typing-gadts/pr7902.ml[6,48+4]..[6,48+10])
+                []
+                Some
+                  core_type (testsuite/tests/typing-gadts/pr7902.ml[6,48+13]..[6,48+29])
+                    Ptyp_constr "segment" (testsuite/tests/typing-gadts/pr7902.ml[6,48+22]..[6,48+29])
+                    [
+                      core_type (testsuite/tests/typing-gadts/pr7902.ml[6,48+14]..[6,48+16])
+                        Ptyp_var a
+                      core_type (testsuite/tests/typing-gadts/pr7902.ml[6,48+18]..[6,48+20])
+                        Ptyp_var a
+                    ]
+              (testsuite/tests/typing-gadts/pr7902.ml[7,78+2]..[7,78+55])
+                "SegCons" (testsuite/tests/typing-gadts/pr7902.ml[7,78+4]..[7,78+11])
+                [
+                  core_type (testsuite/tests/typing-gadts/pr7902.ml[7,78+14]..[7,78+35])
+                    Ptyp_constr "segment" (testsuite/tests/typing-gadts/pr7902.ml[7,78+28]..[7,78+35])
+                    [
+                      core_type (testsuite/tests/typing-gadts/pr7902.ml[7,78+15]..[7,78+22])
+                        Ptyp_tuple
+                        [
+                          core_type (testsuite/tests/typing-gadts/pr7902.ml[7,78+15]..[7,78+17])
+                            Ptyp_var a
+                          core_type (testsuite/tests/typing-gadts/pr7902.ml[7,78+20]..[7,78+22])
+                            Ptyp_var a
+                        ]
+                      core_type (testsuite/tests/typing-gadts/pr7902.ml[7,78+24]..[7,78+26])
+                        Ptyp_var b
+                    ]
+                ]
+                Some
+                  core_type (testsuite/tests/typing-gadts/pr7902.ml[7,78+39]..[7,78+55])
+                    Ptyp_constr "segment" (testsuite/tests/typing-gadts/pr7902.ml[7,78+48]..[7,78+55])
+                    [
+                      core_type (testsuite/tests/typing-gadts/pr7902.ml[7,78+40]..[7,78+42])
+                        Ptyp_var a
+                      core_type (testsuite/tests/typing-gadts/pr7902.ml[7,78+44]..[7,78+46])
+                        Ptyp_var b
+                    ]
+            ]
+        ptype_private = Public
+        ptype_manifest =
+          None
+    ]
+  structure_item (testsuite/tests/typing-gadts/pr7902.ml[9,135+0]..[12,231+18])
+    Pstr_value Nonrec
+    [
+      <def>
+        pattern (testsuite/tests/typing-gadts/pr7902.ml[9,135+4]..[9,135+44]) ghost
+          Ppat_constraint
+          pattern (testsuite/tests/typing-gadts/pr7902.ml[9,135+4]..[9,135+9])
+            Ppat_var "color" (testsuite/tests/typing-gadts/pr7902.ml[9,135+4]..[9,135+9])
+          core_type (testsuite/tests/typing-gadts/pr7902.ml[9,135+4]..[12,231+18]) ghost
+            Ptyp_poly 'a 'b
+            core_type (testsuite/tests/typing-gadts/pr7902.ml[9,135+23]..[9,135+44])
+              Ptyp_arrow
+              Nolabel
+              core_type (testsuite/tests/typing-gadts/pr7902.ml[9,135+23]..[9,135+37])
+                Ptyp_constr "segment" (testsuite/tests/typing-gadts/pr7902.ml[9,135+30]..[9,135+37])
+                [
+                  core_type (testsuite/tests/typing-gadts/pr7902.ml[9,135+24]..[9,135+25])
+                    Ptyp_var a
+                  core_type (testsuite/tests/typing-gadts/pr7902.ml[9,135+27]..[9,135+28])
+                    Ptyp_var b
+                ]
+              core_type (testsuite/tests/typing-gadts/pr7902.ml[9,135+41]..[9,135+44])
+                Ptyp_constr "int" (testsuite/tests/typing-gadts/pr7902.ml[9,135+41]..[9,135+44])
+                []
+        expression (testsuite/tests/typing-gadts/pr7902.ml[9,135+4]..[12,231+18])
+          Pexp_newtype "a"
+          expression (testsuite/tests/typing-gadts/pr7902.ml[9,135+4]..[12,231+18])
+            Pexp_newtype "b"
+            expression (testsuite/tests/typing-gadts/pr7902.ml[9,135+4]..[12,231+18])
+              Pexp_constraint
+              expression (testsuite/tests/typing-gadts/pr7902.ml[9,135+47]..[12,231+18])
+                Pexp_function
+                [
+                  <case>
+                    pattern (testsuite/tests/typing-gadts/pr7902.ml[10,191+4]..[10,191+10])
+                      Ppat_construct "SegNil" (testsuite/tests/typing-gadts/pr7902.ml[10,191+4]..[10,191+10])
+                      None
+                    expression (testsuite/tests/typing-gadts/pr7902.ml[10,191+14]..[10,191+15])
+                      Pexp_constant PConst_int (0,None)
+                  <case>
+                    pattern (testsuite/tests/typing-gadts/pr7902.ml[11,207+4]..[11,207+18])
+                      Ppat_construct "SegCons" (testsuite/tests/typing-gadts/pr7902.ml[11,207+4]..[11,207+11])
+                      Some
+                        []
+                        pattern (testsuite/tests/typing-gadts/pr7902.ml[11,207+12]..[11,207+18])
+                          Ppat_construct "SegNil" (testsuite/tests/typing-gadts/pr7902.ml[11,207+12]..[11,207+18])
+                          None
+                    expression (testsuite/tests/typing-gadts/pr7902.ml[11,207+22]..[11,207+23])
+                      Pexp_constant PConst_int (0,None)
+                  <case>
+                    pattern (testsuite/tests/typing-gadts/pr7902.ml[12,231+4]..[12,231+13])
+                      Ppat_construct "SegCons" (testsuite/tests/typing-gadts/pr7902.ml[12,231+4]..[12,231+11])
+                      Some
+                        []
+                        pattern (testsuite/tests/typing-gadts/pr7902.ml[12,231+12]..[12,231+13])
+                          Ppat_any
+                    expression (testsuite/tests/typing-gadts/pr7902.ml[12,231+17]..[12,231+18])
+                      Pexp_constant PConst_int (0,None)
+                ]
+              core_type (testsuite/tests/typing-gadts/pr7902.ml[9,135+23]..[9,135+44])
+                Ptyp_arrow
+                Nolabel
+                core_type (testsuite/tests/typing-gadts/pr7902.ml[9,135+23]..[9,135+37])
+                  Ptyp_constr "segment" (testsuite/tests/typing-gadts/pr7902.ml[9,135+30]..[9,135+37])
+                  [
+                    core_type (testsuite/tests/typing-gadts/pr7902.ml[9,135+24]..[9,135+25])
+                      Ptyp_constr "a" (testsuite/tests/typing-gadts/pr7902.ml[9,135+24]..[9,135+25])
+                      []
+                    core_type (testsuite/tests/typing-gadts/pr7902.ml[9,135+27]..[9,135+28])
+                      Ptyp_constr "b" (testsuite/tests/typing-gadts/pr7902.ml[9,135+27]..[9,135+28])
+                      []
+                  ]
+                core_type (testsuite/tests/typing-gadts/pr7902.ml[9,135+41]..[9,135+44])
+                  Ptyp_constr "int" (testsuite/tests/typing-gadts/pr7902.ml[9,135+41]..[9,135+44])
+                  []
+    ]
+  structure_item (testsuite/tests/typing-gadts/pr7902.ml[13,250+0]..[18,416+3])
+    Pstr_extension "expect"
+    [
+      structure_item (testsuite/tests/typing-gadts/pr7902.ml[13,250+9]..[18,416+2])
+        Pstr_eval
+        expression (testsuite/tests/typing-gadts/pr7902.ml[13,250+9]..[18,416+2])
+          Pexp_constant PConst_string ("\ntype ('a, 'b) segment =\n    SegNil : ('a, 'a) segment\n  | SegCons : ('a * 'a, 'b) segment -> ('a, 'b) segment\nval color : ('a, 'b) segment -> int = <fun>\n",(testsuite/tests/typing-gadts/pr7902.ml[13,250+11]..[18,416+0]),Some "")
+    ]
+  structure_item (testsuite/tests/typing-gadts/pr7902.ml[21,432+0]..[24,534+18])
+    Pstr_value Nonrec
+    [
+      <def>
+        pattern (testsuite/tests/typing-gadts/pr7902.ml[21,432+4]..[21,432+9])
+          Ppat_var "color" (testsuite/tests/typing-gadts/pr7902.ml[21,432+4]..[21,432+9])
+        expression (testsuite/tests/typing-gadts/pr7902.ml[21,432+53]..[24,534+18])
+          Pexp_function
+          [
+            <case>
+              pattern (testsuite/tests/typing-gadts/pr7902.ml[22,494+4]..[22,494+10])
+                Ppat_construct "SegNil" (testsuite/tests/typing-gadts/pr7902.ml[22,494+4]..[22,494+10])
+                None
+              expression (testsuite/tests/typing-gadts/pr7902.ml[22,494+14]..[22,494+15])
+                Pexp_constant PConst_int (0,None)
+            <case>
+              pattern (testsuite/tests/typing-gadts/pr7902.ml[23,510+4]..[23,510+18])
+                Ppat_construct "SegCons" (testsuite/tests/typing-gadts/pr7902.ml[23,510+4]..[23,510+11])
+                Some
+                  []
+                  pattern (testsuite/tests/typing-gadts/pr7902.ml[23,510+12]..[23,510+18])
+                    Ppat_construct "SegNil" (testsuite/tests/typing-gadts/pr7902.ml[23,510+12]..[23,510+18])
+                    None
+              expression (testsuite/tests/typing-gadts/pr7902.ml[23,510+22]..[23,510+23])
+                Pexp_constant PConst_int (0,None)
+            <case>
+              pattern (testsuite/tests/typing-gadts/pr7902.ml[24,534+4]..[24,534+13])
+                Ppat_construct "SegCons" (testsuite/tests/typing-gadts/pr7902.ml[24,534+4]..[24,534+11])
+                Some
+                  []
+                  pattern (testsuite/tests/typing-gadts/pr7902.ml[24,534+12]..[24,534+13])
+                    Ppat_any
+              expression (testsuite/tests/typing-gadts/pr7902.ml[24,534+17]..[24,534+18])
+                Pexp_constant PConst_int (0,None)
+          ]
+    ]
+  structure_item (testsuite/tests/typing-gadts/pr7902.ml[25,553+0]..[33,856+3])
+    Pstr_extension "expect"
+    [
+      structure_item (testsuite/tests/typing-gadts/pr7902.ml[25,553+9]..[33,856+2])
+        Pstr_eval
+        expression (testsuite/tests/typing-gadts/pr7902.ml[25,553+9]..[33,856+2])
+          Pexp_constant PConst_string ("\nLine 3, characters 12-18:\n3 |   | SegCons SegNil -> 0\n                ^^^^^^\nError: This pattern matches values of type ('a * 'a, 'a * 'a) segment\n       but a pattern was expected which matches values of type\n         ('a * 'a, 'a) segment\n       The type variable 'a occurs inside 'a * 'a\n",(testsuite/tests/typing-gadts/pr7902.ml[25,553+11]..[33,856+0]),Some "")
+    ]
+]
+

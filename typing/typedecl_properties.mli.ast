@@ -1,0 +1,281 @@
+[
+  signature_item (typing/typedecl_properties.mli[17,1156+0]..[17,1156+34])
+    Psig_type Rec
+    [
+      type_declaration "decl" (typing/typedecl_properties.mli[17,1156+5]..[17,1156+9]) (typing/typedecl_properties.mli[17,1156+0]..[17,1156+34])
+        ptype_params =
+          []
+        ptype_cstrs =
+          []
+        ptype_kind =
+          Ptype_abstract
+        ptype_private = Public
+        ptype_manifest =
+          Some
+            core_type (typing/typedecl_properties.mli[17,1156+12]..[17,1156+34])
+              Ptyp_constr "Types.type_declaration" (typing/typedecl_properties.mli[17,1156+12]..[17,1156+34])
+              []
+    ]
+  signature_item (typing/typedecl_properties.mli[19,1192+0]..[24,1516+59])
+    Psig_attribute "ocaml.text"
+    [
+      structure_item (typing/typedecl_properties.mli[19,1192+0]..[24,1516+59])
+        Pstr_eval
+        expression (typing/typedecl_properties.mli[19,1192+0]..[24,1516+59])
+          Pexp_constant PConst_string(" An abstract interface for properties of type definitions, such as\n   variance and immediacy, that are computed by a fixpoint on\n   mutually-recursive type declarations. This interface contains all\n   the operations needed to initialize and run the fixpoint\n   computation, and then (optionally) check that the result is\n   consistent with the declaration or user expectations. ",(typing/typedecl_properties.mli[19,1192+0]..[24,1516+59]),None)
+    ]
+  signature_item (typing/typedecl_properties.mli[26,1577+0]..[35,1853+1])
+    Psig_type Rec
+    [
+      type_declaration "property" (typing/typedecl_properties.mli[26,1577+19]..[26,1577+27]) (typing/typedecl_properties.mli[26,1577+0]..[35,1853+1])
+        attribute "ocaml.doc"
+          [
+            structure_item (typing/typedecl_properties.mli[36,1855+0]..[44,2225+72])
+              Pstr_eval
+              expression (typing/typedecl_properties.mli[36,1855+0]..[44,2225+72])
+                Pexp_constant PConst_string(" ['prop] represents the type of property values\n    ({!Types.Variance.t}, just 'bool' for immediacy, etc).\n\n    ['req] represents the property value required by the author of the\n    declaration, if they gave an expectation: [type +'a t = ...].\n\n    Some properties have no natural notion of user requirement, or\n    their requirement is global, or already stored in\n    [type_declaration]; they can just use [unit] as ['req] parameter. ",(typing/typedecl_properties.mli[36,1855+0]..[44,2225+72]),None)
+          ]
+        ptype_params =
+          [
+            core_type (typing/typedecl_properties.mli[26,1577+6]..[26,1577+11])
+              Ptyp_var prop
+            core_type (typing/typedecl_properties.mli[26,1577+13]..[26,1577+17])
+              Ptyp_var req
+          ]
+        ptype_cstrs =
+          []
+        ptype_kind =
+          Ptype_record
+            [
+              (typing/typedecl_properties.mli[27,1609+2]..[27,1609+30])
+                Immutable
+                "eq" (typing/typedecl_properties.mli[27,1609+2]..[27,1609+4])                core_type (typing/typedecl_properties.mli[27,1609+7]..[27,1609+29])
+                  Ptyp_arrow
+                  Nolabel
+                  core_type (typing/typedecl_properties.mli[27,1609+7]..[27,1609+12])
+                    Ptyp_var prop
+                  core_type (typing/typedecl_properties.mli[27,1609+16]..[27,1609+29])
+                    Ptyp_arrow
+                    Nolabel
+                    core_type (typing/typedecl_properties.mli[27,1609+16]..[27,1609+21])
+                      Ptyp_var prop
+                    core_type (typing/typedecl_properties.mli[27,1609+25]..[27,1609+29])
+                      Ptyp_constr "bool" (typing/typedecl_properties.mli[27,1609+25]..[27,1609+29])
+                      []
+              (typing/typedecl_properties.mli[28,1640+2]..[28,1640+48])
+                Immutable
+                "merge" (typing/typedecl_properties.mli[28,1640+2]..[28,1640+7])                core_type (typing/typedecl_properties.mli[28,1640+10]..[28,1640+47])
+                  Ptyp_arrow
+                  Labelled "prop"
+                  core_type (typing/typedecl_properties.mli[28,1640+15]..[28,1640+20])
+                    Ptyp_var prop
+                  core_type (typing/typedecl_properties.mli[28,1640+24]..[28,1640+47])
+                    Ptyp_arrow
+                    Labelled "new_prop"
+                    core_type (typing/typedecl_properties.mli[28,1640+33]..[28,1640+38])
+                      Ptyp_var prop
+                    core_type (typing/typedecl_properties.mli[28,1640+42]..[28,1640+47])
+                      Ptyp_var prop
+              (typing/typedecl_properties.mli[30,1690+2]..[30,1690+26])
+                Immutable
+                "default" (typing/typedecl_properties.mli[30,1690+2]..[30,1690+9])                core_type (typing/typedecl_properties.mli[30,1690+12]..[30,1690+25])
+                  Ptyp_arrow
+                  Nolabel
+                  core_type (typing/typedecl_properties.mli[30,1690+12]..[30,1690+16])
+                    Ptyp_constr "decl" (typing/typedecl_properties.mli[30,1690+12]..[30,1690+16])
+                    []
+                  core_type (typing/typedecl_properties.mli[30,1690+20]..[30,1690+25])
+                    Ptyp_var prop
+              (typing/typedecl_properties.mli[31,1717+2]..[31,1717+43])
+                Immutable
+                "compute" (typing/typedecl_properties.mli[31,1717+2]..[31,1717+9])                core_type (typing/typedecl_properties.mli[31,1717+12]..[31,1717+42])
+                  Ptyp_arrow
+                  Nolabel
+                  core_type (typing/typedecl_properties.mli[31,1717+12]..[31,1717+17])
+                    Ptyp_constr "Env.t" (typing/typedecl_properties.mli[31,1717+12]..[31,1717+17])
+                    []
+                  core_type (typing/typedecl_properties.mli[31,1717+21]..[31,1717+42])
+                    Ptyp_arrow
+                    Nolabel
+                    core_type (typing/typedecl_properties.mli[31,1717+21]..[31,1717+25])
+                      Ptyp_constr "decl" (typing/typedecl_properties.mli[31,1717+21]..[31,1717+25])
+                      []
+                    core_type (typing/typedecl_properties.mli[31,1717+29]..[31,1717+42])
+                      Ptyp_arrow
+                      Nolabel
+                      core_type (typing/typedecl_properties.mli[31,1717+29]..[31,1717+33])
+                        Ptyp_var req
+                      core_type (typing/typedecl_properties.mli[31,1717+37]..[31,1717+42])
+                        Ptyp_var prop
+              (typing/typedecl_properties.mli[32,1761+2]..[32,1761+38])
+                Immutable
+                "update_decl" (typing/typedecl_properties.mli[32,1761+2]..[32,1761+13])                core_type (typing/typedecl_properties.mli[32,1761+16]..[32,1761+37])
+                  Ptyp_arrow
+                  Nolabel
+                  core_type (typing/typedecl_properties.mli[32,1761+16]..[32,1761+20])
+                    Ptyp_constr "decl" (typing/typedecl_properties.mli[32,1761+16]..[32,1761+20])
+                    []
+                  core_type (typing/typedecl_properties.mli[32,1761+24]..[32,1761+37])
+                    Ptyp_arrow
+                    Nolabel
+                    core_type (typing/typedecl_properties.mli[32,1761+24]..[32,1761+29])
+                      Ptyp_var prop
+                    core_type (typing/typedecl_properties.mli[32,1761+33]..[32,1761+37])
+                      Ptyp_constr "decl" (typing/typedecl_properties.mli[32,1761+33]..[32,1761+37])
+                      []
+              (typing/typedecl_properties.mli[34,1801+2]..[34,1801+51])
+                Immutable
+                "check" (typing/typedecl_properties.mli[34,1801+2]..[34,1801+7])                core_type (typing/typedecl_properties.mli[34,1801+10]..[34,1801+50])
+                  Ptyp_arrow
+                  Nolabel
+                  core_type (typing/typedecl_properties.mli[34,1801+10]..[34,1801+15])
+                    Ptyp_constr "Env.t" (typing/typedecl_properties.mli[34,1801+10]..[34,1801+15])
+                    []
+                  core_type (typing/typedecl_properties.mli[34,1801+19]..[34,1801+50])
+                    Ptyp_arrow
+                    Nolabel
+                    core_type (typing/typedecl_properties.mli[34,1801+19]..[34,1801+26])
+                      Ptyp_constr "Ident.t" (typing/typedecl_properties.mli[34,1801+19]..[34,1801+26])
+                      []
+                    core_type (typing/typedecl_properties.mli[34,1801+30]..[34,1801+50])
+                      Ptyp_arrow
+                      Nolabel
+                      core_type (typing/typedecl_properties.mli[34,1801+30]..[34,1801+34])
+                        Ptyp_constr "decl" (typing/typedecl_properties.mli[34,1801+30]..[34,1801+34])
+                        []
+                      core_type (typing/typedecl_properties.mli[34,1801+38]..[34,1801+50])
+                        Ptyp_arrow
+                        Nolabel
+                        core_type (typing/typedecl_properties.mli[34,1801+38]..[34,1801+42])
+                          Ptyp_var req
+                        core_type (typing/typedecl_properties.mli[34,1801+46]..[34,1801+50])
+                          Ptyp_constr "unit" (typing/typedecl_properties.mli[34,1801+46]..[34,1801+50])
+                          []
+            ]
+        ptype_private = Public
+        ptype_manifest =
+          None
+    ]
+  signature_item (typing/typedecl_properties.mli[51,2599+0]..[52,2657+61])
+    Psig_value
+    value_description "compute_property" (typing/typedecl_properties.mli[51,2599+4]..[51,2599+20]) (typing/typedecl_properties.mli[51,2599+0]..[52,2657+61])
+      attribute "ocaml.doc"
+        [
+          structure_item (typing/typedecl_properties.mli[47,2300+0]..[50,2530+68])
+            Pstr_eval
+            expression (typing/typedecl_properties.mli[47,2300+0]..[50,2530+68])
+              Pexp_constant PConst_string(" [compute_property prop env decls req] performs a fixpoint computation\n    to determine the final values of a property on a set of mutually-recursive\n    type declarations. The [req] argument must be a list of the same size as\n    [decls], providing the user requirement for each declaration. ",(typing/typedecl_properties.mli[47,2300+0]..[50,2530+68]),None)
+        ]
+      core_type (typing/typedecl_properties.mli[51,2599+23]..[52,2657+61])
+        Ptyp_arrow
+        Nolabel
+        core_type (typing/typedecl_properties.mli[51,2599+23]..[51,2599+45])
+          Ptyp_constr "property" (typing/typedecl_properties.mli[51,2599+37]..[51,2599+45])
+          [
+            core_type (typing/typedecl_properties.mli[51,2599+24]..[51,2599+29])
+              Ptyp_var prop
+            core_type (typing/typedecl_properties.mli[51,2599+31]..[51,2599+35])
+              Ptyp_var req
+          ]
+        core_type (typing/typedecl_properties.mli[51,2599+49]..[52,2657+61])
+          Ptyp_arrow
+          Nolabel
+          core_type (typing/typedecl_properties.mli[51,2599+49]..[51,2599+54])
+            Ptyp_constr "Env.t" (typing/typedecl_properties.mli[51,2599+49]..[51,2599+54])
+            []
+          core_type (typing/typedecl_properties.mli[52,2657+2]..[52,2657+61])
+            Ptyp_arrow
+            Nolabel
+            core_type (typing/typedecl_properties.mli[52,2657+2]..[52,2657+23])
+              Ptyp_constr "list" (typing/typedecl_properties.mli[52,2657+19]..[52,2657+23])
+              [
+                core_type (typing/typedecl_properties.mli[52,2657+3]..[52,2657+17])
+                  Ptyp_tuple
+                  [
+                    core_type (typing/typedecl_properties.mli[52,2657+3]..[52,2657+10])
+                      Ptyp_constr "Ident.t" (typing/typedecl_properties.mli[52,2657+3]..[52,2657+10])
+                      []
+                    core_type (typing/typedecl_properties.mli[52,2657+13]..[52,2657+17])
+                      Ptyp_constr "decl" (typing/typedecl_properties.mli[52,2657+13]..[52,2657+17])
+                      []
+                  ]
+              ]
+            core_type (typing/typedecl_properties.mli[52,2657+27]..[52,2657+61])
+              Ptyp_arrow
+              Nolabel
+              core_type (typing/typedecl_properties.mli[52,2657+27]..[52,2657+36])
+                Ptyp_constr "list" (typing/typedecl_properties.mli[52,2657+32]..[52,2657+36])
+                [
+                  core_type (typing/typedecl_properties.mli[52,2657+27]..[52,2657+31])
+                    Ptyp_var req
+                ]
+              core_type (typing/typedecl_properties.mli[52,2657+40]..[52,2657+61])
+                Ptyp_constr "list" (typing/typedecl_properties.mli[52,2657+57]..[52,2657+61])
+                [
+                  core_type (typing/typedecl_properties.mli[52,2657+41]..[52,2657+55])
+                    Ptyp_tuple
+                    [
+                      core_type (typing/typedecl_properties.mli[52,2657+41]..[52,2657+48])
+                        Ptyp_constr "Ident.t" (typing/typedecl_properties.mli[52,2657+41]..[52,2657+48])
+                        []
+                      core_type (typing/typedecl_properties.mli[52,2657+51]..[52,2657+55])
+                        Ptyp_constr "decl" (typing/typedecl_properties.mli[52,2657+51]..[52,2657+55])
+                        []
+                    ]
+                ]
+      []
+  signature_item (typing/typedecl_properties.mli[54,2720+0]..[55,2784+48])
+    Psig_value
+    value_description "compute_property_noreq" (typing/typedecl_properties.mli[54,2720+4]..[54,2720+26]) (typing/typedecl_properties.mli[54,2720+0]..[55,2784+48])
+      core_type (typing/typedecl_properties.mli[54,2720+29]..[55,2784+48])
+        Ptyp_arrow
+        Nolabel
+        core_type (typing/typedecl_properties.mli[54,2720+29]..[54,2720+51])
+          Ptyp_constr "property" (typing/typedecl_properties.mli[54,2720+43]..[54,2720+51])
+          [
+            core_type (typing/typedecl_properties.mli[54,2720+30]..[54,2720+35])
+              Ptyp_var prop
+            core_type (typing/typedecl_properties.mli[54,2720+37]..[54,2720+41])
+              Ptyp_constr "unit" (typing/typedecl_properties.mli[54,2720+37]..[54,2720+41])
+              []
+          ]
+        core_type (typing/typedecl_properties.mli[54,2720+55]..[55,2784+48])
+          Ptyp_arrow
+          Nolabel
+          core_type (typing/typedecl_properties.mli[54,2720+55]..[54,2720+60])
+            Ptyp_constr "Env.t" (typing/typedecl_properties.mli[54,2720+55]..[54,2720+60])
+            []
+          core_type (typing/typedecl_properties.mli[55,2784+2]..[55,2784+48])
+            Ptyp_arrow
+            Nolabel
+            core_type (typing/typedecl_properties.mli[55,2784+2]..[55,2784+23])
+              Ptyp_constr "list" (typing/typedecl_properties.mli[55,2784+19]..[55,2784+23])
+              [
+                core_type (typing/typedecl_properties.mli[55,2784+3]..[55,2784+17])
+                  Ptyp_tuple
+                  [
+                    core_type (typing/typedecl_properties.mli[55,2784+3]..[55,2784+10])
+                      Ptyp_constr "Ident.t" (typing/typedecl_properties.mli[55,2784+3]..[55,2784+10])
+                      []
+                    core_type (typing/typedecl_properties.mli[55,2784+13]..[55,2784+17])
+                      Ptyp_constr "decl" (typing/typedecl_properties.mli[55,2784+13]..[55,2784+17])
+                      []
+                  ]
+              ]
+            core_type (typing/typedecl_properties.mli[55,2784+27]..[55,2784+48])
+              Ptyp_constr "list" (typing/typedecl_properties.mli[55,2784+44]..[55,2784+48])
+              [
+                core_type (typing/typedecl_properties.mli[55,2784+28]..[55,2784+42])
+                  Ptyp_tuple
+                  [
+                    core_type (typing/typedecl_properties.mli[55,2784+28]..[55,2784+35])
+                      Ptyp_constr "Ident.t" (typing/typedecl_properties.mli[55,2784+28]..[55,2784+35])
+                      []
+                    core_type (typing/typedecl_properties.mli[55,2784+38]..[55,2784+42])
+                      Ptyp_constr "decl" (typing/typedecl_properties.mli[55,2784+38]..[55,2784+42])
+                      []
+                  ]
+              ]
+      []
+]
+

@@ -1,0 +1,112 @@
+[
+  signature_item (otherlibs/systhreads/mutex.mli[16,1079+0]..[27,1451+2])
+    Psig_attribute "ocaml.text"
+    [
+      structure_item (otherlibs/systhreads/mutex.mli[16,1079+0]..[27,1451+2])
+        Pstr_eval
+        expression (otherlibs/systhreads/mutex.mli[16,1079+0]..[27,1451+2])
+          Pexp_constant PConst_string(" Locks for mutual exclusion.\n\n   Mutexes (mutual-exclusion locks) are used to implement critical sections\n   and protect shared mutable data structures against concurrent accesses.\n   The typical use is (if [m] is the mutex associated with the data structure\n   [D]):\n   {[\n     Mutex.lock m;\n     (* Critical section that operates over D *);\n     Mutex.unlock m\n   ]}\n",(otherlibs/systhreads/mutex.mli[16,1079+0]..[27,1451+2]),None)
+    ]
+  signature_item (otherlibs/systhreads/mutex.mli[29,1455+0]..[29,1455+6])
+    Psig_type Rec
+    [
+      type_declaration "t" (otherlibs/systhreads/mutex.mli[29,1455+5]..[29,1455+6]) (otherlibs/systhreads/mutex.mli[29,1455+0]..[29,1455+6])
+        attribute "ocaml.doc"
+          [
+            structure_item (otherlibs/systhreads/mutex.mli[30,1462+0]..[30,1462+27])
+              Pstr_eval
+              expression (otherlibs/systhreads/mutex.mli[30,1462+0]..[30,1462+27])
+                Pexp_constant PConst_string(" The type of mutexes. ",(otherlibs/systhreads/mutex.mli[30,1462+0]..[30,1462+27]),None)
+          ]
+        ptype_params =
+          []
+        ptype_cstrs =
+          []
+        ptype_kind =
+          Ptype_abstract
+        ptype_private = Public
+        ptype_manifest =
+          None
+    ]
+  signature_item (otherlibs/systhreads/mutex.mli[32,1491+0]..[32,1491+22])
+    Psig_value
+    value_description "create" (otherlibs/systhreads/mutex.mli[32,1491+4]..[32,1491+10]) (otherlibs/systhreads/mutex.mli[32,1491+0]..[32,1491+22])
+      attribute "ocaml.doc"
+        [
+          structure_item (otherlibs/systhreads/mutex.mli[33,1514+0]..[33,1514+26])
+            Pstr_eval
+            expression (otherlibs/systhreads/mutex.mli[33,1514+0]..[33,1514+26])
+              Pexp_constant PConst_string(" Return a new mutex. ",(otherlibs/systhreads/mutex.mli[33,1514+0]..[33,1514+26]),None)
+        ]
+      core_type (otherlibs/systhreads/mutex.mli[32,1491+13]..[32,1491+22])
+        Ptyp_arrow
+        Nolabel
+        core_type (otherlibs/systhreads/mutex.mli[32,1491+13]..[32,1491+17])
+          Ptyp_constr "unit" (otherlibs/systhreads/mutex.mli[32,1491+13]..[32,1491+17])
+          []
+        core_type (otherlibs/systhreads/mutex.mli[32,1491+21]..[32,1491+22])
+          Ptyp_constr "t" (otherlibs/systhreads/mutex.mli[32,1491+21]..[32,1491+22])
+          []
+      []
+  signature_item (otherlibs/systhreads/mutex.mli[35,1542+0]..[35,1542+20])
+    Psig_value
+    value_description "lock" (otherlibs/systhreads/mutex.mli[35,1542+4]..[35,1542+8]) (otherlibs/systhreads/mutex.mli[35,1542+0]..[35,1542+20])
+      attribute "ocaml.doc"
+        [
+          structure_item (otherlibs/systhreads/mutex.mli[36,1563+0]..[45,1939+36])
+            Pstr_eval
+            expression (otherlibs/systhreads/mutex.mli[36,1563+0]..[45,1939+36])
+              Pexp_constant PConst_string(" Lock the given mutex. Only one thread can have the mutex locked\n   at any time. A thread that attempts to lock a mutex already locked\n   by another thread will suspend until the other thread unlocks\n   the mutex.\n\n   @raise Sys_error if the mutex is already locked by the thread calling\n   {!Mutex.lock}.\n\n   @before 4.12 {!Sys_error} was not raised for recursive locking\n   (platform-dependent behaviour) ",(otherlibs/systhreads/mutex.mli[36,1563+0]..[45,1939+36]),None)
+        ]
+      core_type (otherlibs/systhreads/mutex.mli[35,1542+11]..[35,1542+20])
+        Ptyp_arrow
+        Nolabel
+        core_type (otherlibs/systhreads/mutex.mli[35,1542+11]..[35,1542+12])
+          Ptyp_constr "t" (otherlibs/systhreads/mutex.mli[35,1542+11]..[35,1542+12])
+          []
+        core_type (otherlibs/systhreads/mutex.mli[35,1542+16]..[35,1542+20])
+          Ptyp_constr "unit" (otherlibs/systhreads/mutex.mli[35,1542+16]..[35,1542+20])
+          []
+      []
+  signature_item (otherlibs/systhreads/mutex.mli[47,1977+0]..[47,1977+24])
+    Psig_value
+    value_description "try_lock" (otherlibs/systhreads/mutex.mli[47,1977+4]..[47,1977+12]) (otherlibs/systhreads/mutex.mli[47,1977+0]..[47,1977+24])
+      attribute "ocaml.doc"
+        [
+          structure_item (otherlibs/systhreads/mutex.mli[48,2002+0]..[51,2191+20])
+            Pstr_eval
+            expression (otherlibs/systhreads/mutex.mli[48,2002+0]..[51,2191+20])
+              Pexp_constant PConst_string(" Same as {!Mutex.lock}, but does not suspend the calling thread if\n   the mutex is already locked: just return [false] immediately\n   in that case. If the mutex is unlocked, lock it and\n   return [true]. ",(otherlibs/systhreads/mutex.mli[48,2002+0]..[51,2191+20]),None)
+        ]
+      core_type (otherlibs/systhreads/mutex.mli[47,1977+15]..[47,1977+24])
+        Ptyp_arrow
+        Nolabel
+        core_type (otherlibs/systhreads/mutex.mli[47,1977+15]..[47,1977+16])
+          Ptyp_constr "t" (otherlibs/systhreads/mutex.mli[47,1977+15]..[47,1977+16])
+          []
+        core_type (otherlibs/systhreads/mutex.mli[47,1977+20]..[47,1977+24])
+          Ptyp_constr "bool" (otherlibs/systhreads/mutex.mli[47,1977+20]..[47,1977+24])
+          []
+      []
+  signature_item (otherlibs/systhreads/mutex.mli[53,2213+0]..[53,2213+22])
+    Psig_value
+    value_description "unlock" (otherlibs/systhreads/mutex.mli[53,2213+4]..[53,2213+10]) (otherlibs/systhreads/mutex.mli[53,2213+0]..[53,2213+22])
+      attribute "ocaml.doc"
+        [
+          structure_item (otherlibs/systhreads/mutex.mli[54,2236+0]..[60,2575+56])
+            Pstr_eval
+            expression (otherlibs/systhreads/mutex.mli[54,2236+0]..[60,2575+56])
+              Pexp_constant PConst_string(" Unlock the given mutex. Other threads suspended trying to lock\n   the mutex will restart.  The mutex must have been previously locked\n   by the thread that calls {!Mutex.unlock}.\n   @raise Sys_error if the mutex is unlocked or was locked by another thread.\n\n   @before 4.12 {!Sys_error} was not raised when unlocking an unlocked mutex\n   or when unlocking a mutex from a different thread. ",(otherlibs/systhreads/mutex.mli[54,2236+0]..[60,2575+56]),None)
+        ]
+      core_type (otherlibs/systhreads/mutex.mli[53,2213+13]..[53,2213+22])
+        Ptyp_arrow
+        Nolabel
+        core_type (otherlibs/systhreads/mutex.mli[53,2213+13]..[53,2213+14])
+          Ptyp_constr "t" (otherlibs/systhreads/mutex.mli[53,2213+13]..[53,2213+14])
+          []
+        core_type (otherlibs/systhreads/mutex.mli[53,2213+18]..[53,2213+22])
+          Ptyp_constr "unit" (otherlibs/systhreads/mutex.mli[53,2213+18]..[53,2213+22])
+          []
+      []
+]
+

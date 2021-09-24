@@ -1,0 +1,415 @@
+[
+  structure_item (testsuite/tests/typing-core-bugs/const_int_hint.ml[5,24+0]..[5,24+24])
+    Pstr_value Nonrec
+    [
+      <def>
+        pattern (testsuite/tests/typing-core-bugs/const_int_hint.ml[5,24+4]..[5,24+5])
+          Ppat_any
+        expression (testsuite/tests/typing-core-bugs/const_int_hint.ml[5,24+8]..[5,24+24])
+          Pexp_open Fresh
+          module_expr (testsuite/tests/typing-core-bugs/const_int_hint.ml[5,24+8]..[5,24+13])
+            Pmod_ident "Int32" (testsuite/tests/typing-core-bugs/const_int_hint.ml[5,24+8]..[5,24+13])
+          expression (testsuite/tests/typing-core-bugs/const_int_hint.ml[5,24+15]..[5,24+23])
+            Pexp_apply
+            expression (testsuite/tests/typing-core-bugs/const_int_hint.ml[5,24+15]..[5,24+18])
+              Pexp_ident "add" (testsuite/tests/typing-core-bugs/const_int_hint.ml[5,24+15]..[5,24+18])
+            [
+              <arg>
+              Nolabel
+                expression (testsuite/tests/typing-core-bugs/const_int_hint.ml[5,24+19]..[5,24+20])
+                  Pexp_constant PConst_int (1,None)
+              <arg>
+              Nolabel
+                expression (testsuite/tests/typing-core-bugs/const_int_hint.ml[5,24+21]..[5,24+23])
+                  Pexp_constant PConst_int (2,Some l)
+            ]
+    ]
+  structure_item (testsuite/tests/typing-core-bugs/const_int_hint.ml[6,51+0]..[13,262+3])
+    Pstr_extension "expect"
+    [
+      structure_item (testsuite/tests/typing-core-bugs/const_int_hint.ml[6,51+9]..[13,262+2])
+        Pstr_eval
+        expression (testsuite/tests/typing-core-bugs/const_int_hint.ml[6,51+9]..[13,262+2])
+          Pexp_constant PConst_string ("\nLine 1, characters 19-20:\n1 | let _ = Int32.(add 1 2l);;\n                       ^\nError: This expression has type int but an expression was expected of type\n         int32\n  Hint: Did you mean `1l'?\n",(testsuite/tests/typing-core-bugs/const_int_hint.ml[6,51+11]..[13,262+0]),Some "")
+    ]
+  structure_item (testsuite/tests/typing-core-bugs/const_int_hint.ml[15,267+0]..[15,267+31])
+    Pstr_value Nonrec
+    [
+      <def>
+        pattern (testsuite/tests/typing-core-bugs/const_int_hint.ml[15,267+4]..[15,267+21]) ghost
+          Ppat_constraint
+          pattern (testsuite/tests/typing-core-bugs/const_int_hint.ml[15,267+4]..[15,267+5])
+            Ppat_any
+          core_type (testsuite/tests/typing-core-bugs/const_int_hint.ml[15,267+8]..[15,267+21])
+            Ptyp_tuple
+            [
+              core_type (testsuite/tests/typing-core-bugs/const_int_hint.ml[15,267+8]..[15,267+13])
+                Ptyp_constr "int32" (testsuite/tests/typing-core-bugs/const_int_hint.ml[15,267+8]..[15,267+13])
+                []
+              core_type (testsuite/tests/typing-core-bugs/const_int_hint.ml[15,267+16]..[15,267+21])
+                Ptyp_constr "int32" (testsuite/tests/typing-core-bugs/const_int_hint.ml[15,267+16]..[15,267+21])
+                []
+            ]
+        expression (testsuite/tests/typing-core-bugs/const_int_hint.ml[15,267+24]..[15,267+31])
+          Pexp_tuple
+          [
+            expression (testsuite/tests/typing-core-bugs/const_int_hint.ml[15,267+24]..[15,267+27])
+              Pexp_constant PConst_int (42,Some l)
+            expression (testsuite/tests/typing-core-bugs/const_int_hint.ml[15,267+29]..[15,267+31])
+              Pexp_constant PConst_int (43,None)
+          ]
+    ]
+  structure_item (testsuite/tests/typing-core-bugs/const_int_hint.ml[16,301+0]..[23,531+3])
+    Pstr_extension "expect"
+    [
+      structure_item (testsuite/tests/typing-core-bugs/const_int_hint.ml[16,301+9]..[23,531+2])
+        Pstr_eval
+        expression (testsuite/tests/typing-core-bugs/const_int_hint.ml[16,301+9]..[23,531+2])
+          Pexp_constant PConst_string ("\nLine 1, characters 29-31:\n1 | let _ : int32 * int32 = 42l, 43;;\n                                 ^^\nError: This expression has type int but an expression was expected of type\n         int32\n  Hint: Did you mean `43l'?\n",(testsuite/tests/typing-core-bugs/const_int_hint.ml[16,301+11]..[23,531+0]),Some "")
+    ]
+  structure_item (testsuite/tests/typing-core-bugs/const_int_hint.ml[25,536+0]..[25,536+35])
+    Pstr_value Nonrec
+    [
+      <def>
+        pattern (testsuite/tests/typing-core-bugs/const_int_hint.ml[25,536+4]..[25,536+25]) ghost
+          Ppat_constraint
+          pattern (testsuite/tests/typing-core-bugs/const_int_hint.ml[25,536+4]..[25,536+5])
+            Ppat_any
+          core_type (testsuite/tests/typing-core-bugs/const_int_hint.ml[25,536+8]..[25,536+25])
+            Ptyp_tuple
+            [
+              core_type (testsuite/tests/typing-core-bugs/const_int_hint.ml[25,536+8]..[25,536+13])
+                Ptyp_constr "int32" (testsuite/tests/typing-core-bugs/const_int_hint.ml[25,536+8]..[25,536+13])
+                []
+              core_type (testsuite/tests/typing-core-bugs/const_int_hint.ml[25,536+16]..[25,536+25])
+                Ptyp_constr "nativeint" (testsuite/tests/typing-core-bugs/const_int_hint.ml[25,536+16]..[25,536+25])
+                []
+            ]
+        expression (testsuite/tests/typing-core-bugs/const_int_hint.ml[25,536+28]..[25,536+35])
+          Pexp_tuple
+          [
+            expression (testsuite/tests/typing-core-bugs/const_int_hint.ml[25,536+28]..[25,536+31])
+              Pexp_constant PConst_int (42,Some l)
+            expression (testsuite/tests/typing-core-bugs/const_int_hint.ml[25,536+33]..[25,536+35])
+              Pexp_constant PConst_int (43,None)
+          ]
+    ]
+  structure_item (testsuite/tests/typing-core-bugs/const_int_hint.ml[26,574+0]..[33,816+3])
+    Pstr_extension "expect"
+    [
+      structure_item (testsuite/tests/typing-core-bugs/const_int_hint.ml[26,574+9]..[33,816+2])
+        Pstr_eval
+        expression (testsuite/tests/typing-core-bugs/const_int_hint.ml[26,574+9]..[33,816+2])
+          Pexp_constant PConst_string ("\nLine 1, characters 33-35:\n1 | let _ : int32 * nativeint = 42l, 43;;\n                                     ^^\nError: This expression has type int but an expression was expected of type\n         nativeint\n  Hint: Did you mean `43n'?\n",(testsuite/tests/typing-core-bugs/const_int_hint.ml[26,574+11]..[33,816+0]),Some "")
+    ]
+  structure_item (testsuite/tests/typing-core-bugs/const_int_hint.ml[35,821+0]..[35,821+16])
+    Pstr_value Nonrec
+    [
+      <def>
+        pattern (testsuite/tests/typing-core-bugs/const_int_hint.ml[35,821+4]..[35,821+5])
+          Ppat_any
+        expression (testsuite/tests/typing-core-bugs/const_int_hint.ml[35,821+8]..[35,821+16])
+          Pexp_apply
+          expression (testsuite/tests/typing-core-bugs/const_int_hint.ml[35,821+8]..[35,821+11])
+            Pexp_ident "min" (testsuite/tests/typing-core-bugs/const_int_hint.ml[35,821+8]..[35,821+11])
+          [
+            <arg>
+            Nolabel
+              expression (testsuite/tests/typing-core-bugs/const_int_hint.ml[35,821+12]..[35,821+14])
+                Pexp_constant PConst_int (6,Some L)
+            <arg>
+            Nolabel
+              expression (testsuite/tests/typing-core-bugs/const_int_hint.ml[35,821+15]..[35,821+16])
+                Pexp_constant PConst_int (7,None)
+          ]
+    ]
+  structure_item (testsuite/tests/typing-core-bugs/const_int_hint.ml[36,840+0]..[43,1039+3])
+    Pstr_extension "expect"
+    [
+      structure_item (testsuite/tests/typing-core-bugs/const_int_hint.ml[36,840+9]..[43,1039+2])
+        Pstr_eval
+        expression (testsuite/tests/typing-core-bugs/const_int_hint.ml[36,840+9]..[43,1039+2])
+          Pexp_constant PConst_string ("\nLine 1, characters 15-16:\n1 | let _ = min 6L 7;;\n                   ^\nError: This expression has type int but an expression was expected of type\n         int64\n  Hint: Did you mean `7L'?\n",(testsuite/tests/typing-core-bugs/const_int_hint.ml[36,840+11]..[43,1039+0]),Some "")
+    ]
+  structure_item (testsuite/tests/typing-core-bugs/const_int_hint.ml[45,1044+0]..[45,1044+19])
+    Pstr_value Nonrec
+    [
+      <def>
+        pattern (testsuite/tests/typing-core-bugs/const_int_hint.ml[45,1044+4]..[45,1044+13]) ghost
+          Ppat_constraint
+          pattern (testsuite/tests/typing-core-bugs/const_int_hint.ml[45,1044+4]..[45,1044+5])
+            Ppat_any
+          core_type (testsuite/tests/typing-core-bugs/const_int_hint.ml[45,1044+8]..[45,1044+13])
+            Ptyp_constr "float" (testsuite/tests/typing-core-bugs/const_int_hint.ml[45,1044+8]..[45,1044+13])
+            []
+        expression (testsuite/tests/typing-core-bugs/const_int_hint.ml[45,1044+16]..[45,1044+19])
+          Pexp_constant PConst_int (123,None)
+    ]
+  structure_item (testsuite/tests/typing-core-bugs/const_int_hint.ml[46,1066+0]..[53,1273+3])
+    Pstr_extension "expect"
+    [
+      structure_item (testsuite/tests/typing-core-bugs/const_int_hint.ml[46,1066+9]..[53,1273+2])
+        Pstr_eval
+        expression (testsuite/tests/typing-core-bugs/const_int_hint.ml[46,1066+9]..[53,1273+2])
+          Pexp_constant PConst_string ("\nLine 1, characters 16-19:\n1 | let _ : float = 123;;\n                    ^^^\nError: This expression has type int but an expression was expected of type\n         float\n  Hint: Did you mean `123.'?\n",(testsuite/tests/typing-core-bugs/const_int_hint.ml[46,1066+11]..[53,1273+0]),Some "")
+    ]
+  structure_item (testsuite/tests/typing-core-bugs/const_int_hint.ml[56,1292+0]..[56,1292+9])
+    Pstr_value Nonrec
+    [
+      <def>
+        pattern (testsuite/tests/typing-core-bugs/const_int_hint.ml[56,1292+4]..[56,1292+5])
+          Ppat_var "x" (testsuite/tests/typing-core-bugs/const_int_hint.ml[56,1292+4]..[56,1292+5])
+        expression (testsuite/tests/typing-core-bugs/const_int_hint.ml[56,1292+8]..[56,1292+9])
+          Pexp_constant PConst_int (0,None)
+    ]
+  structure_item (testsuite/tests/typing-core-bugs/const_int_hint.ml[57,1302+0]..[57,1302+24])
+    Pstr_value Nonrec
+    [
+      <def>
+        pattern (testsuite/tests/typing-core-bugs/const_int_hint.ml[57,1302+4]..[57,1302+5])
+          Ppat_any
+        expression (testsuite/tests/typing-core-bugs/const_int_hint.ml[57,1302+8]..[57,1302+24])
+          Pexp_open Fresh
+          module_expr (testsuite/tests/typing-core-bugs/const_int_hint.ml[57,1302+8]..[57,1302+13])
+            Pmod_ident "Int32" (testsuite/tests/typing-core-bugs/const_int_hint.ml[57,1302+8]..[57,1302+13])
+          expression (testsuite/tests/typing-core-bugs/const_int_hint.ml[57,1302+15]..[57,1302+23])
+            Pexp_apply
+            expression (testsuite/tests/typing-core-bugs/const_int_hint.ml[57,1302+15]..[57,1302+18])
+              Pexp_ident "add" (testsuite/tests/typing-core-bugs/const_int_hint.ml[57,1302+15]..[57,1302+18])
+            [
+              <arg>
+              Nolabel
+                expression (testsuite/tests/typing-core-bugs/const_int_hint.ml[57,1302+19]..[57,1302+20])
+                  Pexp_ident "x" (testsuite/tests/typing-core-bugs/const_int_hint.ml[57,1302+19]..[57,1302+20])
+              <arg>
+              Nolabel
+                expression (testsuite/tests/typing-core-bugs/const_int_hint.ml[57,1302+21]..[57,1302+23])
+                  Pexp_constant PConst_int (2,Some l)
+            ]
+    ]
+  structure_item (testsuite/tests/typing-core-bugs/const_int_hint.ml[58,1329+0]..[65,1529+3])
+    Pstr_extension "expect"
+    [
+      structure_item (testsuite/tests/typing-core-bugs/const_int_hint.ml[58,1329+9]..[65,1529+2])
+        Pstr_eval
+        expression (testsuite/tests/typing-core-bugs/const_int_hint.ml[58,1329+9]..[65,1529+2])
+          Pexp_constant PConst_string ("\nval x : int = 0\nLine 2, characters 19-20:\n2 | let _ = Int32.(add x 2l);;\n                       ^\nError: This expression has type int but an expression was expected of type\n         int32\n",(testsuite/tests/typing-core-bugs/const_int_hint.ml[58,1329+11]..[65,1529+0]),Some "")
+    ]
+  structure_item (testsuite/tests/typing-core-bugs/const_int_hint.ml[68,1548+0]..[70,1594+10])
+    Pstr_value Nonrec
+    [
+      <def>
+        pattern (testsuite/tests/typing-core-bugs/const_int_hint.ml[68,1548+4]..[68,1548+22]) ghost
+          Ppat_constraint
+          pattern (testsuite/tests/typing-core-bugs/const_int_hint.ml[68,1548+4]..[68,1548+5])
+            Ppat_any
+          core_type (testsuite/tests/typing-core-bugs/const_int_hint.ml[68,1548+8]..[68,1548+22])
+            Ptyp_arrow
+            Nolabel
+            core_type (testsuite/tests/typing-core-bugs/const_int_hint.ml[68,1548+8]..[68,1548+13])
+              Ptyp_constr "int32" (testsuite/tests/typing-core-bugs/const_int_hint.ml[68,1548+8]..[68,1548+13])
+              []
+            core_type (testsuite/tests/typing-core-bugs/const_int_hint.ml[68,1548+17]..[68,1548+22])
+              Ptyp_constr "int32" (testsuite/tests/typing-core-bugs/const_int_hint.ml[68,1548+17]..[68,1548+22])
+              []
+        expression (testsuite/tests/typing-core-bugs/const_int_hint.ml[68,1548+25]..[70,1594+10])
+          Pexp_function
+          [
+            <case>
+              pattern (testsuite/tests/typing-core-bugs/const_int_hint.ml[69,1582+4]..[69,1582+5])
+                Ppat_constant PConst_int (0,None)
+              expression (testsuite/tests/typing-core-bugs/const_int_hint.ml[69,1582+9]..[69,1582+11])
+                Pexp_constant PConst_int (0,Some l)
+            <case>
+              pattern (testsuite/tests/typing-core-bugs/const_int_hint.ml[70,1594+4]..[70,1594+5])
+                Ppat_var "x" (testsuite/tests/typing-core-bugs/const_int_hint.ml[70,1594+4]..[70,1594+5])
+              expression (testsuite/tests/typing-core-bugs/const_int_hint.ml[70,1594+9]..[70,1594+10])
+                Pexp_ident "x" (testsuite/tests/typing-core-bugs/const_int_hint.ml[70,1594+9]..[70,1594+10])
+          ]
+    ]
+  structure_item (testsuite/tests/typing-core-bugs/const_int_hint.ml[71,1605+0]..[78,1810+3])
+    Pstr_extension "expect"
+    [
+      structure_item (testsuite/tests/typing-core-bugs/const_int_hint.ml[71,1605+9]..[78,1810+2])
+        Pstr_eval
+        expression (testsuite/tests/typing-core-bugs/const_int_hint.ml[71,1605+9]..[78,1810+2])
+          Pexp_constant PConst_string ("\nLine 2, characters 4-5:\n2 |   | 0 -> 0l\n        ^\nError: This pattern matches values of type int\n       but a pattern was expected which matches values of type int32\n  Hint: Did you mean `0l'?\n",(testsuite/tests/typing-core-bugs/const_int_hint.ml[71,1605+11]..[78,1810+0]),Some "")
+    ]
+  structure_item (testsuite/tests/typing-core-bugs/const_int_hint.ml[80,1815+0]..[82,1866+10])
+    Pstr_value Nonrec
+    [
+      <def>
+        pattern (testsuite/tests/typing-core-bugs/const_int_hint.ml[80,1815+4]..[80,1815+22]) ghost
+          Ppat_constraint
+          pattern (testsuite/tests/typing-core-bugs/const_int_hint.ml[80,1815+4]..[80,1815+5])
+            Ppat_any
+          core_type (testsuite/tests/typing-core-bugs/const_int_hint.ml[80,1815+8]..[80,1815+22])
+            Ptyp_arrow
+            Nolabel
+            core_type (testsuite/tests/typing-core-bugs/const_int_hint.ml[80,1815+8]..[80,1815+13])
+              Ptyp_constr "int64" (testsuite/tests/typing-core-bugs/const_int_hint.ml[80,1815+8]..[80,1815+13])
+              []
+            core_type (testsuite/tests/typing-core-bugs/const_int_hint.ml[80,1815+17]..[80,1815+22])
+              Ptyp_constr "int64" (testsuite/tests/typing-core-bugs/const_int_hint.ml[80,1815+17]..[80,1815+22])
+              []
+        expression (testsuite/tests/typing-core-bugs/const_int_hint.ml[80,1815+25]..[82,1866+10])
+          Pexp_function
+          [
+            <case>
+              pattern (testsuite/tests/typing-core-bugs/const_int_hint.ml[81,1849+4]..[81,1849+10])
+                Ppat_or
+                pattern (testsuite/tests/typing-core-bugs/const_int_hint.ml[81,1849+4]..[81,1849+6])
+                  Ppat_constant PConst_int (1,Some L)
+                pattern (testsuite/tests/typing-core-bugs/const_int_hint.ml[81,1849+9]..[81,1849+10])
+                  Ppat_constant PConst_int (2,None)
+              expression (testsuite/tests/typing-core-bugs/const_int_hint.ml[81,1849+14]..[81,1849+16])
+                Pexp_constant PConst_int (3,Some L)
+            <case>
+              pattern (testsuite/tests/typing-core-bugs/const_int_hint.ml[82,1866+4]..[82,1866+5])
+                Ppat_var "x" (testsuite/tests/typing-core-bugs/const_int_hint.ml[82,1866+4]..[82,1866+5])
+              expression (testsuite/tests/typing-core-bugs/const_int_hint.ml[82,1866+9]..[82,1866+10])
+                Pexp_ident "x" (testsuite/tests/typing-core-bugs/const_int_hint.ml[82,1866+9]..[82,1866+10])
+          ]
+    ]
+  structure_item (testsuite/tests/typing-core-bugs/const_int_hint.ml[83,1879+0]..[90,2095+3])
+    Pstr_extension "expect"
+    [
+      structure_item (testsuite/tests/typing-core-bugs/const_int_hint.ml[83,1879+9]..[90,2095+2])
+        Pstr_eval
+        expression (testsuite/tests/typing-core-bugs/const_int_hint.ml[83,1879+9]..[90,2095+2])
+          Pexp_constant PConst_string ("\nLine 2, characters 9-10:\n2 |   | 1L | 2 -> 3L\n             ^\nError: This pattern matches values of type int\n       but a pattern was expected which matches values of type int64\n  Hint: Did you mean `2L'?\n",(testsuite/tests/typing-core-bugs/const_int_hint.ml[83,1879+11]..[90,2095+0]),Some "")
+    ]
+  structure_item (testsuite/tests/typing-core-bugs/const_int_hint.ml[93,2116+0]..[93,2116+18])
+    Pstr_value Nonrec
+    [
+      <def>
+        pattern (testsuite/tests/typing-core-bugs/const_int_hint.ml[93,2116+4]..[93,2116+13]) ghost
+          Ppat_constraint
+          pattern (testsuite/tests/typing-core-bugs/const_int_hint.ml[93,2116+4]..[93,2116+5])
+            Ppat_any
+          core_type (testsuite/tests/typing-core-bugs/const_int_hint.ml[93,2116+8]..[93,2116+13])
+            Ptyp_constr "int32" (testsuite/tests/typing-core-bugs/const_int_hint.ml[93,2116+8]..[93,2116+13])
+            []
+        expression (testsuite/tests/typing-core-bugs/const_int_hint.ml[93,2116+16]..[93,2116+18])
+          Pexp_constant PConst_int (1,Some L)
+    ]
+  structure_item (testsuite/tests/typing-core-bugs/const_int_hint.ml[94,2137+0]..[101,2342+3])
+    Pstr_extension "expect"
+    [
+      structure_item (testsuite/tests/typing-core-bugs/const_int_hint.ml[94,2137+9]..[101,2342+2])
+        Pstr_eval
+        expression (testsuite/tests/typing-core-bugs/const_int_hint.ml[94,2137+9]..[101,2342+2])
+          Pexp_constant PConst_string ("\nLine 1, characters 16-18:\n1 | let _ : int32 = 1L;;\n                    ^^\nError: This expression has type int64 but an expression was expected of type\n         int32\n  Hint: Did you mean `1l'?\n",(testsuite/tests/typing-core-bugs/const_int_hint.ml[94,2137+11]..[101,2342+0]),Some "")
+    ]
+  structure_item (testsuite/tests/typing-core-bugs/const_int_hint.ml[102,2346+0]..[102,2346+18])
+    Pstr_value Nonrec
+    [
+      <def>
+        pattern (testsuite/tests/typing-core-bugs/const_int_hint.ml[102,2346+4]..[102,2346+13]) ghost
+          Ppat_constraint
+          pattern (testsuite/tests/typing-core-bugs/const_int_hint.ml[102,2346+4]..[102,2346+5])
+            Ppat_any
+          core_type (testsuite/tests/typing-core-bugs/const_int_hint.ml[102,2346+8]..[102,2346+13])
+            Ptyp_constr "float" (testsuite/tests/typing-core-bugs/const_int_hint.ml[102,2346+8]..[102,2346+13])
+            []
+        expression (testsuite/tests/typing-core-bugs/const_int_hint.ml[102,2346+16]..[102,2346+18])
+          Pexp_constant PConst_int (1,Some L)
+    ]
+  structure_item (testsuite/tests/typing-core-bugs/const_int_hint.ml[103,2367+0]..[110,2572+3])
+    Pstr_extension "expect"
+    [
+      structure_item (testsuite/tests/typing-core-bugs/const_int_hint.ml[103,2367+9]..[110,2572+2])
+        Pstr_eval
+        expression (testsuite/tests/typing-core-bugs/const_int_hint.ml[103,2367+9]..[110,2572+2])
+          Pexp_constant PConst_string ("\nLine 1, characters 16-18:\n1 | let _ : float = 1L;;\n                    ^^\nError: This expression has type int64 but an expression was expected of type\n         float\n  Hint: Did you mean `1.'?\n",(testsuite/tests/typing-core-bugs/const_int_hint.ml[103,2367+11]..[110,2572+0]),Some "")
+    ]
+  structure_item (testsuite/tests/typing-core-bugs/const_int_hint.ml[111,2576+0]..[111,2576+18])
+    Pstr_value Nonrec
+    [
+      <def>
+        pattern (testsuite/tests/typing-core-bugs/const_int_hint.ml[111,2576+4]..[111,2576+13]) ghost
+          Ppat_constraint
+          pattern (testsuite/tests/typing-core-bugs/const_int_hint.ml[111,2576+4]..[111,2576+5])
+            Ppat_any
+          core_type (testsuite/tests/typing-core-bugs/const_int_hint.ml[111,2576+8]..[111,2576+13])
+            Ptyp_constr "int64" (testsuite/tests/typing-core-bugs/const_int_hint.ml[111,2576+8]..[111,2576+13])
+            []
+        expression (testsuite/tests/typing-core-bugs/const_int_hint.ml[111,2576+16]..[111,2576+18])
+          Pexp_constant PConst_int (1,Some n)
+    ]
+  structure_item (testsuite/tests/typing-core-bugs/const_int_hint.ml[112,2597+0]..[119,2804+3])
+    Pstr_extension "expect"
+    [
+      structure_item (testsuite/tests/typing-core-bugs/const_int_hint.ml[112,2597+9]..[119,2804+2])
+        Pstr_eval
+        expression (testsuite/tests/typing-core-bugs/const_int_hint.ml[112,2597+9]..[119,2804+2])
+          Pexp_constant PConst_string ("\nLine 1, characters 16-18:\n1 | let _ : int64 = 1n;;\n                    ^^\nError: This expression has type nativeint\n       but an expression was expected of type int64\n  Hint: Did you mean `1L'?\n",(testsuite/tests/typing-core-bugs/const_int_hint.ml[112,2597+11]..[119,2804+0]),Some "")
+    ]
+  structure_item (testsuite/tests/typing-core-bugs/const_int_hint.ml[120,2808+0]..[120,2808+22])
+    Pstr_value Nonrec
+    [
+      <def>
+        pattern (testsuite/tests/typing-core-bugs/const_int_hint.ml[120,2808+4]..[120,2808+17]) ghost
+          Ppat_constraint
+          pattern (testsuite/tests/typing-core-bugs/const_int_hint.ml[120,2808+4]..[120,2808+5])
+            Ppat_any
+          core_type (testsuite/tests/typing-core-bugs/const_int_hint.ml[120,2808+8]..[120,2808+17])
+            Ptyp_constr "nativeint" (testsuite/tests/typing-core-bugs/const_int_hint.ml[120,2808+8]..[120,2808+17])
+            []
+        expression (testsuite/tests/typing-core-bugs/const_int_hint.ml[120,2808+20]..[120,2808+22])
+          Pexp_constant PConst_int (1,Some l)
+    ]
+  structure_item (testsuite/tests/typing-core-bugs/const_int_hint.ml[121,2833+0]..[128,3050+3])
+    Pstr_extension "expect"
+    [
+      structure_item (testsuite/tests/typing-core-bugs/const_int_hint.ml[121,2833+9]..[128,3050+2])
+        Pstr_eval
+        expression (testsuite/tests/typing-core-bugs/const_int_hint.ml[121,2833+9]..[128,3050+2])
+          Pexp_constant PConst_string ("\nLine 1, characters 20-22:\n1 | let _ : nativeint = 1l;;\n                        ^^\nError: This expression has type int32 but an expression was expected of type\n         nativeint\n  Hint: Did you mean `1n'?\n",(testsuite/tests/typing-core-bugs/const_int_hint.ml[121,2833+11]..[128,3050+0]),Some "")
+    ]
+  structure_item (testsuite/tests/typing-core-bugs/const_int_hint.ml[131,3077+0]..[131,3077+18])
+    Pstr_value Nonrec
+    [
+      <def>
+        pattern (testsuite/tests/typing-core-bugs/const_int_hint.ml[131,3077+4]..[131,3077+13]) ghost
+          Ppat_constraint
+          pattern (testsuite/tests/typing-core-bugs/const_int_hint.ml[131,3077+4]..[131,3077+5])
+            Ppat_any
+          core_type (testsuite/tests/typing-core-bugs/const_int_hint.ml[131,3077+8]..[131,3077+13])
+            Ptyp_constr "int64" (testsuite/tests/typing-core-bugs/const_int_hint.ml[131,3077+8]..[131,3077+13])
+            []
+        expression (testsuite/tests/typing-core-bugs/const_int_hint.ml[131,3077+16]..[131,3077+18])
+          Pexp_constant PConst_float (0.,None)
+    ]
+  structure_item (testsuite/tests/typing-core-bugs/const_int_hint.ml[132,3098+0]..[138,3276+3])
+    Pstr_extension "expect"
+    [
+      structure_item (testsuite/tests/typing-core-bugs/const_int_hint.ml[132,3098+9]..[138,3276+2])
+        Pstr_eval
+        expression (testsuite/tests/typing-core-bugs/const_int_hint.ml[132,3098+9]..[138,3276+2])
+          Pexp_constant PConst_string ("\nLine 1, characters 16-18:\n1 | let _ : int64 = 0.;;\n                    ^^\nError: This expression has type float but an expression was expected of type\n         int64\n",(testsuite/tests/typing-core-bugs/const_int_hint.ml[132,3098+11]..[138,3276+0]),Some "")
+    ]
+  structure_item (testsuite/tests/typing-core-bugs/const_int_hint.ml[139,3280+0]..[139,3280+16])
+    Pstr_value Nonrec
+    [
+      <def>
+        pattern (testsuite/tests/typing-core-bugs/const_int_hint.ml[139,3280+4]..[139,3280+11]) ghost
+          Ppat_constraint
+          pattern (testsuite/tests/typing-core-bugs/const_int_hint.ml[139,3280+4]..[139,3280+5])
+            Ppat_any
+          core_type (testsuite/tests/typing-core-bugs/const_int_hint.ml[139,3280+8]..[139,3280+11])
+            Ptyp_constr "int" (testsuite/tests/typing-core-bugs/const_int_hint.ml[139,3280+8]..[139,3280+11])
+            []
+        expression (testsuite/tests/typing-core-bugs/const_int_hint.ml[139,3280+14]..[139,3280+16])
+          Pexp_constant PConst_int (1,Some L)
+    ]
+  structure_item (testsuite/tests/typing-core-bugs/const_int_hint.ml[140,3299+0]..[146,3471+3])
+    Pstr_extension "expect"
+    [
+      structure_item (testsuite/tests/typing-core-bugs/const_int_hint.ml[140,3299+9]..[146,3471+2])
+        Pstr_eval
+        expression (testsuite/tests/typing-core-bugs/const_int_hint.ml[140,3299+9]..[146,3471+2])
+          Pexp_constant PConst_string ("\nLine 1, characters 14-16:\n1 | let _ : int = 1L;;\n                  ^^\nError: This expression has type int64 but an expression was expected of type\n         int\n",(testsuite/tests/typing-core-bugs/const_int_hint.ml[140,3299+11]..[146,3471+0]),Some "")
+    ]
+]
+

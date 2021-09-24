@@ -1,0 +1,1416 @@
+[
+  structure_item (asmcomp/comballoc.ml[18,1145+0]..[18,1145+9])
+    Pstr_open Fresh
+    module_expr (asmcomp/comballoc.ml[18,1145+5]..[18,1145+9])
+      Pmod_ident "Mach" (asmcomp/comballoc.ml[18,1145+5]..[18,1145+9])
+  structure_item (asmcomp/comballoc.ml[20,1156+0]..[23,1339+18])
+    Pstr_type Rec
+    [
+      type_declaration "pending_alloc" (asmcomp/comballoc.ml[20,1156+5]..[20,1156+18]) (asmcomp/comballoc.ml[20,1156+0]..[23,1339+18])
+        ptype_params =
+          []
+        ptype_cstrs =
+          []
+        ptype_kind =
+          Ptype_record
+            [
+              (asmcomp/comballoc.ml[21,1177+4]..[21,1177+15])
+                Immutable
+                "reg" (asmcomp/comballoc.ml[21,1177+4]..[21,1177+7])                core_type (asmcomp/comballoc.ml[21,1177+9]..[21,1177+14])
+                  Ptyp_constr "Reg.t" (asmcomp/comballoc.ml[21,1177+9]..[21,1177+14])
+                  []
+              (asmcomp/comballoc.ml[22,1258+4]..[22,1258+38])
+                Immutable
+                "dbginfos" (asmcomp/comballoc.ml[22,1258+4]..[22,1258+12])                core_type (asmcomp/comballoc.ml[22,1258+14]..[22,1258+37])
+                  Ptyp_constr "Debuginfo.alloc_dbginfo" (asmcomp/comballoc.ml[22,1258+14]..[22,1258+37])
+                  []
+              (asmcomp/comballoc.ml[23,1339+4]..[23,1339+16])
+                Immutable
+                "totalsz" (asmcomp/comballoc.ml[23,1339+4]..[23,1339+11])                core_type (asmcomp/comballoc.ml[23,1339+13]..[23,1339+16])
+                  Ptyp_constr "int" (asmcomp/comballoc.ml[23,1339+13]..[23,1339+16])
+                  []
+            ]
+        ptype_private = Public
+        ptype_manifest =
+          None
+    ]
+  structure_item (asmcomp/comballoc.ml[25,1421+0]..[27,1458+34])
+    Pstr_type Rec
+    [
+      type_declaration "allocation_state" (asmcomp/comballoc.ml[25,1421+5]..[25,1421+21]) (asmcomp/comballoc.ml[25,1421+0]..[27,1458+34])
+        ptype_params =
+          []
+        ptype_cstrs =
+          []
+        ptype_kind =
+          Ptype_variant
+            [
+              (asmcomp/comballoc.ml[26,1445+4]..[26,1445+12])
+                "No_alloc" (asmcomp/comballoc.ml[26,1445+4]..[26,1445+12])
+                []
+                None
+              (asmcomp/comballoc.ml[27,1458+2]..[27,1458+34])
+                "Pending_alloc" (asmcomp/comballoc.ml[27,1458+4]..[27,1458+17])
+                [
+                  core_type (asmcomp/comballoc.ml[27,1458+21]..[27,1458+34])
+                    Ptyp_constr "pending_alloc" (asmcomp/comballoc.ml[27,1458+21]..[27,1458+34])
+                    []
+                ]
+                None
+            ]
+        ptype_private = Public
+        ptype_manifest =
+          None
+    ]
+  structure_item (asmcomp/comballoc.ml[29,1494+0]..[98,4402+44])
+    Pstr_value Rec
+    [
+      <def>
+        pattern (asmcomp/comballoc.ml[29,1494+8]..[29,1494+15])
+          Ppat_var "combine" (asmcomp/comballoc.ml[29,1494+8]..[29,1494+15])
+        expression (asmcomp/comballoc.ml[29,1494+16]..[95,4302+74]) ghost
+          Pexp_fun
+          Nolabel
+          None
+          pattern (asmcomp/comballoc.ml[29,1494+16]..[29,1494+17])
+            Ppat_var "i" (asmcomp/comballoc.ml[29,1494+16]..[29,1494+17])
+          expression (asmcomp/comballoc.ml[29,1494+18]..[95,4302+74]) ghost
+            Pexp_fun
+            Nolabel
+            None
+            pattern (asmcomp/comballoc.ml[29,1494+18]..[29,1494+28])
+              Ppat_var "allocstate" (asmcomp/comballoc.ml[29,1494+18]..[29,1494+28])
+            expression (asmcomp/comballoc.ml[30,1525+2]..[95,4302+74])
+              Pexp_match
+              expression (asmcomp/comballoc.ml[30,1525+8]..[30,1525+14])
+                Pexp_field
+                expression (asmcomp/comballoc.ml[30,1525+8]..[30,1525+9])
+                  Pexp_ident "i" (asmcomp/comballoc.ml[30,1525+8]..[30,1525+9])
+                "desc" (asmcomp/comballoc.ml[30,1525+10]..[30,1525+14])
+              [
+                <case>
+                  pattern (asmcomp/comballoc.ml[31,1545+4]..[31,1545+39])
+                    Ppat_or
+                    pattern (asmcomp/comballoc.ml[31,1545+4]..[31,1545+28])
+                      Ppat_or
+                      pattern (asmcomp/comballoc.ml[31,1545+4]..[31,1545+18])
+                        Ppat_or
+                        pattern (asmcomp/comballoc.ml[31,1545+4]..[31,1545+8])
+                          Ppat_construct "Iend" (asmcomp/comballoc.ml[31,1545+4]..[31,1545+8])
+                          None
+                        pattern (asmcomp/comballoc.ml[31,1545+11]..[31,1545+18])
+                          Ppat_construct "Ireturn" (asmcomp/comballoc.ml[31,1545+11]..[31,1545+18])
+                          None
+                      pattern (asmcomp/comballoc.ml[31,1545+21]..[31,1545+28])
+                        Ppat_construct "Iexit" (asmcomp/comballoc.ml[31,1545+21]..[31,1545+26])
+                        Some
+                          []
+                          pattern (asmcomp/comballoc.ml[31,1545+27]..[31,1545+28])
+                            Ppat_any
+                    pattern (asmcomp/comballoc.ml[31,1545+31]..[31,1545+39])
+                      Ppat_construct "Iraise" (asmcomp/comballoc.ml[31,1545+31]..[31,1545+37])
+                      Some
+                        []
+                        pattern (asmcomp/comballoc.ml[31,1545+38]..[31,1545+39])
+                          Ppat_any
+                  expression (asmcomp/comballoc.ml[32,1588+6]..[32,1588+21])
+                    Pexp_tuple
+                    [
+                      expression (asmcomp/comballoc.ml[32,1588+7]..[32,1588+8])
+                        Pexp_ident "i" (asmcomp/comballoc.ml[32,1588+7]..[32,1588+8])
+                      expression (asmcomp/comballoc.ml[32,1588+10]..[32,1588+20])
+                        Pexp_ident "allocstate" (asmcomp/comballoc.ml[32,1588+10]..[32,1588+20])
+                    ]
+                <case>
+                  pattern (asmcomp/comballoc.ml[33,1610+4]..[33,1610+42])
+                    Ppat_construct "Iop" (asmcomp/comballoc.ml[33,1610+4]..[33,1610+7])
+                    Some
+                      []
+                      pattern (asmcomp/comballoc.ml[33,1610+7]..[33,1610+42])
+                        Ppat_construct "Ialloc" (asmcomp/comballoc.ml[33,1610+8]..[33,1610+14])
+                        Some
+                          []
+                          pattern (asmcomp/comballoc.ml[33,1610+15]..[33,1610+41])
+                            Ppat_record Open
+                            [
+                              "bytes" (asmcomp/comballoc.ml[33,1610+17]..[33,1610+22])
+                                pattern (asmcomp/comballoc.ml[33,1610+25]..[33,1610+27])
+                                  Ppat_var "sz" (asmcomp/comballoc.ml[33,1610+25]..[33,1610+27])
+                              "dbginfo" (asmcomp/comballoc.ml[33,1610+29]..[33,1610+36]) ghost
+                                pattern (asmcomp/comballoc.ml[33,1610+29]..[33,1610+36])
+                                  Ppat_var "dbginfo" (asmcomp/comballoc.ml[33,1610+29]..[33,1610+36])
+                            ]
+                  expression (asmcomp/comballoc.ml[34,1656+6]..[64,2935+9])
+                    Pexp_sequence
+                    expression (asmcomp/comballoc.ml[34,1656+6]..[34,1656+38])
+                      Pexp_assert
+                      expression (asmcomp/comballoc.ml[34,1656+13]..[34,1656+38])
+                        Pexp_apply
+                        expression (asmcomp/comballoc.ml[34,1656+34]..[34,1656+35])
+                          Pexp_ident "=" (asmcomp/comballoc.ml[34,1656+34]..[34,1656+35])
+                        [
+                          <arg>
+                          Nolabel
+                            expression (asmcomp/comballoc.ml[34,1656+14]..[34,1656+33])
+                              Pexp_apply
+                              expression (asmcomp/comballoc.ml[34,1656+14]..[34,1656+25])
+                                Pexp_ident "List.length" (asmcomp/comballoc.ml[34,1656+14]..[34,1656+25])
+                              [
+                                <arg>
+                                Nolabel
+                                  expression (asmcomp/comballoc.ml[34,1656+26]..[34,1656+33])
+                                    Pexp_ident "dbginfo" (asmcomp/comballoc.ml[34,1656+26]..[34,1656+33])
+                              ]
+                          <arg>
+                          Nolabel
+                            expression (asmcomp/comballoc.ml[34,1656+36]..[34,1656+37])
+                              Pexp_constant PConst_int (1,None)
+                        ]
+                    expression (asmcomp/comballoc.ml[35,1696+6]..[64,2935+9])
+                      Pexp_match
+                      expression (asmcomp/comballoc.ml[35,1696+18]..[35,1696+28])
+                        Pexp_ident "allocstate" (asmcomp/comballoc.ml[35,1696+18]..[35,1696+28])
+                      [
+                        <case>
+                          pattern (asmcomp/comballoc.ml[36,1730+8]..[36,1730+46])
+                            Ppat_construct "Pending_alloc" (asmcomp/comballoc.ml[36,1730+8]..[36,1730+21])
+                            Some
+                              []
+                              pattern (asmcomp/comballoc.ml[36,1730+22]..[36,1730+46])
+                                Ppat_record Closed
+                                [
+                                  "reg" (asmcomp/comballoc.ml[36,1730+23]..[36,1730+26]) ghost
+                                    pattern (asmcomp/comballoc.ml[36,1730+23]..[36,1730+26])
+                                      Ppat_var "reg" (asmcomp/comballoc.ml[36,1730+23]..[36,1730+26])
+                                  "dbginfos" (asmcomp/comballoc.ml[36,1730+28]..[36,1730+36]) ghost
+                                    pattern (asmcomp/comballoc.ml[36,1730+28]..[36,1730+36])
+                                      Ppat_var "dbginfos" (asmcomp/comballoc.ml[36,1730+28]..[36,1730+36])
+                                  "totalsz" (asmcomp/comballoc.ml[36,1730+38]..[36,1730+45]) ghost
+                                    pattern (asmcomp/comballoc.ml[36,1730+38]..[36,1730+45])
+                                      Ppat_var "totalsz" (asmcomp/comballoc.ml[36,1730+38]..[36,1730+45])
+                                ]
+                          <when>
+                            expression (asmcomp/comballoc.ml[37,1777+15]..[37,1777+77])
+                              Pexp_apply
+                              expression (asmcomp/comballoc.ml[37,1777+28]..[37,1777+30])
+                                Pexp_ident "<=" (asmcomp/comballoc.ml[37,1777+28]..[37,1777+30])
+                              [
+                                <arg>
+                                Nolabel
+                                  expression (asmcomp/comballoc.ml[37,1777+15]..[37,1777+27])
+                                    Pexp_apply
+                                    expression (asmcomp/comballoc.ml[37,1777+23]..[37,1777+24])
+                                      Pexp_ident "+" (asmcomp/comballoc.ml[37,1777+23]..[37,1777+24])
+                                    [
+                                      <arg>
+                                      Nolabel
+                                        expression (asmcomp/comballoc.ml[37,1777+15]..[37,1777+22])
+                                          Pexp_ident "totalsz" (asmcomp/comballoc.ml[37,1777+15]..[37,1777+22])
+                                      <arg>
+                                      Nolabel
+                                        expression (asmcomp/comballoc.ml[37,1777+25]..[37,1777+27])
+                                          Pexp_ident "sz" (asmcomp/comballoc.ml[37,1777+25]..[37,1777+27])
+                                    ]
+                                <arg>
+                                Nolabel
+                                  expression (asmcomp/comballoc.ml[37,1777+31]..[37,1777+77])
+                                    Pexp_apply
+                                    expression (asmcomp/comballoc.ml[37,1777+61]..[37,1777+62])
+                                      Pexp_ident "*" (asmcomp/comballoc.ml[37,1777+61]..[37,1777+62])
+                                    [
+                                      <arg>
+                                      Nolabel
+                                        expression (asmcomp/comballoc.ml[37,1777+31]..[37,1777+60])
+                                          Pexp_apply
+                                          expression (asmcomp/comballoc.ml[37,1777+56]..[37,1777+57])
+                                            Pexp_ident "+" (asmcomp/comballoc.ml[37,1777+56]..[37,1777+57])
+                                          [
+                                            <arg>
+                                            Nolabel
+                                              expression (asmcomp/comballoc.ml[37,1777+32]..[37,1777+55])
+                                                Pexp_ident "Config.max_young_wosize" (asmcomp/comballoc.ml[37,1777+32]..[37,1777+55])
+                                            <arg>
+                                            Nolabel
+                                              expression (asmcomp/comballoc.ml[37,1777+58]..[37,1777+59])
+                                                Pexp_constant PConst_int (1,None)
+                                          ]
+                                      <arg>
+                                      Nolabel
+                                        expression (asmcomp/comballoc.ml[37,1777+63]..[37,1777+77])
+                                          Pexp_ident "Arch.size_addr" (asmcomp/comballoc.ml[37,1777+63]..[37,1777+77])
+                                    ]
+                              ]
+                          expression (asmcomp/comballoc.ml[38,1858+10]..[45,2177+17])
+                            Pexp_let Nonrec
+                            [
+                              <def>
+                                pattern (asmcomp/comballoc.ml[38,1858+14]..[38,1858+27])
+                                  Ppat_tuple
+                                  [
+                                    pattern (asmcomp/comballoc.ml[38,1858+15]..[38,1858+19])
+                                      Ppat_var "next" (asmcomp/comballoc.ml[38,1858+15]..[38,1858+19])
+                                    pattern (asmcomp/comballoc.ml[38,1858+21]..[38,1858+26])
+                                      Ppat_var "state" (asmcomp/comballoc.ml[38,1858+21]..[38,1858+26])
+                                  ]
+                                expression (asmcomp/comballoc.ml[39,1888+11]..[42,2022+55])
+                                  Pexp_apply
+                                  expression (asmcomp/comballoc.ml[39,1888+11]..[39,1888+18])
+                                    Pexp_ident "combine" (asmcomp/comballoc.ml[39,1888+11]..[39,1888+18])
+                                  [
+                                    <arg>
+                                    Nolabel
+                                      expression (asmcomp/comballoc.ml[39,1888+19]..[39,1888+25])
+                                        Pexp_field
+                                        expression (asmcomp/comballoc.ml[39,1888+19]..[39,1888+20])
+                                          Pexp_ident "i" (asmcomp/comballoc.ml[39,1888+19]..[39,1888+20])
+                                        "next" (asmcomp/comballoc.ml[39,1888+21]..[39,1888+25])
+                                    <arg>
+                                    Nolabel
+                                      expression (asmcomp/comballoc.ml[40,1914+13]..[42,2022+55])
+                                        Pexp_construct "Pending_alloc" (asmcomp/comballoc.ml[40,1914+14]..[40,1914+27])
+                                        Some
+                                          expression (asmcomp/comballoc.ml[40,1914+28]..[42,2022+54])
+                                            Pexp_record
+                                            [
+                                              "reg" (asmcomp/comballoc.ml[40,1914+30]..[40,1914+33])
+                                                expression (asmcomp/comballoc.ml[40,1914+36]..[40,1914+45])
+                                                  Pexp_apply
+                                                  expression (asmcomp/comballoc.ml[40,1914+36]..[40,1914+45]) ghost
+                                                    Pexp_ident "Array.get" (asmcomp/comballoc.ml[40,1914+36]..[40,1914+45]) ghost
+                                                  [
+                                                    <arg>
+                                                    Nolabel
+                                                      expression (asmcomp/comballoc.ml[40,1914+36]..[40,1914+41])
+                                                        Pexp_field
+                                                        expression (asmcomp/comballoc.ml[40,1914+36]..[40,1914+37])
+                                                          Pexp_ident "i" (asmcomp/comballoc.ml[40,1914+36]..[40,1914+37])
+                                                        "res" (asmcomp/comballoc.ml[40,1914+38]..[40,1914+41])
+                                                    <arg>
+                                                    Nolabel
+                                                      expression (asmcomp/comballoc.ml[40,1914+43]..[40,1914+44])
+                                                        Pexp_constant PConst_int (0,None)
+                                                  ]
+                                              "dbginfos" (asmcomp/comballoc.ml[41,1961+30]..[41,1961+38])
+                                                expression (asmcomp/comballoc.ml[41,1961+41]..[41,1961+59])
+                                                  Pexp_apply
+                                                  expression (asmcomp/comballoc.ml[41,1961+49]..[41,1961+50])
+                                                    Pexp_ident "@" (asmcomp/comballoc.ml[41,1961+49]..[41,1961+50])
+                                                  [
+                                                    <arg>
+                                                    Nolabel
+                                                      expression (asmcomp/comballoc.ml[41,1961+41]..[41,1961+48])
+                                                        Pexp_ident "dbginfo" (asmcomp/comballoc.ml[41,1961+41]..[41,1961+48])
+                                                    <arg>
+                                                    Nolabel
+                                                      expression (asmcomp/comballoc.ml[41,1961+51]..[41,1961+59])
+                                                        Pexp_ident "dbginfos" (asmcomp/comballoc.ml[41,1961+51]..[41,1961+59])
+                                                  ]
+                                              "totalsz" (asmcomp/comballoc.ml[42,2022+30]..[42,2022+37])
+                                                expression (asmcomp/comballoc.ml[42,2022+40]..[42,2022+52])
+                                                  Pexp_apply
+                                                  expression (asmcomp/comballoc.ml[42,2022+48]..[42,2022+49])
+                                                    Pexp_ident "+" (asmcomp/comballoc.ml[42,2022+48]..[42,2022+49])
+                                                  [
+                                                    <arg>
+                                                    Nolabel
+                                                      expression (asmcomp/comballoc.ml[42,2022+40]..[42,2022+47])
+                                                        Pexp_ident "totalsz" (asmcomp/comballoc.ml[42,2022+40]..[42,2022+47])
+                                                    <arg>
+                                                    Nolabel
+                                                      expression (asmcomp/comballoc.ml[42,2022+50]..[42,2022+52])
+                                                        Pexp_ident "sz" (asmcomp/comballoc.ml[42,2022+50]..[42,2022+52])
+                                                  ]
+                                            ]
+                                            None
+                                  ]
+                            ]
+                            expression (asmcomp/comballoc.ml[43,2081+9]..[45,2177+17])
+                              Pexp_tuple
+                              [
+                                expression (asmcomp/comballoc.ml[43,2081+10]..[44,2137+38])
+                                  Pexp_apply
+                                  expression (asmcomp/comballoc.ml[43,2081+10]..[43,2081+26])
+                                    Pexp_ident "instr_cons_debug" (asmcomp/comballoc.ml[43,2081+10]..[43,2081+26])
+                                  [
+                                    <arg>
+                                    Nolabel
+                                      expression (asmcomp/comballoc.ml[43,2081+27]..[43,2081+55])
+                                        Pexp_construct "Iop" (asmcomp/comballoc.ml[43,2081+28]..[43,2081+31])
+                                        Some
+                                          expression (asmcomp/comballoc.ml[43,2081+31]..[43,2081+54])
+                                            Pexp_construct "Iintop_imm" (asmcomp/comballoc.ml[43,2081+32]..[43,2081+42])
+                                            Some
+                                              expression (asmcomp/comballoc.ml[43,2081+42]..[43,2081+53])
+                                                Pexp_tuple
+                                                [
+                                                  expression (asmcomp/comballoc.ml[43,2081+43]..[43,2081+47])
+                                                    Pexp_construct "Iadd" (asmcomp/comballoc.ml[43,2081+43]..[43,2081+47])
+                                                    None
+                                                  expression (asmcomp/comballoc.ml[43,2081+49]..[43,2081+52])
+                                                    Pexp_apply
+                                                    expression (asmcomp/comballoc.ml[43,2081+49]..[43,2081+50])
+                                                      Pexp_ident "~-" (asmcomp/comballoc.ml[43,2081+49]..[43,2081+50])
+                                                    [
+                                                      <arg>
+                                                      Nolabel
+                                                        expression (asmcomp/comballoc.ml[43,2081+50]..[43,2081+52])
+                                                          Pexp_ident "sz" (asmcomp/comballoc.ml[43,2081+50]..[43,2081+52])
+                                                    ]
+                                                ]
+                                    <arg>
+                                    Nolabel
+                                      expression (asmcomp/comballoc.ml[44,2137+12]..[44,2137+21])
+                                        Pexp_array
+                                        [
+                                          expression (asmcomp/comballoc.ml[44,2137+15]..[44,2137+18])
+                                            Pexp_ident "reg" (asmcomp/comballoc.ml[44,2137+15]..[44,2137+18])
+                                        ]
+                                    <arg>
+                                    Nolabel
+                                      expression (asmcomp/comballoc.ml[44,2137+22]..[44,2137+27])
+                                        Pexp_field
+                                        expression (asmcomp/comballoc.ml[44,2137+22]..[44,2137+23])
+                                          Pexp_ident "i" (asmcomp/comballoc.ml[44,2137+22]..[44,2137+23])
+                                        "res" (asmcomp/comballoc.ml[44,2137+24]..[44,2137+27])
+                                    <arg>
+                                    Nolabel
+                                      expression (asmcomp/comballoc.ml[44,2137+28]..[44,2137+33])
+                                        Pexp_field
+                                        expression (asmcomp/comballoc.ml[44,2137+28]..[44,2137+29])
+                                          Pexp_ident "i" (asmcomp/comballoc.ml[44,2137+28]..[44,2137+29])
+                                        "dbg" (asmcomp/comballoc.ml[44,2137+30]..[44,2137+33])
+                                    <arg>
+                                    Nolabel
+                                      expression (asmcomp/comballoc.ml[44,2137+34]..[44,2137+38])
+                                        Pexp_ident "next" (asmcomp/comballoc.ml[44,2137+34]..[44,2137+38])
+                                  ]
+                                expression (asmcomp/comballoc.ml[45,2177+11]..[45,2177+16])
+                                  Pexp_ident "state" (asmcomp/comballoc.ml[45,2177+11]..[45,2177+16])
+                              ]
+                        <case>
+                          pattern (asmcomp/comballoc.ml[46,2195+8]..[46,2195+34])
+                            Ppat_or
+                            pattern (asmcomp/comballoc.ml[46,2195+8]..[46,2195+16])
+                              Ppat_construct "No_alloc" (asmcomp/comballoc.ml[46,2195+8]..[46,2195+16])
+                              None
+                            pattern (asmcomp/comballoc.ml[46,2195+19]..[46,2195+34])
+                              Ppat_construct "Pending_alloc" (asmcomp/comballoc.ml[46,2195+19]..[46,2195+32])
+                              Some
+                                []
+                                pattern (asmcomp/comballoc.ml[46,2195+33]..[46,2195+34])
+                                  Ppat_any
+                          expression (asmcomp/comballoc.ml[47,2233+9]..[63,2889+45])
+                            Pexp_let Nonrec
+                            [
+                              <def>
+                                pattern (asmcomp/comballoc.ml[47,2233+13]..[47,2233+26])
+                                  Ppat_tuple
+                                  [
+                                    pattern (asmcomp/comballoc.ml[47,2233+14]..[47,2233+18])
+                                      Ppat_var "next" (asmcomp/comballoc.ml[47,2233+14]..[47,2233+18])
+                                    pattern (asmcomp/comballoc.ml[47,2233+20]..[47,2233+25])
+                                      Ppat_var "state" (asmcomp/comballoc.ml[47,2233+20]..[47,2233+25])
+                                  ]
+                                expression (asmcomp/comballoc.ml[48,2262+11]..[51,2385+45])
+                                  Pexp_apply
+                                  expression (asmcomp/comballoc.ml[48,2262+11]..[48,2262+18])
+                                    Pexp_ident "combine" (asmcomp/comballoc.ml[48,2262+11]..[48,2262+18])
+                                  [
+                                    <arg>
+                                    Nolabel
+                                      expression (asmcomp/comballoc.ml[48,2262+19]..[48,2262+25])
+                                        Pexp_field
+                                        expression (asmcomp/comballoc.ml[48,2262+19]..[48,2262+20])
+                                          Pexp_ident "i" (asmcomp/comballoc.ml[48,2262+19]..[48,2262+20])
+                                        "next" (asmcomp/comballoc.ml[48,2262+21]..[48,2262+25])
+                                    <arg>
+                                    Nolabel
+                                      expression (asmcomp/comballoc.ml[49,2288+13]..[51,2385+45])
+                                        Pexp_construct "Pending_alloc" (asmcomp/comballoc.ml[49,2288+14]..[49,2288+27])
+                                        Some
+                                          expression (asmcomp/comballoc.ml[49,2288+28]..[51,2385+44])
+                                            Pexp_record
+                                            [
+                                              "reg" (asmcomp/comballoc.ml[49,2288+30]..[49,2288+33])
+                                                expression (asmcomp/comballoc.ml[49,2288+36]..[49,2288+45])
+                                                  Pexp_apply
+                                                  expression (asmcomp/comballoc.ml[49,2288+36]..[49,2288+45]) ghost
+                                                    Pexp_ident "Array.get" (asmcomp/comballoc.ml[49,2288+36]..[49,2288+45]) ghost
+                                                  [
+                                                    <arg>
+                                                    Nolabel
+                                                      expression (asmcomp/comballoc.ml[49,2288+36]..[49,2288+41])
+                                                        Pexp_field
+                                                        expression (asmcomp/comballoc.ml[49,2288+36]..[49,2288+37])
+                                                          Pexp_ident "i" (asmcomp/comballoc.ml[49,2288+36]..[49,2288+37])
+                                                        "res" (asmcomp/comballoc.ml[49,2288+38]..[49,2288+41])
+                                                    <arg>
+                                                    Nolabel
+                                                      expression (asmcomp/comballoc.ml[49,2288+43]..[49,2288+44])
+                                                        Pexp_constant PConst_int (0,None)
+                                                  ]
+                                              "dbginfos" (asmcomp/comballoc.ml[50,2335+30]..[50,2335+38])
+                                                expression (asmcomp/comballoc.ml[50,2335+41]..[50,2335+48])
+                                                  Pexp_ident "dbginfo" (asmcomp/comballoc.ml[50,2335+41]..[50,2335+48])
+                                              "totalsz" (asmcomp/comballoc.ml[51,2385+30]..[51,2385+37])
+                                                expression (asmcomp/comballoc.ml[51,2385+40]..[51,2385+42])
+                                                  Pexp_ident "sz" (asmcomp/comballoc.ml[51,2385+40]..[51,2385+42])
+                                            ]
+                                            None
+                                  ]
+                            ]
+                            expression (asmcomp/comballoc.ml[52,2434+9]..[63,2889+45])
+                              Pexp_let Nonrec
+                              [
+                                <def>
+                                  pattern (asmcomp/comballoc.ml[52,2434+13]..[52,2434+29])
+                                    Ppat_tuple
+                                    [
+                                      pattern (asmcomp/comballoc.ml[52,2434+13]..[52,2434+20])
+                                        Ppat_var "totalsz" (asmcomp/comballoc.ml[52,2434+13]..[52,2434+20])
+                                      pattern (asmcomp/comballoc.ml[52,2434+22]..[52,2434+29])
+                                        Ppat_var "dbginfo" (asmcomp/comballoc.ml[52,2434+22]..[52,2434+29])
+                                    ]
+                                  expression (asmcomp/comballoc.ml[53,2466+11]..[55,2532+72])
+                                    Pexp_match
+                                    expression (asmcomp/comballoc.ml[53,2466+17]..[53,2466+22])
+                                      Pexp_ident "state" (asmcomp/comballoc.ml[53,2466+17]..[53,2466+22])
+                                    [
+                                      <case>
+                                        pattern (asmcomp/comballoc.ml[54,2494+13]..[54,2494+21])
+                                          Ppat_construct "No_alloc" (asmcomp/comballoc.ml[54,2494+13]..[54,2494+21])
+                                          None
+                                        expression (asmcomp/comballoc.ml[54,2494+25]..[54,2494+37])
+                                          Pexp_assert
+                                          expression (asmcomp/comballoc.ml[54,2494+32]..[54,2494+37])
+                                            Pexp_construct "false" (asmcomp/comballoc.ml[54,2494+32]..[54,2494+37])
+                                            None
+                                      <case>
+                                        pattern (asmcomp/comballoc.ml[55,2532+13]..[55,2532+51])
+                                          Ppat_construct "Pending_alloc" (asmcomp/comballoc.ml[55,2532+13]..[55,2532+26])
+                                          Some
+                                            []
+                                            pattern (asmcomp/comballoc.ml[55,2532+27]..[55,2532+51])
+                                              Ppat_record Open
+                                              [
+                                                "totalsz" (asmcomp/comballoc.ml[55,2532+29]..[55,2532+36]) ghost
+                                                  pattern (asmcomp/comballoc.ml[55,2532+29]..[55,2532+36])
+                                                    Ppat_var "totalsz" (asmcomp/comballoc.ml[55,2532+29]..[55,2532+36])
+                                                "dbginfos" (asmcomp/comballoc.ml[55,2532+38]..[55,2532+46]) ghost
+                                                  pattern (asmcomp/comballoc.ml[55,2532+38]..[55,2532+46])
+                                                    Ppat_var "dbginfos" (asmcomp/comballoc.ml[55,2532+38]..[55,2532+46])
+                                              ]
+                                        expression (asmcomp/comballoc.ml[55,2532+55]..[55,2532+72])
+                                          Pexp_tuple
+                                          [
+                                            expression (asmcomp/comballoc.ml[55,2532+55]..[55,2532+62])
+                                              Pexp_ident "totalsz" (asmcomp/comballoc.ml[55,2532+55]..[55,2532+62])
+                                            expression (asmcomp/comballoc.ml[55,2532+64]..[55,2532+72])
+                                              Pexp_ident "dbginfos" (asmcomp/comballoc.ml[55,2532+64]..[55,2532+72])
+                                          ]
+                                    ]
+                              ]
+                              expression (asmcomp/comballoc.ml[56,2608+9]..[63,2889+45])
+                                Pexp_let Nonrec
+                                [
+                                  <def>
+                                    pattern (asmcomp/comballoc.ml[56,2608+13]..[56,2608+17])
+                                      Ppat_var "next" (asmcomp/comballoc.ml[56,2608+13]..[56,2608+17])
+                                    expression (asmcomp/comballoc.ml[57,2628+11]..[60,2774+32])
+                                      Pexp_let Nonrec
+                                      [
+                                        <def>
+                                          pattern (asmcomp/comballoc.ml[57,2628+15]..[57,2628+21])
+                                            Ppat_var "offset" (asmcomp/comballoc.ml[57,2628+15]..[57,2628+21])
+                                          expression (asmcomp/comballoc.ml[57,2628+24]..[57,2628+36])
+                                            Pexp_apply
+                                            expression (asmcomp/comballoc.ml[57,2628+32]..[57,2628+33])
+                                              Pexp_ident "-" (asmcomp/comballoc.ml[57,2628+32]..[57,2628+33])
+                                            [
+                                              <arg>
+                                              Nolabel
+                                                expression (asmcomp/comballoc.ml[57,2628+24]..[57,2628+31])
+                                                  Pexp_ident "totalsz" (asmcomp/comballoc.ml[57,2628+24]..[57,2628+31])
+                                              <arg>
+                                              Nolabel
+                                                expression (asmcomp/comballoc.ml[57,2628+34]..[57,2628+36])
+                                                  Pexp_ident "sz" (asmcomp/comballoc.ml[57,2628+34]..[57,2628+36])
+                                            ]
+                                      ]
+                                      expression (asmcomp/comballoc.ml[58,2668+11]..[60,2774+32])
+                                        Pexp_ifthenelse
+                                        expression (asmcomp/comballoc.ml[58,2668+14]..[58,2668+24])
+                                          Pexp_apply
+                                          expression (asmcomp/comballoc.ml[58,2668+21]..[58,2668+22])
+                                            Pexp_ident "=" (asmcomp/comballoc.ml[58,2668+21]..[58,2668+22])
+                                          [
+                                            <arg>
+                                            Nolabel
+                                              expression (asmcomp/comballoc.ml[58,2668+14]..[58,2668+20])
+                                                Pexp_ident "offset" (asmcomp/comballoc.ml[58,2668+14]..[58,2668+20])
+                                            <arg>
+                                            Nolabel
+                                              expression (asmcomp/comballoc.ml[58,2668+23]..[58,2668+24])
+                                                Pexp_constant PConst_int (0,None)
+                                          ]
+                                        expression (asmcomp/comballoc.ml[58,2668+30]..[58,2668+34])
+                                          Pexp_ident "next" (asmcomp/comballoc.ml[58,2668+30]..[58,2668+34])
+                                        Some
+                                          expression (asmcomp/comballoc.ml[59,2703+16]..[60,2774+32])
+                                            Pexp_apply
+                                            expression (asmcomp/comballoc.ml[59,2703+16]..[59,2703+32])
+                                              Pexp_ident "instr_cons_debug" (asmcomp/comballoc.ml[59,2703+16]..[59,2703+32])
+                                            [
+                                              <arg>
+                                              Nolabel
+                                                expression (asmcomp/comballoc.ml[59,2703+33]..[59,2703+64])
+                                                  Pexp_construct "Iop" (asmcomp/comballoc.ml[59,2703+34]..[59,2703+37])
+                                                  Some
+                                                    expression (asmcomp/comballoc.ml[59,2703+37]..[59,2703+63])
+                                                      Pexp_construct "Iintop_imm" (asmcomp/comballoc.ml[59,2703+38]..[59,2703+48])
+                                                      Some
+                                                        expression (asmcomp/comballoc.ml[59,2703+48]..[59,2703+62])
+                                                          Pexp_tuple
+                                                          [
+                                                            expression (asmcomp/comballoc.ml[59,2703+49]..[59,2703+53])
+                                                              Pexp_construct "Iadd" (asmcomp/comballoc.ml[59,2703+49]..[59,2703+53])
+                                                              None
+                                                            expression (asmcomp/comballoc.ml[59,2703+55]..[59,2703+61])
+                                                              Pexp_ident "offset" (asmcomp/comballoc.ml[59,2703+55]..[59,2703+61])
+                                                          ]
+                                              <arg>
+                                              Nolabel
+                                                expression (asmcomp/comballoc.ml[59,2703+65]..[59,2703+70])
+                                                  Pexp_field
+                                                  expression (asmcomp/comballoc.ml[59,2703+65]..[59,2703+66])
+                                                    Pexp_ident "i" (asmcomp/comballoc.ml[59,2703+65]..[59,2703+66])
+                                                  "res" (asmcomp/comballoc.ml[59,2703+67]..[59,2703+70])
+                                              <arg>
+                                              Nolabel
+                                                expression (asmcomp/comballoc.ml[60,2774+16]..[60,2774+21])
+                                                  Pexp_field
+                                                  expression (asmcomp/comballoc.ml[60,2774+16]..[60,2774+17])
+                                                    Pexp_ident "i" (asmcomp/comballoc.ml[60,2774+16]..[60,2774+17])
+                                                  "res" (asmcomp/comballoc.ml[60,2774+18]..[60,2774+21])
+                                              <arg>
+                                              Nolabel
+                                                expression (asmcomp/comballoc.ml[60,2774+22]..[60,2774+27])
+                                                  Pexp_field
+                                                  expression (asmcomp/comballoc.ml[60,2774+22]..[60,2774+23])
+                                                    Pexp_ident "i" (asmcomp/comballoc.ml[60,2774+22]..[60,2774+23])
+                                                  "dbg" (asmcomp/comballoc.ml[60,2774+24]..[60,2774+27])
+                                              <arg>
+                                              Nolabel
+                                                expression (asmcomp/comballoc.ml[60,2774+28]..[60,2774+32])
+                                                  Pexp_ident "next" (asmcomp/comballoc.ml[60,2774+28]..[60,2774+32])
+                                            ]
+                                ]
+                                expression (asmcomp/comballoc.ml[62,2819+9]..[63,2889+45])
+                                  Pexp_tuple
+                                  [
+                                    expression (asmcomp/comballoc.ml[62,2819+10]..[63,2889+32])
+                                      Pexp_apply
+                                      expression (asmcomp/comballoc.ml[62,2819+10]..[62,2819+26])
+                                        Pexp_ident "instr_cons_debug" (asmcomp/comballoc.ml[62,2819+10]..[62,2819+26])
+                                      [
+                                        <arg>
+                                        Nolabel
+                                          expression (asmcomp/comballoc.ml[62,2819+27]..[62,2819+69])
+                                            Pexp_construct "Iop" (asmcomp/comballoc.ml[62,2819+28]..[62,2819+31])
+                                            Some
+                                              expression (asmcomp/comballoc.ml[62,2819+31]..[62,2819+68])
+                                                Pexp_construct "Ialloc" (asmcomp/comballoc.ml[62,2819+32]..[62,2819+38])
+                                                Some
+                                                  expression (asmcomp/comballoc.ml[62,2819+39]..[62,2819+67])
+                                                    Pexp_record
+                                                    [
+                                                      "bytes" (asmcomp/comballoc.ml[62,2819+40]..[62,2819+45])
+                                                        expression (asmcomp/comballoc.ml[62,2819+48]..[62,2819+55])
+                                                          Pexp_ident "totalsz" (asmcomp/comballoc.ml[62,2819+48]..[62,2819+55])
+                                                      "dbginfo" (asmcomp/comballoc.ml[62,2819+57]..[62,2819+64]) ghost
+                                                        expression (asmcomp/comballoc.ml[62,2819+57]..[62,2819+64])
+                                                          Pexp_ident "dbginfo" (asmcomp/comballoc.ml[62,2819+57]..[62,2819+64])
+                                                    ]
+                                                    None
+                                        <arg>
+                                        Nolabel
+                                          expression (asmcomp/comballoc.ml[63,2889+10]..[63,2889+15])
+                                            Pexp_field
+                                            expression (asmcomp/comballoc.ml[63,2889+10]..[63,2889+11])
+                                              Pexp_ident "i" (asmcomp/comballoc.ml[63,2889+10]..[63,2889+11])
+                                            "arg" (asmcomp/comballoc.ml[63,2889+12]..[63,2889+15])
+                                        <arg>
+                                        Nolabel
+                                          expression (asmcomp/comballoc.ml[63,2889+16]..[63,2889+21])
+                                            Pexp_field
+                                            expression (asmcomp/comballoc.ml[63,2889+16]..[63,2889+17])
+                                              Pexp_ident "i" (asmcomp/comballoc.ml[63,2889+16]..[63,2889+17])
+                                            "res" (asmcomp/comballoc.ml[63,2889+18]..[63,2889+21])
+                                        <arg>
+                                        Nolabel
+                                          expression (asmcomp/comballoc.ml[63,2889+22]..[63,2889+27])
+                                            Pexp_field
+                                            expression (asmcomp/comballoc.ml[63,2889+22]..[63,2889+23])
+                                              Pexp_ident "i" (asmcomp/comballoc.ml[63,2889+22]..[63,2889+23])
+                                            "dbg" (asmcomp/comballoc.ml[63,2889+24]..[63,2889+27])
+                                        <arg>
+                                        Nolabel
+                                          expression (asmcomp/comballoc.ml[63,2889+28]..[63,2889+32])
+                                            Pexp_ident "next" (asmcomp/comballoc.ml[63,2889+28]..[63,2889+32])
+                                      ]
+                                    expression (asmcomp/comballoc.ml[63,2889+34]..[63,2889+44])
+                                      Pexp_ident "allocstate" (asmcomp/comballoc.ml[63,2889+34]..[63,2889+44])
+                                  ]
+                      ]
+                <case>
+                  pattern (asmcomp/comballoc.ml[65,2945+4]..[66,2992+50])
+                    Ppat_construct "Iop" (asmcomp/comballoc.ml[65,2945+4]..[65,2945+7])
+                    Some
+                      []
+                      pattern (asmcomp/comballoc.ml[65,2945+7]..[66,2992+50])
+                        Ppat_or
+                        pattern (asmcomp/comballoc.ml[65,2945+8]..[66,2992+39])
+                          Ppat_or
+                          pattern (asmcomp/comballoc.ml[65,2945+8]..[66,2992+21])
+                            Ppat_or
+                            pattern (asmcomp/comballoc.ml[65,2945+8]..[65,2945+44])
+                              Ppat_or
+                              pattern (asmcomp/comballoc.ml[65,2945+8]..[65,2945+31])
+                                Ppat_or
+                                pattern (asmcomp/comballoc.ml[65,2945+8]..[65,2945+17])
+                                  Ppat_construct "Icall_ind" (asmcomp/comballoc.ml[65,2945+8]..[65,2945+17])
+                                  None
+                                pattern (asmcomp/comballoc.ml[65,2945+20]..[65,2945+31])
+                                  Ppat_construct "Icall_imm" (asmcomp/comballoc.ml[65,2945+20]..[65,2945+29])
+                                  Some
+                                    []
+                                    pattern (asmcomp/comballoc.ml[65,2945+30]..[65,2945+31])
+                                      Ppat_any
+                              pattern (asmcomp/comballoc.ml[65,2945+34]..[65,2945+44])
+                                Ppat_construct "Iextcall" (asmcomp/comballoc.ml[65,2945+34]..[65,2945+42])
+                                Some
+                                  []
+                                  pattern (asmcomp/comballoc.ml[65,2945+43]..[65,2945+44])
+                                    Ppat_any
+                            pattern (asmcomp/comballoc.ml[66,2992+8]..[66,2992+21])
+                              Ppat_construct "Itailcall_ind" (asmcomp/comballoc.ml[66,2992+8]..[66,2992+21])
+                              None
+                          pattern (asmcomp/comballoc.ml[66,2992+24]..[66,2992+39])
+                            Ppat_construct "Itailcall_imm" (asmcomp/comballoc.ml[66,2992+24]..[66,2992+37])
+                            Some
+                              []
+                              pattern (asmcomp/comballoc.ml[66,2992+38]..[66,2992+39])
+                                Ppat_any
+                        pattern (asmcomp/comballoc.ml[66,2992+42]..[66,2992+49])
+                          Ppat_construct "Ipoll" (asmcomp/comballoc.ml[66,2992+42]..[66,2992+47])
+                          Some
+                            []
+                            pattern (asmcomp/comballoc.ml[66,2992+48]..[66,2992+49])
+                              Ppat_any
+                  expression (asmcomp/comballoc.ml[67,3046+6]..[69,3150+18])
+                    Pexp_let Nonrec
+                    [
+                      <def>
+                        pattern (asmcomp/comballoc.ml[67,3046+10]..[67,3046+17])
+                          Ppat_var "newnext" (asmcomp/comballoc.ml[67,3046+10]..[67,3046+17])
+                        expression (asmcomp/comballoc.ml[67,3046+20]..[67,3046+42])
+                          Pexp_apply
+                          expression (asmcomp/comballoc.ml[67,3046+20]..[67,3046+35])
+                            Pexp_ident "combine_restart" (asmcomp/comballoc.ml[67,3046+20]..[67,3046+35])
+                          [
+                            <arg>
+                            Nolabel
+                              expression (asmcomp/comballoc.ml[67,3046+36]..[67,3046+42])
+                                Pexp_field
+                                expression (asmcomp/comballoc.ml[67,3046+36]..[67,3046+37])
+                                  Pexp_ident "i" (asmcomp/comballoc.ml[67,3046+36]..[67,3046+37])
+                                "next" (asmcomp/comballoc.ml[67,3046+38]..[67,3046+42])
+                          ]
+                    ]
+                    expression (asmcomp/comballoc.ml[68,3092+6]..[69,3150+18])
+                      Pexp_tuple
+                      [
+                        expression (asmcomp/comballoc.ml[68,3092+7]..[68,3092+56])
+                          Pexp_apply
+                          expression (asmcomp/comballoc.ml[68,3092+7]..[68,3092+23])
+                            Pexp_ident "instr_cons_debug" (asmcomp/comballoc.ml[68,3092+7]..[68,3092+23])
+                          [
+                            <arg>
+                            Nolabel
+                              expression (asmcomp/comballoc.ml[68,3092+24]..[68,3092+30])
+                                Pexp_field
+                                expression (asmcomp/comballoc.ml[68,3092+24]..[68,3092+25])
+                                  Pexp_ident "i" (asmcomp/comballoc.ml[68,3092+24]..[68,3092+25])
+                                "desc" (asmcomp/comballoc.ml[68,3092+26]..[68,3092+30])
+                            <arg>
+                            Nolabel
+                              expression (asmcomp/comballoc.ml[68,3092+31]..[68,3092+36])
+                                Pexp_field
+                                expression (asmcomp/comballoc.ml[68,3092+31]..[68,3092+32])
+                                  Pexp_ident "i" (asmcomp/comballoc.ml[68,3092+31]..[68,3092+32])
+                                "arg" (asmcomp/comballoc.ml[68,3092+33]..[68,3092+36])
+                            <arg>
+                            Nolabel
+                              expression (asmcomp/comballoc.ml[68,3092+37]..[68,3092+42])
+                                Pexp_field
+                                expression (asmcomp/comballoc.ml[68,3092+37]..[68,3092+38])
+                                  Pexp_ident "i" (asmcomp/comballoc.ml[68,3092+37]..[68,3092+38])
+                                "res" (asmcomp/comballoc.ml[68,3092+39]..[68,3092+42])
+                            <arg>
+                            Nolabel
+                              expression (asmcomp/comballoc.ml[68,3092+43]..[68,3092+48])
+                                Pexp_field
+                                expression (asmcomp/comballoc.ml[68,3092+43]..[68,3092+44])
+                                  Pexp_ident "i" (asmcomp/comballoc.ml[68,3092+43]..[68,3092+44])
+                                "dbg" (asmcomp/comballoc.ml[68,3092+45]..[68,3092+48])
+                            <arg>
+                            Nolabel
+                              expression (asmcomp/comballoc.ml[68,3092+49]..[68,3092+56])
+                                Pexp_ident "newnext" (asmcomp/comballoc.ml[68,3092+49]..[68,3092+56])
+                          ]
+                        expression (asmcomp/comballoc.ml[69,3150+7]..[69,3150+17])
+                          Pexp_ident "allocstate" (asmcomp/comballoc.ml[69,3150+7]..[69,3150+17])
+                      ]
+                <case>
+                  pattern (asmcomp/comballoc.ml[70,3169+4]..[70,3169+9])
+                    Ppat_construct "Iop" (asmcomp/comballoc.ml[70,3169+4]..[70,3169+7])
+                    Some
+                      []
+                      pattern (asmcomp/comballoc.ml[70,3169+8]..[70,3169+9])
+                        Ppat_any
+                  expression (asmcomp/comballoc.ml[71,3182+6]..[72,3237+61])
+                    Pexp_let Nonrec
+                    [
+                      <def>
+                        pattern (asmcomp/comballoc.ml[71,3182+10]..[71,3182+23])
+                          Ppat_tuple
+                          [
+                            pattern (asmcomp/comballoc.ml[71,3182+11]..[71,3182+18])
+                              Ppat_var "newnext" (asmcomp/comballoc.ml[71,3182+11]..[71,3182+18])
+                            pattern (asmcomp/comballoc.ml[71,3182+20]..[71,3182+22])
+                              Ppat_var "s'" (asmcomp/comballoc.ml[71,3182+20]..[71,3182+22])
+                          ]
+                        expression (asmcomp/comballoc.ml[71,3182+26]..[71,3182+51])
+                          Pexp_apply
+                          expression (asmcomp/comballoc.ml[71,3182+26]..[71,3182+33])
+                            Pexp_ident "combine" (asmcomp/comballoc.ml[71,3182+26]..[71,3182+33])
+                          [
+                            <arg>
+                            Nolabel
+                              expression (asmcomp/comballoc.ml[71,3182+34]..[71,3182+40])
+                                Pexp_field
+                                expression (asmcomp/comballoc.ml[71,3182+34]..[71,3182+35])
+                                  Pexp_ident "i" (asmcomp/comballoc.ml[71,3182+34]..[71,3182+35])
+                                "next" (asmcomp/comballoc.ml[71,3182+36]..[71,3182+40])
+                            <arg>
+                            Nolabel
+                              expression (asmcomp/comballoc.ml[71,3182+41]..[71,3182+51])
+                                Pexp_ident "allocstate" (asmcomp/comballoc.ml[71,3182+41]..[71,3182+51])
+                          ]
+                    ]
+                    expression (asmcomp/comballoc.ml[72,3237+6]..[72,3237+61])
+                      Pexp_tuple
+                      [
+                        expression (asmcomp/comballoc.ml[72,3237+7]..[72,3237+56])
+                          Pexp_apply
+                          expression (asmcomp/comballoc.ml[72,3237+7]..[72,3237+23])
+                            Pexp_ident "instr_cons_debug" (asmcomp/comballoc.ml[72,3237+7]..[72,3237+23])
+                          [
+                            <arg>
+                            Nolabel
+                              expression (asmcomp/comballoc.ml[72,3237+24]..[72,3237+30])
+                                Pexp_field
+                                expression (asmcomp/comballoc.ml[72,3237+24]..[72,3237+25])
+                                  Pexp_ident "i" (asmcomp/comballoc.ml[72,3237+24]..[72,3237+25])
+                                "desc" (asmcomp/comballoc.ml[72,3237+26]..[72,3237+30])
+                            <arg>
+                            Nolabel
+                              expression (asmcomp/comballoc.ml[72,3237+31]..[72,3237+36])
+                                Pexp_field
+                                expression (asmcomp/comballoc.ml[72,3237+31]..[72,3237+32])
+                                  Pexp_ident "i" (asmcomp/comballoc.ml[72,3237+31]..[72,3237+32])
+                                "arg" (asmcomp/comballoc.ml[72,3237+33]..[72,3237+36])
+                            <arg>
+                            Nolabel
+                              expression (asmcomp/comballoc.ml[72,3237+37]..[72,3237+42])
+                                Pexp_field
+                                expression (asmcomp/comballoc.ml[72,3237+37]..[72,3237+38])
+                                  Pexp_ident "i" (asmcomp/comballoc.ml[72,3237+37]..[72,3237+38])
+                                "res" (asmcomp/comballoc.ml[72,3237+39]..[72,3237+42])
+                            <arg>
+                            Nolabel
+                              expression (asmcomp/comballoc.ml[72,3237+43]..[72,3237+48])
+                                Pexp_field
+                                expression (asmcomp/comballoc.ml[72,3237+43]..[72,3237+44])
+                                  Pexp_ident "i" (asmcomp/comballoc.ml[72,3237+43]..[72,3237+44])
+                                "dbg" (asmcomp/comballoc.ml[72,3237+45]..[72,3237+48])
+                            <arg>
+                            Nolabel
+                              expression (asmcomp/comballoc.ml[72,3237+49]..[72,3237+56])
+                                Pexp_ident "newnext" (asmcomp/comballoc.ml[72,3237+49]..[72,3237+56])
+                          ]
+                        expression (asmcomp/comballoc.ml[72,3237+58]..[72,3237+60])
+                          Pexp_ident "s'" (asmcomp/comballoc.ml[72,3237+58]..[72,3237+60])
+                      ]
+                <case>
+                  pattern (asmcomp/comballoc.ml[73,3299+4]..[73,3299+34])
+                    Ppat_construct "Iifthenelse" (asmcomp/comballoc.ml[73,3299+4]..[73,3299+15])
+                    Some
+                      []
+                      pattern (asmcomp/comballoc.ml[73,3299+15]..[73,3299+34])
+                        Ppat_tuple
+                        [
+                          pattern (asmcomp/comballoc.ml[73,3299+16]..[73,3299+20])
+                            Ppat_var "test" (asmcomp/comballoc.ml[73,3299+16]..[73,3299+20])
+                          pattern (asmcomp/comballoc.ml[73,3299+22]..[73,3299+26])
+                            Ppat_var "ifso" (asmcomp/comballoc.ml[73,3299+22]..[73,3299+26])
+                          pattern (asmcomp/comballoc.ml[73,3299+28]..[73,3299+33])
+                            Ppat_var "ifnot" (asmcomp/comballoc.ml[73,3299+28]..[73,3299+33])
+                        ]
+                  expression (asmcomp/comballoc.ml[74,3337+6]..[78,3551+18])
+                    Pexp_let Nonrec
+                    [
+                      <def>
+                        pattern (asmcomp/comballoc.ml[74,3337+10]..[74,3337+17])
+                          Ppat_var "newifso" (asmcomp/comballoc.ml[74,3337+10]..[74,3337+17])
+                        expression (asmcomp/comballoc.ml[74,3337+20]..[74,3337+40])
+                          Pexp_apply
+                          expression (asmcomp/comballoc.ml[74,3337+20]..[74,3337+35])
+                            Pexp_ident "combine_restart" (asmcomp/comballoc.ml[74,3337+20]..[74,3337+35])
+                          [
+                            <arg>
+                            Nolabel
+                              expression (asmcomp/comballoc.ml[74,3337+36]..[74,3337+40])
+                                Pexp_ident "ifso" (asmcomp/comballoc.ml[74,3337+36]..[74,3337+40])
+                          ]
+                    ]
+                    expression (asmcomp/comballoc.ml[75,3381+6]..[78,3551+18])
+                      Pexp_let Nonrec
+                      [
+                        <def>
+                          pattern (asmcomp/comballoc.ml[75,3381+10]..[75,3381+18])
+                            Ppat_var "newifnot" (asmcomp/comballoc.ml[75,3381+10]..[75,3381+18])
+                          expression (asmcomp/comballoc.ml[75,3381+21]..[75,3381+42])
+                            Pexp_apply
+                            expression (asmcomp/comballoc.ml[75,3381+21]..[75,3381+36])
+                              Pexp_ident "combine_restart" (asmcomp/comballoc.ml[75,3381+21]..[75,3381+36])
+                            [
+                              <arg>
+                              Nolabel
+                                expression (asmcomp/comballoc.ml[75,3381+37]..[75,3381+42])
+                                  Pexp_ident "ifnot" (asmcomp/comballoc.ml[75,3381+37]..[75,3381+42])
+                            ]
+                      ]
+                      expression (asmcomp/comballoc.ml[76,3427+6]..[78,3551+18])
+                        Pexp_let Nonrec
+                        [
+                          <def>
+                            pattern (asmcomp/comballoc.ml[76,3427+10]..[76,3427+17])
+                              Ppat_var "newnext" (asmcomp/comballoc.ml[76,3427+10]..[76,3427+17])
+                            expression (asmcomp/comballoc.ml[76,3427+20]..[76,3427+42])
+                              Pexp_apply
+                              expression (asmcomp/comballoc.ml[76,3427+20]..[76,3427+35])
+                                Pexp_ident "combine_restart" (asmcomp/comballoc.ml[76,3427+20]..[76,3427+35])
+                              [
+                                <arg>
+                                Nolabel
+                                  expression (asmcomp/comballoc.ml[76,3427+36]..[76,3427+42])
+                                    Pexp_field
+                                    expression (asmcomp/comballoc.ml[76,3427+36]..[76,3427+37])
+                                      Pexp_ident "i" (asmcomp/comballoc.ml[76,3427+36]..[76,3427+37])
+                                    "next" (asmcomp/comballoc.ml[76,3427+38]..[76,3427+42])
+                              ]
+                        ]
+                        expression (asmcomp/comballoc.ml[77,3473+6]..[78,3551+18])
+                          Pexp_tuple
+                          [
+                            expression (asmcomp/comballoc.ml[77,3473+7]..[77,3473+76])
+                              Pexp_apply
+                              expression (asmcomp/comballoc.ml[77,3473+7]..[77,3473+17])
+                                Pexp_ident "instr_cons" (asmcomp/comballoc.ml[77,3473+7]..[77,3473+17])
+                              [
+                                <arg>
+                                Nolabel
+                                  expression (asmcomp/comballoc.ml[77,3473+18]..[77,3473+56])
+                                    Pexp_construct "Iifthenelse" (asmcomp/comballoc.ml[77,3473+19]..[77,3473+30])
+                                    Some
+                                      expression (asmcomp/comballoc.ml[77,3473+30]..[77,3473+55])
+                                        Pexp_tuple
+                                        [
+                                          expression (asmcomp/comballoc.ml[77,3473+31]..[77,3473+35])
+                                            Pexp_ident "test" (asmcomp/comballoc.ml[77,3473+31]..[77,3473+35])
+                                          expression (asmcomp/comballoc.ml[77,3473+37]..[77,3473+44])
+                                            Pexp_ident "newifso" (asmcomp/comballoc.ml[77,3473+37]..[77,3473+44])
+                                          expression (asmcomp/comballoc.ml[77,3473+46]..[77,3473+54])
+                                            Pexp_ident "newifnot" (asmcomp/comballoc.ml[77,3473+46]..[77,3473+54])
+                                        ]
+                                <arg>
+                                Nolabel
+                                  expression (asmcomp/comballoc.ml[77,3473+57]..[77,3473+62])
+                                    Pexp_field
+                                    expression (asmcomp/comballoc.ml[77,3473+57]..[77,3473+58])
+                                      Pexp_ident "i" (asmcomp/comballoc.ml[77,3473+57]..[77,3473+58])
+                                    "arg" (asmcomp/comballoc.ml[77,3473+59]..[77,3473+62])
+                                <arg>
+                                Nolabel
+                                  expression (asmcomp/comballoc.ml[77,3473+63]..[77,3473+68])
+                                    Pexp_field
+                                    expression (asmcomp/comballoc.ml[77,3473+63]..[77,3473+64])
+                                      Pexp_ident "i" (asmcomp/comballoc.ml[77,3473+63]..[77,3473+64])
+                                    "res" (asmcomp/comballoc.ml[77,3473+65]..[77,3473+68])
+                                <arg>
+                                Nolabel
+                                  expression (asmcomp/comballoc.ml[77,3473+69]..[77,3473+76])
+                                    Pexp_ident "newnext" (asmcomp/comballoc.ml[77,3473+69]..[77,3473+76])
+                              ]
+                            expression (asmcomp/comballoc.ml[78,3551+7]..[78,3551+17])
+                              Pexp_ident "allocstate" (asmcomp/comballoc.ml[78,3551+7]..[78,3551+17])
+                          ]
+                <case>
+                  pattern (asmcomp/comballoc.ml[79,3570+4]..[79,3570+25])
+                    Ppat_construct "Iswitch" (asmcomp/comballoc.ml[79,3570+4]..[79,3570+11])
+                    Some
+                      []
+                      pattern (asmcomp/comballoc.ml[79,3570+11]..[79,3570+25])
+                        Ppat_tuple
+                        [
+                          pattern (asmcomp/comballoc.ml[79,3570+12]..[79,3570+17])
+                            Ppat_var "table" (asmcomp/comballoc.ml[79,3570+12]..[79,3570+17])
+                          pattern (asmcomp/comballoc.ml[79,3570+19]..[79,3570+24])
+                            Ppat_var "cases" (asmcomp/comballoc.ml[79,3570+19]..[79,3570+24])
+                        ]
+                  expression (asmcomp/comballoc.ml[80,3599+6]..[83,3767+18])
+                    Pexp_let Nonrec
+                    [
+                      <def>
+                        pattern (asmcomp/comballoc.ml[80,3599+10]..[80,3599+18])
+                          Ppat_var "newcases" (asmcomp/comballoc.ml[80,3599+10]..[80,3599+18])
+                        expression (asmcomp/comballoc.ml[80,3599+21]..[80,3599+52])
+                          Pexp_apply
+                          expression (asmcomp/comballoc.ml[80,3599+21]..[80,3599+30])
+                            Pexp_ident "Array.map" (asmcomp/comballoc.ml[80,3599+21]..[80,3599+30])
+                          [
+                            <arg>
+                            Nolabel
+                              expression (asmcomp/comballoc.ml[80,3599+31]..[80,3599+46])
+                                Pexp_ident "combine_restart" (asmcomp/comballoc.ml[80,3599+31]..[80,3599+46])
+                            <arg>
+                            Nolabel
+                              expression (asmcomp/comballoc.ml[80,3599+47]..[80,3599+52])
+                                Pexp_ident "cases" (asmcomp/comballoc.ml[80,3599+47]..[80,3599+52])
+                          ]
+                    ]
+                    expression (asmcomp/comballoc.ml[81,3655+6]..[83,3767+18])
+                      Pexp_let Nonrec
+                      [
+                        <def>
+                          pattern (asmcomp/comballoc.ml[81,3655+10]..[81,3655+17])
+                            Ppat_var "newnext" (asmcomp/comballoc.ml[81,3655+10]..[81,3655+17])
+                          expression (asmcomp/comballoc.ml[81,3655+20]..[81,3655+42])
+                            Pexp_apply
+                            expression (asmcomp/comballoc.ml[81,3655+20]..[81,3655+35])
+                              Pexp_ident "combine_restart" (asmcomp/comballoc.ml[81,3655+20]..[81,3655+35])
+                            [
+                              <arg>
+                              Nolabel
+                                expression (asmcomp/comballoc.ml[81,3655+36]..[81,3655+42])
+                                  Pexp_field
+                                  expression (asmcomp/comballoc.ml[81,3655+36]..[81,3655+37])
+                                    Pexp_ident "i" (asmcomp/comballoc.ml[81,3655+36]..[81,3655+37])
+                                  "next" (asmcomp/comballoc.ml[81,3655+38]..[81,3655+42])
+                            ]
+                      ]
+                      expression (asmcomp/comballoc.ml[82,3701+6]..[83,3767+18])
+                        Pexp_tuple
+                        [
+                          expression (asmcomp/comballoc.ml[82,3701+7]..[82,3701+64])
+                            Pexp_apply
+                            expression (asmcomp/comballoc.ml[82,3701+7]..[82,3701+17])
+                              Pexp_ident "instr_cons" (asmcomp/comballoc.ml[82,3701+7]..[82,3701+17])
+                            [
+                              <arg>
+                              Nolabel
+                                expression (asmcomp/comballoc.ml[82,3701+18]..[82,3701+44])
+                                  Pexp_construct "Iswitch" (asmcomp/comballoc.ml[82,3701+19]..[82,3701+26])
+                                  Some
+                                    expression (asmcomp/comballoc.ml[82,3701+26]..[82,3701+43])
+                                      Pexp_tuple
+                                      [
+                                        expression (asmcomp/comballoc.ml[82,3701+27]..[82,3701+32])
+                                          Pexp_ident "table" (asmcomp/comballoc.ml[82,3701+27]..[82,3701+32])
+                                        expression (asmcomp/comballoc.ml[82,3701+34]..[82,3701+42])
+                                          Pexp_ident "newcases" (asmcomp/comballoc.ml[82,3701+34]..[82,3701+42])
+                                      ]
+                              <arg>
+                              Nolabel
+                                expression (asmcomp/comballoc.ml[82,3701+45]..[82,3701+50])
+                                  Pexp_field
+                                  expression (asmcomp/comballoc.ml[82,3701+45]..[82,3701+46])
+                                    Pexp_ident "i" (asmcomp/comballoc.ml[82,3701+45]..[82,3701+46])
+                                  "arg" (asmcomp/comballoc.ml[82,3701+47]..[82,3701+50])
+                              <arg>
+                              Nolabel
+                                expression (asmcomp/comballoc.ml[82,3701+51]..[82,3701+56])
+                                  Pexp_field
+                                  expression (asmcomp/comballoc.ml[82,3701+51]..[82,3701+52])
+                                    Pexp_ident "i" (asmcomp/comballoc.ml[82,3701+51]..[82,3701+52])
+                                  "res" (asmcomp/comballoc.ml[82,3701+53]..[82,3701+56])
+                              <arg>
+                              Nolabel
+                                expression (asmcomp/comballoc.ml[82,3701+57]..[82,3701+64])
+                                  Pexp_ident "newnext" (asmcomp/comballoc.ml[82,3701+57]..[82,3701+64])
+                            ]
+                          expression (asmcomp/comballoc.ml[83,3767+7]..[83,3767+17])
+                            Pexp_ident "allocstate" (asmcomp/comballoc.ml[83,3767+7]..[83,3767+17])
+                        ]
+                <case>
+                  pattern (asmcomp/comballoc.ml[84,3786+4]..[84,3786+36])
+                    Ppat_construct "Icatch" (asmcomp/comballoc.ml[84,3786+4]..[84,3786+10])
+                    Some
+                      []
+                      pattern (asmcomp/comballoc.ml[84,3786+10]..[84,3786+36])
+                        Ppat_tuple
+                        [
+                          pattern (asmcomp/comballoc.ml[84,3786+11]..[84,3786+19])
+                            Ppat_var "rec_flag" (asmcomp/comballoc.ml[84,3786+11]..[84,3786+19])
+                          pattern (asmcomp/comballoc.ml[84,3786+21]..[84,3786+29])
+                            Ppat_var "handlers" (asmcomp/comballoc.ml[84,3786+21]..[84,3786+29])
+                          pattern (asmcomp/comballoc.ml[84,3786+31]..[84,3786+35])
+                            Ppat_var "body" (asmcomp/comballoc.ml[84,3786+31]..[84,3786+35])
+                        ]
+                  expression (asmcomp/comballoc.ml[85,3826+6]..[90,4088+33])
+                    Pexp_let Nonrec
+                    [
+                      <def>
+                        pattern (asmcomp/comballoc.ml[85,3826+10]..[85,3826+23])
+                          Ppat_tuple
+                          [
+                            pattern (asmcomp/comballoc.ml[85,3826+11]..[85,3826+18])
+                              Ppat_var "newbody" (asmcomp/comballoc.ml[85,3826+11]..[85,3826+18])
+                            pattern (asmcomp/comballoc.ml[85,3826+20]..[85,3826+22])
+                              Ppat_var "s'" (asmcomp/comballoc.ml[85,3826+20]..[85,3826+22])
+                          ]
+                        expression (asmcomp/comballoc.ml[85,3826+26]..[85,3826+49])
+                          Pexp_apply
+                          expression (asmcomp/comballoc.ml[85,3826+26]..[85,3826+33])
+                            Pexp_ident "combine" (asmcomp/comballoc.ml[85,3826+26]..[85,3826+33])
+                          [
+                            <arg>
+                            Nolabel
+                              expression (asmcomp/comballoc.ml[85,3826+34]..[85,3826+38])
+                                Pexp_ident "body" (asmcomp/comballoc.ml[85,3826+34]..[85,3826+38])
+                            <arg>
+                            Nolabel
+                              expression (asmcomp/comballoc.ml[85,3826+39]..[85,3826+49])
+                                Pexp_ident "allocstate" (asmcomp/comballoc.ml[85,3826+39]..[85,3826+49])
+                          ]
+                    ]
+                    expression (asmcomp/comballoc.ml[86,3879+6]..[90,4088+33])
+                      Pexp_let Nonrec
+                      [
+                        <def>
+                          pattern (asmcomp/comballoc.ml[86,3879+10]..[86,3879+21])
+                            Ppat_var "newhandlers" (asmcomp/comballoc.ml[86,3879+10]..[86,3879+21])
+                          expression (asmcomp/comballoc.ml[87,3903+8]..[87,3903+76])
+                            Pexp_apply
+                            expression (asmcomp/comballoc.ml[87,3903+8]..[87,3903+16])
+                              Pexp_ident "List.map" (asmcomp/comballoc.ml[87,3903+8]..[87,3903+16])
+                            [
+                              <arg>
+                              Nolabel
+                                expression (asmcomp/comballoc.ml[87,3903+17]..[87,3903+67])
+                                  Pexp_fun
+                                  Nolabel
+                                  None
+                                  pattern (asmcomp/comballoc.ml[87,3903+22]..[87,3903+35])
+                                    Ppat_tuple
+                                    [
+                                      pattern (asmcomp/comballoc.ml[87,3903+23]..[87,3903+25])
+                                        Ppat_var "io" (asmcomp/comballoc.ml[87,3903+23]..[87,3903+25])
+                                      pattern (asmcomp/comballoc.ml[87,3903+27]..[87,3903+34])
+                                        Ppat_var "handler" (asmcomp/comballoc.ml[87,3903+27]..[87,3903+34])
+                                    ]
+                                  expression (asmcomp/comballoc.ml[87,3903+39]..[87,3903+66])
+                                    Pexp_tuple
+                                    [
+                                      expression (asmcomp/comballoc.ml[87,3903+39]..[87,3903+41])
+                                        Pexp_ident "io" (asmcomp/comballoc.ml[87,3903+39]..[87,3903+41])
+                                      expression (asmcomp/comballoc.ml[87,3903+43]..[87,3903+66])
+                                        Pexp_apply
+                                        expression (asmcomp/comballoc.ml[87,3903+43]..[87,3903+58])
+                                          Pexp_ident "combine_restart" (asmcomp/comballoc.ml[87,3903+43]..[87,3903+58])
+                                        [
+                                          <arg>
+                                          Nolabel
+                                            expression (asmcomp/comballoc.ml[87,3903+59]..[87,3903+66])
+                                              Pexp_ident "handler" (asmcomp/comballoc.ml[87,3903+59]..[87,3903+66])
+                                        ]
+                                    ]
+                              <arg>
+                              Nolabel
+                                expression (asmcomp/comballoc.ml[87,3903+68]..[87,3903+76])
+                                  Pexp_ident "handlers" (asmcomp/comballoc.ml[87,3903+68]..[87,3903+76])
+                            ]
+                      ]
+                      expression (asmcomp/comballoc.ml[88,3983+6]..[90,4088+33])
+                        Pexp_let Nonrec
+                        [
+                          <def>
+                            pattern (asmcomp/comballoc.ml[88,3983+10]..[88,3983+17])
+                              Ppat_var "newnext" (asmcomp/comballoc.ml[88,3983+10]..[88,3983+17])
+                            expression (asmcomp/comballoc.ml[88,3983+20]..[88,3983+42])
+                              Pexp_apply
+                              expression (asmcomp/comballoc.ml[88,3983+20]..[88,3983+35])
+                                Pexp_ident "combine_restart" (asmcomp/comballoc.ml[88,3983+20]..[88,3983+35])
+                              [
+                                <arg>
+                                Nolabel
+                                  expression (asmcomp/comballoc.ml[88,3983+36]..[88,3983+42])
+                                    Pexp_field
+                                    expression (asmcomp/comballoc.ml[88,3983+36]..[88,3983+37])
+                                      Pexp_ident "i" (asmcomp/comballoc.ml[88,3983+36]..[88,3983+37])
+                                    "next" (asmcomp/comballoc.ml[88,3983+38]..[88,3983+42])
+                              ]
+                        ]
+                        expression (asmcomp/comballoc.ml[89,4029+6]..[90,4088+33])
+                          Pexp_tuple
+                          [
+                            expression (asmcomp/comballoc.ml[89,4029+7]..[90,4088+28])
+                              Pexp_apply
+                              expression (asmcomp/comballoc.ml[89,4029+7]..[89,4029+17])
+                                Pexp_ident "instr_cons" (asmcomp/comballoc.ml[89,4029+7]..[89,4029+17])
+                              [
+                                <arg>
+                                Nolabel
+                                  expression (asmcomp/comballoc.ml[89,4029+18]..[89,4029+58])
+                                    Pexp_construct "Icatch" (asmcomp/comballoc.ml[89,4029+19]..[89,4029+25])
+                                    Some
+                                      expression (asmcomp/comballoc.ml[89,4029+25]..[89,4029+57])
+                                        Pexp_tuple
+                                        [
+                                          expression (asmcomp/comballoc.ml[89,4029+26]..[89,4029+34])
+                                            Pexp_ident "rec_flag" (asmcomp/comballoc.ml[89,4029+26]..[89,4029+34])
+                                          expression (asmcomp/comballoc.ml[89,4029+36]..[89,4029+47])
+                                            Pexp_ident "newhandlers" (asmcomp/comballoc.ml[89,4029+36]..[89,4029+47])
+                                          expression (asmcomp/comballoc.ml[89,4029+49]..[89,4029+56])
+                                            Pexp_ident "newbody" (asmcomp/comballoc.ml[89,4029+49]..[89,4029+56])
+                                        ]
+                                <arg>
+                                Nolabel
+                                  expression (asmcomp/comballoc.ml[90,4088+9]..[90,4088+14])
+                                    Pexp_field
+                                    expression (asmcomp/comballoc.ml[90,4088+9]..[90,4088+10])
+                                      Pexp_ident "i" (asmcomp/comballoc.ml[90,4088+9]..[90,4088+10])
+                                    "arg" (asmcomp/comballoc.ml[90,4088+11]..[90,4088+14])
+                                <arg>
+                                Nolabel
+                                  expression (asmcomp/comballoc.ml[90,4088+15]..[90,4088+20])
+                                    Pexp_field
+                                    expression (asmcomp/comballoc.ml[90,4088+15]..[90,4088+16])
+                                      Pexp_ident "i" (asmcomp/comballoc.ml[90,4088+15]..[90,4088+16])
+                                    "res" (asmcomp/comballoc.ml[90,4088+17]..[90,4088+20])
+                                <arg>
+                                Nolabel
+                                  expression (asmcomp/comballoc.ml[90,4088+21]..[90,4088+28])
+                                    Pexp_ident "newnext" (asmcomp/comballoc.ml[90,4088+21]..[90,4088+28])
+                              ]
+                            expression (asmcomp/comballoc.ml[90,4088+30]..[90,4088+32])
+                              Pexp_ident "s'" (asmcomp/comballoc.ml[90,4088+30]..[90,4088+32])
+                          ]
+                <case>
+                  pattern (asmcomp/comballoc.ml[91,4122+4]..[91,4122+27])
+                    Ppat_construct "Itrywith" (asmcomp/comballoc.ml[91,4122+4]..[91,4122+12])
+                    Some
+                      []
+                      pattern (asmcomp/comballoc.ml[91,4122+12]..[91,4122+27])
+                        Ppat_tuple
+                        [
+                          pattern (asmcomp/comballoc.ml[91,4122+13]..[91,4122+17])
+                            Ppat_var "body" (asmcomp/comballoc.ml[91,4122+13]..[91,4122+17])
+                          pattern (asmcomp/comballoc.ml[91,4122+19]..[91,4122+26])
+                            Ppat_var "handler" (asmcomp/comballoc.ml[91,4122+19]..[91,4122+26])
+                        ]
+                  expression (asmcomp/comballoc.ml[92,4153+6]..[95,4302+74])
+                    Pexp_let Nonrec
+                    [
+                      <def>
+                        pattern (asmcomp/comballoc.ml[92,4153+10]..[92,4153+23])
+                          Ppat_tuple
+                          [
+                            pattern (asmcomp/comballoc.ml[92,4153+11]..[92,4153+18])
+                              Ppat_var "newbody" (asmcomp/comballoc.ml[92,4153+11]..[92,4153+18])
+                            pattern (asmcomp/comballoc.ml[92,4153+20]..[92,4153+22])
+                              Ppat_var "s'" (asmcomp/comballoc.ml[92,4153+20]..[92,4153+22])
+                          ]
+                        expression (asmcomp/comballoc.ml[92,4153+26]..[92,4153+49])
+                          Pexp_apply
+                          expression (asmcomp/comballoc.ml[92,4153+26]..[92,4153+33])
+                            Pexp_ident "combine" (asmcomp/comballoc.ml[92,4153+26]..[92,4153+33])
+                          [
+                            <arg>
+                            Nolabel
+                              expression (asmcomp/comballoc.ml[92,4153+34]..[92,4153+38])
+                                Pexp_ident "body" (asmcomp/comballoc.ml[92,4153+34]..[92,4153+38])
+                            <arg>
+                            Nolabel
+                              expression (asmcomp/comballoc.ml[92,4153+39]..[92,4153+49])
+                                Pexp_ident "allocstate" (asmcomp/comballoc.ml[92,4153+39]..[92,4153+49])
+                          ]
+                    ]
+                    expression (asmcomp/comballoc.ml[93,4206+6]..[95,4302+74])
+                      Pexp_let Nonrec
+                      [
+                        <def>
+                          pattern (asmcomp/comballoc.ml[93,4206+10]..[93,4206+20])
+                            Ppat_var "newhandler" (asmcomp/comballoc.ml[93,4206+10]..[93,4206+20])
+                          expression (asmcomp/comballoc.ml[93,4206+23]..[93,4206+46])
+                            Pexp_apply
+                            expression (asmcomp/comballoc.ml[93,4206+23]..[93,4206+38])
+                              Pexp_ident "combine_restart" (asmcomp/comballoc.ml[93,4206+23]..[93,4206+38])
+                            [
+                              <arg>
+                              Nolabel
+                                expression (asmcomp/comballoc.ml[93,4206+39]..[93,4206+46])
+                                  Pexp_ident "handler" (asmcomp/comballoc.ml[93,4206+39]..[93,4206+46])
+                            ]
+                      ]
+                      expression (asmcomp/comballoc.ml[94,4256+6]..[95,4302+74])
+                        Pexp_let Nonrec
+                        [
+                          <def>
+                            pattern (asmcomp/comballoc.ml[94,4256+10]..[94,4256+17])
+                              Ppat_var "newnext" (asmcomp/comballoc.ml[94,4256+10]..[94,4256+17])
+                            expression (asmcomp/comballoc.ml[94,4256+20]..[94,4256+42])
+                              Pexp_apply
+                              expression (asmcomp/comballoc.ml[94,4256+20]..[94,4256+35])
+                                Pexp_ident "combine_restart" (asmcomp/comballoc.ml[94,4256+20]..[94,4256+35])
+                              [
+                                <arg>
+                                Nolabel
+                                  expression (asmcomp/comballoc.ml[94,4256+36]..[94,4256+42])
+                                    Pexp_field
+                                    expression (asmcomp/comballoc.ml[94,4256+36]..[94,4256+37])
+                                      Pexp_ident "i" (asmcomp/comballoc.ml[94,4256+36]..[94,4256+37])
+                                    "next" (asmcomp/comballoc.ml[94,4256+38]..[94,4256+42])
+                              ]
+                        ]
+                        expression (asmcomp/comballoc.ml[95,4302+6]..[95,4302+74])
+                          Pexp_tuple
+                          [
+                            expression (asmcomp/comballoc.ml[95,4302+7]..[95,4302+69])
+                              Pexp_apply
+                              expression (asmcomp/comballoc.ml[95,4302+7]..[95,4302+17])
+                                Pexp_ident "instr_cons" (asmcomp/comballoc.ml[95,4302+7]..[95,4302+17])
+                              [
+                                <arg>
+                                Nolabel
+                                  expression (asmcomp/comballoc.ml[95,4302+18]..[95,4302+49])
+                                    Pexp_construct "Itrywith" (asmcomp/comballoc.ml[95,4302+19]..[95,4302+27])
+                                    Some
+                                      expression (asmcomp/comballoc.ml[95,4302+27]..[95,4302+48])
+                                        Pexp_tuple
+                                        [
+                                          expression (asmcomp/comballoc.ml[95,4302+28]..[95,4302+35])
+                                            Pexp_ident "newbody" (asmcomp/comballoc.ml[95,4302+28]..[95,4302+35])
+                                          expression (asmcomp/comballoc.ml[95,4302+37]..[95,4302+47])
+                                            Pexp_ident "newhandler" (asmcomp/comballoc.ml[95,4302+37]..[95,4302+47])
+                                        ]
+                                <arg>
+                                Nolabel
+                                  expression (asmcomp/comballoc.ml[95,4302+50]..[95,4302+55])
+                                    Pexp_field
+                                    expression (asmcomp/comballoc.ml[95,4302+50]..[95,4302+51])
+                                      Pexp_ident "i" (asmcomp/comballoc.ml[95,4302+50]..[95,4302+51])
+                                    "arg" (asmcomp/comballoc.ml[95,4302+52]..[95,4302+55])
+                                <arg>
+                                Nolabel
+                                  expression (asmcomp/comballoc.ml[95,4302+56]..[95,4302+61])
+                                    Pexp_field
+                                    expression (asmcomp/comballoc.ml[95,4302+56]..[95,4302+57])
+                                      Pexp_ident "i" (asmcomp/comballoc.ml[95,4302+56]..[95,4302+57])
+                                    "res" (asmcomp/comballoc.ml[95,4302+58]..[95,4302+61])
+                                <arg>
+                                Nolabel
+                                  expression (asmcomp/comballoc.ml[95,4302+62]..[95,4302+69])
+                                    Pexp_ident "newnext" (asmcomp/comballoc.ml[95,4302+62]..[95,4302+69])
+                              ]
+                            expression (asmcomp/comballoc.ml[95,4302+71]..[95,4302+73])
+                              Pexp_ident "s'" (asmcomp/comballoc.ml[95,4302+71]..[95,4302+73])
+                          ]
+              ]
+      <def>
+        pattern (asmcomp/comballoc.ml[97,4378+4]..[97,4378+19])
+          Ppat_var "combine_restart" (asmcomp/comballoc.ml[97,4378+4]..[97,4378+19])
+        expression (asmcomp/comballoc.ml[97,4378+20]..[98,4402+44]) ghost
+          Pexp_fun
+          Nolabel
+          None
+          pattern (asmcomp/comballoc.ml[97,4378+20]..[97,4378+21])
+            Ppat_var "i" (asmcomp/comballoc.ml[97,4378+20]..[97,4378+21])
+          expression (asmcomp/comballoc.ml[98,4402+2]..[98,4402+44])
+            Pexp_let Nonrec
+            [
+              <def>
+                pattern (asmcomp/comballoc.ml[98,4402+6]..[98,4402+15])
+                  Ppat_tuple
+                  [
+                    pattern (asmcomp/comballoc.ml[98,4402+7]..[98,4402+11])
+                      Ppat_var "newi" (asmcomp/comballoc.ml[98,4402+7]..[98,4402+11])
+                    pattern (asmcomp/comballoc.ml[98,4402+13]..[98,4402+14])
+                      Ppat_any
+                  ]
+                expression (asmcomp/comballoc.ml[98,4402+18]..[98,4402+36])
+                  Pexp_apply
+                  expression (asmcomp/comballoc.ml[98,4402+18]..[98,4402+25])
+                    Pexp_ident "combine" (asmcomp/comballoc.ml[98,4402+18]..[98,4402+25])
+                  [
+                    <arg>
+                    Nolabel
+                      expression (asmcomp/comballoc.ml[98,4402+26]..[98,4402+27])
+                        Pexp_ident "i" (asmcomp/comballoc.ml[98,4402+26]..[98,4402+27])
+                    <arg>
+                    Nolabel
+                      expression (asmcomp/comballoc.ml[98,4402+28]..[98,4402+36])
+                        Pexp_construct "No_alloc" (asmcomp/comballoc.ml[98,4402+28]..[98,4402+36])
+                        None
+                  ]
+            ]
+            expression (asmcomp/comballoc.ml[98,4402+40]..[98,4402+44])
+              Pexp_ident "newi" (asmcomp/comballoc.ml[98,4402+40]..[98,4402+44])
+    ]
+  structure_item (asmcomp/comballoc.ml[100,4448+0]..[101,4464+48])
+    Pstr_value Nonrec
+    [
+      <def>
+        pattern (asmcomp/comballoc.ml[100,4448+4]..[100,4448+11])
+          Ppat_var "fundecl" (asmcomp/comballoc.ml[100,4448+4]..[100,4448+11])
+        expression (asmcomp/comballoc.ml[100,4448+12]..[101,4464+48]) ghost
+          Pexp_fun
+          Nolabel
+          None
+          pattern (asmcomp/comballoc.ml[100,4448+12]..[100,4448+13])
+            Ppat_var "f" (asmcomp/comballoc.ml[100,4448+12]..[100,4448+13])
+          expression (asmcomp/comballoc.ml[101,4464+2]..[101,4464+48])
+            Pexp_record
+            [
+              "fun_body" (asmcomp/comballoc.ml[101,4464+10]..[101,4464+18])
+                expression (asmcomp/comballoc.ml[101,4464+21]..[101,4464+47])
+                  Pexp_apply
+                  expression (asmcomp/comballoc.ml[101,4464+21]..[101,4464+36])
+                    Pexp_ident "combine_restart" (asmcomp/comballoc.ml[101,4464+21]..[101,4464+36])
+                  [
+                    <arg>
+                    Nolabel
+                      expression (asmcomp/comballoc.ml[101,4464+37]..[101,4464+47])
+                        Pexp_field
+                        expression (asmcomp/comballoc.ml[101,4464+37]..[101,4464+38])
+                          Pexp_ident "f" (asmcomp/comballoc.ml[101,4464+37]..[101,4464+38])
+                        "fun_body" (asmcomp/comballoc.ml[101,4464+39]..[101,4464+47])
+                  ]
+            ]
+            Some
+              expression (asmcomp/comballoc.ml[101,4464+3]..[101,4464+4])
+                Pexp_ident "f" (asmcomp/comballoc.ml[101,4464+3]..[101,4464+4])
+    ]
+]
+

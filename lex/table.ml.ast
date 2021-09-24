@@ -1,0 +1,593 @@
+[
+  structure_item (lex/table.ml[16,1079+0]..[16,1079+58])
+    Pstr_type Rec
+    [
+      type_declaration "t" (lex/table.ml[16,1079+8]..[16,1079+9]) (lex/table.ml[16,1079+0]..[16,1079+58])
+        ptype_params =
+          [
+            core_type (lex/table.ml[16,1079+5]..[16,1079+7])
+              Ptyp_var a
+          ]
+        ptype_cstrs =
+          []
+        ptype_kind =
+          Ptype_record
+            [
+              (lex/table.ml[16,1079+13]..[16,1079+33])
+                Mutable
+                "next" (lex/table.ml[16,1079+21]..[16,1079+25])                core_type (lex/table.ml[16,1079+28]..[16,1079+31])
+                  Ptyp_constr "int" (lex/table.ml[16,1079+28]..[16,1079+31])
+                  []
+              (lex/table.ml[16,1079+34]..[16,1079+57])
+                Mutable
+                "data" (lex/table.ml[16,1079+42]..[16,1079+46])                core_type (lex/table.ml[16,1079+49]..[16,1079+57])
+                  Ptyp_constr "array" (lex/table.ml[16,1079+52]..[16,1079+57])
+                  [
+                    core_type (lex/table.ml[16,1079+49]..[16,1079+51])
+                      Ptyp_var a
+                  ]
+            ]
+        ptype_private = Public
+        ptype_manifest =
+          None
+    ]
+  structure_item (lex/table.ml[18,1139+0]..[18,1139+21])
+    Pstr_value Nonrec
+    [
+      <def>
+        pattern (lex/table.ml[18,1139+4]..[18,1139+16])
+          Ppat_var "default_size" (lex/table.ml[18,1139+4]..[18,1139+16])
+        expression (lex/table.ml[18,1139+19]..[18,1139+21])
+          Pexp_constant PConst_int (32,None)
+    ]
+  structure_item (lex/table.ml[21,1165+0]..[22,1226+25])
+    Pstr_value Nonrec
+    [
+      <def>
+        pattern (lex/table.ml[21,1165+4]..[21,1165+10])
+          Ppat_var "create" (lex/table.ml[21,1165+4]..[21,1165+10])
+        expression (lex/table.ml[21,1165+11]..[21,1165+60]) ghost
+          Pexp_fun
+          Nolabel
+          None
+          pattern (lex/table.ml[21,1165+11]..[21,1165+12])
+            Ppat_var "x" (lex/table.ml[21,1165+11]..[21,1165+12])
+          expression (lex/table.ml[21,1165+15]..[21,1165+60])
+            Pexp_record
+            [
+              "next" (lex/table.ml[21,1165+16]..[21,1165+20])
+                expression (lex/table.ml[21,1165+23]..[21,1165+24])
+                  Pexp_constant PConst_int (0,None)
+              "data" (lex/table.ml[21,1165+27]..[21,1165+31])
+                expression (lex/table.ml[21,1165+34]..[21,1165+59])
+                  Pexp_apply
+                  expression (lex/table.ml[21,1165+34]..[21,1165+44])
+                    Pexp_ident "Array.make" (lex/table.ml[21,1165+34]..[21,1165+44])
+                  [
+                    <arg>
+                    Nolabel
+                      expression (lex/table.ml[21,1165+45]..[21,1165+57])
+                        Pexp_ident "default_size" (lex/table.ml[21,1165+45]..[21,1165+57])
+                    <arg>
+                    Nolabel
+                      expression (lex/table.ml[21,1165+58]..[21,1165+59])
+                        Pexp_ident "x" (lex/table.ml[21,1165+58]..[21,1165+59])
+                  ]
+            ]
+            None
+      <def>
+        pattern (lex/table.ml[22,1226+4]..[22,1226+9])
+          Ppat_var "reset" (lex/table.ml[22,1226+4]..[22,1226+9])
+        expression (lex/table.ml[22,1226+10]..[22,1226+25]) ghost
+          Pexp_fun
+          Nolabel
+          None
+          pattern (lex/table.ml[22,1226+10]..[22,1226+11])
+            Ppat_var "t" (lex/table.ml[22,1226+10]..[22,1226+11])
+          expression (lex/table.ml[22,1226+14]..[22,1226+25])
+            Pexp_setfield
+            expression (lex/table.ml[22,1226+14]..[22,1226+15])
+              Pexp_ident "t" (lex/table.ml[22,1226+14]..[22,1226+15])
+            "next" (lex/table.ml[22,1226+16]..[22,1226+20])
+            expression (lex/table.ml[22,1226+24]..[22,1226+25])
+              Pexp_constant PConst_int (0,None)
+    ]
+  structure_item (lex/table.ml[25,1256+0]..[28,1394+17])
+    Pstr_value Nonrec
+    [
+      <def>
+        pattern (lex/table.ml[25,1256+4]..[25,1256+14])
+          Ppat_var "incr_table" (lex/table.ml[25,1256+4]..[25,1256+14])
+        expression (lex/table.ml[25,1256+15]..[28,1394+17]) ghost
+          Pexp_fun
+          Nolabel
+          None
+          pattern (lex/table.ml[25,1256+15]..[25,1256+20])
+            Ppat_var "table" (lex/table.ml[25,1256+15]..[25,1256+20])
+          expression (lex/table.ml[25,1256+21]..[28,1394+17]) ghost
+            Pexp_fun
+            Nolabel
+            None
+            pattern (lex/table.ml[25,1256+21]..[25,1256+29])
+              Ppat_var "new_size" (lex/table.ml[25,1256+21]..[25,1256+29])
+            expression (lex/table.ml[26,1288+2]..[28,1394+17])
+              Pexp_let Nonrec
+              [
+                <def>
+                  pattern (lex/table.ml[26,1288+6]..[26,1288+7])
+                    Ppat_var "t" (lex/table.ml[26,1288+6]..[26,1288+7])
+                  expression (lex/table.ml[26,1288+10]..[26,1288+44])
+                    Pexp_apply
+                    expression (lex/table.ml[26,1288+10]..[26,1288+20])
+                      Pexp_ident "Array.make" (lex/table.ml[26,1288+10]..[26,1288+20])
+                    [
+                      <arg>
+                      Nolabel
+                        expression (lex/table.ml[26,1288+21]..[26,1288+29])
+                          Pexp_ident "new_size" (lex/table.ml[26,1288+21]..[26,1288+29])
+                      <arg>
+                      Nolabel
+                        expression (lex/table.ml[26,1288+30]..[26,1288+44])
+                          Pexp_apply
+                          expression (lex/table.ml[26,1288+30]..[26,1288+44]) ghost
+                            Pexp_ident "Array.get" (lex/table.ml[26,1288+30]..[26,1288+44]) ghost
+                          [
+                            <arg>
+                            Nolabel
+                              expression (lex/table.ml[26,1288+30]..[26,1288+40])
+                                Pexp_field
+                                expression (lex/table.ml[26,1288+30]..[26,1288+35])
+                                  Pexp_ident "table" (lex/table.ml[26,1288+30]..[26,1288+35])
+                                "data" (lex/table.ml[26,1288+36]..[26,1288+40])
+                            <arg>
+                            Nolabel
+                              expression (lex/table.ml[26,1288+42]..[26,1288+43])
+                                Pexp_constant PConst_int (0,None)
+                          ]
+                    ]
+              ]
+              expression (lex/table.ml[27,1336+2]..[28,1394+17])
+                Pexp_sequence
+                expression (lex/table.ml[27,1336+2]..[27,1336+55])
+                  Pexp_apply
+                  expression (lex/table.ml[27,1336+2]..[27,1336+12])
+                    Pexp_ident "Array.blit" (lex/table.ml[27,1336+2]..[27,1336+12])
+                  [
+                    <arg>
+                    Nolabel
+                      expression (lex/table.ml[27,1336+13]..[27,1336+23])
+                        Pexp_field
+                        expression (lex/table.ml[27,1336+13]..[27,1336+18])
+                          Pexp_ident "table" (lex/table.ml[27,1336+13]..[27,1336+18])
+                        "data" (lex/table.ml[27,1336+19]..[27,1336+23])
+                    <arg>
+                    Nolabel
+                      expression (lex/table.ml[27,1336+24]..[27,1336+25])
+                        Pexp_constant PConst_int (0,None)
+                    <arg>
+                    Nolabel
+                      expression (lex/table.ml[27,1336+26]..[27,1336+27])
+                        Pexp_ident "t" (lex/table.ml[27,1336+26]..[27,1336+27])
+                    <arg>
+                    Nolabel
+                      expression (lex/table.ml[27,1336+28]..[27,1336+29])
+                        Pexp_constant PConst_int (0,None)
+                    <arg>
+                    Nolabel
+                      expression (lex/table.ml[27,1336+30]..[27,1336+55])
+                        Pexp_apply
+                        expression (lex/table.ml[27,1336+31]..[27,1336+43])
+                          Pexp_ident "Array.length" (lex/table.ml[27,1336+31]..[27,1336+43])
+                        [
+                          <arg>
+                          Nolabel
+                            expression (lex/table.ml[27,1336+44]..[27,1336+54])
+                              Pexp_field
+                              expression (lex/table.ml[27,1336+44]..[27,1336+49])
+                                Pexp_ident "table" (lex/table.ml[27,1336+44]..[27,1336+49])
+                              "data" (lex/table.ml[27,1336+50]..[27,1336+54])
+                        ]
+                  ]
+                expression (lex/table.ml[28,1394+2]..[28,1394+17])
+                  Pexp_setfield
+                  expression (lex/table.ml[28,1394+2]..[28,1394+7])
+                    Pexp_ident "table" (lex/table.ml[28,1394+2]..[28,1394+7])
+                  "data" (lex/table.ml[28,1394+8]..[28,1394+12])
+                  expression (lex/table.ml[28,1394+16]..[28,1394+17])
+                    Pexp_ident "t" (lex/table.ml[28,1394+16]..[28,1394+17])
+    ]
+  structure_item (lex/table.ml[30,1413+0]..[35,1562+29])
+    Pstr_value Nonrec
+    [
+      <def>
+        pattern (lex/table.ml[30,1413+4]..[30,1413+8])
+          Ppat_var "emit" (lex/table.ml[30,1413+4]..[30,1413+8])
+        expression (lex/table.ml[30,1413+9]..[35,1562+29]) ghost
+          Pexp_fun
+          Nolabel
+          None
+          pattern (lex/table.ml[30,1413+9]..[30,1413+14])
+            Ppat_var "table" (lex/table.ml[30,1413+9]..[30,1413+14])
+          expression (lex/table.ml[30,1413+15]..[35,1562+29]) ghost
+            Pexp_fun
+            Nolabel
+            None
+            pattern (lex/table.ml[30,1413+15]..[30,1413+16])
+              Ppat_var "i" (lex/table.ml[30,1413+15]..[30,1413+16])
+            expression (lex/table.ml[31,1432+1]..[35,1562+29])
+              Pexp_let Nonrec
+              [
+                <def>
+                  pattern (lex/table.ml[31,1432+5]..[31,1432+9])
+                    Ppat_var "size" (lex/table.ml[31,1432+5]..[31,1432+9])
+                  expression (lex/table.ml[31,1432+12]..[31,1432+35])
+                    Pexp_apply
+                    expression (lex/table.ml[31,1432+12]..[31,1432+24])
+                      Pexp_ident "Array.length" (lex/table.ml[31,1432+12]..[31,1432+24])
+                    [
+                      <arg>
+                      Nolabel
+                        expression (lex/table.ml[31,1432+25]..[31,1432+35])
+                          Pexp_field
+                          expression (lex/table.ml[31,1432+25]..[31,1432+30])
+                            Pexp_ident "table" (lex/table.ml[31,1432+25]..[31,1432+30])
+                          "data" (lex/table.ml[31,1432+31]..[31,1432+35])
+                    ]
+              ]
+              expression (lex/table.ml[32,1471+1]..[35,1562+29])
+                Pexp_sequence
+                expression (lex/table.ml[32,1471+1]..[33,1499+29])
+                  Pexp_ifthenelse
+                  expression (lex/table.ml[32,1471+4]..[32,1471+22])
+                    Pexp_apply
+                    expression (lex/table.ml[32,1471+15]..[32,1471+17])
+                      Pexp_ident ">=" (lex/table.ml[32,1471+15]..[32,1471+17])
+                    [
+                      <arg>
+                      Nolabel
+                        expression (lex/table.ml[32,1471+4]..[32,1471+14])
+                          Pexp_field
+                          expression (lex/table.ml[32,1471+4]..[32,1471+9])
+                            Pexp_ident "table" (lex/table.ml[32,1471+4]..[32,1471+9])
+                          "next" (lex/table.ml[32,1471+10]..[32,1471+14])
+                      <arg>
+                      Nolabel
+                        expression (lex/table.ml[32,1471+18]..[32,1471+22])
+                          Pexp_ident "size" (lex/table.ml[32,1471+18]..[32,1471+22])
+                    ]
+                  expression (lex/table.ml[33,1499+4]..[33,1499+29])
+                    Pexp_apply
+                    expression (lex/table.ml[33,1499+4]..[33,1499+14])
+                      Pexp_ident "incr_table" (lex/table.ml[33,1499+4]..[33,1499+14])
+                    [
+                      <arg>
+                      Nolabel
+                        expression (lex/table.ml[33,1499+15]..[33,1499+20])
+                          Pexp_ident "table" (lex/table.ml[33,1499+15]..[33,1499+20])
+                      <arg>
+                      Nolabel
+                        expression (lex/table.ml[33,1499+21]..[33,1499+29])
+                          Pexp_apply
+                          expression (lex/table.ml[33,1499+23]..[33,1499+24])
+                            Pexp_ident "*" (lex/table.ml[33,1499+23]..[33,1499+24])
+                          [
+                            <arg>
+                            Nolabel
+                              expression (lex/table.ml[33,1499+22]..[33,1499+23])
+                                Pexp_constant PConst_int (2,None)
+                            <arg>
+                            Nolabel
+                              expression (lex/table.ml[33,1499+24]..[33,1499+28])
+                                Pexp_ident "size" (lex/table.ml[33,1499+24]..[33,1499+28])
+                          ]
+                    ]
+                  None
+                expression (lex/table.ml[34,1530+1]..[35,1562+29])
+                  Pexp_sequence
+                  expression (lex/table.ml[34,1530+1]..[34,1530+29])
+                    Pexp_apply
+                    expression (lex/table.ml[34,1530+1]..[34,1530+29]) ghost
+                      Pexp_ident "Array.set" (lex/table.ml[34,1530+1]..[34,1530+29]) ghost
+                    [
+                      <arg>
+                      Nolabel
+                        expression (lex/table.ml[34,1530+1]..[34,1530+11])
+                          Pexp_field
+                          expression (lex/table.ml[34,1530+1]..[34,1530+6])
+                            Pexp_ident "table" (lex/table.ml[34,1530+1]..[34,1530+6])
+                          "data" (lex/table.ml[34,1530+7]..[34,1530+11])
+                      <arg>
+                      Nolabel
+                        expression (lex/table.ml[34,1530+13]..[34,1530+23])
+                          Pexp_field
+                          expression (lex/table.ml[34,1530+13]..[34,1530+18])
+                            Pexp_ident "table" (lex/table.ml[34,1530+13]..[34,1530+18])
+                          "next" (lex/table.ml[34,1530+19]..[34,1530+23])
+                      <arg>
+                      Nolabel
+                        expression (lex/table.ml[34,1530+28]..[34,1530+29])
+                          Pexp_ident "i" (lex/table.ml[34,1530+28]..[34,1530+29])
+                    ]
+                  expression (lex/table.ml[35,1562+1]..[35,1562+29])
+                    Pexp_setfield
+                    expression (lex/table.ml[35,1562+1]..[35,1562+6])
+                      Pexp_ident "table" (lex/table.ml[35,1562+1]..[35,1562+6])
+                    "next" (lex/table.ml[35,1562+7]..[35,1562+11])
+                    expression (lex/table.ml[35,1562+15]..[35,1562+29])
+                      Pexp_apply
+                      expression (lex/table.ml[35,1562+26]..[35,1562+27])
+                        Pexp_ident "+" (lex/table.ml[35,1562+26]..[35,1562+27])
+                      [
+                        <arg>
+                        Nolabel
+                          expression (lex/table.ml[35,1562+15]..[35,1562+25])
+                            Pexp_field
+                            expression (lex/table.ml[35,1562+15]..[35,1562+20])
+                              Pexp_ident "table" (lex/table.ml[35,1562+15]..[35,1562+20])
+                            "next" (lex/table.ml[35,1562+21]..[35,1562+25])
+                        <arg>
+                        Nolabel
+                          expression (lex/table.ml[35,1562+28]..[35,1562+29])
+                            Pexp_constant PConst_int (1,None)
+                      ]
+    ]
+  structure_item (lex/table.ml[39,1597+0]..[39,1597+15])
+    Pstr_exception
+    type_exception
+      ptyext_constructor =
+        extension_constructor (lex/table.ml[39,1597+0]..[39,1597+15])
+          pext_name = "Error"
+          pext_kind =
+            Pext_decl
+              []
+              None
+  structure_item (lex/table.ml[41,1614+0]..[45,1681+15])
+    Pstr_value Nonrec
+    [
+      <def>
+        pattern (lex/table.ml[41,1614+4]..[41,1614+7])
+          Ppat_var "get" (lex/table.ml[41,1614+4]..[41,1614+7])
+        expression (lex/table.ml[41,1614+8]..[45,1681+15]) ghost
+          Pexp_fun
+          Nolabel
+          None
+          pattern (lex/table.ml[41,1614+8]..[41,1614+9])
+            Ppat_var "t" (lex/table.ml[41,1614+8]..[41,1614+9])
+          expression (lex/table.ml[41,1614+10]..[45,1681+15]) ghost
+            Pexp_fun
+            Nolabel
+            None
+            pattern (lex/table.ml[41,1614+10]..[41,1614+11])
+              Ppat_var "i" (lex/table.ml[41,1614+10]..[41,1614+11])
+            expression (lex/table.ml[42,1628+2]..[45,1681+15])
+              Pexp_ifthenelse
+              expression (lex/table.ml[42,1628+5]..[42,1628+25])
+                Pexp_apply
+                expression (lex/table.ml[42,1628+12]..[42,1628+14])
+                  Pexp_ident "&&" (lex/table.ml[42,1628+12]..[42,1628+14])
+                [
+                  <arg>
+                  Nolabel
+                    expression (lex/table.ml[42,1628+5]..[42,1628+11])
+                      Pexp_apply
+                      expression (lex/table.ml[42,1628+7]..[42,1628+9])
+                        Pexp_ident "<=" (lex/table.ml[42,1628+7]..[42,1628+9])
+                      [
+                        <arg>
+                        Nolabel
+                          expression (lex/table.ml[42,1628+5]..[42,1628+6])
+                            Pexp_constant PConst_int (0,None)
+                        <arg>
+                        Nolabel
+                          expression (lex/table.ml[42,1628+10]..[42,1628+11])
+                            Pexp_ident "i" (lex/table.ml[42,1628+10]..[42,1628+11])
+                      ]
+                  <arg>
+                  Nolabel
+                    expression (lex/table.ml[42,1628+15]..[42,1628+25])
+                      Pexp_apply
+                      expression (lex/table.ml[42,1628+17]..[42,1628+18])
+                        Pexp_ident "<" (lex/table.ml[42,1628+17]..[42,1628+18])
+                      [
+                        <arg>
+                        Nolabel
+                          expression (lex/table.ml[42,1628+15]..[42,1628+16])
+                            Pexp_ident "i" (lex/table.ml[42,1628+15]..[42,1628+16])
+                        <arg>
+                        Nolabel
+                          expression (lex/table.ml[42,1628+19]..[42,1628+25])
+                            Pexp_field
+                            expression (lex/table.ml[42,1628+19]..[42,1628+20])
+                              Pexp_ident "t" (lex/table.ml[42,1628+19]..[42,1628+20])
+                            "next" (lex/table.ml[42,1628+21]..[42,1628+25])
+                      ]
+                ]
+              expression (lex/table.ml[43,1659+4]..[43,1659+14])
+                Pexp_apply
+                expression (lex/table.ml[43,1659+4]..[43,1659+14]) ghost
+                  Pexp_ident "Array.get" (lex/table.ml[43,1659+4]..[43,1659+14]) ghost
+                [
+                  <arg>
+                  Nolabel
+                    expression (lex/table.ml[43,1659+4]..[43,1659+10])
+                      Pexp_field
+                      expression (lex/table.ml[43,1659+4]..[43,1659+5])
+                        Pexp_ident "t" (lex/table.ml[43,1659+4]..[43,1659+5])
+                      "data" (lex/table.ml[43,1659+6]..[43,1659+10])
+                  <arg>
+                  Nolabel
+                    expression (lex/table.ml[43,1659+12]..[43,1659+13])
+                      Pexp_ident "i" (lex/table.ml[43,1659+12]..[43,1659+13])
+                ]
+              Some
+                expression (lex/table.ml[45,1681+4]..[45,1681+15])
+                  Pexp_apply
+                  expression (lex/table.ml[45,1681+4]..[45,1681+9])
+                    Pexp_ident "raise" (lex/table.ml[45,1681+4]..[45,1681+9])
+                  [
+                    <arg>
+                    Nolabel
+                      expression (lex/table.ml[45,1681+10]..[45,1681+15])
+                        Pexp_construct "Error" (lex/table.ml[45,1681+10]..[45,1681+15])
+                        None
+                  ]
+    ]
+  structure_item (lex/table.ml[47,1698+0]..[50,1762+3])
+    Pstr_value Nonrec
+    [
+      <def>
+        pattern (lex/table.ml[47,1698+4]..[47,1698+8])
+          Ppat_var "trim" (lex/table.ml[47,1698+4]..[47,1698+8])
+        expression (lex/table.ml[47,1698+9]..[50,1762+3]) ghost
+          Pexp_fun
+          Nolabel
+          None
+          pattern (lex/table.ml[47,1698+9]..[47,1698+10])
+            Ppat_var "t" (lex/table.ml[47,1698+9]..[47,1698+10])
+          expression (lex/table.ml[48,1711+2]..[50,1762+3])
+            Pexp_let Nonrec
+            [
+              <def>
+                pattern (lex/table.ml[48,1711+6]..[48,1711+7])
+                  Ppat_var "r" (lex/table.ml[48,1711+6]..[48,1711+7])
+                expression (lex/table.ml[48,1711+10]..[48,1711+35])
+                  Pexp_apply
+                  expression (lex/table.ml[48,1711+10]..[48,1711+19])
+                    Pexp_ident "Array.sub" (lex/table.ml[48,1711+10]..[48,1711+19])
+                  [
+                    <arg>
+                    Nolabel
+                      expression (lex/table.ml[48,1711+20]..[48,1711+26])
+                        Pexp_field
+                        expression (lex/table.ml[48,1711+20]..[48,1711+21])
+                          Pexp_ident "t" (lex/table.ml[48,1711+20]..[48,1711+21])
+                        "data" (lex/table.ml[48,1711+22]..[48,1711+26])
+                    <arg>
+                    Nolabel
+                      expression (lex/table.ml[48,1711+27]..[48,1711+28])
+                        Pexp_constant PConst_int (0,None)
+                    <arg>
+                    Nolabel
+                      expression (lex/table.ml[48,1711+29]..[48,1711+35])
+                        Pexp_field
+                        expression (lex/table.ml[48,1711+29]..[48,1711+30])
+                          Pexp_ident "t" (lex/table.ml[48,1711+29]..[48,1711+30])
+                        "next" (lex/table.ml[48,1711+31]..[48,1711+35])
+                  ]
+            ]
+            expression (lex/table.ml[49,1750+2]..[50,1762+3])
+              Pexp_sequence
+              expression (lex/table.ml[49,1750+2]..[49,1750+9])
+                Pexp_apply
+                expression (lex/table.ml[49,1750+2]..[49,1750+7])
+                  Pexp_ident "reset" (lex/table.ml[49,1750+2]..[49,1750+7])
+                [
+                  <arg>
+                  Nolabel
+                    expression (lex/table.ml[49,1750+8]..[49,1750+9])
+                      Pexp_ident "t" (lex/table.ml[49,1750+8]..[49,1750+9])
+                ]
+              expression (lex/table.ml[50,1762+2]..[50,1762+3])
+                Pexp_ident "r" (lex/table.ml[50,1762+2]..[50,1762+3])
+    ]
+  structure_item (lex/table.ml[52,1767+0]..[57,1865+6])
+    Pstr_value Nonrec
+    [
+      <def>
+        pattern (lex/table.ml[52,1767+4]..[52,1767+8])
+          Ppat_var "iter" (lex/table.ml[52,1767+4]..[52,1767+8])
+        expression (lex/table.ml[52,1767+9]..[57,1865+6]) ghost
+          Pexp_fun
+          Nolabel
+          None
+          pattern (lex/table.ml[52,1767+9]..[52,1767+10])
+            Ppat_var "t" (lex/table.ml[52,1767+9]..[52,1767+10])
+          expression (lex/table.ml[52,1767+11]..[57,1865+6]) ghost
+            Pexp_fun
+            Nolabel
+            None
+            pattern (lex/table.ml[52,1767+11]..[52,1767+12])
+              Ppat_var "f" (lex/table.ml[52,1767+11]..[52,1767+12])
+            expression (lex/table.ml[53,1782+2]..[57,1865+6])
+              Pexp_let Nonrec
+              [
+                <def>
+                  pattern (lex/table.ml[53,1782+6]..[53,1782+10])
+                    Ppat_var "size" (lex/table.ml[53,1782+6]..[53,1782+10])
+                  expression (lex/table.ml[53,1782+13]..[53,1782+19])
+                    Pexp_field
+                    expression (lex/table.ml[53,1782+13]..[53,1782+14])
+                      Pexp_ident "t" (lex/table.ml[53,1782+13]..[53,1782+14])
+                    "next" (lex/table.ml[53,1782+15]..[53,1782+19])
+                <def>
+                  pattern (lex/table.ml[54,1802+6]..[54,1802+10])
+                    Ppat_var "data" (lex/table.ml[54,1802+6]..[54,1802+10])
+                  expression (lex/table.ml[54,1802+13]..[54,1802+19])
+                    Pexp_field
+                    expression (lex/table.ml[54,1802+13]..[54,1802+14])
+                      Pexp_ident "t" (lex/table.ml[54,1802+13]..[54,1802+14])
+                    "data" (lex/table.ml[54,1802+15]..[54,1802+19])
+              ]
+              expression (lex/table.ml[55,1825+2]..[57,1865+6])
+                Pexp_for Up
+                pattern (lex/table.ml[55,1825+6]..[55,1825+7])
+                  Ppat_var "i" (lex/table.ml[55,1825+6]..[55,1825+7])
+                expression (lex/table.ml[55,1825+10]..[55,1825+11])
+                  Pexp_constant PConst_int (0,None)
+                expression (lex/table.ml[55,1825+15]..[55,1825+21])
+                  Pexp_apply
+                  expression (lex/table.ml[55,1825+19]..[55,1825+20])
+                    Pexp_ident "-" (lex/table.ml[55,1825+19]..[55,1825+20])
+                  [
+                    <arg>
+                    Nolabel
+                      expression (lex/table.ml[55,1825+15]..[55,1825+19])
+                        Pexp_ident "size" (lex/table.ml[55,1825+15]..[55,1825+19])
+                    <arg>
+                    Nolabel
+                      expression (lex/table.ml[55,1825+20]..[55,1825+21])
+                        Pexp_constant PConst_int (1,None)
+                  ]
+                expression (lex/table.ml[56,1850+4]..[56,1850+14])
+                  Pexp_apply
+                  expression (lex/table.ml[56,1850+4]..[56,1850+5])
+                    Pexp_ident "f" (lex/table.ml[56,1850+4]..[56,1850+5])
+                  [
+                    <arg>
+                    Nolabel
+                      expression (lex/table.ml[56,1850+6]..[56,1850+14])
+                        Pexp_apply
+                        expression (lex/table.ml[56,1850+6]..[56,1850+14]) ghost
+                          Pexp_ident "Array.get" (lex/table.ml[56,1850+6]..[56,1850+14]) ghost
+                        [
+                          <arg>
+                          Nolabel
+                            expression (lex/table.ml[56,1850+6]..[56,1850+10])
+                              Pexp_ident "data" (lex/table.ml[56,1850+6]..[56,1850+10])
+                          <arg>
+                          Nolabel
+                            expression (lex/table.ml[56,1850+12]..[56,1850+13])
+                              Pexp_ident "i" (lex/table.ml[56,1850+12]..[56,1850+13])
+                        ]
+                  ]
+    ]
+  structure_item (lex/table.ml[59,1873+0]..[59,1873+19])
+    Pstr_value Nonrec
+    [
+      <def>
+        pattern (lex/table.ml[59,1873+4]..[59,1873+8])
+          Ppat_var "size" (lex/table.ml[59,1873+4]..[59,1873+8])
+        expression (lex/table.ml[59,1873+9]..[59,1873+19]) ghost
+          Pexp_fun
+          Nolabel
+          None
+          pattern (lex/table.ml[59,1873+9]..[59,1873+10])
+            Ppat_var "t" (lex/table.ml[59,1873+9]..[59,1873+10])
+          expression (lex/table.ml[59,1873+13]..[59,1873+19])
+            Pexp_field
+            expression (lex/table.ml[59,1873+13]..[59,1873+14])
+              Pexp_ident "t" (lex/table.ml[59,1873+13]..[59,1873+14])
+            "next" (lex/table.ml[59,1873+15]..[59,1873+19])
+    ]
+]
+

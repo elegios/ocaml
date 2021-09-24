@@ -1,0 +1,612 @@
+[
+  structure_item (testsuite/tests/typing-gadts/pr7374.ml[5,24+0]..[5,24+37])
+    Pstr_type Rec
+    [
+      type_declaration "eq" (testsuite/tests/typing-gadts/pr7374.ml[5,24+14]..[5,24+16]) (testsuite/tests/typing-gadts/pr7374.ml[5,24+0]..[5,24+37])
+        ptype_params =
+          [
+            core_type (testsuite/tests/typing-gadts/pr7374.ml[5,24+6]..[5,24+8])
+              Ptyp_var a
+            core_type (testsuite/tests/typing-gadts/pr7374.ml[5,24+10]..[5,24+12])
+              Ptyp_var b
+          ]
+        ptype_cstrs =
+          []
+        ptype_kind =
+          Ptype_variant
+            [
+              (testsuite/tests/typing-gadts/pr7374.ml[5,24+19]..[5,24+37])
+                "Refl" (testsuite/tests/typing-gadts/pr7374.ml[5,24+19]..[5,24+23])
+                []
+                Some
+                  core_type (testsuite/tests/typing-gadts/pr7374.ml[5,24+26]..[5,24+37])
+                    Ptyp_constr "eq" (testsuite/tests/typing-gadts/pr7374.ml[5,24+35]..[5,24+37])
+                    [
+                      core_type (testsuite/tests/typing-gadts/pr7374.ml[5,24+27]..[5,24+29])
+                        Ptyp_var a
+                      core_type (testsuite/tests/typing-gadts/pr7374.ml[5,24+31]..[5,24+33])
+                        Ptyp_var a
+                    ]
+            ]
+        ptype_private = Public
+        ptype_manifest =
+          None
+    ]
+  structure_item (testsuite/tests/typing-gadts/pr7374.ml[7,63+0]..[9,124+3])
+    Pstr_modtype "S" (testsuite/tests/typing-gadts/pr7374.ml[7,63+12]..[7,63+13])
+      module_type (testsuite/tests/typing-gadts/pr7374.ml[7,63+16]..[9,124+3])
+        Pmty_signature
+        [
+          signature_item (testsuite/tests/typing-gadts/pr7374.ml[8,83+2]..[8,83+40])
+            Psig_type Rec
+            [
+              type_declaration "t" (testsuite/tests/typing-gadts/pr7374.ml[8,83+10]..[8,83+11]) (testsuite/tests/typing-gadts/pr7374.ml[8,83+2]..[8,83+40])
+                ptype_params =
+                  [
+                    core_type (testsuite/tests/typing-gadts/pr7374.ml[8,83+7]..[8,83+9])
+                      Ptyp_var a
+                  ]
+                ptype_cstrs =
+                  [
+                    <constraint> (testsuite/tests/typing-gadts/pr7374.ml[8,83+23]..[8,83+40])
+                      core_type (testsuite/tests/typing-gadts/pr7374.ml[8,83+23]..[8,83+25])
+                        Ptyp_var a
+                      core_type (testsuite/tests/typing-gadts/pr7374.ml[8,83+28]..[8,83+40])
+                        Ptyp_variant closed=Closed
+                        [
+                          Rtag "Rec" false
+                            [
+                              core_type (testsuite/tests/typing-gadts/pr7374.ml[8,83+37]..[8,83+39])
+                                Ptyp_var b
+                            ]
+                        ]
+                        None
+                  ]
+                ptype_kind =
+                  Ptype_abstract
+                ptype_private = Public
+                ptype_manifest =
+                  None
+            ]
+        ]
+  structure_item (testsuite/tests/typing-gadts/pr7374.ml[10,130+0]..[13,245+3])
+    Pstr_extension "expect"
+    [
+      structure_item (testsuite/tests/typing-gadts/pr7374.ml[10,130+9]..[13,245+2])
+        Pstr_eval
+        expression (testsuite/tests/typing-gadts/pr7374.ml[10,130+9]..[13,245+2])
+          Pexp_constant PConst_string ("\ntype ('a, 'b) eq = Refl : ('a, 'a) eq\nmodule type S = sig type 'a t constraint 'a = [ `Rec of 'b ] end\n",(testsuite/tests/typing-gadts/pr7374.ml[10,130+11]..[13,245+0]),Some "")
+    ]
+  structure_item (testsuite/tests/typing-gadts/pr7374.ml[15,250+0]..[22,466+3])
+    Pstr_module
+    "Fix" (testsuite/tests/typing-gadts/pr7374.ml[15,250+7]..[15,250+10])
+      module_expr (testsuite/tests/typing-gadts/pr7374.ml[15,250+11]..[22,466+3])
+        Pmod_functor "X" (testsuite/tests/typing-gadts/pr7374.ml[15,250+12]..[15,250+13])
+        module_type (testsuite/tests/typing-gadts/pr7374.ml[15,250+16]..[15,250+17])
+          Pmty_ident "S" (testsuite/tests/typing-gadts/pr7374.ml[15,250+16]..[15,250+17])
+        module_expr (testsuite/tests/typing-gadts/pr7374.ml[15,250+19]..[22,466+3])
+          Pmod_constraint
+          module_expr (testsuite/tests/typing-gadts/pr7374.ml[18,337+6]..[22,466+3])
+            Pmod_structure
+            [
+              structure_item (testsuite/tests/typing-gadts/pr7374.ml[19,350+2]..[19,350+33])
+                Pstr_type Rec
+                [
+                  type_declaration "t" (testsuite/tests/typing-gadts/pr7374.ml[19,350+7]..[19,350+8]) (testsuite/tests/typing-gadts/pr7374.ml[19,350+2]..[19,350+33])
+                    ptype_params =
+                      []
+                    ptype_cstrs =
+                      []
+                    ptype_kind =
+                      Ptype_abstract
+                    ptype_private = Public
+                    ptype_manifest =
+                      Some
+                        core_type (testsuite/tests/typing-gadts/pr7374.ml[19,350+11]..[19,350+33])
+                          Ptyp_alias "a"
+                          core_type (testsuite/tests/typing-gadts/pr7374.ml[19,350+11]..[19,350+27])
+                            Ptyp_constr "X.t" (testsuite/tests/typing-gadts/pr7374.ml[19,350+24]..[19,350+27])
+                            [
+                              core_type (testsuite/tests/typing-gadts/pr7374.ml[19,350+11]..[19,350+23])
+                                Ptyp_variant closed=Closed
+                                [
+                                  Rtag "Rec" false
+                                    [
+                                      core_type (testsuite/tests/typing-gadts/pr7374.ml[19,350+20]..[19,350+22])
+                                        Ptyp_var a
+                                    ]
+                                ]
+                                None
+                            ]
+                ]
+              structure_item (testsuite/tests/typing-gadts/pr7374.ml[20,384+2]..[21,445+20])
+                Pstr_value Nonrec
+                [
+                  <def>
+                    pattern (testsuite/tests/typing-gadts/pr7374.ml[20,384+6]..[20,384+58]) ghost
+                      Ppat_constraint
+                      pattern (testsuite/tests/typing-gadts/pr7374.ml[20,384+6]..[20,384+10])
+                        Ppat_var "uniq" (testsuite/tests/typing-gadts/pr7374.ml[20,384+6]..[20,384+10])
+                      core_type (testsuite/tests/typing-gadts/pr7374.ml[20,384+6]..[21,445+20]) ghost
+                        Ptyp_poly 'a
+                        core_type (testsuite/tests/typing-gadts/pr7374.ml[20,384+22]..[20,384+58])
+                          Ptyp_arrow
+                          Nolabel
+                          core_type (testsuite/tests/typing-gadts/pr7374.ml[20,384+22]..[20,384+45])
+                            Ptyp_constr "eq" (testsuite/tests/typing-gadts/pr7374.ml[20,384+43]..[20,384+45])
+                            [
+                              core_type (testsuite/tests/typing-gadts/pr7374.ml[20,384+23]..[20,384+24])
+                                Ptyp_var a
+                              core_type (testsuite/tests/typing-gadts/pr7374.ml[20,384+26]..[20,384+41])
+                                Ptyp_constr "X.t" (testsuite/tests/typing-gadts/pr7374.ml[20,384+38]..[20,384+41])
+                                [
+                                  core_type (testsuite/tests/typing-gadts/pr7374.ml[20,384+26]..[20,384+37])
+                                    Ptyp_variant closed=Closed
+                                    [
+                                      Rtag "Rec" false
+                                        [
+                                          core_type (testsuite/tests/typing-gadts/pr7374.ml[20,384+35]..[20,384+36])
+                                            Ptyp_var a
+                                        ]
+                                    ]
+                                    None
+                                ]
+                            ]
+                          core_type (testsuite/tests/typing-gadts/pr7374.ml[20,384+49]..[20,384+58])
+                            Ptyp_constr "eq" (testsuite/tests/typing-gadts/pr7374.ml[20,384+56]..[20,384+58])
+                            [
+                              core_type (testsuite/tests/typing-gadts/pr7374.ml[20,384+50]..[20,384+51])
+                                Ptyp_var a
+                              core_type (testsuite/tests/typing-gadts/pr7374.ml[20,384+53]..[20,384+54])
+                                Ptyp_constr "t" (testsuite/tests/typing-gadts/pr7374.ml[20,384+53]..[20,384+54])
+                                []
+                            ]
+                    expression (testsuite/tests/typing-gadts/pr7374.ml[20,384+6]..[21,445+20])
+                      Pexp_newtype "a"
+                      expression (testsuite/tests/typing-gadts/pr7374.ml[20,384+6]..[21,445+20])
+                        Pexp_constraint
+                        expression (testsuite/tests/typing-gadts/pr7374.ml[21,445+4]..[21,445+20])
+                          Pexp_fun
+                          Nolabel
+                          None
+                          pattern (testsuite/tests/typing-gadts/pr7374.ml[21,445+8]..[21,445+12])
+                            Ppat_construct "Refl" (testsuite/tests/typing-gadts/pr7374.ml[21,445+8]..[21,445+12])
+                            None
+                          expression (testsuite/tests/typing-gadts/pr7374.ml[21,445+16]..[21,445+20])
+                            Pexp_construct "Refl" (testsuite/tests/typing-gadts/pr7374.ml[21,445+16]..[21,445+20])
+                            None
+                        core_type (testsuite/tests/typing-gadts/pr7374.ml[20,384+22]..[20,384+58])
+                          Ptyp_arrow
+                          Nolabel
+                          core_type (testsuite/tests/typing-gadts/pr7374.ml[20,384+22]..[20,384+45])
+                            Ptyp_constr "eq" (testsuite/tests/typing-gadts/pr7374.ml[20,384+43]..[20,384+45])
+                            [
+                              core_type (testsuite/tests/typing-gadts/pr7374.ml[20,384+23]..[20,384+24])
+                                Ptyp_constr "a" (testsuite/tests/typing-gadts/pr7374.ml[20,384+23]..[20,384+24])
+                                []
+                              core_type (testsuite/tests/typing-gadts/pr7374.ml[20,384+26]..[20,384+41])
+                                Ptyp_constr "X.t" (testsuite/tests/typing-gadts/pr7374.ml[20,384+38]..[20,384+41])
+                                [
+                                  core_type (testsuite/tests/typing-gadts/pr7374.ml[20,384+26]..[20,384+37])
+                                    Ptyp_variant closed=Closed
+                                    [
+                                      Rtag "Rec" false
+                                        [
+                                          core_type (testsuite/tests/typing-gadts/pr7374.ml[20,384+35]..[20,384+36])
+                                            Ptyp_constr "a" (testsuite/tests/typing-gadts/pr7374.ml[20,384+35]..[20,384+36])
+                                            []
+                                        ]
+                                    ]
+                                    None
+                                ]
+                            ]
+                          core_type (testsuite/tests/typing-gadts/pr7374.ml[20,384+49]..[20,384+58])
+                            Ptyp_constr "eq" (testsuite/tests/typing-gadts/pr7374.ml[20,384+56]..[20,384+58])
+                            [
+                              core_type (testsuite/tests/typing-gadts/pr7374.ml[20,384+50]..[20,384+51])
+                                Ptyp_constr "a" (testsuite/tests/typing-gadts/pr7374.ml[20,384+50]..[20,384+51])
+                                []
+                              core_type (testsuite/tests/typing-gadts/pr7374.ml[20,384+53]..[20,384+54])
+                                Ptyp_constr "t" (testsuite/tests/typing-gadts/pr7374.ml[20,384+53]..[20,384+54])
+                                []
+                            ]
+                ]
+            ]
+          module_type (testsuite/tests/typing-gadts/pr7374.ml[15,250+21]..[18,337+3])
+            Pmty_signature
+            [
+              signature_item (testsuite/tests/typing-gadts/pr7374.ml[16,275+2]..[16,275+8])
+                Psig_type Rec
+                [
+                  type_declaration "t" (testsuite/tests/typing-gadts/pr7374.ml[16,275+7]..[16,275+8]) (testsuite/tests/typing-gadts/pr7374.ml[16,275+2]..[16,275+8])
+                    ptype_params =
+                      []
+                    ptype_cstrs =
+                      []
+                    ptype_kind =
+                      Ptype_abstract
+                    ptype_private = Public
+                    ptype_manifest =
+                      None
+                ]
+              signature_item (testsuite/tests/typing-gadts/pr7374.ml[17,284+2]..[17,284+52])
+                Psig_value
+                value_description "uniq" (testsuite/tests/typing-gadts/pr7374.ml[17,284+6]..[17,284+10]) (testsuite/tests/typing-gadts/pr7374.ml[17,284+2]..[17,284+52])
+                  core_type (testsuite/tests/typing-gadts/pr7374.ml[17,284+13]..[17,284+52])
+                    Ptyp_arrow
+                    Nolabel
+                    core_type (testsuite/tests/typing-gadts/pr7374.ml[17,284+13]..[17,284+38])
+                      Ptyp_constr "eq" (testsuite/tests/typing-gadts/pr7374.ml[17,284+36]..[17,284+38])
+                      [
+                        core_type (testsuite/tests/typing-gadts/pr7374.ml[17,284+14]..[17,284+16])
+                          Ptyp_var a
+                        core_type (testsuite/tests/typing-gadts/pr7374.ml[17,284+18]..[17,284+34])
+                          Ptyp_constr "X.t" (testsuite/tests/typing-gadts/pr7374.ml[17,284+31]..[17,284+34])
+                          [
+                            core_type (testsuite/tests/typing-gadts/pr7374.ml[17,284+18]..[17,284+30])
+                              Ptyp_variant closed=Closed
+                              [
+                                Rtag "Rec" false
+                                  [
+                                    core_type (testsuite/tests/typing-gadts/pr7374.ml[17,284+27]..[17,284+29])
+                                      Ptyp_var a
+                                  ]
+                              ]
+                              None
+                          ]
+                      ]
+                    core_type (testsuite/tests/typing-gadts/pr7374.ml[17,284+42]..[17,284+52])
+                      Ptyp_constr "eq" (testsuite/tests/typing-gadts/pr7374.ml[17,284+50]..[17,284+52])
+                      [
+                        core_type (testsuite/tests/typing-gadts/pr7374.ml[17,284+43]..[17,284+45])
+                          Ptyp_var a
+                        core_type (testsuite/tests/typing-gadts/pr7374.ml[17,284+47]..[17,284+48])
+                          Ptyp_constr "t" (testsuite/tests/typing-gadts/pr7374.ml[17,284+47]..[17,284+48])
+                          []
+                      ]
+                  []
+            ]
+  structure_item (testsuite/tests/typing-gadts/pr7374.ml[23,490+0]..[30,747+3])
+    Pstr_extension "expect"
+    [
+      structure_item (testsuite/tests/typing-gadts/pr7374.ml[23,490+9]..[30,747+2])
+        Pstr_eval
+        expression (testsuite/tests/typing-gadts/pr7374.ml[23,490+9]..[30,747+2])
+          Pexp_constant PConst_string ("\nLine 7, characters 16-20:\n7 |     fun Refl -> Refl\n                    ^^^^\nError: This expression has type (a, a) eq\n       but an expression was expected of type (a, t) eq\n       Type a is not compatible with type t = [ `Rec of 'a ] X.t as 'a\n",(testsuite/tests/typing-gadts/pr7374.ml[23,490+11]..[30,747+0]),Some "")
+    ]
+  structure_item (testsuite/tests/typing-gadts/pr7374.ml[33,804+0]..[35,871+3])
+    Pstr_module
+    "Id" (testsuite/tests/typing-gadts/pr7374.ml[33,804+7]..[33,804+9])
+      module_expr (testsuite/tests/typing-gadts/pr7374.ml[33,804+12]..[35,871+3])
+        Pmod_structure
+        [
+          structure_item (testsuite/tests/typing-gadts/pr7374.ml[34,823+2]..[34,823+47])
+            Pstr_type Rec
+            [
+              type_declaration "t" (testsuite/tests/typing-gadts/pr7374.ml[34,823+10]..[34,823+11]) (testsuite/tests/typing-gadts/pr7374.ml[34,823+2]..[34,823+47])
+                ptype_params =
+                  [
+                    core_type (testsuite/tests/typing-gadts/pr7374.ml[34,823+7]..[34,823+9])
+                      Ptyp_var a
+                  ]
+                ptype_cstrs =
+                  [
+                    <constraint> (testsuite/tests/typing-gadts/pr7374.ml[34,823+28]..[34,823+47])
+                      core_type (testsuite/tests/typing-gadts/pr7374.ml[34,823+28]..[34,823+30])
+                        Ptyp_var a
+                      core_type (testsuite/tests/typing-gadts/pr7374.ml[34,823+33]..[34,823+47])
+                        Ptyp_variant closed=Closed
+                        [
+                          Rtag "Rec" false
+                            [
+                              core_type (testsuite/tests/typing-gadts/pr7374.ml[34,823+43]..[34,823+45])
+                                Ptyp_var b
+                            ]
+                        ]
+                        None
+                  ]
+                ptype_kind =
+                  Ptype_abstract
+                ptype_private = Public
+                ptype_manifest =
+                  Some
+                    core_type (testsuite/tests/typing-gadts/pr7374.ml[34,823+14]..[34,823+16])
+                      Ptyp_var b
+            ]
+        ]
+  structure_item (testsuite/tests/typing-gadts/pr7374.ml[36,875+0]..[36,875+20])
+    Pstr_module
+    "Bad" (testsuite/tests/typing-gadts/pr7374.ml[36,875+7]..[36,875+10])
+      module_expr (testsuite/tests/typing-gadts/pr7374.ml[36,875+13]..[36,875+20])
+        Pmod_apply
+        module_expr (testsuite/tests/typing-gadts/pr7374.ml[36,875+13]..[36,875+16])
+          Pmod_ident "Fix" (testsuite/tests/typing-gadts/pr7374.ml[36,875+13]..[36,875+16])
+        module_expr (testsuite/tests/typing-gadts/pr7374.ml[36,875+17]..[36,875+19])
+          Pmod_ident "Id" (testsuite/tests/typing-gadts/pr7374.ml[36,875+17]..[36,875+19])
+  structure_item (testsuite/tests/typing-gadts/pr7374.ml[37,896+0]..[40,987+50])
+    Pstr_value Nonrec
+    [
+      <def>
+        pattern (testsuite/tests/typing-gadts/pr7374.ml[37,896+4]..[37,896+28]) ghost
+          Ppat_constraint
+          pattern (testsuite/tests/typing-gadts/pr7374.ml[37,896+4]..[37,896+9])
+            Ppat_var "magic" (testsuite/tests/typing-gadts/pr7374.ml[37,896+4]..[37,896+9])
+          core_type (testsuite/tests/typing-gadts/pr7374.ml[37,896+4]..[40,987+50]) ghost
+            Ptyp_poly 'a 'b
+            core_type (testsuite/tests/typing-gadts/pr7374.ml[37,896+22]..[37,896+28])
+              Ptyp_arrow
+              Nolabel
+              core_type (testsuite/tests/typing-gadts/pr7374.ml[37,896+22]..[37,896+23])
+                Ptyp_var a
+              core_type (testsuite/tests/typing-gadts/pr7374.ml[37,896+27]..[37,896+28])
+                Ptyp_var b
+        expression (testsuite/tests/typing-gadts/pr7374.ml[37,896+4]..[40,987+50])
+          Pexp_newtype "a"
+          expression (testsuite/tests/typing-gadts/pr7374.ml[37,896+4]..[40,987+50])
+            Pexp_newtype "b"
+            expression (testsuite/tests/typing-gadts/pr7374.ml[37,896+4]..[40,987+50])
+              Pexp_constraint
+              expression (testsuite/tests/typing-gadts/pr7374.ml[38,927+2]..[40,987+50])
+                Pexp_fun
+                Nolabel
+                None
+                pattern (testsuite/tests/typing-gadts/pr7374.ml[38,927+6]..[38,927+7])
+                  Ppat_var "x" (testsuite/tests/typing-gadts/pr7374.ml[38,927+6]..[38,927+7])
+                expression (testsuite/tests/typing-gadts/pr7374.ml[39,938+4]..[40,987+50])
+                  Pexp_let Nonrec
+                  [
+                    <def>
+                      pattern (testsuite/tests/typing-gadts/pr7374.ml[39,938+8]..[39,938+12])
+                        Ppat_construct "Refl" (testsuite/tests/typing-gadts/pr7374.ml[39,938+8]..[39,938+12])
+                        None
+                      expression (testsuite/tests/typing-gadts/pr7374.ml[39,938+15]..[39,938+45])
+                        Pexp_constraint
+                        expression (testsuite/tests/typing-gadts/pr7374.ml[39,938+16]..[39,938+29])
+                          Pexp_apply
+                          expression (testsuite/tests/typing-gadts/pr7374.ml[39,938+16]..[39,938+24])
+                            Pexp_ident "Bad.uniq" (testsuite/tests/typing-gadts/pr7374.ml[39,938+16]..[39,938+24])
+                          [
+                            <arg>
+                            Nolabel
+                              expression (testsuite/tests/typing-gadts/pr7374.ml[39,938+25]..[39,938+29])
+                                Pexp_construct "Refl" (testsuite/tests/typing-gadts/pr7374.ml[39,938+25]..[39,938+29])
+                                None
+                          ]
+                        core_type (testsuite/tests/typing-gadts/pr7374.ml[39,938+32]..[39,938+44])
+                          Ptyp_constr "eq" (testsuite/tests/typing-gadts/pr7374.ml[39,938+42]..[39,938+44])
+                          [
+                            core_type (testsuite/tests/typing-gadts/pr7374.ml[39,938+33]..[39,938+34])
+                              Ptyp_constr "a" (testsuite/tests/typing-gadts/pr7374.ml[39,938+33]..[39,938+34])
+                              []
+                            core_type (testsuite/tests/typing-gadts/pr7374.ml[39,938+35]..[39,938+40])
+                              Ptyp_constr "Bad.t" (testsuite/tests/typing-gadts/pr7374.ml[39,938+35]..[39,938+40])
+                              []
+                          ]
+                  ]
+                  expression (testsuite/tests/typing-gadts/pr7374.ml[40,987+4]..[40,987+50])
+                    Pexp_let Nonrec
+                    [
+                      <def>
+                        pattern (testsuite/tests/typing-gadts/pr7374.ml[40,987+8]..[40,987+12])
+                          Ppat_construct "Refl" (testsuite/tests/typing-gadts/pr7374.ml[40,987+8]..[40,987+12])
+                          None
+                        expression (testsuite/tests/typing-gadts/pr7374.ml[40,987+15]..[40,987+45])
+                          Pexp_constraint
+                          expression (testsuite/tests/typing-gadts/pr7374.ml[40,987+16]..[40,987+29])
+                            Pexp_apply
+                            expression (testsuite/tests/typing-gadts/pr7374.ml[40,987+16]..[40,987+24])
+                              Pexp_ident "Bad.uniq" (testsuite/tests/typing-gadts/pr7374.ml[40,987+16]..[40,987+24])
+                            [
+                              <arg>
+                              Nolabel
+                                expression (testsuite/tests/typing-gadts/pr7374.ml[40,987+25]..[40,987+29])
+                                  Pexp_construct "Refl" (testsuite/tests/typing-gadts/pr7374.ml[40,987+25]..[40,987+29])
+                                  None
+                            ]
+                          core_type (testsuite/tests/typing-gadts/pr7374.ml[40,987+32]..[40,987+44])
+                            Ptyp_constr "eq" (testsuite/tests/typing-gadts/pr7374.ml[40,987+42]..[40,987+44])
+                            [
+                              core_type (testsuite/tests/typing-gadts/pr7374.ml[40,987+33]..[40,987+34])
+                                Ptyp_constr "b" (testsuite/tests/typing-gadts/pr7374.ml[40,987+33]..[40,987+34])
+                                []
+                              core_type (testsuite/tests/typing-gadts/pr7374.ml[40,987+35]..[40,987+40])
+                                Ptyp_constr "Bad.t" (testsuite/tests/typing-gadts/pr7374.ml[40,987+35]..[40,987+40])
+                                []
+                            ]
+                    ]
+                    expression (testsuite/tests/typing-gadts/pr7374.ml[40,987+49]..[40,987+50])
+                      Pexp_ident "x" (testsuite/tests/typing-gadts/pr7374.ml[40,987+49]..[40,987+50])
+              core_type (testsuite/tests/typing-gadts/pr7374.ml[37,896+22]..[37,896+28])
+                Ptyp_arrow
+                Nolabel
+                core_type (testsuite/tests/typing-gadts/pr7374.ml[37,896+22]..[37,896+23])
+                  Ptyp_constr "a" (testsuite/tests/typing-gadts/pr7374.ml[37,896+22]..[37,896+23])
+                  []
+                core_type (testsuite/tests/typing-gadts/pr7374.ml[37,896+27]..[37,896+28])
+                  Ptyp_constr "b" (testsuite/tests/typing-gadts/pr7374.ml[37,896+27]..[37,896+28])
+                  []
+    ]
+  structure_item (testsuite/tests/typing-gadts/pr7374.ml[41,1038+0]..[47,1214+3])
+    Pstr_extension "expect"
+    [
+      structure_item (testsuite/tests/typing-gadts/pr7374.ml[41,1038+9]..[47,1214+2])
+        Pstr_eval
+        expression (testsuite/tests/typing-gadts/pr7374.ml[41,1038+9]..[47,1214+2])
+          Pexp_constant PConst_string ("\nmodule Id : sig type 'a t = 'b constraint 'a = [ `Rec of 'b ] end\nLine 4, characters 13-16:\n4 | module Bad = Fix(Id)\n                 ^^^\nError: Unbound module Fix\n",(testsuite/tests/typing-gadts/pr7374.ml[41,1038+11]..[47,1214+0]),Some "")
+    ]
+  structure_item (testsuite/tests/typing-gadts/pr7374.ml[50,1276+0]..[54,1421+3])
+    Pstr_module
+    "F" (testsuite/tests/typing-gadts/pr7374.ml[50,1276+7]..[50,1276+8])
+      module_expr (testsuite/tests/typing-gadts/pr7374.ml[50,1276+9]..[54,1421+3])
+        Pmod_functor "X" (testsuite/tests/typing-gadts/pr7374.ml[50,1276+10]..[50,1276+11])
+        module_type (testsuite/tests/typing-gadts/pr7374.ml[50,1276+14]..[50,1276+31])
+          Pmty_signature
+          [
+            signature_item (testsuite/tests/typing-gadts/pr7374.ml[50,1276+18]..[50,1276+27])
+              Psig_type Rec
+              [
+                type_declaration "t" (testsuite/tests/typing-gadts/pr7374.ml[50,1276+26]..[50,1276+27]) (testsuite/tests/typing-gadts/pr7374.ml[50,1276+18]..[50,1276+27])
+                  ptype_params =
+                    [
+                      core_type (testsuite/tests/typing-gadts/pr7374.ml[50,1276+23]..[50,1276+25])
+                        Ptyp_var a
+                    ]
+                  ptype_cstrs =
+                    []
+                  ptype_kind =
+                    Ptype_abstract
+                  ptype_private = Public
+                  ptype_manifest =
+                    None
+              ]
+          ]
+        module_expr (testsuite/tests/typing-gadts/pr7374.ml[50,1276+35]..[54,1421+3])
+          Pmod_structure
+          [
+            structure_item (testsuite/tests/typing-gadts/pr7374.ml[51,1318+2]..[51,1318+8])
+              Pstr_open Fresh
+              module_expr (testsuite/tests/typing-gadts/pr7374.ml[51,1318+7]..[51,1318+8])
+                Pmod_ident "X" (testsuite/tests/typing-gadts/pr7374.ml[51,1318+7]..[51,1318+8])
+            structure_item (testsuite/tests/typing-gadts/pr7374.ml[52,1327+2]..[53,1393+25])
+              Pstr_value Nonrec
+              [
+                <def>
+                  pattern (testsuite/tests/typing-gadts/pr7374.ml[52,1327+6]..[52,1327+63]) ghost
+                    Ppat_constraint
+                    pattern (testsuite/tests/typing-gadts/pr7374.ml[52,1327+6]..[52,1327+7])
+                      Ppat_var "f" (testsuite/tests/typing-gadts/pr7374.ml[52,1327+6]..[52,1327+7])
+                    core_type (testsuite/tests/typing-gadts/pr7374.ml[52,1327+6]..[53,1393+25]) ghost
+                      Ptyp_poly 'a 'b
+                      core_type (testsuite/tests/typing-gadts/pr7374.ml[52,1327+20]..[52,1327+63])
+                        Ptyp_arrow
+                        Nolabel
+                        core_type (testsuite/tests/typing-gadts/pr7374.ml[52,1327+20]..[52,1327+31])
+                          Ptyp_constr "eq" (testsuite/tests/typing-gadts/pr7374.ml[52,1327+29]..[52,1327+31])
+                          [
+                            core_type (testsuite/tests/typing-gadts/pr7374.ml[52,1327+21]..[52,1327+22])
+                              Ptyp_var a
+                            core_type (testsuite/tests/typing-gadts/pr7374.ml[52,1327+24]..[52,1327+27])
+                              Ptyp_constr "t" (testsuite/tests/typing-gadts/pr7374.ml[52,1327+26]..[52,1327+27])
+                              [
+                                core_type (testsuite/tests/typing-gadts/pr7374.ml[52,1327+24]..[52,1327+25])
+                                  Ptyp_var b
+                              ]
+                          ]
+                        core_type (testsuite/tests/typing-gadts/pr7374.ml[52,1327+35]..[52,1327+63])
+                          Ptyp_arrow
+                          Nolabel
+                          core_type (testsuite/tests/typing-gadts/pr7374.ml[52,1327+35]..[52,1327+46])
+                            Ptyp_constr "eq" (testsuite/tests/typing-gadts/pr7374.ml[52,1327+44]..[52,1327+46])
+                            [
+                              core_type (testsuite/tests/typing-gadts/pr7374.ml[52,1327+36]..[52,1327+37])
+                                Ptyp_var b
+                              core_type (testsuite/tests/typing-gadts/pr7374.ml[52,1327+39]..[52,1327+42])
+                                Ptyp_constr "t" (testsuite/tests/typing-gadts/pr7374.ml[52,1327+41]..[52,1327+42])
+                                [
+                                  core_type (testsuite/tests/typing-gadts/pr7374.ml[52,1327+39]..[52,1327+40])
+                                    Ptyp_var a
+                                ]
+                            ]
+                          core_type (testsuite/tests/typing-gadts/pr7374.ml[52,1327+50]..[52,1327+63])
+                            Ptyp_constr "eq" (testsuite/tests/typing-gadts/pr7374.ml[52,1327+61]..[52,1327+63])
+                            [
+                              core_type (testsuite/tests/typing-gadts/pr7374.ml[52,1327+51]..[52,1327+52])
+                                Ptyp_var a
+                              core_type (testsuite/tests/typing-gadts/pr7374.ml[52,1327+54]..[52,1327+59])
+                                Ptyp_constr "t" (testsuite/tests/typing-gadts/pr7374.ml[52,1327+58]..[52,1327+59])
+                                [
+                                  core_type (testsuite/tests/typing-gadts/pr7374.ml[52,1327+54]..[52,1327+57])
+                                    Ptyp_constr "t" (testsuite/tests/typing-gadts/pr7374.ml[52,1327+56]..[52,1327+57])
+                                    [
+                                      core_type (testsuite/tests/typing-gadts/pr7374.ml[52,1327+54]..[52,1327+55])
+                                        Ptyp_var a
+                                    ]
+                                ]
+                            ]
+                  expression (testsuite/tests/typing-gadts/pr7374.ml[52,1327+6]..[53,1393+25])
+                    Pexp_newtype "a"
+                    expression (testsuite/tests/typing-gadts/pr7374.ml[52,1327+6]..[53,1393+25])
+                      Pexp_newtype "b"
+                      expression (testsuite/tests/typing-gadts/pr7374.ml[52,1327+6]..[53,1393+25])
+                        Pexp_constraint
+                        expression (testsuite/tests/typing-gadts/pr7374.ml[53,1393+4]..[53,1393+25])
+                          Pexp_fun
+                          Nolabel
+                          None
+                          pattern (testsuite/tests/typing-gadts/pr7374.ml[53,1393+8]..[53,1393+12])
+                            Ppat_construct "Refl" (testsuite/tests/typing-gadts/pr7374.ml[53,1393+8]..[53,1393+12])
+                            None
+                          expression (testsuite/tests/typing-gadts/pr7374.ml[53,1393+13]..[53,1393+25]) ghost
+                            Pexp_fun
+                            Nolabel
+                            None
+                            pattern (testsuite/tests/typing-gadts/pr7374.ml[53,1393+13]..[53,1393+17])
+                              Ppat_construct "Refl" (testsuite/tests/typing-gadts/pr7374.ml[53,1393+13]..[53,1393+17])
+                              None
+                            expression (testsuite/tests/typing-gadts/pr7374.ml[53,1393+21]..[53,1393+25])
+                              Pexp_construct "Refl" (testsuite/tests/typing-gadts/pr7374.ml[53,1393+21]..[53,1393+25])
+                              None
+                        core_type (testsuite/tests/typing-gadts/pr7374.ml[52,1327+20]..[52,1327+63])
+                          Ptyp_arrow
+                          Nolabel
+                          core_type (testsuite/tests/typing-gadts/pr7374.ml[52,1327+20]..[52,1327+31])
+                            Ptyp_constr "eq" (testsuite/tests/typing-gadts/pr7374.ml[52,1327+29]..[52,1327+31])
+                            [
+                              core_type (testsuite/tests/typing-gadts/pr7374.ml[52,1327+21]..[52,1327+22])
+                                Ptyp_constr "a" (testsuite/tests/typing-gadts/pr7374.ml[52,1327+21]..[52,1327+22])
+                                []
+                              core_type (testsuite/tests/typing-gadts/pr7374.ml[52,1327+24]..[52,1327+27])
+                                Ptyp_constr "t" (testsuite/tests/typing-gadts/pr7374.ml[52,1327+26]..[52,1327+27])
+                                [
+                                  core_type (testsuite/tests/typing-gadts/pr7374.ml[52,1327+24]..[52,1327+25])
+                                    Ptyp_constr "b" (testsuite/tests/typing-gadts/pr7374.ml[52,1327+24]..[52,1327+25])
+                                    []
+                                ]
+                            ]
+                          core_type (testsuite/tests/typing-gadts/pr7374.ml[52,1327+35]..[52,1327+63])
+                            Ptyp_arrow
+                            Nolabel
+                            core_type (testsuite/tests/typing-gadts/pr7374.ml[52,1327+35]..[52,1327+46])
+                              Ptyp_constr "eq" (testsuite/tests/typing-gadts/pr7374.ml[52,1327+44]..[52,1327+46])
+                              [
+                                core_type (testsuite/tests/typing-gadts/pr7374.ml[52,1327+36]..[52,1327+37])
+                                  Ptyp_constr "b" (testsuite/tests/typing-gadts/pr7374.ml[52,1327+36]..[52,1327+37])
+                                  []
+                                core_type (testsuite/tests/typing-gadts/pr7374.ml[52,1327+39]..[52,1327+42])
+                                  Ptyp_constr "t" (testsuite/tests/typing-gadts/pr7374.ml[52,1327+41]..[52,1327+42])
+                                  [
+                                    core_type (testsuite/tests/typing-gadts/pr7374.ml[52,1327+39]..[52,1327+40])
+                                      Ptyp_constr "a" (testsuite/tests/typing-gadts/pr7374.ml[52,1327+39]..[52,1327+40])
+                                      []
+                                  ]
+                              ]
+                            core_type (testsuite/tests/typing-gadts/pr7374.ml[52,1327+50]..[52,1327+63])
+                              Ptyp_constr "eq" (testsuite/tests/typing-gadts/pr7374.ml[52,1327+61]..[52,1327+63])
+                              [
+                                core_type (testsuite/tests/typing-gadts/pr7374.ml[52,1327+51]..[52,1327+52])
+                                  Ptyp_constr "a" (testsuite/tests/typing-gadts/pr7374.ml[52,1327+51]..[52,1327+52])
+                                  []
+                                core_type (testsuite/tests/typing-gadts/pr7374.ml[52,1327+54]..[52,1327+59])
+                                  Ptyp_constr "t" (testsuite/tests/typing-gadts/pr7374.ml[52,1327+58]..[52,1327+59])
+                                  [
+                                    core_type (testsuite/tests/typing-gadts/pr7374.ml[52,1327+54]..[52,1327+57])
+                                      Ptyp_constr "t" (testsuite/tests/typing-gadts/pr7374.ml[52,1327+56]..[52,1327+57])
+                                      [
+                                        core_type (testsuite/tests/typing-gadts/pr7374.ml[52,1327+54]..[52,1327+55])
+                                          Ptyp_constr "a" (testsuite/tests/typing-gadts/pr7374.ml[52,1327+54]..[52,1327+55])
+                                          []
+                                      ]
+                                  ]
+                              ]
+              ]
+          ]
+  structure_item (testsuite/tests/typing-gadts/pr7374.ml[55,1445+0]..[63,1759+3])
+    Pstr_extension "expect"
+    [
+      structure_item (testsuite/tests/typing-gadts/pr7374.ml[55,1445+9]..[63,1759+2])
+        Pstr_eval
+        expression (testsuite/tests/typing-gadts/pr7374.ml[55,1445+9]..[63,1759+2])
+          Pexp_constant PConst_string ("\nLine 4, characters 21-25:\n4 |     fun Refl Refl -> Refl;;\n                         ^^^^\nError: This expression has type (a, a) eq\n       but an expression was expected of type (a, a X.t X.t) eq\n       Type a = b X.t is not compatible with type a X.t X.t\n       Type b is not compatible with type a X.t\n",(testsuite/tests/typing-gadts/pr7374.ml[55,1445+11]..[63,1759+0]),Some "")
+    ]
+]
+

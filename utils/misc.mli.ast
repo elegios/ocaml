@@ -1,0 +1,3604 @@
+[
+  signature_item (utils/misc.mli[16,1079+0]..[21,1212+2])
+    Psig_attribute "ocaml.text"
+    [
+      structure_item (utils/misc.mli[16,1079+0]..[21,1212+2])
+        Pstr_eval
+        expression (utils/misc.mli[16,1079+0]..[21,1212+2])
+          Pexp_constant PConst_string(" Miscellaneous useful types and functions\n\n  {b Warning:} this module is unstable and part of\n  {{!Compiler_libs}compiler-libs}.\n\n",(utils/misc.mli[16,1079+0]..[21,1212+2]),None)
+    ]
+  signature_item (utils/misc.mli[23,1216+0]..[23,1216+29])
+    Psig_value
+    value_description "fatal_error" (utils/misc.mli[23,1216+4]..[23,1216+15]) (utils/misc.mli[23,1216+0]..[23,1216+29])
+      core_type (utils/misc.mli[23,1216+17]..[23,1216+29])
+        Ptyp_arrow
+        Nolabel
+        core_type (utils/misc.mli[23,1216+17]..[23,1216+23])
+          Ptyp_constr "string" (utils/misc.mli[23,1216+17]..[23,1216+23])
+          []
+        core_type (utils/misc.mli[23,1216+27]..[23,1216+29])
+          Ptyp_var a
+      []
+  signature_item (utils/misc.mli[24,1246+0]..[24,1246+64])
+    Psig_value
+    value_description "fatal_errorf" (utils/misc.mli[24,1246+4]..[24,1246+16]) (utils/misc.mli[24,1246+0]..[24,1246+64])
+      core_type (utils/misc.mli[24,1246+18]..[24,1246+64])
+        Ptyp_arrow
+        Nolabel
+        core_type (utils/misc.mli[24,1246+18]..[24,1246+58])
+          Ptyp_constr "format4" (utils/misc.mli[24,1246+51]..[24,1246+58])
+          [
+            core_type (utils/misc.mli[24,1246+19]..[24,1246+21])
+              Ptyp_var a
+            core_type (utils/misc.mli[24,1246+23]..[24,1246+39])
+              Ptyp_constr "Format.formatter" (utils/misc.mli[24,1246+23]..[24,1246+39])
+              []
+            core_type (utils/misc.mli[24,1246+41]..[24,1246+45])
+              Ptyp_constr "unit" (utils/misc.mli[24,1246+41]..[24,1246+45])
+              []
+            core_type (utils/misc.mli[24,1246+47]..[24,1246+49])
+              Ptyp_var b
+          ]
+        core_type (utils/misc.mli[24,1246+62]..[24,1246+64])
+          Ptyp_var a
+      []
+  signature_item (utils/misc.mli[25,1311+0]..[25,1311+21])
+    Psig_exception
+    type_exception
+      ptyext_constructor =
+        extension_constructor (utils/misc.mli[25,1311+0]..[25,1311+21])
+          pext_name = "Fatal_error"
+          pext_kind =
+            Pext_decl
+              []
+              None
+  signature_item (utils/misc.mli[27,1334+0]..[30,1415+20])
+    Psig_value
+    value_description "try_finally" (utils/misc.mli[27,1334+4]..[27,1334+15]) (utils/misc.mli[27,1334+0]..[30,1415+20])
+      attribute "ocaml.doc"
+        [
+          structure_item (utils/misc.mli[31,1436+0]..[60,2656+2])
+            Pstr_eval
+            expression (utils/misc.mli[31,1436+0]..[60,2656+2])
+              Pexp_constant PConst_string(" [try_finally work ~always ~exceptionally] is designed to run code\n    in [work] that may fail with an exception, and has two kind of\n    cleanup routines: [always], that must be run after any execution\n    of the function (typically, freeing system resources), and\n    [exceptionally], that should be run only if [work] or [always]\n    failed with an exception (typically, undoing user-visible state\n    changes that would only make sense if the function completes\n    correctly). For example:\n\n    {[\n      let objfile = outputprefix ^ \".cmo\" in\n      let oc = open_out_bin objfile in\n      Misc.try_finally\n        (fun () ->\n           bytecode\n           ++ Timings.(accumulate_time (Generate sourcefile))\n               (Emitcode.to_file oc modulename objfile);\n           Warnings.check_fatal ())\n        ~always:(fun () -> close_out oc)\n        ~exceptionally:(fun _exn -> remove_file objfile);\n    ]}\n\n    If [exceptionally] fail with an exception, it is propagated as\n    usual.\n\n    If [always] or [exceptionally] use exceptions internally for\n    control-flow but do not raise, then [try_finally] is careful to\n    preserve any exception backtrace coming from [work] or [always]\n    for easier debugging.\n",(utils/misc.mli[31,1436+0]..[60,2656+2]),None)
+        ]
+      core_type (utils/misc.mli[28,1352+2]..[30,1415+20])
+        Ptyp_arrow
+        Optional "always"
+        core_type (utils/misc.mli[28,1352+11]..[28,1352+23])
+          Ptyp_arrow
+          Nolabel
+          core_type (utils/misc.mli[28,1352+11]..[28,1352+15])
+            Ptyp_constr "unit" (utils/misc.mli[28,1352+11]..[28,1352+15])
+            []
+          core_type (utils/misc.mli[28,1352+19]..[28,1352+23])
+            Ptyp_constr "unit" (utils/misc.mli[28,1352+19]..[28,1352+23])
+            []
+        core_type (utils/misc.mli[29,1380+2]..[30,1415+20])
+          Ptyp_arrow
+          Optional "exceptionally"
+          core_type (utils/misc.mli[29,1380+18]..[29,1380+30])
+            Ptyp_arrow
+            Nolabel
+            core_type (utils/misc.mli[29,1380+18]..[29,1380+22])
+              Ptyp_constr "unit" (utils/misc.mli[29,1380+18]..[29,1380+22])
+              []
+            core_type (utils/misc.mli[29,1380+26]..[29,1380+30])
+              Ptyp_constr "unit" (utils/misc.mli[29,1380+26]..[29,1380+30])
+              []
+          core_type (utils/misc.mli[30,1415+2]..[30,1415+20])
+            Ptyp_arrow
+            Nolabel
+            core_type (utils/misc.mli[30,1415+3]..[30,1415+13])
+              Ptyp_arrow
+              Nolabel
+              core_type (utils/misc.mli[30,1415+3]..[30,1415+7])
+                Ptyp_constr "unit" (utils/misc.mli[30,1415+3]..[30,1415+7])
+                []
+              core_type (utils/misc.mli[30,1415+11]..[30,1415+13])
+                Ptyp_var a
+            core_type (utils/misc.mli[30,1415+18]..[30,1415+20])
+              Ptyp_var a
+      []
+  signature_item (utils/misc.mli[62,2660+0]..[62,2660+62])
+    Psig_value
+    value_description "reraise_preserving_backtrace" (utils/misc.mli[62,2660+4]..[62,2660+32]) (utils/misc.mli[62,2660+0]..[62,2660+62])
+      attribute "ocaml.doc"
+        [
+          structure_item (utils/misc.mli[63,2723+0]..[64,2797+78])
+            Pstr_eval
+            expression (utils/misc.mli[63,2723+0]..[64,2797+78])
+              Pexp_constant PConst_string(" [reraise_preserving_backtrace e f] is (f (); raise e) except that the\n    current backtrace is preserved, even if [f] uses exceptions internally. ",(utils/misc.mli[63,2723+0]..[64,2797+78]),None)
+        ]
+      core_type (utils/misc.mli[62,2660+35]..[62,2660+62])
+        Ptyp_arrow
+        Nolabel
+        core_type (utils/misc.mli[62,2660+35]..[62,2660+38])
+          Ptyp_constr "exn" (utils/misc.mli[62,2660+35]..[62,2660+38])
+          []
+        core_type (utils/misc.mli[62,2660+42]..[62,2660+62])
+          Ptyp_arrow
+          Nolabel
+          core_type (utils/misc.mli[62,2660+43]..[62,2660+55])
+            Ptyp_arrow
+            Nolabel
+            core_type (utils/misc.mli[62,2660+43]..[62,2660+47])
+              Ptyp_constr "unit" (utils/misc.mli[62,2660+43]..[62,2660+47])
+              []
+            core_type (utils/misc.mli[62,2660+51]..[62,2660+55])
+              Ptyp_constr "unit" (utils/misc.mli[62,2660+51]..[62,2660+55])
+              []
+          core_type (utils/misc.mli[62,2660+60]..[62,2660+62])
+            Ptyp_var a
+      []
+  signature_item (utils/misc.mli[67,2878+0]..[67,2878+56])
+    Psig_value
+    value_description "map_end" (utils/misc.mli[67,2878+4]..[67,2878+11]) (utils/misc.mli[67,2878+0]..[67,2878+56])
+      core_type (utils/misc.mli[67,2878+13]..[67,2878+56])
+        Ptyp_arrow
+        Nolabel
+        core_type (utils/misc.mli[67,2878+14]..[67,2878+22])
+          Ptyp_arrow
+          Nolabel
+          core_type (utils/misc.mli[67,2878+14]..[67,2878+16])
+            Ptyp_var a
+          core_type (utils/misc.mli[67,2878+20]..[67,2878+22])
+            Ptyp_var b
+        core_type (utils/misc.mli[67,2878+27]..[67,2878+56])
+          Ptyp_arrow
+          Nolabel
+          core_type (utils/misc.mli[67,2878+27]..[67,2878+34])
+            Ptyp_constr "list" (utils/misc.mli[67,2878+30]..[67,2878+34])
+            [
+              core_type (utils/misc.mli[67,2878+27]..[67,2878+29])
+                Ptyp_var a
+            ]
+          core_type (utils/misc.mli[67,2878+38]..[67,2878+56])
+            Ptyp_arrow
+            Nolabel
+            core_type (utils/misc.mli[67,2878+38]..[67,2878+45])
+              Ptyp_constr "list" (utils/misc.mli[67,2878+41]..[67,2878+45])
+              [
+                core_type (utils/misc.mli[67,2878+38]..[67,2878+40])
+                  Ptyp_var b
+              ]
+            core_type (utils/misc.mli[67,2878+49]..[67,2878+56])
+              Ptyp_constr "list" (utils/misc.mli[67,2878+52]..[67,2878+56])
+              [
+                core_type (utils/misc.mli[67,2878+49]..[67,2878+51])
+                  Ptyp_var b
+              ]
+      []
+  signature_item (utils/misc.mli[69,3004+0]..[69,3004+52])
+    Psig_value
+    value_description "map_left_right" (utils/misc.mli[69,3004+4]..[69,3004+18]) (utils/misc.mli[69,3004+0]..[69,3004+52])
+      core_type (utils/misc.mli[69,3004+20]..[69,3004+52])
+        Ptyp_arrow
+        Nolabel
+        core_type (utils/misc.mli[69,3004+21]..[69,3004+29])
+          Ptyp_arrow
+          Nolabel
+          core_type (utils/misc.mli[69,3004+21]..[69,3004+23])
+            Ptyp_var a
+          core_type (utils/misc.mli[69,3004+27]..[69,3004+29])
+            Ptyp_var b
+        core_type (utils/misc.mli[69,3004+34]..[69,3004+52])
+          Ptyp_arrow
+          Nolabel
+          core_type (utils/misc.mli[69,3004+34]..[69,3004+41])
+            Ptyp_constr "list" (utils/misc.mli[69,3004+37]..[69,3004+41])
+            [
+              core_type (utils/misc.mli[69,3004+34]..[69,3004+36])
+                Ptyp_var a
+            ]
+          core_type (utils/misc.mli[69,3004+45]..[69,3004+52])
+            Ptyp_constr "list" (utils/misc.mli[69,3004+48]..[69,3004+52])
+            [
+              core_type (utils/misc.mli[69,3004+45]..[69,3004+47])
+                Ptyp_var b
+            ]
+      []
+  signature_item (utils/misc.mli[71,3135+0]..[71,3135+62])
+    Psig_value
+    value_description "for_all2" (utils/misc.mli[71,3135+4]..[71,3135+12]) (utils/misc.mli[71,3135+0]..[71,3135+62])
+      core_type (utils/misc.mli[71,3135+14]..[71,3135+62])
+        Ptyp_arrow
+        Nolabel
+        core_type (utils/misc.mli[71,3135+15]..[71,3135+31])
+          Ptyp_arrow
+          Nolabel
+          core_type (utils/misc.mli[71,3135+15]..[71,3135+17])
+            Ptyp_var a
+          core_type (utils/misc.mli[71,3135+21]..[71,3135+31])
+            Ptyp_arrow
+            Nolabel
+            core_type (utils/misc.mli[71,3135+21]..[71,3135+23])
+              Ptyp_var b
+            core_type (utils/misc.mli[71,3135+27]..[71,3135+31])
+              Ptyp_constr "bool" (utils/misc.mli[71,3135+27]..[71,3135+31])
+              []
+        core_type (utils/misc.mli[71,3135+36]..[71,3135+62])
+          Ptyp_arrow
+          Nolabel
+          core_type (utils/misc.mli[71,3135+36]..[71,3135+43])
+            Ptyp_constr "list" (utils/misc.mli[71,3135+39]..[71,3135+43])
+            [
+              core_type (utils/misc.mli[71,3135+36]..[71,3135+38])
+                Ptyp_var a
+            ]
+          core_type (utils/misc.mli[71,3135+47]..[71,3135+62])
+            Ptyp_arrow
+            Nolabel
+            core_type (utils/misc.mli[71,3135+47]..[71,3135+54])
+              Ptyp_constr "list" (utils/misc.mli[71,3135+50]..[71,3135+54])
+              [
+                core_type (utils/misc.mli[71,3135+47]..[71,3135+49])
+                  Ptyp_var b
+              ]
+            core_type (utils/misc.mli[71,3135+58]..[71,3135+62])
+              Ptyp_constr "bool" (utils/misc.mli[71,3135+58]..[71,3135+62])
+              []
+      []
+  signature_item (utils/misc.mli[75,3385+0]..[75,3385+40])
+    Psig_value
+    value_description "replicate_list" (utils/misc.mli[75,3385+4]..[75,3385+18]) (utils/misc.mli[75,3385+0]..[75,3385+40])
+      core_type (utils/misc.mli[75,3385+20]..[75,3385+40])
+        Ptyp_arrow
+        Nolabel
+        core_type (utils/misc.mli[75,3385+20]..[75,3385+22])
+          Ptyp_var a
+        core_type (utils/misc.mli[75,3385+26]..[75,3385+40])
+          Ptyp_arrow
+          Nolabel
+          core_type (utils/misc.mli[75,3385+26]..[75,3385+29])
+            Ptyp_constr "int" (utils/misc.mli[75,3385+26]..[75,3385+29])
+            []
+          core_type (utils/misc.mli[75,3385+33]..[75,3385+40])
+            Ptyp_constr "list" (utils/misc.mli[75,3385+36]..[75,3385+40])
+            [
+              core_type (utils/misc.mli[75,3385+33]..[75,3385+35])
+                Ptyp_var a
+            ]
+      []
+  signature_item (utils/misc.mli[78,3530+0]..[78,3530+41])
+    Psig_value
+    value_description "list_remove" (utils/misc.mli[78,3530+4]..[78,3530+15]) (utils/misc.mli[78,3530+0]..[78,3530+41])
+      core_type (utils/misc.mli[78,3530+17]..[78,3530+41])
+        Ptyp_arrow
+        Nolabel
+        core_type (utils/misc.mli[78,3530+17]..[78,3530+19])
+          Ptyp_var a
+        core_type (utils/misc.mli[78,3530+23]..[78,3530+41])
+          Ptyp_arrow
+          Nolabel
+          core_type (utils/misc.mli[78,3530+23]..[78,3530+30])
+            Ptyp_constr "list" (utils/misc.mli[78,3530+26]..[78,3530+30])
+            [
+              core_type (utils/misc.mli[78,3530+23]..[78,3530+25])
+                Ptyp_var a
+            ]
+          core_type (utils/misc.mli[78,3530+34]..[78,3530+41])
+            Ptyp_constr "list" (utils/misc.mli[78,3530+37]..[78,3530+41])
+            [
+              core_type (utils/misc.mli[78,3530+34]..[78,3530+36])
+                Ptyp_var a
+            ]
+      []
+  signature_item (utils/misc.mli[81,3682+0]..[81,3682+39])
+    Psig_value
+    value_description "split_last" (utils/misc.mli[81,3682+4]..[81,3682+14]) (utils/misc.mli[81,3682+0]..[81,3682+39])
+      core_type (utils/misc.mli[81,3682+16]..[81,3682+39])
+        Ptyp_arrow
+        Nolabel
+        core_type (utils/misc.mli[81,3682+16]..[81,3682+23])
+          Ptyp_constr "list" (utils/misc.mli[81,3682+19]..[81,3682+23])
+          [
+            core_type (utils/misc.mli[81,3682+16]..[81,3682+18])
+              Ptyp_var a
+          ]
+        core_type (utils/misc.mli[81,3682+27]..[81,3682+39])
+          Ptyp_tuple
+          [
+            core_type (utils/misc.mli[81,3682+27]..[81,3682+34])
+              Ptyp_constr "list" (utils/misc.mli[81,3682+30]..[81,3682+34])
+              [
+                core_type (utils/misc.mli[81,3682+27]..[81,3682+29])
+                  Ptyp_var a
+              ]
+            core_type (utils/misc.mli[81,3682+37]..[81,3682+39])
+              Ptyp_var a
+          ]
+      []
+  signature_item (utils/misc.mli[84,3803+0]..[84,3803+53])
+    Psig_type Rec
+    [
+      type_declaration "ref_and_value" (utils/misc.mli[84,3803+5]..[84,3803+18]) (utils/misc.mli[84,3803+0]..[84,3803+53])
+        ptype_params =
+          []
+        ptype_cstrs =
+          []
+        ptype_kind =
+          Ptype_variant
+            [
+              (utils/misc.mli[84,3803+21]..[84,3803+53])
+                "R" (utils/misc.mli[84,3803+21]..[84,3803+22])
+                [
+                  core_type (utils/misc.mli[84,3803+25]..[84,3803+31])
+                    Ptyp_constr "ref" (utils/misc.mli[84,3803+28]..[84,3803+31])
+                    [
+                      core_type (utils/misc.mli[84,3803+25]..[84,3803+27])
+                        Ptyp_var a
+                    ]
+                  core_type (utils/misc.mli[84,3803+34]..[84,3803+36])
+                    Ptyp_var a
+                ]
+                Some
+                  core_type (utils/misc.mli[84,3803+40]..[84,3803+53])
+                    Ptyp_constr "ref_and_value" (utils/misc.mli[84,3803+40]..[84,3803+53])
+                    []
+            ]
+        ptype_private = Public
+        ptype_manifest =
+          None
+    ]
+  signature_item (utils/misc.mli[86,3858+0]..[86,3858+59])
+    Psig_value
+    value_description "protect_refs" (utils/misc.mli[86,3858+4]..[86,3858+16]) (utils/misc.mli[86,3858+0]..[86,3858+59])
+      attribute "ocaml.doc"
+        [
+          structure_item (utils/misc.mli[87,3918+0]..[90,4152+2])
+            Pstr_eval
+            expression (utils/misc.mli[87,3918+0]..[90,4152+2])
+              Pexp_constant PConst_string(" [protect_refs l f] temporarily sets [r] to [v] for each [R (r, v)] in [l]\n    while executing [f]. The previous contents of the references is restored\n    even if [f] raises an exception, without altering the exception backtrace.\n",(utils/misc.mli[87,3918+0]..[90,4152+2]),None)
+        ]
+      core_type (utils/misc.mli[86,3858+19]..[86,3858+59])
+        Ptyp_arrow
+        Nolabel
+        core_type (utils/misc.mli[86,3858+19]..[86,3858+37])
+          Ptyp_constr "list" (utils/misc.mli[86,3858+33]..[86,3858+37])
+          [
+            core_type (utils/misc.mli[86,3858+19]..[86,3858+32])
+              Ptyp_constr "ref_and_value" (utils/misc.mli[86,3858+19]..[86,3858+32])
+              []
+          ]
+        core_type (utils/misc.mli[86,3858+41]..[86,3858+59])
+          Ptyp_arrow
+          Nolabel
+          core_type (utils/misc.mli[86,3858+42]..[86,3858+52])
+            Ptyp_arrow
+            Nolabel
+            core_type (utils/misc.mli[86,3858+42]..[86,3858+46])
+              Ptyp_constr "unit" (utils/misc.mli[86,3858+42]..[86,3858+46])
+              []
+            core_type (utils/misc.mli[86,3858+50]..[86,3858+52])
+              Ptyp_var a
+          core_type (utils/misc.mli[86,3858+57]..[86,3858+59])
+            Ptyp_var a
+      []
+  signature_item (utils/misc.mli[92,4156+0]..[179,7325+3])
+    Psig_module "Stdlib" (utils/misc.mli[92,4156+7]..[92,4156+13])
+    module_type (utils/misc.mli[92,4156+16]..[179,7325+3])
+      Pmty_signature
+      [
+        signature_item (utils/misc.mli[93,4176+2]..[141,6252+5])
+          Psig_module "List" (utils/misc.mli[93,4176+9]..[93,4176+13])
+          module_type (utils/misc.mli[93,4176+16]..[141,6252+5])
+            Pmty_signature
+            [
+              signature_item (utils/misc.mli[94,4196+4]..[94,4196+23])
+                Psig_type Rec
+                [
+                  type_declaration "t" (utils/misc.mli[94,4196+12]..[94,4196+13]) (utils/misc.mli[94,4196+4]..[94,4196+23])
+                    ptype_params =
+                      [
+                        core_type (utils/misc.mli[94,4196+9]..[94,4196+11])
+                          Ptyp_var a
+                      ]
+                    ptype_cstrs =
+                      []
+                    ptype_kind =
+                      Ptype_abstract
+                    ptype_private = Public
+                    ptype_manifest =
+                      Some
+                        core_type (utils/misc.mli[94,4196+16]..[94,4196+23])
+                          Ptyp_constr "list" (utils/misc.mli[94,4196+19]..[94,4196+23])
+                          [
+                            core_type (utils/misc.mli[94,4196+16]..[94,4196+18])
+                              Ptyp_var a
+                          ]
+                ]
+              signature_item (utils/misc.mli[96,4221+4]..[96,4221+58])
+                Psig_value
+                value_description "compare" (utils/misc.mli[96,4221+8]..[96,4221+15]) (utils/misc.mli[96,4221+4]..[96,4221+58])
+                  attribute "ocaml.doc"
+                    [
+                      structure_item (utils/misc.mli[97,4280+4]..[98,4345+71])
+                        Pstr_eval
+                        expression (utils/misc.mli[97,4280+4]..[98,4345+71])
+                          Pexp_constant PConst_string(" The lexicographic order supported by the provided order.\n        There is no constraint on the relative lengths of the lists. ",(utils/misc.mli[97,4280+4]..[98,4345+71]),None)
+                    ]
+                  core_type (utils/misc.mli[96,4221+18]..[96,4221+58])
+                    Ptyp_arrow
+                    Nolabel
+                    core_type (utils/misc.mli[96,4221+19]..[96,4221+34])
+                      Ptyp_arrow
+                      Nolabel
+                      core_type (utils/misc.mli[96,4221+19]..[96,4221+21])
+                        Ptyp_var a
+                      core_type (utils/misc.mli[96,4221+25]..[96,4221+34])
+                        Ptyp_arrow
+                        Nolabel
+                        core_type (utils/misc.mli[96,4221+25]..[96,4221+27])
+                          Ptyp_var a
+                        core_type (utils/misc.mli[96,4221+31]..[96,4221+34])
+                          Ptyp_constr "int" (utils/misc.mli[96,4221+31]..[96,4221+34])
+                          []
+                    core_type (utils/misc.mli[96,4221+39]..[96,4221+58])
+                      Ptyp_arrow
+                      Nolabel
+                      core_type (utils/misc.mli[96,4221+39]..[96,4221+43])
+                        Ptyp_constr "t" (utils/misc.mli[96,4221+42]..[96,4221+43])
+                        [
+                          core_type (utils/misc.mli[96,4221+39]..[96,4221+41])
+                            Ptyp_var a
+                        ]
+                      core_type (utils/misc.mli[96,4221+47]..[96,4221+58])
+                        Ptyp_arrow
+                        Nolabel
+                        core_type (utils/misc.mli[96,4221+47]..[96,4221+51])
+                          Ptyp_constr "t" (utils/misc.mli[96,4221+50]..[96,4221+51])
+                          [
+                            core_type (utils/misc.mli[96,4221+47]..[96,4221+49])
+                              Ptyp_var a
+                          ]
+                        core_type (utils/misc.mli[96,4221+55]..[96,4221+58])
+                          Ptyp_constr "int" (utils/misc.mli[96,4221+55]..[96,4221+58])
+                          []
+                  []
+              signature_item (utils/misc.mli[100,4418+4]..[100,4418+58])
+                Psig_value
+                value_description "equal" (utils/misc.mli[100,4418+8]..[100,4418+13]) (utils/misc.mli[100,4418+4]..[100,4418+58])
+                  attribute "ocaml.doc"
+                    [
+                      structure_item (utils/misc.mli[101,4477+4]..[102,4556+63])
+                        Pstr_eval
+                        expression (utils/misc.mli[101,4477+4]..[102,4556+63])
+                          Pexp_constant PConst_string(" Returns [true] if and only if the given lists have the same length and\n        content with respect to the given equality function. ",(utils/misc.mli[101,4477+4]..[102,4556+63]),None)
+                    ]
+                  core_type (utils/misc.mli[100,4418+16]..[100,4418+58])
+                    Ptyp_arrow
+                    Nolabel
+                    core_type (utils/misc.mli[100,4418+17]..[100,4418+33])
+                      Ptyp_arrow
+                      Nolabel
+                      core_type (utils/misc.mli[100,4418+17]..[100,4418+19])
+                        Ptyp_var a
+                      core_type (utils/misc.mli[100,4418+23]..[100,4418+33])
+                        Ptyp_arrow
+                        Nolabel
+                        core_type (utils/misc.mli[100,4418+23]..[100,4418+25])
+                          Ptyp_var a
+                        core_type (utils/misc.mli[100,4418+29]..[100,4418+33])
+                          Ptyp_constr "bool" (utils/misc.mli[100,4418+29]..[100,4418+33])
+                          []
+                    core_type (utils/misc.mli[100,4418+38]..[100,4418+58])
+                      Ptyp_arrow
+                      Nolabel
+                      core_type (utils/misc.mli[100,4418+38]..[100,4418+42])
+                        Ptyp_constr "t" (utils/misc.mli[100,4418+41]..[100,4418+42])
+                        [
+                          core_type (utils/misc.mli[100,4418+38]..[100,4418+40])
+                            Ptyp_var a
+                        ]
+                      core_type (utils/misc.mli[100,4418+46]..[100,4418+58])
+                        Ptyp_arrow
+                        Nolabel
+                        core_type (utils/misc.mli[100,4418+46]..[100,4418+50])
+                          Ptyp_constr "t" (utils/misc.mli[100,4418+49]..[100,4418+50])
+                          [
+                            core_type (utils/misc.mli[100,4418+46]..[100,4418+48])
+                              Ptyp_var a
+                          ]
+                        core_type (utils/misc.mli[100,4418+54]..[100,4418+58])
+                          Ptyp_constr "bool" (utils/misc.mli[100,4418+54]..[100,4418+58])
+                          []
+                  []
+              signature_item (utils/misc.mli[104,4621+4]..[104,4621+66])
+                Psig_value
+                value_description "some_if_all_elements_are_some" (utils/misc.mli[104,4621+8]..[104,4621+37]) (utils/misc.mli[104,4621+4]..[104,4621+66])
+                  attribute "ocaml.doc"
+                    [
+                      structure_item (utils/misc.mli[105,4688+4]..[107,4834+53])
+                        Pstr_eval
+                        expression (utils/misc.mli[105,4688+4]..[107,4834+53])
+                          Pexp_constant PConst_string(" If all elements of the given list are [Some _] then [Some xs]\n        is returned with the [xs] being the contents of those [Some]s, with\n        order preserved.  Otherwise return [None]. ",(utils/misc.mli[105,4688+4]..[107,4834+53]),None)
+                    ]
+                  core_type (utils/misc.mli[104,4621+40]..[104,4621+66])
+                    Ptyp_arrow
+                    Nolabel
+                    core_type (utils/misc.mli[104,4621+40]..[104,4621+51])
+                      Ptyp_constr "t" (utils/misc.mli[104,4621+50]..[104,4621+51])
+                      [
+                        core_type (utils/misc.mli[104,4621+40]..[104,4621+49])
+                          Ptyp_constr "option" (utils/misc.mli[104,4621+43]..[104,4621+49])
+                          [
+                            core_type (utils/misc.mli[104,4621+40]..[104,4621+42])
+                              Ptyp_var a
+                          ]
+                      ]
+                    core_type (utils/misc.mli[104,4621+55]..[104,4621+66])
+                      Ptyp_constr "option" (utils/misc.mli[104,4621+60]..[104,4621+66])
+                      [
+                        core_type (utils/misc.mli[104,4621+55]..[104,4621+59])
+                          Ptyp_constr "t" (utils/misc.mli[104,4621+58]..[104,4621+59])
+                          [
+                            core_type (utils/misc.mli[104,4621+55]..[104,4621+57])
+                              Ptyp_var a
+                          ]
+                      ]
+                  []
+              signature_item (utils/misc.mli[109,4889+4]..[109,4889+71])
+                Psig_value
+                value_description "map2_prefix" (utils/misc.mli[109,4889+8]..[109,4889+19]) (utils/misc.mli[109,4889+4]..[109,4889+71])
+                  attribute "ocaml.doc"
+                    [
+                      structure_item (utils/misc.mli[110,4961+4]..[112,5075+50])
+                        Pstr_eval
+                        expression (utils/misc.mli[110,4961+4]..[112,5075+50])
+                          Pexp_constant PConst_string(" [let r1, r2 = map2_prefix f l1 l2]\n        If [l1] is of length n and [l2 = h2 @ t2] with h2 of length n,\n        r1 is [List.map2 f l1 h1] and r2 is t2. ",(utils/misc.mli[110,4961+4]..[112,5075+50]),None)
+                    ]
+                  core_type (utils/misc.mli[109,4889+22]..[109,4889+71])
+                    Ptyp_arrow
+                    Nolabel
+                    core_type (utils/misc.mli[109,4889+23]..[109,4889+37])
+                      Ptyp_arrow
+                      Nolabel
+                      core_type (utils/misc.mli[109,4889+23]..[109,4889+25])
+                        Ptyp_var a
+                      core_type (utils/misc.mli[109,4889+29]..[109,4889+37])
+                        Ptyp_arrow
+                        Nolabel
+                        core_type (utils/misc.mli[109,4889+29]..[109,4889+31])
+                          Ptyp_var b
+                        core_type (utils/misc.mli[109,4889+35]..[109,4889+37])
+                          Ptyp_var c
+                    core_type (utils/misc.mli[109,4889+42]..[109,4889+71])
+                      Ptyp_arrow
+                      Nolabel
+                      core_type (utils/misc.mli[109,4889+42]..[109,4889+46])
+                        Ptyp_constr "t" (utils/misc.mli[109,4889+45]..[109,4889+46])
+                        [
+                          core_type (utils/misc.mli[109,4889+42]..[109,4889+44])
+                            Ptyp_var a
+                        ]
+                      core_type (utils/misc.mli[109,4889+50]..[109,4889+71])
+                        Ptyp_arrow
+                        Nolabel
+                        core_type (utils/misc.mli[109,4889+50]..[109,4889+54])
+                          Ptyp_constr "t" (utils/misc.mli[109,4889+53]..[109,4889+54])
+                          [
+                            core_type (utils/misc.mli[109,4889+50]..[109,4889+52])
+                              Ptyp_var b
+                          ]
+                        core_type (utils/misc.mli[109,4889+59]..[109,4889+70])
+                          Ptyp_tuple
+                          [
+                            core_type (utils/misc.mli[109,4889+59]..[109,4889+63])
+                              Ptyp_constr "t" (utils/misc.mli[109,4889+62]..[109,4889+63])
+                              [
+                                core_type (utils/misc.mli[109,4889+59]..[109,4889+61])
+                                  Ptyp_var c
+                              ]
+                            core_type (utils/misc.mli[109,4889+66]..[109,4889+70])
+                              Ptyp_constr "t" (utils/misc.mli[109,4889+69]..[109,4889+70])
+                              [
+                                core_type (utils/misc.mli[109,4889+66]..[109,4889+68])
+                                  Ptyp_var b
+                              ]
+                          ]
+                  []
+              signature_item (utils/misc.mli[114,5127+4]..[114,5127+45])
+                Psig_value
+                value_description "split_at" (utils/misc.mli[114,5127+8]..[114,5127+16]) (utils/misc.mli[114,5127+4]..[114,5127+45])
+                  attribute "ocaml.doc"
+                    [
+                      structure_item (utils/misc.mli[115,5173+4]..[117,5317+70])
+                        Pstr_eval
+                        expression (utils/misc.mli[115,5173+4]..[117,5317+70])
+                          Pexp_constant PConst_string(" [split_at n l] returns the pair [before, after] where [before] is\n        the [n] first elements of [l] and [after] the remaining ones.\n        If [l] has less than [n] elements, raises Invalid_argument. ",(utils/misc.mli[115,5173+4]..[117,5317+70]),None)
+                    ]
+                  core_type (utils/misc.mli[114,5127+19]..[114,5127+45])
+                    Ptyp_arrow
+                    Nolabel
+                    core_type (utils/misc.mli[114,5127+19]..[114,5127+22])
+                      Ptyp_constr "int" (utils/misc.mli[114,5127+19]..[114,5127+22])
+                      []
+                    core_type (utils/misc.mli[114,5127+26]..[114,5127+45])
+                      Ptyp_arrow
+                      Nolabel
+                      core_type (utils/misc.mli[114,5127+26]..[114,5127+30])
+                        Ptyp_constr "t" (utils/misc.mli[114,5127+29]..[114,5127+30])
+                        [
+                          core_type (utils/misc.mli[114,5127+26]..[114,5127+28])
+                            Ptyp_var a
+                        ]
+                      core_type (utils/misc.mli[114,5127+34]..[114,5127+45])
+                        Ptyp_tuple
+                        [
+                          core_type (utils/misc.mli[114,5127+34]..[114,5127+38])
+                            Ptyp_constr "t" (utils/misc.mli[114,5127+37]..[114,5127+38])
+                            [
+                              core_type (utils/misc.mli[114,5127+34]..[114,5127+36])
+                                Ptyp_var a
+                            ]
+                          core_type (utils/misc.mli[114,5127+41]..[114,5127+45])
+                            Ptyp_constr "t" (utils/misc.mli[114,5127+44]..[114,5127+45])
+                            [
+                              core_type (utils/misc.mli[114,5127+41]..[114,5127+43])
+                                Ptyp_var a
+                            ]
+                        ]
+                  []
+              signature_item (utils/misc.mli[119,5389+4]..[123,5479+13])
+                Psig_value
+                value_description "is_prefix" (utils/misc.mli[119,5389+8]..[119,5389+17]) (utils/misc.mli[119,5389+4]..[123,5479+13])
+                  attribute "ocaml.doc"
+                    [
+                      structure_item (utils/misc.mli[124,5493+4]..[125,5573+76])
+                        Pstr_eval
+                        expression (utils/misc.mli[124,5493+4]..[125,5573+76])
+                          Pexp_constant PConst_string(" Returns [true] if and only if the given list, with respect to the given\n        equality function on list members, is a prefix of the list [of_]. ",(utils/misc.mli[124,5493+4]..[125,5573+76]),None)
+                    ]
+                  core_type (utils/misc.mli[120,5407+9]..[123,5479+13])
+                    Ptyp_arrow
+                    Labelled "equal"
+                    core_type (utils/misc.mli[120,5407+16]..[120,5407+32])
+                      Ptyp_arrow
+                      Nolabel
+                      core_type (utils/misc.mli[120,5407+16]..[120,5407+18])
+                        Ptyp_var a
+                      core_type (utils/misc.mli[120,5407+22]..[120,5407+32])
+                        Ptyp_arrow
+                        Nolabel
+                        core_type (utils/misc.mli[120,5407+22]..[120,5407+24])
+                          Ptyp_var a
+                        core_type (utils/misc.mli[120,5407+28]..[120,5407+32])
+                          Ptyp_constr "bool" (utils/misc.mli[120,5407+28]..[120,5407+32])
+                          []
+                    core_type (utils/misc.mli[121,5441+9]..[123,5479+13])
+                      Ptyp_arrow
+                      Nolabel
+                      core_type (utils/misc.mli[121,5441+9]..[121,5441+16])
+                        Ptyp_constr "list" (utils/misc.mli[121,5441+12]..[121,5441+16])
+                        [
+                          core_type (utils/misc.mli[121,5441+9]..[121,5441+11])
+                            Ptyp_var a
+                        ]
+                      core_type (utils/misc.mli[122,5458+9]..[123,5479+13])
+                        Ptyp_arrow
+                        Labelled "of_"
+                        core_type (utils/misc.mli[122,5458+13]..[122,5458+20])
+                          Ptyp_constr "list" (utils/misc.mli[122,5458+16]..[122,5458+20])
+                          [
+                            core_type (utils/misc.mli[122,5458+13]..[122,5458+15])
+                              Ptyp_var a
+                          ]
+                        core_type (utils/misc.mli[123,5479+9]..[123,5479+13])
+                          Ptyp_constr "bool" (utils/misc.mli[123,5479+9]..[123,5479+13])
+                          []
+                  []
+              signature_item (utils/misc.mli[127,5651+4]..[131,5850+5])
+                Psig_type Rec
+                [
+                  type_declaration "longest_common_prefix_result" (utils/misc.mli[127,5651+12]..[127,5651+40]) (utils/misc.mli[127,5651+4]..[131,5850+5])
+                    ptype_params =
+                      [
+                        core_type (utils/misc.mli[127,5651+9]..[127,5651+11])
+                          Ptyp_var a
+                      ]
+                    ptype_cstrs =
+                      []
+                    ptype_kind =
+                      Ptype_record
+                        [
+                          (utils/misc.mli[128,5704+6]..[128,5704+38])
+                            Immutable
+                            "longest_common_prefix" (utils/misc.mli[128,5704+6]..[128,5704+27])                            core_type (utils/misc.mli[128,5704+30]..[128,5704+37])
+                              Ptyp_constr "list" (utils/misc.mli[128,5704+33]..[128,5704+37])
+                              [
+                                core_type (utils/misc.mli[128,5704+30]..[128,5704+32])
+                                  Ptyp_var a
+                              ]
+                          (utils/misc.mli[129,5743+6]..[129,5743+52])
+                            Immutable
+                            "first_without_longest_common_prefix" (utils/misc.mli[129,5743+6]..[129,5743+41])                            core_type (utils/misc.mli[129,5743+44]..[129,5743+51])
+                              Ptyp_constr "list" (utils/misc.mli[129,5743+47]..[129,5743+51])
+                              [
+                                core_type (utils/misc.mli[129,5743+44]..[129,5743+46])
+                                  Ptyp_var a
+                              ]
+                          (utils/misc.mli[130,5796+6]..[130,5796+53])
+                            Immutable
+                            "second_without_longest_common_prefix" (utils/misc.mli[130,5796+6]..[130,5796+42])                            core_type (utils/misc.mli[130,5796+45]..[130,5796+52])
+                              Ptyp_constr "list" (utils/misc.mli[130,5796+48]..[130,5796+52])
+                              [
+                                core_type (utils/misc.mli[130,5796+45]..[130,5796+47])
+                                  Ptyp_var a
+                              ]
+                        ]
+                    ptype_private = Private
+                    ptype_manifest =
+                      None
+                ]
+              signature_item (utils/misc.mli[133,5857+4]..[137,5982+40])
+                Psig_value
+                value_description "find_and_chop_longest_common_prefix" (utils/misc.mli[133,5857+8]..[133,5857+43]) (utils/misc.mli[133,5857+4]..[137,5982+40])
+                  attribute "ocaml.doc"
+                    [
+                      structure_item (utils/misc.mli[138,6023+4]..[140,6176+75])
+                        Pstr_eval
+                        expression (utils/misc.mli[138,6023+4]..[140,6176+75])
+                          Pexp_constant PConst_string(" Returns the longest list that, with respect to the provided equality\n        function, is a prefix of both of the given lists.  The input lists,\n        each with such longest common prefix removed, are also returned. ",(utils/misc.mli[138,6023+4]..[140,6176+75]),None)
+                    ]
+                  core_type (utils/misc.mli[134,5901+9]..[137,5982+40])
+                    Ptyp_arrow
+                    Labelled "equal"
+                    core_type (utils/misc.mli[134,5901+16]..[134,5901+32])
+                      Ptyp_arrow
+                      Nolabel
+                      core_type (utils/misc.mli[134,5901+16]..[134,5901+18])
+                        Ptyp_var a
+                      core_type (utils/misc.mli[134,5901+22]..[134,5901+32])
+                        Ptyp_arrow
+                        Nolabel
+                        core_type (utils/misc.mli[134,5901+22]..[134,5901+24])
+                          Ptyp_var a
+                        core_type (utils/misc.mli[134,5901+28]..[134,5901+32])
+                          Ptyp_constr "bool" (utils/misc.mli[134,5901+28]..[134,5901+32])
+                          []
+                    core_type (utils/misc.mli[135,5935+9]..[137,5982+40])
+                      Ptyp_arrow
+                      Labelled "first"
+                      core_type (utils/misc.mli[135,5935+15]..[135,5935+22])
+                        Ptyp_constr "list" (utils/misc.mli[135,5935+18]..[135,5935+22])
+                        [
+                          core_type (utils/misc.mli[135,5935+15]..[135,5935+17])
+                            Ptyp_var a
+                        ]
+                      core_type (utils/misc.mli[136,5958+9]..[137,5982+40])
+                        Ptyp_arrow
+                        Labelled "second"
+                        core_type (utils/misc.mli[136,5958+16]..[136,5958+23])
+                          Ptyp_constr "list" (utils/misc.mli[136,5958+19]..[136,5958+23])
+                          [
+                            core_type (utils/misc.mli[136,5958+16]..[136,5958+18])
+                              Ptyp_var a
+                          ]
+                        core_type (utils/misc.mli[137,5982+9]..[137,5982+40])
+                          Ptyp_constr "longest_common_prefix_result" (utils/misc.mli[137,5982+12]..[137,5982+40])
+                          [
+                            core_type (utils/misc.mli[137,5982+9]..[137,5982+11])
+                              Ptyp_var a
+                          ]
+                  []
+            ]
+        signature_item (utils/misc.mli[143,6259+2]..[151,6418+5])
+          Psig_module "Option" (utils/misc.mli[143,6259+9]..[143,6259+15])
+          module_type (utils/misc.mli[143,6259+18]..[151,6418+5])
+            Pmty_signature
+            [
+              signature_item (utils/misc.mli[144,6281+4]..[144,6281+25])
+                Psig_type Rec
+                [
+                  type_declaration "t" (utils/misc.mli[144,6281+12]..[144,6281+13]) (utils/misc.mli[144,6281+4]..[144,6281+25])
+                    ptype_params =
+                      [
+                        core_type (utils/misc.mli[144,6281+9]..[144,6281+11])
+                          Ptyp_var a
+                      ]
+                    ptype_cstrs =
+                      []
+                    ptype_kind =
+                      Ptype_abstract
+                    ptype_private = Public
+                    ptype_manifest =
+                      Some
+                        core_type (utils/misc.mli[144,6281+16]..[144,6281+25])
+                          Ptyp_constr "option" (utils/misc.mli[144,6281+19]..[144,6281+25])
+                          [
+                            core_type (utils/misc.mli[144,6281+16]..[144,6281+18])
+                              Ptyp_var a
+                          ]
+                ]
+              signature_item (utils/misc.mli[146,6308+4]..[150,6404+13])
+                Psig_value
+                value_description "print" (utils/misc.mli[146,6308+8]..[146,6308+13]) (utils/misc.mli[146,6308+4]..[150,6404+13])
+                  core_type (utils/misc.mli[147,6322+9]..[150,6404+13])
+                    Ptyp_arrow
+                    Nolabel
+                    core_type (utils/misc.mli[147,6322+10]..[147,6322+40])
+                      Ptyp_arrow
+                      Nolabel
+                      core_type (utils/misc.mli[147,6322+10]..[147,6322+26])
+                        Ptyp_constr "Format.formatter" (utils/misc.mli[147,6322+10]..[147,6322+26])
+                        []
+                      core_type (utils/misc.mli[147,6322+30]..[147,6322+40])
+                        Ptyp_arrow
+                        Nolabel
+                        core_type (utils/misc.mli[147,6322+30]..[147,6322+32])
+                          Ptyp_var a
+                        core_type (utils/misc.mli[147,6322+36]..[147,6322+40])
+                          Ptyp_constr "unit" (utils/misc.mli[147,6322+36]..[147,6322+40])
+                          []
+                    core_type (utils/misc.mli[148,6364+9]..[150,6404+13])
+                      Ptyp_arrow
+                      Nolabel
+                      core_type (utils/misc.mli[148,6364+9]..[148,6364+25])
+                        Ptyp_constr "Format.formatter" (utils/misc.mli[148,6364+9]..[148,6364+25])
+                        []
+                      core_type (utils/misc.mli[149,6390+9]..[150,6404+13])
+                        Ptyp_arrow
+                        Nolabel
+                        core_type (utils/misc.mli[149,6390+9]..[149,6390+13])
+                          Ptyp_constr "t" (utils/misc.mli[149,6390+12]..[149,6390+13])
+                          [
+                            core_type (utils/misc.mli[149,6390+9]..[149,6390+11])
+                              Ptyp_var a
+                          ]
+                        core_type (utils/misc.mli[150,6404+9]..[150,6404+13])
+                          Ptyp_constr "unit" (utils/misc.mli[150,6404+9]..[150,6404+13])
+                          []
+                  []
+            ]
+        signature_item (utils/misc.mli[153,6425+2]..[165,6969+5])
+          Psig_module "Array" (utils/misc.mli[153,6425+9]..[153,6425+14])
+          module_type (utils/misc.mli[153,6425+17]..[165,6969+5])
+            Pmty_signature
+            [
+              signature_item (utils/misc.mli[154,6446+4]..[154,6446+68])
+                Psig_value
+                value_description "exists2" (utils/misc.mli[154,6446+8]..[154,6446+15]) (utils/misc.mli[154,6446+4]..[154,6446+68])
+                  core_type (utils/misc.mli[154,6446+18]..[154,6446+68])
+                    Ptyp_arrow
+                    Nolabel
+                    core_type (utils/misc.mli[154,6446+19]..[154,6446+35])
+                      Ptyp_arrow
+                      Nolabel
+                      core_type (utils/misc.mli[154,6446+19]..[154,6446+21])
+                        Ptyp_var a
+                      core_type (utils/misc.mli[154,6446+25]..[154,6446+35])
+                        Ptyp_arrow
+                        Nolabel
+                        core_type (utils/misc.mli[154,6446+25]..[154,6446+27])
+                          Ptyp_var b
+                        core_type (utils/misc.mli[154,6446+31]..[154,6446+35])
+                          Ptyp_constr "bool" (utils/misc.mli[154,6446+31]..[154,6446+35])
+                          []
+                    core_type (utils/misc.mli[154,6446+40]..[154,6446+68])
+                      Ptyp_arrow
+                      Nolabel
+                      core_type (utils/misc.mli[154,6446+40]..[154,6446+48])
+                        Ptyp_constr "array" (utils/misc.mli[154,6446+43]..[154,6446+48])
+                        [
+                          core_type (utils/misc.mli[154,6446+40]..[154,6446+42])
+                            Ptyp_var a
+                        ]
+                      core_type (utils/misc.mli[154,6446+52]..[154,6446+68])
+                        Ptyp_arrow
+                        Nolabel
+                        core_type (utils/misc.mli[154,6446+52]..[154,6446+60])
+                          Ptyp_constr "array" (utils/misc.mli[154,6446+55]..[154,6446+60])
+                          [
+                            core_type (utils/misc.mli[154,6446+52]..[154,6446+54])
+                              Ptyp_var b
+                          ]
+                        core_type (utils/misc.mli[154,6446+64]..[154,6446+68])
+                          Ptyp_constr "bool" (utils/misc.mli[154,6446+64]..[154,6446+68])
+                          []
+                  []
+              signature_item (utils/misc.mli[159,6681+4]..[159,6681+58])
+                Psig_value
+                value_description "for_alli" (utils/misc.mli[159,6681+8]..[159,6681+16]) (utils/misc.mli[159,6681+4]..[159,6681+58])
+                  attribute "ocaml.doc"
+                    [
+                      structure_item (utils/misc.mli[160,6740+4]..[162,6859+53])
+                        Pstr_eval
+                        expression (utils/misc.mli[160,6740+4]..[162,6859+53])
+                          Pexp_constant PConst_string(" Same as {!Array.for_all}, but the\n        function is applied with the index of the element as first argument,\n        and the element itself as second argument. ",(utils/misc.mli[160,6740+4]..[162,6859+53]),None)
+                    ]
+                  core_type (utils/misc.mli[159,6681+19]..[159,6681+58])
+                    Ptyp_arrow
+                    Nolabel
+                    core_type (utils/misc.mli[159,6681+20]..[159,6681+37])
+                      Ptyp_arrow
+                      Nolabel
+                      core_type (utils/misc.mli[159,6681+20]..[159,6681+23])
+                        Ptyp_constr "int" (utils/misc.mli[159,6681+20]..[159,6681+23])
+                        []
+                      core_type (utils/misc.mli[159,6681+27]..[159,6681+37])
+                        Ptyp_arrow
+                        Nolabel
+                        core_type (utils/misc.mli[159,6681+27]..[159,6681+29])
+                          Ptyp_var a
+                        core_type (utils/misc.mli[159,6681+33]..[159,6681+37])
+                          Ptyp_constr "bool" (utils/misc.mli[159,6681+33]..[159,6681+37])
+                          []
+                    core_type (utils/misc.mli[159,6681+42]..[159,6681+58])
+                      Ptyp_arrow
+                      Nolabel
+                      core_type (utils/misc.mli[159,6681+42]..[159,6681+50])
+                        Ptyp_constr "array" (utils/misc.mli[159,6681+45]..[159,6681+50])
+                        [
+                          core_type (utils/misc.mli[159,6681+42]..[159,6681+44])
+                            Ptyp_var a
+                        ]
+                      core_type (utils/misc.mli[159,6681+54]..[159,6681+58])
+                        Ptyp_constr "bool" (utils/misc.mli[159,6681+54]..[159,6681+58])
+                        []
+                  []
+              signature_item (utils/misc.mli[164,6914+4]..[164,6914+54])
+                Psig_value
+                value_description "all_somes" (utils/misc.mli[164,6914+8]..[164,6914+17]) (utils/misc.mli[164,6914+4]..[164,6914+54])
+                  core_type (utils/misc.mli[164,6914+20]..[164,6914+54])
+                    Ptyp_arrow
+                    Nolabel
+                    core_type (utils/misc.mli[164,6914+20]..[164,6914+35])
+                      Ptyp_constr "array" (utils/misc.mli[164,6914+30]..[164,6914+35])
+                      [
+                        core_type (utils/misc.mli[164,6914+20]..[164,6914+29])
+                          Ptyp_constr "option" (utils/misc.mli[164,6914+23]..[164,6914+29])
+                          [
+                            core_type (utils/misc.mli[164,6914+20]..[164,6914+22])
+                              Ptyp_var a
+                          ]
+                      ]
+                    core_type (utils/misc.mli[164,6914+39]..[164,6914+54])
+                      Ptyp_constr "option" (utils/misc.mli[164,6914+48]..[164,6914+54])
+                      [
+                        core_type (utils/misc.mli[164,6914+39]..[164,6914+47])
+                          Ptyp_constr "array" (utils/misc.mli[164,6914+42]..[164,6914+47])
+                          [
+                            core_type (utils/misc.mli[164,6914+39]..[164,6914+41])
+                              Ptyp_var a
+                          ]
+                      ]
+                  []
+            ]
+        signature_item (utils/misc.mli[167,6976+2]..[176,7268+5])
+          Psig_module "String" (utils/misc.mli[167,6976+9]..[167,6976+15])
+          module_type (utils/misc.mli[167,6976+18]..[176,7268+5])
+            Pmty_signature
+            [
+              signature_item (utils/misc.mli[168,6998+4]..[168,6998+33])
+                Psig_include
+                module_type (utils/misc.mli[168,6998+12]..[168,6998+33])
+                  Pmty_typeof
+                  module_expr (utils/misc.mli[168,6998+27]..[168,6998+33])
+                    Pmod_ident "String" (utils/misc.mli[168,6998+27]..[168,6998+33])
+              signature_item (utils/misc.mli[169,7032+4]..[169,7032+45])
+                Psig_module "Set" (utils/misc.mli[169,7032+11]..[169,7032+14])
+                module_type (utils/misc.mli[169,7032+17]..[169,7032+45])
+                  Pmty_with
+                  module_type (utils/misc.mli[169,7032+17]..[169,7032+22])
+                    Pmty_ident "Set.S" (utils/misc.mli[169,7032+17]..[169,7032+22])
+                  [
+                    Pwith_type "elt" (utils/misc.mli[169,7032+33]..[169,7032+36])
+                      type_declaration "elt" (utils/misc.mli[169,7032+33]..[169,7032+36]) (utils/misc.mli[169,7032+28]..[169,7032+45])
+                        ptype_params =
+                          []
+                        ptype_cstrs =
+                          []
+                        ptype_kind =
+                          Ptype_abstract
+                        ptype_private = Public
+                        ptype_manifest =
+                          Some
+                            core_type (utils/misc.mli[169,7032+39]..[169,7032+45])
+                              Ptyp_constr "string" (utils/misc.mli[169,7032+39]..[169,7032+45])
+                              []
+                  ]
+              signature_item (utils/misc.mli[170,7078+4]..[170,7078+45])
+                Psig_module "Map" (utils/misc.mli[170,7078+11]..[170,7078+14])
+                module_type (utils/misc.mli[170,7078+17]..[170,7078+45])
+                  Pmty_with
+                  module_type (utils/misc.mli[170,7078+17]..[170,7078+22])
+                    Pmty_ident "Map.S" (utils/misc.mli[170,7078+17]..[170,7078+22])
+                  [
+                    Pwith_type "key" (utils/misc.mli[170,7078+33]..[170,7078+36])
+                      type_declaration "key" (utils/misc.mli[170,7078+33]..[170,7078+36]) (utils/misc.mli[170,7078+28]..[170,7078+45])
+                        ptype_params =
+                          []
+                        ptype_cstrs =
+                          []
+                        ptype_kind =
+                          Ptype_abstract
+                        ptype_private = Public
+                        ptype_manifest =
+                          Some
+                            core_type (utils/misc.mli[170,7078+39]..[170,7078+45])
+                              Ptyp_constr "string" (utils/misc.mli[170,7078+39]..[170,7078+45])
+                              []
+                  ]
+              signature_item (utils/misc.mli[171,7124+4]..[171,7124+49])
+                Psig_module "Tbl" (utils/misc.mli[171,7124+11]..[171,7124+14])
+                module_type (utils/misc.mli[171,7124+17]..[171,7124+49])
+                  Pmty_with
+                  module_type (utils/misc.mli[171,7124+17]..[171,7124+26])
+                    Pmty_ident "Hashtbl.S" (utils/misc.mli[171,7124+17]..[171,7124+26])
+                  [
+                    Pwith_type "key" (utils/misc.mli[171,7124+37]..[171,7124+40])
+                      type_declaration "key" (utils/misc.mli[171,7124+37]..[171,7124+40]) (utils/misc.mli[171,7124+32]..[171,7124+49])
+                        ptype_params =
+                          []
+                        ptype_cstrs =
+                          []
+                        ptype_kind =
+                          Ptype_abstract
+                        ptype_private = Public
+                        ptype_manifest =
+                          Some
+                            core_type (utils/misc.mli[171,7124+43]..[171,7124+49])
+                              Ptyp_constr "string" (utils/misc.mli[171,7124+43]..[171,7124+49])
+                              []
+                  ]
+              signature_item (utils/misc.mli[173,7175+4]..[173,7175+45])
+                Psig_value
+                value_description "print" (utils/misc.mli[173,7175+8]..[173,7175+13]) (utils/misc.mli[173,7175+4]..[173,7175+45])
+                  core_type (utils/misc.mli[173,7175+16]..[173,7175+45])
+                    Ptyp_arrow
+                    Nolabel
+                    core_type (utils/misc.mli[173,7175+16]..[173,7175+32])
+                      Ptyp_constr "Format.formatter" (utils/misc.mli[173,7175+16]..[173,7175+32])
+                      []
+                    core_type (utils/misc.mli[173,7175+36]..[173,7175+45])
+                      Ptyp_arrow
+                      Nolabel
+                      core_type (utils/misc.mli[173,7175+36]..[173,7175+37])
+                        Ptyp_constr "t" (utils/misc.mli[173,7175+36]..[173,7175+37])
+                        []
+                      core_type (utils/misc.mli[173,7175+41]..[173,7175+45])
+                        Ptyp_constr "unit" (utils/misc.mli[173,7175+41]..[173,7175+45])
+                        []
+                  []
+              signature_item (utils/misc.mli[175,7222+4]..[175,7222+45])
+                Psig_value
+                value_description "for_all" (utils/misc.mli[175,7222+8]..[175,7222+15]) (utils/misc.mli[175,7222+4]..[175,7222+45])
+                  core_type (utils/misc.mli[175,7222+18]..[175,7222+45])
+                    Ptyp_arrow
+                    Nolabel
+                    core_type (utils/misc.mli[175,7222+19]..[175,7222+31])
+                      Ptyp_arrow
+                      Nolabel
+                      core_type (utils/misc.mli[175,7222+19]..[175,7222+23])
+                        Ptyp_constr "char" (utils/misc.mli[175,7222+19]..[175,7222+23])
+                        []
+                      core_type (utils/misc.mli[175,7222+27]..[175,7222+31])
+                        Ptyp_constr "bool" (utils/misc.mli[175,7222+27]..[175,7222+31])
+                        []
+                    core_type (utils/misc.mli[175,7222+36]..[175,7222+45])
+                      Ptyp_arrow
+                      Nolabel
+                      core_type (utils/misc.mli[175,7222+36]..[175,7222+37])
+                        Ptyp_constr "t" (utils/misc.mli[175,7222+36]..[175,7222+37])
+                        []
+                      core_type (utils/misc.mli[175,7222+41]..[175,7222+45])
+                        Ptyp_constr "bool" (utils/misc.mli[175,7222+41]..[175,7222+45])
+                        []
+                  []
+            ]
+        signature_item (utils/misc.mli[178,7275+2]..[178,7275+49])
+          Psig_value
+          value_description "compare" (utils/misc.mli[178,7275+11]..[178,7275+18]) (utils/misc.mli[178,7275+2]..[178,7275+49])
+            core_type (utils/misc.mli[178,7275+21]..[178,7275+36])
+              Ptyp_arrow
+              Nolabel
+              core_type (utils/misc.mli[178,7275+21]..[178,7275+23])
+                Ptyp_var a
+              core_type (utils/misc.mli[178,7275+27]..[178,7275+36])
+                Ptyp_arrow
+                Nolabel
+                core_type (utils/misc.mli[178,7275+27]..[178,7275+29])
+                  Ptyp_var a
+                core_type (utils/misc.mli[178,7275+33]..[178,7275+36])
+                  Ptyp_constr "int" (utils/misc.mli[178,7275+33]..[178,7275+36])
+                  []
+            [
+              "%compare"
+            ]
+      ]
+  signature_item (utils/misc.mli[181,7330+0]..[181,7330+49])
+    Psig_value
+    value_description "find_in_path" (utils/misc.mli[181,7330+4]..[181,7330+16]) (utils/misc.mli[181,7330+0]..[181,7330+49])
+      core_type (utils/misc.mli[181,7330+18]..[181,7330+49])
+        Ptyp_arrow
+        Nolabel
+        core_type (utils/misc.mli[181,7330+18]..[181,7330+29])
+          Ptyp_constr "list" (utils/misc.mli[181,7330+25]..[181,7330+29])
+          [
+            core_type (utils/misc.mli[181,7330+18]..[181,7330+24])
+              Ptyp_constr "string" (utils/misc.mli[181,7330+18]..[181,7330+24])
+              []
+          ]
+        core_type (utils/misc.mli[181,7330+33]..[181,7330+49])
+          Ptyp_arrow
+          Nolabel
+          core_type (utils/misc.mli[181,7330+33]..[181,7330+39])
+            Ptyp_constr "string" (utils/misc.mli[181,7330+33]..[181,7330+39])
+            []
+          core_type (utils/misc.mli[181,7330+43]..[181,7330+49])
+            Ptyp_constr "string" (utils/misc.mli[181,7330+43]..[181,7330+49])
+            []
+      []
+  signature_item (utils/misc.mli[183,7434+0]..[183,7434+53])
+    Psig_value
+    value_description "find_in_path_rel" (utils/misc.mli[183,7434+4]..[183,7434+20]) (utils/misc.mli[183,7434+0]..[183,7434+53])
+      core_type (utils/misc.mli[183,7434+22]..[183,7434+53])
+        Ptyp_arrow
+        Nolabel
+        core_type (utils/misc.mli[183,7434+22]..[183,7434+33])
+          Ptyp_constr "list" (utils/misc.mli[183,7434+29]..[183,7434+33])
+          [
+            core_type (utils/misc.mli[183,7434+22]..[183,7434+28])
+              Ptyp_constr "string" (utils/misc.mli[183,7434+22]..[183,7434+28])
+              []
+          ]
+        core_type (utils/misc.mli[183,7434+37]..[183,7434+53])
+          Ptyp_arrow
+          Nolabel
+          core_type (utils/misc.mli[183,7434+37]..[183,7434+43])
+            Ptyp_constr "string" (utils/misc.mli[183,7434+37]..[183,7434+43])
+            []
+          core_type (utils/misc.mli[183,7434+47]..[183,7434+53])
+            Ptyp_constr "string" (utils/misc.mli[183,7434+47]..[183,7434+53])
+            []
+      []
+  signature_item (utils/misc.mli[185,7551+0]..[185,7551+55])
+    Psig_value
+    value_description "find_in_path_uncap" (utils/misc.mli[185,7551+4]..[185,7551+22]) (utils/misc.mli[185,7551+0]..[185,7551+55])
+      core_type (utils/misc.mli[185,7551+24]..[185,7551+55])
+        Ptyp_arrow
+        Nolabel
+        core_type (utils/misc.mli[185,7551+24]..[185,7551+35])
+          Ptyp_constr "list" (utils/misc.mli[185,7551+31]..[185,7551+35])
+          [
+            core_type (utils/misc.mli[185,7551+24]..[185,7551+30])
+              Ptyp_constr "string" (utils/misc.mli[185,7551+24]..[185,7551+30])
+              []
+          ]
+        core_type (utils/misc.mli[185,7551+39]..[185,7551+55])
+          Ptyp_arrow
+          Nolabel
+          core_type (utils/misc.mli[185,7551+39]..[185,7551+45])
+            Ptyp_constr "string" (utils/misc.mli[185,7551+39]..[185,7551+45])
+            []
+          core_type (utils/misc.mli[185,7551+49]..[185,7551+55])
+            Ptyp_constr "string" (utils/misc.mli[185,7551+49]..[185,7551+55])
+            []
+      []
+  signature_item (utils/misc.mli[189,7759+0]..[189,7759+31])
+    Psig_value
+    value_description "remove_file" (utils/misc.mli[189,7759+4]..[189,7759+15]) (utils/misc.mli[189,7759+0]..[189,7759+31])
+      core_type (utils/misc.mli[189,7759+17]..[189,7759+31])
+        Ptyp_arrow
+        Nolabel
+        core_type (utils/misc.mli[189,7759+17]..[189,7759+23])
+          Ptyp_constr "string" (utils/misc.mli[189,7759+17]..[189,7759+23])
+          []
+        core_type (utils/misc.mli[189,7759+27]..[189,7759+31])
+          Ptyp_constr "unit" (utils/misc.mli[189,7759+27]..[189,7759+31])
+          []
+      []
+  signature_item (utils/misc.mli[191,7863+0]..[191,7863+48])
+    Psig_value
+    value_description "expand_directory" (utils/misc.mli[191,7863+4]..[191,7863+20]) (utils/misc.mli[191,7863+0]..[191,7863+48])
+      core_type (utils/misc.mli[191,7863+22]..[191,7863+48])
+        Ptyp_arrow
+        Nolabel
+        core_type (utils/misc.mli[191,7863+22]..[191,7863+28])
+          Ptyp_constr "string" (utils/misc.mli[191,7863+22]..[191,7863+28])
+          []
+        core_type (utils/misc.mli[191,7863+32]..[191,7863+48])
+          Ptyp_arrow
+          Nolabel
+          core_type (utils/misc.mli[191,7863+32]..[191,7863+38])
+            Ptyp_constr "string" (utils/misc.mli[191,7863+32]..[191,7863+38])
+            []
+          core_type (utils/misc.mli[191,7863+42]..[191,7863+48])
+            Ptyp_constr "string" (utils/misc.mli[191,7863+42]..[191,7863+48])
+            []
+      []
+  signature_item (utils/misc.mli[195,8057+0]..[195,8057+59])
+    Psig_value
+    value_description "split_path_contents" (utils/misc.mli[195,8057+4]..[195,8057+23]) (utils/misc.mli[195,8057+0]..[195,8057+59])
+      core_type (utils/misc.mli[195,8057+25]..[195,8057+59])
+        Ptyp_arrow
+        Optional "sep"
+        core_type (utils/misc.mli[195,8057+30]..[195,8057+34])
+          Ptyp_constr "char" (utils/misc.mli[195,8057+30]..[195,8057+34])
+          []
+        core_type (utils/misc.mli[195,8057+38]..[195,8057+59])
+          Ptyp_arrow
+          Nolabel
+          core_type (utils/misc.mli[195,8057+38]..[195,8057+44])
+            Ptyp_constr "string" (utils/misc.mli[195,8057+38]..[195,8057+44])
+            []
+          core_type (utils/misc.mli[195,8057+48]..[195,8057+59])
+            Ptyp_constr "list" (utils/misc.mli[195,8057+55]..[195,8057+59])
+            [
+              core_type (utils/misc.mli[195,8057+48]..[195,8057+54])
+                Ptyp_constr "string" (utils/misc.mli[195,8057+48]..[195,8057+54])
+                []
+            ]
+      []
+  signature_item (utils/misc.mli[202,8387+0]..[202,8387+65])
+    Psig_value
+    value_description "create_hashtable" (utils/misc.mli[202,8387+4]..[202,8387+20]) (utils/misc.mli[202,8387+0]..[202,8387+65])
+      core_type (utils/misc.mli[202,8387+22]..[202,8387+65])
+        Ptyp_arrow
+        Nolabel
+        core_type (utils/misc.mli[202,8387+22]..[202,8387+25])
+          Ptyp_constr "int" (utils/misc.mli[202,8387+22]..[202,8387+25])
+          []
+        core_type (utils/misc.mli[202,8387+29]..[202,8387+65])
+          Ptyp_arrow
+          Nolabel
+          core_type (utils/misc.mli[202,8387+29]..[202,8387+43])
+            Ptyp_constr "list" (utils/misc.mli[202,8387+39]..[202,8387+43])
+            [
+              core_type (utils/misc.mli[202,8387+30]..[202,8387+37])
+                Ptyp_tuple
+                [
+                  core_type (utils/misc.mli[202,8387+30]..[202,8387+32])
+                    Ptyp_var a
+                  core_type (utils/misc.mli[202,8387+35]..[202,8387+37])
+                    Ptyp_var b
+                ]
+            ]
+          core_type (utils/misc.mli[202,8387+47]..[202,8387+65])
+            Ptyp_constr "Hashtbl.t" (utils/misc.mli[202,8387+56]..[202,8387+65])
+            [
+              core_type (utils/misc.mli[202,8387+48]..[202,8387+50])
+                Ptyp_var a
+              core_type (utils/misc.mli[202,8387+52]..[202,8387+54])
+                Ptyp_var b
+            ]
+      []
+  signature_item (utils/misc.mli[206,8554+0]..[206,8554+48])
+    Psig_value
+    value_description "copy_file" (utils/misc.mli[206,8554+4]..[206,8554+13]) (utils/misc.mli[206,8554+0]..[206,8554+48])
+      core_type (utils/misc.mli[206,8554+15]..[206,8554+48])
+        Ptyp_arrow
+        Nolabel
+        core_type (utils/misc.mli[206,8554+15]..[206,8554+25])
+          Ptyp_constr "in_channel" (utils/misc.mli[206,8554+15]..[206,8554+25])
+          []
+        core_type (utils/misc.mli[206,8554+29]..[206,8554+48])
+          Ptyp_arrow
+          Nolabel
+          core_type (utils/misc.mli[206,8554+29]..[206,8554+40])
+            Ptyp_constr "out_channel" (utils/misc.mli[206,8554+29]..[206,8554+40])
+            []
+          core_type (utils/misc.mli[206,8554+44]..[206,8554+48])
+            Ptyp_constr "unit" (utils/misc.mli[206,8554+44]..[206,8554+48])
+            []
+      []
+  signature_item (utils/misc.mli[209,8743+0]..[209,8743+61])
+    Psig_value
+    value_description "copy_file_chunk" (utils/misc.mli[209,8743+4]..[209,8743+19]) (utils/misc.mli[209,8743+0]..[209,8743+61])
+      core_type (utils/misc.mli[209,8743+21]..[209,8743+61])
+        Ptyp_arrow
+        Nolabel
+        core_type (utils/misc.mli[209,8743+21]..[209,8743+31])
+          Ptyp_constr "in_channel" (utils/misc.mli[209,8743+21]..[209,8743+31])
+          []
+        core_type (utils/misc.mli[209,8743+35]..[209,8743+61])
+          Ptyp_arrow
+          Nolabel
+          core_type (utils/misc.mli[209,8743+35]..[209,8743+46])
+            Ptyp_constr "out_channel" (utils/misc.mli[209,8743+35]..[209,8743+46])
+            []
+          core_type (utils/misc.mli[209,8743+50]..[209,8743+61])
+            Ptyp_arrow
+            Nolabel
+            core_type (utils/misc.mli[209,8743+50]..[209,8743+53])
+              Ptyp_constr "int" (utils/misc.mli[209,8743+50]..[209,8743+53])
+              []
+            core_type (utils/misc.mli[209,8743+57]..[209,8743+61])
+              Ptyp_constr "unit" (utils/misc.mli[209,8743+57]..[209,8743+61])
+              []
+      []
+  signature_item (utils/misc.mli[213,8973+0]..[213,8973+40])
+    Psig_value
+    value_description "string_of_file" (utils/misc.mli[213,8973+4]..[213,8973+18]) (utils/misc.mli[213,8973+0]..[213,8973+40])
+      core_type (utils/misc.mli[213,8973+20]..[213,8973+40])
+        Ptyp_arrow
+        Nolabel
+        core_type (utils/misc.mli[213,8973+20]..[213,8973+30])
+          Ptyp_constr "in_channel" (utils/misc.mli[213,8973+20]..[213,8973+30])
+          []
+        core_type (utils/misc.mli[213,8973+34]..[213,8973+40])
+          Ptyp_constr "string" (utils/misc.mli[213,8973+34]..[213,8973+40])
+          []
+      []
+  signature_item (utils/misc.mli[216,9160+0]..[217,9194+75])
+    Psig_value
+    value_description "output_to_file_via_temporary" (utils/misc.mli[216,9160+4]..[216,9160+32]) (utils/misc.mli[216,9160+0]..[217,9194+75])
+      core_type (utils/misc.mli[217,9194+6]..[217,9194+75])
+        Ptyp_arrow
+        Optional "mode"
+        core_type (utils/misc.mli[217,9194+12]..[217,9194+26])
+          Ptyp_constr "list" (utils/misc.mli[217,9194+22]..[217,9194+26])
+          [
+            core_type (utils/misc.mli[217,9194+12]..[217,9194+21])
+              Ptyp_constr "open_flag" (utils/misc.mli[217,9194+12]..[217,9194+21])
+              []
+          ]
+        core_type (utils/misc.mli[217,9194+30]..[217,9194+75])
+          Ptyp_arrow
+          Nolabel
+          core_type (utils/misc.mli[217,9194+30]..[217,9194+36])
+            Ptyp_constr "string" (utils/misc.mli[217,9194+30]..[217,9194+36])
+            []
+          core_type (utils/misc.mli[217,9194+40]..[217,9194+75])
+            Ptyp_arrow
+            Nolabel
+            core_type (utils/misc.mli[217,9194+41]..[217,9194+68])
+              Ptyp_arrow
+              Nolabel
+              core_type (utils/misc.mli[217,9194+41]..[217,9194+47])
+                Ptyp_constr "string" (utils/misc.mli[217,9194+41]..[217,9194+47])
+                []
+              core_type (utils/misc.mli[217,9194+51]..[217,9194+68])
+                Ptyp_arrow
+                Nolabel
+                core_type (utils/misc.mli[217,9194+51]..[217,9194+62])
+                  Ptyp_constr "out_channel" (utils/misc.mli[217,9194+51]..[217,9194+62])
+                  []
+                core_type (utils/misc.mli[217,9194+66]..[217,9194+68])
+                  Ptyp_var a
+            core_type (utils/misc.mli[217,9194+73]..[217,9194+75])
+              Ptyp_var a
+      []
+  signature_item (utils/misc.mli[228,9866+0]..[231,9942+7])
+    Psig_value
+    value_description "protect_writing_to_file" (utils/misc.mli[228,9866+4]..[228,9866+27]) (utils/misc.mli[228,9866+0]..[231,9942+7])
+      attribute "ocaml.doc"
+        [
+          structure_item (utils/misc.mli[225,9656+0]..[227,9806+59])
+            Pstr_eval
+            expression (utils/misc.mli[225,9656+0]..[227,9806+59])
+              Pexp_constant PConst_string(" Open the given [filename] for writing (in binary mode), pass the\n    [out_channel] to the given function, then close the channel. If the function\n    raises an exception then [filename] will be removed. ",(utils/misc.mli[225,9656+0]..[227,9806+59]),None)
+        ]
+      core_type (utils/misc.mli[229,9894+5]..[231,9942+7])
+        Ptyp_arrow
+        Labelled "filename"
+        core_type (utils/misc.mli[229,9894+14]..[229,9894+20])
+          Ptyp_constr "string" (utils/misc.mli[229,9894+14]..[229,9894+20])
+          []
+        core_type (utils/misc.mli[230,9915+5]..[231,9942+7])
+          Ptyp_arrow
+          Labelled "f"
+          core_type (utils/misc.mli[230,9915+8]..[230,9915+25])
+            Ptyp_arrow
+            Nolabel
+            core_type (utils/misc.mli[230,9915+8]..[230,9915+19])
+              Ptyp_constr "out_channel" (utils/misc.mli[230,9915+8]..[230,9915+19])
+              []
+            core_type (utils/misc.mli[230,9915+23]..[230,9915+25])
+              Ptyp_var a
+          core_type (utils/misc.mli[231,9942+5]..[231,9942+7])
+            Ptyp_var a
+      []
+  signature_item (utils/misc.mli[233,9951+0]..[233,9951+20])
+    Psig_value
+    value_description "log2" (utils/misc.mli[233,9951+4]..[233,9951+8]) (utils/misc.mli[233,9951+0]..[233,9951+20])
+      core_type (utils/misc.mli[233,9951+10]..[233,9951+20])
+        Ptyp_arrow
+        Nolabel
+        core_type (utils/misc.mli[233,9951+10]..[233,9951+13])
+          Ptyp_constr "int" (utils/misc.mli[233,9951+10]..[233,9951+13])
+          []
+        core_type (utils/misc.mli[233,9951+17]..[233,9951+20])
+          Ptyp_constr "int" (utils/misc.mli[233,9951+17]..[233,9951+20])
+          []
+      []
+  signature_item (utils/misc.mli[236,10064+0]..[236,10064+28])
+    Psig_value
+    value_description "align" (utils/misc.mli[236,10064+4]..[236,10064+9]) (utils/misc.mli[236,10064+0]..[236,10064+28])
+      core_type (utils/misc.mli[236,10064+11]..[236,10064+28])
+        Ptyp_arrow
+        Nolabel
+        core_type (utils/misc.mli[236,10064+11]..[236,10064+14])
+          Ptyp_constr "int" (utils/misc.mli[236,10064+11]..[236,10064+14])
+          []
+        core_type (utils/misc.mli[236,10064+18]..[236,10064+28])
+          Ptyp_arrow
+          Nolabel
+          core_type (utils/misc.mli[236,10064+18]..[236,10064+21])
+            Ptyp_constr "int" (utils/misc.mli[236,10064+18]..[236,10064+21])
+            []
+          core_type (utils/misc.mli[236,10064+25]..[236,10064+28])
+            Ptyp_constr "int" (utils/misc.mli[236,10064+25]..[236,10064+28])
+            []
+      []
+  signature_item (utils/misc.mli[239,10186+0]..[239,10186+39])
+    Psig_value
+    value_description "no_overflow_add" (utils/misc.mli[239,10186+4]..[239,10186+19]) (utils/misc.mli[239,10186+0]..[239,10186+39])
+      core_type (utils/misc.mli[239,10186+21]..[239,10186+39])
+        Ptyp_arrow
+        Nolabel
+        core_type (utils/misc.mli[239,10186+21]..[239,10186+24])
+          Ptyp_constr "int" (utils/misc.mli[239,10186+21]..[239,10186+24])
+          []
+        core_type (utils/misc.mli[239,10186+28]..[239,10186+39])
+          Ptyp_arrow
+          Nolabel
+          core_type (utils/misc.mli[239,10186+28]..[239,10186+31])
+            Ptyp_constr "int" (utils/misc.mli[239,10186+28]..[239,10186+31])
+            []
+          core_type (utils/misc.mli[239,10186+35]..[239,10186+39])
+            Ptyp_constr "bool" (utils/misc.mli[239,10186+35]..[239,10186+39])
+            []
+      []
+  signature_item (utils/misc.mli[242,10341+0]..[242,10341+39])
+    Psig_value
+    value_description "no_overflow_sub" (utils/misc.mli[242,10341+4]..[242,10341+19]) (utils/misc.mli[242,10341+0]..[242,10341+39])
+      core_type (utils/misc.mli[242,10341+21]..[242,10341+39])
+        Ptyp_arrow
+        Nolabel
+        core_type (utils/misc.mli[242,10341+21]..[242,10341+24])
+          Ptyp_constr "int" (utils/misc.mli[242,10341+21]..[242,10341+24])
+          []
+        core_type (utils/misc.mli[242,10341+28]..[242,10341+39])
+          Ptyp_arrow
+          Nolabel
+          core_type (utils/misc.mli[242,10341+28]..[242,10341+31])
+            Ptyp_constr "int" (utils/misc.mli[242,10341+28]..[242,10341+31])
+            []
+          core_type (utils/misc.mli[242,10341+35]..[242,10341+39])
+            Ptyp_constr "bool" (utils/misc.mli[242,10341+35]..[242,10341+39])
+            []
+      []
+  signature_item (utils/misc.mli[245,10496+0]..[245,10496+39])
+    Psig_value
+    value_description "no_overflow_mul" (utils/misc.mli[245,10496+4]..[245,10496+19]) (utils/misc.mli[245,10496+0]..[245,10496+39])
+      core_type (utils/misc.mli[245,10496+21]..[245,10496+39])
+        Ptyp_arrow
+        Nolabel
+        core_type (utils/misc.mli[245,10496+21]..[245,10496+24])
+          Ptyp_constr "int" (utils/misc.mli[245,10496+21]..[245,10496+24])
+          []
+        core_type (utils/misc.mli[245,10496+28]..[245,10496+39])
+          Ptyp_arrow
+          Nolabel
+          core_type (utils/misc.mli[245,10496+28]..[245,10496+31])
+            Ptyp_constr "int" (utils/misc.mli[245,10496+28]..[245,10496+31])
+            []
+          core_type (utils/misc.mli[245,10496+35]..[245,10496+39])
+            Ptyp_constr "bool" (utils/misc.mli[245,10496+35]..[245,10496+39])
+            []
+      []
+  signature_item (utils/misc.mli[248,10651+0]..[248,10651+39])
+    Psig_value
+    value_description "no_overflow_lsl" (utils/misc.mli[248,10651+4]..[248,10651+19]) (utils/misc.mli[248,10651+0]..[248,10651+39])
+      core_type (utils/misc.mli[248,10651+21]..[248,10651+39])
+        Ptyp_arrow
+        Nolabel
+        core_type (utils/misc.mli[248,10651+21]..[248,10651+24])
+          Ptyp_constr "int" (utils/misc.mli[248,10651+21]..[248,10651+24])
+          []
+        core_type (utils/misc.mli[248,10651+28]..[248,10651+39])
+          Ptyp_arrow
+          Nolabel
+          core_type (utils/misc.mli[248,10651+28]..[248,10651+31])
+            Ptyp_constr "int" (utils/misc.mli[248,10651+28]..[248,10651+31])
+            []
+          core_type (utils/misc.mli[248,10651+35]..[248,10651+39])
+            Ptyp_constr "bool" (utils/misc.mli[248,10651+35]..[248,10651+39])
+            []
+      []
+  signature_item (utils/misc.mli[252,10805+0]..[257,10964+3])
+    Psig_module "Int_literal_converter" (utils/misc.mli[252,10805+7]..[252,10805+28])
+    module_type (utils/misc.mli[252,10805+31]..[257,10964+3])
+      Pmty_signature
+      [
+        signature_item (utils/misc.mli[253,10840+2]..[253,10840+25])
+          Psig_value
+          value_description "int" (utils/misc.mli[253,10840+6]..[253,10840+9]) (utils/misc.mli[253,10840+2]..[253,10840+25])
+            core_type (utils/misc.mli[253,10840+12]..[253,10840+25])
+              Ptyp_arrow
+              Nolabel
+              core_type (utils/misc.mli[253,10840+12]..[253,10840+18])
+                Ptyp_constr "string" (utils/misc.mli[253,10840+12]..[253,10840+18])
+                []
+              core_type (utils/misc.mli[253,10840+22]..[253,10840+25])
+                Ptyp_constr "int" (utils/misc.mli[253,10840+22]..[253,10840+25])
+                []
+            []
+        signature_item (utils/misc.mli[254,10866+2]..[254,10866+29])
+          Psig_value
+          value_description "int32" (utils/misc.mli[254,10866+6]..[254,10866+11]) (utils/misc.mli[254,10866+2]..[254,10866+29])
+            core_type (utils/misc.mli[254,10866+14]..[254,10866+29])
+              Ptyp_arrow
+              Nolabel
+              core_type (utils/misc.mli[254,10866+14]..[254,10866+20])
+                Ptyp_constr "string" (utils/misc.mli[254,10866+14]..[254,10866+20])
+                []
+              core_type (utils/misc.mli[254,10866+24]..[254,10866+29])
+                Ptyp_constr "int32" (utils/misc.mli[254,10866+24]..[254,10866+29])
+                []
+            []
+        signature_item (utils/misc.mli[255,10896+2]..[255,10896+29])
+          Psig_value
+          value_description "int64" (utils/misc.mli[255,10896+6]..[255,10896+11]) (utils/misc.mli[255,10896+2]..[255,10896+29])
+            core_type (utils/misc.mli[255,10896+14]..[255,10896+29])
+              Ptyp_arrow
+              Nolabel
+              core_type (utils/misc.mli[255,10896+14]..[255,10896+20])
+                Ptyp_constr "string" (utils/misc.mli[255,10896+14]..[255,10896+20])
+                []
+              core_type (utils/misc.mli[255,10896+24]..[255,10896+29])
+                Ptyp_constr "int64" (utils/misc.mli[255,10896+24]..[255,10896+29])
+                []
+            []
+        signature_item (utils/misc.mli[256,10926+2]..[256,10926+37])
+          Psig_value
+          value_description "nativeint" (utils/misc.mli[256,10926+6]..[256,10926+15]) (utils/misc.mli[256,10926+2]..[256,10926+37])
+            core_type (utils/misc.mli[256,10926+18]..[256,10926+37])
+              Ptyp_arrow
+              Nolabel
+              core_type (utils/misc.mli[256,10926+18]..[256,10926+24])
+                Ptyp_constr "string" (utils/misc.mli[256,10926+18]..[256,10926+24])
+                []
+              core_type (utils/misc.mli[256,10926+28]..[256,10926+37])
+                Ptyp_constr "nativeint" (utils/misc.mli[256,10926+28]..[256,10926+37])
+                []
+            []
+      ]
+  signature_item (utils/misc.mli[259,10969+0]..[259,10969+37])
+    Psig_value
+    value_description "chop_extensions" (utils/misc.mli[259,10969+4]..[259,10969+19]) (utils/misc.mli[259,10969+0]..[259,10969+37])
+      core_type (utils/misc.mli[259,10969+21]..[259,10969+37])
+        Ptyp_arrow
+        Nolabel
+        core_type (utils/misc.mli[259,10969+21]..[259,10969+27])
+          Ptyp_constr "string" (utils/misc.mli[259,10969+21]..[259,10969+27])
+          []
+        core_type (utils/misc.mli[259,10969+31]..[259,10969+37])
+          Ptyp_constr "string" (utils/misc.mli[259,10969+31]..[259,10969+37])
+          []
+      []
+  signature_item (utils/misc.mli[266,11292+0]..[266,11292+52])
+    Psig_value
+    value_description "search_substring" (utils/misc.mli[266,11292+4]..[266,11292+20]) (utils/misc.mli[266,11292+0]..[266,11292+52])
+      core_type (utils/misc.mli[266,11292+22]..[266,11292+52])
+        Ptyp_arrow
+        Nolabel
+        core_type (utils/misc.mli[266,11292+22]..[266,11292+28])
+          Ptyp_constr "string" (utils/misc.mli[266,11292+22]..[266,11292+28])
+          []
+        core_type (utils/misc.mli[266,11292+32]..[266,11292+52])
+          Ptyp_arrow
+          Nolabel
+          core_type (utils/misc.mli[266,11292+32]..[266,11292+38])
+            Ptyp_constr "string" (utils/misc.mli[266,11292+32]..[266,11292+38])
+            []
+          core_type (utils/misc.mli[266,11292+42]..[266,11292+52])
+            Ptyp_arrow
+            Nolabel
+            core_type (utils/misc.mli[266,11292+42]..[266,11292+45])
+              Ptyp_constr "int" (utils/misc.mli[266,11292+42]..[266,11292+45])
+              []
+            core_type (utils/misc.mli[266,11292+49]..[266,11292+52])
+              Ptyp_constr "int" (utils/misc.mli[266,11292+49]..[266,11292+52])
+              []
+      []
+  signature_item (utils/misc.mli[272,11591+0]..[272,11591+72])
+    Psig_value
+    value_description "replace_substring" (utils/misc.mli[272,11591+4]..[272,11591+21]) (utils/misc.mli[272,11591+0]..[272,11591+72])
+      core_type (utils/misc.mli[272,11591+23]..[272,11591+72])
+        Ptyp_arrow
+        Labelled "before"
+        core_type (utils/misc.mli[272,11591+30]..[272,11591+36])
+          Ptyp_constr "string" (utils/misc.mli[272,11591+30]..[272,11591+36])
+          []
+        core_type (utils/misc.mli[272,11591+40]..[272,11591+72])
+          Ptyp_arrow
+          Labelled "after"
+          core_type (utils/misc.mli[272,11591+46]..[272,11591+52])
+            Ptyp_constr "string" (utils/misc.mli[272,11591+46]..[272,11591+52])
+            []
+          core_type (utils/misc.mli[272,11591+56]..[272,11591+72])
+            Ptyp_arrow
+            Nolabel
+            core_type (utils/misc.mli[272,11591+56]..[272,11591+62])
+              Ptyp_constr "string" (utils/misc.mli[272,11591+56]..[272,11591+62])
+              []
+            core_type (utils/misc.mli[272,11591+66]..[272,11591+72])
+              Ptyp_constr "string" (utils/misc.mli[272,11591+66]..[272,11591+72])
+              []
+      []
+  signature_item (utils/misc.mli[277,11833+0]..[277,11833+42])
+    Psig_value
+    value_description "rev_split_words" (utils/misc.mli[277,11833+4]..[277,11833+19]) (utils/misc.mli[277,11833+0]..[277,11833+42])
+      core_type (utils/misc.mli[277,11833+21]..[277,11833+42])
+        Ptyp_arrow
+        Nolabel
+        core_type (utils/misc.mli[277,11833+21]..[277,11833+27])
+          Ptyp_constr "string" (utils/misc.mli[277,11833+21]..[277,11833+27])
+          []
+        core_type (utils/misc.mli[277,11833+31]..[277,11833+42])
+          Ptyp_constr "list" (utils/misc.mli[277,11833+38]..[277,11833+42])
+          [
+            core_type (utils/misc.mli[277,11833+31]..[277,11833+37])
+              Ptyp_constr "string" (utils/misc.mli[277,11833+31]..[277,11833+37])
+              []
+          ]
+      []
+  signature_item (utils/misc.mli[281,12007+0]..[281,12007+35])
+    Psig_value
+    value_description "get_ref" (utils/misc.mli[281,12007+4]..[281,12007+11]) (utils/misc.mli[281,12007+0]..[281,12007+35])
+      core_type (utils/misc.mli[281,12007+13]..[281,12007+35])
+        Ptyp_arrow
+        Nolabel
+        core_type (utils/misc.mli[281,12007+13]..[281,12007+24])
+          Ptyp_constr "ref" (utils/misc.mli[281,12007+21]..[281,12007+24])
+          [
+            core_type (utils/misc.mli[281,12007+13]..[281,12007+20])
+              Ptyp_constr "list" (utils/misc.mli[281,12007+16]..[281,12007+20])
+              [
+                core_type (utils/misc.mli[281,12007+13]..[281,12007+15])
+                  Ptyp_var a
+              ]
+          ]
+        core_type (utils/misc.mli[281,12007+28]..[281,12007+35])
+          Ptyp_constr "list" (utils/misc.mli[281,12007+31]..[281,12007+35])
+          [
+            core_type (utils/misc.mli[281,12007+28]..[281,12007+30])
+              Ptyp_var a
+          ]
+      []
+  signature_item (utils/misc.mli[285,12170+0]..[285,12170+68])
+    Psig_value
+    value_description "set_or_ignore" (utils/misc.mli[285,12170+4]..[285,12170+17]) (utils/misc.mli[285,12170+0]..[285,12170+68])
+      core_type (utils/misc.mli[285,12170+20]..[285,12170+68])
+        Ptyp_arrow
+        Nolabel
+        core_type (utils/misc.mli[285,12170+21]..[285,12170+36])
+          Ptyp_arrow
+          Nolabel
+          core_type (utils/misc.mli[285,12170+21]..[285,12170+23])
+            Ptyp_var a
+          core_type (utils/misc.mli[285,12170+27]..[285,12170+36])
+            Ptyp_constr "option" (utils/misc.mli[285,12170+30]..[285,12170+36])
+            [
+              core_type (utils/misc.mli[285,12170+27]..[285,12170+29])
+                Ptyp_var b
+            ]
+        core_type (utils/misc.mli[285,12170+41]..[285,12170+68])
+          Ptyp_arrow
+          Nolabel
+          core_type (utils/misc.mli[285,12170+41]..[285,12170+54])
+            Ptyp_constr "ref" (utils/misc.mli[285,12170+51]..[285,12170+54])
+            [
+              core_type (utils/misc.mli[285,12170+41]..[285,12170+50])
+                Ptyp_constr "option" (utils/misc.mli[285,12170+44]..[285,12170+50])
+                [
+                  core_type (utils/misc.mli[285,12170+41]..[285,12170+43])
+                    Ptyp_var b
+                ]
+            ]
+          core_type (utils/misc.mli[285,12170+58]..[285,12170+68])
+            Ptyp_arrow
+            Nolabel
+            core_type (utils/misc.mli[285,12170+58]..[285,12170+60])
+              Ptyp_var a
+            core_type (utils/misc.mli[285,12170+64]..[285,12170+68])
+              Ptyp_constr "unit" (utils/misc.mli[285,12170+64]..[285,12170+68])
+              []
+      []
+  signature_item (utils/misc.mli[289,12379+0]..[289,12379+28])
+    Psig_value
+    value_description "fst3" (utils/misc.mli[289,12379+4]..[289,12379+8]) (utils/misc.mli[289,12379+0]..[289,12379+28])
+      core_type (utils/misc.mli[289,12379+10]..[289,12379+28])
+        Ptyp_arrow
+        Nolabel
+        core_type (utils/misc.mli[289,12379+10]..[289,12379+22])
+          Ptyp_tuple
+          [
+            core_type (utils/misc.mli[289,12379+10]..[289,12379+12])
+              Ptyp_var a
+            core_type (utils/misc.mli[289,12379+15]..[289,12379+17])
+              Ptyp_var b
+            core_type (utils/misc.mli[289,12379+20]..[289,12379+22])
+              Ptyp_var c
+          ]
+        core_type (utils/misc.mli[289,12379+26]..[289,12379+28])
+          Ptyp_var a
+      []
+  signature_item (utils/misc.mli[290,12408+0]..[290,12408+28])
+    Psig_value
+    value_description "snd3" (utils/misc.mli[290,12408+4]..[290,12408+8]) (utils/misc.mli[290,12408+0]..[290,12408+28])
+      core_type (utils/misc.mli[290,12408+10]..[290,12408+28])
+        Ptyp_arrow
+        Nolabel
+        core_type (utils/misc.mli[290,12408+10]..[290,12408+22])
+          Ptyp_tuple
+          [
+            core_type (utils/misc.mli[290,12408+10]..[290,12408+12])
+              Ptyp_var a
+            core_type (utils/misc.mli[290,12408+15]..[290,12408+17])
+              Ptyp_var b
+            core_type (utils/misc.mli[290,12408+20]..[290,12408+22])
+              Ptyp_var c
+          ]
+        core_type (utils/misc.mli[290,12408+26]..[290,12408+28])
+          Ptyp_var b
+      []
+  signature_item (utils/misc.mli[291,12437+0]..[291,12437+28])
+    Psig_value
+    value_description "thd3" (utils/misc.mli[291,12437+4]..[291,12437+8]) (utils/misc.mli[291,12437+0]..[291,12437+28])
+      core_type (utils/misc.mli[291,12437+10]..[291,12437+28])
+        Ptyp_arrow
+        Nolabel
+        core_type (utils/misc.mli[291,12437+10]..[291,12437+22])
+          Ptyp_tuple
+          [
+            core_type (utils/misc.mli[291,12437+10]..[291,12437+12])
+              Ptyp_var a
+            core_type (utils/misc.mli[291,12437+15]..[291,12437+17])
+              Ptyp_var b
+            core_type (utils/misc.mli[291,12437+20]..[291,12437+22])
+              Ptyp_var c
+          ]
+        core_type (utils/misc.mli[291,12437+26]..[291,12437+28])
+          Ptyp_var c
+      []
+  signature_item (utils/misc.mli[293,12467+0]..[293,12467+33])
+    Psig_value
+    value_description "fst4" (utils/misc.mli[293,12467+4]..[293,12467+8]) (utils/misc.mli[293,12467+0]..[293,12467+33])
+      core_type (utils/misc.mli[293,12467+10]..[293,12467+33])
+        Ptyp_arrow
+        Nolabel
+        core_type (utils/misc.mli[293,12467+10]..[293,12467+27])
+          Ptyp_tuple
+          [
+            core_type (utils/misc.mli[293,12467+10]..[293,12467+12])
+              Ptyp_var a
+            core_type (utils/misc.mli[293,12467+15]..[293,12467+17])
+              Ptyp_var b
+            core_type (utils/misc.mli[293,12467+20]..[293,12467+22])
+              Ptyp_var c
+            core_type (utils/misc.mli[293,12467+25]..[293,12467+27])
+              Ptyp_var d
+          ]
+        core_type (utils/misc.mli[293,12467+31]..[293,12467+33])
+          Ptyp_var a
+      []
+  signature_item (utils/misc.mli[294,12501+0]..[294,12501+33])
+    Psig_value
+    value_description "snd4" (utils/misc.mli[294,12501+4]..[294,12501+8]) (utils/misc.mli[294,12501+0]..[294,12501+33])
+      core_type (utils/misc.mli[294,12501+10]..[294,12501+33])
+        Ptyp_arrow
+        Nolabel
+        core_type (utils/misc.mli[294,12501+10]..[294,12501+27])
+          Ptyp_tuple
+          [
+            core_type (utils/misc.mli[294,12501+10]..[294,12501+12])
+              Ptyp_var a
+            core_type (utils/misc.mli[294,12501+15]..[294,12501+17])
+              Ptyp_var b
+            core_type (utils/misc.mli[294,12501+20]..[294,12501+22])
+              Ptyp_var c
+            core_type (utils/misc.mli[294,12501+25]..[294,12501+27])
+              Ptyp_var d
+          ]
+        core_type (utils/misc.mli[294,12501+31]..[294,12501+33])
+          Ptyp_var b
+      []
+  signature_item (utils/misc.mli[295,12535+0]..[295,12535+33])
+    Psig_value
+    value_description "thd4" (utils/misc.mli[295,12535+4]..[295,12535+8]) (utils/misc.mli[295,12535+0]..[295,12535+33])
+      core_type (utils/misc.mli[295,12535+10]..[295,12535+33])
+        Ptyp_arrow
+        Nolabel
+        core_type (utils/misc.mli[295,12535+10]..[295,12535+27])
+          Ptyp_tuple
+          [
+            core_type (utils/misc.mli[295,12535+10]..[295,12535+12])
+              Ptyp_var a
+            core_type (utils/misc.mli[295,12535+15]..[295,12535+17])
+              Ptyp_var b
+            core_type (utils/misc.mli[295,12535+20]..[295,12535+22])
+              Ptyp_var c
+            core_type (utils/misc.mli[295,12535+25]..[295,12535+27])
+              Ptyp_var d
+          ]
+        core_type (utils/misc.mli[295,12535+31]..[295,12535+33])
+          Ptyp_var c
+      []
+  signature_item (utils/misc.mli[296,12569+0]..[296,12569+33])
+    Psig_value
+    value_description "for4" (utils/misc.mli[296,12569+4]..[296,12569+8]) (utils/misc.mli[296,12569+0]..[296,12569+33])
+      core_type (utils/misc.mli[296,12569+10]..[296,12569+33])
+        Ptyp_arrow
+        Nolabel
+        core_type (utils/misc.mli[296,12569+10]..[296,12569+27])
+          Ptyp_tuple
+          [
+            core_type (utils/misc.mli[296,12569+10]..[296,12569+12])
+              Ptyp_var a
+            core_type (utils/misc.mli[296,12569+15]..[296,12569+17])
+              Ptyp_var b
+            core_type (utils/misc.mli[296,12569+20]..[296,12569+22])
+              Ptyp_var c
+            core_type (utils/misc.mli[296,12569+25]..[296,12569+27])
+              Ptyp_var d
+          ]
+        core_type (utils/misc.mli[296,12569+31]..[296,12569+33])
+          Ptyp_var d
+      []
+  signature_item (utils/misc.mli[298,12604+0]..[310,13050+5])
+    Psig_module "LongString" (utils/misc.mli[298,12604+7]..[298,12604+17])
+    module_type (utils/misc.mli[299,12624+2]..[310,13050+5])
+      Pmty_signature
+      [
+        signature_item (utils/misc.mli[300,12630+4]..[300,12630+24])
+          Psig_type Rec
+          [
+            type_declaration "t" (utils/misc.mli[300,12630+9]..[300,12630+10]) (utils/misc.mli[300,12630+4]..[300,12630+24])
+              ptype_params =
+                []
+              ptype_cstrs =
+                []
+              ptype_kind =
+                Ptype_abstract
+              ptype_private = Public
+              ptype_manifest =
+                Some
+                  core_type (utils/misc.mli[300,12630+13]..[300,12630+24])
+                    Ptyp_constr "array" (utils/misc.mli[300,12630+19]..[300,12630+24])
+                    [
+                      core_type (utils/misc.mli[300,12630+13]..[300,12630+18])
+                        Ptyp_constr "bytes" (utils/misc.mli[300,12630+13]..[300,12630+18])
+                        []
+                    ]
+          ]
+        signature_item (utils/misc.mli[301,12655+4]..[301,12655+25])
+          Psig_value
+          value_description "create" (utils/misc.mli[301,12655+8]..[301,12655+14]) (utils/misc.mli[301,12655+4]..[301,12655+25])
+            core_type (utils/misc.mli[301,12655+17]..[301,12655+25])
+              Ptyp_arrow
+              Nolabel
+              core_type (utils/misc.mli[301,12655+17]..[301,12655+20])
+                Ptyp_constr "int" (utils/misc.mli[301,12655+17]..[301,12655+20])
+                []
+              core_type (utils/misc.mli[301,12655+24]..[301,12655+25])
+                Ptyp_constr "t" (utils/misc.mli[301,12655+24]..[301,12655+25])
+                []
+            []
+        signature_item (utils/misc.mli[302,12681+4]..[302,12681+25])
+          Psig_value
+          value_description "length" (utils/misc.mli[302,12681+8]..[302,12681+14]) (utils/misc.mli[302,12681+4]..[302,12681+25])
+            core_type (utils/misc.mli[302,12681+17]..[302,12681+25])
+              Ptyp_arrow
+              Nolabel
+              core_type (utils/misc.mli[302,12681+17]..[302,12681+18])
+                Ptyp_constr "t" (utils/misc.mli[302,12681+17]..[302,12681+18])
+                []
+              core_type (utils/misc.mli[302,12681+22]..[302,12681+25])
+                Ptyp_constr "int" (utils/misc.mli[302,12681+22]..[302,12681+25])
+                []
+            []
+        signature_item (utils/misc.mli[303,12707+4]..[303,12707+30])
+          Psig_value
+          value_description "get" (utils/misc.mli[303,12707+8]..[303,12707+11]) (utils/misc.mli[303,12707+4]..[303,12707+30])
+            core_type (utils/misc.mli[303,12707+14]..[303,12707+30])
+              Ptyp_arrow
+              Nolabel
+              core_type (utils/misc.mli[303,12707+14]..[303,12707+15])
+                Ptyp_constr "t" (utils/misc.mli[303,12707+14]..[303,12707+15])
+                []
+              core_type (utils/misc.mli[303,12707+19]..[303,12707+30])
+                Ptyp_arrow
+                Nolabel
+                core_type (utils/misc.mli[303,12707+19]..[303,12707+22])
+                  Ptyp_constr "int" (utils/misc.mli[303,12707+19]..[303,12707+22])
+                  []
+                core_type (utils/misc.mli[303,12707+26]..[303,12707+30])
+                  Ptyp_constr "char" (utils/misc.mli[303,12707+26]..[303,12707+30])
+                  []
+            []
+        signature_item (utils/misc.mli[304,12738+4]..[304,12738+38])
+          Psig_value
+          value_description "set" (utils/misc.mli[304,12738+8]..[304,12738+11]) (utils/misc.mli[304,12738+4]..[304,12738+38])
+            core_type (utils/misc.mli[304,12738+14]..[304,12738+38])
+              Ptyp_arrow
+              Nolabel
+              core_type (utils/misc.mli[304,12738+14]..[304,12738+15])
+                Ptyp_constr "t" (utils/misc.mli[304,12738+14]..[304,12738+15])
+                []
+              core_type (utils/misc.mli[304,12738+19]..[304,12738+38])
+                Ptyp_arrow
+                Nolabel
+                core_type (utils/misc.mli[304,12738+19]..[304,12738+22])
+                  Ptyp_constr "int" (utils/misc.mli[304,12738+19]..[304,12738+22])
+                  []
+                core_type (utils/misc.mli[304,12738+26]..[304,12738+38])
+                  Ptyp_arrow
+                  Nolabel
+                  core_type (utils/misc.mli[304,12738+26]..[304,12738+30])
+                    Ptyp_constr "char" (utils/misc.mli[304,12738+26]..[304,12738+30])
+                    []
+                  core_type (utils/misc.mli[304,12738+34]..[304,12738+38])
+                    Ptyp_constr "unit" (utils/misc.mli[304,12738+34]..[304,12738+38])
+                    []
+            []
+        signature_item (utils/misc.mli[305,12777+4]..[305,12777+50])
+          Psig_value
+          value_description "blit" (utils/misc.mli[305,12777+8]..[305,12777+12]) (utils/misc.mli[305,12777+4]..[305,12777+50])
+            core_type (utils/misc.mli[305,12777+15]..[305,12777+50])
+              Ptyp_arrow
+              Nolabel
+              core_type (utils/misc.mli[305,12777+15]..[305,12777+16])
+                Ptyp_constr "t" (utils/misc.mli[305,12777+15]..[305,12777+16])
+                []
+              core_type (utils/misc.mli[305,12777+20]..[305,12777+50])
+                Ptyp_arrow
+                Nolabel
+                core_type (utils/misc.mli[305,12777+20]..[305,12777+23])
+                  Ptyp_constr "int" (utils/misc.mli[305,12777+20]..[305,12777+23])
+                  []
+                core_type (utils/misc.mli[305,12777+27]..[305,12777+50])
+                  Ptyp_arrow
+                  Nolabel
+                  core_type (utils/misc.mli[305,12777+27]..[305,12777+28])
+                    Ptyp_constr "t" (utils/misc.mli[305,12777+27]..[305,12777+28])
+                    []
+                  core_type (utils/misc.mli[305,12777+32]..[305,12777+50])
+                    Ptyp_arrow
+                    Nolabel
+                    core_type (utils/misc.mli[305,12777+32]..[305,12777+35])
+                      Ptyp_constr "int" (utils/misc.mli[305,12777+32]..[305,12777+35])
+                      []
+                    core_type (utils/misc.mli[305,12777+39]..[305,12777+50])
+                      Ptyp_arrow
+                      Nolabel
+                      core_type (utils/misc.mli[305,12777+39]..[305,12777+42])
+                        Ptyp_constr "int" (utils/misc.mli[305,12777+39]..[305,12777+42])
+                        []
+                      core_type (utils/misc.mli[305,12777+46]..[305,12777+50])
+                        Ptyp_constr "unit" (utils/misc.mli[305,12777+46]..[305,12777+50])
+                        []
+            []
+        signature_item (utils/misc.mli[306,12828+4]..[306,12828+62])
+          Psig_value
+          value_description "blit_string" (utils/misc.mli[306,12828+8]..[306,12828+19]) (utils/misc.mli[306,12828+4]..[306,12828+62])
+            core_type (utils/misc.mli[306,12828+22]..[306,12828+62])
+              Ptyp_arrow
+              Nolabel
+              core_type (utils/misc.mli[306,12828+22]..[306,12828+28])
+                Ptyp_constr "string" (utils/misc.mli[306,12828+22]..[306,12828+28])
+                []
+              core_type (utils/misc.mli[306,12828+32]..[306,12828+62])
+                Ptyp_arrow
+                Nolabel
+                core_type (utils/misc.mli[306,12828+32]..[306,12828+35])
+                  Ptyp_constr "int" (utils/misc.mli[306,12828+32]..[306,12828+35])
+                  []
+                core_type (utils/misc.mli[306,12828+39]..[306,12828+62])
+                  Ptyp_arrow
+                  Nolabel
+                  core_type (utils/misc.mli[306,12828+39]..[306,12828+40])
+                    Ptyp_constr "t" (utils/misc.mli[306,12828+39]..[306,12828+40])
+                    []
+                  core_type (utils/misc.mli[306,12828+44]..[306,12828+62])
+                    Ptyp_arrow
+                    Nolabel
+                    core_type (utils/misc.mli[306,12828+44]..[306,12828+47])
+                      Ptyp_constr "int" (utils/misc.mli[306,12828+44]..[306,12828+47])
+                      []
+                    core_type (utils/misc.mli[306,12828+51]..[306,12828+62])
+                      Ptyp_arrow
+                      Nolabel
+                      core_type (utils/misc.mli[306,12828+51]..[306,12828+54])
+                        Ptyp_constr "int" (utils/misc.mli[306,12828+51]..[306,12828+54])
+                        []
+                      core_type (utils/misc.mli[306,12828+58]..[306,12828+62])
+                        Ptyp_constr "unit" (utils/misc.mli[306,12828+58]..[306,12828+62])
+                        []
+            []
+        signature_item (utils/misc.mli[307,12891+4]..[307,12891+55])
+          Psig_value
+          value_description "output" (utils/misc.mli[307,12891+8]..[307,12891+14]) (utils/misc.mli[307,12891+4]..[307,12891+55])
+            core_type (utils/misc.mli[307,12891+17]..[307,12891+55])
+              Ptyp_arrow
+              Nolabel
+              core_type (utils/misc.mli[307,12891+17]..[307,12891+28])
+                Ptyp_constr "out_channel" (utils/misc.mli[307,12891+17]..[307,12891+28])
+                []
+              core_type (utils/misc.mli[307,12891+32]..[307,12891+55])
+                Ptyp_arrow
+                Nolabel
+                core_type (utils/misc.mli[307,12891+32]..[307,12891+33])
+                  Ptyp_constr "t" (utils/misc.mli[307,12891+32]..[307,12891+33])
+                  []
+                core_type (utils/misc.mli[307,12891+37]..[307,12891+55])
+                  Ptyp_arrow
+                  Nolabel
+                  core_type (utils/misc.mli[307,12891+37]..[307,12891+40])
+                    Ptyp_constr "int" (utils/misc.mli[307,12891+37]..[307,12891+40])
+                    []
+                  core_type (utils/misc.mli[307,12891+44]..[307,12891+55])
+                    Ptyp_arrow
+                    Nolabel
+                    core_type (utils/misc.mli[307,12891+44]..[307,12891+47])
+                      Ptyp_constr "int" (utils/misc.mli[307,12891+44]..[307,12891+47])
+                      []
+                    core_type (utils/misc.mli[307,12891+51]..[307,12891+55])
+                      Ptyp_constr "unit" (utils/misc.mli[307,12891+51]..[307,12891+55])
+                      []
+            []
+        signature_item (utils/misc.mli[308,12947+4]..[308,12947+57])
+          Psig_value
+          value_description "input_bytes_into" (utils/misc.mli[308,12947+8]..[308,12947+24]) (utils/misc.mli[308,12947+4]..[308,12947+57])
+            core_type (utils/misc.mli[308,12947+27]..[308,12947+57])
+              Ptyp_arrow
+              Nolabel
+              core_type (utils/misc.mli[308,12947+27]..[308,12947+28])
+                Ptyp_constr "t" (utils/misc.mli[308,12947+27]..[308,12947+28])
+                []
+              core_type (utils/misc.mli[308,12947+32]..[308,12947+57])
+                Ptyp_arrow
+                Nolabel
+                core_type (utils/misc.mli[308,12947+32]..[308,12947+42])
+                  Ptyp_constr "in_channel" (utils/misc.mli[308,12947+32]..[308,12947+42])
+                  []
+                core_type (utils/misc.mli[308,12947+46]..[308,12947+57])
+                  Ptyp_arrow
+                  Nolabel
+                  core_type (utils/misc.mli[308,12947+46]..[308,12947+49])
+                    Ptyp_constr "int" (utils/misc.mli[308,12947+46]..[308,12947+49])
+                    []
+                  core_type (utils/misc.mli[308,12947+53]..[308,12947+57])
+                    Ptyp_constr "unit" (utils/misc.mli[308,12947+53]..[308,12947+57])
+                    []
+            []
+        signature_item (utils/misc.mli[309,13005+4]..[309,13005+44])
+          Psig_value
+          value_description "input_bytes" (utils/misc.mli[309,13005+8]..[309,13005+19]) (utils/misc.mli[309,13005+4]..[309,13005+44])
+            core_type (utils/misc.mli[309,13005+22]..[309,13005+44])
+              Ptyp_arrow
+              Nolabel
+              core_type (utils/misc.mli[309,13005+22]..[309,13005+32])
+                Ptyp_constr "in_channel" (utils/misc.mli[309,13005+22]..[309,13005+32])
+                []
+              core_type (utils/misc.mli[309,13005+36]..[309,13005+44])
+                Ptyp_arrow
+                Nolabel
+                core_type (utils/misc.mli[309,13005+36]..[309,13005+39])
+                  Ptyp_constr "int" (utils/misc.mli[309,13005+36]..[309,13005+39])
+                  []
+                core_type (utils/misc.mli[309,13005+43]..[309,13005+44])
+                  Ptyp_constr "t" (utils/misc.mli[309,13005+43]..[309,13005+44])
+                  []
+            []
+      ]
+  signature_item (utils/misc.mli[312,13057+0]..[312,13057+57])
+    Psig_value
+    value_description "edit_distance" (utils/misc.mli[312,13057+4]..[312,13057+17]) (utils/misc.mli[312,13057+0]..[312,13057+57])
+      attribute "ocaml.doc"
+        [
+          structure_item (utils/misc.mli[313,13115+0]..[322,13600+2])
+            Pstr_eval
+            expression (utils/misc.mli[313,13115+0]..[322,13600+2])
+              Pexp_constant PConst_string(" [edit_distance a b cutoff] computes the edit distance between\n    strings [a] and [b]. To help efficiency, it uses a cutoff: if the\n    distance [d] is smaller than [cutoff], it returns [Some d], else\n    [None].\n\n    The distance algorithm currently used is Damerau-Levenshtein: it\n    computes the number of insertion, deletion, substitution of\n    letters, or swapping of adjacent letters to go from one word to the\n    other. The particular algorithm may change in the future.\n",(utils/misc.mli[313,13115+0]..[322,13600+2]),None)
+        ]
+      core_type (utils/misc.mli[312,13057+20]..[312,13057+57])
+        Ptyp_arrow
+        Nolabel
+        core_type (utils/misc.mli[312,13057+20]..[312,13057+26])
+          Ptyp_constr "string" (utils/misc.mli[312,13057+20]..[312,13057+26])
+          []
+        core_type (utils/misc.mli[312,13057+30]..[312,13057+57])
+          Ptyp_arrow
+          Nolabel
+          core_type (utils/misc.mli[312,13057+30]..[312,13057+36])
+            Ptyp_constr "string" (utils/misc.mli[312,13057+30]..[312,13057+36])
+            []
+          core_type (utils/misc.mli[312,13057+40]..[312,13057+57])
+            Ptyp_arrow
+            Nolabel
+            core_type (utils/misc.mli[312,13057+40]..[312,13057+43])
+              Ptyp_constr "int" (utils/misc.mli[312,13057+40]..[312,13057+43])
+              []
+            core_type (utils/misc.mli[312,13057+47]..[312,13057+57])
+              Ptyp_constr "option" (utils/misc.mli[312,13057+51]..[312,13057+57])
+              [
+                core_type (utils/misc.mli[312,13057+47]..[312,13057+50])
+                  Ptyp_constr "int" (utils/misc.mli[312,13057+47]..[312,13057+50])
+                  []
+              ]
+      []
+  signature_item (utils/misc.mli[324,13604+0]..[324,13604+53])
+    Psig_value
+    value_description "spellcheck" (utils/misc.mli[324,13604+4]..[324,13604+14]) (utils/misc.mli[324,13604+0]..[324,13604+53])
+      attribute "ocaml.doc"
+        [
+          structure_item (utils/misc.mli[325,13658+0]..[328,13860+52])
+            Pstr_eval
+            expression (utils/misc.mli[325,13658+0]..[328,13860+52])
+              Pexp_constant PConst_string(" [spellcheck env name] takes a list of names [env] that exist in\n    the current environment and an erroneous [name], and returns a\n    list of suggestions taken from [env], that are close enough to\n    [name] that it may be a typo for one of them. ",(utils/misc.mli[325,13658+0]..[328,13860+52]),None)
+        ]
+      core_type (utils/misc.mli[324,13604+17]..[324,13604+53])
+        Ptyp_arrow
+        Nolabel
+        core_type (utils/misc.mli[324,13604+17]..[324,13604+28])
+          Ptyp_constr "list" (utils/misc.mli[324,13604+24]..[324,13604+28])
+          [
+            core_type (utils/misc.mli[324,13604+17]..[324,13604+23])
+              Ptyp_constr "string" (utils/misc.mli[324,13604+17]..[324,13604+23])
+              []
+          ]
+        core_type (utils/misc.mli[324,13604+32]..[324,13604+53])
+          Ptyp_arrow
+          Nolabel
+          core_type (utils/misc.mli[324,13604+32]..[324,13604+38])
+            Ptyp_constr "string" (utils/misc.mli[324,13604+32]..[324,13604+38])
+            []
+          core_type (utils/misc.mli[324,13604+42]..[324,13604+53])
+            Ptyp_constr "list" (utils/misc.mli[324,13604+49]..[324,13604+53])
+            [
+              core_type (utils/misc.mli[324,13604+42]..[324,13604+48])
+                Ptyp_constr "string" (utils/misc.mli[324,13604+42]..[324,13604+48])
+                []
+            ]
+      []
+  signature_item (utils/misc.mli[330,13914+0]..[330,13914+68])
+    Psig_value
+    value_description "did_you_mean" (utils/misc.mli[330,13914+4]..[330,13914+16]) (utils/misc.mli[330,13914+0]..[330,13914+68])
+      attribute "ocaml.doc"
+        [
+          structure_item (utils/misc.mli[331,13983+0]..[341,14559+2])
+            Pstr_eval
+            expression (utils/misc.mli[331,13983+0]..[341,14559+2])
+              Pexp_constant PConst_string(" [did_you_mean ppf get_choices] hints that the user may have meant\n    one of the option returned by calling [get_choices]. It does nothing\n    if the returned list is empty.\n\n    The [unit -> ...] thunking is meant to delay any potentially-slow\n    computation (typically computing edit-distance with many things\n    from the current environment) to when the hint message is to be\n    printed. You should print an understandable error message before\n    calling [did_you_mean], so that users get a clear notification of\n    the failure even if producing the hint is slow.\n",(utils/misc.mli[331,13983+0]..[341,14559+2]),None)
+        ]
+      core_type (utils/misc.mli[330,13914+19]..[330,13914+68])
+        Ptyp_arrow
+        Nolabel
+        core_type (utils/misc.mli[330,13914+19]..[330,13914+35])
+          Ptyp_constr "Format.formatter" (utils/misc.mli[330,13914+19]..[330,13914+35])
+          []
+        core_type (utils/misc.mli[330,13914+39]..[330,13914+68])
+          Ptyp_arrow
+          Nolabel
+          core_type (utils/misc.mli[330,13914+40]..[330,13914+59])
+            Ptyp_arrow
+            Nolabel
+            core_type (utils/misc.mli[330,13914+40]..[330,13914+44])
+              Ptyp_constr "unit" (utils/misc.mli[330,13914+40]..[330,13914+44])
+              []
+            core_type (utils/misc.mli[330,13914+48]..[330,13914+59])
+              Ptyp_constr "list" (utils/misc.mli[330,13914+55]..[330,13914+59])
+              [
+                core_type (utils/misc.mli[330,13914+48]..[330,13914+54])
+                  Ptyp_constr "string" (utils/misc.mli[330,13914+48]..[330,13914+54])
+                  []
+              ]
+          core_type (utils/misc.mli[330,13914+64]..[330,13914+68])
+            Ptyp_constr "unit" (utils/misc.mli[330,13914+64]..[330,13914+68])
+            []
+      []
+  signature_item (utils/misc.mli[343,14563+0]..[343,14563+46])
+    Psig_value
+    value_description "cut_at" (utils/misc.mli[343,14563+4]..[343,14563+10]) (utils/misc.mli[343,14563+0]..[343,14563+46])
+      attribute "ocaml.doc"
+        [
+          structure_item (utils/misc.mli[344,14610+0]..[352,14991+2])
+            Pstr_eval
+            expression (utils/misc.mli[344,14610+0]..[352,14991+2])
+              Pexp_constant PConst_string(" [String.cut_at s c] returns a pair containing the sub-string before\n   the first occurrence of [c] in [s], and the sub-string after the\n   first occurrence of [c] in [s].\n   [let (before, after) = String.cut_at s c in\n    before ^ String.make 1 c ^ after] is the identity if [s] contains [c].\n\n   Raise [Not_found] if the character does not appear in the string\n   @since 4.01\n",(utils/misc.mli[344,14610+0]..[352,14991+2]),None)
+        ]
+      core_type (utils/misc.mli[343,14563+13]..[343,14563+46])
+        Ptyp_arrow
+        Nolabel
+        core_type (utils/misc.mli[343,14563+13]..[343,14563+19])
+          Ptyp_constr "string" (utils/misc.mli[343,14563+13]..[343,14563+19])
+          []
+        core_type (utils/misc.mli[343,14563+23]..[343,14563+46])
+          Ptyp_arrow
+          Nolabel
+          core_type (utils/misc.mli[343,14563+23]..[343,14563+27])
+            Ptyp_constr "char" (utils/misc.mli[343,14563+23]..[343,14563+27])
+            []
+          core_type (utils/misc.mli[343,14563+31]..[343,14563+46])
+            Ptyp_tuple
+            [
+              core_type (utils/misc.mli[343,14563+31]..[343,14563+37])
+                Ptyp_constr "string" (utils/misc.mli[343,14563+31]..[343,14563+37])
+                []
+              core_type (utils/misc.mli[343,14563+40]..[343,14563+46])
+                Ptyp_constr "string" (utils/misc.mli[343,14563+40]..[343,14563+46])
+                []
+            ]
+      []
+  signature_item (utils/misc.mli[354,14995+0]..[354,14995+34])
+    Psig_value
+    value_description "ordinal_suffix" (utils/misc.mli[354,14995+4]..[354,14995+18]) (utils/misc.mli[354,14995+0]..[354,14995+34])
+      attribute "ocaml.doc"
+        [
+          structure_item (utils/misc.mli[355,15030+0]..[358,15260+59])
+            Pstr_eval
+            expression (utils/misc.mli[355,15030+0]..[358,15260+59])
+              Pexp_constant PConst_string(" [ordinal_suffix n] is the appropriate suffix to append to the numeral [n] as\n    an ordinal number: [1] -> [\"st\"], [2] -> [\"nd\"], [3] -> [\"rd\"],\n    [4] -> [\"th\"], and so on.  Handles larger numbers (e.g., [42] -> [\"nd\"]) and\n    the numbers 11--13 (which all get [\"th\"]) correctly. ",(utils/misc.mli[355,15030+0]..[358,15260+59]),None)
+        ]
+      core_type (utils/misc.mli[354,14995+21]..[354,14995+34])
+        Ptyp_arrow
+        Nolabel
+        core_type (utils/misc.mli[354,14995+21]..[354,14995+24])
+          Ptyp_constr "int" (utils/misc.mli[354,14995+21]..[354,14995+24])
+          []
+        core_type (utils/misc.mli[354,14995+28]..[354,14995+34])
+          Ptyp_constr "string" (utils/misc.mli[354,14995+28]..[354,14995+34])
+          []
+      []
+  signature_item (utils/misc.mli[361,15342+0]..[405,16338+3])
+    Psig_module "Color" (utils/misc.mli[361,15342+7]..[361,15342+12])
+    module_type (utils/misc.mli[361,15342+15]..[405,16338+3])
+      Pmty_signature
+      [
+        signature_item (utils/misc.mli[362,15361+2]..[370,15459+11])
+          Psig_type Rec
+          [
+            type_declaration "color" (utils/misc.mli[362,15361+7]..[362,15361+12]) (utils/misc.mli[362,15361+2]..[370,15459+11])
+              ptype_params =
+                []
+              ptype_cstrs =
+                []
+              ptype_kind =
+                Ptype_variant
+                  [
+                    (utils/misc.mli[363,15376+4]..[363,15376+11])
+                      "Black" (utils/misc.mli[363,15376+6]..[363,15376+11])
+                      []
+                      None
+                    (utils/misc.mli[364,15388+4]..[364,15388+9])
+                      "Red" (utils/misc.mli[364,15388+6]..[364,15388+9])
+                      []
+                      None
+                    (utils/misc.mli[365,15398+4]..[365,15398+11])
+                      "Green" (utils/misc.mli[365,15398+6]..[365,15398+11])
+                      []
+                      None
+                    (utils/misc.mli[366,15410+4]..[366,15410+12])
+                      "Yellow" (utils/misc.mli[366,15410+6]..[366,15410+12])
+                      []
+                      None
+                    (utils/misc.mli[367,15423+4]..[367,15423+10])
+                      "Blue" (utils/misc.mli[367,15423+6]..[367,15423+10])
+                      []
+                      None
+                    (utils/misc.mli[368,15434+4]..[368,15434+13])
+                      "Magenta" (utils/misc.mli[368,15434+6]..[368,15434+13])
+                      []
+                      None
+                    (utils/misc.mli[369,15448+4]..[369,15448+10])
+                      "Cyan" (utils/misc.mli[369,15448+6]..[369,15448+10])
+                      []
+                      None
+                    (utils/misc.mli[370,15459+4]..[370,15459+11])
+                      "White" (utils/misc.mli[370,15459+6]..[370,15459+11])
+                      []
+                      None
+                  ]
+              ptype_private = Public
+              ptype_manifest =
+                None
+          ]
+        signature_item (utils/misc.mli[373,15477+2]..[377,15573+11])
+          Psig_type Rec
+          [
+            type_declaration "style" (utils/misc.mli[373,15477+7]..[373,15477+12]) (utils/misc.mli[373,15477+2]..[377,15573+11])
+              ptype_params =
+                []
+              ptype_cstrs =
+                []
+              ptype_kind =
+                Ptype_variant
+                  [
+                    (utils/misc.mli[374,15492+4]..[374,15492+17])
+                      "FG" (utils/misc.mli[374,15492+6]..[374,15492+8])
+                      [
+                        core_type (utils/misc.mli[374,15492+12]..[374,15492+17])
+                          Ptyp_constr "color" (utils/misc.mli[374,15492+12]..[374,15492+17])
+                          []
+                      ]
+                      None
+                    (utils/misc.mli[375,15527+4]..[375,15527+17])
+                      "BG" (utils/misc.mli[375,15527+6]..[375,15527+8])
+                      [
+                        core_type (utils/misc.mli[375,15527+12]..[375,15527+17])
+                          Ptyp_constr "color" (utils/misc.mli[375,15527+12]..[375,15527+17])
+                          []
+                      ]
+                      None
+                    (utils/misc.mli[376,15562+4]..[376,15562+10])
+                      "Bold" (utils/misc.mli[376,15562+6]..[376,15562+10])
+                      []
+                      None
+                    (utils/misc.mli[377,15573+4]..[377,15573+11])
+                      "Reset" (utils/misc.mli[377,15573+6]..[377,15573+11])
+                      []
+                      None
+                  ]
+              ptype_private = Public
+              ptype_manifest =
+                None
+          ]
+        signature_item (utils/misc.mli[379,15586+2]..[379,15586+41])
+          Psig_typext
+          type_extension
+            ptyext_path = "Format.stag" (utils/misc.mli[379,15586+7]..[379,15586+18])
+            ptyext_params =
+              []
+            ptyext_constructors =
+              [
+                extension_constructor (utils/misc.mli[379,15586+22]..[379,15586+41])
+                  pext_name = "Style"
+                  pext_kind =
+                    Pext_decl
+                      [
+                        core_type (utils/misc.mli[379,15586+31]..[379,15586+41])
+                          Ptyp_constr "list" (utils/misc.mli[379,15586+37]..[379,15586+41])
+                          [
+                            core_type (utils/misc.mli[379,15586+31]..[379,15586+36])
+                              Ptyp_constr "style" (utils/misc.mli[379,15586+31]..[379,15586+36])
+                              []
+                          ]
+                      ]
+                      None
+              ]
+            ptyext_private = Public
+        signature_item (utils/misc.mli[381,15629+2]..[381,15629+44])
+          Psig_value
+          value_description "ansi_of_style_l" (utils/misc.mli[381,15629+6]..[381,15629+21]) (utils/misc.mli[381,15629+2]..[381,15629+44])
+            core_type (utils/misc.mli[381,15629+24]..[381,15629+44])
+              Ptyp_arrow
+              Nolabel
+              core_type (utils/misc.mli[381,15629+24]..[381,15629+34])
+                Ptyp_constr "list" (utils/misc.mli[381,15629+30]..[381,15629+34])
+                [
+                  core_type (utils/misc.mli[381,15629+24]..[381,15629+29])
+                    Ptyp_constr "style" (utils/misc.mli[381,15629+24]..[381,15629+29])
+                    []
+                ]
+              core_type (utils/misc.mli[381,15629+38]..[381,15629+44])
+                Ptyp_constr "string" (utils/misc.mli[381,15629+38]..[381,15629+44])
+                []
+            []
+        signature_item (utils/misc.mli[384,15724+2]..[388,15811+3])
+          Psig_type Rec
+          [
+            type_declaration "styles" (utils/misc.mli[384,15724+7]..[384,15724+13]) (utils/misc.mli[384,15724+2]..[388,15811+3])
+              ptype_params =
+                []
+              ptype_cstrs =
+                []
+              ptype_kind =
+                Ptype_record
+                  [
+                    (utils/misc.mli[385,15742+4]..[385,15742+22])
+                      Immutable
+                      "error" (utils/misc.mli[385,15742+4]..[385,15742+9])                      core_type (utils/misc.mli[385,15742+11]..[385,15742+21])
+                        Ptyp_constr "list" (utils/misc.mli[385,15742+17]..[385,15742+21])
+                        [
+                          core_type (utils/misc.mli[385,15742+11]..[385,15742+16])
+                            Ptyp_constr "style" (utils/misc.mli[385,15742+11]..[385,15742+16])
+                            []
+                        ]
+                    (utils/misc.mli[386,15765+4]..[386,15765+24])
+                      Immutable
+                      "warning" (utils/misc.mli[386,15765+4]..[386,15765+11])                      core_type (utils/misc.mli[386,15765+13]..[386,15765+23])
+                        Ptyp_constr "list" (utils/misc.mli[386,15765+19]..[386,15765+23])
+                        [
+                          core_type (utils/misc.mli[386,15765+13]..[386,15765+18])
+                            Ptyp_constr "style" (utils/misc.mli[386,15765+13]..[386,15765+18])
+                            []
+                        ]
+                    (utils/misc.mli[387,15790+4]..[387,15790+20])
+                      Immutable
+                      "loc" (utils/misc.mli[387,15790+4]..[387,15790+7])                      core_type (utils/misc.mli[387,15790+9]..[387,15790+19])
+                        Ptyp_constr "list" (utils/misc.mli[387,15790+15]..[387,15790+19])
+                        [
+                          core_type (utils/misc.mli[387,15790+9]..[387,15790+14])
+                            Ptyp_constr "style" (utils/misc.mli[387,15790+9]..[387,15790+14])
+                            []
+                        ]
+                  ]
+              ptype_private = Public
+              ptype_manifest =
+                None
+          ]
+        signature_item (utils/misc.mli[390,15816+2]..[390,15816+28])
+          Psig_value
+          value_description "default_styles" (utils/misc.mli[390,15816+6]..[390,15816+20]) (utils/misc.mli[390,15816+2]..[390,15816+28])
+            core_type (utils/misc.mli[390,15816+22]..[390,15816+28])
+              Ptyp_constr "styles" (utils/misc.mli[390,15816+22]..[390,15816+28])
+              []
+            []
+        signature_item (utils/misc.mli[391,15845+2]..[391,15845+32])
+          Psig_value
+          value_description "get_styles" (utils/misc.mli[391,15845+6]..[391,15845+16]) (utils/misc.mli[391,15845+2]..[391,15845+32])
+            core_type (utils/misc.mli[391,15845+18]..[391,15845+32])
+              Ptyp_arrow
+              Nolabel
+              core_type (utils/misc.mli[391,15845+18]..[391,15845+22])
+                Ptyp_constr "unit" (utils/misc.mli[391,15845+18]..[391,15845+22])
+                []
+              core_type (utils/misc.mli[391,15845+26]..[391,15845+32])
+                Ptyp_constr "styles" (utils/misc.mli[391,15845+26]..[391,15845+32])
+                []
+            []
+        signature_item (utils/misc.mli[392,15878+2]..[392,15878+32])
+          Psig_value
+          value_description "set_styles" (utils/misc.mli[392,15878+6]..[392,15878+16]) (utils/misc.mli[392,15878+2]..[392,15878+32])
+            core_type (utils/misc.mli[392,15878+18]..[392,15878+32])
+              Ptyp_arrow
+              Nolabel
+              core_type (utils/misc.mli[392,15878+18]..[392,15878+24])
+                Ptyp_constr "styles" (utils/misc.mli[392,15878+18]..[392,15878+24])
+                []
+              core_type (utils/misc.mli[392,15878+28]..[392,15878+32])
+                Ptyp_constr "unit" (utils/misc.mli[392,15878+28]..[392,15878+32])
+                []
+            []
+        signature_item (utils/misc.mli[394,15912+2]..[394,15912+38])
+          Psig_type Rec
+          [
+            type_declaration "setting" (utils/misc.mli[394,15912+7]..[394,15912+14]) (utils/misc.mli[394,15912+2]..[394,15912+38])
+              ptype_params =
+                []
+              ptype_cstrs =
+                []
+              ptype_kind =
+                Ptype_variant
+                  [
+                    (utils/misc.mli[394,15912+17]..[394,15912+21])
+                      "Auto" (utils/misc.mli[394,15912+17]..[394,15912+21])
+                      []
+                      None
+                    (utils/misc.mli[394,15912+22]..[394,15912+30])
+                      "Always" (utils/misc.mli[394,15912+24]..[394,15912+30])
+                      []
+                      None
+                    (utils/misc.mli[394,15912+31]..[394,15912+38])
+                      "Never" (utils/misc.mli[394,15912+33]..[394,15912+38])
+                      []
+                      None
+                  ]
+              ptype_private = Public
+              ptype_manifest =
+                None
+          ]
+        signature_item (utils/misc.mli[396,15952+2]..[396,15952+31])
+          Psig_value
+          value_description "default_setting" (utils/misc.mli[396,15952+6]..[396,15952+21]) (utils/misc.mli[396,15952+2]..[396,15952+31])
+            core_type (utils/misc.mli[396,15952+24]..[396,15952+31])
+              Ptyp_constr "setting" (utils/misc.mli[396,15952+24]..[396,15952+31])
+              []
+            []
+        signature_item (utils/misc.mli[398,15985+2]..[398,15985+36])
+          Psig_value
+          value_description "setup" (utils/misc.mli[398,15985+6]..[398,15985+11]) (utils/misc.mli[398,15985+2]..[398,15985+36])
+            core_type (utils/misc.mli[398,15985+14]..[398,15985+36])
+              Ptyp_arrow
+              Nolabel
+              core_type (utils/misc.mli[398,15985+14]..[398,15985+28])
+                Ptyp_constr "option" (utils/misc.mli[398,15985+22]..[398,15985+28])
+                [
+                  core_type (utils/misc.mli[398,15985+14]..[398,15985+21])
+                    Ptyp_constr "setting" (utils/misc.mli[398,15985+14]..[398,15985+21])
+                    []
+                ]
+              core_type (utils/misc.mli[398,15985+32]..[398,15985+36])
+                Ptyp_constr "unit" (utils/misc.mli[398,15985+32]..[398,15985+36])
+                []
+            []
+        signature_item (utils/misc.mli[403,16213+2]..[403,16213+55])
+          Psig_value
+          value_description "set_color_tag_handling" (utils/misc.mli[403,16213+6]..[403,16213+28]) (utils/misc.mli[403,16213+2]..[403,16213+55])
+            core_type (utils/misc.mli[403,16213+31]..[403,16213+55])
+              Ptyp_arrow
+              Nolabel
+              core_type (utils/misc.mli[403,16213+31]..[403,16213+47])
+                Ptyp_constr "Format.formatter" (utils/misc.mli[403,16213+31]..[403,16213+47])
+                []
+              core_type (utils/misc.mli[403,16213+51]..[403,16213+55])
+                Ptyp_constr "unit" (utils/misc.mli[403,16213+51]..[403,16213+55])
+                []
+            []
+      ]
+  signature_item (utils/misc.mli[408,16377+0]..[414,16481+3])
+    Psig_module "Error_style" (utils/misc.mli[408,16377+7]..[408,16377+18])
+    module_type (utils/misc.mli[408,16377+21]..[414,16481+3])
+      Pmty_signature
+      [
+        signature_item (utils/misc.mli[409,16402+2]..[411,16436+11])
+          Psig_type Rec
+          [
+            type_declaration "setting" (utils/misc.mli[409,16402+7]..[409,16402+14]) (utils/misc.mli[409,16402+2]..[411,16436+11])
+              ptype_params =
+                []
+              ptype_cstrs =
+                []
+              ptype_kind =
+                Ptype_variant
+                  [
+                    (utils/misc.mli[410,16419+4]..[410,16419+16])
+                      "Contextual" (utils/misc.mli[410,16419+6]..[410,16419+16])
+                      []
+                      None
+                    (utils/misc.mli[411,16436+4]..[411,16436+11])
+                      "Short" (utils/misc.mli[411,16436+6]..[411,16436+11])
+                      []
+                      None
+                  ]
+              ptype_private = Public
+              ptype_manifest =
+                None
+          ]
+        signature_item (utils/misc.mli[413,16449+2]..[413,16449+31])
+          Psig_value
+          value_description "default_setting" (utils/misc.mli[413,16449+6]..[413,16449+21]) (utils/misc.mli[413,16449+2]..[413,16449+31])
+            core_type (utils/misc.mli[413,16449+24]..[413,16449+31])
+              Ptyp_constr "setting" (utils/misc.mli[413,16449+24]..[413,16449+31])
+              []
+            []
+      ]
+  signature_item (utils/misc.mli[416,16486+0]..[416,16486+36])
+    Psig_value
+    value_description "normalise_eol" (utils/misc.mli[416,16486+4]..[416,16486+17]) (utils/misc.mli[416,16486+0]..[416,16486+36])
+      attribute "ocaml.doc"
+        [
+          structure_item (utils/misc.mli[417,16523+0]..[419,16678+68])
+            Pstr_eval
+            expression (utils/misc.mli[417,16523+0]..[419,16678+68])
+              Pexp_constant PConst_string(" [normalise_eol s] returns a fresh copy of [s] with any '\\r' characters\n   removed. Intended for pre-processing text which will subsequently be printed\n   on a channel which performs EOL transformations (i.e. Windows) ",(utils/misc.mli[417,16523+0]..[419,16678+68]),None)
+        ]
+      core_type (utils/misc.mli[416,16486+20]..[416,16486+36])
+        Ptyp_arrow
+        Nolabel
+        core_type (utils/misc.mli[416,16486+20]..[416,16486+26])
+          Ptyp_constr "string" (utils/misc.mli[416,16486+20]..[416,16486+26])
+          []
+        core_type (utils/misc.mli[416,16486+30]..[416,16486+36])
+          Ptyp_constr "string" (utils/misc.mli[416,16486+30]..[416,16486+36])
+          []
+      []
+  signature_item (utils/misc.mli[421,16748+0]..[421,16748+40])
+    Psig_value
+    value_description "delete_eol_spaces" (utils/misc.mli[421,16748+4]..[421,16748+21]) (utils/misc.mli[421,16748+0]..[421,16748+40])
+      attribute "ocaml.doc"
+        [
+          structure_item (utils/misc.mli[422,16789+0]..[424,16923+25])
+            Pstr_eval
+            expression (utils/misc.mli[422,16789+0]..[424,16923+25])
+              Pexp_constant PConst_string(" [delete_eol_spaces s] returns a fresh copy of [s] with any end of\n   line spaces removed. Intended to normalize the output of the\n   toplevel for tests. ",(utils/misc.mli[422,16789+0]..[424,16923+25]),None)
+        ]
+      core_type (utils/misc.mli[421,16748+24]..[421,16748+40])
+        Ptyp_arrow
+        Nolabel
+        core_type (utils/misc.mli[421,16748+24]..[421,16748+30])
+          Ptyp_constr "string" (utils/misc.mli[421,16748+24]..[421,16748+30])
+          []
+        core_type (utils/misc.mli[421,16748+34]..[421,16748+40])
+          Ptyp_constr "string" (utils/misc.mli[421,16748+34]..[421,16748+40])
+          []
+      []
+  signature_item (utils/misc.mli[426,16950+0]..[428,17006+52])
+    Psig_value
+    value_description "pp_two_columns" (utils/misc.mli[426,16950+4]..[426,16950+18]) (utils/misc.mli[426,16950+0]..[428,17006+52])
+      attribute "ocaml.doc"
+        [
+          structure_item (utils/misc.mli[429,17059+0]..[450,17570+2])
+            Pstr_eval
+            expression (utils/misc.mli[429,17059+0]..[450,17570+2])
+              Pexp_constant PConst_string(" [pp_two_columns ?sep ?max_lines ppf l] prints the lines in [l] as two\n   columns separated by [sep] (\"|\" by default). [max_lines] can be used to\n   indicate a maximum number of lines to print -- an ellipsis gets inserted at\n   the middle if the input has too many lines.\n\n   Example:\n\n    {v pp_two_columns ~max_lines:3 Format.std_formatter [\n      \"abc\", \"hello\";\n      \"def\", \"zzz\";\n      \"a\"  , \"bllbl\";\n      \"bb\" , \"dddddd\";\n    ] v}\n\n    prints\n\n    {v\n    abc | hello\n    ...\n    bb  | dddddd\n    v}\n",(utils/misc.mli[429,17059+0]..[450,17570+2]),None)
+        ]
+      core_type (utils/misc.mli[427,16971+2]..[428,17006+52])
+        Ptyp_arrow
+        Optional "sep"
+        core_type (utils/misc.mli[427,16971+7]..[427,16971+13])
+          Ptyp_constr "string" (utils/misc.mli[427,16971+7]..[427,16971+13])
+          []
+        core_type (utils/misc.mli[427,16971+17]..[428,17006+52])
+          Ptyp_arrow
+          Optional "max_lines"
+          core_type (utils/misc.mli[427,16971+28]..[427,16971+31])
+            Ptyp_constr "int" (utils/misc.mli[427,16971+28]..[427,16971+31])
+            []
+          core_type (utils/misc.mli[428,17006+2]..[428,17006+52])
+            Ptyp_arrow
+            Nolabel
+            core_type (utils/misc.mli[428,17006+2]..[428,17006+18])
+              Ptyp_constr "Format.formatter" (utils/misc.mli[428,17006+2]..[428,17006+18])
+              []
+            core_type (utils/misc.mli[428,17006+22]..[428,17006+52])
+              Ptyp_arrow
+              Nolabel
+              core_type (utils/misc.mli[428,17006+22]..[428,17006+44])
+                Ptyp_constr "list" (utils/misc.mli[428,17006+40]..[428,17006+44])
+                [
+                  core_type (utils/misc.mli[428,17006+23]..[428,17006+38])
+                    Ptyp_tuple
+                    [
+                      core_type (utils/misc.mli[428,17006+23]..[428,17006+29])
+                        Ptyp_constr "string" (utils/misc.mli[428,17006+23]..[428,17006+29])
+                        []
+                      core_type (utils/misc.mli[428,17006+32]..[428,17006+38])
+                        Ptyp_constr "string" (utils/misc.mli[428,17006+32]..[428,17006+38])
+                        []
+                    ]
+                ]
+              core_type (utils/misc.mli[428,17006+48]..[428,17006+52])
+                Ptyp_constr "unit" (utils/misc.mli[428,17006+48]..[428,17006+52])
+                []
+      []
+  signature_item (utils/misc.mli[453,17605+0]..[453,17605+39])
+    Psig_value
+    value_description "show_config_and_exit" (utils/misc.mli[453,17605+4]..[453,17605+24]) (utils/misc.mli[453,17605+0]..[453,17605+39])
+      attribute "ocaml.doc"
+        [
+          structure_item (utils/misc.mli[452,17574+0]..[452,17574+30])
+            Pstr_eval
+            expression (utils/misc.mli[452,17574+0]..[452,17574+30])
+              Pexp_constant PConst_string(" configuration variables ",(utils/misc.mli[452,17574+0]..[452,17574+30]),None)
+        ]
+      core_type (utils/misc.mli[453,17605+27]..[453,17605+39])
+        Ptyp_arrow
+        Nolabel
+        core_type (utils/misc.mli[453,17605+27]..[453,17605+31])
+          Ptyp_constr "unit" (utils/misc.mli[453,17605+27]..[453,17605+31])
+          []
+        core_type (utils/misc.mli[453,17605+35]..[453,17605+39])
+          Ptyp_constr "unit" (utils/misc.mli[453,17605+35]..[453,17605+39])
+          []
+      []
+  signature_item (utils/misc.mli[454,17645+0]..[454,17645+50])
+    Psig_value
+    value_description "show_config_variable_and_exit" (utils/misc.mli[454,17645+4]..[454,17645+33]) (utils/misc.mli[454,17645+0]..[454,17645+50])
+      core_type (utils/misc.mli[454,17645+36]..[454,17645+50])
+        Ptyp_arrow
+        Nolabel
+        core_type (utils/misc.mli[454,17645+36]..[454,17645+42])
+          Ptyp_constr "string" (utils/misc.mli[454,17645+36]..[454,17645+42])
+          []
+        core_type (utils/misc.mli[454,17645+46]..[454,17645+50])
+          Ptyp_constr "unit" (utils/misc.mli[454,17645+46]..[454,17645+50])
+          []
+      []
+  signature_item (utils/misc.mli[456,17697+0]..[456,17697+71])
+    Psig_value
+    value_description "get_build_path_prefix_map" (utils/misc.mli[456,17697+4]..[456,17697+29]) (utils/misc.mli[456,17697+0]..[456,17697+71])
+      attribute "ocaml.doc"
+        [
+          structure_item (utils/misc.mli[457,17769+0]..[458,17840+16])
+            Pstr_eval
+            expression (utils/misc.mli[457,17769+0]..[458,17840+16])
+              Pexp_constant PConst_string(" Returns the map encoded in the [BUILD_PATH_PREFIX_MAP] environment\n    variable. ",(utils/misc.mli[457,17769+0]..[458,17840+16]),None)
+        ]
+      core_type (utils/misc.mli[456,17697+31]..[456,17697+71])
+        Ptyp_arrow
+        Nolabel
+        core_type (utils/misc.mli[456,17697+31]..[456,17697+35])
+          Ptyp_constr "unit" (utils/misc.mli[456,17697+31]..[456,17697+35])
+          []
+        core_type (utils/misc.mli[456,17697+39]..[456,17697+71])
+          Ptyp_constr "option" (utils/misc.mli[456,17697+65]..[456,17697+71])
+          [
+            core_type (utils/misc.mli[456,17697+39]..[456,17697+64])
+              Ptyp_constr "Build_path_prefix_map.map" (utils/misc.mli[456,17697+39]..[456,17697+64])
+              []
+          ]
+      []
+  signature_item (utils/misc.mli[460,17858+0]..[460,17858+47])
+    Psig_value
+    value_description "debug_prefix_map_flags" (utils/misc.mli[460,17858+4]..[460,17858+26]) (utils/misc.mli[460,17858+0]..[460,17858+47])
+      attribute "ocaml.doc"
+        [
+          structure_item (utils/misc.mli[461,17906+0]..[462,17977+78])
+            Pstr_eval
+            expression (utils/misc.mli[461,17906+0]..[462,17977+78])
+              Pexp_constant PConst_string(" Returns the list of [--debug-prefix-map] flags to be passed to the\n    assembler, built from the [BUILD_PATH_PREFIX_MAP] environment variable. ",(utils/misc.mli[461,17906+0]..[462,17977+78]),None)
+        ]
+      core_type (utils/misc.mli[460,17858+28]..[460,17858+47])
+        Ptyp_arrow
+        Nolabel
+        core_type (utils/misc.mli[460,17858+28]..[460,17858+32])
+          Ptyp_constr "unit" (utils/misc.mli[460,17858+28]..[460,17858+32])
+          []
+        core_type (utils/misc.mli[460,17858+36]..[460,17858+47])
+          Ptyp_constr "list" (utils/misc.mli[460,17858+43]..[460,17858+47])
+          [
+            core_type (utils/misc.mli[460,17858+36]..[460,17858+42])
+              Ptyp_constr "string" (utils/misc.mli[460,17858+36]..[460,17858+42])
+              []
+          ]
+      []
+  signature_item (utils/misc.mli[464,18057+0]..[465,18072+78])
+    Psig_value
+    value_description "print_if" (utils/misc.mli[464,18057+4]..[464,18057+12]) (utils/misc.mli[464,18057+0]..[465,18072+78])
+      attribute "ocaml.doc"
+        [
+          structure_item (utils/misc.mli[466,18151+0]..[466,18151+79])
+            Pstr_eval
+            expression (utils/misc.mli[466,18151+0]..[466,18151+79])
+              Pexp_constant PConst_string(" [print_if ppf flag fmt x] prints [x] with [fmt] on [ppf] if [b] is true. ",(utils/misc.mli[466,18151+0]..[466,18151+79]),None)
+        ]
+      core_type (utils/misc.mli[465,18072+2]..[465,18072+78])
+        Ptyp_arrow
+        Nolabel
+        core_type (utils/misc.mli[465,18072+2]..[465,18072+18])
+          Ptyp_constr "Format.formatter" (utils/misc.mli[465,18072+2]..[465,18072+18])
+          []
+        core_type (utils/misc.mli[465,18072+22]..[465,18072+78])
+          Ptyp_arrow
+          Nolabel
+          core_type (utils/misc.mli[465,18072+22]..[465,18072+30])
+            Ptyp_constr "ref" (utils/misc.mli[465,18072+27]..[465,18072+30])
+            [
+              core_type (utils/misc.mli[465,18072+22]..[465,18072+26])
+                Ptyp_constr "bool" (utils/misc.mli[465,18072+22]..[465,18072+26])
+                []
+            ]
+          core_type (utils/misc.mli[465,18072+34]..[465,18072+78])
+            Ptyp_arrow
+            Nolabel
+            core_type (utils/misc.mli[465,18072+35]..[465,18072+65])
+              Ptyp_arrow
+              Nolabel
+              core_type (utils/misc.mli[465,18072+35]..[465,18072+51])
+                Ptyp_constr "Format.formatter" (utils/misc.mli[465,18072+35]..[465,18072+51])
+                []
+              core_type (utils/misc.mli[465,18072+55]..[465,18072+65])
+                Ptyp_arrow
+                Nolabel
+                core_type (utils/misc.mli[465,18072+55]..[465,18072+57])
+                  Ptyp_var a
+                core_type (utils/misc.mli[465,18072+61]..[465,18072+65])
+                  Ptyp_constr "unit" (utils/misc.mli[465,18072+61]..[465,18072+65])
+                  []
+            core_type (utils/misc.mli[465,18072+70]..[465,18072+78])
+              Ptyp_arrow
+              Nolabel
+              core_type (utils/misc.mli[465,18072+70]..[465,18072+72])
+                Ptyp_var a
+              core_type (utils/misc.mli[465,18072+76]..[465,18072+78])
+                Ptyp_var a
+      []
+  signature_item (utils/misc.mli[469,18233+0]..[469,18233+22])
+    Psig_type Rec
+    [
+      type_declaration "filepath" (utils/misc.mli[469,18233+5]..[469,18233+13]) (utils/misc.mli[469,18233+0]..[469,18233+22])
+        ptype_params =
+          []
+        ptype_cstrs =
+          []
+        ptype_kind =
+          Ptype_abstract
+        ptype_private = Public
+        ptype_manifest =
+          Some
+            core_type (utils/misc.mli[469,18233+16]..[469,18233+22])
+              Ptyp_constr "string" (utils/misc.mli[469,18233+16]..[469,18233+22])
+              []
+    ]
+  signature_item (utils/misc.mli[470,18256+0]..[470,18256+21])
+    Psig_type Rec
+    [
+      type_declaration "modname" (utils/misc.mli[470,18256+5]..[470,18256+12]) (utils/misc.mli[470,18256+0]..[470,18256+21])
+        ptype_params =
+          []
+        ptype_cstrs =
+          []
+        ptype_kind =
+          Ptype_abstract
+        ptype_private = Public
+        ptype_manifest =
+          Some
+            core_type (utils/misc.mli[470,18256+15]..[470,18256+21])
+              Ptyp_constr "string" (utils/misc.mli[470,18256+15]..[470,18256+21])
+              []
+    ]
+  signature_item (utils/misc.mli[471,18278+0]..[471,18278+44])
+    Psig_type Rec
+    [
+      type_declaration "crcs" (utils/misc.mli[471,18278+5]..[471,18278+9]) (utils/misc.mli[471,18278+0]..[471,18278+44])
+        ptype_params =
+          []
+        ptype_cstrs =
+          []
+        ptype_kind =
+          Ptype_abstract
+        ptype_private = Public
+        ptype_manifest =
+          Some
+            core_type (utils/misc.mli[471,18278+12]..[471,18278+44])
+              Ptyp_constr "list" (utils/misc.mli[471,18278+40]..[471,18278+44])
+              [
+                core_type (utils/misc.mli[471,18278+13]..[471,18278+38])
+                  Ptyp_tuple
+                  [
+                    core_type (utils/misc.mli[471,18278+13]..[471,18278+20])
+                      Ptyp_constr "modname" (utils/misc.mli[471,18278+13]..[471,18278+20])
+                      []
+                    core_type (utils/misc.mli[471,18278+23]..[471,18278+38])
+                      Ptyp_constr "option" (utils/misc.mli[471,18278+32]..[471,18278+38])
+                      [
+                        core_type (utils/misc.mli[471,18278+23]..[471,18278+31])
+                          Ptyp_constr "Digest.t" (utils/misc.mli[471,18278+23]..[471,18278+31])
+                          []
+                      ]
+                  ]
+              ]
+    ]
+  signature_item (utils/misc.mli[473,18324+0]..[473,18324+40])
+    Psig_type Rec
+    [
+      type_declaration "alerts" (utils/misc.mli[473,18324+5]..[473,18324+11]) (utils/misc.mli[473,18324+0]..[473,18324+40])
+        ptype_params =
+          []
+        ptype_cstrs =
+          []
+        ptype_kind =
+          Ptype_abstract
+        ptype_private = Public
+        ptype_manifest =
+          Some
+            core_type (utils/misc.mli[473,18324+14]..[473,18324+40])
+              Ptyp_constr "Stdlib.String.Map.t" (utils/misc.mli[473,18324+21]..[473,18324+40])
+              [
+                core_type (utils/misc.mli[473,18324+14]..[473,18324+20])
+                  Ptyp_constr "string" (utils/misc.mli[473,18324+14]..[473,18324+20])
+                  []
+              ]
+    ]
+  signature_item (utils/misc.mli[476,18367+0]..[673,25290+3])
+    Psig_module "Magic_number" (utils/misc.mli[476,18367+7]..[476,18367+19])
+    module_type (utils/misc.mli[476,18367+22]..[673,25290+3])
+      Pmty_signature
+      [
+        signature_item (utils/misc.mli[477,18393+2]..[529,20593+4])
+          Psig_attribute "ocaml.text"
+          [
+            structure_item (utils/misc.mli[477,18393+2]..[529,20593+4])
+              Pstr_eval
+              expression (utils/misc.mli[477,18393+2]..[529,20593+4])
+                Pexp_constant PConst_string(" a typical magic number is \"Caml1999I011\"; it is formed of an\n      alphanumeric prefix, here Caml1990I, followed by a version,\n      here 011. The prefix identifies the kind of the versioned data:\n      here the I indicates that it is the magic number for .cmi files.\n\n      All magic numbers have the same byte length, [magic_length], and\n      this is important for users as it gives them the number of bytes\n      to read to obtain the byte sequence that should be a magic\n      number. Typical user code will look like:\n      {[\n        let ic = open_in_bin path in\n        let magic =\n          try really_input_string ic Magic_number.magic_length\n          with End_of_file -> ... in\n        match Magic_number.parse magic with\n        | Error parse_error -> ...\n        | Ok info -> ...\n      ]}\n\n      A given compiler version expects one specific version for each\n      kind of object file, and will fail if given an unsupported\n      version. Because versions grow monotonically, you can compare\n      the parsed version with the expected \"current version\" for\n      a kind, to tell whether the wrong-magic object file comes from\n      the past or from the future.\n\n      An example of code block that expects the \"currently supported version\"\n      of a given kind of magic numbers, here [Cmxa], is as follows:\n      {[\n        let ic = open_in_bin path in\n        begin\n          try Magic_number.(expect_current Cmxa (get_info ic)) with\n          | Parse_error error -> ...\n          | Unexpected error -> ...\n        end;\n        ...\n      ]}\n\n      Parse errors distinguish inputs that are [Not_a_magic_number str],\n      which are likely to come from the file being completely\n      different, and [Truncated str], raised by headers that are the\n      (possibly empty) prefix of a valid magic number.\n\n      Unexpected errors correspond to valid magic numbers that are not\n      the one expected, either because it corresponds to a different\n      kind, or to a newer or older version.\n\n      The helper functions [explain_parse_error] and [explain_unexpected_error]\n      will generate a textual explanation of each error,\n      for use in error messages.\n\n      @since 4.11.0\n  ",(utils/misc.mli[477,18393+2]..[529,20593+4]),None)
+          ]
+        signature_item (utils/misc.mli[531,20599+2]..[533,20648+3])
+          Psig_type Rec
+          [
+            type_declaration "native_obj_config" (utils/misc.mli[531,20599+7]..[531,20599+24]) (utils/misc.mli[531,20599+2]..[533,20648+3])
+              attribute "ocaml.doc"
+                [
+                  structure_item (utils/misc.mli[534,20652+2]..[537,20849+13])
+                    Pstr_eval
+                    expression (utils/misc.mli[534,20652+2]..[537,20849+13])
+                      Pexp_constant PConst_string(" native object files have a format and magic number that depend\n     on certain native-compiler configuration parameters. This\n     configuration space is expressed by the [native_obj_config]\n     type. ",(utils/misc.mli[534,20652+2]..[537,20849+13]),None)
+                ]
+              ptype_params =
+                []
+              ptype_cstrs =
+                []
+              ptype_kind =
+                Ptype_record
+                  [
+                    (utils/misc.mli[532,20628+4]..[532,20628+19])
+                      Immutable
+                      "flambda" (utils/misc.mli[532,20628+4]..[532,20628+11])                      core_type (utils/misc.mli[532,20628+14]..[532,20628+18])
+                        Ptyp_constr "bool" (utils/misc.mli[532,20628+14]..[532,20628+18])
+                        []
+                  ]
+              ptype_private = Public
+              ptype_manifest =
+                None
+          ]
+        signature_item (utils/misc.mli[539,20864+2]..[539,20864+43])
+          Psig_value
+          value_description "native_obj_config" (utils/misc.mli[539,20864+6]..[539,20864+23]) (utils/misc.mli[539,20864+2]..[539,20864+43])
+            attribute "ocaml.doc"
+              [
+                structure_item (utils/misc.mli[540,20908+2]..[540,20908+80])
+                  Pstr_eval
+                  expression (utils/misc.mli[540,20908+2]..[540,20908+80])
+                    Pexp_constant PConst_string(" the native object file configuration of the active/configured compiler. ",(utils/misc.mli[540,20908+2]..[540,20908+80]),None)
+              ]
+            core_type (utils/misc.mli[539,20864+26]..[539,20864+43])
+              Ptyp_constr "native_obj_config" (utils/misc.mli[539,20864+26]..[539,20864+43])
+              []
+            []
+        signature_item (utils/misc.mli[542,20990+2]..[542,20990+20])
+          Psig_type Rec
+          [
+            type_declaration "version" (utils/misc.mli[542,20990+7]..[542,20990+14]) (utils/misc.mli[542,20990+2]..[542,20990+20])
+              ptype_params =
+                []
+              ptype_cstrs =
+                []
+              ptype_kind =
+                Ptype_abstract
+              ptype_private = Public
+              ptype_manifest =
+                Some
+                  core_type (utils/misc.mli[542,20990+17]..[542,20990+20])
+                    Ptyp_constr "int" (utils/misc.mli[542,20990+17]..[542,20990+20])
+                    []
+          ]
+        signature_item (utils/misc.mli[544,21012+2]..[549,21129+31])
+          Psig_type Rec
+          [
+            type_declaration "kind" (utils/misc.mli[544,21012+7]..[544,21012+11]) (utils/misc.mli[544,21012+2]..[549,21129+31])
+              ptype_params =
+                []
+              ptype_cstrs =
+                []
+              ptype_kind =
+                Ptype_variant
+                  [
+                    (utils/misc.mli[545,21026+4]..[545,21026+10])
+                      "Exec" (utils/misc.mli[545,21026+6]..[545,21026+10])
+                      []
+                      None
+                    (utils/misc.mli[546,21037+4]..[546,21037+9])
+                      "Cmi" (utils/misc.mli[546,21037+6]..[546,21037+9])
+                      []
+                      None
+                    (utils/misc.mli[546,21037+10]..[546,21037+15])
+                      "Cmo" (utils/misc.mli[546,21037+12]..[546,21037+15])
+                      []
+                      None
+                    (utils/misc.mli[546,21037+16]..[546,21037+21])
+                      "Cma" (utils/misc.mli[546,21037+18]..[546,21037+21])
+                      []
+                      None
+                    (utils/misc.mli[547,21059+4]..[547,21059+30])
+                      "Cmx" (utils/misc.mli[547,21059+6]..[547,21059+9])
+                      [
+                        core_type (utils/misc.mli[547,21059+13]..[547,21059+30])
+                          Ptyp_constr "native_obj_config" (utils/misc.mli[547,21059+13]..[547,21059+30])
+                          []
+                      ]
+                      None
+                    (utils/misc.mli[547,21059+31]..[547,21059+58])
+                      "Cmxa" (utils/misc.mli[547,21059+33]..[547,21059+37])
+                      [
+                        core_type (utils/misc.mli[547,21059+41]..[547,21059+58])
+                          Ptyp_constr "native_obj_config" (utils/misc.mli[547,21059+41]..[547,21059+58])
+                          []
+                      ]
+                      None
+                    (utils/misc.mli[548,21118+4]..[548,21118+10])
+                      "Cmxs" (utils/misc.mli[548,21118+6]..[548,21118+10])
+                      []
+                      None
+                    (utils/misc.mli[549,21129+4]..[549,21129+9])
+                      "Cmt" (utils/misc.mli[549,21129+6]..[549,21129+9])
+                      []
+                      None
+                    (utils/misc.mli[549,21129+10]..[549,21129+20])
+                      "Ast_impl" (utils/misc.mli[549,21129+12]..[549,21129+20])
+                      []
+                      None
+                    (utils/misc.mli[549,21129+21]..[549,21129+31])
+                      "Ast_intf" (utils/misc.mli[549,21129+23]..[549,21129+31])
+                      []
+                      None
+                  ]
+              ptype_private = Public
+              ptype_manifest =
+                None
+          ]
+        signature_item (utils/misc.mli[551,21162+2]..[558,21514+3])
+          Psig_type Rec
+          [
+            type_declaration "info" (utils/misc.mli[551,21162+7]..[551,21162+11]) (utils/misc.mli[551,21162+2]..[558,21514+3])
+              ptype_params =
+                []
+              ptype_cstrs =
+                []
+              ptype_kind =
+                Ptype_record
+                  [
+                    (utils/misc.mli[552,21178+4]..[552,21178+15])
+                      Immutable
+                      "kind" (utils/misc.mli[552,21178+4]..[552,21178+8])                      core_type (utils/misc.mli[552,21178+10]..[552,21178+14])
+                        Ptyp_constr "kind" (utils/misc.mli[552,21178+10]..[552,21178+14])
+                        []
+                    (utils/misc.mli[553,21194+4]..[553,21194+21])
+                      attribute "ocaml.doc"
+                        [
+                          structure_item (utils/misc.mli[554,21216+4]..[557,21444+69])
+                            Pstr_eval
+                            expression (utils/misc.mli[554,21216+4]..[557,21444+69])
+                              Pexp_constant PConst_string(" Note: some versions of the compiler use the same [version] suffix\n        for all kinds, but others use different versions counters for different\n        kinds. We may only assume that versions are growing monotonically\n        (not necessarily always by one) between compiler versions. ",(utils/misc.mli[554,21216+4]..[557,21444+69]),None)
+                        ]
+                      Immutable
+                      "version" (utils/misc.mli[553,21194+4]..[553,21194+11])                      core_type (utils/misc.mli[553,21194+13]..[553,21194+20])
+                        Ptyp_constr "version" (utils/misc.mli[553,21194+13]..[553,21194+20])
+                        []
+                  ]
+              ptype_private = Public
+              ptype_manifest =
+                None
+          ]
+        signature_item (utils/misc.mli[560,21519+2]..[560,21519+19])
+          Psig_type Rec
+          [
+            type_declaration "raw" (utils/misc.mli[560,21519+7]..[560,21519+10]) (utils/misc.mli[560,21519+2]..[560,21519+19])
+              attribute "ocaml.doc"
+                [
+                  structure_item (utils/misc.mli[561,21539+2]..[562,21576+64])
+                    Pstr_eval
+                    expression (utils/misc.mli[561,21539+2]..[562,21576+64])
+                      Pexp_constant PConst_string(" the type of raw magic numbers,\n      such as \"Caml1999A027\" for the .cma files of OCaml 4.10 ",(utils/misc.mli[561,21539+2]..[562,21576+64]),None)
+                ]
+              ptype_params =
+                []
+              ptype_cstrs =
+                []
+              ptype_kind =
+                Ptype_abstract
+              ptype_private = Public
+              ptype_manifest =
+                Some
+                  core_type (utils/misc.mli[560,21519+13]..[560,21519+19])
+                    Ptyp_constr "string" (utils/misc.mli[560,21519+13]..[560,21519+19])
+                    []
+          ]
+        signature_item (utils/misc.mli[564,21642+2]..[564,21642+34])
+          Psig_attribute "ocaml.text"
+          [
+            structure_item (utils/misc.mli[564,21642+2]..[564,21642+34])
+              Pstr_eval
+              expression (utils/misc.mli[564,21642+2]..[564,21642+34])
+                Pexp_constant PConst_string(" {3 Parsing magic numbers} ",(utils/misc.mli[564,21642+2]..[564,21642+34]),None)
+          ]
+        signature_item (utils/misc.mli[566,21678+2]..[568,21725+34])
+          Psig_type Rec
+          [
+            type_declaration "parse_error" (utils/misc.mli[566,21678+7]..[566,21678+18]) (utils/misc.mli[566,21678+2]..[568,21725+34])
+              ptype_params =
+                []
+              ptype_cstrs =
+                []
+              ptype_kind =
+                Ptype_variant
+                  [
+                    (utils/misc.mli[567,21699+4]..[567,21699+25])
+                      "Truncated" (utils/misc.mli[567,21699+6]..[567,21699+15])
+                      [
+                        core_type (utils/misc.mli[567,21699+19]..[567,21699+25])
+                          Ptyp_constr "string" (utils/misc.mli[567,21699+19]..[567,21699+25])
+                          []
+                      ]
+                      None
+                    (utils/misc.mli[568,21725+4]..[568,21725+34])
+                      "Not_a_magic_number" (utils/misc.mli[568,21725+6]..[568,21725+24])
+                      [
+                        core_type (utils/misc.mli[568,21725+28]..[568,21725+34])
+                          Ptyp_constr "string" (utils/misc.mli[568,21725+28]..[568,21725+34])
+                          []
+                      ]
+                      None
+                  ]
+              ptype_private = Public
+              ptype_manifest =
+                None
+          ]
+        signature_item (utils/misc.mli[570,21761+2]..[570,21761+64])
+          Psig_value
+          value_description "explain_parse_error" (utils/misc.mli[570,21761+6]..[570,21761+25]) (utils/misc.mli[570,21761+2]..[570,21761+64])
+            attribute "ocaml.doc"
+              [
+                structure_item (utils/misc.mli[571,21826+2]..[573,21976+48])
+                  Pstr_eval
+                  expression (utils/misc.mli[571,21826+2]..[573,21976+48])
+                    Pexp_constant PConst_string(" Produces an explanation for a parse error. If no kind is provided,\n      we use an unspecific formulation suggesting that any compiler-produced\n      object file would have been satisfying. ",(utils/misc.mli[571,21826+2]..[573,21976+48]),None)
+              ]
+            core_type (utils/misc.mli[570,21761+28]..[570,21761+64])
+              Ptyp_arrow
+              Nolabel
+              core_type (utils/misc.mli[570,21761+28]..[570,21761+39])
+                Ptyp_constr "option" (utils/misc.mli[570,21761+33]..[570,21761+39])
+                [
+                  core_type (utils/misc.mli[570,21761+28]..[570,21761+32])
+                    Ptyp_constr "kind" (utils/misc.mli[570,21761+28]..[570,21761+32])
+                    []
+                ]
+              core_type (utils/misc.mli[570,21761+43]..[570,21761+64])
+                Ptyp_arrow
+                Nolabel
+                core_type (utils/misc.mli[570,21761+43]..[570,21761+54])
+                  Ptyp_constr "parse_error" (utils/misc.mli[570,21761+43]..[570,21761+54])
+                  []
+                core_type (utils/misc.mli[570,21761+58]..[570,21761+64])
+                  Ptyp_constr "string" (utils/misc.mli[570,21761+58]..[570,21761+64])
+                  []
+            []
+        signature_item (utils/misc.mli[575,22026+2]..[575,22026+47])
+          Psig_value
+          value_description "parse" (utils/misc.mli[575,22026+6]..[575,22026+11]) (utils/misc.mli[575,22026+2]..[575,22026+47])
+            attribute "ocaml.doc"
+              [
+                structure_item (utils/misc.mli[576,22074+2]..[576,22074+34])
+                  Pstr_eval
+                  expression (utils/misc.mli[576,22074+2]..[576,22074+34])
+                    Pexp_constant PConst_string(" Parses a raw magic number ",(utils/misc.mli[576,22074+2]..[576,22074+34]),None)
+              ]
+            core_type (utils/misc.mli[575,22026+14]..[575,22026+47])
+              Ptyp_arrow
+              Nolabel
+              core_type (utils/misc.mli[575,22026+14]..[575,22026+17])
+                Ptyp_constr "raw" (utils/misc.mli[575,22026+14]..[575,22026+17])
+                []
+              core_type (utils/misc.mli[575,22026+21]..[575,22026+47])
+                Ptyp_constr "result" (utils/misc.mli[575,22026+41]..[575,22026+47])
+                [
+                  core_type (utils/misc.mli[575,22026+22]..[575,22026+26])
+                    Ptyp_constr "info" (utils/misc.mli[575,22026+22]..[575,22026+26])
+                    []
+                  core_type (utils/misc.mli[575,22026+28]..[575,22026+39])
+                    Ptyp_constr "parse_error" (utils/misc.mli[575,22026+28]..[575,22026+39])
+                    []
+                ]
+            []
+        signature_item (utils/misc.mli[578,22110+2]..[578,22110+58])
+          Psig_value
+          value_description "read_info" (utils/misc.mli[578,22110+6]..[578,22110+15]) (utils/misc.mli[578,22110+2]..[578,22110+58])
+            attribute "ocaml.doc"
+              [
+                structure_item (utils/misc.mli[579,22169+2]..[591,22676+5])
+                  Pstr_eval
+                  expression (utils/misc.mli[579,22169+2]..[591,22676+5])
+                    Pexp_constant PConst_string(" Read a raw magic number from an input channel.\n\n      If the data read [str] is not a valid magic number, it can be\n      recovered from the [Truncated str | Not_a_magic_number str]\n      payload of the [Error parse_error] case.\n\n      If parsing succeeds with an [Ok info] result, we know that\n      exactly [magic_length] bytes have been consumed from the\n      input_channel.\n\n      If you also wish to enforce that the magic number\n      is at the current version, see {!read_current_info} below.\n   ",(utils/misc.mli[579,22169+2]..[591,22676+5]),None)
+              ]
+            core_type (utils/misc.mli[578,22110+18]..[578,22110+58])
+              Ptyp_arrow
+              Nolabel
+              core_type (utils/misc.mli[578,22110+18]..[578,22110+28])
+                Ptyp_constr "in_channel" (utils/misc.mli[578,22110+18]..[578,22110+28])
+                []
+              core_type (utils/misc.mli[578,22110+32]..[578,22110+58])
+                Ptyp_constr "result" (utils/misc.mli[578,22110+52]..[578,22110+58])
+                [
+                  core_type (utils/misc.mli[578,22110+33]..[578,22110+37])
+                    Ptyp_constr "info" (utils/misc.mli[578,22110+33]..[578,22110+37])
+                    []
+                  core_type (utils/misc.mli[578,22110+39]..[578,22110+50])
+                    Ptyp_constr "parse_error" (utils/misc.mli[578,22110+39]..[578,22110+50])
+                    []
+                ]
+            []
+        signature_item (utils/misc.mli[593,22683+2]..[593,22683+24])
+          Psig_value
+          value_description "magic_length" (utils/misc.mli[593,22683+6]..[593,22683+18]) (utils/misc.mli[593,22683+2]..[593,22683+24])
+            attribute "ocaml.doc"
+              [
+                structure_item (utils/misc.mli[594,22708+2]..[594,22708+56])
+                  Pstr_eval
+                  expression (utils/misc.mli[594,22708+2]..[594,22708+56])
+                    Pexp_constant PConst_string(" all magic numbers take the same number of bytes ",(utils/misc.mli[594,22708+2]..[594,22708+56]),None)
+              ]
+            core_type (utils/misc.mli[593,22683+21]..[593,22683+24])
+              Ptyp_constr "int" (utils/misc.mli[593,22683+21]..[593,22683+24])
+              []
+            []
+        signature_item (utils/misc.mli[597,22767+2]..[597,22767+52])
+          Psig_attribute "ocaml.text"
+          [
+            structure_item (utils/misc.mli[597,22767+2]..[597,22767+52])
+              Pstr_eval
+              expression (utils/misc.mli[597,22767+2]..[597,22767+52])
+                Pexp_constant PConst_string(" {3 Checking that magic numbers are current} ",(utils/misc.mli[597,22767+2]..[597,22767+52]),None)
+          ]
+        signature_item (utils/misc.mli[599,22821+2]..[599,22821+53])
+          Psig_type Rec
+          [
+            type_declaration "unexpected" (utils/misc.mli[599,22821+10]..[599,22821+20]) (utils/misc.mli[599,22821+2]..[599,22821+53])
+              ptype_params =
+                [
+                  core_type (utils/misc.mli[599,22821+7]..[599,22821+9])
+                    Ptyp_var a
+                ]
+              ptype_cstrs =
+                []
+              ptype_kind =
+                Ptype_record
+                  [
+                    (utils/misc.mli[599,22821+25]..[599,22821+39])
+                      Immutable
+                      "expected" (utils/misc.mli[599,22821+25]..[599,22821+33])                      core_type (utils/misc.mli[599,22821+36]..[599,22821+38])
+                        Ptyp_var a
+                    (utils/misc.mli[599,22821+40]..[599,22821+51])
+                      Immutable
+                      "actual" (utils/misc.mli[599,22821+40]..[599,22821+46])                      core_type (utils/misc.mli[599,22821+49]..[599,22821+51])
+                        Ptyp_var a
+                  ]
+              ptype_private = Public
+              ptype_manifest =
+                None
+          ]
+        signature_item (utils/misc.mli[600,22875+2]..[602,22931+42])
+          Psig_type Rec
+          [
+            type_declaration "unexpected_error" (utils/misc.mli[600,22875+7]..[600,22875+23]) (utils/misc.mli[600,22875+2]..[602,22931+42])
+              ptype_params =
+                []
+              ptype_cstrs =
+                []
+              ptype_kind =
+                Ptype_variant
+                  [
+                    (utils/misc.mli[601,22901+4]..[601,22901+29])
+                      "Kind" (utils/misc.mli[601,22901+6]..[601,22901+10])
+                      [
+                        core_type (utils/misc.mli[601,22901+14]..[601,22901+29])
+                          Ptyp_constr "unexpected" (utils/misc.mli[601,22901+19]..[601,22901+29])
+                          [
+                            core_type (utils/misc.mli[601,22901+14]..[601,22901+18])
+                              Ptyp_constr "kind" (utils/misc.mli[601,22901+14]..[601,22901+18])
+                              []
+                          ]
+                      ]
+                      None
+                    (utils/misc.mli[602,22931+4]..[602,22931+42])
+                      "Version" (utils/misc.mli[602,22931+6]..[602,22931+13])
+                      [
+                        core_type (utils/misc.mli[602,22931+17]..[602,22931+21])
+                          Ptyp_constr "kind" (utils/misc.mli[602,22931+17]..[602,22931+21])
+                          []
+                        core_type (utils/misc.mli[602,22931+24]..[602,22931+42])
+                          Ptyp_constr "unexpected" (utils/misc.mli[602,22931+32]..[602,22931+42])
+                          [
+                            core_type (utils/misc.mli[602,22931+24]..[602,22931+31])
+                              Ptyp_constr "version" (utils/misc.mli[602,22931+24]..[602,22931+31])
+                              []
+                          ]
+                      ]
+                      None
+                  ]
+              ptype_private = Public
+              ptype_manifest =
+                None
+          ]
+        signature_item (utils/misc.mli[604,22975+2]..[604,22975+69])
+          Psig_value
+          value_description "check_current" (utils/misc.mli[604,22975+6]..[604,22975+19]) (utils/misc.mli[604,22975+2]..[604,22975+69])
+            attribute "ocaml.doc"
+              [
+                structure_item (utils/misc.mli[605,23045+2]..[606,23115+57])
+                  Pstr_eval
+                  expression (utils/misc.mli[605,23045+2]..[606,23115+57])
+                    Pexp_constant PConst_string(" [check_current kind info] checks that the provided magic [info]\n      is the current version of [kind]'s magic header. ",(utils/misc.mli[605,23045+2]..[606,23115+57]),None)
+              ]
+            core_type (utils/misc.mli[604,22975+22]..[604,22975+69])
+              Ptyp_arrow
+              Nolabel
+              core_type (utils/misc.mli[604,22975+22]..[604,22975+26])
+                Ptyp_constr "kind" (utils/misc.mli[604,22975+22]..[604,22975+26])
+                []
+              core_type (utils/misc.mli[604,22975+30]..[604,22975+69])
+                Ptyp_arrow
+                Nolabel
+                core_type (utils/misc.mli[604,22975+30]..[604,22975+34])
+                  Ptyp_constr "info" (utils/misc.mli[604,22975+30]..[604,22975+34])
+                  []
+                core_type (utils/misc.mli[604,22975+38]..[604,22975+69])
+                  Ptyp_constr "result" (utils/misc.mli[604,22975+63]..[604,22975+69])
+                  [
+                    core_type (utils/misc.mli[604,22975+39]..[604,22975+43])
+                      Ptyp_constr "unit" (utils/misc.mli[604,22975+39]..[604,22975+43])
+                      []
+                    core_type (utils/misc.mli[604,22975+45]..[604,22975+61])
+                      Ptyp_constr "unexpected_error" (utils/misc.mli[604,22975+45]..[604,22975+61])
+                      []
+                  ]
+            []
+        signature_item (utils/misc.mli[608,23174+2]..[608,23174+59])
+          Psig_value
+          value_description "explain_unexpected_error" (utils/misc.mli[608,23174+6]..[608,23174+30]) (utils/misc.mli[608,23174+2]..[608,23174+59])
+            attribute "ocaml.doc"
+              [
+                structure_item (utils/misc.mli[609,23234+2]..[609,23234+59])
+                  Pstr_eval
+                  expression (utils/misc.mli[609,23234+2]..[609,23234+59])
+                    Pexp_constant PConst_string(" Provides an explanation of the [unexpected_error]. ",(utils/misc.mli[609,23234+2]..[609,23234+59]),None)
+              ]
+            core_type (utils/misc.mli[608,23174+33]..[608,23174+59])
+              Ptyp_arrow
+              Nolabel
+              core_type (utils/misc.mli[608,23174+33]..[608,23174+49])
+                Ptyp_constr "unexpected_error" (utils/misc.mli[608,23174+33]..[608,23174+49])
+                []
+              core_type (utils/misc.mli[608,23174+53]..[608,23174+59])
+                Ptyp_constr "string" (utils/misc.mli[608,23174+53]..[608,23174+59])
+                []
+            []
+        signature_item (utils/misc.mli[611,23295+2]..[613,23343+42])
+          Psig_type Rec
+          [
+            type_declaration "error" (utils/misc.mli[611,23295+7]..[611,23295+12]) (utils/misc.mli[611,23295+2]..[613,23343+42])
+              ptype_params =
+                []
+              ptype_cstrs =
+                []
+              ptype_kind =
+                Ptype_variant
+                  [
+                    (utils/misc.mli[612,23310+4]..[612,23310+32])
+                      "Parse_error" (utils/misc.mli[612,23310+6]..[612,23310+17])
+                      [
+                        core_type (utils/misc.mli[612,23310+21]..[612,23310+32])
+                          Ptyp_constr "parse_error" (utils/misc.mli[612,23310+21]..[612,23310+32])
+                          []
+                      ]
+                      None
+                    (utils/misc.mli[613,23343+4]..[613,23343+42])
+                      "Unexpected_error" (utils/misc.mli[613,23343+6]..[613,23343+22])
+                      [
+                        core_type (utils/misc.mli[613,23343+26]..[613,23343+42])
+                          Ptyp_constr "unexpected_error" (utils/misc.mli[613,23343+26]..[613,23343+42])
+                          []
+                      ]
+                      None
+                  ]
+              ptype_private = Public
+              ptype_manifest =
+                None
+          ]
+        signature_item (utils/misc.mli[615,23387+2]..[616,23413+67])
+          Psig_value
+          value_description "read_current_info" (utils/misc.mli[615,23387+6]..[615,23387+23]) (utils/misc.mli[615,23387+2]..[616,23413+67])
+            attribute "ocaml.doc"
+              [
+                structure_item (utils/misc.mli[617,23481+2]..[619,23583+73])
+                  Pstr_eval
+                  expression (utils/misc.mli[617,23481+2]..[619,23583+73])
+                    Pexp_constant PConst_string(" Read a magic number as [read_info],\n      and check that it is the current version as its kind.\n      If the [expected_kind] argument is [None], any kind is accepted. ",(utils/misc.mli[617,23481+2]..[619,23583+73]),None)
+              ]
+            core_type (utils/misc.mli[616,23413+4]..[616,23413+67])
+              Ptyp_arrow
+              Labelled "expected_kind"
+              core_type (utils/misc.mli[616,23413+18]..[616,23413+29])
+                Ptyp_constr "option" (utils/misc.mli[616,23413+23]..[616,23413+29])
+                [
+                  core_type (utils/misc.mli[616,23413+18]..[616,23413+22])
+                    Ptyp_constr "kind" (utils/misc.mli[616,23413+18]..[616,23413+22])
+                    []
+                ]
+              core_type (utils/misc.mli[616,23413+33]..[616,23413+67])
+                Ptyp_arrow
+                Nolabel
+                core_type (utils/misc.mli[616,23413+33]..[616,23413+43])
+                  Ptyp_constr "in_channel" (utils/misc.mli[616,23413+33]..[616,23413+43])
+                  []
+                core_type (utils/misc.mli[616,23413+47]..[616,23413+67])
+                  Ptyp_constr "result" (utils/misc.mli[616,23413+61]..[616,23413+67])
+                  [
+                    core_type (utils/misc.mli[616,23413+48]..[616,23413+52])
+                      Ptyp_constr "info" (utils/misc.mli[616,23413+48]..[616,23413+52])
+                      []
+                    core_type (utils/misc.mli[616,23413+54]..[616,23413+59])
+                      Ptyp_constr "error" (utils/misc.mli[616,23413+54]..[616,23413+59])
+                      []
+                  ]
+            []
+        signature_item (utils/misc.mli[622,23659+2]..[622,23659+41])
+          Psig_attribute "ocaml.text"
+          [
+            structure_item (utils/misc.mli[622,23659+2]..[622,23659+41])
+              Pstr_eval
+              expression (utils/misc.mli[622,23659+2]..[622,23659+41])
+                Pexp_constant PConst_string(" {3 Information on magic numbers} ",(utils/misc.mli[622,23659+2]..[622,23659+41]),None)
+          ]
+        signature_item (utils/misc.mli[624,23702+2]..[624,23702+37])
+          Psig_value
+          value_description "string_of_kind" (utils/misc.mli[624,23702+6]..[624,23702+20]) (utils/misc.mli[624,23702+2]..[624,23702+37])
+            attribute "ocaml.doc"
+              [
+                structure_item (utils/misc.mli[625,23740+2]..[626,23810+27])
+                  Pstr_eval
+                  expression (utils/misc.mli[625,23740+2]..[626,23810+27])
+                    Pexp_constant PConst_string(" a user-printable string for a kind, eg. \"exec\" or \"cmo\", to use\n      in error messages. ",(utils/misc.mli[625,23740+2]..[626,23810+27]),None)
+              ]
+            core_type (utils/misc.mli[624,23702+23]..[624,23702+37])
+              Ptyp_arrow
+              Nolabel
+              core_type (utils/misc.mli[624,23702+23]..[624,23702+27])
+                Ptyp_constr "kind" (utils/misc.mli[624,23702+23]..[624,23702+27])
+                []
+              core_type (utils/misc.mli[624,23702+31]..[624,23702+37])
+                Ptyp_constr "string" (utils/misc.mli[624,23702+31]..[624,23702+37])
+                []
+            []
+        signature_item (utils/misc.mli[628,23839+2]..[628,23839+41])
+          Psig_value
+          value_description "human_name_of_kind" (utils/misc.mli[628,23839+6]..[628,23839+24]) (utils/misc.mli[628,23839+2]..[628,23839+41])
+            attribute "ocaml.doc"
+              [
+                structure_item (utils/misc.mli[629,23881+2]..[630,23947+58])
+                  Pstr_eval
+                  expression (utils/misc.mli[629,23881+2]..[630,23947+58])
+                    Pexp_constant PConst_string(" a user-meaningful name for a kind, eg. \"executable file\" or\n      \"bytecode object file\", to use in error messages. ",(utils/misc.mli[629,23881+2]..[630,23947+58]),None)
+              ]
+            core_type (utils/misc.mli[628,23839+27]..[628,23839+41])
+              Ptyp_arrow
+              Nolabel
+              core_type (utils/misc.mli[628,23839+27]..[628,23839+31])
+                Ptyp_constr "kind" (utils/misc.mli[628,23839+27]..[628,23839+31])
+                []
+              core_type (utils/misc.mli[628,23839+35]..[628,23839+41])
+                Ptyp_constr "string" (utils/misc.mli[628,23839+35]..[628,23839+41])
+                []
+            []
+        signature_item (utils/misc.mli[632,24007+2]..[632,24007+31])
+          Psig_value
+          value_description "current_raw" (utils/misc.mli[632,24007+6]..[632,24007+17]) (utils/misc.mli[632,24007+2]..[632,24007+31])
+            attribute "ocaml.doc"
+              [
+                structure_item (utils/misc.mli[633,24039+2]..[633,24039+46])
+                  Pstr_eval
+                  expression (utils/misc.mli[633,24039+2]..[633,24039+46])
+                    Pexp_constant PConst_string(" the current magic number of each kind ",(utils/misc.mli[633,24039+2]..[633,24039+46]),None)
+              ]
+            core_type (utils/misc.mli[632,24007+20]..[632,24007+31])
+              Ptyp_arrow
+              Nolabel
+              core_type (utils/misc.mli[632,24007+20]..[632,24007+24])
+                Ptyp_constr "kind" (utils/misc.mli[632,24007+20]..[632,24007+24])
+                []
+              core_type (utils/misc.mli[632,24007+28]..[632,24007+31])
+                Ptyp_constr "raw" (utils/misc.mli[632,24007+28]..[632,24007+31])
+                []
+            []
+        signature_item (utils/misc.mli[635,24087+2]..[635,24087+39])
+          Psig_value
+          value_description "current_version" (utils/misc.mli[635,24087+6]..[635,24087+21]) (utils/misc.mli[635,24087+2]..[635,24087+39])
+            attribute "ocaml.doc"
+              [
+                structure_item (utils/misc.mli[636,24127+2]..[636,24127+41])
+                  Pstr_eval
+                  expression (utils/misc.mli[636,24127+2]..[636,24127+41])
+                    Pexp_constant PConst_string(" the current version of each kind ",(utils/misc.mli[636,24127+2]..[636,24127+41]),None)
+              ]
+            core_type (utils/misc.mli[635,24087+24]..[635,24087+39])
+              Ptyp_arrow
+              Nolabel
+              core_type (utils/misc.mli[635,24087+24]..[635,24087+28])
+                Ptyp_constr "kind" (utils/misc.mli[635,24087+24]..[635,24087+28])
+                []
+              core_type (utils/misc.mli[635,24087+32]..[635,24087+39])
+                Ptyp_constr "version" (utils/misc.mli[635,24087+32]..[635,24087+39])
+                []
+            []
+        signature_item (utils/misc.mli[639,24171+2]..[641,24202+47])
+          Psig_attribute "ocaml.text"
+          [
+            structure_item (utils/misc.mli[639,24171+2]..[641,24202+47])
+              Pstr_eval
+              expression (utils/misc.mli[639,24171+2]..[641,24202+47])
+                Pexp_constant PConst_string(" {3 Raw representations}\n\n      Mainly for internal usage and testing. ",(utils/misc.mli[639,24171+2]..[641,24202+47]),None)
+          ]
+        signature_item (utils/misc.mli[643,24251+2]..[643,24251+24])
+          Psig_type Rec
+          [
+            type_declaration "raw_kind" (utils/misc.mli[643,24251+7]..[643,24251+15]) (utils/misc.mli[643,24251+2]..[643,24251+24])
+              attribute "ocaml.doc"
+                [
+                  structure_item (utils/misc.mli[644,24276+2]..[645,24319+43])
+                    Pstr_eval
+                    expression (utils/misc.mli[644,24276+2]..[645,24319+43])
+                      Pexp_constant PConst_string(" the type of raw magic numbers kinds,\n      such as \"Caml1999A\" for .cma files ",(utils/misc.mli[644,24276+2]..[645,24319+43]),None)
+                ]
+              ptype_params =
+                []
+              ptype_cstrs =
+                []
+              ptype_kind =
+                Ptype_abstract
+              ptype_private = Public
+              ptype_manifest =
+                Some
+                  core_type (utils/misc.mli[643,24251+18]..[643,24251+24])
+                    Ptyp_constr "string" (utils/misc.mli[643,24251+18]..[643,24251+24])
+                    []
+          ]
+        signature_item (utils/misc.mli[647,24364+2]..[647,24364+42])
+          Psig_value
+          value_description "parse_kind" (utils/misc.mli[647,24364+6]..[647,24364+16]) (utils/misc.mli[647,24364+2]..[647,24364+42])
+            attribute "ocaml.doc"
+              [
+                structure_item (utils/misc.mli[648,24407+2]..[648,24407+37])
+                  Pstr_eval
+                  expression (utils/misc.mli[648,24407+2]..[648,24407+37])
+                    Pexp_constant PConst_string(" parse a raw kind into a kind ",(utils/misc.mli[648,24407+2]..[648,24407+37]),None)
+              ]
+            core_type (utils/misc.mli[647,24364+19]..[647,24364+42])
+              Ptyp_arrow
+              Nolabel
+              core_type (utils/misc.mli[647,24364+19]..[647,24364+27])
+                Ptyp_constr "raw_kind" (utils/misc.mli[647,24364+19]..[647,24364+27])
+                []
+              core_type (utils/misc.mli[647,24364+31]..[647,24364+42])
+                Ptyp_constr "option" (utils/misc.mli[647,24364+36]..[647,24364+42])
+                [
+                  core_type (utils/misc.mli[647,24364+31]..[647,24364+35])
+                    Ptyp_constr "kind" (utils/misc.mli[647,24364+31]..[647,24364+35])
+                    []
+                ]
+            []
+        signature_item (utils/misc.mli[650,24446+2]..[650,24446+33])
+          Psig_value
+          value_description "raw_kind" (utils/misc.mli[650,24446+6]..[650,24446+14]) (utils/misc.mli[650,24446+2]..[650,24446+33])
+            attribute "ocaml.doc"
+              [
+                structure_item (utils/misc.mli[651,24480+2]..[657,24772+4])
+                  Pstr_eval
+                  expression (utils/misc.mli[651,24480+2]..[657,24772+4])
+                    Pexp_constant PConst_string(" the current raw representation of a kind.\n\n      In some cases the raw representation of a kind has changed\n      over compiler versions, so other files of the same kind\n      may have different raw kinds.\n      Note that all currently known cases are parsed correctly by [parse_kind].\n  ",(utils/misc.mli[651,24480+2]..[657,24772+4]),None)
+              ]
+            core_type (utils/misc.mli[650,24446+17]..[650,24446+33])
+              Ptyp_arrow
+              Nolabel
+              core_type (utils/misc.mli[650,24446+17]..[650,24446+21])
+                Ptyp_constr "kind" (utils/misc.mli[650,24446+17]..[650,24446+21])
+                []
+              core_type (utils/misc.mli[650,24446+25]..[650,24446+33])
+                Ptyp_constr "raw_kind" (utils/misc.mli[650,24446+25]..[650,24446+33])
+                []
+            []
+        signature_item (utils/misc.mli[659,24778+2]..[659,24778+23])
+          Psig_value
+          value_description "raw" (utils/misc.mli[659,24778+6]..[659,24778+9]) (utils/misc.mli[659,24778+2]..[659,24778+23])
+            attribute "ocaml.doc"
+              [
+                structure_item (utils/misc.mli[660,24802+2]..[668,25244+5])
+                  Pstr_eval
+                  expression (utils/misc.mli[660,24802+2]..[668,25244+5])
+                    Pexp_constant PConst_string(" A valid raw representation of the magic number.\n\n      Due to past and future changes in the string representation of\n      magic numbers, we cannot guarantee that the raw strings returned\n      for past and future versions actually match the expectations of\n      those compilers. The representation is accurate for current\n      versions, and it is correctly parsed back into the desired\n      version by the parsing functions above.\n   ",(utils/misc.mli[660,24802+2]..[668,25244+5]),None)
+              ]
+            core_type (utils/misc.mli[659,24778+12]..[659,24778+23])
+              Ptyp_arrow
+              Nolabel
+              core_type (utils/misc.mli[659,24778+12]..[659,24778+16])
+                Ptyp_constr "info" (utils/misc.mli[659,24778+12]..[659,24778+16])
+                []
+              core_type (utils/misc.mli[659,24778+20]..[659,24778+23])
+                Ptyp_constr "raw" (utils/misc.mli[659,24778+20]..[659,24778+23])
+                []
+            []
+        signature_item (utils/misc.mli[670,25251+2]..[670,25251+9])
+          Psig_attribute "ocaml.text"
+          [
+            structure_item (utils/misc.mli[670,25251+2]..[670,25251+9])
+              Pstr_eval
+              expression (utils/misc.mli[670,25251+2]..[670,25251+9])
+                Pexp_constant PConst_string("/*",(utils/misc.mli[670,25251+2]..[670,25251+9]),None)
+          ]
+        signature_item (utils/misc.mli[672,25262+2]..[672,25262+27])
+          Psig_value
+          value_description "all_kinds" (utils/misc.mli[672,25262+6]..[672,25262+15]) (utils/misc.mli[672,25262+2]..[672,25262+27])
+            core_type (utils/misc.mli[672,25262+18]..[672,25262+27])
+              Ptyp_constr "list" (utils/misc.mli[672,25262+23]..[672,25262+27])
+              [
+                core_type (utils/misc.mli[672,25262+18]..[672,25262+22])
+                  Ptyp_constr "kind" (utils/misc.mli[672,25262+18]..[672,25262+22])
+                  []
+              ]
+            []
+      ]
+]
+

@@ -1,0 +1,443 @@
+[
+  structure_item (debugger/exec.ml[19,1195+0]..[19,1195+27])
+    Pstr_value Nonrec
+    [
+      <def>
+        pattern (debugger/exec.ml[19,1195+4]..[19,1195+15])
+          Ppat_var "interrupted" (debugger/exec.ml[19,1195+4]..[19,1195+15])
+        expression (debugger/exec.ml[19,1195+18]..[19,1195+27])
+          Pexp_apply
+          expression (debugger/exec.ml[19,1195+18]..[19,1195+21])
+            Pexp_ident "ref" (debugger/exec.ml[19,1195+18]..[19,1195+21])
+          [
+            <arg>
+            Nolabel
+              expression (debugger/exec.ml[19,1195+22]..[19,1195+27])
+                Pexp_construct "false" (debugger/exec.ml[19,1195+22]..[19,1195+27])
+                None
+          ]
+    ]
+  structure_item (debugger/exec.ml[21,1224+0]..[21,1224+28])
+    Pstr_value Nonrec
+    [
+      <def>
+        pattern (debugger/exec.ml[21,1224+4]..[21,1224+16])
+          Ppat_var "is_protected" (debugger/exec.ml[21,1224+4]..[21,1224+16])
+        expression (debugger/exec.ml[21,1224+19]..[21,1224+28])
+          Pexp_apply
+          expression (debugger/exec.ml[21,1224+19]..[21,1224+22])
+            Pexp_ident "ref" (debugger/exec.ml[21,1224+19]..[21,1224+22])
+          [
+            <arg>
+            Nolabel
+              expression (debugger/exec.ml[21,1224+23]..[21,1224+28])
+                Pexp_construct "false" (debugger/exec.ml[21,1224+23]..[21,1224+28])
+                None
+          ]
+    ]
+  structure_item (debugger/exec.ml[23,1254+0]..[26,1320+22])
+    Pstr_value Nonrec
+    [
+      <def>
+        pattern (debugger/exec.ml[23,1254+4]..[23,1254+9])
+          Ppat_var "break" (debugger/exec.ml[23,1254+4]..[23,1254+9])
+        expression (debugger/exec.ml[23,1254+10]..[26,1320+22]) ghost
+          Pexp_fun
+          Nolabel
+          None
+          pattern (debugger/exec.ml[23,1254+10]..[23,1254+17])
+            Ppat_var "_signum" (debugger/exec.ml[23,1254+10]..[23,1254+17])
+          expression (debugger/exec.ml[24,1274+2]..[26,1320+22])
+            Pexp_ifthenelse
+            expression (debugger/exec.ml[24,1274+5]..[24,1274+18])
+              Pexp_apply
+              expression (debugger/exec.ml[24,1274+5]..[24,1274+6])
+                Pexp_ident "!" (debugger/exec.ml[24,1274+5]..[24,1274+6])
+              [
+                <arg>
+                Nolabel
+                  expression (debugger/exec.ml[24,1274+6]..[24,1274+18])
+                    Pexp_ident "is_protected" (debugger/exec.ml[24,1274+6]..[24,1274+18])
+              ]
+            expression (debugger/exec.ml[25,1293+7]..[25,1293+26])
+              Pexp_apply
+              expression (debugger/exec.ml[25,1293+19]..[25,1293+21])
+                Pexp_ident ":=" (debugger/exec.ml[25,1293+19]..[25,1293+21])
+              [
+                <arg>
+                Nolabel
+                  expression (debugger/exec.ml[25,1293+7]..[25,1293+18])
+                    Pexp_ident "interrupted" (debugger/exec.ml[25,1293+7]..[25,1293+18])
+                <arg>
+                Nolabel
+                  expression (debugger/exec.ml[25,1293+22]..[25,1293+26])
+                    Pexp_construct "true" (debugger/exec.ml[25,1293+22]..[25,1293+26])
+                    None
+              ]
+            Some
+              expression (debugger/exec.ml[26,1320+7]..[26,1320+22])
+                Pexp_apply
+                expression (debugger/exec.ml[26,1320+7]..[26,1320+12])
+                  Pexp_ident "raise" (debugger/exec.ml[26,1320+7]..[26,1320+12])
+                [
+                  <arg>
+                  Nolabel
+                    expression (debugger/exec.ml[26,1320+13]..[26,1320+22])
+                      Pexp_construct "Sys.Break" (debugger/exec.ml[26,1320+13]..[26,1320+22])
+                      None
+                ]
+    ]
+  structure_item (debugger/exec.ml[28,1344+0]..[33,1463+80])
+    Pstr_value Nonrec
+    [
+      <def>
+        pattern (debugger/exec.ml[28,1344+4]..[28,1344+5])
+          Ppat_any
+        expression (debugger/exec.ml[29,1352+2]..[33,1463+80])
+          Pexp_match
+          expression (debugger/exec.ml[29,1352+8]..[29,1352+19])
+            Pexp_ident "Sys.os_type" (debugger/exec.ml[29,1352+8]..[29,1352+19])
+          [
+            <case>
+              pattern (debugger/exec.ml[30,1377+4]..[30,1377+11])
+                Ppat_constant PConst_string("Win32",(debugger/exec.ml[30,1377+5]..[30,1377+10]),None)
+              expression (debugger/exec.ml[30,1377+15]..[30,1377+17])
+                Pexp_construct "()" (debugger/exec.ml[30,1377+15]..[30,1377+17])
+                None
+            <case>
+              pattern (debugger/exec.ml[31,1395+4]..[31,1395+5])
+                Ppat_any
+              expression (debugger/exec.ml[32,1404+6]..[33,1463+80])
+                Pexp_sequence
+                expression (debugger/exec.ml[32,1404+6]..[32,1404+57])
+                  Pexp_apply
+                  expression (debugger/exec.ml[32,1404+6]..[32,1404+20])
+                    Pexp_ident "Sys.set_signal" (debugger/exec.ml[32,1404+6]..[32,1404+20])
+                  [
+                    <arg>
+                    Nolabel
+                      expression (debugger/exec.ml[32,1404+21]..[32,1404+31])
+                        Pexp_ident "Sys.sigint" (debugger/exec.ml[32,1404+21]..[32,1404+31])
+                    <arg>
+                    Nolabel
+                      expression (debugger/exec.ml[32,1404+32]..[32,1404+57])
+                        Pexp_construct "Sys.Signal_handle" (debugger/exec.ml[32,1404+33]..[32,1404+50])
+                        Some
+                          expression (debugger/exec.ml[32,1404+51]..[32,1404+56])
+                            Pexp_ident "break" (debugger/exec.ml[32,1404+51]..[32,1404+56])
+                  ]
+                expression (debugger/exec.ml[33,1463+6]..[33,1463+80])
+                  Pexp_apply
+                  expression (debugger/exec.ml[33,1463+6]..[33,1463+20])
+                    Pexp_ident "Sys.set_signal" (debugger/exec.ml[33,1463+6]..[33,1463+20])
+                  [
+                    <arg>
+                    Nolabel
+                      expression (debugger/exec.ml[33,1463+21]..[33,1463+32])
+                        Pexp_ident "Sys.sigpipe" (debugger/exec.ml[33,1463+21]..[33,1463+32])
+                    <arg>
+                    Nolabel
+                      expression (debugger/exec.ml[33,1463+33]..[33,1463+80])
+                        Pexp_construct "Sys.Signal_handle" (debugger/exec.ml[33,1463+34]..[33,1463+51])
+                        Some
+                          expression (debugger/exec.ml[33,1463+51]..[33,1463+79])
+                            Pexp_fun
+                            Nolabel
+                            None
+                            pattern (debugger/exec.ml[33,1463+56]..[33,1463+57])
+                              Ppat_any
+                            expression (debugger/exec.ml[33,1463+61]..[33,1463+78])
+                              Pexp_apply
+                              expression (debugger/exec.ml[33,1463+61]..[33,1463+66])
+                                Pexp_ident "raise" (debugger/exec.ml[33,1463+61]..[33,1463+66])
+                              [
+                                <arg>
+                                Nolabel
+                                  expression (debugger/exec.ml[33,1463+67]..[33,1463+78])
+                                    Pexp_construct "End_of_file" (debugger/exec.ml[33,1463+67]..[33,1463+78])
+                                    None
+                              ]
+                  ]
+          ]
+    ]
+  structure_item (debugger/exec.ml[35,1545+0]..[44,1775+5])
+    Pstr_value Nonrec
+    [
+      <def>
+        pattern (debugger/exec.ml[35,1545+4]..[35,1545+11])
+          Ppat_var "protect" (debugger/exec.ml[35,1545+4]..[35,1545+11])
+        expression (debugger/exec.ml[35,1545+12]..[44,1775+5]) ghost
+          Pexp_fun
+          Nolabel
+          None
+          pattern (debugger/exec.ml[35,1545+12]..[35,1545+13])
+            Ppat_var "f" (debugger/exec.ml[35,1545+12]..[35,1545+13])
+          expression (debugger/exec.ml[36,1561+2]..[44,1775+5])
+            Pexp_ifthenelse
+            expression (debugger/exec.ml[36,1561+5]..[36,1561+18])
+              Pexp_apply
+              expression (debugger/exec.ml[36,1561+5]..[36,1561+6])
+                Pexp_ident "!" (debugger/exec.ml[36,1561+5]..[36,1561+6])
+              [
+                <arg>
+                Nolabel
+                  expression (debugger/exec.ml[36,1561+6]..[36,1561+18])
+                    Pexp_ident "is_protected" (debugger/exec.ml[36,1561+6]..[36,1561+18])
+              ]
+            expression (debugger/exec.ml[37,1585+4]..[37,1585+8])
+              Pexp_apply
+              expression (debugger/exec.ml[37,1585+4]..[37,1585+5])
+                Pexp_ident "f" (debugger/exec.ml[37,1585+4]..[37,1585+5])
+              [
+                <arg>
+                Nolabel
+                  expression (debugger/exec.ml[37,1585+6]..[37,1585+8])
+                    Pexp_construct "()" (debugger/exec.ml[37,1585+6]..[37,1585+8])
+                    None
+              ]
+            Some
+              expression (debugger/exec.ml[38,1594+7]..[44,1775+5])
+                Pexp_sequence
+                expression (debugger/exec.ml[39,1607+4]..[39,1607+24])
+                  Pexp_apply
+                  expression (debugger/exec.ml[39,1607+17]..[39,1607+19])
+                    Pexp_ident ":=" (debugger/exec.ml[39,1607+17]..[39,1607+19])
+                  [
+                    <arg>
+                    Nolabel
+                      expression (debugger/exec.ml[39,1607+4]..[39,1607+16])
+                        Pexp_ident "is_protected" (debugger/exec.ml[39,1607+4]..[39,1607+16])
+                    <arg>
+                    Nolabel
+                      expression (debugger/exec.ml[39,1607+20]..[39,1607+24])
+                        Pexp_construct "true" (debugger/exec.ml[39,1607+20]..[39,1607+24])
+                        None
+                  ]
+                expression (debugger/exec.ml[40,1633+4]..[43,1702+72])
+                  Pexp_sequence
+                  expression (debugger/exec.ml[40,1633+4]..[41,1662+11])
+                    Pexp_ifthenelse
+                    expression (debugger/exec.ml[40,1633+7]..[40,1633+23])
+                      Pexp_apply
+                      expression (debugger/exec.ml[40,1633+7]..[40,1633+10])
+                        Pexp_ident "not" (debugger/exec.ml[40,1633+7]..[40,1633+10])
+                      [
+                        <arg>
+                        Nolabel
+                          expression (debugger/exec.ml[40,1633+11]..[40,1633+23])
+                            Pexp_apply
+                            expression (debugger/exec.ml[40,1633+11]..[40,1633+12])
+                              Pexp_ident "!" (debugger/exec.ml[40,1633+11]..[40,1633+12])
+                            [
+                              <arg>
+                              Nolabel
+                                expression (debugger/exec.ml[40,1633+12]..[40,1633+23])
+                                  Pexp_ident "interrupted" (debugger/exec.ml[40,1633+12]..[40,1633+23])
+                            ]
+                      ]
+                    expression (debugger/exec.ml[41,1662+7]..[41,1662+11])
+                      Pexp_apply
+                      expression (debugger/exec.ml[41,1662+7]..[41,1662+8])
+                        Pexp_ident "f" (debugger/exec.ml[41,1662+7]..[41,1662+8])
+                      [
+                        <arg>
+                        Nolabel
+                          expression (debugger/exec.ml[41,1662+9]..[41,1662+11])
+                            Pexp_construct "()" (debugger/exec.ml[41,1662+9]..[41,1662+11])
+                            None
+                      ]
+                    None
+                  expression (debugger/exec.ml[42,1675+4]..[43,1702+72])
+                    Pexp_sequence
+                    expression (debugger/exec.ml[42,1675+4]..[42,1675+25])
+                      Pexp_apply
+                      expression (debugger/exec.ml[42,1675+17]..[42,1675+19])
+                        Pexp_ident ":=" (debugger/exec.ml[42,1675+17]..[42,1675+19])
+                      [
+                        <arg>
+                        Nolabel
+                          expression (debugger/exec.ml[42,1675+4]..[42,1675+16])
+                            Pexp_ident "is_protected" (debugger/exec.ml[42,1675+4]..[42,1675+16])
+                        <arg>
+                        Nolabel
+                          expression (debugger/exec.ml[42,1675+20]..[42,1675+25])
+                            Pexp_construct "false" (debugger/exec.ml[42,1675+20]..[42,1675+25])
+                            None
+                      ]
+                    expression (debugger/exec.ml[43,1702+4]..[43,1702+72])
+                      Pexp_ifthenelse
+                      expression (debugger/exec.ml[43,1702+7]..[43,1702+19])
+                        Pexp_apply
+                        expression (debugger/exec.ml[43,1702+7]..[43,1702+8])
+                          Pexp_ident "!" (debugger/exec.ml[43,1702+7]..[43,1702+8])
+                        [
+                          <arg>
+                          Nolabel
+                            expression (debugger/exec.ml[43,1702+8]..[43,1702+19])
+                              Pexp_ident "interrupted" (debugger/exec.ml[43,1702+8]..[43,1702+19])
+                        ]
+                      expression (debugger/exec.ml[43,1702+25]..[43,1702+72])
+                        Pexp_sequence
+                        expression (debugger/exec.ml[43,1702+31]..[43,1702+51])
+                          Pexp_apply
+                          expression (debugger/exec.ml[43,1702+43]..[43,1702+45])
+                            Pexp_ident ":=" (debugger/exec.ml[43,1702+43]..[43,1702+45])
+                          [
+                            <arg>
+                            Nolabel
+                              expression (debugger/exec.ml[43,1702+31]..[43,1702+42])
+                                Pexp_ident "interrupted" (debugger/exec.ml[43,1702+31]..[43,1702+42])
+                            <arg>
+                            Nolabel
+                              expression (debugger/exec.ml[43,1702+46]..[43,1702+51])
+                                Pexp_construct "false" (debugger/exec.ml[43,1702+46]..[43,1702+51])
+                                None
+                          ]
+                        expression (debugger/exec.ml[43,1702+53]..[43,1702+68])
+                          Pexp_apply
+                          expression (debugger/exec.ml[43,1702+53]..[43,1702+58])
+                            Pexp_ident "raise" (debugger/exec.ml[43,1702+53]..[43,1702+58])
+                          [
+                            <arg>
+                            Nolabel
+                              expression (debugger/exec.ml[43,1702+59]..[43,1702+68])
+                                Pexp_construct "Sys.Break" (debugger/exec.ml[43,1702+59]..[43,1702+68])
+                                None
+                          ]
+                      None
+    ]
+  structure_item (debugger/exec.ml[46,1782+0]..[54,1986+5])
+    Pstr_value Nonrec
+    [
+      <def>
+        pattern (debugger/exec.ml[46,1782+4]..[46,1782+13])
+          Ppat_var "unprotect" (debugger/exec.ml[46,1782+4]..[46,1782+13])
+        expression (debugger/exec.ml[46,1782+14]..[54,1986+5]) ghost
+          Pexp_fun
+          Nolabel
+          None
+          pattern (debugger/exec.ml[46,1782+14]..[46,1782+15])
+            Ppat_var "f" (debugger/exec.ml[46,1782+14]..[46,1782+15])
+          expression (debugger/exec.ml[47,1800+2]..[54,1986+5])
+            Pexp_ifthenelse
+            expression (debugger/exec.ml[47,1800+5]..[47,1800+22])
+              Pexp_apply
+              expression (debugger/exec.ml[47,1800+5]..[47,1800+8])
+                Pexp_ident "not" (debugger/exec.ml[47,1800+5]..[47,1800+8])
+              [
+                <arg>
+                Nolabel
+                  expression (debugger/exec.ml[47,1800+9]..[47,1800+22])
+                    Pexp_apply
+                    expression (debugger/exec.ml[47,1800+9]..[47,1800+10])
+                      Pexp_ident "!" (debugger/exec.ml[47,1800+9]..[47,1800+10])
+                    [
+                      <arg>
+                      Nolabel
+                        expression (debugger/exec.ml[47,1800+10]..[47,1800+22])
+                          Pexp_ident "is_protected" (debugger/exec.ml[47,1800+10]..[47,1800+22])
+                    ]
+              ]
+            expression (debugger/exec.ml[48,1828+4]..[48,1828+8])
+              Pexp_apply
+              expression (debugger/exec.ml[48,1828+4]..[48,1828+5])
+                Pexp_ident "f" (debugger/exec.ml[48,1828+4]..[48,1828+5])
+              [
+                <arg>
+                Nolabel
+                  expression (debugger/exec.ml[48,1828+6]..[48,1828+8])
+                    Pexp_construct "()" (debugger/exec.ml[48,1828+6]..[48,1828+8])
+                    None
+              ]
+            Some
+              expression (debugger/exec.ml[49,1837+7]..[54,1986+5])
+                Pexp_sequence
+                expression (debugger/exec.ml[50,1850+4]..[50,1850+25])
+                  Pexp_apply
+                  expression (debugger/exec.ml[50,1850+17]..[50,1850+19])
+                    Pexp_ident ":=" (debugger/exec.ml[50,1850+17]..[50,1850+19])
+                  [
+                    <arg>
+                    Nolabel
+                      expression (debugger/exec.ml[50,1850+4]..[50,1850+16])
+                        Pexp_ident "is_protected" (debugger/exec.ml[50,1850+4]..[50,1850+16])
+                    <arg>
+                    Nolabel
+                      expression (debugger/exec.ml[50,1850+20]..[50,1850+25])
+                        Pexp_construct "false" (debugger/exec.ml[50,1850+20]..[50,1850+25])
+                        None
+                  ]
+                expression (debugger/exec.ml[51,1877+4]..[53,1961+24])
+                  Pexp_sequence
+                  expression (debugger/exec.ml[51,1877+4]..[51,1877+72])
+                    Pexp_ifthenelse
+                    expression (debugger/exec.ml[51,1877+7]..[51,1877+19])
+                      Pexp_apply
+                      expression (debugger/exec.ml[51,1877+7]..[51,1877+8])
+                        Pexp_ident "!" (debugger/exec.ml[51,1877+7]..[51,1877+8])
+                      [
+                        <arg>
+                        Nolabel
+                          expression (debugger/exec.ml[51,1877+8]..[51,1877+19])
+                            Pexp_ident "interrupted" (debugger/exec.ml[51,1877+8]..[51,1877+19])
+                      ]
+                    expression (debugger/exec.ml[51,1877+25]..[51,1877+72])
+                      Pexp_sequence
+                      expression (debugger/exec.ml[51,1877+31]..[51,1877+51])
+                        Pexp_apply
+                        expression (debugger/exec.ml[51,1877+43]..[51,1877+45])
+                          Pexp_ident ":=" (debugger/exec.ml[51,1877+43]..[51,1877+45])
+                        [
+                          <arg>
+                          Nolabel
+                            expression (debugger/exec.ml[51,1877+31]..[51,1877+42])
+                              Pexp_ident "interrupted" (debugger/exec.ml[51,1877+31]..[51,1877+42])
+                          <arg>
+                          Nolabel
+                            expression (debugger/exec.ml[51,1877+46]..[51,1877+51])
+                              Pexp_construct "false" (debugger/exec.ml[51,1877+46]..[51,1877+51])
+                              None
+                        ]
+                      expression (debugger/exec.ml[51,1877+53]..[51,1877+68])
+                        Pexp_apply
+                        expression (debugger/exec.ml[51,1877+53]..[51,1877+58])
+                          Pexp_ident "raise" (debugger/exec.ml[51,1877+53]..[51,1877+58])
+                        [
+                          <arg>
+                          Nolabel
+                            expression (debugger/exec.ml[51,1877+59]..[51,1877+68])
+                              Pexp_construct "Sys.Break" (debugger/exec.ml[51,1877+59]..[51,1877+68])
+                              None
+                        ]
+                    None
+                  expression (debugger/exec.ml[52,1951+4]..[53,1961+24])
+                    Pexp_sequence
+                    expression (debugger/exec.ml[52,1951+4]..[52,1951+8])
+                      Pexp_apply
+                      expression (debugger/exec.ml[52,1951+4]..[52,1951+5])
+                        Pexp_ident "f" (debugger/exec.ml[52,1951+4]..[52,1951+5])
+                      [
+                        <arg>
+                        Nolabel
+                          expression (debugger/exec.ml[52,1951+6]..[52,1951+8])
+                            Pexp_construct "()" (debugger/exec.ml[52,1951+6]..[52,1951+8])
+                            None
+                      ]
+                    expression (debugger/exec.ml[53,1961+4]..[53,1961+24])
+                      Pexp_apply
+                      expression (debugger/exec.ml[53,1961+17]..[53,1961+19])
+                        Pexp_ident ":=" (debugger/exec.ml[53,1961+17]..[53,1961+19])
+                      [
+                        <arg>
+                        Nolabel
+                          expression (debugger/exec.ml[53,1961+4]..[53,1961+16])
+                            Pexp_ident "is_protected" (debugger/exec.ml[53,1961+4]..[53,1961+16])
+                        <arg>
+                        Nolabel
+                          expression (debugger/exec.ml[53,1961+20]..[53,1961+24])
+                            Pexp_construct "true" (debugger/exec.ml[53,1961+20]..[53,1961+24])
+                            None
+                      ]
+    ]
+]
+
