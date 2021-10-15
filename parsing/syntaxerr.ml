@@ -24,6 +24,7 @@ type error =
   | Other of Location.t
   | Ill_formed_ast of Location.t * string
   | Invalid_package_type of Location.t * string
+  | Ambiguities of Location.t * (Location.t * string) list
 
 exception Error of error
 exception Escape_error
@@ -37,6 +38,7 @@ let location_of_error = function
   | Ill_formed_ast (l, _)
   | Invalid_package_type (l, _)
   | Expecting (l, _) -> l
+  | Ambiguities (l, _) -> l
 
 
 let ill_formed_ast loc s =

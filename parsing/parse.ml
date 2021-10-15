@@ -138,6 +138,9 @@ let prepare_error err =
         "broken invariant in parsetree: %s" s
   | Invalid_package_type (loc, s) ->
       Location.errorf ~loc "invalid package type: %s" s
+  | Ambiguities (loc, ambs) ->
+      let ambs = String.concat "\n\n" (List.map snd ambs) in
+      Location.errorf ~loc "The program is ambiguous:\n\n%s" ambs
 
 let () =
   Location.register_error_of_exn
