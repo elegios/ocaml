@@ -748,6 +748,9 @@ module BS = struct
     | Infix (l, BSSemi, r) -> mkRecordField l :: mkRecordContents r
     | x -> [mkRecordField x]
 
+  (* TODO(vipa, 2021-10-20): Cheat the "unused binding" warning for the moment *)
+  let _foo _ = mkRecordContents (Obj.magic ())
+
   let defaultAllow =
     allowAll
 
@@ -1053,6 +1056,8 @@ The precedences must be listed from low to high.
 %type <Longident.t> parse_mod_longident
 %start parse_any_longident
 %type <Longident.t> parse_any_longident
+%start parse_old_expression
+%type <Parsetree.expression> parse_old_expression
 /* END AVOID */
 
 %%
@@ -1394,6 +1399,11 @@ parse_expression:
     { $1 }
 ;
 
+parse_old_expression:
+  seq_expr EOF
+    { $1 }
+;
+
 parse_pattern:
   pattern EOF
     { $1 }
@@ -1519,24 +1529,24 @@ paren_module_expr:
        This expression can be annotated in various ways. *)
     LPAREN VAL attrs = attributes e = expr_colon_package_type RPAREN
       { mkmod ~loc:$sloc ~attrs (Pmod_unpack e) }
-  | LPAREN VAL attributes seq_expr COLON error
+  | LPAREN VAL attributes bseq_expr COLON error
       { unclosed "(" $loc($1) ")" $loc($6) }
-  | LPAREN VAL attributes seq_expr COLONGREATER error
+  | LPAREN VAL attributes bseq_expr COLONGREATER error
       { unclosed "(" $loc($1) ")" $loc($6) }
-  | LPAREN VAL attributes seq_expr error
+  | LPAREN VAL attributes bseq_expr error
       { unclosed "(" $loc($1) ")" $loc($5) }
 ;
 
 (* The various ways of annotating a core language expression that
    produces a first-class module that we wish to unpack. *)
 %inline expr_colon_package_type:
-    e = seq_expr
+    e = bseq_expr
       { e }
-  | e = seq_expr COLON ty = package_type
+  | e = bseq_expr COLON ty = package_type
       { ghexp ~loc:$loc (Pexp_constraint (e, ty)) }
-  | e = seq_expr COLON ty1 = package_type COLONGREATER ty2 = package_type
+  | e = bseq_expr COLON ty1 = package_type COLONGREATER ty2 = package_type
       { ghexp ~loc:$loc (Pexp_coerce (e, Some ty1, ty2)) }
-  | e = seq_expr COLONGREATER ty2 = package_type
+  | e = bseq_expr COLONGREATER ty2 = package_type
       { ghexp ~loc:$loc (Pexp_coerce (e, None, ty2)) }
 ;
 
@@ -1560,7 +1570,7 @@ structure:
 
 (* An expression with attributes, wrapped as a structure item. *)
 %inline str_exp:
-  e = seq_expr
+  e = bseq_expr
   attrs = post_item_attributes
     { mkstrexp e attrs }
 ;
@@ -2401,7 +2411,7 @@ bs_before_lopen:
     }
 ;
 bs_atom:
-  | LPAREN seq_expr RPAREN
+  | LPAREN bseq_expr RPAREN
     { (B.grouping, ($sloc, BSGrouping (reloc_exp ~loc:$sloc $2))) }
   | mkrhs(mk_longident(mod_longident, LIDENT))
     { (B.ident, ($sloc, BSIdent $1)) }
@@ -2426,16 +2436,15 @@ bseq_expr:
   | bs_expr { BS.mkWhole $1 }
 ;
 seq_expr:
-  | bseq_expr { $1 }
-  /* | expr        %prec below_SEMI  { $1 } */
-  /* | expr SEMI                     { $1 } */
-  /* | mkexp(expr SEMI seq_expr */
-  /*   { Pexp_sequence($1, $3) }) */
-  /*   { $1 } */
-  /* | expr SEMI PERCENT attr_id seq_expr */
-  /*   { let seq = mkexp ~loc:$sloc (Pexp_sequence ($1, $5)) in */
-  /*     let payload = PStr [mkstrexp seq []] in */
-  /*     mkexp ~loc:$sloc (Pexp_extension ($4, payload)) } */
+  | expr        %prec below_SEMI  { $1 }
+  | expr SEMI                     { $1 }
+  | mkexp(expr SEMI seq_expr
+    { Pexp_sequence($1, $3) })
+    { $1 }
+  | expr SEMI PERCENT attr_id seq_expr
+    { let seq = mkexp ~loc:$sloc (Pexp_sequence ($1, $5)) in
+      let payload = PStr [mkstrexp seq []] in
+      mkexp ~loc:$sloc (Pexp_extension ($4, payload)) }
 ;
 labeled_simple_pattern:
     QUESTION LPAREN label_let_pattern opt_default RPAREN
@@ -2885,9 +2894,9 @@ fun_def:
     { es }
 ;
 record_expr_content:
-  eo = ioption(terminated(seq_expr, WITH))
-  fields = bs_expr
-    { eo, BS.mkRecordContents fields }
+  eo = ioption(terminated(simple_expr, WITH))
+  fields = separated_or_terminated_nonempty_list(SEMI, record_expr_field)
+    { eo, fields }
 ;
 %inline record_expr_field:
   | label = mkrhs(label_longident)
@@ -4127,6 +4136,6 @@ payload:
   | COLON signature { PSig $2 }
   | COLON core_type { PTyp $2 }
   | QUESTION pattern { PPat ($2, None) }
-  | QUESTION pattern WHEN seq_expr { PPat ($2, Some $4) }
+  | QUESTION pattern WHEN bseq_expr { PPat ($2, Some $4) }
 ;
 %%
