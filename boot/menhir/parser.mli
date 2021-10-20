@@ -140,6 +140,8 @@ val parse_val_longident: (Lexing.lexbuf -> token) -> Lexing.lexbuf -> (Longident
 
 val parse_pattern: (Lexing.lexbuf -> token) -> Lexing.lexbuf -> (Parsetree.pattern)
 
+val parse_old_expression: (Lexing.lexbuf -> token) -> Lexing.lexbuf -> (Parsetree.expression)
+
 val parse_mty_longident: (Lexing.lexbuf -> token) -> Lexing.lexbuf -> (Longident.t)
 
 val parse_mod_longident: (Lexing.lexbuf -> token) -> Lexing.lexbuf -> (Longident.t)
@@ -178,6 +180,8 @@ module Incremental : sig
   val parse_val_longident: Lexing.position -> (Longident.t) MenhirInterpreter.checkpoint
   
   val parse_pattern: Lexing.position -> (Parsetree.pattern) MenhirInterpreter.checkpoint
+  
+  val parse_old_expression: Lexing.position -> (Parsetree.expression) MenhirInterpreter.checkpoint
   
   val parse_mty_longident: Lexing.position -> (Longident.t) MenhirInterpreter.checkpoint
   

@@ -638,6 +638,8 @@ let gright l r = (l, r, (false, true))
 (* let geither l r = (l, r, (true, true)) *)
 (* let gneither l r = (l, r, (false, false)) *)
 
+let left_assoc l = gleft l l
+
 let precTableNoEq (table : 'label list list) : ('label * 'label * (bool * bool)) list =
   let firstLow a b = [gright a b; gleft b a] in
   let rec go = function
@@ -657,6 +659,7 @@ type blabel =
   (* Infix *)
   | BLSemi
   | BLEquality
+  | BLApp
 
   (* Prefix *)
   | BLMinusPre
@@ -674,6 +677,7 @@ type batom =
 
 type binfix =
   | BSSemi
+  | BSApp
   | BSEquality of expression
 
 type bprefix =
@@ -700,6 +704,7 @@ module BSBasics = struct
   let infix_to_str s = match s with
     | BSSemi -> ";"
     | BSEquality _ -> "="
+    | BSApp -> ""
   let prefix_to_str (_, s) = match s with
     | BSUSub str -> str
   let postfix_to_str (_, s) = match s with
@@ -718,6 +723,9 @@ module BS = struct
 
     | Infix (l, BSSemi, r) -> whole_infix l r (fun l r -> Pexp_sequence(l, r))
     | Infix (l, BSEquality op, r) -> whole_infix l r (fun l r -> mkinfix l op r)
+    | Infix (l, BSApp, r) ->
+       let r = mkWhole r in
+       mkApplication r.pexp_loc.loc_end [(Nolabel, r)] l
 
     | Prefix ((oploc, BSUSub op), r) ->
        whole_prefix oploc r (fun r -> mkuminus ~oploc op r)
@@ -735,6 +743,13 @@ module BS = struct
   and whole_postfix l (_, endP) c =
     let l = mkWhole l in
     mkexp ~loc:(l.pexp_loc.loc_start, endP) (c l)
+
+  and mkApplication redge rest = function
+    | Infix (l, BSApp, r) ->
+       mkApplication redge ((Nolabel, mkWhole r) :: rest) l
+    | x ->
+       let x = mkWhole x in
+       mkexp ~loc:(x.pexp_loc.loc_start, redge) (Pexp_apply(x, rest))
 
   let rec mkSemiList = function
     | Infix (l, BSSemi, r) -> mkWhole l :: mkSemiList r
@@ -760,7 +775,7 @@ module BS = struct
   let binfixes =
     List.map
       (fun l -> defaultAllow, l, defaultAllow)
-      [ BLSemi; BLEquality
+      [ BLSemi; BLEquality; BLApp
       ]
     @ [
       ]
@@ -784,8 +799,13 @@ module BS = struct
   let bprecedence = List.concat
     [ precTableNoEq
         [ [ BLFieldAccess ]
+        ; [ BLApp ]
         ; [ BLMinusPre ]
+        ; [ BLEquality ]
         ; [ BLSemi ]
+        ]
+    ; List.map left_assoc
+        [ BLEquality; BLApp
         ]
     ]
 
@@ -808,6 +828,7 @@ module B = struct
   let ident = getAtom BLIdent
   let semi = getInfix BLSemi
   let equality = getInfix BLEquality
+  let app = getInfix BLApp
   let minusPre = getPrefix BLMinusPre
   let fieldAccess = getPostfix BLFieldAccess
 end
@@ -2419,6 +2440,8 @@ bs_atom:
     { (B.opaque, ($sloc, BSOpaque (mkexp ~loc:$sloc (Pexp_constant $1)))) }
 ;
 bs_infix:
+  | /* Empty */
+    { (B.app, BSApp) }
   | SEMI
     { (B.semi, BSSemi) }
   | EQUAL

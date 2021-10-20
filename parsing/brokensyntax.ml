@@ -9180,13 +9180,13 @@ module Make (S : Self) = struct
   let mk_atom (s : tagged_self) : res = match s with
     | AtomSelf s -> Atom s
     | _ -> assert false
-  let mk_infix (l : res) (s : tagged_self) (r : res) : res = match s with
+  let mk_infix (s : tagged_self) (l : res) (r : res) : res = match s with
     | InfixSelf s -> Infix (l, s, r)
     | _ -> assert false
   let mk_prefix (s : tagged_self) (r : res) : res = match s with
     | PrefixSelf s -> Prefix (s, r)
     | _ -> assert false
-  let mk_postfix (l : res) (s : tagged_self) : res = match s with
+  let mk_postfix (s : tagged_self) (l : res)  : res = match s with
     | PostfixSelf s -> Postfix (l, s)
     | _ -> assert false
 
@@ -9211,8 +9211,8 @@ module Make (S : Self) = struct
   type error = Obj.t
   type ambiguity = Obj.t
 
-  let allowAll = Obj.magic v_allowAll
-  let allowNone = Obj.magic v_allowNone
+  let allowAll = Obj.magic v_allowAll compareLabel
+  let allowNone = Obj.magic v_allowNone compareLabel
   let allowOneMore = Obj.magic v_allowOneMore
   let allowOneLess = Obj.magic v_allowOneLess
 
