@@ -2284,45 +2284,39 @@ end
 end
 end [@ocaml.warning "-27-26-37-32-34-60-11"]
 module Breakable_impl = struct
-type v_record'2320 =
-  | CRec'2319 of {l0: Obj.t;l1: Obj.t;l2: Obj.t;l3: Obj.t;l4: Obj.t;l5: Obj.t;l6: Obj.t;l7: Obj.t;l8: Obj.t;l9: Obj.t;l10: Obj.t;l11: Obj.t;l12: Obj.t;l13: Obj.t;l14: Obj.t;l15: Obj.t;l16: Obj.t;l17: Obj.t;l18: Obj.t;l19: Obj.t;l20: Obj.t;l21: Obj.t;l22: Obj.t;l23: Obj.t;l24: Obj.t;l25: Obj.t;l26: Obj.t;l27: Obj.t};;
-type v_record'2321 =
-  | CRec'2318 of {l0: Obj.t;l1: Obj.t};;
-type v_record'2322 =
-  | CRec'2317 of {llabel: Obj.t;lconstruct: Obj.t;lleftAllow: Obj.t;lrightAllow: Obj.t};;
-type v_record'2323 =
-  | CRec'2316 of {llabel: Obj.t;lconstruct: Obj.t;lleftAllow: Obj.t};;
-type v_record'2324 =
-  | CRec'2315 of {llabel: Obj.t;lconstruct: Obj.t;lrightAllow: Obj.t};;
-type v_record'2325 =
+type v_record'2317 =
+  | CRec'2316 of {l0: Obj.t;l1: Obj.t;l2: Obj.t;l3: Obj.t;l4: Obj.t;l5: Obj.t;l6: Obj.t;l7: Obj.t;l8: Obj.t;l9: Obj.t;l10: Obj.t;l11: Obj.t;l12: Obj.t;l13: Obj.t;l14: Obj.t;l15: Obj.t;l16: Obj.t;l17: Obj.t;l18: Obj.t;l19: Obj.t;l20: Obj.t;l21: Obj.t;l22: Obj.t;l23: Obj.t;l24: Obj.t;l25: Obj.t;l26: Obj.t;l27: Obj.t};;
+type v_record'2318 =
+  | CRec'2315 of {l0: Obj.t;l1: Obj.t};;
+type v_record'2319 =
   | CRec'2314 of {lfirst: Obj.t;llast: Obj.t;lpartialResolutions: Obj.t};;
-type v_record'2326 =
+type v_record'2320 =
   | CRec'2313 of {lfirst: Obj.t;llast: Obj.t};;
 type v_BreakableError'2056 =
   | CAmbiguities'2057 of Obj.t;;
-type v_record'2327 =
+type v_record'2321 =
   | CRec'2311 of {lparents: Obj.t;lnode: Obj.t};;
-type v_record'2328 =
+type v_record'2322 =
   | CRec'2310 of {lid: Obj.t;lidx: Obj.t;linput: Obj.t;lself: Obj.t};;
-type v_record'2329 =
+type v_record'2323 =
   | CRec'2309 of {lparents: Obj.t;laddedNodesLeftChildren: Obj.t;laddedNodesRightChildren: Obj.t;ltentativeData: Obj.t;lmaxDistanceFromRoot: Obj.t};;
-type v_record'2330 =
+type v_record'2324 =
   | CRec'2308 of {lidx: Obj.t;linput: Obj.t;lself: Obj.t};;
-type v_record'2331 =
+type v_record'2325 =
   | CRec'2303 of {lid: Obj.t;lidx: Obj.t;linput: Obj.t;lself: Obj.t;lleftChildAlts: Obj.t};;
-type v_record'2332 =
+type v_record'2326 =
   | CRec'2301 of {lidx: Obj.t;linput: Obj.t;lself: Obj.t;lleftChildAlts: Obj.t};;
-type v_record'2333 =
+type v_record'2327 =
   | CRec'2298 of {lconstruct: Obj.t;lleftAllow: Obj.t;lid: Obj.t;lprecWhenThisIsRight: Obj.t};;
-type v_record'2334 =
+type v_record'2328 =
   | CRec'2297 of {lconstruct: Obj.t;lleftAllow: Obj.t;lrightAllow: Obj.t;lid: Obj.t;lprecWhenThisIsRight: Obj.t};;
-type v_record'2335 =
+type v_record'2329 =
   | CRec'2296 of {lconstruct: Obj.t;lrightAllow: Obj.t;lid: Obj.t};;
-type v_record'2336 =
+type v_record'2330 =
   | CRec'2294 of {lconstruct: Obj.t;lid: Obj.t};;
-type v_record'2337 =
+type v_record'2331 =
   | CRec'2291 of {ltimestep: Obj.t;lnextIdx: Obj.t;lfrontier: Obj.t};;
-type v_record'2338 =
+type v_record'2332 =
   | CRec'2290 of {laddedNodesLeftChildren: Obj.t;laddedNodesRightChildren: Obj.t};;
 type v_TentativeNode'1715 =
   | CTentativeLeaf'1716 of {lparents: Obj.t;lnode: Obj.t}
@@ -2331,27 +2325,33 @@ type v_TentativeNode'1715 =
 type v_TentativeData'1711 =
   | CInfixT'1712 of {lidx: Obj.t;linput: Obj.t;lself: Obj.t;lleftChildAlts: Obj.t}
   | CPrefixT'1713 of {lidx: Obj.t;linput: Obj.t;lself: Obj.t};;
-type v_record'2339 =
+type v_record'2333 =
   | CRec'2284 of {lid: Obj.t;lidx: Obj.t;linput: Obj.t;lself: Obj.t;lrightChildAlts: Obj.t};;
-type v_record'2340 =
+type v_record'2334 =
   | CRec'2283 of {lid: Obj.t;lidx: Obj.t;linput: Obj.t;lself: Obj.t;lleftChildAlts: Obj.t;lrightChildAlts: Obj.t};;
 type v_PermanentNode'1706 =
   | CAtomP'1707 of {lid: Obj.t;lidx: Obj.t;linput: Obj.t;lself: Obj.t}
   | CInfixP'1708 of {lid: Obj.t;lidx: Obj.t;linput: Obj.t;lself: Obj.t;lleftChildAlts: Obj.t;lrightChildAlts: Obj.t}
   | CPrefixP'1709 of {lid: Obj.t;lidx: Obj.t;linput: Obj.t;lself: Obj.t;lrightChildAlts: Obj.t}
   | CPostfixP'1710 of {lid: Obj.t;lidx: Obj.t;linput: Obj.t;lself: Obj.t;lleftChildAlts: Obj.t};;
-type v_record'2341 =
+type v_record'2335 =
   | CRec'2281 of {latoms: Obj.t;lprefixes: Obj.t;linfixes: Obj.t;lpostfixes: Obj.t};;
 type v_BreakableInput'1700 =
   | CAtomI'1701 of {lconstruct: Obj.t;lid: Obj.t}
   | CInfixI'1702 of {lconstruct: Obj.t;lleftAllow: Obj.t;lrightAllow: Obj.t;lid: Obj.t;lprecWhenThisIsRight: Obj.t}
   | CPrefixI'1703 of {lconstruct: Obj.t;lrightAllow: Obj.t;lid: Obj.t}
   | CPostfixI'1704 of {lconstruct: Obj.t;lleftAllow: Obj.t;lid: Obj.t;lprecWhenThisIsRight: Obj.t};;
-type v_record'2342 =
+type v_record'2336 =
   | CRec'2276 of {lproductions: Obj.t;lprecedences: Obj.t};;
-type v_record'2343 =
+type v_record'2337 =
   | CRec'2274 of {lmayGroupLeft: Obj.t;lmayGroupRight: Obj.t};;
-type v_record'2344 =
+type v_record'2338 =
+  | CRec'2273 of {llabel: Obj.t;lconstruct: Obj.t;lleftAllow: Obj.t};;
+type v_record'2339 =
+  | CRec'2272 of {llabel: Obj.t;lconstruct: Obj.t;lrightAllow: Obj.t};;
+type v_record'2340 =
+  | CRec'2271 of {llabel: Obj.t;lconstruct: Obj.t;lleftAllow: Obj.t;lrightAllow: Obj.t};;
+type v_record'2341 =
   | CRec'2270 of {llabel: Obj.t;lconstruct: Obj.t};;
 type v_BreakableProduction'1687 =
   | CBreakableAtom'1688 of {llabel: Obj.t;lconstruct: Obj.t}
@@ -2382,16 +2382,16 @@ let v_optionMap =
     fun v_o'1613 ->
       match
         Obj.magic
-          (let v__target'2345 =
+          (let v__target'2342 =
              v_o'1613
            in
            match
              Obj.magic
                Obj.magic
-               v__target'2345
+               v__target'2342
            with
-           | CSome'1610 v__n'2346 ->
-               (Option.Some (v__n'2346))
+           | CSome'1610 v__n'2343 ->
+               (Option.Some (v__n'2343))
            | _ ->
                (Obj.magic
                   Obj.magic
@@ -2411,8 +2411,8 @@ let v_optionZipWith =
       fun v_o2'1618 ->
         match
           Obj.magic
-            (let v__target'2347 =
-               CRec'2318 { l0 =
+            (let v__target'2344 =
+               CRec'2315 { l0 =
                    (Obj.repr
                      v_o1'1617);
                  l1 =
@@ -2420,25 +2420,25 @@ let v_optionZipWith =
                      v_o2'1618) }
              in
              let
-               CRec'2318 ({l0 = v_0'2348;l1 = v_1'2349})
+               CRec'2315 ({l0 = v_0'2345;l1 = v_1'2346})
              =
                Obj.magic
                  Obj.magic
-                 v__target'2347
+                 v__target'2344
              in
              match
                Obj.magic
                  Obj.magic
-                 v_0'2348
+                 v_0'2345
              with
-             | CSome'1610 v__n'2350 ->
+             | CSome'1610 v__n'2347 ->
                  (match
                     Obj.magic
                       Obj.magic
-                      v_1'2349
+                      v_1'2346
                   with
-                  | CSome'1610 v__n'2351 ->
-                      (Option.Some (v__n'2350, v__n'2351))
+                  | CSome'1610 v__n'2348 ->
+                      (Option.Some (v__n'2347, v__n'2348))
                   | _ ->
                       (Obj.magic
                          Obj.magic
@@ -2462,16 +2462,16 @@ let v_optionGetOrElse =
     fun v_o'1623 ->
       match
         Obj.magic
-          (let v__target'2352 =
+          (let v__target'2349 =
              v_o'1623
            in
            match
              Obj.magic
                Obj.magic
-               v__target'2352
+               v__target'2349
            with
-           | CSome'1610 v__n'2353 ->
-               (Option.Some (v__n'2353))
+           | CSome'1610 v__n'2350 ->
+               (Option.Some (v__n'2350))
            | _ ->
                (Obj.magic
                   Obj.magic
@@ -2490,7 +2490,7 @@ let v_mapOption =
         fun v_as'1628 ->
           match
             Obj.magic
-              (let v__target'2354 =
+              (let v__target'2351 =
                  v_as'1628
                in
                if
@@ -2498,7 +2498,7 @@ let v_mapOption =
                    ((<) : int -> int -> bool)
                    (Obj.magic
                       Boot.Intrinsics.Mseq.length
-                      v__target'2354)
+                      v__target'2351)
                    1
                then
                  Option.None
@@ -2506,38 +2506,38 @@ let v_mapOption =
                  Obj.magic
                    Obj.magic
                    (let
-                      (v__prefix'2355, v__splitTemp'2356)
+                      (v__prefix'2352, v__splitTemp'2353)
                     =
                       Obj.magic
                         Boot.Intrinsics.Mseq.split_at
-                        v__target'2354
+                        v__target'2351
                         1
                     in
                     let
-                      (v__middle'2357, v__postfix'2358)
+                      (v__middle'2354, v__postfix'2355)
                     =
                       Obj.magic
                         Boot.Intrinsics.Mseq.split_at
-                        v__splitTemp'2356
+                        v__splitTemp'2353
                         (Obj.magic
                            Int.sub
                            (Obj.magic
                               Boot.Intrinsics.Mseq.length
-                              v__splitTemp'2356)
+                              v__splitTemp'2353)
                            0)
                     in
-                    let v__seqElem'2359 =
+                    let v__seqElem'2356 =
                       Obj.magic
                         Boot.Intrinsics.Mseq.get
-                        v__prefix'2355
+                        v__prefix'2352
                         0
                     in
-                    Option.Some (v__seqElem'2359, v__middle'2357)))
+                    Option.Some (v__seqElem'2356, v__middle'2354)))
           with
           | Option.Some (v_a'1629, v_as'1630) ->
               (match
                  Obj.magic
-                   (let v__target'2360 =
+                   (let v__target'2357 =
                       Obj.magic
                         v_f'1626
                         v_a'1629
@@ -2545,10 +2545,10 @@ let v_mapOption =
                     match
                       Obj.magic
                         Obj.magic
-                        v__target'2360
+                        v__target'2357
                     with
-                    | CSome'1610 v__n'2361 ->
-                        (Option.Some (v__n'2361))
+                    | CSome'1610 v__n'2358 ->
+                        (Option.Some (v__n'2358))
                     | _ ->
                         (Obj.magic
                            Obj.magic
@@ -2753,7 +2753,7 @@ let v_mapFromSeq =
              Obj.magic
                Boot.Intrinsics.Mmap.insert
                (let
-                  CRec'2318 ({l0 = v_X'1672})
+                  CRec'2315 ({l0 = v_X'1672})
                 =
                   Obj.magic
                     v_binding'1671
@@ -2761,7 +2761,7 @@ let v_mapFromSeq =
                 Obj.magic
                   v_X'1672)
                (let
-                  CRec'2318 ({l1 = v_X'1673})
+                  CRec'2315 ({l1 = v_X'1673})
                 =
                   Obj.magic
                     v_binding'1671
@@ -2824,7 +2824,7 @@ let v__getParents =
   fun v_n'1728 ->
     match
       Obj.magic
-        (let v__target'2362 =
+        (let v__target'2359 =
            v_n'1728
          in
          match
@@ -2832,41 +2832,41 @@ let v__getParents =
              match
                Obj.magic
                  Obj.magic
-                 v__target'2362
+                 v__target'2359
              with
-             | CTentativeLeaf'1716 v__n'2363 ->
+             | CTentativeLeaf'1716 v__n'2360 ->
                  (let
-                    CRec'2311 ({lparents = v_parents'2364})
+                    CRec'2311 ({lparents = v_parents'2361})
                   =
                     Obj.magic
                       Obj.magic
-                      v__target'2362
+                      v__target'2359
                   in
-                  Option.Some (v_parents'2364))
+                  Option.Some (v_parents'2361))
              | _ ->
                  (Obj.magic
                     Obj.magic
                     (Option.None))
            with
-           | Option.Some v__x'2367 ->
-               (Option.Some v__x'2367)
+           | Option.Some v__x'2364 ->
+               (Option.Some v__x'2364)
            | Option.None ->
                (Obj.magic
                   Obj.magic
                   (match
                      Obj.magic
                        Obj.magic
-                       v__target'2362
+                       v__target'2359
                    with
-                   | CTentativeMid'1717 v__n'2365 ->
+                   | CTentativeMid'1717 v__n'2362 ->
                        (let
-                          CRec'2309 ({lparents = v_parents'2366})
+                          CRec'2309 ({lparents = v_parents'2363})
                         =
                           Obj.magic
                             Obj.magic
-                            v__target'2362
+                            v__target'2359
                         in
-                        Option.Some (v_parents'2366))
+                        Option.Some (v_parents'2363))
                    | _ ->
                        (Obj.magic
                           Obj.magic
@@ -2886,15 +2886,15 @@ let v__getParents =
         (Obj.magic
            (match
               Obj.magic
-                (let v__target'2368 =
+                (let v__target'2365 =
                    v_n'1728
                  in
                  match
                    Obj.magic
                      Obj.magic
-                     v__target'2368
+                     v__target'2365
                  with
-                 | CTentativeRoot'1718 v__n'2369 ->
+                 | CTentativeRoot'1718 v__n'2366 ->
                      (Option.Some ())
                  | _ ->
                      (Obj.magic
@@ -2911,7 +2911,7 @@ let v__opIdI =
   fun v_input'1731 ->
     match
       Obj.magic
-        (let v__target'2370 =
+        (let v__target'2367 =
            v_input'1731
          in
          match
@@ -2919,24 +2919,24 @@ let v__opIdI =
              match
                Obj.magic
                  Obj.magic
-                 v__target'2370
+                 v__target'2367
              with
-             | CAtomI'1701 v__n'2371 ->
+             | CAtomI'1701 v__n'2368 ->
                  (let
-                    CRec'2294 ({lid = v_id'2372})
+                    CRec'2294 ({lid = v_id'2369})
                   =
                     Obj.magic
                       Obj.magic
-                      v__target'2370
+                      v__target'2367
                   in
-                  Option.Some (v_id'2372))
+                  Option.Some (v_id'2369))
              | _ ->
                  (Obj.magic
                     Obj.magic
                     (Option.None))
            with
-           | Option.Some v__x'2381 ->
-               (Option.Some v__x'2381)
+           | Option.Some v__x'2378 ->
+               (Option.Some v__x'2378)
            | Option.None ->
                (Obj.magic
                   Obj.magic
@@ -2945,24 +2945,24 @@ let v__opIdI =
                        match
                          Obj.magic
                            Obj.magic
-                           v__target'2370
+                           v__target'2367
                        with
-                       | CInfixI'1702 v__n'2373 ->
+                       | CInfixI'1702 v__n'2370 ->
                            (let
-                              CRec'2297 ({lid = v_id'2374})
+                              CRec'2297 ({lid = v_id'2371})
                             =
                               Obj.magic
                                 Obj.magic
-                                v__target'2370
+                                v__target'2367
                             in
-                            Option.Some (v_id'2374))
+                            Option.Some (v_id'2371))
                        | _ ->
                            (Obj.magic
                               Obj.magic
                               (Option.None))
                      with
-                     | Option.Some v__x'2380 ->
-                         (Option.Some v__x'2380)
+                     | Option.Some v__x'2377 ->
+                         (Option.Some v__x'2377)
                      | Option.None ->
                          (Obj.magic
                             Obj.magic
@@ -2971,41 +2971,41 @@ let v__opIdI =
                                  match
                                    Obj.magic
                                      Obj.magic
-                                     v__target'2370
+                                     v__target'2367
                                  with
-                                 | CPrefixI'1703 v__n'2375 ->
+                                 | CPrefixI'1703 v__n'2372 ->
                                      (let
-                                        CRec'2296 ({lid = v_id'2376})
+                                        CRec'2296 ({lid = v_id'2373})
                                       =
                                         Obj.magic
                                           Obj.magic
-                                          v__target'2370
+                                          v__target'2367
                                       in
-                                      Option.Some (v_id'2376))
+                                      Option.Some (v_id'2373))
                                  | _ ->
                                      (Obj.magic
                                         Obj.magic
                                         (Option.None))
                                with
-                               | Option.Some v__x'2379 ->
-                                   (Option.Some v__x'2379)
+                               | Option.Some v__x'2376 ->
+                                   (Option.Some v__x'2376)
                                | Option.None ->
                                    (Obj.magic
                                       Obj.magic
                                       (match
                                          Obj.magic
                                            Obj.magic
-                                           v__target'2370
+                                           v__target'2367
                                        with
-                                       | CPostfixI'1704 v__n'2377 ->
+                                       | CPostfixI'1704 v__n'2374 ->
                                            (let
-                                              CRec'2298 ({lid = v_id'2378})
+                                              CRec'2298 ({lid = v_id'2375})
                                             =
                                               Obj.magic
                                                 Obj.magic
-                                                v__target'2370
+                                                v__target'2367
                                             in
-                                            Option.Some (v_id'2378))
+                                            Option.Some (v_id'2375))
                                        | _ ->
                                            (Obj.magic
                                               Obj.magic
@@ -3040,7 +3040,7 @@ let v__opIdI =
               "FILE \"/home/vipa/.local/lib/mcore/stdlib/parser/breakable.mc\" 284:9-284:14 ERROR: Reached a never term, which should be impossible in a well-typed program."));;
 let v__opIdP =
   fun v_node'1734 ->
-    let v_defaultCase'2382 =
+    let v_defaultCase'2379 =
       fun nv_ ->
         failwith
           "FILE \"/home/vipa/.local/lib/mcore/stdlib/parser/breakable.mc\" 293:4-293:9 ERROR: Reached a never term, which should be impossible in a well-typed program."
@@ -3049,22 +3049,22 @@ let v__opIdP =
       Obj.magic
         v_node'1734
     with
-    | CAtomP'1707 v_x'2383 ->
+    | CAtomP'1707 v_x'2380 ->
         (match
            Obj.magic
-             (let v__target'2384 =
+             (let v__target'2381 =
                 Obj.magic
                   Obj.magic
                   v_node'1734
               in
               let
-                CRec'2310 ({linput = v_input'2385})
+                CRec'2310 ({linput = v_input'2382})
               =
                 Obj.magic
                   Obj.magic
-                  v__target'2384
+                  v__target'2381
               in
-              Option.Some (v_input'2385))
+              Option.Some (v_input'2382))
          with
          | Option.Some (v_input'1735) ->
              (Obj.magic
@@ -3073,9 +3073,36 @@ let v__opIdP =
          | Option.None ->
              (Obj.magic
                 (Obj.magic
-                   v_defaultCase'2382
+                   v_defaultCase'2379
                    ())))
-    | CInfixP'1708 v_x'2386 ->
+    | CInfixP'1708 v_x'2383 ->
+        (Obj.magic
+           (match
+              Obj.magic
+                (let v__target'2384 =
+                   Obj.magic
+                     Obj.magic
+                     v_node'1734
+                 in
+                 let
+                   CRec'2283 ({linput = v_input'2385})
+                 =
+                   Obj.magic
+                     Obj.magic
+                     v__target'2384
+                 in
+                 Option.Some (v_input'2385))
+            with
+            | Option.Some (v_input'1736) ->
+                (Obj.magic
+                   v__opIdI
+                   v_input'1736)
+            | Option.None ->
+                (Obj.magic
+                   (Obj.magic
+                      v_defaultCase'2379
+                      ()))))
+    | CPrefixP'1709 v_x'2386 ->
         (Obj.magic
            (match
               Obj.magic
@@ -3085,7 +3112,7 @@ let v__opIdP =
                      v_node'1734
                  in
                  let
-                   CRec'2283 ({linput = v_input'2388})
+                   CRec'2284 ({linput = v_input'2388})
                  =
                    Obj.magic
                      Obj.magic
@@ -3093,16 +3120,16 @@ let v__opIdP =
                  in
                  Option.Some (v_input'2388))
             with
-            | Option.Some (v_input'1736) ->
+            | Option.Some (v_input'1737) ->
                 (Obj.magic
                    v__opIdI
-                   v_input'1736)
+                   v_input'1737)
             | Option.None ->
                 (Obj.magic
                    (Obj.magic
-                      v_defaultCase'2382
+                      v_defaultCase'2379
                       ()))))
-    | CPrefixP'1709 v_x'2389 ->
+    | CPostfixP'1710 v_x'2389 ->
         (Obj.magic
            (match
               Obj.magic
@@ -3112,40 +3139,13 @@ let v__opIdP =
                      v_node'1734
                  in
                  let
-                   CRec'2284 ({linput = v_input'2391})
+                   CRec'2303 ({linput = v_input'2391})
                  =
                    Obj.magic
                      Obj.magic
                      v__target'2390
                  in
                  Option.Some (v_input'2391))
-            with
-            | Option.Some (v_input'1737) ->
-                (Obj.magic
-                   v__opIdI
-                   v_input'1737)
-            | Option.None ->
-                (Obj.magic
-                   (Obj.magic
-                      v_defaultCase'2382
-                      ()))))
-    | CPostfixP'1710 v_x'2392 ->
-        (Obj.magic
-           (match
-              Obj.magic
-                (let v__target'2393 =
-                   Obj.magic
-                     Obj.magic
-                     v_node'1734
-                 in
-                 let
-                   CRec'2303 ({linput = v_input'2394})
-                 =
-                   Obj.magic
-                     Obj.magic
-                     v__target'2393
-                 in
-                 Option.Some (v_input'2394))
             with
             | Option.Some (v_input'1738) ->
                 (Obj.magic
@@ -3154,15 +3154,15 @@ let v__opIdP =
             | Option.None ->
                 (Obj.magic
                    (Obj.magic
-                      v_defaultCase'2382
+                      v_defaultCase'2379
                       ()))))
     | _ ->
         (Obj.magic
-           (v_defaultCase'2382
+           (v_defaultCase'2379
               ()));;
 let v__opIdxP =
   fun v_node'1740 ->
-    let v_defaultCase'2395 =
+    let v_defaultCase'2392 =
       fun nv_ ->
         failwith
           "FILE \"/home/vipa/.local/lib/mcore/stdlib/parser/breakable.mc\" 302:4-302:9 ERROR: Reached a never term, which should be impossible in a well-typed program."
@@ -3171,31 +3171,56 @@ let v__opIdxP =
       Obj.magic
         v_node'1740
     with
-    | CAtomP'1707 v_x'2396 ->
+    | CAtomP'1707 v_x'2393 ->
         (match
            Obj.magic
-             (let v__target'2397 =
+             (let v__target'2394 =
                 Obj.magic
                   Obj.magic
                   v_node'1740
               in
               let
-                CRec'2310 ({lidx = v_idx'2398})
+                CRec'2310 ({lidx = v_idx'2395})
               =
                 Obj.magic
                   Obj.magic
-                  v__target'2397
+                  v__target'2394
               in
-              Option.Some (v_idx'2398))
+              Option.Some (v_idx'2395))
          with
          | Option.Some (v_idx'1741) ->
              v_idx'1741
          | Option.None ->
              (Obj.magic
                 (Obj.magic
-                   v_defaultCase'2395
+                   v_defaultCase'2392
                    ())))
-    | CInfixP'1708 v_x'2399 ->
+    | CInfixP'1708 v_x'2396 ->
+        (Obj.magic
+           (match
+              Obj.magic
+                (let v__target'2397 =
+                   Obj.magic
+                     Obj.magic
+                     v_node'1740
+                 in
+                 let
+                   CRec'2283 ({lidx = v_idx'2398})
+                 =
+                   Obj.magic
+                     Obj.magic
+                     v__target'2397
+                 in
+                 Option.Some (v_idx'2398))
+            with
+            | Option.Some (v_idx'1742) ->
+                v_idx'1742
+            | Option.None ->
+                (Obj.magic
+                   (Obj.magic
+                      v_defaultCase'2392
+                      ()))))
+    | CPrefixP'1709 v_x'2399 ->
         (Obj.magic
            (match
               Obj.magic
@@ -3205,7 +3230,7 @@ let v__opIdxP =
                      v_node'1740
                  in
                  let
-                   CRec'2283 ({lidx = v_idx'2401})
+                   CRec'2284 ({lidx = v_idx'2401})
                  =
                    Obj.magic
                      Obj.magic
@@ -3213,14 +3238,14 @@ let v__opIdxP =
                  in
                  Option.Some (v_idx'2401))
             with
-            | Option.Some (v_idx'1742) ->
-                v_idx'1742
+            | Option.Some (v_idx'1743) ->
+                v_idx'1743
             | Option.None ->
                 (Obj.magic
                    (Obj.magic
-                      v_defaultCase'2395
+                      v_defaultCase'2392
                       ()))))
-    | CPrefixP'1709 v_x'2402 ->
+    | CPostfixP'1710 v_x'2402 ->
         (Obj.magic
            (match
               Obj.magic
@@ -3230,7 +3255,7 @@ let v__opIdxP =
                      v_node'1740
                  in
                  let
-                   CRec'2284 ({lidx = v_idx'2404})
+                   CRec'2303 ({lidx = v_idx'2404})
                  =
                    Obj.magic
                      Obj.magic
@@ -3238,47 +3263,22 @@ let v__opIdxP =
                  in
                  Option.Some (v_idx'2404))
             with
-            | Option.Some (v_idx'1743) ->
-                v_idx'1743
-            | Option.None ->
-                (Obj.magic
-                   (Obj.magic
-                      v_defaultCase'2395
-                      ()))))
-    | CPostfixP'1710 v_x'2405 ->
-        (Obj.magic
-           (match
-              Obj.magic
-                (let v__target'2406 =
-                   Obj.magic
-                     Obj.magic
-                     v_node'1740
-                 in
-                 let
-                   CRec'2303 ({lidx = v_idx'2407})
-                 =
-                   Obj.magic
-                     Obj.magic
-                     v__target'2406
-                 in
-                 Option.Some (v_idx'2407))
-            with
             | Option.Some (v_idx'1744) ->
                 v_idx'1744
             | Option.None ->
                 (Obj.magic
                    (Obj.magic
-                      v_defaultCase'2395
+                      v_defaultCase'2392
                       ()))))
     | _ ->
         (Obj.magic
-           (v_defaultCase'2395
+           (v_defaultCase'2392
               ()));;
 let v__opIdTD =
   fun v_data'1746 ->
     match
       Obj.magic
-        (let v__target'2408 =
+        (let v__target'2405 =
            v_data'1746
          in
          match
@@ -3286,41 +3286,41 @@ let v__opIdTD =
              match
                Obj.magic
                  Obj.magic
-                 v__target'2408
+                 v__target'2405
              with
-             | CInfixT'1712 v__n'2409 ->
+             | CInfixT'1712 v__n'2406 ->
                  (let
-                    CRec'2301 ({linput = v_input'2410})
+                    CRec'2301 ({linput = v_input'2407})
                   =
                     Obj.magic
                       Obj.magic
-                      v__target'2408
+                      v__target'2405
                   in
-                  Option.Some (v_input'2410))
+                  Option.Some (v_input'2407))
              | _ ->
                  (Obj.magic
                     Obj.magic
                     (Option.None))
            with
-           | Option.Some v__x'2413 ->
-               (Option.Some v__x'2413)
+           | Option.Some v__x'2410 ->
+               (Option.Some v__x'2410)
            | Option.None ->
                (Obj.magic
                   Obj.magic
                   (match
                      Obj.magic
                        Obj.magic
-                       v__target'2408
+                       v__target'2405
                    with
-                   | CPrefixT'1713 v__n'2411 ->
+                   | CPrefixT'1713 v__n'2408 ->
                        (let
-                          CRec'2308 ({linput = v_input'2412})
+                          CRec'2308 ({linput = v_input'2409})
                         =
                           Obj.magic
                             Obj.magic
-                            v__target'2408
+                            v__target'2405
                         in
-                        Option.Some (v_input'2412))
+                        Option.Some (v_input'2409))
                    | _ ->
                        (Obj.magic
                           Obj.magic
@@ -3343,7 +3343,7 @@ let v__opIdTD =
               "FILE \"/home/vipa/.local/lib/mcore/stdlib/parser/breakable.mc\" 308:4-308:9 ERROR: Reached a never term, which should be impossible in a well-typed program."));;
 let v__opIdT =
   fun v_node'1749 ->
-    let v_defaultCase'2414 =
+    let v_defaultCase'2411 =
       fun nv_ ->
         failwith
           "FILE \"/home/vipa/.local/lib/mcore/stdlib/parser/breakable.mc\" 316:4-316:9 ERROR: Reached a never term, which should be impossible in a well-typed program."
@@ -3352,22 +3352,22 @@ let v__opIdT =
       Obj.magic
         v_node'1749
     with
-    | CTentativeLeaf'1716 v_x'2415 ->
+    | CTentativeLeaf'1716 v_x'2412 ->
         (match
            Obj.magic
-             (let v__target'2416 =
+             (let v__target'2413 =
                 Obj.magic
                   Obj.magic
                   v_node'1749
               in
               let
-                CRec'2311 ({lnode = v_node'2417})
+                CRec'2311 ({lnode = v_node'2414})
               =
                 Obj.magic
                   Obj.magic
-                  v__target'2416
+                  v__target'2413
               in
-              Option.Some (v_node'2417))
+              Option.Some (v_node'2414))
          with
          | Option.Some (v_node'1750) ->
              (Obj.magic
@@ -3376,25 +3376,25 @@ let v__opIdT =
          | Option.None ->
              (Obj.magic
                 (Obj.magic
-                   v_defaultCase'2414
+                   v_defaultCase'2411
                    ())))
-    | CTentativeMid'1717 v_x'2418 ->
+    | CTentativeMid'1717 v_x'2415 ->
         (Obj.magic
            (match
               Obj.magic
-                (let v__target'2419 =
+                (let v__target'2416 =
                    Obj.magic
                      Obj.magic
                      v_node'1749
                  in
                  let
-                   CRec'2309 ({ltentativeData = v_tentativeData'2420})
+                   CRec'2309 ({ltentativeData = v_tentativeData'2417})
                  =
                    Obj.magic
                      Obj.magic
-                     v__target'2419
+                     v__target'2416
                  in
-                 Option.Some (v_tentativeData'2420))
+                 Option.Some (v_tentativeData'2417))
             with
             | Option.Some (v_data'1751) ->
                 (Obj.magic
@@ -3403,20 +3403,20 @@ let v__opIdT =
             | Option.None ->
                 (Obj.magic
                    (Obj.magic
-                      v_defaultCase'2414
+                      v_defaultCase'2411
                       ()))))
-    | CTentativeRoot'1718 v_x'2421 ->
+    | CTentativeRoot'1718 v_x'2418 ->
         (Obj.magic
            v__rootID)
     | _ ->
         (Obj.magic
-           (v_defaultCase'2414
+           (v_defaultCase'2411
               ()));;
 let v__addedNodesLeftChildren =
   fun v_node'1753 ->
     match
       Obj.magic
-        (let v__target'2422 =
+        (let v__target'2419 =
            v_node'1753
          in
          match
@@ -3424,41 +3424,41 @@ let v__addedNodesLeftChildren =
              match
                Obj.magic
                  Obj.magic
-                 v__target'2422
+                 v__target'2419
              with
-             | CTentativeRoot'1718 v__n'2423 ->
+             | CTentativeRoot'1718 v__n'2420 ->
                  (let
-                    CRec'2290 ({laddedNodesLeftChildren = v_addedNodesLeftChildren'2424})
+                    CRec'2290 ({laddedNodesLeftChildren = v_addedNodesLeftChildren'2421})
                   =
                     Obj.magic
                       Obj.magic
-                      v__target'2422
+                      v__target'2419
                   in
-                  Option.Some (v_addedNodesLeftChildren'2424))
+                  Option.Some (v_addedNodesLeftChildren'2421))
              | _ ->
                  (Obj.magic
                     Obj.magic
                     (Option.None))
            with
-           | Option.Some v__x'2427 ->
-               (Option.Some v__x'2427)
+           | Option.Some v__x'2424 ->
+               (Option.Some v__x'2424)
            | Option.None ->
                (Obj.magic
                   Obj.magic
                   (match
                      Obj.magic
                        Obj.magic
-                       v__target'2422
+                       v__target'2419
                    with
-                   | CTentativeMid'1717 v__n'2425 ->
+                   | CTentativeMid'1717 v__n'2422 ->
                        (let
-                          CRec'2309 ({laddedNodesLeftChildren = v_addedNodesLeftChildren'2426})
+                          CRec'2309 ({laddedNodesLeftChildren = v_addedNodesLeftChildren'2423})
                         =
                           Obj.magic
                             Obj.magic
-                            v__target'2422
+                            v__target'2419
                         in
-                        Option.Some (v_addedNodesLeftChildren'2426))
+                        Option.Some (v_addedNodesLeftChildren'2423))
                    | _ ->
                        (Obj.magic
                           Obj.magic
@@ -3481,7 +3481,7 @@ let v__addedNodesRightChildren =
   fun v_node'1756 ->
     match
       Obj.magic
-        (let v__target'2428 =
+        (let v__target'2425 =
            v_node'1756
          in
          match
@@ -3489,41 +3489,41 @@ let v__addedNodesRightChildren =
              match
                Obj.magic
                  Obj.magic
-                 v__target'2428
+                 v__target'2425
              with
-             | CTentativeRoot'1718 v__n'2429 ->
+             | CTentativeRoot'1718 v__n'2426 ->
                  (let
-                    CRec'2290 ({laddedNodesRightChildren = v_addedNodesRightChildren'2430})
+                    CRec'2290 ({laddedNodesRightChildren = v_addedNodesRightChildren'2427})
                   =
                     Obj.magic
                       Obj.magic
-                      v__target'2428
+                      v__target'2425
                   in
-                  Option.Some (v_addedNodesRightChildren'2430))
+                  Option.Some (v_addedNodesRightChildren'2427))
              | _ ->
                  (Obj.magic
                     Obj.magic
                     (Option.None))
            with
-           | Option.Some v__x'2433 ->
-               (Option.Some v__x'2433)
+           | Option.Some v__x'2430 ->
+               (Option.Some v__x'2430)
            | Option.None ->
                (Obj.magic
                   Obj.magic
                   (match
                      Obj.magic
                        Obj.magic
-                       v__target'2428
+                       v__target'2425
                    with
-                   | CTentativeMid'1717 v__n'2431 ->
+                   | CTentativeMid'1717 v__n'2428 ->
                        (let
-                          CRec'2309 ({laddedNodesRightChildren = v_addedNodesRightChildren'2432})
+                          CRec'2309 ({laddedNodesRightChildren = v_addedNodesRightChildren'2429})
                         =
                           Obj.magic
                             Obj.magic
-                            v__target'2428
+                            v__target'2425
                         in
-                        Option.Some (v_addedNodesRightChildren'2432))
+                        Option.Some (v_addedNodesRightChildren'2429))
                    | _ ->
                        (Obj.magic
                           Obj.magic
@@ -3545,7 +3545,7 @@ let v__addedNodesRightChildren =
 let v_breakableInAllowSet =
   fun v_id'1759 ->
     fun v_set'1760 ->
-      let v_defaultCase'2434 =
+      let v_defaultCase'2431 =
         fun nv_ ->
           failwith
             "FILE \"/home/vipa/.local/lib/mcore/stdlib/parser/breakable.mc\" 339:4-339:9 ERROR: Reached a never term, which should be impossible in a well-typed program."
@@ -3554,22 +3554,22 @@ let v_breakableInAllowSet =
         Obj.magic
           v_set'1760
       with
-      | CAllowSet'1685 v_x'2435 ->
+      | CAllowSet'1685 v_x'2432 ->
           (let v_s'1761 =
              Obj.magic
                Obj.magic
-               v_x'2435
+               v_x'2432
            in
            Obj.magic
              Boot.Intrinsics.Mmap.mem
              v_id'1759
              v_s'1761)
-      | CDisallowSet'1686 v_x'2436 ->
+      | CDisallowSet'1686 v_x'2433 ->
           (Obj.magic
              (let v_s'1762 =
                 Obj.magic
                   Obj.magic
-                  v_x'2436
+                  v_x'2433
               in
               Obj.magic
                 v_not
@@ -3579,12 +3579,12 @@ let v_breakableInAllowSet =
                    v_s'1762)))
       | _ ->
           (Obj.magic
-             (v_defaultCase'2434
+             (v_defaultCase'2431
                 ()));;
 let v_breakableInsertAllowSet =
   fun v_id'1764 ->
     fun v_set'1765 ->
-      let v_defaultCase'2437 =
+      let v_defaultCase'2434 =
         fun nv_ ->
           failwith
             "FILE \"/home/vipa/.local/lib/mcore/stdlib/parser/breakable.mc\" 348:4-348:9 ERROR: Reached a never term, which should be impossible in a well-typed program."
@@ -3593,11 +3593,11 @@ let v_breakableInsertAllowSet =
         Obj.magic
           v_set'1765
       with
-      | CAllowSet'1685 v_x'2438 ->
+      | CAllowSet'1685 v_x'2435 ->
           (let v_s'1766 =
              Obj.magic
                Obj.magic
-               v_x'2438
+               v_x'2435
            in
            CAllowSet'1685 (Obj.repr
               (Obj.magic
@@ -3605,12 +3605,12 @@ let v_breakableInsertAllowSet =
                  v_id'1764
                  ()
                  v_s'1766)))
-      | CDisallowSet'1686 v_x'2439 ->
+      | CDisallowSet'1686 v_x'2436 ->
           (Obj.magic
              (let v_s'1767 =
                 Obj.magic
                   Obj.magic
-                  v_x'2439
+                  v_x'2436
               in
               CDisallowSet'1686 (Obj.repr
                  (Obj.magic
@@ -3620,12 +3620,12 @@ let v_breakableInsertAllowSet =
                     v_s'1767))))
       | _ ->
           (Obj.magic
-             (v_defaultCase'2437
+             (v_defaultCase'2434
                 ()));;
 let v_breakableRemoveAllowSet =
   fun v_id'1769 ->
     fun v_set'1770 ->
-      let v_defaultCase'2440 =
+      let v_defaultCase'2437 =
         fun nv_ ->
           failwith
             "FILE \"/home/vipa/.local/lib/mcore/stdlib/parser/breakable.mc\" 357:4-357:9 ERROR: Reached a never term, which should be impossible in a well-typed program."
@@ -3634,23 +3634,23 @@ let v_breakableRemoveAllowSet =
         Obj.magic
           v_set'1770
       with
-      | CAllowSet'1685 v_x'2441 ->
+      | CAllowSet'1685 v_x'2438 ->
           (let v_s'1771 =
              Obj.magic
                Obj.magic
-               v_x'2441
+               v_x'2438
            in
            CAllowSet'1685 (Obj.repr
               (Obj.magic
                  Boot.Intrinsics.Mmap.remove
                  v_id'1769
                  v_s'1771)))
-      | CDisallowSet'1686 v_x'2442 ->
+      | CDisallowSet'1686 v_x'2439 ->
           (Obj.magic
              (let v_s'1772 =
                 Obj.magic
                   Obj.magic
-                  v_x'2442
+                  v_x'2439
               in
               CDisallowSet'1686 (Obj.repr
                  (Obj.magic
@@ -3659,7 +3659,7 @@ let v_breakableRemoveAllowSet =
                     v_s'1772))))
       | _ ->
           (Obj.magic
-             (v_defaultCase'2440
+             (v_defaultCase'2437
                 ()));;
 let v_breakableMapAllowSet =
   fun v_f'1774 ->
@@ -3673,12 +3673,12 @@ let v_breakableMapAllowSet =
               (Obj.magic
                  Boot.Intrinsics.Mseq.map
                  (fun v_x'1778 ->
-                    CRec'2318 { l0 =
+                    CRec'2315 { l0 =
                         (Obj.repr
                           (Obj.magic
                              v_f'1774
                              (let
-                                CRec'2318 ({l0 = v_X'1779})
+                                CRec'2315 ({l0 = v_X'1779})
                               =
                                 Obj.magic
                                   v_x'1778
@@ -3692,7 +3692,7 @@ let v_breakableMapAllowSet =
                     Boot.Intrinsics.Mmap.bindings
                     v_s'1777))
         in
-        let v_defaultCase'2443 =
+        let v_defaultCase'2440 =
           fun nv_ ->
             failwith
               "FILE \"/home/vipa/.local/lib/mcore/stdlib/parser/breakable.mc\" 368:4-368:9 ERROR: Reached a never term, which should be impossible in a well-typed program."
@@ -3701,22 +3701,22 @@ let v_breakableMapAllowSet =
           Obj.magic
             v_s'1776
         with
-        | CAllowSet'1685 v_x'2444 ->
+        | CAllowSet'1685 v_x'2441 ->
             (let v_s'1781 =
                Obj.magic
                  Obj.magic
-                 v_x'2444
+                 v_x'2441
              in
              CAllowSet'1685 (Obj.repr
                 (Obj.magic
                    v_convert'1780
                    v_s'1781)))
-        | CDisallowSet'1686 v_x'2445 ->
+        | CDisallowSet'1686 v_x'2442 ->
             (Obj.magic
                (let v_s'1782 =
                   Obj.magic
                     Obj.magic
-                    v_x'2445
+                    v_x'2442
                 in
                 CDisallowSet'1686 (Obj.repr
                    (Obj.magic
@@ -3724,7 +3724,7 @@ let v_breakableMapAllowSet =
                       v_s'1782))))
         | _ ->
             (Obj.magic
-               (v_defaultCase'2443
+               (v_defaultCase'2440
                   ()));;
 let v_breakableGenGrammar =
   fun v_cmp'1784 ->
@@ -3753,7 +3753,7 @@ let v_breakableGenGrammar =
       in
       let v_label'1796 =
         fun v_prod'1791 ->
-          let v_defaultCase'2446 =
+          let v_defaultCase'2443 =
             fun nv_ ->
               failwith
                 "FILE \"/home/vipa/.local/lib/mcore/stdlib/parser/breakable.mc\" 389:8-389:13 ERROR: Reached a never term, which should be impossible in a well-typed program."
@@ -3762,31 +3762,56 @@ let v_breakableGenGrammar =
             Obj.magic
               v_prod'1791
           with
-          | CBreakableAtom'1688 v_x'2447 ->
+          | CBreakableAtom'1688 v_x'2444 ->
               (match
                  Obj.magic
-                   (let v__target'2448 =
+                   (let v__target'2445 =
                       Obj.magic
                         Obj.magic
                         v_prod'1791
                     in
                     let
-                      CRec'2270 ({llabel = v_label'2449})
+                      CRec'2270 ({llabel = v_label'2446})
                     =
                       Obj.magic
                         Obj.magic
-                        v__target'2448
+                        v__target'2445
                     in
-                    Option.Some (v_label'2449))
+                    Option.Some (v_label'2446))
                with
                | Option.Some (v_label'1792) ->
                    v_label'1792
                | Option.None ->
                    (Obj.magic
                       (Obj.magic
-                         v_defaultCase'2446
+                         v_defaultCase'2443
                          ())))
-          | CBreakableInfix'1689 v_x'2450 ->
+          | CBreakableInfix'1689 v_x'2447 ->
+              (Obj.magic
+                 (match
+                    Obj.magic
+                      (let v__target'2448 =
+                         Obj.magic
+                           Obj.magic
+                           v_prod'1791
+                       in
+                       let
+                         CRec'2271 ({llabel = v_label'2449})
+                       =
+                         Obj.magic
+                           Obj.magic
+                           v__target'2448
+                       in
+                       Option.Some (v_label'2449))
+                  with
+                  | Option.Some (v_label'1794) ->
+                      v_label'1794
+                  | Option.None ->
+                      (Obj.magic
+                         (Obj.magic
+                            v_defaultCase'2443
+                            ()))))
+          | CBreakablePrefix'1690 v_x'2450 ->
               (Obj.magic
                  (match
                     Obj.magic
@@ -3796,7 +3821,7 @@ let v_breakableGenGrammar =
                            v_prod'1791
                        in
                        let
-                         CRec'2317 ({llabel = v_label'2452})
+                         CRec'2272 ({llabel = v_label'2452})
                        =
                          Obj.magic
                            Obj.magic
@@ -3804,14 +3829,14 @@ let v_breakableGenGrammar =
                        in
                        Option.Some (v_label'2452))
                   with
-                  | Option.Some (v_label'1794) ->
-                      v_label'1794
+                  | Option.Some (v_label'1793) ->
+                      v_label'1793
                   | Option.None ->
                       (Obj.magic
                          (Obj.magic
-                            v_defaultCase'2446
+                            v_defaultCase'2443
                             ()))))
-          | CBreakablePrefix'1690 v_x'2453 ->
+          | CBreakablePostfix'1691 v_x'2453 ->
               (Obj.magic
                  (match
                     Obj.magic
@@ -3821,7 +3846,7 @@ let v_breakableGenGrammar =
                            v_prod'1791
                        in
                        let
-                         CRec'2315 ({llabel = v_label'2455})
+                         CRec'2273 ({llabel = v_label'2455})
                        =
                          Obj.magic
                            Obj.magic
@@ -3829,41 +3854,16 @@ let v_breakableGenGrammar =
                        in
                        Option.Some (v_label'2455))
                   with
-                  | Option.Some (v_label'1793) ->
-                      v_label'1793
-                  | Option.None ->
-                      (Obj.magic
-                         (Obj.magic
-                            v_defaultCase'2446
-                            ()))))
-          | CBreakablePostfix'1691 v_x'2456 ->
-              (Obj.magic
-                 (match
-                    Obj.magic
-                      (let v__target'2457 =
-                         Obj.magic
-                           Obj.magic
-                           v_prod'1791
-                       in
-                       let
-                         CRec'2316 ({llabel = v_label'2458})
-                       =
-                         Obj.magic
-                           Obj.magic
-                           v__target'2457
-                       in
-                       Option.Some (v_label'2458))
-                  with
                   | Option.Some (v_label'1795) ->
                       v_label'1795
                   | Option.None ->
                       (Obj.magic
                          (Obj.magic
-                            v_defaultCase'2446
+                            v_defaultCase'2443
                             ()))))
           | _ ->
               (Obj.magic
-                 (v_defaultCase'2446
+                 (v_defaultCase'2443
                     ()))
       in
       let v_prodLabelToOpId'1799 =
@@ -3873,7 +3873,7 @@ let v_breakableGenGrammar =
           (Obj.magic
              Boot.Intrinsics.Mseq.map
              (fun v_prod'1797 ->
-                CRec'2318 { l0 =
+                CRec'2315 { l0 =
                     (Obj.repr
                       (Obj.magic
                          v_label'1796
@@ -3906,24 +3906,24 @@ let v_breakableGenGrammar =
              fun v_grouping'1803 ->
                match
                  Obj.magic
-                   (let v__target'2459 =
+                   (let v__target'2456 =
                       v_grouping'1803
                     in
                     let
-                      CRec'2318 ({l0 = v_0'2460;l1 = v_1'2461})
+                      CRec'2315 ({l0 = v_0'2457;l1 = v_1'2458})
                     =
                       Obj.magic
                         Obj.magic
-                        v__target'2459
+                        v__target'2456
                     in
                     let
-                      CRec'2318 ({l0 = v_0'2462;l1 = v_1'2463})
+                      CRec'2315 ({l0 = v_0'2459;l1 = v_1'2460})
                     =
                       Obj.magic
                         Obj.magic
-                        v_0'2460
+                        v_0'2457
                     in
-                    Option.Some (v_0'2462, v_1'2463, v_1'2461))
+                    Option.Some (v_0'2459, v_1'2460, v_1'2458))
                with
                | Option.Some (v_lplab'1804, v_rplab'1805, v_grouping'1806) ->
                    (let v_lid'1807 =
@@ -3939,7 +3939,7 @@ let v_breakableGenGrammar =
                     let v_prev'1810 =
                       match
                         Obj.magic
-                          (let v__target'2464 =
+                          (let v__target'2461 =
                              Obj.magic
                                v_mapLookup
                                v_rid'1808
@@ -3948,10 +3948,10 @@ let v_breakableGenGrammar =
                            match
                              Obj.magic
                                Obj.magic
-                               v__target'2464
+                               v__target'2461
                            with
-                           | CSome'1610 v__n'2465 ->
-                               (Option.Some (v__n'2465))
+                           | CSome'1610 v__n'2462 ->
+                               (Option.Some (v__n'2462))
                            | _ ->
                                (Obj.magic
                                   Obj.magic
@@ -3994,7 +3994,7 @@ let v_breakableGenGrammar =
         fun v_opid'1813 ->
           match
             Obj.magic
-              (let v__target'2466 =
+              (let v__target'2463 =
                  Obj.magic
                    v_mapLookup
                    v_opid'1813
@@ -4003,10 +4003,10 @@ let v_breakableGenGrammar =
                match
                  Obj.magic
                    Obj.magic
-                   v__target'2466
+                   v__target'2463
                with
-               | CSome'1610 v__n'2467 ->
-                   (Option.Some (v__n'2467))
+               | CSome'1610 v__n'2464 ->
+                   (Option.Some (v__n'2464))
                | _ ->
                    (Obj.magic
                       Obj.magic
@@ -4082,7 +4082,7 @@ let v_breakableGenGrammar =
                  v_toOpId'1801
                  v_label'1825
              in
-             let v_defaultCase'2468 =
+             let v_defaultCase'2465 =
                fun nv_ ->
                  failwith
                    "FILE \"/home/vipa/.local/lib/mcore/stdlib/parser/breakable.mc\" 445:13-445:18 ERROR: Reached a never term, which should be impossible in a well-typed program."
@@ -4091,22 +4091,22 @@ let v_breakableGenGrammar =
                Obj.magic
                  v_prod'1824
              with
-             | CBreakableAtom'1688 v_x'2469 ->
+             | CBreakableAtom'1688 v_x'2466 ->
                  (match
                     Obj.magic
-                      (let v__target'2470 =
+                      (let v__target'2467 =
                          Obj.magic
                            Obj.magic
                            v_prod'1824
                        in
                        let
-                         CRec'2270 ({lconstruct = v_construct'2471})
+                         CRec'2270 ({lconstruct = v_construct'2468})
                        =
                          Obj.magic
                            Obj.magic
-                           v__target'2470
+                           v__target'2467
                        in
-                       Option.Some (v_construct'2471))
+                       Option.Some (v_construct'2468))
                   with
                   | Option.Some (v_construct'1827) ->
                       (Obj.magic
@@ -4114,7 +4114,7 @@ let v_breakableGenGrammar =
                          v_atoms'1816
                          (Obj.magic
                             Boot.Intrinsics.Mseq.cons
-                            (CRec'2318 { l0 =
+                            (CRec'2315 { l0 =
                                  (Obj.repr
                                    v_label'1825);
                                l1 =
@@ -4128,25 +4128,25 @@ let v_breakableGenGrammar =
                   | Option.None ->
                       (Obj.magic
                          (Obj.magic
-                            v_defaultCase'2468
+                            v_defaultCase'2465
                             ())))
-             | CBreakableInfix'1689 v_x'2472 ->
+             | CBreakableInfix'1689 v_x'2469 ->
                  (Obj.magic
                     (match
                        Obj.magic
-                         (let v__target'2473 =
+                         (let v__target'2470 =
                             Obj.magic
                               Obj.magic
                               v_prod'1824
                           in
                           let
-                            CRec'2317 ({lconstruct = v_construct'2474;lleftAllow = v_leftAllow'2475;lrightAllow = v_rightAllow'2476})
+                            CRec'2271 ({lconstruct = v_construct'2471;lleftAllow = v_leftAllow'2472;lrightAllow = v_rightAllow'2473})
                           =
                             Obj.magic
                               Obj.magic
-                              v__target'2473
+                              v__target'2470
                           in
-                          Option.Some (v_construct'2474, v_leftAllow'2475, v_rightAllow'2476))
+                          Option.Some (v_construct'2471, v_leftAllow'2472, v_rightAllow'2473))
                      with
                      | Option.Some (v_c'1831, v_l'1832, v_r'1833) ->
                          (let v_l'1834 =
@@ -4173,7 +4173,7 @@ let v_breakableGenGrammar =
                             v_infixes'1818
                             (Obj.magic
                                Boot.Intrinsics.Mseq.cons
-                               (CRec'2318 { l0 =
+                               (CRec'2315 { l0 =
                                     (Obj.repr
                                       v_label'1825);
                                   l1 =
@@ -4196,25 +4196,25 @@ let v_breakableGenGrammar =
                      | Option.None ->
                          (Obj.magic
                             (Obj.magic
-                               v_defaultCase'2468
+                               v_defaultCase'2465
                                ()))))
-             | CBreakablePrefix'1690 v_x'2477 ->
+             | CBreakablePrefix'1690 v_x'2474 ->
                  (Obj.magic
                     (match
                        Obj.magic
-                         (let v__target'2478 =
+                         (let v__target'2475 =
                             Obj.magic
                               Obj.magic
                               v_prod'1824
                           in
                           let
-                            CRec'2315 ({lconstruct = v_construct'2479;lrightAllow = v_rightAllow'2480})
+                            CRec'2272 ({lconstruct = v_construct'2476;lrightAllow = v_rightAllow'2477})
                           =
                             Obj.magic
                               Obj.magic
-                              v__target'2478
+                              v__target'2475
                           in
-                          Option.Some (v_construct'2479, v_rightAllow'2480))
+                          Option.Some (v_construct'2476, v_rightAllow'2477))
                      with
                      | Option.Some (v_c'1828, v_r'1829) ->
                          (let v_r'1830 =
@@ -4229,7 +4229,7 @@ let v_breakableGenGrammar =
                             v_prefixes'1817
                             (Obj.magic
                                Boot.Intrinsics.Mseq.cons
-                               (CRec'2318 { l0 =
+                               (CRec'2315 { l0 =
                                     (Obj.repr
                                       v_label'1825);
                                   l1 =
@@ -4246,25 +4246,25 @@ let v_breakableGenGrammar =
                      | Option.None ->
                          (Obj.magic
                             (Obj.magic
-                               v_defaultCase'2468
+                               v_defaultCase'2465
                                ()))))
-             | CBreakablePostfix'1691 v_x'2481 ->
+             | CBreakablePostfix'1691 v_x'2478 ->
                  (Obj.magic
                     (match
                        Obj.magic
-                         (let v__target'2482 =
+                         (let v__target'2479 =
                             Obj.magic
                               Obj.magic
                               v_prod'1824
                           in
                           let
-                            CRec'2316 ({lconstruct = v_construct'2483;lleftAllow = v_leftAllow'2484})
+                            CRec'2273 ({lconstruct = v_construct'2480;lleftAllow = v_leftAllow'2481})
                           =
                             Obj.magic
                               Obj.magic
-                              v__target'2482
+                              v__target'2479
                           in
-                          Option.Some (v_construct'2483, v_leftAllow'2484))
+                          Option.Some (v_construct'2480, v_leftAllow'2481))
                      with
                      | Option.Some (v_c'1837, v_l'1838) ->
                          (let v_l'1839 =
@@ -4284,7 +4284,7 @@ let v_breakableGenGrammar =
                             v_postfixes'1819
                             (Obj.magic
                                Boot.Intrinsics.Mseq.cons
-                               (CRec'2318 { l0 =
+                               (CRec'2315 { l0 =
                                     (Obj.repr
                                       v_label'1825);
                                   l1 =
@@ -4304,11 +4304,11 @@ let v_breakableGenGrammar =
                      | Option.None ->
                          (Obj.magic
                             (Obj.magic
-                               v_defaultCase'2468
+                               v_defaultCase'2465
                                ()))))
              | _ ->
                  (Obj.magic
-                    (v_defaultCase'2468
+                    (v_defaultCase'2465
                        ())))
       in
       CRec'2281 { latoms =
@@ -4358,7 +4358,7 @@ let v_breakableInitState =
     let v_addedLeft'1846 =
       Obj.magic
         ref
-        (CRec'2318 { l0 =
+        (CRec'2315 { l0 =
              (Obj.repr
                v__firstTimeStep);
            l1 =
@@ -4372,7 +4372,7 @@ let v_breakableInitState =
     let v_addedRight'1847 =
       Obj.magic
         ref
-        (CRec'2318 { l0 =
+        (CRec'2315 { l0 =
              (Obj.repr
                v__firstTimeStep);
            l1 =
@@ -4400,7 +4400,7 @@ let v_breakableInitState =
                         v_addedRight'1847) })) |])) };;
 let rec v__maxDistanceFromRoot =
     fun v_n'1850 ->
-      let v_defaultCase'2485 =
+      let v_defaultCase'2482 =
         fun nv_ ->
           let v_'1854 =
             Obj.magic
@@ -4414,22 +4414,22 @@ let rec v__maxDistanceFromRoot =
         Obj.magic
           v_n'1850
       with
-      | CTentativeLeaf'1716 v_x'2486 ->
+      | CTentativeLeaf'1716 v_x'2483 ->
           (match
              Obj.magic
-               (let v__target'2487 =
+               (let v__target'2484 =
                   Obj.magic
                     Obj.magic
                     v_n'1850
                 in
                 let
-                  CRec'2311 ({lparents = v_parents'2488})
+                  CRec'2311 ({lparents = v_parents'2485})
                 =
                   Obj.magic
                     Obj.magic
-                    v__target'2487
+                    v__target'2484
                 in
-                Option.Some (v_parents'2488))
+                Option.Some (v_parents'2485))
            with
            | Option.Some (v_parents'1852) ->
                (Obj.magic
@@ -4444,62 +4444,62 @@ let rec v__maxDistanceFromRoot =
            | Option.None ->
                (Obj.magic
                   (Obj.magic
-                     v_defaultCase'2485
+                     v_defaultCase'2482
                      ())))
-      | CTentativeMid'1717 v_x'2489 ->
+      | CTentativeMid'1717 v_x'2486 ->
           (Obj.magic
              (match
                 Obj.magic
-                  (let v__target'2490 =
+                  (let v__target'2487 =
                      Obj.magic
                        Obj.magic
                        v_n'1850
                    in
                    let
-                     CRec'2309 ({lmaxDistanceFromRoot = v_maxDistanceFromRoot'2491})
+                     CRec'2309 ({lmaxDistanceFromRoot = v_maxDistanceFromRoot'2488})
                    =
                      Obj.magic
                        Obj.magic
-                       v__target'2490
+                       v__target'2487
                    in
-                   Option.Some (v_maxDistanceFromRoot'2491))
+                   Option.Some (v_maxDistanceFromRoot'2488))
               with
               | Option.Some (v_r'1851) ->
                   v_r'1851
               | Option.None ->
                   (Obj.magic
                      (Obj.magic
-                        v_defaultCase'2485
+                        v_defaultCase'2482
                         ()))))
-      | CTentativeRoot'1718 v_x'2492 ->
+      | CTentativeRoot'1718 v_x'2489 ->
           (Obj.magic
              0)
       | _ ->
           (Obj.magic
-             (v_defaultCase'2485
+             (v_defaultCase'2482
                 ()));;
 let v__shallowAllowedLeft =
   fun v_parent'1855 ->
     fun v_child'1856 ->
       match
         Obj.magic
-          (let v__target'2493 =
+          (let v__target'2490 =
              v_child'1856
            in
            match
              Obj.magic
                Obj.magic
-               v__target'2493
+               v__target'2490
            with
-           | CTentativeLeaf'1716 v__n'2494 ->
+           | CTentativeLeaf'1716 v__n'2491 ->
                (let
-                  CRec'2311 ({lnode = v_node'2495})
+                  CRec'2311 ({lnode = v_node'2492})
                 =
                   Obj.magic
                     Obj.magic
-                    v__target'2493
+                    v__target'2490
                 in
-                Option.Some (v_node'2495))
+                Option.Some (v_node'2492))
            | _ ->
                (Obj.magic
                   Obj.magic
@@ -4508,7 +4508,7 @@ let v__shallowAllowedLeft =
       | Option.Some (v_node'1857) ->
           (match
              Obj.magic
-               (let v__target'2496 =
+               (let v__target'2493 =
                   v_parent'1855
                 in
                 match
@@ -4516,41 +4516,41 @@ let v__shallowAllowedLeft =
                     match
                       Obj.magic
                         Obj.magic
-                        v__target'2496
+                        v__target'2493
                     with
-                    | CInfixI'1702 v__n'2497 ->
+                    | CInfixI'1702 v__n'2494 ->
                         (let
-                           CRec'2297 ({lleftAllow = v_leftAllow'2498})
+                           CRec'2297 ({lleftAllow = v_leftAllow'2495})
                          =
                            Obj.magic
                              Obj.magic
-                             v__target'2496
+                             v__target'2493
                          in
-                         Option.Some (v_leftAllow'2498))
+                         Option.Some (v_leftAllow'2495))
                     | _ ->
                         (Obj.magic
                            Obj.magic
                            (Option.None))
                   with
-                  | Option.Some v__x'2501 ->
-                      (Option.Some v__x'2501)
+                  | Option.Some v__x'2498 ->
+                      (Option.Some v__x'2498)
                   | Option.None ->
                       (Obj.magic
                          Obj.magic
                          (match
                             Obj.magic
                               Obj.magic
-                              v__target'2496
+                              v__target'2493
                           with
-                          | CPostfixI'1704 v__n'2499 ->
+                          | CPostfixI'1704 v__n'2496 ->
                               (let
-                                 CRec'2298 ({lleftAllow = v_leftAllow'2500})
+                                 CRec'2298 ({lleftAllow = v_leftAllow'2497})
                                =
                                  Obj.magic
                                    Obj.magic
-                                   v__target'2496
+                                   v__target'2493
                                in
-                               Option.Some (v_leftAllow'2500))
+                               Option.Some (v_leftAllow'2497))
                           | _ ->
                               (Obj.magic
                                  Obj.magic
@@ -4591,30 +4591,30 @@ let v__shallowAllowedRight =
     fun v_child'1861 ->
       match
         Obj.magic
-          (let v__target'2502 =
+          (let v__target'2499 =
              v_child'1861
            in
            match
              Obj.magic
                Obj.magic
-               v__target'2502
+               v__target'2499
            with
-           | CTentativeLeaf'1716 v__n'2503 ->
+           | CTentativeLeaf'1716 v__n'2500 ->
                (let
-                  CRec'2311 ({lnode = v_node'2504})
+                  CRec'2311 ({lnode = v_node'2501})
                 =
                   Obj.magic
                     Obj.magic
-                    v__target'2502
+                    v__target'2499
                 in
-                Option.Some (v_node'2504))
+                Option.Some (v_node'2501))
            | _ ->
                (Obj.magic
                   Obj.magic
                   (Option.None)))
       with
       | Option.Some (v_node'1862) ->
-          (let v_defaultCase'2505 =
+          (let v_defaultCase'2502 =
              fun nv_ ->
                let v_'1864 =
                  Obj.magic
@@ -4628,50 +4628,50 @@ let v__shallowAllowedRight =
              Obj.magic
                v_parent'1860
            with
-           | CTentativeMid'1717 v_x'2506 ->
+           | CTentativeMid'1717 v_x'2503 ->
                (match
                   Obj.magic
-                    (let v__target'2507 =
+                    (let v__target'2504 =
                        Obj.magic
                          Obj.magic
                          v_parent'1860
                      in
                      let
-                       CRec'2309 ({ltentativeData = v_tentativeData'2508})
+                       CRec'2309 ({ltentativeData = v_tentativeData'2505})
                      =
                        Obj.magic
                          Obj.magic
-                         v__target'2507
+                         v__target'2504
                      in
                      match
                        match
                          match
                            Obj.magic
                              Obj.magic
-                             v_tentativeData'2508
+                             v_tentativeData'2505
                          with
-                         | CInfixT'1712 v__n'2509 ->
+                         | CInfixT'1712 v__n'2506 ->
                              (let
-                                CRec'2301 ({linput = v_input'2510})
+                                CRec'2301 ({linput = v_input'2507})
                               =
                                 Obj.magic
                                   Obj.magic
-                                  v_tentativeData'2508
+                                  v_tentativeData'2505
                               in
                               match
                                 Obj.magic
                                   Obj.magic
-                                  v_input'2510
+                                  v_input'2507
                               with
-                              | CInfixI'1702 v__n'2511 ->
+                              | CInfixI'1702 v__n'2508 ->
                                   (let
-                                     CRec'2297 ({lrightAllow = v_rightAllow'2512})
+                                     CRec'2297 ({lrightAllow = v_rightAllow'2509})
                                    =
                                      Obj.magic
                                        Obj.magic
-                                       v_input'2510
+                                       v_input'2507
                                    in
-                                   Option.Some (v_rightAllow'2512))
+                                   Option.Some (v_rightAllow'2509))
                               | _ ->
                                   (Obj.magic
                                      Obj.magic
@@ -4681,38 +4681,38 @@ let v__shallowAllowedRight =
                                 Obj.magic
                                 (Option.None))
                        with
-                       | Option.Some v__x'2517 ->
-                           (Option.Some v__x'2517)
+                       | Option.Some v__x'2514 ->
+                           (Option.Some v__x'2514)
                        | Option.None ->
                            (Obj.magic
                               Obj.magic
                               (match
                                  Obj.magic
                                    Obj.magic
-                                   v_tentativeData'2508
+                                   v_tentativeData'2505
                                with
-                               | CPrefixT'1713 v__n'2513 ->
+                               | CPrefixT'1713 v__n'2510 ->
                                    (let
-                                      CRec'2308 ({linput = v_input'2514})
+                                      CRec'2308 ({linput = v_input'2511})
                                     =
                                       Obj.magic
                                         Obj.magic
-                                        v_tentativeData'2508
+                                        v_tentativeData'2505
                                     in
                                     match
                                       Obj.magic
                                         Obj.magic
-                                        v_input'2514
+                                        v_input'2511
                                     with
-                                    | CPrefixI'1703 v__n'2515 ->
+                                    | CPrefixI'1703 v__n'2512 ->
                                         (let
-                                           CRec'2296 ({lrightAllow = v_rightAllow'2516})
+                                           CRec'2296 ({lrightAllow = v_rightAllow'2513})
                                          =
                                            Obj.magic
                                              Obj.magic
-                                             v_input'2514
+                                             v_input'2511
                                          in
-                                         Option.Some (v_rightAllow'2516))
+                                         Option.Some (v_rightAllow'2513))
                                     | _ ->
                                         (Obj.magic
                                            Obj.magic
@@ -4747,15 +4747,15 @@ let v__shallowAllowedRight =
                 | Option.None ->
                     (Obj.magic
                        (Obj.magic
-                          v_defaultCase'2505
+                          v_defaultCase'2502
                           ())))
-           | CTentativeRoot'1718 v_x'2518 ->
+           | CTentativeRoot'1718 v_x'2515 ->
                (Obj.magic
                   (CSome'1610 (Obj.repr
                       v_node'1862)))
            | _ ->
                (Obj.magic
-                  (v_defaultCase'2505
+                  (v_defaultCase'2502
                      ())))
       | Option.None ->
           (Obj.magic
@@ -4765,7 +4765,7 @@ let v__addRightChildren =
   fun v_st'1866 ->
     fun v_parent'1867 ->
       fun v_children'1868 ->
-        let v_defaultCase'2519 =
+        let v_defaultCase'2516 =
           fun nv_ ->
             failwith
               "FILE \"/home/vipa/.local/lib/mcore/stdlib/parser/breakable.mc\" 516:9-516:14 ERROR: Reached a never term, which should be impossible in a well-typed program."
@@ -4774,22 +4774,22 @@ let v__addRightChildren =
           Obj.magic
             v_parent'1867
         with
-        | CTentativeMid'1717 v_x'2520 ->
+        | CTentativeMid'1717 v_x'2517 ->
             (match
                Obj.magic
-                 (let v__target'2521 =
+                 (let v__target'2518 =
                     Obj.magic
                       Obj.magic
                       v_parent'1867
                   in
                   let
-                    CRec'2309 ({lparents = v_parents'2522;ltentativeData = v_tentativeData'2523})
+                    CRec'2309 ({lparents = v_parents'2519;ltentativeData = v_tentativeData'2520})
                   =
                     Obj.magic
                       Obj.magic
-                      v__target'2521
+                      v__target'2518
                   in
-                  Option.Some (v_parents'2522, v_tentativeData'2523))
+                  Option.Some (v_parents'2519, v_tentativeData'2520))
              with
              | Option.Some (v_parents'1869, v_data'1870) ->
                  (let v_id'1871 =
@@ -4798,7 +4798,7 @@ let v__addRightChildren =
                       ()
                   in
                   let v_node'1879 =
-                    let v_defaultCase'2524 =
+                    let v_defaultCase'2521 =
                       fun nv_ ->
                         failwith
                           "FILE \"/home/vipa/.local/lib/mcore/stdlib/parser/breakable.mc\" 512:13-512:18 ERROR: Reached a never term, which should be impossible in a well-typed program."
@@ -4807,22 +4807,22 @@ let v__addRightChildren =
                       Obj.magic
                         v_data'1870
                     with
-                    | CInfixT'1712 v_x'2525 ->
+                    | CInfixT'1712 v_x'2522 ->
                         (match
                            Obj.magic
-                             (let v__target'2526 =
+                             (let v__target'2523 =
                                 Obj.magic
                                   Obj.magic
                                   v_data'1870
                               in
                               let
-                                CRec'2301 ({lidx = v_idx'2527;linput = v_input'2528;lself = v_self'2529;lleftChildAlts = v_leftChildAlts'2530})
+                                CRec'2301 ({lidx = v_idx'2524;linput = v_input'2525;lself = v_self'2526;lleftChildAlts = v_leftChildAlts'2527})
                               =
                                 Obj.magic
                                   Obj.magic
-                                  v__target'2526
+                                  v__target'2523
                               in
-                              Option.Some (v_idx'2527, v_input'2528, v_self'2529, v_leftChildAlts'2530))
+                              Option.Some (v_idx'2524, v_input'2525, v_self'2526, v_leftChildAlts'2527))
                          with
                          | Option.Some (v_idx'1872, v_input'1873, v_self'1874, v_l'1875) ->
                              (CInfixP'1708 { lid =
@@ -4846,25 +4846,25 @@ let v__addRightChildren =
                          | Option.None ->
                              (Obj.magic
                                 (Obj.magic
-                                   v_defaultCase'2524
+                                   v_defaultCase'2521
                                    ())))
-                    | CPrefixT'1713 v_x'2531 ->
+                    | CPrefixT'1713 v_x'2528 ->
                         (Obj.magic
                            (match
                               Obj.magic
-                                (let v__target'2532 =
+                                (let v__target'2529 =
                                    Obj.magic
                                      Obj.magic
                                      v_data'1870
                                  in
                                  let
-                                   CRec'2308 ({lidx = v_idx'2533;linput = v_input'2534;lself = v_self'2535})
+                                   CRec'2308 ({lidx = v_idx'2530;linput = v_input'2531;lself = v_self'2532})
                                  =
                                    Obj.magic
                                      Obj.magic
-                                     v__target'2532
+                                     v__target'2529
                                  in
-                                 Option.Some (v_idx'2533, v_input'2534, v_self'2535))
+                                 Option.Some (v_idx'2530, v_input'2531, v_self'2532))
                             with
                             | Option.Some (v_idx'1876, v_input'1877, v_self'1878) ->
                                 (CPrefixP'1709 { lid =
@@ -4885,11 +4885,11 @@ let v__addRightChildren =
                             | Option.None ->
                                 (Obj.magic
                                    (Obj.magic
-                                      v_defaultCase'2524
+                                      v_defaultCase'2521
                                       ()))))
                     | _ ->
                         (Obj.magic
-                           (v_defaultCase'2524
+                           (v_defaultCase'2521
                               ()))
                   in
                   CTentativeLeaf'1716 { lparents =
@@ -4901,9 +4901,9 @@ let v__addRightChildren =
              | Option.None ->
                  (Obj.magic
                     (Obj.magic
-                       v_defaultCase'2519
+                       v_defaultCase'2516
                        ())))
-        | CTentativeRoot'1718 v_x'2536 ->
+        | CTentativeRoot'1718 v_x'2533 ->
             (Obj.magic
                (Obj.magic
                   Boot.Intrinsics.MSys.error
@@ -4963,7 +4963,7 @@ let v__addRightChildren =
                        (116) |])))
         | _ ->
             (Obj.magic
-               (v_defaultCase'2519
+               (v_defaultCase'2516
                   ()));;
 let v__addLeftChildren =
   fun v_st'1881 ->
@@ -4983,7 +4983,7 @@ let v__addLeftChildren =
                  Obj.magic
                    v_X'1886)
             in
-            let v_defaultCase'2537 =
+            let v_defaultCase'2534 =
               fun nv_ ->
                 failwith
                   "FILE \"/home/vipa/.local/lib/mcore/stdlib/parser/breakable.mc\" 544:9-544:14 ERROR: Reached a never term, which should be impossible in a well-typed program."
@@ -4992,7 +4992,7 @@ let v__addLeftChildren =
               Obj.magic
                 v_input'1882
             with
-            | CInfixI'1702 v_x'2538 ->
+            | CInfixI'1702 v_x'2535 ->
                 (let v_time'1889 =
                    Obj.magic
                      (!)
@@ -5008,7 +5008,7 @@ let v__addLeftChildren =
                  let v_addedLeft'1890 =
                    Obj.magic
                      ref
-                     (CRec'2318 { l0 =
+                     (CRec'2315 { l0 =
                           (Obj.repr
                             v__firstTimeStep);
                         l1 =
@@ -5022,7 +5022,7 @@ let v__addLeftChildren =
                  let v_addedRight'1891 =
                    Obj.magic
                      ref
-                     (CRec'2318 { l0 =
+                     (CRec'2315 { l0 =
                           (Obj.repr
                             v__firstTimeStep);
                         l1 =
@@ -5068,7 +5068,7 @@ let v__addLeftChildren =
                                 Boot.Intrinsics.Mseq.map
                                 v__maxDistanceFromRoot
                                 v_parents'1885)))) })
-            | CPostfixI'1704 v_x'2539 ->
+            | CPostfixI'1704 v_x'2536 ->
                 (Obj.magic
                    (let v_id'1893 =
                       Obj.magic
@@ -5097,7 +5097,7 @@ let v__addLeftChildren =
                                  v_leftChildren'1884) })) }))
             | _ ->
                 (Obj.magic
-                   (v_defaultCase'2537
+                   (v_defaultCase'2534
                       ()));;
 let v__addRightChildToParent =
   fun v_time'1895 ->
@@ -5110,19 +5110,19 @@ let v__addRightChildToParent =
         in
         match
           Obj.magic
-            (let v__target'2540 =
+            (let v__target'2537 =
                Obj.magic
                  (!)
                  v_target'1898
              in
              let
-               CRec'2318 ({l0 = v_0'2541;l1 = v_1'2542})
+               CRec'2315 ({l0 = v_0'2538;l1 = v_1'2539})
              =
                Obj.magic
                  Obj.magic
-                 v__target'2540
+                 v__target'2537
              in
-             Option.Some (v_0'2541, v_1'2542))
+             Option.Some (v_0'2538, v_1'2539))
         with
         | Option.Some (v_lastUpdate'1899, v_prev'1900) ->
             (if
@@ -5136,7 +5136,7 @@ let v__addRightChildToParent =
                  Obj.magic
                    (:=)
                    v_target'1898
-                   (CRec'2318 { l0 =
+                   (CRec'2315 { l0 =
                         (Obj.repr
                           v_time'1895);
                       l1 =
@@ -5154,7 +5154,7 @@ let v__addRightChildToParent =
                     Obj.magic
                       (:=)
                       v_target'1898
-                      (CRec'2318 { l0 =
+                      (CRec'2315 { l0 =
                            (Obj.repr
                              v_time'1895);
                          l1 =
@@ -5175,7 +5175,7 @@ let v__addLeftChildToParent =
       fun v_parents'1906 ->
         match
           Obj.magic
-            (let v__target'2543 =
+            (let v__target'2540 =
                v_parents'1906
              in
              if
@@ -5183,7 +5183,7 @@ let v__addLeftChildToParent =
                  ((<) : int -> int -> bool)
                  (Obj.magic
                     Boot.Intrinsics.Mseq.length
-                    v__target'2543)
+                    v__target'2540)
                  1
              then
                Option.None
@@ -5191,33 +5191,33 @@ let v__addLeftChildToParent =
                Obj.magic
                  Obj.magic
                  (let
-                    (v__prefix'2544, v__splitTemp'2545)
+                    (v__prefix'2541, v__splitTemp'2542)
                   =
                     Obj.magic
                       Boot.Intrinsics.Mseq.split_at
-                      v__target'2543
+                      v__target'2540
                       1
                   in
                   let
-                    (v__middle'2546, v__postfix'2547)
+                    (v__middle'2543, v__postfix'2544)
                   =
                     Obj.magic
                       Boot.Intrinsics.Mseq.split_at
-                      v__splitTemp'2545
+                      v__splitTemp'2542
                       (Obj.magic
                          Int.sub
                          (Obj.magic
                             Boot.Intrinsics.Mseq.length
-                            v__splitTemp'2545)
+                            v__splitTemp'2542)
                          0)
                   in
-                  let v__seqElem'2548 =
+                  let v__seqElem'2545 =
                     Obj.magic
                       Boot.Intrinsics.Mseq.get
-                      v__prefix'2544
+                      v__prefix'2541
                       0
                   in
-                  Option.Some (v__seqElem'2548)))
+                  Option.Some (v__seqElem'2545)))
         with
         | Option.Some (v_p'1907) ->
             (let v_target'1908 =
@@ -5227,19 +5227,19 @@ let v__addLeftChildToParent =
              in
              match
                Obj.magic
-                 (let v__target'2549 =
+                 (let v__target'2546 =
                     Obj.magic
                       (!)
                       v_target'1908
                   in
                   let
-                    CRec'2318 ({l0 = v_0'2550;l1 = v_1'2551})
+                    CRec'2315 ({l0 = v_0'2547;l1 = v_1'2548})
                   =
                     Obj.magic
                       Obj.magic
-                      v__target'2549
+                      v__target'2546
                   in
-                  Option.Some (v_0'2550, v_1'2551))
+                  Option.Some (v_0'2547, v_1'2548))
              with
              | Option.Some (v_lastUpdate'1909, v_prev'1910) ->
                  (if
@@ -5267,7 +5267,7 @@ let v__addLeftChildToParent =
                              (Obj.magic
                                 v__addedNodesLeftChildren
                                 v_p'1912)
-                             (CRec'2318 { l0 =
+                             (CRec'2315 { l0 =
                                   (Obj.repr
                                     v_time'1904);
                                 l1 =
@@ -5318,7 +5318,7 @@ let v__getOpGroup =
         Obj.magic
           (match
              Obj.magic
-               (let v__target'2552 =
+               (let v__target'2549 =
                   v_input'1916
                 in
                 match
@@ -5326,41 +5326,41 @@ let v__getOpGroup =
                     match
                       Obj.magic
                         Obj.magic
-                        v__target'2552
+                        v__target'2549
                     with
-                    | CInfixI'1702 v__n'2553 ->
+                    | CInfixI'1702 v__n'2550 ->
                         (let
-                           CRec'2297 ({lprecWhenThisIsRight = v_precWhenThisIsRight'2554})
+                           CRec'2297 ({lprecWhenThisIsRight = v_precWhenThisIsRight'2551})
                          =
                            Obj.magic
                              Obj.magic
-                             v__target'2552
+                             v__target'2549
                          in
-                         Option.Some (v_precWhenThisIsRight'2554))
+                         Option.Some (v_precWhenThisIsRight'2551))
                     | _ ->
                         (Obj.magic
                            Obj.magic
                            (Option.None))
                   with
-                  | Option.Some v__x'2557 ->
-                      (Option.Some v__x'2557)
+                  | Option.Some v__x'2554 ->
+                      (Option.Some v__x'2554)
                   | Option.None ->
                       (Obj.magic
                          Obj.magic
                          (match
                             Obj.magic
                               Obj.magic
-                              v__target'2552
+                              v__target'2549
                           with
-                          | CPostfixI'1704 v__n'2555 ->
+                          | CPostfixI'1704 v__n'2552 ->
                               (let
-                                 CRec'2298 ({lprecWhenThisIsRight = v_precWhenThisIsRight'2556})
+                                 CRec'2298 ({lprecWhenThisIsRight = v_precWhenThisIsRight'2553})
                                =
                                  Obj.magic
                                    Obj.magic
-                                   v__target'2552
+                                   v__target'2549
                                in
-                               Option.Some (v_precWhenThisIsRight'2556))
+                               Option.Some (v_precWhenThisIsRight'2553))
                           | _ ->
                               (Obj.magic
                                  Obj.magic
@@ -5376,7 +5376,7 @@ let v__getOpGroup =
            | Option.Some (v_prec'1918) ->
                (match
                   Obj.magic
-                    (let v__target'2558 =
+                    (let v__target'2555 =
                        Obj.magic
                          v_mapLookup
                          v_id'1917
@@ -5385,10 +5385,10 @@ let v__getOpGroup =
                      match
                        Obj.magic
                          Obj.magic
-                         v__target'2558
+                         v__target'2555
                      with
-                     | CSome'1610 v__n'2559 ->
-                         (Option.Some (v__n'2559))
+                     | CSome'1610 v__n'2556 ->
+                         (Option.Some (v__n'2556))
                      | _ ->
                          (Obj.magic
                             Obj.magic
@@ -5493,7 +5493,7 @@ let rec v__popFromQueue =
     fun v_queue'1941 ->
       match
         Obj.magic
-          (let v__target'2560 =
+          (let v__target'2557 =
              v_queue'1941
            in
            if
@@ -5501,7 +5501,7 @@ let rec v__popFromQueue =
                ((<) : int -> int -> bool)
                (Obj.magic
                   Boot.Intrinsics.Mseq.length
-                  v__target'2560)
+                  v__target'2557)
                1
            then
              Option.None
@@ -5509,33 +5509,33 @@ let rec v__popFromQueue =
              Obj.magic
                Obj.magic
                (let
-                  (v__prefix'2561, v__splitTemp'2562)
+                  (v__prefix'2558, v__splitTemp'2559)
                 =
                   Obj.magic
                     Boot.Intrinsics.Mseq.split_at
-                    v__target'2560
+                    v__target'2557
                     0
                 in
                 let
-                  (v__middle'2563, v__postfix'2564)
+                  (v__middle'2560, v__postfix'2561)
                 =
                   Obj.magic
                     Boot.Intrinsics.Mseq.split_at
-                    v__splitTemp'2562
+                    v__splitTemp'2559
                     (Obj.magic
                        Int.sub
                        (Obj.magic
                           Boot.Intrinsics.Mseq.length
-                          v__splitTemp'2562)
+                          v__splitTemp'2559)
                        1)
                 in
-                let v__seqElem'2565 =
+                let v__seqElem'2562 =
                   Obj.magic
                     Boot.Intrinsics.Mseq.get
-                    v__postfix'2564
+                    v__postfix'2561
                     0
                 in
-                Option.Some (v__middle'2563, v__seqElem'2565)))
+                Option.Some (v__middle'2560, v__seqElem'2562)))
       with
       | Option.Some (v_queue'1942, v_target'1943) ->
           (let v_nodes'1944 =
@@ -5545,7 +5545,7 @@ let rec v__popFromQueue =
            in
            match
              Obj.magic
-               (let v__target'2566 =
+               (let v__target'2563 =
                   v_nodes'1944
                 in
                 if
@@ -5553,7 +5553,7 @@ let rec v__popFromQueue =
                     ((<) : int -> int -> bool)
                     (Obj.magic
                        Boot.Intrinsics.Mseq.length
-                       v__target'2566)
+                       v__target'2563)
                     1
                 then
                   Option.None
@@ -5561,33 +5561,33 @@ let rec v__popFromQueue =
                   Obj.magic
                     Obj.magic
                     (let
-                       (v__prefix'2567, v__splitTemp'2568)
+                       (v__prefix'2564, v__splitTemp'2565)
                      =
                        Obj.magic
                          Boot.Intrinsics.Mseq.split_at
-                         v__target'2566
+                         v__target'2563
                          1
                      in
                      let
-                       (v__middle'2569, v__postfix'2570)
+                       (v__middle'2566, v__postfix'2567)
                      =
                        Obj.magic
                          Boot.Intrinsics.Mseq.split_at
-                         v__splitTemp'2568
+                         v__splitTemp'2565
                          (Obj.magic
                             Int.sub
                             (Obj.magic
                                Boot.Intrinsics.Mseq.length
-                               v__splitTemp'2568)
+                               v__splitTemp'2565)
                             0)
                      in
-                     let v__seqElem'2571 =
+                     let v__seqElem'2568 =
                        Obj.magic
                          Boot.Intrinsics.Mseq.get
-                         v__prefix'2567
+                         v__prefix'2564
                          0
                      in
-                     Option.Some (v__seqElem'2571, v__middle'2569)))
+                     Option.Some (v__seqElem'2568, v__middle'2566)))
            with
            | Option.Some (v_node'1945, v_nodes'1946) ->
                (let v_'1947 =
@@ -5642,7 +5642,7 @@ let v__addLOpen =
           fun v_parents'1955 ->
             match
               Obj.magic
-                (let v__target'2572 =
+                (let v__target'2569 =
                    v_parents'1955
                  in
                  if
@@ -5650,7 +5650,7 @@ let v__addLOpen =
                      ((<) : int -> int -> bool)
                      (Obj.magic
                         Boot.Intrinsics.Mseq.length
-                        v__target'2572)
+                        v__target'2569)
                      1
                  then
                    Option.None
@@ -5658,39 +5658,39 @@ let v__addLOpen =
                    Obj.magic
                      Obj.magic
                      (let
-                        (v__prefix'2573, v__splitTemp'2574)
+                        (v__prefix'2570, v__splitTemp'2571)
                       =
                         Obj.magic
                           Boot.Intrinsics.Mseq.split_at
-                          v__target'2572
+                          v__target'2569
                           1
                       in
                       let
-                        (v__middle'2575, v__postfix'2576)
+                        (v__middle'2572, v__postfix'2573)
                       =
                         Obj.magic
                           Boot.Intrinsics.Mseq.split_at
-                          v__splitTemp'2574
+                          v__splitTemp'2571
                           (Obj.magic
                              Int.sub
                              (Obj.magic
                                 Boot.Intrinsics.Mseq.length
-                                v__splitTemp'2574)
+                                v__splitTemp'2571)
                              0)
                       in
-                      let v__seqElem'2577 =
+                      let v__seqElem'2574 =
                         Obj.magic
                           Boot.Intrinsics.Mseq.get
-                          v__prefix'2573
+                          v__prefix'2570
                           0
                       in
-                      Option.Some (v__seqElem'2577)))
+                      Option.Some (v__seqElem'2574)))
             with
             | Option.Some (v_p'1956) ->
                 (let v_snd'1959 =
                    fun v_x'1957 ->
                      let
-                       CRec'2318 ({l1 = v_X'1958})
+                       CRec'2315 ({l1 = v_X'1958})
                      =
                        Obj.magic
                          v_x'1957
@@ -5711,7 +5711,7 @@ let v__addLOpen =
                  in
                  match
                    Obj.magic
-                     (let v__target'2578 =
+                     (let v__target'2575 =
                         v_cs'1960
                       in
                       if
@@ -5719,7 +5719,7 @@ let v__addLOpen =
                           ((<) : int -> int -> bool)
                           (Obj.magic
                              Boot.Intrinsics.Mseq.length
-                             v__target'2578)
+                             v__target'2575)
                           1
                       then
                         Option.None
@@ -5727,30 +5727,30 @@ let v__addLOpen =
                         Obj.magic
                           Obj.magic
                           (let
-                             (v__prefix'2579, v__splitTemp'2580)
+                             (v__prefix'2576, v__splitTemp'2577)
                            =
                              Obj.magic
                                Boot.Intrinsics.Mseq.split_at
-                               v__target'2578
+                               v__target'2575
                                1
                            in
                            let
-                             (v__middle'2581, v__postfix'2582)
+                             (v__middle'2578, v__postfix'2579)
                            =
                              Obj.magic
                                Boot.Intrinsics.Mseq.split_at
-                               v__splitTemp'2580
+                               v__splitTemp'2577
                                (Obj.magic
                                   Int.sub
                                   (Obj.magic
                                      Boot.Intrinsics.Mseq.length
-                                     v__splitTemp'2580)
+                                     v__splitTemp'2577)
                                   0)
                            in
-                           let v__seqElem'2583 =
+                           let v__seqElem'2580 =
                              Obj.magic
                                Boot.Intrinsics.Mseq.get
-                               v__prefix'2579
+                               v__prefix'2576
                                0
                            in
                            Option.Some ()))
@@ -5858,7 +5858,7 @@ let v__addLOpen =
             fun v_child'1963 ->
               match
                 Obj.magic
-                  (let v__target'2584 =
+                  (let v__target'2581 =
                      Obj.magic
                        v__getParents
                        v_child'1963
@@ -5866,10 +5866,10 @@ let v__addLOpen =
                    match
                      Obj.magic
                        Obj.magic
-                       v__target'2584
+                       v__target'2581
                    with
-                   | CSome'1610 v__n'2585 ->
-                       (Option.Some (v__n'2585))
+                   | CSome'1610 v__n'2582 ->
+                       (Option.Some (v__n'2582))
                    | _ ->
                        (Obj.magic
                           Obj.magic
@@ -5895,7 +5895,7 @@ let v__addLOpen =
                             Obj.magic
                               (match
                                  Obj.magic
-                                   (let v__target'2586 =
+                                   (let v__target'2583 =
                                       Obj.magic
                                         v__shallowAllowedRight
                                         v_parent'1965
@@ -5904,10 +5904,10 @@ let v__addLOpen =
                                     match
                                       Obj.magic
                                         Obj.magic
-                                        v__target'2586
+                                        v__target'2583
                                     with
-                                    | CSome'1610 v__n'2587 ->
-                                        (Option.Some (v__n'2587))
+                                    | CSome'1610 v__n'2584 ->
+                                        (Option.Some (v__n'2584))
                                     | _ ->
                                         (Obj.magic
                                            Obj.magic
@@ -5916,7 +5916,7 @@ let v__addLOpen =
                                | Option.Some (v_child'1966) ->
                                    (match
                                       Obj.magic
-                                        (let v__target'2588 =
+                                        (let v__target'2585 =
                                            Obj.magic
                                              v__addRightChildToParent
                                              v_time'1952
@@ -5926,10 +5926,10 @@ let v__addLOpen =
                                          match
                                            Obj.magic
                                              Obj.magic
-                                             v__target'2588
+                                             v__target'2585
                                          with
-                                         | CSome'1610 v__n'2589 ->
-                                             (Option.Some (v__n'2589))
+                                         | CSome'1610 v__n'2586 ->
+                                             (Option.Some (v__n'2586))
                                          | _ ->
                                              (Obj.magic
                                                 Obj.magic
@@ -5949,8 +5949,8 @@ let v__addLOpen =
                    in
                    match
                      Obj.magic
-                       (let v__target'2590 =
-                          CRec'2318 { l0 =
+                       (let v__target'2587 =
+                          CRec'2315 { l0 =
                               (Obj.repr
                                 (Obj.magic
                                    v__shallowAllowedLeft
@@ -5968,24 +5968,24 @@ let v__addLOpen =
                                    v_parents'1964)) }
                         in
                         let
-                          CRec'2318 ({l0 = v_0'2591;l1 = v_1'2592})
+                          CRec'2315 ({l0 = v_0'2588;l1 = v_1'2589})
                         =
                           Obj.magic
                             Obj.magic
-                            v__target'2590
+                            v__target'2587
                         in
                         match
                           Obj.magic
                             Obj.magic
-                            v_0'2591
+                            v_0'2588
                         with
-                        | CSome'1610 v__n'2593 ->
+                        | CSome'1610 v__n'2590 ->
                             (if
                                Obj.magic
                                  ((<) : int -> int -> bool)
                                  (Obj.magic
                                     Boot.Intrinsics.Mseq.length
-                                    v_1'2592)
+                                    v_1'2589)
                                  1
                              then
                                Option.None
@@ -5993,33 +5993,33 @@ let v__addLOpen =
                                Obj.magic
                                  Obj.magic
                                  (let
-                                    (v__prefix'2594, v__splitTemp'2595)
+                                    (v__prefix'2591, v__splitTemp'2592)
                                   =
                                     Obj.magic
                                       Boot.Intrinsics.Mseq.split_at
-                                      v_1'2592
+                                      v_1'2589
                                       1
                                   in
                                   let
-                                    (v__middle'2596, v__postfix'2597)
+                                    (v__middle'2593, v__postfix'2594)
                                   =
                                     Obj.magic
                                       Boot.Intrinsics.Mseq.split_at
-                                      v__splitTemp'2595
+                                      v__splitTemp'2592
                                       (Obj.magic
                                          Int.sub
                                          (Obj.magic
                                             Boot.Intrinsics.Mseq.length
-                                            v__splitTemp'2595)
+                                            v__splitTemp'2592)
                                          0)
                                   in
-                                  let v__seqElem'2598 =
+                                  let v__seqElem'2595 =
                                     Obj.magic
                                       Boot.Intrinsics.Mseq.get
-                                      v__prefix'2594
+                                      v__prefix'2591
                                       0
                                   in
-                                  Option.Some (v__n'2593, v_1'2592)))
+                                  Option.Some (v__n'2590, v_1'2589)))
                         | _ ->
                             (Obj.magic
                                Obj.magic
@@ -6044,7 +6044,7 @@ let v__addLOpen =
               fun v_acc'1975 ->
                 match
                   Obj.magic
-                    (let v__target'2599 =
+                    (let v__target'2596 =
                        Obj.magic
                          v__popFromQueue
                          v_queue'1974
@@ -6052,23 +6052,23 @@ let v__addLOpen =
                      match
                        Obj.magic
                          Obj.magic
-                         v__target'2599
+                         v__target'2596
                      with
-                     | CSome'1610 v__n'2600 ->
+                     | CSome'1610 v__n'2597 ->
                          (match
                             Obj.magic
                               Obj.magic
-                              v__n'2600
+                              v__n'2597
                           with
-                          | CTentativeMid'1717 v__n'2601 ->
+                          | CTentativeMid'1717 v__n'2598 ->
                               (let
-                                 CRec'2309 ({laddedNodesRightChildren = v_addedNodesRightChildren'2602})
+                                 CRec'2309 ({laddedNodesRightChildren = v_addedNodesRightChildren'2599})
                                =
                                  Obj.magic
                                    Obj.magic
-                                   v__n'2600
+                                   v__n'2597
                                in
-                               Option.Some (v__n'2600, v_addedNodesRightChildren'2602))
+                               Option.Some (v__n'2597, v_addedNodesRightChildren'2599))
                           | _ ->
                               (Obj.magic
                                  Obj.magic
@@ -6081,24 +6081,24 @@ let v__addLOpen =
                 | Option.Some (v_parent'1976, v_addedRight'1977) ->
                     (match
                        Obj.magic
-                         (let v__target'2603 =
+                         (let v__target'2600 =
                             Obj.magic
                               (!)
                               v_addedRight'1977
                           in
                           let
-                            CRec'2318 ({l0 = v_0'2604;l1 = v_1'2605})
+                            CRec'2315 ({l0 = v_0'2601;l1 = v_1'2602})
                           =
                             Obj.magic
                               Obj.magic
-                              v__target'2603
+                              v__target'2600
                           in
                           if
                             Obj.magic
                               ((<) : int -> int -> bool)
                               (Obj.magic
                                  Boot.Intrinsics.Mseq.length
-                                 v_1'2605)
+                                 v_1'2602)
                               1
                           then
                             Option.None
@@ -6106,39 +6106,39 @@ let v__addLOpen =
                             Obj.magic
                               Obj.magic
                               (let
-                                 (v__prefix'2606, v__splitTemp'2607)
+                                 (v__prefix'2603, v__splitTemp'2604)
                                =
                                  Obj.magic
                                    Boot.Intrinsics.Mseq.split_at
-                                   v_1'2605
+                                   v_1'2602
                                    1
                                in
                                let
-                                 (v__middle'2608, v__postfix'2609)
+                                 (v__middle'2605, v__postfix'2606)
                                =
                                  Obj.magic
                                    Boot.Intrinsics.Mseq.split_at
-                                   v__splitTemp'2607
+                                   v__splitTemp'2604
                                    (Obj.magic
                                       Int.sub
                                       (Obj.magic
                                          Boot.Intrinsics.Mseq.length
-                                         v__splitTemp'2607)
+                                         v__splitTemp'2604)
                                       0)
                                in
-                               let v__seqElem'2610 =
+                               let v__seqElem'2607 =
                                  Obj.magic
                                    Boot.Intrinsics.Mseq.get
-                                   v__prefix'2606
+                                   v__prefix'2603
                                    0
                                in
-                               Option.Some (v_1'2605)))
+                               Option.Some (v_1'2602)))
                      with
                      | Option.Some (v_children'1978) ->
                          (let v_acc'1980 =
                             match
                               Obj.magic
-                                (let v__target'2611 =
+                                (let v__target'2608 =
                                    Obj.magic
                                      v_handleLeaf'1972
                                      v_queue'1974
@@ -6151,10 +6151,10 @@ let v__addLOpen =
                                  match
                                    Obj.magic
                                      Obj.magic
-                                     v__target'2611
+                                     v__target'2608
                                  with
-                                 | CSome'1610 v__n'2612 ->
-                                     (Option.Some (v__n'2612))
+                                 | CSome'1610 v__n'2609 ->
+                                     (Option.Some (v__n'2609))
                                  | _ ->
                                      (Obj.magic
                                         Obj.magic
@@ -6294,7 +6294,7 @@ let v__addLOpen =
         in
         match
           Obj.magic
-            (let v__target'2613 =
+            (let v__target'2610 =
                Obj.magic
                  Boot.Intrinsics.Mseq.map
                  v_makeNewParents'1961
@@ -6305,7 +6305,7 @@ let v__addLOpen =
                  ((<) : int -> int -> bool)
                  (Obj.magic
                     Boot.Intrinsics.Mseq.length
-                    v__target'2613)
+                    v__target'2610)
                  1
              then
                Option.None
@@ -6313,43 +6313,43 @@ let v__addLOpen =
                Obj.magic
                  Obj.magic
                  (let
-                    (v__prefix'2614, v__splitTemp'2615)
+                    (v__prefix'2611, v__splitTemp'2612)
                   =
                     Obj.magic
                       Boot.Intrinsics.Mseq.split_at
-                      v__target'2613
+                      v__target'2610
                       1
                   in
                   let
-                    (v__middle'2616, v__postfix'2617)
+                    (v__middle'2613, v__postfix'2614)
                   =
                     Obj.magic
                       Boot.Intrinsics.Mseq.split_at
-                      v__splitTemp'2615
+                      v__splitTemp'2612
                       (Obj.magic
                          Int.sub
                          (Obj.magic
                             Boot.Intrinsics.Mseq.length
-                            v__splitTemp'2615)
+                            v__splitTemp'2612)
                          0)
                   in
-                  let v__seqElem'2618 =
+                  let v__seqElem'2615 =
                     Obj.magic
                       Boot.Intrinsics.Mseq.get
-                      v__prefix'2614
+                      v__prefix'2611
                       0
                   in
-                  Option.Some (v__target'2613)))
+                  Option.Some (v__target'2610)))
         with
         | Option.Some (v_frontier'1986) ->
             (CSome'1610 (Obj.repr
                 (let
-                   CRec'2291 v_rec'2619
+                   CRec'2291 v_rec'2616
                  =
                    Obj.magic
                      v_st'1950
                  in
-                 CRec'2291 { v_rec'2619
+                 CRec'2291 { v_rec'2616
                    with
                    lfrontier =
                      Obj.repr
@@ -6414,7 +6414,7 @@ let v_breakableAddPrefix =
         let v_addedLeft'1999 =
           Obj.magic
             ref
-            (CRec'2318 { l0 =
+            (CRec'2315 { l0 =
                  (Obj.repr
                    v__firstTimeStep);
                l1 =
@@ -6428,7 +6428,7 @@ let v_breakableAddPrefix =
         let v_addedRight'2000 =
           Obj.magic
             ref
-            (CRec'2318 { l0 =
+            (CRec'2315 { l0 =
                  (Obj.repr
                    v__firstTimeStep);
                l1 =
@@ -6438,12 +6438,12 @@ let v_breakableAddPrefix =
                       [|  |])) })
         in
         let
-          CRec'2291 v_rec'2620
+          CRec'2291 v_rec'2617
         =
           Obj.magic
             v_st'1990
         in
-        CRec'2291 { v_rec'2620
+        CRec'2291 { v_rec'2617
           with
           lfrontier =
             Obj.repr
@@ -6596,12 +6596,12 @@ let v_breakableAddAtom =
             ()
         in
         let
-          CRec'2291 v_rec'2621
+          CRec'2291 v_rec'2618
         =
           Obj.magic
             v_st'2021
         in
-        CRec'2291 { v_rec'2621
+        CRec'2291 { v_rec'2618
           with
           lfrontier =
             Obj.repr
@@ -6667,7 +6667,7 @@ let v_breakableFinalizeParse =
         fun v_child'2035 ->
           match
             Obj.magic
-              (let v__target'2622 =
+              (let v__target'2619 =
                  Obj.magic
                    v__getParents
                    v_child'2035
@@ -6675,10 +6675,10 @@ let v_breakableFinalizeParse =
                match
                  Obj.magic
                    Obj.magic
-                   v__target'2622
+                   v__target'2619
                with
-               | CSome'1610 v__n'2623 ->
-                   (Option.Some (v__n'2623))
+               | CSome'1610 v__n'2620 ->
+                   (Option.Some (v__n'2620))
                | _ ->
                    (Obj.magic
                       Obj.magic
@@ -6691,7 +6691,7 @@ let v_breakableFinalizeParse =
                  (fun v_parent'2037 ->
                     match
                       Obj.magic
-                        (let v__target'2624 =
+                        (let v__target'2621 =
                            Obj.magic
                              v__shallowAllowedRight
                              v_parent'2037
@@ -6700,10 +6700,10 @@ let v_breakableFinalizeParse =
                          match
                            Obj.magic
                              Obj.magic
-                             v__target'2624
+                             v__target'2621
                          with
-                         | CSome'1610 v__n'2625 ->
-                             (Option.Some (v__n'2625))
+                         | CSome'1610 v__n'2622 ->
+                             (Option.Some (v__n'2622))
                          | _ ->
                              (Obj.magic
                                 Obj.magic
@@ -6712,7 +6712,7 @@ let v_breakableFinalizeParse =
                     | Option.Some (v_child'2038) ->
                         (match
                            Obj.magic
-                             (let v__target'2626 =
+                             (let v__target'2623 =
                                 Obj.magic
                                   v__addRightChildToParent
                                   v_time'2031
@@ -6722,10 +6722,10 @@ let v_breakableFinalizeParse =
                               match
                                 Obj.magic
                                   Obj.magic
-                                  v__target'2626
+                                  v__target'2623
                               with
-                              | CSome'1610 v__n'2627 ->
-                                  (Option.Some (v__n'2627))
+                              | CSome'1610 v__n'2624 ->
+                                  (Option.Some (v__n'2624))
                               | _ ->
                                   (Obj.magic
                                      Obj.magic
@@ -6751,7 +6751,7 @@ let v_breakableFinalizeParse =
         fun v_queue'2042 ->
           match
             Obj.magic
-              (let v__target'2628 =
+              (let v__target'2625 =
                  Obj.magic
                    v__popFromQueue
                    v_queue'2042
@@ -6759,10 +6759,10 @@ let v_breakableFinalizeParse =
                match
                  Obj.magic
                    Obj.magic
-                   v__target'2628
+                   v__target'2625
                with
-               | CSome'1610 v__n'2629 ->
-                   (Option.Some (v__n'2629))
+               | CSome'1610 v__n'2626 ->
+                   (Option.Some (v__n'2626))
                | _ ->
                    (Obj.magic
                       Obj.magic
@@ -6772,7 +6772,7 @@ let v_breakableFinalizeParse =
               (let v_snd'2046 =
                  fun v_x'2044 ->
                    let
-                     CRec'2318 ({l1 = v_X'2045})
+                     CRec'2315 ({l1 = v_X'2045})
                    =
                      Obj.magic
                        v_x'2044
@@ -6789,12 +6789,12 @@ let v_breakableFinalizeParse =
                          v__addedNodesRightChildren
                          v_p'2043))
                in
-               let v_defaultCase'2630 =
+               let v_defaultCase'2627 =
                  fun nv_ ->
                    match
                      Obj.magic
-                       (let v__target'2631 =
-                          CRec'2318 { l0 =
+                       (let v__target'2628 =
+                          CRec'2315 { l0 =
                               (Obj.repr
                                 v_p'2043);
                             l1 =
@@ -6802,24 +6802,24 @@ let v_breakableFinalizeParse =
                                 v_children'2047) }
                         in
                         let
-                          CRec'2318 ({l0 = v_0'2632;l1 = v_1'2633})
+                          CRec'2315 ({l0 = v_0'2629;l1 = v_1'2630})
                         =
                           Obj.magic
                             Obj.magic
-                            v__target'2631
+                            v__target'2628
                         in
                         match
                           Obj.magic
                             Obj.magic
-                            v_0'2632
+                            v_0'2629
                         with
-                        | CTentativeMid'1717 v__n'2634 ->
+                        | CTentativeMid'1717 v__n'2631 ->
                             (if
                                Obj.magic
                                  ((<) : int -> int -> bool)
                                  (Obj.magic
                                     Boot.Intrinsics.Mseq.length
-                                    v_1'2633)
+                                    v_1'2630)
                                  1
                              then
                                Option.None
@@ -6827,30 +6827,30 @@ let v_breakableFinalizeParse =
                                Obj.magic
                                  Obj.magic
                                  (let
-                                    (v__prefix'2635, v__splitTemp'2636)
+                                    (v__prefix'2632, v__splitTemp'2633)
                                   =
                                     Obj.magic
                                       Boot.Intrinsics.Mseq.split_at
-                                      v_1'2633
+                                      v_1'2630
                                       1
                                   in
                                   let
-                                    (v__middle'2637, v__postfix'2638)
+                                    (v__middle'2634, v__postfix'2635)
                                   =
                                     Obj.magic
                                       Boot.Intrinsics.Mseq.split_at
-                                      v__splitTemp'2636
+                                      v__splitTemp'2633
                                       (Obj.magic
                                          Int.sub
                                          (Obj.magic
                                             Boot.Intrinsics.Mseq.length
-                                            v__splitTemp'2636)
+                                            v__splitTemp'2633)
                                          0)
                                   in
-                                  let v__seqElem'2639 =
+                                  let v__seqElem'2636 =
                                     Obj.magic
                                       Boot.Intrinsics.Mseq.get
-                                      v__prefix'2635
+                                      v__prefix'2632
                                       0
                                   in
                                   Option.Some ()))
@@ -6877,15 +6877,15 @@ let v_breakableFinalizeParse =
                        (Obj.magic
                           (match
                              Obj.magic
-                               (let v__target'2640 =
+                               (let v__target'2637 =
                                   v_p'2043
                                 in
                                 match
                                   Obj.magic
                                     Obj.magic
-                                    v__target'2640
+                                    v__target'2637
                                 with
-                                | CTentativeMid'1717 v__n'2641 ->
+                                | CTentativeMid'1717 v__n'2638 ->
                                     (Option.Some ())
                                 | _ ->
                                     (Obj.magic
@@ -6994,11 +6994,11 @@ let v_breakableFinalizeParse =
                  Obj.magic
                    v_p'2043
                with
-               | CTentativeRoot'1718 v_x'2642 ->
+               | CTentativeRoot'1718 v_x'2639 ->
                    v_children'2047
                | _ ->
                    (Obj.magic
-                      (v_defaultCase'2630
+                      (v_defaultCase'2627
                          ())))
           | Option.None ->
               (Obj.magic
@@ -7030,7 +7030,7 @@ let v_breakableFinalizeParse =
     in
     match
       Obj.magic
-        (let v__target'2643 =
+        (let v__target'2640 =
            Obj.magic
              v_work'2041
              v_queue'2051
@@ -7040,7 +7040,7 @@ let v_breakableFinalizeParse =
              ((<) : int -> int -> bool)
              (Obj.magic
                 Boot.Intrinsics.Mseq.length
-                v__target'2643)
+                v__target'2640)
              1
          then
            Option.None
@@ -7048,33 +7048,33 @@ let v_breakableFinalizeParse =
            Obj.magic
              Obj.magic
              (let
-                (v__prefix'2644, v__splitTemp'2645)
+                (v__prefix'2641, v__splitTemp'2642)
               =
                 Obj.magic
                   Boot.Intrinsics.Mseq.split_at
-                  v__target'2643
+                  v__target'2640
                   1
               in
               let
-                (v__middle'2646, v__postfix'2647)
+                (v__middle'2643, v__postfix'2644)
               =
                 Obj.magic
                   Boot.Intrinsics.Mseq.split_at
-                  v__splitTemp'2645
+                  v__splitTemp'2642
                   (Obj.magic
                      Int.sub
                      (Obj.magic
                         Boot.Intrinsics.Mseq.length
-                        v__splitTemp'2645)
+                        v__splitTemp'2642)
                      0)
               in
-              let v__seqElem'2648 =
+              let v__seqElem'2645 =
                 Obj.magic
                   Boot.Intrinsics.Mseq.get
-                  v__prefix'2644
+                  v__prefix'2641
                   0
               in
-              Option.Some (v__target'2643)))
+              Option.Some (v__target'2640)))
     with
     | Option.Some (v_res'2053) ->
         (CSome'1610 (Obj.repr
@@ -7095,7 +7095,7 @@ let v_breakableConstructResult =
             in
             let rec v_range'2064 =
                 fun v_node'2065 ->
-                  let v_defaultCase'2649 =
+                  let v_defaultCase'2646 =
                     fun nv_ ->
                       failwith
                         "FILE \"/home/vipa/.local/lib/mcore/stdlib/parser/breakable.mc\" 856:13-856:18 ERROR: Reached a never term, which should be impossible in a well-typed program."
@@ -7104,22 +7104,22 @@ let v_breakableConstructResult =
                     Obj.magic
                       v_node'2065
                   with
-                  | CAtomP'1707 v_x'2650 ->
+                  | CAtomP'1707 v_x'2647 ->
                       (match
                          Obj.magic
-                           (let v__target'2651 =
+                           (let v__target'2648 =
                               Obj.magic
                                 Obj.magic
                                 v_node'2065
                             in
                             let
-                              CRec'2310 ({lself = v_self'2652})
+                              CRec'2310 ({lself = v_self'2649})
                             =
                               Obj.magic
                                 Obj.magic
-                                v__target'2651
+                                v__target'2648
                             in
-                            Option.Some (v_self'2652))
+                            Option.Some (v_self'2649))
                        with
                        | Option.Some (v_self'2066) ->
                            (CRec'2313 { lfirst =
@@ -7131,30 +7131,30 @@ let v_breakableConstructResult =
                        | Option.None ->
                            (Obj.magic
                               (Obj.magic
-                                 v_defaultCase'2649
+                                 v_defaultCase'2646
                                  ())))
-                  | CInfixP'1708 v_x'2653 ->
+                  | CInfixP'1708 v_x'2650 ->
                       (Obj.magic
                          (match
                             Obj.magic
-                              (let v__target'2654 =
+                              (let v__target'2651 =
                                  Obj.magic
                                    Obj.magic
                                    v_node'2065
                                in
                                let
-                                 CRec'2283 ({lleftChildAlts = v_leftChildAlts'2655;lrightChildAlts = v_rightChildAlts'2656})
+                                 CRec'2283 ({lleftChildAlts = v_leftChildAlts'2652;lrightChildAlts = v_rightChildAlts'2653})
                                =
                                  Obj.magic
                                    Obj.magic
-                                   v__target'2654
+                                   v__target'2651
                                in
                                if
                                  Obj.magic
                                    ((<) : int -> int -> bool)
                                    (Obj.magic
                                       Boot.Intrinsics.Mseq.length
-                                      v_leftChildAlts'2655)
+                                      v_leftChildAlts'2652)
                                    1
                                then
                                  Option.None
@@ -7162,30 +7162,30 @@ let v_breakableConstructResult =
                                  Obj.magic
                                    Obj.magic
                                    (let
-                                      (v__prefix'2657, v__splitTemp'2658)
+                                      (v__prefix'2654, v__splitTemp'2655)
                                     =
                                       Obj.magic
                                         Boot.Intrinsics.Mseq.split_at
-                                        v_leftChildAlts'2655
+                                        v_leftChildAlts'2652
                                         1
                                     in
                                     let
-                                      (v__middle'2659, v__postfix'2660)
+                                      (v__middle'2656, v__postfix'2657)
                                     =
                                       Obj.magic
                                         Boot.Intrinsics.Mseq.split_at
-                                        v__splitTemp'2658
+                                        v__splitTemp'2655
                                         (Obj.magic
                                            Int.sub
                                            (Obj.magic
                                               Boot.Intrinsics.Mseq.length
-                                              v__splitTemp'2658)
+                                              v__splitTemp'2655)
                                            0)
                                     in
-                                    let v__seqElem'2661 =
+                                    let v__seqElem'2658 =
                                       Obj.magic
                                         Boot.Intrinsics.Mseq.get
-                                        v__prefix'2657
+                                        v__prefix'2654
                                         0
                                     in
                                     if
@@ -7193,7 +7193,7 @@ let v_breakableConstructResult =
                                         ((<) : int -> int -> bool)
                                         (Obj.magic
                                            Boot.Intrinsics.Mseq.length
-                                           v_rightChildAlts'2656)
+                                           v_rightChildAlts'2653)
                                         1
                                     then
                                       Option.None
@@ -7201,33 +7201,33 @@ let v_breakableConstructResult =
                                       Obj.magic
                                         Obj.magic
                                         (let
-                                           (v__prefix'2662, v__splitTemp'2663)
+                                           (v__prefix'2659, v__splitTemp'2660)
                                          =
                                            Obj.magic
                                              Boot.Intrinsics.Mseq.split_at
-                                             v_rightChildAlts'2656
+                                             v_rightChildAlts'2653
                                              1
                                          in
                                          let
-                                           (v__middle'2664, v__postfix'2665)
+                                           (v__middle'2661, v__postfix'2662)
                                          =
                                            Obj.magic
                                              Boot.Intrinsics.Mseq.split_at
-                                             v__splitTemp'2663
+                                             v__splitTemp'2660
                                              (Obj.magic
                                                 Int.sub
                                                 (Obj.magic
                                                    Boot.Intrinsics.Mseq.length
-                                                   v__splitTemp'2663)
+                                                   v__splitTemp'2660)
                                                 0)
                                          in
-                                         let v__seqElem'2666 =
+                                         let v__seqElem'2663 =
                                            Obj.magic
                                              Boot.Intrinsics.Mseq.get
-                                             v__prefix'2662
+                                             v__prefix'2659
                                              0
                                          in
-                                         Option.Some (v__seqElem'2661, v__seqElem'2666))))
+                                         Option.Some (v__seqElem'2658, v__seqElem'2663))))
                           with
                           | Option.Some (v_l'2067, v_r'2068) ->
                               (CRec'2313 { lfirst =
@@ -7257,30 +7257,30 @@ let v_breakableConstructResult =
                           | Option.None ->
                               (Obj.magic
                                  (Obj.magic
-                                    v_defaultCase'2649
+                                    v_defaultCase'2646
                                     ()))))
-                  | CPrefixP'1709 v_x'2667 ->
+                  | CPrefixP'1709 v_x'2664 ->
                       (Obj.magic
                          (match
                             Obj.magic
-                              (let v__target'2668 =
+                              (let v__target'2665 =
                                  Obj.magic
                                    Obj.magic
                                    v_node'2065
                                in
                                let
-                                 CRec'2284 ({lself = v_self'2669;lrightChildAlts = v_rightChildAlts'2670})
+                                 CRec'2284 ({lself = v_self'2666;lrightChildAlts = v_rightChildAlts'2667})
                                =
                                  Obj.magic
                                    Obj.magic
-                                   v__target'2668
+                                   v__target'2665
                                in
                                if
                                  Obj.magic
                                    ((<) : int -> int -> bool)
                                    (Obj.magic
                                       Boot.Intrinsics.Mseq.length
-                                      v_rightChildAlts'2670)
+                                      v_rightChildAlts'2667)
                                    1
                                then
                                  Option.None
@@ -7288,33 +7288,33 @@ let v_breakableConstructResult =
                                  Obj.magic
                                    Obj.magic
                                    (let
-                                      (v__prefix'2671, v__splitTemp'2672)
+                                      (v__prefix'2668, v__splitTemp'2669)
                                     =
                                       Obj.magic
                                         Boot.Intrinsics.Mseq.split_at
-                                        v_rightChildAlts'2670
+                                        v_rightChildAlts'2667
                                         1
                                     in
                                     let
-                                      (v__middle'2673, v__postfix'2674)
+                                      (v__middle'2670, v__postfix'2671)
                                     =
                                       Obj.magic
                                         Boot.Intrinsics.Mseq.split_at
-                                        v__splitTemp'2672
+                                        v__splitTemp'2669
                                         (Obj.magic
                                            Int.sub
                                            (Obj.magic
                                               Boot.Intrinsics.Mseq.length
-                                              v__splitTemp'2672)
+                                              v__splitTemp'2669)
                                            0)
                                     in
-                                    let v__seqElem'2675 =
+                                    let v__seqElem'2672 =
                                       Obj.magic
                                         Boot.Intrinsics.Mseq.get
-                                        v__prefix'2671
+                                        v__prefix'2668
                                         0
                                     in
-                                    Option.Some (v_self'2669, v__seqElem'2675)))
+                                    Option.Some (v_self'2666, v__seqElem'2672)))
                           with
                           | Option.Some (v_self'2071, v_r'2072) ->
                               (CRec'2313 { lfirst =
@@ -7335,30 +7335,30 @@ let v_breakableConstructResult =
                           | Option.None ->
                               (Obj.magic
                                  (Obj.magic
-                                    v_defaultCase'2649
+                                    v_defaultCase'2646
                                     ()))))
-                  | CPostfixP'1710 v_x'2676 ->
+                  | CPostfixP'1710 v_x'2673 ->
                       (Obj.magic
                          (match
                             Obj.magic
-                              (let v__target'2677 =
+                              (let v__target'2674 =
                                  Obj.magic
                                    Obj.magic
                                    v_node'2065
                                in
                                let
-                                 CRec'2303 ({lself = v_self'2678;lleftChildAlts = v_leftChildAlts'2679})
+                                 CRec'2303 ({lself = v_self'2675;lleftChildAlts = v_leftChildAlts'2676})
                                =
                                  Obj.magic
                                    Obj.magic
-                                   v__target'2677
+                                   v__target'2674
                                in
                                if
                                  Obj.magic
                                    ((<) : int -> int -> bool)
                                    (Obj.magic
                                       Boot.Intrinsics.Mseq.length
-                                      v_leftChildAlts'2679)
+                                      v_leftChildAlts'2676)
                                    1
                                then
                                  Option.None
@@ -7366,33 +7366,33 @@ let v_breakableConstructResult =
                                  Obj.magic
                                    Obj.magic
                                    (let
-                                      (v__prefix'2680, v__splitTemp'2681)
+                                      (v__prefix'2677, v__splitTemp'2678)
                                     =
                                       Obj.magic
                                         Boot.Intrinsics.Mseq.split_at
-                                        v_leftChildAlts'2679
+                                        v_leftChildAlts'2676
                                         1
                                     in
                                     let
-                                      (v__middle'2682, v__postfix'2683)
+                                      (v__middle'2679, v__postfix'2680)
                                     =
                                       Obj.magic
                                         Boot.Intrinsics.Mseq.split_at
-                                        v__splitTemp'2681
+                                        v__splitTemp'2678
                                         (Obj.magic
                                            Int.sub
                                            (Obj.magic
                                               Boot.Intrinsics.Mseq.length
-                                              v__splitTemp'2681)
+                                              v__splitTemp'2678)
                                            0)
                                     in
-                                    let v__seqElem'2684 =
+                                    let v__seqElem'2681 =
                                       Obj.magic
                                         Boot.Intrinsics.Mseq.get
-                                        v__prefix'2680
+                                        v__prefix'2677
                                         0
                                     in
-                                    Option.Some (v_self'2678, v__seqElem'2684)))
+                                    Option.Some (v_self'2675, v__seqElem'2681)))
                           with
                           | Option.Some (v_self'2074, v_l'2075) ->
                               (CRec'2313 { lfirst =
@@ -7413,18 +7413,18 @@ let v_breakableConstructResult =
                           | Option.None ->
                               (Obj.magic
                                  (Obj.magic
-                                    v_defaultCase'2649
+                                    v_defaultCase'2646
                                     ()))))
                   | _ ->
                       (Obj.magic
-                         (v_defaultCase'2649
+                         (v_defaultCase'2646
                             ()))
             in let rec v_flattenOne'2077 =
                 fun v_node'2079 ->
                   let v_X'2080 =
                     v_node'2079
                   in
-                  let v_defaultCase'2685 =
+                  let v_defaultCase'2682 =
                     fun nv_ ->
                       failwith
                         "FILE \"/home/vipa/.local/lib/mcore/stdlib/parser/breakable.mc\" 869:8-869:11 ERROR: Reached a never term, which should be impossible in a well-typed program."
@@ -7433,22 +7433,22 @@ let v_breakableConstructResult =
                     Obj.magic
                       v_X'2080
                   with
-                  | CAtomP'1707 v_x'2686 ->
+                  | CAtomP'1707 v_x'2683 ->
                       (match
                          Obj.magic
-                           (let v__target'2687 =
+                           (let v__target'2684 =
                               Obj.magic
                                 Obj.magic
                                 v_X'2080
                             in
                             let
-                              CRec'2310 ({lself = v_self'2688})
+                              CRec'2310 ({lself = v_self'2685})
                             =
                               Obj.magic
                                 Obj.magic
-                                v__target'2687
+                                v__target'2684
                             in
-                            Option.Some (v_self'2688))
+                            Option.Some (v_self'2685))
                        with
                        | Option.Some (v_self'2081) ->
                            (Obj.magic
@@ -7460,9 +7460,9 @@ let v_breakableConstructResult =
                        | Option.None ->
                            (Obj.magic
                               (Obj.magic
-                                 v_defaultCase'2685
+                                 v_defaultCase'2682
                                  ())))
-                  | CInfixP'1708 v_x'2689 ->
+                  | CInfixP'1708 v_x'2686 ->
                       (Obj.magic
                          (let v_p'2082 =
                             Obj.magic
@@ -7509,7 +7509,7 @@ let v_breakableConstructResult =
                                        in
                                        Obj.magic
                                          v_X'2085))) |])))
-                  | CPrefixP'1709 v_x'2690 ->
+                  | CPrefixP'1709 v_x'2687 ->
                       (Obj.magic
                          (let v_p'2086 =
                             Obj.magic
@@ -7538,7 +7538,7 @@ let v_breakableConstructResult =
                                 in
                                 Obj.magic
                                   v_X'2088))))
-                  | CPostfixP'1710 v_x'2691 ->
+                  | CPostfixP'1710 v_x'2688 ->
                       (Obj.magic
                          (let v_p'2089 =
                             Obj.magic
@@ -7569,13 +7569,13 @@ let v_breakableConstructResult =
                                   v_X'2091))))
                   | _ ->
                       (Obj.magic
-                         (v_defaultCase'2685
+                         (v_defaultCase'2682
                             ()))
             and v_flattenMany'2078 =
                 fun v_nodes'2092 ->
                   match
                     Obj.magic
-                      (let v__target'2692 =
+                      (let v__target'2689 =
                          v_nodes'2092
                        in
                        if
@@ -7583,7 +7583,7 @@ let v_breakableConstructResult =
                            ((<) : int -> int -> bool)
                            (Obj.magic
                               Boot.Intrinsics.Mseq.length
-                              v__target'2692)
+                              v__target'2689)
                            1
                        then
                          Option.None
@@ -7591,33 +7591,33 @@ let v_breakableConstructResult =
                          Obj.magic
                            Obj.magic
                            (let
-                              (v__prefix'2693, v__splitTemp'2694)
+                              (v__prefix'2690, v__splitTemp'2691)
                             =
                               Obj.magic
                                 Boot.Intrinsics.Mseq.split_at
-                                v__target'2692
+                                v__target'2689
                                 1
                             in
                             let
-                              (v__middle'2695, v__postfix'2696)
+                              (v__middle'2692, v__postfix'2693)
                             =
                               Obj.magic
                                 Boot.Intrinsics.Mseq.split_at
-                                v__splitTemp'2694
+                                v__splitTemp'2691
                                 (Obj.magic
                                    Int.sub
                                    (Obj.magic
                                       Boot.Intrinsics.Mseq.length
-                                      v__splitTemp'2694)
+                                      v__splitTemp'2691)
                                    0)
                             in
-                            let v__seqElem'2697 =
+                            let v__seqElem'2694 =
                               Obj.magic
                                 Boot.Intrinsics.Mseq.get
-                                v__prefix'2693
+                                v__prefix'2690
                                 0
                             in
-                            Option.Some (v__seqElem'2697)))
+                            Option.Some (v__seqElem'2694)))
                   with
                   | Option.Some (v_n'2093) ->
                       (Obj.magic
@@ -7689,7 +7689,7 @@ let v_breakableConstructResult =
                         let v_X'2105 =
                           v_node'2104
                         in
-                        let v_defaultCase'2698 =
+                        let v_defaultCase'2695 =
                           fun nv_ ->
                             failwith
                               "FILE \"/home/vipa/.local/lib/mcore/stdlib/parser/breakable.mc\" 935:8-935:11 ERROR: Reached a never term, which should be impossible in a well-typed program."
@@ -7698,22 +7698,22 @@ let v_breakableConstructResult =
                           Obj.magic
                             v_X'2105
                         with
-                        | CAtomP'1707 v_x'2699 ->
+                        | CAtomP'1707 v_x'2696 ->
                             (match
                                Obj.magic
-                                 (let v__target'2700 =
+                                 (let v__target'2697 =
                                     Obj.magic
                                       Obj.magic
                                       v_X'2105
                                   in
                                   let
-                                    CRec'2310 ({lself = v_self'2701})
+                                    CRec'2310 ({lself = v_self'2698})
                                   =
                                     Obj.magic
                                       Obj.magic
-                                      v__target'2700
+                                      v__target'2697
                                   in
-                                  Option.Some (v_self'2701))
+                                  Option.Some (v_self'2698))
                              with
                              | Option.Some (v_self'2106) ->
                                  (Obj.magic
@@ -7728,31 +7728,31 @@ let v_breakableConstructResult =
                              | Option.None ->
                                  (Obj.magic
                                     (Obj.magic
-                                       v_defaultCase'2698
+                                       v_defaultCase'2695
                                        ())))
-                        | CInfixP'1708 v_x'2702 ->
+                        | CInfixP'1708 v_x'2699 ->
                             (Obj.magic
                                (match
                                   Obj.magic
-                                    (let v__target'2703 =
+                                    (let v__target'2700 =
                                        Obj.magic
                                          Obj.magic
                                          v_X'2105
                                      in
                                      let
-                                       CRec'2283 ({linput = v_input'2704})
+                                       CRec'2283 ({linput = v_input'2701})
                                      =
                                        Obj.magic
                                          Obj.magic
-                                         v__target'2703
+                                         v__target'2700
                                      in
                                      match
                                        Obj.magic
                                          Obj.magic
-                                         v_input'2704
+                                         v_input'2701
                                      with
-                                     | CInfixI'1702 v__n'2705 ->
-                                         (Option.Some (v__target'2703, v_input'2704))
+                                     | CInfixI'1702 v__n'2702 ->
+                                         (Option.Some (v__target'2700, v_input'2701))
                                      | _ ->
                                          (Obj.magic
                                             Obj.magic
@@ -7923,31 +7923,31 @@ let v_breakableConstructResult =
                                 | Option.None ->
                                     (Obj.magic
                                        (Obj.magic
-                                          v_defaultCase'2698
+                                          v_defaultCase'2695
                                           ()))))
-                        | CPrefixP'1709 v_x'2706 ->
+                        | CPrefixP'1709 v_x'2703 ->
                             (Obj.magic
                                (match
                                   Obj.magic
-                                    (let v__target'2707 =
+                                    (let v__target'2704 =
                                        Obj.magic
                                          Obj.magic
                                          v_X'2105
                                      in
                                      let
-                                       CRec'2284 ({linput = v_input'2708})
+                                       CRec'2284 ({linput = v_input'2705})
                                      =
                                        Obj.magic
                                          Obj.magic
-                                         v__target'2707
+                                         v__target'2704
                                      in
                                      match
                                        Obj.magic
                                          Obj.magic
-                                         v_input'2708
+                                         v_input'2705
                                      with
-                                     | CPrefixI'1703 v__n'2709 ->
-                                         (Option.Some (v__target'2707, v_input'2708))
+                                     | CPrefixI'1703 v__n'2706 ->
+                                         (Option.Some (v__target'2704, v_input'2705))
                                      | _ ->
                                          (Obj.magic
                                             Obj.magic
@@ -8061,31 +8061,31 @@ let v_breakableConstructResult =
                                 | Option.None ->
                                     (Obj.magic
                                        (Obj.magic
-                                          v_defaultCase'2698
+                                          v_defaultCase'2695
                                           ()))))
-                        | CPostfixP'1710 v_x'2710 ->
+                        | CPostfixP'1710 v_x'2707 ->
                             (Obj.magic
                                (match
                                   Obj.magic
-                                    (let v__target'2711 =
+                                    (let v__target'2708 =
                                        Obj.magic
                                          Obj.magic
                                          v_X'2105
                                      in
                                      let
-                                       CRec'2303 ({linput = v_input'2712})
+                                       CRec'2303 ({linput = v_input'2709})
                                      =
                                        Obj.magic
                                          Obj.magic
-                                         v__target'2711
+                                         v__target'2708
                                      in
                                      match
                                        Obj.magic
                                          Obj.magic
-                                         v_input'2712
+                                         v_input'2709
                                      with
-                                     | CPostfixI'1704 v__n'2713 ->
-                                         (Option.Some (v__target'2711, v_input'2712))
+                                     | CPostfixI'1704 v__n'2710 ->
+                                         (Option.Some (v__target'2708, v_input'2709))
                                      | _ ->
                                          (Obj.magic
                                             Obj.magic
@@ -8199,11 +8199,11 @@ let v_breakableConstructResult =
                                 | Option.None ->
                                     (Obj.magic
                                        (Obj.magic
-                                          v_defaultCase'2698
+                                          v_defaultCase'2695
                                           ()))))
                         | _ ->
                             (Obj.magic
-                               (v_defaultCase'2698
+                               (v_defaultCase'2695
                                   ()))
             in let v_ambiguities'2151 =
               Obj.magic
@@ -8216,7 +8216,7 @@ let v_breakableConstructResult =
                 fun v_tops'2154 ->
                   match
                     Obj.magic
-                      (let v__target'2714 =
+                      (let v__target'2711 =
                          v_tops'2154
                        in
                        if
@@ -8224,16 +8224,16 @@ let v_breakableConstructResult =
                            Int.equal
                            (Obj.magic
                               Boot.Intrinsics.Mseq.length
-                              v__target'2714)
+                              v__target'2711)
                            1
                        then
-                         let v__seqElem'2715 =
+                         let v__seqElem'2712 =
                            Obj.magic
                              Boot.Intrinsics.Mseq.get
-                             v__target'2714
+                             v__target'2711
                              0
                          in
-                         Option.Some (v__seqElem'2715)
+                         Option.Some (v__seqElem'2712)
                        else
                          Obj.magic
                            Obj.magic
@@ -8247,7 +8247,7 @@ let v_breakableConstructResult =
                       (Obj.magic
                          (match
                             Obj.magic
-                              (let v__target'2716 =
+                              (let v__target'2713 =
                                  v_tops'2154
                                in
                                if
@@ -8255,7 +8255,7 @@ let v_breakableConstructResult =
                                    ((<) : int -> int -> bool)
                                    (Obj.magic
                                       Boot.Intrinsics.Mseq.length
-                                      v__target'2716)
+                                      v__target'2713)
                                    1
                                then
                                  Option.None
@@ -8263,33 +8263,33 @@ let v_breakableConstructResult =
                                  Obj.magic
                                    Obj.magic
                                    (let
-                                      (v__prefix'2717, v__splitTemp'2718)
+                                      (v__prefix'2714, v__splitTemp'2715)
                                     =
                                       Obj.magic
                                         Boot.Intrinsics.Mseq.split_at
-                                        v__target'2716
+                                        v__target'2713
                                         1
                                     in
                                     let
-                                      (v__middle'2719, v__postfix'2720)
+                                      (v__middle'2716, v__postfix'2717)
                                     =
                                       Obj.magic
                                         Boot.Intrinsics.Mseq.split_at
-                                        v__splitTemp'2718
+                                        v__splitTemp'2715
                                         (Obj.magic
                                            Int.sub
                                            (Obj.magic
                                               Boot.Intrinsics.Mseq.length
-                                              v__splitTemp'2718)
+                                              v__splitTemp'2715)
                                            0)
                                     in
-                                    let v__seqElem'2721 =
+                                    let v__seqElem'2718 =
                                       Obj.magic
                                         Boot.Intrinsics.Mseq.get
-                                        v__prefix'2717
+                                        v__prefix'2714
                                         0
                                     in
-                                    Option.Some (v__seqElem'2721)))
+                                    Option.Some (v__seqElem'2718)))
                           with
                           | Option.Some (v_n'2156) ->
                               (let v_topIdxs'2157 =
@@ -8363,7 +8363,7 @@ let v_breakableConstructResult =
                                     "FILE \"/home/vipa/.local/lib/mcore/stdlib/parser/breakable.mc\" 956:30-956:35 ERROR: Reached a never term, which should be impossible in a well-typed program."))))
             and v_workOne'2153 =
                 fun v_node'2165 ->
-                  let v_defaultCase'2722 =
+                  let v_defaultCase'2719 =
                     fun nv_ ->
                       failwith
                         "FILE \"/home/vipa/.local/lib/mcore/stdlib/parser/breakable.mc\" 971:15-971:20 ERROR: Reached a never term, which should be impossible in a well-typed program."
@@ -8372,35 +8372,35 @@ let v_breakableConstructResult =
                     Obj.magic
                       v_node'2165
                   with
-                  | CAtomP'1707 v_x'2723 ->
+                  | CAtomP'1707 v_x'2720 ->
                       (match
                          Obj.magic
-                           (let v__target'2724 =
+                           (let v__target'2721 =
                               Obj.magic
                                 Obj.magic
                                 v_node'2165
                             in
                             let
-                              CRec'2310 ({linput = v_input'2725;lself = v_self'2726})
+                              CRec'2310 ({linput = v_input'2722;lself = v_self'2723})
                             =
                               Obj.magic
                                 Obj.magic
-                                v__target'2724
+                                v__target'2721
                             in
                             match
                               Obj.magic
                                 Obj.magic
-                                v_input'2725
+                                v_input'2722
                             with
-                            | CAtomI'1701 v__n'2727 ->
+                            | CAtomI'1701 v__n'2724 ->
                                 (let
-                                   CRec'2294 ({lconstruct = v_construct'2728})
+                                   CRec'2294 ({lconstruct = v_construct'2725})
                                  =
                                    Obj.magic
                                      Obj.magic
-                                     v_input'2725
+                                     v_input'2722
                                  in
-                                 Option.Some (v_construct'2728, v_self'2726))
+                                 Option.Some (v_construct'2725, v_self'2723))
                             | _ ->
                                 (Obj.magic
                                    Obj.magic
@@ -8414,38 +8414,38 @@ let v_breakableConstructResult =
                        | Option.None ->
                            (Obj.magic
                               (Obj.magic
-                                 v_defaultCase'2722
+                                 v_defaultCase'2719
                                  ())))
-                  | CInfixP'1708 v_x'2729 ->
+                  | CInfixP'1708 v_x'2726 ->
                       (Obj.magic
                          (match
                             Obj.magic
-                              (let v__target'2730 =
+                              (let v__target'2727 =
                                  Obj.magic
                                    Obj.magic
                                    v_node'2165
                                in
                                let
-                                 CRec'2283 ({linput = v_input'2731;lself = v_self'2732;lleftChildAlts = v_leftChildAlts'2733;lrightChildAlts = v_rightChildAlts'2734})
+                                 CRec'2283 ({linput = v_input'2728;lself = v_self'2729;lleftChildAlts = v_leftChildAlts'2730;lrightChildAlts = v_rightChildAlts'2731})
                                =
                                  Obj.magic
                                    Obj.magic
-                                   v__target'2730
+                                   v__target'2727
                                in
                                match
                                  Obj.magic
                                    Obj.magic
-                                   v_input'2731
+                                   v_input'2728
                                with
-                               | CInfixI'1702 v__n'2735 ->
+                               | CInfixI'1702 v__n'2732 ->
                                    (let
-                                      CRec'2297 ({lconstruct = v_construct'2736})
+                                      CRec'2297 ({lconstruct = v_construct'2733})
                                     =
                                       Obj.magic
                                         Obj.magic
-                                        v_input'2731
+                                        v_input'2728
                                     in
-                                    Option.Some (v_construct'2736, v_self'2732, v_leftChildAlts'2733, v_rightChildAlts'2734))
+                                    Option.Some (v_construct'2733, v_self'2729, v_leftChildAlts'2730, v_rightChildAlts'2731))
                                | _ ->
                                    (Obj.magic
                                       Obj.magic
@@ -8472,38 +8472,38 @@ let v_breakableConstructResult =
                           | Option.None ->
                               (Obj.magic
                                  (Obj.magic
-                                    v_defaultCase'2722
+                                    v_defaultCase'2719
                                     ()))))
-                  | CPrefixP'1709 v_x'2737 ->
+                  | CPrefixP'1709 v_x'2734 ->
                       (Obj.magic
                          (match
                             Obj.magic
-                              (let v__target'2738 =
+                              (let v__target'2735 =
                                  Obj.magic
                                    Obj.magic
                                    v_node'2165
                                in
                                let
-                                 CRec'2284 ({linput = v_input'2739;lself = v_self'2740;lrightChildAlts = v_rightChildAlts'2741})
+                                 CRec'2284 ({linput = v_input'2736;lself = v_self'2737;lrightChildAlts = v_rightChildAlts'2738})
                                =
                                  Obj.magic
                                    Obj.magic
-                                   v__target'2738
+                                   v__target'2735
                                in
                                match
                                  Obj.magic
                                    Obj.magic
-                                   v_input'2739
+                                   v_input'2736
                                with
-                               | CPrefixI'1703 v__n'2742 ->
+                               | CPrefixI'1703 v__n'2739 ->
                                    (let
-                                      CRec'2296 ({lconstruct = v_construct'2743})
+                                      CRec'2296 ({lconstruct = v_construct'2740})
                                     =
                                       Obj.magic
                                         Obj.magic
-                                        v_input'2739
+                                        v_input'2736
                                     in
-                                    Option.Some (v_construct'2743, v_self'2740, v_rightChildAlts'2741))
+                                    Option.Some (v_construct'2740, v_self'2737, v_rightChildAlts'2738))
                                | _ ->
                                    (Obj.magic
                                       Obj.magic
@@ -8521,38 +8521,38 @@ let v_breakableConstructResult =
                           | Option.None ->
                               (Obj.magic
                                  (Obj.magic
-                                    v_defaultCase'2722
+                                    v_defaultCase'2719
                                     ()))))
-                  | CPostfixP'1710 v_x'2744 ->
+                  | CPostfixP'1710 v_x'2741 ->
                       (Obj.magic
                          (match
                             Obj.magic
-                              (let v__target'2745 =
+                              (let v__target'2742 =
                                  Obj.magic
                                    Obj.magic
                                    v_node'2165
                                in
                                let
-                                 CRec'2303 ({linput = v_input'2746;lself = v_self'2747;lleftChildAlts = v_leftChildAlts'2748})
+                                 CRec'2303 ({linput = v_input'2743;lself = v_self'2744;lleftChildAlts = v_leftChildAlts'2745})
                                =
                                  Obj.magic
                                    Obj.magic
-                                   v__target'2745
+                                   v__target'2742
                                in
                                match
                                  Obj.magic
                                    Obj.magic
-                                   v_input'2746
+                                   v_input'2743
                                with
-                               | CPostfixI'1704 v__n'2749 ->
+                               | CPostfixI'1704 v__n'2746 ->
                                    (let
-                                      CRec'2298 ({lconstruct = v_construct'2750})
+                                      CRec'2298 ({lconstruct = v_construct'2747})
                                     =
                                       Obj.magic
                                         Obj.magic
-                                        v_input'2746
+                                        v_input'2743
                                     in
-                                    Option.Some (v_construct'2750, v_self'2747, v_leftChildAlts'2748))
+                                    Option.Some (v_construct'2747, v_self'2744, v_leftChildAlts'2745))
                                | _ ->
                                    (Obj.magic
                                       Obj.magic
@@ -8570,15 +8570,15 @@ let v_breakableConstructResult =
                           | Option.None ->
                               (Obj.magic
                                  (Obj.magic
-                                    v_defaultCase'2722
+                                    v_defaultCase'2719
                                     ()))))
                   | _ ->
                       (Obj.magic
-                         (v_defaultCase'2722
+                         (v_defaultCase'2719
                             ()))
             in match
               Obj.magic
-                (let v__target'2751 =
+                (let v__target'2748 =
                    Obj.magic
                      v_workMany'2152
                      v_nodes'2062
@@ -8586,10 +8586,10 @@ let v_breakableConstructResult =
                  match
                    Obj.magic
                      Obj.magic
-                     v__target'2751
+                     v__target'2748
                  with
-                 | CSome'1610 v__n'2752 ->
-                     (Option.Some (v__n'2752))
+                 | CSome'1610 v__n'2749 ->
+                     (Option.Some (v__n'2749))
                  | _ ->
                      (Obj.magic
                         Obj.magic
@@ -8698,12 +8698,12 @@ let v_addProd =
   fun v_prod'2209 ->
     fun v_gram'2210 ->
       let
-        CRec'2276 v_rec'2753
+        CRec'2276 v_rec'2750
       =
         Obj.magic
           v_gram'2210
       in
-      CRec'2276 { v_rec'2753
+      CRec'2276 { v_rec'2750
         with
         lproductions =
           Obj.repr
@@ -8725,12 +8725,12 @@ let v_addPrec =
         fun v_mayR'2216 ->
           fun v_gram'2217 ->
             let
-              CRec'2276 v_rec'2754
+              CRec'2276 v_rec'2751
             =
               Obj.magic
                 v_gram'2217
             in
-            CRec'2276 { v_rec'2754
+            CRec'2276 { v_rec'2751
               with
               lprecedences =
                 Obj.repr
@@ -8744,9 +8744,9 @@ let v_addPrec =
                       in
                       Obj.magic
                         v_X'2218)
-                     (CRec'2318 { l0 =
+                     (CRec'2315 { l0 =
                           (Obj.repr
-                            (CRec'2318 { l0 =
+                            (CRec'2315 { l0 =
                                  (Obj.repr
                                    v_l'2213);
                                l1 =
@@ -8836,16 +8836,16 @@ let v_maybe =
       fun v_opt'2245 ->
         match
           Obj.magic
-            (let v__target'2755 =
+            (let v__target'2752 =
                v_opt'2245
              in
              match
                Obj.magic
                  Obj.magic
-                 v__target'2755
+                 v__target'2752
              with
-             | CSome'1610 v__n'2756 ->
-                 (Option.Some (v__n'2756))
+             | CSome'1610 v__n'2753 ->
+                 (Option.Some (v__n'2753))
              | _ ->
                  (Obj.magic
                     Obj.magic
@@ -8869,7 +8869,7 @@ let v_either =
         let v_X'2252 =
           v_either'2251
         in
-        let v_defaultCase'2757 =
+        let v_defaultCase'2754 =
           fun nv_ ->
             failwith
               "FILE \"/home/vipa/Projects/static-resolvable/breakable-ml/breakable_impl.mc\" 163:4-163:7 ERROR: Reached a never term, which should be impossible in a well-typed program."
@@ -8878,28 +8878,28 @@ let v_either =
           Obj.magic
             v_X'2252
         with
-        | CLeft'1676 v_x'2758 ->
+        | CLeft'1676 v_x'2755 ->
             (let v_a'2253 =
                Obj.magic
                  Obj.magic
-                 v_x'2758
+                 v_x'2755
              in
              Obj.magic
                v_left'2249
                v_a'2253)
-        | CRight'1677 v_x'2759 ->
+        | CRight'1677 v_x'2756 ->
             (Obj.magic
                (let v_b'2254 =
                   Obj.magic
                     Obj.magic
-                    v_x'2759
+                    v_x'2756
                 in
                 Obj.magic
                   v_right'2250
                   v_b'2254))
         | _ ->
             (Obj.magic
-               (v_defaultCase'2757
+               (v_defaultCase'2754
                   ()));;
 let v_foldError =
   fun v_amb'2256 ->
@@ -8909,16 +8909,16 @@ let v_foldError =
       in
       match
         Obj.magic
-          (let v__target'2760 =
+          (let v__target'2757 =
              v_X'2258
            in
            match
              Obj.magic
                Obj.magic
-               v__target'2760
+               v__target'2757
            with
-           | CAmbiguities'2057 v__n'2761 ->
-               (Option.Some (v__n'2761))
+           | CAmbiguities'2057 v__n'2758 ->
+               (Option.Some (v__n'2758))
            | _ ->
                (Obj.magic
                   Obj.magic
@@ -8963,7 +8963,7 @@ let v_ambiguity =
          in
          Obj.magic
            v_X'2266);;
-CRec'2319 { l0 =
+CRec'2316 { l0 =
     (Obj.repr
       v_allowAll);
   l1 =
@@ -9048,60 +9048,223 @@ CRec'2319 { l0 =
     (Obj.repr
       v_ambiguity) };;
 end [@ocaml.warning "-27-26-37-32-34-60-11"]
-open Breakable_impl
+module type Self = sig
+  type atom_self
+  type infix_self
+  type prefix_self
+  type postfix_self
+  type label
+  type tokish
 
-type 'a allow_set = Obj.t
+  val lpar_tok : tokish
+  val rpar_tok : tokish
 
-type ('label, 'res, 'self) breakable_production = Obj.t
+  val atom_to_str : atom_self -> tokish
+  val infix_to_str : infix_self -> tokish
+  val prefix_to_str : prefix_self -> tokish
+  val postfix_to_str : postfix_self -> tokish
 
-type ('label, 'res, 'self) breakable_grammar = Obj.t
+  val compareLabel : label -> label -> int
+end
 
-type ('label, 'res, 'self) breakable_gen_grammar = Obj.t
+module type S = sig
+  type atom_self
+  type infix_self
+  type prefix_self
+  type postfix_self
+  type label
+  type tokish
 
-type lclosed = unit
-type lopen = unit
-type rclosed = unit
-type ropen = unit
-type ('res, 'self, 'l, 'r) breakable_input = Obj.t
+  (* ## Allow sets *)
+  type allow_set
 
-type ('res, 'self, 'r) state = Obj.t
-type ('res, 'self) permanent_node = Obj.t
-type 'a sequence = Obj.t
+  val allowAll : allow_set
+  val allowNone : allow_set
+  val allowOneMore : label -> allow_set -> allow_set
+  val allowOneLess : label -> allow_set -> allow_set
 
-type ('self, 'tokish) breakable_error = Obj.t
-type ('self, 'tokish) ambiguity = Obj.t
+  (* ## Productions *)
+  type production
 
-let allowAll = Obj.magic v_allowAll
-let allowNone = Obj.magic v_allowNone
-let allowOneMore = Obj.magic v_allowOneMore
-let allowOneLess = Obj.magic v_allowOneLess
-let atom = Obj.magic v_atom
-let prefix = Obj.magic v_prefix
-let postfix = Obj.magic v_postfix
-let infix = Obj.magic v_infix
-let emptyGrammar = Obj.magic v_emptyGrammar
-let addProd = Obj.magic v_addProd
-let addPrec = Obj.magic v_addPrec
-let finalize = Obj.magic v_finalize
-let getAtom = Obj.magic v_getAtom
-let getPrefix = Obj.magic v_getPrefix
-let getPostfix = Obj.magic v_getPostfix
-let getInfix = Obj.magic v_getInfix
-let init = Obj.magic v_init
-let addAtom = Obj.magic v_addAtom
-let addPrefix = Obj.magic v_addPrefix
-let addPostfix input self state =
-  Obj.magic v_addPostfix input self state
-  |> v_maybe (fun _ -> None) (fun x -> Some x)
-let addInfix input self state =
-  Obj.magic v_addInfix input self state
-  |> v_maybe (fun _ -> None) (fun x -> Some x)
-let finalizeParse state =
-  Obj.magic v_finalizeParse state
-  |> v_maybe (fun _ -> None) (fun x -> Some x)
-let constructResult toTok lpar rpar input sppf =
-  Obj.magic v_constructResult toTok lpar rpar input sppf
-  |> v_either Result.error Result.ok
-let foldError = Obj.magic v_foldError
-let seqFoldl = Obj.magic v_seqFoldl
-let ambiguity = Obj.magic v_ambiguity
+  val atom : label -> production
+  val infix : label -> allow_set -> allow_set -> production
+  val prefix : label -> allow_set -> production
+  val postfix : label -> allow_set -> production
+
+  (* ## Grammar construction *)
+  type grammar
+  val emptyGrammar : grammar
+  val addProd : production -> grammar -> grammar
+  val addPrec : label -> label -> bool -> bool -> grammar -> grammar
+
+  (* ## Grammar processing *)
+  type gen_grammar
+  val finalize : grammar -> gen_grammar
+
+  (* ## Grammar queries after processing *)
+  type lclosed
+  type lopen
+  type rclosed
+  type ropen
+
+  type ('l, 'r) input
+
+  val getAtom : gen_grammar -> label -> (lclosed, rclosed) input
+  val getInfix : gen_grammar -> label -> (lopen, ropen) input
+  val getPrefix : gen_grammar -> label -> (lclosed, ropen) input
+  val getPostfix : gen_grammar -> label -> (lopen, rclosed) input
+
+  (* ## Parsing *)
+  type 'r state
+  type permanent_node
+  type 'a sequence
+
+  val init : unit -> ropen state
+
+  val addAtom
+      : (lclosed, rclosed) input -> atom_self -> ropen state -> rclosed state
+  val addPrefix
+      : (lclosed, ropen) input -> prefix_self -> ropen state -> ropen state
+  val addPostfix
+      : (lopen, rclosed) input -> postfix_self -> rclosed state -> rclosed state option
+  val addInfix
+      : (lopen, ropen) input -> infix_self -> rclosed state -> ropen state option
+
+  val finalizeParse : rclosed state -> permanent_node sequence option (* NonEmpty *)
+
+  (* ## Querying the result *)
+  type error
+  type ambiguity
+  type res =
+    | Atom of atom_self
+    | Infix of res * infix_self * res
+    | Prefix of prefix_self * res
+    | Postfix of res * postfix_self
+
+  val constructResult
+      : (lclosed, rclosed) input
+        -> permanent_node sequence (* NonEmpty *)
+        -> (res, error) Result.t
+
+  val foldError
+      : (ambiguity sequence -> 'a) -> error -> 'a
+
+  val seqFoldl
+      : ('acc -> 'a -> 'acc)
+        -> 'acc
+        -> 'a sequence
+        -> 'acc
+
+  val ambiguity
+      : ((atom_self, prefix_self) Either.t -> (atom_self, postfix_self) Either.t -> tokish sequence sequence -> 'a)
+        -> ambiguity
+        -> 'a
+end
+
+module Make (S : Self) = struct
+  include S
+  open Breakable_impl
+
+  type res =
+    | Atom of atom_self
+    | Infix of res * infix_self * res
+    | Prefix of prefix_self * res
+    | Postfix of res * postfix_self
+
+  type tagged_self =
+    | AtomSelf of atom_self
+    | InfixSelf of infix_self
+    | PrefixSelf of prefix_self
+    | PostfixSelf of postfix_self
+
+  let mk_atom (s : tagged_self) : res = match s with
+    | AtomSelf s -> Atom s
+    | _ -> assert false
+  let mk_infix (l : res) (s : tagged_self) (r : res) : res = match s with
+    | InfixSelf s -> Infix (l, s, r)
+    | _ -> assert false
+  let mk_prefix (s : tagged_self) (r : res) : res = match s with
+    | PrefixSelf s -> Prefix (s, r)
+    | _ -> assert false
+  let mk_postfix (l : res) (s : tagged_self) : res = match s with
+    | PostfixSelf s -> Postfix (l, s)
+    | _ -> assert false
+
+  let selfToStr = function
+    | AtomSelf s -> atom_to_str s
+    | InfixSelf s -> infix_to_str s
+    | PrefixSelf s -> prefix_to_str s
+    | PostfixSelf s -> postfix_to_str s
+
+  type allow_set = Obj.t
+  type production = Obj.t
+  type grammar = Obj.t
+  type gen_grammar = Obj.t
+  type lclosed = unit
+  type lopen = unit
+  type rclosed = unit
+  type ropen = unit
+  type ('l, 'r) input = Obj.t
+  type 'r state = Obj.t
+  type permanent_node = Obj.t
+  type 'a sequence = Obj.t
+  type error = Obj.t
+  type ambiguity = Obj.t
+
+  let allowAll = Obj.magic v_allowAll
+  let allowNone = Obj.magic v_allowNone
+  let allowOneMore = Obj.magic v_allowOneMore
+  let allowOneLess = Obj.magic v_allowOneLess
+
+  let atom label = Obj.magic v_atom label mk_atom
+  let infix label lallow rallow = Obj.magic v_infix label mk_infix lallow rallow
+  let prefix label rallow = Obj.magic v_prefix label mk_prefix rallow
+  let postfix label lallow = Obj.magic v_postfix label mk_postfix lallow
+
+  let emptyGrammar = Obj.magic v_emptyGrammar
+  let addProd prod gram = Obj.magic v_addProd prod gram
+  let addPrec l r ml mr gram = Obj.magic v_addPrec l r ml mr gram
+
+  let finalize gram = Obj.magic v_finalize compareLabel gram
+
+  let getAtom gen label = Obj.magic v_getAtom gen label
+  let getInfix gen label = Obj.magic v_getInfix gen label
+  let getPrefix gen label = Obj.magic v_getPrefix gen label
+  let getPostfix gen label = Obj.magic v_getPostfix gen label
+
+  let init () = Obj.magic v_init ()
+
+  let addAtom input self st = Obj.magic v_addAtom input (AtomSelf self) st
+  let addPrefix input self st = Obj.magic v_addPrefix input (PrefixSelf self) st
+  let addPostfix input self st =
+    Obj.magic v_addPostfix input (PostfixSelf self) st
+    |> v_maybe (fun _ -> None) (fun x -> Some x)
+  let addInfix input self st =
+    Obj.magic v_addInfix input (InfixSelf self) st
+    |> v_maybe (fun _ -> None) (fun x -> Some x)
+
+  let finalizeParse st =
+    Obj.magic v_finalizeParse st
+    |> v_maybe (fun _ -> None) (fun x -> Some x)
+
+  let constructResult parInput roots =
+    Obj.magic v_constructResult selfToStr lpar_tok rpar_tok parInput roots
+    |> v_either Result.error Result.ok
+
+  let foldError deconAmbiguities error = Obj.magic v_foldError deconAmbiguities error
+
+  let seqFoldl = Obj.magic v_seqFoldl
+
+  let ambiguity deconAmbiguity ambiguity =
+    let decon selfl selfr resolutions =
+      let l = match selfl with
+        | AtomSelf s -> Either.left s
+        | PrefixSelf s -> Either.right s
+        | _ -> assert false in
+      let r = match selfr with
+        | AtomSelf s -> Either.left s
+        | PostfixSelf s -> Either.right s
+        | _ -> assert false in
+      deconAmbiguity l r resolutions
+    in Obj.magic v_ambiguity decon ambiguity
+end

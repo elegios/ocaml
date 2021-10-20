@@ -633,15 +633,30 @@ Known "external" uses of the expr nts:
   (This uses `expr` inside, hopefully in a compatible way)
 *)
 
-module BS = Brokensyntax
+let gleft l r = (l, r, (true, false))
+let gright l r = (l, r, (false, true))
+(* let geither l r = (l, r, (true, true)) *)
+(* let gneither l r = (l, r, (false, false)) *)
+
+let precTableNoEq (table : 'label list list) : ('label * 'label * (bool * bool)) list =
+  let firstLow a b = [gright a b; gleft b a] in
+  let rec go = function
+    | [] -> []
+    | l :: ls ->
+       List.concat ls
+       |> List.concat_map (fun l' -> List.concat_map (firstLow l') l)
+       |> fun here -> here @ go ls
+  in go table
 
 type blabel =
   (* Atom *)
   | BLOpaque
   | BLGrouping
+  | BLIdent
 
   (* Infix *)
   | BLSemi
+  | BLEquality
 
   (* Prefix *)
   | BLMinusPre
@@ -652,153 +667,139 @@ type blabel =
 (* This works because blabel only has constructors without carried data *)
 let compareLabel (a : blabel) (b : blabel) = Obj.magic a - Obj.magic b
 
-type bexpr =
-  (* Atom *)
+type batom =
   | BSOpaque of expression
   | BSGrouping of expression
+  | BSIdent of Longident.t Asttypes.loc
 
-  (* Infix *)
+type binfix =
   | BSSemi
+  | BSEquality of expression
 
-  (* Prefix *)
+type bprefix =
   | BSUSub of string
 
-  (* Postfix *)
+type bpostfix =
   | BSFieldAccess of Longident.t Asttypes.loc
 
-type bself = (Lexing.position * Lexing.position) * bexpr
-(* The bool denotes "available for unbreaking" *)
-type mbroken =
-  | Whole of expression
-  | BrokenSemis of (expression * (Lexing.position * Lexing.position)) list
-  | BrokenFieldAccess of (Lexing.position * Lexing.position) * expression * Longident.t Asttypes.loc
+module BSBasics = struct
+  type atom_self = (Lexing.position * Lexing.position) * batom
+  type infix_self = binfix
+  type prefix_self = (Lexing.position * Lexing.position) * bprefix
+  type postfix_self = (Lexing.position * Lexing.position) * bpostfix
+  type label = blabel
+  type tokish = string
 
-let mkWhole = function
-  | Whole x -> x
-  | BrokenSemis stmts ->
-     let rec go = function
-       | [(l, (lloc, _)); (r, (_, rloc))] -> (mkexp ~loc:(lloc, rloc) (Pexp_sequence(l, r)), rloc)
-       | (l, (lloc, _)) :: xs ->
-          let r, rloc = go xs in
-          (mkexp ~loc:(lloc, rloc) (Pexp_sequence(l, r)), rloc)
-       | [] -> assert false
-     in let e, _ = go stmts in e
-  | BrokenFieldAccess (loc, e, field) -> mkexp ~loc (Pexp_field(e, field))
+  let lpar_tok = "("
+  let rpar_tok = ")"
 
-type bres = mbroken * (Lexing.position * Lexing.position)
+  let atom_to_str (_, s) = match s with
+    | BSOpaque _ -> "..."
+    | BSGrouping _ -> "(...)"
+    | BSIdent rhs -> Format.asprintf "%a" Pprintast.longident rhs.txt
+  let infix_to_str s = match s with
+    | BSSemi -> ";"
+    | BSEquality _ -> "="
+  let prefix_to_str (_, s) = match s with
+    | BSUSub str -> str
+  let postfix_to_str (_, s) = match s with
+    | BSFieldAccess rhs -> Format.asprintf ". %a" Pprintast.longident rhs.txt
 
-let selfToStr (_, self) = match self with
-  | BSOpaque _ -> "..."
-  | BSGrouping _ -> "(...)"
-  | BSSemi -> ";"
-  | BSUSub str -> str
-  | BSFieldAccess rhs -> Format.asprintf ". %a" Pprintast.longident rhs.txt
+  let compareLabel = compareLabel
+end
 
-let bconstructAtom (loc, self) =
-  let res = match self with
-    | BSOpaque x -> Whole x
-    | BSGrouping x -> Whole x
-    | _ -> assert false
-  in (res, loc)
+module BS = struct
+  include Brokensyntax.Make(BSBasics)
 
-let bconstructInfix (l, (lloc, _ as lloc')) (_, self) (r, (_, rloc as rloc')) =
-  let res = match self with
-    | BSSemi ->
-       let l = mkWhole l in
-       let tail = match r with
-         | BrokenSemis stmts -> stmts
-         | _ -> [(mkWhole r, rloc')]
-       in BrokenSemis ((l, lloc') :: tail)
-    | _ -> assert false
-  in (res, (lloc, rloc))
+  let rec mkWhole = function
+    | Atom (_, BSOpaque e) -> e
+    | Atom (_, BSGrouping e) -> e
+    | Atom (loc, BSIdent ident) -> mkexp ~loc (Pexp_ident ident)
 
-let bconstructPrefix ((lloc, _) as loc, self) (r, (_, rloc)) =
-  let res = match self with
-    | BSUSub op -> Whole (mkexp ~loc:(lloc, rloc) (mkuminus ~oploc:loc op (mkWhole r)))
-    | _ -> assert false
-  in (res, (lloc, rloc))
+    | Infix (l, BSSemi, r) -> whole_infix l r (fun l r -> Pexp_sequence(l, r))
+    | Infix (l, BSEquality op, r) -> whole_infix l r (fun l r -> mkinfix l op r)
 
-let bconstructPostfix (l, (lloc, _)) ((_, rloc), self) =
-  let res = match self with
-    | BSFieldAccess field -> BrokenFieldAccess ((lloc, rloc), mkWhole l, field)
-    | _ -> assert false
-  in (res, (lloc, rloc))
+    | Prefix ((oploc, BSUSub op), r) ->
+       whole_prefix oploc r (fun r -> mkuminus ~oploc op r)
 
-let ballowAll = BS.allowAll compareLabel
-(* let ballowNone = BS.allowNone compareLabel *)
+    | Postfix (l, (oploc, BSFieldAccess ident)) ->
+       whole_postfix l oploc (fun l -> Pexp_field(l, ident))
 
-let defaultAllow =
-  ballowAll
+  and whole_infix l r c =
+    let l = mkWhole l in
+    let r = mkWhole r in
+    mkexp ~loc:(l.pexp_loc.loc_start, r.pexp_loc.loc_end) (c l r)
+  and whole_prefix (start, _) r c =
+    let r = mkWhole r in
+    mkexp ~loc:(start, r.pexp_loc.loc_end) (c r)
+  and whole_postfix l (_, endP) c =
+    let l = mkWhole l in
+    mkexp ~loc:(l.pexp_loc.loc_start, endP) (c l)
 
-(* let allowOnly l = List.fold_left (fun s l -> BS.allowOneMore l s) ballowNone l *)
+  let rec mkSemiList = function
+    | Infix (l, BSSemi, r) -> mkWhole l :: mkSemiList r
+    | x -> [mkWhole x]
 
-let gleft l r = (l, r, (true, false))
-let gright l r = (l, r, (false, true))
-(* let geither l r = (l, r, (true, true)) *)
-(* let gneither l r = (l, r, (false, false)) *)
+  let defaultAllow =
+    allowAll
 
-let precTableNoEq (table : blabel list list) : (blabel * blabel * (bool * bool)) list =
-  let firstLow a b = [gright a b; gleft b a] in
-  let rec go = function
-    | [] -> []
-    | l :: ls ->
-       List.concat ls
-       |> List.concat_map (fun l' -> List.concat_map (firstLow l') l)
-       |> fun here -> here @ go ls
-  in go table
-
-let batoms =
-  [ BLGrouping; BLOpaque ]
-let binfixes =
-  List.map
-    (fun l -> defaultAllow, l, defaultAllow)
-    [ BLSemi
+  let batoms =
+    [ BLGrouping; BLOpaque; BLIdent
     ]
-  @ [
-    ]
-let bprefixes =
-  List.map
-    (fun l -> l, defaultAllow)
-    [ BLMinusPre
-    ]
-let bpostfixes =
-  List.map
-    (fun l -> defaultAllow, l)
-    [ BLFieldAccess
-    ]
-
-let bproductions =
-  List.map (fun l -> BS.atom l bconstructAtom) batoms
-  @ List.map (fun (lallow, l, rallow) -> BS.infix l bconstructInfix lallow rallow) binfixes
-  @ List.map (fun (l, rallow) -> BS.prefix l bconstructPrefix rallow) bprefixes
-  @ List.map (fun (lallow, l) -> BS.postfix l bconstructPostfix lallow) bpostfixes
-
-let bprecedence = List.concat
-  [ precTableNoEq
-      [ [ BLFieldAccess ]
-      ; [ BLMinusPre ]
-      ; [ BLSemi ]
+  let binfixes =
+    List.map
+      (fun l -> defaultAllow, l, defaultAllow)
+      [ BLSemi; BLEquality
       ]
-  ]
+    @ [
+      ]
+  let bprefixes =
+    List.map
+      (fun l -> l, defaultAllow)
+      [ BLMinusPre
+      ]
+  let bpostfixes =
+    List.map
+      (fun l -> defaultAllow, l)
+      [ BLFieldAccess
+      ]
 
-let grammar =
-  let g = List.fold_left (fun g p -> BS.addProd p g) BS.emptyGrammar bproductions in
-  List.fold_left (fun g (l, r, (gleft, gright)) -> BS.addPrec l r gleft gright g) g bprecedence
+  let bproductions =
+    List.map (fun l -> atom l) batoms
+    @ List.map (fun (lallow, l, rallow) -> infix l lallow rallow) binfixes
+    @ List.map (fun (l, rallow) -> prefix l rallow) bprefixes
+    @ List.map (fun (lallow, l) -> postfix l lallow) bpostfixes
 
-let genned = BS.finalize compareLabel grammar
+  let bprecedence = List.concat
+    [ precTableNoEq
+        [ [ BLFieldAccess ]
+        ; [ BLMinusPre ]
+        ; [ BLSemi ]
+        ]
+    ]
 
-let getAtom : blabel -> (bres, bself, BS.lclosed, BS.rclosed) BS.breakable_input = BS.getAtom genned
-let getInfix = BS.getInfix genned
-let getPrefix = BS.getPrefix genned
-let getPostfix = BS.getPostfix genned
+  let grammar =
+    let g = List.fold_left (fun g p -> addProd p g) emptyGrammar bproductions in
+    List.fold_left (fun g (l, r, (gleft, gright)) -> addPrec l r gleft gright g) g bprecedence
 
-(* A long list of all the inputs extracted from the generated grammar *)
+  let genned = finalize grammar
 
-let bOpaque = getAtom BLOpaque
-let bGrouping = getAtom BLGrouping
-let bSemi = getInfix BLSemi
-let bMinusPre = getPrefix BLMinusPre
-let bFieldAccess = getPostfix BLFieldAccess
+  let getAtom = getAtom genned
+  let getInfix = getInfix genned
+  let getPrefix = getPrefix genned
+  let getPostfix = getPostfix genned
+end
+
+module B = struct
+  open BS
+  let opaque = getAtom BLOpaque
+  let grouping = getAtom BLGrouping
+  let ident = getAtom BLIdent
+  let semi = getInfix BLSemi
+  let equality = getInfix BLEquality
+  let minusPre = getPrefix BLMinusPre
+  let fieldAccess = getPostfix BLFieldAccess
+end
 
 %}
 
@@ -2347,11 +2348,15 @@ bs_expr:
     { match BS.finalizeParse st with
       | None -> syntax_error ()
       | Some roots ->
-         (match BS.constructResult selfToStr "(" ")" bGrouping roots with
+         (match BS.constructResult B.grouping roots with
           | Ok x -> x
           | Error br_err ->
              let bsSeqToList seq = BS.seqFoldl (fun xs x -> x :: xs) [] seq |> List.rev in
-             let handleAmbiguity ((startP, _), _) ((_, endP), _) resolutions =
+             let handleAmbiguity startS endS resolutions =
+               let getStart ((x, _), _) = x in
+               let getEnd ((_, x), _) = x in
+               let startP = Either.fold ~left:getStart ~right:getStart startS in
+               let endP = Either.fold ~left:getEnd ~right:getEnd endS in
                let resolutions = bsSeqToList resolutions |> List.map bsSeqToList in
                let msg = String.concat "\n" (List.map (String.concat " ") resolutions) in
                (make_loc (startP, endP), msg)
@@ -2362,9 +2367,8 @@ bs_expr:
          )
     }
 ;
-bs_before_lclosed:
-  | /* empty */
-    { BS.init () }
+
+bs_before_lclosed_non_nullable:
   | bs_before_lclosed bs_prefix
     { let input, self = $2 in BS.addPrefix input self $1 }
   | bs_before_lopen bs_infix
@@ -2373,6 +2377,10 @@ bs_before_lclosed:
       | Some st -> st
       | None -> syntax_error ()
     }
+;
+%inline bs_before_lclosed:
+  | /* empty */ { BS.init () }
+  | bs_before_lclosed_non_nullable { $1 }
 ;
 bs_before_lopen:
   | bs_before_lclosed bs_atom
@@ -2386,35 +2394,40 @@ bs_before_lopen:
 ;
 bs_atom:
   | LPAREN seq_expr RPAREN
-    { (bGrouping, ($sloc, BSGrouping (reloc_exp ~loc:$sloc $2))) } // TODO: wrap in `(breakableinput, )`
+    { (B.grouping, ($sloc, BSGrouping (reloc_exp ~loc:$sloc $2))) }
+  | mkrhs(mk_longident(mod_longident, LIDENT))
+    { (B.ident, ($sloc, BSIdent $1)) }
   | constant
-    { (bOpaque, ($sloc, BSOpaque (mkexp ~loc:$sloc (Pexp_constant $1)))) }
+    { (B.opaque, ($sloc, BSOpaque (mkexp ~loc:$sloc (Pexp_constant $1)))) }
 ;
 bs_infix:
   | SEMI
-    { (bSemi, ($sloc, BSSemi)) }
+    { (B.semi, BSSemi) }
+  | EQUAL
+    { (B.equality, BSEquality (mkoperator ~loc:$sloc "=")) }
 ;
 bs_prefix:
   | subtractive
-    { (bMinusPre, ($sloc, BSUSub $1)) } // TODO: recover the attributes
+    { (B.minusPre, ($sloc, BSUSub $1)) } // TODO: recover the attributes
 ;
 bs_postfix:
   | DOT mkrhs(label_longident)
-    { (bFieldAccess, ($sloc, BSFieldAccess $2)) }
+    { (B.fieldAccess, ($sloc, BSFieldAccess $2)) }
 ;
 bseq_expr:
-  | bs_expr { let expr, _ = $1 in mkWhole expr }
+  | bs_expr { BS.mkWhole $1 }
 ;
 seq_expr:
-  | expr        %prec below_SEMI  { $1 }
-  | expr SEMI                     { $1 }
-  | mkexp(expr SEMI seq_expr
-    { Pexp_sequence($1, $3) })
-    { $1 }
-  | expr SEMI PERCENT attr_id seq_expr
-    { let seq = mkexp ~loc:$sloc (Pexp_sequence ($1, $5)) in
-      let payload = PStr [mkstrexp seq []] in
-      mkexp ~loc:$sloc (Pexp_extension ($4, payload)) }
+  | bseq_expr { $1 }
+  /* | expr        %prec below_SEMI  { $1 } */
+  /* | expr SEMI                     { $1 } */
+  /* | mkexp(expr SEMI seq_expr */
+  /*   { Pexp_sequence($1, $3) }) */
+  /*   { $1 } */
+  /* | expr SEMI PERCENT attr_id seq_expr */
+  /*   { let seq = mkexp ~loc:$sloc (Pexp_sequence ($1, $5)) in */
+  /*     let payload = PStr [mkstrexp seq []] in */
+  /*     mkexp ~loc:$sloc (Pexp_extension ($4, payload)) } */
 ;
 labeled_simple_pattern:
     QUESTION LPAREN label_let_pattern opt_default RPAREN
@@ -2900,8 +2913,8 @@ record_expr_content:
         label, e }
 ;
 %inline expr_semi_list:
-  es = separated_or_terminated_nonempty_list(SEMI, expr)
-    { es }
+  es = bs_expr
+    { BS.mkSemiList es }
 ;
 type_constraint:
     COLON core_type                             { (Some $2, None) }
