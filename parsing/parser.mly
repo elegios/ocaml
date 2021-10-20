@@ -740,6 +740,14 @@ module BS = struct
     | Infix (l, BSSemi, r) -> mkWhole l :: mkSemiList r
     | x -> [mkWhole x]
 
+  let mkRecordField = function
+    | Infix (Atom (_, BSIdent ident), BSEquality _, r) -> (ident, mkWhole r)
+    | Atom (_, BSIdent ident) -> (make_ghost ident, exp_of_longident ident)
+    | _x -> assert false (* TODO(vipa, 2021-10-20): Actual error message here *)
+  let rec mkRecordContents = function
+    | Infix (l, BSSemi, r) -> mkRecordField l :: mkRecordContents r
+    | x -> [mkRecordField x]
+
   let defaultAllow =
     allowAll
 
@@ -1511,24 +1519,24 @@ paren_module_expr:
        This expression can be annotated in various ways. *)
     LPAREN VAL attrs = attributes e = expr_colon_package_type RPAREN
       { mkmod ~loc:$sloc ~attrs (Pmod_unpack e) }
-  | LPAREN VAL attributes expr COLON error
+  | LPAREN VAL attributes seq_expr COLON error
       { unclosed "(" $loc($1) ")" $loc($6) }
-  | LPAREN VAL attributes expr COLONGREATER error
+  | LPAREN VAL attributes seq_expr COLONGREATER error
       { unclosed "(" $loc($1) ")" $loc($6) }
-  | LPAREN VAL attributes expr error
+  | LPAREN VAL attributes seq_expr error
       { unclosed "(" $loc($1) ")" $loc($5) }
 ;
 
 (* The various ways of annotating a core language expression that
    produces a first-class module that we wish to unpack. *)
 %inline expr_colon_package_type:
-    e = expr
+    e = seq_expr
       { e }
-  | e = expr COLON ty = package_type
+  | e = seq_expr COLON ty = package_type
       { ghexp ~loc:$loc (Pexp_constraint (e, ty)) }
-  | e = expr COLON ty1 = package_type COLONGREATER ty2 = package_type
+  | e = seq_expr COLON ty1 = package_type COLONGREATER ty2 = package_type
       { ghexp ~loc:$loc (Pexp_coerce (e, Some ty1, ty2)) }
-  | e = expr COLONGREATER ty2 = package_type
+  | e = seq_expr COLONGREATER ty2 = package_type
       { ghexp ~loc:$loc (Pexp_coerce (e, None, ty2)) }
 ;
 
@@ -2877,9 +2885,9 @@ fun_def:
     { es }
 ;
 record_expr_content:
-  eo = ioption(terminated(simple_expr, WITH))
-  fields = separated_or_terminated_nonempty_list(SEMI, record_expr_field)
-    { eo, fields }
+  eo = ioption(terminated(seq_expr, WITH))
+  fields = bs_expr
+    { eo, BS.mkRecordContents fields }
 ;
 %inline record_expr_field:
   | label = mkrhs(label_longident)
