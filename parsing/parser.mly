@@ -656,6 +656,9 @@ let precTableNoEq (table : 'label list list) : ('label * 'label * (bool * bool))
        |> fun here -> here @ go ls
   in go table
 
+let liftA2 (f : 'a -> 'b -> 'c) (l : 'a list) (r : 'b list) : 'c list =
+  List.concat_map (fun a -> List.map (f a) r) l
+
 type blabel =
   (* Atom *)
   | BLOpaque
@@ -668,10 +671,12 @@ type blabel =
   | BLEquality
   | BLApp
   | BLComma
+  | BLMatchArm
 
   (* Prefix *)
   | BLMinusPre
   | BLLet
+  | BLMatch
 
   (* Postfix *)
   | BLFieldAccess
@@ -690,10 +695,12 @@ type binfix =
   | BSApp
   | BSEquality of expression
   | BSComma
+  | BSMatchArm of pattern * expression option
 
 type bprefix =
   | BSUSub of string
   | BSLet of let_bindings
+  | BSMatch of (string Asttypes.loc option * Parsetree.attributes) * expression * (pattern * expression option)
 
 type bpostfix =
   | BSFieldAccess of Longident.t Asttypes.loc
@@ -719,9 +726,11 @@ module BSBasics = struct
     | BSEquality _ -> "="
     | BSApp -> ""
     | BSComma -> ","
+    | BSMatchArm _ -> "| ... ->"
   let prefix_to_str (_, s) = match s with
     | BSUSub str -> str
     | BSLet _ -> "let ... in"
+    | BSMatch _ -> "match ... with"
   let postfix_to_str (_, s) = match s with
     | BSFieldAccess rhs -> Format.asprintf ". %a" Pprintast.longident rhs.txt
 
@@ -745,12 +754,17 @@ module BS = struct
     | Infix (_, BSComma, _) as x ->
        let xs = mkCommaList x in
        mkexp ~loc:(loc_of_exp_list xs) (Pexp_tuple xs)
+    | Infix (_, BSMatchArm _, _) ->
+       assert false (* TODO: proper error? Might not be possible to get here *)
 
     | Prefix ((oploc, BSUSub op), r) ->
        whole_prefix oploc r (fun r -> mkuminus ~oploc op r)
     | Prefix ((oploc, BSLet bindings), r) ->
        let r = mkWhole r in
        expr_of_let_bindings ~loc:(fst oploc, r.pexp_loc.loc_end) bindings r
+    | Prefix ((oploc, BSMatch (attrs, expr, (pat, guard))), r) ->
+       let cases, redge = mkCases pat guard r in
+       mkexp_attrs ~loc:(fst oploc, redge) (Pexp_match(expr, cases)) attrs
 
     | Postfix (l, (oploc, BSFieldAccess ident)) ->
        whole_postfix l oploc (fun l -> Pexp_field(l, ident))
@@ -784,6 +798,14 @@ module BS = struct
     | Infix (l, BSComma, r) -> mkWhole l :: mkCommaList r
     | x -> [mkWhole x]
 
+  and mkCases pat guard = function
+    | Infix (l, BSMatchArm (pat', guard'), r) ->
+       let cases, redge = mkCases pat' guard' r in
+       (Exp.case pat ?guard (mkWhole l) :: cases, redge)
+    | x ->
+       let x = mkWhole x in
+       ([Exp.case pat ?guard x], x.pexp_loc.loc_end)
+
   let rec mkSemiList = function
     | Infix (l, BSSemi, r) -> mkWhole l :: mkSemiList r
     | x -> [mkWhole x]
@@ -801,6 +823,9 @@ module BS = struct
 
   let defaultAllow =
     allowAll
+    |> allowOneLess BLMatchArm
+  let defaultAnd l =
+    List.fold_left (fun acc l -> allowOneMore l acc) defaultAllow l
 
   let batoms =
     [ BLGrouping; BLOpaque; BLIdent; BLConstructor
@@ -810,12 +835,14 @@ module BS = struct
       (fun l -> defaultAllow, l, defaultAllow)
       [ BLSemi; BLEquality; BLApp; BLComma
       ]
-    @ [
+    @ [ defaultAllow, BLMatchArm, defaultAnd [BLMatchArm]
       ]
   let bprefixes =
     List.map
       (fun l -> l, defaultAllow)
       [ BLMinusPre; BLLet
+      ]
+    @ [ BLMatch, defaultAnd [BLMatchArm]
       ]
   let bpostfixes =
     List.map
@@ -837,14 +864,15 @@ module BS = struct
         ; [ BLEquality ]
         ; [ BLComma ]
         ; [ BLSemi ]
-        ; [ BLLet ]
+        ; [ BLLet; BLMatch; BLMatchArm ]
         ]
     ; List.map left_assoc
         [ BLEquality; BLApp
         ]
     ; List.map right_assoc
-        [ BLSemi; BLComma
+        [ BLSemi; BLComma; BLMatchArm
         ]
+    ; liftA2 gright [BLMatch] [BLMatchArm]
     ]
 
   let grammar =
@@ -869,8 +897,10 @@ module B = struct
   let equality = getInfix BLEquality
   let app = getInfix BLApp
   let comma = getInfix BLComma
+  let matchArm = getInfix BLMatchArm
   let minusPre = getPrefix BLMinusPre
   let letbindings = getPrefix BLLet
+  let matchStart = getPrefix BLMatch
   let fieldAccess = getPostfix BLFieldAccess
 end
 
@@ -2509,8 +2539,16 @@ bs_infix_non_app:
     { (B.equality, BSEquality (mkoperator ~loc:$sloc "=")) }
   | COMMA
     { (B.comma, BSComma) }
+  | BAR match_arm_ropen
+    { let pat, guard = $2 in (B.matchArm, BSMatchArm (pat, guard)) }
 ;
 
+match_arm_ropen:
+  | pattern MINUSGREATER
+    { $1, None }
+  | pattern WHEN bseq_expr MINUSGREATER
+    { $1, Some $3 }
+;
 %inline bs_prefix_shared:
   | subtractive
     { (B.minusPre, ($sloc, BSUSub $1)) } // TODO: recover the attributes
@@ -2519,6 +2557,10 @@ bs_prefix_after_non_app:
   | bs_prefix_shared { $1 }
   | let_bindings(ext) IN
     { (B.letbindings, ($sloc, BSLet $1)) }
+  // NOTE(vipa, 2021-10-22): This could be in `shared`, but OCaml
+  // forbids it normally, so we follow suit
+  | MATCH ext_attributes bseq_expr WITH BAR? match_arm_ropen
+    { (B.matchStart, ($sloc, BSMatch ($2, $3, $6))) }
 ;
 bs_prefix_after_app:
   | bs_prefix_shared { $1 }

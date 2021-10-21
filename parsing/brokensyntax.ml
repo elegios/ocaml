@@ -3616,7 +3616,6 @@ let v_breakableInsertAllowSet =
                  (Obj.magic
                     Boot.Intrinsics.Mmap.remove
                     v_id'1764
-                    ()
                     v_s'1767))))
       | _ ->
           (Obj.magic
@@ -3656,6 +3655,7 @@ let v_breakableRemoveAllowSet =
                  (Obj.magic
                     Boot.Intrinsics.Mmap.insert
                     v_id'1769
+                    ()
                     v_s'1772))))
       | _ ->
           (Obj.magic
