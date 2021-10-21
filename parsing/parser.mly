@@ -2434,6 +2434,12 @@ bs_before_lopen:
 bs_atom:
   | LPAREN bseq_expr RPAREN
     { (B.grouping, ($sloc, BSGrouping (reloc_exp ~loc:$sloc $2))) }
+  | LBRACKET expr_semi_list RBRACKET
+    { (B.opaque, ($sloc, BSOpaque (mkexp ~loc:$sloc (fst (mktailexp $loc($3) $2))))) }
+  | LBRACKETBAR expr_semi_list BARRBRACKET
+    { (B.opaque, ($sloc, BSOpaque (mkexp ~loc:$sloc (Pexp_array($2))))) }
+  | LBRACKETBAR BARRBRACKET
+    { (B.opaque, ($sloc, BSOpaque (mkexp ~loc:$sloc (Pexp_array [])))) }
   | mkrhs(mk_longident(mod_longident, LIDENT))
     { (B.ident, ($sloc, BSIdent $1)) }
   | constant
