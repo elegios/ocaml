@@ -665,6 +665,7 @@ type blabel =
 
   (* Prefix *)
   | BLMinusPre
+  | BLLet
 
   (* Postfix *)
   | BLFieldAccess
@@ -685,6 +686,7 @@ type binfix =
 
 type bprefix =
   | BSUSub of string
+  | BSLet of let_bindings
 
 type bpostfix =
   | BSFieldAccess of Longident.t Asttypes.loc
@@ -711,6 +713,7 @@ module BSBasics = struct
     | BSApp -> ""
   let prefix_to_str (_, s) = match s with
     | BSUSub str -> str
+    | BSLet _ -> "let ... in"
   let postfix_to_str (_, s) = match s with
     | BSFieldAccess rhs -> Format.asprintf ". %a" Pprintast.longident rhs.txt
 
@@ -734,6 +737,9 @@ module BS = struct
 
     | Prefix ((oploc, BSUSub op), r) ->
        whole_prefix oploc r (fun r -> mkuminus ~oploc op r)
+    | Prefix ((oploc, BSLet bindings), r) ->
+       let r = mkWhole r in
+       expr_of_let_bindings ~loc:(fst oploc, r.pexp_loc.loc_end) bindings r
 
     | Postfix (l, (oploc, BSFieldAccess ident)) ->
        whole_postfix l oploc (fun l -> Pexp_field(l, ident))
@@ -794,7 +800,7 @@ module BS = struct
   let bprefixes =
     List.map
       (fun l -> l, defaultAllow)
-      [ BLMinusPre
+      [ BLMinusPre; BLLet
       ]
   let bpostfixes =
     List.map
@@ -815,6 +821,7 @@ module BS = struct
         ; [ BLMinusPre ]
         ; [ BLEquality ]
         ; [ BLSemi ]
+        ; [ BLLet ]
         ]
     ; List.map left_assoc
         [ BLEquality; BLApp
@@ -846,6 +853,7 @@ module B = struct
   let equality = getInfix BLEquality
   let app = getInfix BLApp
   let minusPre = getPrefix BLMinusPre
+  let letbindings = getPrefix BLLet
   let fieldAccess = getPostfix BLFieldAccess
 end
 
@@ -2422,20 +2430,33 @@ bs_expr:
          )
     }
 ;
-
-bs_before_lclosed_non_nullable:
-  | bs_before_lclosed bs_prefix
+bs_before_lclosed_non_app_non_nullable:
+  | bs_before_lclosed_app bs_prefix_after_app
     { let input, self = $2 in BS.addPrefix input self $1 }
-  | bs_before_lopen bs_infix
+  | bs_before_lclosed_non_app bs_prefix_after_non_app
+    { let input, self = $2 in BS.addPrefix input self $1 }
+  | bs_before_lopen bs_infix_non_app
     { let input, self = $2 in
       match BS.addInfix input self $1 with
       | Some st -> st
       | None -> syntax_error ()
     }
 ;
+bs_before_lclosed_app:
+  | bs_before_lopen
+    { match BS.addInfix B.app BSApp $1 with
+      | Some st -> st
+      | None -> syntax_error ()
+    }
+;
 %inline bs_before_lclosed:
   | /* empty */ { BS.init () }
-  | bs_before_lclosed_non_nullable { $1 }
+  | bs_before_lclosed_app { $1 }
+  | bs_before_lclosed_non_app_non_nullable { $1 }
+;
+%inline bs_before_lclosed_non_app:
+  | /* empty */ { BS.init () }
+  | bs_before_lclosed_non_app_non_nullable { $1 }
 ;
 bs_before_lopen:
   | bs_before_lclosed bs_atom
@@ -2463,22 +2484,32 @@ bs_atom:
   | constant
     { (B.opaque, ($sloc, BSOpaque (mkexp ~loc:$sloc (Pexp_constant $1)))) }
 ;
-bs_infix:
-  | /* Empty */
-    { (B.app, BSApp) }
+
+bs_infix_non_app:
   | SEMI
     { (B.semi, BSSemi) }
   | EQUAL
     { (B.equality, BSEquality (mkoperator ~loc:$sloc "=")) }
 ;
-bs_prefix:
+
+%inline bs_prefix_shared:
   | subtractive
     { (B.minusPre, ($sloc, BSUSub $1)) } // TODO: recover the attributes
 ;
+bs_prefix_after_non_app:
+  | bs_prefix_shared { $1 }
+  | let_bindings(ext) IN
+    { (B.letbindings, ($sloc, BSLet $1)) }
+;
+bs_prefix_after_app:
+  | bs_prefix_shared { $1 }
+;
+
 bs_postfix:
   | DOT mkrhs(label_longident)
     { (B.fieldAccess, ($sloc, BSFieldAccess $2)) }
 ;
+
 bseq_expr:
   | bs_expr { BS.mkWhole $1 }
 ;
