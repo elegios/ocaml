@@ -639,6 +639,7 @@ let gright l r = (l, r, (false, true))
 (* let gneither l r = (l, r, (false, false)) *)
 
 let left_assoc l = gleft l l
+let right_assoc l = gright l l
 
 let precTableNoEq (table : 'label list list) : ('label * 'label * (bool * bool)) list =
   let firstLow a b = [gright a b; gleft b a] in
@@ -806,6 +807,9 @@ module BS = struct
         ]
     ; List.map left_assoc
         [ BLEquality; BLApp
+        ]
+    ; List.map right_assoc
+        [ BLSemi
         ]
     ]
 
