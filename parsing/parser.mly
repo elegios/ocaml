@@ -2789,7 +2789,7 @@ labeled_simple_expr:
 let_binding_body_no_punning:
     let_ident strict_binding
       { ($1, $2) }
-  | let_ident type_constraint EQUAL seq_expr
+  | let_ident type_constraint EQUAL bseq_expr
       { let v = $1 in (* PR#7344 *)
         let t =
           match $2 with
@@ -2802,19 +2802,19 @@ let_binding_body_no_punning:
         let patloc = ($startpos($1), $endpos($2)) in
         (ghpat ~loc:patloc (Ppat_constraint(v, typ)),
          mkexp_constraint ~loc:$sloc $4 $2) }
-  | let_ident COLON poly(core_type) EQUAL seq_expr
+  | let_ident COLON poly(core_type) EQUAL bseq_expr
       { let patloc = ($startpos($1), $endpos($3)) in
         (ghpat ~loc:patloc
            (Ppat_constraint($1, ghtyp ~loc:($loc($3)) $3)),
          $5) }
-  | let_ident COLON TYPE lident_list DOT core_type EQUAL seq_expr
+  | let_ident COLON TYPE lident_list DOT core_type EQUAL bseq_expr
       { let exp, poly =
           wrap_type_annotation ~loc:$sloc $4 $6 $8 in
         let loc = ($startpos($1), $endpos($6)) in
         (ghpat ~loc (Ppat_constraint($1, poly)), exp) }
-  | pattern_no_exn EQUAL seq_expr
+  | pattern_no_exn EQUAL bseq_expr
       { ($1, $3) }
-  | simple_pattern_not_ident COLON core_type EQUAL seq_expr
+  | simple_pattern_not_ident COLON core_type EQUAL bseq_expr
       { let loc = ($startpos($1), $endpos($3)) in
         (ghpat ~loc (Ppat_constraint($1, $3)), $5) }
 ;
@@ -2888,7 +2888,7 @@ fun_binding:
       { mkexp_constraint ~loc:$sloc $3 $1 }
 ;
 strict_binding:
-    EQUAL seq_expr
+    EQUAL bseq_expr
       { $2 }
   | labeled_simple_pattern fun_binding
       { let (l, o, p) = $1 in ghexp ~loc:$sloc (Pexp_fun(l, o, p, $2)) }
