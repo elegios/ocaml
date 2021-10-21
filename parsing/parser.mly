@@ -625,6 +625,11 @@ let mk_directive ~loc name arg =
 
 (* === Brokensyntax stuff === *)
 
+let rec loc_of_exp_list = function
+  | [] -> assert false
+  | [e] -> (e.pexp_loc.loc_start, e.pexp_loc.loc_end)
+  | e :: es -> (e.pexp_loc.loc_start, snd (loc_of_exp_list es))
+
 (*
 Known "external" uses of the expr nts:
 - seq_expr
@@ -662,6 +667,7 @@ type blabel =
   | BLSemi
   | BLEquality
   | BLApp
+  | BLComma
 
   (* Prefix *)
   | BLMinusPre
@@ -683,6 +689,7 @@ type binfix =
   | BSSemi
   | BSApp
   | BSEquality of expression
+  | BSComma
 
 type bprefix =
   | BSUSub of string
@@ -711,6 +718,7 @@ module BSBasics = struct
     | BSSemi -> ";"
     | BSEquality _ -> "="
     | BSApp -> ""
+    | BSComma -> ","
   let prefix_to_str (_, s) = match s with
     | BSUSub str -> str
     | BSLet _ -> "let ... in"
@@ -734,6 +742,9 @@ module BS = struct
     | Infix (l, BSApp, r) ->
        let r = mkWhole r in
        mkApplication r.pexp_loc.loc_end [(Nolabel, r)] l
+    | Infix (_, BSComma, _) as x ->
+       let xs = mkCommaList x in
+       mkexp ~loc:(loc_of_exp_list xs) (Pexp_tuple xs)
 
     | Prefix ((oploc, BSUSub op), r) ->
        whole_prefix oploc r (fun r -> mkuminus ~oploc op r)
@@ -769,6 +780,10 @@ module BS = struct
        let x = mkWhole x in
        mkexp ~loc:(x.pexp_loc.loc_start, redge) (Pexp_apply(x, rest))
 
+  and mkCommaList = function
+    | Infix (l, BSComma, r) -> mkWhole l :: mkCommaList r
+    | x -> [mkWhole x]
+
   let rec mkSemiList = function
     | Infix (l, BSSemi, r) -> mkWhole l :: mkSemiList r
     | x -> [mkWhole x]
@@ -793,7 +808,7 @@ module BS = struct
   let binfixes =
     List.map
       (fun l -> defaultAllow, l, defaultAllow)
-      [ BLSemi; BLEquality; BLApp
+      [ BLSemi; BLEquality; BLApp; BLComma
       ]
     @ [
       ]
@@ -820,6 +835,7 @@ module BS = struct
         ; [ BLApp ]
         ; [ BLMinusPre ]
         ; [ BLEquality ]
+        ; [ BLComma ]
         ; [ BLSemi ]
         ; [ BLLet ]
         ]
@@ -827,7 +843,7 @@ module BS = struct
         [ BLEquality; BLApp
         ]
     ; List.map right_assoc
-        [ BLSemi
+        [ BLSemi; BLComma
         ]
     ]
 
@@ -852,6 +868,7 @@ module B = struct
   let semi = getInfix BLSemi
   let equality = getInfix BLEquality
   let app = getInfix BLApp
+  let comma = getInfix BLComma
   let minusPre = getPrefix BLMinusPre
   let letbindings = getPrefix BLLet
   let fieldAccess = getPostfix BLFieldAccess
@@ -2490,6 +2507,8 @@ bs_infix_non_app:
     { (B.semi, BSSemi) }
   | EQUAL
     { (B.equality, BSEquality (mkoperator ~loc:$sloc "=")) }
+  | COMMA
+    { (B.comma, BSComma) }
 ;
 
 %inline bs_prefix_shared:
