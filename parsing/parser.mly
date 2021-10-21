@@ -656,6 +656,7 @@ type blabel =
   | BLOpaque
   | BLGrouping
   | BLIdent
+  | BLConstructor
 
   (* Infix *)
   | BLSemi
@@ -675,6 +676,7 @@ type batom =
   | BSOpaque of expression
   | BSGrouping of expression
   | BSIdent of Longident.t Asttypes.loc
+  | BSConstructor of Longident.t Asttypes.loc
 
 type binfix =
   | BSSemi
@@ -702,6 +704,7 @@ module BSBasics = struct
     | BSOpaque _ -> "..."
     | BSGrouping _ -> "(...)"
     | BSIdent rhs -> Format.asprintf "%a" Pprintast.longident rhs.txt
+    | BSConstructor rhs -> Format.asprintf "%a" Pprintast.longident rhs.txt
   let infix_to_str s = match s with
     | BSSemi -> ";"
     | BSEquality _ -> "="
@@ -721,6 +724,7 @@ module BS = struct
     | Atom (_, BSOpaque e) -> e
     | Atom (_, BSGrouping e) -> e
     | Atom (loc, BSIdent ident) -> mkexp ~loc (Pexp_ident ident)
+    | Atom (loc, BSConstructor c) -> mkexp ~loc (Pexp_construct(c, None))
 
     | Infix (l, BSSemi, r) -> whole_infix l r (fun l r -> Pexp_sequence(l, r))
     | Infix (l, BSEquality op, r) -> whole_infix l r (fun l r -> mkinfix l op r)
@@ -748,6 +752,13 @@ module BS = struct
   and mkApplication redge rest = function
     | Infix (l, BSApp, r) ->
        mkApplication redge ((Nolabel, mkWhole r) :: rest) l
+    | Atom ((start, _), BSConstructor c) ->
+       (match rest with
+        | [] -> assert false
+        | [(Nolabel, x)] -> mkexp ~loc:(start, redge) (Pexp_construct(c, Some x))
+        | [(_label, _x)] -> assert false (* TODO: proper error message *)
+        | _ :: _extra :: _ -> assert false (* TODO: proper error message *)
+       )
     | x ->
        let x = mkWhole x in
        mkexp ~loc:(x.pexp_loc.loc_start, redge) (Pexp_apply(x, rest))
@@ -771,7 +782,7 @@ module BS = struct
     allowAll
 
   let batoms =
-    [ BLGrouping; BLOpaque; BLIdent
+    [ BLGrouping; BLOpaque; BLIdent; BLConstructor
     ]
   let binfixes =
     List.map
@@ -830,6 +841,7 @@ module B = struct
   let opaque = getAtom BLOpaque
   let grouping = getAtom BLGrouping
   let ident = getAtom BLIdent
+  let constructor = getAtom BLConstructor
   let semi = getInfix BLSemi
   let equality = getInfix BLEquality
   let app = getInfix BLApp
@@ -2446,6 +2458,8 @@ bs_atom:
     { (B.opaque, ($sloc, BSOpaque (mkexp ~loc:$sloc (Pexp_array [])))) }
   | mkrhs(mk_longident(mod_longident, LIDENT))
     { (B.ident, ($sloc, BSIdent $1)) }
+  | mkrhs(constr_longident)
+    { (B.constructor, ($sloc, BSConstructor $1)) }
   | constant
     { (B.opaque, ($sloc, BSOpaque (mkexp ~loc:$sloc (Pexp_constant $1)))) }
 ;
