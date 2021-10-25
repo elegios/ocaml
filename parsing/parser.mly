@@ -665,6 +665,7 @@ type blabel =
   | BLGrouping
   | BLIdent
   | BLConstructor
+  | BLUnreachable
 
   (* Infix *)
   | BLSemi
@@ -824,25 +825,26 @@ module BS = struct
   let defaultAllow =
     allowAll
     |> allowOneLess BLMatchArm
+    |> allowOneLess BLUnreachable
   let defaultAnd l =
     List.fold_left (fun acc l -> allowOneMore l acc) defaultAllow l
 
   let batoms =
-    [ BLGrouping; BLOpaque; BLIdent; BLConstructor
+    [ BLGrouping; BLOpaque; BLIdent; BLConstructor; BLUnreachable
     ]
   let binfixes =
     List.map
       (fun l -> defaultAllow, l, defaultAllow)
       [ BLSemi; BLEquality; BLApp; BLComma
       ]
-    @ [ defaultAllow, BLMatchArm, defaultAnd [BLMatchArm]
+    @ [ defaultAllow, BLMatchArm, defaultAnd [BLMatchArm; BLUnreachable]
       ]
   let bprefixes =
     List.map
       (fun l -> l, defaultAllow)
       [ BLMinusPre; BLLet
       ]
-    @ [ BLMatch, defaultAnd [BLMatchArm]
+    @ [ BLMatch, defaultAnd [BLMatchArm; BLUnreachable]
       ]
   let bpostfixes =
     List.map
@@ -893,6 +895,7 @@ module B = struct
   let grouping = getAtom BLGrouping
   let ident = getAtom BLIdent
   let constructor = getAtom BLConstructor
+  let unreachable = getAtom BLUnreachable
   let semi = getInfix BLSemi
   let equality = getInfix BLEquality
   let app = getInfix BLApp
@@ -2533,24 +2536,32 @@ interaction into their own non-terminals:
 
 bs_rclosed_all: bs_rclosed_base {$1};
 %inline bs_rclosed_base:
-  | st=maybe_start(bs_ropen_all) op=bs_atom_all { add_atom (st, op) }
+  | st=maybe_start(bs_ropen_all) op=bs_atom_nodot { add_atom (st, op) }
+  | st=bs_ropen_matchlike op=bs_unreachable { add_atom (st, op) }
 
   | st=bs_rclosed_all op=bs_postfix_all { add_postfix (st, op) }
 ;
 
-bs_ropen_all: bs_ropen_app | bs_ropen_base {$1};
-bs_ropen_noapp: bs_ropen_base {$1};
+bs_ropen_all: bs_ropen_app | bs_ropen_matchlike | bs_ropen_base {$1};
+bs_ropen_noapp: bs_ropen_matchlike | bs_ropen_base {$1};
 %inline bs_ropen_app:
   | st=bs_rclosed_all op=bs_app { add_infix (st, op) }
+%inline bs_ropen_matchlike:
+  | st=maybe_start(bs_ropen_noapp) op=bs_match { add_prefix (st, op) }
+  | st=bs_rclosed_all op=bs_match_arm { add_infix (st, op) }
 %inline bs_ropen_base:
   | st=maybe_start(bs_ropen_all) op=bs_prefix_nolet_nomatch { add_prefix (st, op) }
   | st=maybe_start(bs_ropen_noapp) op=bs_let { add_prefix (st, op) }
-  | st=maybe_start(bs_ropen_noapp) op=bs_match { add_prefix (st, op) }
 
-  | st=bs_rclosed_all op=bs_infix_noapp { add_infix (st, op) }
+  | st=bs_rclosed_all op=bs_infix_noapp_nomatcharm { add_infix (st, op) }
 ;
 
-bs_atom_all: bs_atom_base {$1}
+/* bs_atom_all: bs_unreachable | bs_atom_base {$1}; */
+bs_atom_nodot: bs_atom_base {$1};
+%inline bs_unreachable:
+  | DOT
+    { (B.unreachable, ($sloc, BSOpaque (Exp.unreachable ~loc:(make_loc $sloc) ()))) }
+;
 %inline bs_atom_base:
   | LPAREN bseq_expr RPAREN
     { (B.grouping, ($sloc, BSGrouping (reloc_exp ~loc:$sloc $2))) }
@@ -2569,7 +2580,8 @@ bs_atom_all: bs_atom_base {$1}
 ;
 
 /* bs_infix_all: bs_app | bs_match_arm | bs_infix_base {$1}; */
-bs_infix_noapp: bs_match_arm | bs_infix_base {$1};
+/* bs_infix_noapp: bs_match_arm | bs_infix_base {$1}; */
+bs_infix_noapp_nomatcharm: bs_infix_base {$1};
 %inline bs_app:
   |   { (B.app, BSApp) }
 ;
