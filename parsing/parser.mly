@@ -730,7 +730,7 @@ module BSBasics = struct
   let prefix_to_str (_, s) = match s with
     | BSUSub str -> str
     | BSLet _ -> "let ... in"
-    | BSMatch _ -> "match ... with"
+    | BSMatch _ -> "match ... with ... ->"
   let postfix_to_str (_, s) = match s with
     | BSFieldAccess rhs -> Format.asprintf ". %a" Pprintast.longident rhs.txt
 
@@ -903,6 +903,22 @@ module B = struct
   let matchStart = getPrefix BLMatch
   let fieldAccess = getPostfix BLFieldAccess
 end
+
+let add_atom (st, (input, self)) =
+  BS.addAtom input self st
+
+let add_infix (st, (input, self)) =
+  match BS.addInfix input self st with
+  | Some x -> x
+  | None -> syntax_error ()
+
+let add_prefix (st, (input, self)) =
+  BS.addPrefix input self st
+
+let add_postfix (st, (input, self)) =
+  match BS.addPostfix input self st with
+  | Some x -> x
+  | None -> syntax_error ()
 
 %}
 
@@ -2453,8 +2469,14 @@ class_type_declarations:
 
 /* Core expressions */
 
+// Get a normal expression
+bseq_expr:
+  | bs_expr { BS.mkWhole $1 }
+;
+
+// Get a broken expression, to enable unbreaking later
 bs_expr:
-  | st=bs_before_lopen
+  | st=bs_rclosed_all
     { match BS.finalizeParse st with
       | None -> syntax_error ()
       | Some roots ->
@@ -2477,45 +2499,59 @@ bs_expr:
          )
     }
 ;
-bs_before_lclosed_non_app_non_nullable:
-  | bs_before_lclosed_app bs_prefix_after_app
-    { let input, self = $2 in BS.addPrefix input self $1 }
-  | bs_before_lclosed_non_app bs_prefix_after_non_app
-    { let input, self = $2 in BS.addPrefix input self $1 }
-  | bs_before_lopen bs_infix_non_app
-    { let input, self = $2 in
-      match BS.addInfix input self $1 with
-      | Some st -> st
-      | None -> syntax_error ()
-    }
-;
-bs_before_lclosed_app:
-  | bs_before_lopen
-    { match BS.addInfix B.app BSApp $1 with
-      | Some st -> st
-      | None -> syntax_error ()
-    }
-;
-%inline bs_before_lclosed:
+
+/*
+
+In normal operation these non-terminals are formulated as follows:
+- We build essentially a snoc-list of operators as we find them
+- We have two kinds of non-terminals: those that dictate the structure
+  of this list, and those that describe elements in each list
+- Each list non-terminal is named based on whether it is right-open or
+  right-closed, as well as whether it includes all such operators or
+  some subset of them.
+- The productions in the list non-terminals look like
+  `bs_<closed|open>_<subset> bs_<atom|prefix|postfix|infix>_<subset>`
+
+A few of the "operators" involved here have to be a bit special
+because of how OCaml normally treats them. For example, neither `let`
+nor `match` is allowed syntactically after a function application.
+
+To handle these we split the things that have this form of special
+interaction into their own non-terminals:
+- let: must not be preceeded by function application
+- match: must not be preceeded by function application
+
+*/
+
+// This expresses the fact that before something lclosed we could
+// simply start the expression, i.e., there's nothing before it.
+// It needs to be inlined to avoid a reduce/reduce error
+%inline maybe_start(previous):
   | /* empty */ { BS.init () }
-  | bs_before_lclosed_app { $1 }
-  | bs_before_lclosed_non_app_non_nullable { $1 }
+  | previous { $1 }
 ;
-%inline bs_before_lclosed_non_app:
-  | /* empty */ { BS.init () }
-  | bs_before_lclosed_non_app_non_nullable { $1 }
+
+bs_rclosed_all: bs_rclosed_base {$1};
+%inline bs_rclosed_base:
+  | st=maybe_start(bs_ropen_all) op=bs_atom_all { add_atom (st, op) }
+
+  | st=bs_rclosed_all op=bs_postfix_all { add_postfix (st, op) }
 ;
-bs_before_lopen:
-  | bs_before_lclosed bs_atom
-    { let input, self = $2 in BS.addAtom input self $1 }
-  | bs_before_lopen bs_postfix
-    { let input, self = $2 in
-      match BS.addPostfix input self $1 with
-      | Some st -> st
-      | None -> syntax_error ()
-    }
+
+bs_ropen_all: bs_ropen_app | bs_ropen_base {$1};
+bs_ropen_noapp: bs_ropen_base {$1};
+%inline bs_ropen_app:
+  | st=bs_rclosed_all op=bs_app { add_infix (st, op) }
+%inline bs_ropen_base:
+  | st=maybe_start(bs_ropen_all) op=bs_prefix_nolet_nomatch { add_prefix (st, op) }
+  | st=maybe_start(bs_ropen_noapp) op=bs_let { add_prefix (st, op) }
+  | st=maybe_start(bs_ropen_noapp) op=bs_match { add_prefix (st, op) }
+
+  | st=bs_rclosed_all op=bs_infix_noapp { add_infix (st, op) }
 ;
-bs_atom:
+
+bs_atom_all: bs_atom_base {$1}
+%inline bs_atom_base:
   | LPAREN bseq_expr RPAREN
     { (B.grouping, ($sloc, BSGrouping (reloc_exp ~loc:$sloc $2))) }
   | LBRACKET expr_semi_list RBRACKET
@@ -2532,15 +2568,42 @@ bs_atom:
     { (B.opaque, ($sloc, BSOpaque (mkexp ~loc:$sloc (Pexp_constant $1)))) }
 ;
 
-bs_infix_non_app:
+/* bs_infix_all: bs_app | bs_match_arm | bs_infix_base {$1}; */
+bs_infix_noapp: bs_match_arm | bs_infix_base {$1};
+%inline bs_app:
+  |   { (B.app, BSApp) }
+;
+%inline bs_match_arm:
+  | BAR match_arm_ropen
+    { let pat, guard = $2 in (B.matchArm, BSMatchArm (pat, guard)) }
+;
+%inline bs_infix_base:
   | SEMI
     { (B.semi, BSSemi) }
   | EQUAL
     { (B.equality, BSEquality (mkoperator ~loc:$sloc "=")) }
   | COMMA
     { (B.comma, BSComma) }
-  | BAR match_arm_ropen
-    { let pat, guard = $2 in (B.matchArm, BSMatchArm (pat, guard)) }
+;
+
+/* bs_prefix_all: bs_match | bs_let | bs_prefix_base {$1}; */
+bs_prefix_nolet_nomatch: bs_prefix_base {$1};
+%inline bs_match:
+  | MATCH ext_attributes bseq_expr WITH BAR? match_arm_ropen
+    { (B.matchStart, ($sloc, BSMatch ($2, $3, $6))) }
+%inline bs_let:
+  | let_bindings(ext) IN
+    { (B.letbindings, ($sloc, BSLet $1)) }
+;
+%inline bs_prefix_base:
+  | subtractive
+    { (B.minusPre, ($sloc, BSUSub $1)) } // TODO: recover the attributes
+;
+
+bs_postfix_all: bs_postfix_base {$1}
+%inline bs_postfix_base:
+  | DOT mkrhs(label_longident)
+    { (B.fieldAccess, ($sloc, BSFieldAccess $2)) }
 ;
 
 match_arm_ropen:
@@ -2549,31 +2612,8 @@ match_arm_ropen:
   | pattern WHEN bseq_expr MINUSGREATER
     { $1, Some $3 }
 ;
-%inline bs_prefix_shared:
-  | subtractive
-    { (B.minusPre, ($sloc, BSUSub $1)) } // TODO: recover the attributes
-;
-bs_prefix_after_non_app:
-  | bs_prefix_shared { $1 }
-  | let_bindings(ext) IN
-    { (B.letbindings, ($sloc, BSLet $1)) }
-  // NOTE(vipa, 2021-10-22): This could be in `shared`, but OCaml
-  // forbids it normally, so we follow suit
-  | MATCH ext_attributes bseq_expr WITH BAR? match_arm_ropen
-    { (B.matchStart, ($sloc, BSMatch ($2, $3, $6))) }
-;
-bs_prefix_after_app:
-  | bs_prefix_shared { $1 }
-;
 
-bs_postfix:
-  | DOT mkrhs(label_longident)
-    { (B.fieldAccess, ($sloc, BSFieldAccess $2)) }
-;
-
-bseq_expr:
-  | bs_expr { BS.mkWhole $1 }
-;
+/* Old implementation of expressions, still in use in some OO-related parts of the grammar */
 seq_expr:
   | expr        %prec below_SEMI  { $1 }
   | expr SEMI                     { $1 }
