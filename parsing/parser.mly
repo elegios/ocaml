@@ -679,6 +679,8 @@ type blabel =
   | BLMinusPre
   | BLLet
   | BLMatch
+  | BLFunctionMatch
+  | BLTry
   | BLIf
 
   (* Postfix *)
@@ -705,6 +707,8 @@ type bprefix =
   | BSUSub of string
   | BSLet of let_bindings
   | BSMatch of (string Asttypes.loc option * Parsetree.attributes) * expression * (pattern * expression option)
+  | BSFunctionMatch of (string Asttypes.loc option * Parsetree.attributes) * (pattern * expression option)
+  | BSTry of (string Asttypes.loc option * Parsetree.attributes) * expression * (pattern * expression option)
   | BSIf of (string Asttypes.loc option * Parsetree.attributes) * expression
 
 type bpostfix =
@@ -737,6 +741,8 @@ module BSBasics = struct
     | BSUSub str -> str
     | BSLet _ -> "let ... in"
     | BSMatch _ -> "match ... with ... ->"
+    | BSFunctionMatch _ -> "function ... ->"
+    | BSTry _ -> "try ... with ... ->"
     | BSIf _ -> "if ... then"
   let postfix_to_str (_, s) = match s with
     | BSFieldAccess rhs -> Format.asprintf ". %a" Pprintast.longident rhs.txt
@@ -774,6 +780,12 @@ module BS = struct
     | Prefix ((oploc, BSMatch (attrs, expr, (pat, guard))), r) ->
        let cases, redge = mkCases pat guard r in
        mkexp_attrs ~loc:(fst oploc, redge) (Pexp_match(expr, cases)) attrs
+    | Prefix ((oploc, BSTry (attrs, expr, (pat, guard))), r) ->
+       let cases, redge = mkCases pat guard r in
+       mkexp_attrs ~loc:(fst oploc, redge) (Pexp_try(expr, cases)) attrs
+    | Prefix ((oploc, BSFunctionMatch (attrs, (pat, guard))), r) ->
+       let cases, redge = mkCases pat guard r in
+       mkexp_attrs ~loc:(fst oploc, redge) (Pexp_function cases) attrs
     | Prefix ((oploc, BSIf (attrs, cond)), (Infix (l, BSElse, r))) ->
        let l = mkWhole l in
        let r = mkWhole r in
@@ -861,6 +873,8 @@ module BS = struct
       [ BLMinusPre; BLLet
       ]
     @ [ BLMatch, defaultAnd [BLMatchArm; BLUnreachable]
+      ; BLFunctionMatch, defaultAnd [BLMatchArm; BLUnreachable]
+      ; BLTry, defaultAnd [BLMatchArm; BLUnreachable]
       ; BLIf, defaultAnd [BLElse]
       ]
   let bpostfixes =
@@ -884,7 +898,7 @@ module BS = struct
         ; [ BLComma ]
         ; [ BLIf; BLElse ]
         ; [ BLSemi ]
-        ; [ BLLet; BLMatch; BLMatchArm ]
+        ; [ BLLet; BLMatch; BLMatchArm; BLFunctionMatch; BLTry ]
         ]
     ; List.map left_assoc
         [ BLEquality; BLApp
@@ -892,7 +906,7 @@ module BS = struct
     ; List.map right_assoc
         [ BLSemi; BLComma; BLMatchArm
         ]
-    ; liftA2 gright [BLMatch] [BLMatchArm]
+    ; liftA2 gright [BLMatch; BLFunctionMatch; BLTry] [BLMatchArm]
     ; liftA2 gright [BLIf] [BLElse]
     ]
 
@@ -925,6 +939,8 @@ module B = struct
   let letbindings = getPrefix BLLet
   let matchStart = getPrefix BLMatch
   let bif = getPrefix BLIf
+  let matchFunction = getPrefix BLFunctionMatch
+  let matchTry = getPrefix BLTry
   let fieldAccess = getPostfix BLFieldAccess
 end
 
@@ -2568,7 +2584,7 @@ bs_ropen_noapp: bs_ropen_matchlike | bs_ropen_base {$1};
 %inline bs_ropen_app:
   | st=bs_rclosed_all op=bs_app { add_infix (st, op) }
 %inline bs_ropen_matchlike:
-  | st=maybe_start(bs_ropen_noapp) op=bs_match { add_prefix (st, op) }
+  | st=maybe_start(bs_ropen_noapp) op=bs_matchlike { add_prefix (st, op) }
   | st=bs_rclosed_all op=bs_match_arm { add_infix (st, op) }
 %inline bs_ropen_base:
   | st=maybe_start(bs_ropen_all) op=bs_prefix_nolet_nomatch_noif { add_prefix (st, op) }
@@ -2624,11 +2640,15 @@ bs_infix_noapp_nomatcharm: bs_infix_base {$1};
     { (B.belse, BSElse) }
 ;
 
-/* bs_prefix_all: bs_match | bs_let | bs_prefix_base {$1}; */
+/* bs_prefix_all: bs_matchlike | bs_let | bs_prefix_base {$1}; */
 bs_prefix_nolet_nomatch_noif: bs_prefix_base {$1};
-%inline bs_match:
+%inline bs_matchlike:
   | MATCH ext_attributes bseq_expr WITH BAR? match_arm_ropen
     { (B.matchStart, ($sloc, BSMatch ($2, $3, $6))) }
+  | FUNCTION ext_attributes BAR? match_arm_ropen
+    { (B.matchFunction, ($sloc, BSFunctionMatch ($2, $4))) }
+  | TRY ext_attributes bseq_expr WITH BAR? match_arm_ropen
+    { (B.matchTry, ($sloc, BSTry ($2, $3, $6))) }
 %inline bs_let:
   | let_bindings(ext) IN
     { (B.letbindings, ($sloc, BSLet $1)) }
