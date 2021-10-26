@@ -674,6 +674,7 @@ type blabel =
   | BLComma
   | BLMatchArm
   | BLElse
+  | BLArrowAssign
 
   (* Prefix *)
   | BLMinusPre
@@ -703,6 +704,7 @@ type binfix =
   | BSComma
   | BSMatchArm of pattern * expression option
   | BSElse
+  | BSArrowAssign
 
 type bprefix =
   | BSUSub of string
@@ -740,6 +742,7 @@ module BSBasics = struct
     | BSComma -> ","
     | BSMatchArm _ -> "| ... ->"
     | BSElse -> "else"
+    | BSArrowAssign -> "<-"
   let prefix_to_str (_, s) = match s with
     | BSUSub str -> str
     | BSLet _ -> "let ... in"
@@ -786,6 +789,25 @@ module BS = struct
        assert false (* TODO: proper error? Might not be possible to get here *)
     | Infix (_, BSElse, _) ->
        assert false (* TODO: proper error? Might not be possible to get here *)
+    | Infix (Postfix (l, (_, BSFieldAccess ident)), BSArrowAssign, r) ->
+       whole_infix l r (fun l r -> Pexp_setfield(l, ident, r))
+    | Infix (Postfix (l, (_, BSBuiltinIndex (_, pkind, index))), BSArrowAssign, r) ->
+       let l = mkWhole l in
+       let r = mkWhole r in
+       let loc = (l.pexp_loc.loc_start, r.pexp_loc.loc_end) in
+       mk_indexop_expr builtin_indexing_operators ~loc (l, (), pkind, index, Some r)
+    | Infix (Postfix (l, (_, BSCustomIndex (dotop, pkind, index))), BSArrowAssign, r) ->
+       let l = mkWhole l in
+       let r = mkWhole r in
+       let loc = (l.pexp_loc.loc_start, r.pexp_loc.loc_end) in
+       mk_indexop_expr user_indexing_operators ~loc (l, dotop, pkind, index, Some r)
+    | Infix (Atom (loc, BSIdent {txt = Lident ident; loc=idloc}), BSArrowAssign, r) ->
+       let r = mkWhole r in
+       let loc = (fst loc, r.pexp_loc.loc_end) in
+       mkexp ~loc (Pexp_setinstvar ({txt = ident; loc=idloc}, r))
+    | Infix (_, BSArrowAssign, _) ->
+       print_endline "Unexpected left-hand side of '<-'";
+       syntax_error () (* TODO: actually useful error *)
 
     | Prefix ((oploc, BSUSub op), r) ->
        whole_prefix oploc r (fun r -> mkuminus ~oploc op r)
@@ -877,6 +899,8 @@ module BS = struct
     |> allowOneLess BLElse
   let defaultAnd l =
     List.fold_left (fun acc l -> allowOneMore l acc) defaultAllow l
+  let allowOnly l =
+    List.fold_left (fun acc l -> allowOneMore l acc) allowNone l
 
   let batoms =
     [ BLGrouping; BLOpaque; BLIdent; BLConstructor; BLUnreachable
@@ -887,6 +911,7 @@ module BS = struct
       [ BLSemi; BLEquality; BLApp; BLComma; BLElse
       ]
     @ [ defaultAllow, BLMatchArm, defaultAnd [BLMatchArm; BLUnreachable]
+      ; allowOnly [BLFieldAccess; BLIndex], BLArrowAssign, defaultAllow
       ]
   let bprefixes =
     List.map
@@ -917,6 +942,7 @@ module BS = struct
         ; [ BLMinusPre ]
         ; [ BLEquality ]
         ; [ BLComma ]
+        ; [ BLArrowAssign ]
         ; [ BLIf; BLElse ]
         ; [ BLSemi ]
         ; [ BLLet; BLMatch; BLMatchArm; BLFunctionMatch; BLTry ]
@@ -956,6 +982,7 @@ module B = struct
   let comma = getInfix BLComma
   let matchArm = getInfix BLMatchArm
   let belse = getInfix BLElse
+  let arrowAssign = getInfix BLArrowAssign
   let minusPre = getPrefix BLMinusPre
   let letbindings = getPrefix BLLet
   let matchStart = getPrefix BLMatch
@@ -2660,6 +2687,8 @@ bs_infix_noapp_nomatcharm: bs_infix_base {$1};
     { (B.comma, BSComma) }
   | ELSE
     { (B.belse, BSElse) }
+  | LESSMINUS
+    { (B.arrowAssign, BSArrowAssign) }
 ;
 
 /* bs_prefix_all: bs_matchlike | bs_let | bs_prefix_base {$1}; */
