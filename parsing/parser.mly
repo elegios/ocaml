@@ -685,6 +685,7 @@ type blabel =
 
   (* Postfix *)
   | BLFieldAccess
+  | BLIndex
 
 (* This works because blabel only has constructors without carried data *)
 let compareLabel (a : blabel) (b : blabel) = Obj.magic a - Obj.magic b
@@ -713,6 +714,8 @@ type bprefix =
 
 type bpostfix =
   | BSFieldAccess of Longident.t Asttypes.loc
+  | BSBuiltinIndex of (unit * paren_kind * expression)
+  | BSCustomIndex of ((Longident.t option * string) * paren_kind * expression list)
 
 module BSBasics = struct
   type atom_self = (Lexing.position * Lexing.position) * batom
@@ -745,7 +748,19 @@ module BSBasics = struct
     | BSTry _ -> "try ... with ... ->"
     | BSIf _ -> "if ... then"
   let postfix_to_str (_, s) = match s with
-    | BSFieldAccess rhs -> Format.asprintf ". %a" Pprintast.longident rhs.txt
+    | BSFieldAccess rhs -> Format.asprintf ".%a" Pprintast.longident rhs.txt
+    | BSBuiltinIndex (_, Paren, _) -> ".(...)"
+    | BSBuiltinIndex (_, Brace, _) -> ".{...}"
+    | BSBuiltinIndex (_, Bracket, _) -> ".[...]"
+    | BSCustomIndex ((qualification, op), pkind, _) ->
+       let qualification = match qualification with
+         | Some m -> Format.asprintf ".%a" Pprintast.longident m
+         | None -> "" in
+       let lpar, rpar = match pkind with
+         | Paren -> ("(", ")")
+         | Brace -> ("{", "}")
+         | Bracket -> ("[", "]") in
+       Format.sprintf "%s.%s%s...%s" qualification op lpar rpar
 
   let compareLabel = compareLabel
 end
@@ -796,6 +811,12 @@ module BS = struct
 
     | Postfix (l, (oploc, BSFieldAccess ident)) ->
        whole_postfix l oploc (fun l -> Pexp_field(l, ident))
+    | Postfix (l, (oploc, BSBuiltinIndex (_, pkind, index))) ->
+       let l = mkWhole l in
+       mk_indexop_expr builtin_indexing_operators ~loc:(l.pexp_loc.loc_start, snd oploc) (l, (), pkind, index, None)
+    | Postfix (l, (oploc, BSCustomIndex (dotop, pkind, index))) ->
+       let l = mkWhole l in
+       mk_indexop_expr user_indexing_operators ~loc:(l.pexp_loc.loc_start, snd oploc) (l, dotop, pkind, index, None)
 
   and whole_infix l r c =
     let l = mkWhole l in
@@ -880,7 +901,7 @@ module BS = struct
   let bpostfixes =
     List.map
       (fun l -> defaultAllow, l)
-      [ BLFieldAccess
+      [ BLFieldAccess; BLIndex
       ]
 
   let bproductions =
@@ -891,7 +912,7 @@ module BS = struct
 
   let bprecedence = List.concat
     [ precTableNoEq
-        [ [ BLFieldAccess ]
+        [ [ BLFieldAccess; BLIndex ]
         ; [ BLApp ]
         ; [ BLMinusPre ]
         ; [ BLEquality ]
@@ -942,6 +963,7 @@ module B = struct
   let matchFunction = getPrefix BLFunctionMatch
   let matchTry = getPrefix BLTry
   let fieldAccess = getPostfix BLFieldAccess
+  let index = getPostfix BLIndex
 end
 
 let add_atom (st, (input, self)) =
@@ -2665,7 +2687,19 @@ bs_postfix_all: bs_postfix_base {$1}
 %inline bs_postfix_base:
   | DOT mkrhs(label_longident)
     { (B.fieldAccess, ($sloc, BSFieldAccess $2)) }
+  | bs_indexop(DOT, bseq_expr)
+    { (B.index, ($sloc, BSBuiltinIndex $1)) }
+  | bs_indexop(qualified_dotop, expr_semi_list)
+    { (B.index, ($sloc, BSCustomIndex $1)) }
 ;
+
+%inline bs_indexop(dot, index):
+  | d=dot LPAREN i=index RPAREN
+    { (d, Paren, i) }
+  | d=dot LBRACE i=index RBRACE
+    { (d, Brace, i) }
+  | d=dot LBRACKET i=index RBRACKET
+    { (d, Bracket, i) }
 
 match_arm_ropen:
   | pattern MINUSGREATER
