@@ -673,11 +673,13 @@ type blabel =
   | BLApp
   | BLComma
   | BLMatchArm
+  | BLElse
 
   (* Prefix *)
   | BLMinusPre
   | BLLet
   | BLMatch
+  | BLIf
 
   (* Postfix *)
   | BLFieldAccess
@@ -697,11 +699,13 @@ type binfix =
   | BSEquality of expression
   | BSComma
   | BSMatchArm of pattern * expression option
+  | BSElse
 
 type bprefix =
   | BSUSub of string
   | BSLet of let_bindings
   | BSMatch of (string Asttypes.loc option * Parsetree.attributes) * expression * (pattern * expression option)
+  | BSIf of (string Asttypes.loc option * Parsetree.attributes) * expression
 
 type bpostfix =
   | BSFieldAccess of Longident.t Asttypes.loc
@@ -728,10 +732,12 @@ module BSBasics = struct
     | BSApp -> ""
     | BSComma -> ","
     | BSMatchArm _ -> "| ... ->"
+    | BSElse -> "else"
   let prefix_to_str (_, s) = match s with
     | BSUSub str -> str
     | BSLet _ -> "let ... in"
     | BSMatch _ -> "match ... with ... ->"
+    | BSIf _ -> "if ... then"
   let postfix_to_str (_, s) = match s with
     | BSFieldAccess rhs -> Format.asprintf ". %a" Pprintast.longident rhs.txt
 
@@ -757,6 +763,8 @@ module BS = struct
        mkexp ~loc:(loc_of_exp_list xs) (Pexp_tuple xs)
     | Infix (_, BSMatchArm _, _) ->
        assert false (* TODO: proper error? Might not be possible to get here *)
+    | Infix (_, BSElse, _) ->
+       assert false (* TODO: proper error? Might not be possible to get here *)
 
     | Prefix ((oploc, BSUSub op), r) ->
        whole_prefix oploc r (fun r -> mkuminus ~oploc op r)
@@ -766,6 +774,13 @@ module BS = struct
     | Prefix ((oploc, BSMatch (attrs, expr, (pat, guard))), r) ->
        let cases, redge = mkCases pat guard r in
        mkexp_attrs ~loc:(fst oploc, redge) (Pexp_match(expr, cases)) attrs
+    | Prefix ((oploc, BSIf (attrs, cond)), (Infix (l, BSElse, r))) ->
+       let l = mkWhole l in
+       let r = mkWhole r in
+       mkexp_attrs ~loc:(fst oploc, r.pexp_loc.loc_end) (Pexp_ifthenelse(cond, l, Some r)) attrs
+    | Prefix ((oploc, BSIf (attrs, cond)), r) ->
+       let r = mkWhole r in
+       mkexp_attrs ~loc:(fst oploc, r.pexp_loc.loc_end) (Pexp_ifthenelse(cond, r, None)) attrs
 
     | Postfix (l, (oploc, BSFieldAccess ident)) ->
        whole_postfix l oploc (fun l -> Pexp_field(l, ident))
@@ -826,6 +841,7 @@ module BS = struct
     allowAll
     |> allowOneLess BLMatchArm
     |> allowOneLess BLUnreachable
+    |> allowOneLess BLElse
   let defaultAnd l =
     List.fold_left (fun acc l -> allowOneMore l acc) defaultAllow l
 
@@ -835,7 +851,7 @@ module BS = struct
   let binfixes =
     List.map
       (fun l -> defaultAllow, l, defaultAllow)
-      [ BLSemi; BLEquality; BLApp; BLComma
+      [ BLSemi; BLEquality; BLApp; BLComma; BLElse
       ]
     @ [ defaultAllow, BLMatchArm, defaultAnd [BLMatchArm; BLUnreachable]
       ]
@@ -845,6 +861,7 @@ module BS = struct
       [ BLMinusPre; BLLet
       ]
     @ [ BLMatch, defaultAnd [BLMatchArm; BLUnreachable]
+      ; BLIf, defaultAnd [BLElse]
       ]
   let bpostfixes =
     List.map
@@ -865,6 +882,7 @@ module BS = struct
         ; [ BLMinusPre ]
         ; [ BLEquality ]
         ; [ BLComma ]
+        ; [ BLIf; BLElse ]
         ; [ BLSemi ]
         ; [ BLLet; BLMatch; BLMatchArm ]
         ]
@@ -875,6 +893,7 @@ module BS = struct
         [ BLSemi; BLComma; BLMatchArm
         ]
     ; liftA2 gright [BLMatch] [BLMatchArm]
+    ; liftA2 gright [BLIf] [BLElse]
     ]
 
   let grammar =
@@ -901,9 +920,11 @@ module B = struct
   let app = getInfix BLApp
   let comma = getInfix BLComma
   let matchArm = getInfix BLMatchArm
+  let belse = getInfix BLElse
   let minusPre = getPrefix BLMinusPre
   let letbindings = getPrefix BLLet
   let matchStart = getPrefix BLMatch
+  let bif = getPrefix BLIf
   let fieldAccess = getPostfix BLFieldAccess
 end
 
@@ -2550,8 +2571,9 @@ bs_ropen_noapp: bs_ropen_matchlike | bs_ropen_base {$1};
   | st=maybe_start(bs_ropen_noapp) op=bs_match { add_prefix (st, op) }
   | st=bs_rclosed_all op=bs_match_arm { add_infix (st, op) }
 %inline bs_ropen_base:
-  | st=maybe_start(bs_ropen_all) op=bs_prefix_nolet_nomatch { add_prefix (st, op) }
+  | st=maybe_start(bs_ropen_all) op=bs_prefix_nolet_nomatch_noif { add_prefix (st, op) }
   | st=maybe_start(bs_ropen_noapp) op=bs_let { add_prefix (st, op) }
+  | st=maybe_start(bs_ropen_noapp) op=bs_if { add_prefix (st, op) }
 
   | st=bs_rclosed_all op=bs_infix_noapp_nomatcharm { add_infix (st, op) }
 ;
@@ -2598,10 +2620,12 @@ bs_infix_noapp_nomatcharm: bs_infix_base {$1};
     { (B.equality, BSEquality (mkoperator ~loc:$sloc "=")) }
   | COMMA
     { (B.comma, BSComma) }
+  | ELSE
+    { (B.belse, BSElse) }
 ;
 
 /* bs_prefix_all: bs_match | bs_let | bs_prefix_base {$1}; */
-bs_prefix_nolet_nomatch: bs_prefix_base {$1};
+bs_prefix_nolet_nomatch_noif: bs_prefix_base {$1};
 %inline bs_match:
   | MATCH ext_attributes bseq_expr WITH BAR? match_arm_ropen
     { (B.matchStart, ($sloc, BSMatch ($2, $3, $6))) }
@@ -2609,6 +2633,9 @@ bs_prefix_nolet_nomatch: bs_prefix_base {$1};
   | let_bindings(ext) IN
     { (B.letbindings, ($sloc, BSLet $1)) }
 ;
+%inline bs_if:
+  | IF ext_attributes bseq_expr THEN
+    { (B.bif, ($sloc, BSIf($2, $3))) }
 %inline bs_prefix_base:
   | subtractive
     { (B.minusPre, ($sloc, BSUSub $1)) } // TODO: recover the attributes
