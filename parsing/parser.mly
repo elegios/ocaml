@@ -2563,6 +2563,8 @@ bs_atom_nodot: bs_atom_base {$1};
     { (B.unreachable, ($sloc, BSOpaque (Exp.unreachable ~loc:(make_loc $sloc) ()))) }
 ;
 %inline bs_atom_base:
+  | BEGIN ext=ext attrs=attributes e=bseq_expr END
+    { (B.opaque, ($sloc, BSOpaque (mkexp_attrs ~loc:$sloc e.pexp_desc (ext, attrs @ e.pexp_attributes)))) }
   | LPAREN bseq_expr RPAREN
     { (B.grouping, ($sloc, BSGrouping (reloc_exp ~loc:$sloc $2))) }
   | LBRACKET expr_semi_list RBRACKET
