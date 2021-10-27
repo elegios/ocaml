@@ -675,6 +675,23 @@ type blabel =
   | BLMatchArm
   | BLElse
   | BLArrowAssign
+  | BLInfixop0
+  | BLInfixop1
+  | BLInfixop2
+  | BLInfixop3
+  | BLInfixop4
+  | BLPlus
+  | BLPlusEq
+  | BLMinus
+  | BLStar
+  | BLPercent
+  | BLLess
+  | BLGreater
+  | BLOrWord
+  | BLBarBar
+  | BLAmpersand
+  | BLAmperAmper
+  | BLColonEqual
 
   (* Prefix *)
   | BLMinusPre
@@ -705,6 +722,7 @@ type binfix =
   | BSMatchArm of pattern * expression option
   | BSElse
   | BSArrowAssign
+  | BSSimpleInfix of (Lexing.position * Lexing.position) * string
 
 type bprefix =
   | BSUSub of string
@@ -743,6 +761,7 @@ module BSBasics = struct
     | BSMatchArm _ -> "| ... ->"
     | BSElse -> "else"
     | BSArrowAssign -> "<-"
+    | BSSimpleInfix (_, str) -> str
   let prefix_to_str (_, s) = match s with
     | BSUSub str -> str
     | BSLet _ -> "let ... in"
@@ -808,6 +827,12 @@ module BS = struct
     | Infix (_, BSArrowAssign, _) ->
        print_endline "Unexpected left-hand side of '<-'";
        syntax_error () (* TODO: actually useful error *)
+      (* TODO: this might not actually be possible because of the
+      shallow forbids. It is however possible that I want it to be
+      allowed syntactically, then error here, i.e., make it possible
+      *)
+    | Infix (l, BSSimpleInfix (loc, str), r) ->
+       whole_infix l r (fun l r -> mkinfix l (mkoperator ~loc str) r)
 
     | Prefix ((oploc, BSUSub op), r) ->
        whole_prefix oploc r (fun r -> mkuminus ~oploc op r)
@@ -909,6 +934,10 @@ module BS = struct
     List.map
       (fun l -> defaultAllow, l, defaultAllow)
       [ BLSemi; BLEquality; BLApp; BLComma; BLElse
+      ; BLInfixop0; BLInfixop1; BLInfixop2; BLInfixop3
+      ; BLInfixop4; BLPlus; BLPlusEq; BLMinus; BLStar
+      ; BLPercent; BLLess; BLGreater; BLOrWord; BLBarBar
+      ; BLAmpersand; BLAmperAmper; BLColonEqual
       ]
     @ [ defaultAllow, BLMatchArm, defaultAnd [BLMatchArm; BLUnreachable]
       ; allowOnly [BLFieldAccess; BLIndex], BLArrowAssign, defaultAllow
@@ -983,6 +1012,23 @@ module B = struct
   let matchArm = getInfix BLMatchArm
   let belse = getInfix BLElse
   let arrowAssign = getInfix BLArrowAssign
+  let infixop0 = getInfix BLInfixop0
+  let infixop1 = getInfix BLInfixop1
+  let infixop2 = getInfix BLInfixop2
+  let infixop3 = getInfix BLInfixop3
+  let infixop4 = getInfix BLInfixop4
+  let plus = getInfix BLPlus
+  let plusEq = getInfix BLPlusEq
+  let minus = getInfix BLMinus
+  let star = getInfix BLStar
+  let percent = getInfix BLPercent
+  let less = getInfix BLLess
+  let greater = getInfix BLGreater
+  let orWord = getInfix BLOrWord
+  let barbar = getInfix BLBarBar
+  let ampersand = getInfix BLAmpersand
+  let amperAmper = getInfix BLAmperAmper
+  let colonEqual = getInfix BLColonEqual
   let minusPre = getPrefix BLMinusPre
   let letbindings = getPrefix BLLet
   let matchStart = getPrefix BLMatch
@@ -2636,9 +2682,10 @@ bs_ropen_noapp: bs_ropen_matchlike | bs_ropen_base {$1};
   | st=maybe_start(bs_ropen_noapp) op=bs_matchlike { add_prefix (st, op) }
   | st=bs_rclosed_all op=bs_match_arm { add_infix (st, op) }
 %inline bs_ropen_base:
-  | st=maybe_start(bs_ropen_all) op=bs_prefix_nolet_nomatch_noif { add_prefix (st, op) }
+  | st=maybe_start(bs_ropen_all) op=bs_prefix_nolet_nomatch_noif_nominus { add_prefix (st, op) }
   | st=maybe_start(bs_ropen_noapp) op=bs_let { add_prefix (st, op) }
   | st=maybe_start(bs_ropen_noapp) op=bs_if { add_prefix (st, op) }
+  | st=maybe_start(bs_ropen_noapp) op=bs_minus { add_prefix (st, op) }
 
   | st=bs_rclosed_all op=bs_infix_noapp_nomatcharm { add_infix (st, op) }
 ;
@@ -2689,10 +2736,48 @@ bs_infix_noapp_nomatcharm: bs_infix_base {$1};
     { (B.belse, BSElse) }
   | LESSMINUS
     { (B.arrowAssign, BSArrowAssign) }
+  | INFIXOP0
+    { (B.infixop0, BSSimpleInfix ($sloc, $1)) }
+  | INFIXOP1
+    { (B.infixop1, BSSimpleInfix ($sloc, $1)) }
+  | INFIXOP2
+    { (B.infixop2, BSSimpleInfix ($sloc, $1)) }
+  | INFIXOP3
+    { (B.infixop3, BSSimpleInfix ($sloc, $1)) }
+  | INFIXOP4
+    { (B.infixop4, BSSimpleInfix ($sloc, $1)) }
+  | PLUS
+    { (B.plus, BSSimpleInfix ($sloc, "+")) }
+  | PLUSDOT
+    { (B.plus, BSSimpleInfix ($sloc, "+.")) }
+  | PLUSEQ
+    { (B.plusEq, BSSimpleInfix ($sloc, "+=")) }
+  | MINUS
+    { (B.minus, BSSimpleInfix ($sloc, "-")) }
+  | MINUSDOT
+    { (B.minus, BSSimpleInfix ($sloc, "-.")) }
+  | STAR
+    { (B.star, BSSimpleInfix ($sloc, "*")) }
+  | PERCENT
+    { (B.percent, BSSimpleInfix ($sloc, "%")) }
+  | LESS
+    { (B.less, BSSimpleInfix ($sloc, "<")) }
+  | GREATER
+    { (B.greater, BSSimpleInfix ($sloc, ">")) }
+  | OR
+    { (B.orWord, BSSimpleInfix ($sloc, "or")) }
+  | BARBAR
+    { (B.barbar, BSSimpleInfix ($sloc, "||")) }
+  | AMPERSAND
+    { (B.ampersand, BSSimpleInfix ($sloc, "&")) }
+  | AMPERAMPER
+    { (B.amperAmper, BSSimpleInfix ($sloc, "&&")) }
+  | COLONEQUAL
+    { (B.colonEqual, BSSimpleInfix ($sloc, ":=")) }
 ;
 
 /* bs_prefix_all: bs_matchlike | bs_let | bs_prefix_base {$1}; */
-bs_prefix_nolet_nomatch_noif: bs_prefix_base {$1};
+bs_prefix_nolet_nomatch_noif_nominus: bs_prefix_base {$1};
 %inline bs_matchlike:
   | MATCH ext_attributes bseq_expr WITH BAR? match_arm_ropen
     { (B.matchStart, ($sloc, BSMatch ($2, $3, $6))) }
@@ -2707,9 +2792,11 @@ bs_prefix_nolet_nomatch_noif: bs_prefix_base {$1};
 %inline bs_if:
   | IF ext_attributes bseq_expr THEN
     { (B.bif, ($sloc, BSIf($2, $3))) }
-%inline bs_prefix_base:
+%inline bs_minus:
   | subtractive
     { (B.minusPre, ($sloc, BSUSub $1)) } // TODO: recover the attributes
+%inline bs_prefix_base:
+  | NEW { syntax_error () } // TODO: put a proper prefix here
 ;
 
 bs_postfix_all: bs_postfix_base {$1}
