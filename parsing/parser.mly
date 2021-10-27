@@ -903,16 +903,28 @@ module BS = struct
     | Infix (l, BSSemi, r) -> mkWhole l :: mkSemiList r
     | x -> [mkWhole x]
 
-  let mkRecordField = function
-    | Infix (Atom (_, BSIdent ident), BSEquality _, r) -> (ident, mkWhole r)
-    | Atom (_, BSIdent ident) -> (make_ghost ident, exp_of_longident ident)
+  let rec mkRecordFieldAnnoying = function
+    | Infix (Atom (_, BSIdent ident), BSEquality _, r) -> (ident, r)
+    | Infix (l, op, r) ->
+       let ident, l = mkRecordFieldAnnoying l in
+       (ident, Infix (l, op, r))
+    | Postfix (l, op) ->
+       let ident, l = mkRecordFieldAnnoying l in
+       (ident, Postfix (l, op))
     | _x -> assert false (* TODO(vipa, 2021-10-20): Actual error message here *)
-  let rec mkRecordContents = function
-    | Infix (l, BSSemi, r) -> mkRecordField l :: mkRecordContents r
+  let rec mkRecordField = function
+    | Postfix (l, (_, BSSemiPost)) -> mkRecordField l
+    | Atom (_, BSIdent ident) -> (make_ghost ident, exp_of_longident ident)
+    | Infix _ | Postfix _ as x ->
+       let ident, r = mkRecordFieldAnnoying x in
+       (ident, mkWhole r)
+    | _x -> assert false (* TODO(vipa, 2021-10-20): Actual error message here *)
+  let rec mkRecordFields = function
+    | Infix (l, BSSemi, r) -> mkRecordField l :: mkRecordFields r
     | x -> [mkRecordField x]
-
-  (* TODO(vipa, 2021-10-20): Cheat the "unused binding" warning for the moment *)
-  let _foo _ = mkRecordContents (Obj.magic ())
+  let mkRecordContent loc with_base fields =
+    let fields = mkRecordFields fields in
+    mkexp ~loc (Pexp_record(fields, with_base))
 
   let defaultAllow =
     allowAll
@@ -2744,6 +2756,10 @@ bs_atom_nodot: bs_atom_base {$1};
     { (B.constructor, ($sloc, BSConstructor $1)) }
   | constant
     { (B.opaque, ($sloc, BSOpaque (mkexp ~loc:$sloc (Pexp_constant $1)))) }
+  | LBRACE bs_record_expr_content RBRACE
+    { let with_base, fields = $2 in
+      (B.opaque, ($sloc, BSOpaque (BS.mkRecordContent $sloc with_base fields)))
+    }
 ;
 
 /* bs_infix_all: bs_app | bs_match_arm | bs_infix_base {$1}; */
@@ -2847,6 +2863,12 @@ bs_postfix_all: bs_postfix_base {$1}
     { (d, Brace, i) }
   | d=dot LBRACKET i=index RBRACKET
     { (d, Bracket, i) }
+;
+
+bs_record_expr_content:
+  | ioption(terminated(bseq_expr, WITH)) bs_expr
+    { $1, $2 }
+;
 
 match_arm_ropen:
   | pattern MINUSGREATER
