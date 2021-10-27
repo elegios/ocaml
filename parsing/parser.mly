@@ -643,9 +643,6 @@ let gright l r = (l, r, (false, true))
 (* let geither l r = (l, r, (true, true)) *)
 (* let gneither l r = (l, r, (false, false)) *)
 
-let left_assoc l = gleft l l
-let right_assoc l = gright l l
-
 let precTableNoEq (table : 'label list list) : ('label * 'label * (bool * bool)) list =
   let firstLow a b = [gright a b; gleft b a] in
   let rec go = function
@@ -965,25 +962,59 @@ module BS = struct
     @ List.map (fun (lallow, l) -> postfix l lallow) bpostfixes
 
   let bprecedence = List.concat
+    (* Precedence *)
     [ precTableNoEq
         [ [ BLFieldAccess; BLIndex ]
         ; [ BLApp ]
         ; [ BLMinusPre ]
-        ; [ BLEquality ]
+        ; [ BLInfixop4 ]
+        ; [ BLInfixop2; BLInfixop3; BLStar; BLPercent ]
+        ; [ BLPlus; BLPlusEq; BLMinus ]
+        ; [ BLInfixop1 ]
+        ; [ BLEquality; BLInfixop0; BLLess; BLGreater ]
+        ; [ BLAmpersand; BLAmperAmper ]
+        ; [ BLOrWord; BLBarBar ]
         ; [ BLComma ]
-        ; [ BLArrowAssign ]
+        ; [ BLArrowAssign; BLColonEqual ]
         ; [ BLIf; BLElse ]
         ; [ BLSemi ]
         ; [ BLLet; BLMatch; BLMatchArm; BLFunctionMatch; BLTry ]
         ]
-    ; List.map left_assoc
-        [ BLEquality; BLApp
-        ]
-    ; List.map right_assoc
-        [ BLSemi; BLComma; BLMatchArm
-        ]
+    (* Associativity *)
+    ; liftA2 gleft
+             [BLApp]
+             [BLApp]
+    ; liftA2 gright
+             [BLInfixop4]
+             [BLInfixop4]
+    ; liftA2 gleft
+             [BLInfixop2; BLInfixop3; BLStar; BLPercent]
+             [BLInfixop2; BLInfixop3; BLStar; BLPercent]
+    ; liftA2 gleft
+             [BLPlus; BLPlusEq; BLMinus]
+             [BLPlus; BLPlusEq; BLMinus]
+    ; liftA2 gright
+             [BLInfixop1]
+             [BLInfixop1]
+    ; liftA2 gleft
+             [BLEquality; BLInfixop0; BLLess; BLGreater]
+             [BLEquality; BLInfixop0; BLLess; BLGreater]
+    ; liftA2 gright
+             [BLAmpersand; BLAmperAmper]
+             [BLAmpersand; BLAmperAmper]
+    ; liftA2 gright
+             [BLOrWord; BLBarBar]
+             [BLOrWord; BLBarBar]
+    ; liftA2 gright
+             [BLArrowAssign; BLColonEqual]
+             [BLArrowAssign; BLColonEqual]
+    ; liftA2 gright
+             [BLSemi]
+             [BLSemi]
+    (* Longest match/unbreaking *)
     ; liftA2 gright [BLMatch; BLFunctionMatch; BLTry] [BLMatchArm]
     ; liftA2 gright [BLIf] [BLElse]
+    ; liftA2 gright [BLComma] [BLComma]
     ]
 
   let grammar =
