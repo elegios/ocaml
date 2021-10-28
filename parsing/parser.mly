@@ -640,7 +640,7 @@ Known "external" uses of the expr nts:
 
 let gleft l r = (l, r, (true, false))
 let gright l r = (l, r, (false, true))
-(* let geither l r = (l, r, (true, true)) *)
+let geither l r = (l, r, (true, true))
 (* let gneither l r = (l, r, (false, false)) *)
 
 let precTableNoEq (table : 'label list list) : ('label * 'label * (bool * bool)) list =
@@ -823,7 +823,8 @@ module BS = struct
        mkexp ~loc (Pexp_setinstvar ({txt = ident; loc=idloc}, r))
     | Infix (_, BSArrowAssign, _) ->
        print_endline "Unexpected left-hand side of '<-'";
-       syntax_error () (* TODO: actually useful error *)
+       assert false
+       (* syntax_error ()*) (* TODO: actually useful error *)
       (* TODO: this might not actually be possible because of the
       shallow forbids. It is however possible that I want it to be
       allowed syntactically, then error here, i.e., make it possible
@@ -949,7 +950,7 @@ module BS = struct
       ; BLAmpersand; BLAmperAmper; BLColonEqual
       ]
     @ [ defaultAllow, BLMatchArm, defaultAnd [BLMatchArm; BLUnreachable]
-      ; allowOnly [BLFieldAccess; BLIndex], BLArrowAssign, defaultAllow
+      ; allowOnly [BLFieldAccess; BLIndex; BLIdent], BLArrowAssign, defaultAllow
       ]
   let bprefixes =
     List.map
@@ -992,6 +993,10 @@ module BS = struct
         ; [ BLSemi ]
         ; [ BLLet; BLMatch; BLMatchArm; BLFunctionMatch; BLTry ]
         ]
+    (* Allow the broken operators to float past the operators that otherwise have lower precedence *)
+    ; liftA2 geither
+             [BLSemi; BLLet; BLMatch; BLMatchArm; BLFunctionMatch; BLTry]
+             [BLElse]
     (* Associativity *)
     ; liftA2 gleft
              [BLApp]
@@ -1025,7 +1030,7 @@ module BS = struct
              [BLSemi]
     (* Longest match/unbreaking *)
     ; liftA2 gright [BLMatch; BLFunctionMatch; BLTry] [BLMatchArm]
-    ; liftA2 gright [BLIf] [BLElse]
+    ; liftA2 gleft [BLElse] [BLElse]
     ; liftA2 gright [BLComma] [BLComma]
     ]
 
@@ -1088,7 +1093,7 @@ let add_atom (st, (input, self)) =
 let add_infix (st, (input, self)) =
   match BS.addInfix input self st with
   | Some x -> x
-  | None -> syntax_error ()
+  | None -> syntax_error () (* TODO: this will error on the token after the operator being added *)
 
 let add_prefix (st, (input, self)) =
   BS.addPrefix input self st
@@ -1096,7 +1101,7 @@ let add_prefix (st, (input, self)) =
 let add_postfix (st, (input, self)) =
   match BS.addPostfix input self st with
   | Some x -> x
-  | None -> syntax_error ()
+  | None -> syntax_error () (* TODO: this will error on the token after the operator being added *)
 
 %}
 
