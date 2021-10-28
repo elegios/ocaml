@@ -701,6 +701,7 @@ type blabel =
   (* Postfix *)
   | BLFieldAccess
   | BLIndex
+  | BLSemiPost
 
 (* This works because blabel only has constructors without carried data *)
 let compareLabel (a : blabel) (b : blabel) = Obj.magic a - Obj.magic b
@@ -733,6 +734,7 @@ type bpostfix =
   | BSFieldAccess of Longident.t Asttypes.loc
   | BSBuiltinIndex of (unit * paren_kind * expression)
   | BSCustomIndex of ((Longident.t option * string) * paren_kind * expression list)
+  | BSSemiPost
 
 module BSBasics = struct
   type atom_self = (Lexing.position * Lexing.position) * batom
@@ -780,6 +782,7 @@ module BSBasics = struct
          | Brace -> ("{", "}")
          | Bracket -> ("[", "]") in
        Format.sprintf "%s.%s%s...%s" qualification op lpar rpar
+    | BSSemiPost -> ";"
 
   let compareLabel = compareLabel
 end
@@ -862,6 +865,8 @@ module BS = struct
     | Postfix (l, (oploc, BSCustomIndex (dotop, pkind, index))) ->
        let l = mkWhole l in
        mk_indexop_expr user_indexing_operators ~loc:(l.pexp_loc.loc_start, snd oploc) (l, dotop, pkind, index, None)
+    | Postfix (l, (_, BSSemiPost)) ->
+       mkWhole l
 
   and whole_infix l r c =
     let l = mkWhole l in
@@ -965,7 +970,7 @@ module BS = struct
   let bpostfixes =
     List.map
       (fun l -> defaultAllow, l)
-      [ BLFieldAccess; BLIndex
+      [ BLFieldAccess; BLIndex; BLSemiPost
       ]
 
   let bproductions =
@@ -990,7 +995,7 @@ module BS = struct
         ; [ BLComma ]
         ; [ BLArrowAssign; BLColonEqual ]
         ; [ BLIf; BLElse ]
-        ; [ BLSemi ]
+        ; [ BLSemi; BLSemiPost ]
         ; [ BLLet; BLMatch; BLMatchArm; BLFunctionMatch; BLTry ]
         ]
     (* Allow the broken operators to float past the operators that otherwise have lower precedence *)
@@ -1027,7 +1032,7 @@ module BS = struct
              [BLArrowAssign; BLColonEqual]
     ; liftA2 gright
              [BLSemi]
-             [BLSemi]
+             [BLSemi; BLSemiPost]
     (* Longest match/unbreaking *)
     ; liftA2 gright [BLMatch; BLFunctionMatch; BLTry] [BLMatchArm]
     ; liftA2 gleft [BLElse] [BLElse]
@@ -1085,6 +1090,7 @@ module B = struct
   let matchTry = getPrefix BLTry
   let fieldAccess = getPostfix BLFieldAccess
   let index = getPostfix BLIndex
+  let semiPost = getPostfix BLSemiPost
 end
 
 let add_atom (st, (input, self)) =
@@ -2714,18 +2720,23 @@ interaction into their own non-terminals:
   | previous { $1 }
 ;
 
-bs_rclosed_all: bs_rclosed_base {$1};
+bs_rclosed_all: bs_rclosed_semipost | bs_rclosed_base {$1};
+bs_rclosed_nosemipost: bs_rclosed_base {$1};
+%inline bs_rclosed_semipost:
+  | st=bs_rclosed_all op=bs_postfix_semi { add_postfix (st, op) }
 %inline bs_rclosed_base:
   | st=maybe_start(bs_ropen_all) op=bs_atom_nodot { add_atom (st, op) }
   | st=bs_ropen_matchlike op=bs_unreachable { add_atom (st, op) }
 
-  | st=bs_rclosed_all op=bs_postfix_all { add_postfix (st, op) }
+  | st=bs_rclosed_all op1=bs_semi op2=bs_atom_nodot { add_atom (add_infix (st, op1), op2) }
+
+  | st=bs_rclosed_all op=bs_postfix_nosemi { add_postfix (st, op) }
 ;
 
 bs_ropen_all: bs_ropen_app | bs_ropen_matchlike | bs_ropen_base {$1};
 bs_ropen_noapp: bs_ropen_matchlike | bs_ropen_base {$1};
 %inline bs_ropen_app:
-  | st=bs_rclosed_all op=bs_app { add_infix (st, op) }
+  | st=bs_rclosed_nosemipost op=bs_app { add_infix (st, op) }
 %inline bs_ropen_matchlike:
   | st=maybe_start(bs_ropen_noapp) op=bs_matchlike { add_prefix (st, op) }
   | st=bs_rclosed_all op=bs_match_arm { add_infix (st, op) }
@@ -2735,7 +2746,9 @@ bs_ropen_noapp: bs_ropen_matchlike | bs_ropen_base {$1};
   | st=maybe_start(bs_ropen_noapp) op=bs_if { add_prefix (st, op) }
   | st=maybe_start(bs_ropen_noapp) op=bs_minus { add_prefix (st, op) }
 
-  | st=bs_rclosed_all op=bs_infix_noapp_nomatcharm { add_infix (st, op) }
+  | st=bs_rclosed_all op1=bs_semi op2=bs_prefix_all { add_prefix (add_infix (st, op1), op2) }
+
+  | st=bs_rclosed_all op=bs_infix_noapp_nomatcharm_nosemi { add_infix (st, op) }
 ;
 
 /* bs_atom_all: bs_unreachable | bs_atom_base {$1}; */
@@ -2767,9 +2780,10 @@ bs_atom_nodot: bs_atom_base {$1};
     }
 ;
 
-/* bs_infix_all: bs_app | bs_match_arm | bs_infix_base {$1}; */
-/* bs_infix_noapp: bs_match_arm | bs_infix_base {$1}; */
-bs_infix_noapp_nomatcharm: bs_infix_base {$1};
+/* bs_infix_all: bs_app | bs_match_arm | bs_semi | bs_infix_base {$1}; */
+/* bs_infix_noapp: bs_match_arm | bs_semi | bs_infix_base {$1}; */
+/* bs_infix_noapp_nomatcharm: bs_semi | bs_infix_base {$1}; */
+bs_infix_noapp_nomatcharm_nosemi: bs_infix_base {$1};
 %inline bs_app:
   |   { (B.app, BSApp) }
 ;
@@ -2777,9 +2791,11 @@ bs_infix_noapp_nomatcharm: bs_infix_base {$1};
   | BAR match_arm_ropen
     { let pat, guard = $2 in (B.matchArm, BSMatchArm (pat, guard)) }
 ;
-%inline bs_infix_base:
+%inline bs_semi:
   | SEMI
     { (B.semi, BSSemi) }
+;
+%inline bs_infix_base:
   | EQUAL
     { (B.equality, BSEquality (mkoperator ~loc:$sloc "=")) }
   | COMMA
@@ -2828,7 +2844,7 @@ bs_infix_noapp_nomatcharm: bs_infix_base {$1};
     { (B.colonEqual, BSSimpleInfix ($sloc, ":=")) }
 ;
 
-/* bs_prefix_all: bs_matchlike | bs_let | bs_prefix_base {$1}; */
+bs_prefix_all: bs_matchlike | bs_let | bs_if | bs_minus | bs_prefix_base {$1};
 bs_prefix_nolet_nomatch_noif_nominus: bs_prefix_base {$1};
 %inline bs_matchlike:
   | MATCH ext_attributes bseq_expr WITH BAR? match_arm_ropen
@@ -2851,7 +2867,11 @@ bs_prefix_nolet_nomatch_noif_nominus: bs_prefix_base {$1};
   | NEW { syntax_error () } // TODO: put a proper prefix here
 ;
 
-bs_postfix_all: bs_postfix_base {$1}
+/* bs_postfix_all: bs_postfix_semi | bs_postfix_base {$1} */
+bs_postfix_nosemi: bs_postfix_base {$1}
+%inline bs_postfix_semi:
+  | SEMI
+    { (B.semiPost, ($sloc, BSSemiPost)) }
 %inline bs_postfix_base:
   | DOT mkrhs(label_longident)
     { (B.fieldAccess, ($sloc, BSFieldAccess $2)) }
