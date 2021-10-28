@@ -697,6 +697,7 @@ type blabel =
   | BLFunctionMatch
   | BLTry
   | BLIf
+  | BLSimplePrefix
 
   (* Postfix *)
   | BLFieldAccess
@@ -729,6 +730,7 @@ type bprefix =
   | BSFunctionMatch of (string Asttypes.loc option * Parsetree.attributes) * (pattern * expression option)
   | BSTry of (string Asttypes.loc option * Parsetree.attributes) * expression * (pattern * expression option)
   | BSIf of (string Asttypes.loc option * Parsetree.attributes) * expression
+  | BSSimplePrefix of string
 
 type bpostfix =
   | BSFieldAccess of Longident.t Asttypes.loc
@@ -768,6 +770,7 @@ module BSBasics = struct
     | BSFunctionMatch _ -> "function ... ->"
     | BSTry _ -> "try ... with ... ->"
     | BSIf _ -> "if ... then"
+    | BSSimplePrefix str -> str
   let postfix_to_str (_, s) = match s with
     | BSFieldAccess rhs -> Format.asprintf ".%a" Pprintast.longident rhs.txt
     | BSBuiltinIndex (_, Paren, _) -> ".(...)"
@@ -856,6 +859,8 @@ module BS = struct
     | Prefix ((oploc, BSIf (attrs, cond)), r) ->
        let r = mkWhole r in
        mkexp_attrs ~loc:(fst oploc, r.pexp_loc.loc_end) (Pexp_ifthenelse(cond, r, None)) attrs
+    | Prefix ((oploc, BSSimplePrefix str), r) ->
+       whole_prefix oploc r (fun r -> Pexp_apply(mkoperator ~loc:oploc str, [Nolabel, r]))
 
     | Postfix (l, (oploc, BSFieldAccess ident)) ->
        whole_postfix l oploc (fun l -> Pexp_field(l, ident))
@@ -960,7 +965,7 @@ module BS = struct
   let bprefixes =
     List.map
       (fun l -> l, defaultAllow)
-      [ BLMinusPre; BLLet
+      [ BLMinusPre; BLLet; BLSimplePrefix
       ]
     @ [ BLMatch, defaultAnd [BLMatchArm; BLUnreachable]
       ; BLFunctionMatch, defaultAnd [BLMatchArm; BLUnreachable]
@@ -982,7 +987,8 @@ module BS = struct
   let bprecedence = List.concat
     (* Precedence *)
     [ precTableNoEq
-        [ [ BLFieldAccess; BLIndex ]
+        [ [ BLSimplePrefix ]
+        ; [ BLFieldAccess; BLIndex ]
         ; [ BLApp ]
         ; [ BLMinusPre ]
         ; [ BLInfixop4 ]
@@ -1088,6 +1094,7 @@ module B = struct
   let bif = getPrefix BLIf
   let matchFunction = getPrefix BLFunctionMatch
   let matchTry = getPrefix BLTry
+  let simplePre = getPrefix BLSimplePrefix
   let fieldAccess = getPostfix BLFieldAccess
   let index = getPostfix BLIndex
   let semiPost = getPostfix BLSemiPost
@@ -2864,7 +2871,10 @@ bs_prefix_nolet_nomatch_noif_nominus: bs_prefix_base {$1};
   | subtractive
     { (B.minusPre, ($sloc, BSUSub $1)) } // TODO: recover the attributes
 %inline bs_prefix_base:
-  | NEW { syntax_error () } // TODO: put a proper prefix here
+  | BANG
+    { (B.simplePre, ($sloc, BSSimplePrefix "!")) }
+  | PREFIXOP
+    { (B.simplePre, ($sloc, BSSimplePrefix $1)) }
 ;
 
 /* bs_postfix_all: bs_postfix_semi | bs_postfix_base {$1} */
