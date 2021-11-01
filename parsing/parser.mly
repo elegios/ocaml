@@ -663,6 +663,7 @@ type blabel =
   | BLIdent
   | BLConstructor
   | BLUnreachable
+  | BLNew
 
   (* Infix *)
   | BLSemi
@@ -699,6 +700,8 @@ type blabel =
   | BLIf
   | BLSimplePrefix
   | BLLambda
+  | BLLazy
+  | BLAssert
 
   (* Postfix *)
   | BLFieldAccess
@@ -717,6 +720,7 @@ type batom =
   | BSGrouping of expression
   | BSIdent of Longident.t Asttypes.loc
   | BSConstructor of Longident.t Asttypes.loc
+  | BSNew of expression
 
 type binfix =
   | BSSemi
@@ -737,6 +741,8 @@ type bprefix =
   | BSIf of (string Asttypes.loc option * Parsetree.attributes) * expression
   | BSSimplePrefix of string
   | BSLambda of (string Asttypes.loc option * Parsetree.attributes) * bs_lambda_param list * (Lexing.position * core_type) option
+  | BSLazy of (string Asttypes.loc option * Parsetree.attributes)
+  | BSAssert of (string Asttypes.loc option * Parsetree.attributes)
 
 type bpostfix =
   | BSFieldAccess of Longident.t Asttypes.loc
@@ -760,6 +766,7 @@ module BSBasics = struct
     | BSGrouping _ -> "(...)"
     | BSIdent rhs -> Format.asprintf "%a" Pprintast.longident rhs.txt
     | BSConstructor rhs -> Format.asprintf "%a" Pprintast.longident rhs.txt
+    | BSNew _ -> "..."
   let infix_to_str s = match s with
     | BSSemi -> ";"
     | BSEquality _ -> "="
@@ -778,6 +785,8 @@ module BSBasics = struct
     | BSIf _ -> "if ... then"
     | BSSimplePrefix str -> str
     | BSLambda _ -> "fun ... ->"
+    | BSLazy _ -> "lazy"
+    | BSAssert _ -> "assert"
   let postfix_to_str (_, s) = match s with
     | BSFieldAccess rhs -> Format.asprintf ".%a" Pprintast.longident rhs.txt
     | BSBuiltinIndex (_, Paren, _) -> ".(...)"
@@ -805,6 +814,7 @@ module BS = struct
     | Atom (_, BSGrouping e) -> e
     | Atom (loc, BSIdent ident) -> mkexp ~loc (Pexp_ident ident)
     | Atom (loc, BSConstructor c) -> mkexp ~loc (Pexp_construct(c, None))
+    | Atom (_, BSNew e) -> e
 
     | Infix (l, BSSemi, r) -> whole_infix l r (fun l r -> Pexp_sequence(l, r))
     | Infix (l, BSEquality op, r) -> whole_infix l r (fun l r -> mkinfix l op r)
@@ -879,6 +889,14 @@ module BS = struct
          | BSLambdaType (start, ts) -> mk_newtypes ~loc:(start, end_pos) ts acc in
        let top_ghost = List.fold_right fold_f ps r in
        mkexp_attrs ~loc:(fst oploc, end_pos) top_ghost.pexp_desc attrs
+    | Prefix (((s, _), BSLazy attrs), r) ->
+       let r = mkWhole r in
+       let e = r.pexp_loc.loc_end in
+       mkexp_attrs ~loc:(s, e) (Pexp_lazy r) attrs
+    | Prefix (((s, _), BSAssert attrs), r) ->
+       let r = mkWhole r in
+       let e = r.pexp_loc.loc_end in
+       mkexp_attrs ~loc:(s, e) (Pexp_assert r) attrs
 
     | Postfix (l, (oploc, BSFieldAccess ident)) ->
        whole_postfix l oploc (fun l -> Pexp_field(l, ident))
@@ -903,6 +921,9 @@ module BS = struct
     mkexp ~loc:(l.pexp_loc.loc_start, endP) (c l)
 
   and mkApplication redge rest = function
+    | Infix (_, BSApp, (Prefix ((_, (BSLazy _ | BSAssert _)), _))) ->
+       print_endline "lazy and assert must be parenthesized when passed to a function";
+       assert false (* TODO(vipa, 2021-11-02): proper error message *)
     | Infix (l, BSApp, r) ->
        mkApplication redge ((Nolabel, mkWhole r) :: rest) l
     | Atom ((start, _), BSConstructor c) ->
@@ -912,6 +933,9 @@ module BS = struct
         | [(_label, _x)] -> assert false (* TODO: proper error message *)
         | _ :: _extra :: _ -> assert false (* TODO: proper error message *)
        )
+    | Prefix ((_, (BSLazy _ | BSAssert _)), _) ->
+       print_endline "lazy and assert only take a single argument";
+       assert false (* TODO(vipa, 2021-11-02): proper error message *)
     | x ->
        let x = mkWhole x in
        mkexp ~loc:(x.pexp_loc.loc_start, redge) (Pexp_apply(x, rest))
@@ -967,6 +991,7 @@ module BS = struct
 
   let batoms =
     [ BLGrouping; BLOpaque; BLIdent; BLConstructor; BLUnreachable
+    ; BLNew
     ]
   let binfixes =
     List.map
@@ -983,7 +1008,7 @@ module BS = struct
   let bprefixes =
     List.map
       (fun l -> l, defaultAllow)
-      [ BLMinusPre; BLLet; BLSimplePrefix; BLLambda
+      [ BLMinusPre; BLLet; BLSimplePrefix; BLLambda; BLLazy; BLAssert
       ]
     @ [ BLMatch, defaultAnd [BLMatchArm; BLUnreachable]
       ; BLFunctionMatch, defaultAnd [BLMatchArm; BLUnreachable]
@@ -1007,7 +1032,7 @@ module BS = struct
     [ precTableNoEq
         [ [ BLSimplePrefix ]
         ; [ BLFieldAccess; BLIndex ]
-        ; [ BLApp ]
+        ; [ BLApp; BLLazy; BLAssert ]
         ; [ BLMinusPre ]
         ; [ BLInfixop4 ]
         ; [ BLInfixop2; BLInfixop3; BLStar; BLPercent ]
@@ -1028,7 +1053,7 @@ module BS = struct
              [BLElse]
     (* Associativity *)
     ; liftA2 gleft
-             [BLApp]
+             [BLApp; BLLazy; BLAssert]
              [BLApp]
     ; liftA2 gright
              [BLInfixop4]
@@ -1083,6 +1108,7 @@ module B = struct
   let ident = getAtom BLIdent
   let constructor = getAtom BLConstructor
   let unreachable = getAtom BLUnreachable
+  let new_atom = getAtom BLNew
   let semi = getInfix BLSemi
   let equality = getInfix BLEquality
   let app = getInfix BLApp
@@ -1115,6 +1141,8 @@ module B = struct
   let matchTry = getPrefix BLTry
   let simplePre = getPrefix BLSimplePrefix
   let lambda = getPrefix BLLambda
+  let assert_pre = getPrefix BLAssert
+  let lazy_pre = getPrefix BLLazy
   let fieldAccess = getPostfix BLFieldAccess
   let index = getPostfix BLIndex
   let semiPost = getPostfix BLSemiPost
@@ -2807,6 +2835,8 @@ bs_atom_nodot: bs_atom_base {$1};
     }
   | LPAREN bseq_expr type_constraint RPAREN
     { (B.grouping, ($sloc, BSOpaque (mkexp_constraint ~loc:$sloc $2 $3))) }
+  | NEW ext_attributes mkrhs(class_longident)
+    { (B.new_atom, ($sloc, BSNew (mkexp_attrs ~loc:$sloc (Pexp_new $3) $2))) }
 ;
 
 /* bs_infix_all: bs_app | bs_match_arm | bs_semi | bs_infix_base {$1}; */
@@ -2899,6 +2929,10 @@ bs_prefix_nolet_nomatch_noif_nominus: bs_prefix_base {$1};
     { (B.simplePre, ($sloc, BSSimplePrefix $1)) }
   | FUN attrs=ext_attributes ps=nonempty_llist(bs_fun_param) ret=ioption(COLON atomic_type {$symbolstartpos, $2}) MINUSGREATER
     { (B.lambda, ($sloc, BSLambda (attrs, ps, ret))) }
+  | ASSERT ext_attributes
+    { (B.assert_pre, ($sloc, BSAssert $2)) }
+  | LAZY ext_attributes
+    { (B.lazy_pre, ($sloc, BSLazy $2)) }
 ;
 
 /* bs_postfix_all: bs_postfix_semi | bs_postfix_base {$1} */
