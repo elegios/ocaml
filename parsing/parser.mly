@@ -1042,6 +1042,7 @@ module BS = struct
     (* Longest match/unbreaking *)
     ; liftA2 gright [BLMatch; BLFunctionMatch; BLTry] [BLMatchArm]
     ; liftA2 gleft [BLElse] [BLElse]
+    ; liftA2 gright [BLIf] [BLElse]
     ; liftA2 gright [BLComma] [BLComma]
     ]
 
