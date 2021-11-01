@@ -2805,6 +2805,8 @@ bs_atom_nodot: bs_atom_base {$1};
     { let with_base, fields = $2 in
       (B.opaque, ($sloc, BSOpaque (BS.mkRecordContent $sloc with_base fields)))
     }
+  | LPAREN bseq_expr type_constraint RPAREN
+    { (B.grouping, ($sloc, BSOpaque (mkexp_constraint ~loc:$sloc $2 $3))) }
 ;
 
 /* bs_infix_all: bs_app | bs_match_arm | bs_semi | bs_infix_base {$1}; */
