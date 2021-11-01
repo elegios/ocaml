@@ -698,6 +698,7 @@ type blabel =
   | BLTry
   | BLIf
   | BLSimplePrefix
+  | BLLambda
 
   (* Postfix *)
   | BLFieldAccess
@@ -706,6 +707,10 @@ type blabel =
 
 (* This works because blabel only has constructors without carried data *)
 let compareLabel (a : blabel) (b : blabel) = Obj.magic a - Obj.magic b
+
+type bs_lambda_param =
+  | BSLambdaPat of Lexing.position * (arg_label * expression option * pattern)
+  | BSLambdaType of Lexing.position * string Asttypes.loc list
 
 type batom =
   | BSOpaque of expression
@@ -731,6 +736,7 @@ type bprefix =
   | BSTry of (string Asttypes.loc option * Parsetree.attributes) * expression * (pattern * expression option)
   | BSIf of (string Asttypes.loc option * Parsetree.attributes) * expression
   | BSSimplePrefix of string
+  | BSLambda of (string Asttypes.loc option * Parsetree.attributes) * bs_lambda_param list * (Lexing.position * core_type) option
 
 type bpostfix =
   | BSFieldAccess of Longident.t Asttypes.loc
@@ -771,6 +777,7 @@ module BSBasics = struct
     | BSTry _ -> "try ... with ... ->"
     | BSIf _ -> "if ... then"
     | BSSimplePrefix str -> str
+    | BSLambda _ -> "fun ... ->"
   let postfix_to_str (_, s) = match s with
     | BSFieldAccess rhs -> Format.asprintf ".%a" Pprintast.longident rhs.txt
     | BSBuiltinIndex (_, Paren, _) -> ".(...)"
@@ -861,6 +868,17 @@ module BS = struct
        mkexp_attrs ~loc:(fst oploc, r.pexp_loc.loc_end) (Pexp_ifthenelse(cond, r, None)) attrs
     | Prefix ((oploc, BSSimplePrefix str), r) ->
        whole_prefix oploc r (fun r -> Pexp_apply(mkoperator ~loc:oploc str, [Nolabel, r]))
+    | Prefix ((oploc, BSLambda (attrs, ps, ret)), r) ->
+       let r = mkWhole r in
+       let end_pos = r.pexp_loc.loc_end in
+       let r = match ret with
+         | Some (start, retty) -> mkexp ~loc:(start, end_pos) (Pexp_constraint (r, retty))
+         | None -> r in
+       let fold_f p acc = match p with
+         | BSLambdaPat (start, (l, o, p)) -> ghexp ~loc:(start, end_pos) (Pexp_fun(l, o, p, acc))
+         | BSLambdaType (start, ts) -> mk_newtypes ~loc:(start, end_pos) ts acc in
+       let top_ghost = List.fold_right fold_f ps r in
+       mkexp_attrs ~loc:(fst oploc, end_pos) top_ghost.pexp_desc attrs
 
     | Postfix (l, (oploc, BSFieldAccess ident)) ->
        whole_postfix l oploc (fun l -> Pexp_field(l, ident))
@@ -965,7 +983,7 @@ module BS = struct
   let bprefixes =
     List.map
       (fun l -> l, defaultAllow)
-      [ BLMinusPre; BLLet; BLSimplePrefix
+      [ BLMinusPre; BLLet; BLSimplePrefix; BLLambda
       ]
     @ [ BLMatch, defaultAnd [BLMatchArm; BLUnreachable]
       ; BLFunctionMatch, defaultAnd [BLMatchArm; BLUnreachable]
@@ -1002,11 +1020,11 @@ module BS = struct
         ; [ BLArrowAssign; BLColonEqual ]
         ; [ BLIf; BLElse ]
         ; [ BLSemi; BLSemiPost ]
-        ; [ BLLet; BLMatch; BLMatchArm; BLFunctionMatch; BLTry ]
+        ; [ BLLet; BLMatch; BLMatchArm; BLFunctionMatch; BLTry; BLLambda ]
         ]
     (* Allow the broken operators to float past the operators that otherwise have lower precedence *)
     ; liftA2 geither
-             [BLSemi; BLLet; BLMatch; BLMatchArm; BLFunctionMatch; BLTry]
+             [BLSemi; BLLet; BLMatch; BLMatchArm; BLFunctionMatch; BLTry; BLLambda]
              [BLElse]
     (* Associativity *)
     ; liftA2 gleft
@@ -1096,6 +1114,7 @@ module B = struct
   let matchFunction = getPrefix BLFunctionMatch
   let matchTry = getPrefix BLTry
   let simplePre = getPrefix BLSimplePrefix
+  let lambda = getPrefix BLLambda
   let fieldAccess = getPostfix BLFieldAccess
   let index = getPostfix BLIndex
   let semiPost = getPostfix BLSemiPost
@@ -2876,6 +2895,8 @@ bs_prefix_nolet_nomatch_noif_nominus: bs_prefix_base {$1};
     { (B.simplePre, ($sloc, BSSimplePrefix "!")) }
   | PREFIXOP
     { (B.simplePre, ($sloc, BSSimplePrefix $1)) }
+  | FUN attrs=ext_attributes ps=nonempty_llist(bs_fun_param) ret=ioption(COLON atomic_type {$symbolstartpos, $2}) MINUSGREATER
+    { (B.lambda, ($sloc, BSLambda (attrs, ps, ret))) }
 ;
 
 /* bs_postfix_all: bs_postfix_semi | bs_postfix_base {$1} */
@@ -2911,6 +2932,13 @@ match_arm_ropen:
     { $1, None }
   | pattern WHEN bseq_expr MINUSGREATER
     { $1, Some $3 }
+;
+
+bs_fun_param:
+  | labeled_simple_pattern
+    { BSLambdaPat ($symbolstartpos, $1) }
+  | LPAREN TYPE lident_list RPAREN
+    { BSLambdaType ($symbolstartpos, $3) }
 ;
 
 /* Old implementation of expressions, still in use in some OO-related parts of the grammar */
