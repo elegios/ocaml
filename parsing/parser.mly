@@ -690,6 +690,7 @@ type blabel =
   | BLAmpersand
   | BLAmperAmper
   | BLColonEqual
+  | BLCons
 
   (* Prefix *)
   | BLMinusPre
@@ -732,6 +733,7 @@ type binfix =
   | BSElse
   | BSArrowAssign
   | BSSimpleInfix of (Lexing.position * Lexing.position) * string
+  | BSCons of (Lexing.position * Lexing.position)
 
 type bprefix =
   | BSUSub of string
@@ -783,6 +785,7 @@ module BSBasics = struct
     | BSElse -> "else"
     | BSArrowAssign -> "<-"
     | BSSimpleInfix (_, str) -> str
+    | BSCons _ -> "::"
   let prefix_to_str (_, s) = match s with
     | BSUSub str -> str
     | BSLet _ -> "let ... in"
@@ -881,6 +884,11 @@ module BS = struct
       *)
     | Infix (l, BSSimpleInfix (loc, str), r) ->
        whole_infix l r (fun l r -> mkinfix l (mkoperator ~loc str) r)
+    | Infix (l, BSCons oploc, r) ->
+       let l = mkWhole l in
+       let r = mkWhole r in
+       let loc = (l.pexp_loc.loc_start, r.pexp_loc.loc_end) in
+       mkexp_cons ~loc oploc (ghexp ~loc (Pexp_tuple [l; r]))
 
     | Prefix ((oploc, BSUSub op), r) ->
        whole_prefix oploc r (fun r -> mkuminus ~oploc op r)
@@ -1033,7 +1041,7 @@ module BS = struct
       ; BLInfixop0; BLInfixop1; BLInfixop2; BLInfixop3
       ; BLInfixop4; BLPlus; BLPlusEq; BLMinus; BLStar
       ; BLPercent; BLLess; BLGreater; BLOrWord; BLBarBar
-      ; BLAmpersand; BLAmperAmper; BLColonEqual
+      ; BLAmpersand; BLAmperAmper; BLColonEqual; BLCons
       ]
     @ [ defaultAllow, BLMatchArm, defaultAnd [BLMatchArm; BLUnreachable]
       ; allowOnly [BLFieldAccess; BLIndex; BLIdent], BLArrowAssign, defaultAllow
@@ -1070,6 +1078,7 @@ module BS = struct
         ; [ BLInfixop4 ]
         ; [ BLInfixop2; BLInfixop3; BLStar; BLPercent ]
         ; [ BLPlus; BLPlusEq; BLMinus ]
+        ; [ BLCons ]
         ; [ BLInfixop1 ]
         ; [ BLEquality; BLInfixop0; BLLess; BLGreater ]
         ; [ BLAmpersand; BLAmperAmper ]
@@ -1097,6 +1106,9 @@ module BS = struct
     ; liftA2 gleft
              [BLPlus; BLPlusEq; BLMinus]
              [BLPlus; BLPlusEq; BLMinus]
+    ; liftA2 gright
+             [BLCons]
+             [BLCons]
     ; liftA2 gright
              [BLInfixop1]
              [BLInfixop1]
@@ -1166,6 +1178,7 @@ module B = struct
   let ampersand = getInfix BLAmpersand
   let amperAmper = getInfix BLAmperAmper
   let colonEqual = getInfix BLColonEqual
+  let cons = getInfix BLCons
   let minusPre = getPrefix BLMinusPre
   let letbindings = getPrefix BLLet
   let matchStart = getPrefix BLMatch
@@ -2937,6 +2950,8 @@ bs_infix_noapp_nomatcharm_nosemi: bs_infix_base {$1};
     { (B.amperAmper, BSSimpleInfix ($sloc, "&&")) }
   | COLONEQUAL
     { (B.colonEqual, BSSimpleInfix ($sloc, ":=")) }
+  | COLONCOLON
+    { (B.cons, BSCons $sloc) }
 ;
 
 bs_prefix_all: bs_matchlike | bs_let | bs_if | bs_minus | bs_prefix_base {$1};
