@@ -707,6 +707,7 @@ type blabel =
   | BLFieldAccess
   | BLIndex
   | BLSemiPost
+  | BLLabelledAppPun
 
 (* This works because blabel only has constructors without carried data *)
 let compareLabel (a : blabel) (b : blabel) = Obj.magic a - Obj.magic b
@@ -749,6 +750,7 @@ type bpostfix =
   | BSBuiltinIndex of (unit * paren_kind * expression)
   | BSCustomIndex of ((Longident.t option * string) * paren_kind * expression list)
   | BSSemiPost
+  | BSLabelledAppPun of arg_label * (Lexing.position * Lexing.position) * ((Lexing.position * Lexing.position) * (Parsetree.core_type option * Parsetree.core_type option)) option
 
 module BSBasics = struct
   type atom_self = (Lexing.position * Lexing.position) * batom
@@ -807,12 +809,32 @@ module BSBasics = struct
          | Bracket -> ("[", "]") in
        Format.sprintf "%s.%s%s...%s" qualification op lpar rpar
     | BSSemiPost -> ";"
+    | BSLabelledAppPun (label, _, ty) ->
+       let l, str = match label with
+         | Labelled str -> "~", str
+         | Optional str -> "?", str
+         | Nolabel -> assert false in
+       (match ty with
+        | Some _ -> l ^ "(" ^ str ^ " : ... )"
+        | None -> l ^ str
+       )
 
   let compareLabel = compareLabel
 end
 
 module BS = struct
   include Brokensyntax.Make(BSBasics)
+
+  let labelled_pun_to_arg label loc ty =
+    let str = match label with
+      | Labelled str -> str
+      | Optional str -> str
+      | Nolabel -> assert false in
+    let r = mkexpvar ~loc str in
+    let r = match ty with
+      | Some (loc, ty) -> mkexp_constraint ~loc r ty
+      | None -> r in
+    (label, r)
 
   let rec mkWhole = function
     | Atom (_, BSOpaque e) -> e
@@ -913,6 +935,9 @@ module BS = struct
        mk_indexop_expr user_indexing_operators ~loc:(l.pexp_loc.loc_start, snd oploc) (l, dotop, pkind, index, None)
     | Postfix (l, (_, BSSemiPost)) ->
        mkWhole l
+    | Postfix (l, ((_, redge), BSLabelledAppPun (label, loc, ty))) ->
+       let arg = labelled_pun_to_arg label loc ty in
+       mkApplication redge [arg] l
 
   and whole_infix l r c =
     let l = mkWhole l in
@@ -931,6 +956,9 @@ module BS = struct
        assert false (* TODO(vipa, 2021-11-02): proper error message *)
     | Infix (l, BSApp label, r) ->
        mkApplication redge ((label, mkWhole r) :: rest) l
+    | Postfix (l, (_, BSLabelledAppPun (label, loc, ty))) ->
+       let arg = labelled_pun_to_arg label loc ty in
+       mkApplication redge (arg :: rest) l
     | Atom ((start, _), BSConstructor c) ->
        (match rest with
         | [] -> assert false
@@ -1023,7 +1051,7 @@ module BS = struct
   let bpostfixes =
     List.map
       (fun l -> defaultAllow, l)
-      [ BLFieldAccess; BLIndex; BLSemiPost
+      [ BLFieldAccess; BLIndex; BLSemiPost; BLLabelledAppPun
       ]
 
   let bproductions =
@@ -1037,7 +1065,7 @@ module BS = struct
     [ precTableNoEq
         [ [ BLSimplePrefix ]
         ; [ BLFieldAccess; BLIndex ]
-        ; [ BLApp; BLLazy; BLAssert ]
+        ; [ BLApp; BLLazy; BLAssert; BLLabelledAppPun ]
         ; [ BLMinusPre ]
         ; [ BLInfixop4 ]
         ; [ BLInfixop2; BLInfixop3; BLStar; BLPercent ]
@@ -1059,7 +1087,7 @@ module BS = struct
     (* Associativity *)
     ; liftA2 gleft
              [BLApp; BLLazy; BLAssert]
-             [BLApp]
+             [BLApp; BLLabelledAppPun]
     ; liftA2 gright
              [BLInfixop4]
              [BLInfixop4]
@@ -1151,6 +1179,7 @@ module B = struct
   let fieldAccess = getPostfix BLFieldAccess
   let index = getPostfix BLIndex
   let semiPost = getPostfix BLSemiPost
+  let labelledAppPun = getPostfix BLLabelledAppPun
 end
 
 let add_atom (st, (input, self)) =
@@ -2954,6 +2983,12 @@ bs_postfix_nosemi: bs_postfix_base {$1}
     { (B.index, ($sloc, BSBuiltinIndex $1)) }
   | bs_indexop(qualified_dotop, expr_semi_list)
     { (B.index, ($sloc, BSCustomIndex $1)) }
+  | TILDE label=LIDENT
+    { (B.labelledAppPun, ($sloc, BSLabelledAppPun (Labelled label, $loc(label), None))) }
+  | TILDE LPAREN label=LIDENT COLON ty=type_constraint RPAREN
+    { (B.labelledAppPun, ($sloc, BSLabelledAppPun (Labelled label, $loc(label), Some ($loc(ty), ty)))) }
+  | QUESTION label=LIDENT
+    { (B.labelledAppPun, ($sloc, BSLabelledAppPun (Optional label, $loc(label), None))) }
 ;
 
 %inline bs_indexop(dot, index):
