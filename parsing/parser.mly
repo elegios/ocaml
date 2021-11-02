@@ -709,6 +709,7 @@ type blabel =
   | BLIndex
   | BLSemiPost
   | BLLabelledAppPun
+  | BLMethod
 
 (* This works because blabel only has constructors without carried data *)
 let compareLabel (a : blabel) (b : blabel) = Obj.magic a - Obj.magic b
@@ -753,6 +754,7 @@ type bpostfix =
   | BSCustomIndex of ((Longident.t option * string) * paren_kind * expression list)
   | BSSemiPost
   | BSLabelledAppPun of arg_label * (Lexing.position * Lexing.position) * ((Lexing.position * Lexing.position) * (Parsetree.core_type option * Parsetree.core_type option)) option
+  | BSMethod of label Asttypes.loc
 
 module BSBasics = struct
   type atom_self = (Lexing.position * Lexing.position) * batom
@@ -821,6 +823,7 @@ module BSBasics = struct
         | Some _ -> l ^ "(" ^ str ^ " : ... )"
         | None -> l ^ str
        )
+    | BSMethod ident -> "#" ^ ident.txt
 
   let compareLabel = compareLabel
 end
@@ -946,6 +949,8 @@ module BS = struct
     | Postfix (l, ((_, redge), BSLabelledAppPun (label, loc, ty))) ->
        let arg = labelled_pun_to_arg label loc ty in
        mkApplication redge [arg] l
+    | Postfix (l, (oploc, BSMethod ident)) ->
+       whole_postfix l oploc (fun l -> Pexp_send(l, ident))
 
   and whole_infix l r c =
     let l = mkWhole l in
@@ -1059,7 +1064,7 @@ module BS = struct
   let bpostfixes =
     List.map
       (fun l -> defaultAllow, l)
-      [ BLFieldAccess; BLIndex; BLSemiPost; BLLabelledAppPun
+      [ BLFieldAccess; BLIndex; BLSemiPost; BLLabelledAppPun; BLMethod
       ]
 
   let bproductions =
@@ -1073,6 +1078,7 @@ module BS = struct
     [ precTableNoEq
         [ [ BLSimplePrefix ]
         ; [ BLFieldAccess; BLIndex ]
+        ; [ BLMethod ]
         ; [ BLApp; BLLazy; BLAssert; BLLabelledAppPun ]
         ; [ BLMinusPre ]
         ; [ BLInfixop4 ]
@@ -1193,6 +1199,7 @@ module B = struct
   let index = getPostfix BLIndex
   let semiPost = getPostfix BLSemiPost
   let labelledAppPun = getPostfix BLLabelledAppPun
+  let methodCall = getPostfix BLMethod
 end
 
 let add_atom (st, (input, self)) =
@@ -2767,7 +2774,7 @@ bseq_expr:
 
 // Get a broken expression, to enable unbreaking later
 bs_expr:
-  | st=bs_rclosed_all
+  | st=bs_rclosed_all %prec below_HASH
     { match BS.finalizeParse st with
       | None -> syntax_error ()
       | Some roots ->
@@ -3004,6 +3011,8 @@ bs_postfix_nosemi: bs_postfix_base {$1}
     { (B.labelledAppPun, ($sloc, BSLabelledAppPun (Labelled label, $loc(label), Some ($loc(ty), ty)))) }
   | QUESTION label=LIDENT
     { (B.labelledAppPun, ($sloc, BSLabelledAppPun (Optional label, $loc(label), None))) }
+  | HASH mkrhs(label)
+    { (B.methodCall, ($sloc, BSMethod $2)) }
 ;
 
 %inline bs_indexop(dot, index):
