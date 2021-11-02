@@ -724,7 +724,7 @@ type batom =
 
 type binfix =
   | BSSemi
-  | BSApp
+  | BSApp of arg_label
   | BSEquality of expression
   | BSComma
   | BSMatchArm of pattern * expression option
@@ -770,7 +770,12 @@ module BSBasics = struct
   let infix_to_str s = match s with
     | BSSemi -> ";"
     | BSEquality _ -> "="
-    | BSApp -> ""
+    | BSApp label ->
+       (match label with
+        | Nolabel -> ""
+        | Labelled str -> "~" ^ str
+        | Optional str -> "?" ^ str
+       )
     | BSComma -> ","
     | BSMatchArm _ -> "| ... ->"
     | BSElse -> "else"
@@ -818,9 +823,9 @@ module BS = struct
 
     | Infix (l, BSSemi, r) -> whole_infix l r (fun l r -> Pexp_sequence(l, r))
     | Infix (l, BSEquality op, r) -> whole_infix l r (fun l r -> mkinfix l op r)
-    | Infix (l, BSApp, r) ->
+    | Infix (l, BSApp label, r) ->
        let r = mkWhole r in
-       mkApplication r.pexp_loc.loc_end [(Nolabel, r)] l
+       mkApplication r.pexp_loc.loc_end [(label, r)] l
     | Infix (_, BSComma, _) as x ->
        let xs = mkCommaList x in
        mkexp ~loc:(loc_of_exp_list xs) (Pexp_tuple xs)
@@ -921,11 +926,11 @@ module BS = struct
     mkexp ~loc:(l.pexp_loc.loc_start, endP) (c l)
 
   and mkApplication redge rest = function
-    | Infix (_, BSApp, (Prefix ((_, (BSLazy _ | BSAssert _)), _))) ->
+    | Infix (_, BSApp _, (Prefix ((_, (BSLazy _ | BSAssert _)), _))) ->
        print_endline "lazy and assert must be parenthesized when passed to a function";
        assert false (* TODO(vipa, 2021-11-02): proper error message *)
-    | Infix (l, BSApp, r) ->
-       mkApplication redge ((Nolabel, mkWhole r) :: rest) l
+    | Infix (l, BSApp label, r) ->
+       mkApplication redge ((label, mkWhole r) :: rest) l
     | Atom ((start, _), BSConstructor c) ->
        (match rest with
         | [] -> assert false
@@ -2844,7 +2849,9 @@ bs_atom_nodot: bs_atom_base {$1};
 /* bs_infix_noapp_nomatcharm: bs_semi | bs_infix_base {$1}; */
 bs_infix_noapp_nomatcharm_nosemi: bs_infix_base {$1};
 %inline bs_app:
-  |   { (B.app, BSApp) }
+  |          { (B.app, BSApp Nolabel) }
+  | LABEL    { (B.app, BSApp (Labelled $1)) }
+  | OPTLABEL { (B.app, BSApp (Optional $1)) }
 ;
 %inline bs_match_arm:
   | BAR match_arm_ropen
