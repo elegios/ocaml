@@ -707,6 +707,7 @@ type blabel =
   | BLSemiPost
   | BLLabelledAppPun
   | BLMethod
+  | BLAttribute
 
 (* This works because blabel only has constructors without carried data *)
 let compareLabel (a : blabel) (b : blabel) = Obj.magic a - Obj.magic b
@@ -757,6 +758,7 @@ type bpostfix =
   | BSSemiPost
   | BSLabelledAppPun of arg_label * (Lexing.position * Lexing.position) * ((Lexing.position * Lexing.position) * (Parsetree.core_type option * Parsetree.core_type option)) option
   | BSMethod of label Asttypes.loc
+  | BSAttribute of string Asttypes.loc * payload
 
 module BSBasics = struct
   type atom_self = batom
@@ -832,6 +834,7 @@ module BSBasics = struct
         | None -> l ^ str
        )
     | BSMethod ident -> "#" ^ ident.txt
+    | BSAttribute (id, _) -> "[@" ^ id.txt ^ " ... ]"
 
   let compareLabel = compareLabel
 end
@@ -968,6 +971,10 @@ module BS = struct
        mkApplication p2 [arg] l
     | Postfix (loc, l, _, BSMethod ident) ->
        whole_postfix loc l (fun l -> Pexp_send(l, ident))
+    | Postfix (loc, l, p2, BSAttribute (id, payload)) ->
+       let l = mkWhole l in
+       let attr = Attr.mk ~loc:(make_loc (p2, snd loc)) id payload in
+       Exp.attr l attr
 
   and whole_infix loc l r c =
     let l = mkWhole l in
@@ -1093,6 +1100,7 @@ module BS = struct
     List.map
       (fun l -> defaultAllowLeft, l)
       [ BLFieldAccess; BLIndex; BLSemiPost; BLLabelledAppPun; BLMethod
+      ; BLAttribute
       ]
 
   let bproductions =
@@ -1107,7 +1115,7 @@ module BS = struct
         [ [ BLSimplePrefix ]
         ; [ BLFieldAccess; BLIndex ]
         ; [ BLMethod ]
-        ; [ BLApp; BLLazy; BLAssert; BLLabelledAppPun ]
+        ; [ BLApp; BLLazy; BLAssert; BLLabelledAppPun; BLAttribute ]
         ; [ BLMinusPre ]
         ; [ BLInfixop4 ]
         ; [ BLInfixop2; BLInfixop3; BLStar; BLPercent ]
@@ -1130,7 +1138,7 @@ module BS = struct
     (* Associativity *)
     ; liftA2 gleft
              [BLApp; BLLazy; BLAssert]
-             [BLApp; BLLabelledAppPun]
+             [BLApp; BLLabelledAppPun; BLAttribute]
     ; liftA2 gright
              [BLInfixop4]
              [BLInfixop4]
@@ -1232,6 +1240,7 @@ module B = struct
   let semiPost = getPostfix BLSemiPost
   let labelledAppPun = getPostfix BLLabelledAppPun
   let methodCall = getPostfix BLMethod
+  let attribute = getPostfix BLAttribute
 end
 
 let add_atom (st, (pos, input, self)) =
@@ -3086,6 +3095,8 @@ bs_postfix_nosemi: bs_postfix_base {$1}
     { ($sloc, B.labelledAppPun, BSLabelledAppPun (Optional label, $loc(label), None)) }
   | HASH mkrhs(label)
     { ($sloc, B.methodCall, BSMethod $2) }
+  | LBRACKETAT attr_id payload RBRACKET
+    { ($sloc, B.attribute, BSAttribute ($2, $3)) }
 ;
 
 %inline bs_indexop(dot, index):
