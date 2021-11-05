@@ -2903,6 +2903,13 @@ bs_atom_nodot: bs_atom_base {$1};
     { (B.opaque, ($sloc, BSOpaque (mkexp_attrs ~loc:$sloc (Pexp_for($3, $5, $7, $6, $9)) $2))) }
   | WHILE ext_attributes seq_expr DO seq_expr DONE
     { (B.opaque, ($sloc, BSOpaque (mkexp_attrs ~loc:$sloc (Pexp_while($3, $5)) $2))) }
+  | od=open_dot_declaration DOT LPAREN bseq_expr RPAREN
+    { (B.opaque, ($sloc, BSOpaque (mkexp ~loc:$sloc (Pexp_open (od, $4))))) }
+  | od=open_dot_declaration DOT LBRACE bs_record_expr_content RBRACE
+    { let with_base, fields = $4 in
+      let record = BS.mkRecordContent ($startpos($3), $endpos) with_base fields in
+      (B.opaque, ($sloc, BSOpaque (mkexp ~loc:$sloc (Pexp_open (od, record)))))
+    }
 ;
 
 /* bs_infix_all: bs_app | bs_match_arm | bs_semi | bs_infix_base {$1}; */
