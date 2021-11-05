@@ -43,7 +43,7 @@ module type S = sig
 
   (* ## Grammar construction *)
   type grammar
-  val emptyGrammar : grammar
+  val emptyGrammar : allow_set -> grammar
   val addProd : production -> grammar -> grammar
   val addPrec : label -> label -> bool -> bool -> grammar -> grammar
 
@@ -69,7 +69,7 @@ module type S = sig
   type permanent_node
   type 'a sequence
 
-  val init : unit -> ropen state
+  val init : gen_grammar -> unit -> ropen state
 
   val addAtom
       : (lclosed, rclosed) input -> atom_self -> ropen state -> rclosed state

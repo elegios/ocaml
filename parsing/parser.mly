@@ -1145,10 +1145,12 @@ module BS = struct
     ]
 
   let grammar =
-    let g = List.fold_left (fun g p -> addProd p g) emptyGrammar bproductions in
+    let g = List.fold_left (fun g p -> addProd p g) (emptyGrammar defaultAllowRight) bproductions in
     List.fold_left (fun g (l, r, (gleft, gright)) -> addPrec l r gleft gright g) g bprecedence
 
   let genned = finalize grammar
+
+  let init = init genned
 
   let getAtom = getAtom genned
   let getInfix = getInfix genned
