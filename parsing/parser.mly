@@ -2897,6 +2897,8 @@ bs_atom_nodot: bs_atom_base {$1};
     { (B.grouping, ($sloc, BSOpaque (mkexp_constraint ~loc:$sloc $2 $3))) }
   | NEW ext_attributes mkrhs(class_longident)
     { (B.new_atom, ($sloc, BSNew (mkexp_attrs ~loc:$sloc (Pexp_new $3) $2))) }
+  | FOR ext_attributes pattern EQUAL bseq_expr direction_flag bseq_expr DO bseq_expr DONE
+    { (B.opaque, ($sloc, BSOpaque (mkexp_attrs ~loc:$sloc (Pexp_for($3, $5, $7, $6, $9)) $2))) }
 ;
 
 /* bs_infix_all: bs_app | bs_match_arm | bs_semi | bs_infix_base {$1}; */
