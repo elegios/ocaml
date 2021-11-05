@@ -734,6 +734,9 @@ type binfix =
 type bprefix =
   | BSUSub of string
   | BSLet of let_bindings
+  | BSLetModule of (string Asttypes.loc option * Parsetree.attributes) * string option Asttypes.loc * module_expr
+  | BSLetException of (string Asttypes.loc option * Parsetree.attributes) * extension_constructor
+  | BSLetOpen of (string Asttypes.loc option * Parsetree.attributes) * module_expr open_infos
   | BSMatch of (string Asttypes.loc option * Parsetree.attributes) * expression * (pattern * expression option)
   | BSFunctionMatch of (string Asttypes.loc option * Parsetree.attributes) * (pattern * expression option)
   | BSTry of (string Asttypes.loc option * Parsetree.attributes) * expression * (pattern * expression option)
@@ -787,6 +790,9 @@ module BSBasics = struct
   let prefix_to_str = function
     | BSUSub str -> str
     | BSLet _ -> "let ... in"
+    | BSLetModule _ -> "let ... in"
+    | BSLetException _ -> "let ... in"
+    | BSLetOpen _ -> "let ... in"
     | BSMatch _ -> "match ... with ... ->"
     | BSFunctionMatch _ -> "function ... ->"
     | BSTry _ -> "try ... with ... ->"
@@ -928,6 +934,15 @@ module BS = struct
     | Prefix (loc, BSAssert attrs, _, r) ->
        let r = mkWhole r in
        mkexp_attrs ~loc (Pexp_assert r) attrs
+    | Prefix (loc, BSLetModule (attrs, name, binding), _, r) ->
+       let r = mkWhole r in
+       mkexp_attrs ~loc (Pexp_letmodule (name, binding, r)) attrs
+    | Prefix (loc, BSLetException (attrs, decl), _, r) ->
+       let r = mkWhole r in
+       mkexp_attrs ~loc (Pexp_letexception(decl, r)) attrs
+    | Prefix (loc, BSLetOpen (attrs, od), _, r) ->
+       let r = mkWhole r in
+       mkexp_attrs ~loc (Pexp_open(od, r)) attrs
 
     | Postfix (loc, l, _, BSFieldAccess ident) ->
        whole_postfix loc l (fun l -> Pexp_field(l, ident))
@@ -2980,6 +2995,15 @@ bs_prefix_nolet_nomatch_noif_nominus: bs_prefix_base {$1};
 %inline bs_let:
   | let_bindings(ext) IN
     { ($sloc, B.letbindings, BSLet $1) }
+  | LET MODULE ext_attributes mkrhs(module_name) module_binding_body IN
+    { ($sloc, B.letbindings, BSLetModule ($3, $4, $5)) }
+  | LET EXCEPTION ext_attributes let_exception_declaration IN
+    { ($sloc, B.letbindings, BSLetException ($3, $4)) }
+  | LET OPEN override_flag ext_attributes module_expr IN
+    { let open_loc = make_loc ($startpos($2), $endpos($5)) in
+      let od = Opn.mk $5 ~override:$3 ~loc:open_loc in
+      ($sloc, B.letbindings, BSLetOpen ($4, od))
+    }
 ;
 %inline bs_if:
   | IF ext_attributes bseq_expr THEN
