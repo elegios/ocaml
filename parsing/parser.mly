@@ -659,6 +659,7 @@ type blabel =
   | BLConstructor
   | BLUnreachable
   | BLNew
+  | BLPolyVariant
 
   (* Infix *)
   | BLSemi
@@ -719,6 +720,7 @@ type batom =
   | BSIdent of Longident.t Asttypes.loc
   | BSConstructor of Longident.t Asttypes.loc
   | BSNew of expression
+  | BSPolyVariant of string
 
 type binfix =
   | BSSemi
@@ -772,6 +774,7 @@ module BSBasics = struct
     | BSIdent rhs -> Format.asprintf "%a" Pprintast.longident rhs.txt
     | BSConstructor rhs -> Format.asprintf "%a" Pprintast.longident rhs.txt
     | BSNew _ -> "..."
+    | BSPolyVariant str -> "," ^ str
   let infix_to_str = function
     | BSSemi -> ";"
     | BSEquality _ -> "="
@@ -856,6 +859,7 @@ module BS = struct
     | Atom (loc, BSIdent ident) -> mkexp ~loc (Pexp_ident ident)
     | Atom (loc, BSConstructor c) -> mkexp ~loc (Pexp_construct(c, None))
     | Atom (_, BSNew e) -> e
+    | Atom (loc, BSPolyVariant c) -> mkexp ~loc (Pexp_variant(c, None))
 
     | Infix (p, l, _, BSSemi, _, r) -> whole_infix p l r (fun l r -> Pexp_sequence(l, r))
     | Infix (p, l, _, BSEquality op, _, r) -> whole_infix p l r (fun l r -> mkinfix l op r)
@@ -987,6 +991,13 @@ module BS = struct
         | [(_label, _x)] -> assert false (* TODO: proper error message *)
         | _ :: _extra :: _ -> assert false (* TODO: proper error message *)
        )
+    | Atom ((start, _), BSPolyVariant c) ->
+       (match rest with
+        | [] -> assert false
+        | [(Nolabel, x)] -> mkexp ~loc:(start, redge) (Pexp_variant(c, Some x))
+        | [(_label, _x)] -> assert false (* TODO: proper error message *)
+        | _ :: _extra :: _ -> assert false (* TODO: proper error message *)
+       )
     | Prefix (_, (BSLazy _ | BSAssert _), _, _) ->
        print_endline "lazy and assert only take a single argument";
        assert false (* TODO(vipa, 2021-11-02): proper error message *)
@@ -1047,7 +1058,7 @@ module BS = struct
 
   let batoms =
     [ BLGrouping; BLOpaque; BLIdent; BLConstructor; BLUnreachable
-    ; BLNew
+    ; BLNew; BLPolyVariant
     ]
   let binfixes =
     List.map
@@ -1173,6 +1184,7 @@ module B = struct
   let constructor = getAtom BLConstructor
   let unreachable = getAtom BLUnreachable
   let new_atom = getAtom BLNew
+  let polyVariant = getAtom BLPolyVariant
   let semi = getInfix BLSemi
   let equality = getInfix BLEquality
   let app = getInfix BLApp
@@ -2920,6 +2932,8 @@ bs_atom_nodot: bs_atom_base {$1};
       let constr = Pexp_constraint (pack, $6) in
       ($sloc, B.opaque, BSOpaque (mkexp_attrs ~loc:$sloc constr $3))
     }
+  | BACKQUOTE ident
+    { ($sloc, B.polyVariant, BSPolyVariant $2) }
 ;
 
 /* bs_infix_all: bs_app | bs_match_arm | bs_semi | bs_infix_base {$1}; */
