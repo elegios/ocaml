@@ -1025,13 +1025,16 @@ module BS = struct
     let fields = mkRecordFields fields in
     mkexp ~loc (Pexp_record(fields, with_base))
 
-  let defaultAllow =
+  let defaultAllowRight =
     allowAll
     |> allowOneLess BLMatchArm
     |> allowOneLess BLUnreachable
     |> allowOneLess BLElse
-  let defaultAnd l =
-    List.fold_left (fun acc l -> allowOneMore l acc) defaultAllow l
+  let defaultAllowLeft =
+    defaultAllowRight
+    |> allowOneLess BLSemiPost
+  let also def l =
+    List.fold_left (fun acc l -> allowOneMore l acc) def l
   let allowOnly l =
     List.fold_left (fun acc l -> allowOneMore l acc) allowNone l
 
@@ -1041,29 +1044,30 @@ module BS = struct
     ]
   let binfixes =
     List.map
-      (fun l -> defaultAllow, l, defaultAllow)
+      (fun l -> defaultAllowLeft, l, defaultAllowRight)
       [ BLSemi; BLEquality; BLApp; BLComma; BLElse
       ; BLInfixop0; BLInfixop1; BLInfixop2; BLInfixop3
       ; BLInfixop4; BLPlus; BLPlusEq; BLMinus; BLStar
       ; BLPercent; BLLess; BLGreater; BLOrWord; BLBarBar
       ; BLAmpersand; BLAmperAmper; BLColonEqual; BLCons
       ]
-    @ [ defaultAllow, BLMatchArm, defaultAnd [BLMatchArm; BLUnreachable]
-      ; allowOnly [BLFieldAccess; BLIndex; BLIdent], BLArrowAssign, defaultAllow
+      (* NOTE(vipa, 2021-11-05): The lhs of BLMatchArm is actually the rhs of the previous arm/match after unbreaking, thus the forbids should be defaultAllow*Right*. *)
+    @ [ defaultAllowRight, BLMatchArm, also defaultAllowRight [BLMatchArm; BLUnreachable]
+      ; allowOnly [BLFieldAccess; BLIndex; BLIdent], BLArrowAssign, defaultAllowRight
       ]
   let bprefixes =
     List.map
-      (fun l -> l, defaultAllow)
+      (fun l -> l, defaultAllowRight)
       [ BLMinusPre; BLLet; BLSimplePrefix; BLLambda; BLLazy; BLAssert
       ]
-    @ [ BLMatch, defaultAnd [BLMatchArm; BLUnreachable]
-      ; BLFunctionMatch, defaultAnd [BLMatchArm; BLUnreachable]
-      ; BLTry, defaultAnd [BLMatchArm; BLUnreachable]
-      ; BLIf, defaultAnd [BLElse]
+    @ [ BLMatch, also defaultAllowRight [BLMatchArm; BLUnreachable]
+      ; BLFunctionMatch, also defaultAllowRight [BLMatchArm; BLUnreachable]
+      ; BLTry, also defaultAllowRight [BLMatchArm; BLUnreachable]
+      ; BLIf, also defaultAllowRight [BLElse]
       ]
   let bpostfixes =
     List.map
-      (fun l -> defaultAllow, l)
+      (fun l -> defaultAllowLeft, l)
       [ BLFieldAccess; BLIndex; BLSemiPost; BLLabelledAppPun; BLMethod
       ]
 
@@ -1134,7 +1138,7 @@ module BS = struct
              [BLSemi]
              [BLSemi; BLSemiPost]
     (* Longest match/unbreaking *)
-    ; liftA2 gright [BLMatch; BLFunctionMatch; BLTry] [BLMatchArm]
+    ; liftA2 gright [BLMatch; BLFunctionMatch; BLTry; BLMatchArm] [BLMatchArm]
     ; liftA2 gleft [BLElse] [BLElse]
     ; liftA2 gright [BLIf] [BLElse]
     ; liftA2 gright [BLComma] [BLComma]
