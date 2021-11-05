@@ -625,11 +625,6 @@ let mk_directive ~loc name arg =
 
 (* === Brokensyntax stuff === *)
 
-let rec loc_of_exp_list = function
-  | [] -> assert false
-  | [e] -> (e.pexp_loc.loc_start, e.pexp_loc.loc_end)
-  | e :: es -> (e.pexp_loc.loc_start, snd (loc_of_exp_list es))
-
 (*
 Known "external" uses of the expr nts:
 - seq_expr
@@ -733,8 +728,8 @@ type binfix =
   | BSMatchArm of pattern * expression option
   | BSElse
   | BSArrowAssign
-  | BSSimpleInfix of (Lexing.position * Lexing.position) * string
-  | BSCons of (Lexing.position * Lexing.position)
+  | BSSimpleInfix of string
+  | BSCons
 
 type bprefix =
   | BSUSub of string
@@ -757,23 +752,24 @@ type bpostfix =
   | BSMethod of label Asttypes.loc
 
 module BSBasics = struct
-  type atom_self = (Lexing.position * Lexing.position) * batom
+  type atom_self = batom
   type infix_self = binfix
-  type prefix_self = (Lexing.position * Lexing.position) * bprefix
-  type postfix_self = (Lexing.position * Lexing.position) * bpostfix
+  type prefix_self = bprefix
+  type postfix_self = bpostfix
   type label = blabel
   type tokish = string
+  type pos = Lexing.position
 
   let lpar_tok = "("
   let rpar_tok = ")"
 
-  let atom_to_str (_, s) = match s with
+  let atom_to_str = function
     | BSOpaque _ -> "..."
     | BSGrouping _ -> "(...)"
     | BSIdent rhs -> Format.asprintf "%a" Pprintast.longident rhs.txt
     | BSConstructor rhs -> Format.asprintf "%a" Pprintast.longident rhs.txt
     | BSNew _ -> "..."
-  let infix_to_str s = match s with
+  let infix_to_str = function
     | BSSemi -> ";"
     | BSEquality _ -> "="
     | BSApp label ->
@@ -786,9 +782,9 @@ module BSBasics = struct
     | BSMatchArm _ -> "| ... ->"
     | BSElse -> "else"
     | BSArrowAssign -> "<-"
-    | BSSimpleInfix (_, str) -> str
-    | BSCons _ -> "::"
-  let prefix_to_str (_, s) = match s with
+    | BSSimpleInfix str -> str
+    | BSCons -> "::"
+  let prefix_to_str = function
     | BSUSub str -> str
     | BSLet _ -> "let ... in"
     | BSMatch _ -> "match ... with ... ->"
@@ -799,7 +795,7 @@ module BSBasics = struct
     | BSLambda _ -> "fun ... ->"
     | BSLazy _ -> "lazy"
     | BSAssert _ -> "assert"
-  let postfix_to_str (_, s) = match s with
+  let postfix_to_str = function
     | BSFieldAccess rhs -> Format.asprintf ".%a" Pprintast.longident rhs.txt
     | BSBuiltinIndex (_, Paren, _) -> ".(...)"
     | BSBuiltinIndex (_, Brace, _) -> ".{...}"
@@ -842,6 +838,12 @@ module BS = struct
       | None -> r in
     (label, r)
 
+  let pos_of_res = function
+    | Atom (p, _)
+    | Infix (p, _, _, _, _, _)
+    | Prefix (p, _, _, _)
+    | Postfix (p, _, _, _) -> p
+
   let rec mkWhole = function
     | Atom (_, BSOpaque e) -> e
     | Atom (_, BSGrouping e) -> e
@@ -849,35 +851,32 @@ module BS = struct
     | Atom (loc, BSConstructor c) -> mkexp ~loc (Pexp_construct(c, None))
     | Atom (_, BSNew e) -> e
 
-    | Infix (l, BSSemi, r) -> whole_infix l r (fun l r -> Pexp_sequence(l, r))
-    | Infix (l, BSEquality op, r) -> whole_infix l r (fun l r -> mkinfix l op r)
-    | Infix (l, BSApp label, r) ->
+    | Infix (p, l, _, BSSemi, _, r) -> whole_infix p l r (fun l r -> Pexp_sequence(l, r))
+    | Infix (p, l, _, BSEquality op, _, r) -> whole_infix p l r (fun l r -> mkinfix l op r)
+    | Infix ((_, p2), l, _, BSApp label, _, r) ->
        let r = mkWhole r in
-       mkApplication r.pexp_loc.loc_end [(label, r)] l
-    | Infix (_, BSComma, _) as x ->
+       mkApplication p2 [(label, r)] l
+    | Infix (loc, _, _, BSComma, _, _) as x ->
        let xs = mkCommaList x in
-       mkexp ~loc:(loc_of_exp_list xs) (Pexp_tuple xs)
-    | Infix (_, BSMatchArm _, _) ->
+       mkexp ~loc (Pexp_tuple xs)
+    | Infix (_, _, _, BSMatchArm _, _, _) ->
        assert false (* TODO: proper error? Might not be possible to get here *)
-    | Infix (_, BSElse, _) ->
+    | Infix (_, _, _, BSElse, _, _) ->
        assert false (* TODO: proper error? Might not be possible to get here *)
-    | Infix (Postfix (l, (_, BSFieldAccess ident)), BSArrowAssign, r) ->
-       whole_infix l r (fun l r -> Pexp_setfield(l, ident, r))
-    | Infix (Postfix (l, (_, BSBuiltinIndex (_, pkind, index))), BSArrowAssign, r) ->
+    | Infix (p, Postfix (_, l, _, BSFieldAccess ident), _, BSArrowAssign, _, r) ->
+       whole_infix p l r (fun l r -> Pexp_setfield(l, ident, r))
+    | Infix (loc, Postfix (_, l, _, BSBuiltinIndex (_, pkind, index)), _, BSArrowAssign, _, r) ->
        let l = mkWhole l in
        let r = mkWhole r in
-       let loc = (l.pexp_loc.loc_start, r.pexp_loc.loc_end) in
        mk_indexop_expr builtin_indexing_operators ~loc (l, (), pkind, index, Some r)
-    | Infix (Postfix (l, (_, BSCustomIndex (dotop, pkind, index))), BSArrowAssign, r) ->
+    | Infix (loc, Postfix (_, l, _, BSCustomIndex (dotop, pkind, index)), _, BSArrowAssign, _, r) ->
        let l = mkWhole l in
        let r = mkWhole r in
-       let loc = (l.pexp_loc.loc_start, r.pexp_loc.loc_end) in
        mk_indexop_expr user_indexing_operators ~loc (l, dotop, pkind, index, Some r)
-    | Infix (Atom (loc, BSIdent {txt = Lident ident; loc=idloc}), BSArrowAssign, r) ->
+    | Infix (loc, Atom (_, BSIdent {txt = Lident ident; loc=idloc}), _, BSArrowAssign, _, r) ->
        let r = mkWhole r in
-       let loc = (fst loc, r.pexp_loc.loc_end) in
        mkexp ~loc (Pexp_setinstvar ({txt = ident; loc=idloc}, r))
-    | Infix (_, BSArrowAssign, _) ->
+    | Infix (_, _, _, BSArrowAssign, _, _) ->
        print_endline "Unexpected left-hand side of '<-'";
        assert false
        (* syntax_error ()*) (* TODO: actually useful error *)
@@ -885,40 +884,36 @@ module BS = struct
       shallow forbids. It is however possible that I want it to be
       allowed syntactically, then error here, i.e., make it possible
       *)
-    | Infix (l, BSSimpleInfix (loc, str), r) ->
-       whole_infix l r (fun l r -> mkinfix l (mkoperator ~loc str) r)
-    | Infix (l, BSCons oploc, r) ->
+    | Infix (p, l, p1, BSSimpleInfix str, p2, r) ->
+       whole_infix p l r (fun l r -> mkinfix l (mkoperator ~loc:(p1, p2) str) r)
+    | Infix (loc, l, p1, BSCons, p2, r) ->
        let l = mkWhole l in
        let r = mkWhole r in
-       let loc = (l.pexp_loc.loc_start, r.pexp_loc.loc_end) in
-       mkexp_cons ~loc oploc (ghexp ~loc (Pexp_tuple [l; r]))
+       mkexp_cons ~loc (p1, p2) (ghexp ~loc (Pexp_tuple [l; r]))
 
-    | Prefix ((oploc, BSUSub op), r) ->
-       whole_prefix oploc r (fun r -> mkuminus ~oploc op r)
-    | Prefix ((oploc, BSLet bindings), r) ->
+    | Prefix (loc, BSUSub op, p2, r) ->
+       whole_prefix loc r (fun r -> mkuminus ~oploc:(fst loc, p2) op r)
+    | Prefix (loc, BSLet bindings, _, r) ->
        let r = mkWhole r in
-       expr_of_let_bindings ~loc:(fst oploc, r.pexp_loc.loc_end) bindings r
-    | Prefix ((oploc, BSMatch (attrs, expr, (pat, guard))), r) ->
-       let cases, redge = mkCases pat guard r in
-       mkexp_attrs ~loc:(fst oploc, redge) (Pexp_match(expr, cases)) attrs
-    | Prefix ((oploc, BSTry (attrs, expr, (pat, guard))), r) ->
-       let cases, redge = mkCases pat guard r in
-       mkexp_attrs ~loc:(fst oploc, redge) (Pexp_try(expr, cases)) attrs
-    | Prefix ((oploc, BSFunctionMatch (attrs, (pat, guard))), r) ->
-       let cases, redge = mkCases pat guard r in
-       mkexp_attrs ~loc:(fst oploc, redge) (Pexp_function cases) attrs
-    | Prefix ((oploc, BSIf (attrs, cond)), (Infix (l, BSElse, r))) ->
+       expr_of_let_bindings ~loc bindings r
+    | Prefix (loc, BSMatch (attrs, expr, (pat, guard)), _, r) ->
+       mkexp_attrs ~loc (Pexp_match(expr, mkCases pat guard r)) attrs
+    | Prefix (loc, BSTry (attrs, expr, (pat, guard)), _, r) ->
+       mkexp_attrs ~loc (Pexp_try(expr, mkCases pat guard r)) attrs
+    | Prefix (loc, BSFunctionMatch (attrs, (pat, guard)), _, r) ->
+       mkexp_attrs ~loc (Pexp_function (mkCases pat guard r)) attrs
+    | Prefix (loc, BSIf (attrs, cond), _, (Infix (_, l, _, BSElse, _, r))) ->
        let l = mkWhole l in
        let r = mkWhole r in
-       mkexp_attrs ~loc:(fst oploc, r.pexp_loc.loc_end) (Pexp_ifthenelse(cond, l, Some r)) attrs
-    | Prefix ((oploc, BSIf (attrs, cond)), r) ->
+       mkexp_attrs ~loc (Pexp_ifthenelse(cond, l, Some r)) attrs
+    | Prefix (loc, BSIf (attrs, cond), _, r) ->
        let r = mkWhole r in
-       mkexp_attrs ~loc:(fst oploc, r.pexp_loc.loc_end) (Pexp_ifthenelse(cond, r, None)) attrs
-    | Prefix ((oploc, BSSimplePrefix str), r) ->
-       whole_prefix oploc r (fun r -> Pexp_apply(mkoperator ~loc:oploc str, [Nolabel, r]))
-    | Prefix ((oploc, BSLambda (attrs, ps, ret)), r) ->
+       mkexp_attrs ~loc (Pexp_ifthenelse(cond, r, None)) attrs
+    | Prefix (loc, BSSimplePrefix str, p2, r) ->
+       whole_prefix loc r (fun r -> Pexp_apply(mkoperator ~loc:(fst loc, p2) str, [Nolabel, r]))
+    | Prefix (loc, BSLambda (attrs, ps, ret), _, r) ->
        let r = mkWhole r in
-       let end_pos = r.pexp_loc.loc_end in
+       let end_pos = snd loc in
        let r = match ret with
          | Some (start, retty) -> mkexp ~loc:(start, end_pos) (Pexp_constraint (r, retty))
          | None -> r in
@@ -926,50 +921,48 @@ module BS = struct
          | BSLambdaPat (start, (l, o, p)) -> ghexp ~loc:(start, end_pos) (Pexp_fun(l, o, p, acc))
          | BSLambdaType (start, ts) -> mk_newtypes ~loc:(start, end_pos) ts acc in
        let top_ghost = List.fold_right fold_f ps r in
-       mkexp_attrs ~loc:(fst oploc, end_pos) top_ghost.pexp_desc attrs
-    | Prefix (((s, _), BSLazy attrs), r) ->
+       mkexp_attrs ~loc top_ghost.pexp_desc attrs
+    | Prefix (loc, BSLazy attrs, _, r) ->
        let r = mkWhole r in
-       let e = r.pexp_loc.loc_end in
-       mkexp_attrs ~loc:(s, e) (Pexp_lazy r) attrs
-    | Prefix (((s, _), BSAssert attrs), r) ->
+       mkexp_attrs ~loc (Pexp_lazy r) attrs
+    | Prefix (loc, BSAssert attrs, _, r) ->
        let r = mkWhole r in
-       let e = r.pexp_loc.loc_end in
-       mkexp_attrs ~loc:(s, e) (Pexp_assert r) attrs
+       mkexp_attrs ~loc (Pexp_assert r) attrs
 
-    | Postfix (l, (oploc, BSFieldAccess ident)) ->
-       whole_postfix l oploc (fun l -> Pexp_field(l, ident))
-    | Postfix (l, (oploc, BSBuiltinIndex (_, pkind, index))) ->
+    | Postfix (loc, l, _, BSFieldAccess ident) ->
+       whole_postfix loc l (fun l -> Pexp_field(l, ident))
+    | Postfix (loc, l, _, BSBuiltinIndex (_, pkind, index)) ->
        let l = mkWhole l in
-       mk_indexop_expr builtin_indexing_operators ~loc:(l.pexp_loc.loc_start, snd oploc) (l, (), pkind, index, None)
-    | Postfix (l, (oploc, BSCustomIndex (dotop, pkind, index))) ->
+       mk_indexop_expr builtin_indexing_operators ~loc (l, (), pkind, index, None)
+    | Postfix (loc, l, _, BSCustomIndex (dotop, pkind, index)) ->
        let l = mkWhole l in
-       mk_indexop_expr user_indexing_operators ~loc:(l.pexp_loc.loc_start, snd oploc) (l, dotop, pkind, index, None)
-    | Postfix (l, (_, BSSemiPost)) ->
+       mk_indexop_expr user_indexing_operators ~loc (l, dotop, pkind, index, None)
+    | Postfix (_, l, _, BSSemiPost) ->
        mkWhole l
-    | Postfix (l, ((_, redge), BSLabelledAppPun (label, loc, ty))) ->
+    | Postfix ((_, p2), l, _, BSLabelledAppPun (label, loc, ty)) ->
        let arg = labelled_pun_to_arg label loc ty in
-       mkApplication redge [arg] l
-    | Postfix (l, (oploc, BSMethod ident)) ->
-       whole_postfix l oploc (fun l -> Pexp_send(l, ident))
+       mkApplication p2 [arg] l
+    | Postfix (loc, l, _, BSMethod ident) ->
+       whole_postfix loc l (fun l -> Pexp_send(l, ident))
 
-  and whole_infix l r c =
+  and whole_infix loc l r c =
     let l = mkWhole l in
     let r = mkWhole r in
-    mkexp ~loc:(l.pexp_loc.loc_start, r.pexp_loc.loc_end) (c l r)
-  and whole_prefix (start, _) r c =
+    mkexp ~loc (c l r)
+  and whole_prefix loc r c =
     let r = mkWhole r in
-    mkexp ~loc:(start, r.pexp_loc.loc_end) (c r)
-  and whole_postfix l (_, endP) c =
+    mkexp ~loc (c r)
+  and whole_postfix loc l c =
     let l = mkWhole l in
-    mkexp ~loc:(l.pexp_loc.loc_start, endP) (c l)
+    mkexp ~loc (c l)
 
   and mkApplication redge rest = function
-    | Infix (_, BSApp _, (Prefix ((_, (BSLazy _ | BSAssert _)), _))) ->
+    | Infix (_, _, _, BSApp _, _, (Prefix (_, (BSLazy _ | BSAssert _), _, _))) ->
        print_endline "lazy and assert must be parenthesized when passed to a function";
        assert false (* TODO(vipa, 2021-11-02): proper error message *)
-    | Infix (l, BSApp label, r) ->
+    | Infix (_, l, _, BSApp label, _, r) ->
        mkApplication redge ((label, mkWhole r) :: rest) l
-    | Postfix (l, (_, BSLabelledAppPun (label, loc, ty))) ->
+    | Postfix (_, l, _, BSLabelledAppPun (label, loc, ty)) ->
        let arg = labelled_pun_to_arg label loc ty in
        mkApplication redge (arg :: rest) l
     | Atom ((start, _), BSConstructor c) ->
@@ -979,7 +972,7 @@ module BS = struct
         | [(_label, _x)] -> assert false (* TODO: proper error message *)
         | _ :: _extra :: _ -> assert false (* TODO: proper error message *)
        )
-    | Prefix ((_, (BSLazy _ | BSAssert _)), _) ->
+    | Prefix (_, (BSLazy _ | BSAssert _), _, _) ->
        print_endline "lazy and assert only take a single argument";
        assert false (* TODO(vipa, 2021-11-02): proper error message *)
     | x ->
@@ -987,39 +980,38 @@ module BS = struct
        mkexp ~loc:(x.pexp_loc.loc_start, redge) (Pexp_apply(x, rest))
 
   and mkCommaList = function
-    | Infix (l, BSComma, r) -> mkWhole l :: mkCommaList r
+    | Infix (_, l, _, BSComma, _, r) -> mkWhole l :: mkCommaList r
     | x -> [mkWhole x]
 
   and mkCases pat guard = function
-    | Infix (l, BSMatchArm (pat', guard'), r) ->
-       let cases, redge = mkCases pat' guard' r in
-       (Exp.case pat ?guard (mkWhole l) :: cases, redge)
+    | Infix (_, l, _, BSMatchArm (pat', guard'), _, r) ->
+       let cases = mkCases pat' guard' r in
+       (Exp.case pat ?guard (mkWhole l) :: cases)
     | x ->
-       let x = mkWhole x in
-       ([Exp.case pat ?guard x], x.pexp_loc.loc_end)
+       [Exp.case pat ?guard (mkWhole x)]
 
   let rec mkSemiList = function
-    | Infix (l, BSSemi, r) -> mkWhole l :: mkSemiList r
+    | Infix (_, l, _, BSSemi, _, r) -> mkWhole l :: mkSemiList r
     | x -> [mkWhole x]
 
   let rec mkRecordFieldAnnoying = function
-    | Infix (Atom (_, BSIdent ident), BSEquality _, r) -> (ident, r)
-    | Infix (l, op, r) ->
+    | Infix (_, Atom (_, BSIdent ident), _, BSEquality _, _, r) -> (ident, r)
+    | Infix ((_, p4), l, p2, op, p3, r) ->
        let ident, l = mkRecordFieldAnnoying l in
-       (ident, Infix (l, op, r))
-    | Postfix (l, op) ->
+       (ident, Infix ((pos_of_res l |> fst, p4), l, p2, op, p3, r))
+    | Postfix ((_, p3), l, p2, op) ->
        let ident, l = mkRecordFieldAnnoying l in
-       (ident, Postfix (l, op))
+       (ident, Postfix ((pos_of_res l |> fst, p3), l, p2, op))
     | _x -> assert false (* TODO(vipa, 2021-10-20): Actual error message here *)
   let rec mkRecordField = function
-    | Postfix (l, (_, BSSemiPost)) -> mkRecordField l
+    | Postfix (_, l, _, BSSemiPost) -> mkRecordField l
     | Atom (_, BSIdent ident) -> (make_ghost ident, exp_of_longident ident)
     | Infix _ | Postfix _ as x ->
        let ident, r = mkRecordFieldAnnoying x in
        (ident, mkWhole r)
     | _x -> assert false (* TODO(vipa, 2021-10-20): Actual error message here *)
   let rec mkRecordFields = function
-    | Infix (l, BSSemi, r) -> mkRecordField l :: mkRecordFields r
+    | Infix (_, l, _, BSSemi, _, r) -> mkRecordField l :: mkRecordFields r
     | x -> [mkRecordField x]
   let mkRecordContent loc with_base fields =
     let fields = mkRecordFields fields in
@@ -1208,19 +1200,19 @@ module B = struct
   let methodCall = getPostfix BLMethod
 end
 
-let add_atom (st, (input, self)) =
-  BS.addAtom input self st
+let add_atom (st, (pos, input, self)) =
+  BS.addAtom input (pos, self) st
 
-let add_infix (st, (input, self)) =
-  match BS.addInfix input self st with
+let add_infix (st, (pos, input, self)) =
+  match BS.addInfix input (pos, self) st with
   | Some x -> x
   | None -> syntax_error () (* TODO: this will error on the token after the operator being added *)
 
-let add_prefix (st, (input, self)) =
-  BS.addPrefix input self st
+let add_prefix (st, (pos, input, self)) =
+  BS.addPrefix input (pos, self) st
 
-let add_postfix (st, (input, self)) =
-  match BS.addPostfix input self st with
+let add_postfix (st, (pos, input, self)) =
+  match BS.addPostfix input (pos, self) st with
   | Some x -> x
   | None -> syntax_error () (* TODO: this will error on the token after the operator being added *)
 
@@ -2788,14 +2780,10 @@ bs_expr:
           | Ok x -> x
           | Error br_err ->
              let bsSeqToList seq = BS.seqFoldl (fun xs x -> x :: xs) [] seq |> List.rev in
-             let handleAmbiguity startS endS resolutions =
-               let getStart ((x, _), _) = x in
-               let getEnd ((_, x), _) = x in
-               let startP = Either.fold ~left:getStart ~right:getStart startS in
-               let endP = Either.fold ~left:getEnd ~right:getEnd endS in
+             let handleAmbiguity loc resolutions =
                let resolutions = bsSeqToList resolutions |> List.map bsSeqToList in
                let msg = String.concat "\n" (List.map (String.concat " ") resolutions) in
-               (make_loc (startP, endP), msg)
+               (make_loc loc, msg)
              in
              let foldf msgs amb = BS.ambiguity handleAmbiguity amb :: msgs in
              let msgs = BS.foldError (BS.seqFoldl foldf []) br_err in
@@ -2870,45 +2858,45 @@ bs_ropen_noapp: bs_ropen_matchlike | bs_ropen_base {$1};
 bs_atom_nodot: bs_atom_base {$1};
 %inline bs_unreachable:
   | DOT
-    { (B.unreachable, ($sloc, BSOpaque (Exp.unreachable ~loc:(make_loc $sloc) ()))) }
+    { ($sloc, B.unreachable, BSOpaque (Exp.unreachable ~loc:(make_loc $sloc) ())) }
 ;
 %inline bs_atom_base:
   | BEGIN ext=ext attrs=attributes e=bseq_expr END
-    { (B.opaque, ($sloc, BSOpaque (mkexp_attrs ~loc:$sloc e.pexp_desc (ext, attrs @ e.pexp_attributes)))) }
+    { ($sloc, B.opaque, BSOpaque (mkexp_attrs ~loc:$sloc e.pexp_desc (ext, attrs @ e.pexp_attributes))) }
   | LPAREN bseq_expr RPAREN
-    { (B.grouping, ($sloc, BSGrouping (reloc_exp ~loc:$sloc $2))) }
+    { ($sloc, B.grouping, BSGrouping (reloc_exp ~loc:$sloc $2)) }
   | LBRACKET expr_semi_list RBRACKET
-    { (B.opaque, ($sloc, BSOpaque (mkexp ~loc:$sloc (fst (mktailexp $loc($3) $2))))) }
+    { ($sloc, B.opaque, BSOpaque (mkexp ~loc:$sloc (fst (mktailexp $loc($3) $2)))) }
   | LBRACKETBAR expr_semi_list BARRBRACKET
-    { (B.opaque, ($sloc, BSOpaque (mkexp ~loc:$sloc (Pexp_array($2))))) }
+    { ($sloc, B.opaque, BSOpaque (mkexp ~loc:$sloc (Pexp_array($2)))) }
   | LBRACKETBAR BARRBRACKET
-    { (B.opaque, ($sloc, BSOpaque (mkexp ~loc:$sloc (Pexp_array [])))) }
+    { ($sloc, B.opaque, BSOpaque (mkexp ~loc:$sloc (Pexp_array []))) }
   | mkrhs(mk_longident(mod_longident, LIDENT))
-    { (B.ident, ($sloc, BSIdent $1)) }
+    { ($sloc, B.ident, BSIdent $1) }
   | mkrhs(mk_longident(mod_longident, LPAREN operator RPAREN {$2}))
-    { (B.ident, ($sloc, BSIdent $1)) }
+    { ($sloc, B.ident, BSIdent $1) }
   | mkrhs(constr_longident)
-    { (B.constructor, ($sloc, BSConstructor $1)) }
+    { ($sloc, B.constructor, BSConstructor $1) }
   | constant
-    { (B.opaque, ($sloc, BSOpaque (mkexp ~loc:$sloc (Pexp_constant $1)))) }
+    { ($sloc, B.opaque, BSOpaque (mkexp ~loc:$sloc (Pexp_constant $1))) }
   | LBRACE bs_record_expr_content RBRACE
     { let with_base, fields = $2 in
-      (B.opaque, ($sloc, BSOpaque (BS.mkRecordContent $sloc with_base fields)))
+      ($sloc, B.opaque, BSOpaque (BS.mkRecordContent $sloc with_base fields))
     }
   | LPAREN bseq_expr type_constraint RPAREN
-    { (B.grouping, ($sloc, BSOpaque (mkexp_constraint ~loc:$sloc $2 $3))) }
+    { ($sloc, B.grouping, BSOpaque (mkexp_constraint ~loc:$sloc $2 $3)) }
   | NEW ext_attributes mkrhs(class_longident)
-    { (B.new_atom, ($sloc, BSNew (mkexp_attrs ~loc:$sloc (Pexp_new $3) $2))) }
+    { ($sloc, B.new_atom, BSNew (mkexp_attrs ~loc:$sloc (Pexp_new $3) $2)) }
   | FOR ext_attributes pattern EQUAL bseq_expr direction_flag bseq_expr DO bseq_expr DONE
-    { (B.opaque, ($sloc, BSOpaque (mkexp_attrs ~loc:$sloc (Pexp_for($3, $5, $7, $6, $9)) $2))) }
+    { ($sloc, B.opaque, BSOpaque (mkexp_attrs ~loc:$sloc (Pexp_for($3, $5, $7, $6, $9)) $2)) }
   | WHILE ext_attributes seq_expr DO seq_expr DONE
-    { (B.opaque, ($sloc, BSOpaque (mkexp_attrs ~loc:$sloc (Pexp_while($3, $5)) $2))) }
+    { ($sloc, B.opaque, BSOpaque (mkexp_attrs ~loc:$sloc (Pexp_while($3, $5)) $2)) }
   | od=open_dot_declaration DOT LPAREN bseq_expr RPAREN
-    { (B.opaque, ($sloc, BSOpaque (mkexp ~loc:$sloc (Pexp_open (od, $4))))) }
+    { ($sloc, B.opaque, BSOpaque (mkexp ~loc:$sloc (Pexp_open (od, $4)))) }
   | od=open_dot_declaration DOT LBRACE bs_record_expr_content RBRACE
     { let with_base, fields = $4 in
       let record = BS.mkRecordContent ($startpos($3), $endpos) with_base fields in
-      (B.opaque, ($sloc, BSOpaque (mkexp ~loc:$sloc (Pexp_open (od, record)))))
+      ($sloc, B.opaque, BSOpaque (mkexp ~loc:$sloc (Pexp_open (od, record))))
     }
 ;
 
@@ -2917,121 +2905,121 @@ bs_atom_nodot: bs_atom_base {$1};
 /* bs_infix_noapp_nomatcharm: bs_semi | bs_infix_base {$1}; */
 bs_infix_noapp_nomatcharm_nosemi: bs_infix_base {$1};
 %inline bs_app:
-  |          { (B.app, BSApp Nolabel) }
-  | LABEL    { (B.app, BSApp (Labelled $1)) }
-  | OPTLABEL { (B.app, BSApp (Optional $1)) }
+  |          { ($sloc, B.app, BSApp Nolabel) }
+  | LABEL    { ($sloc, B.app, BSApp (Labelled $1)) }
+  | OPTLABEL { ($sloc, B.app, BSApp (Optional $1)) }
 ;
 %inline bs_match_arm:
   | BAR match_arm_ropen
-    { let pat, guard = $2 in (B.matchArm, BSMatchArm (pat, guard)) }
+    { let pat, guard = $2 in ($sloc, B.matchArm, BSMatchArm (pat, guard)) }
 ;
 %inline bs_semi:
   | SEMI
-    { (B.semi, BSSemi) }
+    { ($sloc, B.semi, BSSemi) }
 ;
 %inline bs_infix_base:
   | EQUAL
-    { (B.equality, BSEquality (mkoperator ~loc:$sloc "=")) }
+    { ($sloc, B.equality, BSEquality (mkoperator ~loc:$sloc "=")) }
   | COMMA
-    { (B.comma, BSComma) }
+    { ($sloc, B.comma, BSComma) }
   | ELSE
-    { (B.belse, BSElse) }
+    { ($sloc, B.belse, BSElse) }
   | LESSMINUS
-    { (B.arrowAssign, BSArrowAssign) }
+    { ($sloc, B.arrowAssign, BSArrowAssign) }
   | INFIXOP0
-    { (B.infixop0, BSSimpleInfix ($sloc, $1)) }
+    { ($sloc, B.infixop0, BSSimpleInfix $1) }
   | INFIXOP1
-    { (B.infixop1, BSSimpleInfix ($sloc, $1)) }
+    { ($sloc, B.infixop1, BSSimpleInfix $1) }
   | INFIXOP2
-    { (B.infixop2, BSSimpleInfix ($sloc, $1)) }
+    { ($sloc, B.infixop2, BSSimpleInfix $1) }
   | INFIXOP3
-    { (B.infixop3, BSSimpleInfix ($sloc, $1)) }
+    { ($sloc, B.infixop3, BSSimpleInfix $1) }
   | INFIXOP4
-    { (B.infixop4, BSSimpleInfix ($sloc, $1)) }
+    { ($sloc, B.infixop4, BSSimpleInfix $1) }
   | PLUS
-    { (B.plus, BSSimpleInfix ($sloc, "+")) }
+    { ($sloc, B.plus, BSSimpleInfix "+") }
   | PLUSDOT
-    { (B.plus, BSSimpleInfix ($sloc, "+.")) }
+    { ($sloc, B.plus, BSSimpleInfix "+.") }
   | PLUSEQ
-    { (B.plusEq, BSSimpleInfix ($sloc, "+=")) }
+    { ($sloc, B.plusEq, BSSimpleInfix "+=") }
   | MINUS
-    { (B.minus, BSSimpleInfix ($sloc, "-")) }
+    { ($sloc, B.minus, BSSimpleInfix "-") }
   | MINUSDOT
-    { (B.minus, BSSimpleInfix ($sloc, "-.")) }
+    { ($sloc, B.minus, BSSimpleInfix "-.") }
   | STAR
-    { (B.star, BSSimpleInfix ($sloc, "*")) }
+    { ($sloc, B.star, BSSimpleInfix "*") }
   | PERCENT
-    { (B.percent, BSSimpleInfix ($sloc, "%")) }
+    { ($sloc, B.percent, BSSimpleInfix "%") }
   | LESS
-    { (B.less, BSSimpleInfix ($sloc, "<")) }
+    { ($sloc, B.less, BSSimpleInfix "<") }
   | GREATER
-    { (B.greater, BSSimpleInfix ($sloc, ">")) }
+    { ($sloc, B.greater, BSSimpleInfix ">") }
   | OR
-    { (B.orWord, BSSimpleInfix ($sloc, "or")) }
+    { ($sloc, B.orWord, BSSimpleInfix "or") }
   | BARBAR
-    { (B.barbar, BSSimpleInfix ($sloc, "||")) }
+    { ($sloc, B.barbar, BSSimpleInfix "||") }
   | AMPERSAND
-    { (B.ampersand, BSSimpleInfix ($sloc, "&")) }
+    { ($sloc, B.ampersand, BSSimpleInfix "&") }
   | AMPERAMPER
-    { (B.amperAmper, BSSimpleInfix ($sloc, "&&")) }
+    { ($sloc, B.amperAmper, BSSimpleInfix "&&") }
   | COLONEQUAL
-    { (B.colonEqual, BSSimpleInfix ($sloc, ":=")) }
+    { ($sloc, B.colonEqual, BSSimpleInfix ":=") }
   | COLONCOLON
-    { (B.cons, BSCons $sloc) }
+    { ($sloc, B.cons, BSCons) }
 ;
 
 bs_prefix_all: bs_matchlike | bs_let | bs_if | bs_minus | bs_prefix_base {$1};
 bs_prefix_nolet_nomatch_noif_nominus: bs_prefix_base {$1};
 %inline bs_matchlike:
   | MATCH ext_attributes bseq_expr WITH BAR? match_arm_ropen
-    { (B.matchStart, ($sloc, BSMatch ($2, $3, $6))) }
+    { ($sloc, B.matchStart, BSMatch ($2, $3, $6)) }
   | FUNCTION ext_attributes BAR? match_arm_ropen
-    { (B.matchFunction, ($sloc, BSFunctionMatch ($2, $4))) }
+    { ($sloc, B.matchFunction, BSFunctionMatch ($2, $4)) }
   | TRY ext_attributes bseq_expr WITH BAR? match_arm_ropen
-    { (B.matchTry, ($sloc, BSTry ($2, $3, $6))) }
+    { ($sloc, B.matchTry, BSTry ($2, $3, $6)) }
 %inline bs_let:
   | let_bindings(ext) IN
-    { (B.letbindings, ($sloc, BSLet $1)) }
+    { ($sloc, B.letbindings, BSLet $1) }
 ;
 %inline bs_if:
   | IF ext_attributes bseq_expr THEN
-    { (B.bif, ($sloc, BSIf($2, $3))) }
+    { ($sloc, B.bif, BSIf($2, $3)) }
 %inline bs_minus:
   | subtractive
-    { (B.minusPre, ($sloc, BSUSub $1)) } // TODO: recover the attributes
+    { ($sloc, B.minusPre, BSUSub $1) } // TODO: recover the attributes
 %inline bs_prefix_base:
   | BANG
-    { (B.simplePre, ($sloc, BSSimplePrefix "!")) }
+    { ($sloc, B.simplePre, BSSimplePrefix "!") }
   | PREFIXOP
-    { (B.simplePre, ($sloc, BSSimplePrefix $1)) }
+    { ($sloc, B.simplePre, BSSimplePrefix $1) }
   | FUN attrs=ext_attributes ps=nonempty_llist(bs_fun_param) ret=ioption(COLON atomic_type {$symbolstartpos, $2}) MINUSGREATER
-    { (B.lambda, ($sloc, BSLambda (attrs, ps, ret))) }
+    { ($sloc, B.lambda, BSLambda (attrs, ps, ret)) }
   | ASSERT ext_attributes
-    { (B.assert_pre, ($sloc, BSAssert $2)) }
+    { ($sloc, B.assert_pre, BSAssert $2) }
   | LAZY ext_attributes
-    { (B.lazy_pre, ($sloc, BSLazy $2)) }
+    { ($sloc, B.lazy_pre, BSLazy $2) }
 ;
 
 /* bs_postfix_all: bs_postfix_semi | bs_postfix_base {$1} */
 bs_postfix_nosemi: bs_postfix_base {$1}
 %inline bs_postfix_semi:
   | SEMI
-    { (B.semiPost, ($sloc, BSSemiPost)) }
+    { ($sloc, B.semiPost, BSSemiPost) }
 %inline bs_postfix_base:
   | DOT mkrhs(label_longident)
-    { (B.fieldAccess, ($sloc, BSFieldAccess $2)) }
+    { ($sloc, B.fieldAccess, BSFieldAccess $2) }
   | bs_indexop(DOT, bseq_expr)
-    { (B.index, ($sloc, BSBuiltinIndex $1)) }
+    { ($sloc, B.index, BSBuiltinIndex $1) }
   | bs_indexop(qualified_dotop, expr_semi_list)
-    { (B.index, ($sloc, BSCustomIndex $1)) }
+    { ($sloc, B.index, BSCustomIndex $1) }
   | TILDE label=LIDENT
-    { (B.labelledAppPun, ($sloc, BSLabelledAppPun (Labelled label, $loc(label), None))) }
+    { ($sloc, B.labelledAppPun, BSLabelledAppPun (Labelled label, $loc(label), None)) }
   | TILDE LPAREN label=LIDENT COLON ty=type_constraint RPAREN
-    { (B.labelledAppPun, ($sloc, BSLabelledAppPun (Labelled label, $loc(label), Some ($loc(ty), ty)))) }
+    { ($sloc, B.labelledAppPun, BSLabelledAppPun (Labelled label, $loc(label), Some ($loc(ty), ty))) }
   | QUESTION label=LIDENT
-    { (B.labelledAppPun, ($sloc, BSLabelledAppPun (Optional label, $loc(label), None))) }
+    { ($sloc, B.labelledAppPun, BSLabelledAppPun (Optional label, $loc(label), None)) }
   | HASH mkrhs(label)
-    { (B.methodCall, ($sloc, BSMethod $2)) }
+    { ($sloc, B.methodCall, BSMethod $2) }
 ;
 
 %inline bs_indexop(dot, index):

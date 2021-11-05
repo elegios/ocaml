@@ -9262,6 +9262,7 @@ module type Self = sig
   type postfix_self
   type label
   type tokish
+  type pos
 
   val lpar_tok : tokish
   val rpar_tok : tokish
@@ -9281,6 +9282,7 @@ module type S = sig
   type postfix_self
   type label
   type tokish
+  type pos
 
   (* ## Allow sets *)
   type allow_set
@@ -9329,13 +9331,13 @@ module type S = sig
   val init : gen_grammar -> unit -> ropen state
 
   val addAtom
-      : (lclosed, rclosed) input -> atom_self -> ropen state -> rclosed state
+      : (lclosed, rclosed) input -> (pos * pos) * atom_self -> ropen state -> rclosed state
   val addPrefix
-      : (lclosed, ropen) input -> prefix_self -> ropen state -> ropen state
+      : (lclosed, ropen) input -> (pos * pos) * prefix_self -> ropen state -> ropen state
   val addPostfix
-      : (lopen, rclosed) input -> postfix_self -> rclosed state -> rclosed state option
+      : (lopen, rclosed) input -> (pos * pos) * postfix_self -> rclosed state -> rclosed state option
   val addInfix
-      : (lopen, ropen) input -> infix_self -> rclosed state -> ropen state option
+      : (lopen, ropen) input -> (pos * pos) * infix_self -> rclosed state -> ropen state option
 
   val finalizeParse : rclosed state -> permanent_node sequence option (* NonEmpty *)
 
@@ -9343,10 +9345,10 @@ module type S = sig
   type error
   type ambiguity
   type res =
-    | Atom of atom_self
-    | Infix of res * infix_self * res
-    | Prefix of prefix_self * res
-    | Postfix of res * postfix_self
+    | Atom of (pos * pos) * atom_self
+    | Infix of (pos * pos) * res * pos * infix_self * pos * res
+    | Prefix of (pos * pos) * prefix_self * pos * res
+    | Postfix of (pos * pos) * res * pos * postfix_self
 
   val constructResult
       : (lclosed, rclosed) input
@@ -9363,7 +9365,7 @@ module type S = sig
         -> 'acc
 
   val ambiguity
-      : ((atom_self, prefix_self) Either.t -> (atom_self, postfix_self) Either.t -> tokish sequence sequence -> 'a)
+      : (pos * pos -> tokish sequence sequence -> 'a)
         -> ambiguity
         -> 'a
 end
@@ -9373,35 +9375,41 @@ module Make (S : Self) = struct
   open Breakable_impl
 
   type res =
-    | Atom of atom_self
-    | Infix of res * infix_self * res
-    | Prefix of prefix_self * res
-    | Postfix of res * postfix_self
+    | Atom of (pos * pos) * atom_self
+    | Infix of (pos * pos) * res * pos * infix_self * pos * res
+    | Prefix of (pos * pos) * prefix_self * pos * res
+    | Postfix of (pos * pos) * res * pos * postfix_self
+
+  let pos_of_res = function
+    | Atom (p, _) -> p
+    | Infix (p, _, _, _, _, _) -> p
+    | Prefix (p, _, _, _) -> p
+    | Postfix (p, _, _, _) -> p
 
   type tagged_self =
-    | AtomSelf of atom_self
-    | InfixSelf of infix_self
-    | PrefixSelf of prefix_self
-    | PostfixSelf of postfix_self
+    | AtomSelf of (pos * pos) * atom_self
+    | InfixSelf of (pos * pos) * infix_self
+    | PrefixSelf of (pos * pos) * prefix_self
+    | PostfixSelf of (pos * pos) * postfix_self
 
   let mk_atom (s : tagged_self) : res = match s with
-    | AtomSelf s -> Atom s
+    | AtomSelf (p, s) -> Atom (p, s)
     | _ -> assert false
   let mk_infix (s : tagged_self) (l : res) (r : res) : res = match s with
-    | InfixSelf s -> Infix (l, s, r)
+    | InfixSelf ((p1, p2), s) -> Infix ((pos_of_res l |> fst, pos_of_res r |> snd), l, p1, s, p2, r)
     | _ -> assert false
   let mk_prefix (s : tagged_self) (r : res) : res = match s with
-    | PrefixSelf s -> Prefix (s, r)
+    | PrefixSelf ((p1, p2), s) -> Prefix ((p1, pos_of_res r |> snd), s, p2, r)
     | _ -> assert false
   let mk_postfix (s : tagged_self) (l : res)  : res = match s with
-    | PostfixSelf s -> Postfix (l, s)
+    | PostfixSelf ((p1, p2), s) -> Postfix ((pos_of_res l |> fst, p2), l, p1, s)
     | _ -> assert false
 
   let selfToStr = function
-    | AtomSelf s -> atom_to_str s
-    | InfixSelf s -> infix_to_str s
-    | PrefixSelf s -> prefix_to_str s
-    | PostfixSelf s -> postfix_to_str s
+    | AtomSelf (_, s) -> atom_to_str s
+    | InfixSelf (_, s) -> infix_to_str s
+    | PrefixSelf (_, s) -> prefix_to_str s
+    | PostfixSelf (_, s) -> postfix_to_str s
 
   type allow_set = Obj.t
   type production = Obj.t
@@ -9441,13 +9449,13 @@ module Make (S : Self) = struct
 
   let init grammar () = Obj.magic v_init grammar ()
 
-  let addAtom input self st = Obj.magic v_addAtom input (AtomSelf self) st
-  let addPrefix input self st = Obj.magic v_addPrefix input (PrefixSelf self) st
-  let addPostfix input self st =
-    Obj.magic v_addPostfix input (PostfixSelf self) st
+  let addAtom input (p, self) st = Obj.magic v_addAtom input (AtomSelf (p, self)) st
+  let addPrefix input (p, self) st = Obj.magic v_addPrefix input (PrefixSelf (p, self)) st
+  let addPostfix input (p, self) st =
+    Obj.magic v_addPostfix input (PostfixSelf (p, self)) st
     |> v_maybe (fun _ -> None) (fun x -> Some x)
-  let addInfix input self st =
-    Obj.magic v_addInfix input (InfixSelf self) st
+  let addInfix input (p, self) st =
+    Obj.magic v_addInfix input (InfixSelf (p, self)) st
     |> v_maybe (fun _ -> None) (fun x -> Some x)
 
   let finalizeParse st =
@@ -9462,16 +9470,16 @@ module Make (S : Self) = struct
 
   let seqFoldl = Obj.magic v_seqFoldl
 
+  let pos_of_tagged = function
+    | AtomSelf (p, _) -> p
+    | InfixSelf (p, _) -> p
+    | PrefixSelf (p, _) -> p
+    | PostfixSelf (p, _) -> p
+
   let ambiguity deconAmbiguity ambiguity =
     let decon selfl selfr resolutions =
-      let l = match selfl with
-        | AtomSelf s -> Either.left s
-        | PrefixSelf s -> Either.right s
-        | _ -> assert false in
-      let r = match selfr with
-        | AtomSelf s -> Either.left s
-        | PostfixSelf s -> Either.right s
-        | _ -> assert false in
-      deconAmbiguity l r resolutions
+      let l = pos_of_tagged selfl |> fst in
+      let r = pos_of_tagged selfr |> snd in
+      deconAmbiguity (l, r) resolutions
     in Obj.magic v_ambiguity decon ambiguity
 end

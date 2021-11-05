@@ -5,6 +5,7 @@ module type Self = sig
   type postfix_self
   type label
   type tokish
+  type pos
 
   val lpar_tok : tokish
   val rpar_tok : tokish
@@ -24,6 +25,7 @@ module type S = sig
   type postfix_self
   type label
   type tokish
+  type pos
 
   (* ## Allow sets *)
   type allow_set
@@ -72,13 +74,13 @@ module type S = sig
   val init : gen_grammar -> unit -> ropen state
 
   val addAtom
-      : (lclosed, rclosed) input -> atom_self -> ropen state -> rclosed state
+      : (lclosed, rclosed) input -> (pos * pos) * atom_self -> ropen state -> rclosed state
   val addPrefix
-      : (lclosed, ropen) input -> prefix_self -> ropen state -> ropen state
+      : (lclosed, ropen) input -> (pos * pos) * prefix_self -> ropen state -> ropen state
   val addPostfix
-      : (lopen, rclosed) input -> postfix_self -> rclosed state -> rclosed state option
+      : (lopen, rclosed) input -> (pos * pos) * postfix_self -> rclosed state -> rclosed state option
   val addInfix
-      : (lopen, ropen) input -> infix_self -> rclosed state -> ropen state option
+      : (lopen, ropen) input -> (pos * pos) * infix_self -> rclosed state -> ropen state option
 
   val finalizeParse : rclosed state -> permanent_node sequence option (* NonEmpty *)
 
@@ -86,10 +88,10 @@ module type S = sig
   type error
   type ambiguity
   type res =
-    | Atom of atom_self
-    | Infix of res * infix_self * res
-    | Prefix of prefix_self * res
-    | Postfix of res * postfix_self
+    | Atom of (pos * pos) * atom_self
+    | Infix of (pos * pos) * res * pos * infix_self * pos * res
+    | Prefix of (pos * pos) * prefix_self * pos * res
+    | Postfix of (pos * pos) * res * pos * postfix_self
 
   val constructResult
       : (lclosed, rclosed) input
@@ -106,7 +108,7 @@ module type S = sig
         -> 'acc
 
   val ambiguity
-      : ((atom_self, prefix_self) Either.t -> (atom_self, postfix_self) Either.t -> tokish sequence sequence -> 'a)
+      : (pos * pos -> tokish sequence sequence -> 'a)
         -> ambiguity
         -> 'a
 end
@@ -118,3 +120,4 @@ module Make (Se : Self) : S
         and type prefix_self = Se.prefix_self
         and type postfix_self = Se.postfix_self
         and type tokish = Se.tokish
+        and type pos = Se.pos
