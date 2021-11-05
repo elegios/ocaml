@@ -2913,6 +2913,13 @@ bs_atom_nodot: bs_atom_base {$1};
       let record = BS.mkRecordContent ($startpos($3), $endpos) with_base fields in
       ($sloc, B.opaque, BSOpaque (mkexp ~loc:$sloc (Pexp_open (od, record))))
     }
+  | LPAREN MODULE ext_attributes module_expr RPAREN
+    { ($sloc, B.opaque, BSOpaque (mkexp_attrs ~loc:$sloc (Pexp_pack $4) $3)) }
+  | LPAREN MODULE ext_attributes module_expr COLON package_type RPAREN
+    { let pack = ghexp ~loc:$sloc (Pexp_pack $4) in
+      let constr = Pexp_constraint (pack, $6) in
+      ($sloc, B.opaque, BSOpaque (mkexp_attrs ~loc:$sloc constr $3))
+    }
 ;
 
 /* bs_infix_all: bs_app | bs_match_arm | bs_semi | bs_infix_base {$1}; */
