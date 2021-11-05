@@ -2885,6 +2885,8 @@ bs_atom_nodot: bs_atom_base {$1};
     { (B.opaque, ($sloc, BSOpaque (mkexp ~loc:$sloc (Pexp_array [])))) }
   | mkrhs(mk_longident(mod_longident, LIDENT))
     { (B.ident, ($sloc, BSIdent $1)) }
+  | mkrhs(mk_longident(mod_longident, LPAREN operator RPAREN {$2}))
+    { (B.ident, ($sloc, BSIdent $1)) }
   | mkrhs(constr_longident)
     { (B.constructor, ($sloc, BSConstructor $1)) }
   | constant
