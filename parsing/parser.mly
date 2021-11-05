@@ -699,6 +699,7 @@ type blabel =
   | BLLambda
   | BLLazy
   | BLAssert
+  | BLPlusPre
 
   (* Postfix *)
   | BLFieldAccess
@@ -747,6 +748,7 @@ type bprefix =
   | BSLambda of (string Asttypes.loc option * Parsetree.attributes) * bs_lambda_param list * (Lexing.position * core_type) option
   | BSLazy of (string Asttypes.loc option * Parsetree.attributes)
   | BSAssert of (string Asttypes.loc option * Parsetree.attributes)
+  | BSUPlus of string
 
 type bpostfix =
   | BSFieldAccess of Longident.t Asttypes.loc
@@ -804,6 +806,7 @@ module BSBasics = struct
     | BSLambda _ -> "fun ... ->"
     | BSLazy _ -> "lazy"
     | BSAssert _ -> "assert"
+    | BSUPlus str -> str
   let postfix_to_str = function
     | BSFieldAccess rhs -> Format.asprintf ".%a" Pprintast.longident rhs.txt
     | BSBuiltinIndex (_, Paren, _) -> ".(...)"
@@ -947,6 +950,8 @@ module BS = struct
     | Prefix (loc, BSLetOpen (attrs, od), _, r) ->
        let r = mkWhole r in
        mkexp_attrs ~loc (Pexp_open(od, r)) attrs
+    | Prefix (loc, BSUPlus op, p2, r) ->
+       whole_prefix loc r (fun r -> mkuplus ~oploc:(fst loc, p2) op r)
 
     | Postfix (loc, l, _, BSFieldAccess ident) ->
        whole_postfix loc l (fun l -> Pexp_field(l, ident))
@@ -1077,6 +1082,7 @@ module BS = struct
     List.map
       (fun l -> l, defaultAllowRight)
       [ BLMinusPre; BLLet; BLSimplePrefix; BLLambda; BLLazy; BLAssert
+      ; BLPlusPre
       ]
     @ [ BLMatch, also defaultAllowRight [BLMatchArm; BLUnreachable]
       ; BLFunctionMatch, also defaultAllowRight [BLMatchArm; BLUnreachable]
@@ -1220,6 +1226,7 @@ module B = struct
   let lambda = getPrefix BLLambda
   let assert_pre = getPrefix BLAssert
   let lazy_pre = getPrefix BLLazy
+  let plusPre = getPrefix BLPlusPre
   let fieldAccess = getPostfix BLFieldAccess
   let index = getPostfix BLIndex
   let semiPost = getPostfix BLSemiPost
@@ -3043,7 +3050,9 @@ bs_prefix_nolet_nomatch_noif_nominus: bs_prefix_base {$1};
     { ($sloc, B.bif, BSIf($2, $3)) }
 %inline bs_minus:
   | subtractive
-    { ($sloc, B.minusPre, BSUSub $1) } // TODO: recover the attributes
+    { ($sloc, B.minusPre, BSUSub $1) }
+  | additive
+    { ($sloc, B.plusPre, BSUPlus $1) }
 %inline bs_prefix_base:
   | BANG
     { ($sloc, B.simplePre, BSSimplePrefix "!") }
