@@ -687,6 +687,7 @@ type blabel =
   | BLAmperAmper
   | BLColonEqual
   | BLCons
+  | BLHashop
 
   (* Prefix *)
   | BLMinusPre
@@ -1111,6 +1112,7 @@ module BS = struct
       ; BLInfixop4; BLPlus; BLPlusEq; BLMinus; BLStar
       ; BLPercent; BLLess; BLGreater; BLOrWord; BLBarBar
       ; BLAmpersand; BLAmperAmper; BLColonEqual; BLCons
+      ; BLHashop
       ]
       (* NOTE(vipa, 2021-11-05): The lhs of BLMatchArm is actually the rhs of the previous arm/match after unbreaking, thus the forbids should be defaultAllow*Right*. *)
     @ [ defaultAllowRight, BLMatchArm, also defaultAllowRight [BLMatchArm; BLUnreachable]
@@ -1145,7 +1147,7 @@ module BS = struct
     [ precTableNoEq
         [ [ BLSimplePrefix ]
         ; [ BLFieldAccess; BLIndex ]
-        ; [ BLMethod ]
+        ; [ BLMethod; BLHashop ]
         ; [ BLApp; BLLazy; BLAssert; BLLabelledAppPun; BLAttribute ]
         ; [ BLMinusPre ]
         ; [ BLInfixop4 ]
@@ -1167,6 +1169,9 @@ module BS = struct
              [BLSemi; BLLet; BLMatch; BLMatchArm; BLFunctionMatch; BLTry; BLLambda]
              [BLElse]
     (* Associativity *)
+    ; liftA2 gleft
+             [BLHashop]
+             [BLHashop; BLMethod]
     ; liftA2 gleft
              [BLApp; BLLazy; BLAssert]
              [BLApp; BLLabelledAppPun; BLAttribute]
@@ -1255,6 +1260,7 @@ module B = struct
   let amperAmper = getInfix BLAmperAmper
   let colonEqual = getInfix BLColonEqual
   let cons = getInfix BLCons
+  let hashop = getInfix BLHashop
   let minusPre = getPrefix BLMinusPre
   let letbindings = getPrefix BLLet
   let matchStart = getPrefix BLMatch
@@ -3069,6 +3075,8 @@ bs_infix_noapp_nomatcharm_nosemi: bs_infix_base {$1};
     { ($sloc, B.colonEqual, BSSimpleInfix ":=") }
   | COLONCOLON
     { ($sloc, B.cons, BSCons) }
+  | HASHOP
+    { ($sloc, B.hashop, BSSimpleInfix $1) }
 ;
 
 bs_prefix_all: bs_matchlike | bs_let | bs_if | bs_minus | bs_prefix_base {$1};
