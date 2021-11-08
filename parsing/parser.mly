@@ -3005,6 +3005,8 @@ bs_atom_nodot: bs_atom_base {$1};
     { ($sloc, B.opaque, BSOpaque (BS.mkObjectContent $sloc $2)) }
   | LBRACELESS GREATERRBRACE
     { ($sloc, B.opaque, BSOpaque (mkexp ~loc:$sloc (Pexp_override []))) }
+  | extension
+    { ($sloc, B.opaque, BSOpaque (mkexp ~loc:$sloc (Pexp_extension $1))) }
 ;
 
 /* bs_infix_all: bs_app | bs_match_arm | bs_semi | bs_infix_base {$1}; */
