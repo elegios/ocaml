@@ -2948,6 +2948,10 @@ bs_atom_nodot: bs_atom_base {$1};
 %inline bs_atom_base:
   | BEGIN ext=ext attrs=attributes e=bseq_expr END
     { ($sloc, B.opaque, BSOpaque (mkexp_attrs ~loc:$sloc e.pexp_desc (ext, attrs @ e.pexp_attributes))) }
+  | BEGIN ext_attributes END
+    { let exp = mkexp_attrs ~loc:$sloc (Pexp_construct (mkloc (Lident "()") (make_loc $sloc), None)) $2
+      in ($sloc, B.opaque, BSOpaque exp)
+    }
   | LPAREN bseq_expr RPAREN
     { ($sloc, B.grouping, BSGrouping (reloc_exp ~loc:$sloc $2)) }
   | LBRACKET expr_semi_list RBRACKET
@@ -2995,6 +2999,12 @@ bs_atom_nodot: bs_atom_base {$1};
     { let list = mkexp ~loc:($startpos($3), $endpos) (fst (mktailexp $loc($5) $4)) in
       ($sloc, B.opaque, BSOpaque (mkexp ~loc:$sloc (Pexp_open (od, list))))
     }
+  | od=open_dot_declaration DOT mkrhs(LBRACKET RBRACKET {Lident "[]"})
+    { let list_exp = mkexp ~loc:$loc($3) (Pexp_construct($3, None)) in
+      let exp = mkexp ~loc:$sloc (Pexp_open(od, list_exp)) in
+      ($sloc, B.opaque, BSOpaque exp)
+    }
+
   | LPAREN MODULE ext_attributes module_expr RPAREN
     { ($sloc, B.opaque, BSOpaque (mkexp_attrs ~loc:$sloc (Pexp_pack $4) $3)) }
   | LPAREN MODULE ext_attributes module_expr COLON package_type RPAREN
@@ -3148,7 +3158,7 @@ bs_postfix_nosemi: bs_postfix_base {$1}
     { ($sloc, B.index, BSCustomIndex $1) }
   | TILDE label=LIDENT
     { ($sloc, B.labelledAppPun, BSLabelledAppPun (Labelled label, $loc(label), None)) }
-  | TILDE LPAREN label=LIDENT COLON ty=type_constraint RPAREN
+  | TILDE LPAREN label=LIDENT ty=type_constraint RPAREN
     { ($sloc, B.labelledAppPun, BSLabelledAppPun (Labelled label, $loc(label), Some ($loc(ty), ty))) }
   | QUESTION label=LIDENT
     { ($sloc, B.labelledAppPun, BSLabelledAppPun (Optional label, $loc(label), None)) }
