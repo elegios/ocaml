@@ -1061,6 +1061,31 @@ module BS = struct
     let fields = mkRecordFields fields in
     mkexp ~loc (Pexp_record(fields, with_base))
 
+  let rec mkObjectFieldAnnoying = function
+    | Infix (_, Atom (loc, BSIdent {txt = Lident ident}), _, BSEquality _, _, r) -> (mkrhs ident loc, r)
+    | Infix ((_, p4), l, p2, op, p3, r) ->
+       let ident, l = mkObjectFieldAnnoying l in
+       (ident, Infix ((pos_of_res l |> fst, p4), l, p2, op, p3, r))
+    | Postfix ((_, p3), l, p2, op) ->
+       let ident, l = mkObjectFieldAnnoying l in
+       (ident, Postfix ((pos_of_res l |> fst, p3), l, p2, op))
+    | _x -> assert false (* TODO(vipa, 2021-10-20): Actual error message here *)
+  let rec mkObjectField = function
+    | Postfix (_, l, _, BSSemiPost) -> mkObjectField l
+    | Atom (loc, BSIdent {txt = Lident ident}) ->
+       let label = mkrhs ident loc in
+       (make_ghost label, exp_of_label label)
+    | Infix _ | Postfix _ as x ->
+       let ident, r = mkObjectFieldAnnoying x in
+       (ident, mkWhole r)
+    | _x -> assert false (* TODO(vipa, 2021-10-20): Actual error message here *)
+  let rec mkObjectFields = function
+    | Infix (_, l, _, BSSemi, _, r) -> mkObjectField l :: mkObjectFields r
+    | x -> [mkObjectField x]
+  let mkObjectContent loc fields =
+    let fields = mkObjectFields fields in
+    mkexp ~loc (Pexp_override fields)
+
   let defaultAllowRight =
     allowAll
     |> allowOneLess BLMatchArm
@@ -2970,6 +2995,10 @@ bs_atom_nodot: bs_atom_base {$1};
     { ($sloc, B.polyVariant, BSPolyVariant $2) }
   | OBJECT ext_attributes class_structure END
     { ($sloc, B.opaque, BSOpaque (mkexp_attrs ~loc:$sloc (Pexp_object $3) $2)) }
+  | LBRACELESS bs_expr GREATERRBRACE
+    { ($sloc, B.opaque, BSOpaque (BS.mkObjectContent $sloc $2)) }
+  | LBRACELESS GREATERRBRACE
+    { ($sloc, B.opaque, BSOpaque (mkexp ~loc:$sloc (Pexp_override []))) }
 ;
 
 /* bs_infix_all: bs_app | bs_match_arm | bs_semi | bs_infix_base {$1}; */
