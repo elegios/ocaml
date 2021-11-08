@@ -734,6 +734,7 @@ type binfix =
   | BSArrowAssign
   | BSSimpleInfix of string
   | BSCons
+  | BSSemiExt of string Asttypes.loc
 
 type bprefix =
   | BSUSub of string
@@ -794,6 +795,7 @@ module BSBasics = struct
     | BSArrowAssign -> "<-"
     | BSSimpleInfix str -> str
     | BSCons -> "::"
+    | BSSemiExt str -> ";%" ^ str.txt
   let prefix_to_str = function
     | BSUSub str -> str
     | BSLet _ -> "let ... in"
@@ -867,7 +869,11 @@ module BS = struct
     | Atom (_, BSNew e) -> e
     | Atom (loc, BSPolyVariant c) -> mkexp ~loc (Pexp_variant(c, None))
 
-    | Infix (p, l, _, BSSemi, _, r) -> whole_infix p l r (fun l r -> Pexp_sequence(l, r))
+    | Infix (loc, l, _, BSSemi, _, r) -> whole_infix loc l r (fun l r -> Pexp_sequence(l, r))
+    | Infix (loc, l, _, BSSemiExt str, _, r) ->
+       let seq = whole_infix loc l r (fun l r -> Pexp_sequence(l, r)) in
+       let payload = PStr [mkstrexp seq []] in
+       mkexp ~loc (Pexp_extension (str, payload))
     | Infix (p, l, _, BSEquality op, _, r) -> whole_infix p l r (fun l r -> mkinfix l op r)
     | Infix ((_, p2), l, _, BSApp label, _, r) ->
        let r = mkWhole r in
@@ -2982,6 +2988,8 @@ bs_infix_noapp_nomatcharm_nosemi: bs_infix_base {$1};
 %inline bs_semi:
   | SEMI
     { ($sloc, B.semi, BSSemi) }
+  | SEMI PERCENT attr_id
+    { ($sloc, B.semi, BSSemiExt $3) }
 ;
 %inline bs_infix_base:
   | EQUAL
