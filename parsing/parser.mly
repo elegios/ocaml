@@ -2939,8 +2939,14 @@ bs_ropen_noapp: bs_ropen_matchlike | bs_ropen_base {$1};
   | st=bs_rclosed_all op=bs_infix_noapp_nomatcharm_nosemi { add_infix (st, op) }
 ;
 
-/* bs_atom_all: bs_unreachable | bs_atom_base {$1}; */
-bs_atom_nodot: bs_atom_base {$1};
+/* bs_atom_all: bs_atom_error | bs_unreachable | bs_atom_base {$1}; */
+bs_atom_nodot: bs_atom_error | bs_atom_base {$1};
+%inline bs_atom_error:
+  | LPAREN bseq_expr error
+    { unclosed "(" $loc($1) ")" $loc($3) }
+  | OBJECT ext_attributes class_structure error
+      { unclosed "object" $loc($1) "end" $loc($4) }
+;
 %inline bs_unreachable:
   | DOT
     { ($sloc, B.unreachable, BSOpaque (Exp.unreachable ~loc:(make_loc $sloc) ())) }
