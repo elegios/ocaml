@@ -2962,6 +2962,8 @@ bs_atom_nodot: bs_atom_base {$1};
     }
   | BACKQUOTE ident
     { ($sloc, B.polyVariant, BSPolyVariant $2) }
+  | OBJECT ext_attributes class_structure END
+    { ($sloc, B.opaque, BSOpaque (mkexp_attrs ~loc:$sloc (Pexp_object $3) $2)) }
 ;
 
 /* bs_infix_all: bs_app | bs_match_arm | bs_semi | bs_infix_base {$1}; */
