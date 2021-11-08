@@ -1115,7 +1115,7 @@ module BS = struct
       ; BLHashop
       ]
       (* NOTE(vipa, 2021-11-05): The lhs of BLMatchArm is actually the rhs of the previous arm/match after unbreaking, thus the forbids should be defaultAllow*Right*. *)
-    @ [ defaultAllowRight, BLMatchArm, also defaultAllowRight [BLMatchArm; BLUnreachable]
+    @ [ also defaultAllowRight [BLUnreachable], BLMatchArm, also defaultAllowRight [BLMatchArm; BLUnreachable]
       ; allowOnly [BLFieldAccess; BLIndex; BLIdent], BLArrowAssign, defaultAllowRight
       ]
   let bprefixes =
