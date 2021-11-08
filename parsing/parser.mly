@@ -752,6 +752,7 @@ type bprefix =
   | BSLazy of (string Asttypes.loc option * Parsetree.attributes)
   | BSAssert of (string Asttypes.loc option * Parsetree.attributes)
   | BSUPlus of string
+  | BSLetOp of string Asttypes.loc * pattern * expression * binding_op list
 
 type bpostfix =
   | BSFieldAccess of Longident.t Asttypes.loc
@@ -812,6 +813,7 @@ module BSBasics = struct
     | BSLazy _ -> "lazy"
     | BSAssert _ -> "assert"
     | BSUPlus str -> str
+    | BSLetOp (op, _, _, _) -> op.txt ^ " ... in"
   let postfix_to_str = function
     | BSFieldAccess rhs -> Format.asprintf ".%a" Pprintast.longident rhs.txt
     | BSBuiltinIndex (_, Paren, _) -> ".(...)"
@@ -962,6 +964,9 @@ module BS = struct
        mkexp_attrs ~loc (Pexp_open(od, r)) attrs
     | Prefix (loc, BSUPlus op, p2, r) ->
        whole_prefix loc r (fun r -> mkuplus ~oploc:(fst loc, p2) op r)
+    | Prefix (loc, BSLetOp (pbop_op, pbop_pat, pbop_exp, ands), _, r) ->
+       let let_ = {pbop_op; pbop_pat; pbop_exp; pbop_loc = make_loc loc} in
+       whole_prefix loc r (fun r -> Pexp_letop {let_; ands; body = r})
 
     | Postfix (loc, l, _, BSFieldAccess ident) ->
        whole_postfix loc l (fun l -> Pexp_field(l, ident))
@@ -3101,6 +3106,11 @@ bs_prefix_nolet_nomatch_noif_nominus: bs_prefix_base {$1};
     { let open_loc = make_loc ($startpos($2), $endpos($5)) in
       let od = Opn.mk $5 ~override:$3 ~loc:open_loc in
       ($sloc, B.letbindings, BSLetOpen ($4, od))
+    }
+  | pbop_op=mkrhs(LETOP) bindings=letop_bindings IN
+    { let (pbop_pat, pbop_exp, rev_ands) = bindings in
+      let ands = List.rev rev_ands in
+      ($sloc, B.letbindings, BSLetOp (pbop_op, pbop_pat, pbop_exp, ands))
     }
 ;
 %inline bs_if:
