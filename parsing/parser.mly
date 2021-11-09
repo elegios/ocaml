@@ -941,7 +941,15 @@ module BS = struct
        let fold_f p acc = match p with
          | BSLambdaPat (start, (l, o, p)) -> ghexp ~loc:(start, end_pos) (Pexp_fun(l, o, p, acc))
          | BSLambdaType (start, ts) -> mk_newtypes ~loc:(start, end_pos) ts acc in
-       let top_ghost = List.fold_right fold_f ps r in
+       let top_ghost = match ps with
+         (* NOTE(vipa, 2021-11-09): The original implementation
+         special cases the first parameter, making it start at the
+         `fun` rather than the parameter itself. For `type` arguments
+         this is done in a bit of a weird way, if the paramater is
+         `(type a b)` then both parameters are considered to start at
+         `fun`, not just `a`. *)
+         | BSLambdaType (_, ts) :: ps -> mk_newtypes ~loc ts (List.fold_right fold_f ps r)
+         | ps -> List.fold_right fold_f ps r in
        mkexp_attrs ~loc top_ghost.pexp_desc attrs
     | Prefix (loc, BSLazy attrs, _, r) ->
        let r = mkWhole r in
@@ -3140,7 +3148,7 @@ bs_postfix_nosemi: bs_postfix_base {$1}
   | TILDE label=LIDENT
     { ($sloc, B.labelledAppPun, BSLabelledAppPun (Labelled label, $loc(label), None)) }
   | TILDE LPAREN label=LIDENT ty=type_constraint RPAREN
-    { ($sloc, B.labelledAppPun, BSLabelledAppPun (Labelled label, $loc(label), Some ($loc(ty), ty))) }
+    { ($sloc, B.labelledAppPun, BSLabelledAppPun (Labelled label, $loc(label), Some (($startpos($2), $endpos), ty))) }
   | QUESTION label=LIDENT
     { ($sloc, B.labelledAppPun, BSLabelledAppPun (Optional label, $loc(label), None)) }
   | HASH mkrhs(label)
