@@ -212,10 +212,6 @@ let mkexp_constraint ~loc e (t1, t2) =
   | _, Some t -> mkexp ~loc (Pexp_coerce(e, t1, t))
   | None, None -> assert false
 
-let mkexp_opt_constraint ~loc e = function
-  | None -> e
-  | Some constraint_ -> mkexp_constraint ~loc e constraint_
-
 let mkpat_opt_constraint ~loc p = function
   | None -> p
   | Some typ -> mkpat ~loc (Ppat_constraint(p, typ))
@@ -1467,34 +1463,24 @@ The precedences must be listed from low to high.
 */
 
 %nonassoc IN
-%nonassoc below_SEMI
 %nonassoc SEMI                          /* below EQUAL ({lbl=...; lbl=...}) */
 %nonassoc LET                           /* above SEMI ( ...; let ... in ...) */
 %nonassoc below_WITH
-%nonassoc FUNCTION WITH                 /* below BAR  (match ... with ...) */
+%nonassoc WITH                 /* below BAR  (match ... with ...) */
 %nonassoc AND             /* above WITH (module rec A: SIG with ... and ...) */
-%nonassoc THEN                          /* below ELSE (if ... then ...) */
-%nonassoc ELSE                          /* (if ... then ... else ...) */
-%nonassoc LESSMINUS                     /* below COLONEQUAL (lbl <- x := e) */
 %right    COLONEQUAL                    /* expr (e := e := e) */
 %nonassoc AS
 %left     BAR                           /* pattern (p|p|p) */
 %nonassoc below_COMMA
 %left     COMMA                         /* expr/expr_comma_list (e,e,e) */
 %right    MINUSGREATER                  /* function_type (t -> t -> t) */
-%right    OR BARBAR                     /* expr (e || e || e) */
-%right    AMPERSAND AMPERAMPER          /* expr (e && e && e) */
 %nonassoc below_EQUAL
-%left     INFIXOP0 EQUAL LESS GREATER   /* expr (e OP e OP e) */
-%right    INFIXOP1                      /* expr (e OP e OP e) */
+%left     EQUAL   /* expr (e OP e OP e) */
 %nonassoc below_LBRACKETAT
 %nonassoc LBRACKETAT
 %right    COLONCOLON                    /* expr (e :: e :: e) */
-%left     INFIXOP2 PLUS PLUSDOT MINUS MINUSDOT PLUSEQ /* expr (e OP e OP e) */
-%left     PERCENT INFIXOP3 STAR                 /* expr (e OP e OP e) */
-%right    INFIXOP4                      /* expr (e OP e OP e) */
-%nonassoc prec_unary_minus prec_unary_plus /* unary - */
-%nonassoc prec_constant_constructor     /* cf. simple_expr (C versus C x) */
+%left     PLUS PLUSDOT MINUS MINUSDOT /* expr (e OP e OP e) */
+%left     PERCENT STAR                 /* expr (e OP e OP e) */
 %nonassoc prec_constr_appl              /* above AS BAR COLONCOLON COMMA */
 %nonassoc below_HASH
 %nonassoc HASH                         /* simple_expr/toplevel_directive */
@@ -1502,11 +1488,7 @@ The precedences must be listed from low to high.
 %nonassoc below_DOT
 %nonassoc DOT DOTOP
 /* Finally, the first tokens of simple_expr are above everything else. */
-%nonassoc BACKQUOTE BANG BEGIN CHAR FALSE FLOAT INT OBJECT
-          LBRACE LBRACELESS LBRACKET LBRACKETBAR LIDENT LPAREN
-          NEW PREFIXOP STRING TRUE UIDENT
-          LBRACKETPERCENT QUOTED_STRING_EXPR
-
+%nonassoc BANG LPAREN PREFIXOP
 
 /* Entry points */
 
@@ -1545,8 +1527,6 @@ The precedences must be listed from low to high.
 %type <Longident.t> parse_mod_longident
 %start parse_any_longident
 %type <Longident.t> parse_any_longident
-%start parse_old_expression
-%type <Parsetree.expression> parse_old_expression
 /* END AVOID */
 
 %%
@@ -1885,11 +1865,6 @@ parse_core_type:
 
 parse_expression:
   bseq_expr EOF
-    { $1 }
-;
-
-parse_old_expression:
-  seq_expr EOF
     { $1 }
 ;
 
@@ -2618,7 +2593,7 @@ class_field:
   | CONSTRAINT attributes constrain_field post_item_attributes
       { let docs = symbol_docs $sloc in
         mkcf ~loc:$sloc (Pcf_constraint $3) ~attrs:($2@$4) ~docs }
-  | INITIALIZER attributes seq_expr post_item_attributes
+  | INITIALIZER attributes bseq_expr post_item_attributes
       { let docs = symbol_docs $sloc in
         mkcf ~loc:$sloc (Pcf_initializer $3) ~attrs:($2@$4) ~docs }
   | item_extension post_item_attributes
@@ -2634,10 +2609,10 @@ value:
     mutable_ = virtual_with_mutable_flag
     label = mkrhs(label) COLON ty = core_type
       { (label, mutable_, Cfk_virtual ty), attrs }
-  | override_flag attributes mutable_flag mkrhs(label) EQUAL seq_expr
+  | override_flag attributes mutable_flag mkrhs(label) EQUAL bseq_expr
       { ($4, $3, Cfk_concrete ($1, $6)), $2 }
   | override_flag attributes mutable_flag mkrhs(label) type_constraint
-    EQUAL seq_expr
+    EQUAL bseq_expr
       { let e = mkexp_constraint ~loc:$sloc $7 $5 in
         ($4, $3, Cfk_concrete ($1, e)), $2
       }
@@ -2654,13 +2629,13 @@ method_:
         ($4, $3,
         Cfk_concrete ($1, ghexp ~loc (Pexp_poly (e, None)))), $2 }
   | override_flag attributes private_flag mkrhs(label)
-    COLON poly_type EQUAL seq_expr
+    COLON poly_type EQUAL bseq_expr
       { let poly_exp =
           let loc = ($startpos($6), $endpos($8)) in
           ghexp ~loc (Pexp_poly($8, Some $6)) in
         ($4, $3, Cfk_concrete ($1, poly_exp)), $2 }
   | override_flag attributes private_flag mkrhs(label) COLON TYPE lident_list
-    DOT core_type EQUAL seq_expr
+    DOT core_type EQUAL bseq_expr
       { let poly_exp_loc = ($startpos($7), $endpos($11)) in
         let poly_exp =
           let exp, poly =
@@ -2984,7 +2959,7 @@ bs_atom_nodot: bs_atom_error | bs_atom_base {$1};
     { ($sloc, B.new_atom, BSNew (mkexp_attrs ~loc:$sloc (Pexp_new $3) $2)) }
   | FOR ext_attributes pattern EQUAL bseq_expr direction_flag bseq_expr DO bseq_expr DONE
     { ($sloc, B.opaque, BSOpaque (mkexp_attrs ~loc:$sloc (Pexp_for($3, $5, $7, $6, $9)) $2)) }
-  | WHILE ext_attributes seq_expr DO seq_expr DONE
+  | WHILE ext_attributes bseq_expr DO bseq_expr DONE
     { ($sloc, B.opaque, BSOpaque (mkexp_attrs ~loc:$sloc (Pexp_while($3, $5)) $2)) }
   | od=open_dot_declaration DOT LPAREN bseq_expr RPAREN
     { ($sloc, B.opaque, BSOpaque (mkexp ~loc:$sloc (Pexp_open (od, $4)))) }
@@ -3202,18 +3177,6 @@ bs_fun_param:
     { BSLambdaType ($symbolstartpos, $3) }
 ;
 
-/* Old implementation of expressions, still in use in some OO-related parts of the grammar */
-seq_expr:
-  | expr        %prec below_SEMI  { $1 }
-  | expr SEMI                     { $1 }
-  | mkexp(expr SEMI seq_expr
-    { Pexp_sequence($1, $3) })
-    { $1 }
-  | expr SEMI PERCENT attr_id seq_expr
-    { let seq = mkexp ~loc:$sloc (Pexp_sequence ($1, $5)) in
-      let payload = PStr [mkstrexp seq []] in
-      mkexp ~loc:$sloc (Pexp_extension ($4, payload)) }
-;
 labeled_simple_pattern:
     QUESTION LPAREN label_let_pattern opt_default RPAREN
       { (Optional (fst $3), $4, snd $3) }
@@ -3241,7 +3204,7 @@ pattern_var:
 ;
 
 %inline opt_default:
-  preceded(EQUAL, seq_expr)?
+  preceded(EQUAL, bseq_expr)?
     { $1 }
 ;
 label_let_pattern:
@@ -3284,104 +3247,18 @@ let_pattern:
 
 %inline qualified_dotop: ioption(DOT mod_longident {$2}) DOTOP { $1, $2 };
 
-expr:
-    simple_expr %prec below_HASH
-      { $1 }
-  | expr_attrs
-      { let desc, attrs = $1 in
-        mkexp_attrs ~loc:$sloc desc attrs }
-  | mkexp(expr_)
-      { $1 }
-  | let_bindings(ext) IN seq_expr
-      { expr_of_let_bindings ~loc:$sloc $1 $3 }
-  | pbop_op = mkrhs(LETOP) bindings = letop_bindings IN body = seq_expr
-      { let (pbop_pat, pbop_exp, rev_ands) = bindings in
-        let ands = List.rev rev_ands in
-        let pbop_loc = make_loc $sloc in
-        let let_ = {pbop_op; pbop_pat; pbop_exp; pbop_loc} in
-        mkexp ~loc:$sloc (Pexp_letop{ let_; ands; body}) }
-  | expr COLONCOLON expr
-      { mkexp_cons ~loc:$sloc $loc($2) (ghexp ~loc:$sloc (Pexp_tuple[$1;$3])) }
-  | mkrhs(label) LESSMINUS expr
-      { mkexp ~loc:$sloc (Pexp_setinstvar($1, $3)) }
-  | simple_expr DOT mkrhs(label_longident) LESSMINUS expr
-      { mkexp ~loc:$sloc (Pexp_setfield($1, $3, $5)) }
-  | indexop_expr(DOT, seq_expr, LESSMINUS v=expr {Some v})
-    { mk_indexop_expr builtin_indexing_operators ~loc:$sloc $1 }
-  | indexop_expr(qualified_dotop, expr_semi_list, LESSMINUS v=expr {Some v})
-    { mk_indexop_expr user_indexing_operators ~loc:$sloc $1 }
-  | expr attribute
-      { Exp.attr $1 $2 }
-/* BEGIN AVOID */
-  | UNDERSCORE
-     { not_expecting $loc($1) "wildcard \"_\"" }
-/* END AVOID */
-;
-%inline expr_attrs:
-  | LET MODULE ext_attributes mkrhs(module_name) module_binding_body IN seq_expr
-      { Pexp_letmodule($4, $5, $7), $3 }
-  | LET EXCEPTION ext_attributes let_exception_declaration IN seq_expr
-      { Pexp_letexception($4, $6), $3 }
-  | LET OPEN override_flag ext_attributes module_expr IN seq_expr
-      { let open_loc = make_loc ($startpos($2), $endpos($5)) in
-        let od = Opn.mk $5 ~override:$3 ~loc:open_loc in
-        Pexp_open(od, $7), $4 }
-  | FUNCTION ext_attributes match_cases
-      { Pexp_function $3, $2 }
-  | FUN ext_attributes labeled_simple_pattern fun_def
-      { let (l,o,p) = $3 in
-        Pexp_fun(l, o, p, $4), $2 }
-  | FUN ext_attributes LPAREN TYPE lident_list RPAREN fun_def
-      { (mk_newtypes ~loc:$sloc $5 $7).pexp_desc, $2 }
-  | MATCH ext_attributes seq_expr WITH match_cases
-      { Pexp_match($3, $5), $2 }
-  | TRY ext_attributes seq_expr WITH match_cases
-      { Pexp_try($3, $5), $2 }
-  | TRY ext_attributes seq_expr WITH error
-      { syntax_error() }
-  | IF ext_attributes seq_expr THEN expr ELSE expr
-      { Pexp_ifthenelse($3, $5, Some $7), $2 }
-  | IF ext_attributes seq_expr THEN expr
-      { Pexp_ifthenelse($3, $5, None), $2 }
-  | WHILE ext_attributes seq_expr DO seq_expr DONE
-      { Pexp_while($3, $5), $2 }
-  | FOR ext_attributes pattern EQUAL seq_expr direction_flag seq_expr DO
-    seq_expr DONE
-      { Pexp_for($3, $5, $7, $6, $9), $2 }
-  | ASSERT ext_attributes simple_expr %prec below_HASH
-      { Pexp_assert $3, $2 }
-  | LAZY ext_attributes simple_expr %prec below_HASH
-      { Pexp_lazy $3, $2 }
-;
-%inline expr_:
-  | simple_expr nonempty_llist(labeled_simple_expr)
-      { Pexp_apply($1, $2) }
-  | expr_comma_list %prec below_COMMA
-      { Pexp_tuple($1) }
-  | mkrhs(constr_longident) simple_expr %prec below_HASH
-      { Pexp_construct($1, Some $2) }
-  | name_tag simple_expr %prec below_HASH
-      { Pexp_variant($1, Some $2) }
-  | e1 = expr op = op(infix_operator) e2 = expr
-      { mkinfix e1 op e2 }
-  | subtractive expr %prec prec_unary_minus
-      { mkuminus ~oploc:$loc($1) $1 $2 }
-  | additive expr %prec prec_unary_plus
-      { mkuplus ~oploc:$loc($1) $1 $2 }
-;
-
 simple_expr:
-  | LPAREN seq_expr RPAREN
+  | LPAREN bseq_expr RPAREN
       { reloc_exp ~loc:$sloc $2 }
-  | LPAREN seq_expr error
+  | LPAREN bseq_expr error
       { unclosed "(" $loc($1) ")" $loc($3) }
-  | LPAREN seq_expr type_constraint RPAREN
+  | LPAREN bseq_expr type_constraint RPAREN
       { mkexp_constraint ~loc:$sloc $2 $3 }
-  | indexop_expr(DOT, seq_expr, { None })
+  | indexop_expr(DOT, bseq_expr, { None })
       { mk_indexop_expr builtin_indexing_operators ~loc:$sloc $1 }
   | indexop_expr(qualified_dotop, expr_semi_list, { None })
       { mk_indexop_expr user_indexing_operators ~loc:$sloc $1 }
-  | indexop_error (DOT, seq_expr) { $1 }
+  | indexop_error (DOT, bseq_expr) { $1 }
   | indexop_error (qualified_dotop, expr_semi_list) { $1 }
   | simple_expr_attrs
     { let desc, attrs = $1 in
@@ -3390,11 +3267,11 @@ simple_expr:
       { $1 }
 ;
 %inline simple_expr_attrs:
-  | BEGIN ext = ext attrs = attributes e = seq_expr END
+  | BEGIN ext = ext attrs = attributes e = bseq_expr END
       { e.pexp_desc, (ext, attrs @ e.pexp_attributes) }
   | BEGIN ext_attributes END
       { Pexp_construct (mkloc (Lident "()") (make_loc $sloc), None), $2 }
-  | BEGIN ext_attributes seq_expr error
+  | BEGIN ext_attributes bseq_expr error
       { unclosed "begin" $loc($1) "end" $loc($4) }
   | NEW ext_attributes mkrhs(class_longident)
       { Pexp_new($3), $2 }
@@ -3414,28 +3291,28 @@ simple_expr:
       { Pexp_ident ($1) }
   | constant
       { Pexp_constant $1 }
-  | mkrhs(constr_longident) %prec prec_constant_constructor
+  | mkrhs(constr_longident)
       { Pexp_construct($1, None) }
-  | name_tag %prec prec_constant_constructor
+  | name_tag
       { Pexp_variant($1, None) }
   | op(PREFIXOP) simple_expr
       { Pexp_apply($1, [Nolabel,$2]) }
   | op(BANG {"!"}) simple_expr
       { Pexp_apply($1, [Nolabel,$2]) }
-  | LBRACELESS object_expr_content GREATERRBRACE
-      { Pexp_override $2 }
-  | LBRACELESS object_expr_content error
+  | LBRACELESS bs_expr GREATERRBRACE
+      { (BS.mkObjectContent $sloc $2).pexp_desc }
+  | LBRACELESS bs_expr error
       { unclosed "{<" $loc($1) ">}" $loc($3) }
   | LBRACELESS GREATERRBRACE
       { Pexp_override [] }
   | simple_expr DOT mkrhs(label_longident)
       { Pexp_field($1, $3) }
-  | od=open_dot_declaration DOT LPAREN seq_expr RPAREN
+  | od=open_dot_declaration DOT LPAREN bseq_expr RPAREN
       { Pexp_open(od, $4) }
-  | od=open_dot_declaration DOT LBRACELESS object_expr_content GREATERRBRACE
+  | od=open_dot_declaration DOT LBRACELESS bs_expr GREATERRBRACE
       { (* TODO: review the location of Pexp_override *)
-        Pexp_open(od, mkexp ~loc:$sloc (Pexp_override $4)) }
-  | mod_longident DOT LBRACELESS object_expr_content error
+        Pexp_open(od, BS.mkObjectContent $sloc $4) }
+  | mod_longident DOT LBRACELESS bs_expr error
       { unclosed "{<" $loc($3) ">}" $loc($5) }
   | simple_expr HASH mkrhs(label)
       { Pexp_send($1, $3) }
@@ -3445,18 +3322,20 @@ simple_expr:
       { Pexp_extension $1 }
   | od=open_dot_declaration DOT mkrhs(LPAREN RPAREN {Lident "()"})
       { Pexp_open(od, mkexp ~loc:($loc($3)) (Pexp_construct($3, None))) }
-  | mod_longident DOT LPAREN seq_expr error
+  | mod_longident DOT LPAREN bseq_expr error
       { unclosed "(" $loc($3) ")" $loc($5) }
-  | LBRACE record_expr_content RBRACE
+  | LBRACE bs_record_expr_content RBRACE
       { let (exten, fields) = $2 in
-        Pexp_record(fields, exten) }
-  | LBRACE record_expr_content error
+        (BS.mkRecordContent $sloc exten fields).pexp_desc
+      }
+  | LBRACE bs_record_expr_content error
       { unclosed "{" $loc($1) "}" $loc($3) }
-  | od=open_dot_declaration DOT LBRACE record_expr_content RBRACE
+  | od=open_dot_declaration DOT LBRACE bs_record_expr_content RBRACE
       { let (exten, fields) = $4 in
-        Pexp_open(od, mkexp ~loc:($startpos($3), $endpos)
-                        (Pexp_record(fields, exten))) }
-  | mod_longident DOT LBRACE record_expr_content error
+        let exp = BS.mkRecordContent ($startpos($3), $endpos) exten fields in
+        Pexp_open(od, exp)
+      }
+  | mod_longident DOT LBRACE bs_record_expr_content error
       { unclosed "{" $loc($3) "}" $loc($5) }
   | LBRACKETBAR expr_semi_list BARRBRACKET
       { Pexp_array($2) }
@@ -3599,10 +3478,10 @@ letop_binding_body:
   | val_ident
       (* Let-punning *)
       { (mkpatvar ~loc:$loc $1, mkexpvar ~loc:$loc $1) }
-  | pat = simple_pattern COLON typ = core_type EQUAL exp = seq_expr
+  | pat = simple_pattern COLON typ = core_type EQUAL exp = bseq_expr
       { let loc = ($startpos(pat), $endpos(typ)) in
         (ghpat ~loc (Ppat_constraint(pat, typ)), exp) }
-  | pat = pattern_no_exn EQUAL exp = seq_expr
+  | pat = pattern_no_exn EQUAL exp = bseq_expr
       { (pat, exp) }
 ;
 letop_bindings:
@@ -3619,7 +3498,7 @@ letop_bindings:
 fun_binding:
     strict_binding
       { $1 }
-  | type_constraint EQUAL seq_expr
+  | type_constraint EQUAL bseq_expr
       { mkexp_constraint ~loc:$sloc $3 $1 }
 ;
 strict_binding:
@@ -3629,73 +3508,6 @@ strict_binding:
       { let (l, o, p) = $1 in ghexp ~loc:$sloc (Pexp_fun(l, o, p, $2)) }
   | LPAREN TYPE lident_list RPAREN fun_binding
       { mk_newtypes ~loc:$sloc $3 $5 }
-;
-%inline match_cases:
-  xs = preceded_or_separated_nonempty_llist(BAR, match_case)
-    { xs }
-;
-match_case:
-    pattern MINUSGREATER seq_expr
-      { Exp.case $1 $3 }
-  | pattern WHEN seq_expr MINUSGREATER seq_expr
-      { Exp.case $1 ~guard:$3 $5 }
-  | pattern MINUSGREATER DOT
-      { Exp.case $1 (Exp.unreachable ~loc:(make_loc $loc($3)) ()) }
-;
-fun_def:
-    MINUSGREATER seq_expr
-      { $2 }
-  | mkexp(COLON atomic_type MINUSGREATER seq_expr
-      { Pexp_constraint ($4, $2) })
-      { $1 }
-/* Cf #5939: we used to accept (fun p when e0 -> e) */
-  | labeled_simple_pattern fun_def
-      {
-       let (l,o,p) = $1 in
-       ghexp ~loc:$sloc (Pexp_fun(l, o, p, $2))
-      }
-  | LPAREN TYPE lident_list RPAREN fun_def
-      { mk_newtypes ~loc:$sloc $3 $5 }
-;
-%inline expr_comma_list:
-  es = separated_nontrivial_llist(COMMA, expr)
-    { es }
-;
-record_expr_content:
-  eo = ioption(terminated(simple_expr, WITH))
-  fields = separated_or_terminated_nonempty_list(SEMI, record_expr_field)
-    { eo, fields }
-;
-%inline record_expr_field:
-  | label = mkrhs(label_longident)
-    c = type_constraint?
-    eo = preceded(EQUAL, expr)?
-      { let constraint_loc, label, e =
-          match eo with
-          | None ->
-              (* No pattern; this is a pun. Desugar it. *)
-              $sloc, make_ghost label, exp_of_longident label
-          | Some e ->
-              ($startpos(c), $endpos), label, e
-        in
-        label, mkexp_opt_constraint ~loc:constraint_loc e c }
-;
-%inline object_expr_content:
-  xs = separated_or_terminated_nonempty_list(SEMI, object_expr_field)
-    { xs }
-;
-%inline object_expr_field:
-    label = mkrhs(label)
-    oe = preceded(EQUAL, expr)?
-      { let label, e =
-          match oe with
-          | None ->
-              (* No expression; this is a pun. Desugar it. *)
-              make_ghost label, exp_of_label label
-          | Some e ->
-              label, e
-        in
-        label, e }
 ;
 %inline expr_semi_list:
   es = bs_expr
