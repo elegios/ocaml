@@ -1184,7 +1184,7 @@ module BS = struct
         ]
     (* Allow the broken operators to float past the operators that otherwise have lower precedence *)
     ; liftA2 geither
-             [BLSemi; BLLet; BLMatch; BLMatchArm; BLFunctionMatch; BLTry; BLLambda]
+             ropen
              [BLElse]
     (* Associativity *)
     ; liftA2 gleft
@@ -1226,7 +1226,7 @@ module BS = struct
     (* Longest match/unbreaking *)
     ; liftA2 gright [BLMatch; BLFunctionMatch; BLTry; BLMatchArm] [BLMatchArm]
     ; liftA2 gleft [BLElse] [BLElse]
-    ; liftA2 gright [BLIf] [BLElse]
+    (* ; liftA2 gright [BLIf] [BLElse] *)
     ; liftA2 gright [BLComma] [BLComma]
     ]
 
