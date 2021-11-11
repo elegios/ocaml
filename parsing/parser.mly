@@ -1152,6 +1152,14 @@ module BS = struct
     @ List.map (fun (l, rallow) -> prefix l rallow) bprefixes
     @ List.map (fun (lallow, l) -> postfix l lallow) bpostfixes
 
+  let ropen =
+    [ BLSimplePrefix; BLApp; BLLazy; BLAssert; BLMinusPre; BLInfixop4; BLInfixop2
+    ; BLInfixop3; BLStar; BLPercent; BLPlus; BLPlusEq; BLMinus; BLCons; BLInfixop1
+    ; BLEquality; BLInfixop0; BLLess; BLGreater; BLAmpersand; BLAmperAmper
+    ; BLOrWord; BLBarBar; BLComma; BLArrowAssign; BLColonEqual; BLIf; BLElse; BLSemi
+    ; BLLet; BLMatch; BLMatchArm; BLFunctionMatch; BLTry; BLLambda
+    ]
+
   let bprecedence = List.concat
     (* Precedence *)
     [ precTableNoEq
