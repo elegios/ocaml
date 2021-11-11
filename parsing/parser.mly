@@ -881,8 +881,8 @@ module BS = struct
     | Infix (loc, _, _, BSComma, _, _) as x ->
        let xs = mkCommaList x in
        mkexp ~loc (Pexp_tuple xs)
-    | Infix (_, _, _, BSMatchArm _, _, _) ->
-       assert false (* TODO: proper error? Might not be possible to get here *)
+    | Infix ((_, redge), _, _, BSMatchArm _, _, _) as x ->
+       mkMatch redge [] x
     | Infix (_, _, _, BSElse, _, _) ->
        assert false (* TODO: proper error? Might not be possible to get here *)
     | Infix (p, Postfix (_, l, _, BSFieldAccess ident), _, BSArrowAssign, _, r) ->
@@ -918,12 +918,12 @@ module BS = struct
     | Prefix (loc, BSLet bindings, _, r) ->
        let r = mkWhole r in
        expr_of_let_bindings ~loc bindings r
-    | Prefix (loc, BSMatch (attrs, expr, (pat, guard)), _, r) ->
-       mkexp_attrs ~loc (Pexp_match(expr, mkCases pat guard r)) attrs
-    | Prefix (loc, BSTry (attrs, expr, (pat, guard)), _, r) ->
-       mkexp_attrs ~loc (Pexp_try(expr, mkCases pat guard r)) attrs
-    | Prefix (loc, BSFunctionMatch (attrs, (pat, guard)), _, r) ->
-       mkexp_attrs ~loc (Pexp_function (mkCases pat guard r)) attrs
+    | Prefix ((_, redge), BSMatch _, _, _) as x ->
+       mkMatch redge [] x
+    | Prefix ((_, redge), BSTry _, _, _) as x ->
+       mkMatch redge [] x
+    | Prefix ((_, redge), BSFunctionMatch _, _, _) as x ->
+       mkMatch redge [] x
     | Prefix (loc, BSIf (attrs, cond), _, (Infix (_, l, _, BSElse, _, r))) ->
        let l = mkWhole l in
        let r = mkWhole r in
@@ -1038,12 +1038,22 @@ module BS = struct
     | Infix (_, l, _, BSComma, _, r) -> mkWhole l :: mkCommaList r
     | x -> [mkWhole x]
 
-  and mkCases pat guard = function
-    | Infix (_, l, _, BSMatchArm (pat', guard'), _, r) ->
-       let cases = mkCases pat' guard' r in
-       (Exp.case pat ?guard (mkWhole l) :: cases)
-    | x ->
-       [Exp.case pat ?guard (mkWhole x)]
+  and mkMatch redge cases = function
+    | Infix (_, l, _, BSMatchArm (pat, guard), _, r) ->
+       mkMatch redge (Exp.case pat ?guard (mkWhole r) :: cases) l
+    | Prefix ((ledge, _), BSMatch (attrs, target, (pat, guard)), _, r) ->
+       let cases = Exp.case pat ?guard (mkWhole r) :: cases in
+       let loc = (ledge, redge) in
+       mkexp_attrs ~loc (Pexp_match(target, cases)) attrs
+    | Prefix ((ledge, _), BSFunctionMatch (attrs, (pat, guard)), _, r) ->
+       let cases = Exp.case pat ?guard (mkWhole r) :: cases in
+       let loc = (ledge, redge) in
+       mkexp_attrs ~loc (Pexp_function cases) attrs
+    | Prefix ((ledge, _), BSTry (attrs, target, (pat, guard)), _, r) ->
+       let cases = Exp.case pat ?guard (mkWhole r) :: cases in
+       let loc = (ledge, redge) in
+       mkexp_attrs ~loc (Pexp_try(target, cases)) attrs
+    | _ -> assert false
 
   let rec mkSemiList = function
     | Infix (_, l, _, BSSemi, _, r) -> mkWhole l :: mkSemiList r
@@ -1099,7 +1109,6 @@ module BS = struct
 
   let defaultAllowRight =
     allowAll
-    |> allowOneLess BLMatchArm
     |> allowOneLess BLUnreachable
     |> allowOneLess BLElse
   let defaultAllowLeft =
@@ -1124,8 +1133,7 @@ module BS = struct
       ; BLAmpersand; BLAmperAmper; BLColonEqual; BLCons
       ; BLHashop
       ]
-      (* NOTE(vipa, 2021-11-05): The lhs of BLMatchArm is actually the rhs of the previous arm/match after unbreaking, thus the forbids should be defaultAllow*Right*. *)
-    @ [ also defaultAllowRight [BLUnreachable], BLMatchArm, also defaultAllowRight [BLMatchArm; BLUnreachable]
+    @ [ allowOnly [BLMatchArm; BLMatch; BLFunctionMatch; BLTry], BLMatchArm, also defaultAllowRight [BLUnreachable]
       ; allowOnly [BLFieldAccess; BLIndex; BLIdent], BLArrowAssign, defaultAllowRight
       ]
   let bprefixes =
@@ -1134,9 +1142,9 @@ module BS = struct
       [ BLMinusPre; BLLet; BLSimplePrefix; BLLambda; BLLazy; BLAssert
       ; BLPlusPre
       ]
-    @ [ BLMatch, also defaultAllowRight [BLMatchArm; BLUnreachable]
-      ; BLFunctionMatch, also defaultAllowRight [BLMatchArm; BLUnreachable]
-      ; BLTry, also defaultAllowRight [BLMatchArm; BLUnreachable]
+    @ [ BLMatch, also defaultAllowRight [BLUnreachable]
+      ; BLFunctionMatch, also defaultAllowRight [BLUnreachable]
+      ; BLTry, also defaultAllowRight [BLUnreachable]
       ; BLIf, also defaultAllowRight [BLElse]
       ]
   let bpostfixes =
@@ -1182,10 +1190,10 @@ module BS = struct
         ; [ BLSemi; BLSemiPost ]
         ; [ BLLet; BLMatch; BLMatchArm; BLFunctionMatch; BLTry; BLLambda ]
         ]
-    (* Allow the broken operators to float past the operators that otherwise have lower precedence *)
+    (* Allow the broken operators to float past all right-open operators *)
     ; liftA2 geither
              ropen
-             [BLElse]
+             [BLElse; BLMatchArm]
     (* Associativity *)
     ; liftA2 gleft
              [BLHashop]
@@ -1224,7 +1232,7 @@ module BS = struct
              [BLSemi]
              [BLSemi; BLSemiPost]
     (* Longest match/unbreaking *)
-    ; liftA2 gright [BLMatch; BLFunctionMatch; BLTry; BLMatchArm] [BLMatchArm]
+    (* ; liftA2 gright [BLMatch; BLFunctionMatch; BLTry; BLMatchArm] [BLMatchArm] *)
     ; liftA2 gleft [BLElse] [BLElse]
     (* ; liftA2 gright [BLIf] [BLElse] *)
     ; liftA2 gright [BLComma] [BLComma]
