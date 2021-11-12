@@ -2848,7 +2848,7 @@ bs_expr:
           | Error br_err ->
              let bsSeqToList seq = BS.seqFoldl (fun xs x -> x :: xs) [] seq |> List.rev in
              let handleAmbiguity loc resolutions =
-               let resolutions = bsSeqToList resolutions |> List.map bsSeqToList in
+               let resolutions = bsSeqToList resolutions |> List.map bsSeqToList |> List.map (List.filter (fun x -> x <> "")) in
                let msg = String.concat "\n" (List.map (String.concat " ") resolutions) in
                (make_loc loc, msg)
              in
