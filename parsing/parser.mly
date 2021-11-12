@@ -768,8 +768,9 @@ module BSBasics = struct
   type tokish = string
   type pos = Lexing.position
 
-  let lpar_tok = "("
-  let rpar_tok = ")"
+  let lpar_tok = "\027[31m(\027[0m"
+  let rpar_tok = "\027[31m)\027[0m"
+  let elide_tok = "..."
 
   let atom_to_str = function
     | BSOpaque _ -> "..."
@@ -1226,8 +1227,6 @@ module BS = struct
     List.fold_left (fun g (l, r, (gleft, gright)) -> addPrec l r gleft gright g) g bprecedence
 
   let genned = finalize grammar
-
-  let init = init genned
 
   let getAtom = getAtom genned
   let getInfix = getInfix genned

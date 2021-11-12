@@ -9,6 +9,7 @@ module type Self = sig
 
   val lpar_tok : tokish
   val rpar_tok : tokish
+  val elide_tok : tokish
 
   val atom_to_str : atom_self -> tokish
   val infix_to_str : infix_self -> tokish
@@ -71,7 +72,7 @@ module type S = sig
   type permanent_node
   type 'a sequence
 
-  val init : gen_grammar -> unit -> ropen state
+  val init : unit -> ropen state
 
   val addAtom
       : (lclosed, rclosed) input -> (pos * pos) * atom_self -> ropen state -> rclosed state
