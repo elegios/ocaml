@@ -69,13 +69,13 @@ let setup_symlinks test_source_directory build_directory files =
     let dst = Filename.concat build_directory filename in
     let () =
       if Sys.file_exists dst then
-        if Sys.win32 && Sys.is_directory dst then
+        (if Sys.win32 && Sys.is_directory dst then
           (* Native symbolic links to directories don't disappear with unlink;
              doing rmdir here is technically slightly more than ln -sfT would
              do *)
           Sys.rmdir dst
         else
-          Sys.remove dst
+          Sys.remove dst)
     in
       Unix.symlink src dst in
   let copy filename =

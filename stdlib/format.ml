@@ -897,11 +897,11 @@ let display_newline state () = state.pp_out_string "\n" 0  1
 let blank_line = String.make 80 ' '
 let rec display_blanks state n =
   if n > 0 then
-  if n <= 80 then state.pp_out_string blank_line 0 n else
+  (if n <= 80 then state.pp_out_string blank_line 0 n else
   begin
     state.pp_out_string blank_line 0 80;
     display_blanks state (n - 80)
-  end
+  end)
 
 
 (* The default function to output indentation of new lines. *)

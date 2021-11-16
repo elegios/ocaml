@@ -321,8 +321,8 @@ let bprint_char_set buf char_set =
     if is_alone '-' then buffer_add_char buf '-';
   and print_out set i =
     if i < 256 then
-      if is_in_char_set set (char_of_int i) then print_first set i
-      else print_out set (i + 1)
+      (if is_in_char_set set (char_of_int i) then print_first set i
+      else print_out set (i + 1))
   and print_first set i =
     match char_of_int i with
     | '\255' -> print_char buf 255;

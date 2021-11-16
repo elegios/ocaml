@@ -308,7 +308,7 @@ let build_libs () =
              (String.concat " " flexdll_dirs)
           )
       in
-      if retcode <> 0 then if !failsafe then dynlink := false else exit 2
+      if retcode <> 0 then (if !failsafe then dynlink := false else exit 2)
     end;
     safe_remove (prepostfix "lib" !output_c Config.ext_lib);
     scommand

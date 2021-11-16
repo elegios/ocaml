@@ -1152,9 +1152,9 @@ let scan_chars_in_char_set char_set scan_indic width ib =
     scan_chars width (int_of_char c);
     if not (Scanning.eof ib) then
       let ci = Scanning.peek_char ib in
-      if c = ci
+      (if c = ci
       then Scanning.invalidate_current_char ib
-      else character_mismatch c ci
+      else character_mismatch c ci)
 
 
 (* The global error report function for [Scanf]. *)

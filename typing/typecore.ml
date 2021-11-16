@@ -2623,8 +2623,8 @@ let check_partial_application ~statement exp =
 let generalizable level ty =
   let rec check ty =
     if not_marked_node ty then
-      if get_level ty <= level then raise Exit else
-      (flip_mark_node ty; iter_type_expr check ty)
+      (if get_level ty <= level then raise Exit else
+      (flip_mark_node ty; iter_type_expr check ty))
   in
   try check ty; unmark_type ty; true
   with Exit -> unmark_type ty; false
@@ -4352,10 +4352,10 @@ and type_label_exp create env loc ty_expected
     generalize_structure ty_arg
   end;
   if label.lbl_private = Private then
-    if create then
+    (if create then
       raise (Error(loc, env, Private_type ty_expected))
     else
-      raise (Error(lid.loc, env, Private_label(lid.txt, ty_expected)));
+      raise (Error(lid.loc, env, Private_label(lid.txt, ty_expected))));
   let arg =
     let snap = if vars = [] then None else Some (Btype.snapshot ()) in
     let arg = type_argument env sarg ty_arg (instance ty_arg) in

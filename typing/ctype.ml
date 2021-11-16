@@ -973,9 +973,9 @@ let compute_univars ty =
 let fully_generic ty =
   let rec aux ty =
     if not_marked_node ty then
-      if get_level ty = generic_level then
+      (if get_level ty = generic_level then
         (flip_mark_node ty; iter_type_expr aux ty)
-      else raise Exit
+      else raise Exit)
   in
   let res = try aux ty; true with Exit -> false in
   unmark_type ty;
@@ -1868,7 +1868,7 @@ let occur_univar ?(inj_only=false) env ty =
   let visited = ref TypeMap.empty in
   let rec occur_rec bound ty =
     if not_marked_node ty then
-      if TypeSet.is_empty bound then
+      (if TypeSet.is_empty bound then
         (flip_mark_node ty; occur_desc bound ty)
       else try
         let bound' = TypeMap.find ty !visited in
@@ -1878,7 +1878,7 @@ let occur_univar ?(inj_only=false) env ty =
         end
       with Not_found ->
         visited := TypeMap.add ty bound !visited;
-        occur_desc bound ty
+        occur_desc bound ty)
   and occur_desc bound ty =
       match get_desc ty with
         Tunivar _ ->

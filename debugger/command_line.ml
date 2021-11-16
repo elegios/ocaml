@@ -236,7 +236,7 @@ let instr_env _ppf lexbuf =
   let cmdarg = argument_list_eol argument lexbuf in
   let cmdarg = string_trim (String.concat " " cmdarg) in
   if cmdarg <> "" then
-    if ask_kill_program () then begin
+    (if ask_kill_program () then begin
       try
         let eqpos = String.index cmdarg '=' in
         if eqpos = 0 then raise Not_found;
@@ -252,7 +252,7 @@ let instr_env _ppf lexbuf =
   else
     List.iter
       (fun (vvar, vval) -> printf "%s=%s\n%!" vvar vval)
-      (List.rev !Debugger_config.environment)
+      (List.rev !Debugger_config.environment))
 
 let instr_pwd ppf lexbuf =
   eol lexbuf;
